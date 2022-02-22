@@ -2,8 +2,8 @@
 
 ## Disciplinas:
 
-* [Arquitetura de Computadores](/arq/arq.md)
+* [Arquitetura de Computadores](arq.md)
 * Desafios de Engenharia
 * Gestão de Projetos
-* [Sistemas Digitais](/sisdig/sisdig.md)
-* [Arduino](/arduino/arduino.md)
+* [Sistemas Digitais](sisdig.md)
+* [Arduino](arduino.md)
