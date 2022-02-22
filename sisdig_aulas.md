@@ -1,6 +1,6 @@
 # Aulas de Sistemas Digitais - 2022.1
 
-* Álgebra Booleana e portas lógicas
+* [Álgebra Booleana e portas lógicas](sisdig_aulas/sisdig_1.pdf)
 * Projetos de circuitos combinacionais
 * Grandezas numéricas nos sistemas digitais
 * Circuitos aritméticos
