@@ -4,6 +4,6 @@
 
 * [Arquitetura de Computadores](arq.md)
 * Desafios de Engenharia
-* Gestão de Projetos
+* [Gestão de Projetos](pjto.md)
 * [Sistemas Digitais](sisdig.md)
 * [Arduino](arduino.md)
