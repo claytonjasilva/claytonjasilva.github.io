@@ -1,6 +1,7 @@
 # Aulas de Sistemas Digitais - 2022.1
 
 * Álgebra Booleana e portas lógicas
+* Projetos de circuitos combinacionais
 * Grandezas numéricas nos sistemas digitais
 * Circuitos aritméticos
 * _Coders_/_decoders_
