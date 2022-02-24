@@ -30,4 +30,4 @@ Exemplos de IDE para o Python:
 [Replit](https://replit.com/site/ide)
 
 ### Iniciando a trabalhar
-[...>>](https://claytonjasilva.github.io/prog_aulas/prog_replit.md)
+[...>>](prog_replit.md)
