@@ -1,4 +1,5 @@
 ## Programando com Python
+
 ### O que é Python?
 Uma linguagem de alto nível para que os usuários possam escrever **programas** que determinem como computadores possam resolver problemas. 
 ### O que é um programa de computador?
@@ -11,7 +12,9 @@ Um conjunto de instruções que devem obedecem à sintaxe e à semântica da lin
 - Poderosa
 #### Desvantagem
 - Lenta
+
 ## Interpretação de um programa escrito em Python
+
 ### O que é um interpretador?
 As instruções de um programa escrito em certa linguagem (por exemplo, Python) precisam ser convertidas para instruções que o computadore reconheça. Um programa interpretador converte cada instrução do programa para executá-la.
 ### O que é uma IDE?
