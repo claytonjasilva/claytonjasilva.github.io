@@ -12,3 +12,8 @@
 10. Gestão de riscos
 11. Gestão de aquisições, comunicações e partes interessadas
 12. Métodos ágeis: Scrum
+13. Exercícios
+
+#### Formulários
+
+1. [Conceitos iniciais](https://forms.gle/o837NnA29qcVmz796)
