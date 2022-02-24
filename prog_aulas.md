@@ -1,5 +1,6 @@
 # Programação - 2022.1
 
+0. [Iniciando...](prog_inicio.md)
 1. Conceitos de programação procedural: tipos, operadores, entrada/saída 
 2. Conceitos de programação procedural: condicionais simples e compostas
 3. Conceitos de programação procedural: estruturas de repetição
