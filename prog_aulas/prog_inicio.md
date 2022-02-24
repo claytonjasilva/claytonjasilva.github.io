@@ -5,7 +5,7 @@ Uma linguagem de alto nível para que os usuários possam escrever **programas**
 Um conjunto de instruções que devem obedecem à sintaxe e à semântica da linguagem de programação. A execução da sequência de instruções do programa deve levar à solução de um problema.
 ### Por que aprender a programar usando Python?
 | Vantagens             | Desvantagens |
-|-----------------------|--------------|
+| --------------------- | ------------ |
 | Facilidade de uso     | Lenta        |
 | Orientada a objetos   |              |
 | Gratuita              |              |
