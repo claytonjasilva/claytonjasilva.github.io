@@ -28,4 +28,4 @@ Exemplos de IDE para o Python:
 ### Qual é a IDE que iremos usar no curso?
 Usaremos [Replit] (https://replit.com/site/ide) como IDE para desenvolver nossos códigos em Python.
 
-[Começando a trabalhar com o Replit...](prog_replit.md)
+[Começando a trabalhar com o Replit...](prog_aulas/prog_replit.md)
