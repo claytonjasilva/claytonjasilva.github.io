@@ -12,7 +12,8 @@
 10. Gestão de riscos
 11. Gestão de aquisições, comunicações e partes interessadas
 12. Métodos ágeis: Scrum
-13. Exercícios
+13. Ponte de palitos [projeto final](pjto_projeto_final.pdf)
+14. Exercícios
 
 #### Formulários
 
