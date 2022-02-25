@@ -1,7 +1,7 @@
 # Programação - 2022.1
 
 0. [Iniciando...](prog_aulas/prog_inicio.md)
-1. Conceitos de programação procedural: tipos, operadores, entrada/saída 
+1. [Conceitos de programação procedural: tipos, operadores, entrada/saída](claytonjasilva.github.io/prog_aulas/conceitos(1).md) 
 2. Conceitos de programação procedural: condicionais simples e compostas
 3. Conceitos de programação procedural: estruturas de repetição
 4. MSProject: ferramenta para gestão de projetos
