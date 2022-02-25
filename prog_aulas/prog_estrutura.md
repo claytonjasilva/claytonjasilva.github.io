@@ -11,7 +11,7 @@ Os programas em Python podem ser decompostos em módulos, instruções, express�
 
 As expressões que geram objetos contemplam:
 
-1. [Funções da biblioteca-padrão] (https://docs.python.org/pt-br/3/library/functions.html).  
+1. [Funções da biblioteca-padrão](https://docs.python.org/pt-br/3/library/functions.html).  
 Funções são elementos da expressão que realizam um trabalho, entregando um resultado após serem executadas.  
 Por exemplo, *print(argumento)* apresenta o valor do argumento.
 3. Objetos de vários **tipos**:  
