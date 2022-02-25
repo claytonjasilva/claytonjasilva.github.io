@@ -27,3 +27,4 @@ Por exemplo, *print(x)* produz na saída o valor armazenado no objeto *x*.
 Por exemplo, a constante matemática *pi*
 5. Operações booleanas, comparações e operações aritméticas.
   
+## Gerando alguns códigos...
