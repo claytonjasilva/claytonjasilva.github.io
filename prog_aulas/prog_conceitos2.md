@@ -1,11 +1,12 @@
 ## Conceitos de programação procedural: condicionais simples e compostas  
 ### [Expressões lógicas ou booleanas e comparações](https://docs.python.org/pt-br/3/library/stdtypes.html#boolean-operations-and-or-not)
 
-### Instruções Condicionais   
+### Instruções Condicionais
+- As [instruções compostas](https://docs.python.org/pt-br/3/reference/compound_stmts.html)
 - Em termos simples, uma instrução condicional executa uma ação (ou conjunto de ações) em função de uma condição ser verdadeira ou falsa  
-- Quando a instrução condicional é simples, a ação é realizada se a condição for verdadeira - se a condição for falsa nenhuma ação é executada  
-- Quando a instrução condicional é composta, uma ação é realizada se a condição for verdadeira; outra ação é realizada se a condição for falsa 
-- Os limites de cada **bloco de instruções** na estrutura de execução são detectados automaticamente pela linguagem, em função da identação 
+- A execução da instrução condicional pode implicar a realização de uma ação se a condição for **verdadeira** (*True*) - se a condição for falsa nenhuma ação é executada 
+- Pode também implicar a realização de uma ação se a condição for verdadeira; e a realização de outra ação se a condição for **falsa** (*False*) 
+- Os limites de cada **bloco de instruções** na estrutura de execução são detectados automaticamente pela linguagem, em função da **identação** 
 
 ### Exercícios com condicionais simples e compostas  
 1. Elaborar um programa na linguagem Python para ler dois números; calcular e escrever o maior dos números lidos.
