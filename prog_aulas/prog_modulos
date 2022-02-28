@@ -1,8 +1,12 @@
 ## Módulos e pacotes 
-### [Conceito de módulos](https://docs.python.org/3/glossary.html#term-module)
+
+### Conceitos
+- [Conceito de módulos](https://docs.python.org/3/glossary.html#term-module)
+- [Conceito de pacotes](https://docs.python.org/pt-br/3/glossary.html#term-package)
 
 ### Mais sobre módulos e pacotes
 - O código Python em um módulo obtém acesso ao código em outro módulo pelo processo de importação dele. A instrução import é a maneira mais comum de chamar o mecanismo de importação, mas não é a única maneira.
+- A instrução import combina duas operações; ela procura o módulo nomeado e vincula os resultados dessa pesquisa a um nome no escopo local.
 - 
 
 ### Exercícios com condicionais simples e compostas  
