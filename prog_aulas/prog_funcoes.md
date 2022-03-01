@@ -6,7 +6,7 @@
 - Decomposição procedural: permitem dividir o sistema desenvolvido em partes, com tarefas bem definidas
 
 ### Escopo das variáveis
-- A linguagem Python posssui algumas [funções embutidas](https://docs.python.org/pt-br/3/reference/compound_stmts.html#function-definitions)
+- A linguagem Python posssui algumas [funções embutidas](https://docs.python.org/pt-br/3/library/functions.html)
 - Na estrutura *função(argumento's)*, os valores dos argumentos são copiados para os parâmetros da função. A alteração do valor do parâmetros não altera o valor dos argumentos se estes forem dos tipos imutáveis (int, float, ...). Por exemplo,  
 *def fun(x)  
    x=1  
