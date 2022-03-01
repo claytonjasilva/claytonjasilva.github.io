@@ -15,10 +15,10 @@
 ### Escopo e funções aninhadas     
 - O Python permite escrever funções dentro de funções envolventes
 - Exemplo de escopo aninhado:  
-*def f1():  
-    x = 88  
-    def f2():  
-        print x  
-    f2()  
-  f1()*  
+`def f1():`  
+`  x = 88`  
+`  def f2():`  
+`     print x`  
+`  f2()`  
+`f1()`  
   O resultado é a apresentação de 88. **A instrução *def* aninhada só é executada enquanto uma chamada da função envolvente está em andamento**
