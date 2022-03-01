@@ -16,7 +16,7 @@ fun(x)
 print(x)*  
 Escreve o valor **2**
 - O uso do comando simples [*return*](https://docs.python.org/pt-br/3/reference/simple_stmts.html#the-return-statement) pode acompanhar ou não a definição de uma função. O comando simples *return* devolve o resultado da função chamada para o programa que a chama
-- Por padrão, todos os nomes das variáveis atribuídos em uma função são locais, isto é, existem apensas enquanto a função é executada. Variáveis globais são lidas e atualizadas por qualquer função ou método do programa. As variáveis locais só podem ser acessadas por código pertencente ao método ou função onde foi declarado a variável. [Ver detalhes](prog_aulas/prog_funcoes_escopo.md)
+- Por padrão, todos os nomes das variáveis atribuídos em uma função são locais, isto é, existem apensas enquanto a função é executada. Variáveis globais são lidas e atualizadas por qualquer função ou método do programa. As variáveis locais só podem ser acessadas por código pertencente ao método ou função onde foi declarado a variável. [Ver detalhes](prog_funcoes_escopo.md)
 
 ### Exercícios com condicionais simples e compostas  
 1. Elaborar um programa na linguagem Python que possua uma função para calcular a média final de aluno, usando a fórmula: mf=0,4.ap1+0,4.ap2+0,2.ac. O programa deve ser executado para calcular a média de um grupo de 30 alunos.
