@@ -5,7 +5,7 @@
 2. [Conceitos de programação procedural: condicionais simples e compostas](prog_aulas/prog_conceitos2.md)
 3. [Conceitos de programação procedural: estruturas de repetição](prog_aulas/prog_conceitos3.md)
 4. [Funções](prog_aulas/prog_funcoes.md)
-5. Módulos e pacotes
+5. [Módulos](prog_aulas/prog_modulos.md) e [pacotes]((prog_aulas/prog_pacotes.md)
 6. Listas
 7. Tuplas e conjuntos
 8. POO
