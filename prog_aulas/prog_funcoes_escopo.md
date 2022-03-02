@@ -4,7 +4,7 @@
 - O espaço de nome de um objeto determina o **escopo de visibilidade**
 - Os nomes definidos dentro de uma função *def* só podem ser vistos pelo código que ewstá dentro da função
 - Os nomes definidos dentro de uma função *def* não entram em conflito com os nomes das variáveis fora da função
-- As funções definem um espaço local e o **[módulo](prog_aulas/modulos.md) envolvente** define um espaço global
+- As funções definem um espaço local e o **[módulo](prog_aulas/prog_modulos.md) envolvente** define um espaço global
 - O escopo global abrange apenas um arquivo
 - A **regra de pesquisa** de escopo do Python é dada por  
 1. Interna (Python) - nomes atribuídos previamente no módulos de nomes internos
