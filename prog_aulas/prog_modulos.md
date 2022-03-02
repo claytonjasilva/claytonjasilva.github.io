@@ -4,14 +4,23 @@
 - [Conceito de módulos](https://docs.python.org/3/glossary.html#term-module)
 - [Conceito de pacotes](https://docs.python.org/pt-br/3/glossary.html#term-package)
 
+### Por que utilizar módulos?
+- Reuso de código: o código que fica em arquivos de módulos é **persistente**, isto é, pode ser recarregado e novamente executado quantas vezes forem necessárias
+- Particionamento de espaço de nome: Os módulos encerram nomes em pacotes auto-suficientes que evitam conflitos de nomes
+- Implementar serviços ou dados compartilhados: permitem implementar componentes compartilhados em um sistema, razão pela qual só exigem uma cópia
+
 ### Mais sobre módulos e pacotes
-- O código Python em um módulo obtém acesso ao código em outro módulo pelo processo de importação dele. A instrução import é a maneira mais comum de chamar o mecanismo de importação, mas não é a única maneira.
-- A instrução import combina duas operações; ela procura o módulo nomeado e vincula os resultados dessa pesquisa a um nome no escopo local.
-- 
+- Módulos são pacotes de nomes que normalmente correspondem aos arquivos-fonte, servindo como bibliotecas de ferramentas para uso em outros arquivos e programas.
+- O código Python em um módulo obtém acesso ao código em outro módulo pelo processo de importação dele. A instrução *import* é a maneira mais comum de chamar o mecanismo de importação, mas não é a única maneira.
+- A instrução *import* combina duas operações; ela procura o módulo nomeado e vincula os resultados dessa pesquisa a um nome no escopo local.
+- A instrução *from* permite que os clientes busquem nomes específicos em um módulo
+- A instrução *reload* fornece uma maneira de recarregar o código de um módulos sem interromper o Python
+
+### [Módulos da biblioteca padrão](https://docs.python.org/3/library/index.html)
+- Cabe destacar alguns módulos intereessantes
+  + [Módulos matemáticos e numéricos](https://docs.python.org/3/library/numeric.html), como, por exemplo, *[math](https://docs.python.org/3/library/math.html#module-math)*, *[decimal](https://docs.python.org/3/library/decimal.html)* e *[statistics](https://docs.python.org/3/library/statistics.html)*, entre outros
+  + [File and Directory Access](https://docs.python.org/3/library/filesys.html), como, por exemplo, 
 
 ### Exercícios com condicionais simples e compostas  
 1. Elaborar um programa na linguagem Python que leia as notas de um grupo de N=30 alunos; calcule e escreva a média aritmética das notas dos alunos.
-2. Elaborar um programa na linguagem Python que leia as alturas e pesos de um grupo de N=20 pessoas; calcule e screve o IMC médio daquele grupo.
-3. Elaborar um programa na linguagem Python que leia os dados de um grupo de pessoas: nome, idade e escolaridade('fundamental','medio','superior'). O programa deverá calcular e escrever a média da idade das pessoas que possuem nível de escolaridade de ensino médio.
-4. Elaborar um programa na linguagem Python que leia o cpf de uma pessoa, o saldo da conta corrente no início de um dia, leia a natureza ('d'-depósito,'s'-saque) e o valor de todas as operações do dia. O programa deverá escrever o cpf do correntista, calcular e escrever o respectivo saldo ao final do dia.
-5. Elaborar um programa na linguagem Python que leia o cpf (no formato de 11 caracteres numéricos sem pontos e travessão), o número da instituição financeira a que pertence aquele cpf e o respectivo saldo bancário na instituição financeira de um grupo de pessoas. O programa deverá calcular e apresentar o saldo médio de cada cpf, assim como o saldo médio de cada instituição financeira. Admitir que o programa será interrompido se for digitado o cpf 000.000.000-00. O programa deverá **verificar se o cpf é válido** usando a regra proposta em <https://www.aceguarulhos.com.br/blog/como-saber-se-um-cpf-e-verdadeiro/#gsc.tab=0>.
+2.
