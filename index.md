@@ -3,7 +3,7 @@
 ## Disciplinas:
 
 * [Arquitetura de Computadores](arq.md)
-* Desafios de Engenharia
+* [Desafios de Engenharia](desafios.md)
 * [Gestão de Projetos](pjto.md)
 * [Programação](prog.md)
 * [Sistemas Digitais](sisdig.md)
