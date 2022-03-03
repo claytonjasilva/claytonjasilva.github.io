@@ -20,7 +20,7 @@
 ### Retirando o Arduíno...
 1. Conectar o circuito a uma fonte de tensão de 3,3 VDC
 2. Subir a tensão da fonte para 5 VDC
-3. Reduzir a tensão da fonte
+3. Reduzir a tensão da fonte  
 -----------------------------------------
 #### Observações
 + Usar o [manual da fonte](/manuais/Manual_fonteDC.pdf)
