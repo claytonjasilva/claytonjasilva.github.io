@@ -1,7 +1,8 @@
 # Gestão de projetos - 2022.1
 
+## Conteúdo
 1. [Conceitos fundamentais](pjto_aulas/pjto_1.pdf)
-2. Ciclo de vida de projetos
+2. [Ciclo de vida de projetos](pjto_aulas/pjto_2.pdf)
 3. Modelos de gestão de projetos
 4. MSProject: ferramenta para gestão de projetos
 5. Gestão integrada
@@ -12,9 +13,10 @@
 10. Gestão de riscos
 11. Gestão de aquisições, comunicações e partes interessadas
 12. Métodos ágeis: Scrum
-13. Ponte de palitos [projeto final](pjto_projeto_final.pdf)
-14. Exercícios
 
-#### Formulários
+## Projeto final
+**Ponte de palitos [projeto final](pjto_projeto_final.pdf)**
+
+#### Exercícios
 
 1. [Conceitos fundamentais](https://forms.gle/o837NnA29qcVmz796)
