@@ -23,7 +23,7 @@
 3. Reduzir a tensão da fonte
 -----------------------------------------
 #### Observações
-+ Usar o [manual da fonte](/manuais/Manual_fonte DC.pdf)
++ Usar o [manual da fonte](/manuais/Manual_fonteDC.pdf)
 + Relatar o que acontece quando se reduz a tensão de alimentação
 + Explicar o que acontece quando se reduziu a tensão
 + Identificar o valor da tensão de alimentação que se configura como limite a partir da observação realizada
