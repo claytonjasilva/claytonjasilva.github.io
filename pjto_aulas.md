@@ -19,4 +19,5 @@
 
 #### Exercícios
 
-1. [Conceitos fundamentais](https://forms.gle/o837NnA29qcVmz796)
+1. [Prática 1 *MS Project*](pjto_aulas/pratica1_msproject.md)
+2. [Conceitos fundamentais](https://forms.gle/o837NnA29qcVmz796)
