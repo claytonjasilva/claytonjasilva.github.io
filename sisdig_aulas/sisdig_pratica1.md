@@ -10,7 +10,7 @@
 --------------------------------
 #### Observações
 + Utilizar as trilhas adequadamente do protoboard - Ver <https://www.robocore.net/tutoriais/como-utilizar-uma-protoboard>
-+ Ver a pinagem da placa do Arduíno descrita nas [notas sobre Arduíno](claytonjasilva/arduino/arduino_1.pdf)
++ Ver a pinagem da placa do Arduíno descrita nas [notas sobre Arduíno](claytonjasilva.github.io/arduino/arduino_1.pdf)
 + Relatar o que está ocorrendo fisicamente:  
   + Ajustar o potenciômetro e relatar o que acontece com o led
   + Por que é importante usar o resistor limitador de corrente?
@@ -23,7 +23,7 @@
 3. Reduzir a tensão da fonte
 -----------------------------------------
 #### Observações
-+ Usar o [manual da fonte](claytonjasilva/manuais/Manual_fonte DC.pdf)
++ Usar o [manual da fonte](claytonjasilva.github.io/manuais/Manual_fonte DC.pdf)
 + Relatar o que acontece quando se reduz a tensão de alimentação
 + Explicar o que acontece quando se reduziu a tensão
 + Identificar o valor da tensão de alimentação que se configura como limite a partir da observação realizada
