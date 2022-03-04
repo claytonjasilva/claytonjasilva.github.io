@@ -1,9 +1,13 @@
-# Aulas de Arquitetura de Computadores - 2022.1
+# Desafios de Engenharia - 2022.1
 
-1. [Conceitos básicos](arq_aulas/arq_aulas_conceitos.pdf)
-2. Números e aritmética binária
-3. _Overview_ - elementos básicos das arquiteturas modernas
-4. Microprocessador Atmel ATmega 2560
-5. Programando no _assembler_ do MC2560
-6. Sistemas Operacionais
-7. Referências do MC2560
+1.  [Engenharia e sociedade - parte 1](des_aulas/des_engenharia-sociedade.pdf)  
+    Engenharia e sociedade - parte 2
+2.  Projetos de engenharia e ferramentas para gerenciamento de projetos
+3.  Sistemas de Engenharia e o método da Engenharia de sistemas
+4.  Grandezas e unidades de medida
+6.  Simulação computacional de modelos quantitativos de produtos de engenharia 
+7.  Modelos estáticos, dinâmicos e funcionais de sistemas de engenharia
+8.  Método para solução de problemas de engenharia
+9.  Métodos e ferramentas de apoio à decisão 
+10. Segurança do trabalho e ergonomia
+11. Engenharia e empreendedorismo
