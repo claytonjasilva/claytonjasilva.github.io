@@ -6,7 +6,7 @@
 3. [Conceitos de programação procedural: estruturas de repetição](prog_aulas/prog_conceitos3.md)
 4. [Funções](prog_aulas/prog_funcoes.md)
 5. [Módulos](prog_aulas/prog_modulos.md) e [pacotes](prog_aulas/prog_pacotes.md)
-6. Listas
+6. [Listas](prog_aulas/listas.md)
 7. Tuplas e conjuntos
 8. POO
 9. Pacote NumPy
