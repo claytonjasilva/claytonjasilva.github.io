@@ -1,8 +1,8 @@
-﻿ARQUITETURA DE COMPUTADORES - 2021.2
 
-PROF. CLAYTON J A SILVA – NOTA DE AULA 1
-# **CONCEITOS BÁSICOS SOBRE ARQUITETURA DE COMPUTADORES**
-1. # **Dados, linguagens e programas de computadores**
+# NOTA 1: **CONCEITOS BÁSICOS SOBRE ARQUITETURA DE COMPUTADORES**
+
+## 1. Dados, linguagens e programas de computadores
+
 Os termos dados e informações são amplamente utilizados em várias disciplinas do conhecimento. À medida que o uso dos computadores passou a permear todas as atividades humanas o uso se ampliou. Independentemente do contexto de utilização, pode-se afirmar que informação é o resultado de uma transformação do dado, ao qual lhe foi agregado valor. A agregação de valor ao dado é o que se designa processamento de dados. Merece destaque que, como valor se relaciona com o propósito a que se destina a informação, a transformação pode ocorrer contextos diferentes, ou seja, o que é informação em um contexto pode ser dado. A Figura 1 ilustra essa visão.
 
 `    `![](Aspose.Words.3b07b864-1baf-478e-9365-4006d396e73e.001.png)
@@ -24,7 +24,9 @@ Sem aprofundar, **os conceitos de linguagem conduzem às ideias chaves: no que s
 Louden (2004) define a semântica de um programa como o seu “significado”, em contraste com a sintaxe e estrutura. Determina o comportamento do programa durante a execução, mas usa atributos que podem ser determinados antes da execução e que não podem ser expressos de forma conveniente como sintaxe.
 
 Em síntese, os programas são conjuntos de instruções para manipulação de dados escritos em linguagens de programação, portanto obedecendo a regras de sintaxe, dentro de estruturas definidas e conforme regras de semântica. 
-1. # **Modelo de máquina de níveis**
+
+## 2. Modelo de máquina de níveis
+
 Uma das maneiras de representar sistemas de engenharia é o uso de modelos. A representação de um sistema objetiva facilitar a compreensão a seu respeito de modo a apoiar o processo de desenvolvimento do produto, ou seja, na síntese do sistema. Objetiva, por outro, lado, uma vez que o produto já tenha sido concebido e entrado na fase de operação, subsidiar o processo de suporte à operação, seja nas atividades de manutenção, suprimento etc.
 
 Os modelos podem ser descritos como uma abstração dos sistemas, normalmente buscando capturar uma perspectiva de interesse, de modo a refletir o comportamento real a investigar. É natural que os modelos não tenham a capacidade de representar todos os comportamentos que um determinado sistema possa manifestar. Um modelo de sistema apresenta um ponto de vista que requer geralmente de explicações complementares a fim de que seja entendido e cumpra o seu propósito.
@@ -62,7 +64,9 @@ Quanto maior o número de níveis do computador menos complexo é o processo de 
 Além dessas considerações de complexidade e custo, particularmente na integração homem-máquina, é desejável que o nível mais elevado seja o mais amigável com as pessoas, dispensando que o seu uso seja privilégio de especialistas em eletrônica.           
 
 Entendido o modelo de máquina de níveis, é importante caracterizar as funções do computador. As funções centrais do computador são processar e armazenar dados.
-1. # **Máquina de seis níveis**
+
+## 3. Máquina de seis níveis
+
 A Figura 4 apresenta a máquina de níveis que representa a referência da organização de computadores considerada no presente texto.
 
 ![](Aspose.Words.3b07b864-1baf-478e-9365-4006d396e73e.004.png)
@@ -116,7 +120,9 @@ Figura 6 – Processo de transformação no código fonte em código objeto exec
 ` `O programa fonte pode ser subdividido em módulos armazenados em arquivos separados, o que demanda a utilização de um **pré-processador**, que gera um programa fonte modificado.
 
 O programa fonte modificado é traduzido pelo compilador em um programa em linguagem de montagem (*assembly*), que, por sua vez, é traduzido pelo montador (*assembler*) em um programa relocável. A saída do montador pode depender de arquivos de bibliotecas, por exemplo, para ser executado. Assim o código relocável é associado a um código de carregado por um *linkeditor* (editor de ligação/carregador) para gerar o código executável. 
-1. # **Sobre a evolução histórica da organização dos computadores**
+
+## 4. Sobre a evolução histórica da organização dos computadores
+
 Do ponto de vista histórico, o primeiro registro que vale a pena mencionar para o contexto da organização de computadores é o da máquina diferencial de Charles Babbage, em Cambridge. Tratava-se de uma máquina mecânica que realizava operações de soma e subtração com base em método de diferenças finitas que usava polinômio. O mecanismo da máquina realizava um conjunto de instruções (programa) e gerava uma impressão sobre chapa de cobre.
 
 O desafio tecnológico seguinte foi possibilitar a construção de uma máquina que pudesse realizar vários programas diferentes, o que não era possível com a máquina diferencial. Para responder ao desafio surgiu o conceito da **máquina analítica, proposta por Babbage**, organizada com: sistema de armazenamento (memória); sistema de cálculo; e sistema de saída.  O grande avanço da máquina analítica era poder suportar aplicações gerai, com base na leitura de cartões, executava instruções e usando dados armazenado realizar operações sobre eles. A máquina analítica era programável.
@@ -151,7 +157,7 @@ O site da TecMundo (<https://www.tecmundo.com.br/>) apresenta um vídeo bastante
 
 Uma perspectiva diferente da usual da história da computação é apresentada no filme Atanasoff o Pai do Computador[^4]. O vídeo credita a John Vincent Atanasoff o título de Pai do Computador, por ele ter usado pioneiramente a lógica binária, o que viria a se configurar uma revolução da computação digital. 
 
-1. **A máquina IAS (ou Máquina de Von Neumman)**
+## 5. A máquina IAS (ou Máquina de Von Neumman)
 
 Vamos detalhar mais o funcionamento da máquina de Von Neumman, base de muitos conceitos que aprofundaremos no curso. A Figura 8 apresenta a estrutura detalhada do IAS.
 
@@ -277,7 +283,6 @@ Considerando somente a parcela do subciclo de busca do ciclo de instrução repr
 ![](Aspose.Words.3b07b864-1baf-478e-9365-4006d396e73e.014.png)
 
 Figura 14 – Diagrama de transição de estados correspondente à temporização de parte do subciclo de busca do ciclo de instrução
-Página 1/25
 
 [^1]: Acessível em <https://www.youtube.com/watch?v=_95Ml7jhrNg>
 [^2]: Acessível em <https://www.youtube.com/watch?v=Q2xrQ5U0Tbo>.
