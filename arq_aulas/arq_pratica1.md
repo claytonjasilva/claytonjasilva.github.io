@@ -1,4 +1,4 @@
-### Prática 1: Arduíno
+### Prática: Arduíno
 
 #### Vamos iniciar a prática com a placa do Arduíno 2560...
 
