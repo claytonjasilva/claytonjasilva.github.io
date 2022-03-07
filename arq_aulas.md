@@ -9,7 +9,7 @@
 6. Sistemas Operacionais
 
 ## Práticas
-1. [Prática 1 Arduíno](arq_aulas/arq_aulas_pratica1.md)
+1. [Prática 1 Arduíno](arq_aulas/arq_pratica1.md)
 
 ## Referências
 
