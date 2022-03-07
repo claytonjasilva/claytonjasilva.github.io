@@ -8,6 +8,9 @@
 5. Programando no _assembler_ do MC2560
 6. Sistemas Operacionais
 
+## Práticas
+1. [Prática 1 Arduíno](arq_aulas/arq_aulas_pratica1.md)
+
 ## Referências
 
 #### Notas de aula
