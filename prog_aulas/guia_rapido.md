@@ -31,7 +31,7 @@
    Sintaxe: *int()*  
    Exemplo: *y=int(x)*  
    Finalidade: converter um valor para um número inteiro. No exemplo, o valor de *x* é convertido para inteiro - por causa da atribuição, *y* recebe o número convertido  
-   **Converter para ponto flutuante** - usa-se **ponto flutuante** para a representação de números fracionários no computador  
+7. **Converter para ponto flutuante** - usa-se **ponto flutuante** para a representação de números fracionários no computador  
    Sintaxe: *float()*  
    Exemplo: *y=float(x)*  
    Finalidade: converter um valor para um número de ponto flutuante. No exemplo, o valor de *x* é convertido para ponto flutuante  
