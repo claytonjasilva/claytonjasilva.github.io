@@ -13,3 +13,7 @@
 10. Pacote Matplotlib
 11. Pacote SciPy
 12. Debugging, testes e perfilamento
+
+### Guia rápido
+**Guia para utilizar a sintaxe básica do Python - atualizado de acordo com as aulas**  
+[Guia básico](prog_aulas/guia_rapido.md)
