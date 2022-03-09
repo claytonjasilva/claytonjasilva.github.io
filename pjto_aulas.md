@@ -19,5 +19,6 @@
 
 #### Exercícios
 
-1. [Prática 1 *MS Project*](pjto_aulas/pratica1_msproject.md)
+1. [Prática 1 *MS Project*](pjto_aulas/pratica1_msproject.md) - o.k.
 2. [Conceitos fundamentais](https://forms.gle/o837NnA29qcVmz796)
+3. [Ciclo de vida e processos](https://forms.gle/xryaYDTNHqzEX9a47)
