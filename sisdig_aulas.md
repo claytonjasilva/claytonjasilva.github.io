@@ -2,7 +2,7 @@
 
 ## Conteúdo
 * [Álgebra Booleana e portas lógicas](sisdig_aulas/sisdig_1.pdf)
-* Projetos de circuitos combinacionais
+* [Projetos de circuitos combinacionais](sisdig_aulas/sisdig_2-1.pdf)
 * Grandezas numéricas nos sistemas digitais
 * Circuitos aritméticos
 * _Coders_/_decoders_
