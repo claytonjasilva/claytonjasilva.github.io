@@ -19,4 +19,5 @@
 2. [Prática 2](/arq_aulas/arq_pratica1.md)
 
 ### Listas de exercício
-1. [Lista 1: álgebra booleana e portas lógicas](sisdig_aulas/sisdig_exercicios/Lista1-AlgebraBooleana-Gates.pdf)   
+1. [Lista 1: álgebra booleana e portas lógicas](sisdig_aulas/sisdig_exercicios/Lista1-AlgebraBooleana-Gates.pdf)
+2. [Form álgebra booleana e portas lógicas](https://forms.gle/5pouUtxLecaapEoL7)    
