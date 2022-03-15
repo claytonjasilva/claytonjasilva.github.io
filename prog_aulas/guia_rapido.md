@@ -38,4 +38,15 @@
 8. **Arredondar um número de ponto flutuante**  
    Sintaxe: *round(x,ndig)*  
    Exemplo: *y=round(x,1)*  
-   Finalidade: Retorna o número arredondado para a precisão de n dígitos após o ponto decimal. Se ndig for omitido retornará o inteiro mais próximo.
+   Finalidade: Retorna o número arredondado para a precisão de n dígitos após o ponto decimal. Se ndig for omitido retornará o inteiro mais próximo.  
+9. **Comando if**  
+   Sintaxe:  
+   `if cond:`    
+   >`instruções`  
+          
+   Exemplo:  
+   `if x<0:`    
+   >`print(x)`
+
+   Finalidade: Executa as 'instruções' somente se a condição for verdadeira.  
+
