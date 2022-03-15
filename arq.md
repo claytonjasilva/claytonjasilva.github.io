@@ -8,3 +8,4 @@
 6. Exercícios
 
    Formulário 1: [Conceitos iniciais - máquina de níveis](https://forms.gle/7G6Fa3jiCavhMrwR6)
+   Lista 1 de exercícios: [Arquitetura IAS]()
