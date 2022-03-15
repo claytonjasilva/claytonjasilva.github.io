@@ -34,4 +34,8 @@
 7. **Converter para ponto flutuante** - usa-se **ponto flutuante** para a representação de números fracionários no computador  
    Sintaxe: *float()*  
    Exemplo: *y=float(x)*  
-   Finalidade: converter um valor para um número de ponto flutuante. No exemplo, o valor de *x* é convertido para ponto flutuante  
+   Finalidade: converter um valor para um número de ponto flutuante. No exemplo, o valor de *x* é convertido para ponto flutuante
+8. **Arredondar um número de ponto flutuante**  
+   Sintaxe: *round(x,ndig)*  
+   Exemplo: *y=round(x,1)*  
+   Finalidade: Retorna o número arredondado para a precisão de n dígitos após o ponto decimal. Se ndig for omitido retornará o inteiro mais próximo.
