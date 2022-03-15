@@ -49,4 +49,13 @@
    >`print(x)`
 
    Finalidade: Executa as 'instruções' somente se a condição for verdadeira.  
-
+10. **Operações lógicas de comparação**  
+   Sintaxe:  
+   *>*, maior  
+   *<*, menor  
+   *>=*, maior ou igual  
+   *<=*, menor ou igual
+   *==*, igual  
+   *!=*, diferente  
+    Exemplos: *x>y, 4<z, x==5, x!=4, ...  
+    Finalidade: realizar a comparação e retornar True (verdadeiro) ou False (falso).
