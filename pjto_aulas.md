@@ -22,3 +22,4 @@
 2. [Conceitos fundamentais](https://forms.gle/o837NnA29qcVmz796) - o.k.
 3. [Ciclo de vida e processos](https://forms.gle/xryaYDTNHqzEX9a47)
 4. [Prática 2 *MS Project*](pjto_aulas/pratica2_msproject.md)
+5. [Prática 3 *MS Project*](pjto_aulas/pratica3_msproject.md)
