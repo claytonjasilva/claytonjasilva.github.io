@@ -2,7 +2,7 @@
 
 1. Engenharia e sociedade   
 [Engenharia e sociedade - parte 1](des_aulas/des_engenharia-sociedade.pdf)  
-Engenharia e sociedade - parte 2  
+[Engenharia e sociedade - parte 2](des_aulas/des_engenharia-sociedade-2.pdf)  
 Alguns vídeos interessantes:  
    - [Grandes projetos de engenharia](https://www.youtube.com/watch?v=gU485CESr4k)  
    - [Um grande projeto no Brasil: Itaipu](https://www.youtube.com/watch?v=9uIaa2eOxhc)  
