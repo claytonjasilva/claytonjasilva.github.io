@@ -1,21 +1,13 @@
-## Prática nº 2: MS Project
+## Prática nº 3: MS Project
 
-Você possui um projeto que contempla as tarefas relacionadas a seguir:
-- **Tarefa 1**: realizar estudos técnicos, que contempla: formular o problema, analisar alternativas de solução e decidir qual é a solução mais vantajosa.
-- **Tarefa 2**: especificar tecnicamente a solução de engenharia.
-- **Tarefa 3**: elaborar o protótipo, que contempla: adquirir o material, desenhar as plantas de engenharia, construir o protótipo.
-- **Tarefa 4**: validar o protótipo.
-- Após todas as tarefas e subtarefas é definida uma tarefa de marco, com duração de '0 dias'
+Considerando o problema apresentado na **prática 2**, você desenvolveu o cronograma do projeto, identificando tarefas, subtarefas; as sequenciou; e definiu a respecitiva duração. Obteve o **cronograma** do projeto, duração total etc.
 
-Admita agora que as subtarefas *adquirir o material* e *desenhar as plantas de engenharia* **devem ser realizadas simultaneamente**. Todas as demais tarefas e subtarefas devem ser **executadas sequencialmente**.
-
-As subtarefas de mais baixo nível na estrutura possuem **duração de 10(dez) dias**. As demais tarefas e subtarefas possuem **duração de 20 (vinte) dias**.
+Agora é necessário planejar os **recursos** a alocar para cada tarefa e subtarefa.
 
 ### Pedido:
-1. Criar, além das tarefas definidas acima, uma tarefa *Gerenciar Projeto*
-2. Criar as subtarefas da tarefa *Gerenciar Projeto*, que são: realizar reunião de *kickoff* (1 dia), realizar reuniões de acompanhamento, encerrar projeto (0 dia)
-3. Criar as subtarefas da subtarefa *realizar reuniões de acompanhamento*: realizar reunião 1, realizar reunião 2, ...
-4. **Agendar manualmente** cada um das subtarefas *realizar reuniões de acompanhamento*, no **início de cada mês** durante a vida do projeto 
-5. Configurar a subtarefa *realizar reunião de kickoff* como a primeira tarefa do projeto
-6. Configurar a subtarefa *encerrar projeto* como a última tarefa do projeto
-7. Gerar o cronograma e o gráfico de Gantt do projeto
+1. Selecionar no botão *Exibir* a opção *Planilha de Recursos*
+2. Exibir somente as colunas - na ordem - *Grupo*|*Nome do recurso*|*Tipo*|*Código* - **ocultar** as demais colunas
+3. Identifcar os recursos necessários e cadastrar na planilha os campos selecionados. Sugestão: cadastrar como grupo os **componentes de custo** tratados em sala
+4. Selecionar no botão *Exibir* a opção *Gráfico de Gantt* 
+5. Abrir as informações de cada Tarefa - duplo clique na tarefa ou no menu *Tarefa*,*Informações*
+6. Alocar os recursos criados na aba *Recursos* do form - ao finalizar pressionar o.k.
