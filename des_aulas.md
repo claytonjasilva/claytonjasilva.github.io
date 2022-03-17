@@ -18,3 +18,5 @@ Alguns vídeos interessantes:
 10. Métodos e ferramentas de apoio à decisão 
 11. Segurança do trabalho e ergonomia
 12. Engenharia e empreendedorismo
+
+[Quiz 1: Engenharia e sociedade](https://docs.google.com/forms/d/e/1FAIpQLSehC8uYUdJ2myPz-k1E3LUkW-CoyKvS4nvrJaLe-yEBUQ3Dkw/viewform?usp=sf_link)
