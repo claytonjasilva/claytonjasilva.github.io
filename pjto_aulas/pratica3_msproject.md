@@ -9,5 +9,5 @@ Agora é necessário planejar os **recursos** a alocar para cada tarefa e subtar
 2. Exibir somente as colunas - na ordem - *Grupo*, *Nome do recurso*, *Tipo*, *Código* - **ocultar** as demais colunas
 3. Identifcar os recursos necessários e cadastrar na planilha os campos selecionados. Sugestão: cadastrar como grupo os **componentes de custo** tratados em sala
 4. Selecionar no botão *Exibir* a opção *Gráfico de Gantt* 
-5. Abrir as informações de cada Tarefa - duplo clique na tarefa ou no menu *Tarefa*,*Informações*
+5. Abrir as informações de cada Tarefa - duplo clique na tarefa ou no menu *Tarefa*, *Informações*
 6. Alocar os recursos criados na aba *Recursos* do form - ao finalizar pressionar o.k.
