@@ -4,4 +4,3 @@
 2. [Grid](pjto_grid.pdf)
 3. [Sistema de Avaliações](/./avaliacoes.pdf)
 4. [Conteúdo das Aulas](pjto_aulas.md)
-6. Exercícios
