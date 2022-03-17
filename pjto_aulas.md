@@ -16,7 +16,7 @@
 ## Projeto final
 **Ponte de palitos [projeto final](pjto_projeto_final.pdf)**
 
-#### Exercícios
+## Exercícios
 
 1. [Prática 1 *MS Project*](pjto_aulas/pratica1_msproject.md) - o.k.
 2. [Conceitos fundamentais](https://forms.gle/o837NnA29qcVmz796) - o.k.  
