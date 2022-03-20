@@ -35,11 +35,15 @@
    Sintaxe: *float()*  
    Exemplo: *y=float(x)*  
    Finalidade: converter um valor para um número de ponto flutuante. No exemplo, o valor de *x* é convertido para ponto flutuante
-8. **Arredondar um número de ponto flutuante**  
+8.  **Delimitação de strings - cadeias de caracteres**  
+   Sintaxe: *'texto'* ou *"texto"*  
+   Exemplo: *"Digite o valor"*  
+   Finalidade: Definir uma cadeia de caracteres
+9. **Arredondar um número de ponto flutuante**  
    Sintaxe: *round(x,ndig)*  
    Exemplo: *y=round(x,1)*  
    Finalidade: Retorna o número arredondado para a precisão de n dígitos após o ponto decimal. Se ndig for omitido retornará o inteiro mais próximo.  
-9. **Comando if**  
+10. **Comando if**  
    Sintaxe:  
    `if cond:`    
    >`instruções`  
@@ -49,7 +53,7 @@
    >`print(x)`
 
    Finalidade: Executa as 'instruções' somente se a condição for verdadeira.  
-10. **Operações lógicas de comparação**  
+11. **Operações lógicas de comparação**  
    Sintaxe:  
    *>*, maior  
    *<*, menor  
@@ -59,7 +63,7 @@
    *!=*, diferente  
     Exemplos: x>y, 4<z, x==5, x!=4, ...  
     Finalidade: realizar a comparação e retornar True (verdadeiro) ou False (falso).  
-11. **A barra invertida - sequências de *escape* -**
+12. **A barra invertida - sequências de *escape* -**
    Sintaxe:  
    *\n*, quebra linha  
    *\t*, tabulação  
