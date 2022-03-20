@@ -44,15 +44,15 @@
    Exemplo: *y=round(x,1)*  
    Finalidade: Retorna o número arredondado para a precisão de n dígitos após o ponto decimal. Se ndig for omitido retornará o inteiro mais próximo.  
 10. **Comando if**  
-   Sintaxe:  
+  Sintaxe:  
    `if cond:`    
    >`instruções`  
   
-   Exemplo:  
+  Exemplo:  
    `if x<0:`    
    >`print(x)`
-
-   Finalidade: Executa as 'instruções' somente se a condição for verdadeira.  
+  
+  Finalidade: Executa as 'instruções' somente se a condição for verdadeira.  
 11. **Operações lógicas de comparação**  
   Sintaxe:  
   *>*, maior  
