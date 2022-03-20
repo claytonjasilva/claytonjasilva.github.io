@@ -57,5 +57,13 @@
    *<=*, menor ou igual
    *==*, igual  
    *!=*, diferente  
-    Exemplos: *x>y, 4<z, x==5, x!=4, ...  
-    Finalidade: realizar a comparação e retornar True (verdadeiro) ou False (falso).
+    Exemplos: x>y, 4<z, x==5, x!=4, ...  
+    Finalidade: realizar a comparação e retornar True (verdadeiro) ou False (falso).  
+11. **A barra invertida - sequências de *escape* -**
+   Sintaxe:  
+   *\n*, quebra linha  
+   *\t*, tabulação  
+   *\a*, bip  
+    Exemplos: x>y, 4<z, x==5, x!=4, ...  
+    Finalidade: A barra invertida seguida de um caracter representa um único caracter indicando operação da string.  
+
