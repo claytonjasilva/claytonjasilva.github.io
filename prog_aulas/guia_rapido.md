@@ -50,7 +50,7 @@
   Exemplo:  
    `if x<0:`    
    >`print(x)`  
-  Finalidade: Executa as 'instruções' somente se a condição for verdadeira.  
+Finalidade: Executa as 'instruções' somente se a condição for verdadeira.  
 11. **Operações lógicas de comparação**  
   Sintaxe:  
   *>*, maior  
