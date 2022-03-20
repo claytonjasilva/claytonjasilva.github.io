@@ -47,7 +47,7 @@
    Sintaxe:  
    `if cond:`    
    >`instruções`  
-          
+  
    Exemplo:  
    `if x<0:`    
    >`print(x)`
@@ -63,7 +63,7 @@
    *!=*, diferente  
     Exemplos: x>y, 4<z, x==5, x!=4, ...  
     Finalidade: realizar a comparação e retornar True (verdadeiro) ou False (falso).  
-12. **A barra invertida - sequências de *escape* -**
+12. **A barra invertida - sequências de *escape* -**  
    Sintaxe:  
    *\n*, quebra linha  
    *\t*, tabulação  
