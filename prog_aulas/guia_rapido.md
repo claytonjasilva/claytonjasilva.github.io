@@ -47,7 +47,7 @@
   Sintaxe:  
    `if cond:`    
    >`instruções`  
-  <Exemplo:  
+  Exemplo:  
    `if x<0:`    
    >`print(x)`  
   Finalidade: Executa as 'instruções' somente se a condição for verdadeira.  
