@@ -68,6 +68,6 @@
    *\n*, quebra linha  
    *\t*, tabulação  
    *\a*, bip  
-    Exemplos: x>y, 4<z, x==5, x!=4, ...  
-    Finalidade: A barra invertida seguida de um caracter representa um único caracter indicando operação da string.  
+   Exemplos: x>y, 4<z, x==5, x!=4, ...  
+   Finalidade: A barra invertida seguida de um caracter representa um único caracter indicando operação da string.  
 
