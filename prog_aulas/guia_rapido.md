@@ -45,11 +45,11 @@
    Finalidade: Retorna o número arredondado para a precisão de n dígitos após o ponto decimal. Se ndig for omitido retornará o inteiro mais próximo.  
 10. **Comando if**  
   Sintaxe:  
-  `if cond:`  
-  `  instruções`  
+  `if cond:  
+  `  instruções  
   Exemplo:  
-  `if x<0:`  
-  `  print(x)`  
+  `if x<0:  
+  `  print(x)  
   Finalidade: Executa as 'instruções' somente se a condição for verdadeira.  
 11. **Operações lógicas de comparação**  
   Sintaxe:  
