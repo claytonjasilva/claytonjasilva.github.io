@@ -47,7 +47,6 @@
   Sintaxe:  
    `if cond:`    
    >`instruções`  
-    
   Exemplo:  
    `if x<0:`    
    >`print(x)`
