@@ -5,4 +5,3 @@
 3. [Sistema de Avaliações](/./avaliacoes.pdf)
 4. [Conteúdo das Aulas](sisdig_aulas.md)
 5. [Arduíno](arduino.md)
-6. Exercícios
