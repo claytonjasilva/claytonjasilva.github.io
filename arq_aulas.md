@@ -12,6 +12,15 @@
 1. [Prática 1 Arduíno](arq_aulas/arq_pratica1.md)
 2. [Prática 2 Arduíno](arq_aulas/arq_pratica2.md)
 
+## Exercícios
+1. Form-lista 1: conceitos iniciais máquina de níveis (**fechado**)  
+  + [Questões](arq_aulas/Form_lista_1_arq.pdf)
+  + [Solução](arq_aulas/Form_lista_1_arq_sol.pdf)  
+2. Form-lista 2: máquina IAS
+  + [Questões](arq_aulas/Form_lista_2_arq.pdf)
+3. Form-lista 3: máquina IAS
+  + [Questões](https://forms.gle/aAiGrofbk5BooTwk8)
+
 ## Referências
 
 #### Notas de aula
