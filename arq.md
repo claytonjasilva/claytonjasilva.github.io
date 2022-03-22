@@ -4,9 +4,4 @@
 2. [Grid](arq_grid.pdf)
 3. [Sistema de Avaliações](/./avaliacoes.pdf)
 4. [Conteúdo das Aulas](arq_aulas.md)
-5. [Arduíno](arduino.md)
-
-  + Formulário 1: [Conceitos iniciais - máquina de níveis](https://forms.gle/7G6Fa3jiCavhMrwR6)
-  + Formulário 1: [Form pdf](arq_aulas/form1_arq.pdf)  
-  + Lista 1 de exercícios: [Arquitetura IAS](arq_aulas/arq_lista1.pdf)
-  + Formulário 2: [Conceitos iniciais - máquina IAS](https://forms.gle/aAiGrofbk5BooTwk8)
+5. [Notas sobre Arduíno MEGA 2560](arduino.md)
