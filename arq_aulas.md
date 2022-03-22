@@ -10,6 +10,7 @@
 
 ## Práticas
 1. [Prática 1 Arduíno](arq_aulas/arq_pratica1.md)
+2. [Prática 2 Arduíno](arq_aulas/arq_pratica2.md)
 
 ## Referências
 
