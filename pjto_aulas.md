@@ -26,3 +26,7 @@
 4. [Prática 2 *MS Project*](pjto_aulas/pratica2_msproject.md)  
 +[Prática 2 - uma solução](pjto_aulas/pjto_pratica2.mpp)
 5. [Prática 3 *MS Project*](pjto_aulas/pratica3_msproject.md)
+
+## Trabalhos
+
+1. [Trabalho 1: artefatos básicos](pjto_aulas/pjto_trabalho_1.pdf) - data de entrega: 6 de abril de 2022
