@@ -1,5 +1,7 @@
 # Desafios de Engenharia - 2022.1
 
+## Conteúdo   
+
 1. Engenharia e sociedade   
 [Engenharia e sociedade - parte 1](des_aulas/des_engenharia-sociedade.pdf)  
 [Engenharia e sociedade - parte 2](des_aulas/des_engenharia-sociedade-2.pdf)  
@@ -9,7 +11,7 @@ Alguns vídeos interessantes:
    - [Do passado ao futuro: as revoluções industriais](https://youtu.be/urq74GM5smg)  
    - [A indústria 4.0](https://youtu.be/RPC7yo99Nxs)  
    - [Desafios da engenharia na próxima década](https://www.youtube.com/watch?v=kH96qhxfCpg)  
-4.  Projetos de engenharia e ferramentas para gerenciamento de projetos
+4.  [Projetos de engenharia e ferramentas para gerenciamento de projetos](des_aulas/des_gerencia_projetos.pdf)
 5.  Sistemas de Engenharia e o método da Engenharia de sistemas
 6.  Grandezas e unidades de medida
 7.  Simulação computacional de modelos quantitativos de produtos de engenharia 
@@ -19,4 +21,7 @@ Alguns vídeos interessantes:
 11. Segurança do trabalho e ergonomia
 12. Engenharia e empreendedorismo
 
-[Quiz 1: Engenharia e sociedade](https://docs.google.com/forms/d/e/1FAIpQLSehC8uYUdJ2myPz-k1E3LUkW-CoyKvS4nvrJaLe-yEBUQ3Dkw/viewform?usp=sf_link)
+## Exercícios e trabalhos
+
+1. [Quiz 1: Engenharia e sociedade](https://docs.google.com/forms/d/e/1FAIpQLSehC8uYUdJ2myPz-k1E3LUkW-CoyKvS4nvrJaLe-yEBUQ3Dkw/viewform?usp=sf_link)
+2. 
