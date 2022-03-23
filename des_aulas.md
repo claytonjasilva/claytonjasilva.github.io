@@ -24,4 +24,4 @@ Alguns vídeos interessantes:
 ## Exercícios e trabalhos
 
 1. [Quiz 1: Engenharia e sociedade](https://docs.google.com/forms/d/e/1FAIpQLSehC8uYUdJ2myPz-k1E3LUkW-CoyKvS4nvrJaLe-yEBUQ3Dkw/viewform?usp=sf_link)
-2. 
+2. [Prática: Cronograma de projeto com MS Project](des_aulas/des_praticaProject.md) 
