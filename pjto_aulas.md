@@ -24,5 +24,5 @@
 3. [Ciclo de vida e processos](https://forms.gle/xryaYDTNHqzEX9a47)  
 +[Form 2 - uma solução](pjto_aulas/Form_ciclo_de_vida.pdf)
 4. [Prática 2 *MS Project*](pjto_aulas/pratica2_msproject.md)  
-+[Prática 2 - uma solução](pjto_aulas/Pratica2-prototipo_com_marcos.mpp)
++[Prática 2 - uma solução](pjto_aulas/pjto_pratica2.mpp)
 5. [Prática 3 *MS Project*](pjto_aulas/pratica3_msproject.md)
