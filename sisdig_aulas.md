@@ -20,8 +20,8 @@
 3. [Prática 3](/arq_aulas/arq_pratica2.md)
 4. [Prática 4](sisdig_aulas/sisdig_pratica2.md)  
 
-**Datasheets de referência**
-[Portas AND](CD14082BCP_Motorola.pdf)
+**Datasheets de referência**  
+[Portas AND](sisdig_aulas/CD14082BCP_Motorola.pdf)
 
 ### Listas de exercício e forms
 1. [Lista 1: álgebra booleana e portas lógicas](sisdig_aulas/sisdig_exercicios/Lista1-AlgebraBooleana-Gates.pdf) - Corrigido em sala
