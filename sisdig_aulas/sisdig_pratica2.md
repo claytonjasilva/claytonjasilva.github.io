@@ -2,7 +2,7 @@
 
 # Circuito de controle de linha de produção
 1. A linha é definida pelas células apresentadas na figura  
-(sisdig_aulas/F9CD7947-8D73-4819-8C92-A17A9F139462.jpeg)
+![linha](sisdig_aulas/F9CD7947-8D73-4819-8C92-A17A9F139462.jpeg)
 2. As células B e C realizam as mesmas operações
 3. Cada célula possui um sensor que acusa quando ocorre uma falha
 4. Apresentar a expressão booleana de um circuito de controle que gera um alarme quando a linha falha
