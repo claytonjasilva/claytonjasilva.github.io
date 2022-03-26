@@ -51,7 +51,35 @@
   *if x<0:*  
   *-->print(x)*  
   Finalidade: Executa as 'instruções' somente se a condição for verdadeira.  
-11. **Operações lógicas de comparação**  
+11. **Comando if...else...**  
+  Sintaxe:  
+  *if cond:*  
+  *-->instruções A*  
+  *else:*  
+  *-->instruções B*  
+  Exemplo:  
+  *if x<0:*  
+  *-->print(x)*
+  *else:*  
+  *-->print(y)*
+  Finalidade: Executa o bloco A de 'instruções' somente se a condição for verdadeira. Se a condição for falsa executa o bloco B de 'instruções'.  
+11. **Comando if...elif...else...**  
+  Sintaxe:  
+  *if cond 1:*  
+  *-->instruções A*  
+  *elif cond 2:*  
+  *-->instruções B*
+  *else:*  
+  *-->instruções C*  
+  Exemplo:  
+  *if x<16:*  
+  *-->print(x)*
+  *elif x<25:*  
+  *-->print(x+16)*
+  *else:*  
+  *-->print(x+25)*
+  Finalidade: Executa o bloco A de 'instruções' somente se a condição 1 for verdadeira. Se a condição for falsa, testa a condição 2. Se for verdadeira, executa o bloco B de 'instruções', senão executa o bloco C de 'instruções'. 
+12. **Operações lógicas de comparação**  
   Sintaxe:  
   *>*, maior  
   *<*, menor  
@@ -61,7 +89,7 @@
   *!=*, diferente  
   Exemplos: x>y, 4<z, x==5, x!=4, ...  
   Finalidade: realizar a comparação e retornar True (verdadeiro) ou False (falso).  
-12. **A barra invertida - sequências de *escape* -**  
+13. **A barra invertida - sequências de *escape* -**  
   Sintaxe:  
   *\n*, quebra linha  
   *\t*, tabulação  
