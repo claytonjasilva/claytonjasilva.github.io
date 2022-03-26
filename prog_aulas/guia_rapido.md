@@ -59,25 +59,25 @@
   *-->instruções B*  
   Exemplo:  
   *if x<0:*  
-  *-->print(x)*
+  *-->print(x)*  
   *else:*  
-  *-->print(y)*
+  *-->print(y)*  
   Finalidade: Executa o bloco A de 'instruções' somente se a condição for verdadeira. Se a condição for falsa executa o bloco B de 'instruções'.  
 11. **Comando if...elif...else...**  
   Sintaxe:  
   *if cond 1:*  
   *-->instruções A*  
   *elif cond 2:*  
-  *-->instruções B*
+  *-->instruções B*  
   *else:*  
   *-->instruções C*  
   Exemplo:  
   *if x<16:*  
-  *-->print(x)*
+  *-->print(x)*  
   *elif x<25:*  
-  *-->print(x+16)*
+  *-->print(x+16)*  
   *else:*  
-  *-->print(x+25)*
+  *-->print(x+25)*  
   Finalidade: Executa o bloco A de 'instruções' somente se a condição 1 for verdadeira. Se a condição for falsa, testa a condição 2. Se for verdadeira, executa o bloco B de 'instruções', senão executa o bloco C de 'instruções'. 
 12. **Operações lógicas de comparação**  
   Sintaxe:  
