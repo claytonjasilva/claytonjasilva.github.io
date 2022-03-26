@@ -89,7 +89,14 @@
   *!=*, diferente  
   Exemplos: x>y, 4<z, x==5, x!=4, ...  
   Finalidade: realizar a comparação e retornar True (verdadeiro) ou False (falso).  
-13. **A barra invertida - sequências de *escape* -**  
+13. **Operadores lógicos**  
+  Sintaxe:  
+  *or*, ou  
+  *and*, e  
+  *not*, negação  
+  Exemplos: x or y, x and y, not x, ... onde x, y retornam True ou False 
+  Finalidade: realizar operações lógicas entre operações que retormam True (verdadeiro) ou False (falso). 
+14. **A barra invertida - sequências de *escape* -**  
   Sintaxe:  
   *\n*, quebra linha  
   *\t*, tabulação  
