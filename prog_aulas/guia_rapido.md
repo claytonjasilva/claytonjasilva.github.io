@@ -91,11 +91,11 @@
   Finalidade: realizar a comparação e retornar True (verdadeiro) ou False (falso).  
 13. **Operadores lógicos**  
   Sintaxe:  
-  *or*, ou  
-  *and*, e  
+  *or*, disjunção - ou  
+  *and*, conjunção - e  
   *not*, negação  
-  Exemplos: x or y, x and y, not x, ... onde x, y retornam True ou False 
-  Finalidade: realizar operações lógicas entre operações que retormam True (verdadeiro) ou False (falso). 
+  Exemplos: x or y, x and y, not x, ... onde x, y retornam *True* ou *False* 
+  Finalidade: realizar operações lógicas entre expressões que retornam *True* (verdadeiro) ou *False* (falso). 
 14. **A barra invertida - sequências de *escape* -**  
   Sintaxe:  
   *\n*, quebra linha  
