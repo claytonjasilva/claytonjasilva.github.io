@@ -8,8 +8,9 @@
 São exemplos de aplicação da classe *range* são:  
 *range(stop)*  
 *range(inicio,fim,passo)*
-- A instrução *break* interrompe a execução do loop e prossegue a execução após o *for* e o *while* sem intemrromper a execução do código
-- No *break* a interrupção do loop independe do teste da condição da estrutura  
+- A instrução *break* interrompe a execução do loop e prossegue a execução após o *for* e o *while* sem interromper a execução do código
+- No *break* a interrupção do loop independe do teste da condição da estrutura
+- A instrução *continue* remete a execução do loop para a próxima interação a partir do ponto onde é inserida 
 
 ### Exercícios com condicionais simples e compostas  
 1. Elaborar um programa na linguagem Python que leia as notas de um grupo de N=30 alunos; calcule e escreva a média aritmética das notas dos alunos.
