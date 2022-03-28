@@ -17,7 +17,8 @@
   + [Questões](arq_aulas/Form_lista_1_arq.pdf)
   + [Solução](arq_aulas/Form_lista_1_arq_sol.pdf)  
 2. Form-lista 2: máquina IAS
-  + [Questões](arq_aulas/Form_lista_2_arq.pdf)
+  + [Questões](arq_aulas/Form_lista_2_arq.pdf)  
+  + [Solução](arq_aulas/Form_lista_2_arq_sol.pdf)  
 3. Form-lista 3: máquina IAS
   + [Questões](https://forms.gle/aAiGrofbk5BooTwk8)
 
