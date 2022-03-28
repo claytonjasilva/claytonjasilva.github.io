@@ -1,4 +1,4 @@
-## Prática 2: Sistemas Digitais
+## Prática: Sistemas Digitais
 
 # Circuito de controle de linha de produção
 1. A linha é definida pelas células apresentadas na figura  
