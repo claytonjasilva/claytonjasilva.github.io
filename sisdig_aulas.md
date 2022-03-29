@@ -24,7 +24,7 @@
 [Portas AND](sisdig_aulas/CD14082BCP_Motorola.pdf)  
 [Portas OR](sisdig_aulas/SN74HC32N_Texas.pdf)  
 [Portas NAND](sisdig_aulas/CD4011BE_Texas.pdf)  
-[INVERSOR](sisdig_aulas/SN74HC04_Philips.pdf)
+[INVERSOR](sisdig_aulas/SN74HC04_Philips.pdf)  
 [Mux](sisdig_aulas/SN74HC151N_Texas.pdf)
 
 ### Listas de exercício e forms
