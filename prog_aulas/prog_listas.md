@@ -1,7 +1,7 @@
 ## Listas 
 
 ### Sobre listas...
-- Constituem um dos tipos de **sequências**: conjuntos ordenados finitos indexados por números não negativos. 
+- Constituem um dos tipos de **sequências**: conjuntos **ordenados** finitos **indexados por números** não negativos. 
 - A função embutida [*len()*](https://docs.python.org/pt-br/3/library/functions.html#len) retorna o número de itens de uma sequência, incluindo as listas.
 - Quando o comprimento de uma sequência é *n*, o conjunto de índices contém os números 0, 1, …, n-1.  
   O item i da sequência *a* é selecionado por *a[i]*.
