@@ -16,8 +16,5 @@
 - Para serem criados podem ser usados chaves ou a função [*set()*](https://docs.python.org/pt-br/3/library/stdtypes.html#set).
 
 ### Exercícios com listas  
-1. Elaborar um programa na linguagem Python que leia os dados sobre o número de batimentos cardíacos de um grupo de 30 pessoas. O programa deve calcular a média e o desvio padrão dos batimentos das pessoas.
-2. Elaborar um programa na linguagem Python para ler os nomes e a nota final de um grupo de 20 alunos. O programa deverá calcular e escrever os nomes, as respectivas notas dos alunos e a média global da turma.
-3. Elaborar um programa na linguagem Python para ler a matrícula e o número de faltas de um grupo de alunos; ler também o número de aulas do semestre. O programa deverá ler repetidamente os dados até o usuário digitar a matrícula 0000. Deverá calcular e apresentar o percentual de faltas de cada aluno, informando se está reprovado ou não por faltas - admite-se aprovação se o número de faltas for inferior a 25%. 
-
-### Outra sequência importante: as cadeias de caracteres ou *[Strings>>](prog_str.md)*.
+1. Elaborar um programa na linguagem Python que leia o nome e cpf de um grupo de 30 pessoas. O programa deve fornecer a possibilidade de 'cadastrar a habilitação' para cada cpf; ou 'alterar a data da habilitação' se já tiver sido cadastrada. Quando cadastrar a habilitação, o usuário deve informar o número e a data. O número não pode ser alterado, no entanto a data pode ser alterada. 
+2. Elaborar um programa na linguagem Python que leia a identificação de um grupo de componentes mecânicos. O usuário deixará de cadastrar os componentes quando for inserido o número de identificação for igual a 0. O identificador do componente, que não pode ser alterado, sempre é cadastrado juntamente com sua versão de fabricação, que pode ser alterada. Após cadastrados os componentes, o programa deve permitir localizar um componente a partir de seu identificador, apresentando a sua versão de fabricação. 
