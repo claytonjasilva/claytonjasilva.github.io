@@ -28,7 +28,7 @@
 [Mux](sisdig_aulas/SN74HC151N_Texas.pdf)  
 [Coder BCD](sisdig_aulas/CD4511_Texas.pdf)  
 [Decoder BCD-Decimal](sisdig_aulas/CD4028_Texas.pdf)  
-[Counter](sisdig_aulas/74HC161_Philips.pdf)
+[Counter](sisdig_aulas/74HC161_Philips.pdf)  
 [Adder](sisdig_aulas/74LS283_National.pdf)
 
 ### Listas de exercício e forms
