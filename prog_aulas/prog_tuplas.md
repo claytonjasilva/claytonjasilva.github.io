@@ -2,26 +2,18 @@
 
 ### Sobre tuplas...
 - Constituem um dos tipos de **sequências**, assim como as listas e as strings, ou seja, **conjuntos ordenados finitos indexados por números não negativos**. 
-- A função embutida [*len()*](https://docs.python.org/pt-br/3/library/functions.html#len) retorna o número de itens de uma sequência, incluindo as listas.
-- Quando o comprimento de uma sequência é *n*, o conjunto de índices contém os números 0, 1, …, n-1.  
-  O item i da sequência *a* é selecionado por *a[i]*.
-- Funcionalmente, são apenas um lugar para reunir outros objetos.
-- São formadas colocando uma lista separada por vírgulas de expressões entre **colchetes**.  
-  *Observe que não há casos especiais necessários para formar listas de comprimento 0 ou 1*
-- Tratam-se de um tipo de sequência **mutável**, ou seja, que podem ser alteradas após serem criadas. 
-- Definem uma **ordenação** posicional dos objetos, da esquerda para a direita. 
-- Possuem **comprimento variável**, ou seja, podem crescer e diminuir.
-- Podem conter qualquer tipo de objeto - os elementos não precisam ser do mesmo tipo, mas **geralmente** são usadas com elementos do mesmo tipo.
-- Admitem aninhamento arbitrário, ou seja, podem ser construídas listas de listas.
+- Uma tupla consiste em uma sequência de valores separados por vírgulas, de expressões entre **parênteses**.
+- Aplicam-se às tuplas a função embutida *len()* e a indexação de uma tupla de dimensão *n* por um conjunto de índices 0, 1, …, n-1, cada item i tratado *a[i]*.
+- Tratam-se de um tipo de sequência **imutável**, ou seja, que **não** podem ser alteradas após serem criadas, contudo é possível criar tuplas que contenham objetos mutáveis, como listas. 
+- **Não é possível atribuir itens individuais** de uma tupla.
+- Podem conter qualquer tipo de objeto - os elementos não precisam ser do mesmo tipo, mas **geralmente** são usadas com elementos heterogêneos.
   
-**As operações com listas podem ser obtidas em *<https://docs.python.org/3/library/stdtypes.html#index-23>***
+**As operações com tuplas podem ser obtidas em *<https://docs.python.org/3/library/stdtypes.html#index-23>***
 
-### Matrizes
-- Como é possível aninhar listas, é possível construir matrizes a partir de uma lista com sub-listas aninhadas
-- Por exemplo,  
-  *matriz =[[1,2,3],[4,5,6],[7,8,9]]*  
-  é uma lista cujo primeiro objeto, *matriz[0]* é a lista *[1,2,3]*, logo  
-  *matriz[0][2]* retorna o elemento *3*. 
+### Sobre conjuntos...
+- Constituem **conjuntos desordenados finitos** de elementos, **sem elementos repetidos**.
+- Conjuntos também suportam operações matemáticas como união **(operador: |)**, interseção **(operador: &)**, diferença **(operador: -)** e diferença simétrica **(operador: ^)**.
+- Para serem criados podem ser usados chaves ou a função [*set()*](https://docs.python.org/pt-br/3/library/stdtypes.html#set).
 
 ### Exercícios com listas  
 1. Elaborar um programa na linguagem Python que leia os dados sobre o número de batimentos cardíacos de um grupo de 30 pessoas. O programa deve calcular a média e o desvio padrão dos batimentos das pessoas.
