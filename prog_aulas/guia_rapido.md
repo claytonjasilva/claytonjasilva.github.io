@@ -1,6 +1,7 @@
 # Guia rápido Python - Programação 2022.1
+[Operadores](operadores)
 
-## Operadores
+## #Operadores
 1. **Aritméticos**  
    Sintaxe:  
    *+*, adição  
