@@ -1,7 +1,13 @@
 # Guia rápido Python - Programação 2022.1
-[Operadores](operadores)
+<a name="ancora"></a>
+- [Operadores](#ancora1)
+- [Instruções simples e compostas](#ancora2)
+- [Entrada e saída](#ancora3)
+- [Conversão de tipos](#ancora4)
+- [Outras](#ancora4)
 
-## #Operadores
+<a id="ancora1"></a>
+## Operadores
 1. **Aritméticos**  
    Sintaxe:  
    *+*, adição  
@@ -29,8 +35,10 @@
   *and*, conjunção - e  
   *not*, negação  
   Exemplos: x or y, x and y, not x, ... onde x, y retornam *True* ou *False* 
-  Finalidade: realizar operações lógicas entre expressões que retornam *True* (verdadeiro) ou *False* (falso). 
- 
+  Finalidade: realizar operações lógicas entre expressões que retornam *True* (verdadeiro) ou *False* (falso).  
+[Topo](#ancora)
+
+<a id="ancora2"></a>
 ## Instruções simples e compostas 
 1. **Atribuição**  
    Sintaxe: *=*  
@@ -80,7 +88,9 @@
   *while x<16:*  
   *-->print(x)*    
   Finalidade: Executa as 'instruções' enquanto a condição for verdadeira. Se a condição for falsa, para à execução da instrução seguinte ao *while*  
+[Topo](#ancora)  
 
+<a id="ancora3"></a>
 ## Entrada e saída
 1. **Escrever uma saída**  
    Sintaxe: *print()*  
@@ -89,8 +99,10 @@
 2. **Ler entrada**  
    Sintaxe: *input()*  
    Exemplo: *x=input("Digite o valor")*  
-   Finalidade: ler o valor digitado pelo usuário no 'console', após ele teclar *enter* e armazena que foi digitado **no formato texto** em *x*. No exemplo, o texto digitado pelo usuário será armazenado em x.
+   Finalidade: ler o valor digitado pelo usuário no 'console', após ele teclar *enter* e armazena que foi digitado **no formato texto** em *x*. No exemplo, o texto digitado pelo usuário será armazenado em x.  
+[Topo](#ancora) 
 
+<a id="ancora4"></a>
 ## Conversão de tipos
 1. **Converter para inteiro**  
    Sintaxe: *int()*  
@@ -99,8 +111,10 @@
 2. **Converter para ponto flutuante** - usa-se **ponto flutuante** para a representação de números fracionários no computador  
    Sintaxe: *float()*  
    Exemplo: *y=float(x)*  
-   Finalidade: converter um valor para um número de ponto flutuante. No exemplo, o valor de *x* é convertido para ponto flutuante
+   Finalidade: converter um valor para um número de ponto flutuante. No exemplo, o valor de *x* é convertido para ponto flutuante  
+[Topo](#ancora)
 
+<a id="ancora5"></a>
 ## Outras
 1. **Comentário:**  
    Sintaxe: *#*, seguido pelo texto de comentário  
@@ -121,4 +135,4 @@
   *\a*, bip  
   Exemplos: x>y, 4<z, x==5, x!=4, ...  
   Finalidade: A barra invertida seguida de um caracter representa um único caracter indicando operação da string.  
-
+[Topo](#ancora)
