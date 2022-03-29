@@ -25,6 +25,7 @@
 [Portas OR](sisdig_aulas/SN74HC32N_Texas.pdf)  
 [Portas NAND](sisdig_aulas/CD4011BE_Texas.pdf)  
 [INVERSOR](sisdig_aulas/SN74HC04_Philips.pdf)
+[Mux](sisdig_aulas/SN74HC151N_Texas.pdf)
 
 ### Listas de exercício e forms
 1. [Lista 1: álgebra booleana e portas lógicas](sisdig_aulas/sisdig_exercicios/Lista1-AlgebraBooleana-Gates.pdf) - Corrigido em sala
