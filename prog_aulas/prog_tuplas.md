@@ -13,7 +13,7 @@
 ### Sobre conjuntos...
 - Constituem **conjuntos desordenados finitos** de elementos, **sem elementos repetidos**.
 - Conjuntos também suportam operações matemáticas como  
-união **(operador: |)**,  
+união **(operador:  |  )**,  
 interseção **(operador: &)**,  
 diferença **(operador: -)** e  
 diferença simétrica **(operador: ^)**.  
