@@ -6,12 +6,12 @@
 - Quando o comprimento de uma sequência é *n*, o conjunto de índices contém os números 0, 1, …, n-1.  
   O item i da sequência *a* é selecionado por *a[i]*.
 - Funcionalmente, são apenas um lugar para reunir outros objetos.
-- São formadas colocando uma lista separada por vírgulas de expressões entre colchetes.  
+- São formadas colocando uma lista separada por vírgulas de expressões entre **colchetes**.  
   *Observe que não há casos especiais necessários para formar listas de comprimento 0 ou 1*
 - Tratam-se de um tipo de sequência **mutável**, ou seja, que podem ser alteradas após serem criadas. 
 - Definem uma **ordenação** posicional dos objetos, da esquerda para a direita. 
 - Possuem **comprimento variável**, ou seja, podem crescer e diminuir.
-- Podem conter qualquer tipo de objeto - os elementos não precisam ser do mesmo tipo.
+- Podem conter qualquer tipo de objeto - os elementos não precisam ser do mesmo tipo, mas **geralmente** são usadas com elementos do mesmo tipo.
 - Admitem aninhamento arbitrário, ou seja, podem ser construídas listas de listas.
   
 **As operações com listas podem ser obtidas em *<https://docs.python.org/3/library/stdtypes.html#index-23>***
