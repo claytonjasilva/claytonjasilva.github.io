@@ -3,7 +3,7 @@
 ## Conteúdo
 * [Álgebra Booleana e portas lógicas](sisdig_aulas/sisdig_1.pdf)
 * [Projetos de circuitos combinacionais](sisdig_aulas/sisdig_2-1.pdf)
-* Grandezas numéricas nos sistemas digitais
+* [Grandezas numéricas nos sistemas digitais](sisdig_aulas/sisdig_3.pdf)
 * Circuitos aritméticos
 * _Coders_/_decoders_
 * Multiplexadores (Mux)
@@ -29,5 +29,5 @@
 ### Listas de exercício e forms
 1. [Lista 1: álgebra booleana e portas lógicas](sisdig_aulas/sisdig_exercicios/Lista1-AlgebraBooleana-Gates.pdf) - Corrigido em sala
 2. [Form álgebra booleana e portas lógicas](https://forms.gle/5pouUtxLecaapEoL7)
-3. [Lista 2: projeto de circuitos combinacionais](sisdig_aulas/sisdig_exercicios/Lista2-ProjetoCircuitosCombinacionais.pdf)
+3. [Lista 2: projeto de circuitos combinacionais](sisdig_aulas/sisdig_exercicios/Lista2-ProjetoCircuitosCombinacionais.pdf) - Corrigido em sala
 4. [Form projeto de circuitos combinacionais](https://forms.gle/2CthQwVdgyLThFvQ8)    
