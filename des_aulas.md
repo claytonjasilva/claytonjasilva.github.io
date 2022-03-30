@@ -24,5 +24,5 @@ Alguns vídeos interessantes:
 ## Exercícios e trabalhos
 
 1. [Quiz 1: Engenharia e sociedade - introdução](des_aulas/des_form_1.pdf)
-2. [Quiz 2: Engenharia e sociedade - métodos e ferramentas](https://forms.gle/vZfensD3PubsE4Fj6)
+2. [Quiz 2: Engenharia e sociedade - métodos e ferramentas](des_aulas/des_form_2.pdf)
 3. [Prática: Cronograma de projeto com MS Project](des_aulas/des_praticaMSProject.md) 
