@@ -4,14 +4,13 @@
 1. [Conceitos fundamentais](pjto_aulas/pjto_1.pdf)
 2. [Ciclo de vida de projetos](pjto_aulas/pjto_2.pdf)
 3. [Artefatos básicos para gestão de projetos](pjto_aulas/pjto_3.pdf)
-4. Gestão integrada
-5. Gestão do escopo
-6. Gestão do cronograma
-7. Gestão dos custos
-8. Gestão de pessoas
-9. Gestão de riscos
-10. Gestão de aquisições, comunicações e partes interessadas
-11. Métodos ágeis: Scrum
+4. [Gestão integrada e gestão do escopo](pjto_aulas/pjto_4.pdf)
+5. Gestão do cronograma
+6. Gestão dos custos
+7. Gestão de pessoas
+8. Gestão de riscos
+9. Gestão de aquisições, comunicações e partes interessadas
+10. Métodos ágeis: Scrum
 
 ## Projeto final
 **Ponte de palitos [projeto final](pjto_projeto_final.pdf)**
