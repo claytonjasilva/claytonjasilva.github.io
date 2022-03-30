@@ -21,6 +21,10 @@ Alguns vídeos interessantes:
 11. Segurança do trabalho e ergonomia
 12. Engenharia e empreendedorismo
 
+## Notas de aula
+1. [Engenharia e sociedade](des_aulas/notas/des_engenharia_sociedade.md)
+
+
 ## Exercícios e trabalhos
 
 1. [Quiz 1: Engenharia e sociedade - introdução](des_aulas/des_form_1.pdf)
