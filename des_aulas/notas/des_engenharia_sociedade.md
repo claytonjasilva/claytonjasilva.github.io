@@ -4,7 +4,8 @@ ENGENHARIA, CIÊNCIA E TECNOLOGIA
 
 PROF. CLAYTON J A SILVA
 
-1. # **O conceito da engenharia**
+# **1. O conceito da engenharia**
+
 O que é a engenharia para você? Reserve sua resposta e depois a revise, em função do que discutiremos a seguir.
 
 É difícil definir engenharia em poucas palavras. Alguns exemplos práticos podem auxiliar nesse intuito. Algumas definições mais amplas também podem nos ajudar a compreender melhor:
@@ -27,9 +28,7 @@ O que é elemento de valor? A definição de valor pode ensejar uma boa discuss�
 
 A Figura 1 apresenta um rol de atividades humanas, nas quais se inserem as ciências aplicadas, entre elas, a engenharia.
 
-![Diagrama
-
-Descrição gerada automaticamente](Aspose.Words.7fa21d76-65b4-4bd5-b72b-c23d648e93c0.001.jpeg)
+![Diagrama](Aspose.Words.7fa21d76-65b4-4bd5-b72b-c23d648e93c0.001.jpeg)
 
 Figura 1 – Diagrama das atividades humanas
 
@@ -77,7 +76,8 @@ Simon designa no seu livro o termo artificial sem a conotação negativa que mui
 Uma definição ampla do objetivo das atividades de engenharia pode ser dada por:
 
 “O objetivo principal da engenharia é aplicar a tecnologia, em combinação com fenômenos naturais, para obter as coisas que desejamos ou necessitamos”.
-1. # **Ciência e Tecnologia**
+
+# **2. Ciência e Tecnologia**
 A definição acima nos traz agora o uso do termo tecnologia. Embora, em princípio, possamos usar os termos ciência e tecnologia de modo indistinto, não possuem o mesmo sentido.
 
 Podemos definir ciência como o “conjunto organizado dos conhecimentos relativos ao Universo envolvendo seus fenômenos naturais, ambientais e comportamentais, resultante do processo cumulativo do conhecimento humano, gerado pela aplicação de pesquisa ou investigação científica e seguindo o método indutivo-dedutivo.”
@@ -107,9 +107,7 @@ Finalmente, cabe destacar nesse conjunto de marcos da evolução da ciência e d
 
 Em síntese, Galileu propõe que o método científico deve ser indutivo-dedutivo, com uma estruturação racional e a observação controlada dos fenômenos a investigar. A Figura 2 apresenta o resumo do método científico.
 
-![Diagrama
-
-Descrição gerada automaticamente](Aspose.Words.7fa21d76-65b4-4bd5-b72b-c23d648e93c0.002.png)
+![Diagrama](Aspose.Words.7fa21d76-65b4-4bd5-b72b-c23d648e93c0.002.png)
 
 Figura 2 – Método científico
 
@@ -120,7 +118,9 @@ Para explicar os fatos são formuladas hipóteses. Hipóteses são proposições
 Caracterizados os fatos que cercam o fenômeno e as hipóteses que o explicam estabelece-se uma teoria a seu respeito. A teoria deve ser formulada de modo que as implicações do fenômeno sejam levantadas, as previsões dele decorrentes, uma vez aconteça, e conclusões sejam estabelecidas.
 
 O método científico é contínuo e a teoria formulada deve possibilitar que novos experimentos sejam realizados, fatos sejam observados, de modo a certificar se corroboram ou não a base estabelecida. Em caso negativo, ou seja, a teoria não foi corroborada as hipóteses devem ser reavaliadas e recicladas, submetendo-se o fenômeno a uma observação e repetindo o ciclo.
-1. # **O voo da humanidade**
+
+# **3. O voo da humanidade**
+
 Não me arrisco a dizer, com base nas definições preliminares, que a história da evolução da engenharia se confunde com a evolução da ciência e tecnologia. 
 
 Considerando a importância da ciência e da tecnologia no exercício da atividade de engenharia, é fundamental verificar como a evolução humana foi diretamente influenciada pelos saltos tecnológicos pelos quais a sociedade passou. Em especial, o quanto a aceleração da produção de bens e serviços foi acelerada pela adoção de métodos científicos, evidenciando a importância de aportar às atividades de engenharia métodos científicos rigorosos.
@@ -142,7 +142,7 @@ Amarante aponta as seguintes revoluções socioculturais e as correlaciona com u
 
 Cada uma das revoluções iniciou-se em um determinado período da civilização humana. A mais antiga das revoluções iniciou-se aproximadamente em 8000 AC, a mais recente, em 1940. A Figura 3 mostra como o intervalo entre o surgimento de novas revoluções tem se tronado cada vez mais curto.
 
-![](Aspose.Words.7fa21d76-65b4-4bd5-b72b-c23d648e93c0.003.png)
+![Diagrama](Aspose.Words.7fa21d76-65b4-4bd5-b72b-c23d648e93c0.003.png)
 
 Figura 3 – Comparação entre o início das revoluções socioculturais da humanidade
 
@@ -150,7 +150,7 @@ Cada vértice da figura indica o início da respectiva revolução comparada à 
 
 Não somente o início entre as revoluções tem ocorrido em intervalos cada vez menores. Um outro parâmetro é importante para analisar cada revolução socioeconômica: a duração do fenômeno. A Figura 4 apresenta a duração de cada uma.
 
-![](Aspose.Words.7fa21d76-65b4-4bd5-b72b-c23d648e93c0.004.png)
+![Diagrama](Aspose.Words.7fa21d76-65b4-4bd5-b72b-c23d648e93c0.004.png)
 
 Figura 4 – Revoluções socioculturais e sua duração aproximada
 
@@ -160,9 +160,7 @@ Considerando as informações conclui-se que as transformações rotuladas como 
 
 O livro *O voo da humanidade* apresenta a quantidade de tecnologias de impacto em cada revolução, apresentada no gráfico da Figura 5.
 
-![Gráfico, Gráfico de linhas
-
-Descrição gerada automaticamente](Aspose.Words.7fa21d76-65b4-4bd5-b72b-c23d648e93c0.005.png)
+![Gráfico, Gráfico de linhas](Aspose.Words.7fa21d76-65b4-4bd5-b72b-c23d648e93c0.005.png)
 
 Figura 5 - Evolução da quantidade de tecnologias na história da civilização humana
 
@@ -175,16 +173,16 @@ Qual é a relação dessa questão com a engenharia?
 
 Tabela 2 – Tabela de critérios para comparação das revoluções socioculturais
 
-![Tabela
-
-Descrição gerada automaticamente](Aspose.Words.7fa21d76-65b4-4bd5-b72b-c23d648e93c0.006.png)  
+![Tabela](Aspose.Words.7fa21d76-65b4-4bd5-b72b-c23d648e93c0.006.png)  
 
 Interessa-nos particularmente discutir a evolução e os reflexos na engenharia. A tabela evidencia, que enquanto nas primeiras revoluções as tecnologias tinham base essencialmente empírica, nas revoluções mais recentes na história da civilização humana, possuem uma base científica. 
 
 A engenharia, como ciência aplicada, tem sido cada vez mais dependente da aplicação do método científico, aplicável não somente às ciências da natureza. Por essa razão os currículos de engenharia requerem o aprofundamento das disciplinas de matemática, física etc. 
 
 No entanto, não somente do método científico a engenharia é dependente. Além do método científico, os currículos de engenharia devem contemplar o método da engenharia, que é próprio da finalidade prática dos artefatos produzidos pelos engenheiros. No que ele consiste?
-1. # **Método, modelos e sistemas de engenharia**
+
+# **4. Método, modelos e sistemas de engenharia**
+
 Quase todos os problemas de engenharia são abertos, ou seja, não possuem solução única. O fato de um problema ter mais de uma solução não significa que seja fácil resolvê-lo. É típico dos problemas abertos também que o enunciado não contenha todas as informações necessárias para solucioná-los. Para superar essa situação é necessário formular hipóteses a fim de aplicar uma técnica conhecida, como resolver uma equação. O conhecimento de quais hipóteses são razoáveis só é obtido através da experiência.
 
 Nesse sentido, o engenheiro deve possuir as competências, entre outras, de:
@@ -202,15 +200,15 @@ Podemos sintetizar as tarefas do engenheiro como sendo aquelas relacionadas dire
 Para realizar suas tarefas diárias e alcançar os objetivos os engenheiros utilizam o método da engenharia, o qual, com algumas variações de descrição (aprofundaremos o método em uma seção específica da disciplina), pode ser sumariamente apresentado como:
 
 1. Identificar e definir o problema;
-1. Reunir a equipe de projeto;
-1. Identificar restrições e critérios para atingir o sucesso;
-1. Buscar soluções;
-1. Analisar cada solução potencial;
-1. Selecionar a melhor solução;
-1. Documentar a solução;
-1. Comunicar a solução à gerência;
-1. Construir a solução;
-1. Verificar e avaliar o desempenho da solução.
+2. Reunir a equipe de projeto;
+3. Identificar restrições e critérios para atingir o sucesso;
+4. Buscar soluções;
+5. Analisar cada solução potencial;
+6. Selecionar a melhor solução;
+7. Documentar a solução;
+8. Comunicar a solução à gerência;
+9. Construir a solução;
+10. Verificar e avaliar o desempenho da solução.
 
 Os engenheiros usam métodos para desenvolver modelos dos seus projetos. Os modelos são versões aproximadas dos sistemas reais, respondendo de modo semelhante, mas que podem ter muitas formas diferentes, desde protótipos até cálculos simples, passando por simulações de computador. A capacidade de usar modelos para descrever processos e fenômenos é uma exigência básica em todos os ramos da engenharia. 
 
@@ -228,15 +226,11 @@ Por exemplo, admita o projeto de uma motocicleta. Três variáveis permitem mens
 
 Tabela 3 – Mapa do desempenho global, *d=f(peso,potência)*
 
-![Tabela
-
-Descrição gerada automaticamente](Aspose.Words.7fa21d76-65b4-4bd5-b72b-c23d648e93c0.007.png)
+![Tabela](Aspose.Words.7fa21d76-65b4-4bd5-b72b-c23d648e93c0.007.png)
 
 Obviamente, a solução ótima do problema consiste na potência do motor de 130 hp e um peso total de 250 kg, pois o desempenho global alcança 0,9. Graficamente a solução ótima se manifesta como o pico na curva definida pela superfície que define a função *d=f(peso, potência)*, conforme apresenta a Figura 6.
 
-![Gráfico, Gráfico de superfície
-
-Descrição gerada automaticamente](Aspose.Words.7fa21d76-65b4-4bd5-b72b-c23d648e93c0.008.png)
+![Gráfico](Aspose.Words.7fa21d76-65b4-4bd5-b72b-c23d648e93c0.008.png)
 
 Figura 6 – Gráfico da superfície com a solução ótima *no projeto* veículo automotivo
 
@@ -246,7 +240,7 @@ Na parte inferior apresenta-se o conjunto de tentativas para a apresentação da
 
 Caso o modelo qualitativo atenda como solução, o modelo quantitativo, com variáveis capazes de ser mensuradas, é proposto e testado. O modelo quantitativo provoca o que é da consciência no sentido de que produz resultados objetivamente mensuráveis, com limites aceitáveis ou rejeitáveis, de acordo com medidas, métricas e indicadores claramente estabelecidos, utilizando unidades padronizadas.
 
-![](Aspose.Words.7fa21d76-65b4-4bd5-b72b-c23d648e93c0.009.png)
+![Figura](Aspose.Words.7fa21d76-65b4-4bd5-b72b-c23d648e93c0.009.png)
 
 Figura 7 – O processo de solução de um problema de engenharia
 
@@ -258,7 +252,7 @@ Finalmente, os modelos físicos, embora muitas vezes sejam caros e demorados par
 
 Como os modelos simplificam sistemas de engenharia, naturalmente o objeto do estudo da engenharia são os sistemas artificiais. É necessário entender a noção de sistema. Sistema é “um conjunto ou montagem de entidades ligadas, associadas, ou interdependentes, de modo a formar uma unidade complexa.” Pensar em termos de sistemas permite desenhar uma curva fechada em torno de uma parte de uma rede e considerar essa parte como uma entidade única.
 
-![](Aspose.Words.7fa21d76-65b4-4bd5-b72b-c23d648e93c0.010.png)
+![Diagrama](Aspose.Words.7fa21d76-65b4-4bd5-b72b-c23d648e93c0.010.png)
 
 Figura 8 – Um sistema
 
@@ -280,9 +274,7 @@ Quando algum problema ocorre no projeto de um sistema complexo, muitas vezes dec
 
 A interligação que existe entre os elementos do sistema e do sistema com os elementos do ambiente caracteriza as redes, inerente à complexidade dos problemas e soluções de engenharia. Os diagramas auxiliam a visualização de sistemas complexos, em particular das redes. Um tipo de diagrama que permite visualizar as redes são os chamados ‘grafos’, como apresentado na Figura 9.
 
-![Uma imagem contendo Gráfico
-
-Descrição gerada automaticamente](Aspose.Words.7fa21d76-65b4-4bd5-b72b-c23d648e93c0.011.png)
+![Gráfico](Aspose.Words.7fa21d76-65b4-4bd5-b72b-c23d648e93c0.011.png)
 
 Figura 9 – Grafos com nós e arestas
 
@@ -294,9 +286,7 @@ Em qualquer projeto, por exemplo, estruturar o trabalho a realizar de modo adequ
 
 A Figura 10 apresenta uma abordagem sistêmica na formulação do escopo de um projeto de automóvel, a título de exemplo.
 
-![Diagrama
-
-Descrição gerada automaticamente](Aspose.Words.7fa21d76-65b4-4bd5-b72b-c23d648e93c0.012.png)
+![Diagrama](Aspose.Words.7fa21d76-65b4-4bd5-b72b-c23d648e93c0.012.png)
 
 Figura 10 – Escopo de automóvel organizado com visão sistêmica 
 
@@ -308,12 +298,14 @@ Os sistemas de engenharia têm se tornado cada vez mais complexos e aplicar as t
 - na análise de sistemas. 
 
 Pela vertente do projeto de artefatos, conhecer as ferramentas e desenvolver as habilidades para conceber artefatos é cada vez mais importante no mercado de trabalho. 
-1. # **Projetos de engenharia**
+
+# **5. Projetos de engenharia**
+
 Define-se projeto como o empreendimento de trabalho singular, ou seja, que entrega um resultado único, produto ou serviço, que se desenrola em uma janela temporal, portanto tem início, meio e fim. Entregar o produto (usando o termo indistintamente para produtos e serviços) satisfazendo os requisitos negociados do objeto, ou seja, atendendo ao escopo para satisfazer a necessidades, de acordo com o cronograma acordado com os interessados e dentro do orçamento comunicado permite classificar qualquer empreendimento como bem ou malsucedido.
 
 Gerenciar adequadamente o esforço que se define como um projeto é importante para o engenheiro na atualidade. Trata-se de mais uma competência requerida para o exercício da engenharia. A Figura 11 apresenta o rol de algumas das competências que já discutimos aqui, incluindo a capacidade de gerenciamento de projetos.
 
-![](Aspose.Words.7fa21d76-65b4-4bd5-b72b-c23d648e93c0.013.png)
+![Diagrama](Aspose.Words.7fa21d76-65b4-4bd5-b72b-c23d648e93c0.013.png)
 
 Figura 11 – Algumas das disciplinas da engenharia
 
@@ -321,9 +313,7 @@ Existem várias metodologias recomendadas para gerenciar projetos de engenharia 
 
 Em vários contextos, a aplicação dos chamados métodos clássicos (modelos em cascata) de gestão de projetos é a forma mais adequada de assegurar as entregas com sucesso do resultado do projeto. Em síntese os métodos em cascata de gestão operam conforme mostra a Figura 12.
 
-![Diagrama
-
-Descrição gerada automaticamente](Aspose.Words.7fa21d76-65b4-4bd5-b72b-c23d648e93c0.014.png)
+![Diagrama](Aspose.Words.7fa21d76-65b4-4bd5-b72b-c23d648e93c0.014.png)
 
 Figura 12 – Modelo em cascata típico para gestão de projetos
 
