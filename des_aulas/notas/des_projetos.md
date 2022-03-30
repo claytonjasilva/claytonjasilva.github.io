@@ -247,34 +247,7 @@ O Cronograma do Projeto apresenta todas as tarefas necessárias para desenvolver
 
 Apresenta, ainda, o sequenciamento e a duração das tarefas necessários para a execução dos trabalhos. Em função disso, apresenta as datas de início e término de cada atividade e consequentemente do projeto.
 
-A Tabela 1 apresenta um exemplo de Cronograma de Projeto de Almoço Beneficente.
-
-Tabela 1 – Exemplo de Cronograma de Projeto - Almoço Beneficente
-
-|Nome da tarefa|Duração|Predecessoras|Início|Término|
-| - | - | - | - | - |
-|Tratar convidados|7 dias||Qui 17/03/16|Sex 25/03/16|
-|`   `Elaborar lista|1 dia||Qui 17/03/16|Qui 17/03/16|
-|`   `Enviar convites|5 dias|2;6|Sex 18/03/16|Qui 24/03/16|
-|`   `Confirmar presenças|5 dias|3|Seg 21/03/16|Sex 25/03/16|
-|Tratar local|6 dias||Qui 17/03/16|Qui 24/03/16|
-|`   `Escolher local|1 dia||Qui 17/03/16|Qui 17/03/16|
-|`   `Organizar local|5 dias|6|Sex 18/03/16|Qui 24/03/16|
-|`   `Contratar pessoal de apoio|5 dias||Qui 17/03/16|Qua 23/03/16|
-|`   `Limpar local|1 dia|13;8|Sex 18/03/16|Sex 18/03/16|
-|Realizar almoço|6 dias||Sex 18/03/16|Sex 25/03/16|
-|`   `Comprar ingredientes|2 dias|4|Ter 22/03/16|Qua 23/03/16|
-|`   `Preparar almoço|2 dias|11|Sex 18/03/16|Seg 21/03/16|
-|`   `Realizar almoço|1 dia|7;3|Sex 25/03/16|Sex 25/03/16|
-|Gerenciar finanças|13 dias||Qui 17/03/16|Seg 04/04/16|
-|`   `Preparar orçamento|2 dias||Qui 17/03/16|Sex 18/03/16|
-|`   `Receber pagamentos|1 dia|13|Seg 28/03/16|Seg 28/03/16|
-|`   `Pagar fornecedores|5 dias|16|Ter 29/03/16|Seg 04/04/16|
-|`   `Fazer balanço|1 dia|17|Seg 28/03/16|Seg 28/03/16|
-|Tratar atrações|4 dias||Qui 17/03/16|Ter 22/03/16|
-|`   `Escolher atrações|1 dia||Qui 17/03/16|Qui 17/03/16|
-|`   `Contratar atrações|3 dias|20|Sex 18/03/16|Ter 22/03/16|
-O Cronograma de Projeto pode ser apresentado também na forma de Gráfico de *Gantt*, um tipo de gráfico em barras que representa visualmente todas as informações da tabela apresentada no exemplo anterior. A Figura 11 apresenta o Gráfico de *Gantt* relativo ao mesmo projeto do exemplo anterior.
+A Figura 11 apresenta o Gráfico de *Gantt* relativo a um projeto.
 
 ![Interface gráfica do usuário](Aspose.Words.371f0465-0d46-4006-bf39-fdfae9bdcd23.011.png)
 
