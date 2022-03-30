@@ -4,4 +4,3 @@
 2. [Grid](des_grid.pdf)
 3. [Sistema de Avaliações](/./avaliacoes.pdf)
 4. [Conteúdo das Aulas](des_aulas.md)
-6. Exercícios
