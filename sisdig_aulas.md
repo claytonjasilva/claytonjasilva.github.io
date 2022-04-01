@@ -35,6 +35,8 @@
 1. Lista 1  
 + [Lista 1: álgebra booleana e portas lógicas](sisdig_aulas/sisdig_exercicios/Lista1-AlgebraBooleana-Gates.pdf)  
 + [Lista 1: solução](sisdig_aulas/sisdig_exercicios/sisdig_lista1_sol.pdf)
-3. [Form álgebra booleana e portas lógicas](https://forms.gle/5pouUtxLecaapEoL7)
-4. [Lista 2: projeto de circuitos combinacionais](sisdig_aulas/sisdig_exercicios/Lista2-ProjetoCircuitosCombinacionais.pdf) - Corrigido em sala
-5. [Form projeto de circuitos combinacionais](https://forms.gle/2CthQwVdgyLThFvQ8)    
+2. [Form álgebra booleana e portas lógicas](https://forms.gle/5pouUtxLecaapEoL7)
+3. Lista 2
++ [Lista 2: projeto de circuitos combinacionais](sisdig_aulas/sisdig_exercicios/Lista2-ProjetoCircuitosCombinacionais.pdf)  
++ [Lista 2: solução](sisdig_aulas/sisdig_exercicios/sisdig_lista2_sol.pdf)
+4. [Form projeto de circuitos combinacionais](https://forms.gle/2CthQwVdgyLThFvQ8)    
