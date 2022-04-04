@@ -88,6 +88,14 @@
   *while x<16:*  
   *-->print(x)*    
   Finalidade: Executa as 'instruções' enquanto a condição for verdadeira. Se a condição for falsa, para à execução da instrução seguinte ao *while*  
+5. **Comando for...**  
+  Sintaxe:  
+  *for var in range(limite):*  
+  *-->instruções*  
+  Exemplo:  
+  *for x in range(16):*  
+  *-->print(x)*    
+  Finalidade: Executa as 'instruções' em um número de loops controlado por x, dentro dos limites de 0 a (limite-1)  
 [Topo](#ancora)  
 
 <a id="ancora3"></a>
