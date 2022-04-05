@@ -3,10 +3,13 @@
 ## Conteúdo
 1. [Conceitos básicos](arq_aulas/arq_aulas_conceitos.pdf)
 2. [Números e aritmética binária](arq_aulas/arq_aulas_representacao.pdf)
-3. _Overview_ - elementos básicos das arquiteturas modernas
-4. Microprocessador Atmel ATmega 2560
-5. Programando no _assembler_ do MC2560
-6. Sistemas Operacionais
+3. Nível de lógica digital  
++ [Circuitos combinacionais](arq_aulas/arq_aulas_logica_combinacional.pdf)    
++ Circuitos sequenciais
+5. _Overview_ - elementos básicos das arquiteturas modernas
+6. Microprocessador Atmel ATmega 2560
+7. Programando no _assembler_ do MC2560
+8. Sistemas Operacionais
 
 ## Práticas
 1. [Prática 1 Arduíno](arq_aulas/arq_pratica1.md)
@@ -21,6 +24,9 @@
   + [Solução](arq_aulas/Form_lista_2_arq_sol.pdf)  
 3. Form-lista 3: máquina IAS
   + [Questões](https://forms.gle/aAiGrofbk5BooTwk8)
+4. Form-lista 4: Números e aritmética binária
+  + [Questões](arq_aulas/Form_lista_4_arq.pdf)  
+  + [Solução](arq_aulas/Form_lista_4_arq_sol.pdf) 
 
 ## Referências
 
