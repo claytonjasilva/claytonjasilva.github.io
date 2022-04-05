@@ -22,6 +22,7 @@ Tabela 1 – Portas lógicas
 |![](Aspose.Words.7974c329-796f-4922-9c28-a34de34e7e49.001.png)|![](Aspose.Words.7974c329-796f-4922-9c28-a34de34e7e49.002.png)|![](Aspose.Words.7974c329-796f-4922-9c28-a34de34e7e49.003.png)|
 |***NOR***|***EXOR***|***INVERSOR***|
 |![](Aspose.Words.7974c329-796f-4922-9c28-a34de34e7e49.004.png)|![](Aspose.Words.7974c329-796f-4922-9c28-a34de34e7e49.005.png)|![](Aspose.Words.7974c329-796f-4922-9c28-a34de34e7e49.006.png)|
+
 Admitindo duas entradas somente A e B, o resultado lógico que as portas entregam na saída é dado pela operação lógica correspondente, conforme apresenta a Tabela 2.
 
 Tabela 2 – Operações lógicas realizadas pelas portas lógicas
@@ -85,7 +86,8 @@ Tabela 3 – Tabela-verdade do circuito exemplo: 5 entradas e 2 saídas
 |30|1|1|1|0|1|1|1|
 |31|1|1|1|1|0|0|1|
 |32|1|1|1|1|1|0|0|
-` `É importante destacar que a ferramenta Logisim permite, na opção de menu *Projeto-Analisar Circuito*, realizar uma análise combinacional do circuito elaborado, gerando automaticamente a tabela-verdade.
+
+É importante destacar que a ferramenta Logisim permite, na opção de menu *Projeto-Analisar Circuito*, realizar uma análise combinacional do circuito elaborado, gerando automaticamente a tabela-verdade.
 
 Como as saídas das portas lógicas são funções das suas respectivas entradas, também as saídas dos circuitos combinacionais são funções de suas entradas, que podem ser representadas por meio da tabela-verdade, mas também podem ser representadas por meio de uma expressão lógica ou *booleana*.  
 
@@ -124,25 +126,27 @@ As identidades da Álgebra de Boole que podem ser aplicados para obtenção do c
 
 Tabela 5 – Identidades da Álgebra *Booleana*
 
-|*3. A.0=0*|Elemento nulo|*8. 1+A=1*|
+|Identidade|Descrição|Identidade|
 | - | - | - |
-|*4. A.1=A*|Elemento neutro|*9. 0+A=A*|
-|*5. A.A=A*|Idempotência|*10. A+A=A*|
-|*6. A.Ã=0*||*11. A+Ã=1*|
-|*7. ~(Ã)=A*|Dupla negação||
+|A.0=0|Elemento nulo|1+A=1|
+|A.1=A|Elemento neutro|A+0=A|
+|A.A=A|Idempotência|A+A=A|
+|A.Ã=0||A+Ã=1|
+|~(Ã)=A|Dupla negação||
 
 Dos postulados e identidades, alguns teoremas podem ser formulados e provados. A Tabela 6 apresenta os teoremas.
 
 Tabela 6 – Teoremas da Álgebra *Booleana*
 
-|*12. A+A.B*|Absorção|
+|Teorema|Descrição|
 | - | - |
-|*13. A+Ã.B=A+B*||
-|*14. A.B+A.~B=A*|Lógica Adjacente|
-|*15. A.C+Ã.B.C=A.B+B.C*||
-|*16. A.B+A.C+~B.C=A.B+~B.C*||
-|*17. ~(A.B.C)=Ã+~B+~C*|De Morgan|
-|*18. ~(A+B+C)=Ã.~B.~C*|De Morgan|
+|A+A.B=A|Absorção|
+|A+Ã.B=A+B||
+|A.B+A.~B=A|Lógica Adjacente|
+|A.C+Ã.B.C=A.B+B.C||
+|A.B+A.C+~B.C=A.B+~B.C||
+|~(A.B.C)=Ã+~B+~C|De Morgan|
+|18. ~(A+B+C)=Ã.~B.~C|De Morgan|
 
 Aplicando os 18 (dezoito) postulados, identidades e teoremas as expressões correspondentes aos circuitos podem ser minimizadas, consequentemente os circuitos projetados podem ser simplificados.
 
@@ -190,9 +194,7 @@ A soma resultante varia, na representação decimal, entre 0 (A e B iguais a 0) 
 
 A Figura 8 apresenta o circuito implementado utilizando a ferramenta Logisim.
 
-![Uma imagem contendo traçado
-
-Descrição gerada automaticamente](Aspose.Words.7974c329-796f-4922-9c28-a34de34e7e49.016.jpeg)
+![Uma imagem contendo traçado Descrição gerada automaticamente](Aspose.Words.7974c329-796f-4922-9c28-a34de34e7e49.016.jpeg)
 
 Figura 8 – Circuito de um somador binário de palavras de 2 bits
 
@@ -229,6 +231,7 @@ A Figura 11 apresenta um exemplo de um circuito digital multiplexador com entrad
 
 |<p>![](Aspose.Words.7974c329-796f-4922-9c28-a34de34e7e49.019.png)</p><p>(a)</p>|<p>![](Aspose.Words.7974c329-796f-4922-9c28-a34de34e7e49.020.png)</p><p>(b)</p>|
 | :-: | :-: |
+
 Figura 11 – Multiplexador de 8 bits: (a) Seleção da entrada A0 (b) Seleção da entrada A1
 
 Observe que a entrada possui 8 bits, dentre os quais, em (a) como a entrada seletora de controle carrega 000 mutiplexa o bit A0, cujo valor lógico é 1, na saída. Em (b), embora o valor lógico do bit de entrada A0 tenha assumido 0, a entrada seletora passou a 001. O multiplexador chaveia a entrada A1 para a saída.
@@ -272,6 +275,7 @@ Tabela 8 – Exemplo de código para teclado com 6 teclas
 |![](Aspose.Words.7974c329-796f-4922-9c28-a34de34e7e49.027.png)|100|1|0|0|
 |![](Aspose.Words.7974c329-796f-4922-9c28-a34de34e7e49.025.png)|101|1|0|1|
 |NENHUMA TECLA DIGITADA|110|1|1|0|
+
 Para facilitar a compreensão do projeto do circuito codificador, pode-se apresentar o problema do codificador da forma da tabela-verdade constante da Tabela 9. Pela tabela, cada palavra do código é gerada somente se a tecla for pressionada e as demais não forem pressionadas. Todas as demais combinações, inclusive não pressionar tecla alguma implicam a saída 111 – razão pela qual a tabela-verdade retrata como X. 
 
 Para projetar o circuito pode-se, abordando a tabela-verdade, bit a bit de saída, analisar em quais linhas o bit assume valor 1. A disjunção das saídas de cada tecla que determina 1 para a saída será a operação requerida para o circuito. Por exemplo, a saída S0 será igual a 1 somente se T1 ou T4 ou T6 ou se ocorrer uma das demais combinações. 
@@ -314,7 +318,7 @@ Um código também bastante consagrado e adotado pela indústria, destinado a re
 
 Figura 15 – Reprodução do código ASCII de um manual de impressora anterior a 1972. 
 
-`       `Fonte: <https://en.wikipedia.org/wiki/ASCII#Character_set>
+Fonte: <https://en.wikipedia.org/wiki/ASCII#Character_set>
 
 Observa-se que o código possui 7 bits, portanto suporta a representação de 128 caracteres alfanuméricos. Atualmente existem diversas variações do código ASCII, estabelecidas em normas, padrões internacionais etc.
 
@@ -330,7 +334,7 @@ Na Figura 16 são utilizados dois *decoders*, um para cada dígito decimal. Para
 
 ## **4. Memória**
    
-# **4.1 Flip-Flops**
+### **4.1 Flip-Flops**
 
 Nas seções precedentes foram apresentados circuitos combinacionais aritméticos e lógicos. Uma outra classe de circuitos digitais é muito importante: circuitos sequenciais. Existe uma gama ampla de aplicações de circuitos sequenciais, entre as quais, particularmente para o estudo da arquitetura de computadores, a mais importante é a de controle, em que sinais digitais são recebidos e interpretados por um sistema digital e saídas de controle são geradas de acordo com a sequência em que os sinais de entrada são recebidos (FLETCHER, 1980).
 
@@ -398,11 +402,10 @@ No exemplo considerado, a Figura 19 apresenta o diagrama de estados. Na represen
 
 Figura 19 – Diagrama de estados contador binário de 3-bits
 
-` `A tabela apresenta a tabela-verdade. À esquerda os valores no instante n e à direita no instante seguinte.
+A tabela apresenta a tabela-verdade. À esquerda os valores no instante n e à direita no instante seguinte.
 
 Tabela 13 – Tabela-verdade do contador binário de 3-bits.
 
 ![](Aspose.Words.7974c329-796f-4922-9c28-a34de34e7e49.035.png)
-
 
 [^1]: A ferramenta pode ser baixa pela Web. Disponível em <https://www.simplesolverlogic.com/index.html>.
