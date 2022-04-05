@@ -1,8 +1,10 @@
 ﻿ARQUITETURA DE COMPUTADORES - 2021.2
 
 PROF. CLAYTON J A SILVA – NOTA DE AULA 3
+
 # **NÍVEL 0: NÍVEL DE LÓGICA DIGITAL**
-1. # **Portas lógicas**
+
+## **1. Portas lógicas**
 Considerando o estudo da arquitetura de computadores segundo a abordagem da máquina de 6 níveis, o nível mais elementar, no sentido de mais próxima da máquina é o nível de lógica digital.
 
 Os circuitos digitais são basicamente divididos em duas grandes categorias: circuitos combinacionais e circuitos sequenciais. Os circuitos combinacionais são aqueles cujas respostas (saídas) em um determinado instante dependem somente das entradas do circuito naquele instante. Os circuitos sequenciais são aqueles cujas saídas dependem das entradas e de uma realimentação da saída para a entrada a fim de gerar uma função de saída como uma função sequencial de suas entradas (FLETCHER, 1980).
@@ -114,10 +116,9 @@ Tabela 4 - Expressão lógica na primeira forma canônica, forma disjuntiva
 **Cada termo associado ao valor lógico 1 é chamado de mintermo**. A disjunção de mintermos é a expressão lógica resultante, apresentada na **forma canônica**. 
 
 Alguns dos postulados da Álgebra de Boole que podem ser aplicados para a obtenção da minimização dos circuitos, em especial as propriedades de comutatividade e distributividade das operações de conjunção e disjunção, apresentadas abaixo:
-1.
-1. 1. **Comutatividade** em relação às operações de conjunção e disjunção: *A+B=B+A*; *A.B=B.A*
-1. 1. **Distributividade** da conjunção em relação à disjunção e da disjunção em relação à conjunção: *A.(B+C)=A.B+A.C; A+(B.C)=(A+B).(A+C)*
 
+**Comutatividade** em relação às operações de conjunção e disjunção: *A+B=B+A*; *A.B=B.A*
+**Distributividade** da conjunção em relação à disjunção e da disjunção em relação à conjunção: *A.(B+C)=A.B+A.C; A+(B.C)=(A+B).(A+C)*
 
 As identidades da Álgebra de Boole que podem ser aplicados para obtenção do circuito mínimo são apresentados na Tabela 5. A numeração prossegue a numeração das propriedades dos postulados.
 
@@ -129,6 +130,7 @@ Tabela 5 – Identidades da Álgebra *Booleana*
 |*5. A.A=A*|Idempotência|*10. A+A=A*|
 |*6. A.Ã=0*||*11. A+Ã=1*|
 |*7. ~(Ã)=A*|Dupla negação||
+
 Dos postulados e identidades, alguns teoremas podem ser formulados e provados. A Tabela 6 apresenta os teoremas.
 
 Tabela 6 – Teoremas da Álgebra *Booleana*
@@ -141,6 +143,7 @@ Tabela 6 – Teoremas da Álgebra *Booleana*
 |*16. A.B+A.C+~B.C=A.B+~B.C*||
 |*17. ~(A.B.C)=Ã+~B+~C*|De Morgan|
 |*18. ~(A+B+C)=Ã.~B.~C*|De Morgan|
+
 Aplicando os 18 (dezoito) postulados, identidades e teoremas as expressões correspondentes aos circuitos podem ser minimizadas, consequentemente os circuitos projetados podem ser simplificados.
 
 Considerando o exemplo anterior, aplicando-se os postulados, identidades e teoremas, a expressão *Ã2.Ã1.Ã0+Ã2.A1.Ã0+Ã2.A1.A0+A2.A1.Ã0* pode-se obter
@@ -157,7 +160,7 @@ Aplicando novamente (2) e (13),
 
 *Ã2.Ã0+Ã2.A1+A2.A1.Ã0= Ã2.Ã0+Ã2.A1+A1.Ã0* (iii)
 
-Implementando-se a tabela-verdade referente à expressão (iii) pode-se verificar facilmente que a tabela-verdade é a mesma apresentada na **Erro! Fonte de referência não encontrada.**. Entretanto, embora as expressões sejam logicamente equivalentes, o circuito associado à expressão (iii) é muito mais simples, conforme apresentado na figura.
+Embora as expressões sejam logicamente equivalentes, o circuito associado à expressão (iii) é muito mais simples, conforme apresentado na figura.
 
 ![](Aspose.Words.7974c329-796f-4922-9c28-a34de34e7e49.013.png)
 
@@ -168,7 +171,9 @@ Figura 6 – Implementação da expressão *Ã2.Ã1.Ã0+Ã2.A1.Ã0+Ã2.A1.A0+A2.
 Figura 7 – Implementação da expressão *Ã2.Ã0+Ã2.A1+A1.Ã0*
 
 Existem técnicas baseadas nos postulados, identidades e teoremas da Álgebra Booleana para minimizar de forma gráfica as expressões. Uma das técnicas é o uso do Mapa de Karnaugh (K-MAP). Foge ao interesse deste curso discutir e aplicar as técnicas no projeto de circuitos combinacionais.  A ferramenta *open source* SimpleSolver pode ser aplicada para minimização de funções de forma bastante eficiente[^1].
-1. # **Circuitos aritméticos**
+
+## **2. Circuitos aritméticos**
+
 Os circuitos combinacionais podem realizar operações aritméticas binárias, como adição, subtração, multiplicação e divisão. Seja, por exemplo, um circuito combinacional que implementa a soma de duas palavras de 2 bits cada A (*A1,A0*) e B(*B1,B0*). A tabela-verdade associada a esse circuito está apresentada da Tabela 7.
 
 Tabela 7 - Tabela-verdade de um somador binário de palavras de 2 bits
@@ -204,8 +209,10 @@ Figura 9 – Circuito somador de duas palavras de 4 bits
 Analisando o circuito da Figura 9, verifica-se que o barramento de entrada de dados possui 8 bits, 4 bits para cada palavra a ser somada, A e B. O barramento de saída de dados possui 5 bits, S (S5,S4,S3,S2,S1,S0). A saída S5 é obtida pelo barramento de saída do circuito somador intitulado *Carry Out*, que é o *overflow* da operação de adição binária. O *overflow* é o bit que “transborda” na operação binária. Por exemplo, 1 + 1 = 0, *overflow* 1, ou seja, 10.
 
 Além dos circuitos somadores, uma categoria particular de circuitos aritméticos é o dos subtratores, cujo propósito é realizar operações binárias de subtração.
-1. # **Circuitos lógicos**
-   1. # **Comparadores**
+
+## **3. Circuitos lógicos**
+   
+### **3.1 Comparadores**
 Os circuitos digitais combinacionais comparadores são circuitos recebem palavras binárias A e B de entrada com N bits cada uma, gerando um sinal de nível *High* (bit 1) em uma de três saídas, sinalizando se A>B, A=B ou A<B.
 
 A figura apresenta um exemplo de um circuito digital comparador de duas palavras binárias de 4 bits cada. No exemplo, está evidenciado que A (0001) é menor do que B (0011), consequentemente a saída ativada (em nível *High*) é A<B.
@@ -213,7 +220,9 @@ A figura apresenta um exemplo de um circuito digital comparador de duas palavras
 ![](Aspose.Words.7974c329-796f-4922-9c28-a34de34e7e49.018.png)
 
 Figura 10 – Circuito comparador de palavras de 4 bits
-1. # **Multiplexadores e demultiplexadores**
+
+### **3.2 Multiplexadores e demultiplexadores**
+
 Os circuitos digitais combinacionais multiplexadores são circuitos que recebem uma palavra binária A (*AN-1, AN-2, ..., A0*) de entrada de dados com *N* bits, gerando como saída S somente um dos bits da palavra de dados da entrada, de acordo uma entrada seletora de controle C (*CM-1, CM-2, ...,C0*) com *M* bits. Obviamente, para que todas as entradas de dados possam ser selecionadas, *2M>=N*.
 
 A Figura 11 apresenta um exemplo de um circuito digital multiplexador com entrada de dados A de 8 bits, entrada controladora C de 3 bits.
@@ -233,7 +242,9 @@ Os circuitos multiplexadores são chamados comumente de *mux* e os demultiplexad
 ![](Aspose.Words.7974c329-796f-4922-9c28-a34de34e7e49.021.png)
 
 Figura 12 – Demultiplexador de palavra de saída de 16 bits
-1. # **Codificadores e decodificadores**
+
+### **3.3 Codificadores e decodificadores**
+
 Os codificadores são circuitos digitais combinacionais que relacionam um conjunto finito e discreto de N elementos a um conjunto de sequências de M bits, cada uma. O conjunto de sequências constitui o código binário que representa o conjunto discreto. Cada elemento do conjunto discreto será tratado pelo circuito ligado ao codificador pela sua representação no código, digitalmente.
 
 O primeiro ponto a destacar é a quantidade de bits de cada palavra do código binário. Considerando N elementos discretos, a relação 2M>=N, onde M é o tamanho da palavra do código. 
@@ -250,8 +261,6 @@ Analisando o teclado observa-se que há 6 teclas ativas. Admitindo que o teclado
 
 Como o conjunto discreto possui 6 teclas (número de elementos do conjunto discreto) e admitindo-se que se deseja uma palavra para nenhuma tecla digitada, será necessário um código de pelo menos 3 bits, pois 23>7. Pode-se estabelecer um código conforme mostrado na Tabela 8. S2,S1,S0 representam os bits de saída do circuito quando as teclas forem acionadas. Caso nenhuma tecla seja acionada a palavra binária gerada pelo teclado será 111.
 
-
-
 Tabela 8 – Exemplo de código para teclado com 6 teclas
 
 |**TECLA**|**Código binário**|***S2***|***S1***|***S0***|
@@ -266,10 +275,6 @@ Tabela 8 – Exemplo de código para teclado com 6 teclas
 Para facilitar a compreensão do projeto do circuito codificador, pode-se apresentar o problema do codificador da forma da tabela-verdade constante da Tabela 9. Pela tabela, cada palavra do código é gerada somente se a tecla for pressionada e as demais não forem pressionadas. Todas as demais combinações, inclusive não pressionar tecla alguma implicam a saída 111 – razão pela qual a tabela-verdade retrata como X. 
 
 Para projetar o circuito pode-se, abordando a tabela-verdade, bit a bit de saída, analisar em quais linhas o bit assume valor 1. A disjunção das saídas de cada tecla que determina 1 para a saída será a operação requerida para o circuito. Por exemplo, a saída S0 será igual a 1 somente se T1 ou T4 ou T6 ou se ocorrer uma das demais combinações. 
-
-
-
-
 
 Tabela 9 - Tabela-verdade do codificador de 6 teclas
 
@@ -302,6 +307,7 @@ Tabela 10 – Códigos BCD (ZUFFO, 1976)
 |-|-|-|-|-|1|0|1|0|7|
 |-|-|-|-|-|1|0|1|1|8|
 |-|-|-|-|-|1|1|0|0|9|
+
 Um código também bastante consagrado e adotado pela indústria, destinado a representar caracteres alfanuméricos, é o código ASCII.
 
 ![](Aspose.Words.7974c329-796f-4922-9c28-a34de34e7e49.030.png)
@@ -321,8 +327,11 @@ A Figura 16 apresenta um decoder BCD 8-4-2-1 para um número com dois dígitos d
 Figura 16 – Decoder BCD de dois dígitos decimais
 
 Na Figura 16 são utilizados dois *decoders*, um para cada dígito decimal. Para ilustra a aplicação do decoder, os sinais de saídas são utilizados para ‘acender’ um display de 7 segmentos. Cada segmento é acionado em função da saída do decoder. Por exemplo, se a saída corresponder ao dígito decimal 8, todos os segmentos são acionados. Todas as saídas que acionam um segmento são combinadas em uma porta OR. Por exemplo, no caso do segmento superior do display, deverá ser acionada pela saída 0 ou pelas saídas 2, 3, 5, 6, 7, 8 ou 9. 
-1. # **Memória**
-   1. # **Flip-Flops**
+
+## **4. Memória**
+   
+# **4.1 Flip-Flops**
+
 Nas seções precedentes foram apresentados circuitos combinacionais aritméticos e lógicos. Uma outra classe de circuitos digitais é muito importante: circuitos sequenciais. Existe uma gama ampla de aplicações de circuitos sequenciais, entre as quais, particularmente para o estudo da arquitetura de computadores, a mais importante é a de controle, em que sinais digitais são recebidos e interpretados por um sistema digital e saídas de controle são geradas de acordo com a sequência em que os sinais de entrada são recebidos (FLETCHER, 1980).
 
 O procedimento clássico de controle consiste na observação do sinal de saída em um instante *t0*, realimentando à entrada de forma que a saída em *t1=t0+dt*, onde *dt* é um intervalo de tempo, é função da entrada em *t1* e da realimentação da saída em *t0*. Nesse sentido, é necessário ao circuito digital a capacidade de memória para armazenar o resultado do passado para utilizar no presente.
@@ -341,11 +350,12 @@ Tabela 11 – Flip-Flop Tipo T: Tabela-verdade; Tabela de excitação
 |0|1|1||0 -> 1|1|
 |1|0|1||1 -> 0|1|
 |1|1|0||1 -> 1|0|
+
 Na tabela, *Qn* representa o estado atual e *Qn+1* representa o estado após a transição do pulso de clock. Fica claro que enquanto o sinal de controle T permanecer igual a 0, a saída do *Flip-Flop* mantém o estado futuro igual ao anterior. Caso seja necessário alterar o valor armazenado, a entrada de controle T precisa receber o valor 1. Na próxima transição de pulso de clock, o valor armazenado será alterado. Se anteriormente armazenava 0 passará a armazenar 1, e vice-versa. 
 
 O tempo de permanência do sinal em um nível é contado pelo número de ciclos do clock entre a transição que armazenou o bit e a transição que modificou o bit armazenado na saída do *Flip-Flop*.
 
-O *Filp-Flop* tipo D mantém a saída Q em um determinado instante (*Qn+1*) igual ao instante anterior (*Qn*) dependendo do valor de D. Se o valor lógico de D for igual a 0, a saída no instante *Qn+1* será sempre 0. Se o valor lógico de D for igual a 1, a saída *Qn+1* na próxima transição será sempre 1. A tabela-verdade apresentada na Tabela 12 ilustra a operação do *Flip-Flop* tipo D.
+O *Flip-Flop* tipo D mantém a saída Q em um determinado instante (*Qn+1*) igual ao instante anterior (*Qn*) dependendo do valor de D. Se o valor lógico de D for igual a 0, a saída no instante *Qn+1* será sempre 0. Se o valor lógico de D for igual a 1, a saída *Qn+1* na próxima transição será sempre 1. A tabela-verdade apresentada na Tabela 12 ilustra a operação do *Flip-Flop* tipo D.
 
 Tabela 12 – Flip-Flop Tipo D: Tabela-verdade; Tabela de excitação
 
@@ -355,8 +365,11 @@ Tabela 12 – Flip-Flop Tipo D: Tabela-verdade; Tabela de excitação
 |0|1|0||0 -> 1|1|
 |1|0|1||1 -> 0|0|
 |1|1|1||1 -> 1|1|
+
 O Flip-Flop tipo D se comporta de modo que, na transição do clock, o sinal de entrada D é transferido para a saída independentemente do estado anterior. 
-1. # **Registradores**
+
+### **4.2 Registradores**
+
 A compreensão do funcionamento do Flip-Flop propicia entender um conjunto de circuitos digitais sequenciais chamados de registradores. Os registradores armazenam conjunto de bits na saída, mantendo-os disponíveis para serem operados por outros circuitos digitais, como, por exemplo, pelos circuitos aritméticos. Eles podem armazenar N bits e apresentar a saída em paralelo (todos o bits simultaneamente) a um barramento de N bits ou apresentar a saída em série, bit a bit, dos N bits armazenados.
 
 Seja, como exemplo, um registrador de 2 bits baseado em um Flip-Flop tipo T. A Figura 17 apresenta dois registradores de 2 bits. As saídas dos registradores armazenam respectivamente os bits 01 e 10, enquanto as entradas de controle T permanecerem em 0.  
@@ -366,7 +379,9 @@ Seja, como exemplo, um registrador de 2 bits baseado em um Flip-Flop tipo T. A F
 Figura 17 – Registradores de 2 bits. Dados somados por um somador de 2 bits.
 
 As saídas dos registradores constituem entradas de um somador de 2 bits, cuja saída é S (*S2, S1, S0*). As saídas de cada *Flip-Flop* são carregadas simultaneamente no circuito somador. Alternativamente, os registradores podem armazenar os bits e produzir uma saída serial dos bits armazenados, isto é, 1 bit de cada vez.
-1. # **Contadores**
+
+### **4.3 Contadores**
+
 Os contadores são circuitos sequenciais amplamente usados para converter um número de pulsos de entrada em um código, gerar sequências de códigos especiais etc. Classificam-se geralmente de acordo com a operação, *single* ou multi-modo; com o número de saída de bits; com a sequência de código que gera; e conforme a resposta seja síncrona ou assíncrona.
 
 A figura ilustra o funcionamento de um contador de 3 bits, assíncrono, que gera uma sequência crescente dos números binários 000, 001, 010, ..., 111. 
