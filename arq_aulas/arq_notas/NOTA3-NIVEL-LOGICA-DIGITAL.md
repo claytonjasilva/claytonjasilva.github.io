@@ -1,8 +1,4 @@
-﻿ARQUITETURA DE COMPUTADORES - 2021.2
-
-PROF. CLAYTON J A SILVA – NOTA DE AULA 3
-
-# **NÍVEL 0: NÍVEL DE LÓGICA DIGITAL**
+# NOTA 3: **NÍVEL DE LÓGICA DIGITAL**
 
 ## **1. Portas lógicas**
 Considerando o estudo da arquitetura de computadores segundo a abordagem da máquina de 6 níveis, o nível mais elementar, no sentido de mais próxima da máquina é o nível de lógica digital.
