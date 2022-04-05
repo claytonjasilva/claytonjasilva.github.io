@@ -25,7 +25,8 @@
 3. Form-lista 3: máquina IAS
   + [Questões](https://forms.gle/aAiGrofbk5BooTwk8)
 4. Form-lista 4: Números e aritmética binária
-  + [Questões](arq_aulas/Form_lista_4_arq.pdf)
+  + [Questões](arq_aulas/Form_lista_4_arq.pdf)  
+  + [Solução](arq_aulas/Form_lista_4_arq_sol.pdf) 
 
 ## Referências
 
