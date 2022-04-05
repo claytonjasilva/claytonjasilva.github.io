@@ -27,3 +27,6 @@ Após o aumento ser realizado, informe na tela:
 + o novo salário, após o aumento.
 6. Supondo que a população de um país A seja de 80000 habitantes com uma taxa anual de crescimento de 3% e que a população de B seja 200000 habitantes com uma taxa de crescimento de 1.5%. Faça um programa que calcule e escreva o número de anos necessários para que a população do país A ultrapasse ou iguale a população do país B, mantidas as taxas de crescimento.
 7. Faça um programa que peça um numero inteiro positivo e em seguida mostre este numero invertido. O programa deverá informar se o número é um palíndromo, ou seja, ele é igual se lido da direita para esquerda ou da esquerda para a direita.
+8. Faça um programa que mostre os n termos da Série a seguir:  
+  S = 1/1 + 2/3 + 3/5 + 4/7 + 5/9 + ... + n/m.   
+Imprima no final a soma da série.
