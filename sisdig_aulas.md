@@ -4,7 +4,7 @@
 * [Álgebra Booleana e portas lógicas](sisdig_aulas/sisdig_1.pdf)
 * [Projetos de circuitos combinacionais](sisdig_aulas/sisdig_2-1.pdf)
 * [Grandezas numéricas nos sistemas digitais](sisdig_aulas/sisdig_3.pdf)
-* Circuitos aritméticos: [Somadores]((sisdig_aulas/sisdig_4.pdf))
+* Circuitos aritméticos: [Somadores](sisdig_aulas/sisdig_4.pdf)
 * _Coders_/_decoders_
 * Multiplexadores (Mux)
 * Registradores
