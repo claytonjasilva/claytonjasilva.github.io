@@ -4,7 +4,7 @@
 1. [Conceitos básicos](arq_aulas/arq_aulas_conceitos.pdf)
 2. [Números e aritmética binária](arq_aulas/arq_aulas_representacao.pdf)
 3. Nível de lógica digital  
-+ [Circuitos combinacionais](arq_aulas/arq_aulas_logica_combinacional.pdf)  
++ [Circuitos combinacionais](arq_aulas/arq_aulas_logica_combinacional.pdf)    
 + Circuitos sequenciais
 5. _Overview_ - elementos básicos das arquiteturas modernas
 6. Microprocessador Atmel ATmega 2560
