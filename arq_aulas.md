@@ -33,6 +33,7 @@
 #### Notas de aula
 1. [Nota 1: Conceitos iniciais](arq_aulas/arq_notas/NOTA1-CONCEITOS-BASICOS-ARQ_COMP.md)
 2. [Nota 2: Representação numérica, aritmética binária e codificação](arq_aulas/arq_notas/NOTA2-ARITMETICA-BINARIA-ARQ_COMP.md)
+3. [Nota 3: Nível de lógica digital](arq_aulas/arq_notas/NOTA3-NIVEL-LOGICA-DIGITAL.md)
 
 #### Manuais do ATmega2560  
 - [Atmel ATmega640/V-1280/V-1281/V-2560/V-2561/V (datasheet)](https://ww1.microchip.com/downloads/en/devicedoc/atmel-2549-8-bit-avr-microcontroller-atmega640-1280-1281-2560-2561_datasheet.pdf)
