@@ -19,6 +19,9 @@
 **Guia para utilizar a sintaxe básica do Python - atualizado de acordo com as aulas**  
 [Guia básico](prog_aulas/guia_rapido.md)
 
+### Exercícios  
+1. Conteúdo até estruturas de repetição  
+
 ### Forms em sala
 - [Form 1 - solução](prog_aulas/Quiz1-FormSolucao.pdf)  
-- [Form 2](https://forms.gle/nvVJGSoa9SRdnJ1f9)
+- [Form 2 - solução](https://github.com/claytonjasilva/prog_exemplos)
