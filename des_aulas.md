@@ -24,6 +24,7 @@ Alguns vídeos interessantes:
 ## Notas de aula
 1. [Engenharia e sociedade](des_aulas/notas/des_engenharia_sociedade.md)
 2. [Gestão de projetos](des_aulas/notas/des_projetos.md)
+3. [Engenharia de sistemas](des_aulas/notas/des_engenharia_sistemas.md)
 
 
 ## Exercícios e trabalhos
