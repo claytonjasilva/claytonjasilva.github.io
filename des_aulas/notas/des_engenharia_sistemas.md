@@ -1,12 +1,10 @@
-﻿NOTA DE AULA 3 – DESAFIOS DE ENGENHARIA
-
+NOTA DE AULA 3 – DESAFIOS DE ENGENHARIA  
 PROF. CLAYTON J A SILVA
 
-|||
-| - | -: |
+## **SISTEMAS DE ENGENHARIA e ENGENHARIA DE SISTEMAS**
 
-1. # **SISTEMAS DE ENGENHARIA e ENGENHARIA DE SISTEMAS**
-   1. # **Sistemas de Engenharia**
+### **1. Sistemas de Engenharia**
+
 A teoria geral dos sistemas (TGS) inspira a disciplina de Engenharia de Sistemas. Um sistema pode ser definido como **um complexo conjunto de elementos que interagem entre si**. Entende-se por interações como **as relações que os elementos do sistema estabelecem entre si, tais que o comportamento de um elemento de uma relação é diferente do seu comportamento em outra relação**. Se os comportamentos do elemento em duas relações distintas não são diferentes significa que não há interação e o elemento comporta-se independentemente com respeito às suas relações. 
 
 A verificação da **complexidade** dos objetos requer a análise de três condições. A primeira é verificar **a intensidade da interação entre as “partes”**. Em sistemas, a interação deve ser forte o suficiente. Somente nessa condição será possível tratar conjuntamente as “partes” dos sistemas. A segunda condição é que **as relações que descrevem o comportamento da combinação das “partes” não sejam lineares**. 
@@ -38,7 +36,9 @@ Segundo o que propõe o Departamento de Defesa (DoD) dos Estados Unidos, nos seu
 Figura 1 – Relacionamento do Homem com Sistemas de Engenharia
 
 Fonte: o Autor
-1. # **Análise matemática do comportamento de sistemas**
+
+### **2. Análise matemática do comportamento de sistemas**
+
 O comportamento de Sistemas de Engenharia pode ser descrito por meio de formulações matemáticas, importantes não somente como um instrumento para subsidiar a sua concepção, mas também para validar ou não o resultado que entregam. As formulações matemáticas constituem-se um modelo especialmente importante para os sistemas de complexidade mais elevada e levam em consideração diversos conceitos que merecem discussão mais detalhada.  
 
 A modelagem matemática de sistemas de engenharia que se classificam como complexos é importante para a compreensão do seu desenvolvimento de engenharia, consequentemente da gestão de todas as questões que o envolvem, como tempo, custos, requisitos etc. 
@@ -136,7 +136,9 @@ O conceito de estado permite analisar as informações que representam o comport
 Ainda há que classificar as instalações complexas segundo a propriedade de **estabilidade ou instabilidade do comportamento das suas saídas**. A instabilidade pode conduzir a um comportamento errático e extremo, incompatível com o desejável para os sistemas de engenharia. Os sistemas estáveis são ditos BIBO (do inglês, *bounded input-bounded output*) se somente se toda entrada limitada produzir uma saída limitada (PROAKIS e MANOLAKIS, 1996, p. 69). 
 
 As condições em que a sequência de entradas ***x*** e de saídas ***y*** são limitadas são representadas matematicamente no sentido de que existe somente um número finito de números *Mx* e *My* tal que x≤Mx<∞ e y≤My<∞. Os conceitos de não linearidade e estabilidade estão relacionados. 
-1. # **Instalações como Sistema de Sistemas (SoS)**
+
+### **3. Instalações como Sistema de Sistemas (SoS)**
+
 As instalações complexas podem ser caracterizadas tipicamente como Sistemas de Sistemas (SoS), podendo ser entendidas como a combinação ou arranjo de outros sistemas. 
 
 **Sistemas de Sistemas (SoS) apresentam as seguintes características gerais (KOSSIAKOFF, 2011)**:
@@ -151,32 +153,8 @@ As instalações complexas podem ser caracterizadas tipicamente como Sistemas de
 
 A construção de instalações complexas é obtida a partir da interconexão dos sistemas e componentes de sus estrutura, ou seja, dos seus elementos construtivos. **Duas são as formas básicas de interconexão: em cascata (série) ou em paralelo**.
 
-Na interconexão em cascata de dois sistemas S1 e S2, S1-S2, pode-se representar
+### **4. Ciclo de vida de Instalações Complexas**
 
-y1(n)=*Á*1[x(n)]   *(13)*
-
-onde *y1(n)* é a saída de *S1*, proporcionada pela transformação *Á*1
-
-y(n)=*Á*2[y1(n)]=*Á*2{*Á*2[x(n)]}   *(14)*
-
-onde *y(n)* é a saída de *S2*, proporcionada pela transformação *Á*2.
-
-Observa-se que a combinação dos sistemas S1 e S2, representada matematicamente pelo produto das transformações *Á*1 e *Á*2, resulta em sistema S, tal que 
-
-*Á*=*Á*2*Á*1*, tal que* y(n)=*Á*[x(n)] *(15)*
-
-A respeito da combinação de *S1* e *S2*, sendo ambos invariantes no tempo, pode-se demonstrar que *S* também é invariante no tempo. No entanto, convém destacar que *Á*2*Á*1≠*Á*1*Á*2, pois as instalações complexas se comportam como sistemas não lineares.
-
-Na interconexão em paralelo de dois sistemas S1 e S2, S1//S2, pode-se representar
-
-y1(n)=*Á*1[x(n)]   *(16)*
-
-y2(n)=*Á*2[x(n)]   *(17)*
-
-A saída *y3(n)* da combinação é dada por
-
-y3(n)=y1(n)+y2(n)=*Á*1[x(n)]+*Á*2[x(n)]=(*Á*1+*Á*2)[x(n)]=*Á*[x(n)]      (18)  
-1. # **Ciclo de vida de Instalações Complexas**
 Segundo Kossiakoff (2011), o ciclo de vida XE "ciclo de vida"  das instalações complexas compreende os estágios dos Sistemas Complexos: Desenvolvimento do Conceito; Desenvolvimento de Engenharia; e Pós-desenvolvimento. Não serão discutidos neste texto os aspectos referentes ao estágio de pós-desenvolvimento. 
 
 A Figura 3 apresenta cada um dos estágios do ciclo de vida. Observar as informações que representam entradas/saídas entre as fases do ciclo de vida.
@@ -243,8 +221,7 @@ Figura 8 – Exemplo da visão geral detalhada do ciclo de vida de Sistemas de T
 
 Fonte: o Autor
 
-
-1. # **Espiral de estágios do ciclo de vida**
+### **5. Espiral de estágios do ciclo de vida**
 O **método da Engenharia de Sistemas** pode ser aplicado **às fases do ciclo de vida das instalações complexas** em quatro passos. Em cada fase, são cumpridos os quatro passos iterativos, produzindo saídas que alimentam a fase subsequente e retroalimentam a fase anterior, refinando os resultados de saída até que seja alcançado o amadurecimento do modelo. 
 
 Os passos de execução de cada fase são os seguintes: Análise de Requisitos; Definição Funcional; Definição Física; Validação do Design.
@@ -282,8 +259,8 @@ Figura 9 – Visão conceitual da espiral de desenvolvimento da ES
 
 Fonte: adaptado de (KOSSIAKOFF, 2011)
 
+### **6. Gestão da Engenharia de Sistemas**
 
-1. # **Gestão da Engenharia de Sistemas**
 A **Gestão da Engenharia de Sistemas (GES)** tem por objetivo definir os processos de engenharia de sistemas a serem utilizados no projeto do sistema propriamente dito, estabelecendo, para isso, as tarefas, os métodos a serem empregados e os recursos humanos necessários de Sistemas de Engenharia, particularmente das instalações complexas.
 
 A Figura 10 apresenta como se insere a gestão da engenharia de sistemas no contexto do gerenciamento do projeto de Sistemas de Engenharia.
@@ -320,20 +297,7 @@ Fonte: o Autor
 
 Na etapa de teste e avaliação da interoperabilidade XE "interoperabilidade" , deve ser certificado o atendimento dos requisitos de interoperabilidade no sistema construído e identificado o nível de interoperabilidade do Sistema.
 
-O **nível de maturidade da instalação quanto à interoperabilidade**, XE "interoperabilidade"  pode ser definido conforme apresenta a Tabela 1.
-
-Tabela 1 – Nível de Maturidade da interoperabilidade XE "interoperabilidade"  de Instalações Complexas
-
-|**Nível**|**Descrição**|
-| - | - |
-|<p>Nível 4</p><p></p>|Sistema interoperável por empreendimento (ambiente global). Sistema conectado eletronicamente em rede. Todos os dados, informações, domínios, sistemas e aplicativos integrantes são compartilhados. É permitido o acesso a múltiplos usuários, simultaneamente.|
-|<p>Nível 3</p><p></p>|Sistema interoperável por domínio (ambiente integrado). Sistema conectado eletronicamente em rede, capaz de transferir e receber informações entre sistemas e aplicativos agrupados por domínio. Modelos de dados, regras de negócios e processos são estabelecidos por domínio. É permitida a interação direta entre bases de dados de diferentes domínios. É permitido o acesso a múltiplos usuários.|
-|<p>Nível 2</p><p></p>|Sistema funcional (ambiente  distribuído). Sistema conectado eletronicamente em rede, capaz de transferir e receber informações entre sistemas e aplicativos que possuam modelos de dados diferentes, independentemente de suas respectivas localizações na rede.|
-|<p>Nível  1</p><p></p>|Sistema conectado (ponto a ponto). Sistema conectado eletronicamente com outro sistema, de forma bilateral, capaz de transferir e receber informações.|
-|<p>Nível 0</p><p></p>|Sistema isolado (ambiente manual). O Sistema não possui ou não permite conexões eletrônicas com outros sistemas. A transferência de informações ocorre somente por meio de ação humana, utilizando-se mídia transportável.|
-Os testes realizados também proporcionam as condições para identificar necessidades de mudança e coordenar ações para a melhoria da interoperabilidade XE "interoperabilidade" , quer seja revisitando os padrões XE "padrões" , as interfaces e os seus respectivos requisitos, funcionais e não funcionais.
-
-Na validação da interoperabilidade XE "interoperabilidade" , em cada estágio do ciclo de vida XE "ciclo de vida"  da Engenharia de Sistemas, deve ser avaliada a interoperabilidade sob os aspectos técnicos, de configuração XE "configuração"  e de utilização, identificando possíveis oportunidades de melhoria.
+O **nível de maturidade da instalação quanto à interoperabilidade** de sistemas pode ser mensurado de acordo com alguns parâmetros que avaliam a inserção do sistema no ambiente global, a conexão dos elementos do ambiente interno, todos capazes de transferir e receber informações.
 
 A governança XE "governança"  da interoperabilidade XE "interoperabilidade"  não se aterá às questões tecnológicas. Concentrar-se-á também nas questões abaixo:
 
@@ -345,8 +309,9 @@ A governança XE "governança"  da interoperabilidade XE "interoperabilidade"  n
 - ` `Interoperabilidade legal – Assegurando-se que o sistema esteja de acordo com o que prescrevem as exigências e disposições legais;
 - ` `Interoperabilidade Organizacional – Envolve a edição de processo das organizações que tenham objetivos XE "objetivos"  e metas que envolvam a cooperação do grupo.
 
-1. # **ENGENHARIA DE REQUISITOS**
-   1. # **Classificação de Requisitos**
+### **7. ENGENHARIA DE REQUISITOS**
+   
+#### **7.1 Classificação de Requisitos**
 Os requisitos das instalações complexas podem ser classificados conforme definido a seguir:
 
 Objetivos ou requisitos operacionais – referem-se ao propósito do sistema.
@@ -368,7 +333,8 @@ Figura 12 – Classificação dos requisitos
 Fonte: adaptado de <<desconhecido>>
 
 Um aspecto central do projeto de sistemas complexos, em particular das instalações complexas, é o processamento dos requisitos.
-1. # **Processamento dos requisitos**
+
+##### **Processamento dos requisitos**
 O processamento de requisitos é formado por um conjunto de atividades destinado a derivar, validar e manter o documento de requisitos do sistema. A figura apresenta as informações de entrada e saída do processo.
 
 ![](Aspose.Words.ad7430c9-8dfb-4dc6-b9a7-7d4a2554f8ac.012.png)
@@ -402,8 +368,10 @@ Figura 14 – Atividades do processo de engenharia de requisitos
 Fonte: o Autor
 
 O processo não é linear. Como as suas atividades estão inseridas no processo de engenharia de sistemas, será implementado de forma iterativa, em cada um dos estágios de Desenvolvimento do Conceito e Desenvolvimento de Engenharia, por refinamentos sucessivos do nível de sistema até o nível de partes.  
-1. # **Elicitação dos requisitos**
-Contempla o levantamento de todos os requisitos (capacidades, funcionais, não funcionais e especificações de *design*) da instalação complexa, dos seus subsistemas, componentes, subcomponentes e partes. Caracterizada a estrutura hierárquica da instalação, deve ser contemplado tanto o nível dos subcomponentes no topo da árvore (mais complexos) como aquele em que se fará a tradução dos requisitos de mais alto nível para as especificações de *design* de engenharia.
+
+##### **Elicitação dos requisitos**
+
+   Contempla o levantamento de todos os requisitos (capacidades, funcionais, não funcionais e especificações de *design*) da instalação complexa, dos seus subsistemas, componentes, subcomponentes e partes. Caracterizada a estrutura hierárquica da instalação, deve ser contemplado tanto o nível dos subcomponentes no topo da árvore (mais complexos) como aquele em que se fará a tradução dos requisitos de mais alto nível para as especificações de *design* de engenharia.
 
 A definição dos requisitos funcionais pela equipe de projeto deve buscar descrevê-los em completude, ou seja definindo todos os serviços XE "serviços"  com consistência, ou seja requisitos que não sejam contraditórios.
 
@@ -417,7 +385,8 @@ Figura 15 – Elicitação de requisitos
 
 Fonte: o Autor
 
-1. # **Análise e Negociação de Requisitos**
+##### **Análise e Negociação de Requisitos**
+
 A análise dos requisitos compreende as atividades básicas de verificação das necessidades, verificação de consistência e integridade XE "integridade" , e verificação de viabilidade. A Figura 16 apresenta a etapa de análise e negociação.
 
 ![](Aspose.Words.ad7430c9-8dfb-4dc6-b9a7-7d4a2554f8ac.015.png)
@@ -427,11 +396,14 @@ Figura 16 – Análise e negociação de requisitos
 Fonte: o Autor
 
 Além das técnicas tradicionais e genéricas de elicitação, como entrevistas, questionário, análise de documentação existente, e de técnicas de dinâmica de grupo, como brainstorming, podem ser utilizadas técnicas de prototipação, métodos de modelagem XE "modelagem"  baseados em cenários, técnicas dirigida a modelos. 
-1. # **Validação de Requisitos**
+
+##### **Validação de Requisitos**
 O objetivo da atividade de validação de requisitos é estabelecer que os requisitos estejam definidos de forma correta, consistente, íntegra e precisa. A atividade envolve os *stakeholders*, os engenheiros de requisitos e os engenheiros de *design*, mediante a análise dos requisitos documentados, buscando problemas, omissões e ambiguidades.
 
 Os instrumentos que podem ser utilizados para validação dos requisitos são: as revisões da documentação de requisitos; validação dos modelos de requisitos, que devem ser apresentados na forma de modelos de fluxos de dados; modelos de objetos; modelos de eventos; e modelos de dados; prototipação; e testes de requisitos – a dificuldade de definir e propor testes pode ser um indicativo de problema na indicação dos requisitos.
-1. # **SISTEMAS SOCIOTÉCNICOS**
+
+### **8. SISTEMAS SOCIOTÉCNICOS**
+
 Explorando o status de atores e fatores sociais em relação aos sistemas de engenharia, pelo menos três diferentes tipos de sistemas podem ser distinguidos (OTTENS, 2006): 
 
 (1) sistemas de engenharia que executam sua função **sem atores e sem instituições sociais** executarem uma subfunção dentro dos sistemas; 
@@ -483,88 +455,9 @@ Quanto aos elementos sociais, um conjunto de elementos não técnicos influencia
 As relações podem ser técnica-técnica, técnica-ator, ator-ator, ator-social, social-social e técnica social.
 
 Redes sociotécnicas são sistemas distribuídos que utilizam recursos humanos e tecnológicos para atender às necessidades essenciais, sociais, comerciais, industriais, militares e econômicas (SIQUEIRA, 2014). No contexto da disciplina de Projeto de Instalações Complexas, o entendimento será de que as instalações complexas tratadas serão aquelas que satisfazem a tal definição.
-1. # **REDES SOCIOTÉCNICAS**
-As instalações complexas, enquanto redes sociotécnicas, caracterizam-se pela interligação de quatro principais entidades:
 
-- Fornecedores – provedores de serviços para a rede;
-- Consumidores – usuários de serviços prestados pela rede;
-- Distribuidores – concentradores e processadores de serviços na rede;
-- Transportadores – transmissores de serviços através da rede, com o objetivo de atender as necessidades ou demandas de serviços essenciais de uma determinada região ou empreendimento.
+### **REFERÊNCIAS**
 
-`    `As instalações complexas assim definidas se configuram redes de complexidades e dimensão elevadas, comportamento dinâmico variável e incerto, múltiplas interdependências, gerando elevados impactos durante falhas. Adicionalmente, estão sujeitas a falhas endógenas ou exógenas, intencionais ou acidentais.
-
-Embora se constituam como redes sociotécnicas, as instalações complexas nem sempre se desdobram por regiões geográficas amplas, além das distâncias locais. Não contemplam as redes de âmbito do perímetro urbano ou maiores, para as quais pode haver correlação do desempenho e funcionamento com variáveis geográficas.
-
-Os símbolos que usaremos para indicação das entidades nas instalações complexas estão apresentados na Tabela 2.
-
-Tabela 2 – Símbolo de entidades nos diagrama unifilares das instalações complexas
-
-|**Componente**|**Fornecedor**|**Consumidor**|**Distribuidor**|**Transportador**|
-| - | - | - | - | - |
-|**Símbolo**|![](Aspose.Words.ad7430c9-8dfb-4dc6-b9a7-7d4a2554f8ac.018.png)|![](Aspose.Words.ad7430c9-8dfb-4dc6-b9a7-7d4a2554f8ac.019.png)|![](Aspose.Words.ad7430c9-8dfb-4dc6-b9a7-7d4a2554f8ac.020.png)|![](Aspose.Words.ad7430c9-8dfb-4dc6-b9a7-7d4a2554f8ac.021.png)|
-As instalações de energia elétrica podem ser caracterizadas segundo suas entidades da seguinte forma:
-
-- Fornecedores – geradores de energia elétrica;
-- Consumidores – usuários de energia fornecida pela rede;
-- Distribuidores – Subestações de transmissão e distribuição da rede;
-- Transportadores – linhas de transmissão interligando as subestações.
-
-No setor elétrico é comum distinguir-se entre instalações transmissoras e distribuidoras, de acordo com o nível de tensão, segundo regras definidas pelo órgão regulador. Redes elétricas de potências formam os maiores e mais complexos sistemas interligados. Tipicamente, o seccionamento dos elementos ocorre pela abertura de disjuntores ou o gatilhamento de válvulas eletrônicas tiristorizadas em cada elemento, sob o comando local ou remoto, manual e automático, interrompendo o fornecimento, consumo, distribuição ou transporte de energia. A Figura 19 apresenta um exemplo.
-
-![](Aspose.Words.ad7430c9-8dfb-4dc6-b9a7-7d4a2554f8ac.022.png)
-
-Figura 19 – Exemplo de instalação elétrica – visão das entidades
-
-Fonte: o Autor
-
-A Figura 19 representa um modelo possível de uma instalação elétrica complexa, que pode contemplar nenhum ou mais do que cada uma das entidades apresentadas. As entidades apresentadas constituem-se ativos das instalações elétricas complexas, os quais podem pertencer a uma empresa ou a empresas diferentes. 
-
-No exemplo, os elementos possuem capacidades de transmissão e geração limitadas, indicadas entre parênteses, referenciada a um valor de base para fluxo de energia (por exemplo, 100 MW por unidade – pu – de capacidade). No exemplo, admite-se que os geradores produzem o total de 6 pu de capacidade de transmissão e que a carda demanda 4 pu. A linha de transmissão 1 suporta encaminhar 3 pu, a linha 2 suporta encaminhar 4 pu e a linha 3 suporta encaminhar 2 pu. 
-
-Os parâmetros do modelo podem ser definidos em função da interrupção ou não de funcionamento dos elementos, daqueles que devem operar ou não como reserva, entre outras considerações.
-
-Instalações de energia elétrica estão sujeitas a ameaças, logo devem possuir sistemas de controle capazes de desligar cada componente em caso de anormalidade interna ou bloquear subsistemas afetados por ameaças externas. 
-
-As instalações de distribuição de água potável coletam e tratam água oriundas de fontes naturais ou servidas e a distribuem para uso residencial ou industrial, através de aquedutos, interligando quatro tipos principais de entidades:
-
-- Fornecedores – aquíferos, mananciais e estações de tratamento de água;
-- Consumidores – usuários e absorvedores de águas fornecidas pela rede;
-- Distribuidores – reservatórios e estações de distribuição da água na rede;
-- Transportadores – aquedutos interligando os reservatórios e estações.
-
-Nas redes, o seccionamento dos elementos ocorre pelo fechamento de válvulas e comportas, com acionamento manual, elétrico, pneumático ou hidráulico, sob comando local ou remoto, interrompendo o fornecimento, consumo, distribuição e transporte de água. As estruturas são bastante similares aos sistemas elétricos. A Figura 20 apresenta um exemplo.
-
-![](Aspose.Words.ad7430c9-8dfb-4dc6-b9a7-7d4a2554f8ac.023.png)
-
-Figura 20 – Exemplo de instalação de distribuição de água – visão das entidades
-
-Fonte: o Autor
-
-A Figura 20 ilustra uma instalação de distribuição de água similar à instalação elétrica da Figura 19. O sistema proporciona a exploração de dois mananciais servidos por estações de bombeamento e reservatórios, interligados por três aquedutos que distribuem água entre reservatórios, bem como ao consumidor, que é servido por um reservatório.
-
-A capacidade de fluxo de água nos aquedutos, estações de bombeamento, mananciais, reservatórios e consumidores podem ser especificados por unidade (pu) de um valor de base para o fluxo de água (por exemplo, 1.000 m3/seg).
-
-Similarmente ao modelo de instalação elétrica, o exemplo ilustra uma situação em que os dois mananciais propiciam 6 pu de capacidade de água para suprir via aquedutos que possuem 8 pu de capacidade armazenamento as necessidades de consumo de 4 pu de água do usuário. Na instalação estão distribuídos reservatórios que possuem a capacidade de distribuir a água entre as entidades do sistema. 
-
-As instalações de distribuição de distribuição de gás combustível, com gasodutos e estações armazenamento, compressão e descompressão interligando fornecedores e consumidores de gás, para uso comercial, industrial e residencial se configuram instalações complexas, interligando quatro tipos principais de entidades:
-
-- Fornecedores – produtores, extratores e fontes de gás natural ou derivados gasosos de petróleo;
-- Consumidores – utilizadores de gás;
-- Distribuidores – reservatórios e estações de distribuição de gás;
-- Transportadores – gasodutos interligando os reservatórios e estações.
-
-Nas redes, o seccionamento dos elementos ocorre pelo fechamento de válvulas e comportas, com acionamento manual, elétrico, pneumático ou hidráulico, sob comando local ou remoto, interrompendo o fornecimento, consumo, distribuição e transporte de gás. As estruturas são bastante similares aos sistemas elétricos e hidráulicos. A Figura 21 apresenta um exemplo.
-
-![](Aspose.Words.ad7430c9-8dfb-4dc6-b9a7-7d4a2554f8ac.024.png)
-
-Figura 21 - Exemplo de instalação de distribuição de gás – visão das entidades
-
-Fonte: o Autor
-
-A Figura 21 ilustra uma instalação de distribuição de gás. O sistema dispõe de duas fontes de óleo com capacidade de produção 6 pu (valor de base de 100 m3/seg). As demais capacidades podem ser analisadas de modo similar às instalações elétricas e hidráulicas. 
-
-
-# **REFERÊNCIAS**
 CHIAVENATO, I. **Introdução à Teoria Geral da Administração**. [S.l.]: Campus, 2000.
 
 CURRY, G. L.; FELDMAN, R. M. **Manufacturing Systems - Modeling and Analysing**. Second. ed. [S.l.]: Springer, 2011.
