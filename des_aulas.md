@@ -12,7 +12,7 @@ Alguns vídeos interessantes:
    - [A indústria 4.0](https://youtu.be/RPC7yo99Nxs)  
    - [Desafios da engenharia na próxima década](https://www.youtube.com/watch?v=kH96qhxfCpg)  
 4.  [Projetos de engenharia e ferramentas para gerenciamento de projetos](des_aulas/des_gerencia_projetos.pdf)
-5.  Sistemas de Engenharia e o método da Engenharia de sistemas
+5.  [Sistemas de Engenharia e o método da Engenharia de sistemas](des_aulas/des_engenharia_sistemas.pdf)
 6.  Grandezas e unidades de medida
 7.  Simulação computacional de modelos quantitativos de produtos de engenharia 
 8.  Modelos estáticos, dinâmicos e funcionais de sistemas de engenharia
