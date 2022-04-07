@@ -9,11 +9,12 @@
 6. [Listas](prog_aulas/prog_listas.md)
 7. [Tuplas e conjuntos](prog_aulas/prog_tuplas.md)
 8. Dicionários
-9. POO
-10. Pacote NumPy
-11. Pacote Matplotlib
-12. Pacote SciPy
-13. Debugging, testes e perfilamento
+9. Arquivos
+10. POO
+11. Pacote NumPy
+12. Pacote Matplotlib
+13. Pacote SciPy
+14. Debugging, testes e perfilamento
 
 ### Guia rápido
 **Guia para utilizar a sintaxe básica do Python - atualizado de acordo com as aulas**  
