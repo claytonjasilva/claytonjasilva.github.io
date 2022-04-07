@@ -31,4 +31,4 @@
 
 ## Trabalhos
 
-1. [Trabalho 1: artefatos básicos](pjto_aulas/pjto_trabalho_1.pdf) - data de entrega: 6 de abril de 2022
+1. [Trabalho 1: artefatos básicos](pjto_aulas/pjto_trabalho_1.pdf) - data de entrega: 7 de abril de 2022
