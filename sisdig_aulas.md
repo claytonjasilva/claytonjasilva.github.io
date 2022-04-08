@@ -18,7 +18,8 @@
 1. [Prática 1](sisdig_aulas/sisdig_pratica1.md)
 2. [Prática 2](/arq_aulas/arq_pratica1.md)
 3. [Prática 3](/arq_aulas/arq_pratica2.md)
-4. [Prática 4](sisdig_aulas/sisdig_pratica2.md)  
+4. [Prática 4](sisdig_aulas/sisdig_pratica2.md)
+5. [Prática 5](sisdig_aulas/sisdig_pratica3.md)  
 
 **Datasheets de referência**  
 [Portas AND](sisdig_aulas/CD14082BCP_Motorola.pdf)  
