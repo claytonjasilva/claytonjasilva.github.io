@@ -26,11 +26,13 @@
 + [CD14082BCP](sisdig_aulas/CD14082BCP_Motorola.pdf)  
 + [74HC08N](sisdig_aulas/74HC08N_Philips.pdf)
 2. [Portas OR](sisdig_aulas/SN74HC32N_Texas.pdf)  
-3. [Portas NAND](sisdig_aulas/CD4011BE_Texas.pdf)  
-4. [INVERSOR](sisdig_aulas/SN74HC04_Philips.pdf)  
-5. [Mux](sisdig_aulas/SN74HC151N_Texas.pdf)  
-6. [Coder BCD](sisdig_aulas/CD4511_Texas.pdf)  
-7. [Decoder BCD-Decimal](sisdig_aulas/CD4028_Texas.pdf)  
+3. Portas NAND 
++ [CD4011BE](sisdig_aulas/CD4011BE_Texas.pdf)  
++ [74HC00N](sisdig_aulas/74HC00N_Philips.pdf)
+5. [INVERSOR](sisdig_aulas/SN74HC04_Philips.pdf)  
+6. [Mux](sisdig_aulas/SN74HC151N_Texas.pdf)  
+7. [Coder BCD](sisdig_aulas/CD4511_Texas.pdf)  
+8. [Decoder BCD-Decimal](sisdig_aulas/CD4028_Texas.pdf)  
 [Counter](sisdig_aulas/74HC161_Philips.pdf)  
 [Adder](sisdig_aulas/74LS283_National.pdf)
 
