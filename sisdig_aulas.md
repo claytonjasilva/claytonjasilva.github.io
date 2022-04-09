@@ -45,4 +45,6 @@
 + [Lista 2: projeto de circuitos combinacionais](sisdig_aulas/sisdig_exercicios/Lista2-ProjetoCircuitosCombinacionais.pdf)  
 + [Lista 2: solução](sisdig_aulas/sisdig_exercicios/sisdig_lista2_sol.pdf)
 4. [Form projeto de circuitos combinacionais](https://forms.gle/2CthQwVdgyLThFvQ8)  
-5. [Lista 3: representação binária](sisdig_aulas/sisdig_exercicios/Lista3-NumerosBinarios.pdf)     
+5. Lista 3
++ [Lista 3: representação binária](sisdig_aulas/sisdig_exercicios/Lista3-NumerosBinarios.pdf)  
++ [Lista 3: solução](sisdig_aulas/sisdig_exercicios/Lista2-Projeto_Circuitos-Solucao.pdf)     
