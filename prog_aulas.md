@@ -21,7 +21,8 @@
 [Guia básico](prog_aulas/guia_rapido.md)
 
 ### Exercícios  
-1. [Conteúdo até estruturas de repetição](prog_aulas/lista1.md)  
+1. [Conteúdo até estruturas de repetição](prog_aulas/lista1.md)
+2. [Mais exercícios sobre estruturas de repetição](prog_aulas/lista1.md)  
 
 ### Forms em sala
 - [Form 1 - solução](prog_aulas/Quiz1-FormSolucao.pdf)  
