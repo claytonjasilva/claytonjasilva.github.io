@@ -5,7 +5,7 @@
 * [Projetos de circuitos combinacionais](sisdig_aulas/sisdig_2-1.pdf)
 * [Grandezas numéricas nos sistemas digitais](sisdig_aulas/sisdig_3.pdf)
 * Circuitos aritméticos: [Somadores](sisdig_aulas/sisdig_4.pdf)
-* _Coders_/_decoders_
+* [Decodificadores e codificadores](sisdig_aulas/sisdig_5.pdf)
 * Multiplexadores (Mux)
 * Registradores
 * Contadores síncronos e assíncronos
