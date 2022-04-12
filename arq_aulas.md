@@ -28,6 +28,8 @@
 4. Form-lista 4: Números e aritmética binária
   + [Questões](arq_aulas/Form_lista_4_arq.pdf)  
   + [Solução](arq_aulas/Form_lista_4_arq_sol.pdf) 
+5. Form-lista 5: Números e aritmética binária
+  + [Questões](https://forms.gle/v5kd9jCaKMyqPZ3JA)
 
 ## Referências
 
