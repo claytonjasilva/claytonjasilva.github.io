@@ -9,5 +9,9 @@ Alguns pontos podem ser destacados:
 + *w* - para abrir o arquivo para escrever (se o arquivo já existir seu conteúdo prévio será apagado)
 + *a* - para abrir o arquivo para adição ao final do arquivo
 + *r+* - para abrir o arquivo tanto para leitura como para escrita
-2. Após operar com o arquivo, use o método **close**. 
+2. **Após operar com o arquivo**, use o método *close*, na forma *nome_do_arquivo.close()*.
+3. Para **ler o arquivo inteiro**, use o método **read**, na forma *variável = nome_do_arquivo.read()*.
+4. Para **ler linha a linha** do arquivo, use o método **readline**, na forma *variável = nome_do_arquivo.readline()*.
+5. Para **ler linha a linha** do arquivo iterando diretamente sobre ele, use a expressão *for linha in arquivo:**.
+6. Para escrever em um arquivo, use o método **write**, na forma *nome_do_arquivo.write()*. 
 
