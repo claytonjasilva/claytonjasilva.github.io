@@ -14,6 +14,7 @@
 ## Práticas
 1. [Prática 1 Arduíno](arq_aulas/arq_pratica1.md)
 2. [Prática 2 Arduíno](arq_aulas/arq_pratica2.md)
+3. [Trabalho - AP1](arq_aulas/arq_AP1_trabalho.pdf)
 
 ## Exercícios
 1. Form-lista 1: conceitos iniciais máquina de níveis (**fechado**)  
