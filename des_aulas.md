@@ -33,4 +33,4 @@ Alguns vídeos interessantes:
 2. [Quiz 2: Engenharia e sociedade - métodos e ferramentas](des_aulas/des_form_2.pdf)
 3. [Prática: Cronograma de projeto com MS Project](des_aulas/des_praticaMSProject.md)   
 4. [Trabalho em grupo 1](des_aulas/des_trabalho_1.pdf)
-5. [Quiz 3: Gerenciamento de projetos](https://forms.gle/tW3mM5xMkuShgcCSA)
+5. [Quiz 3: Gerenciamento de projetos](des_aulas/des_form3.pdf)
