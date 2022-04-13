@@ -32,3 +32,4 @@
 ## Trabalhos
 
 1. [Trabalho 1: artefatos básicos](pjto_aulas/pjto_trabalho_1.pdf) - data de entrega: 7 de abril de 2022
+2. [Trabalho 2: gestão do escopo/(pjto_aulas/pjto_trabalho_2_AP1.pdf)
