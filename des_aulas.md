@@ -13,13 +13,14 @@ Alguns vídeos interessantes:
    - [Desafios da engenharia na próxima década](https://www.youtube.com/watch?v=kH96qhxfCpg)  
 4.  [Projetos de engenharia e ferramentas para gerenciamento de projetos](des_aulas/des_gerencia_projetos.pdf)
 5.  [Sistemas de Engenharia e o método da Engenharia de sistemas](des_aulas/des_engenharia_sistemas.pdf)
-6.  Grandezas e unidades de medida
-7.  Simulação computacional de modelos quantitativos de produtos de engenharia 
-8.  Modelos estáticos, dinâmicos e funcionais de sistemas de engenharia
-9.  Método para solução de problemas de engenharia
-10. Métodos e ferramentas de apoio à decisão 
-11. Segurança do trabalho e ergonomia
-12. Engenharia e empreendedorismo
+6.  [Otimização de soluções](des_aulas/des_solucao_otima.pdf)
+7.  Grandezas e unidades de medida
+8.  Simulação computacional de modelos quantitativos de produtos de engenharia 
+9.  Modelos estáticos, dinâmicos e funcionais de sistemas de engenharia
+10.  Método para solução de problemas de engenharia
+11. Métodos e ferramentas de apoio à decisão 
+12. Segurança do trabalho e ergonomia
+13. Engenharia e empreendedorismo
 
 ## Notas de aula
 1. [Engenharia e sociedade](des_aulas/notas/des_engenharia_sociedade.md)
