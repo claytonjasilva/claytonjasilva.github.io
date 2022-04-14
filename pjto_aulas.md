@@ -5,7 +5,7 @@
 2. [Ciclo de vida de projetos](pjto_aulas/pjto_2.pdf)
 3. [Artefatos básicos para gestão de projetos](pjto_aulas/pjto_3.pdf)
 4. [Gestão integrada e gestão do escopo](pjto_aulas/pjto_4.pdf)
-5. Gestão do cronograma
+5. [Gestão do cronograma](pjto_aulas/pjto_4.pdf)
 6. Gestão dos custos
 7. Gestão de pessoas
 8. Gestão de riscos
