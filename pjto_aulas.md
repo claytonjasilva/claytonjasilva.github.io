@@ -27,7 +27,8 @@
 5. [Prática 3 *MS Project*](pjto_aulas/pratica3_msproject.md)
 6. [Form 3 - Gestão da integração](https://forms.gle/HUC4BxwVMno2wAhp8)  
 +[Form 3 - uma solução](pjto_aulas/Form_integracao.pdf) 
-7. [Form 4 - Gestão do escopo](https://forms.gle/KoYKn6p4CHtsnPZU9)
+7. [Form 4 - Gestão do escopo](https://forms.gle/KoYKn6p4CHtsnPZU9)  
++[Form 4 - uma solução](pjto_aulas/Form_escopo.pdf)
 
 ## Trabalhos
 
