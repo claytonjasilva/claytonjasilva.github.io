@@ -1,8 +1,7 @@
 ## Módulos e pacotes 
 
 ### Conceitos
-- [Conceito de módulos](https://docs.python.org/pt-br/3/tutorial/modules.html)
-- [Conceito de pacotes](https://docs.python.org/pt-br/3/glossary.html#term-package)
+**- Tutorial - [módulos e pacotes](https://docs.python.org/pt-br/3/tutorial/modules.html)**
 
 ### Por que utilizar módulos?
 - Reuso de código: o código que fica em arquivos de módulos é **persistente**, isto é, pode ser recarregado e novamente executado quantas vezes forem necessárias
