@@ -1,7 +1,7 @@
 ## Módulos e pacotes 
 
 ### Conceitos
-- [Conceito de módulos](https://docs.python.org/3/glossary.html#term-module)
+- [Conceito de módulos](https://docs.python.org/pt-br/3/tutorial/modules.html)
 - [Conceito de pacotes](https://docs.python.org/pt-br/3/glossary.html#term-package)
 
 ### Por que utilizar módulos?
