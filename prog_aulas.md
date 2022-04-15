@@ -5,10 +5,10 @@
 2. [Conceitos de programação procedural: condicionais simples e compostas](prog_aulas/prog_conceitos2.md)
 3. [Conceitos de programação procedural: estruturas de repetição](prog_aulas/prog_conceitos3.md)
 4. [Funções](prog_aulas/prog_funcoes.md)
-5. [Módulos](prog_aulas/prog_modulos.md) e [pacotes](prog_aulas/prog_pacotes.md)
-6. [Listas](prog_aulas/prog_listas.md)
-7. [Tuplas e conjuntos](prog_aulas/prog_tuplas.md)
-8. Dicionários
+5. [Listas](prog_aulas/prog_listas.md)
+6. [Tuplas e conjuntos](prog_aulas/prog_tuplas.md)
+7. Dicionários
+8. [Módulos](prog_aulas/prog_modulos.md) e [pacotes](prog_aulas/prog_pacotes.md)
 9. Arquivos
 10. POO
 11. Pacote NumPy
