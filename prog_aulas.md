@@ -7,7 +7,7 @@
 4. [Funções](prog_aulas/prog_funcoes.md)
 5. [Listas](prog_aulas/prog_listas.md)
 6. [Tuplas e conjuntos](prog_aulas/prog_tuplas.md)
-7. Dicionários
+7. [Dicionários](prog_aulas/prog_dicionarios.md)
 8. [Módulos](prog_aulas/prog_modulos.md) e [pacotes](prog_aulas/prog_pacotes.md)
 9. Arquivos
 10. POO
