@@ -32,7 +32,7 @@ Escreve o valor **2**
 
 ### Exercícios com condicionais simples e compostas  
 1. Elaborar um programa na linguagem Python que possua uma função para calcular a média final de aluno, usando a fórmula: mf=0,4.ap1+0,4.ap2+0,2.ac. O programa deve ser executado para calcular a média de um grupo de 30 alunos.
-2. Elaborar um programa na linguagem Python que possua uma função para calcular a área de figuras geométricas. A função deve ler o tipo de figura('t':triângul;'r':retângulo;'c':círculo) e os dados da figura, conforme o tipo especificado no argumento.
+2. Elaborar um programa na linguagem Python que possua um conjunto de funções para calcular a área de figuras geométricas. O programa deve permitir que o usuário digite o número de figuras cujos parâmetros serão lidos e cuja área será determinada. Deve ler, para cada figura, o seu tipo, ('t':triângul;'r':retângulo;'c':círculo) e os respectivos parâmetros para cálculo de área, escrevendo a área da figura solicitada.
 3. Elaborar um programa na linguagem Python que possua uma função para calcular o valor da soma dos termos positivos de uma série aritmética de razão 1, cujo maior termo é um número N dado, ou seja, soma=1+2+3+...+N.
 4. Elaborar um programa na linguagem Python que possua uma função para somar o quadrado de três valores.
 5. Elaborar um programa na linguagem Python que possua uma função para ler dois números e retornar o maior dentre os dois. O programa deve ler 10 números, determinar e escrever o maior dentre os números lidos. 
