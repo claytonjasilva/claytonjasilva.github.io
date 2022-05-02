@@ -30,6 +30,7 @@
   + [Solução](arq_aulas/Form_lista_4_arq_sol.pdf) 
 5. Form-lista 5: Números e aritmética binária
   + [Questões](https://forms.gle/v5kd9jCaKMyqPZ3JA)
+6. [Gabarito AP1](arq_aulas/gabaritoAP1.pdf)
 
 ## Referências
 
