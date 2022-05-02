@@ -5,7 +5,7 @@
 2. [Números e aritmética binária](arq_aulas/arq_aulas_representacao.pdf)
 3. Nível de lógica digital  
 + [Circuitos combinacionais](arq_aulas/arq_aulas_logica_combinacional.pdf)    
-+ Circuitos sequenciais
++ [Circuitos sequenciais](arq_aulas/arq_aulas_logica_sequencial.pdf)
 5. _Overview_ - elementos básicos das arquiteturas modernas
 6. Microprocessador Atmel ATmega 2560
 7. Programando no _assembler_ do MC2560
