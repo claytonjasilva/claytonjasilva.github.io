@@ -6,7 +6,7 @@
 3. Nível de lógica digital  
 + [Circuitos combinacionais](arq_aulas/arq_aulas_logica_combinacional.pdf)    
 + [Circuitos sequenciais](arq_aulas/arq_aulas_logica_sequencial.pdf)
-5. _Overview_ - elementos básicos das arquiteturas modernas
+5. [Detalhamento dos elementos fundamentais das arquiteturas](arq_aulas/arq_aulas_componentes.pdf)
 6. Microprocessador Atmel ATmega 2560
 7. Programando no _assembler_ do MC2560
 8. Sistemas Operacionais
