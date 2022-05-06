@@ -6,7 +6,7 @@
 * [Grandezas numéricas nos sistemas digitais](sisdig_aulas/sisdig_3.pdf)
 * Circuitos aritméticos: [Somadores](sisdig_aulas/sisdig_4.pdf)
 * [Decodificadores e codificadores](sisdig_aulas/sisdig_5.pdf)
-* Multiplexadores (Mux)
+* [Multiplexadores (Mux)](sisdig_aulas/sisdig_6.pdf)
 * Registradores
 * Contadores síncronos e assíncronos
 * Conversores A/D e D/A
