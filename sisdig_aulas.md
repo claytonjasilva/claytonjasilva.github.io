@@ -49,5 +49,6 @@
 5. Lista 3
 + [Lista 3: representação binária](sisdig_aulas/sisdig_exercicios/Lista3-NumerosBinarios.pdf)  
 + [Lista 3: solução](sisdig_aulas/sisdig_exercicios/Lista2-Projeto_Circuitos-Solucao.pdf)  
-6. [Form representação binária](https://forms.gle/4nmhzPPj18UVwMiu9)   
-7. **[Trabalho AP1](sisdig_aulas/sisdig_exercicios/sisdig_AP1_trabalho.pdf)
+6. [Form representação binária](https://forms.gle/4nmhzPPj18UVwMiu9)
+7. [Lista 4](sisdig_aulas/sisdig_exercicios/Lista4-Mux.pdf)   
+8. **[Trabalho AP1](sisdig_aulas/sisdig_exercicios/sisdig_AP1_trabalho.pdf)
