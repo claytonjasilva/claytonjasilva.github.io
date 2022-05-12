@@ -6,7 +6,7 @@
 3. [Artefatos básicos para gestão de projetos](pjto_aulas/pjto_3.pdf)
 4. [Gestão integrada e gestão do escopo](pjto_aulas/pjto_4.pdf)
 5. [Gestão do cronograma](pjto_aulas/pjto_5.pdf)
-6. Gestão dos custos
+6. [Gestão dos custos](pjto_aulas/pjto_6.pdf)
 7. Gestão de pessoas
 8. Gestão de riscos
 9. Gestão de aquisições, comunicações e partes interessadas
