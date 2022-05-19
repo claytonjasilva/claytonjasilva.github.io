@@ -15,7 +15,7 @@ Alguns vídeos interessantes:
 5.  [Sistemas de Engenharia e o método da Engenharia de sistemas](des_aulas/des_engenharia_sistemas.pdf)
 6.  [Otimização de soluções](des_aulas/des_solucao_otima.pdf)
 7.  [Método de apoio à decisão: AHP](des_aulas/des_ahp.pdf)
-8.  Grandezas e unidades de medida
+8.  [Grandezas e unidades de medida](des_aulas/des_grandezas_unidades.pdf)
 9.  Simulação computacional de modelos quantitativos de produtos de engenharia 
 10.  Modelos estáticos, dinâmicos e funcionais de sistemas de engenharia
 11.  Método para solução de problemas de engenharia
@@ -37,3 +37,4 @@ Alguns vídeos interessantes:
 5. [Quiz 3: Gerenciamento de projetos](des_aulas/des_form3.pdf)
 6. [Quiz 4: Engenharia de sistemas](des_aulas/des_form4.pdf)
 7. [Trabalho em grupo 2 - AP1 parte 2](des_aulas/desafios_AP1_trabalho.pdf)
+8. [Trabalho em grupo - sala de aula](des_aulas/des_trabalho_3.pdf)
