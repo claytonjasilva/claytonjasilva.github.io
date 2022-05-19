@@ -29,7 +29,8 @@
 +[Form 3 - uma solução](pjto_aulas/Form_integracao.pdf) 
 7. [Form 4 - Gestão do escopo](https://forms.gle/KoYKn6p4CHtsnPZU9)  
 +[Form 4 - uma solução](pjto_aulas/Form_escopo.pdf)
-8. [Form - Gestão do tempo](https://forms.gle/QqtNozQphBGkPzK48)
+8. [Form - Gestão do tempo](https://forms.gle/QqtNozQphBGkPzK48)  
++[Form 5 - uma solução](pjto_aulas/form_gestao_tempo.pdf)
 
 ## Trabalhos
 
