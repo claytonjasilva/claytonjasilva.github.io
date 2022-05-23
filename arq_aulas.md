@@ -17,20 +17,22 @@
 3. [Trabalho - AP1](arq_aulas/arq_AP1_trabalho.pdf)
 
 ## Exercícios
-1. Form-lista 1: conceitos iniciais máquina de níveis (**fechado**)  
+1. Form-lista: conceitos iniciais máquina de níveis (**fechado**)  
   + [Questões](arq_aulas/Form_lista_1_arq.pdf)
   + [Solução](arq_aulas/Form_lista_1_arq_sol.pdf)  
-2. Form-lista 2: máquina IAS
+2. Form-lista: máquina IAS
   + [Questões](arq_aulas/Form_lista_2_arq.pdf)  
   + [Solução](arq_aulas/Form_lista_2_arq_sol.pdf)  
-3. Form-lista 3: máquina IAS
+3. Form-lista: máquina IAS
   + [Questões](https://forms.gle/aAiGrofbk5BooTwk8)
-4. Form-lista 4: Números e aritmética binária
+4. Form-lista: Números e aritmética binária
   + [Questões](arq_aulas/Form_lista_4_arq.pdf)  
   + [Solução](arq_aulas/Form_lista_4_arq_sol.pdf) 
-5. Form-lista 5: Números e aritmética binária
+5. Form-lista: Números e aritmética binária
   + [Questões](https://forms.gle/v5kd9jCaKMyqPZ3JA)
 6. [Gabarito AP1](arq_aulas/gabaritoAP1.pdf)
+7. Form-lista: Elementos da arquitetura - memória
+  + [Questões](arq_aulas/Form_lista_5_arq.pdf)
 
 ## Referências
 
