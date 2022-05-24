@@ -7,10 +7,11 @@
 * Circuitos aritméticos: [Somadores](sisdig_aulas/sisdig_4.pdf)
 * [Decodificadores e codificadores](sisdig_aulas/sisdig_5.pdf)
 * [Multiplexadores (Mux)](sisdig_aulas/sisdig_6.pdf)
-* Registradores
-* Contadores síncronos e assíncronos
-* Conversores A/D e D/A
-* Sistemas embarcados
+* Circuitos sequenciais  
+    [Flip Flops](sisdig_aulas/sisdig_7.pdf)  
+    Contadores síncronos e assíncronos  
+    Conversores A/D e D/A  
+    Sistemas embarcados
 
 ## Exercícios
 
