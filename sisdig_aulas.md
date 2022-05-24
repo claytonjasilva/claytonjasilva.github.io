@@ -40,17 +40,19 @@
 [Adder](sisdig_aulas/74LS283_National.pdf)
 
 ### Listas de exercício e forms
-1. Lista 1  
+1. Álgebra booleana  
 + [Lista 1: álgebra booleana e portas lógicas](sisdig_aulas/sisdig_exercicios/Lista1-AlgebraBooleana-Gates.pdf)  
 + [Lista 1: solução](sisdig_aulas/sisdig_exercicios/sisdig_lista1_sol.pdf)
 2. [Form álgebra booleana e portas lógicas](https://forms.gle/5pouUtxLecaapEoL7)
-3. Lista 2
+3. Projeto de circuiots combinacionais
 + [Lista 2: projeto de circuitos combinacionais](sisdig_aulas/sisdig_exercicios/Lista2-ProjetoCircuitosCombinacionais.pdf)  
 + [Lista 2: solução](sisdig_aulas/sisdig_exercicios/sisdig_lista2_sol.pdf)
 4. [Form projeto de circuitos combinacionais](https://forms.gle/2CthQwVdgyLThFvQ8)  
-5. Lista 3
+5. Aritmética binária
 + [Lista 3: representação binária](sisdig_aulas/sisdig_exercicios/Lista3-NumerosBinarios.pdf)  
 + [Lista 3: solução](sisdig_aulas/sisdig_exercicios/Lista2-Projeto_Circuitos-Solucao.pdf)  
 6. [Form representação binária](https://forms.gle/4nmhzPPj18UVwMiu9)
-7. [Lista 4](sisdig_aulas/sisdig_exercicios/Lista4-Mux.pdf)   
-8. **[Trabalho AP1](sisdig_aulas/sisdig_exercicios/sisdig_AP1_trabalho.pdf)
+7. Multiplexadores 
++ [Lista 4](sisdig_aulas/sisdig_exercicios/Lista4-Mux.pdf)  
++ [Form 4: multiplexadores](https://forms.gle/qrKyKyndmcwheaBXA)     
+9. **[Trabalho AP1](sisdig_aulas/sisdig_exercicios/sisdig_AP1_trabalho.pdf)
