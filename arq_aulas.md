@@ -7,9 +7,8 @@
 + [Circuitos combinacionais](arq_aulas/arq_aulas_logica_combinacional.pdf)    
 + [Circuitos sequenciais](arq_aulas/arq_aulas_logica_sequencial.pdf)
 5. [Detalhamento dos elementos fundamentais das arquiteturas](arq_aulas/arq_aulas_componentes.pdf)
-6. Microprocessador Atmel ATmega 2560
-7. Programando no _assembler_ do MC2560
-8. Sistemas Operacionais
+6. [Microprocessador Atmel ATmega 2560](arq_aulas/arq_aulas_mc2560.pdf)
+7. Sistemas Operacionais
 
 ## Práticas
 1. [Prática 1 Arduíno](arq_aulas/arq_pratica1.md)
