@@ -4,7 +4,8 @@
 - [Instruções simples e compostas](#ancora2)
 - [Entrada e saída](#ancora3)
 - [Conversão de tipos](#ancora4)
-- [Outras](#ancora4)
+- [Funções, Listas e Strings](#ancora5)
+- [Outras](#ancora6) 
 
 <a id="ancora1"></a>
 ## Operadores
@@ -123,6 +124,33 @@
 [Topo](#ancora)
 
 <a id="ancora5"></a>
+## Funções, Listas e Strings
+1. **Definição de função**  
+   Sintaxe:   
+   *def nome_da_função(parâmetros):    
+   –> bloco de instruções  
+   –> return valor*    
+   Exemplo:  
+   *def soma(a,b):  
+   -> c = a+b  
+   -> return c  
+   Finalidade: criar uma função  
+2. **Inicializar lista vazia**  
+   Sintaxe: *lista=[]*  
+   Exemplo: *nota=[]*  
+   Finalidade: criar uma lista vazia
+3. **Inicializar lista não vazia**  
+   Sintaxe: *lista=[elementos separados por vírgula]*  
+   Exemplo: *nota=[8,9,10,3]*  
+   Finalidade: cria uma lista com seus elementos
+4. **Elemento de uma lista**  
+   Sintaxe: *nome[indice]*  
+   Exemplo: *nota[0]*  
+   Finalidade: associa ao dado de nota na posição [0]
+
+[Topo](#ancora)
+
+<a id="ancora6"></a>
 ## Outras
 1. **Comentário:**  
    Sintaxe: *#*, seguido pelo texto de comentário  
