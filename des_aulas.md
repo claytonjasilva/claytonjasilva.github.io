@@ -26,6 +26,7 @@ Alguns vídeos interessantes:
 1. [Engenharia e sociedade](des_aulas/notas/des_engenharia_sociedade.md)
 2. [Gestão de projetos](des_aulas/notas/des_projetos.md)
 3. [Engenharia de sistemas](des_aulas/notas/des_engenharia_sistemas.md)
+4. [Grandezas e Unidades](des_aulas/notas/desafios_nota_grandezas_unidades_apendice.pdf)
 
 
 ## Exercícios e trabalhos
