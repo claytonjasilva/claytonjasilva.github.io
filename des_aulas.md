@@ -16,11 +16,10 @@ Alguns vídeos interessantes:
 6.  [Otimização de soluções](des_aulas/des_solucao_otima.pdf)
 7.  [Método de apoio à decisão: AHP](des_aulas/des_ahp.pdf)
 8.  [Grandezas e unidades de medida](des_aulas/des_grandezas_unidades.pdf)
-9.  Simulação computacional de modelos quantitativos de produtos de engenharia 
-10.  Modelos estáticos, dinâmicos e funcionais de sistemas de engenharia
-11.  Método para solução de problemas de engenharia
-12. Segurança do trabalho e ergonomia
-13. Engenharia e empreendedorismo
+9.  [Modelos estáticos, dinâmicos e funcionais de sistemas de engenharia](des_aulas/des_modelos.pdf)
+10.  Método para solução de problemas de engenharia
+11. Segurança do trabalho e ergonomia
+12. Engenharia e empreendedorismo
 
 ## Notas de aula
 1. [Engenharia e sociedade](des_aulas/notas/des_engenharia_sociedade.md)
