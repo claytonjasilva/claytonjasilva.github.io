@@ -9,7 +9,7 @@
 * [Multiplexadores (Mux)](sisdig_aulas/sisdig_6.pdf)
 * Circuitos sequenciais  
     [Flip Flops](sisdig_aulas/sisdig_7.pdf)
-    [Aplicações com FF](sisdig_aulas/sisdig_8.pdf)
+    [Aplicações com FF](sisdig_aulas/sisdig_8.pdf)  
     Contadores síncronos  
     Conversores A/D e D/A  
     Sistemas embarcados
