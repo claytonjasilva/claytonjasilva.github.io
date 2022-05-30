@@ -3,6 +3,9 @@
 ### Sobre tuplas...
 - Constituem um dos tipos de **sequências**, assim como as listas e as strings, ou seja, **conjuntos ordenados finitos indexados por números não negativos**. 
 - Uma tupla consiste em uma sequência de valores separados por vírgulas, de expressões entre **parênteses**.
+- Podem ser criadas das seguintes formas:  
+  --relacionando os elementos e separando-os por vírgulas entre parênteses ou não  
+  --utilizando a função embutida *tuple()*
 - Aplicam-se às tuplas a função embutida *len()* e a indexação de uma tupla de dimensão *n* por um conjunto de índices 0, 1, …, n-1, cada item i tratado *a[i]*.
 - Tratam-se de um tipo de sequência **imutável**, ou seja, que **não** podem ser alteradas após serem criadas, contudo é possível criar tuplas que contenham objetos mutáveis, como listas. 
 - **Não é possível atribuir itens individuais** de uma tupla.
