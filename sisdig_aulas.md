@@ -56,4 +56,6 @@
 7. Multiplexadores 
 + [Lista 4](sisdig_aulas/sisdig_exercicios/Lista4-Mux.pdf)  
 + [Form 4: multiplexadores](https://forms.gle/qrKyKyndmcwheaBXA)     
-9. **[Trabalho AP1](sisdig_aulas/sisdig_exercicios/sisdig_AP1_trabalho.pdf)
+9. Trabalhos Avaliações Bimestrais  
+    [Trabalho AP1](sisdig_aulas/sisdig_exercicios/sisdig_AP1_trabalho.pdf)  
+    [Trabalho AP2](sisdig_aulas/sisdig_exercicios/Trabalho_SistemasDigitais_AP2.pdf)
