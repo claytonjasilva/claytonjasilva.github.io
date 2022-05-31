@@ -16,25 +16,22 @@
 3. [Simulador cache - mapeamento direto](arq_aulas/simuladorCache.ino)
 4. **Trabalhos Avaliações Bimestrais**:  
   [Trabalho - AP1](arq_aulas/arq_AP1_trabalho.pdf)  
-  [Trabalho - AP2](arq_aulas/arq_AP2_trabalho.pdf)
+  **[Trabalho - AP2](arq_aulas/arq_AP2_trabalho.pdf)**
 
 ## Exercícios
-1. Form-lista: conceitos iniciais máquina de níveis (**fechado**)  
-  + [Questões](arq_aulas/Form_lista_1_arq.pdf)
-  + [Solução](arq_aulas/Form_lista_1_arq_sol.pdf)  
-2. Form-lista: máquina IAS
-  + [Questões](arq_aulas/Form_lista_2_arq.pdf)  
-  + [Solução](arq_aulas/Form_lista_2_arq_sol.pdf)  
-3. Form-lista: máquina IAS
-  + [Questões](https://forms.gle/aAiGrofbk5BooTwk8)
-4. Form-lista: Números e aritmética binária
-  + [Questões](arq_aulas/Form_lista_4_arq.pdf)  
-  + [Solução](arq_aulas/Form_lista_4_arq_sol.pdf) 
-5. Form-lista: Números e aritmética binária
-  + [Questões](https://forms.gle/v5kd9jCaKMyqPZ3JA)
-6. [Gabarito AP1](arq_aulas/gabaritoAP1.pdf)
-7. Form-lista: Elementos da arquitetura - memória
-  + [Questões](arq_aulas/Form_lista_5_arq.pdf)
+1. **Conceitos iniciais máquina de níveis**:   
+  [Lista de questões](arq_aulas/Form_lista_1_arq.pdf) --- [Solução](arq_aulas/Form_lista_1_arq_sol.pdf)  
+2. **Máquina IAS**:   
+  [Lista de questões](arq_aulas/Form_lista_2_arq.pdf) --- [Solução](arq_aulas/Form_lista_2_arq_sol.pdf)    
+  [Formulário](https://forms.gle/aAiGrofbk5BooTwk8)
+3. **Números e aritmética binária**:  
+  [Lista de questões](arq_aulas/Form_lista_4_arq.pdf) --- [Solução](arq_aulas/Form_lista_4_arq_sol.pdf)   
+  [Formulário](https://forms.gle/v5kd9jCaKMyqPZ3JA)
+4. **Elementos do sistema de computação**:  
+  [Lista de questões](arq_aulas/Form_lista_5_arq.pdf)  
+  **[Formulário](https://forms.gle/d4buy2afHZjHTZp7A)**
+5. **Avaliações Bimestrais**  
+  [Gabarito AP1](arq_aulas/gabaritoAP1.pdf)
 
 ## Referências
 
