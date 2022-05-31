@@ -13,8 +13,10 @@
 ## Práticas
 1. [Prática 1 Arduíno](arq_aulas/arq_pratica1.md)
 2. [Prática 2 Arduíno](arq_aulas/arq_pratica2.md)
-3. [Trabalho - AP1](arq_aulas/arq_AP1_trabalho.pdf)
-4. [Simulador cache - mapeamento direto](arq_aulas/simuladorCache.ino)
+3. [Simulador cache - mapeamento direto](arq_aulas/simuladorCache.ino)
+4. **Trabalhos Avaliações Bimestrais**:  
+  [Trabalho - AP1](arq_aulas/arq_AP1_trabalho.pdf)  
+  [Trabalho - AP2](arq_aulas/arq_AP2_trabalho.pdf)
 
 ## Exercícios
 1. Form-lista: conceitos iniciais máquina de níveis (**fechado**)  
