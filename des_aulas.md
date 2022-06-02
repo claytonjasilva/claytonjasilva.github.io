@@ -17,9 +17,8 @@ Alguns vídeos interessantes:
 7.  [Método de apoio à decisão: AHP](des_aulas/des_ahp.pdf)
 8.  [Grandezas e unidades de medida](des_aulas/des_grandezas_unidades.pdf)
 9.  [Modelos estáticos, dinâmicos e funcionais de sistemas de engenharia](des_aulas/des_modelos.pdf)
-10.  Método para solução de problemas de engenharia
-11. Segurança do trabalho e ergonomia
-12. Engenharia e empreendedorismo
+10. Segurança do trabalho e ergonomia
+11. Sustentabilidade
 
 ## Notas de aula
 1. [Engenharia e sociedade](des_aulas/notas/des_engenharia_sociedade.md)
@@ -37,5 +36,6 @@ Alguns vídeos interessantes:
 5. [Quiz 3: Gerenciamento de projetos](des_aulas/des_form3.pdf)
 6. [Quiz 4: Engenharia de sistemas](des_aulas/des_form4.pdf)
 7. [Trabalho em grupo 2 - AP1 parte 2](des_aulas/desafios_AP1_trabalho.pdf)
-8. [Trabalho em grupo - sala de aula](des_aulas/des_trabalho_3.pdf)
-9. [Quiz 5: Grandezas e unidades](https://forms.gle/UFjqNrjtu5vxpt7C6)
+8. [Trabalho em grupo 3 - sala de aula](des_aulas/des_trabalho_3.pdf)
+9. [Quiz 5: Grandezas e unidades](https://forms.gle/UFjqNrjtu5vxpt7C6)  
+10. **[Trabalho em grupo 4 - AP2 parte 2](des_aulas/des_trabalho4_AP2.pdf)** --- **[Anexo 1](des_aulas/Sistema_Veiculo.pdf)** --- **[Anexo 2](des_aulas/Motor_Sistema_Veiculo.pdf)**
