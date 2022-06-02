@@ -8,7 +8,7 @@
 5. [Gestão do cronograma](pjto_aulas/pjto_5.pdf)
 6. [Gestão dos custos](pjto_aulas/pjto_6.pdf)
 7. [Gestão de pessoas e de riscos](pjto_aulas/pjto_7.pdf)
-8. [Gestão de aquisições, comunicações e partes interessadas](pjto_aulas/pjto_8.pdf)
+8. [Gestão de qualidade, aquisições, comunicações e partes interessadas](pjto_aulas/pjto_8.pdf)
 9. Métodos ágeis: Scrum
 
 ## Projeto final
