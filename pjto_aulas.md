@@ -32,6 +32,7 @@
 +[Form 5 - uma solução](pjto_aulas/form_gestao_tempo.pdf)
 9. **[Form - Gestão de custos](https://forms.gle/2s7eR8iLpceVpLJaA)**
 10. **[Form - Gestão de pessoas](https://forms.gle/w8o6qkukthPzB4xm8)**
+11. **[Form - Gestão de riscos](https://forms.gle/Pf1qViYD3UhZ84iL8)**
 
 ## Trabalhos
 
