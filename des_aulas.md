@@ -25,6 +25,7 @@ Alguns vídeos interessantes:
 2. [Gestão de projetos](des_aulas/notas/des_projetos.md)
 3. [Engenharia de sistemas](des_aulas/notas/des_engenharia_sistemas.md)
 4. [Grandezas e Unidades](des_aulas/notas/desafios_nota_grandezas_unidades.pdf). Apêndice: [Problemas: formulação e Octave/MatLab](des_aulas/notas/desafios_nota_grandezas_unidades_apendice.pdf) 
+5. [Modelos Estático, Dinâmico e Funcional](des_aulas/notas/NOTA5_Modelos_Estatico_Dinamico_Funcional.pdf)
 
 
 ## Exercícios e trabalhos
