@@ -30,7 +30,9 @@
 4. **Elementos do sistema de computação**:  
   [Lista de questões](arq_aulas/Form_lista_5_arq.pdf)  
   **[Formulário](https://forms.gle/d4buy2afHZjHTZp7A)**
-5. **Avaliações Bimestrais**  
+5. **Assembler e set de instruções do MC2560**  
+  [Lista com solução](arq_aulas/Lista3_programas_assembly.pdf)
+7. **Avaliações Bimestrais**  
   [Gabarito AP1](arq_aulas/gabaritoAP1.pdf)
 
 ## Referências
