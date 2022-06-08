@@ -17,8 +17,8 @@ Alguns vídeos interessantes:
 7.  [Método de apoio à decisão: AHP](des_aulas/des_ahp.pdf)
 8.  [Grandezas e unidades de medida](des_aulas/des_grandezas_unidades.pdf)
 9.  [Modelos estáticos, dinâmicos e funcionais de sistemas de engenharia](des_aulas/des_modelos.pdf)
-10. Segurança do trabalho e ergonomia
-11. Sustentabilidade
+10. [Engenharia e Segurança do Trabalho](des_aulas/des_seguranca.pdf)
+11. [Engenharia e sustentabilidade](des_aulas/des_sustentabilidade.pdf)
 
 ## Notas de aula
 1. [Engenharia e sociedade](des_aulas/notas/des_engenharia_sociedade.md)
