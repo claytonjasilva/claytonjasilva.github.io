@@ -9,7 +9,7 @@
 6. [Gestão dos custos](pjto_aulas/pjto_6.pdf)
 7. [Gestão de pessoas e de riscos](pjto_aulas/pjto_7.pdf)
 8. [Gestão de qualidade, aquisições, comunicações e partes interessadas](pjto_aulas/pjto_8.pdf)
-9. Métodos ágeis: Scrum
+9. [Métodos ágeis: Scrum](pjto_aulas/Metodos_ageis.pdf)
 
 ## Projeto final
 **Ponte de palitos [projeto final](pjto_projeto_final.pdf)**
@@ -30,9 +30,9 @@
 +[Form 4 - uma solução](pjto_aulas/Form_escopo.pdf)
 8. [Form - Gestão do tempo](https://forms.gle/QqtNozQphBGkPzK48)  
 +[Form 5 - uma solução](pjto_aulas/form_gestao_tempo.pdf)
-9. **[Form - Gestão de custos](https://forms.gle/2s7eR8iLpceVpLJaA)**
-10. **[Form - Gestão de pessoas](https://forms.gle/w8o6qkukthPzB4xm8)**
-11. **[Form - Gestão de riscos](https://forms.gle/Pf1qViYD3UhZ84iL8)**
+9. [Form - Gestão de custos - solução](pjto_aulas/pjto_gestao_custos.pdf)  
+10. [Form - Gestão de pessoas - solução](pjto_aulas/pjto_gestao_rh.pdf)  
+11. [Form - Gestão de riscos - solução](pjto_aulas/pjto_gestao_riscos.pdf)  
 
 ## Trabalhos
 
