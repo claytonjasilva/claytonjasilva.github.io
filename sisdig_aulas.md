@@ -10,9 +10,7 @@
 * Circuitos sequenciais  
     [Flip Flops](sisdig_aulas/sisdig_7.pdf)  
     [Aplicações com FF](sisdig_aulas/sisdig_8.pdf)  
-    Contadores síncronos  
-    Conversores A/D e D/A  
-    Sistemas embarcados
+    [Conversores A/D e D/A](sisdig_aulas/sisdig_9.pdf)  
 
 ## Exercícios
 
