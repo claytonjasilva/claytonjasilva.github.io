@@ -33,6 +33,7 @@
 9. [Form - Gestão de custos - solução](pjto_aulas/pjto_gestao_custos.pdf)  
 10. [Form - Gestão de pessoas - solução](pjto_aulas/pjto_gestao_rh.pdf)  
 11. [Form - Gestão de riscos - solução](pjto_aulas/pjto_gestao_riscos.pdf)  
+12. **[Gabarito AP1](https://1drv.ms/b/s!AsTd8oN7mu8pj7w4ttrB6KIuwhv0Lg?e=wT0Chn)**  
 
 ## Trabalhos
 
