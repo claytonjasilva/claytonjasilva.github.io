@@ -40,3 +40,4 @@ Alguns vídeos interessantes:
 8. [Trabalho em grupo 3 - sala de aula](des_aulas/des_trabalho_3.pdf)
 9. [Quiz 5: Grandezas e unidades](des_aulas/des_form5_sol.pdf)  
 10. **[Trabalho em grupo 4 - AP2 parte 2](des_aulas/des_trabalho4_AP2.pdf)** --- **[Anexo 1](des_aulas/Sistema_Veiculo.pdf)** --- **[Anexo 2](des_aulas/Motor_Sistema_Veiculo.pdf)**
+11. **[Gabarito AP1](des_aulas/gabaritoAP1.pdf)**
