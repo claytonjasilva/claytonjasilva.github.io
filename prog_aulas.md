@@ -6,15 +6,12 @@
 3. [Conceitos de programação procedural: estruturas de repetição](prog_aulas/prog_conceitos3.md)
 4. [Funções](prog_aulas/prog_funcoes.md)
 5. [Listas](prog_aulas/prog_listas.md)
-6. [Tuplas e conjuntos](prog_aulas/prog_tuplas.md)
-7. [Dicionários](prog_aulas/prog_dicionarios.md)
-8. [Módulos](prog_aulas/prog_modulos.md) e [pacotes](prog_aulas/prog_pacotes.md)
-9. Arquivos
-10. POO
-11. Pacote NumPy
-12. Pacote Matplotlib
-13. Pacote SciPy
-14. Debugging, testes e perfilamento
+6. [Tuplas e conjuntos](prog_aulas/prog_tuplas.md)  
+--------------------------------------------------------------------- **Conteúdo AP2**  
+7. [Arquivos](prog_aulas/prog_arquivos.md)  
+8. [Dicionários](prog_aulas/prog_dicionarios.md)
+9. [Módulos](prog_aulas/prog_modulos.md) e [pacotes](prog_aulas/prog_pacotes.md)
+10. Pacotes [NumPy](https://numpy.org/doc/stable/user/absolute_beginners.html), [Matplotlib](https://matplotlib.org/stable/plot_types/index.html) e [SciPy](https://docs.scipy.org/doc/scipy/getting_started.html#getting-started-ref)
 
 ### Guia rápido
 **Guia para utilizar a sintaxe básica do Python - atualizado de acordo com as aulas**  
