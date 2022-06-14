@@ -1,17 +1,21 @@
-## Trabalhando com arquivos em Python
-
+# Leitura e escrita de arquivos
 A maneira para operar com arquivos em Python pode ser obtida no [tutorial](https://docs.python.org/pt-br/3/tutorial/inputoutput.html#reading-and-writing-files)  
-Alguns pontos podem ser destacados:  
-1. A função [open()](https://docs.python.org/pt-br/3/library/functions.html#open) devolve um objeto arquivo, e é frequentemente usada com dois argumentos:  
-*open(nome_do_arquivo, modo)*, onde o nome do arquivo deve incluir também todo o caminho de diretórios, no caso do Windows (p ex 'C:/Users/clayt/exemplo_python.txt') e o modo é uma string que define como será aberto o arquivo
-2. Os modos na abertura podem ser:  
-+ *r* - para abrir o arquivo somente em leitura
-+ *w* - para abrir o arquivo para escrever (se o arquivo já existir seu conteúdo prévio será apagado)
-+ *a* - para abrir o arquivo para adição ao final do arquivo
-+ *r+* - para abrir o arquivo tanto para leitura como para escrita
-2. **Após operar com o arquivo**, use o método *close*, na forma *nome_do_arquivo.close()*.
-3. Para **ler o arquivo inteiro**, use o método **read**, na forma *variável = nome_do_arquivo.read()*.
-4. Para **ler linha a linha** do arquivo, use o método **readline**, na forma *variável = nome_do_arquivo.readline()*.
-5. Para **ler linha a linha** do arquivo iterando diretamente sobre ele, use a expressão *for linha in arquivo:**.
-6. Para escrever em um arquivo, use o método **write**, na forma *nome_do_arquivo.write()*. 
 
+## Leitura de arquivos
+
+1. A função *open* - sintaxe: *objeto=open('arquivo gravado','modo',encoding='uft-8')*  
+  -onde o *'arquivo gravado'* representa o nome do arquivo **incluindo o caminho onde está armazenado**, por exemplo, arquivo = open('C:/Users/clayt/exemplo_python.txt', 'r+')  
+  -*'modo'* é **opcional** - se não for especificado assume-se 'r', podendo ser     
+  'r' - somente para ler o arquivo  
+  'w' para escrever (se o arquivo já existir seu conteúdo prévio será apagado)  
+  'a' para abrir o arquivo para adição  
+  'r+' abre o arquivo tanto para leitura como para escrita  
+2. A função retorna para o objeto o arquivo normalmente no **formato texto** 
+3. Para manipular o texto do arquivo lido, pode-se usar o **método read**, por exemplo, *texto = objeto.read()*  onde texto é uma string relativa ao **objeto inteiro**
+4. Pode-se usar também o **método readline**, por exemplo, *linha = objeto.readline()*, que atribui uma linha do objeto à string linha - **cada execução é lida uma nova linha**    
+5. Uma forma conveniente é trabalhar com a **função list**, por exemplo, *lista = list(objeto)*, que retorna o texto para a lista - cada linha é um elemento string da lista  
+6. Após operar com qualquer arquivo, recomenda-se utilizar o **método close**, por exemplo, *objeto.close()*
+
+## Escrita em arquivos
+1. Após o arquivo ser aberto para escrita, usar o **método write**, por exemplo, *objeto.write('texto')*. A escrita será feita de acordo com o modo selecionado. 
+  
