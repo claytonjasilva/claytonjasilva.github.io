@@ -53,7 +53,8 @@
 6. [Form representação binária](https://forms.gle/4nmhzPPj18UVwMiu9)
 7. Multiplexadores 
 + [Lista 4](sisdig_aulas/sisdig_exercicios/Lista4-Mux.pdf)  
-+ [Form 4: multiplexadores](https://forms.gle/qrKyKyndmcwheaBXA)     
++ [Form 4: multiplexadores](https://forms.gle/qrKyKyndmcwheaBXA)  
+8. [Lista Flip Flops](sisdig_aulas/Lista3_FF.pdf)   
 9. Trabalhos Avaliações Bimestrais  
     [Trabalho AP1](sisdig_aulas/sisdig_exercicios/sisdig_AP1_trabalho.pdf)  
     [Trabalho AP2](sisdig_aulas/sisdig_exercicios/Trabalho_SistemasDigitais_AP2.pdf)
