@@ -31,9 +31,9 @@
   [Lista de questões](arq_aulas/Form_lista_5_arq.pdf)  
   **[Formulário](https://forms.gle/d4buy2afHZjHTZp7A)**
 5. **Assembler e set de instruções do MC2560**  
-  [Lista com solução](arq_aulas/Lista3_programas_assembly.pdf)  
-  [Lista com solução](arq_aulas/Lista4_programas_assembly.pdf)  
-  [Lista](arq_aulas/Lista5_programas_assembly.pdf)
+  [Lista 1 assembly com solução](arq_aulas/Lista3_programas_assembly.pdf)  
+  [Lista 2 assembly com solução](arq_aulas/Lista4_programas_assembly.pdf)  
+  [Lista 3 assembly com solução](arq_aulas/Lista5_programas_assembly.pdf)
 7. **Avaliações Bimestrais**  
   [Gabarito AP1](arq_aulas/gabaritoAP1.pdf)
 
