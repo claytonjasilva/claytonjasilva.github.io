@@ -8,7 +8,7 @@
 + [Circuitos sequenciais](arq_aulas/arq_aulas_logica_sequencial.pdf)
 5. [Detalhamento dos elementos fundamentais das arquiteturas](arq_aulas/arq_aulas_componentes.pdf)
 6. [Microprocessador Atmel ATmega 2560](arq_aulas/arq_aulas_mc2560.pdf)
-7. Sistemas Operacionais
+7. [Sistemas Operacionais](arq_aulas/arq_aulas_so.pdf)
 
 ## Práticas
 1. [Prática 1 Arduíno](arq_aulas/arq_pratica1.md)
