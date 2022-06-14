@@ -4,7 +4,7 @@ A maneira para operar com arquivos em Python pode ser obtida no [tutorial](https
 ## Leitura de arquivos
 
 1. A função *open* - sintaxe: *objeto=open('arquivo gravado','modo',encoding='uft-8')*  
-  -onde o *'arquivo gravado'* representa o nome do arquivo **incluindo o caminho onde está armazenado**, por exemplo, arquivo = open('C:/Users/clayt/exemplo_python.txt', 'r+')  
+  -onde o *'arquivo gravado'* representa o nome do arquivo **incluindo o caminho onde está armazenado**, por exemplo, objeto = open('C:/Users/clayt/exemplo_python.txt', 'r+')  
   -*'modo'* é **opcional** - se não for especificado assume-se 'r', podendo ser     
   'r' - somente para ler o arquivo  
   'w' para escrever (se o arquivo já existir seu conteúdo prévio será apagado)  
