@@ -1,6 +1,6 @@
-# Arquitetura de Computadores - 2022.1
+# Arquitetura de Computadores - 2022.2
 
-1. [Agenda](arq_agenda.pdf)
+1. **Agenda**
 2. [Grid](arq_grid.pdf)
 3. [Sistema de Avaliações](/./avaliacoes.pdf)
 4. [Conteúdo das Aulas](arq_aulas.md)
