@@ -34,6 +34,7 @@
 2. [Stallings, William; Arquitetura e Organização de Computadores; 10a ed; Pearson, 2018](https://plataforma.bvirtual.com.br/Leitor/Publicacao/151479/pdf/0)
 3. [Corrêa, Ana G. D.; Organização e Arquitetura de Computadores; Pearson, 2017](https://plataforma.bvirtual.com.br/Leitor/Publicacao/124147/pdf/0)
 4. [Tanenbaum, Andrew S.; Sistemas Operacionais Modernos; 3a ed; Pearson, 2007](https://plataforma.bvirtual.com.br/Leitor/Publicacao/1233/pdf/0)  
+5. [Maziero, Carlos; Sistemas Operacionais: Conceitos e Mecanismos; Editora da UFPR; 2019](http://wiki.inf.ufpr.br/maziero/doku.php?id=socm:start)
 
 #### Manuais do ATmega2560  
 - [Atmel ATmega640/V-1280/V-1281/V-2560/V-2561/V (datasheet)](https://ww1.microchip.com/downloads/en/devicedoc/atmel-2549-8-bit-avr-microcontroller-atmega640-1280-1281-2560-2561_datasheet.pdf)
