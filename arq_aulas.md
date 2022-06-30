@@ -9,7 +9,8 @@
 6. [Microprocessador Atmel ATmega 2560](arq_aulas/arq_aulas_mc2560.pdf)
 7. [Sistemas Operacionais](arq_aulas/arq_aulas_so.pdf)
 
-## Práticas
+## Práticas -  
+*a ser atualizado à medida que o semestre evoluir* 
 1. [Prática 1 Arduíno](arq_aulas/arq_pratica1.md)
 2. [Prática 2 Arduíno](arq_aulas/arq_pratica2.md)
 3. [Simulador cache - mapeamento direto](arq_aulas/simuladorCache.ino)
