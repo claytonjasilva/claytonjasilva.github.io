@@ -35,7 +35,7 @@
 
 #### Livros de referência - OBRIGATÓRIO ACESSO PELA BIBLIOTECA VIRTUAL DO IBMEC
 1. [Tanenbaum, Andrew S.; Organização estruturada de computadores; 5a ed; Prenticce-Hall, 2007](https://plataforma.bvirtual.com.br/Leitor/Publicacao/355/pdf/0?code=5cHMqcUc2yay4tU06N65//rDhRX3ZH1Jpyt7iBgTVt04p5cuX57lGQ4MQkD9IvkfWeTyvlQvBq28i4a1Y78uhw==)
-2. [Stallings, William; Arquitetura e Organização de Computadores; 10a ed; Pearson](https://plataforma.bvirtual.com.br/Leitor/Publicacao/151479/pdf/0?code=agBCeYr0F/xBGJ4jUR46q6Z6hobndG8vXS1a2u2hjzR/hchlPyc1j8kPeAeiLKen4JcHznHFOlMSCCosWvWMnw==)
+2. [Stallings, William; Arquitetura e Organização de Computadores; 10a ed; Pearson, 2018](https://plataforma.bvirtual.com.br/Leitor/Publicacao/151479/pdf/0?code=agBCeYr0F/xBGJ4jUR46q6Z6hobndG8vXS1a2u2hjzR/hchlPyc1j8kPeAeiLKen4JcHznHFOlMSCCosWvWMnw==)
 3. [Nota 2: Representação numérica, aritmética binária e codificação](arq_aulas/arq_notas/NOTA2-ARITMETICA-BINARIA-ARQ_COMP.md)
 4. [Nota 3: Nível de lógica digital](arq_aulas/arq_notas/NOTA3-NIVEL-LOGICA-DIGITAL.md)  
 5. [Nota 4: Sistema de memória](arq_aulas/arq_notas/NOTA_4-ELEMENTOS_SIS_COMP_MEMORIA.pdf) 
