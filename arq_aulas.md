@@ -1,11 +1,10 @@
-# Aulas de Arquitetura de Computadores - 2022.1
+# Aulas de Arquitetura de Computadores - 2022.2
 
 ## Conteúdo
 1. [Conceitos básicos](arq_aulas/arq_aulas_conceitos.pdf)
-2. [Números e aritmética binária](arq_aulas/arq_aulas_representacao.pdf)
-3. Nível de lógica digital  
-+ [Circuitos combinacionais](arq_aulas/arq_aulas_logica_combinacional.pdf)    
-+ [Circuitos sequenciais](arq_aulas/arq_aulas_logica_sequencial.pdf)
+2. [Números e aritmética binária](arq_aulas/arq_aulas_representacao.pdf) 
+3. [Nível de lógica digital: circuitos combinacionais](arq_aulas/arq_aulas_logica_combinacional.pdf)    
+4. [Nível de lógica digital: circuitos sequenciais](arq_aulas/arq_aulas_logica_sequencial.pdf)
 5. [Detalhamento dos elementos fundamentais das arquiteturas](arq_aulas/arq_aulas_componentes.pdf)
 6. [Microprocessador Atmel ATmega 2560](arq_aulas/arq_aulas_mc2560.pdf)
 7. [Sistemas Operacionais](arq_aulas/arq_aulas_so.pdf)
@@ -19,23 +18,18 @@
   **[Trabalho - AP2](arq_aulas/arq_AP2_trabalho.pdf)**
 
 ## Exercícios
-1. **Conceitos iniciais máquina de níveis**:   
-  [Lista de questões](arq_aulas/Form_lista_1_arq.pdf) --- [Solução](arq_aulas/Form_lista_1_arq_sol.pdf)  
-2. **Máquina IAS**:   
-  [Lista de questões](arq_aulas/Form_lista_2_arq.pdf) --- [Solução](arq_aulas/Form_lista_2_arq_sol.pdf)    
-  [Formulário](https://forms.gle/aAiGrofbk5BooTwk8)
-3. **Números e aritmética binária**:  
-  [Lista de questões](arq_aulas/Form_lista_4_arq.pdf) --- [Solução](arq_aulas/Form_lista_4_arq_sol.pdf)   
-  [Formulário](https://forms.gle/v5kd9jCaKMyqPZ3JA)
-4. **Elementos do sistema de computação**:  
-  [Lista de questões](arq_aulas/Form_lista_5_arq.pdf)  
-  **[Formulário](https://forms.gle/d4buy2afHZjHTZp7A)**
+1. **[Conceitos iniciais e máquina de níveis](arq_aulas/Form_lista_1_arq.pdf)**   
+ 
+2. **[Máquina IAS](arq_aulas/Form_lista_2_arq.pdf)**   
+  
+3. **[Números e aritmética binária](arq_aulas/Form_lista_4_arq.pdf)**  
+  
+4. **[Elementos do sistema de computação](arq_aulas/Form_lista_5_arq.pdf)**  
+  
 5. **Assembler e set de instruções do MC2560**  
   [Lista 1 assembly com solução](arq_aulas/Lista3_programas_assembly.pdf)  
   [Lista 2 assembly com solução](arq_aulas/Lista4_programas_assembly.pdf)  
   [Lista 3 assembly com solução](arq_aulas/Lista5_programas_assembly.pdf)
-7. **Avaliações Bimestrais**  
-  [Gabarito AP1](arq_aulas/gabaritoAP1.pdf)
 
 ## Referências
 
