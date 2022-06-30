@@ -19,13 +19,9 @@
 
 ## Exercícios
 1. **[Conceitos iniciais e máquina de níveis](arq_aulas/Form_lista_1_arq.pdf)**   
- 
-2. **[Máquina IAS](arq_aulas/Form_lista_2_arq.pdf)**   
-  
-3. **[Números e aritmética binária](arq_aulas/Form_lista_4_arq.pdf)**  
-  
+2. **[Máquina IAS](arq_aulas/Form_lista_2_arq.pdf)**    
+3. **[Números e aritmética binária](arq_aulas/Form_lista_4_arq.pdf)**    
 4. **[Elementos do sistema de computação](arq_aulas/Form_lista_5_arq.pdf)**  
-  
 5. **Assembler e set de instruções do MC2560**  
   [Lista 1 assembly com solução](arq_aulas/Lista3_programas_assembly.pdf)  
   [Lista 2 assembly com solução](arq_aulas/Lista4_programas_assembly.pdf)  
