@@ -34,10 +34,11 @@
 ## Referências
 
 #### Notas de aula
-1. [Nota 1: Conceitos iniciais](arq_aulas/arq_notas/NOTA1-CONCEITOS-BASICOS-ARQ_COMP.md)
-2. [Nota 2: Representação numérica, aritmética binária e codificação](arq_aulas/arq_notas/NOTA2-ARITMETICA-BINARIA-ARQ_COMP.md)
-3. [Nota 3: Nível de lógica digital](arq_aulas/arq_notas/NOTA3-NIVEL-LOGICA-DIGITAL.md)  
-4. [Nota 4: Sistema de memória](arq_aulas/arq_notas/NOTA_4-ELEMENTOS_SIS_COMP_MEMORIA.pdf) 
+1. [Tanenbaum, Andrew S., Organização estruturada de computadores, Prenticce-Hall, 2007](https://plataforma.bvirtual.com.br/Leitor/Publicacao/355/pdf/0?code=5cHMqcUc2yay4tU06N65//rDhRX3ZH1Jpyt7iBgTVt04p5cuX57lGQ4MQkD9IvkfWeTyvlQvBq28i4a1Y78uhw==)
+2. [Nota 1: Conceitos iniciais](arq_aulas/arq_notas/NOTA1-CONCEITOS-BASICOS-ARQ_COMP.md)
+3. [Nota 2: Representação numérica, aritmética binária e codificação](arq_aulas/arq_notas/NOTA2-ARITMETICA-BINARIA-ARQ_COMP.md)
+4. [Nota 3: Nível de lógica digital](arq_aulas/arq_notas/NOTA3-NIVEL-LOGICA-DIGITAL.md)  
+5. [Nota 4: Sistema de memória](arq_aulas/arq_notas/NOTA_4-ELEMENTOS_SIS_COMP_MEMORIA.pdf) 
 
 #### Manuais do ATmega2560  
 - [Atmel ATmega640/V-1280/V-1281/V-2560/V-2561/V (datasheet)](https://ww1.microchip.com/downloads/en/devicedoc/atmel-2549-8-bit-avr-microcontroller-atmega640-1280-1281-2560-2561_datasheet.pdf)
