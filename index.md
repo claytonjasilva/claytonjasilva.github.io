@@ -3,7 +3,7 @@
 ## Disciplinas:
 
 * [Arquitetura de Computadores](arq.md)  
-* Eletrônica (**em atualização**)  
+* [Eletrônica](eletronica.md)  
 * [Gestão de Projetos](pjto.md)  
 * Linguagens Formais e Compiladores (**em atualização**)
 * [Programação](prog.md)
