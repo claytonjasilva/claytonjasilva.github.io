@@ -3,4 +3,4 @@
 1. Agenda (em construção)
 2. [Grid](eletronica/Grid_Eletronica.md)
 3. [Sistema de Avaliações](/./avaliacoes.md)
-4. [Conteúdo das Aulas](sisdig_aulas.md)
+4. [Conteúdo das Aulas](eletronica/Material_Eletronica.md)
