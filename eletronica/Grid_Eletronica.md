@@ -30,11 +30,12 @@ Objetivo 5: Prototipar circuitos em PCB
 14. Design de circuitos: simulação de circuitos; prototipação em *protoboards*; prototipação de placas de circuito impresso (PCB) - fluxo do projeto de PCB, simulação do esquema, layout e verificação da placa.  
 
 
-**III – BIBLIOGRAFIA**
+**III – BIBLIOGRAFIA** - *O acesso aos links exige conta na Biblioteca Virtual*
 
 **BIBLIOGRAFIA BÁSICA:**  
 1.**MALVINO**, ALBERT; **BATES**, DAVID J.; **ELETRÔNICA**, VOLUME 1; **MCGRAW HILL – Bookman**; 2016  
 2.**MALVINO**, ALBERT; **BATES**, DAVID J.; **ELETRÔNICA**, VOLUME 2; **MCGRAW HILL – Bookman**; 2016
 
 **BIBLIOGRAFIA COMPLEMENTAR:**    
-**HOROWITZ**, PAUL; **HILL**, WINFIELD; **THE ART OF ELETRONICS**; **CAMBRIDGE UNIVERSITY PRESS**; 1989
+1.**HOROWITZ**, PAUL; **HILL**, WINFIELD; **THE ART OF ELETRONICS**; **CAMBRIDGE UNIVERSITY PRESS**; 1989  
+2.[**CROVADOR**, ÁLVARO; **ELETRICIDADE E ELETRÔNICA BÁSICA**; **CONTENTUS**; 2020](https://plataforma.bvirtual.com.br/Leitor/Publicacao/188316/pdf/0)
