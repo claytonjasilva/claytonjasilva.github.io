@@ -1,7 +1,6 @@
-# Programação - 2022.1
+# Programação - 2022.2
 
-1. [Agenda](prog_agenda.pdf)
+1. Agenda(*em construção*)
 2. [Grid](prog_grid.pdf)
-3. [Sistema de Avaliações](/./avaliacoes.pdf)
+3. [Sistema de Avaliações](/./avaliacoes.md)
 4. [Conteúdo das Aulas](prog_aulas.md)
-5. Exercícios
