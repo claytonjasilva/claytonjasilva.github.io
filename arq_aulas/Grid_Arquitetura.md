@@ -1,7 +1,7 @@
 # GRID DA DISCIPLINA 
 
 **CURSO: Engenharia de Computação**  
-**DISCIPLINA: Eletrônica e Design de Circuitos - PERÍODO: 3º 2022/2**  
+**DISCIPLINA: Arquitetura de Computadores - 2022/2**  
 **PROFESSOR: Clayton Jones Alves da Silva, MSc**
 
 ## I - OBJETIVOS 
