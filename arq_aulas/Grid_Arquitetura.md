@@ -29,3 +29,14 @@
 13. Programação de aplicações utilizando linguagem C para implementação de tarefas de gerência do SO.
 14. Arquiteturas paralelas: paralelismo no chip; co-processadores; multiprocessadores.
 
+## III - REFERÊNCIAS *OBRIGATÓRIO ACESSO PELA BIBLIOTECA VIRTUAL DO IBMEC*
+
+**REFERÊNCIA BÁSICA:**  
+1. [Tanenbaum, Andrew S.; Organização estruturada de computadores; 5a ed; Prenticce-Hall, 2007](https://plataforma.bvirtual.com.br/Leitor/Publicacao/355/pdf/0)
+
+**REFERÊNCIA COMPLEMENTAR:**
+1. [Stallings, William; Arquitetura e Organização de Computadores; 10a ed; Pearson, 2018](https://plataforma.bvirtual.com.br/Leitor/Publicacao/151479/pdf/0)
+2. [Corrêa, Ana G. D.; Organização e Arquitetura de Computadores; Pearson, 2017](https://plataforma.bvirtual.com.br/Leitor/Publicacao/124147/pdf/0)
+3. [Tanenbaum, Andrew S.; Sistemas Operacionais Modernos; 3a ed; Pearson, 2007](https://plataforma.bvirtual.com.br/Leitor/Publicacao/1233/pdf/0)  
+4. [Maziero, Carlos; Sistemas Operacionais: Conceitos e Mecanismos; Editora da UFPR; 2019](http://wiki.inf.ufpr.br/maziero/doku.php?id=socm:start)
+
