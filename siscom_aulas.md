@@ -6,4 +6,5 @@
 4. Equalizadores de canal: lineares e não lineares
 5. Codificadores de voz
 6. Técnicas de acesso múltiplo: FDMA, TDMA, CDMA e outras
-7. 
+7. Sistemas de rádio troncalizados (*trunking*): APCO25, TETRA e outros
+8. Sistemas celulares: conceitos, NMT, AMPS, GSM, 
