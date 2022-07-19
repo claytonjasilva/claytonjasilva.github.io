@@ -29,10 +29,8 @@
   [Lista 2 assembly com solução](arq_aulas/Lista4_programas_assembly.pdf)  
   [Lista 3 assembly com solução](arq_aulas/Lista5_programas_assembly.pdf)
 
-## Referências
-
-#### Livros de referência  
-OBRIGATÓRIO ACESSO PELA BIBLIOTECA VIRTUAL DO IBMEC  
+## Referências  
+*OBRIGATÓRIO ACESSO PELA BIBLIOTECA VIRTUAL DO IBMEC*    
 1. [Tanenbaum, Andrew S.; Organização estruturada de computadores; 5a ed; Prenticce-Hall, 2007](https://plataforma.bvirtual.com.br/Leitor/Publicacao/355/pdf/0)
 2. [Stallings, William; Arquitetura e Organização de Computadores; 10a ed; Pearson, 2018](https://plataforma.bvirtual.com.br/Leitor/Publicacao/151479/pdf/0)
 3. [Corrêa, Ana G. D.; Organização e Arquitetura de Computadores; Pearson, 2017](https://plataforma.bvirtual.com.br/Leitor/Publicacao/124147/pdf/0)
