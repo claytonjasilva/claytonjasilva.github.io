@@ -1,5 +1,6 @@
-# Linguagens Formais e Compiladores - 2022.2
+# Conteúdo das Aulas - Linguagens Formais e Compiladores - 2022.2  
 
+## Tópicos
 1. Conceitos introdutórios: processadores de linguagem, estrutura de compilador, fundamentos de linguagem de programação.
 2. Tradutor simples, dirigido por sintaxe.
 3. Varredura: o processo de varredura, expressões regulares, autômatos finitos.
@@ -14,3 +15,5 @@
 12. Paralelismo de instrução. 
 13. Análise interprocedimental.
 14. *Front-end* completo de compilador.
+
+## Exercícios
