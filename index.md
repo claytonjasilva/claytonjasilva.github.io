@@ -1,6 +1,6 @@
 # Prof Clayton J A Silva - Ibmec RJ
 
-## Disciplinas:
+## Disciplinas
 
 * [Arquitetura de Computadores](arq.md)  
 * [Eletrônica](eletronica.md)  
@@ -8,3 +8,6 @@
 * [Programação](prog.md)
 * [Sistemas de Comunicações Móveis](siscom.md)
 * [Sistemas Digitais](sisdig.md)
+
+## Ferramentas e disciplinas de apoio
+* Linguagem C
