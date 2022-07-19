@@ -7,7 +7,6 @@
 4. [Funções](prog_aulas/prog_funcoes.md)
 5. [Listas](prog_aulas/prog_listas.md)
 6. [Tuplas e conjuntos](prog_aulas/prog_tuplas.md)  
---------------------------------------------------------------------- **Conteúdo AP2**  
 7. [Arquivos](prog_aulas/prog_arquivos.md)  
 8. [Dicionários](prog_aulas/prog_dicionarios.md)
 9. [Módulos](prog_aulas/prog_modulos.md) e [pacotes](prog_aulas/prog_pacotes.md)
