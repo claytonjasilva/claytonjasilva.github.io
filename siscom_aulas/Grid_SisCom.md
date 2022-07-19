@@ -1,13 +1,17 @@
-# Sistema de Comunicações Móveis - 2022.2
+# GRID DA DISCIPLINA 
 
-## 1. OBJETIVOS
+**CURSO: Engenharia de Computação**  
+**DISCIPLINA: Sistemas de Comunicações Móveis - 2022/2**  
+**PROFESSOR: Clayton Jones Alves da Silva, MSc**
+
+## I. OBJETIVOS
 - Modelar sistemas móveis, decompondo-o nos subsistemas de transmissão, do canal de comunicações e de recepção  
 - Analisar e simular o comportamento de canais de comunicações
 - Analisar e simular o comportamento de sinais modulados
 - Projetar e simular equalizadores de canais
 - Planejar sistemas de comunicações móveis
 
-## 2. CONTEÚDO
+## II. CONTEÚDO
 1. Sistema de comunicações: transmissor, canal de comunicações e receptor
 2. Propagação em canais rádio móveis
 3. Técnicas de modulação
@@ -19,7 +23,7 @@
 9. Sistemas satelitais
 10. Redes 5G
 
-## 3. REFERÊNCIAS BIBLIOGRÁFICAS
+## III. REFERÊNCIAS BIBLIOGRÁFICAS
 
 1. [**Rappaport**, Theodore S.; **Comunicações sem fio: Princípios e práticas* 2a. ed; **Pearson Prenticce-Hall**; 2009.](https://plataforma.bvirtual.com.br/Leitor/Publicacao/445/pdf/0)
 2. **Wesolowski**, Krzysztof; **Mobile Communications Systems**; **JOHN WILEY & SONS**; 2002.
