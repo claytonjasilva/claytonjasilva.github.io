@@ -6,11 +6,11 @@
 
 **I - OBJETIVO** 
 
-Objetivo 1: Projetar e analisar circuitos básicos resistivos e reativos aplicando lei de Ohm, teoremas de Kirchoff e Thevenin para resolver problemas de hardware dos sistemas computacionais  
-Objetivo 2: Analisar sinais analógicos e digitais aplicando série e transformada de Fourier para processar aplicações de sistemas de informações  
-Objetivo 3: Projetar e analisar circuitos retificadores utilizando teoria de diodos para resolver problemas de hardware dos sistemas computacionais      
-Objetivo 4: Projetar e analisar circuitos amplificadores aplicando teoria de transistores bipolares e de amplificadores operacionais para resolver problemas de hardware dos sistemas computacionais  
-Objetivo 5: Prototipar circuitos em PCB
+- Objetivo 1: Projetar e analisar circuitos básicos resistivos e reativos aplicando lei de Ohm, teoremas de Kirchoff e Thevenin para resolver problemas de hardware dos sistemas computacionais  
+- Objetivo 2: Analisar sinais analógicos e digitais aplicando série e transformada de Fourier para processar aplicações de sistemas de informações  
+- Objetivo 3: Projetar e analisar circuitos retificadores utilizando teoria de diodos para resolver problemas de hardware dos sistemas computacionais      
+- Objetivo 4: Projetar e analisar circuitos amplificadores aplicando teoria de transistores bipolares e de amplificadores operacionais para resolver problemas de hardware dos sistemas computacionais  
+- Objetivo 5: Prototipar circuitos em PCB
 
 **II – CONTEÚDOS**
 
@@ -30,7 +30,8 @@ Objetivo 5: Prototipar circuitos em PCB
 14. Design de circuitos: simulação de circuitos; prototipação em *protoboards*; prototipação de placas de circuito impresso (PCB) - fluxo do projeto de PCB, simulação do esquema, layout e verificação da placa.  
 
 
-**III – BIBLIOGRAFIA** - *O acesso aos links exige conta na Biblioteca Virtual*
+**III – BIBLIOGRAFIA**  
+*OBRIGATÓRIO ACESSO PELA BIBLIOTECA VIRTUAL DO IBMEC*
 
 **BIBLIOGRAFIA BÁSICA:**  
 1.**MALVINO**, ALBERT; **BATES**, DAVID J.; **ELETRÔNICA**, VOLUME 1; **MCGRAW HILL – Bookman**; 2016  
