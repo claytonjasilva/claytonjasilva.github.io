@@ -6,4 +6,4 @@
 4. [Conteúdo das Aulas](compiladores_aulas.md)
 
 
-##### [Home - Prof Clayton J A Silva](/./avaliacoes.md)
+##### [Home - Prof Clayton J A Silva](/./index.md)
