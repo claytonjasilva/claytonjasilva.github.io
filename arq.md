@@ -5,6 +5,6 @@
 3. [Sistema de Avaliações](/./avaliacoes.md)
 4. [Conteúdo das Aulas](arq_aulas.md)
 5. Ferramentas de apoio
-  * [Notas sobre Arduíno MEGA 2560](arduino.md)  
-  * [Microchip Studio for AVR Devices](https://www.microchip.com/en-us/tools-resources/develop/microchip-studio#Downloads)  
+   * [Notas sobre Arduíno MEGA 2560](arduino.md)  
+   * [Microchip Studio for AVR Devices](https://www.microchip.com/en-us/tools-resources/develop/microchip-studio#Downloads)  
   
