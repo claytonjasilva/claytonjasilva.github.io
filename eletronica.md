@@ -6,3 +6,6 @@
 4. [Conteúdo das Aulas](eletronica_aulas.md)
 5. Ferramentas de apoio  
    * [Easy EDA Designer](https://easyeda.com/pt)
+
+
+##### [Home - Prof Clayton J A Silva](/./avaliacoes.md)
