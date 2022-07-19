@@ -1,6 +1,6 @@
-# Material Didático - Eletrônica - 20022.2
+# Conteúdo das Aulas - Eletrônica - 2022.2
 
-## Fundamentação teórica
+## Tópicos
 1. Fundamentos de eletrônica: tensão-corrente-resistência
 2. Instrumentos de medida
 3. Sinais elétricos
