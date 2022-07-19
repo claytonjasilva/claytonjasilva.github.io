@@ -8,4 +8,4 @@
    * [Easy EDA Designer](https://easyeda.com/pt)
 
 
-##### [Home - Prof Clayton J A Silva](/./avaliacoes.md)
+##### [Home - Prof Clayton J A Silva](/./index.md)
