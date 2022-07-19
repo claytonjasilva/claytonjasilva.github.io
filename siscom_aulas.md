@@ -1,4 +1,4 @@
-# Conteúdo - Sistema de Comunicações Móveis - 2022.2
+# Conteúdo - Sistemas de Comunicações Móveis - 2022.2
 
 1. Elementos dos sistemas de comunicações
 2. Comportamento do canal móvel de comunicações: mecanismos básicos de propagação, perdas em larga escala- modelos de propagação *outdoor*, modelos de propagação *indoor*, atenuação em pequena escala e caminhos múltiplos
