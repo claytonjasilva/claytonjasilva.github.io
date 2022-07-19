@@ -1,4 +1,8 @@
+# GRID DA DISCIPLINA 
 
+**CURSO: Engenharia de Computação**  
+**DISCIPLINA: Programação - 2022/2**  
+**PROFESSOR: Clayton Jones Alves da Silva, MSc**
 
 ## I – OBJETIVOS
 - Objetivo 1: Elaborar programas na linguagem Python, utilizando os comandos da biblioteca padrão, para a solução de problemas de engenharia  
@@ -20,3 +24,16 @@
 10. Exceções e ferramentas.
 11. O pacote NumPy.
 12. O pacote Matplotlib.
+
+## III - REFERÊNCIAS
+
+**REFERÊNCIA BÁSICA**    
+- **SUMMERFIELD**, Mark; **Programming in Python 3 A Complete Introduction to the Python Language**, 2nd ed; **Addison-Wesley**; 2010.
+
+**REFERÊNCIAS COMPLEMENTARES**  
+- **Lutz**, Mark; **Ascher**, David; **Aprendendo Python**; **Bookman**; 2007.
+- **Borges**, Luiz E.; **Python para Desenvolvedores**, 3a ed; **Novatec**; 2014.   
+Obs. Segunda edição disponível em [Pythoh para Desenvolvedores; Borges, Luiuz; 2a. ed](https://ark4n.files.wordpress.com/2010/01/python_para_desenvolvedores_2ed.pdf)  
+- **Downey**, Allan B.; **Pense em Python**; **Novatec**; 2016.
+- [**Python Software Foundation**](https://www.python.org/doc/)
+
