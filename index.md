@@ -14,5 +14,6 @@
   1. [C: como programar](https://plataforma.bvirtual.com.br/Leitor/Publicacao/2660/pdf/0)  
   2. [IME-USP](https://www.ime.usp.br/~pf/algoritmos/index.html)
  * [GNU Octave](https://replit.com)
+ * [python.org](https://www.python.org/doc/)
   
   
