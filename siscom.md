@@ -1,4 +1,4 @@
-# Sistema de Comunicações Móveis - 2022.2
+# Sistemas de Comunicações Móveis - 2022.2
 
 1. Agenda (*em construção*)
 2. [Grid](siscom_aulas/Grid_SisCom.md)
