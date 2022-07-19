@@ -7,4 +7,7 @@
 5. Codificadores de voz
 6. Técnicas de acesso múltiplo: FDMA, TDMA, CDMA e outras
 7. Sistemas de rádio troncalizados (*trunking*): APCO25, TETRA e outros
-8. Sistemas celulares: conceitos, NMT, AMPS, GSM, 
+8. Sistemas celulares: conceitos, NMT, AMPS, GSM e outros
+9. Sistemas satelitais
+10. Redes Locais Sem Fio (WLAN) 
+11. Redes 5G
