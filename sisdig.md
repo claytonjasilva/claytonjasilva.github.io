@@ -7,6 +7,7 @@
 5. Ferramentas de Apoio
     * [Notas sobre Arduíno MEGA 2560](arduino.md)
     * [Arduíno|Software](https://github.com/claytonjasilva/claytonjasilva.github.io/edit/main/arq.md)
+    * [Logisim](http://www.cburch.com/logisim/pt/index.html)
 
 
 ##### [Home - Prof Clayton J A Silva](/./index.md)
