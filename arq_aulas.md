@@ -1,6 +1,7 @@
-# Aulas de Arquitetura de Computadores - 2022.2
+# Conteúdo das Aulas  
+## Arquitetura de Computadores - 2022.2
 
-## Conteúdo
+## Tópicos
 1. [Conceitos básicos](arq_aulas/arq_aulas_conceitos.pdf)
 2. [Números e aritmética binária](arq_aulas/arq_aulas_representacao.pdf) 
 3. [Nível de lógica digital: circuitos combinacionais](arq_aulas/arq_aulas_logica_combinacional.pdf)    
@@ -9,7 +10,7 @@
 6. [Microprocessador Atmel ATmega 2560](arq_aulas/arq_aulas_mc2560.pdf)
 7. [Sistemas Operacionais](arq_aulas/arq_aulas_so.pdf)
 
-## Práticas -  
+## Práticas    
 *a ser atualizado à medida que o semestre evoluir* 
 1. [Prática 1 Arduíno](arq_aulas/arq_pratica1.md)
 2. [Prática 2 Arduíno](arq_aulas/arq_pratica2.md)
@@ -30,7 +31,8 @@
 
 ## Referências
 
-#### Livros de referência - OBRIGATÓRIO ACESSO PELA BIBLIOTECA VIRTUAL DO IBMEC
+#### Livros de referência  
+OBRIGATÓRIO ACESSO PELA BIBLIOTECA VIRTUAL DO IBMEC  
 1. [Tanenbaum, Andrew S.; Organização estruturada de computadores; 5a ed; Prenticce-Hall, 2007](https://plataforma.bvirtual.com.br/Leitor/Publicacao/355/pdf/0)
 2. [Stallings, William; Arquitetura e Organização de Computadores; 10a ed; Pearson, 2018](https://plataforma.bvirtual.com.br/Leitor/Publicacao/151479/pdf/0)
 3. [Corrêa, Ana G. D.; Organização e Arquitetura de Computadores; Pearson, 2017](https://plataforma.bvirtual.com.br/Leitor/Publicacao/124147/pdf/0)
