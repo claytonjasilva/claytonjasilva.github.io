@@ -6,3 +6,6 @@
 4. [Conteúdo das Aulas](sisdig_aulas.md)
 5. Ferramentas de Apoio
     * [Notas sobre Arduíno MEGA 2560](arduino.md)
+
+
+##### [Home - Prof Clayton J A Silva](/./avaliacoes.md)
