@@ -11,7 +11,8 @@
 
 ## Ferramentas e disciplinas de apoio
 * Linguagem C  
-  [C: como programar](https://plataforma.bvirtual.com.br/Leitor/Publicacao/2660/pdf/0)  
-  [IME-USP](https://www.ime.usp.br/~pf/algoritmos/index.html)
+  1. [C: como programar](https://plataforma.bvirtual.com.br/Leitor/Publicacao/2660/pdf/0)  
+  2. [IME-USP](https://www.ime.usp.br/~pf/algoritmos/index.html)
+ * [GNU Octave](https://replit.com)
   
   
