@@ -7,3 +7,6 @@
 5. Ferramentas de Apoio  
    * [PyCharm Edu](https://www.jetbrains.com/pt-br/pycharm-edu/)
    * [Replit](https://replit.com)
+
+
+##### [Home - Prof Clayton J A Silva](/./avaliacoes.md)
