@@ -6,4 +6,4 @@
 4. [Conteúdo das Aulas](siscom_aulas.md)
 
 
-##### [Home - Prof Clayton J A Silva](/./avaliacoes.md)
+##### [Home - Prof Clayton J A Silva](/./index.md)
