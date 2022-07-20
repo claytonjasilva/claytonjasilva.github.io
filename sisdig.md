@@ -6,7 +6,7 @@
 4. [Conteúdo das Aulas](sisdig_aulas.md)
 5. Ferramentas de Apoio
     * [Notas sobre Arduíno MEGA 2560](arduino.md)
-    * [Arduíno|Software](https://www.arduino.cc/en/software)
+    * [IDE Arduíno](https://www.arduino.cc/en/software)
     * [Logisim](http://www.cburch.com/logisim/pt/index.html)
 
 
