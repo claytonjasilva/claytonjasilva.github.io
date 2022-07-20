@@ -11,8 +11,9 @@
 
 ## Ferramentas de apoio
 * Linguagem C  
-  1. [C: como programar](https://plataforma.bvirtual.com.br/Leitor/Publicacao/2660/pdf/0)  
-  2. [IME-USP](https://www.ime.usp.br/~pf/algoritmos/index.html)
+  1. [Eclipse IDE](https://www.eclipse.org/downloads/)
+  2. [C: como programar](https://plataforma.bvirtual.com.br/Leitor/Publicacao/2660/pdf/0)  
+  3. [IME-USP](https://www.ime.usp.br/~pf/algoritmos/index.html)
  * [GNU Octave](https://octave.org/)
  * [python.org](https://www.python.org/doc/)
  * [Git Hub](https://github.com)
