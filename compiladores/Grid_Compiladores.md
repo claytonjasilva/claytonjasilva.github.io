@@ -1,7 +1,7 @@
 # GRID DA DISCIPLINA 
 
 **CURSO: Engenharia de Computação**  
-**DISCIPLINA: Linguagens Formais Compiladores - 2022/2**  
+**DISCIPLINA: Linguagens Formais e Compiladores - 2022/2**  
 **PROFESSOR: Clayton Jones Alves da Silva, MSc**
 
 ## I - OBJETIVOS 
@@ -37,5 +37,6 @@
 1. [**Aho**, Alfred V; **Lam**, Monica S.; **Sethi**, Ravi; **Ullman**, Jeffrey D.; **Compiladores: Princíos, técnicas e ferramentas** 2a ed, **Pearson Addison Wesley**, 2008](https://plataforma.bvirtual.com.br/Leitor/Publicacao/280/pdf/0)
 
 **REFERÊNCIA COMPLEMENTAR:**
-1. **Louden**, Kenneth C; **COMPILADORES princípios e práticas**, **Thomson**, 1997. 
-2. **Delamaro**, Márcio E.; **Como Construir um Compilador Utilizando Ferramentas Java**; **novatec**; 2004. 
+1. **Sebesta**, Robert W.; **Conceitos de Linguagens de Programação**, 9a ed; **bookman**, 2010.
+2. **Louden**, Kenneth C; **COMPILADORES princípios e práticas**, **Thomson**, 1997. 
+3. **Delamaro**, Márcio E.; **Como Construir um Compilador Utilizando Ferramentas Java**; **novatec**; 2004. 
