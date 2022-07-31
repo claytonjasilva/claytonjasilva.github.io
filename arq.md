@@ -1,6 +1,6 @@
 # Arquitetura de Computadores - 2022.2
 
-1. Agenda (*em construção*)
+1. **Agenda:** [Barra](https://1drv.ms/b/s!AsTd8oN7mu8pkbFXLfX-Min_RR3xXQ?e=dQMbVk)  [Centro](https://1drv.ms/b/s!AsTd8oN7mu8pkbFYfNTFsphBQWjRXw?e=Bvff7F)
 2. [Grid](arq_aulas/Grid_Arquitetura.md)
 3. [Sistema de Avaliações](/./avaliacoes.md)
 4. [Conteúdo das Aulas](arq_aulas.md)
