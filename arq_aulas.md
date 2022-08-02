@@ -2,7 +2,7 @@
 ## Arquitetura de Computadores - 2022.2
 
 ## Tópicos
-1. [Conceitos básicos](arq_aulas/arq_aulas_conceitos.pdf)
+1. [Conceitos básicos](arq_aulas/arq_aulas_conceitos.pdf)    *Atualizado 2022.2*  
 2. [Números e aritmética binária](arq_aulas/arq_aulas_representacao.pdf) 
 3. [Nível de lógica digital: circuitos combinacionais](arq_aulas/arq_aulas_logica_combinacional.pdf)    
 4. [Nível de lógica digital: circuitos sequenciais](arq_aulas/arq_aulas_logica_sequencial.pdf)
@@ -11,7 +11,7 @@
 7. [Sistemas Operacionais](arq_aulas/arq_aulas_so.pdf)
 
 ## Práticas    
-*Obs. As práticas serão atualizadas/propostas à medida que a apresentação do conteúdo evoluir durante o semestre* 
+*Obs. As práticas e os exercícios serão atualizadas/propostas à medida que a apresentação do conteúdo evoluir durante o semestre* 
 1. [Prática 1 Arduíno](arq_aulas/arq_pratica1.md)
 2. [Prática 2 Arduíno](arq_aulas/arq_pratica2.md)
 3. [Simulador cache - mapeamento direto](arq_aulas/simuladorCache.ino)
@@ -20,11 +20,11 @@
   **[Trabalho - AP2](arq_aulas/arq_AP2_trabalho.pdf)**
 
 ## Exercícios
-1. **[Conceitos iniciais e máquina de níveis](arq_aulas/Form_lista_1_arq.pdf)**   
-2. **[Máquina IAS](arq_aulas/Form_lista_2_arq.pdf)**    
-3. **[Números e aritmética binária](arq_aulas/Form_lista_4_arq.pdf)**    
-4. **[Elementos do sistema de computação](arq_aulas/Form_lista_5_arq.pdf)**  
-5. **Assembler e *set* de instruções do MC2560**  
+1. **[Exercício 1 - 2022.2: Conceitos iniciais e máquina de níveis](https://forms.gle/xLyJSjQdQih7ikn47)**
+2. [Máquina IAS](arq_aulas/Form_lista_2_arq.pdf)    
+3. [Números e aritmética binária](arq_aulas/Form_lista_4_arq.pdf)    
+4. [Elementos do sistema de computação](arq_aulas/Form_lista_5_arq.pdf)  
+5. Assembler e *set* de instruções do MC2560  
   [Lista 1 assembly com solução](arq_aulas/Lista3_programas_assembly.pdf)  
   [Lista 2 assembly com solução](arq_aulas/Lista4_programas_assembly.pdf)  
   [Lista 3 assembly com solução](arq_aulas/Lista5_programas_assembly.pdf)
