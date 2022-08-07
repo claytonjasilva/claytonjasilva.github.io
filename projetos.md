@@ -1,4 +1,4 @@
-# Projetos de Engenharia - 2022.2
+# Projetos em Engenharia - 2022.2
 
 1. [Agenda](https://1drv.ms/b/s!AsTd8oN7mu8pkbI_BkhLrLzJwGvfsw?e=ieHQT3)
 2. [Grid](des_aulas/GridProjetos.md)
