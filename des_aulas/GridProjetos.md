@@ -1,7 +1,7 @@
 # GRID DA DISCIPLINA 
 
 **CURSO: Engenharia de Produção**  
-**DISCIPLINA: Projetos de Engenharia - 2022/2**  
+**DISCIPLINA: Projetos em Engenharia - 2022/2**  
 **PROFESSOR: Clayton Jones Alves da Silva, MSc**
 
 ## I - OBJETIVOS 
