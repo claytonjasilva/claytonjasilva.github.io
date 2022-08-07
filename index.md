@@ -6,6 +6,7 @@
 * [Eletrônica](eletronica.md)  
 * [Linguagens Formais e Compiladores](compiladores.md)
 * [Programação](prog.md)
+* [Projetos em Engenharia](projetos.md)
 * [Sistemas de Comunicações Móveis](siscom.md)
 * [Sistemas Digitais](sisdig.md)
 
