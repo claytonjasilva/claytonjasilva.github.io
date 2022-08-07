@@ -4,11 +4,7 @@
 **DISCIPLINA: Projetos de Engenharia - 2022/2**  
 **PROFESSOR: Clayton Jones Alves da Silva, MSc**
 
-## I - EMENTA
-Ao término desta disciplina, o aluno estará apto a analisar o desempenho de sistemas de computação, com base no conhecimento sobre os elementos da arquitetura, aplicando uma visão de organização em camadas (máquina de níveis), considerando os modelos e as tecnologias atuais; projetar e implementar circuitos eletrônicos digitais básicos, simulando o funcionamento dos sistemas de computação no nível de lógica digital, com base na utilização de testes em simuladores e em bancada; desenvolver programas utilizando o set de instruções de processadores (ISA), considerando o nível de microcódigo da ULA, aplicando corretamente os formatos de instrução, endereçamento e tipos de instrução disponíveis; desenvolver programas básicos em C para interagir com o Sistema Operacional, como na gestão de memória virtual e arquivos. O processo de aprendizagem será desenvolvido mediante aulas expositivas dialogadas, aulas práticas, estudo de casos, debates e
-seminários sobre temas previamente selecionados. A avaliação da aprendizagem será contínua, realizada por aplicação de provas e acompanhamento da efetiva participação do aluno nas atividades programadas.
-
-## II - OBJETIVOS 
+## I - OBJETIVOS 
 
 1. Atuar como engenheiros, desempenhando o papel que lhes cabe na sociedade, como agente transformador do ambiente, considerando a sua especialidade, as questões éticas e ambientais;
 2. Cumprir suas obrigações e exigir os direitos que lhes são assegurados no exercício da profissão, de acordo com o que é regulado pelo sistema Conselho Federal de Engenharia e Agronomia (Confea) e Conselhos Regionais de Engenharia e Agronomia (CREA);
@@ -16,7 +12,7 @@ seminários sobre temas previamente selecionados. A avaliação da aprendizagem 
 4. Elaborar e simular modelos computacionais a partir de modelos matemáticos e estatísticos de engenharia, utilizando os conceitos de dimensões e unidades de medidas e ferramentas de software;
 5. Elaborar modelos estáticos, dinâmicos e funcionais de sistemas de engenharia, aplicando a Técnica de Modelagem de Objetos. 
  
-## III – CONTEÚDOS
+## II – CONTEÚDOS
 
 1. Engenharia e sociedade: ciência e tecnologia, passado, presente e futuro; especialidades da engenharia, domínio dos problemas e competências demandadas.
 2. Sistema Confea/CREA; mercado da engenharia no Brasil e no mundo; ética e responsabilidade no exercício da profissão. 
