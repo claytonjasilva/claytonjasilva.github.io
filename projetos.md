@@ -1,4 +1,4 @@
-# Eletrônica - 2022.2
+# Projetos de Engenharia - 2022.2
 
 1. Agenda (em construção)
 2. [Grid](eletronica/Grid_Eletronica.md)
