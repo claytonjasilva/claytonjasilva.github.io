@@ -1,29 +1,29 @@
 # GRID DA DISCIPLINA 
 
 **CURSO: Engenharia de Produção**  
-**DISCIPLINA: Projetos em Engenharia - 2022/2**  
+**DISCIPLINA: Projetos em Engenharia - 2022-2**  
 **PROFESSOR: Clayton Jones Alves da Silva, MSc**
 
 ## I - OBJETIVOS 
 
 1. Atuar como engenheiros, desempenhando o papel que lhes cabe na sociedade, como agente transformador do ambiente, considerando a sua especialidade, as questões éticas e ambientais;
-2. Cumprir suas obrigações e exigir os direitos que lhes são assegurados no exercício da profissão, de acordo com o que é regulado pelo sistema Conselho Federal de Engenharia e Agronomia (Confea) e Conselhos Regionais de Engenharia e Agronomia (CREA);
-3. Desenvolver artefatos básicos da gestão de projetos de engenharia, inseridos no ciclo de vida de sistemas de engenharia, aplicando os métodos do PMI e Scrum e o método da Engenharia de Sistemas;
-4. Elaborar e simular modelos computacionais a partir de modelos matemáticos e estatísticos de engenharia, utilizando os conceitos de dimensões e unidades de medidas e ferramentas de software;
-5. Elaborar modelos estáticos, dinâmicos e funcionais de sistemas de engenharia, aplicando a Técnica de Modelagem de Objetos. 
+2. Desenvolver artefatos básicos da gestão de projetos de engenharia, inseridos no ciclo de vida de sistemas de engenharia, aplicando os métodos do PMI e Scrum e o método da Engenharia de Sistemas;
+3. Definir o conceito de Sistemas de Engenharia para resolver problemas, com base na análise do problema, levantamento das alternativas de solução e definição da alternativa mais vantajosa;
+4. Planejar o projeto de Sistemas de Engenharia para resolver problemas, com base na formulação de requisitos funcionais e não funcionais;
+5. Elaborar e simular modelos computacionais a partir de modelos matemáticos e estatísticos de engenharia, e modelos estáticos, dinâmicos e funcionais de Sistemas de Engenharia. 
  
 ## II – CONTEÚDOS
 
 1. Engenharia e sociedade: ciência e tecnologia, passado, presente e futuro; especialidades da engenharia, domínio dos problemas e competências demandadas.
-2. Sistema Confea/CREA; mercado da engenharia no Brasil e no mundo; ética e responsabilidade no exercício da profissão. 
-3. Gerenciamento de projetos: conceito e ciclo de vida de projetos; objetivos dos métodos de gerenciamento de projetos; métodos em cascata e o modelo do PMI; métodos ágeis e o modelo Scrum. 
-4. Ferramentas de gerenciamento de projetos: MSProject e Trello.
-5. Sistemas de engenharia: conceito de sistemas; sistemas naturais e não naturais; sistemas complexos; sistemas de sistemas; sistemas sociotécnicos; ciclo de vida de sistemas de engenharia, da concepção ao pós-desenvolvimento. 
-6. Engenharia de sistemas: visão geral do método da Engenharia de Sistemas; estágio de desenvolvimento do conceito de sistemas de engenharia; estágio de desenvolvimento do projeto de sistemas de engenharia; estágio de pós-desenvolvimento (operação e suporte) dos sistemas de engenharia.
-7. Dimensões e unidades: dimensões; quantidades e unidades; Sistema Internacional e suas unidades; unidades derivadas; múltiplos e submúltiplos decimais de unidades do SI.
-8. Modelagem e simulação de sistemas: conceitos de modelos estáticos, dinâmicos e funcionais.
-9. Frameworks de arquitetura de informação de sistemas de engenharia; modelagem Unified Modeling Language (UML).
-10. Ferramentas de simulação e modelagem: MSExcel, Arena e Matlab; ferramentas Computer Aided Design (CAD).
+2. Gerenciamento de projetos: conceito e ciclo de vida de projetos; objetivos dos métodos de gerenciamento de projetos; métodos em cascata e o modelo do PMI; métodos ágeis e o modelo Scrum. Ferramentas de gerenciamento de projetos: MSProject.
+3. Sistemas de Engenharia: conceito de sistemas; sistemas naturais e não naturais; sistemas complexos; sistemas de sistemas; sistemas sociotécnicos; ciclo de vida de sistemas de engenharia, da concepção ao pós-desenvolvimento. 
+4. Engenharia de Sistemas: visão geral do método da Engenharia de Sistemas; estágio de desenvolvimento do conceito de sistemas de engenharia; estágio de desenvolvimento do projeto de sistemas de engenharia; estágio de pós-desenvolvimento (operação e suporte) dos sistemas de engenharia.
+5. Dimensões e unidades: Modelos qualitativos e quantitativos de Sistemas de Engenharia; dimensões; quantidades e unidades; Sistema Internacional e suas unidades; unidades derivadas; múltiplos e submúltiplos decimais de unidades do SI.
+6. Simulação de Sistemas de Engenharia: Modelos Computacionais; métodos e ferramentas para simulação de Sistemas de Engenharia.
+7. Frameworks de arquitetura de informação de sistemas de engenharia; modelagem Unified Modeling Language (UML).
+8. Modelagem de Sistemas de Engenharia: conceitos de modelos estáticos, dinâmicos e funcionais; Modelos estáticos: diagramas de objetos e diagramas de classes.
+9. Modelagem de Sistemas de Engenharia: Modelos Funcionais; Diagramas IDEF-0.
+10. Modelagem de Sistemas de Engenharia: Modelos Dinâmicos; Diagramas de Estados.
 11. Métodos e ferramentas: análise de causa-efeito; otimização de soluções; métodos de apoio à decisão; análise de viabilidade econômica-financeira.
 12. Sustentabilidade em projetos de engenharia: materiais de engenharia e fontes de energia; gerenciamento de resíduos nas obras e serviços de engenharia.
 13. Segurança do trabalho e ergonomia. 
