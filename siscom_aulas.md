@@ -13,4 +13,4 @@
 11. Redes 5G
 
 # Exercícios
-1. [Lista 1](siscom_aulas/modelo_siscom.pdf) - simulação dos elementos básicos dos sistemas de comunicações móveis
+1. [Lista 1](siscom_aulas/Lista1_siscom.pdf) - simulação dos elementos básicos dos sistemas de comunicações móveis
