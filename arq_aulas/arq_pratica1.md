@@ -1,9 +1,15 @@
-### Prática: Arduíno
+### Prática 1 - Arquitetura de Computadores
+#### Apresentação de instrumental e ferramental
+1. *Protoboard*
+2. LED (Diodo Emissor de Luz)
+3. Resistor
+4. Arduíno Mega 2560
+5. IDE Arduíno
 
 #### Vamos iniciar a prática com a placa do Arduíno 2560...
 
 1. Montando a placa do Arduíno com o *protoboard*: conectar a trilha 1 (poderia ser outra trilha qualquer) do *protoboard* com a saída 1 da placa do Arduíno.  
-   - [Sobre *protoboards*...](https://www.robocore.net/tutoriais/como-utilizar-uma-protoboard)  
+  
    - [Ver: nota 1 do Arduíno](/arduino/arduino_1.pdf)
 3. Conectar a trilha 1 do *protoboard* com o terminar de um resistor de 1 kohms
 4. Conectar o outro terminal do resistor com a trilha 60 (poderia ser outra trilha qualquer) do *protoboard*
