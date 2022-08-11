@@ -1,7 +1,8 @@
 # Conteúdo das Aulas - Linguagens Formais e Compiladores - 2022.2  
 
 ## Tópicos
-1. [Conceitos introdutórios](compiladores/0-FundamentosLP.pdf): processadores de linguagem, estrutura de compilador, fundamentos de linguagem de programação.
+1. [Conceitos introdutórios e descrição geral da sintaxe de LP](compiladores/0-FundamentosLP.pdf)  
+   [Descrição geral da sintaxe de LP(cont): árvore de análise sintática](compiladores/0-Fundamentos_LP-cont.pdf)
 2. Tradutor simples, dirigido por sintaxe.
 3. Varredura: o processo de varredura, expressões regulares, autômatos finitos.
 4. Gramáticas livres de contexto e análise sintática: o processo de análise sintática, grmáticas livre de contexto, árvores de análise sintática e árvores sintáticas abstratas, ambiguidades e notações estendidas.
