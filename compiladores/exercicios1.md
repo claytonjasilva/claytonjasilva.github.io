@@ -10,4 +10,3 @@
 4. Propor uma regra que defina a abstração de uma sentença de uma estrutura condicional simples, na linguagem C, usando a BNF.
 5. Propor uma derivação para a regra da sentença de operação aritmética proposta na questão 3.
 6. Propor uma derivação para a regra da sentença de estrutura condicional simples na questão 4.
-7. 
