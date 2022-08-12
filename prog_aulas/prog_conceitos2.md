@@ -44,5 +44,5 @@ else:
       instrucao ou bloco de instruções n+1
 ```  
 **Obs. O uso do else é opcional**  
-3. Elaborar um programa na linguagem Python para ler os nomes, pesos e altura de 3 pessoas; calcular e escrever os nomes somente das pessoas com imc superior a 22 ('valor alto') e inferior a 20 ('valor baixo').
+3. Elaborar um programa na linguagem Python para ler os nomes, pesos e altura de 3 pessoas; calcular e escrever os nomes de cada pessoa com IMC superior a 22 ('valor alto') ou com IMC inferior a 20 ('valor baixo'), seguido do respectivo IMC calculado.  
 4. Elaborar um programa na linguagem Python para ler o nome e a idade de 3 animais; calcular e escrever o nome do animal mais velho.   
