@@ -13,8 +13,10 @@
 que apresenta o conteúdo ou o resultado do argumento ao usuário. Vimos que o argumento pode conter listas de expressão, número ou variável - separadas por vírgula.  
 - O Python possui também uma **função de entrada**, que permite ao usuário inserir um dado e atribui-lo a uma variável, como o exemplo:  
 `x=input("o valor de x e: ")`  
-, onde x é o nome da variável; o texto "o valor ..." é o que aparecerá no console. **Obs.** O programador pode definir o nome da variável e o **texto** desejado.  
+, onde x é o nome da variável; o texto "o valor ..." é o que aparecerá no console. **Obs.** O programador pode definir o nome da variável e o **texto** desejado. 
+- O dado digitado pelo usuário será atribuído para a variável como tipo ***string*** (cadeia de caracteres).
 - Um texto é chamado de ***string*** (cadeia de caracteres). Em Python, *strings* podem ser delimitadas por aspas simples `'texto'` ou aspas duplas `"texto"` 
+- É possível converter um tipo *string* para tipo inteiro usando o comando `int(string)` ou para tipo ponto flutuante usando `float(string)`
 
 # Exercícios com tipos, operadores, entrada/saída  
 1. Elaborar um programa na linguagem Python para ler as notas da ap1, ap2 e ac; calcular e escrever a média do semestre do aluno, de acordo com as regras do Ibmec.
