@@ -9,7 +9,7 @@
 
 #### II - Vamos iniciar a prática com a placa do Arduíno Mega 2560...
 **Sugestão**: Ver a [nota 1 do Arduíno](/arduino/arduino_1.pdf)  
-1. Montar ![circuito do Arduíno com LED](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/arq_aulas/arq_notas/Schematic_Ardu%C3%ADno%20com%20LED_2022-08-12.png)
+1. Montar  o [circuito do Arduíno com LED](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/arq_aulas/arq_notas/Schematic_Ardu%C3%ADno%20com%20LED_2022-08-12.png)
 Obs: Atenção com a **polarização** do LED  
 2. Conectar o circuito com a porta USB do computador
 3. Substituir o resistor (desligar antes o Arduíno do *protoboard*) por um resistor com resistência diferente
