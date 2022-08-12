@@ -9,13 +9,15 @@
 
 #### II - Vamos iniciar a prática com a placa do Arduíno Mega 2560...
 **Sugestão**: Ver a [nota 1 do Arduíno](/arduino/arduino_1.pdf)  
-1. Montar  o [circuito do Arduíno com LED](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/arq_aulas/arq_notas/Schematic_Ardu%C3%ADno%20com%20LED_2022-08-12.png)
-Obs: Atenção com a **polarização** do LED  
+1. Montar  o [circuito do Arduíno com LED](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/arq_aulas/arq_notas/Schematic_Ardu%C3%ADno%20com%20LED_2022-08-12.png).
+Obs:   
+   i. Atenção com a **polarização** do LED  
+   ii. Utilizar as trilhas da placa de *protoboard* corretamente
 2. Conectar o circuito com a porta USB do computador
 3. Substituir o resistor (desligar antes o Arduíno do *protoboard*) por um resistor com resistência diferente
 4. Relatar e explicar o que foi observado
 
-#### Escrevendo o primeiro *Sketch...
+#### III - Escrevendo o primeiro *Sketch...
 1. Iniciando a IDE do Arduíno
 2. Certificar-se na barra de menu, em *Ferramentas*, que a *Porta: COMX (Arduíno Mega or Mega 2560)* está habilitada - X pode ser a 3, por exemplo  
    [Ver o tutorial](https://www.circuitar.com.br/tutoriais/configurando-o-arduino-no-windows/index.html)
