@@ -7,7 +7,16 @@
 - As variáveis devem receber **atribuições** *(p ex, x=3)* antes que possam ser usadas em **expressões**
 - As variáveis se referem a objetos e nunca são declaradas antecipadamente
 
-### Exercícios com tipos, operadores, entrada/saída  
+### Lendo e escrevendo dados: funções de entrada e saída
+- **Função de saída**: Vimos a função de saída  
+`print(argumento)`  
+que apresenta o conteúdo ou o resultado do argumento ao usuário. Vimos que o argumento pode conter listas de expressão, número ou variável - separadas por vírgula.  
+- O Python possui também uma **função de entrada**, que permite ao usuário inserir um dado e atribui-lo a uma variável, como o exemplo:  
+`x=input("o valor de x e: ")`  
+, onde x é o nome da variável; o texto "o valor ..." é o que aparecerá no console. **Obs.** O programador pode definir o nome da variável e o **texto** desejado.  
+- Um texto é chamado de ***string*** (cadeia de caracteres). Em Python, *strings* podem ser delimitadas por aspas simples `'texto'` ou aspas duplas `"texto"` 
+
+# Exercícios com tipos, operadores, entrada/saída  
 1. Elaborar um programa na linguagem Python para ler as notas da ap1, ap2 e ac; calcular e escrever a média do semestre do aluno, de acordo com as regras do Ibmec.
 2. Elaborar um programa na linguagem Python para ler os coeficientes de uma equação do segundo grau na forma a.x2 + b.x + c = 0; calcular e escrever as duas raízes.
 3. Elaborar um programa na linguagem Python para calcular e escrever a área interna de um círculo de raio r e seu perímetro.
