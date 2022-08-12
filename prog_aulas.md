@@ -1,7 +1,7 @@
 # Programação - 2022.2
 
-0. [Iniciando...](prog_aulas/prog_inicio.md) - agosto/22
-1. [Conceitos de programação procedural: tipos, operadores, entrada/saída](prog_aulas/prog_conceitos1.md) 
+0. [Iniciando...](prog_aulas/prog_inicio.md) - *agosto/22*
+1. [Conceitos de programação procedural: tipos, operadores, entrada/saída](prog_aulas/prog_conceitos1.md) - *agosto/22*   
 2. [Conceitos de programação procedural: condicionais simples e compostas](prog_aulas/prog_conceitos2.md)
 3. [Conceitos de programação procedural: estruturas de repetição](prog_aulas/prog_conceitos3.md)
 4. [Funções](prog_aulas/prog_funcoes.md)
