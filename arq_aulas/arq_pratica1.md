@@ -9,7 +9,7 @@
 
 #### II - Vamos iniciar a prática com a placa do Arduíno Mega 2560...
 **Sugestão**: Ver a [nota 1 do Arduíno](/arduino/arduino_1.pdf)  
-1. Montar  o [circuito do Arduíno com LED](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/arq_aulas/arq_notas/Schematic_Ardu%C3%ADno%20com%20LED_2022-08-12.png).
+1. Montar  o [circuito do Arduíno com LED](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/arq_aulas/arq_notas/Schematic_Ardu%C3%ADno%20com%20LED_2022-08-12.png).  
 Obs:   
    i. Atenção com a **polarização** do LED  
    ii. Utilizar as trilhas da placa de *protoboard* corretamente
@@ -18,8 +18,12 @@ Obs:
 4. Relatar e explicar o que foi observado
 
 #### III - Escrevendo o primeiro *Sketch...
-1. Iniciando a IDE do Arduíno
-2. Certificar-se na barra de menu, em *Ferramentas*, que a *Porta: COMX (Arduíno Mega or Mega 2560)* está habilitada - X pode ser a 3, por exemplo  
+1. Montar o [circuito do Arduíno com LED](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/arq_aulas/arq_notas/Schematic_Arduino%20com%20LED%20no%20Scetch_2022-08-12.png)  
+Obs:  
+   i. Atenção com o uso do pino correto
+2. Iniciar a IDE do Arduíno e gerar o código do circuito  
+
+4. Certificar-se na barra de menu, em *Ferramentas*, que a *Porta: COMX (Arduíno Mega or Mega 2560)* está habilitada - X pode ser a 3, por exemplo  
    [Ver o tutorial](https://www.circuitar.com.br/tutoriais/configurando-o-arduino-no-windows/index.html)
 3. Na barra de menu, em *Ferramentas*, selecionar *Placa: "Arduíno Mega or Mega 2560"*, escolher o nome (por exemplo, *sketch_pratica1*)
 4. Na barra de menu, em *Ferramentas*, selecionar *Processador: "ATmega2560 (Mega2560)"*, escolher o nome (por exemplo, *sketch_pratica1*)
