@@ -4,7 +4,7 @@
 ### Mais sobre variáveis  
 - As variáveis **são criadas na primeira vez** que recebem um valor  
 - As variáveis são substituídas por seus valores, quando usadas em expressões
-- As variáveis devem receber **atribuições** *(p ex, x=3)* antes que possam ser usadas em expressões
+- As variáveis devem receber **atribuições** *(p ex, x=3)* antes que possam ser usadas em **expressões**
 - As variáveis se referem a objetos e nunca são declaradas antecipadamente
 
 ### Exercícios com tipos, operadores, entrada/saída  
@@ -15,5 +15,3 @@
 5. Elaborar um programa na linguagem Python para ler as dimensões dos lados de uma pista de corrida de formato retangular, ler a distância percorrida por um veículo, calcular e escrever o número completo de voltas dadas.
 6. Um objeto é solto do alto de um edifício com altura h1; depois solto de outro edifício com altura h2. A velocidade que o objeto chega ao solo é a mesma? Elaborar um program na linguagem Python para calcular e escrever a velocidade de chegada ao solo quando o objeto é largado do alto de cada um dos edifícios. 
 
-#### Veja sugestões de solução em  
-[soluções de exercícios](https://github.com/claytonjasilva/prog_exemplos)
