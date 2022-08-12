@@ -17,7 +17,7 @@ Obs:
 3. Substituir o resistor (desligar antes o Arduíno do *protoboard*) por um resistor com resistência diferente
 4. Relatar e explicar o que foi observado
 
-#### III - Escrevendo o primeiro *Sketch...
+#### III - Escrevendo o primeiro *Sketch...*
 1. Montar o [circuito do Arduíno com LED](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/arq_aulas/arq_notas/Schematic_Arduino%20com%20LED%20no%20Scetch_2022-08-12.png)  
 Obs: Atenção com o uso do pino correto
 2. Iniciar a IDE do Arduíno e gerar o código do circuito. Não esquecer de, na barra de menu, em *Arquivo*, na opção *Salvar como...*, escolher o nome (por exemplo, *sketch_pratica1*)  
