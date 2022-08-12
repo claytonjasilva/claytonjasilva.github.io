@@ -4,9 +4,9 @@
 
 ### Instruções condicionais simples, instruções condicionais compostas e expressões lógicas
 1. As [instruções compostas](https://docs.python.org/pt-br/3/reference/compound_stmts.html) contêm (grupos de) outras instruções; Elas afetam ou controlam a execução dessas outras instruções de alguma maneira. Em geral, instruções compostas abrangem múltiplas linhas. 
-2. Uma das instruções compostas a **instrução condicional** - em termos simples, uma instrução condicional executa uma ação (ou conjunto de ações) dependendo do resultado da avaliação de uma **expressão lógica (condição)** ser verdadeiro ou falso  
+2. Uma das instruções compostas é a **instrução condicional simples** - uma instrução condicional simples executa uma ação (ou conjunto de ações) dependendo do resultado da avaliação de uma **expressão lógica (condição)** ser verdadeiro ou falso  
 3. A expressão lógica é calculada pelo interpretador Python e pode gerar somente um resultado dentre dois possíveis: **verdadeiro (*True*)** ou **falsa** (*False*) 
-4. A instrução condicional simples executa uma instrução (ou bloco de instruções) se a expressão lógica que define resultar verdadeira. Em caso contrário, o interpretador não realiza nenhuma ação.
+4. A instrução condicional simples executa uma instrução (ou bloco de instruções) se a expressão lógica de sua sentença resultar verdadeira. Em caso contrário, o interpretador não realiza nenhuma ação.
 5. A sintaxe em Python da condicional simples é  
 ```
 if expressao logica:  
