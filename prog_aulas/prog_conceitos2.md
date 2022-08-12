@@ -1,7 +1,8 @@
 ## Conceitos de programação procedural: condicionais simples e compostas  
+
 ### [Expressões lógicas (booleanas) e comparações](https://docs.python.org/pt-br/3/library/stdtypes.html#boolean-operations-and-or-not)
 
-### Instruções condicionais simples e expressões lógicas
+### Instruções condicionais simples, instruções condicionais compostas e expressões lógicas
 1. As [instruções compostas](https://docs.python.org/pt-br/3/reference/compound_stmts.html) contêm (grupos de) outras instruções; Elas afetam ou controlam a execução dessas outras instruções de alguma maneira. Em geral, instruções compostas abrangem múltiplas linhas. 
 2. Uma das instruções compostas a **instrução condicional** - em termos simples, uma instrução condicional executa uma ação (ou conjunto de ações) dependendo do resultado da avaliação de uma **expressão lógica (condição)** ser verdadeiro ou falso  
 3. A expressão lógica é calculada pelo interpretador Python e pode gerar somente um resultado dentre dois possíveis: **verdadeiro (*True*)** ou **falsa** (*False*) 
@@ -11,7 +12,21 @@
 if expressao logica:  
       instrucao ou bloco de instruções
 ```  
-Obs.: Na estrutura de execução os limites da instrução ou do bloco de instruções **internos** à estrutura são detectados automaticamente pela linguagem, de acordo com a **indentação** 
+Obs.: Na estrutura de execução, os limites da instrução ou do bloco de instruções **internos (identificados pela indentação)** são detectados automaticamente pelo interpretador.
+6. A expressão lógica, como pode ser visto no link acima, poderá conter um dos operadores lógicos, por exemplo, o operador *>*.  
+```
+if a>b:  
+      maior = a
+      menor = b
+```  
+7. A sintaxe em Python da condicional composta é  
+```
+if expressao logica:  
+      instrucao ou bloco de instruções 1
+else:
+      instrucao ou bloco de instruções 2
+```  
+A interpretação da condicional composta leva à execução do bloco 1 de instruções se a expressão lógica for verdadeira e à execução do bloco 2 de instruções se a expressão lógica for falsa.  
 
 ### Exercícios com condicionais simples e compostas  
 1. Elaborar um programa na linguagem Python para ler dois números; calcular e escrever o maior dos números lidos.
