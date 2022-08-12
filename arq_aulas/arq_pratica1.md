@@ -1,24 +1,19 @@
 ### Prática 1 - Arquitetura de Computadores
-#### Apresentação de instrumental e ferramental
+
+#### I - Apresentação de instrumental e ferramental
 1. *Protoboard*
 2. LED (Diodo Emissor de Luz)
-3. Resistor
+3. Resistores
 4. Arduíno Mega 2560
 5. IDE Arduíno
 
-#### Vamos iniciar a prática com a placa do Arduíno 2560...
-
-1. Montando a placa do Arduíno com o *protoboard*: conectar a trilha 1 (poderia ser outra trilha qualquer) do *protoboard* com a saída 1 da placa do Arduíno.  
-  
-   - [Ver: nota 1 do Arduíno](/arduino/arduino_1.pdf)
-3. Conectar a trilha 1 do *protoboard* com o terminar de um resistor de 1 kohms
-4. Conectar o outro terminal do resistor com a trilha 60 (poderia ser outra trilha qualquer) do *protoboard*
-5. Conectar a mesma trilha com o anodo (+) do led 
-6. Conectar o catodo (-) do led com a trilha 55 (poderia ser outra trilha qualquer) do *protoboard*
-7. Conectar a mesma trilha com o pino GND da placa do Arduíno
-8. Conectar a placa do Arduíno com a porta USB do computador.  
-
-**Relatar o que aconteceu**
+#### II - Vamos iniciar a prática com a placa do Arduíno Mega 2560...
+**Sugestão**: Ver a [nota 1 do Arduíno](/arduino/arduino_1.pdf)  
+1. Montar ![circuito do Arduíno com LED](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/arq_aulas/arq_notas/Schematic_Ardu%C3%ADno%20com%20LED_2022-08-12.png)
+Obs: Atenção com a **polarização** do LED  
+2. Conectar o circuito com a porta USB do computador
+3. Substituir o resistor (desligar antes o Arduíno do *protoboard*) por um resistor com resistência diferente
+4. Relatar e explicar o que foi observado
 
 #### Escrevendo o primeiro *Sketch...
 1. Iniciando a IDE do Arduíno
