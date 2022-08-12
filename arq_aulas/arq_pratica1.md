@@ -29,5 +29,6 @@ Obs:
    ii. Ao conectar o Arduíno com o computador, certificar se na barra de menu, em *Ferramentas*, a *Porta: COMX (Arduíno Mega or Mega 2560)* está habilitada - X pode ser a 3, por exemplo  
    iii. Na barra de menu, em *Ferramentas*, selecionar *Placa: "Arduíno Mega or Mega 2560"*, escolher o nome (por exemplo, *sketch_pratica1*)  
    iv. Na barra de menu, em *Ferramentas*, selecionar *Processador: "ATmega2560 (Mega2560)"*, escolher o nome (por exemplo, *sketch_pratica1*)
-5. Compilar e carregar o código no Arduíno (Na barra de menu, em *Sketch*, selecionar *Verificar/Compilar*, depois selecionar *Carregar*)
-6. Escrever o código disponibilizadao em [exemplo da prática 1](https://github.com/claytonjasilva/arquitetura_exemplos/blob/main/arq_pratica1.ino)  
+4. Compilar e carregar o código no Arduíno (Na barra de menu, em *Sketch*, selecionar *Verificar/Compilar*, depois selecionar *Carregar*)
+5. Escrever o código disponibilizadao em [exemplo da prática 1](https://github.com/claytonjasilva/arquitetura_exemplos/blob/main/arq_pratica1.ino)  
+6. Relatar e explicar o que foi observado
