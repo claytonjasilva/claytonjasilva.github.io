@@ -20,7 +20,7 @@ que apresenta o conteúdo ou o resultado do argumento ao usuário. Vimos que o a
 
 # Exercícios com tipos, operadores, entrada/saída  
 1. Elaborar um programa na linguagem Python para ler as notas da ap1, ap2 e ac; calcular e escrever a média do semestre do aluno, de acordo com as regras do Ibmec.  [calcNota.py](https://github.com/claytonjasilva/prog_exemplos/blob/main/calcNota.py)
-2. Elaborar um programa na linguagem Python para ler os coeficientes de uma equação do segundo graau, cuja expressão e raízes são dadas por 
+2. Elaborar um programa na linguagem Python para ler os coeficientes de uma equação do segundo graau, cuja expressão e raízes são dadas por   
 ![equacao2grau](equacaoGrau2.gif)  
 [calcRaiz.py](https://github.com/claytonjasilva/prog_exemplos/blob/main/calcRaiz.py)  
 Obs. Para calcular a raiz quadrada pode-se incluir o comando `import math` e usar o método `math.sqrt(numero)`  
