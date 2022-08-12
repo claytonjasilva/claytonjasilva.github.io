@@ -25,7 +25,6 @@ que apresenta o conteúdo ou o resultado do argumento ao usuário. Vimos que o a
 [calcRaiz.py](https://github.com/claytonjasilva/prog_exemplos/blob/main/calcRaiz.py)  
 Obs. Para calcular a raiz quadrada pode-se incluir o comando `import math` e usar o método `math.sqrt(numero)`  
 3. Elaborar um programa na linguagem Python para calcular e escrever a área interna e o perímetro de um círculo de raio r e seu perímetro. [calcAreaCirc.py](https://github.com/claytonjasilva/prog_exemplos/blob/main/calcAreaCirc.py)
-5. Elaborar um programa na linguagem Python para calcular e escrever o índice de massa (imc) corporal de uma pessoa.
-6. Elaborar um programa na linguagem Python para ler as dimensões dos lados de uma pista de corrida de formato retangular, ler a distância percorrida por um veículo, calcular e escrever o número completo de voltas dadas.
-7. Um objeto é solto do alto de um edifício com altura h1; depois solto de outro edifício com altura h2. A velocidade que o objeto chega ao solo é a mesma? Elaborar um program na linguagem Python para calcular e escrever a velocidade de chegada ao solo quando o objeto é largado do alto de cada um dos edifícios. 
+5. Elaborar um programa na linguagem Python para calcular e escrever o índice de massa (imc) corporal de uma pessoa. O imc é calculado dividindo-se o peso pelo quadrado da altura. [calcIMC.py](https://github.com/claytonjasilva/prog_exemplos/blob/main/calcIMC.py)
+6. Elaborar um programa na linguagem Python para ler as dimensões dos lados de uma pista de corrida de formato retangular, ler a distância percorrida por um veículo, calcular e escrever o número completo de voltas dadas. [calcVoltas.py](https://github.com/claytonjasilva/prog_exemplos/blob/main/calcVoltas.py)
 
