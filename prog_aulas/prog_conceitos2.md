@@ -1,12 +1,17 @@
 ## Conceitos de programação procedural: condicionais simples e compostas  
-### [Expressões lógicas ou booleanas e comparações](https://docs.python.org/pt-br/3/library/stdtypes.html#boolean-operations-and-or-not)
+### [Expressões lógicas (booleanas) e comparações](https://docs.python.org/pt-br/3/library/stdtypes.html#boolean-operations-and-or-not)
 
-### Instruções Condicionais
-- As [instruções compostas](https://docs.python.org/pt-br/3/reference/compound_stmts.html) contêm (grupos de) outras instruções; Elas afetam ou controlam a execução dessas outras instruções de alguma maneira. Em geral, instruções compostas abrangem múltiplas linhas. 
-- Em termos simples, uma **instrução condicional** executa uma ação (ou conjunto de ações) em função de uma condição ser verdadeira ou falsa  
-- A execução da instrução condicional pode implicar a realização de uma ação se a condição for **verdadeira** (*True*) - se a condição for falsa nenhuma ação é executada 
-- Pode também implicar a realização de uma ação se a condição for verdadeira; e a realização de outra ação se a condição for **falsa** (*False*) 
-- Os limites de cada **bloco de instruções** na estrutura de execução são detectados automaticamente pela linguagem, em função da **indentação** 
+### Instruções condicionais simples e expressões lógicas
+1. As [instruções compostas](https://docs.python.org/pt-br/3/reference/compound_stmts.html) contêm (grupos de) outras instruções; Elas afetam ou controlam a execução dessas outras instruções de alguma maneira. Em geral, instruções compostas abrangem múltiplas linhas. 
+2. Uma das instruções compostas a **instrução condicional** - em termos simples, uma instrução condicional executa uma ação (ou conjunto de ações) dependendo do resultado da avaliação de uma **expressão lógica (condição)** ser verdadeiro ou falso  
+3. A expressão lógica é calculada pelo interpretador Python e pode gerar somente um resultado dentre dois possíveis: **verdadeiro (*True*)** ou **falsa** (*False*) 
+4. A instrução condicional simples executa uma instrução (ou bloco de instruções) se a expressão lógica que define resultar verdadeira. Em caso contrário, o interpretador não realiza nenhuma ação.
+5. A sintaxe em Python da condicional simples é  
+```
+if expressao logica:  
+      instrucao ou bloco de instruções
+```  
+Obs.: Na estrutura de execução os limites da instrução ou do bloco de instruções **internos** à estrutura são detectados automaticamente pela linguagem, de acordo com a **indentação** 
 
 ### Exercícios com condicionais simples e compostas  
 1. Elaborar um programa na linguagem Python para ler dois números; calcular e escrever o maior dos números lidos.
