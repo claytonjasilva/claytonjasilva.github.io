@@ -21,9 +21,9 @@ que apresenta o conteúdo ou o resultado do argumento ao usuário. Vimos que o a
 # Exercícios com tipos, operadores, entrada/saída  
 1. Elaborar um programa na linguagem Python para ler as notas da ap1, ap2 e ac; calcular e escrever a média do semestre do aluno, de acordo com as regras do Ibmec.  [calcNota.py](https://github.com/claytonjasilva/prog_exemplos/blob/main/calcNota.py)
 2. Elaborar um programa na linguagem Python para ler os coeficientes de uma equação do segundo grau, 
-$
+$$
 ax^2+bx+c=0
-$
+$$
 , cujas raízes são dadas por 
 $
 r1=b^2+\sqrt[2]{\Delta/2a}
