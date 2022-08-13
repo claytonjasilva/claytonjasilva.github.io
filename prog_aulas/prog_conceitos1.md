@@ -1,3 +1,12 @@
+---
+layout: post
+title: tipos e operadores em python
+author: claytonjasilva
+tag:
+  - equacoes
+  - LaTeX
+mathjax: true
+---
 ## Conceitos de programação procedural: tipos, operadores, entrada/saída  
 ### [Tipos numéricos](https://docs.python.org/pt-br/3/library/stdtypes.html#numeric-types-int-float-complex)
 
