@@ -5,7 +5,7 @@
 - As variáveis **são criadas na primeira vez** que recebem um valor  
 - As variáveis são substituídas por seus valores, quando usadas em expressões
 - As variáveis devem receber **atribuições** *(p ex, x=3)* antes que possam ser usadas em **expressões**
-- As variáveis se referem a objetos e nunca são declaradas antecipadamente
+- As variáveis se referem a objetos e nunca são declaradas antecipadamente  
 
 ### Lendo e escrevendo dados: funções de entrada e saída
 - **Função de saída**: Vimos a função de saída  
@@ -20,8 +20,7 @@ que apresenta o conteúdo ou o resultado do argumento ao usuário. Vimos que o a
 
 # Exercícios com tipos, operadores, entrada/saída  
 1. Elaborar um programa na linguagem Python para ler as notas da ap1, ap2 e ac; calcular e escrever a média do semestre do aluno, de acordo com as regras do Ibmec.  [calcNota.py](https://github.com/claytonjasilva/prog_exemplos/blob/main/calcNota.py)
-2. Elaborar um programa na linguagem Python para ler os coeficientes de uma equação do segundo grau, cuja expressão e raízes são dadas por $ax^2+bx+c=0$, onde $\Delta=b^2-4ac$, $r1=b^2+\sqrt[2]{\Delta/2a}$ e $r2=b^2-\sqrt[2]{\Delta/2a}$    
-[calcRaiz.py](https://github.com/claytonjasilva/prog_exemplos/blob/main/calcRaiz.py)  
+2. Elaborar um programa na linguagem Python para ler os coeficientes de uma equação do segundo grau, $ax^2+bx+c=0$, cujas raízes são dadas por $r1=b^2+\sqrt[2]{\Delta/2a}$ e $r2=b^2-\sqrt[2]{\Delta/2a}$, onde $\Delta=b^2-4ac$. [calcRaiz.py](https://github.com/claytonjasilva/prog_exemplos/blob/main/calcRaiz.py)  
 Obs. Para calcular a raiz quadrada pode-se incluir o comando `import math` e usar o método `math.sqrt(numero)`  
 3. Elaborar um programa na linguagem Python para calcular e escrever a área interna e o perímetro de um círculo de raio r e seu perímetro. [calcAreaCirc.py](https://github.com/claytonjasilva/prog_exemplos/blob/main/calcAreaCirc.py)
 5. Elaborar um programa na linguagem Python para calcular e escrever o índice de massa (imc) corporal de uma pessoa. O imc é calculado dividindo-se o peso pelo quadrado da altura. [calcIMC.py](https://github.com/claytonjasilva/prog_exemplos/blob/main/calcIMC.py)
