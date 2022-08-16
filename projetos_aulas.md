@@ -29,14 +29,3 @@ Alguns vídeos interessantes:
 
 ## Exercícios e trabalhos
 
-1. [Quiz 1: Engenharia e sociedade - introdução](des_aulas/des_form_1.pdf)
-2. [Quiz 2: Engenharia e sociedade - métodos e ferramentas](des_aulas/des_form_2.pdf)
-3. [Prática: Cronograma de projeto com MS Project](des_aulas/des_praticaMSProject.md)   
-4. [Trabalho em grupo 1](des_aulas/des_trabalho_1.pdf)
-5. [Quiz 3: Gerenciamento de projetos](des_aulas/des_form3.pdf)
-6. [Quiz 4: Engenharia de sistemas](des_aulas/des_form4.pdf)
-7. [Trabalho em grupo 2 - AP1 parte 2](des_aulas/desafios_AP1_trabalho.pdf)
-8. [Trabalho em grupo 3 - sala de aula](des_aulas/des_trabalho_3.pdf)
-9. [Quiz 5: Grandezas e unidades](des_aulas/des_form5_sol.pdf)  
-10. **[Trabalho em grupo 4 - AP2 parte 2](des_aulas/des_trabalho4_AP2.pdf)** --- **[Anexo 1](des_aulas/Sistema_Veiculo.pdf)** --- **[Anexo 2](des_aulas/Motor_Sistema_Veiculo.pdf)**
-11. **[Gabarito AP1](https://1drv.ms/b/s!AsTd8oN7mu8pkOsturFWg-0qHEI3Sg?e=1rrQwv)**
