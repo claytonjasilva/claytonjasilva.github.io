@@ -21,7 +21,7 @@
   **[Trabalho - AP2](arq_aulas/arq_AP2_trabalho.pdf)**
 
 ## Exercícios
-1. **[Exercício 1 - 2022.2: Conceitos iniciais e máquina de níveis](https://forms.gle/xLyJSjQdQih7ikn47)**
+1. [Exercício 1 - 2022.2: Conceitos iniciais e máquina de níveis](arq_aulas/form1.pdf)
 2. [Máquina IAS](arq_aulas/Form_lista_2_arq.pdf)    
 3. [Números e aritmética binária](arq_aulas/Form_lista_4_arq.pdf)    
 4. [Elementos do sistema de computação](arq_aulas/Form_lista_5_arq.pdf)  
