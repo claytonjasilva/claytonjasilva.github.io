@@ -18,3 +18,4 @@
 14. *Front-end* completo de compilador.
 
 ## Exercícios
+1. [Conceitos iniciais - BNF](compiladores/lista1.md)
