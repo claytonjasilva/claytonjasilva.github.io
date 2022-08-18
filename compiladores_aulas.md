@@ -3,7 +3,7 @@
 ## Tópicos
 1. [Conceitos introdutórios e descrição geral da sintaxe de LP](compiladores/0-FundamentosLP.pdf)  
    [Descrição geral da sintaxe de LP(cont): árvore de análise sintática](compiladores/0-FundamentosLP-cont.pdf)
-3. [Varredura: o processo de varredura, expressões regulares](compiladores/1-VarreduraExpressoes.pdf) 
+3. [Varredura: o processo de varredura, expressões regulares](compiladores/1-VarreduraExpressoes.pdf)  
    Varredura: autômatos finitos.
 4. Gramáticas livres de contexto e análise sintática: o processo de análise sintática, grmáticas livre de contexto, árvores de análise sintática e árvores sintáticas abstratas, ambiguidades e notações estendidas.
 5. Análise sintática descendente: análise sintática descentes recursiva e análise sintática LL.
