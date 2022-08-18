@@ -21,10 +21,12 @@ Propor uma abstração para descrever o protótipo de funções na linguagem C.
 <id> -> a | b | c
 ```
 7. Considere a seguinte gramática:  
+
 ```
 <S> -> <a>a<B>b
 <A> -> <A>b | b
 <B> -> a<B> | a
 ```
+
 Quais das sentenças a seguir estão na linguagem gerada pela gramática?  
 baab, bbbab, bbaaaa, bbaab
