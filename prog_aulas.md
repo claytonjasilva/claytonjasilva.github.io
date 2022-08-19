@@ -3,7 +3,7 @@
 0. [Iniciando...](prog_aulas/prog_inicio.md) - *agosto/22*
 1. [Conceitos de programação procedural: tipos, operadores, entrada/saída](prog_aulas/prog_conceitos1.md) - *agosto/22*   
 2. [Conceitos de programação procedural: condicionais simples e compostas](prog_aulas/prog_conceitos2.md) - *agosto/22*  
-3. [Conceitos de programação procedural: estruturas de repetição](prog_aulas/prog_conceitos3.md)
+3. [Conceitos de programação procedural: estruturas de repetição](prog_aulas/prog_conceitos3.md) - *agosto/22*
 4. [Funções](prog_aulas/prog_funcoes.md)
 5. [Listas](prog_aulas/prog_listas.md)
 6. [Tuplas e conjuntos](prog_aulas/prog_tuplas.md)  
