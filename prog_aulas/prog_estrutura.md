@@ -21,7 +21,7 @@ Por exemplo, *print(argumento)* apresenta na área de console o valor do argumen
   d. Tuplas  
   e. Dicionários  
   f. Arquivos  
-3. Expressões e operações aritméticas: utilizam operadores +, -, * e /. Divisão (/) sempre retorna número na representação em **ponto flutuante (float)**. Para fazer uma divisão com resultado inteiro (descartando a parte fracionária) pode-se usar o operador divisão inteira (//); para calcular o resto da divisão inteira pode-se usar o operador **módulo** (%).
+3. Expressões e operações aritméticas: utilizam operadores `+`, `-`, `*` e `/`. Divisão (`/`) sempre retorna número na representação em **ponto flutuante (float)**. Para fazer uma divisão com resultado inteiro (descartando a parte fracionária) pode-se usar o operador divisão inteira (`//`); para calcular o resto da divisão inteira pode-se usar o operador **módulo** (`%`).
 4. Objetos de referência - **variáveis** -, que armazenam os valores dos objetos e são referenciadas por um **identificador** (nome).
 5. Constantes, que possuem valores pré-estabelecidos, chamados pela sua identificação.  
 Por exemplo, a constante matemática *pi*.
