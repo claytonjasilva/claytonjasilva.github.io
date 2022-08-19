@@ -183,22 +183,22 @@
 <a id="ancora6"></a>
 ## Outras
 1. **Comentário:**  
-   Sintaxe: *#*, seguido pelo texto de comentário  
-   Exemplo: *# texto explicativo do código*   
-   Finalidade: facilitar a leitura do código
+   Sintaxe: `#`, seguido pelo texto de comentário  
+   Exemplo: `# texto explicativo do código`   
+   Finalidade: proporcionar melhor legibilidade e facilitar a manutenção do código
 2.  **Delimitação de strings - cadeias de caracteres**  
-   Sintaxe: *'texto'* ou *"texto"*  
-   Exemplo: *"Digite o valor"*  
+   Sintaxe: `'texto'` ou `"texto"`  
+   Exemplo: `"Digite o valor"`  
    Finalidade: Definir uma cadeia de caracteres
 3. **Arredondar um número de ponto flutuante**  
-   Sintaxe: *round(x,ndig)*  
-   Exemplo: *y=round(x,1)*  
-   Finalidade: Retorna o número arredondado para a precisão de n dígitos após o ponto decimal. Se ndig for omitido retornará o inteiro mais próximo.  
+   Sintaxe: `round(x,ndig)`  
+   Exemplo: `y=round(x,1)`  
+   Finalidade: Retorna o número arredondado para a precisão de *n* dígitos após o ponto decimal. Se *ndig* for omitido retornará o inteiro mais próximo.  
 4. **A barra invertida - sequências de *escape* -**  
-  Sintaxe:  
-  *\n*, quebra linha  
-  *\t*, tabulação  
-  *\a*, bip  
-  Exemplos: x>y, 4<z, x==5, x!=4, ...  
-  Finalidade: A barra invertida seguida de um caracter representa um único caracter indicando operação da string.  
+   Sintaxe:
+   `\n`, quebra linha  
+   `\t`, tabulação  
+   `\a`, bip  
+   Exemplos: `x>y`, `4<z`, `x==5`, `x!=4`, ...  
+   Finalidade: A barra invertida seguida de um caracter representa um único caracter indicando operação da string.  
 [Topo](#ancora)
