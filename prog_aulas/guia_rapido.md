@@ -11,84 +11,105 @@
 ## Operadores
 1. **Aritméticos**  
    Sintaxe:  
-   *+*, adição  
-   *-*, subtração  
-   *, multiplicação  
-   */*, divisão
-   *//*, divisão inteira  
-   *%*, módulo de divisão inteira  
-    ** , potenciação  
-    Exemplos: *x+y, 4-z, 8*5, x/4, x//4, x%4, x ** 2  
+   `+`, adição  
+   `-`, subtração  
+   `*`, multiplicação  
+   `/`, divisão
+   `//`, divisão inteira  
+   `%`, módulo ou resto da divisão inteira  
+    `**` , potenciação  
+    Exemplos: `x+y`, `4-z`, `8*5`, `x/4`, `x//4`, `x%4`, `x ** 2`  
     Finalidade: implementar operação aritmética.
 2. **Lógicos de comparação**  
   Sintaxe:  
-  *>*, maior  
-  *<*, menor  
-  *>=*, maior ou igual  
-  *<=*, menor ou igual  
-  *==*, igual  
-  *!=*, diferente  
-  Exemplos: x>y, 4<z, x==5, x!=4, ...  
-  Finalidade: realizar a comparação e retornar True (verdadeiro) ou False (falso).  
+  `>`, maior  
+  `<`, menor  
+  `>=`, maior ou igual  
+  `<=`, menor ou igual  
+  `==`, igual  
+  `!=`, diferente  
+  Exemplos: `x>y`, `4<z`, `x==5`, `x!=4`, ...  
+  Finalidade: realizar a comparação e retornar *True* (verdadeiro) ou *False* (falso).  
 3. **Lógicos**  
   Sintaxe:  
-  *or*, disjunção - ou  
-  *and*, conjunção - e  
-  *not*, negação  
-  Exemplos: x or y, x and y, not x, ... onde x, y retornam *True* ou *False* 
+  `or`, disjunção - ou  
+  `and`, conjunção - e  
+  `not`, negação  
+  Exemplos: `x or y`, `x and y`, `not x`, ... onde x, y assumem os valores *True* ou *False* 
   Finalidade: realizar operações lógicas entre expressões que retornam *True* (verdadeiro) ou *False* (falso).  
 [Topo](#ancora)
 
 <a id="ancora2"></a>
 ## Instruções simples e compostas 
 1. **Atribuição**  
-   Sintaxe: *=*  
-   Exemplo: *x=24*  
-   Finalidade: atribuir um valor à direita do sinal da equação a uma variável à esquerda do sinal. No exemplo, x **recebe** 24.
+   Sintaxe: `var = var` ou `var = numero` ou `var = expressão`  
+   Exemplo: `x = 24`  
+   Finalidade: atribuir um valor à direita do sinal da equação a uma variável à esquerda do sinal. No exemplo, *x* **recebe** 24.
 2. **Comando if**  
-  Sintaxe:  
-  *if cond:*  
-  *-->instruções*  
-  Exemplo:  
-  *if x<0:*  
-  *-->print(x)*  
-  Finalidade: Executa as 'instruções' somente se a condição for verdadeira.  
+   Sintaxe:  
+   ```
+   if cond:
+      instrução ou bloco de instruções
+   ```  
+   Exemplo:  
+   ```
+   if x<0:
+      print(x)
+   ```
+   Finalidade: Executa a instrução ou o bloco de instruções somente se a condição for verdadeira.  
 3. **Comando if...else...**  
-  Sintaxe:  
-  *if cond:*  
-  *-->instruções A*  
-  *else:*  
-  *-->instruções B*  
-  Exemplo:  
-  *if x<0:*  
-  *-->print(x)*  
-  *else:*  
-  *-->print(y)*  
-  Finalidade: Executa o bloco A de 'instruções' somente se a condição for verdadeira. Se a condição for falsa executa o bloco B de 'instruções'.  
+   Sintaxe:  
+   ```
+   if cond:
+      instrução ou bloco de instruções 1
+   else:
+      instrução ou bloco de instruções 2
+   ```
+   Exemplo:
+   ```
+   if x<0:
+      print(x)
+   else:
+      print(y)
+   ```
+   Finalidade: Executa o bloco 1 de instruções somente se a condição for verdadeira. Se a condição for falsa executa o bloco 2 de instruções.  
 4. **Comando if...elif...else...**  
-  Sintaxe:  
-  *if cond 1:*  
-  *-->instruções A*  
-  *elif cond 2:*  
-  *-->instruções B*  
-  *else:*  
-  *-->instruções C*  
-  Exemplo:  
-  *if x<16:*  
-  *-->print(x)*  
-  *elif x<25:*  
-  *-->print(x+16)*  
-  *else:*  
-  *-->print(x+25)*  
-  Finalidade: Executa o bloco A de 'instruções' somente se a condição 1 for verdadeira. Se a condição for falsa, testa a condição 2. Se for verdadeira, executa o bloco B de 'instruções', senão executa o bloco C de 'instruções'. **O *else...* é opcional**   
+   Sintaxe:
+   ```
+   if cond 1:
+      instrução ou bloco de instruções 1
+   elif cond 2:
+      instrução ou bloco de instruções 2
+   ...
+   elif cond n:
+      instrução ou bloco de instruções n
+   else:
+      instruções C
+   ```
+   Exemplo:
+   ```
+   if x<16:
+      print(x)
+   elif x<25:
+      print(x+16)
+   else:
+      print(x+25)
+   ```
+   Finalidade: Executa o bloco 1 de instruções somente se a condição 1 for verdadeira. Se a condição for falsa, testa a condição 2. Se for verdadeira, executa o bloco 2 de instruções, assim por diante. **O *else...* é opcional**   
 5. **Comando while...**  
-  Sintaxe:  
-  *while cond :*  
-  *-->instruções*  
-  Exemplo:  
-  *while x<16:*  
-  *-->print(x)*    
-  Finalidade: Executa as 'instruções' enquanto a condição for verdadeira. Se a condição for falsa, para à execução da instrução seguinte ao *while*  
+  Sintaxe:
+  ```
+  while cond:
+   instrução ou bloco de instruções
+  ```
+   Exemplo:
+   ```
+   x = 1
+   while x<16:
+      print(x)
+      x = x + 1
+   ```
+   Finalidade: Executa o bloco de instruções enquanto a condição for verdadeira e volta a testa a condição. Se a condição for falsa, prossegue para à execução da instrução seguinte ao *while*  
 5. **Comando for...**  
   Sintaxe:  
   *for var in range(limite):*  
