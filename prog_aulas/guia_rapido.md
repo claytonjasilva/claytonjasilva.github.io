@@ -195,7 +195,7 @@
    Exemplo: `y=round(x,1)`  
    Finalidade: Retorna o número arredondado para a precisão de *n* dígitos após o ponto decimal. Se *ndig* for omitido retornará o inteiro mais próximo.  
 4. **A barra invertida - sequências de *escape* -**  
-   Sintaxe:
+   Sintaxe:  
    `\n`, quebra linha  
    `\t`, tabulação  
    `\a`, bip  
