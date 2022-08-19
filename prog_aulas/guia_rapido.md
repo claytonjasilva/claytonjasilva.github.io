@@ -201,4 +201,13 @@
    `\a`, bip  
    Exemplos: `x>y`, `4<z`, `x==5`, `x!=4`, ...  
    Finalidade: A barra invertida seguida de um caracter representa um único caracter indicando operação da string.  
+  5. **Importando pacotes**
+   Sintaxe: `import pacote`  
+   Exemplo: `import math`  
+   Finalidade: importa todos os módulos do pacote
+   6. **Importando módulos de pacotes**
+   Sintaxe: `from pacote import módulo`  
+   Exemplo: `from math import sqrt`  
+   Finalidade: importa somente o módulo do pacote
+   
 [Topo](#ancora)
