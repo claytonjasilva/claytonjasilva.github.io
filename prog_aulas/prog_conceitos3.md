@@ -31,7 +31,7 @@ while condição:
 for nome_de_variável in range(N):
   instrução ou bloco de instruções
 ```
-- A instrução determina a execução de **N** *loops*. N pode ser um número ou o valor armazenado anteriormente em uma variável.
+- A instrução determina a execução de **N** *loops*. N pode ser um número ou o valor armazenado anteriormente em uma variável. [le30Notas.py](https://github.com/claytonjasilva/prog_exemplos/blob/main/le30Notas.py)  
 - A instrução `range(N)` define uma lista de números que varia entre **0 e N-1**. Em cada *loop* o interpretador atribui de forma crescente à variável *nome_de_variável* um valor da lista.
 - **Observações**  
   - A função `range` admite também a sintaxe `range(start,stop,step)`, onde *start* é o limite inferior, *stop* é o limite superior e *step* é o passo em cada incremento
