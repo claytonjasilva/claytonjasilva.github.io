@@ -110,7 +110,7 @@
       x = x + 1
    ```
    Finalidade: Executa o bloco de instruções enquanto a condição for verdadeira e volta a testa a condição. Se a condição for falsa, prossegue para à execução da instrução seguinte ao *while*  
-5. **Comando for...**  
+6. **Comando for...**  
    Sintaxe:
    ```
    for var in range(limite):
@@ -122,6 +122,14 @@
       print(x)
    ```
    Finalidade: Executa o bloco de instruções em um número de *loops* controlado por x. Em cada *loop* o valor de *x* é incrementado em 1, dentro dos limites de 0 a (limite-1)  
+ 7. **Função range**  
+   Sintaxe: `range(stop)` ou `range(start, stop)` ou `range(start, stop, step)`
+   Exemplo:
+   ```
+   for x in range(1,16):
+      print(x)
+   ```
+   Finalidade: retorna um objeto interável de inteiros que inicia em *start*, incrementa em *step* até o limite de *stop* 
 [Topo](#ancora)  
 
 <a id="ancora3"></a>
