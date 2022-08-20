@@ -37,6 +37,7 @@
   `not`, negação  
   Exemplos: `x or y`, `x and y`, `not x`, ... onde x, y assumem os valores *True* ou *False* 
   Finalidade: realizar operações lógicas entre expressões que retornam *True* (verdadeiro) ou *False* (falso).  
+
 [Topo](#ancora)
 
 <a id="ancora2"></a>
@@ -115,21 +116,22 @@
    ```
    for var in range(limite):
       bloco de instruções
-   ```
+   ```  
    Exemplo:
    ```
    for x in range(16):
       print(x)
    ```
    Finalidade: Executa o bloco de instruções em um número de *loops* controlado por x. Em cada *loop* o valor de *x* é incrementado em 1, dentro dos limites de 0 a (limite-1)  
- 7. **Função range**  
-   Sintaxe: `range(stop)` ou `range(start, stop)` ou `range(start, stop, step)`
+  7. **Função range**  
+   Sintaxe: `range(stop)` ou `range(start, stop)` ou `range(start, stop, step)`  
    Exemplo:
-   ```
-   for x in range(1,16):
-      print(x)
-   ```
-   Finalidade: retorna um objeto interável de inteiros que inicia em *start*, incrementa em *step* até o limite de *stop* 
+      ```
+      for x in range(1,16):
+         print(x)
+      ```
+      Finalidade: retorna um objeto interável de inteiros que inicia em *start*, incrementa em *step* até o limite de *stop*   
+
 [Topo](#ancora)  
 
 <a id="ancora3"></a>
@@ -142,6 +144,7 @@
    Sintaxe: `input(texto)`, em que `texto` é uma cadeia de caracteres delimitada por aspas duplas `"` ou aspas simples `'`   
    Exemplo: `x=input("Digite o valor")`  
    Finalidade: ler o valor digitado pelo usuário no 'console', após ele teclar *enter* e armazena que foi digitado **como tipo texto** em *x*. No exemplo, o texto digitado pelo usuário será armazenado em *x*.  
+
 [Topo](#ancora) 
 
 <a id="ancora4"></a>
@@ -154,6 +157,7 @@
    Sintaxe: `float()`, similar ao uso do `int`  
    Exemplo: `y=float(x)`  
    Finalidade: converter um valor para um número de ponto flutuante. No exemplo, o valor de *x* é convertido para ponto flutuante  
+
 [Topo](#ancora)
 
 <a id="ancora5"></a>
@@ -209,7 +213,7 @@
    `\a`, bip  
    Exemplos: `x>y`, `4<z`, `x==5`, `x!=4`, ...  
    Finalidade: A barra invertida seguida de um caracter representa um único caracter indicando operação da string.  
-  5. **Importando pacotes**
+ 5. **Importando pacotes**
    Sintaxe: `import pacote`  
    Exemplo: `import math`  
    Finalidade: importa todos os módulos do pacote
