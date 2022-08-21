@@ -10,7 +10,7 @@ Alguns vídeos interessantes:
    - [Do passado ao futuro: as revoluções industriais](https://youtu.be/urq74GM5smg)  
    - [A indústria 4.0](https://youtu.be/RPC7yo99Nxs)  
    - [Desafios da engenharia na próxima década](https://www.youtube.com/watch?v=kH96qhxfCpg)  
-4.  [Projetos de engenharia e ferramentas para gerenciamento de projetos](des_aulas/des_gerencia_projetos.pdf)
+4.  [Projetos de engenharia e ferramentas para gerenciamento de projetos](des_aulas/gerencia_projetos.pdf)
 5.  [Sistemas de Engenharia e o método da Engenharia de sistemas](des_aulas/des_engenharia_sistemas.pdf)
 6.  [Otimização de soluções](des_aulas/des_solucao_otima.pdf)
 7.  [Método de apoio à decisão: AHP](des_aulas/des_ahp.pdf)
