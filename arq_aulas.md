@@ -22,10 +22,11 @@
 
 ## Exercícios
 1. [Exercício 1 - 2022.2: Conceitos iniciais e máquina de níveis](arq_aulas/form1.pdf)
-2. [Máquina IAS](arq_aulas/Form_lista_2_arq.pdf)    
-3. [Números e aritmética binária](arq_aulas/Form_lista_4_arq.pdf)    
-4. [Elementos do sistema de computação](arq_aulas/Form_lista_5_arq.pdf)  
-5. Assembler e *set* de instruções do MC2560  
+2. [Exercício 2 - 2022.2: Porgrama assembly no set da máquina IAS](arq_aulas/exercicio2.md)
+3. [Máquina IAS](arq_aulas/Form_lista_2_arq.pdf)    
+4. [Números e aritmética binária](arq_aulas/Form_lista_4_arq.pdf)    
+5. [Elementos do sistema de computação](arq_aulas/Form_lista_5_arq.pdf)  
+6. Assembler e *set* de instruções do MC2560  
   [Lista 1 assembly com solução](arq_aulas/Lista3_programas_assembly.pdf)  
   [Lista 2 assembly com solução](arq_aulas/Lista4_programas_assembly.pdf)  
   [Lista 3 assembly com solução](arq_aulas/Lista5_programas_assembly.pdf)
