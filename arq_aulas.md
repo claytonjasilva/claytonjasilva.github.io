@@ -3,7 +3,7 @@
 
 ## Tópicos
 1. [Conceitos básicos](arq_aulas/arq_aulas_conceitos.pdf)    *Atualizado 2022.2*  
-2. [Números e aritmética binária](arq_aulas/arq_aulas_representacao.pdf) 
+2. [Números e aritmética binária](arq_aulas/arq_aulas_aritmetica.pdf) *Atualizado 2022.2*  
 3. [Nível de lógica digital: circuitos combinacionais](arq_aulas/arq_aulas_logica_combinacional.pdf)    
 4. [Nível de lógica digital: circuitos sequenciais](arq_aulas/arq_aulas_logica_sequencial.pdf)
 5. [Detalhamento dos elementos fundamentais das arquiteturas](arq_aulas/arq_aulas_componentes.pdf)
