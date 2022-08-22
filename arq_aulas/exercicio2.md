@@ -8,7 +8,7 @@ lsh
 add m(x) 101
 stor m(x) 102
 ```
-Descrever o que o programa realiza.
+Descrever o que o programa realiza.  
 3. Seja o código no assembly da máquina IAS, apresentado abaixo
 ```
 load mq 100
