@@ -3,11 +3,10 @@
 1. Elaborar um programa no assembly da máquina IAS discutido em sala, para ler 3 dados armazenados nas posições de endereço de memória adjacentes, a partir da posição 500. Somar os três valores e armazenar o resultado na posição 600.
 2. Seja o código no assembly da máquina IAS, apresentado abaixo
 ```
-load mq 100
+load m(x) 100
 lsh
-load mq 101
 add m(x) 101
-stor 102
+stor m(x) 102
 ```
 Descrever o que o programa realiza.
 3. Seja o código no assembly da máquina IAS, apresentado abaixo
