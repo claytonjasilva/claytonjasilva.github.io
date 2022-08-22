@@ -26,5 +26,5 @@ loadi 25
 add m(x) 100
 stor m(x) 101
 ```
-Representar o diagrama de estados na execução do programa, admitindo o ciclo de instruções tratado em sala. Considerando a microarquitetura da máquina IAS, propor um diagrama de temporização.   
+Representar o diagrama de estados na execução do programa, admitindo o ciclo de instruções tratado em sala. Considerando a microarquitetura da máquina IAS, propor um diagrama de temporização. Admitir que a instrução inicial está armazenada no endereço decimal 0.  
 7. Escrever o código das questões 2, 3 e 6 em linguagem de máquina, utilizando a representação hexadecimal.
