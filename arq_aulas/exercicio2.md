@@ -23,8 +23,8 @@ Descrever o que o programa realiza.
 6. Seja o código no assmebly ampliado proposto na questão anterior, apresentado abaixo
 ```
 loadi 25
-add 100
-stor 101
+add m(x) 100
+stor m(x) 101
 ```
 Representar o diagrama de estados na execução do programa, admitindo o ciclo de instruções tratado em sala. Considerando a microarquitetura da máquina IAS, propor um diagrama de temporização.   
 7. Escrever o código das questões 2, 3 e 6 em linguagem de máquina, utilizando a representação hexadecimal.
