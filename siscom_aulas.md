@@ -4,7 +4,7 @@
 
 1. [Elementos dos sistemas de comunicações](siscom_aulas/modelo_siscom.pdf)
 2. [Codificadores de voz](siscom_aulas/codec_voz.pdf) 
-3. Técnicas de modulação: modulação analógica e modulação digital
+3. Técnicas de modulação: [modulação analógica](siscom_aulas/modulacao_analogica.pdf) e modulação digital
 4. Códigos corretores de erros
 5. Comportamento do canal móvel de comunicações: mecanismos básicos de propagação, perdas em larga escala- modelos de propagação *outdoor*, modelos de propagação *indoor*, atenuação em pequena escala e caminhos múltiplos
 6. Equalizadores de canal: lineares e não lineares
