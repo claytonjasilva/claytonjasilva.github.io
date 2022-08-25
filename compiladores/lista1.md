@@ -14,8 +14,8 @@ Propor uma abstração para descrever o protótipo de funções na linguagem C.
 3. Considerando o protótipo de função na linguagem C `int fac(int n);`, propor a derivação de acordo com a regra definida na questão anterior.   
 4. Propor também a árvore de análise sintática.   
 5. Escrever uma árvore de análise sintática para a estrutura heterogênea `struct` na linguagem C.   
- ```
- struct aluno
+```
+struct aluno
 {
 char nome[50];
 float nota;
