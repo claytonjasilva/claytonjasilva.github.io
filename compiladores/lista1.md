@@ -34,7 +34,7 @@ float nota;
 7.Considere a seguinte gramática  
 
 ```
-<S> -> <a>a<B>b
+<S> -> <A>a<B>b
 <A> -> <A>b | b
 <B> -> a<B> | a
 ```
