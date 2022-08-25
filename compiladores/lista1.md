@@ -13,7 +13,8 @@ Admitindo que os *tokens* são palavras reservadas ou palavras-chave, identifica
 Propor uma abstração para descrever o protótipo de funções na linguagem C.   
 3. Considerando o protótipo de função na linguagem C `int fac(int n);`, propor a derivação de acordo com a regra definida na questão anterior.   
 4. Propor também a árvore de análise sintática.   
-5. Escrever uma árvore de análise sintática para a criação de uma estrutura heterogênea `struct` (registro) na linguagem C.   
+5. Escrever uma árvore de análise sintática para a criação de uma estrutura heterogênea `struct` (registro) na linguagem C.  
+
 ```
 struct aluno
 {
@@ -21,6 +22,7 @@ char nome[50];
 float nota;
 };
 ```
+
 6. Prove que a sentença abaixo é ambígua:  
 
 ```
