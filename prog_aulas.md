@@ -1,5 +1,7 @@
 # Programação - 2022.2
 
+
+## Conteúdo  
 0. [Iniciando...](prog_aulas/prog_inicio.md) - *agosto/22*
 1. [Conceitos de programação procedural: tipos, operadores, entrada/saída](prog_aulas/prog_conceitos1.md) - *agosto/22*   
 2. [Conceitos de programação procedural: condicionais simples e compostas](prog_aulas/prog_conceitos2.md) - *agosto/22*  
@@ -12,7 +14,10 @@
 9. [Módulos](prog_aulas/prog_modulos.md) e [pacotes](prog_aulas/prog_pacotes.md)
 10. Pacotes [NumPy](https://numpy.org/doc/stable/user/absolute_beginners.html), [Matplotlib](https://matplotlib.org/stable/plot_types/index.html) e [SciPy](https://docs.scipy.org/doc/scipy/getting_started.html#getting-started-ref)
 
-### Guia rápido
+## Exercícios propostos
+1. [Conceitos iniciais](exercicios_conceitosIniciais.md)
+
+## Guia rápido
 **Guia para utilizar a sintaxe básica do Python - atualizado de acordo com as aulas**  
 [Guia básico](prog_aulas/guia_rapido.md)
 
