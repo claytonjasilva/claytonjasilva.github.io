@@ -10,3 +10,4 @@
 7. Ler um número inteiro de 3 dígitos. Calcular e escrever a soma dos dígitos.  
 8. Calcular a velocidade do corpo na chegada ao solo, usando a fórmula *V=g.tempo*. Considere a força da gravidade (g), g = 9,8 *m/s^2*, onde *^* representa a operação de potenciação. O corpo é abandonado em queda livre de uma determinada altura e leva 6 segundos para chegar à superfície.   
 9. Ler um número inteiro (*n*). Escrever se o número é par ou impar.  
+10. Ler três números (*a*, *b* e *c*). Calcular e escrever o resultado das expressões matemáticas: (a) *2.[a+(b.c)]/(3.b)* (b) *2.a+(b.c)/(3.b)* (c) *2.a+b.c/(3.b)* (b) *2.a+b.c/3.b*
