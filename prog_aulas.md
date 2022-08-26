@@ -17,6 +17,7 @@
 ## Exercícios propostos
 1. [Conceitos iniciais](prog_aulas/exercicios_conceitosIniciais.md)  
 2. [Instruções compostas condicionais](prog_aulas/exercicios_condicionais.md)  
+3. [Instruções compostas de repetição](prog_aulas/exercicios_repeticao.md)
 
 ## Guia rápido
 **Guia para utilizar a sintaxe básica do Python - atualizado de acordo com as aulas**  
