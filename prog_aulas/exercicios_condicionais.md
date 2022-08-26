@@ -15,5 +15,4 @@
 "Já trabalhou com a vítima?"   
 O programa deve no final emitir uma classificação sobre a participação da pessoa no crime. Se a pessoa responder positivamente a 2 questões ela deve ser classificada como "Suspeita", entre 3 e 4 como "Cúmplice" e 5 como "Assassino". Caso contrário, ele será classificado como "Inocente".   
 Ver a relação de exercícios proposta em [Python Brasil](https://wiki.python.org.br/ListaDeExercicios)
-8. Ler o montante financeiro na moeda barasileira (R$) e o tipo de moeda ('dolar', 'euro' ou 'libra') para a qual se deseja convertê-la. Ler também a cotação do dia para conversão da moeda em real para dólar, euro ou libra. Escrever a conversão a moeda selecionada.
-9. 
+8. Ler um montante financeiro em moeda barasileira (R$) e o tipo de moeda ('dolar', 'euro' ou 'libra') para o qual se deseja convertê-lo. Ler também a cotação do dia para conversão da moeda em real para dólar, euro e libra. Escrever a conversão à moeda selecionada.
