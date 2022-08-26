@@ -15,7 +15,8 @@
 10. Pacotes [NumPy](https://numpy.org/doc/stable/user/absolute_beginners.html), [Matplotlib](https://matplotlib.org/stable/plot_types/index.html) e [SciPy](https://docs.scipy.org/doc/scipy/getting_started.html#getting-started-ref)
 
 ## Exercícios propostos
-1. [Conceitos iniciais](prog_aulas/exercicios_conceitosIniciais.md)
+1. [Conceitos iniciais](prog_aulas/exercicios_conceitosIniciais.md)  
+2. [Instruções compostas condicionais](prog_aulas/exercicios_condicionais.md)  
 
 ## Guia rápido
 **Guia para utilizar a sintaxe básica do Python - atualizado de acordo com as aulas**  
