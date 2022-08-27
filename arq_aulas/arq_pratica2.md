@@ -2,7 +2,7 @@
 
 #### Vamos prosseguir nas práticas com a placa do Arduíno 2560...
 
-1. Construir o circuito do Arduíno com o LCD 1602, conforme orientado na [nota 5 do Arduino](/arduino/arduino_5.pdf)
+1. Montar a placa de acordo com o [esquema elétrico](arq_aulas/Schematic_pratica2-3_2022-08-27.png) 
 
 #### Escrevendo o *Sketch*...
 1. Elaborar o sketch conforme orientação da nota
