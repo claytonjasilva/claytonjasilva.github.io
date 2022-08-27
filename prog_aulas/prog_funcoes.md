@@ -4,7 +4,7 @@ No contexto de uma programação, uma **função** é uma sequência nomeada de 
 **Por que usar funções?**     
 - Reutilizar código: as funções permitem agrupar e generalizar um código para se usado arbitrariamente muitas vezes posteriormente  
 - Decomposição procedural: permitem dividir o sistema desenvolvido em partes, com tarefas bem definidas  
-- 
+
 ### Chamada de funções
 Seja **chamada de função** `round(x,1)`  
 O nome da função é `round`  
