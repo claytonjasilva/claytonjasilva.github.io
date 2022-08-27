@@ -1,31 +1,44 @@
 ## Funções em Python  
-### [Definição de funções](https://docs.python.org/pt-br/3/reference/compound_stmts.html#function-definitions)
+No contexto de uma programação, uma **função** é uma sequência nomeada de instruções que proporciona um resultado.  
+[Definição de funções](https://docs.python.org/pt-br/3/reference/compound_stmts.html#function-definitions)  
+**Por que usar funções?**     
+- Reutilizar código: as funções permitem agrupar e generalizar um código para se usado arbitrariamente muitas vezes posteriormente  
+- Decomposição procedural: permitem dividir o sistema desenvolvido em partes, com tarefas bem definidas  
+- 
+### Chamada de funções
+Seja **chamada de função** `round(x,1)`  
+O nome da função é `round`  
+A expressão entre parênteses é chamada de **argumento** da função. Normalmente, diz-se que a função **recebe** um argumento e **retorna** um resultado. O resultado é chamado de **valor de retorno**.  
 
-### Por que usar funções?     
-- Reutilizar código: as funções permitem agrupar e generalizar um código para se usado arbitrariamente muitas vezes posteriormente
-- Decomposição procedural: permitem dividir o sistema desenvolvido em partes, com tarefas bem definidas
-
-### Sintaxe  
-- A sintaxe geral é dada por  
-*def nome_da_função(parâmetros):*    
-*--> bloco de instruções*   
-*--> return valor*  
-- O uso do comando simples [*return*](https://docs.python.org/pt-br/3/reference/simple_stmts.html#the-return-statement) pode acompanhar ou não a definição de uma função.  
-- O comando simples *return* devolve o resultado da função chamada para o programa que a chama. Por exemplo,  
-*y = func(a)*  
-atribui para y o valor retornado pela função 
-- Os **parâmetros** são nomes das variáveis que receberão os **argumentos** quando a função for chamada e devem ser separados por vírgula (se houver mais de um parâmetro)  
-- Na estrutura chamadora utiliza-se *função(argumento's)*. Os valores dos **argumentos** são copiados para os **parâmetros** da função. A alteração do valor do parâmetros não altera o valor dos argumentos se estes forem dos tipos imutáveis (int, float, ...). Por exemplo,  
-*def fun(x)*  
--->x=1*  
--->return 0*     
-*x=2*    
-*fun(x)*  
-*print(x)*  
+### Como definir uma nova função...
+Para criar uma nova função é necessário escrever instruções atendendo a sintaxe do Python, da seguinte forma  
+```
+def nome_da_função(lista_de_parâmetros):
+  corpo de instruções
+  
+ ```  
+A lista de parâmetros contém os nome de todas as variáveis que receberão os dados para a função executar suas instruções separados por vírgulas.  
+A definição de uma função cria um **objeto de função**, que tem o tipo *function*.  
+Uma vez definida a função, ela poderá ser usada dentro de outra função.   
+#### Retornando valores ...
+Algumas funções devolvem resultado. Por exemplo, a função `round(12.345,1)` devolve o resultado 12.3. Se a instrução utilizada for `x = round(12.345,1)`, o resultado será atribuído à variável *x*.  
+Para a função devolver um resultado é necessário utilizar a instrução simples `return valor_a_retornar` no corpo das instruções.  
+A instrução simples [*return*](https://docs.python.org/pt-br/3/reference/simple_stmts.html#the-return-statement) pode acompanhar ou não a definição de uma função.   
+#### Os parâmetros são ...  
+os nomes das variáveis que receberão os **argumentos** quando a função for chamada e devem ser separados por vírgula (se houver mais de um parâmetro).  
+Na estrutura chamadora utiliza-se `função(lista_de_argumentos)`. Os valores dos argumentos são copiados para os parâmetros da função. **A alteração do valor dos parâmetros não altera o valor dos argumentos**. Por exemplo,
+```
+def fun(x)  
+  x=1  
+ return 0*     
+x=2    
+fun(x)  
+print(x)
+```
 Escreve o valor **2**
 
 ### Escopo das variáveis  
-- Por padrão, todos os nomes das variáveis atribuídos em uma função são locais, isto é, existem apensas enquanto a função é executada. Variáveis globais são lidas e atualizadas por qualquer função ou método do programa. As variáveis locais só podem ser acessadas por código pertencente ao método ou função onde foi declarado a variável. [Ver detalhes](prog_funcoes_escopo.md)
+Por padrão, todos os nomes das variáveis atribuídos em uma função são **locais**, isto é, existem apensas enquanto a função é executada. Variáveis globais são lidas e atualizadas por qualquer função ou método do programa. As variáveis locais só podem ser acessadas por código pertencente ao método ou função onde foi declarado a variável. [Ver detalhes](prog_funcoes_escopo.md)
 
 ### Outras considerações sobre funções  
 - A linguagem Python posssui algumas [funções embutidas](https://docs.python.org/pt-br/3/library/functions.html)
