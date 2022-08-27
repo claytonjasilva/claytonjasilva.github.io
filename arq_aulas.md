@@ -14,7 +14,7 @@
 *Obs. As práticas e os exercícios serão atualizadas/propostas à medida que a apresentação do conteúdo evoluir durante o semestre* 
 
 1. [Prática 1 Arduíno](arq_aulas/arq_pratica1.md)      *Atualizado 2022.2*
-2. [Prática 2 Arduíno](arq_aulas/arq_pratica2.md)
+2. [Prática 2 Arduíno](arq_aulas/arq_pratica2.md)      *Ataulizado 2022.2*
 3. [Simulador cache - mapeamento direto](arq_aulas/simuladorCache.ino)
 4. **Trabalhos Avaliações Bimestrais**:  
   [Trabalho - AP1](arq_aulas/arq_AP1_trabalho.pdf)  
