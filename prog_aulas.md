@@ -19,6 +19,9 @@
 2. [Instruções compostas condicionais](prog_aulas/exercicios_condicionais.md)  
 3. [Instruções compostas de repetição](prog_aulas/exercicios_repeticao.md)
 
+## Avaliações Continuadas
+1. [AC1](https://forms.gle/MSFH9vBov7cPHfer5)
+
 ## Guia rápido
 **Guia para utilizar a sintaxe básica do Python - atualizado de acordo com as aulas**  
 [Guia básico](prog_aulas/guia_rapido.md)
