@@ -1,5 +1,15 @@
 ## Listas 
 
+### Sobre listas...
+- Constituem um dos tipos de **sequências**: conjuntos **ordenados** finitos de **elementos**, **indexados** por números não negativos. 
+![Lista](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/prog_aulas/lista.png)  
+- Funcionalmente, são apenas um lugar para reunir outros objetos.  
+- Tratam-se de um tipo de sequência **mutável**, ou seja, que pode ser alterada após ser criada. 
+- Definem uma **ordenação** posicional dos objetos, da esquerda para a direita. 
+- Possuem **comprimento variável**, ou seja, pode crescer e diminuir.
+- Podem conter qualquer tipo de objeto - os elementos não precisam ser do mesmo tipo, mas **geralmente** são usadas com elementos do mesmo tipo - estrutura **homogênea**.
+- Admitem aninhamento arbitrário, ou seja, podem ser construídas listas de listas.
+
 ### Sintaxe  
 - As listas são definidas por elementos entre **colchetes**, separados por **vírgulas**, como *[e1, e2, e3, ..., en]*
 - Toda lista é designada por um **nome de lista**, de forma semelhante a uma variável simples  
@@ -8,15 +18,6 @@
 - Para inicializar uma lista é possível atribuir a um nome a sequência de elementos entre colchetes, na forma  
 *nome = [e1, e2, ..., en]*  
 - Cada elemento da lista pode ser tratado como uma variável simples do seu respectivo tipo
-
-### Mais sobre listas...
-- Constituem um dos tipos de **sequências**: conjuntos **ordenados** finitos **indexados por números** não negativos. 
-- Funcionalmente, são apenas um lugar para reunir outros objetos.  
-- Tratam-se de um tipo de sequência **mutável**, ou seja, que podem ser alteradas após serem criadas. 
-- Definem uma **ordenação** posicional dos objetos, da esquerda para a direita. 
-- Possuem **comprimento variável**, ou seja, podem crescer e diminuir.
-- Podem conter qualquer tipo de objeto - os elementos não precisam ser do mesmo tipo, mas **geralmente** são usadas com elementos do mesmo tipo - estrutura **homogênea**.
-- Admitem aninhamento arbitrário, ou seja, podem ser construídas listas de listas.
 
 ### Alguns métodos sobre listas  
 - Para incluir um elemento em uma lista pode-se usar o método *nome da lista.append()*  
