@@ -1,23 +1,53 @@
 ## Listas 
 
 ### Sobre listas...
-- Constituem um dos tipos de **sequências**: conjuntos **ordenados** finitos de **elementos**, **indexados** por números não negativos. 
-![Lista](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/prog_aulas/lista.png)  
-- Funcionalmente, são apenas um lugar para reunir outros objetos.  
+- Constituem um dos tipos de **sequências**: conjuntos **ordenados** finitos de **elementos**, **indexados** por números não negativos.   
 - Tratam-se de um tipo de sequência **mutável**, ou seja, que pode ser alterada após ser criada. 
 - Definem uma **ordenação** posicional dos objetos, da esquerda para a direita. 
 - Possuem **comprimento variável**, ou seja, pode crescer e diminuir.
 - Podem conter qualquer tipo de objeto - os elementos não precisam ser do mesmo tipo, mas **geralmente** são usadas com elementos do mesmo tipo - estrutura **homogênea**.
-- Admitem aninhamento arbitrário, ou seja, podem ser construídas listas de listas.
+- Admitem **aninhamento arbitrário**, ou seja, podem ser construídas listas de listas.
 
 ### Sintaxe  
-- As listas são definidas por elementos entre **colchetes**, separados por **vírgulas**, como *[e1, e2, e3, ..., en]*
-- Toda lista é designada por um **nome de lista**, de forma semelhante a uma variável simples  
-- Cada elemento de uma lista é referenciado pelo **nome** da lista, seguido pelo **índice (entre colchetes)** que sinaliza a **posição** que ocupa, a partir do **índice 0 até o índice n-1**, *nome[0]*, ..., até *nome[n-1]*  
-- Quando o comprimento de uma sequência é *n*, o conjunto de índices contém os números 0, 1, …, n-1.  
-- Para inicializar uma lista é possível atribuir a um nome a sequência de elementos entre colchetes, na forma  
-*nome = [e1, e2, ..., en]*  
-- Cada elemento da lista pode ser tratado como uma variável simples do seu respectivo tipo
+- As listas são definidas por elementos entre **colchetes**, separados por **vírgulas**, como `[e1, e2, e3, ..., en]`  
+- ** Criação de listas**  
+1. Colocando os elementos entre colchetes  
+```
+nome da lista = [ lista de elementos ]
+```
+Por exemplo,  
+```
+numero = [1,3,6,7]
+```
+O elemento 6 ocupa a posição indexada [2]. O elemento 1 ocupa a posição [0].  
+2. Criando uma lista vazia e inserindo elementos pelo **método** `append()`, na forma `nome da lista.append(elemento)` - que insere o elemento no final da lista
+```
+numero = []
+numero.append(1)
+numero.append(3)
+numero.append(6)
+numero.append(7)
+```
+A lista é criada vazia. O método insere o novo dado após o último.  
+- Toda lista é designada por um nome, de forma semelhante a uma variável simples.   
+- Cada elemento de uma lista é referenciado pelo nome, seguido pelo **índice** (entre colchetes), que sinaliza a posição que ocupa, a partir do índice 0 até o índice n-1, na forma `nome da lista[indice do elemento]`.    
+Nos exemplos, o elemento *6* ocupa a posição *2*, logo pode ser tratado por `numero[2]`.    
+- O comprimento de uma sequência n possui elementos cujos índices variam de 0 a n-1.  
+Nos exemplos, a lista *numero* possui 4 elementos, indexados do índice 0 ao índice 3.  
+- Pode-se utilizar o operador de **fatias** para referenciação a um grupo de elementos da lista.  
+```
+nome da lista[indice inferior:indice superior]
+```
+Nos exemplos, `numero[1:3]` refere-se aos elementos *numero[1]* ao *numero[3]*.  
+```
+nome da lista[:indice superior]
+```
+Nos exemplos, `numero[:1]` refere-se aos elementos *numero[0]* ao *numero[1]*.
+```
+nome da lista[indice inferior:]
+```
+Nos exemplos, `numero[2:]` refere-se aos elementos *numero[2]* ao *numero[3]*.
+- Cada elemento da lista pode ser tratado como uma variável simples do seu respectivo tipo. Por exemplo, na lista `pessoa = ['pedro',18,73.2]`, *pessoa[1]* é um inteiro e *pessoa[2]* é um ponto flutuante.
 
 ### Alguns métodos sobre listas  
 - Para incluir um elemento em uma lista pode-se usar o método *nome da lista.append()*  
