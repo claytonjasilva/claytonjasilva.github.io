@@ -79,6 +79,7 @@ for x in lista:
  print(x)
 ```
 irá escrever todos os elementos da lista.  
+
 **Compreensão de lista**: é possível usar uma estrutura sintática, por exemplo, para **criar uma nova lista** com um código sobre uma lista existente.  
 Pode-se usar para criar uma nova lista a forma sintática ilustrada abaixo
 ```
@@ -86,6 +87,7 @@ t = [j for j in range(N)]
 print(t)
 ```
 escreve a lista [0, 1, 2, 3, 4, 5, 6, 7, 8, 9].  
+
 **Matrizes**: como é possível aninhar listas, é possível construir matrizes a partir de uma lista com sub-listas aninhadas. Por exemplo,  
 ```
 matriz =[[1,2,3],[4,5,6],[7,8,9]]
