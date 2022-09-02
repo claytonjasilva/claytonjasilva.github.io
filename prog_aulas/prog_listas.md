@@ -1,6 +1,6 @@
 ## Listas 
 
-### Sobre listas...
+### 1. Sobre listas...
 - Constituem um dos tipos de **sequências**: conjuntos **ordenados** finitos de **elementos**, **indexados** por números não negativos.   
 - Tratam-se de um tipo de sequência **mutável**, ou seja, que pode ser alterada após ser criada. 
 - Definem uma **ordenação** posicional dos objetos, da esquerda para a direita. 
@@ -8,10 +8,10 @@
 - Podem conter qualquer tipo de objeto - os elementos não precisam ser do mesmo tipo, mas **geralmente** são usadas com elementos do mesmo tipo - estrutura **homogênea**.
 - Admitem **aninhamento arbitrário**, ou seja, podem ser construídas listas de listas.
 
-### Sintaxe  
+### 2. Sintaxe  
 As listas são definidas por elementos entre **colchetes**, separados por **vírgulas**, como `[e1, e2, e3, ..., en]`  
 
-#### Criação de listas
+#### 2.1 Criação de listas
 Colocando os elementos entre colchetes  
 ```
 nome da lista = [ lista de elementos ]
@@ -48,18 +48,18 @@ nome da lista[indice inferior:]
 Nos exemplos, `numero[1:3]` refere-se aos elementos *numero[1]* ao *numero[3]*; `numero[:1]` refere-se aos elementos *numero[0]* ao *numero[1]*; e `numero[2:]` refere-se aos elementos *numero[2]* ao *numero[3]*.  
 Cada elemento da lista pode ser tratado como uma variável simples do seu respectivo tipo. Por exemplo, *pessoa[1]* é um inteiro e *pessoa[2]* é um ponto flutuante na lista `pessoa = ['pedro',18,73.2]`.  
 
-#### Operações com listas
+#### 2.2 Operações com listas
 **Concatenação**: operador `+`. Por exemplo, `[1,2,3] + [9,3]` resulta na lista `[1,2,3,9,3]`.  
 **Repetição**: operador `*`. Por exemplo, `[1,2]*2` resulta na lista `[1,2,1,2]`.  
 
-#### Alguns métodos sobre listas  
+#### 2.3 Alguns métodos sobre listas  
 Para incluir um elemento em uma lista pode-se usar o método *nome da lista.append()*  
 A função embutida [*len()*](https://docs.python.org/pt-br/3/library/functions.html#len) retorna o número de itens de uma sequência, incluindo as listas.  
 Mais métodos podem ser obtidos em  
  *<https://docs.python.org/pt-br/3/tutorial/datastructures.html>* ou  
  *<https://docs.python.org/3/library/stdtypes.html#index-23>*
 
-#### Matrizes
+#### 2.4 Matrizes
 - Como é possível aninhar listas, é possível construir matrizes a partir de uma lista com sub-listas aninhadas
 - Por exemplo,  
   *matriz =[[1,2,3],[4,5,6],[7,8,9]]*  
