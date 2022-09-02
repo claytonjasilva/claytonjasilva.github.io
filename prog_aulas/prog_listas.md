@@ -9,8 +9,9 @@
 - Admitem **aninhamento arbitrário**, ou seja, podem ser construídas listas de listas.
 
 ### Sintaxe  
-- As listas são definidas por elementos entre **colchetes**, separados por **vírgulas**, como `[e1, e2, e3, ..., en]`  
-#### Criação de listas  
+As listas são definidas por elementos entre **colchetes**, separados por **vírgulas**, como `[e1, e2, e3, ..., en]`  
+
+#### Criação de listas
 1. Colocando os elementos entre colchetes
 
 ```
@@ -21,7 +22,6 @@ Por exemplo,
 numero = [1,3,6,7]
 ```
 O elemento 6 ocupa a posição indexada [2]. O elemento 1 ocupa a posição [0].
-
 2. Criando uma lista vazia e inserindo elementos pelo **método** `append()`, na forma `nome da lista.append(elemento)` - que insere o elemento no final da lista.Por exemplo,   
 
 ```
@@ -31,12 +31,12 @@ numero.append(3)
 numero.append(6)
 numero.append(7)
 ```
- A lista é criada vazia. O método insere o novo dado após o último.  
+A lista é criada vazia. O método insere o novo dado após o último.  
 
 - Toda lista é designada por um nome, de forma semelhante a uma variável simples.   
 - Cada elemento de uma lista é referenciado pelo nome, seguido pelo **índice** (entre colchetes), que sinaliza a posição que ocupa, a partir do índice 0 até o índice n-1, na forma `nome da lista[indice do elemento]`. Nos exemplos, o elemento *6* ocupa a posição *2*, logo pode ser tratado por `numero[2]`.    
 - O comprimento de uma sequência n possui elementos cujos índices variam de 0 a n-1. Nos exemplos, a lista *numero* possui 4 elementos, indexados do índice 0 ao índice 3.  
-- Pode-se utilizar o operador de **fatias** para referenciação a um grupo de elementos da lista.  
+- Pode-se utilizar o operador de **fatias** para referenciação a um grupo de elementos da lista.
 ```
 nome da lista[indice inferior:indice superior]
 ```
