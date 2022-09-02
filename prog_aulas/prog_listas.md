@@ -21,7 +21,8 @@ Por exemplo,
 numero = [1,3,6,7]
 ```
 O elemento 6 ocupa a posição indexada [2]. O elemento 1 ocupa a posição [0].  
-Criando uma lista vazia e inserindo elementos pelo **método** `append()`, na forma `nome da lista.append(elemento)` - que insere o elemento no final da lista.Por exemplo,
+Criando uma lista vazia e inserindo elementos pelo **método** `append()`, na forma `nome da lista.append(elemento)` - que insere o elemento no final da lista.  
+Por exemplo,
 ```
 numero = []
 numero.append(1)
