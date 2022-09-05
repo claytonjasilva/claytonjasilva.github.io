@@ -30,5 +30,6 @@ Alguns vídeos interessantes:
 ## Exercícios e trabalhos
 1. [Form 1 - Engenharia e sociedade](https://forms.gle/okmUVnRG2TYVJ3oW7)  
 2. [Form 2 - Projetos](https://forms.gle/yWAM7SQKV9j9hysZ6)  
-3. [Form 3 - Engenharia de Sistemas](https://forms.gle/nFTRAMy1mqPEPCB8A)
+3. Elaborar o cronograma de trabalho utilizando o *Project Libre* ou *MS Project* a partir dos dados disponibilizados em: [Estudo de Caso](des_aulas/gerencia_projetos_case.pdf)
+5. [Form 3 - Engenharia de Sistemas](https://forms.gle/nFTRAMy1mqPEPCB8A)
 
