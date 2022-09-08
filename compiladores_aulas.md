@@ -1,7 +1,7 @@
 # Conteúdo das Aulas - Linguagens Formais e Compiladores - 2022.2  
 
 ## Tópicos
-1. **Conceitos iniciais**
+1. **Conceitos iniciais**  
    1.1 [Conceitos introdutórios e descrição geral da sintaxe de LP](compiladores/0-FundamentosLP.pdf)  
    1.2 [Descrição geral da sintaxe de LP(cont): árvore de análise sintática](compiladores/0-FundamentosLP-cont.pdf)  
 2. **Analisador léxico**  
