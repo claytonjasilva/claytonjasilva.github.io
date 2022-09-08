@@ -7,7 +7,7 @@
 2. **Analisador léxico**  
    2.1 [Processo de varredura, expressões regulares](compiladores/1-VarreduraExpressoes.pdf)  
    2.2 [Autômatos finitos](compiladores/1-VarreduraAutomatosFinitos.pdf).  
-   2.3 [TINY adaptada](TINYv1.pdf)  
+   2.3 [TINY adaptada](compiladores/TINYv1.pdf)  
 3. Gramáticas livres de contexto e análise sintática: o processo de análise sintática, grmáticas livre de contexto, árvores de análise sintática e árvores sintáticas abstratas, ambiguidades e notações estendidas.
 4. Análise sintática descendente: análise sintática descentes recursiva e análise sintática LL.
 5. Análise sintática ascendente: autômato finito dos itens LR e análise sintática LR, análise sintática SLR, análise sintática geral LR e LALR.
