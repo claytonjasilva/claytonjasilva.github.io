@@ -7,7 +7,6 @@
 - O caminho de diretórios é definido por pontos na instrução *import*  
 Por exemplo, *import dir1.dir2.mod* onde *di1* e *dir2* são as pastas do diretório e *mod* é o módulo
 
-### Exercícios com condicionais simples e compostas  
-1. Elaborar um programa na linguagem Python que importe as funções que contemplem cálculo de área de figuras planas a partir de um pacote meupacote
-2. Elaborar um pacote contendo módulos na linguagem Phython, para cálculo de áreas e perímeros de figuras geométricas planas, usando a mesma referência sugerida na seção anterior.
-3. Vamos instalar o pacote *matplotlib*. Ver <https://docs.replit.com/programming-ide/installing-packages>. 
+### Exercícios com pacotes
+1. Elaborar um programa na linguagem Python para criar um módulo de determinação de área e perímetro de várias figuras geométricas planas diferentes.
+Elaborar outro módulo para determinação do volume de várias figuras geométricas espaciais. O módulo principal deve ler o tipo de figura e usando a função devida do pacote, escrever o resultado.
