@@ -4,11 +4,12 @@
 ## Tópicos
 1. [Conceitos básicos](arq_aulas/arq_aulas_conceitos.pdf)    *Atualizado 2022.2*  
 2. [Números e aritmética binária](arq_aulas/arq_aulas_aritmetica.pdf) *Atualizado 2022.2*  
-3. [Nível de lógica digital: circuitos combinacionais](arq_aulas/arq_aulas_logica_combinacional.pdf)    
-4. [Nível de lógica digital: circuitos sequenciais](arq_aulas/arq_aulas_logica_sequencial.pdf)
-5. [Detalhamento dos elementos fundamentais das arquiteturas](arq_aulas/arq_aulas_componentes.pdf)
-6. [Microprocessador Atmel ATmega 2560](arq_aulas/arq_aulas_mc2560.pdf)
-7. [Sistemas Operacionais](arq_aulas/arq_aulas_so.pdf)
+    [Exercícios em sala](exercicios3_sala.md)
+4. [Nível de lógica digital: circuitos combinacionais](arq_aulas/arq_aulas_logica_combinacional.pdf)    
+5. [Nível de lógica digital: circuitos sequenciais](arq_aulas/arq_aulas_logica_sequencial.pdf)
+6. [Detalhamento dos elementos fundamentais das arquiteturas](arq_aulas/arq_aulas_componentes.pdf)
+7. [Microprocessador Atmel ATmega 2560](arq_aulas/arq_aulas_mc2560.pdf)
+8. [Sistemas Operacionais](arq_aulas/arq_aulas_so.pdf)
 
 ## Práticas    
 *Obs. As práticas e os exercícios serão atualizadas/propostas à medida que a apresentação do conteúdo evoluir durante o semestre* 
