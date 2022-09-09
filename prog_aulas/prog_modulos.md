@@ -21,10 +21,7 @@
   + [File and Directory Access](https://docs.python.org/3/library/filesys.html), como, por exemplo, *[pathlib](https://docs.python.org/3/library/pathlib.html)*.
   + [File Formats](https://docs.python.org/3/library/csv.html), como, por exemplo, *[csv](https://docs.python.org/3/library/csv.html)*
 
-### Exercícios com condicionais simples e compostas  
-1. Elaborar um programa na linguagem Python contemplando um módulo que possua funções que contemplem funções de cálculo de área de figuras planas. Sugestão: usar como referência as fórmulas disponíveis em <https://brasilescola.uol.com.br/matematica/area-de-figuras-planas.htm>. O programa deve solicitar ao usuário que digite a figura cuja área deve ser calculada, calclar e determinar a área usando o módulo criado.
-2. Elaborar um módulo na linguagem Phython, utilizando as fórmulas apresentadas em <https://mundoeducacao.uol.com.br/fisica/equacoes-eletricidade.htm>, para solucionar problemas de eletricidade.
-3. Utilizando o módulo *math* da biblioteca padrão de Python, gerar uma tabela contemplando a potência *e = 2.718281*, base dos logaritmos naturais, de 0 a N, onde N é um número digitado pelo usuário.
-4. Utilizando o módulo *csv* da biblioteca padrão de Python, gerar um programa para ler um arquivo *.csv* produzido pelo Excel.
+### Exercícios com pacotes  
+Repetir os exercícios de funções implementando as funções módulos e importando as funções no módulo principal.
 
 ### Vamor prosseguir...com *[pacotes>>](prog_pacotes.md)*
