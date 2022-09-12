@@ -17,7 +17,7 @@
 
 ## Notas de aula  
 
-1. [Revisão de sinais e overview sobre elementos do Sistema de Comunicações Móveis](siscom_aulas/Conceitos_sinais_overview.pdf)  
+1. [Nota: introdução, codec de voz e moduladores](siscom_aulas/nota-intro-codec-modulador.pdf)  Rev 12/9/22
 
 
 ## Exercícios  
