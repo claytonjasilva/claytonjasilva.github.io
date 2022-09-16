@@ -20,6 +20,10 @@
 3. [Instruções compostas de repetição](prog_aulas/exercicios_repeticao.md)
 4. [Funções](prog_aulas/exercicios_funcoes.md)
 
+## Avaliações Bimestrais
+### AP1
+1. [Trabalho AP1](prog_aulas/Orientacao_trabalho_AP1.pdf)
+
 ## Avaliações Continuadas
 1. [AC1](https://forms.gle/MSFH9vBov7cPHfer5)
 
