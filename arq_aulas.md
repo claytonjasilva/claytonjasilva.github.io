@@ -16,14 +16,10 @@
 
 1. [Prática 1 Arduíno](arq_aulas/arq_pratica1.md)      *Atualizado 2022.2*
 2. [Prática 2 Arduíno](arq_aulas/arq_pratica2.md)      *Atualizado 2022.2*
-3. [Simulador cache - mapeamento direto](arq_aulas/simuladorCache.ino)
-4. **Trabalhos Avaliações Bimestrais**:  
-  [Trabalho - AP1](arq_aulas/arq_AP1_trabalho.pdf)  
-  **[Trabalho - AP2](arq_aulas/arq_AP2_trabalho.pdf)**
 
 ## Avaliações Bimestrais
 ### AP1
-1. [Trabalho AP1](arq_aulas/Orientacao_trabalho_AP1.pdf)
+1. [Trabalho AP1](arq_aulas/Orientacao_trabalho_AP1.pdf)    *Atualizado 2022.2*
 
 ## Exercícios
 1. [Exercício 1 - 2022.2: Conceitos iniciais e máquina de níveis](arq_aulas/form1.pdf)
