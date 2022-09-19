@@ -1,6 +1,11 @@
 # Arquitetura de Computadores - 2022.2
 
-1. **Agenda:** [Barra](https://1drv.ms/b/s!AsTd8oN7mu8pkbFXLfX-Min_RR3xXQ?e=dQMbVk) **-** [Centro](https://1drv.ms/b/s!AsTd8oN7mu8pkbFYfNTFsphBQWjRXw?e=Bvff7F)
+1. **Agenda:** [Barra](https://1drv.ms/b/s!AsTd8oN7mu8pkbFXLfX-Min_RR3xXQ?e=dQMbVk) **-** [Centro](https://1drv.ms/b/s!AsTd8oN7mu8pkbFYfNTFsphBQWjRXw?e=Bvff7F)  
+**Datas de avaliação**: de acordo com o calendário acadêmico  
+AP1- prova: 3/10/22 - Revisão: 10/10/22  
+AP2- prova: 21/11/22 - Revisão: até 25/11/22  
+AS - prova: 5/12/22 - Revisão: até 9/12/22
+
 2. [Grid](arq_aulas/Grid_Arquitetura.md)
 3. [Sistema de Avaliações](/./avaliacoes.md)
 4. [Conteúdo das Aulas](arq_aulas.md)
