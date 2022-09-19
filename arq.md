@@ -2,6 +2,8 @@
 
 1. **Agenda:** [Barra](https://1drv.ms/b/s!AsTd8oN7mu8pkbFXLfX-Min_RR3xXQ?e=dQMbVk) **-** [Centro](https://1drv.ms/b/s!AsTd8oN7mu8pkbFYfNTFsphBQWjRXw?e=Bvff7F)  
 **Datas de avaliação**: de acordo com o calendário acadêmico  
+Curso: Análise e Desenvolvimento de Sistemas  
+Unidade: Centro  
 AP1- prova: 3/10/22 - Revisão: 10/10/22  
 AP2- prova: 21/11/22 - Revisão: até 25/11/22  
 AS - prova: 5/12/22 - Revisão: até 9/12/22
