@@ -8,7 +8,7 @@ d. A + B + A.D.(B + ~B.C), dado que A=1, B=C=D=0
 a. Circuito 1  
 ![Circuito 1](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/arq_aulas/circuito1.jpg)  
 b. Circuito 2  
-![Circuito 2](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/arq_aulas/circuito2.jpg))
+![Circuito 2](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/arq_aulas/circuito2.jpg)
 4. Apresentar a tabela-verdade que define as possíveis combinações das entradas e respectivas saídas dos circuitos apresentados na questão anterior.
 Apresentar a expressão dos circuitos na forma canônica de soma-de-produtos.
 5. Propor um circuito para comparar dois números binários A e B de 2 bits e gerar nível alto (H) na saída somente quando A maior do que B.
