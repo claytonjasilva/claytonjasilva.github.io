@@ -7,10 +7,10 @@ d. A + B + A.D.(B + ~B.C), dado que A=1, B=C=D=0
 3. Dados os circuitos apresentados abaixo, apresentar as expressões lógicas das saídas  
 
 a. Circuito 1  
-![Circuito1](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/arq_aulas/circuito1.jpg)  
+<img src="https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/arq_aulas/circuito1.jpg">  
 
 b. Circuito 2  
-![Circuito2](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/arq_aulas/circuito2.jpg)
+<img src="https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/arq_aulas/circuito2.jpg">
 
 4. Apresentar a tabela-verdade que define as possíveis combinações das entradas e respectivas saídas dos circuitos apresentados na questão anterior.
 Apresentar a expressão dos circuitos na forma canônica de soma-de-produtos.
