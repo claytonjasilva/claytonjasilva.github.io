@@ -22,7 +22,10 @@
 
 1. [Nota: introdução, codec de voz e moduladores](siscom_aulas/nota-intro-codec-modulador.pdf)  Rev 12/9/22
 
-## [Um simulador de sistemas de comunicações móveis](https://github.com/claytonjasilva/simuladorSisCom)
+## [Um simulador de sistemas de comunicações móveis](https://github.com/claytonjasilva/simuladorSisCom)  
+
+## Avaliações
+1. AP1 - Trabalho
 
 ## Exercícios  
 
