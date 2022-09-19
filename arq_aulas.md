@@ -25,8 +25,8 @@
 1. [Exercício 1 - 2022.2: Conceitos iniciais e máquina de níveis](arq_aulas/form1.pdf)
 2. [Exercício 2 - 2022.2: Programa assembly no set da máquina IAS](arq_aulas/exercicio2.md)
 3. [Exercício 3 - 2022.2: Números e aritmética binária](arq_aulas/exercicio3.md)    
-5. [Elementos do sistema de computação](arq_aulas/Form_lista_5_arq.pdf)  
-6. Assembler e *set* de instruções do MC2560  
+4. [Exercício 4 - 2022.2: Nível de lógica digital](arq_aulas/exercicio4.md)     
+5. Assembler e *set* de instruções do MC2560  
   [Lista 1 assembly com solução](arq_aulas/Lista3_programas_assembly.pdf)  
   [Lista 2 assembly com solução](arq_aulas/Lista4_programas_assembly.pdf)  
   [Lista 3 assembly com solução](arq_aulas/Lista5_programas_assembly.pdf)
