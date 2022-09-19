@@ -6,9 +6,9 @@ d. A + B + A.D.(B + ~B.C), dado que A=1, B=C=D=0
 2. Utilizando portas AND, OR e inversores lógicos, implementar os circuitos definidos pelas expressões lógicas apresentadas na questão anterior.  
 3. Dados os circuitos apresentados abaixo, apresentar as expressões lógicas das saídas  
 a. Circuito 1  
-![Circuito 1](arq_aulas/circuito1.gif)  
+![Circuito 1](arq_aulas/circuito1.jpeg)  
 b. Circuito 2  
-![Circuito 2](arq_aulas/circuito2.gif)
+![Circuito 2](arq_aulas/circuito2.jpeg)
 4. Apresentar a tabela-verdade que define as possíveis combinações das entradas e respectivas saídas dos circuitos apresentados na questão anterior.
 Apresentar a expressão dos circuitos na forma canônica de soma-de-produtos.
 5. Propor um circuito para comparar dois números binários A e B de 2 bits e gerar nível alto (H) na saída somente quando A maior do que B.
