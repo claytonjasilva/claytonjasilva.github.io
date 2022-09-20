@@ -18,7 +18,8 @@
 1. [Conceitos iniciais](prog_aulas/exercicios_conceitosIniciais.md)  
 2. [Instruções compostas condicionais](prog_aulas/exercicios_condicionais.md)  
 3. [Instruções compostas de repetição](prog_aulas/exercicios_repeticao.md)
-4. [Funções](prog_aulas/exercicios_funcoes.md)
+4. [Funções](prog_aulas/exercicios_funcoes.md)  
+5. [Listas](prog_aulas/exercicios_listas.md)
 
 ## Avaliações Bimestrais
 ### AP1
