@@ -5,6 +5,12 @@
 Curso: Análise e Desenvolvimento de Sistemas  
 Unidade: Centro  
 AP1- prova: 3/10/22 - Revisão: 10/10/22  
+AP2- prova: 23/11/22 - Revisão: até 25/11/22  
+AS - prova: 30/11/22 - Revisão: até 9/12/22
+
+Curso: Engenharia da Computação  
+Unidade: Barra  
+AP1- prova: 28/9/22 - Revisão: 10/10/22  
 AP2- prova: 21/11/22 - Revisão: até 25/11/22  
 AS - prova: 5/12/22 - Revisão: até 9/12/22
 
