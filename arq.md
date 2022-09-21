@@ -1,6 +1,7 @@
 # Arquitetura de Computadores - 2022.2
 
 1. **Agenda:** [Barra](https://1drv.ms/b/s!AsTd8oN7mu8pkbFXLfX-Min_RR3xXQ?e=dQMbVk) **-** [Centro](https://1drv.ms/b/s!AsTd8oN7mu8pkbFYfNTFsphBQWjRXw?e=Bvff7F)  
+
 **Datas de avaliação**: de acordo com o calendário acadêmico  
 Curso: Análise e Desenvolvimento de Sistemas  
 Unidade: Centro  
