@@ -2,7 +2,8 @@
 
 1. [Agenda](https://1drv.ms/b/s!AsTd8oN7mu8pkbI64uFHVIrrXoqiDw?e=HdIMde)  
 
-Curso: Engenharia da Computação/Ciência de Ados&Inteligência Artificial  
+**Datas de avaliação**: de acordo com o calendário acadêmico  
+Curso: Engenharia da Computação/Ciência de Dados&Inteligência Artificial  
 Unidade: Barra  
 AP1- prova: 28/9/22 - Revisão: 10/10/22  
 AP2- prova: 23/11/22 - Revisão: até 25/11/22  
