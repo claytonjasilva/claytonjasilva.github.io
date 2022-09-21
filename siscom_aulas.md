@@ -25,7 +25,7 @@
 ## [Um simulador de sistemas de comunicações móveis](https://github.com/claytonjasilva/simuladorSisCom)  
 
 ## Avaliações
-1. AP1 - Trabalho
+1. [AP1 - Trabalho](siscom_aulas/Orientacao_trabalho_AP1.pdf)
 
 ## Exercícios  
 
