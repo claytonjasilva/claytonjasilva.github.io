@@ -28,3 +28,6 @@
 5. [Varrendo o código fonte](https://github.com/claytonjasilva/prog_exemplos/blob/main/entradaCodigo.c)
 ## Exercícios
 1. [Conceitos iniciais - BNF](compiladores/lista1.md)
+
+## Avaliações
+1. [AP1 - Trabalho](compiladores/Orientacao_trabalho_AP1.pdf)
