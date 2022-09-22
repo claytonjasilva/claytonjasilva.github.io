@@ -25,9 +25,11 @@
 2. [Varredura de um DFA para expressao relacional](https://github.com/claytonjasilva/prog_exemplos/blob/main/DFAoperadorRelacional.c)  
 3. [Registro de *token*](https://github.com/claytonjasilva/prog_exemplos/blob/main/TokenArray.c)  
 4. [Função *getToken*](https://github.com/claytonjasilva/prog_exemplos/blob/main/getTokenExemplo.c)  
-5. [Varrendo o código fonte](https://github.com/claytonjasilva/prog_exemplos/blob/main/entradaCodigo.c)
+5. [Varrendo o código fonte](https://github.com/claytonjasilva/prog_exemplos/blob/main/entradaCodigo.c)  
+
 ## Exercícios
 1. [Conceitos iniciais - BNF](compiladores/lista1.md)
+2. [Análise léxica](compiladores/lista2.md)
 
 ## Avaliações
 1. [AP1 - Trabalho](compiladores/Orientacao_trabalho_AP1.pdf)
