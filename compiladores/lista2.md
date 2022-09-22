@@ -23,4 +23,4 @@ digito = [0 - 9]
 numero = digito digito*  
 7. Seja a expressão regular definida pelos símbolos especiais  
 simbolos = { +, -, *, /, >, <, =, !, %, &, |}  
-, definir uam expressão lógica para os símbolos relacionais e elaborar um diagrama similar ao da questão anterior para representá-la.
+, definir uma expressão lógica para os símbolos relacionais e elaborar um diagrama similar ao da questão anterior para representá-la.
