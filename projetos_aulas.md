@@ -28,9 +28,10 @@ Alguns vídeos interessantes:
 
 
 ## Exercícios e trabalhos
-1. [Form 1 - Engenharia e sociedade](https://forms.gle/okmUVnRG2TYVJ3oW7)  
-2. [Form 2 - Projetos](https://forms.gle/yWAM7SQKV9j9hysZ6)  
+1. [Form 1 - Engenharia e sociedade](des_aulas/Form1_engenharia_sociedade.pdf)  
+2. [Form 2 - Projetos](des_aulas/Form2_gestao_projetos.pdf)  
 3. Elaborar o cronograma de trabalho utilizando o [*Project Libre*](https://sourceforge.net/projects/projectlibre/) ou *MS Project* a partir dos dados disponibilizados em: [Estudo de Caso](des_aulas/gerencia_projetos_case.pdf)
-5. [Form 3 - Engenharia de Sistemas](https://forms.gle/nFTRAMy1mqPEPCB8A)  
-6. Diagramas de classes, objetos e IDEF-0 de um sistema veículo - [modelos estático e funcional](des_aulas/Modelo-estatico-funcional-veiculo.pdf)
+5. [Form 3 - Engenharia de Sistemas](des_aulas/Form3_engenharia_sistemas.pdf)  
+6. Diagramas de classes, objetos e IDEF-0 de um sistema veículo - [modelos estático e funcional](des_aulas/Modelo-estatico-funcional-veiculo.pdf)  
+7. [Form 4 - Modelo de Sistemas de Engenharia](des_aulas/Form4_modelos_sistemas.pdf)  
 
