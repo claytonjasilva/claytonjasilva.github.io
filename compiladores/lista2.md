@@ -20,4 +20,7 @@ Demonstrar a associtividade.
 
 6. Utilizando um diagrama similar ao apresentado na questão aneterior, representar graficamente a expressão regular definida por  
 digito = [0 - 9]  
-numero = digito digito*
+numero = digito digito*  
+7. Seja a expressão regular definida pelos símbolos especiais  
+simbolos = { +, -, *, /, >, <, =, !, %, &, |}  
+, definir uam expressão lógica para os símbolos relacionais e elaborar um diagrama similar ao da questão anterior para representá-la.
