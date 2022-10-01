@@ -1,6 +1,6 @@
 ## Strings 
 
-### Sobre strings...
+### 1. Sobre strings...
 - Conjunto ordenado de caracteres, usado para armazenar e representar informações textuais 
 - Tratam-se de um tipo de sequência **imutável**, ou seja, que não podem ser alteradas após serem criadas.
 - É possível manipular strings de diversas maneiras - Ver em <https://docs.python.org/pt-br/3/tutorial/introduction.html#strings>
@@ -10,7 +10,6 @@
 *len('nome da string')* - retorna o número de caracteres  
 *nome da string[i]* - retorna o caractere de índice i  
 *string.count('teste')* - retorna o número de vezes que teste está na string  
-
   
 ### Alguns exercícios com métodos de listas e manipulação de strings
 1. Elaborar um programa em Python que leia e cadastre em uma lista um conjunto inicial de N itens armazenados em uma despensa. O programa deve permitir que, após cadastrar os itens, o usuário: (i) inclua um novo item; (ii) remova um item pelo nome; (iii) apague todos os itens da lista. Sugestão: consulte o link <https://docs.python.org/pt-br/3/tutorial/datastructures.html?highlight=m%C3%A9todos%20lista>
