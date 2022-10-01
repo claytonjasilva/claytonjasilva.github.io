@@ -1,7 +1,7 @@
 ## Strings 
 
 ### 1. Sobre strings...
-- Dados não numéricos que constituem cadeias de caracteres e podem ser delimitados por aspas simples ou aspas duplas. Por exemplo, "existem 26 caracteres" ou '4 números inteiros'. A função print() com ambos os argumentos resulta no mesmo resultado.
+- Dados não numéricos que constituem cadeias de caracteres e podem ser criados pela delimitação entre aspas simples ou aspas duplas da cadeia de caracteres. Por exemplo, "existem 26 caracteres" ou '4 números inteiros'. A função print() com ambos os argumentos resulta no mesmo resultado.
 - Alguns caracteres - chamados **caracteres de escape** - podem estare presentes nas strings. São eles
 
 | Caractere de escape | Significado |
@@ -15,7 +15,14 @@
 | \\" | Caractere de aspas duplas. |
 | \\' | Caractere de aspas simples. |
 
-- Conjunto **ordenado** de caracteres, usado para armazenar e representar informações textuais, logo 
+- As strings podem abranger várias linhas. Para que o fim da linha seja incluído automaticamente uma maneira é usar as aspas triplas: """...""" ou '''...'''. 
+- Strings são um conjunto **ordenado** de caracteres, usado para armazenar e representar informações textuais, logo os caracteres podem ser referenciados por um índice de indexação definido entre colchetes, como uma lista.  
+Por exemplo,  
+```
+x = 'palavra'
+print(x[0])
+``` 
+produz *p*.
 - Tratam-se de um tipo de sequência **imutável**, ou seja, que não podem ser alteradas após serem criadas.
 - É possível manipular strings de diversas maneiras - Ver em <https://docs.python.org/pt-br/3/tutorial/introduction.html#strings>
 - [Métodos de string](https://docs.python.org/pt-br/3/library/string.html?highlight=m%C3%A9todos%20string)
