@@ -1,7 +1,21 @@
 ## Strings 
 
 ### 1. Sobre strings...
-- Conjunto ordenado de caracteres, usado para armazenar e representar informações textuais 
+- Dados não numéricos que constituem cadeias de caracteres e podem ser delimitados por aspas simples ou aspas duplas. Por exemplo, "existem 26 caracteres" ou '4 números inteiros'. A função print() com ambos os argumentos resulta no mesmo resultado.
+- Alguns caracteres - chamados **caracteres de escape** - podem estare presentes nas strings. São eles
+
+| Caractere de escape | Significado |
+| ------------------- | ----------- |
+| \n |  Nova linha. Move o cursor para o início da próxima linha. |
+| \t | Tabulação Horizontal. Move o cursor para a próxima parada de tabulação (tab). |
+| \r | Retorno de carro. Move o cursor para o início da linha atual; não avança para a próxima linha. |
+| \b | Backspace. Retrocede o cursor um caractere. |
+| \a | Alerta. Emite o som de sino do sistema. |
+| \ | Barra invertida (Backslash). |
+| \\" | Caractere de aspas duplas. |
+| \\' | Caractere de aspas simples. |
+
+- Conjunto **ordenado** de caracteres, usado para armazenar e representar informações textuais, logo 
 - Tratam-se de um tipo de sequência **imutável**, ou seja, que não podem ser alteradas após serem criadas.
 - É possível manipular strings de diversas maneiras - Ver em <https://docs.python.org/pt-br/3/tutorial/introduction.html#strings>
 - [Métodos de string](https://docs.python.org/pt-br/3/library/string.html?highlight=m%C3%A9todos%20string)
