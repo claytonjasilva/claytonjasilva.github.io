@@ -41,7 +41,9 @@ retorna 3.
 2. Elaborar um script em Python que permita ler um texto digitado pelo usurário. O programa deverá calcular o número de vogais presentes no texto digitado.  
 Solução 1: [StringExercicio2.py](https://github.com/claytonjasilva/prog_exemplos/blob/main/StringExercicio2.py)  
 Solução 2: [StringExercicio2-1.py](https://github.com/claytonjasilva/prog_exemplos/blob/main/StringExercicio2-1.py)
-3. Elaborar um script em Python que leia uma palavra digitada pelo usuário. O programa deverá escrever a palavra digitada com a posição das letras invertidas.
+3. Elaborar um script em Python que leia uma palavra digitada pelo usuário. O programa deverá escrever a palavra digitada com a posição das letras invertidas.  
+Solução 1: [StringExercicio3.py](https://github.com/claytonjasilva/prog_exemplos/blob/main/StringExercicio3.py)
+Solução 2: [StringExercicio3-1](https://github.com/claytonjasilva/prog_exemplos/blob/main/StringExercicio3-1.py)  
 4. Elaborar um script em Python que leia o nome completo de uma pessoa e a função em uma empresa. O programa escreve o endereço de e-mail formado da seguinte maneira: primeiro nome + ponto + função + arroba + ‘empresa.com.br’. O endereço de e-mail deve ser formado por letras minúsculas.
 5. Elaborar um script em Python que leia uma relação de N nomes de alunos digitada pelo usuário. Após cadastrar a relação o usuário poderá digitar uma letra e o programa retornará todos os nomes iniciados com a letra digitada.
 6. Elaborar um script em Python que leia um texto digitado pelo usuário. Após digitar o texto, o usuário poderá digitar uma palavra e o programa determinará o número de vezes que a palavra está presente no texto digitado.
