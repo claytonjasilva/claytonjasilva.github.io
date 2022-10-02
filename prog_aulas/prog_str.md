@@ -24,14 +24,18 @@ print(x[0])
 ``` 
 produz *p*.
 - Tratam-se de um tipo de sequência **imutável**, ou seja, que não podem ser alteradas após serem criadas.
-- É possível manipular strings de diversas maneiras - Ver em <https://docs.python.org/pt-br/3/tutorial/introduction.html#strings>
-- [Métodos de string](https://docs.python.org/pt-br/3/library/string.html?highlight=m%C3%A9todos%20string)
+- [Métodos para strings](https://docs.python.org/pt-br/3/library/stdtypes.html#textseq)  
+- [Operações com strings](https://docs.python.org/pt-br/3/library/string.html?highlight=m%C3%A9todos%20string)
 - Algumas operações simples:  
-*+* - concatena strings, por exemplo 'a casa ' + 'eh bonita', resulta ' a casa eh bonita'  
-*len('nome da string')* - retorna o número de caracteres  
-*nome da string[i]* - retorna o caractere de índice i  
-*string.count('teste')* - retorna o número de vezes que teste está na string  
-  
+`+` - concatena strings. Por exemplo `'a casa ' + 'eh bonita'`, resulta `'a casa eh bonita'`  
+A função `len('nome da string')` retorna o número de caracteres. Por exemplo `len('a casa eh bonita')` retorna 16 
+O método `string.count('teste')` gera o número de vezes que teste está na string. Por exemplo,  
+```
+x = 'palavra'
+print(x.count('a'))
+```
+retorna 3.
+
 ### Alguns exercícios com métodos de listas e manipulação de strings
 1. Elaborar um programa em Python que leia e cadastre em uma lista um conjunto inicial de N itens armazenados em uma despensa. O programa deve permitir que, após cadastrar os itens, o usuário: (i) inclua um novo item; (ii) remova um item pelo nome; (iii) apague todos os itens da lista. Sugestão: consulte o link <https://docs.python.org/pt-br/3/tutorial/datastructures.html?highlight=m%C3%A9todos%20lista>
 2. Elaborar um programa em Python que leia e cadastre os nomes dos alunos e as respectivas notas obtidas em uma avaliação de uma turma de aula com 20 alunos. O programa deverá, após os dados serem cadastrados, ler o nome de um aluno e escrever a nota obtida por ele. Sugestão: consulte o link <https://docs.python.org/pt-br/3/tutorial/datastructures.html?highlight=m%C3%A9todos%20lista>
