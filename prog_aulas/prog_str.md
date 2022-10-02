@@ -36,7 +36,7 @@ print(x.count('a'))
 ```
 retorna 3.
 
-### Alguns exercícios com métodos de listas e manipulação de strings
+### Alguns exercícios com manipulação de strings
 1. Elaborar um script em Python que permita ler uma palavra digitada pelo usuário. O programa deverá escrever todas as letras da palavra diferentes da letra ‘a’.
 2. Elaborar um script em Python que permita ler um texto digitado pelo usurário. O programa deverá calcular o número de vogais presentes no texto digitado.
 3. Elaborar um script em Python que leia uma palavra digitada pelo usuário. O programa deverá escrever a palavra digitada com a posição das letras invertidas.
