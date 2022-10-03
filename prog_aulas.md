@@ -8,7 +8,7 @@
 3. [Conceitos de programação procedural: estruturas de repetição](prog_aulas/prog_conceitos3.md) - *agosto/22*
 4. [Funções](prog_aulas/prog_funcoes.md)  -  *agosto/22*  
 5. [Módulos](prog_aulas/prog_modulos.md) e [pacotes](prog_aulas/prog_pacotes.md)
-6. [Listas](prog_aulas/prog_listas.md) - *agosto/22* - e [Strings](prog_aulas/prog_str.md)
+6. [Listas](prog_aulas/prog_listas.md) - *agosto/22* - e [Strings](prog_aulas/prog_str.md) - *setembro/22*
 7. [Tuplas e conjuntos](prog_aulas/prog_tuplas.md)  
 8. [Arquivos](prog_aulas/prog_arquivos.md)  
 9. [Dicionários](prog_aulas/prog_dicionarios.md)
