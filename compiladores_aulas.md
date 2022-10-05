@@ -26,6 +26,9 @@
 3. [Registro de *token*](https://github.com/claytonjasilva/prog_exemplos/blob/main/TokenArray.c)  
 4. [Função *getToken*](https://github.com/claytonjasilva/prog_exemplos/blob/main/getTokenExemplo.c)  
 5. [Varrendo o código fonte](https://github.com/claytonjasilva/prog_exemplos/blob/main/entradaCodigo.c)  
+6. [Análise Sintática, método recursivo descendente: expressão aritmética simples](https://github.com/claytonjasilva/prog_exemplos/blob/main/analiseFator.c)
+7. [Análise Sintática, método recursivo descendente: expressão condicional](https://github.com/claytonjasilva/prog_exemplos/blob/main/analiseIF.c)
+8. [Análise Sintática, método recursivo descendente: expressão condicional]
 
 ## Exercícios
 1. [Conceitos iniciais - BNF](compiladores/lista1.md)
