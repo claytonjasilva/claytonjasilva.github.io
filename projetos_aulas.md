@@ -13,11 +13,10 @@ Alguns vídeos interessantes:
 4.  [Projetos de engenharia e ferramentas para gerenciamento de projetos](des_aulas/gerencia_projetos.pdf)
 5.  [Sistemas de Engenharia e o método da Engenharia de sistemas](des_aulas/des_engenharia_sistemas.pdf)
 6.  [Modelos estáticos, dinâmicos e funcionais de sistemas de engenharia](des_aulas/des_modelos.pdf)
-7.  [Otimização de soluções](des_aulas/des_solucao_otima.pdf)
-8.  [Método de apoio à decisão: AHP](des_aulas/des_ahp.pdf)
-9.  [Grandezas e unidades de medida](des_aulas/des_grandezas_unidades.pdf)
-10. [Engenharia e Segurança do Trabalho](des_aulas/des_seguranca.pdf)
-12. [Engenharia e sustentabilidade](des_aulas/des_sustentabilidade.pdf)
+7.  [Métodos de apoio à decisão: AHP](des_aulas/des_apoio_decisao.pdf)
+8.  [Grandezas e unidades de medida](des_aulas/des_grandezas_unidades.pdf)
+9. [Engenharia e Segurança do Trabalho](des_aulas/des_seguranca.pdf)
+10. [Engenharia e sustentabilidade](des_aulas/des_sustentabilidade.pdf)
 
 ## Notas de aula
 1. [Engenharia e sociedade](des_aulas/notas/des_engenharia_sociedade.md)
