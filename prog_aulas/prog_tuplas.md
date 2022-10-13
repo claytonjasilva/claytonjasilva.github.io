@@ -1,16 +1,31 @@
 ## Tuplas 
 
-### Sobre tuplas...
+### Visão geral
 - Constituem um dos tipos de **sequências**, assim como as listas e as strings, ou seja, **conjuntos ordenados finitos indexados por números não negativos**. 
-- Uma tupla consiste em uma sequência de valores separados por vírgulas, de expressões entre **parênteses**.
-- Podem ser criadas das seguintes formas:  
-  --relacionando os elementos e separando-os por vírgulas entre parênteses ou não  
-  --utilizando a função embutida *tuple()*
-- Aplicam-se às tuplas a função embutida *len()* e a indexação de uma tupla de dimensão *n* por um conjunto de índices 0, 1, …, n-1, cada item i tratado *a[i]*.
-- Tratam-se de um tipo de sequência **imutável**, ou seja, que **não** podem ser alteradas após serem criadas, contudo é possível criar tuplas que contenham objetos mutáveis, como listas. 
-- **Não é possível atribuir itens individuais** de uma tupla.
 - Podem conter qualquer tipo de objeto - os elementos não precisam ser do mesmo tipo, mas **geralmente** são usadas com elementos heterogêneos.
-  
+- A diferença importante entre tuplas e listas é que as tuplas são **imutáveis**, ou seja, **não** podem ser alteradas após serem criadas.  
+- Uma tupla consiste em uma sequência de valores separados por vírgulas, de expressões entre **parênteses**. Por exemplo,
+
+```
+t = ('a','b','c','d')
+```
+- Para criar uma tupla com um elemento é preciso incluir uma vírgula final. Por exemplo,  
+
+```
+t1 = 'a',
+```
+**Um valor entre parênteses não é uma tupla**
+- Podem ser criadas também utilizando-se a função embutida `tuple()`. Por exemplo,
+```
+t = tuple('teste')
+```
+cria uma tupla *t* que contém `('t','e','s','t','e')`
+- Aplicam-se às tuplas a função embutida `len()` e a indexação de uma tupla de dimensão *n* por um conjunto de índices *0, 1, …, n-1*, cada item *i* de uma tupla *a* é tratado `a[i]`. **Não é possível atribuir itens individuais** de uma tupla.
+- É **possível criar tuplas que contenham objetos mutáveis**, como listas. Por exemplo,
+```
+t = tuple([1,2,3],['a','b'])
+```
+cria uma tupla *t* que contém as listas `[1,2,3]` e `['a','b']`. Embora a tupla seja imutável as listas podem ser modificadas.  
 **As operações com tuplas podem ser obtidas em *<https://docs.python.org/3/library/stdtypes.html#index-23>***
 
 ### Sobre conjuntos...
