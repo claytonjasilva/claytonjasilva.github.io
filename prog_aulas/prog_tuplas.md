@@ -3,7 +3,9 @@
 ### Visão geral
 - Constituem um dos tipos de **sequências**, assim como as listas e as strings, ou seja, **conjuntos ordenados finitos indexados por números não negativos**. 
 - Podem conter qualquer tipo de objeto - os elementos não precisam ser do mesmo tipo, mas **geralmente** são usadas com elementos heterogêneos.
-- A diferença importante entre tuplas e listas é que as tuplas são **imutáveis**, ou seja, **não** podem ser alteradas após serem criadas.  
+- A diferença importante entre tuplas e listas é que as tuplas são **imutáveis**, ou seja, **não** podem ser alteradas após serem criadas.
+
+### Criação de tuplas 
 - Uma tupla consiste em uma sequência de valores separados por vírgulas, de expressões entre **parênteses**. Por exemplo,
 
 ```
@@ -26,9 +28,42 @@ cria uma tupla *t* que contém `('t','e','s','t','e')`
 t = ([1,2,3],['a','b'])
 ```
 cria uma tupla *t* que contém as listas `[1,2,3]` e `['a','b']`. Embora a tupla seja imutável as listas podem ser modificadas.  
-
-
+- É possível crir uma lista em tupla utilizando-se a função embutida `tuple()`. Por exemplo,  
+```
+lista = [1, 2, 3, 4]
+t = tuple(lista)
+print(t)
+```
 - **As operações com tuplas podem ser obtidas em *<https://docs.python.org/3/library/stdtypes.html#index-23>***
+
+### Tupla com retorno de função
+- Uma função pode retornar mais de um valor. Por exemplo,  
+
+```
+def mult(n):
+  a = 3 * n
+  b = 2 * n
+  return a , b
+```
+O valor retornado é uma tupla.
+
+### Tupla como argumento de função
+- É possível **espalhar** (*scatter*) os elementos de uma tupla como **argumento** de uma função. Por exemplo,  
+```
+def mult(n):
+  a = 3 * n
+  b = 2 * n
+  return a , b
+
+def soma(a,b):
+    return a + b
+
+n = 4
+t = mult(n)
+x = soma(*t)
+print(x)
+```
+
 
 ### Sobre conjuntos...
 - Constituem **conjuntos desordenados finitos** de elementos, **sem elementos repetidos**.
