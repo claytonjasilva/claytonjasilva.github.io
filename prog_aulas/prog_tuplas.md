@@ -72,16 +72,6 @@ x = gather(1,3,5)
 print(x)
 ```
 
-
-### Sobre conjuntos...
-- Constituem **conjuntos desordenados finitos** de elementos, **sem elementos repetidos**.
-- Conjuntos também suportam operações matemáticas como  
-união **(operador:  |  )**,  
-interseção **(operador: &)**,  
-diferença **(operador: -)** e  
-diferença simétrica **(operador: ^)**.  
-- Para serem criados podem ser usados chaves ou a função [*set()*](https://docs.python.org/pt-br/3/library/stdtypes.html#set).
-
 ### Exercícios com listas  
 1. Elaborar um programa na linguagem Python que armazene as vogais em uma tupla. Leia também uma string, verifique e escreva em uma lista quantas vezes cada vogal está presente na string lida.
 2. Elaborar um programa em Python que leia a matrícula de um grupo de N alunos. Como a matrícula identifica de modo inequìvoco cada aluno, após cadastrar a matrícula dos alunos, o programa não admitirá mudar o número os dados cadastrados.
