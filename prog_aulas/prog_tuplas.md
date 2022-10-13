@@ -23,10 +23,12 @@ cria uma tupla *t* que contém `('t','e','s','t','e')`
 - Aplicam-se às tuplas a função embutida `len()` e a indexação de uma tupla de dimensão *n* por um conjunto de índices *0, 1, …, n-1*, cada item *i* de uma tupla *a* é tratado `a[i]`. **Não é possível atribuir itens individuais** de uma tupla.
 - É **possível criar tuplas que contenham objetos mutáveis**, como listas. Por exemplo,
 ```
-t = tuple([1,2,3],['a','b'])
+t = ([1,2,3],['a','b'])
 ```
 cria uma tupla *t* que contém as listas `[1,2,3]` e `['a','b']`. Embora a tupla seja imutável as listas podem ser modificadas.  
-**As operações com tuplas podem ser obtidas em *<https://docs.python.org/3/library/stdtypes.html#index-23>***
+
+
+- **As operações com tuplas podem ser obtidas em *<https://docs.python.org/3/library/stdtypes.html#index-23>***
 
 ### Sobre conjuntos...
 - Constituem **conjuntos desordenados finitos** de elementos, **sem elementos repetidos**.
