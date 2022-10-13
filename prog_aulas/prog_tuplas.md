@@ -47,8 +47,8 @@ def mult(n):
 ```
 O valor retornado é uma tupla.
 
-### Tupla como argumento de função
-- É possível **espalhar** (*scatter*) os elementos de uma tupla como **argumento** de uma função. Por exemplo,  
+### Tupla como argumento e parâmetro de função
+- É possível **espalhar** (*scatter*) os elementos de uma tupla como **argumento** da chamada de uma função. Por exemplo,  
 ```
 def mult(n):
   a = 3 * n
@@ -61,6 +61,14 @@ def soma(a,b):
 n = 4
 t = mult(n)
 x = soma(*t)
+print(x)
+```
+- Por outtro lado, é possível **reunir** (*gather*) os elementos de uma tupla como **parâmetro** de uma função. Por exemplo,  
+```
+def gather(*a)
+    return a
+
+x = gather(1,3,5)
 print(x)
 ```
 
