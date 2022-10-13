@@ -8,11 +8,13 @@
 3. [Conceitos de programação procedural: estruturas de repetição](prog_aulas/prog_conceitos3.md) - *agosto/22*
 4. [Funções](prog_aulas/prog_funcoes.md)  -  *agosto/22*  
 5. [Módulos](prog_aulas/prog_modulos.md) e [pacotes](prog_aulas/prog_pacotes.md)
-6. [Listas](prog_aulas/prog_listas.md) - *agosto/22* - e [Strings](prog_aulas/prog_str.md) - *setembro/22*
-7. [Tuplas e conjuntos](prog_aulas/prog_tuplas.md)  
+6. [Listas](prog_aulas/prog_listas.md) - *agosto/22*
+7. **Outras sequências**  
+7.1 [Strings](prog_aulas/prog_str.md) - *setembro/22*  
+7.2 [Tuplas e conjuntos](prog_aulas/prog_tuplas.md)    
+7.3 [Dicionários](prog_aulas/prog_dicionarios.md)  
 8. [Arquivos](prog_aulas/prog_arquivos.md)  
-9. [Dicionários](prog_aulas/prog_dicionarios.md)
-10. Pacotes [NumPy](https://numpy.org/doc/stable/user/absolute_beginners.html), [Matplotlib](https://matplotlib.org/stable/plot_types/index.html) e [SciPy](https://docs.scipy.org/doc/scipy/getting_started.html#getting-started-ref)
+9. Pacotes [NumPy](https://numpy.org/doc/stable/user/absolute_beginners.html), [Matplotlib](https://matplotlib.org/stable/plot_types/index.html) e [SciPy](https://docs.scipy.org/doc/scipy/getting_started.html#getting-started-ref)
 
 ## Exercícios propostos
 1. [Conceitos iniciais](prog_aulas/exercicios_conceitosIniciais.md)  
