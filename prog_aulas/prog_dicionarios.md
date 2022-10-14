@@ -1,6 +1,5 @@
 ## Dicionários
 
-### Conceitos gerais
 1. Dicionários são também chamados de “memória associativa” ou “vetor associativo” em outras linguagens. Diferente de sequências que são indexadas por inteiros, dicionários são indexados por **chaves (*keys*)**.  Por exemplo,  
 
 ```
@@ -52,12 +51,8 @@ for chave in alunos.keys():
         print(chave)
 ```
 
-7.  O dicionário vazio é { }.
+7.  Outros métodos e funções nativas do Python que podem ser aplicadas sobre dicionários podem ser obtidas em (https://docs.python.org/3/library/stdtypes.html#mapping-types-dict).
 
-### Principais operações  
-As principais operações em um dicionário são:
-1. **Armazenar** e **recuperar** valores a partir de chaves;
-2. **Remover** um par *chave:valor* com o comando *del*. Se você armazenar um valor utilizando uma chave já presente, o antigo valor será substituído pelo novo. Se tentar recuperar um valor usando uma chave inexistente, será gerado um erro.
-3. **Devolver a lista** de todas as chaves presentes no dicionário, na ordem de inserção, usando **list(d)** em um dicionário d;
-4. **Ordenar**, usando a função *sorted(d)*;
-5. **Verificar** a existência de uma chave, usando o operador *in*.
+### Exercícios  
+Elaborar o *script* de um código em Python para...
+1. Criar um dicionário com as matrículas, nomes e notas finais de um grupo de 30 alunos. Com o dicionário criado, o usuário poderá digitar uma matrícula e o programa deverá retornar os dados cadastrados.
