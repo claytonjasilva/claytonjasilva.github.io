@@ -94,7 +94,8 @@ mat = [int(input('digite matricula: ')) for i in range(N)]
 print(mat)
 ```  
 
-4. Elaborar um programa em Python que leia e armazene o cpf de um grupo de 10 pessoas em uma tupla. Leia e armazene o saldo bancário médio ao longo dos últimos 30 dias em uma lista. O programa deverá criar uma lista dos cpf cujas pessoas apresentaram um saldo médio superior à média de saldo do grupo. [tuplaExemplo4.py](https://github.com/claytonjasilva/prog_exemplos/blob/main/tuplaExemplo4.py)  
+4. Elaborar um programa em Python que leia e armazene o cpf de um grupo de 10 pessoas em uma tupla. Leia e armazene o saldo bancário médio ao longo dos últimos 30 dias em uma lista. O programa deverá criar uma lista dos cpf cujas pessoas apresentaram um saldo médio superior à média de saldo do grupo. [tuplaExemplo4.py](https://github.com/claytonjasilva/prog_exemplos/blob/main/tuplaExemplo4.py)   
+ 
 **Observação: Compreensão de lista**  
 - Python permite uma forma sintática para popular lista sob uma condição, utilizando compreensão de lista. 
 - A forma é dada por `[<i-ésimo valor> for <contador> in range(<limite>) if <cond>]`. Por exemplo,
