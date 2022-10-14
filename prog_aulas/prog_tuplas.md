@@ -11,6 +11,12 @@
 ```
 t = ('a','b','c','d')
 ```
+- Pode-se criar uma tupla também pela indicação dos elementos separados por vírgulas. Por exemplo,  
+```
+vogais = 'a','e','i','o','u'
+print(vogais)
+```
+apresenta a tupla *('a', 'e', 'i', 'o', 'u')*
 - Para criar uma tupla com um elemento é preciso incluir uma vírgula final. Por exemplo,  
 
 ```
