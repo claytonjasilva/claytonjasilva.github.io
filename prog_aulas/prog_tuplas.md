@@ -71,6 +71,7 @@ x = soma(*t)
 print(x)
 ```
 - Por outtro lado, é possível **reunir** (*gather*) os elementos de uma tupla como **parâmetro** de uma função. Por exemplo,  
+
 ```
 def gather(*a)
     return a
