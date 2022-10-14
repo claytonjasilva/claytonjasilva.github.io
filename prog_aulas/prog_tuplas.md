@@ -91,6 +91,15 @@ N = 3
 mat = [int(input('digite matricula: ')) for i in range(N)]
 print(mat)
 ```  
-4. Elaborar um programa em Python que leia e armazene o cpf e o saldo bancário de um grupo de 10 pessoas ao longo de 30 dias. O programa deverá escrever o cpf das pessoas seguido do saldo médio mensal.
+4. Elaborar um programa em Python que leia e armazene o cpf de um grupo de 10 pessoas em uma tupla. Leia e armazene o saldo bancário médio ao longo dos últimos 30 dias em uma lista. O programa deverá criar uma lista dos cpf cujas pessoas apresentaram um saldo médio superior à média de saldo do grupo. [tuplaExemplo4.py](https://github.com/claytonjasilva/prog_exemplos/blob/main/tuplaExemplo4.py)  
+**Observação: Compreensão de lista**  
+- Python permite uma forma sintática para popular lista sob uma condição, utilizando compreensão de lista. 
+- A forma é dada por `[<i-ésimo valor> for <contador> in range(<limite>) if <cond>]`. Por exemplo,
+```
+# Escreve os números pares inferiores a um número dado
+N = int(input("Digite um número inteiro não negativo: "))
+par = [i for i in range(N) if (i % 2) == 0]
+print(par)
+```
 5. Elaborar um programa na linguagem Python que leia o nome e o cpf de um grupo de 30 pessoas. O programa deve fornecer a possibilidade de 'cadastrar a habilitação' para cada cpf; ou 'alterar a data da habilitação' se já tiver sido cadastrada. Quando cadastrar a habilitação, o usuário deve informar o número e a data. O número não pode ser alterado, no entanto a data pode ser alterada. 
 6. Elaborar um programa na linguagem Python que leia a identificação de um grupo de componentes mecânicos. O usuário deixará de cadastrar os componentes quando for inserido o número de identificação for igual a 0. O identificador do componente, que não pode ser alterado, sempre é cadastrado juntamente com sua versão de fabricação, que pode ser alterada. Após cadastrados os componentes, o programa deve permitir localizar um componente a partir de seu identificador, apresentando a sua versão de fabricação. 
