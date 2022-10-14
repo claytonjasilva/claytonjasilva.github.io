@@ -55,6 +55,7 @@ O valor retornado é uma tupla.
 
 ### Tupla como argumento e parâmetro de função
 - É possível **espalhar** (*scatter*) os elementos de uma tupla como **argumento** da chamada de uma função. Por exemplo,  
+
 ```
 def mult(n):
   a = 3 * n
