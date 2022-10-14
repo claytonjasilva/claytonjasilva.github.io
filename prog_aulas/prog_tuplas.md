@@ -79,7 +79,7 @@ print(x)
 ```
 
 ### Exercícios com listas  
-1. Elaborar um programa na linguagem Python que armazene as vogais em uma tupla. Leia também uma string, verifique e escreva em uma lista quantas vezes cada vogal está presente na string lida.
+1. Elaborar um programa na linguagem Python que armazene as vogais em uma tupla. Leia também uma string, verifique e escreva em uma lista quantas vezes cada vogal está presente na string lida. [tuplaExemplo1.py](https://github.com/claytonjasilva/prog_exemplos/blob/main/tuplaExemplo1.py)
 2. Elaborar um programa em Python que leia a matrícula de um grupo de N alunos. Como a matrícula identifica de modo inequìvoco cada aluno, após cadastrar a matrícula dos alunos, o programa não admitirá mudar o número os dados cadastrados.
 3. Elaborar um programa em Python que leia a matrícula de um grupo de N alunos. Leia também as notas do grupo (AP1, AP2 e AC). O programa deverá escrever a matrícula e a média de cada aluno. 
 4. Elaborar um programa em Python que leia e armazene o cpf e o saldo bancário de um grupo de 10 pessoas ao longo de 30 dias. O programa deverá escrever o cpf das pessoas seguido do saldo médio mensal.
