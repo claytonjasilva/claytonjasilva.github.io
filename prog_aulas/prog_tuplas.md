@@ -73,7 +73,7 @@ print(x)
 - Por outtro lado, é possível **reunir** (*gather*) os elementos de uma tupla como **parâmetro** de uma função. Por exemplo,  
 
 ```
-def gather(*a)
+def gather(*a):
     return a
 
 x = gather(1,3,5)
