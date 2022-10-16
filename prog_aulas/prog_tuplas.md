@@ -40,7 +40,21 @@ lista = [1, 2, 3, 4]
 t = tuple(lista)
 print(t)
 ```
-- **As operações com tuplas podem ser obtidas em *<https://docs.python.org/3/library/stdtypes.html#index-23>***
+- Algumas operações com tuplas (sequências imutáveis) são comuns às operações com listas (sequências mutáveis). Por exemplo,
+
+| Operação | Resultado | Observação |
+| -------- | --------- | ---------- |
+| `x in s` | `True` se x está em s, `False` caso contrário | Para *strings* `"gg" in "eggs"` retorna *True* |
+| `x not in s` | `False` se x está em s, `True` caso contrário | Para *strings* `"gg" not in "eggs"` retorna *False* |
+| `s + t` | Concatena s com t | Concatenar objetos imutáveis gera um objeto imutável |
+| `s * n` ou `n * s`| Gera uma sequência s repetida n vezes | Se n igual a zero gera sequência vazia |
+| `s[i]`,`s[i:j]`, ... | Define elemento ou intervalo de elementos de s |  |
+| `len(s)` | Retorna tamanho da sequência |  |
+| `max(s)` | Retorna maior valor |  |
+| `min(s)` | Retorna menor valor |  |
+| `s.index(x)` | Retorna a posição da primeira ocorrência de x em s |  |
+| `s.count(x)` | Retorna o número de ocorrências de x em s |  |
+
 
 ### Tupla com retorno de função
 - Uma função pode retornar mais de um valor. Por exemplo,  
