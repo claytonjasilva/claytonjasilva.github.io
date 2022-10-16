@@ -97,18 +97,16 @@ print(x)
 ### Exercícios com listas  
 1. Elaborar um programa na linguagem Python que armazene as vogais em uma tupla. Leia também uma string, verifique e escreva em uma lista quantas vezes cada vogal está presente na string lida. [tuplaExemplo1.py](https://github.com/claytonjasilva/prog_exemplos/blob/main/tuplaExemplo1.py)
 2. Elaborar um programa em Python que leia a matrícula de um grupo de N alunos. Como a matrícula identifica de modo inequìvoco cada aluno, após cadastrar a matrícula dos alunos, o programa não admitirá mudar o número de matrícula cadastrado.  [tuplaExemplo2.py](https://github.com/claytonjasilva/prog_exemplos/blob/main/tuplaExemplo2.py)
-3. Elaborar um programa em Python que leia a matrícula de um grupo de N alunos, cadastrando-as em uma tupla. Leia também as notas do grupo [AP1, AP2 e AC], cadastrando-as em uma lista. O programa deverá determinar a média parcial (MP) de cada aluno, considerando que MP = 0,4(AP1+AP2) + 0,2 AC. Deverá cadastrar em uma tupla as matriculas, as notas e a média parcial de todos os alunos.  [tuplaExemplo3.py](https://github.com/claytonjasilva/prog_exemplos/blob/main/tuplaExemplo3.py)
-
+3. Elaborar um programa em Python que leia a matrícula de um grupo de N alunos, cadastrando-as em uma tupla. Leia também as notas do grupo [AP1, AP2 e AC], cadastrando-as em uma lista. O programa deverá determinar a média parcial (MP) de cada aluno, considerando que MP = 0,4(AP1+AP2) + 0,2 AC. Deverá cadastrar em uma tupla as matriculas, as notas e a média parcial de todos os alunos.  [tuplaExemplo3.py](https://github.com/claytonjasilva/prog_exemplos/blob/main/tuplaExemplo3.py)    
 **Observação: Compreensão de lista**
 - Python permite uma forma sintática para popular lista, que simplifica o modo tratado até agora, chamada de **compreensão de lista**.  
-- A forma é dada por `lista = [<i-ésimo valor> for <contador> in range(<limite>)]`. Por exemplo,
+- A forma é dada por `lista = [<i-ésimo valor> for <contador> in range(<limite>)]`. Por exemplo,  
 ```
 N = 3
 mat = [int(input('digite matricula: ')) for i in range(N)]
 print(mat)
 ```    
-4. Elaborar um programa em Python que leia e armazene o cpf de um grupo de 10 pessoas em uma tupla. Leia e armazene o saldo bancário médio ao longo dos últimos 30 dias em uma lista. O programa deverá criar uma lista dos cpf cujas pessoas apresentaram um saldo médio superior à média de saldo do grupo. [tuplaExemplo4.py](https://github.com/claytonjasilva/prog_exemplos/blob/main/tuplaExemplo4.py)   
- 
+4. Elaborar um programa em Python que leia e armazene o cpf de um grupo de 10 pessoas em uma tupla. Leia e armazene o saldo bancário médio ao longo dos últimos 30 dias em uma lista. O programa deverá criar uma lista dos cpf cujas pessoas apresentaram um saldo médio superior à média de saldo do grupo. [tuplaExemplo4.py](https://github.com/claytonjasilva/prog_exemplos/blob/main/tuplaExemplo4.py)     
 **Observação: Compreensão de lista**  
 - Python permite uma forma sintática para popular lista sob uma condição, utilizando compreensão de lista. 
 - A forma é dada por `[<i-ésimo valor> for <contador> in range(<limite>) if <cond>]`. Por exemplo,
