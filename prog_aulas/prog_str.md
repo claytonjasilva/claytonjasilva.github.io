@@ -27,14 +27,13 @@ produz *p*.
 - [Métodos para strings](https://docs.python.org/pt-br/3/library/stdtypes.html#textseq)  
 - [Operações com strings](https://docs.python.org/pt-br/3/library/string.html?highlight=m%C3%A9todos%20string)
 - Algumas operações simples:  
-`+` - concatena strings. Por exemplo `'a casa ' + 'eh bonita'`, resulta `'a casa eh bonita'`  
-A função `len('nome da string')` retorna o número de caracteres. Por exemplo `len('a casa eh bonita')` retorna 16 
-O método `string.count('teste')` gera o número de vezes que teste está na string. Por exemplo,  
+  - `+` - concatena strings. Por exemplo `'a casa ' + 'eh bonita'`, resulta `'a casa eh bonita'`.    
+  - A função `len('nome da string')` retorna o número de caracteres. Por exemplo `len('a casa eh bonita')` retorna 16.   
+  - O método `string.count('teste')` gera o número de vezes que teste está na string. Por exemplo, o programa abaixo retorna 3. 
 ```
 x = 'palavra'
 print(x.count('a'))
 ```
-retorna 3.
 
 ### Alguns exercícios com manipulação de strings
 1. Elaborar um script em Python que permita ler uma palavra digitada pelo usuário. O programa deverá escrever todas as letras da palavra diferentes da letra ‘a’.  [StringExercicio1.py](https://github.com/claytonjasilva/prog_exemplos/blob/main/StringExercicio1.py)
