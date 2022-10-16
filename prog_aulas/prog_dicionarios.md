@@ -8,8 +8,8 @@ print(aluno)
 ```
 onde as chaves são 'um', 'dois' e 'tres'. Dicionários são delimitados por chaves: `{ }` e contêm uma **lista de pares *chave:valor* separada por vírgulas**.
 
-2.  Chaves podem ser de qualquer tipo **imutável** (como strings, inteiros e tuplas - se contiverem apenas strings, inteiros ou outras tuplas).  
-3.  Podem ser criados sem elementos com a função `dict()`, sendo cada elemento individulamente adicionado pela chave, `nome[chave]=elemento`. Por exemplo,  
+2. Chaves podem ser de qualquer tipo **imutável** (como strings, inteiros e tuplas - se contiverem apenas strings, inteiros ou outras tuplas).  
+3. Podem ser criados sem elementos com a função `dict()`, sendo cada elemento individulamente adicionado pela chave, `nome[chave]=elemento`. Por exemplo,  
 
 ```
 aluno = dict()
@@ -19,8 +19,7 @@ aluno['tres'] = ['pedro',6.7]
 print(aluno)
 ```
 
-4.  É interessante imaginar um dicionário como um **conjunto não-ordenado** de pares **chave:valor**, onde as chaves são únicas em uma dada instância do dicionário, logo o elemento pode ser instanciado por sua respectiva chave. Por exemplo,  
-
+4. É interessante imaginar um dicionário como um **conjunto não-ordenado** de pares **chave:valor**, onde as chaves são únicas em uma dada instância do dicionário, logo o elemento pode ser instanciado por sua respectiva chave. Por exemplo,  
 ```
 alunos = {'12345': ['ana', 7.8], '12346': ['carlos', 8.8], '12347': ['diogo', 4.8]}
 matr = input('Digite a matrícula: ')
