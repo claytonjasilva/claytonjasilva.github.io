@@ -18,6 +18,7 @@ aluno['dois'] = ['joao',3.4]
 aluno['tres'] = ['pedro',6.7]
 print(aluno)
 ```
+
 4.  É interessante imaginar um dicionário como um **conjunto não-ordenado** de pares **chave:valor**, onde as chaves são únicas em uma dada instância do dicionário, logo o elemento pode ser instanciado por sua respectiva chave. Por exemplo,  
 
 ```
