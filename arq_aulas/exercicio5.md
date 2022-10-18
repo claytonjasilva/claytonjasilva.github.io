@@ -5,8 +5,10 @@ Explicar com suas palavras os seguintes parâmetros de desempenho:
 a. latência da memória  
 b. velocidade de memória  
 c. capacidade de armazenamento da memória
+
 2. Considere uma memória com 15 linhas de endereço, que armazena em cada linha palavras de 64 bits.
 Determinar a capacidade de armazenamento do dispositivo, em bits e em bytes.
+
 3. Seja a memória que possua a pinagem apresentada na tabela a seguir.
 
 | Pino | Função |
@@ -22,5 +24,12 @@ a. Admitindo que o processador realize 1500 operações de leitura/escrita no ba
 (taxa de transmissão) no barramento?  
 b. Considerando que a latência é de 200 nseg, qual será o tempo médio da execução das operações?
 
-4. asas
-5. 5. 4. 3. 
+4. A arquitetura dos sistemas computacionais organiza o sistema de memória, alocando diversos e diferentes tipos de tecnologia.
+Com base na descrição das características, classificar os elementos de memória de acordo com a tecnologia empregada.  
+a. A memória requer bateria ou outra fonte de alimentação para assegurar a preservação dos dados.  
+b. A memória requer uma recarga periódica dos dados armazenados.  
+c. A memória não porporciona a capacidade de leitura e escrita temporária de dados. Propicia somente a capacidade de leitura de dados previamente armazenados.
+d. A memória disponibiliza o acesso a qualquer de suas linhas de endereço no mesmo tempo.
+
+5. asas
+6. 6. 5. 4. 3. 
