@@ -7,7 +7,7 @@ a. latência da memória
 b. velocidade de memória  
 c. capacidade de armazenamento da memória
 
-2. Considere uma memória com 15 linhas de endereço, que armazena em cada linha palavras de 64 bits.
+2. Considere uma memória com 15 linhas de endereço, que armazena em cada linha uma palavra de 64 bits.
 Determinar a capacidade de armazenamento do dispositivo, em bits e em bytes.
 
 3. Seja a memória que possua a pinagem apresentada na tabela abaixo.  
