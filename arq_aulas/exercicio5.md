@@ -44,10 +44,16 @@ b. Memória primária
 c. Cache  
 d. Registradores
 
-7. A meória cache possui tipicamente uma capacidade de armazenamento menor do que a memória primária.
+7. A memória cache possui tipicamente uma capacidade de armazenamento menor do que a memória primária.
 No entanto, possui maior velocidade.
 Apresentar e explicar o princípio que permite utilizar a cache em proveito do aumento de performance nos sistemas computacionais.
 
-8. 
+8. Seja um programa armazenado em memória constituído por 2000 instruções, executado por uma determinada arquitetura.
+1500 instruções são executadas em dois ciclos de clock interno do processador, de 100 GHz.
+As demais instruções são executadas com acesso à memória, cuja latência é de 120 nseg. Admitir a latência aproximadamente igual ao tempo de acesso.  
+a. Determinar o tempo de execução do referido programa nessa máquina.  
+b. Admitir que o projeto da arquitetrua evoluiu e que foi inserido uma cache com latência de 20 nseg.
+Considerando uma taxa de acerto de 75%, em quanto tempo o progama passará a ser executado?
+
 
 9. 7. 6. 5. 4. 3. 
