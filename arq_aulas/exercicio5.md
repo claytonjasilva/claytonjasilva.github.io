@@ -53,17 +53,15 @@ Apresentar e explicar o princípio que permite utilizar a cache em proveito do a
 As demais instruções são executadas com acesso à memória, cuja latência é de 120 nseg. Admitir a latência aproximadamente igual ao tempo de acesso.  
 a. Determinar o tempo de execução do referido programa nessa máquina.  
 b. Admitir que o projeto da arquitetura evoluiu e que foi inserida uma cache com latência de 20 nseg.
-Considerando uma taxa de acerto de 75%, em quanto tempo o progama passará a ser executado?  
+Considerando uma taxa de acerto de 75%, em quanto tempo o programa passará a ser executado?  
 c. Apresentar o ganho de desempenho.  
 
-9. Seja um programa que possua 500 instruções de acesso à memória. Considerando que 450 acessos sejam realizados à cache,
-determinar o tempo de realização das instruções, se o tempo de acesso à cache for igual a 20 nseg;
-e de acesso à MP, de 120 nseg.
+9. Seja um programa que possua 500 instruções de acesso à memória. Considerando que 450 acessos sejam realizados à cache, determinar a taxa de acerto. Em quanto tempo um programa com 1200 instruções de acesso à memória nessa arquitetura seria executado se o tempo de acesso à cache for igual a 20 nseg; e de acesso à MP, de 120 nseg.
 
 10. Seja uma arquitetura cujo tempo de acesso à MP seja de 50 nseg. São usados dois níveis de cache, L1 e L2.
-A cache L1 possui latência de 1 nseg. A cache L2 possui latência de 25 nseg.  
-Seja um programa com 2500 instruções, das quais 500 acessem a memória para leitura/escrita.  
-a. Admitindo taxa de acerto de 75%, das quais 35% de acerto na busca em L1, determinar o tempo de execução do programa.
+A cache L1 possui latência de 1 nseg. A cache L2 possui latência de 25 nseg.
+Seja um programa com 2500 instruções, das quais 500 acessem a memória para leitura/escrita.
+Admitindo taxa de acerto de 75%, das quais 35% de acerto na busca em L1, determinar o tempo de execução do programa.
 Instruções que não acessam memória são executadas em 2 nseg.
 
 11. A leitura de dados em memória de arquiteturaas que utilizam cache se dá de acordo com o processo discutido em sala.  
