@@ -29,7 +29,7 @@ c. Qual é o número de posições de memória endereçáveis?
 Com base na descrição das características, classificar os elementos de memória de acordo com a tecnologia empregada.  
 a. A memória requer bateria ou outra fonte de alimentação para assegurar a preservação dos dados.  
 b. A memória requer uma recarga periódica dos dados armazenados.  
-c. A memória não porporciona a capacidade de leitura e escrita temporária de dados. Propicia somente a capacidade de leitura de dados previamente armazenados.
+c. A memória não proporciona a capacidade de leitura e escrita temporária de dados. Propicia somente a capacidade de leitura de dados previamente armazenados.  
 d. A memória disponibiliza o acesso a qualquer de suas linhas de endereço no mesmo tempo.
 
 5. Seja a especificação da memória descrita por: `Memória Kingston 8GB 1600 Mhz DDR3L`.  
