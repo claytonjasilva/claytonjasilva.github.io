@@ -13,7 +13,7 @@ Determinar a capacidade de armazenamento do dispositivo, em bits e em bytes.
 3. Seja a memória que possua a pinagem apresentada na tabela abaixo.  
 a. Admitindo que o processador realize 1500 operações de leitura/escrita no barramento de dados no intervalo de 3 milissegundos, qual é a largura de banda
 (taxa de transmissão) no barramento?   
-b. Considerando que a latência é de 200 nseg, qual será o tempo médio da execução das operações?   
+b. Considerando que a o tempo de acesso é de 200 nseg, qual será o tempo médio da execução das operações? Presumir que o tempo de sistema é muito menor do que o tempo de acesso.     
 c. Qual é o número de posições de memória endereçáveis?  
 
 | Pino | Função |
