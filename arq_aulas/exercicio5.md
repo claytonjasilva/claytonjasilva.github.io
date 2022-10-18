@@ -10,7 +10,11 @@ c. capacidade de armazenamento da memória
 2. Considere uma memória com 15 linhas de endereço, que armazena em cada linha palavras de 64 bits.
 Determinar a capacidade de armazenamento do dispositivo, em bits e em bytes.
 
-3. Seja a memória que possua a pinagem apresentada na tabela a seguir.
+3. Seja a memória que possua a pinagem apresentada na tabela abaixo.  
+a. Admitindo que o processador realize 1500 operações de leitura/escrita no barramento de dados, qual é a largura de banda
+(taxa de transmissão) no barramento?   
+b. Considerando que a latência é de 200 nseg, qual será o tempo médio da execução das operações?   
+c. Qual é o número de posições de memória endereçáveis?  
 
 | Pino | Função |
 | ---- | ------ |
@@ -21,11 +25,7 @@ Determinar a capacidade de armazenamento do dispositivo, em bits e em bytes.
 | Vcc | Alimentação |
 | Vss | Ground |
 
-a. Admitindo que o processador realize 1500 operações de leitura/escrita no barramento de dados, qual é a largura de banda
-(taxa de transmissão) no barramento?  
-b. Considerando que a latência é de 200 nseg, qual será o tempo médio da execução das operações?
-
-4. A arquitetura dos sistemas computacionais organiza o sistema de memória, alocando diversos e diferentes tipos de tecnologia.
+4. A arquitetura dos sistemas computacionais organiza o sistema de memória alocando diversos e diferentes tipos de tecnologias.
 Com base na descrição das características, classificar os elementos de memória de acordo com a tecnologia empregada.  
 a. A memória requer bateria ou outra fonte de alimentação para assegurar a preservação dos dados.  
 b. A memória requer uma recarga periódica dos dados armazenados.  
@@ -36,7 +36,7 @@ d. A memória disponibiliza o acesso a qualquer de suas linhas de endereço no m
 a. Qual é a sua capacidade de armazenamento?  
 b. Quanto à tecnologia, como se classifica?  
 c. Admitindo que o preço obtido seja de R$ 140,00, comparar com o custo apresentado em sala do dispositivo similar.  
-d. Admitindo uma largura de 64 bits de dados e transferência de 3 palavras por ciclo de clock, qual é a largura de banda?
+d. Admitindo barramento de dados de 64 bits e transferência de 3 palavras por ciclo de clock, qual é a largura de banda?  
 
 6. Descreva os elementos da hierarquia do sistema de memória dos sistemas computacionais:  
 a. Memória secundária  
@@ -52,8 +52,12 @@ Apresentar e explicar o princípio que permite utilizar a cache em proveito do a
 1500 instruções são executadas em dois ciclos de clock interno do processador, de 100 GHz.
 As demais instruções são executadas com acesso à memória, cuja latência é de 120 nseg. Admitir a latência aproximadamente igual ao tempo de acesso.  
 a. Determinar o tempo de execução do referido programa nessa máquina.  
-b. Admitir que o projeto da arquitetrua evoluiu e que foi inserido uma cache com latência de 20 nseg.
-Considerando uma taxa de acerto de 75%, em quanto tempo o progama passará a ser executado?
+b. Admitir que o projeto da arquitettura evoluiu e que foi inserida uma cache com latência de 20 nseg.
+Considerando uma taxa de acerto de 75%, em quanto tempo o progama passará a ser executado?  
+c. Apresentar o ganho de desempenho.  
 
+9. Seja um programa que possua 500 instruções de acesso à memória. Considerando que 450 acessos sejam realizados à cache,
+determinar o tempo de realização das instruções, se o tempo de acesso à cache for igual a 20 nseg;
+e de acesso à MP, de 120 nseg.
 
-9. 7. 6. 5. 4. 3. 
+11.  7. 6. 5. 4. 3. 
