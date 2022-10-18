@@ -31,5 +31,10 @@ b. A memória requer uma recarga periódica dos dados armazenados.
 c. A memória não porporciona a capacidade de leitura e escrita temporária de dados. Propicia somente a capacidade de leitura de dados previamente armazenados.
 d. A memória disponibiliza o acesso a qualquer de suas linhas de endereço no mesmo tempo.
 
-5. asas
-6. 6. 5. 4. 3. 
+5. Seja a especificação da memória descrita por: `Memória Kingston 8GB 1600 Mhz DDR3L`.  
+a. Qual é a sua capacidade de armazenamento?  
+b. Quanto à tecnologia, como se classifica?  
+c. Admitindo que o preço obtido seja de R$ 140,00, comparar com o custo apresentado em sala do dispositivo similar.  
+d. Admitindo uma largura de 64 bits de dados e transferência de 3 palavras por ciclo de clock, qual é a largura de banda?
+
+7. 6. 5. 4. 3. 
