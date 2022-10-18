@@ -35,10 +35,10 @@ d. A memória disponibiliza o acesso a qualquer de suas linhas de endereço no m
 5. Seja a especificação da memória descrita por: `Memória Kingston 8GB 1600 Mhz DDR3L`.  
 a. Qual é a sua capacidade de armazenamento?  
 b. Quanto à tecnologia, como se classifica?  
-c. Admitindo que o preço obtido seja de R$ 140,00, comparar com o custo apresentado em sala do dispositivo similar.  
+c. Admitindo que o preço obtido seja de R$ 140,00, comparar com o custo apresentado em sala do dispositivo similar. Usar como referência uma cotação do dólar a R$ 5,00.    
 d. Admitindo barramento de dados de 64 bits e transferência de 3 palavras por ciclo de clock, qual é a largura de banda?  
 
-6. Descreva os elementos da hierarquia do sistema de memória dos sistemas computacionais:  
+6. Descreva os elementos da hierarquia do sistema de memória das arquiteturas de computadores, considerando a diferença entre eles segundo os parâmetros de desempenho.
 a. Memória secundária  
 b. Memória primária  
 c. Cache  
@@ -52,7 +52,7 @@ Apresentar e explicar o princípio que permite utilizar a cache em proveito do a
 1500 instruções são executadas em dois ciclos de clock interno do processador, de 100 GHz.
 As demais instruções são executadas com acesso à memória, cuja latência é de 120 nseg. Admitir a latência aproximadamente igual ao tempo de acesso.  
 a. Determinar o tempo de execução do referido programa nessa máquina.  
-b. Admitir que o projeto da arquitettura evoluiu e que foi inserida uma cache com latência de 20 nseg.
+b. Admitir que o projeto da arquitetura evoluiu e que foi inserida uma cache com latência de 20 nseg.
 Considerando uma taxa de acerto de 75%, em quanto tempo o progama passará a ser executado?  
 c. Apresentar o ganho de desempenho.  
 
