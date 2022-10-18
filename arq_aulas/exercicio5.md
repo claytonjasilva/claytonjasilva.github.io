@@ -60,4 +60,14 @@ c. Apresentar o ganho de desempenho.
 determinar o tempo de realização das instruções, se o tempo de acesso à cache for igual a 20 nseg;
 e de acesso à MP, de 120 nseg.
 
-11.  7. 6. 5. 4. 3. 
+10. Seja uma arquitetura cujo tempo de acesso à MP seja de 50 nseg. São usados dois níveis de cache, L1 e L2.
+A cache L1 possui latência de 1 nseg. A cache L2 possui latência de 25 nseg.  
+Seja um programa com 2500 instruções, das quais 500 acessem a memória para leitura/escrita.  
+a. Admitindo taxa de acerto de 75%, das quais 35% de acerto na busca em L1, determinar o tempo de execução do programa.
+Instruções que não acessam memória são executadas em 2 nseg.
+
+11. A leitura de dados em memória de arquiteturaas que utilizam cache se dá de acordo com o processo discutido em sala.  
+a. Qual é o elemento que verifica se um dado requisitado pelo processador se encontra armazenado na cache?  
+b. O que acontecerá se o dado requisitado **não estiver disponível** na cache?  
+c. O que acontecerá se o dado requisitado **estiver disponível** na cache?  
+
