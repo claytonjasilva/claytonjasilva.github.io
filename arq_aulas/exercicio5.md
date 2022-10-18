@@ -1,4 +1,5 @@
 # Lista de exercícios: elementos dos sistemas computacionais
+## Dispositivos de memória
 
 1. Os dispositivos de memória possuem características que impactam o desempenho global do sistema computacional.
 Explicar com suas palavras os seguintes parâmetros de desempenho:  
@@ -37,4 +38,16 @@ b. Quanto à tecnologia, como se classifica?
 c. Admitindo que o preço obtido seja de R$ 140,00, comparar com o custo apresentado em sala do dispositivo similar.  
 d. Admitindo uma largura de 64 bits de dados e transferência de 3 palavras por ciclo de clock, qual é a largura de banda?
 
-7. 6. 5. 4. 3. 
+6. Descreva os elementos da hierarquia do sistema de memória dos sistemas computacionais:  
+a. Memória secundária  
+b. Memória primária  
+c. Cache  
+d. Registradores
+
+7. A meória cache possui tipicamente uma capacidade de armazenamento menor do que a memória primária.
+No entanto, possui maior velocidade.
+Apresentar e explicar o princípio que permite utilizar a cache em proveito do aumento de performance nos sistemas computacionais.
+
+8. 
+
+9. 7. 6. 5. 4. 3. 
