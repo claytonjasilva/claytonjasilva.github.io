@@ -17,4 +17,10 @@ Determinar a capacidade de armazenamento do dispositivo, em bits e em bytes.
 | IO1-IO16 | Data Input/Output |
 | Vcc | Alimentação |
 | Vss | Ground |
-5. 4. 3. 
+
+a. Admitindo que o processador realize 1500 operações de leitura/escrita no barramento de dados, qual é a largura de banda
+(taxa de transmissão) no barramento?  
+b. Considerando que a latência é de 200 nseg, qual será o tempo médio da execução das operações?
+
+4. asas
+5. 5. 4. 3. 
