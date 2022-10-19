@@ -8,7 +8,7 @@
     [modulação analógica](siscom_aulas/modulacao_analogica.pdf)  
     [modulação digital](siscom_aulas/modulacao_digital.pdf)  
     [Serviços de telecomunicações](siscom_aulas/servicos.pdf)
-5. Códigos corretores de erros
+5. [Códigos corretores de erros](siscom_aulas/codificacao_erros.pdf)
 6. Comportamento do canal móvel de comunicações: mecanismos básicos de propagação, perdas em larga escala- modelos de propagação *outdoor*, modelos de propagação *indoor*, atenuação em pequena escala e caminhos múltiplos
 7. Equalizadores de canal: lineares e não lineares
 8. Técnicas de acesso múltiplo: FDMA, TDMA, CDMA e outras
