@@ -33,4 +33,6 @@ cpf xxx, saldo xxx
 cpf xxx, saldo xxx
 ...
 ```
-4. 4. 
+4. Elaborar um script em Python para ler os dados do nome, telefone e e-mail de uma pessoa. Cadastrar os dados em um dicionário. O programa deverá permitir a pesquisa do telefone e e-mail de uma pessoa quantas vezes o usuários desejar. Caso o nome da pessoa não esteja na agenda,
+apresentar a mensagem PESSOA NÃO CADASTRADA. 
+
