@@ -11,9 +11,10 @@
 3. Análise sintática:   
 3.1 [Visão geral](compiladores/AnaliseSintatica1.pdf)  
 3.2 [Análise sintática descendente](compiladores/AnaliseSintatica2.pdf): método descendente recursivo e método LL-1.  
+3.3 [TINY adaptada](compiladores/TINYv2.pdf)
 4. Análise semântica: atributos e grmática de atributos, algoritmos para computação de atributos e tabela de símbolos.
 5. Ambientes de execução: ambientes estáticos e ambientes baseados em pilhas.
-6. Geração de código intermediário: variantes da árvore de sintaxe, código de três endereços, tipos e declarações, tradução de expressões, verificação de tipo, fluxo de controle.
+6. Geração de códig2 intermediário: variantes da árvore de sintaxe, código de três endereços, tipos e declarações, tradução de expressões, verificação de tipo, fluxo de controle.
 7. Geração de código: a linguagem objeto, endereços no código objeto, blocos básicos e grafos de fluxo, um gerador de código simples. 
 8. Otimizações independentes de máquina.
 9. Paralelismo de instrução. 
