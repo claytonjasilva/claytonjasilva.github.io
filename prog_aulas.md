@@ -25,6 +25,7 @@
 4. [Funções](prog_aulas/exercicios_funcoes.md)  
 5. [Listas](prog_aulas/exercicios_listas.md)
 6. [Strings](prog_aulas/exercicios_strings.md)
+7. [Tuplas e dicionários](prog_aulas/exercicios_tuplas_dicionarios.md)
 
 ## Avaliações Bimestrais
 ### AP1
