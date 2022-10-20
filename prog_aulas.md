@@ -24,6 +24,7 @@
 3. [Instruções compostas de repetição](prog_aulas/exercicios_repeticao.md)
 4. [Funções](prog_aulas/exercicios_funcoes.md)  
 5. [Listas](prog_aulas/exercicios_listas.md)
+6. [Strings](prog_aulas/exercicios_strings.md)
 
 ## Avaliações Bimestrais
 ### AP1
