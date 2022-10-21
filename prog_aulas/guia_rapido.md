@@ -252,7 +252,7 @@
    Finalidade: método para remove e retorna o elemento da posição i.  
 10. **Método *remove***  
    Sintaxe: `lista.remove(elemento)`  
-   Exemplo: 
+   Exemplo:  
    ```
    lista = [1,2,4,2,7,3]
    x = lista.remove(2)
