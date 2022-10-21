@@ -40,6 +40,17 @@
   `not`, negação  
   Exemplos: `x or y`, `x and y`, `not x`, ... onde x, y assumem os valores *True* ou *False* 
   Finalidade: realizar operações lógicas entre expressões que retornam *True* (verdadeiro) ou *False* (falso).  
+4. **Pertinência**
+   Sintaxe: `in` ou `not in`  
+   Exemplos:  
+   ```
+   x = 2
+   k = 5
+   lista = [1, 2, 3]
+   y = x in lista
+   w = k in lista
+   ```  
+   retorna *True* para *y*, pois 2 pertence a lista; e retorna *False* para *w*. O operador `not in` retorna a negação de `in` 
 
 [Topo](#ancora)
 
