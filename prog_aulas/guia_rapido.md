@@ -193,6 +193,17 @@
       return c
    ```
    Finalidade: criar e definir as instruções executadas por uma função.  
+2. **Retornando tupla**  
+   Sintaxe: `return <valores ou variáveis separadas por vírgula`  
+   Exemplo:  
+   ```
+   def add_mult(n,m):
+      a = n * m
+      b = n + m
+      retiurn a , b
+   ```  
+   retorna a tupla (a, b).  
+   Finalidade: criar uma tupla por função.  
 
 [Topo](#ancora)
 
