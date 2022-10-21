@@ -197,13 +197,13 @@
    Exemplo: `nota[0]`  
    Finalidade: associa ao dado de nota na posição [0]
  4. **Fatiar listas**
-   Sintaxe: `nome da lista[indice inferior:indice superior]` ou `nome da lista[:indice superior]` ou `nome da lista[indice inferior:]`
+   Sintaxe: `nome da lista[indice inferior:indice superior]` ou `nome da lista[:indice superior]` ou `nome da lista[indice inferior:]`  
    Exemplo: 
    ```
    nota = [1,4,2,8,8]
    print(nota[:1], nota[1:3), nota[2:])
    ```
-   produz as listas [1,4] [4,2,8] [2,8,8]
+   produz as listas [1,4] [4,2,8] [2,8,8]  
    Finalidade: tomar e manipular trechos de lista  
  5. **Método *append***
    Sintaxe: `lista.append(item)`  
@@ -213,7 +213,7 @@
    nota.append(0)
    ```
    insere o valor 0 na lista vazia.
-   Finalidade: método para inserir elemento após o último elemento da lista.
+   Finalidade: método para inserir elemento após o último elemento da lista.  
   6. **Método *extend*** 
    Sintaxe: `lista.extend(lista)`  
    Exemplo: 
