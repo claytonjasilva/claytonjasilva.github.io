@@ -5,8 +5,9 @@
 - [Entrada e saída](#ancora3)
 - [Conversão de tipos](#ancora4)
 - [Funções](#ancora5)
-- , Listas e Strings](#ancora5)
-- [Outras](#ancora6) 
+- [Listas](#ancora6)
+- [Strings](#ancora7)
+- [Outras](#ancora8) 
 
 <a id="ancora1"></a>
 ## Operadores
@@ -240,14 +241,41 @@
    ```
    produz a lista [1,8,2.4,6.7,3]
    Finalidade: método para inserir um elemento em uma posição i.
+  9. **Método *pop***
+   Sintaxe: `lista.pop()`  
+   Exemplo: 
+   ```
+   lista = [1,2,4,6,7,3]
+   x = lista.pop(4)
+   ```
+   retorna 7 e atribui a x e produz a lista [1,2,4,6,3]
+   Finalidade: método para remove e retorna o elemento da posição i.
+  10. **Método *remove***
+   Sintaxe: `lista.remove(elemento)`  
+   Exemplo: 
+   ```
+   lista = [1,2,4,2,7,3]
+   lista.remove(2)
+   ```
+   produz a lista [1,4,2,7,3]
+   Finalidade: método para remover o primeiro *elemento* na lista.
+  11. **Função *sum***
+   Sintaxe: `sum(lista)`  
+   Exemplo: 
+   ```
+   lista = [1,2,4,2,7,3]
+   x = sum(lista)
+   ```
+   calcula a soma igual a 19 e atribui à variável x
+   Finalidade: função para retornar a soma todos os elementos da lista.
+[Topo](#ancora)
 
-  10. 
-  11. 
+<a id="ancora7"></a>
 
 
 [Topo](#ancora)
 
-<a id="ancora6"></a>
+<a id="ancora8"></a>
 ## Outras
 1. **Comentário:**  
    Sintaxe: `#`, seguido pelo texto de comentário  
