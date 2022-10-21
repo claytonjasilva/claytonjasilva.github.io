@@ -204,7 +204,7 @@
    print(nota[:1], nota[1:3), nota[2:])
    ```
    produz as listas [1,4] [4,2,8] [2,8,8]
-   Finalidade: tomar e manipular trechos de lista
+   Finalidade: tomar e manipular trechos de lista  
  5. **Método *append***
    Sintaxe: `lista.append(item)`  
    Exemplo: 
@@ -222,7 +222,7 @@
    nota.extend([4,6])
    ```
    produz a lista [1,2,5,6,4,6].
-   Finalidade: método para incluir uma lista argumento no fim da lista
+   Finalidade: método para incluir uma lista argumento no fim da lista  
   7. **Método *sort()***
    Sintaxe: `lista.sort()`  
    Exemplo: 
