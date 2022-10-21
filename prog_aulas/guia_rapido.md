@@ -9,6 +9,7 @@
 - [Strings](#ancora7)
 - [Tuplas](#ancora8) 
 - [Outras](#ancora9)
+   - [Operações comuns a listas, strings e tuplas](#ancora10)
 
 <a id="ancora1"></a>
 ## Operadores
@@ -334,6 +335,21 @@
    6. **Importando módulos de pacotes**
    Sintaxe: `from pacote import módulo`  
    Exemplo: `from math import sqrt`  
-   Finalidade: importa somente o módulo do pacote
+   Finalidade: importa somente o módulo do pacote  
+ <a id="ancora10"></a>
+ 4. **Operações comuns a listas, strings e tuplas**
+
+| Operação | Resultado | Observação |
+| -------- | --------- | ---------- |
+| `x in s` | `True` se x está em s, `False` caso contrário | Para *strings* `"gg" in "eggs"` retorna *True* |
+| `x not in s` | `False` se x está em s, `True` caso contrário | Para *strings* `"gg" not in "eggs"` retorna *False* |
+| `s + t` | Concatena s com t | Concatenar objetos imutáveis gera um objeto imutável |
+| `s * n` ou `n * s`| Gera uma sequência s repetida n vezes | Se n igual a zero gera sequência vazia |
+| `s[i]`,`s[i:j]`, ... | Define elemento ou intervalo de elementos de s |  |
+| `len(s)` | Retorna tamanho da sequência |  |
+| `max(s)` | Retorna maior valor |  |
+| `min(s)` | Retorna menor valor |  |
+| `s.index(x)` | Retorna a posição da primeira ocorrência de x em s |  |
+| `s.count(x)` | Retorna o número de ocorrências de x em s |  |
    
 [Topo](#ancora)
