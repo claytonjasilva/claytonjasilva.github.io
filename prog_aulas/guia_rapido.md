@@ -4,7 +4,8 @@
 - [Instruções simples e compostas](#ancora2)
 - [Entrada e saída](#ancora3)
 - [Conversão de tipos](#ancora4)
-- [Funções, Listas e Strings](#ancora5)
+- [Funções](#ancora5)
+- , Listas e Strings](#ancora5)
 - [Outras](#ancora6) 
 
 <a id="ancora1"></a>
@@ -161,7 +162,7 @@
 [Topo](#ancora)
 
 <a id="ancora5"></a>
-## Funções, Listas e Strings
+## Funções
 1. **Definição de função**  
    Sintaxe:   
    ```
@@ -177,18 +178,72 @@
       return c
    ```
    Finalidade: criar e definir as instruções executadas por uma função.  
-2. **Inicializar lista vazia**  
+
+[Topo](#ancora)
+
+<a id="ancora6"></a>
+## Listas
+1. **Inicializar lista vazia**  
    Sintaxe: `lista=[]`  
    Exemplo: `nota=[]`  
    Finalidade: criar uma lista vazia.
-3. **Inicializar lista não vazia**  
+2. **Inicializar lista não vazia**  
    Sintaxe: `lista=[item, item, ...]`  
    Exemplo: `nota=[8,9,10,3]`  
    Finalidade: criar e inicializar uma lista com seus elementos.
-4. **Elemento de uma lista**  
+3. **Elemento de uma lista**  
    Sintaxe: `nome[indice]`  
    Exemplo: `nota[0]`  
    Finalidade: associa ao dado de nota na posição [0]
+ 4. **Fatiar listas**
+   Sintaxe: `nome da lista[indice inferior:indice superior]` ou `nome da lista[:indice superior]` ou `nome da lista[indice inferior:]`
+   Exemplo: 
+   ```
+   nota = [1,4,2,8,8]
+   print(nota[:1], nota[1:3), nota[2:])
+   ```
+   produz as listas [1,4] [4,2,8] [2,8,8]
+   Finalidade: tomar e manipular trechos de lista
+  5. **Método *append***
+   Sintaxe: `lista.append(item)`  
+   Exemplo: 
+   ```
+   nota = []
+   nota.append(0)
+   ```
+   insere o valor 0 na lista vazia.
+   Finalidade: método para inserir elemento após o último elemento da lista.
+  6. **Método *extend*** 
+   Sintaxe: `lista.extend(lista)`  
+   Exemplo: 
+   ```
+   nota = [1,2,5,6]
+   nota.extend([4,6])
+   ```
+   produz a lista [1,2,5,6,4,6].
+   Finalidade: método para incluir uma lista argumento no fim da lista
+  7. **Método *sort()***
+   Sintaxe: `lista.sort()`  
+   Exemplo: 
+   ```
+   nota = [4,1,0,3]
+   print(nota.sort())
+   ```
+   produz a lista [0,1,3,4].
+   Finalidade: método para ordenar crescentemente a lista.
+  8. **Método *insert***
+   Sintaxe: `lista.insert(i,elemento)`  
+   Exemplo: 
+   ```
+   lista = [1,2.4,6.7,3]
+   lista.insert(1,8)
+   ```
+   produz a lista [1,8,2.4,6.7,3]
+   Finalidade: método para inserir um elemento em uma posição i.
+
+  10. 
+  11. 
+
 
 [Topo](#ancora)
 
