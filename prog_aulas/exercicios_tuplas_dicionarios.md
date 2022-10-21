@@ -41,4 +41,5 @@ Saída: `[3, 5, 7]`
 6. Elaborar um script em Python para converter uma tupla dada de inteiros positivos em um inteiro. Por exemplo,  
 Entrada: `(1, 2, 3)`  
 Saída: `123`
-
+7. Elaborar um script em Python para converter uma determinada lista de tuplas em uma lista de listas. 
+8. Elaborar um script em Python para criar um dicionário de teclas x, y e z onde cada chave tem como valor uma lista de 11-20, 21-30 e 31-40, respectivamente. Acesse o quinto valor de cada chave do dicionário. 
