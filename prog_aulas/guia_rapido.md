@@ -272,6 +272,7 @@
 [Topo](#ancora)
 
 <a id="ancora7"></a>
+## Strings
 1. **Caracteres de escape**
 
 | Caractere de escape | Significado |
@@ -286,15 +287,16 @@
 | \\' | Caractere de aspas simples. |
 
 [Topo](#ancora)
+## Tuplas
 1. **Criação**  
-   Sintaxe: `tupla = (<elementos separados por vírgula>)` ou `tupla = <elementos separados por vírgula`
+   Sintaxe: `tupla = (<elementos separados por vírgula>)` ou `tupla = <elementos separados por vírgula`  
    Exemplo: `vogais = ('a','e','i','o','u')` ou `vogais = 'a','e','i','o','u'`  
    Finalidade: criar a tupla  
-2. **Função *tuple***
-   Sintaxe: `tupla = tuple(<objeto>)`
+2. **Função *tuple***  
+   Sintaxe: `tupla = tuple(<objeto>)`  
    Exemplo: `tupla = tuple([1,2,3])`  
    produz a tupla (1,2,3)  
-   Finalidade: criar a tupla a partir da lista
+   Finalidade: criar a tupla a partir da lista  
 <a id="ancora8"></a>
 
 [Topo](#ancora)
