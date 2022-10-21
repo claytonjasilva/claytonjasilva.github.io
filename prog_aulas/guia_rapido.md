@@ -287,6 +287,8 @@
 | \\' | Caractere de aspas simples. |
 
 [Topo](#ancora)
+
+<a id="ancora8"></a>
 ## Tuplas
 1. **Criação**  
    Sintaxe: `tupla = (<elementos separados por vírgula>)` ou `tupla = <elementos separados por vírgula`  
@@ -297,8 +299,6 @@
    Exemplo: `tupla = tuple([1,2,3])`  
    produz a tupla (1,2,3)  
    Finalidade: criar a tupla a partir da lista  
-<a id="ancora8"></a>
-
 [Topo](#ancora)
 
 <a id="ancora9"></a>
