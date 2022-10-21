@@ -7,7 +7,8 @@
 - [Funções](#ancora5)
 - [Listas](#ancora6)
 - [Strings](#ancora7)
-- [Outras](#ancora8) 
+- [Tuplas](#ancora8) 
+- [Outras](#ancora9)
 
 <a id="ancora1"></a>
 ## Operadores
@@ -271,11 +272,34 @@
 [Topo](#ancora)
 
 <a id="ancora7"></a>
+1. **Caracteres de escape**
 
+| Caractere de escape | Significado |
+| ------------------- | ----------- |
+| \n |  Nova linha. Move o cursor para o início da próxima linha. |
+| \t | Tabulação Horizontal. Move o cursor para a próxima parada de tabulação (tab). |
+| \r | Retorno de carro. Move o cursor para o início da linha atual; não avança para a próxima linha. |
+| \b | Backspace. Retrocede o cursor um caractere. |
+| \a | Alerta. Emite o som de sino do sistema. |
+| \ | Barra invertida (Backslash). |
+| \\" | Caractere de aspas duplas. |
+| \\' | Caractere de aspas simples. |
+
+[Topo](#ancora)
+1. **Criação**  
+   Sintaxe: `tupla = (<elementos separados por vírgula>)` ou `tupla = <elementos separados por vírgula`
+   Exemplo: `vogais = ('a','e','i','o','u')` ou `vogais = 'a','e','i','o','u'`  
+   Finalidade: criar a tupla  
+2. **Função *tuple***
+   Sintaxe: `tupla = tuple(<objeto>)`
+   Exemplo: `tupla = tuple([1,2,3])`  
+   produz a tupla (1,2,3)  
+   Finalidade: criar a tupla a partir da lista
+<a id="ancora8"></a>
 
 [Topo](#ancora)
 
-<a id="ancora8"></a>
+<a id="ancora9"></a>
 ## Outras
 1. **Comentário:**  
    Sintaxe: `#`, seguido pelo texto de comentário  
