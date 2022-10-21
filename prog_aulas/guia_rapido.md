@@ -275,22 +275,22 @@
    ```
    retorna 7 e atribui a x e produz a lista [1,2,4,6,3]  
    Finalidade: método para remove e retorna o elemento da posição i.  
-10. **Método *remove***  
+10. **Método *remove***
    Sintaxe: `lista.remove(elemento)`  
    Exemplo:  
-   ```
+   ```  
    lista = [1,2,4,2,7,3]
    x = lista.remove(2)
    ```  
-   produz a lista [1,4,2,7,3]  
-   Finalidade: método para remover o primeiro *elemento* na lista.  
+   resulta na remoção do primeiro 2 e definição da lista [1,4,2,7,3]  
+   Finalidade: remover primeiro elemento definido no argumento uma lista  
 11. **Função *sum***  
    Sintaxe: `sum(lista)`  
-   Exemplo: 
+   Exemplo:  
    ```
    lista = [1,2,4,2,7,3]
    x = sum(lista)
-   ```
+   ```  
    calcula a soma igual a 19 e atribui à variável x  
    Finalidade: função para retornar a soma todos os elementos da lista.  
 [Topo](#ancora)
