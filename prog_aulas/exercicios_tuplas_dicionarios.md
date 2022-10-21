@@ -38,5 +38,7 @@ apresentar a mensagem PESSOA NÃO CADASTRADA.
 5. Elaborar um script em Python para calcular a soma de todos os elementos de cada tupla armazenados dentro de uma lista de tuplas. Por exemplo,  
 Entrada: `[(1, 2), (2, 3), (3, 4)]`  
 Saída: `[3, 5, 7]`
-6. 
+6. Elaborar um script em Python para converter uma tupla dada de inteiros positivos em um inteiro. Por exemplo,  
+Entrada: `(1, 2, 3)`  
+Saída: `123`
 
