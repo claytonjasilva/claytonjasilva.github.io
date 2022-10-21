@@ -196,78 +196,78 @@
    Sintaxe: `nome[indice]`  
    Exemplo: `nota[0]`  
    Finalidade: associa ao dado de nota na posição [0]
- 4. **Fatiar listas**
+4. **Fatiar listas** 
    Sintaxe: `nome da lista[indice inferior:indice superior]` ou `nome da lista[:indice superior]` ou `nome da lista[indice inferior:]`  
-   Exemplo: 
+   Exemplo:  
    ```
    nota = [1,4,2,8,8]
    print(nota[:1], nota[1:3), nota[2:])
-   ```
+   ```  
    produz as listas [1,4] [4,2,8] [2,8,8]  
    Finalidade: tomar e manipular trechos de lista  
- 5. **Método *append***
+5. **Método *append***  
    Sintaxe: `lista.append(item)`  
    Exemplo: 
    ```
    nota = []
    nota.append(0)
-   ```
-   insere o valor 0 na lista vazia.
+   ```  
+   insere o valor 0 na lista vazia.  
    Finalidade: método para inserir elemento após o último elemento da lista.  
-  6. **Método *extend*** 
+6. **Método *extend***  
    Sintaxe: `lista.extend(lista)`  
    Exemplo:
    ```
    nota = [1,2,5,6]
    nota.extend([4,6])
    ```
-   produz a lista [1,2,5,6,4,6].
+   produz a lista [1,2,5,6,4,6].  
    Finalidade: método para incluir uma lista argumento no fim da lista  
-  7. **Método *sort()***
+7. **Método *sort()***  
    Sintaxe: `lista.sort()`  
    Exemplo:
    ```
    nota = [4,1,0,3]
    print(nota.sort())
    ```
-   produz a lista [0,1,3,4].
+   produz a lista [0,1,3,4].  
    Finalidade: método para ordenar crescentemente a lista.
-  8. **Método *insert***
+8. **Método *insert***
    Sintaxe: `lista.insert(i,elemento)`  
    Exemplo: 
    ```
    lista = [1,2.4,6.7,3]
    lista.insert(1,8)
    ```
-   produz a lista [1,8,2.4,6.7,3]
+   produz a lista [1,8,2.4,6.7,3]  
    Finalidade: método para inserir um elemento em uma posição i.
-  9. **Método *pop***
+9. **Método *pop***  
    Sintaxe: `lista.pop()`  
    Exemplo: 
    ```
    lista = [1,2,4,6,7,3]
    x = lista.pop(4)
    ```
-   retorna 7 e atribui a x e produz a lista [1,2,4,6,3]
-   Finalidade: método para remove e retorna o elemento da posição i.
-  10. **Método *remove***
+   retorna 7 e atribui a x e produz a lista [1,2,4,6,3]  
+   Finalidade: método para remove e retorna o elemento da posição i.  
+10. **Método *remove***
    Sintaxe: `lista.remove(elemento)`  
    Exemplo: 
    ```
    lista = [1,2,4,2,7,3]
    lista.remove(2)
    ```
-   produz a lista [1,4,2,7,3]
-   Finalidade: método para remover o primeiro *elemento* na lista.
-  11. **Função *sum***
+   produz a lista [1,4,2,7,3]  
+   Finalidade: método para remover o primeiro *elemento* na lista.  
+11. **Função *sum***  
    Sintaxe: `sum(lista)`  
    Exemplo: 
    ```
    lista = [1,2,4,2,7,3]
    x = sum(lista)
    ```
-   calcula a soma igual a 19 e atribui à variável x
-   Finalidade: função para retornar a soma todos os elementos da lista.
+   calcula a soma igual a 19 e atribui à variável x  
+   Finalidade: função para retornar a soma todos os elementos da lista.  
 [Topo](#ancora)
 
 <a id="ancora7"></a>
