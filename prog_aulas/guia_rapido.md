@@ -216,7 +216,7 @@
    Finalidade: método para inserir elemento após o último elemento da lista.  
   6. **Método *extend*** 
    Sintaxe: `lista.extend(lista)`  
-   Exemplo: 
+   Exemplo:
    ```
    nota = [1,2,5,6]
    nota.extend([4,6])
@@ -225,7 +225,7 @@
    Finalidade: método para incluir uma lista argumento no fim da lista  
   7. **Método *sort()***
    Sintaxe: `lista.sort()`  
-   Exemplo: 
+   Exemplo:
    ```
    nota = [4,1,0,3]
    print(nota.sort())
