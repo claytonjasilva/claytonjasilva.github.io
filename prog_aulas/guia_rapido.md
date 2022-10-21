@@ -194,7 +194,7 @@
    ```
    Finalidade: criar e definir as instruções executadas por uma função.  
 2. **Retornando tupla**  
-   Sintaxe: `return <valores ou variáveis separadas por vírgula`  
+   Sintaxe: `return <valores ou variáveis separadas por vírgula>`  
    Exemplo:  
    ```
    def add_mult(n,m):
