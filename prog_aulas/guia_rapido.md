@@ -250,13 +250,13 @@
    ```
    retorna 7 e atribui a x e produz a lista [1,2,4,6,3]  
    Finalidade: método para remove e retorna o elemento da posição i.  
-10. **Método *remove***
+10. **Método *remove***  
    Sintaxe: `lista.remove(elemento)`  
    Exemplo: 
    ```
    lista = [1,2,4,2,7,3]
-   lista.remove(2)
-   ```
+   x = lista.remove(2)
+   ```  
    produz a lista [1,4,2,7,3]  
    Finalidade: método para remover o primeiro *elemento* na lista.  
 11. **Função *sum***  
