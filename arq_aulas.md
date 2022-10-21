@@ -7,7 +7,8 @@
     [Exercícios em sala](arq_aulas/exercicios3_sala.md)
 4. [Nível de lógica digital: circuitos combinacionais](arq_aulas/arq_aulas_logica_combinacional.pdf)    
 5. [Nível de lógica digital: circuitos sequenciais](arq_aulas/arq_aulas_logica_sequencial.pdf)
-6. [Detalhamento dos elementos fundamentais das arquiteturas](arq_aulas/arq_aulas_componentes.pdf)
+6. [Detalhamento dos elementos fundamentais das arquiteturas](arq_aulas/arq_aulas_componentes.pdf)  
+    6.1 [Notas sobre memória](arq_aulas/notas_memoria.pdf)
 7. [Microprocessador Atmel ATmega 2560](arq_aulas/arq_aulas_mc2560.pdf)
 8. [Sistemas Operacionais](arq_aulas/arq_aulas_so.pdf)
 
