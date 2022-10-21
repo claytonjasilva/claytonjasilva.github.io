@@ -205,7 +205,7 @@
    ```
    produz as listas [1,4] [4,2,8] [2,8,8]
    Finalidade: tomar e manipular trechos de lista
-  5. **Método *append***
+ 5. **Método *append***
    Sintaxe: `lista.append(item)`  
    Exemplo: 
    ```
