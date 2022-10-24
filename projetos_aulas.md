@@ -33,4 +33,6 @@ Alguns vídeos interessantes:
 5. [Form 3 - Engenharia de Sistemas](des_aulas/Form3_engenharia_sistemas.pdf)  
 6. Diagramas de classes, objetos e IDEF-0 de um sistema veículo - [modelos estático e funcional](des_aulas/Modelo-estatico-funcional-veiculo.pdf)  
 7. [Form 4 - Modelo de Sistemas de Engenharia](des_aulas/Form4_modelos_sistemas.pdf)  
+8. [Form 5 - Métodos de Apoio à Decisão](des_aulas/des_form5.pdf)
+9. [Form 6 - Grandezas e Erros]()
 
