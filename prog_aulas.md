@@ -13,8 +13,8 @@
 7.1 [Strings](prog_aulas/prog_str.md)    
 7.2 [Tuplas](prog_aulas/prog_tuplas.md)     
 7.3 [Dicionários](prog_aulas/prog_dicionarios.md)    
-------------------------------------------------------------- Atualizado: outubro/22  
 7.4 [Conjuntos](prog_aulas/prog_conjuntos.md)   
+------------------------------------------------------------- Atualizado: outubro/22  
 8. [Arquivos](prog_aulas/prog_arquivos.md)  
 9. Pacotes [NumPy](https://numpy.org/doc/stable/user/absolute_beginners.html), [Matplotlib](https://matplotlib.org/stable/plot_types/index.html) e [SciPy](https://docs.scipy.org/doc/scipy/getting_started.html#getting-started-ref)
 
