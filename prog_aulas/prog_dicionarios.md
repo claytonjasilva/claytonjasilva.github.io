@@ -57,3 +57,6 @@ for chave in alunos.keys():
 ### Exercícios  
 Elaborar o *script* de um código em Python para...
 1. Criar um dicionário com as matrículas, nomes e notas finais de um grupo de 30 alunos. Com o dicionário criado, o usuário poderá digitar uma matrícula e o programa deverá retornar os dados cadastrados. [dicionarioEx1.py](https://github.com/claytonjasilva/prog_exemplos/blob/main/dicionarioEx1.py)
+2. Criar uma agenda com os campos de dados de nome, email e celular, utilizando o celular como chave.
+Quando o usuário digitar celular igual a 0 a criação do dicionário se encerra.
+Deve permitir também exclusão de todos os campos. [dicionarioEx2.py](https://github.com/claytonjasilva/prog_exemplos/blob/main/dicionarioEx2.py)
