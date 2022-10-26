@@ -60,3 +60,8 @@ Elaborar o *script* de um código em Python para...
 2. Criar uma agenda com os campos de dados de nome, email e celular, utilizando o celular como chave.
 Quando o usuário digitar celular igual a 0 a criação do dicionário se encerra.
 Deve permitir também exclusão de todos os campos. [dicionarioEx2.py](https://github.com/claytonjasilva/prog_exemplos/blob/main/dicionarioEx2.py)
+3. Criar um dicionário com a matrícula (chave) e nome de um grupo de 30 alunos.
+Deseja-se implementar uma função que retorna a matrícula dado um nome.
+À medida que cada letra do nome é digitada a relação de matrículas que 'casa' com a formação do nome é apresentada.
+[dicionarioEx3.py](https://github.com/claytonjasilva/prog_exemplos/blob/main/dicionarioEx3.py)
+
