@@ -37,3 +37,4 @@
 
 ## Avaliações
 1. [AP1 - Trabalho](compiladores/Orientacao_trabalho_AP1.pdf)
+2. [AP2 - Trabalho](compiladores/Orientacao_trabalho_AP2.pdf)
