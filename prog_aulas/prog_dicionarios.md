@@ -64,4 +64,10 @@ Deve permitir também exclusão de todos os campos. [dicionarioEx2.py](https://g
 Deseja-se implementar uma função que retorna a matrícula dado um nome.
 À medida que cada letra do nome é digitada a relação de matrículas que 'casa' com a formação do nome é apresentada.
 [dicionarioEx3.py](https://github.com/claytonjasilva/prog_exemplos/blob/main/dicionarioEx3.py)
+4. Criar um sistema com dois dicionários. O programa deve armazenar os valores no dicionário principal, fazendo automaticamente o backup no dicionário de *backup*. O dicionário principal possui uma capacidade máxima para armazenar 5 elementos.
+Cada vez que o dicionário principal atingir a sua capacidade limite o programa deve apresentar os valores na console e apagar o seu conteúdo.
+5. sasa
+
+
+
 
