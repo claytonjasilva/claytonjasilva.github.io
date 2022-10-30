@@ -36,6 +36,7 @@ print(vogais)
 Os conjuntos devem conter as matrículas dos alunos. Os alunos são matriculados inicialmente na turma A.
 Quando a capacidade da turma A for completada o programa passa a matricular na turma B.
 Quando a capacidade da turma B for completada o programa deve ser encerrado.
+Após cadastrar os dados o programa deverá apresentar a relação de matriculados em cada turma.
 2. Criar dois conjuntos A e B. Escrever os elementos que pertencem ao conjunto A e não pertencem ao B.
 Escrever os elementos que pertencem a ambos os conjuntos.
 3. Criar um conjunto numéricos. O primeiro conjunto contém uma sequência de valores de ponto flutuante entre 0 e 5 (inclusive),
