@@ -69,8 +69,6 @@ Cada vez que o dicionário principal atingir a sua capacidade limite o programa 
 [dicionarioEx4.py](https://github.com/claytonjasilva/prog_exemplos/blob/main/dicionarioEx4.py)
 5. Criar uma matriz MxN utilizando dicionário. Cada chave deve ser definida por uma tupla que defina linha e coluna do elemento.
 Todos os elementos da matriz são números de ponto flutuante. [dicionarioEx5.py](https://github.com/claytonjasilva/prog_exemplos/blob/main/dicionarioEx5.py)
-6. asas
-
 
 
 
