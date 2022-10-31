@@ -33,7 +33,7 @@
 **AP2**    
 
 5. [Exercício 5 - 2022.2: memória](arq_aulas/exercicio5.md)  
-6. [Exercício 6 - 2022.2: cache e barramento](arq_aulas/exercicio6.md)    
+6. [Exercício 6 - 2022.2: mapeamento MP-cache, barramento e processadores](arq_aulas/exercicio6.md)    
 
 ## Referências  
 *Obs. É necessário o acesso pela Biblioteca Virtual do Ibmec*    
