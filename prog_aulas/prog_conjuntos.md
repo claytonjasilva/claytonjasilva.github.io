@@ -39,13 +39,15 @@ Quando a capacidade da turma B for completada o programa deve ser encerrado.
 Após cadastrar os dados o programa deverá apresentar a relação de matriculados em cada turma. [conjuntoEx1.py](https://github.com/claytonjasilva/prog_exemplos/blob/main/conjuntoEx1.py)
 2. Criar dois conjuntos A e B com N elementos cada. Escrever os elementos que pertencem ao conjunto A e não pertencem ao B.
 Escrever os elementos que pertencem a ambos os conjuntos. [conjuntoEx2.py](https://github.com/claytonjasilva/prog_exemplos/blob/main/conjuntoEx2.py)
-3. Criar um conjunto numéricos. O primeiro conjunto contém uma sequência de valores de ponto flutuante entre 0 e 5 (inclusive),
-em passos de 0.5.
+3. Criar um conjunto contendo as matrículas de um grupo de 10 alunos.
+Considerando o conjunto de matrículas, o programa deve ler uma matrícula digitada, verificar se pertence ao conjunto,
+criando um dicionário, com chave matrícula e a respectiva nota. Caso não pertença, incluir a matrícula no conjunto.
 4. Dados 5 conjuntos contendo o cpf de pessoas, cada conjunto de uma instituição financeira, determinar quantos e quais clientes possuem conta em pelo menos três instituições.
 5. Dada uma turma de alunos cuja matrícula e nome estão cadastrados em um conjunto, ler uma nova matrícula e nome.
 Se o aluno já estiver matriculado, o programa deverá apresentar uma mensagem.
 Se não estiver matriculado e a turma possuir menos do que 20 alunos, atualizar o conjunto.
-CAso a turma já esteja completa, apresentar a mensagem.
+Caso a turma já esteja completa, apresentar a mensagem.
+
 
 
 
