@@ -8,7 +8,7 @@
 união **(operador:  `|`  )**,  
 interseção **(operador: `&`)**,  
 diferença **(operador: `-`)** e  
-diferença simétrica **(operador: `^`)**.  
+diferença simétrica **(operador: `^`)** - A diferença simétrica entre dois conjuntos é um conjunto contendo os elementos de ambos os conjuntos que não são comuns um com o outro.  
 - Para serem criados podem ser usados chaves ou a função `set()`.  
 Por exemplo, 
 ```
