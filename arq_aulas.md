@@ -2,8 +2,8 @@
 ## Arquitetura de Computadores - 2022.2
 
 ## Tópicos
-1. [Conceitos básicos](arq_aulas/arq_aulas_conceitos.pdf)    *Atualizado 2022.2*  
-2. [Números e aritmética binária](arq_aulas/arq_aulas_aritmetica.pdf) *Atualizado 2022.2*  
+1. [Conceitos básicos](arq_aulas/arq_aulas_conceitos.pdf)   
+2. [Números e aritmética binária](arq_aulas/arq_aulas_aritmetica.pdf)    
     [Exercícios em sala](arq_aulas/exercicios3_sala.md)
 4. [Nível de lógica digital: circuitos combinacionais](arq_aulas/arq_aulas_logica_combinacional.pdf)    
 5. [Nível de lógica digital: circuitos sequenciais](arq_aulas/arq_aulas_logica_sequencial.pdf)
@@ -15,23 +15,22 @@
 ## Práticas    
 *Obs. As práticas e os exercícios serão atualizadas/propostas à medida que a apresentação do conteúdo evoluir durante o semestre* 
 
-1. [Prática 1 Arduíno](arq_aulas/arq_pratica1.md)      *Atualizado 2022.2*
-2. [Prática 2 Arduíno](arq_aulas/arq_pratica2.md)      *Atualizado 2022.2*
+1. [Prática 1 Arduíno](arq_aulas/arq_pratica1.md)    
+2. [Prática 2 Arduíno](arq_aulas/arq_pratica2.md)     
 
 ## Avaliações Bimestrais
 ### AP1
-1. [Trabalho AP1](arq_aulas/Orientacao_trabalho_AP1.pdf)    *Atualizado 2022.2*
+1. [Trabalho AP1](arq_aulas/Orientacao_trabalho_AP1.pdf)    
 
 ## Exercícios
+**AP1**  
 1. [Exercício 1 - 2022.2: Conceitos iniciais e máquina de níveis](arq_aulas/form1.pdf)
 2. [Exercício 2 - 2022.2: Programa assembly no set da máquina IAS](arq_aulas/exercicio2.md)
 3. [Exercício 3 - 2022.2: Números e aritmética binária](arq_aulas/exercicio3.md)    
 4. [Exercício 4 - 2022.2: Nível de lógica digital](arq_aulas/exercicio4.md)
-5. [Exercício 5 - 2022.2: memória](arq_aulas/exercicio5.md) - **AC: Resolver o form** (https://forms.gle/sXSQ7qhDyGxBdVLfA)     
-6. Assembler e *set* de instruções do MC2560  
-  [Lista 1 assembly com solução](arq_aulas/Lista3_programas_assembly.pdf)  
-  [Lista 2 assembly com solução](arq_aulas/Lista4_programas_assembly.pdf)  
-  [Lista 3 assembly com solução](arq_aulas/Lista5_programas_assembly.pdf)
+**AP2**  
+5. [Exercício 5 - 2022.2: memória](arq_aulas/exercicio5.md)  
+6. [Exercício 6 - 2022.2: cache e barramento](arq_aulas/exercicio6.md)    
 
 ## Referências  
 *Obs. É necessário o acesso pela Biblioteca Virtual do Ibmec*    
