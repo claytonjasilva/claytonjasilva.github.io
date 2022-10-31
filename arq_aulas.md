@@ -28,7 +28,10 @@
 2. [Exercício 2 - 2022.2: Programa assembly no set da máquina IAS](arq_aulas/exercicio2.md)
 3. [Exercício 3 - 2022.2: Números e aritmética binária](arq_aulas/exercicio3.md)    
 4. [Exercício 4 - 2022.2: Nível de lógica digital](arq_aulas/exercicio4.md)
-**AP2**  
+
+ 
+**AP2**    
+
 5. [Exercício 5 - 2022.2: memória](arq_aulas/exercicio5.md)  
 6. [Exercício 6 - 2022.2: cache e barramento](arq_aulas/exercicio6.md)    
 
