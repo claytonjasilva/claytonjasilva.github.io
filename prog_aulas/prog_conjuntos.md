@@ -42,7 +42,7 @@ Após cadastrar os dados o programa deverá apresentar a relação de matriculad
 Escrever os elementos que pertencem a ambos os conjuntos. [conjuntoEx2.py](https://github.com/claytonjasilva/prog_exemplos/blob/main/conjuntoEx2.py)
 3. Criar um conjunto contendo as matrículas de um grupo de 10 alunos.
 Considerando o conjunto de matrículas, o programa deve ler uma matrícula digitada, verificar se pertence ao conjunto,
-criando um dicionário, com chave matrícula e a respectiva nota. Caso não pertença, incluir a matrícula no conjunto.
+criando um dicionário, com chave matrícula e a respectiva nota. Caso não pertença, incluir a matrícula no conjunto. [conjuntoEx3.py](https://github.com/claytonjasilva/prog_exemplos/blob/main/conjuntoEx3.py)
 4. Dados 5 conjuntos contendo o cpf de pessoas, cada conjunto de uma instituição financeira, determinar quantos e quais clientes possuem conta em pelo menos três instituições.
 5. Dada uma turma de alunos cuja matrícula e nome estão cadastrados em um conjunto, ler uma nova matrícula e nome.
 Se o aluno já estiver matriculado, o programa deverá apresentar uma mensagem.
