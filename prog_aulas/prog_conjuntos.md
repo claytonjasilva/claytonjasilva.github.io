@@ -28,7 +28,8 @@ print(vogais)
 | set.add(item) | Adiciona item |
 | set.remove(item) | Remove item |
 | set.clear() | Esvazia o conjunto |
-| set1.update(set2) | Atualiza os elementos de set 1 com os elementos de set2|
+| set1.update(set2) | Atualiza os elementos de set 1 com os elementos de set2 |
+| set.copy() | Cria um novo conjunto contendo os mesmos elementos do conjunto set |
 
 ### Exercícios
 #### Elaborar um *script* em Python para
