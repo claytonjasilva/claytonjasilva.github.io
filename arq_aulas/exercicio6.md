@@ -45,4 +45,5 @@ e. Caso a técnica de substituição seja LRU, dada a tabela abaixo, qual seria 
 | 6 | 3 | b6 |
 | 3 | 4 | b7 |
 
-
+3. Explicar com suas palavras o motivo pelo qual é necessário aplicar um método para controlar a política de escrita de dados na cache. Quais são as duas técnicas discutidas e a diferença entre elas?
+4. 
