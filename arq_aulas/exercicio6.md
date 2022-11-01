@@ -1,5 +1,5 @@
 # Lista de exercícios: elementos dos sistemas computacionais
-## Mapemaneto MP-Cache, barramento e processadores
+## Mapeamento MP-Cache, barramento e processadores
 
 1. Seja um sistema de memória de uma arquitetura computacional que utilize **mapeamento direto** MP-cache. A memória primária possui 256 MB de capacidade de armazenamento.
 A cache possui 8 kB de capacidade de armazenamento. Ambas utilizam palavras de 4 bits. Responder as perguntas:  
@@ -12,4 +12,37 @@ f. Quantos bits, no mínimo, são necessários para endereçar cada linha da MP?
 g. Considerando os dados dos itens anteriores, qual seria o bloco da cache que armazenaria os dados da linha 5937d da MP requisitado pelo processador?  
 h. Em que endereço relativo dentro da linha de MP (dentro do bloco da cache) o referido dado estaria armazenado (em hexadecimal)?  
 i. Considerando a requisição do endereço do item g, qual seria o valor do campo de tag do bloco da cache para caracterizar um acerto?  
+
+2. SEja uma arquitetura que utiliza um sistema de memória com mapeamento MP-cache do tipo associativo. O projeto contempla a utilização de substituição de dados da cache de acordo com uso de estrutura de dados do tipo FIFO. Admitindo os 8 blocos de cache da questão anterior.
+Os campos de *tag* e a FIFO estão populados com os dados apresentados na tabela abaixo.
+
+| FIFO | *Tag* | Bloco |
+| --- | ----- | ----- |
+| 0 | 0 | b0 |
+| 2 | 53 | b1 |
+| 1 | 1 | b2 |
+| 3 | 1023 | b3 |
+| 7 | 1000 | b4 |
+| 5 | 2 | b5 |
+| 6 | 3 | b6 |
+| 4 | 4 | b7 |
+
+a. No caso de que seja necessário transferir os dados da linha 7 de MP para a cache haveria substituição dos dados da cache? Nesse caso, qual bloco seria substituído? Justitifcar a resposta.
+b. No caso de que seja necessário transferir os dados da linha 53 de MP para a cache haveria substituição dos dados da cache? Nesse caso, qual bloco seria substituído? Justificar a resposta.
+c. Quais são os endereços da MP presentes na cache? Apresentar por faixa de endereçamento, em hexadecimal.
+d. Admitindo que a estrutura dedados utilizada para controlar a substituição de dados na cache fosse LRU ao invés de FIFO, qual seria a modificação no sentido do processo adotado?
+e. Caso a técnica de substituição fosse LRU, dada a tabela abaixo, qual seria o primeiro bloco a ter seus dados substituídos em caso de falta?
+
+
+| t(nseg) | *Tag* | Bloco |
+| --- | ----- | ----- |
+| 1 | 0 | b0 |
+| 5 | 53 | b1 |
+| 4 | 1 | b2 |
+| 8 | 1023 | b3 |
+| 7 | 1000 | b4 |
+| 5 | 2 | b5 |
+| 6 | 3 | b6 |
+| 3 | 4 | b7 |
+
 
