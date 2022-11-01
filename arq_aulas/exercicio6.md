@@ -47,11 +47,17 @@ e. Caso a técnica de substituição seja LRU, dada a tabela abaixo, qual seria 
 
 3. Explicar com suas palavras o motivo pelo qual é necessário aplicar um método para controlar a política de escrita de dados na cache. Quais são as duas técnicas discutidas e a diferença entre elas?
 4. Quanto à funcionalidade, como se classificam os barramentos das arquiteturas de sistemas computacionais? Qual é a função de cada um dos tipos?
-5. Sejam os sinais elétricos apresentados na figura abaixo. Admitindo o clock de 1.5 MHz, reponder as seguintes perguntas.  
+5. Sejam os sinais elétricos apresentados na primeira figura abaixo. Admitindo o clock de 1.5 MHz, reponder as seguintes perguntas.  
 a. O que representa o sinal de clock? Qual é o período de clock utilizado no processo de comunicações?  
 b. Considerando a classificação discutida na questão anterior, como se categorizam os sinais *Rd*, *Dados* e *Endereço*?  
 c. A comunicação estabelecida se classifica como **síncrona** ou **assíncrona**? Justificar a resposta.  
-d. 
+d. Em quanto tempo o processador realizará a leitura de dados?  
+e. Qual é a diferença, do ponto de vista de controle, entre o protocolo de barrramento da figura abaixo, em comparação com a figura anterior? Quais são as vantagens e desvantagens de cada abordagem?  
+6. Os processadores são construídos utilizando duas áreas funcionais básicas. Quais são elas e seu papel?
+7. Havíamos estudado e utilizado instruções de modo de endereçamento imediato e modo de endereçamento direto da arquitetura de Von Neumman.
+Discutimos agora que os processadores possuem no *set* de instruções, algumas que empregam **modo de endereçamento indireto**.
+Explicar com suas palavras como opera uma instrução desse tipo, as vantagens e desvantagens quando comparadas com as instruções de modo direto e imediato.
+
 
 
 
