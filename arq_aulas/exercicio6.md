@@ -49,7 +49,7 @@ e. Caso a técnica de substituição seja LRU, dada a tabela abaixo, qual seria 
 4. Quanto à funcionalidade, como se classificam os barramentos das arquiteturas de sistemas computacionais? Qual é a função de cada um dos tipos?
 5. Sejam os sinais elétricos apresentados na primeira figura abaixo. Admitindo o clock de 1.5 MHz, reponder as seguintes perguntas. 
 
-![Diagrama de temporização 1](/.../main/arq_aulas/arq_notas/temporizador.png)
+![Diagrama de temporização 1](/../main/arq_aulas/arq_notas/temporizador.png)
 
 a. O que representa o sinal de clock? Qual é o período de clock utilizado no processo de comunicações?  
 b. Considerando a classificação discutida na questão anterior, como se categorizam os sinais *Rd*, *Dados* e *Endereço*?  
