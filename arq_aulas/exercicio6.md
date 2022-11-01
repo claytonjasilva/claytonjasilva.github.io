@@ -47,7 +47,7 @@ e. Caso a técnica de substituição seja LRU, dada a tabela abaixo, qual seria 
 
 3. Explicar com suas palavras o motivo pelo qual é necessário aplicar um método para controlar a política de escrita de dados na cache. Quais são as duas técnicas discutidas e a diferença entre elas?
 4. Quanto à funcionalidade, como se classificam os barramentos das arquiteturas de sistemas computacionais? Qual é a função de cada um dos tipos?
-5. Sejam os sinais elétricos apresentados na primeira figura abaixo. Admitindo o clock de 1.5 MHz, reponder as seguintes perguntas. 
+5. Sejam os sinais elétricos apresentados na primeira figura abaixo. Admitindo o clock de 1.5 MHz, reponder as seguintes perguntas.
 
 ![Diagrama de temporização 1](temporizador.png)
 
