@@ -56,6 +56,9 @@ b. Considerando a classificação discutida na questão anterior, como se catego
 c. A comunicação estabelecida se classifica como **síncrona** ou **assíncrona**? Justificar a resposta.  
 d. Em quanto tempo o processador realizará a leitura de dados?  
 e. Qual é a diferença, do ponto de vista de controle, entre o protocolo de barrramento da figura abaixo, em comparação com a figura anterior? Quais são as vantagens e desvantagens de cada abordagem?  
+
+![Diagrama de temporização 1](/../main/arq_aulas/arq_notas/temporizador2.png)
+
 6. Os processadores são construídos utilizando duas áreas funcionais básicas. Quais são elas e seu papel?
 7. Havíamos estudado e utilizado instruções de modo de endereçamento imediato e modo de endereçamento direto da arquitetura de Von Neumman.
 Discutimos agora que os processadores possuem no *set* de instruções, algumas que empregam **modo de endereçamento indireto**.
