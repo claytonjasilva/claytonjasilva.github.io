@@ -49,7 +49,7 @@ e. Caso a técnica de substituição seja LRU, dada a tabela abaixo, qual seria 
 4. Quanto à funcionalidade, como se classificam os barramentos das arquiteturas de sistemas computacionais? Qual é a função de cada um dos tipos?
 5. Sejam os sinais elétricos apresentados na primeira figura abaixo. Admitindo o clock de 1.5 MHz, reponder as seguintes perguntas. 
 
-![Diagrama de temporização 1](/../arq_aulas/temporizador.png)
+![Diagrama de temporização 1](arq_aulas/temporizador.png)
 
 a. O que representa o sinal de clock? Qual é o período de clock utilizado no processo de comunicações?  
 b. Considerando a classificação discutida na questão anterior, como se categorizam os sinais *Rd*, *Dados* e *Endereço*?  
@@ -57,7 +57,7 @@ c. A comunicação estabelecida se classifica como **síncrona** ou **assíncron
 d. Em quanto tempo o processador realizará a leitura de dados?  
 e. Qual é a diferença, do ponto de vista de controle, entre o protocolo de barrramento da figura abaixo, em comparação com a figura anterior? Quais são as vantagens e desvantagens de cada abordagem?  
 
-![Diagrama de temporização 2](/../arq_aulas/temporizador2.png)
+![Diagrama de temporização 2](arq_aulas/temporizador2.png)
 
 6. Os processadores são construídos utilizando duas áreas funcionais básicas. Quais são elas e seu papel?
 7. Havíamos estudado e utilizado instruções de modo de endereçamento imediato e modo de endereçamento direto da arquitetura de Von Neumman.
