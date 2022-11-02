@@ -29,7 +29,10 @@
 
 ## Exercícios  
 
+**AP1**  
 1. [Lista 1](siscom_aulas/Lista1_siscom.pdf) - simulação dos elementos básicos dos sistemas de comunicações móveis  
 2. [Lista 2](siscom_aulas/Lista2_siscom.pdf) - conceitos sobre os elementos básicos dos sistemas de comunicações móveis  
 3. [Lista 3](siscom_aulas/Lista3_siscom.pdf) - conceitos e simulação de codec de voz, moduladores analógicos e digitais
-4. [Lista 4](siscom_aulas/Lista4_siscom.pdf) - aspectos de regulação de serviços de comunicações móveis e uso do espectro de radiofrequências
+4. [Lista 4](siscom_aulas/Lista4_siscom.pdf) - aspectos de regulação de serviços de comunicações móveis e uso do espectro de radiofrequências  
+**AP2**  
+5. [Lista 5](siscom_aulas/Lista5_siscom.md) - códigos de erros
