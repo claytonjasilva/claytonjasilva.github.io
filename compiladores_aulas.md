@@ -11,15 +11,11 @@
 3. Análise sintática:   
 3.1 [Visão geral](compiladores/AnaliseSintatica1.pdf)  
 3.2 [Análise sintática descendente](compiladores/AnaliseSintatica2.pdf): método descendente recursivo e método LL-1.  
-3.3 [TINY adaptada](compiladores/TINYv2.pdf)
-4. Análise semântica: atributos e grmática de atributos, algoritmos para computação de atributos e tabela de símbolos.
-5. Ambientes de execução: ambientes estáticos e ambientes baseados em pilhas.
-6. Geração de códig2 intermediário: variantes da árvore de sintaxe, código de três endereços, tipos e declarações, tradução de expressões, verificação de tipo, fluxo de controle.
-7. Geração de código: a linguagem objeto, endereços no código objeto, blocos básicos e grafos de fluxo, um gerador de código simples. 
-8. Otimizações independentes de máquina.
-9. Paralelismo de instrução. 
-10. Análise interprocedimental.
-11. *Front-end* completo de compilador.
+3.3 [Recuperação de erros](compiladores/Erros.pdf)
+3.4 [TINY adaptada](compiladores/TINYv2.pdf)
+4. Análise semântica: atributos e gramática de atributos, algoritmos para computação de atributos e tabela de símbolos.
+5. Geração de código: a linguagem objeto, endereços no código objeto, blocos básicos e grafos de fluxo, um gerador de código simples.
+6. *Front-end* completo de compilador.
 
 ## Códigos de referência
 1. [Varredura de um DFA para identificador](https://github.com/claytonjasilva/prog_exemplos/blob/main/DFAidentificador.c)
@@ -30,6 +26,7 @@
 6. [Análise Sintática, método recursivo descendente: expressão aritmética simples](https://github.com/claytonjasilva/prog_exemplos/blob/main/analiseFator.c)
 7. [Análise Sintática, método recursivo descendente: expressão condicional](https://github.com/claytonjasilva/prog_exemplos/blob/main/analiseIF.c)
 8. [Análise Sintática, método LL-1: expressão condicional](https://github.com/claytonjasilva/prog_exemplos/blob/main/analiseIF2.c)
+9. [Recuperação de erros em algoritmo recursivo descendente](https://github.com/claytonjasilva/prog_exemplos/blob/main/analiseExpr.c)
 
 ## Exercícios
 1. [Conceitos iniciais - BNF](compiladores/lista1.md)
