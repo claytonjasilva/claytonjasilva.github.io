@@ -38,4 +38,5 @@
   
 **AP2**  
 
-5. [Lista 5](siscom_aulas/Lista5_siscom.pdf) - códigos de erros
+5. [Lista 5](siscom_aulas/Lista5_siscom.pdf) - códigos de correção de erros
+6. [Lista 6](siscom_aulas/Lista6_siscom.pdf) - canal móvel de comunicações
