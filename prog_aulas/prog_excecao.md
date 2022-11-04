@@ -54,6 +54,7 @@ O Python dispõe de várias **classes de exceção** pré-definidas como:
 | TypeError | Levantada quando uma operação ou função é aplicada a um objeto de tipo inadequado. |
 | ValueError | Levantada quando uma operação ou função recebe um argumento que tem o tipo certo, mas um valor inadequado |
 | ZeroDivisionError | Levantada quando o segundo argumento de uma divisão ou operação de módulo é zero. |
+| ValueError |Levantada quando uma operação ou função recebe um argumento que tem o tipo certo, mas um valor inadequado, e a situação não é descrita por uma exceção mais precisa. |
 
 Para obter uma lista completa consulte a [documentação do Python](https://docs.python.org/pt-br/3/library/exceptions.html).
 
@@ -124,7 +125,7 @@ Pelo uso do comando composto `while` com a condição `True`, o código se mant�
 - Se a exceção levantada não corresponder a nenhuma exceção listada na cláusula de exceção, então ela é entregue a uma instrução try mais externa. 
 - O bloco de cláusulas `try … except` possui uma cláusula `else` opcional. O `else` pode ser colocado depois de todas as outras cláusulas. É útil para um código que precisa ser executado se nenhuma exceção foi levantada.
 
-### Levantar exceção
+### Levantando exceção
 A instrução `raise` permite ao programador forçar a ocorrência de um determinado tipo de exceção. Por exemplo,
 ```
 # O script gera uma exceção se o resultado de uma operação for menor do que um limite dado
@@ -143,6 +144,40 @@ while True:
         else:
             print('A operação é ', op, ', superior ou igual ao limite ',N)
     except ValueError
+        print('Limite não superado')
+```
+A exceção `ValueError` não é precisa, portanto **pode ser usada com flexibilidade** no código em várias situações.
+
+### Criando exceções
+É possível ao programador **criar uma nova classe *Exception***. Utiliza-se a sintaxe:  
+
+```
+class <nome da classe>(Exception): 
+ pass
+```
+cria uma nova classe "derivada" da classe *Exception*, de `<nome da classe>`. Por exemplo,
+
+```
+# O script gera uma exceção se o resultado de uma operação for menor do que um limite dado
+# Cria a sub-classe NumeroAbaixoLimite
+
+class NumeroAbaixoLimite(Exception):
+    pass
+
+# Definição de valores
+num1 = 50
+num2 = 100
+
+# verifica o limite
+while True:
+    try:
+        N = float(input('Digite o limite: '))
+        op = num1 * num2
+        if op < N:
+            raise NumeroAbaixoLimite
+        else:
+            print('A operação é ', op, ', superior ou igual ao limite ',N)
+    except NumeroAbaixoLimite:
         print('Limite não superado')
 ```
 
