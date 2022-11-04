@@ -52,7 +52,6 @@ O Python dispõe de várias **classes de exceção** pré-definidas como:
 | IndexError | Levantada quando um índice de alguma sequência está fora do intervalo. |
 | KeyError | Levantada quando uma chave de mapeamento (dicionário) não é encontrada no conjunto de chaves existentes. |
 | TypeError | Levantada quando uma operação ou função é aplicada a um objeto de tipo inadequado. |
-| ValueError | Levantada quando uma operação ou função recebe um argumento que tem o tipo certo, mas um valor inadequado |
 | ZeroDivisionError | Levantada quando o segundo argumento de uma divisão ou operação de módulo é zero. |
 | ValueError |Levantada quando uma operação ou função recebe um argumento que tem o tipo certo, mas um valor inadequado, e a situação não é descrita por uma exceção mais precisa. |
 
