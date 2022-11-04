@@ -116,20 +116,43 @@ while True:
 Pelo uso do comando composto `while` com a condição `True`, o código se mantém no *loop* enquanto o usuário digitar 0.  
 
 **Observações**  
-A instrução try pode ter uma ou mais cláusula de exceção, para especificar múltiplos tratadores para diferentes exceções.   
-No máximo um único tratador será executado. Uma cláusula de exceção pode ser sensível a múltiplas exceções, desde que as especifique em uma tupla.     
-O tratamento só ocorrerá para as cláusulas de exceção levantadas no interior da cláusula de try.  
-Isso é importante porque é possível **aninhar instruções** `try`.  
-Portanto, pode haver `except` numa mesma instrução try que se refira a um comando `try` mais externo.  
-Se a exceção levantada não corresponder a nenhuma exceção listada na cláusula de exceção, então ela é entregue a uma instrução try mais externa.  
-  
+- A instrução try pode ter uma ou mais cláusula de exceção, para especificar múltiplos tratadores para diferentes exceções.   
+- No máximo um único tratador será executado. Uma cláusula de exceção pode ser sensível a múltiplas exceções, desde que as especifique em uma tupla.     
+- O tratamento só ocorrerá para as cláusulas de exceção levantadas no interior da cláusula de try.  
+- Isso é importante porque é possível **aninhar instruções** `try`.  
+- Portanto, pode haver `except` numa mesma instrução try que se refira a um comando `try` mais externo.  
+- Se a exceção levantada não corresponder a nenhuma exceção listada na cláusula de exceção, então ela é entregue a uma instrução try mais externa. 
+- O bloco de cláusulas `try … except` possui uma cláusula `else` opcional. O `else` pode ser colocado depois de todas as outras cláusulas. É útil para um código que precisa ser executado se nenhuma exceção foi levantada.
+
+### Levantar exceção
+A instrução `raise` permite ao programador forçar a ocorrência de um determinado tipo de exceção. Por exemplo,
+```
+# O script gera uma exceção se o resultado de uma operação for menor do que um limite dado
+
+# Definição de valores
+num1 = 50
+num2 = 100
+
+# verifica o limite
+while True:
+    try:
+        N = float(input('Digite o limite: '))
+        op = num1 * num2
+        if op < N:
+            raise ValueError
+        else:
+            print('A operação é ', op, ', superior ou igual ao limite ',N)
+    except ValueError
+        print('Limite não superado')
+```
+
 
 ## Exercícios
 Elaborar um scrip de Python para...
 1. Criar um dicionário cuja chave seja a matrícula de um grupo de 20 alunos, para armazenar as notas.
 Após criar o dicionário, o usuário poderá pesquisar a nota de um determinado aluno.
-Caso a matrícula não esteja cadastrada o programa deve emitir uma mensagem de erro.
-Usar tratamento de exceção.
+Caso a matrícula não esteja cadastrada o programa deve emitir uma mensagem de erro e prosseguir a pesquisa.
+**Usar tratamento de exceção**. [excecaoEx1.py](https://github.com/claytonjasilva/prog_exemplos/blob/main/excecaoEx1.py)
 2. 
 
 
