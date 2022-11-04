@@ -124,7 +124,13 @@ Portanto, pode haver `except` numa mesma instrução try que se refira a um coma
 Se a exceção levantada não corresponder a nenhuma exceção listada na cláusula de exceção, então ela é entregue a uma instrução try mais externa.  
   
 
-
+## Exercícios
+Elaborar um scrip de Python para...
+1. Criar um dicionário cuja chave seja a matrícula de um grupo de 20 alunos, para armazenar as notas.
+Após criar o dicionário, o usuário poderá pesquisar a nota de um determinado aluno.
+Caso a matrícula não esteja cadastrada o programa deve emitir uma mensagem de erro.
+Usar tratamento de exceção.
+2. 
 
 
 
