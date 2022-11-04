@@ -202,7 +202,12 @@ O programa não deve permitir que seja cadastrado dados de um item cujo código 
 [ExcecaoEx2.py](https://github.com/claytonjasilva/prog_exemplos/blob/main/excecaoEx2.py)
 3. Ler um conjunto de valores e armazenar em uma lista. O usuário deve teclar a opção 'sim' para cadastrar um novo valor
 ou 'nao' para encerrar o programa.
-Para qualquer outra opção digitada, deve receber a mensagem 'Opção inválida - digite a opção correta 'sim' ou 'nao'.
+Para qualquer outra opção digitada, deve receber a mensagem 'Opção inválida'. [excecaoEx3.py](https://github.com/claytonjasilva/prog_exemplos/blob/main/excecaoEx3.py)
+4. Criar um conjunto cujos elementos sejam números. O usuário poderá cadastrar no máximo 20 números.
+Caso o usuário tente incluir um elemento não numérico o programa deverá apresentar a mensagem, o conjunto admite somente números.
+
+
+
 
 
 
