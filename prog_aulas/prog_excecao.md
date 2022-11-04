@@ -43,6 +43,7 @@ Se o seu código utilizar funções e módulos em que esse caso possa ocorrer co
 
 ## Tratar, construir e lançar exceções
 
+### Tratamento de exceções
 O Python dispõe de várias **classes de exceção** pré-definidas como:
 
 | Classe | Descrição |
@@ -54,7 +55,7 @@ O Python dispõe de várias **classes de exceção** pré-definidas como:
 | ValueError | Levantada quando uma operação ou função recebe um argumento que tem o tipo certo, mas um valor inadequado |
 | ZeroDivisionError | Levantada quando o segundo argumento de uma divisão ou operação de módulo é zero. |
 
-Para consultar uma lista completa consulte a [documentação do Python](https://docs.python.org/pt-br/3/library/exceptions.html).
+Para obter uma lista completa consulte a [documentação do Python](https://docs.python.org/pt-br/3/library/exceptions.html).
 
 Para tratar uma exceção em Python, pode-se utilizar os blocos nos comandos `try` e `except`.
 A sintaxe é:  
@@ -70,10 +71,61 @@ classe de exceção de tipo compatível com a exceção lançada.
 
 Voltando ao exemplo da divisão por 0, pode-se agora usar o código sem que haja **erro fatal**, dado por
 ```
-try:
+# O script lê e determina a média de N números lidos
+
+def media(N):
+  soma = 0
+  for i in range(N):
+    numero = float(input('Digite número: '))
+    soma += numero
   media = soma / N
-  print(media)
+  return media
+
+try:
+  N = int(input('Digite a quantidade de números lidos: '))
+  print(media(N))
 except ZeroDivisionError:
-  print('Divisão por 0')
+  print('Divisão por zero')
 ```
+A instrução try funciona da seguinte maneira:
+- Primeiramente, a **cláusula try** (o conjunto de instruções entre as palavras reservadas try e except ) é executada.  
+- Se **nenhuma exceção ocorrer**, a cláusula except é ignorada e a execução da instrução try é finalizada.  
+- Se **ocorrer uma exceção durante a execução de uma cláusura try**, as instruções remanescentes na cláusula são ignoradas. Se a classe da exceção ocorrida tiver sido previsto em na cláusula except, ela é executada, e então depois a execução continua após o bloco try/except.
+
+O bloco `try...except` retorna `True`quando a exceção é encontrada.
+Essa característica é útil explorar, pois existem situações em que é desejável descartar a exceção e manter a execução do código **sem a exceção**.
+No exemplo, pode-se desejar que o usuário **não digite 0**. Nesse caso, pode-se produzir o código  
+```
+# O script lê e determina a média de N números lidos
+
+def media(N):
+  soma = 0
+  for i in range(N):
+    numero = float(input('Digite número: '))
+    soma += numero
+  media = soma / N
+  return media
+
+while True:
+  try:
+    N = int(input('Digite a quantidade de números lidos: '))
+    print(media(N))
+  except ZeroDivisionError:
+    print('Divisão por zero')
+```
+Pelo uso do comando composto `while` com a condição `True`, o código se mantém no *loop* enquanto o usuário digitar 0.  
+
+**Observações**  
+A instrução try pode ter uma ou mais cláusula de exceção, para especificar múltiplos tratadores para diferentes exceções.   
+No máximo um único tratador será executado. Uma cláusula de exceção pode ser sensível a múltiplas exceções, desde que as especifique em uma tupla.     
+O tratamento só ocorrerá para as cláusulas de exceção levantadas no interior da cláusula de try.  
+Isso é importante porque é possível **aninhar instruções** `try`.  
+Portanto, pode haver `except` numa mesma instrução try que se refira a um comando `try` mais externo.  
+Se a exceção levantada não corresponder a nenhuma exceção listada na cláusula de exceção, então ela é entregue a uma instrução try mais externa.  
+  
+
+
+
+
+
 
