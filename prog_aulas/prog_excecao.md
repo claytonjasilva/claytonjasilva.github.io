@@ -26,7 +26,7 @@ ZeroDivisionError: division by zero
 As excepcionalidades podem ser **erros de sintaxe** ou **exceções**.    
 - Erros de sintaxe,
 também conhecidos como erros de parse, decorrentes na desobediência a uma regra sintática da linguagem, os mais frequentes entre iniciantes.  
-- Exceções: erros detectados durante a execução são chamados exceções e não são necessariamente fatais e podem ser **tratados**.
+- Exceções: erros detectados durante a execução são chamados exceções e não necessariamente fatais - podem ser **tratados**.
 
 Como é possível detectar e tratar exceções em um módulo do código com os recursos aprendidos até agora? 
 No exemplo acima, usando uma estrutura condicional:  
