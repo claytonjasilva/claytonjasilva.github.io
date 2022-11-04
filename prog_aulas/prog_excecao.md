@@ -4,7 +4,7 @@
 
 Uma **exceção** é um objeto da classe *Exception*, que **permite armazenar informações sobre situações anormais ou erros na execução de um comando**.  
 
-Um exemplo clássico de excpcionalidade é um programa que pode levar a uma divisão por 0, como no código abaixo:
+Um exemplo clássico de excepcionalidade é um programa que pode levar a uma divisão por 0, como no código abaixo:
 ```
 # O script lê e determina a média de N números lidos
 N = int(input('Digite a quantidade de números lidos: '))
