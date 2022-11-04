@@ -188,7 +188,8 @@ Elaborar um scrip de Python para...
 Após criar o dicionário, o usuário poderá pesquisar a nota de um determinado aluno.
 Caso a matrícula não esteja cadastrada o programa deve emitir uma mensagem de erro e prosseguir a pesquisa.
 **Usar tratamento de exceção**. [excecaoEx1.py](https://github.com/claytonjasilva/prog_exemplos/blob/main/excecaoEx1.py)
-2. 
+2. Criar um dicionário com N itens (definido pelo usuário) cuja chave seja o código de um item cadastrado em uma loja. Cada chave remete a uma lista composta por quantidade e valor do respectivo item. A soma dos dígitos do código deve ser superior a 20.
+O programa não deve permitir que seja cadastrado dados de um item cujo código seja inválido. Usar exceção para tratar código inválido.
 
 
 
