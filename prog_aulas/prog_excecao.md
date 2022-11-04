@@ -93,9 +93,8 @@ A instrução try funciona da seguinte maneira:
 - Se **nenhuma exceção ocorrer**, a cláusula except é ignorada e a execução da instrução try é finalizada.  
 - Se **ocorrer uma exceção durante a execução de uma cláusura try**, as instruções remanescentes na cláusula são ignoradas. Se a classe da exceção ocorrida tiver sido previsto em na cláusula except, ela é executada, e então depois a execução continua após o bloco try/except.
 
-O bloco `try...except` retorna `True`quando a exceção é encontrada.
-Essa característica é útil explorar, pois existem situações em que é desejável descartar a exceção e manter a execução do código **sem a exceção**.
-No exemplo, pode-se desejar que o usuário **não digite 0**. Nesse caso, pode-se produzir o código  
+Existem situações em que é desejável chamar a exceção, porém manter a execução em *loop* **até que não haja exceção**.
+No exemplo, pode-se desejar que o usuário **persista digitando um número diferente de 0**. Nesse caso, pode-se produzir o código  
 ```
 # O script lê e determina a média de N números lidos
 
@@ -114,7 +113,17 @@ while True:
   except ZeroDivisionError:
     print('Divisão por zero')
 ```
-Pelo uso do comando composto `while` com a condição `True`, o código se mantém no *loop* enquanto o usuário digitar 0.  
+Pelo uso do comando composto `while` com a condição `True`, o código se mantém no *loop* infinito.
+Para sair do *loop* pode-se usar o comando `break`:
+```
+...
+  try:
+    N = int(input('Digite a quantidade de números lidos: '))
+    print(media(N))
+    break
+ ...
+ ```
+Observe que com a modificação realizada no código, a média será calculada somente uma vez.
 
 **Observações**  
 - A instrução try pode ter uma ou mais cláusula de exceção, para especificar múltiplos tratadores para diferentes exceções.   
