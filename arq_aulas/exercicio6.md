@@ -9,7 +9,7 @@ c. Quantos blocos a cache possui?
 d. Qual é a capacidade de armazenamento de cada linha da MP que armazena um bloco da cache?  
 e. Apresentar qual é o mapeamento das linhas da MP nos blocos da cache.  
 f. Quantos bits, no mínimo, são necessários para endereçar cada linha da MP? Qual é a faixa de representação (em hexadecimal) de cada endereço da MP?  
-g. Considerando os dados dos itens anteriores, qual seria o bloco da cache que armazenaria os dados da linha 5937d da MP requisitado pelo processador?  
+g. Considerando os dados dos itens anteriores, qual seria o bloco da cache que armazenaria os dados do endereço 5937d da MP requisitado pelo processador?  
 h. Em que endereço relativo dentro da linha de MP (dentro do bloco da cache) o referido dado estaria armazenado (em hexadecimal)?  
 i. Considerando a requisição do endereço do item g, qual seria o valor do campo de tag do bloco da cache para caracterizar um acerto?  
 
