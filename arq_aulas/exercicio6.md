@@ -1,8 +1,8 @@
 # Lista de exercícios: elementos dos sistemas computacionais
 ## Mapeamento MP-Cache, barramento e processadores
 
-1) Seja um sistema de memória de uma arquitetura computacional que utilize **mapeamento direto** MP-cache. A memória primária possui 256 MB de capacidade de armazenamento.
-A cache possui 8 kB de capacidade de armazenamento. Ambas utilizam palavras de 4 bits. Responder as perguntas:  
+1)Seja um sistema de memória de uma arquitetura computacional que utilize **mapeamento direto** MP-cache. A memória primária possui 256 MB de capacidade de armazenamento. A cache possui 8 kB de capacidade de armazenamento. Ambas utilizam palavras de 4 bits.  
+Responder as perguntas:  
 a. Admitindo que cada bloco da cache possua 1kB, quantas linhas de endereço cada bloco possui?  
 b. Qual é a faixa de endereços (em hexadecimal) das linhas de endereço **dentro de um bloco**?  
 c. Quantos blocos a cache possui?  
@@ -13,8 +13,8 @@ g. Considerando os dados dos itens anteriores, qual seria o bloco da cache que a
 h. Em que endereço relativo dentro da linha de MP (dentro do bloco da cache) o referido dado estaria armazenado (em hexadecimal)?  
 i. Considerando a requisição do endereço do item g, qual seria o valor do campo de tag do bloco da cache para caracterizar um acerto?  
 
-2) Seja uma arquitetura que utiliza um sistema de memória com **mapeamento MP-cache do tipo associativo**. O projeto contempla a utilização de substituição de dados da cache de acordo com uso de estrutura de dados do tipo FIFO. Admitindo os 8 blocos de cache da questão anterior.
-Os campos de *tag* e a FIFO estão populados com os dados apresentados na tabela abaixo.
+2)Seja uma arquitetura que utiliza um sistema de memória com **mapeamento MP-cache do tipo associativo**. O projeto contempla a utilização de substituição de dados da cache de acordo com uso de estrutura de dados do tipo FIFO. Admitindo os 8 blocos de cache da questão anterior.
+Os campos de *tag* e a FIFO estão populados com os dados apresentados na tabela abaixo.  
 
 | FIFO | *Tag* | Bloco |
 | --- | ----- | ----- |
@@ -45,9 +45,11 @@ e. Caso a técnica de substituição seja LRU, dada a tabela abaixo, qual seria 
 | 6 | 3 | b6 |
 | 3 | 4 | b7 |
 
-3) Explicar com suas palavras o motivo pelo qual é necessário aplicar um método para controlar a política de escrita de dados na cache. Quais são as duas técnicas discutidas e a diferença entre elas?  
-4) Quanto à funcionalidade, como se classificam os barramentos das arquiteturas de sistemas computacionais? Qual é a função de cada um dos tipos?  
-5) Sejam os sinais elétricos apresentados na primeira figura abaixo. Admitindo o clock de 1.5 MHz, reponder as seguintes perguntas.  
+3)Explicar com suas palavras o motivo pelo qual é necessário aplicar um método para controlar a política de escrita de dados na cache. Quais são as duas técnicas discutidas e a diferença entre elas?   
+
+4)Quanto à funcionalidade, como se classificam os barramentos das arquiteturas de sistemas computacionais? Qual é a função de cada um dos tipos?   
+
+5)Sejam os sinais elétricos apresentados na primeira figura abaixo. Admitindo o clock de 1.5 MHz, reponder as seguintes perguntas.  
 
 ![Diagrama de temporização 1](temporizador.png)
 
@@ -59,8 +61,9 @@ e. Caso a técnica de substituição seja LRU, dada a tabela abaixo, qual seria 
 
 ![Diagrama de temporização 2](temporizador2.png)
 
-6) Os processadores são construídos utilizando duas áreas funcionais básicas. Quais são elas e seu papel?  
-7) Havíamos estudado e utilizado instruções de modo de endereçamento imediato e modo de endereçamento direto da arquitetura de Von Neumman.
+6)Os processadores são construídos utilizando duas áreas funcionais básicas. Quais são elas e seu papel?   
+
+7)Havíamos estudado e utilizado instruções de modo de endereçamento imediato e modo de endereçamento direto da arquitetura de Von Neumman.
 Discutimos agora que os processadores possuem no *set* de instruções, algumas que empregam **modo de endereçamento indireto**.
 Explicar com suas palavras como opera uma instrução desse tipo, as vantagens e desvantagens quando comparadas com as instruções de modo direto e imediato.
 
