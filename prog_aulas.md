@@ -34,7 +34,8 @@
 ## Avaliações Continuadas
 1. [AC1](https://forms.gle/MSFH9vBov7cPHfer5)
 2. [AC2](https://forms.gle/Db83EFoDv52w61CP8)
-3. [AC3](https://forms.gle/u24kBy66DsEtuwf17)
+3. [AC3](https://forms.gle/u24kBy66DsEtuwf17)  
+4. [AC4](https://forms.gle/RuYLiFpe115WS8PW6)
 
 ## Guia rápido
 **Guia para utilizar a sintaxe básica do Python - atualizado de acordo com as aulas**  
