@@ -10,13 +10,9 @@
     [Serviços de telecomunicações](siscom_aulas/servicos.pdf)
 5. [Códigos corretores de erros](siscom_aulas/codificacao_erros.pdf)
 6. [Comportamento do canal móvel de comunicações](siscom_aulas/canais.pdf): mecanismos básicos de propagação, perdas em larga escala- modelos de propagação *outdoor*, modelos de propagação *indoor*, atenuação em pequena escala e caminhos múltiplos
-7. Equalizadores de canal: lineares e não lineares
-8. Técnicas de acesso múltiplo: FDMA, TDMA, CDMA e outras
-9. Sistemas de rádio troncalizados (*trunking*): APCO25, TETRA e outros
-10. Sistemas celulares: conceitos, NMT, AMPS, GSM e outros
-11. Sistemas satelitais
-12. Redes Locais Sem Fio (WLAN) 
-13. Redes 5G
+7. Técnicas de acesso múltiplo: FDMA, TDMA, CDMA e outras
+8. Sistemas móveis de rádio convencionais, troncalizados, celulares e satelitaistroncalizados (*trunking*): APCO25, TETRA e outros  
+- [download do material](https://1drv.ms/p/s!AsTd8oN7mu8pkb8NTEdBBqdbmD50OA?e=zoyUiu)
 
 ## Notas de aula  
 
