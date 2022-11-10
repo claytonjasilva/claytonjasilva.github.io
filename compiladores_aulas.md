@@ -11,7 +11,8 @@
 3. Análise sintática:   
 3.1 [Visão geral](compiladores/AnaliseSintatica1.pdf)  
 3.2 [Análise sintática descendente](compiladores/AnaliseSintatica2.pdf): método descendente recursivo e método LL-1.  
-3.3 [Recuperação de erros](compiladores/Erros.pdf)  
+3.3 [Recuperação de erros](compiladores/Erros.pdf)
+3.4 [Árvore de análise sintática](compiladores/arvores.pdf)
 3.4 [TINY adaptada](compiladores/TINYv2.pdf)
 4. Análise semântica: atributos e gramática de atributos, algoritmos para computação de atributos e tabela de símbolos.
 5. Geração de código: a linguagem objeto, endereços no código objeto, blocos básicos e grafos de fluxo, um gerador de código simples.
@@ -27,6 +28,7 @@
 7. [Análise Sintática, método recursivo descendente: expressão condicional](https://github.com/claytonjasilva/prog_exemplos/blob/main/analiseIF.c)
 8. [Análise Sintática, método LL-1: expressão condicional](https://github.com/claytonjasilva/prog_exemplos/blob/main/analiseIF2.c)
 9. [Recuperação de erros em algoritmo recursivo descendente](https://github.com/claytonjasilva/prog_exemplos/blob/main/analiseExpr.c)
+10. [Exemplo de árvore](https://github.com/claytonjasilva/prog_exemplos/blob/main/arvoreExemplo.c)
 
 ## Exercícios
 1. [Conceitos iniciais - BNF](compiladores/lista1.md)
