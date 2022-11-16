@@ -35,5 +35,5 @@
 **AP2**  
 
 5. [Lista 5](siscom_aulas/Lista5_siscom.pdf) - códigos de correção de erros: [gabarito](siscom_aulas/Lista5_siscom_solucao.pdf)
-6. [Lista 6](siscom_aulas/Lista6_siscom.pdf) - canal móvel de comunicações [gabarito](siscom_aulas/Lista6_siscom_solucao.pdf)
+6. [Lista 6](siscom_aulas/Lista6_siscom.pdf) - canal móvel de comunicações: [gabarito](siscom_aulas/Lista6_siscom_solucao.pdf)
 7. [Lista 7](siscom_aulas/Lista7_siscom.pdf) - tipos e arquitetura de sistemas móveis de comunicações
