@@ -5,13 +5,13 @@
 **Datas de avaliação**: de acordo com o calendário acadêmico  
 Curso: Análise e Desenvolvimento de Sistemas  
 Unidade: Centro  
-AP2- prova: 21/11/22 - Revisão: até 25/11/22  
-AS - prova: 30/11/22 - Revisão: até 9/12/22
+AP2- prova: 21/11/22 - Revisão: até 28/11/22  
+AS - prova: 05/12/22 - Revisão: até 9/12/22
 
 Curso: Engenharia da Computação  
 Unidade: Barra  
-AP2- prova: 23/11/22 - Revisão: até 25/11/22  
-AS - prova: 5/12/22 - Revisão: até 9/12/22
+AP2- prova: 23/11/22 - Revisão: até 28/11/22  
+AS - prova: 30/11/22 - Revisão: até 9/12/22
 
 2. [Grid](arq_aulas/Grid_Arquitetura.md)
 3. [Sistema de Avaliações](/./avaliacoes.md)
