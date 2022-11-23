@@ -30,7 +30,6 @@
 ## Avaliações Bimestrais
 ### AP1
 1. [Trabalho AP1](prog_aulas/Orientacao_trabalho_AP1.pdf)
-2. [AP2](https://docs.google.com/forms/d/e/1FAIpQLSe1uhsBx_kdQBfIjd792o9I77jD1zUL5jenSCmYUGJxi96lcw/viewform?usp=sf_link)
 
 ## Avaliações Continuadas
 1. [AC1](https://forms.gle/MSFH9vBov7cPHfer5)
