@@ -38,7 +38,6 @@
 4. [AC4](https://forms.gle/RuYLiFpe115WS8PW6)
 
 ## Avaliação Substitutiva
-[AS](https://forms.gle/uA3Hp39egPvPNtGF8)
 
 ## Guia rápido
 **Guia para utilizar a sintaxe básica do Python - atualizado de acordo com as aulas**  
