@@ -35,5 +35,4 @@
 - **Borges**, Luiz E.; **Python para Desenvolvedores**, 3a ed; **Novatec**; 2014.   
 Obs. Segunda edição disponível em [Pythoh para Desenvolvedores; Borges, Luiuz; 2a. ed](https://ark4n.files.wordpress.com/2010/01/python_para_desenvolvedores_2ed.pdf)  
 - **Downey**, Allan B.; **Pense em Python**; **Novatec**; 2016.
-- [**Python Software Foundation**](https://www.python.org/doc/)
 
