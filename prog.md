@@ -1,14 +1,6 @@
-# Programação - 2022.2
+# Programação - 2023.1
 
-1. [Agenda](https://1drv.ms/b/s!AsTd8oN7mu8pkbI64uFHVIrrXoqiDw?e=HdIMde)  
-
-**Datas de avaliação**: de acordo com o calendário acadêmico  
-Curso: Engenharia da Computação/Ciência de Dados&Inteligência Artificial  
-Unidade: Barra  
-AP1- prova: 28/9/22 - Revisão: 10/10/22  
-AP2- prova: 23/11/22 - Revisão: até 25/11/22  
-AS - prova: 30/11/22 - Revisão: até 9/12/22  
-
+1. **Agenda: a definir 2023.1**  
 2. [Grid](prog_aulas/Grid_programacao.md)
 3. [Sistema de Avaliações](/./avaliacoes.md)
 4. [Conteúdo das Aulas](prog_aulas.md)
