@@ -1,4 +1,4 @@
-# Programação - 2022.2
+# Programação - 2023.1 - *em atualização*
 
 
 ## Conteúdo  
@@ -40,4 +40,10 @@
 ## Guia rápido
 **Guia para utilizar a sintaxe básica do Python - atualizado de acordo com as aulas**  
 [Guia básico](prog_aulas/guia_rapido.md)
+
+## Referências da linguagem Python
+- [**Python Software Foundation**](https://www.python.org/doc/)
+- [**Pandas**](https://pandas.pydata.org/)
+- [**Pyinstaller Manual**](https://pyinstaller.org/en/stable/)
+- [**Pyton GTK**](https://python-gtk-3-tutorial.readthedocs.io/pt_BR/latest/index.html)
 
