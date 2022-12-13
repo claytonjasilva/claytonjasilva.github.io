@@ -19,7 +19,22 @@ Convém lembrar que para medir capacidade de armazenamento de memórias é comum
 | 2<sup>20</sup> | 1.048.576 | Mega |
 | 2<sup>30</sup> | 1.073.741.824 | Giga |
 
-Aplicadas às informações binárias existe a **unidade de medida**
+## Grandezas numéricas
+
+### Representação de grandezas numéricas
+
+As grandezas numéricas são utilizadas para quantificar os fenômenos observados na natureza. Para a engenharia a dimensão dos fenômenos normalmente é definida pelo para: **grandeza numérica** seguida por uma **unidade de medida**.   
+A representação da grandeza numérica consagrada historicamente foi a representação que emprega 10 **dígitos numéricos**, definidos pelo **conjunto ordenado** B<sub>10</sub> = {0, 1, 2 , 3, 4, 5 , 6, 7, 8, 9}. a esse sistema de representação numérica dá-se o nome de **sistema decimal**  
+Por conjunto ordenado entende-se como aquele conjunto cujos elementos possuem um valor relativo entre eles. No caso do sistema decimal, o dígito *8* é superior aos dígitos *7*, *6*, ...*0*, assim por diante.
+
+Nos sistemas computacionais, como discutiremos com maiores detalhes no decorrer da disciplina, são particularmente importantes os sistemas de base 2 (binário) e o sistema de base 16 (hexadecimal). 
+
+**BASE 2**
+| Base | Conjunto ordenado de dígitos | 
+| ---- | ---------------------------- |
+|  2  | B<sub>2</sub> = {0, 1} |
+|  16  | B<sub>16</sub> = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, A, B, C, D, E, F} |
+
 
 
 
