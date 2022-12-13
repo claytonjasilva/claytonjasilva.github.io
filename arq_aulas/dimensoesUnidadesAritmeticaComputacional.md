@@ -44,9 +44,10 @@ Na notação posicional, a posição relativa do dígito na representação do n
 $$N_b = d_{(m-1)}.d_{(m-2)}...d_0$$
 
 , onde   
-- N é a grandeza,   
-- b é a base,   
-- m é o número de dígitos usados na representação   
-- os índices 0 a m-1 representam a posição do dígito.
+- *N* é a grandeza,   
+- *b* é a base,   
+- *m* é o número de dígitos usados na representação.   
+
+Os índices *0* a *m-1* representam a posição relativa do dígito na grandeza. Os dígitos à esquerda são os **mais significativos**
 
 
