@@ -35,6 +35,9 @@ Nos sistemas computacionais, como discutiremos com maiores detalhes no decorrer 
 |  2  | B<sub>2</sub> = {0, 1} |
 |  16  | B<sub>16</sub> = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, A, B, C, D, E, F} |
 
+Independentemente da base, as grandezas numéricas podem ser representadas de acordo com duas notações:  
+- Notação **posicional**
+- Notação **polinomial**
 
-
+Na notação posicional, a posição relativa do dígito na representação do número determina o valor que possui na grandeza numérica.
 
