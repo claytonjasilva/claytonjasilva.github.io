@@ -52,4 +52,5 @@ Por conveniência da representação das informações em sistemas computacionai
 | ------- | -------- |
 | 1 ***byte*** | **8** bits |
 
-[home] () [<<] () [>>](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/arq_aulas/dimensoesUnidadesAritmeticaComputacional3.md)
+
+[home] () [<<](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/arq_aulas/dimensoesUnidadesAritmeticaComputacional1.md) [>>](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/arq_aulas/dimensoesUnidadesAritmeticaComputacional3.md)
