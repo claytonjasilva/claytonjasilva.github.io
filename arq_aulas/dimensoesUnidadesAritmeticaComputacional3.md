@@ -59,7 +59,7 @@ Considerando o que foi tratado acima, seja um número de *m* bits, ***N = b<sub>
 
 ### Representação em complemento de 2
 **Complemento 2 de números binários**: obtém-se pela soma do complemento de 1 com o bit 1.   
-Ou seja, C<sub>2</sub>(N) = C<sub>2</sub>(N) + 1.
+Ou seja, C<sub>2</sub>(N) = C<sub>1</sub>(N) + 1.
 
 Considerando o que foi tratado acima, seja um número de *m* bits, ***N = b<sub>m-1</sub> ... b<sub>1</sub> b<sub>0</sub>***, usando a notação em complemento de 1,
 1. Na posição **mais significativa**, utiliza-se o bit sinal para os números positivos e negativos
