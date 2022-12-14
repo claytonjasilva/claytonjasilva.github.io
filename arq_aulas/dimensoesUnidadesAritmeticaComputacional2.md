@@ -51,3 +51,5 @@ Por conveniência da representação das informações em sistemas computacionai
 | Unidade | Equivalência |
 | ------- | -------- |
 | 1 ***byte*** | **8** bits |
+
+[home] () [<<] () [>>](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/arq_aulas/dimensoesUnidadesAritmeticaComputacional3.md)
