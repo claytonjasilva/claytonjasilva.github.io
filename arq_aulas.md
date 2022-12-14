@@ -2,7 +2,7 @@
 ## Arquitetura de Computadores - 2023.1
 
 ## Tópicos
-1. [Representação numérica]()
+1. [Dimensões, Unidades e Aritmética Computacional]()
 2. [Conceitos básicos](arq_aulas/arq_aulas_conceitos.pdf)   
 3. [Números e aritmética binária](arq_aulas/arq_aulas_aritmetica.pdf)    
     [Exercícios em sala](arq_aulas/exercicios3_sala.md)
