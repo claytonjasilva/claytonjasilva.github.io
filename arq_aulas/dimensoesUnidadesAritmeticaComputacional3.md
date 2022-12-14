@@ -94,8 +94,8 @@ Por exemplo, em palavras de 4 bits, o excesso é 2<sup>3</sup>=8. A representaç
 
   
  
-[home]() [<<](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/arq_aulas/dimensoesUnidadesAritmeticaComputacional3.md) 
-
+[home]() 
+[<<](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/arq_aulas/dimensoesUnidadesAritmeticaComputacional2.md)
 
 
 
