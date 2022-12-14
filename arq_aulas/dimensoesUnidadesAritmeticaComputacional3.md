@@ -20,8 +20,7 @@ Seja um número binário negativo com *m* bits, ele pode ser representado das se
 - Representação em **excesso 2<sup>m-1</sub>** 
 
 ### Representação em sinal e magnitude (bit sinal)
-Seja um número de *m* bits, ***N = b<sub>m-1</sub> ... b<sub>1</sub> b<sub>0</sub>***  
-Usando a notação em bit sinal,
+Seja um número de *m* bits, ***N = b<sub>m-1</sub> ... b<sub>1</sub> b<sub>0</sub>***, usando a notação em bit sinal,
 1. Na posição **mais significativa**, utiliza-se o bit sinal para os números positivos e negativos
 2. Os demais bits representam o valor representado em binário puro  
 3. Utilizaremos como notação que o bit sinal igual a 0 define **números positivos** e que o bit sinal igual a 1 define números **negativos**
@@ -43,9 +42,7 @@ Por exemplo, na base 10, o complemento de 12 é 87, pois 99 (maior número com 2
 **Na base 2, para obter o complemento basta inverter os bits do número binário**. 
 Por exemplo *C<sub>1</sub>*(1011) = 1111-1011 = 0100 (inversão dos bits de 1011), onde *C<sub>1</sub>* representa a operação complemento, chamado na base 2 de **complemento de 1.**
 
-Considerando o que foi tratado acima,  
-Seja um número de *m* bits, ***N = b<sub>m-1</sub> ... b<sub>1</sub> b<sub>0</sub>***  
-Usando a notação em complemento de 1,
+Considerando o que foi tratado acima, seja um número de *m* bits, ***N = b<sub>m-1</sub> ... b<sub>1</sub> b<sub>0</sub>***, usando a notação em complemento de 1,
 1. Na posição **mais significativa**, utiliza-se o bit sinal para os números positivos e negativos
 2. Na faixa **dos números positivos**, o bit sinal é 0, seguido pelos demais bits representando o valor em binário puro  
 3. Na faixa **dos números negativos**, o bit sinal é 1, seguido pelo complemento de 1 do respectivo **simétrico** positivo
@@ -64,9 +61,7 @@ Usando a notação em complemento de 1,
 **Complemento 2 de números binários**: obtém-se pela soma do complemento de 1 com o bit 1.   
 Ou seja, C<sub>2</sub>(N) = C<sub>2</sub>(N) + 1.
 
-Considerando o que foi tratado acima,  
-Seja um número de *m* bits, ***N = b<sub>m-1</sub> ... b<sub>1</sub> b<sub>0</sub>***  
-Usando a notação em complemento de 1,
+Considerando o que foi tratado acima, seja um número de *m* bits, ***N = b<sub>m-1</sub> ... b<sub>1</sub> b<sub>0</sub>***, usando a notação em complemento de 1,
 1. Na posição **mais significativa**, utiliza-se o bit sinal para os números positivos e negativos
 2. Na faixa **dos números positivos**, o bit sinal é 0, seguido pelos demais bits representando o valor em binário puro  
 3. Na faixa **dos números negativos**, o bit sinal é 1, seguido pelo complemento de 2 do respectivo **simétrico** positivo
@@ -83,8 +78,8 @@ Usando a notação em complemento de 1,
 3. **Não** possui dupla representação do 0.  
 
 ### Representação em excesso de 2<sup>m-1<sup>
-Seja um número de *m* bits, ***N = b<sub>m-1</sub> ... b<sub>1</sub> b<sub>0</sub>***  
-Usando a notação em excesso **m-1**, a representação binária é a mesma da representação em binário puro deslocada de até a faixa dos negativos em *2<sup>m-1</sup>*.
+Seja um número de *m* bits, ***N = b<sub>m-1</sub> ... b<sub>1</sub> b<sub>0</sub>***, usando a notação em excesso **m-1**, a representação binária é a mesma da representação em binário puro deslocada de até a faixa dos negativos em *2<sup>m-1</sup>*.  
+
 1. O número mais negativo é o decimal -2<sup>m-1</sup>, representado por todos *m* bits iguais a 0
 2. Incrementa-se 1 a cada número seguinte até o número mais positivo
 **Observação:** Cada número em representação de excesso *m-1* equivale ao binário puro de *m* bits decrementado de -2<sup>m-1</sup>.
