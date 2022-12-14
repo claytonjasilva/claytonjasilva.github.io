@@ -1,5 +1,5 @@
 # Conteúdo das Aulas  
-## Arquitetura de Computadores - 2022.2
+## Arquitetura de Computadores - 2023.1
 
 ## Tópicos
 1. [Conceitos básicos](arq_aulas/arq_aulas_conceitos.pdf)   
