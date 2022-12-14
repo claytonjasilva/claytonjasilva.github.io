@@ -18,3 +18,4 @@ Admtindo que a a faixa de representação da notação usada para a mantissa sej
 - a precisão é determinada pelo número de dígitos da mantissa. 
 
 
+[home](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/arq_aulas.md)   
