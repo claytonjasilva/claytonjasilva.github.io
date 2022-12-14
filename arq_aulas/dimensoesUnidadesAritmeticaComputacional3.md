@@ -91,8 +91,10 @@ Por exemplo, em palavras de 4 bits, o excesso é 2<sup>3</sup>=8. A representaç
 1. **Não utiliza** bit sinal.
 2. **Faixa de representação**: -(2<sup>m-1</sup>) a +(2<sup>m-1</sup>-1).
 3. **Não** possui dupla representação do 0.  
-  
 
+  
+ 
+[home]() [<<](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/arq_aulas/dimensoesUnidadesAritmeticaComputacional3.md) 
 
 
 
