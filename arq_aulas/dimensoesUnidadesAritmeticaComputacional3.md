@@ -92,7 +92,27 @@ Por exemplo, em palavras de 4 bits, o excesso é 2<sup>3</sup>=8. A representaç
 2. **Faixa de representação**: -(2<sup>m-1</sup>) a +(2<sup>m-1</sup>-1).
 3. **Não** possui dupla representação do 0.  
 
+A tabela apresenta uma comparação entre representações de inteiros negativos e positivos em um sistema cuja palavra possui 4 bits.
   
+| base 10 | Sinal e magnitude | Complemento de 1 | Complemento de 2 | excesso 8 |
+| ------- | ----------------- | ---------------- | ---------------- | --------- |
+| +7 | 0111 | 0111 | 0111 | 1111 |
+| +6 | 0110 | 0110 | 0110 | 1110 |
+| +5 | 0101 | 0101 | 0101 | 1101 |
+| +4 | 0100 | 0100 | 0100 | 1100 |
+| +3 | 0011 | 0011 | 0011 | 1011 |
+| +2 | 0010 | 0010 | 0010 | 1010 |
+| +1 | 0001 | 0001 | 0001 | 1001 |
+| 0 | 0000 | 0000 | 0110 | 1000 |
+| 0 | 1000 | 1111 | - | - |
+| -1 | 1001 | 1110 | 1111 | 0111 |
+| -2 | 1010 | 1101 | 1110 | 0110 |
+| -3 | 1011 | 1100 | 1101 | 0101 |
+| -4 | 1100 | 1011 | 1100 | 0100 |
+| -5 | 1101 | 1010 | 1011 | 0011 |
+| -6 | 1110 | 1001 | 1010 | 0010 |
+| -7 | 1111 | 1000 | 1001 | 0001 |
+| -8 | - | - | 1000 | 0000 |
  
 [home](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/arq_aulas.md)   
 [<<](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/arq_aulas/dimensoesUnidadesAritmeticaComputacional2.md)
