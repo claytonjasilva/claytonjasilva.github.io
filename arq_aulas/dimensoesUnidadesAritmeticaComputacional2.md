@@ -41,3 +41,13 @@ As grandezas numéricas utilizadas pelos computadores podem ser representads em 
 - Números representados em **base decimal** serão indicados sucedidos pelo caracter *d*, na forma *Nd*, ou simplesmente *N* quando o contexto não deixar margem a dúvida - por exemplo, 126d;
 - Números representados em **base binária** serão indicados simplesmente pelos seus dígitos - por exemplo, 1011101;
 - Números representados em **base hexadecimal** serão indicados preferencialmente precedidos pelos caracteres *0x*, na forma *0xN* - por exemplo, 0xAF34. Eventualmente, poderão ser usadas as formas *Nh*.
+
+### A unidade elementar de informação computacional: bit
+Os sistemas computacionais modernos utilizam o sistema binário, como discutido acima.  
+A menor unidade de informação nos sistemas computacionais é o **bit**, que é um acrônimo de ***bi**nary* *digi**t***.  
+Como unidade binária, o bit só pode assumir dois valores: 0 ou 1.  
+Por conveniência da representação das informações em sistemas computacionais, em certas circunstâncias utiliza-se o múltiplo de de bits, chamado de ***byte***. 
+
+| Unidade | Equivalência |
+| ------- | -------- |
+| 1 ***byte*** | **8** bits |
