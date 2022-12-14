@@ -1,6 +1,6 @@
-# Dimensões, Unidades e Aritmética Computacional
+# 1. Dimensões, Unidades e Aritmética Computacional
 
-## Unidades métricas
+## 1.1 Unidades métricas
 
 As unidades métricas também são usadas no domínio da computação. A tabela apresenta um resumo.
 
@@ -19,9 +19,9 @@ Convém lembrar que para medir capacidade de armazenamento de memórias é comum
 | 2<sup>20</sup> | 1.048.576 | Mega |
 | 2<sup>30</sup> | 1.073.741.824 | Giga |
 
-## Grandezas numéricas
+## 1.2 Grandezas numéricas
 
-### Representação de grandezas numéricas
+### 1.2.1 Representação de grandezas numéricas
 
 As grandezas numéricas são utilizadas para quantificar os fenômenos observados na natureza. Para a engenharia a dimensão dos fenômenos normalmente é definida pelo para: **grandeza numérica** seguida por uma **unidade de medida**.   
 A representação da grandeza numérica consagrada historicamente foi a representação que emprega 10 **dígitos numéricos**, definidos pelo **conjunto ordenado** B<sub>10</sub> = {0, 1, 2 , 3, 4, 5 , 6, 7, 8, 9}. a esse sistema de representação numérica dá-se o nome de **sistema decimal**  
@@ -39,7 +39,7 @@ Independentemente da base, as grandezas numéricas podem ser representadas de ac
 - Notação **posicional**
 - Notação **polinomial**
 
-#### Notação posicional  
+#### a. Notação posicional  
 Na notação posicional, a posição relativa do dígito na representação do número determina o valor que possui na grandeza numérica. Pode-se generalizar essa representação de um número com M dígitos por: 
 
 $$N_b = d_{(m-1)}d_{(m-2)}...d_0$$
@@ -51,7 +51,7 @@ $$N_b = d_{(m-1)}d_{(m-2)}...d_0$$
 
 Os índices *0* a *m-1* representam a posição relativa do dígito na grandeza. Os dígitos à esquerda são os **mais significativos**.
 
-#### Notação polinomial  
+#### b. Notação polinomial  
 Na notação polinomial a grandeza numérica é representada pela soma ponderada dos seus dígitos pela potência da base em que o número está representado. Um número de M dígitos será representado por:
 
 $$N_b = d_{(m-1)}.b^{m-1}+d_{(m-2)}.b^{m-2}+...+d_0.b^0$$
