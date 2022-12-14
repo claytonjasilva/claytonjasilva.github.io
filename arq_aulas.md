@@ -2,8 +2,9 @@
 ## Arquitetura de Computadores - 2023.1
 
 ## Tópicos
-1. [Conceitos básicos](arq_aulas/arq_aulas_conceitos.pdf)   
-2. [Números e aritmética binária](arq_aulas/arq_aulas_aritmetica.pdf)    
+1. [Representação numérica]()
+2. [Conceitos básicos](arq_aulas/arq_aulas_conceitos.pdf)   
+3. [Números e aritmética binária](arq_aulas/arq_aulas_aritmetica.pdf)    
     [Exercícios em sala](arq_aulas/exercicios3_sala.md)
 4. [Nível de lógica digital: circuitos combinacionais](arq_aulas/arq_aulas_logica_combinacional.pdf)    
 5. [Nível de lógica digital: circuitos sequenciais](arq_aulas/arq_aulas_logica_sequencial.pdf)
