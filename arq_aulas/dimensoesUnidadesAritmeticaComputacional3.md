@@ -20,7 +20,7 @@ Seja um número binário negativo com *m* bits, ele pode ser representado das se
 - Representação em **excesso 2<sup>m-1</sub>** 
 
 ### Representação em sinal e magnitude (bit sinal)
-Seja um número de *m* bits, **N = b<sub>m-1</sub> ... b<sub>1</sub> b<sub>0</sub>**  
+Seja um número de *m* bits, ***N = b<sub>m-1</sub> ... b<sub>1</sub> b<sub>0</sub>***  
 Usando a notação em bit sinal,
 1. Na posição **mais significativa**, utiliza-se o bit sinal para os números positivos e negativos
 2. Os demais bits representam o valor representado em binário puro  
@@ -32,6 +32,10 @@ Usando a notação em bit sinal,
 | 1 | b<sub>m-2</sub> ... b<sub>1</sub> b<sub>0</sub> | **Negativos** |
 
 
+**Características da representação em sinal e magnitude**  
+1. Dos *m* bits, 1 bit fica reservado ao sinal
+2. **Faixa de representação**: -(2<sup>m-1</sup>-1) a +(2<sup>m-1</sup>-1). A faixa de representação representa os limites dos números contemplados, desde o inteiro mais negativo até o inteiro mais positivos.
+3. Dupla representação do 0 – todos os bits iguais a 0, com bit sinal 0 ou 1.
 
 
 
