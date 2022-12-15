@@ -41,7 +41,7 @@ A subtração de dois números binários *A* e *B* de *m* bits, ou seja, *A = a<
 1. O resultado de uma adição pode ter **mais bits do que o tamanho da palavra** => **OVERFLOW**.
 2. Na operação de subtração, se o minuendo A for menor do o subtraendo B inverter a operação - realizar *B-A* - e tomar o resultado como negativo. 
 
-** ADIÇÃO E SUBTRAÇÃO EM COMPLEMENTO DE 1 E COMPLEMENTO DE 2
+**ADIÇÃO E SUBTRAÇÃO EM COMPLEMENTO DE 1 E COMPLEMENTO DE 2**
 1. As operações de subtração em complemento de 1 e 2 são tratadas como adição, da forma *A - B = A + (-B)*
 2. **Se os operandos tiverem o mesmo sinal**, no *overflow* o bit mais significativo da palavra será de sinal trocado
 3. **Se os operandos tiverem sinal trocado** não haverá *overflow* 
