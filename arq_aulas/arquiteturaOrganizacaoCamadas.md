@@ -57,6 +57,21 @@ sob pena do processo de tradução ou interpretação ser muito complexa.
 | Tradução | instruções e dados do código da máquina de origem são substituídos pelos equivalentes no código da máquina de destino, em que o programa será executado. |
 | Interpretação | instruções e dados da linguagem da máquina de origem são mantidos conforme o código original, convertendo-se para a linguagem da máquina virtual de destino conforme a necessidade da execução do código de origem. |
 
+## 2.2 Máquina de seis níveis
+O modelo específico que é utilizado na disciplina é o da **máquina de 6 níveis**. Cada um dos níveis é descrito genericamente a seguir.  
+1. **Nível 0** - nível de lógica digital. Mais elementar. Utiliza **portas lógicas (*gates*)**, que podem ser combinadas em série e em paralelo, para a construção de circuitos digitais. Os dados são sinais elétricos, abstrações dos bits.
+2. **Nível 1** - nível de microarquitetura. Circuitos especializados: registradores; Unidade Lógica e Aritmética; barramentos internos – caminho de dados; Unidade de Controle, constituída de microprogramas ou de circuitos eletrônicos.
+3. **Nível 2** - nível ISA (*Instructions Set Architecture*). Nível do processador. As instruções são definidas pelo fabricante.
+4. **Nível 3** - nível de sistema operacional. Possui instruções próprias, assim como usa instruções do próprio nível ISA. Considera-se como um nível híbrido.
+5. **Nível 4** - nível de linguagem de montagem (*assembly*). Contempla instruções simbólicas que podem ser executadas pelos níveis inferiores (1, 2 e 3), dispensando o conhecimento detalhado dos elementos físicos, usando o programa ***assembler* (montador)**. 
+6. **Nível 5** - nível de aplicações. Usam as chamadas linguagens de alto nível, convertidas para a linguagem de montagem (*assembly*) por programas chamados compiladores.
+
+Considerando as camadas acima, pode-se definir os métodos e programas de suporte à conversão dos códigos entre as linguagens.
+
+![Métodos e programas típicos de conversão de códigos no modelo de 6 níveis](/arq_aulas/images/camadas_computador.jpg)
+
+
+
 
 
 
