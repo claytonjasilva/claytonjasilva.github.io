@@ -40,9 +40,23 @@ A diferença básica entre dado e informação está no contexto em que os bits 
 | Programa | Conjunto de instruções escritas em uma das linguagens entendidas pelas máquinas para processamento de dados. |
 
 ### 2.1.3 Modelo de máquinas de níveis
-Utilizamos na disciplina a abordagem proposta pelo [Tanenbaum, A. S.](https://www.cs.vu.nl/~ast/). O computador pode ser projetado como um conjunto de **camadas** ou **níveis**, um sobre o outro.
+Utilizamos na disciplina a abordagem proposta pelo [Tanenbaum, A. S.](https://www.cs.vu.nl/~ast/). O computador pode ser projetado como um conjunto de **camadas** ou **níveis**, um sobre o outro.  
+A organização de um computador pode ser entendida como um conjunto de máquinas M<sub>i</sub>, cada uma com uma Linguagem de Programação L<sub>i</sub>, para as quais são escritos os programas.  
+Cada máquina ocupa uma camada ou nível N.  
 
 ![Máquina multinível](/arq_aulas/images/camadas_computador.jpg)
+
+Cada nível *i* executa programas que contêm instruções de uma linguagem (L<sub>i</sub>).  
+Cada instrução de um nível *i* pode ser convertida em instruções de um nível *i-1* (inferior).   
+São necessárias interfaces para **conversão** dos programas escritos na linguagem de um nível para execução no nível ao nível inferior: **tradutores** ou **interpretadores**.  
+A distância entre as linguagens das máquinas não pode ser muito grande,
+sob pena do processo de tradução ou interpretação ser muito complexa.  
+
+| Conversores de código | Característica |
+| --------------------- | -------------- |
+| Tradução | instruções e dados do código da máquina de origem são substituídos pelos equivalentes no código da máquina de destino, em que o programa será executado. |
+| Interpretação | instruções e dados da linguagem da máquina de origem são mantidos conforme o código original, convertendo-se para a linguagem da máquina virtual de destino conforme a necessidade da execução do código de origem. |
+
 
 
 
