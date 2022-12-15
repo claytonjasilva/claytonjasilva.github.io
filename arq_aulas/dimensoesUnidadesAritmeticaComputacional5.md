@@ -29,17 +29,20 @@ A adição de dois números binários *A* e *B* de *m* bits, ou seja, *A = a<sub
 3. Se houver bit 1 de *carry* transporta-se para a soma dos bits seguintes mais significativos (à esquerda)
 4. Repete-se o processo até alcançar o bit mais significativo.
 
-Em **aritmética de complemento de 1**, um *carry* gerado pela adição dos bits **mais significativos** (ou seja, da extrema esquerda) é somado ao **bit menos significativo** (da extrema direita) do resultado - esse processo é chamado de **transporte de contorno**.  
-
-Em **aritmética de complemento de 2**, um *carry* gerado pela adição dos bits **mais significativos** (ou seja, da extrema esquerda) é apensas **descartado**.
-
-Em **aritmética de excesso 2<sup>m-1</sup>**, o resultado é subtraído da representação binária do excesso.
-
 **SUBTRAÇÃO**
 
 A subtração de dois números binários *A* e *B* de *m* bits, ou seja, *A = a<sub>m-1</sub> ... a<sub>1</sub> a<sub>0</sub>* e *B = b<sub>m-1</sub> ... b<sub>1</sub> b<sub>0</sub>*, *A-B*, é obtida por
-1. Se o minuendo A for menor do o subtraendo B inverter a operação - realizar *B-A* - e tomar o resultado como negativo 
-2. Realizar a operação **bit a bit** do menos ao mais significativo (da direita para a esquerda)
-3. Aplica-se a tabela anterior de subtração bit a bit
-4. Se houver bit 1 de *borrow* transporta-se para a subtração dos bits seguintes mais significativos (à esquerda)
-5. Repete-se o processo até alcançar o bit mais significativo.
+1. Realizar a operação **bit a bit** do menos ao mais significativo (da direita para a esquerda)
+2. Aplica-se a tabela anterior de subtração bit a bit
+3. Se houver bit 1 de *borrow* transporta-se para a subtração dos bits seguintes mais significativos (à esquerda)
+4. Repete-se o processo até alcançar o bit mais significativo.
+
+**Observações gerais sobre adição e subtração**
+1. O resultado de uma adição pode ter **mais bits do que o tamanho da palavra** => **OVERFLOW**.
+2. Na operação de subtração, se o minuendo A for menor do o subtraendo B inverter a operação - realizar *B-A* - e tomar o resultado como negativo. 
+
+** ADIÇÃO E SUBTRAÇÃO EM COMPLEMENTO DE 1 E COMPLEMENTO DE 2
+1. As operações de subtração em complemento de 1 e 2 são tratadas como adição, da forma *A - B = A + (-B)*
+2. **Se os operandos tiverem o mesmo sinal**, no *overflow* o bit mais significativo da palavra será de sinal trocado 
+3. **Nas operações de complemento de 1**, se houver um bit de *carry* após o bit de sinal ele é acrescido ao bit menos significativo do resultado
+4. **Nas operações de complemento de 1**, se houver um bit de *carry* após o bit de sinal ele é ignorado
