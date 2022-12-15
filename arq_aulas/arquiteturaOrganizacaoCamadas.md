@@ -68,7 +68,7 @@ O modelo específico que é utilizado na disciplina é o da **máquina de 6 nív
 
 Considerando as camadas acima, pode-se definir os métodos e programas de suporte à conversão dos códigos entre as linguagens.
 
-![Métodos e programas típicos de conversão de códigos no modelo de 6 níveis](/arq_aulas/images/camadas_computador.jpg)
+![Métodos e programas típicos de conversão de códigos no modelo de 6 níveis](/arq_aulas/images/conversoes_maquina6niveis.jpg)
 
 
 
