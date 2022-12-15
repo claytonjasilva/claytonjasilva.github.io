@@ -53,6 +53,6 @@ A subtração de dois números binários **purros** *A* e *B* de *m* bits, ou se
 2. Realiza-se a **subtração** normalmente s **soma-se o resultado** ao excesso na sua representação binária
 
 
-[home](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/arq_aulas.md)
-[<<]()
+[home](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/arq_aulas.md)  
+[<<](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/arq_aulas/dimensoesUnidadesAritmeticaComputacional4.md)
 
