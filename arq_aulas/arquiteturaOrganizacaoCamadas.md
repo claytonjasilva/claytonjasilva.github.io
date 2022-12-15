@@ -11,6 +11,6 @@ quando lhes são proporcionadas entradas, da qual resulta uma saída. Essa opera
 ### 2.1.1 Elementos típicos dos sistemas computacionais
 A estrutura típica de sistemas computacionais, em uma visão de alto nível, é apresentada na figura.
 
-![Visão Geral dos sitemas computacionais](/../main/arq_aulas/images/computadaor_visao_geral.jpg)
+![Visão Geral dos sitemas computacionais](images/computadaor_visao_geral.jpg)
 
 
