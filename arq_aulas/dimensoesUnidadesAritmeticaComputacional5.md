@@ -43,6 +43,7 @@ A subtração de dois números binários *A* e *B* de *m* bits, ou seja, *A = a<
 
 ** ADIÇÃO E SUBTRAÇÃO EM COMPLEMENTO DE 1 E COMPLEMENTO DE 2
 1. As operações de subtração em complemento de 1 e 2 são tratadas como adição, da forma *A - B = A + (-B)*
-2. **Se os operandos tiverem o mesmo sinal**, no *overflow* o bit mais significativo da palavra será de sinal trocado 
-3. **Nas operações de complemento de 1**, se houver um bit de *carry* após o bit de sinal ele é acrescido ao bit menos significativo do resultado
-4. **Nas operações de complemento de 1**, se houver um bit de *carry* após o bit de sinal ele é ignorado
+2. **Se os operandos tiverem o mesmo sinal**, no *overflow* o bit mais significativo da palavra será de sinal trocado
+3. **Se os operandos tiverem sinal trocado** não haverá *overflow* 
+4. No caso de bits diferentes dos operandos, **nas operações de complemento de 1**, se houver um bit de *carry* após o bit de sinal ele é acrescido ao bit menos significativo do resultado
+5. No caso de bits diferentes dos operandos, **nas operações de complemento de 2**, se houver um bit de *carry* após o bit de sinal ele é ignorado
