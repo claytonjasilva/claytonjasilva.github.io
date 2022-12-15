@@ -19,7 +19,7 @@ Sejam dois bits, a subtração é dada pela tabela
 
 O bit mais significativo 1 resultante da operação *0 - 1* é chamado de ***borrow*** ou 'toma um'.
 
-### 1.8.2. Adição e subtração de números binários puros
+### 1.8.2. Adição e subtração de números binários
 
 **ADIÇÃO**
 
@@ -28,6 +28,10 @@ A adição de dois números binários *A* e *B* de *m* bits, ou seja, *A = a<sub
 2. Aplica-se a tabela anterior de adição bit a bit
 3. Se houver bit 1 de *carry* transporta-se para a soma dos bits seguintes mais significativos (à esquerda)
 4. Repete-se o processo até alcançar o bit mais significativo.
+
+Em **aritmética de complemento de 1**, um *carry* gerado pela adição dos bits **mais significativos** (ou seja, da extrema esquerda) é somado ao **bit menos significativo** (da extrema direita) do resultado - esse processo é chamado de **transporte de contorno**.  
+
+Em **aritmética de complemento de 2**, um *carry* gerado pela adição dos bits **mais significativos** (ou seja, da extrema esquerda) é apensas **descartado**.
 
 **SUBTRAÇÃO**
 
