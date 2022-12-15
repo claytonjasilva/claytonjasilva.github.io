@@ -3,8 +3,8 @@
 
 ## Tópicos
 1. [Dimensões, Unidades e Aritmética Computacional](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/arq_aulas/dimensoesUnidadesAritmeticaComputacional1.md)
-2. [Arquitetura, Organização e Modelos de máquina de níveis]()
-3. [Conceitos básicos](arq_aulas/arq_aulas_conceitos.pdf)   
+2. [Arquitetura, Organização e Modelos de máquina de níveis](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/arq_aulas/arquiteturaOrganizacaoCamadas.md)
+3. [Máquina de von Neumann ou computador IAS]()   
 4. [Números e aritmética binária](arq_aulas/arq_aulas_aritmetica.pdf)    
     [Exercícios em sala](arq_aulas/exercicios3_sala.md)
 4. [Nível de lógica digital: circuitos combinacionais](arq_aulas/arq_aulas_logica_combinacional.pdf)    
