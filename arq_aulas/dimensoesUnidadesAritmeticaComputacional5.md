@@ -54,4 +54,5 @@ A subtração de dois números binários **purros** *A* e *B* de *m* bits, ou se
 
 
 [home](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/arq_aulas.md)
+[<<]()
 
