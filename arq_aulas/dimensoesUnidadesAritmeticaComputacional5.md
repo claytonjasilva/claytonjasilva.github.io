@@ -33,6 +33,8 @@ Em **aritmética de complemento de 1**, um *carry* gerado pela adição dos bits
 
 Em **aritmética de complemento de 2**, um *carry* gerado pela adição dos bits **mais significativos** (ou seja, da extrema esquerda) é apensas **descartado**.
 
+Em **aritmética de excesso 2<sup>m-1</sup>**, o resultado é subtraído da representação binária do excesso.
+
 **SUBTRAÇÃO**
 
 A subtração de dois números binários *A* e *B* de *m* bits, ou seja, *A = a<sub>m-1</sub> ... a<sub>1</sub> a<sub>0</sub>* e *B = b<sub>m-1</sub> ... b<sub>1</sub> b<sub>0</sub>*, *A-B*, é obtida por
