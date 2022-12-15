@@ -34,6 +34,17 @@ A diferença básica entre dado e informação está no contexto em que os bits 
 
 ![Diferença entre dados e informação](/arq_aulas/images/dados_informacao.jpg)
 
+| Linguagem e programa | Conceito |
+| ------------------ | -------- |
+| Linguagem | Sistema de símbolos, sinais ou objetos instituídos como signos – **código**, que obedece a regras de **sintaxe e semântica**. |
+| Programa | Conjunto de instruções escritas em uma das linguagens entendidas pelas máquinas para processamento de dados. |
+
+### 2.1.3 Modelo de máquinas de níveis
+Utilizamos na disciplina a abordagem proposta pelo [Tanenbaum, A. S.](https://www.cs.vu.nl/~ast/). O computador pode ser projetado como um conjunto de **camadas** ou **níveis**, um sobre o outro.
+
+![Máquina multinível](/arq_aulas/images/camadas_computador.jpg)
+
+
 
 
 
