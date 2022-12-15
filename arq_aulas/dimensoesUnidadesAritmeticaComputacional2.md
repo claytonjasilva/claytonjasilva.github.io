@@ -21,6 +21,12 @@ Para obter o número representado em base 10 (N<sub>10</sub>) no seu equivalente
 3. Parar as divisões quando obtiber quociente igual a 0.
 4. O número na nova base (2 ou 16) na notação posicional será formado pelos restos obtidos, de tal modo que **o último resto é o dígito mais significativo**. 
 
+Na conversão da base 10 para a base 2 pode-se utilizar o comportamento da notação polonomial. Do mais significativo ao menos significativo, preencher com o dígito 1 as potências de 2 e realizar a soma de modo a não ultrapassar o número a ser convertido. A tabela mostra um exemplo para 235<sub>10</sub> convertido à base 2.
+
+| 2<sup>7</sup> | 2<sup>6</sup> | 2<sup>5</sup> | 2<sup>4</sup> | 2<sup>3</sup> | 2<sup>2</sup> | 2<sup>1</sup> | 2<sup>0</sup> |
+| ------------- | ------------- | ------------- | ------------- | ------------- | ------------- | ------------- | ------------- | 
+| 1 | 1 | 1 | 0 | 1 | 0 | 1 | 1 |
+
 ### 1.3.2 Conversão de grandezas numéricas da base 2 para a bases 10: Método da soma polinomial
 Para obter o número representado em base 2 (N<sub>2</sub>) no seu equivalente em base 10 (N<sub>10</sub>), aplica-se o seguinte método:  
 1. Representar N<sub>2</sub> na sua forma polinomial, em que cada termo da soma é dado pelo dígito binário (1 ou 0) multiplicado por 2<sup>j</sup>, onde j é a posição relativa do dígito no número.
