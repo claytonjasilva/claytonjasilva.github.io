@@ -49,5 +49,5 @@ A subtração de dois números binários **purros** *A* e *B* de *m* bits, ou se
 5. No caso de bits diferentes dos operandos, **nas operações de complemento de 2**, se houver um bit de *carry* após o bit de sinal ele é ignorado
 
 **ADIÇÃO E SUBTRAÇÃO EM EXCESSO m-1**
-1. Realiza-se a **adição** normalmente e **subtrai-se o resultado** do excesso na sau representação binária
+1. Realiza-se a **adição** normalmente e **subtrai-se o resultado** do excesso na sua representação binária
 2. Realiza-se a **subtração** normalmente s **soma-se o resultado** ao excesso na sua representação binária
