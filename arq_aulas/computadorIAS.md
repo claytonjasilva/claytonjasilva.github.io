@@ -95,6 +95,12 @@ As instruções podem ser classificadas como segue:
 - **Lógicas e aritméticas**, como adição, subtração, multiplicação e divisão binárias.
 - **Alteração de endereços**: instruções para calcular endereços para inseri-los em instruções armazenadas na memória, propiciando flexibilidade de endereçamento dos programas. 
 
+Os programas executados pelo processador (na **linguagem de máquina**) podem ser escritos por uma representação simbólica (*assembly*) utilizando-se menmônicos.  
+O código em linguagem de máquina, como tratamos, é todo constituído de sequência binária de instruções, ou seja, em sequência de bits.  
+A figura apresenta como a tabela do *set* de instruções é normalmente apresentada.
+
+![Forma da tabela do *set* de instruções](/arq_aulas/images/forma_set_instrucoes.jpg)
+
 
 
 
