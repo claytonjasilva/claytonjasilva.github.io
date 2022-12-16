@@ -62,6 +62,7 @@ O conjunto de microinstruções executadas define o chamado **ciclo de instruç�
 
 ![Ciclo de instrução do computador IAS](/arq_aulas/images/ciclo_instrucao.jpg)
 
+
  
 
 
