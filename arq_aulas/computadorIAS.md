@@ -19,7 +19,7 @@ A figura abaixo ilustra a organiza detalhada do computador IAS.
 
 ![Organizadação datalhada do computador IAS](/arq_aulas/images/maquinaIAS_detalhada.jpg)
 
-1. **Registrador Temporário da Memória** (MBR, *Memory Buffer Register*): capacidade de armazenar **40 bits** e contém uma palavra com um par de instruções a ser lida ou escrita na memória.
+1. **Registrador Temporário da Memória** (MBR, *Memory Buffer Register*): capacidade de armazenar **40 bits** e contém uma palavra com um par de instruções a ser lida ou escrita na memória. Registradores são dispositivos de armazenamento de dados internos ao processador que possuem tipicamente baixo tempo de acesso (posteriormente discutiremos o conceito), embora baixa capacidade de armazenamento de bits.
 2. **Acumulador** (Acc) e **Quociente de Multiplicação** (MQ, *Multiplier Quotient*): capacidade de armazenar **40 bits** e **armazenam temporariamente** os operandos e o resultado das operações realizadas pelos circuitos lógicos e aritméticos da ULA. Em operações com mais de 40 bits, o Acc armazena os 40 bits mais significativos e o MQ armazena os 40 bits menos significativos.
 3. **Contador do Programa** (PC, *Program Counter*): contador de **10 bits** e **contém o endereço do próximo** par de instruções. Incrementa automaticamente **1 bit** em cada instrução executada. **As instruções são armazenadas e **endereços adjacentes** de memória.
 4. **Registrador de Endereçamento à Memória** (MAR, *Memory Adress Register*): capacidade de armazenar **12 bits** e contém o endereço da palavra.
@@ -50,7 +50,17 @@ Nem toda instrução do processador da máquina IAS requer um operando. Nesse ca
 
 ![Estrutura das instruções em memória](/arq_aulas/images/instrucoes_estrutura.jpg)
 
+### 3.3.2 Ciclo de instrução
+O programa consiste na execução das instruções armazenadas em memória.  
+As instruções são normalmente armazenadas em **posições de memória adjacentes** e **executadas sequencialmente**, a execução das instruções de um endereço é seguida da execução das instruções do endereço seguinte.  
+As instruções são executadas sincronizadamente. O **sincronismo** é dado pelos circuitos de controle.  
+Após a execução de cada instrução os registradores armazenam um valor. Os valores de cada elemento definem o **estado** da máquina.
+As etapas (microoperações) de execução de cada operação variam de acordo com cada instrução do programa.  
+O conjunto de microinstruções executadas define o chamado **ciclo de instrução**, que é composto por duas partes:
+- **Busca** do par de instruções
+- **Execução** das instruções
 
+![Ciclo de instrução do computador IAS](/arq_aulas/images/ciclo_instrucao.jpg)
 
  
 
