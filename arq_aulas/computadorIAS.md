@@ -43,8 +43,12 @@ Um par de instruções ocupa cada linha de endereço. A estrutura da linha é da
 
 ![Par de instruções em memória](/arq_aulas/images/instrucoes.jpg)
 
+A instrução à esquerda ocupa os bits b<sub>0</sub> a b<sub>19</sub>. As instruções à direita ocupam os bits b<sub>20</sub> a b<sub>39</sub>.
+Cada instrução é possui um grupo de bits chamado de *opcode*, a palavra de um código que define as instruções do processador.  
+E outro grupo de bits, chamado de operando, que contém o endereço do dado a ser buscado pelo processador em memória.  
+Nem toda instrução do processador da máquina IAS requer um operando. Nesse caso, quando busca a instrução o processador desconsidera os bits relativos ao operando.
 
-
+![Estrutura das instruções em memória](/arq_aulas/images/instrucoes_estrutura.jpg)
 
 
 
