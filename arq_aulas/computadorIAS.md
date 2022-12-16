@@ -62,6 +62,41 @@ O conjunto de microinstruções executadas define o chamado **ciclo de instruç�
 
 ![Ciclo de instrução do computador IAS](/arq_aulas/images/ciclo_instrucao.jpg)
 
+O ciclo de instruções pode ser descrito por:
+1. Programa e dados armazenados em memória: conceito de programa armazenado
+2. PC contém o endereço da próxima palavra (par de instruções)
+3. Evento de controle - o endereço do par de instruções é carregado no MAR
+4. Evento de controle - o endereço das instruções é disponibilizado no barramento de endereços
+5. Evento de controle - o endereço das instruções é decodificado e a posição do par de instruções é selecionada
+6. Evento de controle - o par de instruções é disponibilizdo no barramento de dados
+7. Evento de controle - o par de instruções é armazenado no MBR
+8. Evento de controle - o opcode da instrução à esquerda é armazenado no IR, o operando da instrução é armazenado no MAR e a instrução à direita é armazenada no IBR
+9. Evento de controle - a primeira instrução é decodificada
+10. Evento de controle - o MAR é ativado para disponibilizar o endereço do dado
+11. Evento de controle - o endereço do dado é disponibilizado no barramento de endereços
+12. Evento de controle - o endereço do dado é decodificado e a posição do dado é selecionada
+13. Evento de controle - o dado é disponibilizdo no barramento de dados
+14. Evento de controle - o dado é armazenado no MBR
+15. Evento de controle - a ULA realiza a operação
+16. Evento de controle - o par de instruções é armazenado no MBR
+17. Evento de controle - o resultado da operação é armazenado no ACC ou MQ
+18. Evento de controle - o opcode da segunda instrução é transferida do IBR para o IR e o operando é transferido para o MAR
+19. O processo prossegue para decodificação da segunda instrução e busca do dado
+20. O par de instruções seguinte é buscado ...
+
+Veja o [**vídeo ilustrativo**](https://1drv.ms/v/s!AsTd8oN7mu8pkchLNfDytNnrgyqLpw?e=gwRYPz).
+
+### 3.3.3 Instruções do processador IAS
+Todo processador psosui um *set* (conjunto) de instruções. O processador do computador IAS também possui o seu *set* de instruções.  
+As instruções podem ser classificadas como segue:
+- **Transferência de dados**: os dados são transferidos entre a memória e os registradores da CPU ou entre registradores.
+- **Desvio incondicional**: normalmente a UC executa as instruções em sequência na memória, que pode ser alterada pelo uso desse desvio independentemente de qualquer condição, quando a instrução é executada.
+- **Desvio condicional**: o desvio é executado dependendo de um teste de condição estabelecido pela instrução.
+- **Lógicas e aritméticas**, como adição, subtração, multiplicação e divisão binárias.
+- **Alteração de endereços**: instruções para calcular endereços para inseri-los em instruções armazenadas na memória, propiciando flexibilidade de endereçamento dos programas. 
+
+
+
 
  
 
