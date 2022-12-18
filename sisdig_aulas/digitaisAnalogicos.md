@@ -9,3 +9,6 @@ As aplicações das grandezas e unidades de medida podem ser classificadas como:
 3. Contagem: registro de uso ou fluxo de uma quantidade.
 4. Pesquisa: as medidas dos fenômenos validam ou refutam as hipóteses formuladas?
 5. Projeto: acompanhamento e controle dos requisitos das entregas.
+
+Uma revisão rápida sobre [dimensões, unidades e aritmética computacional](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/arq_aulas/dimensoesUnidadesAritmeticaComputacional1.md)
+
