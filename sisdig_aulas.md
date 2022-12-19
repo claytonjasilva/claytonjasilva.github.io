@@ -1,4 +1,4 @@
-# Aulas de Sistemas Digitais - 2022.1
+# Aulas de Sistemas Digitais - 2023.1
 
 ## Conteúdo
 * [Álgebra Booleana e portas lógicas](sisdig_aulas/sisdig_1.pdf)
