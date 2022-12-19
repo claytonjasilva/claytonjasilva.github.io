@@ -101,6 +101,20 @@ A figura apresenta como a tabela do *set* de instruções é normalmente apresen
 
 ![Forma da tabela do *set* de instruções](/arq_aulas/images/forma_set_instrucoes.jpg)
 
+***SET* DE INSTRUÇÕES**  
+**Instruções de transferência de dados**  
+
+| **Código de operação** | **Representação simbólica** | **Descrição** |
+| ---------------------- | --------------------------- | ------------- |
+| 0000 1010 | LOAD MQ | Transfere o conteúdo do registrador MQ para o acumulador ACC |
+| 0000 1001 | LOAD MQ,M(X) | Transfere o conteúdo da posição de memória X, definida pelo operando, para MQ |
+| 0010 0001 | STOR M(X) | Transfere o conteúdo do acumulador para a posição de memória X, definida pelo operando |
+| 0000 0001 | LOAD M(X) | Transfere o conteúdo da posição de memória X, definida pelo operando, para o acumulador |
+| 0000 0010 | LOAD -M(X) | Transfere o negativo do conteúdo da posição de memória X, definida pelo operando, para o acumulador |
+| 0000 0011 | LOAD \|M(X)\| | Transfere o valor absoluto do conteúdo da posição de memória X, definida pelo operando, para o acumulador |
+| 0000 0100 | LOAD -\|M(X)\| | Transfere o negativo do valor absoluto do conteúdo da posição de memória X, definida pelo operando, para o acumulador |
+
+
 
 
 
