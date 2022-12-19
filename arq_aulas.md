@@ -4,9 +4,7 @@
 ## Tópicos
 1. [Dimensões, Unidades e Aritmética Computacional](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/arq_aulas/dimensoesUnidadesAritmeticaComputacional1.md)
 2. [Arquitetura, Organização e Modelos de máquina de níveis](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/arq_aulas/arquiteturaOrganizacaoCamadas.md)
-3. [Máquina de von Neumann ou computador IAS](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/arq_aulas/computadorIAS.md)   
-4. [Números e aritmética binária](arq_aulas/arq_aulas_aritmetica.pdf)    
-    [Exercícios em sala](arq_aulas/exercicios3_sala.md)
+3. [Máquina de von Neumann ou computador IAS](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/arq_aulas/computadorIAS.md)
 4. [Nível de lógica digital: circuitos combinacionais](arq_aulas/arq_aulas_logica_combinacional.pdf)    
 5. [Nível de lógica digital: circuitos sequenciais](arq_aulas/arq_aulas_logica_sequencial.pdf)
 6. [Detalhamento dos elementos fundamentais das arquiteturas](arq_aulas/arq_aulas_componentes.pdf)  
@@ -24,20 +22,16 @@
 ### AP1
 1. [Trabalho AP1](arq_aulas/Orientacao_trabalho_AP1.pdf)    
 
-## Exercícios
-**AP1**  
-1. [Exercício 1 - 2022.2: Conceitos iniciais e máquina de níveis](arq_aulas/form1.pdf)
-2. [Exercício 2 - 2022.2: Programa assembly no set da máquina IAS](arq_aulas/exercicio2.md)
-3. [Exercício 3 - 2022.2: Números e aritmética binária](arq_aulas/exercicio3.md)    
-4. [Exercício 4 - 2022.2: Nível de lógica digital](arq_aulas/exercicio4.md)
-
- 
-**AP2**    
-
-5. [Exercício 5 - 2022.2: memória](arq_aulas/exercicio5.md) --- [*download* da solução](https://1drv.ms/b/s!AsTd8oN7mu8pkb421P5nTY2l-Zc29Q?e=1K5oEw)
-6. [Exercício 6 - 2022.2: mapeamento MP-cache, barramento e processadores](arq_aulas/exercicio6.md) --- [*download* da solução](https://1drv.ms/b/s!AsTd8oN7mu8pkcBLKzmih8KY92Z2og?e=DeHjSy)  
-6.1 [Form AC](https://forms.gle/1VrBMtB1XZw76Bpj7)
-7. [Exercício 7 - 2022.2: sistemas operacionais](https://forms.gle/LrqzCYKG551iWWG76) - **não será computado para avaliação continuada**
+## Exercícios  
+1. [Lista 1 de Exercícios](arq_aulas/exercicios3_sala.md)
+2. [Exercício 1 - 2022.2: Conceitos iniciais e máquina de níveis](arq_aulas/form1.pdf)
+3. [Exercício 2 - 2022.2: Programa assembly no set da máquina IAS](arq_aulas/exercicio2.md)
+4. [Exercício 3 - 2022.2: Números e aritmética binária](arq_aulas/exercicio3.md)    
+5. [Exercício 4 - 2022.2: Nível de lógica digital](arq_aulas/exercicio4.md)
+6. [Exercício 5 - 2022.2: memória](arq_aulas/exercicio5.md) --- [*download* da solução](https://1drv.ms/b/s!AsTd8oN7mu8pkb421P5nTY2l-Zc29Q?e=1K5oEw)
+7. [Exercício 6 - 2022.2: mapeamento MP-cache, barramento e processadores](arq_aulas/exercicio6.md) --- [*download* da solução](https://1drv.ms/b/s!AsTd8oN7mu8pkcBLKzmih8KY92Z2og?e=DeHjSy)
+8. [Form AC](https://forms.gle/1VrBMtB1XZw76Bpj7)
+9. [Exercício 7 - 2022.2: sistemas operacionais](https://forms.gle/LrqzCYKG551iWWG76) - **não será computado para avaliação continuada**
 
 
 ## Referências  
