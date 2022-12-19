@@ -107,11 +107,11 @@ A figura apresenta como a tabela do *set* de instruções é normalmente apresen
 | **Código de operação** | **Representação simbólica** | **Descrição** |
 | ---------------------- | --------------------------- | ------------- |
 | 0000 1010 | LOAD MQ | Transfere o conteúdo do registrador MQ para o acumulador ACC |
-| 0000 1001 | LOAD MQ,M(X) | Transfere o conteúdo da posição de memória X, definida pelo operando, para MQ |
+| 0000 1001 | LOAD MQ,M(X) | Transfere o conteúdo da posição de memória X, **definida pelo operando**, para MQ |
 | 0010 0001 | STOR M(X) | Transfere o conteúdo do acumulador para a posição de memória X, definida pelo operando |
 | 0000 0001 | LOAD M(X) | Transfere o conteúdo da posição de memória X, definida pelo operando, para o acumulador |
 | 0000 0010 | LOAD -M(X) | Transfere o negativo do conteúdo da posição de memória X, definida pelo operando, para o acumulador |
-| 0000 0011 | LOAD \|M(X)\| | Transfere o valor absoluto do conteúdo da posição de memória X, definida pelo operando, para o acumulador |
+| 0000 0011 | LOAD \|M(X)\| | Transfere o **valor absoluto** do conteúdo da posição de memória X, definida pelo operando, para o acumulador |
 | 0000 0100 | LOAD -\|M(X)\| | Transfere o negativo do valor absoluto do conteúdo da posição de memória X, definida pelo operando, para o acumulador |
 
 **Instruções de desvio incondicional**  
@@ -125,8 +125,21 @@ A figura apresenta como a tabela do *set* de instruções é normalmente apresen
 
 | **Código de operação** | **Representação simbólica** | **Descrição** |
 | ---------------------- | --------------------------- | ------------- |
-| 0000 1111 | JUMP +M(X,0:19) | Se o número do acumulador for não negativo, a próxima instrução a ser executada é buscada **nos bits 0 a 19** da posição de memória X, definida pelo operando |
-| 0000 1110 | JUMP +M(X,20:39) | Se o número do acumulador for não negativo, a próxima instrução a ser executada é buscada **nos bits 20 a 39** da posição de memória X, definida pelo operando |
+| 0000 1111 | JUMP +M(X,0:19) | Se o número do acumulador for **não negativo**, a próxima instrução a ser executada é buscada **nos bits 0 a 19** da posição de memória X, definida pelo operando |
+| 0000 1110 | JUMP +M(X,20:39) | Se o número do acumulador for **não negativo**, a próxima instrução a ser executada é buscada **nos bits 20 a 39** da posição de memória X, definida pelo operando |
+
+**Instruções aritméticas**  
+
+| **Código de operação** | **Representação simbólica** | **Descrição** |
+| ---------------------- | --------------------------- | ------------- |
+| 0000 0101 | ADD M(X) | Soma o conteúdo da posição de memória X, definida pelo operando, com o conteúdo do acumulador; armazena o resultado no acumulador |
+| 0000 0111 | ADD \|M(X)\| | Soma o **módulo** do conteúdo da posição de memória X, definida pelo operando, com o conteúdo do acumulador; armazena o resultado no acumulador |
+| 0010 0110 | SUB M(X) | Subtrai o conteúdo da posição de memória X, definida pelo operando, do conteúdo do acumulador; armazena o resultado no acumulador |
+| 0000 1000 | SUB \|M(X)\| | Subtrai o **módulo** do conteúdo da posição de memória X, definida pelo operando, do conteúdo do acumulador; armazena o resultado no acumulador |
+| 0000 1011 | MUL M(X) | Multiplica o conteúdo da posição de memória X, definida pelo operando, por MQ; armazena os bits mais singificativos do resultado em ACC e os bits menos significativos em MQ |
+| 0000 1100 | DIV M(X) | Divide o conteúdo de ACC pelo conteúdo da posição de memória X, definida pelo operando; armazena o quociente em MQ e o resto em ACC |
+| 0001 0100 | LSH | Multiplica o conteúdo do acumulador por 2 |
+| 0001 0101 | RSH | Divide o conteúdo do acumulador por 2 |
 
 
 
