@@ -29,7 +29,7 @@ Para transformar os sinais analógicos relativos aos fenômenos da natureza e re
 - Apróximar os valores medidos a um conjunto finito de valores, **quantiando o sinal**.
 
 ### 1.2.2 Amostragem de sinais analógicos
-Os sinais *x(t)* analógicos são registrados somente em intervalor de tempo. A esse procedimento se dá o nome de **amostragem**.  
+Os sinais *x(t)* analógicos são registrados somente em intervalos de tempo. A esse procedimento se dá o nome de **amostragem**.  
 Por uma conveninência de implementação, a amostragem do sinal analógico é realizado em intervalos de tempo periódicos constantes. O intervalo de amostragem é chamado **período de amostragem**, T<sub>A</sub>. A figura ilustra o sinal amostrado.
 
 ![Sinal amostrado](/sisdig_aulas/images_sisdig/amostrado.jpg)
@@ -42,4 +42,25 @@ Conforme discutido acima, pela relação entre período e frequência, quanto ma
 Não é difícil concluir também que existe **perda de informação** quando se realiza a aproximação
 de um sinal analógico para um sinal digital.  
 Por outro lado, para a computação é conveniente lidar com sinais digitais por diversos motivos, a despeito de alguma perda na amostragem.  
+
+### 1.2.3 Quantização de sinais analógicos
+Os sinais *x(t)* analógicos são registrados somente em valores pertencentes a um conjunto discreto $x\in$ *C={x<sub>0</sub>, x<sub>1</sub>, ..., x<sub>N</sub>}*.  
+Normalmente, os valores discretos variam entre o valor inferior de *x* e o valor superior, totalizando ***L* níveis**, de modo que entre dois níveis se configura o chamado **degrau de quantização**, ou seja,  
+
+$\Delta = \frac{x_{MAX}-x_{MIN}}{L-1}$
+
+O degrau de quantização indica o erro de quantização ocorrido no processo de quantização do sinal analógico.  
+A figura mostra o sinal quantizado.
+
+![Sinal amostrado](/sisdig_aulas/images_sisdig/quantizado.jpg)
+
+Não é difícil concluir também que existe **perda de informação** quando se realiza a aproximação
+de um sinal analógico para um sinal quantizado.  
+
+### 1.2.4 Sinais digitais
+Os sinais digitais assumem somente dois níveis lógicos cuja abstração matemática é *{0,1}*.  
+
+
+
+
 
