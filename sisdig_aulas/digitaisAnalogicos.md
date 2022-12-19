@@ -22,3 +22,4 @@ $x(t)=f(t)$
 
 , onde *x(t)* é a variável dependente, que pode assumir um valor *X* entre dois valores quaisquer x<sub>0</sub> e x<sub>1</sub> - continuidade em *x*; e *t* é a variável independente, que pode assumir um valor *T* entre dois valores quaisquer t<sub>0</sub> e t<sub>1</sub> - continuidade em *x*.
 
+![Sinais analógicos](/sisdig_aulas/images_sisdig/analogicos.jpg)
