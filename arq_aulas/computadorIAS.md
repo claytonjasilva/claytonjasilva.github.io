@@ -114,6 +114,19 @@ A figura apresenta como a tabela do *set* de instruções é normalmente apresen
 | 0000 0011 | LOAD \|M(X)\| | Transfere o valor absoluto do conteúdo da posição de memória X, definida pelo operando, para o acumulador |
 | 0000 0100 | LOAD -\|M(X)\| | Transfere o negativo do valor absoluto do conteúdo da posição de memória X, definida pelo operando, para o acumulador |
 
+**Instruções de desvio incondicional**  
+
+| **Código de operação** | **Representação simbólica** | **Descrição** |
+| ---------------------- | --------------------------- | ------------- |
+| 0000 1101 | JUMP M(X,0:19) | A próxima instrução a ser executada é buscada **nos bits 0 a 19** da posição de memória X, definida pelo operando |
+| 0000 1110 | JUMP M(X,20:39) | A próxima instrução a ser executada é buscada **nos bits 20 a 39** da posição de memória X, definida pelo operando |
+
+**Instruções de desvio condicional**  
+
+| **Código de operação** | **Representação simbólica** | **Descrição** |
+| ---------------------- | --------------------------- | ------------- |
+| 0000 1111 | JUMP +M(X,0:19) | Se o número do acumulador for não negativo, a próxima instrução a ser executada é buscada **nos bits 0 a 19** da posição de memória X, definida pelo operando |
+| 0000 1110 | JUMP +M(X,20:39) | Se o número do acumulador for não negativo, a próxima instrução a ser executada é buscada **nos bits 20 a 39** da posição de memória X, definida pelo operando |
 
 
 
