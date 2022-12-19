@@ -23,3 +23,23 @@ $x(t)=f(t)$
 , onde *x(t)* é a variável dependente, que pode assumir um valor *X* entre dois valores quaisquer x<sub>0</sub> e x<sub>1</sub> - continuidade em *x*; e *t* é a variável independente, que pode assumir um valor *T* entre dois valores quaisquer t<sub>0</sub> e t<sub>1</sub> - continuidade em *x*.
 
 ![Sinais analógicos](/sisdig_aulas/images_sisdig/analogico.jpg)
+
+Para transformar os sinais analógicos relativos aos fenômenos da natureza e representá-los nos sistemas computacionais é necessário **discretizar**. Os sistemas computacionais possuem capacidade **finita** de representar números, logo a discretização consiste em:  
+- Registrar as observações somente em intervalos discretos, **amostranto o sinal no tempo**; e
+- Apróximar os valores medidos a um conjunto finito de valores, **quantiando o sinal**.
+
+### 1.2.2 Amostragem de sinais analógicos
+Os sinais *x(t)* analógicos são registrados somente em intervalor de tempo. A esse procedimento se dá o nome de **amostragem**.  
+Por uma conveninência de implementação, a amostragem do sinal analógico é realizado em intervalos de tempo periódicos constantes. O intervalo de amostragem é chamado **período de amostragem**, T<sub>A</sub>. A figura ilustra o sinal amostrado.
+
+![Sinal amostrado](/sisdig_aulas/images_sisdig/amostrado.jpg)
+
+Não é difícil observar que quanto menor T<sub>A</sub>, mais o sinal amostrado se aproxima do sinal analógico.  
+Ou seja, quando T<sub>A</sub> -> 0, o sinal amostrado se aproxima do sinal analógico.
+Fisicamente, a todo sinal de período *T* corresponde uma frequência *f=1/T*, medida em Hertz (Hz).
+Isso vale para a amostragem, em que *T<sub>A</sub> = 1/f<sub>A</sub>*.  
+Conforme discutido acima, pela relação entre período e frequência, quanto maior a frequência de amostragem mais o sinal amostrado se aproxima do sinal analógico.  
+Não é difícil concluir também que existe **perda de informação** quando se realiza a aproximação
+de um sinal analógico para um sinal digital.  
+Por outro lado, para a computação é conveniente lidar com sinais digitais por diversos motivos, a despeito de alguma perda na amostragem.  
+
