@@ -141,6 +141,14 @@ A figura apresenta como a tabela do *set* de instruções é normalmente apresen
 | 0001 0100 | LSH | Multiplica o conteúdo do acumulador por 2 |
 | 0001 0101 | RSH | Divide o conteúdo do acumulador por 2 |
 
+**Instruções de alteração de endereço**  
+
+| **Código de operação** | **Representação simbólica** | **Descrição** |
+| ---------------------- | --------------------------- | ------------- |
+| 0001 0010 | STOR M(X,8:19) | Substitui o campo de endereço da instrução à esquerda da posição de memória X (bits 0 a 19), definida pelo operando, pelos 12 bits mais à direita do conteúdo do acumulador |
+| 0000 1110 | JUMP M(X,28:39) | Substitui o campo de endereço da instrução à direita da posição de memória X (bits 20 a 39), definida pelo operando, pelos 12 bits mais à direita do conteúdo do acumulador |
+
+
 
 
 
