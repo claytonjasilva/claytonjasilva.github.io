@@ -75,6 +75,19 @@ Considerando a abstração dos sinais elétricos como 0s e 1s, o sinal analógic
 
 ![Sinal digital](/sisdig_aulas/images_sisdig/digital.jpg)
 
+### 1.2.4 Conversão analógico-digital (AD)
+Embora a maioria dos fenômenos observados na natureza se apresentem tipicamente como analógicos, há uma série de vantagens de processá-los digitalmente, aproveitando o avanço da tecnologia:
+- Facilidade de projeto
+- Facilidade de armazenamento
+- Precisão suficiente para a aplicação
+- Facilidade de processamento
+- Robustez a ruído
+- Facilidade de integração
+Uma aplicação típica e simples de compreender é o armazenamento de músicas. A figura ilustra a aplicação de conversão de sinal analógico para digital.
+
+![Aplicação de conversão AD](/sisdig_aulas/images_sisdig/aplicacao_AD.jpg)
+
+
 
 
 
