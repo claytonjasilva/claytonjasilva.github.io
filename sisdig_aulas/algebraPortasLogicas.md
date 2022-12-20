@@ -96,3 +96,5 @@ A tabela deve possuir **somente uma** coluna de saída, pois uma função só ad
 
 **Os circuitos eletrônicos digitais implementam funções lógicas.**
 
+[home](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/sisdig_aulas.md)
+[>>](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/sisdig_aulas/algebraPortasLogicas1.md)
