@@ -107,6 +107,9 @@ A codificação binária consiste em relacionar um conjunto de **elementos discr
 | 8 | 1000 |
 | 9 | 1001 |
 
+Quando tratamos dos sinais digitais, armazenados e processados pelos sistemas digitais, convém recordarmos o modelo dos computadores de acordo com um conjunto de camadas, especificamente do modelo de 6 níveis, em que:
+- **Nível 0 - nível de lógica digital**. Mais elementar. portas lógicas (gates), que podem ser combinadas em série e em paralelo. Os dados são sinais elétricos, abstrações  dos bits (*binary digits*).
+- **Nível 1 - nível de microarquitetura**. Circuitos especializados: registradores; Unidade Lógica e Aritmética; barramentos internos – caminho de dados; Unidade de Controle, constituída de microprogramas ou de circuitos eletrônicos.
 
 
 
