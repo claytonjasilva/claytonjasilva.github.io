@@ -1,7 +1,7 @@
 # 2. Álgebra Booleana e Portas Lógicas
 
-## 2. Álgebra Booleana
-### 2.1 Proposição e valor lógico
+## 2.1 Álgebra Booleana
+### 2.1.1 Proposição e valor lógico
 A base do nosso estudo é o conteito de **proposição**:  
 Oração declarativa **afirmativa ou negativa**, sobre a qual se pode atribuir um e somente um **valor lógico**: (*F*) falso ou (*V*) verdadeiro. **Abstrairemos como padrão *F* como *0* e *V* como *1***.
 Também conhecida como sentença fechada.  
@@ -61,7 +61,7 @@ Outros operadores utilizados
 | Disjunção | $\lor$, *ou* |
 | Negação | $\bar{X}$, *não* |
 
-### 2.2 Expressões lógicas ou booleanas
+### 2.1.2 Expressões lógicas ou booleanas
 As expressões lógicas consistem na operação lógica de proposições, expressa pelo uso de operadores lógicos, cujo resultado depende do valor lógico de cada uma das proposições constituintes.  
 Para a construção de expressões lógicas devemos definir alguns termos:  
 - **Variável** lógica: representação simbólica de qualquer proposição, consequentemente que pode assumir somente um dos valores do conjunto *C={0,1}*.
@@ -80,7 +80,7 @@ As proposições compostas podem apresentar características especiais, a saber:
 
 **Observação:** Se uma expressão booleana utiliza *n* variáveis, é possível elaborar *2<sup>n</sup>* combinações possíveis para determinar o valor da expressão.
 
-### 2.3 Tabela-verdade
+### 2.1.3 Tabela-verdade
 As tabelas-verdade são instrumentos que permitem a representação de todas as combinações de saída das funções de variáveis.  
 São basicamente formada pelas **colunas das variáveis**, **colunas intermediárias** e **coluna de saída**.  
 Dada uma função de *n* variáveis, a tabela deve possuir ***n*** colunas das variáveis.  
