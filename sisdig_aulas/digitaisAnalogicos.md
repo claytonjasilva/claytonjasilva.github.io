@@ -1,4 +1,4 @@
-# 1. Sistemas Digitais e Analógicos
+# 1. Sinais Digitais e Analógicos
 
 ## 1.1 Dimensões e unidades de medida
 Os fenômenos se manifestam em quantidades que podem ser medidas, registradas e processadas.  
