@@ -82,10 +82,32 @@ Embora a maioria dos fenômenos observados na natureza se apresentem tipicamente
 - Precisão suficiente para a aplicação
 - Facilidade de processamento
 - Robustez a ruído
-- Facilidade de integração
+- Facilidade de integração  
 Uma aplicação típica e simples de compreender é o armazenamento de músicas. A figura ilustra a aplicação de conversão de sinal analógico para digital.
 
 ![Aplicação de conversão AD](/sisdig_aulas/images_sisdig/aplicacao_AD.jpg)
+
+Tipicamente, o processo de conversão analógico-digital envolve a amostragem do sinal analógico, 
+a quantização e finalmente a **codificação**.  
+
+![Etapas da conversão AD](/sisdig_aulas/images_sisdig/conversao_AD.jpg)
+
+A codificação binária consiste em relacionar um conjunto de **elementos discretos** a um conjunto de **palavras binárias**, as quais podem ser armazenadas e processadas digitalmente.  O exemplo mais simples é o chamado código *BCD, Binary-To-Decimal*.  
+
+| Decimal | Código BCD |
+| ------- | ---------- |
+| 0 | 0000 |
+| 1 | 0001 |
+| 2 | 0010 |
+| 3 | 0011 |
+| 4 | 0100 |
+| 5 | 0101 |
+| 6 | 0110 |
+| 7 | 0111 |
+| 8 | 1000 |
+| 9 | 1001 |
+
+
 
 
 
