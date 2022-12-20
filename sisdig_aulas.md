@@ -1,6 +1,8 @@
 # Aulas de Sistemas Digitais - 2023.1
 
 ## Conteúdo
+1. [Sinais Analógicos e Digitais](sisdig_aulas/digitaisAnalogicos.md)
+2. [Álgebra Booleana e Portas Lógicas]
 * [Álgebra Booleana e portas lógicas](sisdig_aulas/sisdig_1.pdf)
 * [Projetos de circuitos combinacionais](sisdig_aulas/sisdig_2-1.pdf)
 * [Grandezas numéricas nos sistemas digitais](sisdig_aulas/sisdig_3.pdf)
