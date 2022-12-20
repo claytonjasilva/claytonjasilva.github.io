@@ -77,6 +77,7 @@ Para calcular o valor resultante de uma expressão lógica é necessário aplica
 As proposições compostas podem apresentar características especiais, a saber:  
 1. **Tautologia**: é a expressão que **sempre resultará valor lógico verdadeiro (1)**, para todas as combinações possíveis de suas variáveis.
 2. **Contradição**: é a expressão que **sempre resultará valor lógico falso (0)**, para todas as combinações possíveis de suas variáveis.
+3. Proposições compostas podem representar resultados iguais para cada uma de todas as posiveis combinações de variáveis. Nesse caso, as proposições são ditas **logicamente equivalentes**.
 
 **Observação:** Se uma expressão booleana utiliza *n* variáveis, é possível elaborar *2<sup>n</sup>* combinações possíveis para determinar o valor da expressão.
 
@@ -93,11 +94,5 @@ A tabela deve possuir **somente uma** coluna de saída, pois uma função só ad
 | ... | ... | ... |
 | Combinação *2<sup>n</sup>-1* | ... | Saída *2<sup>n</sup>-1* |
 
-
-
 **Os circuitos eletrônicos digitais implementam funções lógicas.**
-
-
-
-
 
