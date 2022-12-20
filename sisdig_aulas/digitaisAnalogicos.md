@@ -42,6 +42,11 @@ Conforme discutido acima, pela relação entre período e frequência, quanto ma
 Não é difícil concluir também que existe **perda de informação** quando se realiza a aproximação
 de um sinal analógico para um sinal digital.  
 Por outro lado, para a computação é conveniente lidar com sinais digitais por diversos motivos, a despeito de alguma perda na amostragem.  
+Embora o sinal seja contínuo nos valores observados (variável dependente *x*), após amostrado passa a discreto no tempo, consequentemente pode ser definido em instantes discretos *n = 0, 1, 2, ...* correpondente ao tempo *n.T<sub>A</sub>*, logo que pode ser definido matematicamente da seguinte forma
+
+$x(n)=f(n)$
+
+, onde *x(n)* é a variável dependente, que pode assumir um valor *X* entre dois valores quaisquer x<sub>0</sub> e x<sub>1</sub> - continuidade em *x*; e *n* é a variável independente, *n = 0, 1, 2, ...*.
 
 ### 1.2.3 Quantização de sinais analógicos
 Os sinais *x(t)* analógicos são registrados somente em valores pertencentes a um conjunto discreto $x\in$ *C={x<sub>0</sub>, x<sub>1</sub>, ..., x<sub>N</sub>}*.  
@@ -56,9 +61,21 @@ A figura mostra o sinal quantizado.
 
 Não é difícil concluir também que existe **perda de informação** quando se realiza a aproximação
 de um sinal analógico para um sinal quantizado.  
+O sinal quantizado (variável dependente *x*) só pode assumir valores nos limites dos níveis discreteos estabelecidos para quantização, em qualquer instante de tempo *t* (variável independente), logo que pode ser definido matematicamente da seguinte forma
+
+$x<sub>Q</sub>(n)=f(t)$
+
+, onde *x<sub>Q</sub>* é a variável dependente, que pode assumir um valor *X* pertencente ao conjunto de dimensão L, *C={x<sub>0</sub>, x<sub>1</sub>, ..x<sub>L-1</sub>}*; e *t* é a variável independente contínua.
 
 ### 1.2.4 Sinais digitais
 Os sinais digitais assumem somente dois níveis lógicos cuja abstração matemática é *{0,1}*.  
+Fisicamente, os bits 1 e 0 se apresentam como sinais elétricos cujos valores dependem da tecnologia empregada.  
+Existem várias famílias de circuitos elétricos que reproduzem fisicamente blocos lógicos (serão discutidos posteriromente), como *RTL, Resitor Transistor Logic*, *DTL, Diode Trnsistor Logic*, *TTL, Transistor Transistor Logic*, *CMOS, Complementary Metal-Oxide Semiconductor*, como discutiremos psoteriormente.  
+Considerando a abstração dos sinais elétricos como 0s e 1s, o sinal analógico, após quantizado e amostrado, assume a forma apresentada na figura.  
+
+![Sinal digital](/sisdig_aulas/images_sisdig/digital.jpg)
+
+
 
 
 
