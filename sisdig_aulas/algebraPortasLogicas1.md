@@ -42,6 +42,6 @@ A descrição algébrica dos circuitos do exemplos está mostrada na saída dos 
 Cada saída pode ser definida como **uma função das entradas**.  
 Logo, a cada saída corresponde **uma** tabela verdade. 
 
-[home](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/sisdig_aulas.md)
-[<<](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/sisdig_aulas/algebraPortasLogicas.md)
+[home](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/sisdig_aulas.md)  
+[<<](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/sisdig_aulas/algebraPortasLogicas.md)  
 [>>](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/sisdig_aulas/algebraPortasLogicas2.md)
