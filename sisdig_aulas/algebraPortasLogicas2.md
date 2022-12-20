@@ -35,9 +35,17 @@ $\sim{(A_0+A_1+...+A_n)}=\bar{A_0}.\bar{A_1}.....\bar{A_n}$
 
 ### 2.3.2 Representação dos teoremas e axiomas utilizando portas lógicas
 
-1. [Elemento nulos e neutro da conjunção](/sisdig_aulas/images_sisdig/nulo_conjuncao.jpg)
+1. **Elementos nulo e neutro da conjunção**  
 
-2. 
+![Elementos nulo e neutro da conjunção](/sisdig_aulas/images_sisdig/nulo_conjuncao.jpg)
+
+2. **Elementos nulo e neutro da disjunção**  
+
+![Elementos nulo e neutro da conjunção](/sisdig_aulas/images_sisdig/nulo_disjuncao.jpg)
+
+3. **Elementos inversos da conjunção e da disjunção**  
+
+![Elementos inversos](/sisdig_aulas/images_sisdig/inverso.jpg)
 
 
 
