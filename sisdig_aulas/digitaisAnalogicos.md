@@ -63,7 +63,7 @@ Não é difícil concluir também que existe **perda de informação** quando se
 de um sinal analógico para um sinal quantizado.  
 O sinal quantizado (variável dependente *x*) só pode assumir valores nos limites dos níveis discreteos estabelecidos para quantização, em qualquer instante de tempo *t* (variável independente), logo que pode ser definido matematicamente da seguinte forma
 
-$x<sub>Q</sub>(n)=f(t)$
+$x_Q(n)=f(t)$
 
 , onde *x<sub>Q</sub>* é a variável dependente, que pode assumir um valor *X* pertencente ao conjunto de dimensão L, *C={x<sub>0</sub>, x<sub>1</sub>, ..x<sub>L-1</sub>}*; e *t* é a variável independente contínua.
 
