@@ -1,4 +1,4 @@
-# Álgebra Booleana e Portas Lógicas
+# 2. Álgebra Booleana e Portas Lógicas
 
 ## 2.3 Teoremas e axiomas da álgebra booleana
 
