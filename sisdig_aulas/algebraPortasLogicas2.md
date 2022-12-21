@@ -32,8 +32,9 @@ Salientando que uma proposição *p* só pode assumir **um e somente um** valor 
 $\sim{(A_0.A_1...A_n)}=\bar{A_0}+\bar{A_1}+...+\bar{A_n}$
 - Da disjunção: A negação da disjunção de variáveis é igual a conjunção das variáveis negadas  
 $\sim{(A_0+A_1+...+A_n)}=\bar{A_0}.\bar{A_1}.....\bar{A_n}$  
-- **Adjacência lógica**: $\bar{A}.B+A.B=B$    
-- **Absorção**: $A+A.B=A$; $A+\bar{A}.B=A+B$
+
+**Adjacência lógica**: $\bar{A}.B+A.B=B$    
+**Absorção**: $A+A.B=A$; $A+\bar{A}.B=A+B$
 
 ### 2.3.2 Simplificação das expressões algébricas usando os teoremas e axiomas
 
@@ -57,8 +58,16 @@ Quando a expressão pode assumir valor falso ou verdadeiro é chamada de **conti
 
 ![Elementos inversos](/sisdig_aulas/images_sisdig/inverso.jpg)
 
+4. **Idempotência**
+
+![Idempotência](/sisdig_aulas/images_sisdig/idempotencia.jpg)
+
+5. **Dupla negação**
+
+![Idempotência](/sisdig_aulas/images_sisdig/dupla_negacao.jpg)
+
 ## 2.4 Portas universais 
-Além das portas *AND*, *OR* E *NOT*, existem duas portas que são chamadas de **portas universais**, pois somente com um tipo delas é possível implementar circuitos que implementam quaisquer expressões lógicas.  
+Além das portas *AND*, *OR* E *NOT*, existem duas portas que são chamadas de **portas universais**, pois somente com um tipo delas é possível implementar circuitos descritos por quaisquer expressões lógicas.  
 
 2.4.1 Porta *NOR*
 Implementa a operação de **negação da disjunção**.
