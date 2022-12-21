@@ -2,8 +2,8 @@
 
 ## Conteúdo
 1. [Sinais Analógicos e Digitais](sisdig_aulas/digitaisAnalogicos.md)
-2. [Álgebra Booleana e Portas Lógicas]
-* [Álgebra Booleana e portas lógicas](sisdig_aulas/sisdig_1.pdf)
+2. [Álgebra Booleana e Portas Lógicas](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/sisdig_aulas/algebraPortasLogicas.md)
+
 * [Projetos de circuitos combinacionais](sisdig_aulas/sisdig_2-1.pdf)
 * [Grandezas numéricas nos sistemas digitais](sisdig_aulas/sisdig_3.pdf)
 * Circuitos aritméticos: [Somadores](sisdig_aulas/sisdig_4.pdf)
