@@ -30,6 +30,31 @@ Método:
 3. Gerar a expressão equivalente ao mintermo que resulta 1
 4. Escrever a expressão na forma da disjunção dos mintermos 
 
+## 3.2 Projeto de circuitos combinacionais
+**Método 1**: Um passo a passo recomendado para projetar os circuitos pode ser:  
+1. Interpretar um problema, **expressando a solução na forma algébrica**
+2. Substituir as operações pelas portas lógicas equivalentes
+
+Os dois passos apresentados acima não consideram que a expressão obtida da interpretação **pode não ser a forma mínima**.
+Em consequência, é conveniente, pelas razõs já discutidas, buscar minimizar a expressão lógica. O passo a passo se tornará:  
+**Método 2**: Outro passo a passo recomendado para projetar os circuitos pode ser:  
+1. Interpretar um problema, **expressando a solução na forma algébrica**
+2. **Minimizar a expressão** aplicando os teoremas e axiomas da Álgebra Booleana
+3. Substituir as operações pelas portas lógicas equivalentes 
+
+Nem sempre inferir diretamente a expressão algébrica a partir do problema formulado é simples.  
+**Método 3**: Nesse caso pode-se usar uma abordagem deiferente:  
+1. Interpretar um problema, **expressando a solução na forma de tabela verdade**
+2. Construir a expressão da **solução na forma canônica da soma de produtos**
+3. **Minimizar a expressão** aplicando os teoremas e axiomas da Álgebra Booleana - nesse caso, a utilização de lógica adjacente é direta
+4. Substituir as operações pelas portas lógicas equivalentes 
+
+Um quarto método pode ser utilizado: **MINIMIZAÇÃO COM MAPA DE KARNAUGH**
+
+## 3.3 Simplificação das expressões algébricasMapa de Karnaugh (mapa K)
+
+
+
 
 
 
