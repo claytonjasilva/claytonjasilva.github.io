@@ -51,7 +51,31 @@ Nem sempre inferir diretamente a expressão algébrica a partir do problema form
 
 Um quarto método pode ser utilizado: **MINIMIZAÇÃO COM MAPA DE KARNAUGH**
 
-## 3.3 Simplificação das expressões algébricasMapa de Karnaugh (mapa K)
+## 3.3 Simplificação das expressões algébricas com Mapa de Karnaugh (mapa K)
+Método gráfico para simplificar expressão booleana.  
+O **mapa K** compreende uma tabela com as variáveis de cada mintermos apresentadas nas linhas e colunas.  
+As variáveis rotulam cada linha na forma do mintermo assegurando uma adjacência lógica entre colunas e linhas adjacentes.  
+**Cada célula do mapa K será preenchida com 1 para os mintermos pertencentes à expressão na sua forma canônica.**
+
+Mapas K de 3 e 4 variáveis
+
+![Mapas K - 3 e 4 variáveis](/sisdig_aulas/images_sisdig/mapasK.jpg)
+
+O método de simplifcação consiste nos seguintes passos:  
+1. Construir o mapa K
+2. Agrupar pares, quartetos ou octetos de 1s – desenhar no mapa as maiores combinações de 1s possíveis – pode haver interseção de grupos
+3. Substituir cada grupo pela expressão equivalente, considerando somente as variáveis que não se alteram no grupo 
+4. Escrever a expressão como uma disjunção das expressões dos grupos obtidas
+5. Incluir na expressão os 1s isolados, ou seja, aqueles que não puderam ser incluídos em nenhum grupo
+6. Lembre-se que as colunas e linhas da extremidade são adjacentes - ou seja, pode-se construir grupos de 1s com eles
+7. As expressões mínimas são logicamente equivalentes, mas podem não ser únicas, pois dependem dos grupos constituídos
+8. Existem problemas em que ‘não importa’ o valor da saída para certas condições de entrada: condição *don’t care*
+
+
+
+
+
+
 
 
 
