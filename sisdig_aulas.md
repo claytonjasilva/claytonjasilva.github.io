@@ -5,7 +5,6 @@
 2. [Álgebra Booleana e Portas Lógicas](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/sisdig_aulas/algebraPortasLogicas.md)  
 3. [Projeto de circuitos combinacionais](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/sisdig_aulas/circuitosCombinacionais.md)
 
-* [Projetos de circuitos combinacionais](sisdig_aulas/sisdig_2-1.pdf)
 * [Grandezas numéricas nos sistemas digitais](sisdig_aulas/sisdig_3.pdf)
 * Circuitos aritméticos: [Somadores](sisdig_aulas/sisdig_4.pdf)
 * [Decodificadores e codificadores](sisdig_aulas/sisdig_5.pdf)
