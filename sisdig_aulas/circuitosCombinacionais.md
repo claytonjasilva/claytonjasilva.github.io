@@ -71,6 +71,15 @@ O método de simplifcação consiste nos seguintes passos:
 7. As expressões mínimas são logicamente equivalentes, mas podem não ser únicas, pois dependem dos grupos constituídos
 8. Existem problemas em que ‘não importa’ o valor da saída para certas condições de entrada: condição *don’t care*
 
+O método de simplificação com o uso e *don't care* consiste em:
+1. Construir o mapa K, incluindo X (don’t care) nas células
+2. **Incluir X nos grupos de 1 somente se for possível constituir maiores grupos de 1s**
+3. **Desconsiderar o X (admitir iguais a 0) nas situações em que não contribuir para constituir grupos maiores de 1s**  
+4. Escrever a expressão como uma disjunção das expressões dos grupos obtidas
+5. Incluir na expressão os 1s isolados, ou seja, aqueles que não puderam ser incluídos em nenhum grupo
+
+[home](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/sisdig_aulas.md)
+
 
 
 
