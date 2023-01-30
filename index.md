@@ -13,8 +13,7 @@
 * [Sistemas Digitais](sisdig.md)
 
 ## Cursos complementares
-* Linguagem C
-* Referências:  
+* Linguagem C - Referências:  
   1. [Eclipse IDE](https://www.eclipse.org/downloads/)
   2. [C: como programar](https://plataforma.bvirtual.com.br/Leitor/Publicacao/2660/pdf/0)  
   3. [IME-USP](https://www.ime.usp.br/~pf/algoritmos/index.html)
