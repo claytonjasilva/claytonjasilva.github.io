@@ -1,6 +1,6 @@
 # Sistemas Digitais - 2022.2
 
-1. Agenda(*em construção*)
+1. [Agenda](agendaSistemasDigitais.md)
 2. [Grid](sisdig_aulas/Grid_SisDig.md)
 3. [Sistema de Avaliações](/./avaliacoes.md)
 4. [Conteúdo das Aulas](sisdig_aulas.md)
