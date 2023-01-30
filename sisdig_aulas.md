@@ -60,3 +60,5 @@
 9. Trabalhos Avaliações Bimestrais  
     [Trabalho AP1](sisdig_aulas/sisdig_exercicios/sisdig_AP1_trabalho.pdf)  
     [Trabalho AP2](sisdig_aulas/sisdig_exercicios/Trabalho_SistemasDigitais_AP2.pdf)
+
+[Home - Sistemas Digitais - Prof Clayton J A Silva](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/sisdig.md)
