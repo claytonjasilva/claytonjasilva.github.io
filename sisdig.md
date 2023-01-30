@@ -1,4 +1,4 @@
-# Sistemas Digitais - 2022.2
+# Sistemas Digitais - 2023.1
 
 1. [Agenda](agendaSistemasDigitais.md)
 2. [Grid](sisdig_aulas/Grid_SisDig.md)
