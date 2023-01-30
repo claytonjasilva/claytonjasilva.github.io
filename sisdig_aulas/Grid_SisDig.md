@@ -43,3 +43,5 @@ Objetivo 5: Analisar, projetar e aplicar circuitos conversores analógico-digita
 - VAHID, Frank Vahid; LASCHUK, Anatólio;	Sistemas Digitais: Projeto, Otimização e HDLs; Bookman; 2008  
 - Thomas, Floyd;	Sistemas Digitais: Fundamentos e Aplicações;	Bookman;	2007  
 - Tales, Pimenta;	Circuitos Digitais - Análise e Síntese Lógica - Aplicações em FPGA; LTC;	2016
+
+[Home - Sistemas Digitais - Prof Clayton J A Silva](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/sisdig.md)
