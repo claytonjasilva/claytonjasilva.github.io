@@ -36,3 +36,6 @@
 Obs. Segunda edição disponível em [Pythoh para Desenvolvedores; Borges, Luiuz; 2a. ed](https://ark4n.files.wordpress.com/2010/01/python_para_desenvolvedores_2ed.pdf)  
 - **Downey**, Allan B.; **Pense em Python**; **Novatec**; 2016.
 
+#### [Home - Programação com Python - Prof Clayton J A Silva](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/prog.md)
+
+
