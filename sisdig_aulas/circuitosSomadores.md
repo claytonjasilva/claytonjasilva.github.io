@@ -28,12 +28,27 @@ e
 $CARRY = A.B$  
 Logicamente o meio-somador será representado simplesmente pela figura abaixo  
 
-
-
-
-
+Observando o meio-somador verifica-se que não possui uma entrada de *carry*. Possui somente dois bits de entrada.
+Portanto, para implementação modular de um somador é necessário um outro módulo, chamado de **somador-completo**.
 
 ## 5.2 Somador completo
+O somador completo apresenta o comportamento descrito pela tabela verdade apresentada abaixo  
+| A | B | C<sub>in</sub> | SOMA | C<sub>out</sub> |
+| - | - | -------------- |---- | ----- |
+| 0 | 0 | 0 | 0 | 0 |
+| 0 | 0 | 1 | 1 | 0 |
+| 0 | 1 | 0 | 1 | 0 |
+| 0 | 1 | 1 | 0 | 1 |
+| 1 | 0 | 0 | 1 | 0 |
+| 1 | 0 | 1 | 0 | 1 |
+| 1 | 1 | 0 | 0 | 1 |
+| 1 | 1 | 1 | 1 | 1 |
+
+, onde C<sub>in</sub> e C<sub>out</sub> representam respectivamente *carry* de entrada e *carry* de saída.  
+Similarmente ao caso do meio-somador, pode-se obter a expressão booleana relativa ao somador completeo para cada uma das saídas.  
+
+
+
 
 ## 5.3 Somador de *n* bits 
 
