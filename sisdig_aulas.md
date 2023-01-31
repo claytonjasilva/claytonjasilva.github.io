@@ -4,7 +4,7 @@
 1. [Sinais Analógicos e Digitais](sisdig_aulas/digitaisAnalogicos.md)
 2. [Álgebra Booleana e Portas Lógicas](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/sisdig_aulas/algebraPortasLogicas.md)  
 3. [Projeto de circuitos combinacionais](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/sisdig_aulas/circuitosCombinacionais.md)
-4. [Revisão: grnadezas numéricas nos sistemas digitais](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/arq_aulas/dimensoesUnidadesAritmeticaComputacional1.md)
+4. [Revisão: grandezas numéricas nos sistemas digitais](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/arq_aulas/dimensoesUnidadesAritmeticaComputacional1.md)
 
 * Circuitos aritméticos: [Somadores](sisdig_aulas/sisdig_4.pdf)
 * [Decodificadores e codificadores](sisdig_aulas/sisdig_5.pdf)
