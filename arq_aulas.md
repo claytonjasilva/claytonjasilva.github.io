@@ -42,11 +42,4 @@
 4. [Tanenbaum, Andrew S.; Sistemas Operacionais Modernos; 3a ed; Pearson, 2007](https://plataforma.bvirtual.com.br/Leitor/Publicacao/1233/pdf/0)  
 5. [Maziero, Carlos; Sistemas Operacionais: Conceitos e Mecanismos; Editora da UFPR; 2019](http://wiki.inf.ufpr.br/maziero/doku.php?id=socm:start)
 
-#### Manuais do ATmega2560  
-- [Atmel ATmega640/V-1280/V-1281/V-2560/V-2561/V (datasheet)](https://ww1.microchip.com/downloads/en/devicedoc/atmel-2549-8-bit-avr-microcontroller-atmega640-1280-1281-2560-2561_datasheet.pdf)
-- [AVR&reg; Instruction Set Manual](https://ww1.microchip.com/downloads/en/DeviceDoc/AVR-Instruction-Set-Manual-DS40002198A.pdf)
-- [AVR Assembler](https://ww1.microchip.com/downloads/en/DeviceDoc/40001917A.pdf)
-- [Atmel Studio 7 - Getting Started with Atmel Studio 7](https://www.microchip.com/content/dam/mchp/documents/MCU08/ProductDocuments/UserGuides/Getting-Started-with-Microchip-Studio-DS50002712B.pdf)
-- [Atmel Studio 7 User Guide](https://ww1.microchip.com/downloads/en/DeviceDoc/Getting-Started-with-Atmel-Studio7.pdf)
-
 #### [Home - Arquitetura - Prof Clayton J A Silva](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/arq.md)
