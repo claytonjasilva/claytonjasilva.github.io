@@ -3,24 +3,24 @@ Prof Clayton J A Silva
 
 | Data | Tópico |
 | ---- | ------ |
-| 16/2 | Introdução | 
-| 23/2 | |
-| 2/3 | |
-| 9/3 | |
-| 16/3 | |
-| 23/3 | |
-| 30/3 | |
-| 6/4 | |
+| 16/2 | Introdução e conceitos fundamentais | 
+| 23/2 | Sistemas numéricos e aritmética computacional |
+| 2/3 | Modelo de máquina de níveis/A máquina de von Neumman |
+| 9/3 | Nível de lógica digital/Nível de microarquitetura |
+| 16/3 | Nível ISA/Nível *assembly* |
+| 23/3 | Sistema de memória/Barramento |
+| 30/3 | Processadores/Arduíno 2560 |
+| 6/4 | Prática de laboratório/Revisão |
 | 13/4 | Avaliação Parcial 1 |
-| 20/4 | |
-| 27/4 | |
-| 4/5 | |
-| 11/5 | |
-| 18/5 | |
-| 25/5 | |
-| 1/6 | |
+| 20/4 | Dispositivos de Entrada/Saída/Microcontrolador MC2560: arquitetura |
+| 27/4 | Microcontrolador MC2560: set de instruções e *assembler* |
+| 4/5 | Microcontrolador MC2560: programação |
+| 11/5 | Prática de laboratório |
+| 18/5 | Prática de laboratório |
+| 25/5 | Nível de sistema operacional |
+| 1/6 | Processamento paralelo |
 | 8/6 | Feriado Corpus Christi |
-| 15/6 | |
+| 15/6 | Exercícios/Revisão |
 | 22/6 | Avaliação Parcial 2 |
 | 29/6 | Avaliação Substitutiva |
 
