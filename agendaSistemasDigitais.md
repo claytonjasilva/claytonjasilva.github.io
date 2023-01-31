@@ -12,8 +12,8 @@ Prof Clayton J A Silva
 | 8/3 | Portas lógicas |
 | 13/3 | Projeto de circuitos combinacionais |
 | 15/3 | Projeto de circuitos combinacionais |
-| 20/3 | |
-| 22/3 | |
+| 20/3 | Circuitos somadores |
+| 22/3 | Circuitos somadores |
 | 27/3 | |
 | 29/3 | |
 | 3/4 | |
