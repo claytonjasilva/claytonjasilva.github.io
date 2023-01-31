@@ -14,29 +14,29 @@ Prof Clayton J A Silva
 | 15/3 | Projeto de circuitos combinacionais |
 | 20/3 | Circuitos somadores |
 | 22/3 | Circuitos somadores |
-| 27/3 | |
-| 29/3 | |
-| 3/4 | |
-| 5/4 | |
-| 10/4 | |
-| 12/4 | |
+| 27/3 | Prática de laboratório |
+| 29/3 | Prática de laboratório |
+| 3/4 | Circuitos integrados |
+| 5/4 | Prática de laboratório |
+| 10/4 | Prática de laboratório |
+| 12/4 | Exercícios |
 | 17-19/4 | Avaliação Parcial 1 |
-| 24/4 | |
-| 26/4 | |
+| 24/4 | Circuitos multiplexadores/demultiplexadorea |
+| 26/4 | Circuitos multiplexadores/demultiplexadores |
 | 1/5 | Feriado Dia do Trabalho |
-| 3/5 | |
-| 8/5 | |
-| 10/5 | |
-| 15/5 | |
-| 17/5 | |
-| 22/5 | |
-| 24/5 | |
-| 29/5 | |
-| 31/5 | |
-| 5/6 | |
-| 7/6 | |
-| 12/6 | |
-| 14/6 | |
+| 3/5 | Prática de laboratório |
+| 8/5 | Prática de laboratório |
+| 10/5 | Circuitos sequenciais |
+| 15/5 | Flip-flops |
+| 17/5 | Flip-flops |
+| 22/5 | Prática de laboratório |
+| 24/5 | Prática de laboratório |
+| 29/5 | Aplicações com Flip-flops  |
+| 31/5 | Aplicações com Flip-flops |
+| 5/6 | Prática de laboratório |
+| 7/6 | Prática de laboratório |
+| 12/6 | Exercícios |
+| 14/6 | Revisão |
 | 19-21/6 | Avaliação Parcial 2 |
 | 26-28/6 | Avaliação Substitutiva |
 
