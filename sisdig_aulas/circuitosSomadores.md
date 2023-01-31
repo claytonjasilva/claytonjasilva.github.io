@@ -22,6 +22,13 @@ A tabela verdade da soma de dois bits BIT<sub>0</sub> e BIT<sub>1</sub> é dada 
 | 1 | 0 | 1 | 0 |
 | 1 | 1 | 0 | 1 |
 
+Obtendo a expressão booleana e minimizando não é difícil obter que  
+$SOMA=(\bar A \.B+A.\bar B \)= A \oplus B$  
+e  
+$CARRY = A.B$  
+Logicamente o meio-somador será representado simplesmente pela figura abaixo  
+
+
 
 
 
