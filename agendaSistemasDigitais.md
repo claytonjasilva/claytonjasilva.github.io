@@ -1,4 +1,4 @@
-# Agenda - Sistemas Digitais
+# Agenda 2023.1 - Sistemas Digitais
 Prof Clayton J A Silva
 
 | Data | Tópico |
@@ -21,7 +21,7 @@ Prof Clayton J A Silva
 | 10/4 | Prática de laboratório |
 | 12/4 | Exercícios |
 | 17-19/4 | Avaliação Parcial 1 |
-| 24/4 | Circuitos multiplexadores/demultiplexadorea |
+| 24/4 | Circuitos multiplexadores/demultiplexadores |
 | 26/4 | Circuitos multiplexadores/demultiplexadores |
 | 1/5 | Feriado Dia do Trabalho |
 | 3/5 | Prática de laboratório |
