@@ -4,14 +4,14 @@ Prof Clayton J A Silva
 | Data | Tópico |
 | ---- | ------ |
 | 13/2 | Introdução | 
-| 15/2 | |
+| 15/2 | Sinais analógicos e digitais |
 | 20-22/2 | Recesso Carnaval |
-| 27/2 | |
-| 1/3 | |
-| 6/3 | |
-| 8/3 | |
-| 13/3 | |
-| 15/3 | |
+| 27/2 | Álgebra Booleana |
+| 1/3 | Álgebra Booleana |
+| 6/3 | Portas lógicas |
+| 8/3 | Portas lógicas |
+| 13/3 | Projeto de circuitos combinacionais |
+| 15/3 | Projeto de circuitos combinacionais |
 | 20/3 | |
 | 22/3 | |
 | 27/3 | |
