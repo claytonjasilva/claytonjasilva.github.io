@@ -81,9 +81,10 @@ Os graus de integração são:
 - ULSI, de *ultra large scale integration*,
 - GSI, de *giga scale integration*.  
 
-As figuras abaixo ilustram a orgnização do chip.
-
-Observe que a figura indica um *chanfro* (entalhe) que os chips possuem a fim de indicar a numeração da **pinagem**.  
+As figuras abaixo ilustram a orgnização do chip.  
+![Encapsulamento chip](/sisdig_aulas/images_sisdig/circuitointegrado.jpg)  
+A figura (a) evidencia a pinagem do chip, através da qual são estabelecidas as conexões.
+Observe que a figura (b) indica um *chanfro* (entalhe) que os chips possuem a fim de indicar a numeração da **pinagem**.  
 A complexidade pode ser definida pelo número de portas que são integradas no substrato.  
 A tabela apresenta o grau de complexidade e o respectivo número de portas.
 
