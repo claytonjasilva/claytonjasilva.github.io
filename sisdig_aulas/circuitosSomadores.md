@@ -64,7 +64,7 @@ No módulo do somador completo, a entrada de *carry in* recebe o bit transportad
 A saída do primeiro somador completo é S<sub>1</sub>.  
 Nos próximos módulos a arquitetura se repete como no primeior somador completo.  
 A figura ilustra o modelo lógico.  
-![Somador completo](/sisdig_aulas/images_sisdig/somadormodular.jpg)
+![Somador modular](/sisdig_aulas/images_sisdig/somadormodular.jpg)
 Observe que o dígito mais significativo da soma é *carry* do último módulo do somador.
 
 ## 5.4 CI somador
@@ -114,6 +114,7 @@ O 54LS283 é um somador de 4 bits, cujas características básicas são as segui
 O 54LS283 pode ser cascateado utilizando-se covenientemente os pinos de *carry* de entrada e saída,
 da mesma maneira que a indicada logicamente na construção modular dos somadores com meio=somador e somador completo.  
 A figura ilustra como realizar o cascateamento de somadores de 4 bits.  
+![Cascateamento de CIs somadores](/sisdig_aulas/images_sisdig/somadorcascata.jpg)  
 
 ### 5.4.3 Somador BCD (*Binary Code Decimal*)
 Estudaremos mais à fente diversos tipos de códigos.  
