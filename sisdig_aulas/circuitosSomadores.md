@@ -134,6 +134,17 @@ Dessa forma as **palavras** do código contemplam somente
 | 1000 | 8 |
 | 1001 | 9 |
 
+A soma BCD é realizada em grupos de 4 bits. Quando a soma dos bits é inferior a 9 (maior dígito decimal) a soma é de binário puro.  
+Por exemplo,  
+5 + 4 = 9, em binário 0101 + 0100 = 1001.   
+45 + 33 = 78. A parcela 5 + 3, em binário 0101 + 0011 = 1000. A parcela 4 + 5, em binário 0100 + 0101 = 1001.  
+No entanto, quando a soma resulta maior do o dígito 9, em binário 1001, é necessário somar o resultado ao complemento, C(1001)=0110.
+Por exemplo,   
+6 + 7 resulta 13. Em binário, 0110 + 0111 = 1101 (palavra inválida). Daí é necessário realizar 1101 + 0110 = 1 0011  
+| *Carry* | Soma |
+| ------- | ---- |
+| 0001 | 0011 |
+
 O somador BCD implementa a soma de cada dígito decimal, transportando o *carry*, reproduzindo exatamente a soma decimal.  
 A figura ilustra a operação.  
 ![Somador BCD](/sisdig_aulas/images_sisdig/somadorbcd.jpg)  
