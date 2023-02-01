@@ -46,10 +46,21 @@ O somador completo apresenta o comportamento descrito pela tabela verdade aprese
 
 , onde C<sub>in</sub> e C<sub>out</sub> representam respectivamente *carry* de entrada e *carry* de saída.  
 Similarmente ao caso do meio-somador, pode-se obter a expressão booleana relativa ao somador completeo para cada uma das saídas.  
-
-
-
+Dela pode-se obter os respectivos circuitos digitais.  
+Logicamente o somador completo será representado pela figura abaixo.  
 
 ## 5.3 Somador de *n* bits 
+Um somador de dois números binários A e B de *n* bits pode ser implementado modularmente,
+utilizando-se o **cascateamento** de **1 meio-somador** e ***n-1* somadores completos**.    
+O meio-somador realiza a operação de adição dos dígitos binários menos significativos de A e B, A<sub>0</sub> e B<sub>0</sub>.  
+O *carry* do meio-somador será **transportado** para o módulo seguinte.  
+A soma do meio-somador é o dígito menos significativo da soma resultante, S<sub>0</sub>.  
+O meio-somador é cascateado com um somador commpleto.
+As entradas A e B do somador completo recebem os respectivos dígitos do número binário a ser somado, A<sub>1</sub> e B<sub>1</sub>.
+No módulo do somador completo, a entrada de *carry in* recebe o bit transportado do módulo do meio-somador.  
+A saída do primeiro somador completo é S<sub>1</sub>.  
+Nos próximos módulos a arquitetura se repete como no primeior somador completo.  
+A figura ilustra o modelo lógico.  
+
 
 ## 5.4 CI somador
