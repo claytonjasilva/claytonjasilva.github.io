@@ -64,7 +64,7 @@ No módulo do somador completo, a entrada de *carry in* recebe o bit transportad
 A saída do primeiro somador completo é S<sub>1</sub>.  
 Nos próximos módulos a arquitetura se repete como no primeior somador completo.  
 A figura ilustra o modelo lógico.  
-
+![Somador completo](/sisdig_aulas/images_sisdig/somadormodular.jpg)
 Observe que o dígito mais significativo da soma é *carry* do último módulo do somador.
 
 ## 5.4 CI somador
