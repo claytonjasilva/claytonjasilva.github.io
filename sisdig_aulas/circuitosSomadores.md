@@ -65,3 +65,29 @@ A figura ilustra o modelo lógico.
 Observe que o dígito mais significativo da soma é *carry* do último módulo do somador.
 
 ## 5.4 CI somador
+
+### 5.4.1 Circuitos integrados digitais (CIs)
+O **chip** é um conjunto de elementos eletrônicos integrados em um substrato de semicondutor.  
+Os elementos integrados são **encapsulados** em uma embalagem protetora de um determinado tipo (por exemplo, DIP).  
+Dependendo da quantidade de elementos integrados em um único substrado define-se o **grau de integração** do chip.  
+Os graus de integração são:  
+- SSI, de *small scale integration*,
+- MSI, de *medium scale integration*,
+- LSI, de *large scale integration*,
+- VLSI, de *very large scale integration*,
+- ULSI, de *ultra large scale integration*,
+- GSI, de *giga scale integration*.  
+
+As figuras abaixo ilustram a orgnização do chip.
+
+A complexidade pode ser definida pelo número de portas que são integradas no substrato.  
+A tabela apresenta o grau de complexidade e o respectivo número de portas.
+
+| Complexidade | Número de portas |
+| ------------ | ---------------- |
+| SSI | menor do que 12 |
+| MSI | 12 a 99 |
+| LSI | 100 a 9.999 |
+| VLSI | 10.000 a 99.999 |
+| ULSI | 100.000 a 999.999 |
+| GSI | maior do que 1.000.000 |
