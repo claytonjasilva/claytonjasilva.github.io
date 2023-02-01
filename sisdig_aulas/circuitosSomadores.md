@@ -135,8 +135,8 @@ Dessa forma as **palavras** do código contemplam somente
 | 1001 | 9 |
 
 O somador BCD implementa a soma de cada dígito decimal, transportando o *carry*, reproduzindo exatamente a soma decimal.  
-A figura ilustra a operação.
-
+A figura ilustra a operação.  
+![Somador BCD](/sisdig_aulas/images_sisdig/somadorbcd.jpg)  
 A e B representam os dois dígitos decimais a serem somados em cada módulo somador.  
 A saída decimal é dada por $\sum$.  
 O *carry* é transportado ao módulo seguinte, caracterizando a dezena, centena, ...  
