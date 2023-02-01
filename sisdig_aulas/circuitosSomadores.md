@@ -27,9 +27,7 @@ $SOMA=(\bar A \.B+A.\bar B \)= A \oplus B$
 e  
 $CARRY = A.B$  
 Logicamente o meio-somador será representado simplesmente pela figura abaixo  
-
 ![Meio-somador](/sisdig_aulas/images_sisdig/meiosomador.jpg)
-
 Observando o meio-somador verifica-se que não possui uma entrada de *carry*. Possui somente dois bits de entrada.
 Portanto, para implementação modular de um somador é necessário um outro módulo, chamado de **somador-completo**.
 
