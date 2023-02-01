@@ -48,6 +48,37 @@ Um código UCD conhecido é o chamado código de Gray de 4 bits.
 | 1000 | 15 |
 
 ### 6.1.3 Códigos alfanuméricos
+Quando os elementos discretos incluem incluem, além dos dígitos decimais, caraceres alfabéticos e símbolos especiais caracteriza-se um **código alfanumérico**.  
+Um código alfanumérico amplamente usado é o códgo ASCII, padronizado pela *American Standard Code For Information Interchange*.  
+Cada palavra do código ASCII possui 8 bits.  
+O código utiliza 7 bits para representar um conjunto de 128 sinais:  
+- 95 sinais gráficos (letras do alfabeto latino, algarismos arábicos, sinais de pontuação e sinais matemáticos) e
+- 33 sinais de controle.  
+O bit não utilizado pode ser utilizado de diferentes maneiras.  
+
+
+|   |   |   |   | b<sub>7</sub> b<sub>6</sub> b<sub>5</sub> | 000 | 001 | 010 | 011 | 100 | 101 | 110 | 111 |
+| - | - | - | - | - | - | - | - | - | - | - | - | - |
+| **b<sub>4</sub>** | **b<sub>3</sub>** | **b<sub>2</sub>** | **b<sub>1</sub>** |   |  |   |   |   |   |   |   |   |
+| 0 | 0 | 0 | 0 |   | NULL | DLE | SP | 0 | @ | P | ´ | p |
+| 0 | 0 | 0 | 1 |   | SOH | DC1 | ! | 1 | A | Q | a | q |
+| 0 | 0 | 1 | 0 |   | STX | DC2 | " | 2 | B | R | b | r |
+| 0 | 0 | 1 | 1 |   | ETX | DC3 | # | 3 | C | S | c | s |
+| 0 | 1 | 0 | 0 |   | EOT | DC4 | $ | 4 | D | T | d | u |
+| 0 | 1 | 0 | 1 |   | ENQ | NAK | % | 5 | E | U | e | v |
+| 0 | 1 | 1 | 0 |   | ACK | SYN | & | 6 | F | V | f | w |
+| 0 | 1 | 1 | 1 |   | 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 |
+| 1 | 0 | 0 | 0 |   | 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 |
+| 1 | 0 | 0 | 1 |   | 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 |
+| 1 | 0 | 1 | 0 |   | 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 |
+| 1 | 0 | 1 | 1 |   | 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 |
+| 1 | 1 | 0 | 0 |   | 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 |
+| 1 | 1 | 0 | 1 |   | 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 |
+| 1 | 1 | 1 | 0 |   | 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 |
+| 1 | 1 | 1 | 1 |   | 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 |
+
+
+
 
 
 
