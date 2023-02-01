@@ -6,7 +6,7 @@
 3. [Projeto de circuitos combinacionais](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/sisdig_aulas/circuitosCombinacionais.md)
 4. [Revisão: grandezas numéricas nos sistemas digitais](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/arq_aulas/dimensoesUnidadesAritmeticaComputacional1.md)
 5. [Circuitos aritméticos - somadores binários](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/sisdig_aulas/circuitosSomadores.md)
-6. [Circuitos decodificadores](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/sisdig_aulas/circuitosDEcodificadores.md)
+6. [Circuitos decodificadores](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/sisdig_aulas/circuitosDecodificadores.md)
 
 * [Decodificadores e codificadores](sisdig_aulas/sisdig_5.pdf)
 * [Multiplexadores (Mux)](sisdig_aulas/sisdig_6.pdf)
