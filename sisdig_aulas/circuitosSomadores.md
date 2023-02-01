@@ -47,6 +47,7 @@ O somador completo apresenta o comportamento descrito pela tabela verdade aprese
 , onde C<sub>in</sub> e C<sub>out</sub> representam respectivamente *carry* de entrada e *carry* de saída.  
 Logicamente o somador completo será representado pela figura abaixo.  
 ![Somador completo](/sisdig_aulas/images_sisdig/somadorcompleto.jpg)
+
 Similarmente ao caso do meio-somador, pode-se obter a expressão booleana relativa a cada uma das saídaso somador completo.  
 Dela pode-se obter os respectivos circuitos digitais, implementados por portas lógicas.  
 
