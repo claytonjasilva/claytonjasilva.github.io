@@ -80,6 +80,7 @@ Os graus de integração são:
 
 As figuras abaixo ilustram a orgnização do chip.
 
+Observe que a figura indica um *chanfro* (entalhe) que os chips possuem a fim de indicar a numeração da **pinagem**.  
 A complexidade pode ser definida pelo número de portas que são integradas no substrato.  
 A tabela apresenta o grau de complexidade e o respectivo número de portas.
 
@@ -94,15 +95,51 @@ A tabela apresenta o grau de complexidade e o respectivo número de portas.
 
 ### 5.4.2 Somadores integrados 
 Existem diversos tipos de chips cuja função é produzir a soma de dígitos binários.  
-Pela demanda existente, os circutiso constituídos de portas para realizar a soma são integrados e 
+Pela demanda existente, os circuitos constituídos de portas para realizar a soma são integrados e 
 encapsulados em chips por diversos fabricantes de componentes digitais, como a *National Semiconductor*.  
 São identificados por um código. Por exemplo, 54LS283.
 Ver o *datasheet* em [*Datasheet* do 54LS283](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/sisdig_aulas/74LS283_National.pdf).  
-As características básicas do 54LS283 são as seguintes:  
+O 54LS283 é um somador de 4 bits, cujas características básicas são as seguintes (conforme especificado no *datasheet*):  
 | Característica | Descição |
 | -------------- | -------- |
 | Pinagem | 16 pinos |
 | Entradas lógicas | A (4 bits), B (4 bits) e C<sub>0</sub> |
 | Saídas lógicas | $\sum$ (4 bits) e C<sub>4</sub> |
 | Alimentação (V<sub>cc</sub> | 5 volts (nominal) |
+
+O 54LS283 pode ser cascateado utilizando-se covenientemente os pinos de *carry* de entrada e saída,
+da mesma maneira que a indicada logicamente na construção modular dos somadores com meio=somador e somador completo.  
+A figura ilustra como realizar o cascateamento de somadores de 4 bits.  
+
+### 5.4.3 Somador BCD (*Binary Code Decimal*)
+Estudaremos mais à fente diversos tipos de códigos.  
+Uma das formas de implementar eletronicamente números decimais é utilizar módulos que permitem
+representar somente os dígitos decimais na sua representação binária.  
+Dessa forma as **palavras** do código contemplam somente  
+| Palavra | Decimal |
+| ------- | ------- |
+| 0000 | 0 |
+| 0001 | 1 |
+| 0010 | 2 |
+| 0011 | 3 |
+| 0100 | 4 |
+| 0101 | 5 |
+| 0110 | 6 |
+| 0111 | 7 |
+| 1000 | 8 |
+| 1001 | 9 |
+
+O somador BCD implementa a soma de cada dígito decimal, transportando o *carry*, reproduzindo exatamente a soma decimal.  
+A figura ilustra a operação.
+
+A e B representam os dois dígitos decimais a serem somados em cada módulo somador.  
+A saída decimal é dada por $\sum$.  
+O *carry* é transportado ao módulo seguinte, caracterizando a dezena, centena, ...  
+
+
+
+
+
+
+
 
