@@ -91,3 +91,18 @@ A tabela apresenta o grau de complexidade e o respectivo número de portas.
 | VLSI | 10.000 a 99.999 |
 | ULSI | 100.000 a 999.999 |
 | GSI | maior do que 1.000.000 |
+
+### 5.4.2 Somadores integrados 
+Existem diversos tipos de chips cuja função é produzir a soma de dígitos binários.  
+Pela demanda existente, os circutiso constituídos de portas para realizar a soma são integrados e 
+encapsulados em chips por diversos fabricantes de componentes digitais, como a *National Semiconductor*.  
+São identificados por um código. Por exemplo, 54LS283.
+Ver o *datasheet* em [*Datasheet* do 54LS283](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/sisdig_aulas/74LS283_National.pdf).  
+As características básicas do 54LS283 são as seguintes:  
+| Característica | Descição |
+| -------------- | -------- |
+| Pinagem | 16 pinos |
+| Entradas lógicas | A (4 bits), B (4 bits) e C<sub>0</sub> |
+| Saídas lógicas | $\sum$ (4 bits) e C<sub>4</sub> |
+| Alimentação (V<sub>cc</sub> | 5 volts (nominal) |
+
