@@ -205,11 +205,4 @@ ou 'nao' para encerrar o programa.
 Para qualquer outra opção digitada, deve receber a mensagem 'Opção inválida'. [excecaoEx3.py](https://github.com/claytonjasilva/prog_exemplos/blob/main/excecaoEx3.py)
 
 
-
-
-
-
-
-
-
-
+**[home](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/progPython_aulas.md)**
