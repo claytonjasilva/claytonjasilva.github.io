@@ -26,18 +26,22 @@
 7. [Tuplas e dicionários](prog_aulas/exercicios_tuplas_dicionarios.md)
 
 ## Avaliações Bimestrais
-### AP1
-1. [Trabalho AP1](prog_aulas/Orientacao_trabalho_AP1.pdf)
+### AP1 
+**será disponibilizadao oportunamente**
+### AP2
+**será disponibilizadao oportunamente**
 
-## Avaliações Continuadas
-1. [AC1](https://forms.gle/MSFH9vBov7cPHfer5)
-2. [AC2](https://forms.gle/Db83EFoDv52w61CP8)
-3. [AC3](https://forms.gle/u24kBy66DsEtuwf17)  
-4. [AC4](https://forms.gle/RuYLiFpe115WS8PW6)
+## Avaliaçâo Continuada
+Os instrumentos de avaliação (testes, exercícios e trabalhos) relativos à Avaliação Continuada serão disponbilizados à medida que as aulas forem ministradas.  
+Ver a forma de avaliação definida no início do curso.  
+As soluções dos instrumentos de avaliação **serão apresentadas e discutidas em sala de aula**.  
+É necessário que o aluno acompanhe as aulas para acessar s soluções propostas. **Não será fornecido o gabarito da solução**.
 
 ## Guia rápido
-**Guia para utilizar a sintaxe básica do Python - atualizado de acordo com as aulas**  
-[Guia básico](prog_aulas/guia_rapido.md)
+O guia rápido compreende um **resumo** da sintaxe da linguagem Python, com atenção especial **aos tópicos discutidos em sala**.  
+É um instrumento especialmente para apoiar o aluno na elaboração dos códigos para solucionar exercícios propostos.  
+O guia não tem a pretenção de esgotar todas as definições de sintaxe e semântica da linguagem Python.  
+[**Guia básico**](prog_aulas/guia_rapido.md)
 
 ## Referências da linguagem Python
 - [**Python Software Foundation**](https://www.python.org/doc/)
