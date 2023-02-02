@@ -37,11 +37,11 @@ Ver a forma de avaliação definida no início do curso.
 As soluções dos instrumentos de avaliação **serão apresentadas e discutidas em sala de aula**.  
 É necessário que o aluno acompanhe as aulas para acessar s soluções propostas. **Não será fornecido o gabarito da solução**.
 
-## Guia rápido
+## Guia Rápido
 O guia rápido compreende um **resumo** da sintaxe da linguagem Python, com atenção especial **aos tópicos discutidos em sala**.  
 É um instrumento especialmente para apoiar o aluno na elaboração dos códigos para solucionar exercícios propostos.  
 O guia não tem a pretenção de esgotar todas as definições de sintaxe e semântica da linguagem Python.  
-[**Guia rápido**](prog_aulas/guia_rapido.md)
+[**Acessar o Guia Rápido**](prog_aulas/guia_rapido.md)
 
 ## Referências da linguagem Python
 - [**Python Software Foundation**](https://www.python.org/doc/)
