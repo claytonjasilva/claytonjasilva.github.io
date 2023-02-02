@@ -115,8 +115,8 @@ A tabela apresenta uma comparação entre representações de inteiros negativos
 | -8 | - | - | 1000 | 0000 |
  
 [home](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/arq_aulas.md)   
-[<<](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/arq_aulas/dimensoesUnidadesAritmeticaComputacional2.md)  
-[>>](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/arq_aulas/dimensoesUnidadesAritmeticaComputacional4.md)
+[<<](dimensoesUnidadesAritmeticaComputacional2.md)  
+[>>](dimensoesUnidadesAritmeticaComputacional4.md)
 
 
 
