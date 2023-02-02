@@ -14,6 +14,15 @@ Implementam a operação de disjunção. A figura apresenta a sua representaçã
 
 ![Tabela verdade e representação da porta *or*](/sisdig_aulas/images_sisdig/or.jpg)
 
+As portas lógicas são encapsuladas em chips (discutiremos com mais detalhes posteriormente).  
+Vários fabricantes desenvolvem e lnaçma no mercado esses chips. Um deles é a *Texas Instruments*.  
+Os chips são identificados pelo fabricante. A *Texas* produz as portas *or* [SN54HC32/SN74HC32](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/sisdig_aulas/SN74HC32N_Texas.pdf).
+Para utilizar as portas é necessário obedecer as especificações definidas nos *datsasheets* (folhas de dados) dos componentes eletrônicos.  
+É possível observar que as especificações compreendem, entre outras coisas:
+- **Pinagem**: identificação de todos os pinos do chip, necessária para estabelecer corretamente as ligações;
+- **Características elétricas**: como um componente eletrônicos, os chips precisam receber uma energia elétrica (tensãoxcorrente) para operar corretamente, pois são **componente ativos**;
+- **Características mecânicas**: especificações como temperatua de operação, umidade, entre outras, afetam o desempenho do chip.
+
 ### 2.2.2 Portas *and*
 Implementam a operação de conjunção. A figura apresenta a sua representação simbólica e sua respectiva tabela verdade.
 
