@@ -60,5 +60,5 @@ Por conveniência da representação das informações em sistemas computacionai
 
 
 [home](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/arq_aulas.md)  
-[<<](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/arq_aulas/dimensoesUnidadesAritmeticaComputacional1.md)  
-[>>](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/arq_aulas/dimensoesUnidadesAritmeticaComputacional3.md)  
+[<<](dimensoesUnidadesAritmeticaComputacional1.md)  
+[>>](dimensoesUnidadesAritmeticaComputacional3.md)  
