@@ -82,8 +82,26 @@ São circuitos lógicos que aceitam *M* entradas, em que **somente uma entrada �
 A entrada ativada representa o símbolo discreto representado pela palavra de saída.  
 A figura ilustra o codificador típico.  
 
-Obviamente, é necessário que 2<sup>N</sup> seja maor ou igual a M, de modo que todas os elementos discretos associados à entrada,
-de modo que não haja ambiguidade no código.  
+Obviamente, é necessário que 2<sup>N</sup> seja maior ou igual a M, de modo que todos os elementos discretos associados à entrada sejam representados por uma palavra sem ambiguidade.  
+Um codificador binário de 3 bits pode ter o comportamento representado pela seguinte tabela verdade
+| A<sub>7</sub> | A<sub>6</sub> | A<sub>5</sub> | A<sub>4</sub> | A<sub>3</sub> | A<sub>2</sub> | A<sub>1</sub> | A<sub>0</sub> | O<sub>2</sub> | O<sub>1</sub> | O<sub>0</sub> | 
+| - | - | - | - | - | - | - | - | - | - | - |
+| 0 | 0 | 0 | 0 | 0 | 0 | 0 | 1 | 0 | 0 | 0 |
+| 0 | 0 | 0 | 0 | 0 | 0 | 1 | 0 | 0 | 0 | 1 |
+| 0 | 0 | 0 | 0 | 0 | 1 | 0 | 0 | 0 | 1 | 0 |
+| 0 | 0 | 0 | 0 | 1 | 0 | 0 | 0 | 0 | 1 | 1 |
+| 0 | 0 | 0 | 1 | 0 | 0 | 0 | 0 | 1 | 0 | 0 |
+| 0 | 0 | 1 | 0 | 0 | 0 | 0 | 0 | 1 | 0 | 1 |
+| 0 | 1 | 0 | 0 | 0 | 0 | 0 | 0 | 1 | 1 | 0 |
+| 1 | 0 | 0 | 0 | 0 | 0 | 0 | 1 | 1 | 1 | 1 |
+
+A tabela verdade sugere que **pelo menos uma entrada sempre estará ativada**.  
+É necessário observar que dependendo do projeto o codificador também pode definir palavras relacionadas a outra combinação binária própria das entradas.
+
+## 6.3 Circuitos decodificadores (*decoders*)
+Realizando a operação inversa dos circuitos codificadores, os *decoders* são circuitos lógicos que aceitam *N* entradas de um código, cada uma representando a palavra de um código,
+e **ativam somente uma das *M* saídas**, que corresponde ao elemento do conjunto discreto relacionado por aquela palavra.  
+A figura ilustra o *decoder* típico.  
 
 
 
