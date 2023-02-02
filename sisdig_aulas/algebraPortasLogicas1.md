@@ -38,6 +38,8 @@ Implementam a operação de negação. A figura apresenta a sua representação 
 
 ![Tabela verdade e representação do inversor *not*](/sisdig_aulas/images_sisdig/not.jpg)
 
+A *Philips* produz os inversores [7404](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/sisdig_aulas/SN74HC04_Philips.pdf). 
+
 ### 2.2.4 Os circuitos lógicos digitais
 Os circuitos lógicos são classificados em dois tipos: **circuitos combinacionais** e **circuitos sequenciais**.  
 Os circuitos combinacionais são aqueles cuja saída depende unicamente da combinação das entradas em um instante.  
