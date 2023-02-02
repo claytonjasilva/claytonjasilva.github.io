@@ -49,3 +49,5 @@ O guia não tem a pretenção de esgotar todas as definições de sintaxe e sem�
 - [**Pyinstaller Manual**](https://pyinstaller.org/en/stable/)
 - [**Pyton GTK**](https://python-gtk-3-tutorial.readthedocs.io/pt_BR/latest/index.html)
 
+
+#### [Home - Programação com Python - Prof Clayton J A Silva](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/progPython.md)
