@@ -27,9 +27,9 @@
 
 ## Avaliações Bimestrais
 ### AP1 
-**será disponibilizadao oportunamente**
+**Trabalho AP1: será disponibilizadao oportunamente**
 ### AP2
-**será disponibilizadao oportunamente**
+**Trabalho AP2: será disponibilizadao oportunamente**
 
 ## Avaliaçâo Continuada
 Os instrumentos de avaliação (testes, exercícios e trabalhos) relativos à Avaliação Continuada serão disponbilizados à medida que as aulas forem ministradas.  
