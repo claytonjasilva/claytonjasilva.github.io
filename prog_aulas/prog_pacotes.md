@@ -10,3 +10,5 @@ Por exemplo, *import dir1.dir2.mod* onde *di1* e *dir2* são as pastas do diret�
 ### Exercícios com pacotes
 1. Elaborar um programa na linguagem Python para criar um módulo de determinação de área e perímetro de várias figuras geométricas planas diferentes.
 Elaborar outro módulo para determinação do volume de várias figuras geométricas espaciais. O módulo principal deve ler o tipo de figura e usando a função devida do pacote, escrever o resultado.
+
+**[home](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/progPython_aulas.md)**
