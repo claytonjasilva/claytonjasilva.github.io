@@ -7,7 +7,7 @@
 * [Arquitetura de Computadores](arq.md)  
 * [Eletrônica](eletronica.md)  
 * [Linguagens Formais e Compiladores](compiladores.md)
-* [Programação](prog.md)
+* [Programação](progPython.md)
 * [Projetos em Engenharia](projetos.md)
 * [Sistemas de Comunicações Móveis](siscom.md)
 * [Sistemas Digitais](sisdig.md)
