@@ -140,6 +140,7 @@ A figura ilustra o esquema geral de um *decoder* BCD produzindo uma saída decim
 
 Observe que, diferentemente da tabela verdade apresentada acima, nem todas as combinações das entradas ativam uma saída. 
 No caso, somente as palavras binárias do código BCD ativam saída.
+Um *datasheet* com todas as especificações de um decoder BCD-decimal está disponível para o [CD4028](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/sisdig_aulas/CD4028_Texas.pdf).
 
 [home](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/sisdig_aulas.md)  
 
