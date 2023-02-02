@@ -31,7 +31,7 @@
 ### AP2
 **Trabalho AP2: será disponibilizadao oportunamente**
 
-## Avaliaçâo Continuada
+## Avaliação Continuada
 Os instrumentos de avaliação (testes, exercícios e trabalhos) relativos à Avaliação Continuada serão disponbilizados à medida que as aulas forem ministradas.  
 Ver a forma de avaliação definida no início do curso.  
 As soluções dos instrumentos de avaliação **serão apresentadas e discutidas em sala de aula**.  
