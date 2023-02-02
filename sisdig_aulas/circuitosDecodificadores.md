@@ -83,7 +83,7 @@ A entrada ativada representa o símbolo discreto representado pela palavra de sa
 A figura ilustra o codificador típico.  
 
 Obviamente, é necessário que 2<sup>N</sup> seja maior ou igual a M, de modo que todos os elementos discretos associados à entrada sejam representados por uma palavra sem ambiguidade.  
-Um codificador binário de 3 bits pode ter o comportamento representado pela seguinte tabela verdade
+Um codificador binário de 8 bits pode ter o comportamento representado pela seguinte tabela verdade
 | A<sub>7</sub> | A<sub>6</sub> | A<sub>5</sub> | A<sub>4</sub> | A<sub>3</sub> | A<sub>2</sub> | A<sub>1</sub> | A<sub>0</sub> | O<sub>2</sub> | O<sub>1</sub> | O<sub>0</sub> | 
 | - | - | - | - | - | - | - | - | - | - | - |
 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 1 | 0 | 0 | 0 |
@@ -95,12 +95,22 @@ Um codificador binário de 3 bits pode ter o comportamento representado pela seg
 | 0 | 1 | 0 | 0 | 0 | 0 | 0 | 0 | 1 | 1 | 0 |
 | 1 | 0 | 0 | 0 | 0 | 0 | 0 | 1 | 1 | 1 | 1 |
 
+As entradas são  A<sub>7</sub>A<sub>6</sub>A<sub>5</sub>A<sub>4</sub>A<sub>3</sub>A<sub>2</sub>A<sub>1</sub>A<sub>0</sub>.  
+As saídas são O<sub>2</sub>O<sub>1</sub>O<sub>0</sub>.   
 A tabela verdade sugere que **pelo menos uma entrada sempre estará ativada**.  
+A entrada A<sub>j</sub> ativada implica como saída a palavra binária de 3 bits equivalente ao decimal *j*.    
 É necessário observar que dependendo do projeto o codificador também pode definir palavras relacionadas a outra combinação binária própria das entradas.  
 Um exemplo típico é o [CD4511B](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/sisdig_aulas/CD4511_Texas.pdf).  
 Trata-se de um CI que possui 4 bits de entradas lógicas e 7 bits de saídas lógicas.  
 Funcionalmente, o CD4511 converte as entradas *ABCD* de um código BCD para as saídas associadas a um *display* de 7 segmentos.  
-Observe que o CD4511 possui também entradas de controle que influenciam a palavra gerada na saída do circuito.  
+O *display* de 7 segmentos é o encapsulamento de um conjunto de 7 LEDs.  
+Os segmentos são identificados por letras *a, b, c, d, e, f*, que permitem formar caracteres alfanuméticos quando ativados.  
+A figura ilustra os segmentos.  
+
+A figura apresenta o esquema elétrico da conexão do *decoder* com a organização interna do *display*.  
+
+
+Observe que o CD4511 possui também **entradas de controle** que influenciam a palavra gerada na saída do circuito.  
 **Embora o *datasheet* trate o CD4511 como *BCD-to-7-Segment Decoder* ele satisfaz exatamente a definição que apresentamos,
 embora realize de fato a *decodificação* do código BCD e codificação para o código de 7 segmentos.**
 
@@ -109,8 +119,27 @@ Realizando a operação inversa dos circuitos codificadores, os *decoders* são 
 e **ativam somente uma das *M* saídas**, que corresponde ao elemento do conjunto discreto relacionado por aquela palavra.  
 A figura ilustra o *decoder* típico.  
 
+Um decodificador binário de 3 bits pode ter o comportamento representado pela seguinte tabela verdade
+| C | B | A | O<sub>7</sub> | O<sub>6</sub> | O<sub>5</sub> | O<sub>4</sub> | O<sub>3</sub> | O<sub>2</sub> | O<sub>1</sub> | O<sub>0</sub> | 
+| - | - | - | - | - | - | - | - | - | - | - |
+| 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 1 |
+| 0 | 0 | 1 | 0 | 0 | 0 | 1 | 0 | 0 | 1 | 0 |
+| 0 | 1 | 0 | 0 | 0 | 1 | 0 | 0 | 1 | 0 | 0 |
+| 0 | 1 | 1 | 0 | 1 | 0 | 0 | 1 | 0 | 0 | 0 |
+| 1 | 0 | 0 | 1 | 0 | 0 | 1 | 0 | 0 | 0 | 0 |
+| 1 | 0 | 1 | 0 | 0 | 1 | 0 | 0 | 0 | 0 | 0 |
+| 1 | 1 | 0 | 0 | 1 | 0 | 0 | 0 | 0 | 0 | 0 |
+| 1 | 1 | 1 | 1 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
 
+Como já visto no CD4511, os circuitos integrados operam não somente com sinais lógicos,
+mas também com sinais de controle. A figura apresenta.  
 
+O sinal de controle é chamado de ***enable***.  
+O sinal de *enable* normalmente habilita ou desabilita o circuito para realizar a função para a qual foi projetado.  
+A figura ilustra o esquema geral de um *decoder* BCD produzindo uma saída decimal.  
+
+Observe que, diferentemente da tabela verdade apresentada acima, nem todas as combinações das entradas ativam uma saída. 
+No caso, somente as palavras binárias do código BCD ativam saída.
 
 [home](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/sisdig_aulas.md)  
 
