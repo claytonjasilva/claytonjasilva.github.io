@@ -28,6 +28,11 @@ Implementam a operação de conjunção. A figura apresenta a sua representaçã
 
 ![Tabela verdade e representação da porta *and*](/sisdig_aulas/images_sisdig/and.jpg)
 
+Assim como a *Texas Instruments*, outro fabricante de chips de portas lógicas é a *Motorola*.
+A *Motorola* fabrica uma série de componentes, entre eles as portas *and* [MC14081/MC14082](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/sisdig_aulas/CD14082BCP_Motorola.pdf).  
+Observe que elas difereme pelo número de entradas das portas.
+A *Philips* também fabrica portas *and* como as portas [74HC08N](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/sisdig_aulas/74HC08N_Philips.pdf).
+
 ### 2.2.3 Inversor *not*
 Implementam a operação de negação. A figura apresenta a sua representação simbólica e sua respectiva tabela verdade.
 
