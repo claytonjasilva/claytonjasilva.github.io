@@ -19,5 +19,5 @@ Admtindo que a a faixa de representação da notação usada para a mantissa sej
 
 
 [home](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/arq_aulas.md)   
-[<<](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/arq_aulas/dimensoesUnidadesAritmeticaComputacional3.md)  
-[>>](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/arq_aulas/dimensoesUnidadesAritmeticaComputacional5.md)
+[<<](dimensoesUnidadesAritmeticaComputacional3.md)  
+[>>](dimensoesUnidadesAritmeticaComputacional5.md)
