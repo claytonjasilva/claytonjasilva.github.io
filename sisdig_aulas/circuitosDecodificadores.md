@@ -54,6 +54,7 @@ Cada palavra do código ASCII possui 8 bits.
 O código utiliza 7 bits para representar um conjunto de 128 sinais:  
 - 95 sinais gráficos (letras do alfabeto latino, algarismos arábicos, sinais de pontuação e sinais matemáticos) e
 - 33 sinais de controle.  
+
 O bit não utilizado pode ser utilizado de diferentes maneiras.  
 
 
@@ -81,6 +82,7 @@ O bit não utilizado pode ser utilizado de diferentes maneiras.
 São circuitos lógicos que aceitam *M* entradas, em que **somente uma entrada é ativada por vez**, e ativa as saídas que correspondem à palavra do código de *N* bits que representa a entrada.  
 A entrada ativada representa o símbolo discreto representado pela palavra de saída.  
 A figura ilustra o codificador típico.  
+![Circuito codificador](/sisdig_aulas/images_sisdig/codificador.jpg)
 
 Obviamente, é necessário que 2<sup>N</sup> seja maior ou igual a M, de modo que todos os elementos discretos associados à entrada sejam representados por uma palavra sem ambiguidade.  
 Um codificador binário de 8 bits pode ter o comportamento representado pela seguinte tabela verdade
@@ -106,9 +108,10 @@ Funcionalmente, o CD4511 converte as entradas *ABCD* de um código BCD para as s
 O *display* de 7 segmentos é o encapsulamento de um conjunto de 7 LEDs.  
 Os segmentos são identificados por letras *a, b, c, d, e, f*, que permitem formar caracteres alfanuméticos quando ativados.  
 A figura ilustra os segmentos.  
+![*Display* de 7 segmentos](/sisdig_aulas/images_sisdig/setesegmentos.jpg)
 
 A figura apresenta o esquema elétrico da conexão do *decoder* com a organização interna do *display*.  
-
+![Circuito*decoder*-*display*](/sisdig_aulas/images_sisdig/circuitodecoder7segmentos.jpg)
 
 Observe que o CD4511 possui também **entradas de controle** que influenciam a palavra gerada na saída do circuito.  
 **Embora o *datasheet* trate o CD4511 como *BCD-to-7-Segment Decoder* ele satisfaz exatamente a definição que apresentamos,
@@ -118,6 +121,7 @@ embora realize de fato a *decodificação* do código BCD e codificação para o
 Realizando a operação inversa dos circuitos codificadores, os *decoders* são circuitos lógicos que aceitam *N* entradas de um código, cada uma representando a palavra de um código,
 e **ativam somente uma das *M* saídas**, que corresponde ao elemento do conjunto discreto relacionado por aquela palavra.  
 A figura ilustra o *decoder* típico.  
+![Meio-somador](/sisdig_aulas/images_sisdig/decodificador.jpg)
 
 Um decodificador binário de 3 bits pode ter o comportamento representado pela seguinte tabela verdade
 | C | B | A | O<sub>7</sub> | O<sub>6</sub> | O<sub>5</sub> | O<sub>4</sub> | O<sub>3</sub> | O<sub>2</sub> | O<sub>1</sub> | O<sub>0</sub> | 
@@ -133,10 +137,12 @@ Um decodificador binário de 3 bits pode ter o comportamento representado pela s
 
 Como já visto no CD4511, os circuitos integrados operam não somente com sinais lógicos,
 mas também com sinais de controle. A figura apresenta.  
+![Sinal de controle - *enable*](/sisdig_aulas/images_sisdig/decodificadorcontrole.jpg)
 
 O sinal de controle é chamado de ***enable***.  
 O sinal de *enable* normalmente habilita ou desabilita o circuito para realizar a função para a qual foi projetado.  
 A figura ilustra o esquema geral de um *decoder* BCD produzindo uma saída decimal.  
+![DEcoder BCD-decimal](/sisdig_aulas/images_sisdig/decoderbcddecimal.jpg)
 
 Observe que, diferentemente da tabela verdade apresentada acima, nem todas as combinações das entradas ativam uma saída. 
 No caso, somente as palavras binárias do código BCD ativam saída.
