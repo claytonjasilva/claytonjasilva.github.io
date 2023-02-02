@@ -153,6 +153,7 @@ A saída decimal é dada por $\sum$.
 O *carry* é transportado ao módulo seguinte, caracterizando a dezena, centena, ...  
 
 
+[home](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/sisdig_aulas.md)  
 
 
 
