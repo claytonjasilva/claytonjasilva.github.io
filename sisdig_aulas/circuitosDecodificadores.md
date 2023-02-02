@@ -64,18 +64,26 @@ O bit não utilizado pode ser utilizado de diferentes maneiras.
 | 0 | 0 | 0 | 1 |   | SOH | DC1 | ! | 1 | A | Q | a | q |
 | 0 | 0 | 1 | 0 |   | STX | DC2 | " | 2 | B | R | b | r |
 | 0 | 0 | 1 | 1 |   | ETX | DC3 | # | 3 | C | S | c | s |
-| 0 | 1 | 0 | 0 |   | EOT | DC4 | $ | 4 | D | T | d | u |
-| 0 | 1 | 0 | 1 |   | ENQ | NAK | % | 5 | E | U | e | v |
-| 0 | 1 | 1 | 0 |   | ACK | SYN | & | 6 | F | V | f | w |
-| 0 | 1 | 1 | 1 |   | 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 |
-| 1 | 0 | 0 | 0 |   | 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 |
-| 1 | 0 | 0 | 1 |   | 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 |
-| 1 | 0 | 1 | 0 |   | 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 |
-| 1 | 0 | 1 | 1 |   | 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 |
-| 1 | 1 | 0 | 0 |   | 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 |
-| 1 | 1 | 0 | 1 |   | 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 |
-| 1 | 1 | 1 | 0 |   | 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 |
-| 1 | 1 | 1 | 1 |   | 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 |
+| 0 | 1 | 0 | 0 |   | EOT | DC4 | $ | 4 | D | T | d | t |
+| 0 | 1 | 0 | 1 |   | ENQ | NAK | % | 5 | E | U | e | u |
+| 0 | 1 | 1 | 0 |   | ACK | SYN | & | 6 | F | V | f | v |
+| 0 | 1 | 1 | 1 |   | BEL | ETB | ' | 7 | G | W | g | w |
+| 1 | 0 | 0 | 0 |   | BS | CAN | ( | 8 | H | X | h | x |
+| 1 | 0 | 0 | 1 |   | HT | EM | ) | 9 | I | Y | i | y |
+| 1 | 0 | 1 | 0 |   | LF | SUB | * | : | J | Z | j | z |
+| 1 | 0 | 1 | 1 |   | VT | ESC | + | ; | K | [ | k | { |
+| 1 | 1 | 0 | 0 |   | FF | FS | , | < | L | \ | l | | |
+| 1 | 1 | 0 | 1 |   | CR | GS | - | = | M | ] | m | } |
+| 1 | 1 | 1 | 0 |   | SO | RS | . | > | N | ^ | n | ~ |
+| 1 | 1 | 1 | 1 |   | SI | US | / | ? | O | _ | o | DEL |
+
+## 6.2 Circuitos codificadores
+São circuitos lógicos que aceitam *M* entradas, em que **somente uma entrada é ativada por vez**, e ativa as saídas que correspondem à palavra do código de *N* bits que representa a entrada.  
+A entrada ativada representa o símbolo discreto representado pela palavra de saída.  
+A figura ilustra o codificador típico.  
+
+Obviamente, é necessário que 2<sup>N</sup> seja maor ou igual a M, de modo que todas os elementos discretos associados à entrada,
+de modo que não haja ambiguidade no código.  
 
 
 
