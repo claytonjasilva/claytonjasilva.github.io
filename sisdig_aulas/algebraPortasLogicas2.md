@@ -74,10 +74,15 @@ Implementa a operação de **negação da disjunção**.
 
 ![Porta NOR](/sisdig_aulas/images_sisdig/nor.jpg)
 
+A *Texas Instruments* produz as portas [SN54HC02/SN74HC02](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/sisdig_aulas/SN74HC02N_Texas.pdf).  
+
 2.4.2 Porta *NAND*
 Implementa a operação de **negação da conjunção**.
 
 ![Porta NOR](/sisdig_aulas/images_sisdig/nand.jpg)
+
+A *Texas Instruments* produz a série de portas [CD4011/CD4012/CD4023](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/sisdig_aulas/CD4011BE_Texas.pdf).  
+A *Phlips* produz a porta [74HC00](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/sisdig_aulas/74HC00N_Philips.pdf).  
 
 
 [home](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/sisdig_aulas.md)  
