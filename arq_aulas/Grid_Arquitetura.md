@@ -1,7 +1,7 @@
 # GRID DA DISCIPLINA 
 
 **CURSO: Engenharia de Computação**  
-**DISCIPLINA: Arquitetura de Computadores - 2022/2**  
+**DISCIPLINA: Arquitetura de Computadores - 2023/1**  
 **PROFESSOR: Clayton Jones Alves da Silva, MSc**
 
 ## I - EMENTA
