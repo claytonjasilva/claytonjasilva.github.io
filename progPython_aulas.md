@@ -1,6 +1,4 @@
-# Programação - 2023.1 -   
-*em atualização*
-
+# Programação - 2023.1   
 
 ## Conteúdo  
 0. [Iniciando...](prog_aulas/prog_inicio.md)  
