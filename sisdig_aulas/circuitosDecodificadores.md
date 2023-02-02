@@ -96,7 +96,13 @@ Um codificador binário de 3 bits pode ter o comportamento representado pela seg
 | 1 | 0 | 0 | 0 | 0 | 0 | 0 | 1 | 1 | 1 | 1 |
 
 A tabela verdade sugere que **pelo menos uma entrada sempre estará ativada**.  
-É necessário observar que dependendo do projeto o codificador também pode definir palavras relacionadas a outra combinação binária própria das entradas.
+É necessário observar que dependendo do projeto o codificador também pode definir palavras relacionadas a outra combinação binária própria das entradas.  
+Um exemplo típico é o [CD4511B](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/sisdig_aulas/CD4511_Texas.pdf).  
+Trata-se de um CI que possui 4 bits de entradas lógicas e 7 bits de saídas lógicas.  
+Funcionalmente, o CD4511 converte as entradas *ABCD* de um código BCD para as saídas associadas a um *display* de 7 segmentos.  
+Observe que o CD4511 possui também entradas de controle que influenciam a palavra gerada na saída do circuito.  
+**Embora o *datasheet* trate o CD4511 como *BCD-to-7-Segment Decoder* ele satisfaz exatamente a definição que apresentamos,
+embora realize de fato a *decodificação* do código BCD e codificação para o código de 7 segmentos.**
 
 ## 6.3 Circuitos decodificadores (*decoders*)
 Realizando a operação inversa dos circuitos codificadores, os *decoders* são circuitos lógicos que aceitam *N* entradas de um código, cada uma representando a palavra de um código,
