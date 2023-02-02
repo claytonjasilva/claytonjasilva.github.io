@@ -41,7 +41,7 @@ As soluções dos instrumentos de avaliação **serão apresentadas e discutidas
 O guia rápido compreende um **resumo** da sintaxe da linguagem Python, com atenção especial **aos tópicos discutidos em sala**.  
 É um instrumento especialmente para apoiar o aluno na elaboração dos códigos para solucionar exercícios propostos.  
 O guia não tem a pretenção de esgotar todas as definições de sintaxe e semântica da linguagem Python.  
-[**Guia básico**](prog_aulas/guia_rapido.md)
+[**Guia rápido**](prog_aulas/guia_rapido.md)
 
 ## Referências da linguagem Python
 - [**Python Software Foundation**](https://www.python.org/doc/)
