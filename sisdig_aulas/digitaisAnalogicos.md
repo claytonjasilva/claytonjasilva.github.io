@@ -112,7 +112,7 @@ Quando tratamos dos sinais digitais, armazenados e processados pelos sistemas di
 - **Nível 1 - nível de microarquitetura**. Circuitos especializados: registradores; Unidade Lógica e Aritmética; barramentos internos – caminho de dados; Unidade de Controle, constituída de microprogramas ou de circuitos eletrônicos.
 
 
-
+[home](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/sisdig_aulas.md)  
 
 
 
