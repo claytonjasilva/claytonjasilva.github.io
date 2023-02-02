@@ -38,3 +38,5 @@ Por exemplo, a constante matemática *pi*.
 - A fórmula para determinação da nota final é definida por uma média ponderada em que a nota de cada avaliação parcial possui peso de 40% e a avaliação continuada, peso de 20%. A média para aprovação é 7,0. Se o aluno obtiver nota 6,5 na AP1; nota 8,3 na AP2; e nota 6,9 na AC; ele será aprovado? [nota.py](https://github.com/claytonjasilva/prog_exemplos/blob/main/nota.py)  
 **Não esqueça de salvar os *scrips* criados usando um nome de arquivo adequado**
 2. Criar *scripts* da linguagem Python, utilizando variáveis e atribuindo a elas os dados especificados nas questões acima, assim como o resultado de cada uma das expressões. Lembre-se de utilizar **nomes de variáveis** que facilitem a legibilidade do *script*. [nota2.py](https://github.com/claytonjasilva/prog_exemplos/blob/main/nota2.py)
+
+**[home](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/progPython_aulas.md)**
