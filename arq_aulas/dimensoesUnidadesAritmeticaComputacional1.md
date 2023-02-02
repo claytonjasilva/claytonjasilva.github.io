@@ -63,7 +63,7 @@ $$N_b = d_{(m-1)}.b^{m-1}+d_{(m-2)}.b^{m-2}+...+d_0.b^0$$
 
 
 [home](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/arq_aulas.md)  
-[>>](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/arq_aulas/dimensoesUnidadesAritmeticaComputacional2.md)
+[>>](arq_aulas/dimensoesUnidadesAritmeticaComputacional2.md)
 
 
 
