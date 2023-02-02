@@ -6,6 +6,6 @@
 - Pedindo [ajuda sobre o Replit](https://docs.replit.com/) ...
 - Criando o primeiro código em Python! 
 
-**[anterior](prog_inicio.md)**  
+**[<<anterior](prog_inicio.md)**  
 **Estrutura de um programa em Python: [próximo>>](prog_estrutura.md)**  
 **[home](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/progPython_aulas.md)**
