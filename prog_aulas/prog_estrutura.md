@@ -39,4 +39,5 @@ Por exemplo, a constante matemática *pi*.
 **Não esqueça de salvar os *scrips* criados usando um nome de arquivo adequado**
 2. Criar *scripts* da linguagem Python, utilizando variáveis e atribuindo a elas os dados especificados nas questões acima, assim como o resultado de cada uma das expressões. Lembre-se de utilizar **nomes de variáveis** que facilitem a legibilidade do *script*. [nota2.py](https://github.com/claytonjasilva/prog_exemplos/blob/main/nota2.py)
 
+**[anterior](prog_replit.md)  
 **[home](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/progPython_aulas.md)**
