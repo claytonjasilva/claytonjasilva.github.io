@@ -24,5 +24,5 @@
 ### Exercícios com pacotes  
 Repetir os exercícios de funções implementando as funções módulos e importando as funções no módulo principal.
 
-**Vamor prosseguir...com [pacotes>>](prog_pacotes.md)**
+**Vamor prosseguir...com [pacotes>>](prog_pacotes.md)**  
 **[home](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/progPython_aulas.md)**
