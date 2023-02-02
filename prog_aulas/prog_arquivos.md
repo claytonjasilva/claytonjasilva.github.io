@@ -19,3 +19,4 @@ A maneira para operar com arquivos em Python pode ser obtida no [tutorial](https
 ## Escrita em arquivos
 1. Após o arquivo ser aberto para escrita, usar o **método write**, por exemplo, *objeto.write('texto')*. A escrita será feita de acordo com o modo selecionado. 
   
+**[home](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/progPython_aulas.md)**
