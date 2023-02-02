@@ -81,7 +81,7 @@ Implementa a operação de **negação da conjunção**.
 
 
 [home](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/sisdig_aulas.md)  
-[<<](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/sisdig_aulas/algebraPortasLogicas1.md)
+[<<](algebraPortasLogicas1.md)
 
 
 
