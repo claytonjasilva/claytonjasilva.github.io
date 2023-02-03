@@ -1,30 +1,41 @@
-## Conceitos de programação procedural: tipos, operadores, entrada/saída  
-### [Tipos numéricos](https://docs.python.org/pt-br/3/library/stdtypes.html#numeric-types-int-float-complex)
+# 2. Conceitos de programação procedural: tipos, operadores, entrada/saída  
+## 2.1 [Tipos numéricos](https://docs.python.org/pt-br/3/library/stdtypes.html#numeric-types-int-float-complex)
 
-### Mais sobre variáveis  
-- As variáveis **são criadas na primeira vez** que recebem um valor  
-- As variáveis são substituídas por seus valores, quando usadas em expressões
-- As variáveis devem receber **atribuições** *(p ex, x=3)* antes que possam ser usadas em **expressões**
-- As variáveis se referem a objetos e nunca são declaradas antecipadamente  
+## 2.2 Mais sobre variáveis  
+- São criadas **na primeira vez** que recebem um valor   
+- Para receber um valor deve ser usado um comando de **atribuição**, por exemplo, `x=3`.
+- Após ser criada a variável pode ser usada em **expressões aritméticas ou lógicas**, por exemplo, `(x + x**2 + 3) * 4`
+- São identificadas por **um nome**, que devem obedecer a algumas regras simples 
+  - é uma sequência de letras (a → z, A → Z) e números (0 → 9)
+  - deve sempre começar com uma letra
+  - **não admite** admite letras acentuadas, cedilhas, espaços, caracteres especiais como $, #, @, etc. 
+- Na resolução da expressão pelo interpretador, as variáveis são substituídas por seus valores
+**Obs. As variáveis se referem a objetos e nunca são declaradas antecipadamente**  
 
-### Lendo e escrevendo dados: funções de entrada e saída
-- **Função de saída**: Vimos a função de saída  
+## 2.3 Interação do usuário com o interpretador: funções de entrada e saída
+O usuário do *script* executado precisa, na maioria dos casos, apresentar os dados para o interpretador realizar as tarefas e receber as informações do interpretador durante a realização das tarefas.  
+Para o usuário **apresentar** os dados ao interpretador, o *script* deve conter **comando de entrada**.  
+Para o usuário **receber** os dados do interpretador, o *script* deve conter **comando de saída**.  
+Em Python,  
+- **Função de saída**  
 `print(argumento)`  
-que apresenta o conteúdo ou o resultado do argumento ao usuário. Vimos que o argumento pode conter listas de expressão, número ou variável - separadas por vírgula.  
-- O Python possui também uma **função de entrada**, que permite ao usuário inserir um dado e atribui-lo a uma variável, como o exemplo:  
+que apresenta o conteúdo ou o resultado do argumento ao usuário na console.  
+O argumento pode conter **listas de expressão, número ou variável - separadas por vírgula**.  
+- **Função de entrada**  
 `x=input("o valor de x e: ")`  
-, onde x é o nome da variável; o texto "o valor ..." é o que aparecerá no console. **Obs.** O programador pode definir o nome da variável e o **texto** desejado. 
-- O dado digitado pelo usuário será atribuído para a variável como tipo ***string*** (cadeia de caracteres).
-- Um texto é chamado de ***string*** (cadeia de caracteres). Em Python, *strings* podem ser delimitadas por aspas simples `'texto'` ou aspas duplas `"texto"` 
-- É possível converter um tipo *string* para tipo inteiro usando o comando `int(string)` ou para tipo ponto flutuante usando `float(string)`
+, que permite ao usuário inserir o dado na console.  
+No exemplo, *x* é o nome da variável; o texto "o valor ..." é chamado de ***string*** (uma *string* é uma **cadeia de caracteres**) e aparecerá no console.  
+Em Python, *strings* podem ser delimitadas por aspas simples `'texto'` ou aspas duplas `"texto"`  
+O programador pode definir no *script* o nome da variável e o **texto** desejados - recomenda-se utilizar nomes de variáveis que sugiram o seu papel.  
+O dado digitado pelo usuário **será atribuído para a variável como tipo *string***.  
+É possível converter um tipo *string* para tipo inteiro usando o comando `int(string)` ou para tipo ponto flutuante usando `float(string)`
 
-# Exercícios com tipos, operadores, entrada/saída  
-1. Elaborar um programa na linguagem Python para ler as notas da ap1, ap2 e ac; calcular e escrever a média do semestre do aluno, de acordo com as regras do Ibmec.  [calcNota.py](https://github.com/claytonjasilva/prog_exemplos/blob/main/calcNota.py)
-2. Elaborar um programa na linguagem Python para ler os coeficientes de uma equação do segundo grau, ![equação 2 grau](equacaoGrau2.gif)   
-Obs. Para calcular a raiz quadrada pode-se incluir o comando `import math` e usar o método `math.sqrt(numero)`  
-[calcRaiz.py](https://github.com/claytonjasilva/prog_exemplos/blob/main/calcRaiz.py)  
-3. Elaborar um programa na linguagem Python para calcular e escrever a área interna e o perímetro de um círculo de raio r e seu perímetro. [calcAreaCirc.py](https://github.com/claytonjasilva/prog_exemplos/blob/main/calcAreaCirc.py)
-5. Elaborar um programa na linguagem Python para calcular e escrever o índice de massa (imc) corporal de uma pessoa. O imc é calculado dividindo-se o peso pelo quadrado da altura. [calcIMC.py](https://github.com/claytonjasilva/prog_exemplos/blob/main/calcIMC.py)
-6. Elaborar um programa na linguagem Python para ler as dimensões dos lados de uma pista de corrida de formato retangular, ler a distância percorrida por um veículo, calcular e escrever o número completo de voltas dadas. [calcVoltas.py](https://github.com/claytonjasilva/prog_exemplos/blob/main/calcVoltas.py)
+## 2.4 Exercícios com tipos, operadores, entrada/saída  
+1. Elaborar um programa na linguagem Python para ler as notas da ap1, ap2 e ac; calcular e escrever a média do semestre do aluno, de acordo com as regras do Ibmec.  [*Script 2.1*](https://github.com/claytonjasilva/prog_exemplos/blob/main/calcNota.py)
+2. Elaborar um programa na linguagem Python para ler os coeficientes de uma equação do segundo grau, 2[*Script 2.2*](equacaoGrau2.gif)   
+Obs. Para calcular a raiz quadrada pode-se incluir o comando `import math` e usar o método `math.sqrt(numero)`  [*Script 2.3*](https://github.com/claytonjasilva/prog_exemplos/blob/main/calcRaiz.py)  
+3. Elaborar um programa na linguagem Python para calcular e escrever a área interna e o perímetro de um círculo de raio r e seu perímetro. [*Script 2.4*](https://github.com/claytonjasilva/prog_exemplos/blob/main/calcAreaCirc.py)
+5. Elaborar um programa na linguagem Python para calcular e escrever o índice de massa (imc) corporal de uma pessoa. O imc é calculado dividindo-se o peso pelo quadrado da altura. [*Script 2.5*](https://github.com/claytonjasilva/prog_exemplos/blob/main/calcIMC.py)
+6. Elaborar um programa na linguagem Python para ler as dimensões dos lados de uma pista de corrida de formato retangular, ler a distância percorrida por um veículo, calcular e escrever o número completo de voltas dadas. [*Script 2.6*](https://github.com/claytonjasilva/prog_exemplos/blob/main/calcVoltas.py)
 
 **[home](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/progPython_aulas.md)**
