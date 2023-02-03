@@ -54,7 +54,7 @@ A **instrução condicional composta** - executa uma ação (ou conjunto de aç�
             <instrucao ou bloco 2 de instruções>
       ```  
 2. A figura ilustra o fluxo de execução das instruções do *script*  
-![Condicional simples](/prog_aulas/images_prog/condicionalcomposta.jpg)  
+![Condicional composta](/prog_aulas/images_prog/condicionalcomposta.jpg)  
 3. A interpretação da condicional composta leva à execução do bloco 1 de instruções se a expressão lógica for verdadeira e à execução do bloco 2 de instruções se a expressão lógica for falsa.  
 Adaptando o exemplo anterior,  
       ```
