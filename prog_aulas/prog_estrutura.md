@@ -57,6 +57,7 @@ Vamos criá-lo utilizando o Replit:
 - A fórmula para determinação da nota final é definida por uma média ponderada em que a nota de cada avaliação parcial possui peso de 40% e a avaliação continuada, peso de 20%. A média para aprovação é 7,0. Se o aluno obtiver nota 6,5 na AP1; nota 8,3 na AP2; e nota 6,9 na AC; ele será aprovado? [*Script* 1.6](https://github.com/claytonjasilva/prog_exemplos/blob/main/nota.py)  
 **Não esqueça de salvar os *scrips* criados usando um nome de arquivo adequado**
 2. Criar *scripts* da linguagem Python, utilizando variáveis e atribuindo a elas os dados especificados nas questões acima, assim como o resultado de cada uma das expressões. Lembre-se de utilizar **nomes de variáveis** que facilitem a legibilidade do *script*. [*Script* 1.7](https://github.com/claytonjasilva/prog_exemplos/blob/main/nota2.py)
+
 ___
 **[<<anterior](prog_replit.md)**  
 **[home](/progPython_aulas.md)**
