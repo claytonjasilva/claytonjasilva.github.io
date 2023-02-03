@@ -17,6 +17,7 @@
 13. Pacotes [NumPy](https://numpy.org/doc/stable/user/absolute_beginners.html), [Matplotlib](https://matplotlib.org/stable/plot_types/index.html) e [SciPy](https://docs.scipy.org/doc/scipy/getting_started.html#getting-started-ref)
 
 ## Exercícios propostos
+Os tópicos da disciplina são concluídos com exercícios cuja solução é discutida em sala e está disponível no link do GitHub [prog_exemplos](https://github.com/claytonjasilva/prog_exemplos).  
 1. [Conceitos iniciais](prog_aulas/exercicios_conceitosIniciais.md)  
 2. [Instruções compostas condicionais](prog_aulas/exercicios_condicionais.md)  
 3. [Instruções compostas de repetição](prog_aulas/exercicios_repeticao.md)
