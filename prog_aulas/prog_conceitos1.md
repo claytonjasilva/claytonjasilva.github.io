@@ -9,7 +9,7 @@
   - é uma sequência de letras (a → z, A → Z) e números (0 → 9)
   - deve sempre começar com uma letra
   - **não admite** admite letras acentuadas, cedilhas, espaços, caracteres especiais como $, #, @, etc. 
-- Na resolução da expressão pelo interpretador, as variáveis são substituídas por seus valores
+- Na resolução da expressão pelo interpretador, as variáveis são substituídas por seus valores  
 **Obs. As variáveis se referem a objetos e nunca são declaradas antecipadamente**  
 
 ## 2.3 Interação do usuário com o interpretador: funções de entrada e saída
@@ -19,16 +19,17 @@ Para o usuário **receber** os dados do interpretador, o *script* deve conter **
 Em Python,  
 - **Função de saída**  
 `print(argumento)`  
-que apresenta o conteúdo ou o resultado do argumento ao usuário na console.  
+, que apresenta o conteúdo ou o resultado do argumento ao usuário na console.  
 O argumento pode conter **listas de expressão, número ou variável - separadas por vírgula**.  
 - **Função de entrada**  
 `x=input("o valor de x e: ")`  
 , que permite ao usuário inserir o dado na console.  
 No exemplo, *x* é o nome da variável; o texto "o valor ..." é chamado de ***string*** (uma *string* é uma **cadeia de caracteres**) e aparecerá no console.  
 Em Python, *strings* podem ser delimitadas por aspas simples `'texto'` ou aspas duplas `"texto"`  
-O programador pode definir no *script* o nome da variável e o **texto** desejados - recomenda-se utilizar nomes de variáveis que sugiram o seu papel.  
+O programador pode definir no *script* o nome da variável e a *string* - recomenda-se utilizar nomes de variáveis que sugiram o seu papel.  
 O dado digitado pelo usuário **será atribuído para a variável como tipo *string***.  
-É possível converter um tipo *string* para tipo inteiro usando o comando `int(string)` ou para tipo ponto flutuante usando `float(string)`
+É possível converter um tipo *string* para tipo inteiro usando o comando `int(string)` ou para tipo ponto flutuante usando `float(string)`, 
+logo o comando de entrada pode ser dado `x = int(input('Digite o número: ')` para o valor atribuído à variável *x* ser do tipo inteiro.
 
 ## 2.4 Exercícios com tipos, operadores, entrada/saída  
 1. Elaborar um programa na linguagem Python para ler as notas da ap1, ap2 e ac; calcular e escrever a média do semestre do aluno, de acordo com as regras do Ibmec.  [*Script 2.1*](https://github.com/claytonjasilva/prog_exemplos/blob/main/calcNota.py)
