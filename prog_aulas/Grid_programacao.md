@@ -34,7 +34,7 @@
 - **Lutz**, Mark; **Ascher**, David; **Aprendendo Python**; **Bookman**; 2007.
 - **Borges**, Luiz E.; **Python para Desenvolvedores**, 3a ed; **Novatec**; 2014.   
 Obs. Segunda edição disponível em [Pythoh para Desenvolvedores; Borges, Luiuz; 2a. ed](https://ark4n.files.wordpress.com/2010/01/python_para_desenvolvedores_2ed.pdf)  
-- **Downey**, Allan B.; **Pense em Python**; **Novatec**; 2016.
+- **Downey**, Allan B.; **Pense em Python**; **Novatec**; 2016. O livro pode ser acessado na íntegra pelo link do GitHub [Pense Python2e](https://github.com/PenseAllen/PensePython2e/blob/master/docs/index.md).
 
 #### [Home - Programação com Python - Prof Clayton J A Silva](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/progPython.md)
 
