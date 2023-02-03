@@ -1,10 +1,17 @@
-#### Instrução composta `for` 
-- A instrução `for` é usada também para executar um *loop* de instruções ou bloco de instruções.
-- Uma das suas regras de sintaxe é a seguinte  
+## 4.3 Instrução composta `for` 
+A instrução `for` é usada também para executar um *loop* de instruções ou bloco de instruções.  
+A regra de sintaxe do *for* em Python é a seguinte  
 ```
-for nome_de_variável in range(N):
+for <nome_de_variável> in <função *range*>:
   instrução ou bloco de instruções
 ```
+A função *range* retorna um objeto que compreende uma sequência de números inteiros.  
+Admite três formas:  
+- `range(N)`
+- `range(start, stop)`
+- `range(start, stop, step)`
+
+### 4.3.1 `range(N)`
 - A instrução determina a execução de **N** *loops*. N pode ser um número ou o valor armazenado anteriormente em uma variável.    
 - A instrução `range(N)` define uma lista de números que varia entre **0 e N-1**. Em cada *loop* o interpretador atribui de forma crescente à variável *nome_de_variável* um valor da lista.
 - **Observações**  
