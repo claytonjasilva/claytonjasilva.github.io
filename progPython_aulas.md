@@ -18,6 +18,7 @@
 
 ## Exercícios propostos
 Os tópicos da disciplina são concluídos com exercícios cuja solução é discutida em sala e está disponível no link do GitHub [prog_exemplos](https://github.com/claytonjasilva/prog_exemplos).  
+Em cada exercício está indicado o link da respectiva solução.   
 1. [Conceitos iniciais](prog_aulas/exercicios_conceitosIniciais.md)  
 2. [Instruções compostas condicionais](prog_aulas/exercicios_condicionais.md)  
 3. [Instruções compostas de repetição](prog_aulas/exercicios_repeticao.md)
