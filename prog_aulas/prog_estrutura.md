@@ -27,7 +27,24 @@ Por exemplo, *print(argumento)* apresenta na área de console o valor do argumen
 Por exemplo, a constante matemática *pi*.
 6. Sentença de **atribuição**: o valor armazenado em uma variável ou resultante de uma expressão aritmética é passado a uma variável.
   
-## 1.8 Gerando alguns *scripts*...
+## 1.8 Modos de utilização do interpretador
+Quando os comandos são lidos a partir do **console**, diz-se que o interpretador está em **modo interativo**.  
+No modo interativo o interpretador solicita um próximo comando através do *prompt* primário.  
+Usando o interpretador Python como calculadora no modo interativo...
+
+O outro modo de utilização do interpretador é através da **criação de *scripts***.  
+Um *script* é um conjunto de instruções escritas de forma ordenada, organizadas em um arquivo com extensão ***.py***, 
+que serão convertidas individualmente para a máquina virtual.  
+O arquivo constitui um **programa** que será executado pela IDE pra execução de uma **tarefa**.  
+Um exemplo de *script* é apresentado abaixo:
+```
+x = 5
+y = 6
+z = x**2 + y**2 + 2 * (x + y)
+print(z)
+```
+Vamos criá-lo utilizando o Replit:
+
 
 ## Exercícios: 
 1. **Utilizando o interpretador Python como calculadora**, criar *scripts* da linguagem Python que contenham expressões aritméticas para determinar o resultado dos seguintes problemas, utilizando os dados apresentados:  
