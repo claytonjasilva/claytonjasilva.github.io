@@ -38,5 +38,5 @@ Exemplos de IDE para o Python:
 
 [Replit](https://replit.com/site/ide)
 
-**Iniciando a trabalhar: [próximo>>](prog_replit.md)**  
+**Primeiros passos: [próximo>>](prog_replit.md)**  
 **[home](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/progPython_aulas.md)**
