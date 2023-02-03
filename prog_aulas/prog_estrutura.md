@@ -2,10 +2,12 @@
 
 Os programas em Python podem ser decompostos em módulos, instruções, expressões e objetos:
 
-1. Os programas são compostos de módulos.
-2. Os módulos contêm instruções.
-3. As instruções contêm **expressões**.
-4. As expressões criam e processam objetos.
+- Os programas são compostos de **módulos**. Posteriormente discutiremos os módulos com mais detalhes.
+- Os módulos contêm **instruções**.  
+As instruções são executadas sequencialmente pelo interpretador.
+
+- As instruções contêm **expressões**.
+- As expressões criam e processam objetos.
 
 ## 1.7 As expressões do programa Python
 
