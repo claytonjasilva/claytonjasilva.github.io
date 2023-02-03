@@ -1,11 +1,11 @@
 # 4. Conceitos de programação procedural: estruturas de repetição  
 ## [Mais sobre instruções compostas](https://docs.python.org/pt-br/3/reference/compound_stmts.html)
 
-## 4.2 Instruções de repetição  
+## 4.1 Instruções de repetição  
 Os programas muitas vezes precisam automatizar tarefas repetitivas. A repetição ou **iteração** pode ser obtida pela utilização de instruções compostas chamadas instruções de repetição.  
 As duas instruções de repetição disponíveis na linguagem Python são `while` e `for`.
 
-## 4.3 Instrução composta `while`
+## 4.2 Instrução composta `while`
 A instrução `while` possui a seguinte sintaxe  
 ```
 while <expressão lógica>:
@@ -18,7 +18,7 @@ O interpretador executa a instrução *while* da seguinte forma:
 4. A repetição da instrução ou do bloco de instruções internos será interrompida **quando o resultado da expressão lógica for *False***. Nesse momento, o interpretador passará a executar a instrução do *script* após o *while*.
 5. A figura ilustra o funcionamento do comando *while*
 
-### 4.3.1 Controle das repetições com **contador**  
+### 4.2.1 Controle das repetições com **contador**  
 É muito comum a repetição ser controlada por uma variável de contagem. No exemplo abaixo utiliza-se a variável designada *cont*  
 ```
 cont = 1
@@ -43,7 +43,7 @@ O interpretador executa o *script* da seguinte forma:
   Caso a variável *cont* não seja incrementada, a estrutura permanecerrá em ***loop* **infinito**, pois a condição *False* nunca ocorrerá.  
   O teste para execução ou não é realizado no início do comando, razão pela qual a instrução muitas vezes é designada como **instrução de repetição com teste de condição no início**.
   
-### 4.3.2 Controle das repetições com *flag*
+### 4.2.2 Controle das repetições com *flag*
 Outra situação também muito comum é utilizar uma variável de controle (pode ser chamada de *flag*) cujo valor determina a interrupção ou não da repetição do bloco de instruções. Por exemplo,  
 ```
 flag = 1
@@ -63,7 +63,7 @@ O interpretador executa o *script* da seguinte forma:
 3. Após executar a instrução ou bloco, o interpretador executa a expressão lógica. Se a expressão resultar *True*, o valor de *flag* será modificado para 0. Na execução de `flag==1` o valor retornado será *False* e o interpretador passará a executar a instrução seguinte do *script*.
 4. O número de *loops* não é pré-definido, dependendo da condição que pode determinar a mudança da variável *flag*.
 
-### 4.3.3 Instruções ***break*** e ***continue***
+### 4.2.3 Instruções ***break*** e ***continue***
 Existem duas instruções do Python destinadas a interromper o *loop* de repetições de instruções compostas de repetição: `break` e `continue`.
 As instruções permitem permitem interromper o ciclo de repetições **independentemente da condição de teste do início do comando**.
 
