@@ -36,9 +36,17 @@ Exemplos de IDE para o Python:
 
 [Thonny](https://thonny.org/)
 
-### 1.4.3 Qual é a IDE que iremos usar no curso?
+### 1.4.3 Qual é a IDE que iremos usar no curso? [Replit](https://replit.com/site/ide)
+Plataforma para criar e compartilhar software.  
+Pode ser usado para escrever e hospedar códigos em diversas linguagens de programação no mesmo lugar.  
+Também é útil para o aprendizado, dispondondo de alguns recursos educacionais integrados.
 
-[Replit](https://replit.com/site/ide)
-__
+Algumas funcionalidades:
+- Editor de código
+- Ambiente de desenvolvimento
+- Provedor de nuvem
+- Ferramentas de colaboração em equipe (por exemplo, Google Docs, GitHub)
+
+___ 
 **Primeiros passos: [próximo>>](prog_replit.md)**  
-**[<<home>>](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/progPython_aulas.md)**
+**[home](/progPython_aulas.md)**
