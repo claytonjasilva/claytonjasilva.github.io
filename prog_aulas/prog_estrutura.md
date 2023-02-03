@@ -44,6 +44,8 @@ z = x**2 + y**2 + 2 * (x + y)
 print(z)
 ```
 Vamos criá-lo utilizando o Replit:
+- Criar um *New Repl* - **definir um nome e selecionar o *Template* Python**. O nome escolhido é o que define o projeto Python. 
+- O projeto contemplará um arquivo *main.py* que se constitui o **módulo principal** do projeto criado - **não alterar o nome *main.py***
 
 
 ## Exercícios: 
