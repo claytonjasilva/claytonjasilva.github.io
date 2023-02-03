@@ -24,6 +24,7 @@ As [instruções compostas](https://docs.python.org/pt-br/3/reference/compound_s
 Uma das instruções compostas é a **instrução condicional simples** - executa uma ação (ou conjunto de ações) dependendo do resultado da avaliação de uma **expressão lógica (condição)** ser verdadeiro ou falso.
 
 1. A figura ilustra o fluxo de execução das instruções no *script*
+![Condicional simples](/sisdig_aulas/images_prog/condicionalsimples.jpg)  
 2. A expressão lógica é calculada pelo interpretador Python. A condição só pode gerar somente um resultado dentre dois possíveis: **verdadeiro (*True*)** ou **falso** (*False*).
 3. A instrução (ou bloco de instruções) interna é executa somente se a expressão lógica de sua sentença resultar verdadeira. Em caso contrário, o interpretador executa a instrução do *script* após a instrução condicional.
 4. A sintaxe em Python da condicional simples é
@@ -32,7 +33,7 @@ Uma das instruções compostas é a **instrução condicional simples** - execut
             <instrucao ou bloco de instruções>
       ```  
       Os limites da instrução ou do bloco de instruções **internos (identificados pela indentação)** são detectados automaticamente pelo interpretador.  
-4. A expressão lógica poderá conter um dos operadores lógicos, por exemplo, o operador *>*.
+5. A expressão lógica poderá conter um dos operadores lógicos, por exemplo, o operador *>*.
       ```
       if a>b:  
             maior = a
