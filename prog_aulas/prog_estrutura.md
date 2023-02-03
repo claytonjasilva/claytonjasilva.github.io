@@ -1,4 +1,4 @@
-## Estrutura de programa em Python
+## 1.6 Estrutura de programa em Python
 
 Os programas em Python podem ser decompostos em módulos, instruções, expressões e objetos:
 
@@ -7,7 +7,7 @@ Os programas em Python podem ser decompostos em módulos, instruções, express�
 3. As instruções contêm **expressões**.
 4. As expressões criam e processam objetos.
 
-## As expressões do programa Python
+## 1.7 As expressões do programa Python
 
 As expressões que geram objetos contemplam:
 
@@ -27,7 +27,7 @@ Por exemplo, *print(argumento)* apresenta na área de console o valor do argumen
 Por exemplo, a constante matemática *pi*.
 6. Sentença de **atribuição**: o valor armazenado em uma variável ou resultante de uma expressão aritmética é passado a uma variável.
   
-## Gerando alguns *scripts*...
+## 1.8 Gerando alguns *scripts*...
 
 ## Exercícios: 
 1. **Utilizando o interpretador Python como calculadora**, criar *scripts* da linguagem Python que contenham expressões aritméticas para determinar o resultado dos seguintes problemas, utilizando os dados apresentados:  
