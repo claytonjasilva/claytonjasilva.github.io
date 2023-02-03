@@ -86,5 +86,5 @@ b. **Instrução `continue`**
 A instrução `continue` interrompe a execução do *loop* no ponto em que foi inserido e remete a execução para o próximo teste de condição do `while` ou para o próximo *loop* do `for` 
 
 ___
-**Instrução composta de repetição *for* [próximo>>](progrepeticaofor.md)  
+**Instrução composta de repetição *for*: [próximo>>](progrepeticaofor.md)**  
 **[home](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/progPython_aulas.md)**
