@@ -30,10 +30,12 @@ Por exemplo, a constante matemática *pi*.
 6. Sentença de **atribuição**: o valor armazenado em uma variável ou resultante de uma expressão aritmética é passado a uma variável.
   
 ## 1.8 Modos de utilização do interpretador
+### 1.8.1 Modo interativo
 Quando os comandos são lidos a partir do **console**, diz-se que o interpretador está em **modo interativo**.  
 No modo interativo o interpretador solicita um próximo comando através do *prompt* primário.  
 Usando o interpretador Python como calculadora no modo interativo...
 
+### 1.8.2 Modo de *script*
 O outro modo de utilização do interpretador é através da **criação de *scripts***.  
 Um *script* é um conjunto de instruções escritas de forma ordenada, organizadas em um arquivo com extensão ***.py***, 
 que serão convertidas individualmente para a máquina virtual.  
