@@ -1,36 +1,74 @@
-## Conceitos de programação procedural: condicionais simples e compostas  
+# 3. Conceitos de programação procedural: condicionais simples e compostas  
 
-### [Expressões lógicas (booleanas) e comparações](https://docs.python.org/pt-br/3/library/stdtypes.html#boolean-operations-and-or-not)
+## 3.1 [Expressões lógicas (booleanas) e comparações](https://docs.python.org/pt-br/3/library/stdtypes.html#boolean-operations-and-or-not)  
 
-### Instruções condicionais simples, instruções condicionais compostas e expressões lógicas
-1. As [instruções compostas](https://docs.python.org/pt-br/3/reference/compound_stmts.html) contêm (grupos de) outras instruções; Elas afetam ou controlam a execução dessas outras instruções de alguma maneira. Em geral, instruções compostas abrangem múltiplas linhas. 
-2. Uma das instruções compostas é a **instrução condicional simples** - uma instrução condicional simples executa uma ação (ou conjunto de ações) dependendo do resultado da avaliação de uma **expressão lógica (condição)** ser verdadeiro ou falso  
-3. A expressão lógica é calculada pelo interpretador Python e pode gerar somente um resultado dentre dois possíveis: **verdadeiro (*True*)** ou **falsa** (*False*) 
-4. A instrução condicional simples executa uma instrução (ou bloco de instruções) se a expressão lógica de sua sentença resultar verdadeira. Em caso contrário, o interpretador não realiza nenhuma ação.
-5. A sintaxe em Python da condicional simples é  
-```
-if expressao logica:  
-      instrucao ou bloco de instruções
-```  
-Obs.: Na estrutura de execução, os limites da instrução ou do bloco de instruções **internos (identificados pela indentação)** são detectados automaticamente pelo interpretador.
-6. A expressão lógica, como pode ser visto no link acima, poderá conter um dos operadores lógicos, por exemplo, o operador *>*.  
-```
-if a>b:  
-      maior = a
-      menor = b
-```  
-7. A sintaxe em Python da condicional composta é  
-```
-if expressao logica:  
-      instrucao ou bloco de instruções 1
-else:
-      instrucao ou bloco de instruções 2
-```  
-A interpretação da condicional composta leva à execução do bloco 1 de instruções se a expressão lógica for verdadeira e à execução do bloco 2 de instruções se a expressão lógica for falsa.  
+1. Assim como as expressões aritméticas utilizam operadores aritméticos cujas operações resultam números, as expressões lógicas utilizam **operadores lógicos**.
+2. Por enquanto discutiremos os operadores lógicos **relacionais** ou **de comparação**, que são os seguintes:  
 
-### Exercícios com condicionais simples e compostas  
-1. Elaborar um programa na linguagem Python para ler dois números; calcular e escrever o maior dos números lidos. [maior2num.py](https://github.com/claytonjasilva/prog_exemplos/blob/main/maior2num.py)
-2. Elaborar um programa na linguagem Python para ler a idade de uma pessoa. Se a idade for igual ou inferior a 10 anos, classificar a pessoa como 'criança'. Caso a idade seja inferior a 18 anos e superior a 10 anos, classificar como 'adolescente'. Em qualquer outro caso, classificar como 'adulto'. Apresentar a classificação atribuída. [classIdade.py](https://github.com/claytonjasilva/prog_exemplos/blob/main/classIdade.py)  
+| Operador | Descrição |
+| -------- | --------- |
+| > | Maior |
+| < | Menor |
+| >= | Maior ou igual |
+| <= | Menor ou igual |
+| != | Diferente |
+| == | Igual |
+
+3. O resultado das operações de uma expressão lógica só pode ser ***False*** ou ***True***.  
+4. Os operadores relacionais são aplicados a **dois operandos**. Por exemplo, `3 > 2`, que compara o número 3 com o número 2. Experimente escrever a expressão no modo interativo e tecle <enter>.  
+5. Os operandos podem conter **números**; **variáveis**, por exemplo, `x > 3`; e **expressões aritméticas**, por exemplo, `x + 3 <= 4 + y`. O interpretador resolve primeiro as expressões aritméticas (os operadores aritméticos têm precedência sobre os lógicos).  
+
+## 3.2 Instruções condicionais simples e instruções condicionais compostas  
+As [instruções compostas](https://docs.python.org/pt-br/3/reference/compound_stmts.html) contêm (grupos de) outras instruções; Elas afetam ou controlam a execução dessas outras instruções de alguma maneira. Em geral, instruções compostas abrangem múltiplas linhas. 
+
+### 3.2.1 Instrução condicional simples - *if ...*  
+
+Uma das instruções compostas é a **instrução condicional simples** - executa uma ação (ou conjunto de ações) dependendo do resultado da avaliação de uma **expressão lógica (condição)** ser verdadeiro ou falso.  
+A figura ilustra o fluxo de execução das instruções no *script*  
+
+
+1. A expressão lógica é calculada pelo interpretador Python. A condição só pode gerar somente um resultado dentre dois possíveis: **verdadeiro (*True*)** ou **falso** (*False*).
+2. A instrução (ou bloco de instruções) interna é executa somente se a expressão lógica de sua sentença resultar verdadeira. Em caso contrário, o interpretador executa a instrução do *script* após a instrução condicional.  
+3. A sintaxe em Python da condicional simples é
+      ```
+      if <expressao logica>:  
+            <instrucao ou bloco de instruções>
+      ```  
+      Os limites da instrução ou do bloco de instruções **internos (identificados pela indentação)** são detectados automaticamente pelo interpretador.  
+4. A expressão lógica poderá conter um dos operadores lógicos, por exemplo, o operador *>*.  
+      ```
+      if a>b:  
+            maior = a
+            menor = b
+      ```  
+      A expressão lógica `a>b` pode resultar *True* ou *False*, dependendo do valor de *a* e de *b*. Se o valor de *a* for maior do que *b* a expressão retornará como resultado *True* e as instruções dentro da indentação serão executadas. Em caso contrário, o interpretador irá a executar a instrução após o bloco de instruções indentado.  
+
+### 3.2.2 Instrução condicional composta - *if ... else*  
+
+1. A sintaxe em Python da condicional composta é  
+      ```
+      if <expressão logica>:  
+            <instrucao ou bloco 1 de instruções>
+      else:
+            <instrucao ou bloco 2 de instruções>
+      ```  
+2. A figura ilustra o fluxo de execução das instruções do *script* 
+      
+3. A interpretação da condicional composta leva à execução do bloco 1 de instruções se a expressão lógica for verdadeira e à execução do bloco 2 de instruções se a expressão lógica for falsa.  
+      Adaptando o exemplo anterior,  
+      ```
+      if a>b:  
+            maior = a
+            menor = b
+      else:
+           maior = b
+           menor = a
+      ```  
+      Obviamente admite-se que os valores de *a* e *b* são diferentes.
+
+## 3.3 Exercícios com condicionais simples e compostas  
+1. Elaborar um programa na linguagem Python para ler dois números; calcular e escrever o maior dos números lidos. [*Script 3.1*](https://github.com/claytonjasilva/prog_exemplos/blob/main/maior2num.py)
+2. Elaborar um programa na linguagem Python para ler a idade de uma pessoa. Se a idade for igual ou inferior a 10 anos, classificar a pessoa como 'criança'. Caso a idade seja inferior a 18 anos e superior a 10 anos, classificar como 'adolescente'. Em qualquer outro caso, classificar como 'adulto'. Apresentar a classificação atribuída. [*Script 3.2*](https://github.com/claytonjasilva/prog_exemplos/blob/main/classIdade.py)  
 A solução apresentada utiliza uma instrução condicional composta disponível na sintaxe do Python, que possui staisfaz a regra
 ```
 if expressao logica 1:  
@@ -44,8 +82,9 @@ else:
       instrucao ou bloco de instruções n+1
 ```  
 **Obs. O uso do else é opcional**  
-3. Elaborar um programa na linguagem Python para ler os nomes, pesos e altura de 3 pessoas; calcular e escrever os nomes de cada pessoa com IMC superior a 22 ('valor alto') ou com IMC inferior a 20 ('valor baixo'), seguido do respectivo IMC calculado. [calcIMC3.py](https://github.com/claytonjasilva/prog_exemplos/blob/main/calcIMC3.py)  
+3. Elaborar um programa na linguagem Python para ler os nomes, pesos e altura de 3 pessoas; calcular e escrever os nomes de cada pessoa com IMC superior a 22 ('valor alto') ou com IMC inferior a 20 ('valor baixo'), seguido do respectivo IMC calculado. [*Script 3.3*](https://github.com/claytonjasilva/prog_exemplos/blob/main/calcIMC3.py)  
 **Obs.: Para reflexão** - É prático para escrever códigos se a linguagem possuir instruções que permitam repetir um bloco de instruções quando uma condição for verdadeira. O Python dispõe de **expressões compostas de repetição**.   
-4. Elaborar um programa na linguagem Python para ler o nome e a idade de 3 animais; calcular e escrever o nome do animal mais velho. [maior3id](https://github.com/claytonjasilva/prog_exemplos/blob/main/maior3id.py)  
+4. Elaborar um programa na linguagem Python para ler o nome e a idade de 3 animais; calcular e escrever o nome do animal mais velho. [*Script 3.4*](https://github.com/claytonjasilva/prog_exemplos/blob/main/maior3id.py)  
 
-**[home](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/progPython_aulas.md)**
+___
+**[home](/progPython_aulas.md)**
