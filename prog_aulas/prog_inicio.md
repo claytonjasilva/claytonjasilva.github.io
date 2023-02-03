@@ -39,6 +39,6 @@ Exemplos de IDE para o Python:
 ### 1.4.3 Qual é a IDE que iremos usar no curso?
 
 [Replit](https://replit.com/site/ide)
-
+__
 **Primeiros passos: [próximo>>](prog_replit.md)**  
-**[home](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/progPython_aulas.md)**
+**[<<home>>](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/progPython_aulas.md)**
