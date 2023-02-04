@@ -1,4 +1,5 @@
-### Prática 1 - Arquitetura de Computadores
+### Prática 1 - Conhecendo o Arduíno 2560
+Circuito utilizando a placa do Arduíno 2560 como fonte de alimentação para acender um de três LEDs montados em paralelo.
 
 #### I - Apresentação de instrumental e ferramental
 1. *Protoboard*
