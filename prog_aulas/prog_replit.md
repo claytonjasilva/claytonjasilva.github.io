@@ -8,4 +8,4 @@
 ___
 **[<<anterior](prog_inicio.md)**  
 **Estrutura de um programa em Python: [próximo>>](prog_estrutura.md)**  
-**[home](/progPython_aulas.md)**
+**[home](https://claytonjasilva.github.io/progPython_aulas.html)**
