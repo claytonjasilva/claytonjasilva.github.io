@@ -11,4 +11,4 @@ Circuito utilizando a placa do Arduíno 2560 para acender um de três LEDs conec
 1. Montar  o circuito conforme a figura abaixo.  
 
 2. Utilizando a IDE do Arduíno, elabore o código que permite acender cada um dos LEDs.  
-- O código pode ser obtido em [sidaArduino.ino](https://github.com/claytonjasilva/prog_exemplos/blob/main/saidaArduino.ino)
+- O código pode ser obtido em [saidaArduino.ino](https://github.com/claytonjasilva/prog_exemplos/blob/main/saidaArduino.ino)
