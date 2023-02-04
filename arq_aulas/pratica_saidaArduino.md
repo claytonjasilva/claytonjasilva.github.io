@@ -10,7 +10,5 @@ Circuito utilizando a placa do Arduíno 2560 para acender um de três LEDs conec
 #### II - Vamos iniciar a prática com a placa do Arduíno Mega 2560...
 1. Montar  o circuito conforme a figura abaixo.  
 
-Observações gerais:   
-- Atenção com a **polarização** do LED
-- Utilizar as trilhas da placa de *protoboard* corretamente
-- Conectar o Arduíno ao computador através da porta USB
+2. Utilizando a IDE do Arduíno, elabore o código que permite acender cada um dos LEDs.  
+- O código pode ser obtido em [sidaArduino.ino](https://github.com/claytonjasilva/prog_exemplos/blob/main/saidaArduino.ino)
