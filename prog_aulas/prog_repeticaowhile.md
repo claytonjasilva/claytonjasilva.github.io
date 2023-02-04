@@ -17,6 +17,7 @@ O interpretador executa a instrução *while* da seguinte forma:
 3. Após executar a primeira vez o bloco de instruções, o interpretador volta a executar a expressão lógica. **Enquanto** a expressão lógica resultar *True* o interpretador repetirá a execução do bloco. Cada execução é normalmente referida como um ***loop***.
 4. A repetição da instrução ou do bloco de instruções internos será interrompida **quando o resultado da expressão lógica for *False***. Nesse momento, o interpretador passará a executar a instrução do *script* após o *while*.
 5. A figura ilustra o funcionamento do comando *while*
+![Comando while](/prog_aulas/images_prog/repeticaowhile.jpg)  
 
 ### 4.2.1 Controle das repetições com **contador**  
 É muito comum a repetição ser controlada por uma variável de contagem. No exemplo abaixo utiliza-se a variável designada *cont*  
