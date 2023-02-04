@@ -121,4 +121,4 @@ else:
 4. Elaborar um programa na linguagem Python para ler o nome e a idade de 3 animais; calcular e escrever o nome do animal mais velho. [*Script 3.4*](https://github.com/claytonjasilva/prog_exemplos/blob/main/maior3id.py)  
 
 ___
-**[home](/progPython_aulas.md)**
+**[home](https://claytonjasilva.github.io/progPython_aulas.html)**
