@@ -10,4 +10,4 @@
    * [Replit](https://replit.com)
 
 
-##### [Home - Prof Clayton J A Silva](/./index.md)
+##### [Home - Prof Clayton J A Silva](https://claytonjasilva.github.io/)
