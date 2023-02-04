@@ -15,6 +15,7 @@
 ## Práticas    
 1. [Prática 1 Arduíno](arq_aulas/pratica_ligaLED.md)    
 2. [Prática 2 Arduíno](arq_aulas/pratica_saidaArduino.md)     
+3. [Prática 3 Arduíno](arq_aulas/pratica_entradaArduino.md)     
 
 ## Avaliações
 ### Avaliações Bimestrais
