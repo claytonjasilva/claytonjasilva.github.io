@@ -24,4 +24,4 @@ Prof Clayton J A Silva
 | 20/6 | Avaliação Parcial 2 |
 | 27/6 | Avaliação Substitutiva |
 
-#### [Home - Arquitetura - Prof Clayton J A Silva](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/arq.md)
+#### [Home - Arquitetura - Prof Clayton J A Silva](https://claytonjasilva.github.io/arq.html)
