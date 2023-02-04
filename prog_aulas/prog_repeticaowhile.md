@@ -87,4 +87,4 @@ A instrução `continue` interrompe a execução do *loop* no ponto em que foi i
 
 ___
 **Instrução composta de repetição *for*: [próximo>>](prog_repeticaofor.md)**  
-**[home](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/progPython_aulas.md)**
+**[home](https://claytonjasilva.github.io/progPython_aulas.html)**
