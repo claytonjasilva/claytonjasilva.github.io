@@ -13,7 +13,7 @@
 8. Sistemas Operacionais: [*download* material](https://1drv.ms/p/s!AsTd8oN7mu8pkcB4b7de8Z0_eLNtFA?e=PIgZwh)
 
 ## Práticas    
-1. [Prática 1 Arduíno](arq_aulas/arq_pratica1.md)    
+1. [Prática 1 Arduíno](arq_aulas/pratica_ligaLED.md)    
 2. [Prática 2 Arduíno](arq_aulas/arq_pratica2.md)     
 
 ## Avaliações
