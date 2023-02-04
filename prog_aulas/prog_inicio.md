@@ -49,4 +49,4 @@ Algumas funcionalidades:
 
 ___ 
 **Primeiros passos: [próximo>>](prog_replit.md)**  
-**[home](/progPython_aulas.md)**
+**[home](progPython_aulas.md)**
