@@ -10,7 +10,7 @@ Circuito utilizando a placa do Arduíno 2560 como fonte de alimentação para ac
 #### II - Vamos iniciar a prática com a placa do Arduíno Mega 2560...
 1. Montar  o circuito conforme a figura abaixo.  
 ![Circuito LEDs](/arq_aulas/images/resistor-LED.jpg)  
-Observações gerais:   
+2. Observações gerais:   
 - Atenção com a **polarização** do LED
 - Utilizar as trilhas da placa de *protoboard* corretamente
 - Conectar o Arduíno ao computador através da porta USB
