@@ -43,3 +43,8 @@ O interpretador escreverá os valores inteiros 1, 4, 7.
 4. Elaborar um programa na linguagem Python que leia o cpf de uma pessoa, o saldo da conta corrente no início de um dia. Em seguida, leia a natureza ('d'-depósito,'s'-saque) e o valor de todas as operações do dia. O programa deverá escrever o cpf do correntista e escrever o respectivo saldo ao final do dia. [*Script 4.4*](https://github.com/claytonjasilva/prog_exemplos/blob/main/calcSaldo.py)  
 5. Elaborar um programa na linguagem Python que leia o cpf (no formato de 11 caracteres numéricos sem pontos e travessão) de uma pessoa. O programa deverá verificar se o cpf é válido usando a regra proposta pela [Associação Comercial e Empresarial de Guarulhos](https://www.aceguarulhos.com.br/blog/como-saber-se-um-cpf-e-verdadeiro/#gsc.tab=0).  
 [*Script 4.5*](https://github.com/claytonjasilva/prog_exemplos/blob/main/testaCPF.py)
+
+
+___
+**[<<anterior](progrepeticaowhile.md)**  
+**[home](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/progPython_aulas.md)**
