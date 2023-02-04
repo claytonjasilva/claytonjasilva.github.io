@@ -64,4 +64,4 @@ Vamos criá-lo utilizando o Replit:
 
 ___
 **[<<anterior](prog_replit.md)**  
-**[home](/progPython_aulas.md)**
+**[home](https://claytonjasilva.github.io/progPython_aulas.html)**
