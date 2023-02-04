@@ -13,14 +13,16 @@
 8. Sistemas Operacionais: [*download* material](https://1drv.ms/p/s!AsTd8oN7mu8pkcB4b7de8Z0_eLNtFA?e=PIgZwh)
 
 ## Práticas    
-*Obs. As práticas e os exercícios serão atualizadas/propostas à medida que a apresentação do conteúdo evoluir durante o semestre* 
-
 1. [Prática 1 Arduíno](arq_aulas/arq_pratica1.md)    
 2. [Prática 2 Arduíno](arq_aulas/arq_pratica2.md)     
 
-## Avaliações Bimestrais
-### AP1
-1. [Trabalho AP1](arq_aulas/Orientacao_trabalho_AP1.pdf)    
+## Avaliações
+### Avaliações Bimestrais
+1. **[Trabalho AP1]() - a ser definido oportunamente**   
+2. **[Trabalho AP2]() - a ser definido oportunamente**    
+
+### Avaliação Continuada
+Os instrumentos de avaliação continuada serão disponibilizados à medida que as aulas forem ministradas.
 
 ## Exercícios  
 1. [Lista 1 de Exercícios](arq_aulas/exercicios3_sala.md)
