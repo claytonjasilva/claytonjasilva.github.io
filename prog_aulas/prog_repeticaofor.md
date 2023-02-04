@@ -46,5 +46,5 @@ O interpretador escreverá os valores inteiros 1, 4, 7.
 
 
 ___
-**[<<anterior](progrepeticaowhile.md)**  
+**[<<anterior](prog_repeticaowhile.md)**  
 **[home](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/progPython_aulas.md)**
