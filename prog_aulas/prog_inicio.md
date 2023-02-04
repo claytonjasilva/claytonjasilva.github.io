@@ -49,4 +49,5 @@ Algumas funcionalidades:
 
 ___ 
 **Primeiros passos: [próximo>>](prog_replit.md)**  
+**[<<anterior](/progPython_aulas.md)**
 **[home](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/progPython_aulas.md)**
