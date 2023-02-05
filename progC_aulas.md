@@ -1,4 +1,6 @@
-# Programação com Python - 2023.1   
+# Programação com C - 2023.1   
+O curso não está na grade de disciplinas do Ibmec.  
+Ministrado como atividade extra classe.
 
 ## Conteúdo  
 1. [Iniciando...](prog_aulas/prog_inicio.md)  
