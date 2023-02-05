@@ -13,7 +13,7 @@ conforme um código específico.
 #### II - Vamos iniciar a prática com a placa do Arduíno Mega 2560...
 1. Montar  o circuito conforme a figura abaixo.  
 ![código Arduino LEDs](/arq_aulas/images/codigoArduino.jpg)  
-2. Utilizando a IDE do Arduíno, elabore o código que permite acender/apagar o LED quando a chave for acionada.
+2. Utilizando a IDE do Arduíno, elabore o código que permite acender/apagar o LED de acordo com a combinação das chaves acionada.
 3. Observações:  
 - Visite o site do Arduíno para conhecer um pouco sobre a [referência da linguagem do Arduíno](https://www.arduino.cc/reference/en/)  
 - O código da prática pode ser obtido em [entradaArduino.ino](https://github.com/claytonjasilva/prog_exemplos/blob/main/codigoArduino.ino)
