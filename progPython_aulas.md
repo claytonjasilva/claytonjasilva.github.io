@@ -1,4 +1,4 @@
-# Programação - 2023.1   
+# Programação com Python - 2023.1   
 
 ## Conteúdo  
 1. [Iniciando...](prog_aulas/prog_inicio.md)  
