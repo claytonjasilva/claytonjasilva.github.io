@@ -16,7 +16,7 @@
 1. [Prática 1 Arduíno: alimentação de LEDs](arq_aulas/pratica_ligaLED.md)    
 2. [Prática 2 Arduíno: código, pinos e função de saída](arq_aulas/pratica_saidaArduino.md)     
 3. [Prática 3 Arduíno: código, pinos e função de entrada](arq_aulas/pratica_entradaArduino.md)
-4. [Prática 4 Arduíno: mais sobre código](arq_aulas/pratica_entradaArduino.md)     
+4. [Prática 4 Arduíno: mais sobre código](arq_aulas/pratica_codigoArduino.md)     
 
 ## Avaliações
 ### Avaliações Bimestrais
