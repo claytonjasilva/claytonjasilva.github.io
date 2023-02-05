@@ -13,9 +13,10 @@
 8. Sistemas Operacionais: [*download* material](https://1drv.ms/p/s!AsTd8oN7mu8pkcB4b7de8Z0_eLNtFA?e=PIgZwh)
 
 ## Práticas    
-1. [Prática 1 Arduíno](arq_aulas/pratica_ligaLED.md)    
-2. [Prática 2 Arduíno](arq_aulas/pratica_saidaArduino.md)     
-3. [Prática 3 Arduíno](arq_aulas/pratica_entradaArduino.md)     
+1. [Prática 1 Arduíno: alimentação de LEDs](arq_aulas/pratica_ligaLED.md)    
+2. [Prática 2 Arduíno: código, pinos e função de saída](arq_aulas/pratica_saidaArduino.md)     
+3. [Prática 3 Arduíno: código, pinos e função de entrada](arq_aulas/pratica_entradaArduino.md)
+4. [Prática 4 Arduíno: mais sobre código](arq_aulas/pratica_entradaArduino.md)     
 
 ## Avaliações
 ### Avaliações Bimestrais
