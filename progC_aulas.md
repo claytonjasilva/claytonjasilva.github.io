@@ -35,7 +35,7 @@ O guia rápido compreende um **resumo** da sintaxe da linguagem Python, com aten
 O guia não tem a pretenção de esgotar todas as definições de sintaxe e semântica da linguagem Python.  
 [**Acessar o Guia Rápido**](prog_aulas/guia_rapido.md)
 
-## Referências da linguagem Python
+## Referências da linguagem C
 ...
 
-#### [Home - Programação com Python - Prof Clayton J A Silva](https://claytonjasilva.github.io/)
+#### [Home - Programação com C - Prof Clayton J A Silva](index.md)
