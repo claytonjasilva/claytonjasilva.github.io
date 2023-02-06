@@ -35,10 +35,7 @@ Os instrumentos de avaliação continuada serão disponibilizados à medida que 
 6. [Lista 6 de Exercícios](arq_aulas/arq_exercicios6_sala.md)
 7. [Lista 7 de Exercícios](arq_aulas/arq_exercicios7_sala.md)
 8. [Lista 8 de Exercícios](arq_aulas/arq_exercicios8_sala.md)
-9. [Lista 9 de Exercícios](arq_aulas/exercicio6.md)
-12. [Form AC](https://forms.gle/1VrBMtB1XZw76Bpj7)
-13. [Exercício 7 - 2022.2: sistemas operacionais](https://forms.gle/LrqzCYKG551iWWG76) - **não será computado para avaliação continuada**
-
+9. [Lista 9 de Exercícios](arq_aulas/arq_exercicios9_sala.md)
 
 ## Referências  
 *Obs. É necessário o acesso pela Biblioteca Virtual do Ibmec*    
