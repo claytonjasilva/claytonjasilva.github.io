@@ -6,6 +6,7 @@ Os programas em C podem ser decompostos da seguinte forma:
 - Cada projeto possui pastas, algumas das quais contendo os **códigos nativos do padrão C utilizado do compilador**, chamados de **bibliotecas**
 - Contém também as bibliotecas com os códigos **criados pelo próprio programador do projeto**.
 - Contém o **código principal** desenvolvido pelo programador, cuja estrutura é a seguinte:  
+
 ___
 1. Instruções de **pré-processamento**;
 2. Prototipação das funções: pode se declarar uma função antes de defini-la; através do protótipo da função, ou seja,
@@ -13,7 +14,9 @@ a **especificação do nome e dos parâmetros da função**;
 3. Declaração das variáveis de escopo global - possuem visibilidade em todo o progama;
 4. Função ***main()***, código principal;
 5. Definição das funções.
+
 ___
+
 
 Diferentemente do interpretador, o compilador converte todo o programa, **chamado de programa-fonte**, escrito na linguagem de alto nível C, em um código em **linguagem de máquina**, para depois executá-lo.  
 Além do compilador, outros processos são realizados para a geração do **código executável**:  
