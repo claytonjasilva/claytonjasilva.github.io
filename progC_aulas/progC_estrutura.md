@@ -21,19 +21,23 @@ Além do compilador, outros processos são realizados para a geração do **cód
 ## 1.7 Diretivas da linguagem C
 As diretivas são incluídas no corpo das instruções de pré-processamento e iniciam pelo caractere especial `#`, por exemplo `#include <stdio.h>`.  
 As duas diretivas mais utilizadas são:  
-`#include`: incluir o conteúdo de um arquivo durante a compilação;
+`#include`: incluir o conteúdo de um arquivo, chamado de cabeçalho (*header file*) e que possui extensão *.h*, durante a compilação; 
 `#define`: substituir um **código** por uma sequência arbitrária de caracteres.
 
 ### 1.7.1 Inclusão de arquivos
-A inclusão de arquiuvos admite duas formas sintáticas:  
+A inclusão de arquivos admite duas formas sintáticas:  
 ```
 #include "arquivo"
 ```
-Se o arquivo estiver entre aspas, a busca pelo arquivo será realizada na mesma pasta em que se encontra o código principal.
-ou
+Se o arquivo estiver entre aspas, a busca pelo arquivo será realizada na mesma pasta em que se encontra o código principal.  
+Se não estiver na mesma pasta, a regra para encontrar o arquivo deve ser especificada.
 ```
 #include <arquivo>
 ```
+Para acessar normalmente os arquivos da biblioteca padrão.  
+Um arquivo cabeçalho também pode conter diretivas *include*.  
+As diretivas *include* são muito úteis especialmente para desenvolver códigos muito grandes, utilizando-se o recursos de modularização de código.
+
 
 
 ## 1.8 As expressões do programa Python
