@@ -67,57 +67,72 @@ Por exemplo, a sequência mais simples de substituição de macro pode ser
 ```
 , que substituirá no corpo do código todas as referências a *NUM* pelo número 100.
 
-## 1.8 As expressões do programa C
+## 1.8 As expressões aritméticas do programa C
 
-As expressões que geram objetos contemplam:
+As expressões aritméticas contemplam **operadores** e **operandos** de vários **tipos**.  
+Os **operadores aritméticos** sinalizam para o compilador a operação aritmética correspondente. São eles:
+| Operador | Operação |
+| - | - |
+| `+` | Adição |
+| `-` | Subtração |
+| `*` | Multiplicação |
+| `/` | Divisão |
+| `%` | Módulo ou resto da divisão inteira |
+| `++` | Incremento |
+| `--` | Decremento |
+Os operadores possuem prioridade para serem resolvidos, logo é importante organizá-los na expressão da forma adequada.  
+Admite-se o uso do `(` e `)` para delimitar operações que devem ser priorizadas.  
 
-1. Expressões aritméticas
-3. Objetos de vários **tipos**:  
-  a. **Números**  
-  b. Strings  
-  c. Listas  
-  d. Tuplas  
-  e. Dicionários  
-  f. Arquivos  
-3. Expressões e operações aritméticas: utilizam operadores `+`, `-`, `*` e `/`. Divisão (`/`) sempre retorna número na representação em **ponto flutuante (float)**. Para fazer uma divisão com resultado inteiro (descartando a parte fracionária) pode-se usar o operador divisão inteira (`//`); para calcular o resto da divisão inteira pode-se usar o operador **módulo** (`%`).
-4. Objetos de referência - **variáveis** -, que armazenam os valores dos objetos e são referenciadas por um **identificador** (nome).
-5. Constantes, que possuem valores pré-estabelecidos, chamados pela sua identificação.  
-Por exemplo, a constante matemática *pi*.
-6. Sentença de **atribuição**: o valor armazenado em uma variável ou resultante de uma expressão aritmética é passado a uma variável.
+Os operandos são os dados sobre os quais serão realizadas as operações. Os dados numéricos pode ser dos seguintes **tipos**:
+| Tipo | Descrição |
+| - | - |
+| `int` | números inteiros, podendo variar para `long` ou `short` em função da capacidade de representação desejada |
+| `float` | números de **ponto flutuante**, que represenetam números fracionários computacionalmente, podendo variar para `double` |
+
+## 1.9 Variáveis em C
+Variáveis são representações simbólicas de dados que pertencem a um determinado conjunto.  
+Como são representações simbólicas possuem uma identificação ou nome, que deve obedecer as regras:  
+- Nomes de variáveis são formados por letras e dígitos;
+- O primeiro caractere deve ser uma letra - o caractere *_* é considerado uma letra;
+- Letras maiúsculas e minúsculas são caracteres distintos;
+- Possuem tamanho limitado - no caso do Ansi-C, no máximo 31 caracteres.
+O uso das variáveis requer a **declaração do tipo**, cuja sintaxe em C é:
+```
+<tipo> <nome da variável ou lista de nomes de variáveis>
+```
+, onde a lista de nomes de variáveis é um conjunto de nomes separados por vírgula.
+Por exemplo,
+```
+int i, cont
+float res
+```
+Quando uma variável é declarada o compilador C reserva **um endereço de memória** disponível no computador, com o tamanho necessário para armazenar o dado numérico, e associa a ele um **endereço de memória**.  
+Em C, é muito importante entender essa dinâmica.
+
+Sentença de **atribuição**: o valor armazenado em uma variável ou resultante de uma expressão aritmética é passado a uma variável.
   
-## 1.8 Modos de utilização do interpretador
-### 1.8.1 Modo interativo
-Quando os comandos são lidos a partir do **console**, diz-se que o interpretador está em **modo interativo**.  
-No modo interativo o interpretador solicita um próximo comando através do *prompt* primário.  
-Usando o interpretador Python como calculadora no modo interativo...
-
-### 1.8.2 Modo de *script*
-O outro modo de utilização do interpretador é através da **criação de *scripts***.  
-Um *script* é um conjunto de instruções escritas de forma ordenada, organizadas em um arquivo com extensão ***.py***, 
-que serão convertidas individualmente para a máquina virtual.  
-O arquivo constitui um **programa** que será executado pela IDE pra execução de uma **tarefa**.  
-Um exemplo de *script* é apresentado abaixo:
+## 1.8 Sentença de atribuição
+A sentença de atribuição se caracteriza pela atribuição de um valor a uma variável.  
+A sintaxe para o comando de atribuição é  
 ```
-x = 5
-y = 6
-z = x**2 + y**2 + 2 * (x + y)
-print(z)
+<nome da variável> = <expressão aritmética ou variável ou número>
 ```
-Vamos criá-lo utilizando o Replit:
-1. Criar um *New Repl* - **definir um nome e selecionar o *Template* Python**. O nome escolhido é o que define o projeto Python.
-2. O projeto contemplará um arquivo *main.py* que se constitui o **módulo principal** do projeto criado - **não alterar o nome *main.py***
-3. Escrever as instruções e executar o *script*
+Por exemplo,
+```
+i = 12;
+cont = 3;
+res = (12 + 3) * 1.35;
+```
+Observe que **as sentenças são separadas pelo `;`**
 
 ## 1.9 Exercícios de aula 
-1. **Utilizando o interpretador Python como calculadora**, criar *scripts* da linguagem Python que contenham expressões aritméticas para determinar o resultado dos seguintes problemas, utilizando os dados apresentados:  
-- Quantos minutos dois dias e 18 horas contemplam? [*Script* 1.1](https://github.com/claytonjasilva/prog_exemplos/blob/main/minutos.py)  
-- Qual é a área de um terreno retangular com lados de 50 metros e 15 metros? [*Script* 1.2](https://github.com/claytonjasilva/prog_exemplos/blob/main/area.py)   
-- Quantas voltas um corredor completou em uma pista com perímetro de 400 metros se ele conseguiu correr 2.300 metros? [*Script* 1.3](https://github.com/claytonjasilva/prog_exemplos/blob/main/volta.py)  
-- Um veículo consome em média 2 litros de gasolina para percorrer 19,5 quilômetros. Quantos quilômetros o veículo deverá percorrer se o tanque de combustível possuir capacidade de armazenar 50 litros? [*Script* 1.5](https://github.com/claytonjasilva/prog_exemplos/blob/main/veiculo.py)  
-- A fórmula para determinação da nota final é definida por uma média ponderada em que a nota de cada avaliação parcial possui peso de 40% e a avaliação continuada, peso de 20%. A média para aprovação é 7,0. Se o aluno obtiver nota 6,5 na AP1; nota 8,3 na AP2; e nota 6,9 na AC; ele será aprovado? [*Script* 1.6](https://github.com/claytonjasilva/prog_exemplos/blob/main/nota.py)  
-**Não esqueça de salvar os *scrips* criados usando um nome de arquivo adequado**
-2. Criar *scripts* da linguagem Python, utilizando variáveis e atribuindo a elas os dados especificados nas questões acima, assim como o resultado de cada uma das expressões. Lembre-se de utilizar **nomes de variáveis** que facilitem a legibilidade do *script*. [*Script* 1.7](https://github.com/claytonjasilva/prog_exemplos/blob/main/nota2.py)
-
+1. Criar códigos na linguagem Python que contenham expressões aritméticas para determinar o resultado dos seguintes problemas, utilizando os dados apresentados:  
+- Quantos minutos dois dias e 18 horas contemplam?  
+- Qual é a área de um terreno retangular com lados de 50 metros e 15 metros? 
+- Quantas voltas um corredor completou em uma pista com perímetro de 400 metros se ele conseguiu correr 2.300 metros? 
+- Um veículo consome em média 2 litros de gasolina para percorrer 19,5 quilômetros. Quantos quilômetros o veículo deverá percorrer se o tanque de combustível possuir capacidade de armazenar 50 litros?  
+- A fórmula para determinação da nota final é definida por uma média ponderada em que a nota de cada avaliação parcial possui peso de 40% e a avaliação continuada, peso de 20%. A média para aprovação é 7,0. Se o aluno obtiver nota 6,5 na AP1; nota 8,3 na AP2; e nota 6,9 na AC; ele será aprovado?  
+2. Criar *scripts* da linguagem Python, utilizando variáveis e atribuindo a elas os dados especificados nas questões acima, assim como o resultado de cada uma das expressões. Lembre-se de utilizar **nomes de variáveis** que facilitem a legibilidade do *script*. 
 ___
-**[<<anterior](prog_replit.md)**  
-**[home](https://claytonjasilva.github.io/progPython_aulas.html)**
+**[<<anterior](progC_replit.md)**  
+**[home](https://claytonjasilva.github.io/progC_aulas.html)**
