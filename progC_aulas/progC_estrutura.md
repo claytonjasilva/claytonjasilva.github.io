@@ -38,7 +38,16 @@ Para acessar normalmente os arquivos da biblioteca padrão.
 Um arquivo cabeçalho também pode conter diretivas *include*.  
 As diretivas *include* são muito úteis especialmente para desenvolver códigos muito grandes, utilizando-se o recursos de modularização de código.
 
-
+### 1.7.2 Substituição de Macro
+Uma macro (abreviação para macroinstrução) é uma regra ou padrão que especifica como uma certa sequência de entrada (frequentemente uma sequência de caracteres) mapeada para uma substituição de sequência de saída de acordo com um procedimento definido.  
+Ou seja, utilizando-se uma macro é possível substituir no código uma sequência de caracteres longa e complexa, que se repete muitas vezes,
+por uma sequência simples.  
+Para substituir macro em C utiliza-se a diretiva `#define`.  
+Por exemplo, a sequência mais simples de substituição de macro pode ser  
+```
+#define NUM 100
+```
+, que substituirá no corpo do código todas as referências a *NUM* pelo número 100.
 
 ## 1.8 As expressões do programa Python
 
