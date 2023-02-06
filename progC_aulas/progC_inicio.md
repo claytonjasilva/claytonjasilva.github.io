@@ -19,10 +19,10 @@ O programa encarregado de realizar a conversão é chamado de **compilador**.
 Abreviatura do termo em inglês *Integrated Development Enviroment*, ou seja, **ambiente de desenvolvimento integrado**, 
 que designa uma ferramenta de desenvolvimento para **editar o código, acessar um terminal, executar um programa, *debugar* e compilar programas usando um único ambiente.
 
-Exemplos de IDE para o C:
-[Eclipse](https://www.eclipse.org/downloads/)  
-[VSCode](https://code.visualstudio.com/)
-[Dev C++](https://www.bloodshed.net/)
+Exemplos de IDE para o C:  
+[Eclipse](https://www.eclipse.org/downloads/)    
+[VSCode](https://code.visualstudio.com/)  
+[Dev C++](https://www.bloodshed.net/)  
 
 ### 1.4.3 Qual é a IDE que iremos usar no curso? [Replit](https://replit.com/site/ide)
 Plataforma para criar e compartilhar software.  
