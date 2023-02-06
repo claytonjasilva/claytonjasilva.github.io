@@ -34,6 +34,7 @@ Os instrumentos de avaliação continuada serão disponibilizados à medida que 
 5. [Lista 5 de Exercícios](arq_aulas/arq_exercicios5_sala.md)
 6. [Lista 6 de Exercícios](arq_aulas/arq_exercicios6_sala.md)
 7. [Lista 7 de Exercícios](arq_aulas/arq_exercicios7_sala.md)
+8. [Lista 8 de Exercícios](arq_aulas/arq_exercicios8_sala.md)
 10. [Exercício 5 - 2022.2: memória](arq_aulas/exercicio5.md) --- [*download* da solução](https://1drv.ms/b/s!AsTd8oN7mu8pkb421P5nTY2l-Zc29Q?e=1K5oEw)
 11. [Exercício 6 - 2022.2: mapeamento MP-cache, barramento e processadores](arq_aulas/exercicio6.md) --- [*download* da solução](https://1drv.ms/b/s!AsTd8oN7mu8pkcBLKzmih8KY92Z2og?e=DeHjSy)
 12. [Form AC](https://forms.gle/1VrBMtB1XZw76Bpj7)
