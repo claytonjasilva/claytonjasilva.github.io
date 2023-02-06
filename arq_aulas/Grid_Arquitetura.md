@@ -46,4 +46,4 @@ Obs. *É necessário o acesso pela Biblioteca Virtual do Ibmec*
 3. [Tanenbaum, Andrew S.; Sistemas Operacionais Modernos; 3a ed; Pearson, 2007](https://plataforma.bvirtual.com.br/Leitor/Publicacao/1233/pdf/0)  
 4. [Maziero, Carlos; Sistemas Operacionais: Conceitos e Mecanismos; Editora da UFPR; 2019](http://wiki.inf.ufpr.br/maziero/doku.php?id=socm:start)
 
-#### [Home - Arquitetura - Prof Clayton J A Silva](https://claytonjasilva.github.io/arq_aulas/Grid_Arquitetura.html)
+#### [Home - Arquitetura - Prof Clayton J A Silva](https://claytonjasilva.github.io/arq.html)
