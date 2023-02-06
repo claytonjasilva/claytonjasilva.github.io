@@ -5,7 +5,7 @@ Os programas em C podem ser decompostos da seguinte forma:
 - Os programas são organizados em **projetos**.
 - Cada projeto possui pastas, algumas das quais contendo os **códigos nativos do padrão C utilizado do compilador**, chamados de **bibliotecas**
 - Contém também as bibliotecas com os códigos **criados pelo próprio programador do projeto**.
-- Contém o código principal desenvolvido pelo programador, cuja estrutura é a seguinte:  
+- Contém o **código principal** desenvolvido pelo programador, cuja estrutura é a seguinte:  
 ___
 1. Instruções de **pré-processamento**;
 2. Prototipação das funções: pode se declarar uma função antes de defini-la; através do protótipo da função, ou seja,
@@ -18,12 +18,28 @@ ___
 Diferentemente do interpretador, o compilador converte todo o programa, **chamado de programa-fonte**, escrito na linguagem de alto nível C, em um código em **linguagem de máquina**, para depois executá-lo.  
 Além do compilador, outros processos são realizados para a geração do **código executável**:  
 - ***Link* edição**: realizado pelo ***linker***, é o processo de combinar o resultado compilado (em linguagem de máquina) das funções e outros objetos, tanto aqueles da biblioteca padrão quanto aqueles criadas pelo próprio programador, com o código principal - que contém a função *main()* - compilado. 
-- **Pré-processamento**: realizado pelo **pré-processador**, é o processo que consiste em (i) remover os comentários do programa; e (ii) interpretar as **diretivas** especiais.  
+- **Pré-processamento**: realizado pelo **pré-processador**, é o processo que consiste em (i) remover os comentários do programa; e (ii) interpretar as **diretivas** especiais. 
+
+Em consequência, a sintaxe do código principal em C é:  
+```
+#include <*header file*> /*Se o código precisar de funções de bibliotecas */
+#define <caractere de entrada> <caractere de saída> /*Se o código precisar de macros */
+<protótipo de funções>
+<declaração de variáveis globais>
+main() {
+  <corpo de instruções>
+}
+<definição de funções>
+```
+Algumas observações sobtre a sintaxe:
+- Os comentários em C são deleimitados `/*` e `*/`. Se desejar inserir um comentário em uma linha inteira, pode-se usar `//`antes do comentário.
+- Todo o código da função principal *main()* deve ser delimitado por `{` e `}`.  
+- Posteriormente definiremos a sintaxe para prototipação e definição de funções, assim como para declaração de variáveis.
 
 ## 1.7 Diretivas da linguagem C
 As diretivas são incluídas no corpo das instruções de pré-processamento e iniciam pelo caractere especial `#`, por exemplo `#include <stdio.h>`.  
 As duas diretivas mais utilizadas são:  
-`#include`: incluir o conteúdo de um arquivo, chamado de cabeçalho (*header file*) e que possui extensão *.h*, durante a compilação; 
+`#include`: incluir o conteúdo de um arquivo, chamado de cabeçalho (*header file*) e que possui extensão *.h*, durante a compilação;   
 `#define`: substituir um **código** por uma sequência arbitrária de caracteres.
 
 ### 1.7.1 Inclusão de arquivos
@@ -51,13 +67,11 @@ Por exemplo, a sequência mais simples de substituição de macro pode ser
 ```
 , que substituirá no corpo do código todas as referências a *NUM* pelo número 100.
 
-## 1.8 As expressões do programa Python
+## 1.8 As expressões do programa C
 
 As expressões que geram objetos contemplam:
 
-1. [Funções da biblioteca-padrão](https://docs.python.org/pt-br/3/library/functions.html).  
-Funções são elementos da expressão que realizam um trabalho, entregando um resultado após serem executadas.  
-Por exemplo, *print(argumento)* apresenta na área de console o valor do argumento.
+1. Expressões aritméticas
 3. Objetos de vários **tipos**:  
   a. **Números**  
   b. Strings  
