@@ -3,7 +3,7 @@ O curso não está na grade de disciplinas do Ibmec.
 Ministrado como atividade extra classe.
 
 ## Conteúdo  
-1. [Iniciando...](prog_aulas/prog_inicio.md)  
+1. [Iniciando...](progC_aulas/progC_inicio.md)  
 2. [Conceitos de programação procedural: tipos, variáveis, operadores, entrada/saída](prog_aulas/prog_conceitos1.md)     
 3. [Conceitos de programação procedural: condicionais simples e compostas](prog_aulas/prog_conceitos2.md)    
 4. [Conceitos de programação procedural: estruturas de repetição](prog_aulas/prog_repeticaowhile.md)  
