@@ -26,7 +26,9 @@ As instruções de um programa escrito em certa linguagem (por exemplo, Python) 
 Em Python, o programa *nome.py* é compilado em um **código de byte** para ser executado pela chamada **Máquina Virtual Python (PVM)** - última etapa do interpretador Python.
 
 ### 1.4.2 O que é uma IDE?
-Abreviatura do termo em inglês *Integrated Development Environment*, ou seja, ambiente de desenvolvimento integrado, que designa uma ferramenta de desenvolvimento para editar o código, acessar um terminal, executar um script , debugar e compilar programas usando um único ambiente.
+Abreviatura do termo em inglês *Integrated Development Enviroment*, ou seja, ambiente de desenvolvimento integrado, 
+que designa uma ferramenta de desenvolvimento para **editar o código, acessar um terminal, executar um script , debugar e compilar programas**
+usando um único ambiente.
 
 Exemplos de IDE para o Python:
 
