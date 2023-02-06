@@ -32,9 +32,9 @@ Os instrumentos de avaliação continuada serão disponibilizados à medida que 
 3. [Lista 3 de Exercícios](arq_aulas/arq_exercicios3_sala.md)  
 4. [Lista 4 de Exercícios](arq_aulas/arq_exercicios4_sala.md)  
 5. [Lista 5 de Exercícios](arq_aulas/arq_exercicios5_sala.md)
-6. [Lista 6 de Exercícios](arq_aulas/arq_exercicios5_sala.md)
-7. [Exercício 2 - 2022.2: Programa assembly no set da máquina IAS](arq_aulas/exercicio2.md)
-8. [Exercício 3 - 2022.2: Números e aritmética binária](arq_aulas/exercicio3.md)    
+6. [Lista 6 de Exercícios](arq_aulas/arq_exercicios6_sala.md)
+7. [Lista 7 de Exercícios](arq_aulas/arq_exercicios7_sala.md)
+
 9. [Exercício 4 - 2022.2: Nível de lógica digital](arq_aulas/exercicio4.md)
 10. [Exercício 5 - 2022.2: memória](arq_aulas/exercicio5.md) --- [*download* da solução](https://1drv.ms/b/s!AsTd8oN7mu8pkb421P5nTY2l-Zc29Q?e=1K5oEw)
 11. [Exercício 6 - 2022.2: mapeamento MP-cache, barramento e processadores](arq_aulas/exercicio6.md) --- [*download* da solução](https://1drv.ms/b/s!AsTd8oN7mu8pkcBLKzmih8KY92Z2og?e=DeHjSy)
