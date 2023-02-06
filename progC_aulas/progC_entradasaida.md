@@ -28,4 +28,4 @@ Obs. Para calcular a raiz quadrada pode-se incluir o comando `import math` e usa
 6. Elaborar um programa na linguagem Python para ler as dimensões dos lados de uma pista de corrida de formato retangular, ler a distância percorrida por um veículo, calcular e escrever o número completo de voltas dadas. [*Script 2.6*](https://github.com/claytonjasilva/prog_exemplos/blob/main/calcVoltas.py)
 
 ___
-**[home](/progC_aulas)**
+**[home](/progC_aulas.md)**
