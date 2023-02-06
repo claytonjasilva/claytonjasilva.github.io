@@ -5,18 +5,20 @@ Os programas em C podem ser decompostos da seguinte forma:
 - Os programas são organizados em **projetos**.
 - Cada projeto possui pastas, algumas das quais contendo os **códigos nativos do padrão C utilizado do compilador**, chamados de **bibliotecas**
 - Contém também as bibliotecas com os códigos **criados pelo próprio programador do projeto**.
-- Contém o código principal desenvolvido pelo programador, cuja estrutura é a seguinte:
+- Contém o código principal desenvolvido pelo programador, cuja estrutura é a seguinte:  
+___
 1. Instruções de **pré-processamento**;
 2. Prototipação das funções: pode se declarar uma função antes de defini-la; através do protótipo da função, ou seja,
 a **especificação do nome e dos parâmetros da função**;  
 3. Declaração das variáveis de escopo global - possuem visibilidade em todo o progama;
 4. Função ***main()***, código principal;
 5. Definição das funções.
+___
 
-Diferentemente do interpretador, o compilador converte todo o programa para depois executá-lo em linguagem de máquina.  
+Diferentemente do interpretador, o compilador converte todo o programa, **chamado de programa-fonte**, escrito na linguagem de alto nível C, em um código em **linguagem de máquina**, para depois executá-lo.  
 Além do compilador, outros processos são realizados para a geração do **código executável**:  
-- *Link* edição: realizado pelo ***linker***, é o processo de combinar o resultado compilado (em linguagem de máquina) das funções e outros objetos, tanto aqueles da biblioteca padrão quanto aqueles criadas pelo próprio programador, com o código principal - que contém a função *main()* - compilado. 
-- Pré-processamento: realizado pelo **pré-processador**, é o processo que consiste em (i) remover os comentários do programa; e (ii) interpretar as **diretivas** especiais.  
+- ***Link* edição**: realizado pelo ***linker***, é o processo de combinar o resultado compilado (em linguagem de máquina) das funções e outros objetos, tanto aqueles da biblioteca padrão quanto aqueles criadas pelo próprio programador, com o código principal - que contém a função *main()* - compilado. 
+- **Pré-processamento**: realizado pelo **pré-processador**, é o processo que consiste em (i) remover os comentários do programa; e (ii) interpretar as **diretivas** especiais.  
 
 ## 1.7 Diretivas da linguagem C
 As diretivas são incluídas no corpo das instruções de pré-processamento e iniciam pelo caractere especial `#`, por exemplo `#include <stdio.h>`.  
