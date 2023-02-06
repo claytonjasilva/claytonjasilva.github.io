@@ -1,6 +1,6 @@
 ## 1.6 Estrutura de programa em C
 
-Os programas em C podem ser decompostos em módulos, instruções, expressões e objetos:
+Os programas em C podem ser decompostos da seguinte forma:
 
 - Os programas são organizados em **projetos**.
 - Cada projeto possui pastas, algumas das quais contendo os **códigos nativos do padrão utilizado do compilador**, chamados de **bibliotecas**
