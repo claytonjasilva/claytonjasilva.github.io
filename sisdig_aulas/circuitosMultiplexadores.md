@@ -6,6 +6,7 @@ São circuitos lógicos que aceitam vários dados de entrada e selecionam um del
 Possuem dois tipos de entradas:
 - Entradas de **dados**.
 - Entradas **de seleção ou de endereço**.  
+
 Possuem **uma saída**.
 Atuam como uma **chave digital**.
 A figura ilustra.  
