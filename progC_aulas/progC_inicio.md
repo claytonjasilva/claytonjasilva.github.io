@@ -36,5 +36,5 @@ Algumas funcionalidades:
 - Ferramentas de colaboração em equipe (por exemplo, Google Docs, GitHub)
 
 ___ 
-**Primeiros passos: [próximo>>](prog_replit.md)**  
+**Primeiros passos: [próximo>>](progC_replit.md)**  
 **[home](https://claytonjasilva.github.io/progC_aulas.html)**
