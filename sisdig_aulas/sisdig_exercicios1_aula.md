@@ -20,5 +20,6 @@ c. $\overline{W+P.\bar{Q}}$, dado que W=0, P=Q=1
 3. Seja a função booleana dada por $z=M.N.(P+\bar{N})$. Quais são os valores que *z* pode assumir em função da combinação de suas variáveis booleanas independentes?   Apresentar a resposta na forma de tabela-verdade.
 
 4. Dados os circuitos (a) e (b) apresentados abaixo, apresentar a respectiva expressão booleana que define a saída *x*.
+![Circuitos questão 4](/sisdig_aulas/images_sisdig/circuitosexercicio1_4.jpg)
 
 5. Considerando os circuitos apresentados na figura da questão 4, apresentar as tabelas-verdade que representam o comportamento do circuito para todas as combinações de entradas.
