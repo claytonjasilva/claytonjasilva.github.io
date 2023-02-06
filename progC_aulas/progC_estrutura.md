@@ -3,7 +3,7 @@
 Os programas em C podem ser decompostos da seguinte forma:
 
 - Os programas são organizados em **projetos**.
-- Cada projeto possui pastas, algumas das quais contendo os **códigos nativos do padrão utilizado do compilador**, chamados de **bibliotecas**
+- Cada projeto possui pastas, algumas das quais contendo os **códigos nativos do padrão C utilizado do compilador**, chamados de **bibliotecas**
 - Contém também as bibliotecas com os códigos **criados pelo próprio programador do projeto**.
 - Contém o código principal desenvolvido pelo programador, cuja estrutura é a seguinte:
 1. Instruções de **pré-processamento**;
