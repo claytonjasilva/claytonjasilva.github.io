@@ -31,14 +31,15 @@ Os instrumentos de avaliação continuada serão disponibilizados à medida que 
 2. [Lista 2 de Exercícios](arq_aulas/arq_exercicios2_sala.md)  
 3. [Lista 3 de Exercícios](arq_aulas/arq_exercicios3_sala.md)  
 4. [Lista 4 de Exercícios](arq_aulas/arq_exercicios4_sala.md)  
-5. [Exercício 1 - 2022.2: Conceitos iniciais e máquina de níveis](arq_aulas/form1.pdf)
-6. [Exercício 2 - 2022.2: Programa assembly no set da máquina IAS](arq_aulas/exercicio2.md)
-7. [Exercício 3 - 2022.2: Números e aritmética binária](arq_aulas/exercicio3.md)    
-8. [Exercício 4 - 2022.2: Nível de lógica digital](arq_aulas/exercicio4.md)
-9. [Exercício 5 - 2022.2: memória](arq_aulas/exercicio5.md) --- [*download* da solução](https://1drv.ms/b/s!AsTd8oN7mu8pkb421P5nTY2l-Zc29Q?e=1K5oEw)
-10. [Exercício 6 - 2022.2: mapeamento MP-cache, barramento e processadores](arq_aulas/exercicio6.md) --- [*download* da solução](https://1drv.ms/b/s!AsTd8oN7mu8pkcBLKzmih8KY92Z2og?e=DeHjSy)
-11. [Form AC](https://forms.gle/1VrBMtB1XZw76Bpj7)
-12. [Exercício 7 - 2022.2: sistemas operacionais](https://forms.gle/LrqzCYKG551iWWG76) - **não será computado para avaliação continuada**
+5. [Lista 5 de Exercícios](arq_aulas/arq_exercicios5_sala.md)
+6. [Exercício 1 - 2022.2: Conceitos iniciais e máquina de níveis](arq_aulas/form1.pdf)
+7. [Exercício 2 - 2022.2: Programa assembly no set da máquina IAS](arq_aulas/exercicio2.md)
+8. [Exercício 3 - 2022.2: Números e aritmética binária](arq_aulas/exercicio3.md)    
+9. [Exercício 4 - 2022.2: Nível de lógica digital](arq_aulas/exercicio4.md)
+10. [Exercício 5 - 2022.2: memória](arq_aulas/exercicio5.md) --- [*download* da solução](https://1drv.ms/b/s!AsTd8oN7mu8pkb421P5nTY2l-Zc29Q?e=1K5oEw)
+11. [Exercício 6 - 2022.2: mapeamento MP-cache, barramento e processadores](arq_aulas/exercicio6.md) --- [*download* da solução](https://1drv.ms/b/s!AsTd8oN7mu8pkcBLKzmih8KY92Z2og?e=DeHjSy)
+12. [Form AC](https://forms.gle/1VrBMtB1XZw76Bpj7)
+13. [Exercício 7 - 2022.2: sistemas operacionais](https://forms.gle/LrqzCYKG551iWWG76) - **não será computado para avaliação continuada**
 
 
 ## Referências  
