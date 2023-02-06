@@ -116,7 +116,7 @@ A tabela apresenta uma comparação entre representações de inteiros negativos
 
 ___  
 **Representação de números de ponto flutuante: [próximo>>](dimensoesUnidadesAritmeticaComputacional4.md)**    
-[home](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/arq_aulas.md)   
+**[home](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/arq_aulas.md)**    
 **[<<anterior](dimensoesUnidadesAritmeticaComputacional2.md)**    
 
 
