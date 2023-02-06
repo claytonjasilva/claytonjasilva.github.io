@@ -14,6 +14,7 @@ a **especificação do nome e dos parâmetros da função**;
 3. Declaração das variáveis de escopo global - possuem visibilidade em todo o progama;
 4. Função ***main()***, código principal;
 5. Definição das funções.
+
 ___
 
 
@@ -130,13 +131,14 @@ res = (12 + 3) * 1.35;
 Observe que **as sentenças são separadas pelo `;`**
 
 ## 1.9 Exercícios de aula 
-1. Criar códigos na linguagem Python que contenham expressões aritméticas para determinar o resultado dos seguintes problemas, utilizando os dados apresentados:  
+1. Criar códigos na linguagem C que contenham expressões aritméticas para determinar o resultado dos seguintes problemas, utilizando os dados apresentados:  
 - Quantos minutos dois dias e 18 horas contemplam?  
 - Qual é a área de um terreno retangular com lados de 50 metros e 15 metros? 
 - Quantas voltas um corredor completou em uma pista com perímetro de 400 metros se ele conseguiu correr 2.300 metros? 
 - Um veículo consome em média 2 litros de gasolina para percorrer 19,5 quilômetros. Quantos quilômetros o veículo deverá percorrer se o tanque de combustível possuir capacidade de armazenar 50 litros?  
 - A fórmula para determinação da nota final é definida por uma média ponderada em que a nota de cada avaliação parcial possui peso de 40% e a avaliação continuada, peso de 20%. A média para aprovação é 7,0. Se o aluno obtiver nota 6,5 na AP1; nota 8,3 na AP2; e nota 6,9 na AC; ele será aprovado?  
-2. Criar *scripts* da linguagem Python, utilizando variáveis e atribuindo a elas os dados especificados nas questões acima, assim como o resultado de cada uma das expressões. Lembre-se de utilizar **nomes de variáveis** que facilitem a legibilidade do *script*. 
+2. Criar *scripts* da linguagem C, utilizando variáveis e atribuindo a elas os dados especificados nas questões acima, assim como o resultado de cada uma das expressões. Lembre-se de utilizar **nomes de variáveis** que facilitem a legibilidade do *script*. 
+
 ___
 **[<<anterior](progC_replit.md)**  
 **[home](/progC_aulas.md)**
