@@ -13,10 +13,12 @@
 * [Sistemas Digitais](sisdig.md)
 
 ## Cursos complementares
-* Linguagem C - Referências:  
-  1. [Eclipse IDE](https://www.eclipse.org/downloads/)
-  2. [C: como programar](https://plataforma.bvirtual.com.br/Leitor/Publicacao/2660/pdf/0)  
-  3. [IME-USP](https://www.ime.usp.br/~pf/algoritmos/index.html)  
+* Linguagem C
+  1. [Notas sobre C](progC_aulas.md)
+  2. Referências na Internet:
+    * [Eclipse IDE](https://www.eclipse.org/downloads/)
+    * [C: como programar](https://plataforma.bvirtual.com.br/Leitor/Publicacao/2660/pdf/0)
+    * [IME-USP](https://www.ime.usp.br/~pf/algoritmos/index.html)  
 * Arduíno 2560
   1. [Notas sobre Arduíno MEGA 2560](arduino.md)
   2. Manuais do ATmega2560  
