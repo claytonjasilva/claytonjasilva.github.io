@@ -12,8 +12,13 @@ e.	Admitindo que se deseja armazenar 1 segundo do sinal digitalizado em memória
 f.	Admitindo que se deseja transmitir o sinal digitalizado (sem uso de técnicas de compressão), qual é a capacidade mínima (em taxa de transmissão de bits – bits/seg)
 do canal de comunicações para que não haja perda de informação?  
 
-2. Determine o valor lógico das expressões booleanas apresentadas a seguir.
-a. $A.B.(C+D)$, dado que A=B=0, C=D=1  
-b. 
+2. Determine o valor lógico das expressões booleanas apresentadas a seguir.  
+a. $\overline{A.B.(C+D)}$, dado que A=B=0, C=D=1  
+b. $A.(B+\overline{C.D.E})+\bar{B}.C.\bar{D}$, dado que A=C=0, B=D=E=1  
+c. $\overline{W+P.\bar{Q}}$, dado que W=0, P=Q=1
 
+3. Seja a função booleana dada por $z=M.N.(P+\bar{N})$. Quais são os valores que *z* pode assumir em função da combinação de suas variáveis booleanas independentes?   Apresentar a resposta na forma de tabela-verdade.
 
+4. Dados os circuitos (a) e (b) apresentados abaixo, apresentar a respectiva expressão booleana que define a saída *x*.
+
+5. Considerando os circuitos apresentados na figura da questão 4, apresentar as tabelas-verdade que representam o comportamento do circuito para todas as combinações de entradas.
