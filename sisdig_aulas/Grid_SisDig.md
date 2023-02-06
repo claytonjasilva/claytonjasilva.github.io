@@ -44,4 +44,4 @@ Objetivo 5: Analisar, projetar e aplicar circuitos conversores analógico-digita
 - Thomas, Floyd;	Sistemas Digitais: Fundamentos e Aplicações;	Bookman;	2007  
 - Tales, Pimenta;	Circuitos Digitais - Análise e Síntese Lógica - Aplicações em FPGA; LTC;	2016
 
-#### [Home - Sistemas Digitais - Prof Clayton J A Silva](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/sisdig.md)
+#### [Home - Sistemas Digitais - Prof Clayton J A Silva](/sisdig.md)
