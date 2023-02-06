@@ -32,14 +32,14 @@ Sempre *S=1* a saída é igual I<sub>1</sub>. Ou seja, a tabel verdade pode ser 
 | 0 | I<sub>0</sub> |
 | 1 | I<sub>1</sub> |
 
-Analisando-se a tabela verdade não é difícil verificar que a expressão lógica de $Z=I_0.\bar{S}+I_1.S$, o que resulta no circuito apresentado pela figura.
+Analisando-se a tabela verdade não é difícil verificar que a expressão lógica de $Z=I_0.\bar{S}+I_1.S$, o que resulta no circuito apresentado pela figura.  
 ![Circuito multiplexador de 2 entradas](/sisdig_aulas/images_sisdig/multiplexador2entradas.jpg)
 
-Similarmente pode-se projetar um multiplexador de 4 entradas. Utilizando portas lógicas será obtido o circuito da figura.
+Similarmente pode-se projetar um multiplexador de 4 entradas. Utilizando portas lógicas será obtido o circuito da figura.  
 ![Circuito multiplexador de 4 entradas](/sisdig_aulas/images_sisdig/multiplexador4entradas.jpg)
 
 ## 7.2 Circuito Integrado de multiplexação
-A figura ilustra um circuito integrado 74151, de 8 entradas.  
+A figura ilustra um circuito integrado 74151, de 8 entradas.   
 ![Circuito multiplexador de 8 entradas](/sisdig_aulas/images_sisdig/multiplexador8entradas.jpg)
 
 ___
