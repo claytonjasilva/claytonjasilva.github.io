@@ -1,6 +1,6 @@
 # 1. Programando com C
 
-## 1.1 O que é Python?
+## 1.1 O que é C?
 Uma linguagem de **alto nível** para que os usuários possam escrever **programas** que determinem como computadores possam resolver problemas.
 
 ## 1.2 O que é um programa de computador?
