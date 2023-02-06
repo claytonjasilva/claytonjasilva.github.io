@@ -32,7 +32,7 @@ Os instrumentos de avaliação continuada serão disponibilizados à medida que 
 3. [Lista 3 de Exercícios](arq_aulas/arq_exercicios3_sala.md)  
 4. [Lista 4 de Exercícios](arq_aulas/arq_exercicios4_sala.md)  
 5. [Lista 5 de Exercícios](arq_aulas/arq_exercicios5_sala.md)
-6. [Exercício 1 - 2022.2: Conceitos iniciais e máquina de níveis](arq_aulas/form1.pdf)
+6. [Lista 6 de Exercícios](arq_aulas/arq_exercicios5_sala.md)
 7. [Exercício 2 - 2022.2: Programa assembly no set da máquina IAS](arq_aulas/exercicio2.md)
 8. [Exercício 3 - 2022.2: Números e aritmética binária](arq_aulas/exercicio3.md)    
 9. [Exercício 4 - 2022.2: Nível de lógica digital](arq_aulas/exercicio4.md)
