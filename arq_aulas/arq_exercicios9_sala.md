@@ -1,4 +1,4 @@
-# Lista de exercícios: elementos dos sistemas computacionais
+# Lista 9 de exercícios: elementos dos sistemas computacionais
 ## Mapeamento MP-Cache, barramento e processadores
 
 1)Seja um sistema de memória de uma arquitetura computacional que utilize **mapeamento direto** MP-cache. A memória primária possui 256 MB de capacidade de armazenamento. A cache possui 8 kB de capacidade de armazenamento. Ambas utilizam palavras de 4 bits.  
