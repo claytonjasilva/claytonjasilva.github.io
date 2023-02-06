@@ -88,7 +88,7 @@ Os operandos são os dados sobre os quais serão realizadas as operações. Os d
 | Tipo | Descrição |
 | - | - |
 | `int` | números inteiros, podendo variar para `long` ou `short` em função da capacidade de representação desejada |
-| `float` | números de **ponto flutuante**, que represenetam números fracionários computacionalmente, podendo variar para `double` |
+| `float` | números de **ponto flutuante**, que representam números fracionários computacionalmente, podendo variar para `double` - a parte fracionária é separada da inteira pelo ponto de fração (`.`) |
 
 ## 1.9 Variáveis em C
 Variáveis são representações simbólicas de dados que pertencem a um determinado conjunto.  
