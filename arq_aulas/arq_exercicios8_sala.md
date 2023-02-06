@@ -68,3 +68,6 @@ Instruções que não acessam memória são executadas em 2 nseg.
 a. Qual é o elemento que verifica se um dado requisitado pelo processador se encontra armazenado na cache?  
 b. O que acontecerá se o dado requisitado **não estiver disponível** na cache?  
 c. O que acontecerá se o dado requisitado **estiver disponível** na cache?  
+
+___
+**[home](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/arq_aulas.md)**  
