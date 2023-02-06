@@ -67,6 +67,7 @@ e. Caso a técnica de substituição seja LRU, dada a tabela abaixo, qual seria 
 Discutimos agora que os processadores possuem no *set* de instruções, algumas que empregam **modo de endereçamento indireto**.
 Explicar com suas palavras como opera uma instrução desse tipo, as vantagens e desvantagens quando comparadas com as instruções de modo direto e imediato.
 
-
+___
+**[home](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/arq_aulas.md)**  
 
 
