@@ -10,7 +10,7 @@ O que acontecerá se o valor de *duty cycle* for de 20%?
 
 3.	Sejam circuito e sinais apresentados abaixo, admitindo que todos os FF tipo D apresentem 0 na saída no instante inicial, 
 apresentar o esboço da curva de resposta do circuito em A, B e C.
-![Circuitos questão 4.2](/sisdig_aulas/images_sisdig/circuitosexercicio4_2.jpg) 
+![Circuitos questão 4.3](/sisdig_aulas/images_sisdig/circuitosexercicio4_3.jpg) 
  
 4.	Qual seria a resposta do circuito se o FF tipo D for substituído por um FF tipo T?
 
@@ -27,6 +27,7 @@ conectando o bit mais significativo na entrada de enable do MUX. Desenhe a forma
 ![Circuitos questão 4.9](/sisdig_aulas/images_sisdig/circuitosexercicio4_9.jpg) 
  
 10.	Utilizando o mesmo contador decádico da questão anterior, desenhar a forma de onda da saída do MUX.
+![Circuitos questão 4.10](/sisdig_aulas/images_sisdig/circuitosexercicio4_10.jpg) 
 
 ___
 **[home](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/sisdig_aulas.md)** 
