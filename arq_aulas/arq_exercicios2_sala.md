@@ -1,4 +1,4 @@
-# Lista 2 de exercícios em sala: Aritmética computacional
+# Lista 2 de exercícios em sala: Aritmética em binário puro e representação de numéros negativos 
 
 1. Admitindo **palavras de 6 bits**, representação em **binário puro**, realizar as operações de adição e subtração solicitadas abaixo.
 Indicar a ocorrência de *overflow*, se for o caso. Além disso, se o resultado é negativo.  
