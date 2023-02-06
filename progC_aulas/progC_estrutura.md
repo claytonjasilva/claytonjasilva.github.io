@@ -14,7 +14,6 @@ a **especificação do nome e dos parâmetros da função**;
 3. Declaração das variáveis de escopo global - possuem visibilidade em todo o progama;
 4. Função ***main()***, código principal;
 5. Definição das funções.
-
 ___
 
 
@@ -74,6 +73,7 @@ Por exemplo, a sequência mais simples de substituição de macro pode ser
 
 As expressões aritméticas contemplam **operadores** e **operandos** de vários **tipos**.  
 Os **operadores aritméticos** sinalizam para o compilador a operação aritmética correspondente. São eles:
+
 | Operador | Operação |
 | - | - |
 | `+` | Adição |
@@ -88,6 +88,7 @@ Os operadores possuem prioridade para serem resolvidos, logo é importante organ
 Admite-se o uso do `(` e `)` para delimitar operações que devem ser priorizadas.  
 
 Os operandos são os dados sobre os quais serão realizadas as operações. Os dados numéricos pode ser dos seguintes **tipos**:
+
 | Tipo | Descrição |
 | - | - |
 | `int` | números inteiros, podendo variar para `long` ou `short` em função da capacidade de representação desejada |
@@ -138,4 +139,4 @@ Observe que **as sentenças são separadas pelo `;`**
 2. Criar *scripts* da linguagem Python, utilizando variáveis e atribuindo a elas os dados especificados nas questões acima, assim como o resultado de cada uma das expressões. Lembre-se de utilizar **nomes de variáveis** que facilitem a legibilidade do *script*. 
 ___
 **[<<anterior](progC_replit.md)**  
-**[home](https://claytonjasilva.github.io/progC_aulas.html)**
+**[home](/progC_aulas.md)**
