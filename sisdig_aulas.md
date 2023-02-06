@@ -35,9 +35,6 @@ Os instrumentos de avaliação continuada serão disponibilizados à medida que 
 2. [Lista 2 de Exercícios](sisdig_aulas/sisdig_exercicios2_aulas.md)
 3. [Lista 3 de Exercícios](sisdig_aulas/sisdig_exercicios3_aulas.md)
 4. [Lista 4 de Exercícios](sisdig_aulas/sisdig_exercicios4_aulas.md)
-5. [Lista 5 de Exercícios](sisdig_aulas/sisdig_exercicios5_aulas.md)
-6. [Lista 6 de Exercícios](sisdig_aulas/sisdig_exercicios6_aulas.md)
-7. [Lista 7 de Exercícios](sisdig_aulas/sisdig_exercicios7_aulas.md)
 
 ### *Datasheets* de referência  
 + [Porta AND CD14082BCP](sisdig_aulas/CD14082BCP_Motorola.pdf)  
@@ -52,25 +49,5 @@ Os instrumentos de avaliação continuada serão disponibilizados à medida que 
 + [DECODER BCD-DECIMAL CD4018](sisdig_aulas/CD4028_Texas.pdf)  
 + [COUNTER 74HC161](sisdig_aulas/74HC161_Philips.pdf)  
 + [ADDER 74LS283](sisdig_aulas/74LS283_National.pdf)
-
-
-
-
-1. Álgebra booleana  
-+ [Lista 1: álgebra booleana e portas lógicas](sisdig_aulas/sisdig_exercicios/Lista1-AlgebraBooleana-Gates.pdf)  
-+ [Lista 1: solução](sisdig_aulas/sisdig_exercicios/sisdig_lista1_sol.pdf)
-2. [Form álgebra booleana e portas lógicas](https://forms.gle/5pouUtxLecaapEoL7)
-3. Projeto de circuiots combinacionais
-+ [Lista 2: projeto de circuitos combinacionais](sisdig_aulas/sisdig_exercicios/Lista2-ProjetoCircuitosCombinacionais.pdf)  
-+ [Lista 2: solução](sisdig_aulas/sisdig_exercicios/sisdig_lista2_sol.pdf)
-4. [Form projeto de circuitos combinacionais](https://forms.gle/2CthQwVdgyLThFvQ8)  
-5. Aritmética binária
-+ [Lista 3: representação binária](sisdig_aulas/sisdig_exercicios/Lista3-NumerosBinarios.pdf)  
-+ [Lista 3: solução](sisdig_aulas/sisdig_exercicios/Lista2-Projeto_Circuitos-Solucao.pdf)  
-6. [Form representação binária](https://forms.gle/4nmhzPPj18UVwMiu9)
-7. Multiplexadores 
-+ [Lista 4](sisdig_aulas/sisdig_exercicios/Lista4-Mux.pdf)  
-+ [Form 4: multiplexadores](https://forms.gle/qrKyKyndmcwheaBXA)  
-8. [Lista Flip Flops](sisdig_aulas/Lista3_FF.pdf)   
 
 #### [Home - Sistemas Digitais - Prof Clayton J A Silva](/sisdig.md)
