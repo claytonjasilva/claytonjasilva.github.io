@@ -23,3 +23,6 @@ c. $\overline{W+P.\bar{Q}}$, dado que W=0, P=Q=1
 ![Circuitos questão 4](/sisdig_aulas/images_sisdig/circuitosexercicio1_4.jpg)
 
 5. Considerando os circuitos apresentados na figura da questão 4, apresentar as tabelas-verdade que representam o comportamento do circuito para todas as combinações de entradas.
+
+___
+**[home](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/sisdig_aulas.md)** 
