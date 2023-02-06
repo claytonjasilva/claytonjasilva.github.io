@@ -45,4 +45,4 @@ Os instrumentos de avaliação continuada serão disponibilizados à medida que 
 4. [Tanenbaum, Andrew S.; Sistemas Operacionais Modernos; 3a ed; Pearson, 2007](https://plataforma.bvirtual.com.br/Leitor/Publicacao/1233/pdf/0)  
 5. [Maziero, Carlos; Sistemas Operacionais: Conceitos e Mecanismos; Editora da UFPR; 2019](http://wiki.inf.ufpr.br/maziero/doku.php?id=socm:start)
 
-#### [Home - Arquitetura - Prof Clayton J A Silva](https://claytonjasilva.github.io/arq.html)
+#### [Home - Arquitetura - Prof Clayton J A Silva](/arq_aulas.md)
