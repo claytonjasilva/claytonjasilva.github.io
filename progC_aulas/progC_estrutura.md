@@ -13,8 +13,12 @@ a **especificação do nome e dos parâmetros da função**;
 4. Definição das funções.
 
 Diferentemente do interpretador, o compilador converte todo o programa para depois executá-lo em linguagem de máquina.  
+Além do compilador, outros processos são realizados para a geração do **código executável**:  
+- *Link* edição: realizado pelo ***linker***, é o processo de combinar o resultado compilado (em linguagem de máquina) das funções e outros objetos, tanto aqueles da biblioteca padrão quanto aqueles criadas pelo próprio programador, com o código principal - que contém a função *main()* - compilado. 
 
-## 1.7 As expressões do programa Python
+## 1.7 
+
+## 1.8 As expressões do programa Python
 
 As expressões que geram objetos contemplam:
 
