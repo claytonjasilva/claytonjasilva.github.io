@@ -19,3 +19,5 @@ Apresentar a expressão dos circuitos na forma canônica de soma-de-produtos.
 
 6. Propor um circuito para realizar a multiplicação de um número binário A de 1 bit por um número B de 2 bits.
 
+___
+**[home](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/arq_aulas.md)**  
