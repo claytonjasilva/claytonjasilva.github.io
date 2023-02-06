@@ -58,7 +58,7 @@ Por conveniência da representação das informações em sistemas computacionai
 | ------- | -------- |
 | 1 ***byte*** | **8** bits |
 
-
-[home](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/arq_aulas.md)  
-[<<](dimensoesUnidadesAritmeticaComputacional1.md)  
-[>>](dimensoesUnidadesAritmeticaComputacional3.md)  
+___
+**Representação de números negativos: [próximo>>](dimensoesUnidadesAritmeticaComputacional3.md)**  
+**[home](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/arq_aulas.md)**   
+**[<<anterior](dimensoesUnidadesAritmeticaComputacional1.md)**  
