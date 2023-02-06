@@ -1,4 +1,4 @@
-# Exercícios em sala: Dimensões e Unidades
+# Lista 1 de exercícios em sala: Dimensões e Unidades
 
 1. Apresentar o resultado dos pedidos formulados abaixo
 a. Um processador realiza 25 milhões de operações em 1 segundo, em quanto tempo o processador realizará uma operação? Apresentar o resultado em nanosegundos.  
