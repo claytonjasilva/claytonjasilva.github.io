@@ -17,7 +17,7 @@ Admtindo que a a faixa de representação da notação usada para a mantissa sej
 - a faixa de representação é determinada pelo número de dígitos do expoente; e
 - a precisão é determinada pelo número de dígitos da mantissa. 
 
-
-[home](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/arq_aulas.md)   
-[<<](dimensoesUnidadesAritmeticaComputacional3.md)  
-[>>](dimensoesUnidadesAritmeticaComputacional5.md)
+___
+**Aritmética computacional: [próximo>>](dimensoesUnidadesAritmeticaComputacional5.md)**    
+**[home](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/arq_aulas.md)**   
+**[<<anterior](dimensoesUnidadesAritmeticaComputacional3.md)**    
