@@ -42,7 +42,16 @@
 [Counter](sisdig_aulas/74HC161_Philips.pdf)  
 [Adder](sisdig_aulas/74LS283_National.pdf)
 
-### Listas de exercício e forms
+### Listas de exercício
+1. [Lista 1 de Exercícios](sisdig_aulas/sisdig_exercicios1_aulas.md)
+2. [Lista 2 de Exercícios](sisdig_aulas/sisdig_exercicios2_aulas.md)
+3. [Lista 3 de Exercícios](sisdig_aulas/sisdig_exercicios3_aulas.md)
+4. [Lista 4 de Exercícios](sisdig_aulas/sisdig_exercicios4_aulas.md)
+5. [Lista 5 de Exercícios](sisdig_aulas/sisdig_exercicios5_aulas.md)
+6. [Lista 6 de Exercícios](sisdig_aulas/sisdig_exercicios6_aulas.md)
+7. [Lista 7 de Exercícios](sisdig_aulas/sisdig_exercicios7_aulas.md)
+
+
 1. Álgebra booleana  
 + [Lista 1: álgebra booleana e portas lógicas](sisdig_aulas/sisdig_exercicios/Lista1-AlgebraBooleana-Gates.pdf)  
 + [Lista 1: solução](sisdig_aulas/sisdig_exercicios/sisdig_lista1_sol.pdf)
