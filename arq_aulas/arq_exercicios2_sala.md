@@ -3,9 +3,9 @@
 1. Admitindo **palavras de 6 bits**, representação em **binário puro**, realizar as operações de adição e subtração solicitadas abaixo.
 Indicar a ocorrência de *overflow*, se for o caso. Além disso, se o resultado é negativo.  
 a. 100100 + 110  
-b. 110011 + 101010
-c. 1101 - 110110
-d. 10111 - 111
+b. 110011 + 101010  
+c. 1101 - 110110  
+d. 10111 - 111  
 e. 101 + 1110  
 
 2. Admitindo **palavras de 15 bits**, realizar as operações de adição e subtração solicitadas abaixo.
