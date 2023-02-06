@@ -113,11 +113,11 @@ A tabela apresenta uma comparação entre representações de inteiros negativos
 | -6 | 1110 | 1001 | 1010 | 0010 |
 | -7 | 1111 | 1000 | 1001 | 0001 |
 | -8 | - | - | 1000 | 0000 |
- 
-[home](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/arq_aulas.md)   
-[<<](dimensoesUnidadesAritmeticaComputacional2.md)  
-[>>](dimensoesUnidadesAritmeticaComputacional4.md)
 
+___  
+**Representação de números de ponto flutuante: [próximo>>](dimensoesUnidadesAritmeticaComputacional4.md)**    
+[home](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/arq_aulas.md)   
+**[<<anterior](dimensoesUnidadesAritmeticaComputacional2.md)**    
 
 
 
