@@ -70,7 +70,8 @@ Considerando as camadas acima, pode-se definir os métodos e programas de suport
 
 ![Métodos e programas típicos de conversão de códigos no modelo de 6 níveis](/arq_aulas/images/conversoes_maquina6niveis.jpg)
 
-[home](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/arq_aulas.md)  
+___
+**[home](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/arq_aulas.md)**  
 
 
 
