@@ -80,6 +80,7 @@ Os **operadores aritméticos** sinalizam para o compilador a operação aritmét
 | `%` | Módulo ou resto da divisão inteira |
 | `++` | Incremento |
 | `--` | Decremento |
+
 Os operadores possuem prioridade para serem resolvidos, logo é importante organizá-los na expressão da forma adequada.  
 Admite-se o uso do `(` e `)` para delimitar operações que devem ser priorizadas.  
 
@@ -95,7 +96,8 @@ Como são representações simbólicas possuem uma identificação ou nome, que 
 - Nomes de variáveis são formados por letras e dígitos;
 - O primeiro caractere deve ser uma letra - o caractere *_* é considerado uma letra;
 - Letras maiúsculas e minúsculas são caracteres distintos;
-- Possuem tamanho limitado - no caso do Ansi-C, no máximo 31 caracteres.
+- Possuem tamanho limitado - no caso do Ansi-C, no máximo 31 caracteres.  
+
 O uso das variáveis requer a **declaração do tipo**, cuja sintaxe em C é:
 ```
 <tipo> <nome da variável ou lista de nomes de variáveis>
@@ -109,8 +111,6 @@ float res
 Quando uma variável é declarada o compilador C reserva **um endereço de memória** disponível no computador, com o tamanho necessário para armazenar o dado numérico, e associa a ele um **endereço de memória**.  
 Em C, é muito importante entender essa dinâmica.
 
-Sentença de **atribuição**: o valor armazenado em uma variável ou resultante de uma expressão aritmética é passado a uma variável.
-  
 ## 1.8 Sentença de atribuição
 A sentença de atribuição se caracteriza pela atribuição de um valor a uma variável.  
 A sintaxe para o comando de atribuição é  
