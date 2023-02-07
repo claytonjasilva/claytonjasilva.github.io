@@ -29,7 +29,7 @@ Em consequência, a sintaxe do código principal em C é:
 #define <caractere de entrada> <caractere de saída> /*Se o código precisar de macros */
 <protótipo de funções>
 <declaração de variáveis globais>
-main() {
+void main() {
   <corpo de instruções>
 }
 <definição de funções>
