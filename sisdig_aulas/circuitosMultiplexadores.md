@@ -65,9 +65,8 @@ apresenta os detalhes elétricos e mecânicos do CI, além das entradas e saída
 Observe que o CI da *Texas INstruments* possui alguma modificação da identificação da pinagem do esquema lógico apresentado acima.
 
 ## 7.3 Aplicações com multiplexadores
-Os multiplexadores podem ser usados para algumas aplicações específicas:
+Os multiplexadores podem ser usados para algumas aplicações específicas, como:
 - Conversor série-paralelo
-- Contador
 - Gerador de funções
 
 ### 7.3.1 Mux como Conversor série-paralelo
@@ -86,8 +85,16 @@ do bit menos para o mais significativo ou vice-versa.
 
 A conversão série-paralelo pode ser **assíncrona**, ou seja, um circuito ou uma pessoa ativa a sequência de seleção, portando não é automática a conversão.  
 Por outro lado, automaticamente, operando de acordo com um sinal de *clock* (relógio), os bits das entradas seletoras podem variar.  
-A figura ilustra esse caso.  
-![Conversor série-paralelo com multiplexador síncrono](/sisdig_aulas/images_sisdig/conversorserieparalelosincrono.jpg)
+Nesse caso, as entradas seletoras operam alimentadas por um sinal que se designa **contador síncrono**.  
+![Saída de um contador síncrono](/sisdig_aulas/images_sisdig/contadorsincrono.jpg)    
+Verique que:
+- O sinal de referência é o sinal de *clock*
+- O sinal A possui metade da frequência do sinal de *clock*
+- O sinal B possui metade da frequência do sinal A  
+Esses sinais são gerados por circuitos também chamados de **contadores paralelos**. Pode operar contagem crescente ou decrescente.  
+A figura ilustra a aplicação do mux como conversor série-paralelo síncrono, utilizando um sinal produzido por um contador paralelo.  
+O sinal de *clock* pode alimentar a entrada seletora menos significativa.  
+![Conversor série-paralelo com multiplexador síncrono](/sisdig_aulas/images_sisdig/conversorserieparalelosincrono.jpg)  
 Observe que o período do sinal *S<sub>0</sub>* é a metade do período do sinal *S<sub>1</sub>*. Este, por sua vez, a metade do período do sinal *S<sub>2</sub>*.  
 O período de *S<sub>0</sub>* corresponde ao tempo em que cada bit do registrador é transferido serialmente.
 
