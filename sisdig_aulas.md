@@ -8,7 +8,6 @@
 5. [Circuitos aritméticos - somadores binários](sisdig_aulas/circuitosSomadores.md)
 6. [Circuitos codificadores/decodificadores](sisdig_aulas/circuitosDecodificadores.md)
 7. [Circuitos multiplexadores](sisdig_aulas/circuitosMultiplexadores.md)
-* [Multiplexadores (Mux)](sisdig_aulas/sisdig_6.pdf)
 * Circuitos sequenciais  
     [Flip Flops](sisdig_aulas/sisdig_7.pdf)  
     [Aplicações com FF](sisdig_aulas/sisdig_8.pdf)  
