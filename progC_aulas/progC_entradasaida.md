@@ -48,9 +48,37 @@ Entre o símbolo *%* e a especificação do tipo pode ser usado
 | . | especifica a separação do tamanho do campo da precisão desejada |
 | número inteiro | especifica a precisão (após o ponto) |
 
+O trecho abaixo escreve o resultado de uma operação de adição inteira:
+```
+#include <stdio.h>
+
+void main(){
+  printf("A soma de 3 + 4 eh %i", 3+4);
+}
+```
+
 ### 2.2.2 Função `scanf` 
+A função *scanf* lê do dispositivo de entrada o fluxo de dados, com o **controle do formato** e **atribui os valores convertidos ao formato especificado** a um **ponteiro**.  
+A sintaxe da função *scanf* é a seguinte:
+```
+scanf(<cadeia de caracteres de controle>,<lista de ponteiros dos argumentos>);
+```  
+A cadeia de caracteres pode conter:
+- Espaços ou tabulações, que são ignorados
+- Especificações de conversão  
+Uma especificação de conversão determina a conversão do próximo campo de entrada, de acordo com o mesmo código da função *printf*.  
+Os ponteiros dos argumentos devem ser especificados pelo sinal `&`.
 
+O trecho abaixo escreve o resultado de uma operação de adição inteira:
+```
+#include <stdio.h>
 
+void main(){
+  int x, y;
+  scanf("%i %i",&x,&y);
+  printf("A soma de x + y eh %i", x+y);
+}
+```
 
 ## 2.4 Exercícios com tipos, operadores, entrada/saída  
 1. Elaborar um programa na linguagem C para ler as notas da ap1, ap2 e ac; calcular e escrever a média do semestre do aluno, de acordo com as regras do Ibmec. 
