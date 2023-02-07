@@ -1,6 +1,30 @@
-# 2. Instruções de entrada e saída 
+# 2. Funções de entrada e saída 
 
-## 2.3 Interação do usuário com a máquina: funções de entrada e saída
+## 2.1 Introdução às funções
+Uma função é um bloco de código que pode ser utilizado várias vezes no programa para realizar uma tarefa específica, portanto  
+- escrevê-lo somente uma vez, 
+- definindo-lhe um **nome** e os **parâmetros** necessários para realizar a tarefa  
+- **chamá-lo** no ponto adequado do código é producente.  
+No trecho de código que se desejar resolver a tarefa insere-se o nome da função, inserindo-se entre parêntesis os argumentos, de acordo com o tipo exigido pelos parâmetros da função.  
+Algumas funções respondem **retornando um valor de um determimnado tipo** após a tarefa ser realizada.   
+As funções podem ser definidas pelo programador, no entanto **outras disponíveis nas bibliotecas da linguagem podem ser usadas**.  
+Para que possam ser usadas a diretiva de inclusão `include <nome da biblioteca>` deve ser incluída no programa.
+
+## 2.2 Entrada e Saída: <stdio.h>
+Os dados trocados entre fonte ou destino de dados com um programa deve escrito no código por meio de instruções.  
+São exemplos de fonte e destino de dados: teclado, disco ou outros dispositivos de I/O (entrada/saída).  
+Esses dados configuram-se como fluxo de texto e fluxo binários (bits).  
+Um fluxo de texto é uma sequência de linhas, cada uma com caracteres.  
+Um fluxo binário é uma sequência de bytes não processados, que registram dados internos.   
+Os programas precisam incluir as instruções ou comandos para possiblitar esses fluxos.  
+São categorias de funções, pertencentes à biblioteca <stdio.h>, entre outras:
+- Operações de arquivo;
+- Saída formatada;
+- Entrada foramtada.
+
+### 2.2.1 Função `printf`
+A função *printf* 
+
 O usuário do *script* executado precisa, na maioria dos casos, apresentar os dados para o interpretador realizar as tarefas e receber as informações do interpretador durante a realização das tarefas.  
 Para o usuário **apresentar** os dados ao interpretador, o *script* deve conter **comando de entrada**.  
 Para o usuário **receber** os dados do interpretador, o *script* deve conter **comando de saída**.  
