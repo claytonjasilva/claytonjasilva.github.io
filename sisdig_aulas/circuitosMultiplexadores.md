@@ -137,7 +137,7 @@ A tabela verdade abaixo é a tabela referente à função obtida pelo circuito.
 Os demultiplexadores realizam a operação inversa do mux. A figura ilustra.  
 ![Demultiplexador](/sisdig_aulas/images_sisdig/demultiplexador.jpg)  
 
-Algumas operações propiciadas pelos demux são as inversas do multiplexador, como **conversor série-paralelo**.
+Algumas operações propiciadas pelos demux são as inversas do multiplexador, como **conversor série-paralelo**.  
 ![Demultiplexador](/sisdig_aulas/images_sisdig/conversorserieparalelo.jpg)  
 
 
