@@ -5,7 +5,7 @@ Ministrado como atividade extra classe.
 ## Conteúdo  
 1. [Iniciando...](progC_aulas/progC_inicio.md)  
 2. [Entrada e saída](progC_aulas/progC_entradasaida.md)     
-3. [Conceitos de programação procedural: condicionais simples e compostas](prog_aulas/prog_conceitos2.md)    
+3. [Controle de fluxo: condicionais simples e compostas](progC_condicionais/prog_conceitos2.md)    
 4. [Conceitos de programação procedural: estruturas de repetição](prog_aulas/prog_repeticaowhile.md)  
 5. [Funções](prog_aulas/prog_funcoes.md)
 6. [Listas](prog_aulas/prog_listas.md)
