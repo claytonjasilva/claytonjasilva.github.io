@@ -66,14 +66,16 @@ Observe que o CI da *Texas INstruments* possui alguma modificação da identific
 
 ## 7.3 Aplicações com multiplexadores
 Os multiplexadores podem ser usados para algumas aplicações específicas, como:
-- Conversor série-paralelo
+- Conversor paralelo-série
 - Gerador de funções
 
-### 7.3.1 Mux como Conversor série-paralelo
-A figura abaixo ilustra o projeto de um conversor série-paralelo utilizando um mux.
-![Conversor série-paralelo com multiplexador](/sisdig_aulas/images_sisdig/conversorserieparalelo.jpg)
+### 7.3.1 Mux como Conversor paralelo-série
+A figura abaixo ilustra o projeto de um conversor paralelo-série utilizando um mux.
+![Conversor paralelo-série com multiplexador](/sisdig_aulas/images_sisdig/conversorparaleloserie.jpg)
 O princípio geral de funcionamento é o seguinte:  
-1. As entradas de dados podem ser conectadas as saídas de um registrador.
+1. As entradas de dados podem ser conectadas as saídas de um registrador (portanto, bits simultaneamente armazenados).  
+A conexão de um registrador poderia ser feita a um barramento paralelo. Nesse caso, os bits seriam simultaneamente transferidos.  
+Por outro lado, pode-se desejar transferir os bits por um barramento serial.  
 2. As entradas seletoras S<sub>2</sub>S<sub>1</sub>S<sub>0</sub> recebem três bits que determinam a entrada a trasferir,
 variando crescentemente de 000, 001 até 111.
 3. A entrada de controle *enable* está ativada no nível baixo.
@@ -83,15 +85,15 @@ assim como o valor invertido transferido para a saída $\bar{Z}$.
 do bit menos para o mais significativo ou vice-versa.  
 6. Quando o controle *enable* está no nível alto (H), o conversor deixa de operar. 
 
-A conversão série-paralelo pode ser **assíncrona**, ou seja, um circuito ou uma pessoa ativa a sequência de seleção, portando não é automática a conversão.  
+A conversão paralelo-série pode ser **assíncrona**, ou seja, um circuito ou uma pessoa ativa a sequência de seleção, portanto não automaticamente.  
 Por outro lado, automaticamente, operando de acordo com um sinal de *clock* (relógio), os bits das entradas seletoras podem variar.  
-Nesse caso, as entradas seletoras operam alimentadas por um sinal que se designa **contador síncrono**.  
+Nesse caso, as entradas seletoras operam alimentadas por um circuito que se designa **contador paralelo síncrono**.  
 ![Saída de um contador síncrono](/sisdig_aulas/images_sisdig/contadorsincrono.jpg)    
 Verique que:
 - O sinal de referência é o sinal de *clock*
 - O sinal A possui metade da frequência do sinal de *clock*
 - O sinal B possui metade da frequência do sinal A  
-Esses sinais são gerados por circuitos também chamados de **contadores paralelos**. Pode operar contagem crescente ou decrescente.  
+Esses sinais são gerados por circuitos também chamados de **contadores paralelos** porque produzem os bits simultaneamente. Pode operar contagem crescente ou decrescente.  
 A tabela verdade é a seguinte:
 
 | Contagem | B | A | Clock | 
@@ -105,19 +107,21 @@ A tabela verdade é a seguinte:
 | 6 | 1 | 1 | 0 |
 | 7 | 1 | 1 | 1 |
 
-A figura ilustra a aplicação do mux como conversor série-paralelo síncrono, utilizando um sinal produzido por um contador paralelo.  
+A figura ilustra a aplicação do mux como conversor paralelo-série síncrono, utilizando um sinal produzido por um contador paralelo.  
 O sinal de *clock* pode alimentar a entrada seletora menos significativa.  
-![Conversor série-paralelo com multiplexador síncrono](/sisdig_aulas/images_sisdig/conversorserieparalelosincrono.jpg)  
+![Conversor paralelo-série com multiplexador síncrono](/sisdig_aulas/images_sisdig/conversorserieparalelosincrono.jpg)  
 Observe que o período do sinal *S<sub>0</sub>* é a metade do período do sinal *S<sub>1</sub>*. Este, por sua vez, a metade do período do sinal *S<sub>2</sub>*.  
 O período de *S<sub>0</sub>* corresponde ao tempo em que cada bit do registrador é transferido serialmente.
 
-### 7.3.1 Mux como gerador de funções
-A figura abaixo ilustra o projeto de um gerador de funções utilizando um mux.
-![Gerador de funções com multiplexador](/sisdig_aulas/images_sisdig/geradorfuncoes.jpg)
+### 7.3.2 Mux como gerador de funções
+A figura abaixo ilustra o projeto de um gerador de funções utilizando um mux.  
+![Gerador de funções com multiplexador](/sisdig_aulas/images_sisdig/geradorfuncoes.jpg)  
 O princípio geral de funcionamento é o seguinte:  
 - As entradas seletora são as variáveis booleanas independente da função
 - Cada combinação das entradas corresponde à conexão da entrada de dados com 0 ou 1  
+  
 A tabela verdade abaixo é a tabela referente à função obtida pelo circuito.  
+
 | A | B | C | Z | 
 | - | - | - | - |
 | 0 | 0 | 0 | 0 |
@@ -128,6 +132,13 @@ A tabela verdade abaixo é a tabela referente à função obtida pelo circuito.
 | 1 | 0 | 1 | 0 |
 | 1 | 1 | 0 | 0 |
 | 1 | 1 | 1 | 1 |
+
+## 7.4 Demultiplexador
+Os demultiplexadores realizam a operação inversa do mux. A figura ilustra.  
+![Demultiplexador](/sisdig_aulas/images_sisdig/demultiplexador.jpg)  
+
+Algumas operações propiciadas pelos demux são as inversas do multiplexador, como **conversor série-paralelo**.
+![Demultiplexador](/sisdig_aulas/images_sisdig/conversorserieparalelo.jpg)  
 
 
 ___
