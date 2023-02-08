@@ -17,6 +17,13 @@ a **especificação do nome e dos parâmetros da função**;
 
 ___
 
+As instruções dos progrfamas em C são sempre separadas pelo caractere especial `;`, delimitando o fim de uma instrução e o início da instrução seguinte.  
+Por exemplo,  
+```
+x = 3 * 4 + y;
+x++;
+print("O resultado eh %i",x);
+```
 
 Diferentemente do interpretador, o compilador converte todo o programa, **chamado de programa-fonte**, escrito na linguagem de alto nível C, em um código em **linguagem de máquina**, para depois executá-lo.  
 Além do compilador, outros processos são realizados para a geração do **código executável**:  
