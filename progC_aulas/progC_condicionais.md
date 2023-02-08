@@ -39,7 +39,7 @@ As operações são conjunção, disjunção ou negação.
 | ! | negação |
 
 # 3.2 Condicionais simples
-Na condicional simples, a execução da instrução é condicionada ao resultado da expressão lógica da sentença, cuja sintaxe é
+Na condicional simples, a execução da de um bloco de instruções interno ao comando é condicionada ao resultado da expressão lógica da sentença, cuja sintaxe é
 ```
 if (<expressão lógica>) {
   <bloco de instruções>
@@ -47,8 +47,10 @@ if (<expressão lógica>) {
 ```
 A expressão lógica é calculada pelo compilador.  
 A condição só pode gerar somente um resultado dentre dois possíveis: **1** (verdadeiro) ou **0** (falso).  
-A instrução (ou bloco de instruções) interna é executa somente se a expressão lógica de sua sentença resultar 1. Em caso contrário, o compilador executa o bloco das instruções internas ao *if* após a instrução condicional, **que deve ser delimitado entre chaves**.  
-**Se houver somente uma instrução no bloco** o compilador admite não se usar a delimitação entre chaves.
+A instrução (ou bloco de instruções) interna é executa somente se a expressão lógica de sua sentença resultar 1. Em caso contrário, o compilador executa seguinte ao *if* no programa.  
+O bloco das instruções internas ao *if* após a instrução condicional **deve ser delimitado entre chaves**.  
+**Se houver somente uma instrução no bloco** o compilador admite não se usar a delimitação entre chaves.  
+Observe que a indentação opera exclusivamente para proporcionar mais clareza ao código, facilitando a manutenção, legibilidade etc.  
 
 Um exemplo é o seguinte:  
 ```
@@ -60,11 +62,44 @@ void main(){
   if (num>10) printf("\n\nO numero e maior do que 10");
   if (num==10) {
     printf("\n\nVoce acertou!\n");
-    printf("\O numero e igual a 10");
+    printf("\nO numero e igual a 10");
   }
   if (num<10) printf("\n\nO numero e menor do que 10");
 }
 ```
 
-
 # 3.3 Condicionais compostas
+Na condicional composta, a execução de um bloco de instruções interno ao comando *if* é condicionada ao resultado da expressão lógica da sentença ser verdadeira (valor 1), enquanto a execução de **outro** bloco de instruções, interno ao comando *else*, é condicionada ao resultado ser falso (valor lógico igual a 0).
+A sintaxe é
+```
+if (<expressão lógica>) {
+  <bloco de instruções>
+}
+else {
+  <bloco de instruções>
+}
+```
+A expressão lógica é calculada pelo compilador.  
+A condição só pode gerar somente um resultado dentre dois possíveis: **1** (verdadeiro) ou **0** (falso).  
+A instrução (ou bloco de instruções) interno ao *if* é executado somente se a expressão lógica de sua sentença resultar 1.   
+Em caso contrário, o compilador executa o bloco das instruções interno ao *else*.
+Como anteriormente, **o bloco de instruções deve ser delimitado entre chaves**.  
+**Se houver somente uma instrução no bloco** o compilador admite não se usar a delimitação entre chaves.
+
+Um exemplo é o seguinte:  
+```
+#include <stdio.h>
+void main(){
+  int num; // Declaração da variável num
+  printf("Digite um numero: "); // Criar uma interface do programa com o usuário
+  scanf("%d",&num);
+  if (num>10) printf("\n\nO numero e maior do que 10");
+  else {
+    printf("\n\nO numero e menor ou igual a 10");
+    if (num<5) {
+      printf("\n\nO numero e menor do que 5\n");
+      printf("\nO numero e %d",num);
+    }
+  }
+}
+```
