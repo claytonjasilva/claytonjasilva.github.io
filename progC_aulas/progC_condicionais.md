@@ -117,27 +117,43 @@ Diz-se que os ***ifs* estão aninhados**.
 
 O C possui uma instrução composta cuja sintaxe é a seguinte:  
 ```
-if <expressao logica 1>:  
-      <instrucao ou bloco 1 de instruções>
-elif <expressao logica 2>:
-      <instrucao ou bloco 2 de instruções>
+switch (<variável>) {
+case <constante 1>:
+  <bloco 1 de instruções>
+  break;
+case <constante 2>:
+  <bloco 2 de instruções>
+  break;
 ...
-elif <expressao logica n>:
-      <instrucao ou bloco de instruções n>
-else:
-      <instrucao ou bloco de instruções n+1>
+default:
+  <bloco n de instruções>
+}
 ```  
 , cujo funcionamento é o seguinte:
-1. O interpretador calcula a expressão lógica 1. Se resultar *True* executa o bloco 1, encerra a execução, passando ao próximo comando do *script*. Se resultar *False* calcula a expressão lógica 2.
-2. Se a expressão lógica 2 resultar *True* o interpretador executa o bloco 2 de instruções e passa ao comando seguinte. Se resultar *False* calcula a expressão lógica seguinte.
-3. O interpretador repete esse processo, calculando todas as expressões lógicas até obter resultado *True*, executando o respectivo bloco de instruções, ou seguindo adiante à próxima expressão lógica.
-4. O último *else* é opcional. Se todas as expressões lógicas resultarem *False* nenhum comnado interno é executado e o interpretador segue ao próximo comando do *script* **se não for utilizado o último *else*.
-5. Se o último *else* for utilizado, após todas as espressões lógicas resultarem *False* o comando (ou bloco de comandos) interno a ele será executado. após isso, o interpretador passa à instrução seguinte do *script*.
+1. O compilador testa o valor da variável comparando-o com a constante 1. 
+2. Caso seja igual, o compilador executa o bloco 1 de instruções (interno ao *case*) e segue para a instrução posterior ao *switch* do código.
+3. Caso não seja igual, testa o valor da variável, comparando-o com a contante 2.
+4. Executa o bloco de instruções interno ao *case* da constante 2.
+5. O compilador executa esse procedimento até alcançar *else* no caso da variável não armazenar valor igual a nenhuma das constantes.
+6. Nesse caso, executa o bloco de instruções interno ao *else* e segue à execução da próxima instrução do código.
+7. Importante que o **uso do *else* é opcional**.
+
+Adaptando o exemplo anterior para ilustrar o uso do *switch*, temos:  
+```
+switch (a) {
+case 100:
+  printf("Voce digitou 100");
+  break;
+case 50:
+  printf("Voce digitou 50");
+  break;
+default:
+  printf("Voce digitou numero diferente de 50 e de 100");
+}
+```
                   
 ## 3.3 Exercícios com condicionais simples e compostas  
-1. Elaborar um programa na linguagem Python para ler dois números; calcular e escrever o maior dos números lidos. [*Script 3.1*](https://github.com/claytonjasilva/prog_exemplos/blob/main/maior2num.py)
-2. Elaborar um programa na linguagem Python para ler a idade de uma pessoa. Se a idade for igual ou inferior a 10 anos, classificar a pessoa como 'criança'. Caso a idade seja inferior a 18 anos e superior a 10 anos, classificar como 'adolescente'. Em qualquer outro caso, classificar como 'adulto'. Apresentar a classificação atribuída. [*Script 3.2*](https://github.com/claytonjasilva/prog_exemplos/blob/main/classIdade.py)  
-3. Elaborar um programa na linguagem Python para ler os nomes, pesos e altura de 3 pessoas; calcular e escrever os nomes de cada pessoa com IMC superior a 22 ('valor alto') ou com IMC inferior a 20 ('valor baixo'), seguido do respectivo IMC calculado. [*Script 3.3*](https://github.com/claytonjasilva/prog_exemplos/blob/main/calcIMC3.py)  
-**Obs.: Para reflexão** - É prático para escrever códigos se a linguagem possuir instruções que permitam repetir um bloco de instruções quando uma condição for verdadeira. O Python dispõe de **expressões compostas de repetição**.   
-4. Elaborar um programa na linguagem Python para ler o nome e a idade de 3 animais; calcular e escrever o nome do animal mais velho. [*Script 3.4*](https://github.com/claytonjasilva/prog_exemplos/blob/main/maior3id.py) 
-
+1. Elaborar um programa na linguagem C para ler dois números; calcular e escrever o maior dos números lidos.
+2. Elaborar um programa na linguagem C para ler a idade de uma pessoa. Se a idade for igual ou inferior a 10 anos, classificar a pessoa como 'criança'. Caso a idade seja inferior a 18 anos e superior a 10 anos, classificar como 'adolescente'. Em qualquer outro caso, classificar como 'adulto'. Apresentar a classificação atribuída.
+3. Elaborar um programa na linguagem C para ler os nomes, pesos e altura de 3 pessoas; calcular e escrever os nomes de cada pessoa com IMC superior a 22 ('valor alto') ou com IMC inferior a 20 ('valor baixo'), seguido do respectivo IMC calculado.
+4. Elaborar um programa na linguagem C para ler o nome e a idade de 3 animais; calcular e escrever o nome do animal mais velho. 
