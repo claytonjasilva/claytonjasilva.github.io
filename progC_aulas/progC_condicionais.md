@@ -25,6 +25,10 @@ A tabela especifica os operadores e a respectiva operação lógica corresponden
 | == | igual |
 | != | diferente |
 
+Os operadores relacionais são aplicados a **dois operandos**.  
+Por exemplo, `3 > 2`, que compara o número 3 com o número 2.
+Os operandos podem conter **números**; **variáveis**, por exemplo, `x > 3`; e **expressões aritméticas**, por exemplo, `x + 3 <= 4 + y`. O compilador resolve primeiro as expressões aritméticas (os operadores aritméticos têm precedência sobre os lógicos).  
+
 ### 3.1.2 Operadores lógicos
 Variáveis, expressões ou constante lógicas podem ser combinadas com operadores lógicos para formar proposições compostas.  
 As operações são conjunção, disjunção ou negação.  
@@ -41,5 +45,26 @@ if (<expressão lógica>) {
   <bloco de instruções>
 }
 ```
+A expressão lógica é calculada pelo compilador.  
+A condição só pode gerar somente um resultado dentre dois possíveis: **1** (verdadeiro) ou **0** (falso).  
+A instrução (ou bloco de instruções) interna é executa somente se a expressão lógica de sua sentença resultar 1. Em caso contrário, o compilador executa o bloco das instruções internas ao *if* após a instrução condicional, **que deve ser delimitado entre chaves**.  
+**Se houver somente uma instrução no bloco** o compilador admite não se usar a delimitação entre chaves.
+
+Um exemplo é o seguinte:  
+```
+#include <stdio.h>
+void main(){
+  int num; // Declaração da variável num
+  printf("Digite um numero: "); // Criar uma interface do programa com o usuário
+  scanf("%d",&num);
+  if (num>10) printf("\n\nO numero e maior do que 10");
+  if (num==10) {
+    printf("\n\nVoce acertou!\n");
+    printf("\O numero e igual a 10");
+  }
+  if (num<10) printf("\n\nO numero e menor do que 10");
+}
+```
+
 
 # 3.3 Condicionais compostas
