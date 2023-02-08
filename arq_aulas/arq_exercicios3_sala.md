@@ -19,3 +19,5 @@ Considerar as representações indicadas.
 a. 0x3EC, base em bit sinal, com 5 bits, expoente em complemento de 2, com 7 bits  
 b. 0x1A3, base em complemento de 1, com 4 bits, expoente em excesso 8
 
+___
+[home](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/arq_aulas.md) 
