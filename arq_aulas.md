@@ -17,6 +17,7 @@
 2. [Prática 2 Arduíno: código, pinos e função de saída](arq_aulas/pratica_saidaArduino.md)     
 3. [Prática 3 Arduíno: código, pinos e função de entrada](arq_aulas/pratica_entradaArduino.md)
 4. [Prática 4 Arduíno: mais sobre código](arq_aulas/pratica_codigoArduino.md)     
+5. [Prática 5 Arduíno: mais sobre código](arq_aulas/pratica_codigoArduino2.md)
 
 ## Avaliações
 ### Avaliações Bimestrais
