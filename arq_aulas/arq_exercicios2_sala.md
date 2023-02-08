@@ -47,3 +47,6 @@ b. + 367d
 c. - 433d  
 d. -255d
 d. -33d  
+
+___
+[home](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/arq_aulas.md) 
