@@ -3,7 +3,7 @@
 1. Utilizando uma [porta AND 74HC08N](https://claytonjasilva.github.io/sisdig_aulas/74HC08N_Philips.pdf), fazer as ligações de VCC e GND do circuito integrado.
 2. Montar o circuito da figura  
 
-3. Utilizar as entrada 1A e 1B, conforme especificado no *datasheet*, ligando as com *jumpers*  
+3. Utilizar as entrada 1A e 1B, conforme especificado no *datasheet*, ligando-as com *jumpers*:  
 Conectar o *jumper* ao GND (-), ou *LOW (L)*, é logicamente equivalente a inserir 0 em uma entrada da porta AND  
 Conectar o *jumper* ao 5V (+), ou *HIGH (H)*, é logicamente equivalente a inserir 1 em uma entrada da porta AND
 4. Verificar o que acontece com o LED, conectado à saída 1Y quando  
@@ -14,9 +14,10 @@ Conectar o *jumper* ao 5V (+), ou *HIGH (H)*, é logicamente equivalente a inser
 | GND | 5V |
 | 5V | GND |
 | 5V | 5V |
-5. Utilizando um **multímetro**, selecionar a posição de medida de tensão DC (*V-*) e observe o sinal na saída 1Y.
-6. Realize a mesma prática utilizando a **fonte de tensão DC**.
-7. Identifique os demais pinos do 74HC08N e realize o mesmo experiemnto. 
+
+5. Utilizando um **multímetro**, selecionar a posição de medida de tensão DC (*V-*) e observar o sinal na saída 1Y.
+6. Realizar a mesma prática utilizando a **fonte de tensão DC**.
+7. Identificar os demais pinos do 74HC08N e realizar o mesmo experiemnto. 
 
  ___
  **[home - Sistemas Digitais](https://claytonjasilva.github.io/sisdig_aulas.html)**
