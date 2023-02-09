@@ -8,7 +8,7 @@ Ministrado como atividade extra classe.
 3. [Controle de fluxo: condicionais simples e compostas](progC_aulas/progC_condicionais.md)    
 4. [Controle de fluxo: estrutura de repetição *while*](progC_aulas/progC_repeticaowhile.md)  
 5. [Controle de fluxo: estrutura de repetição *do-while*](progC_aulas/progC_repeticaodowhile.md)  
-6. [Controle de fluxo: estrutura de repetição *for*](progC_aulas/progC_repeticaodofor.md)  
+6. [Controle de fluxo: estrutura de repetição *for*](progC_aulas/progC_repeticaofor.md)  
 7. [Funções](prog_aulas/prog_funcoes.md)
 8. [Listas](prog_aulas/prog_listas.md)
 9. [Strings](prog_aulas/prog_str.md)
