@@ -73,5 +73,5 @@ A linguagem Python posssui algumas [funções embutidas](https://docs.python.org
 O programa deve executar sucessivas vezes as operações. Na **primeira** repetição, o usuário deve digitar os valores de A e B, seguidos da operação desejada. Nas **repetições seguintes**, o usuário deve digitar o valor de um novo número, seguido da nova operação desejada. A nova operação será aplicada sobre o novo número e o resultado da repetição anterior. O programa será interrompido quando for digitada a operação 'nop' - nenhuma operação - e deverá escrever o último valor resultante da operação. [funcoesNotacaoPolonesa.py](https://github.com/claytonjasilva/prog_exemplos/blob/main/funcoesNotacaoPolonesa.py)
 6. Uma forma de calcular a potência de base *e* de um número é dada por *e^x = 1 + x + x^2/2! + x^3/!3 + ...*, onde *^* representa potência e *!* representa o fatorial do número. Elaborar um programa na linguagem Python para determinar o resultado de *e^x*, em que o usuário ditige na entrada o valor de *x* e o número de interações desejadas (número de termos da série). [funcoesSerieExp.py](https://github.com/claytonjasilva/prog_exemplos/blob/main/funcoesSerieExp.py)
 
-___
-**[home](/prog_aulas.md)**
+___ 
+**[home](https://claytonjasilva.github.io/progPython_aulas.html)**
