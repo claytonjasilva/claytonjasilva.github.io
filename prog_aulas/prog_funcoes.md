@@ -43,6 +43,7 @@ Para criar uma nova função é necessário escrever instruções atendendo a si
   <declarações de variáveis>
   <corpo de instruções>
   return <valor ou expressão de retorno>
+}
 ```
 As declarações de funções podem estar em qualquer ordem, em um arquivo fonte ou diversos, porém **nenhuma função pode estar dividida em dois arquivos**.  
 Se a definição da função for apresentada antes do módulo principal a prototipação é desnecessária, no entanto, se a prototipação for usada, 
