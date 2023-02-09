@@ -1,4 +1,4 @@
-## Prática 1: Sistemas Digitais
+## Prática 1: Relembrando o Arduíno
 
 ### Conectando o Arduíno...
 1. Conectar a alimentação da placa do Arduíno pela porta USB
@@ -8,10 +8,12 @@
 5. Conectar o outro terminal do resistor limitador de corrente ao anodo (+) do led
 6. Conectar o catodo (-) do led ao outro pino GND da placa do Arduíno
 
+Obs. Ver circuito abaixo
+
 #### Observações
-+ Utilizar as trilhas adequadamente do protoboard - Ver <https://www.robocore.net/tutoriais/como-utilizar-uma-protoboard>
++ Utilizar as trilhas adequadamente do *protoboard* - Ver <https://www.robocore.net/tutoriais/como-utilizar-uma-protoboard>
 + Ver a pinagem da placa do Arduíno descrita nas [notas sobre Arduíno](/arduino/arduino_1.pdf)
-+ Relatar o que está ocorrendo fisicamente:  
++ Observar o que está ocorrendo fisicamente:  
   + Ajustar o potenciômetro e relatar o que acontece com o led
   + Por que é importante usar o resistor limitador de corrente?
   + Por que é importante usar o GND da placa do Arduíno?
@@ -24,7 +26,6 @@
 
 #### Observações
 + Usar o [manual da fonte](/manuais/Manual_fonteDC.pdf)
-+ Relatar o que acontece quando se reduz a tensão de alimentação
-+ Explicar o que acontece quando se reduziu a tensão
-+ Identificar o valor da tensão de alimentação que se configura como limite a partir da observação realizada
-+ Explicar o fenômeno observado abaixo desse limite  
++ Relatar e explicar o que acontece quando se reduz a tensão de alimentação
+___
+ **[home - Sistemas Digitais](https://claytonjasilva.github.io/sisdig_aulas.html)**
