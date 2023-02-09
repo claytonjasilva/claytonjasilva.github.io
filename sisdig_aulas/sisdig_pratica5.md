@@ -17,7 +17,7 @@ Conectar o *jumper* ao 5V (+), ou *HIGH (H)*, é logicamente equivalente a inser
 
 5. Utilizando um **multímetro**, selecionar a posição de medida de tensão DC (*V-*) e observar o sinal na saída 1Y.
 6. Realizar a mesma prática utilizando a **fonte de tensão DC**.
-7. Identificar os demais pinos do 74HC08N e realizar o mesmo experiemnto. 
+7. Identificar os demais pinos do 74HC08N e realizar o mesmo experimento. 
 
  ___
  **[home - Sistemas Digitais](https://claytonjasilva.github.io/sisdig_aulas.html)**
