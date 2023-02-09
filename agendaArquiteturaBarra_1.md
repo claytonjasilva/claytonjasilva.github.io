@@ -5,7 +5,7 @@ Prof Clayton J A Silva
 | ---- | ------ |
 | 14/2 | Introdução e conceitos fundamentais | 
 | 21/2 | Recesso Carnaval |
-| 29/2 | Sistemas numéricos e aritmética computacional |
+| 28/2 | Sistemas numéricos e aritmética computacional |
 | 7/3 | Modelo de máquina de níveis/A máquina de von Neumman |
 | 14/3 | Nível de lógica digital/Nível de microarquitetura |
 | 21/3 | Nível ISA/Nível *assembly* |
@@ -24,4 +24,4 @@ Prof Clayton J A Silva
 | 20/6 | Avaliação Parcial 2 |
 | 27/6 | Avaliação Substitutiva |
 
-#### [Home - Arquitetura - Prof Clayton J A Silva](https://claytonjasilva.github.io/arq.html)
+**[Home - Arquitetura de Computadores - Prof Clayton J A Silva](https://claytonjasilva.github.io/arq.html)**
