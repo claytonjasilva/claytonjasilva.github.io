@@ -1,34 +1,33 @@
 # 7. Funções em Python
 
 ## 7.1 Conceitos gerais sobre funções  
-No contexto de uma programação, uma **função** é uma sequência nomeada de instruções que proporciona um resultado.  
-É um bloco de código de programa que pode ser chamaado várias vezes, produzindo alguns benefícios, como  
+No contexto de uma programação, uma **função** é uma sequência nomeada de instruções que proporciona um resultado. 
+[Definição de funções](https://docs.python.org/pt-br/3/reference/compound_stmts.html#function-definitions)  
+É um bloco de código de programa que pode ser chamaado várias vezes, produzindo alguns benefícios, como.
 - Reutilizar código: as funções permitem agrupar e generalizar um código para se usado arbitrariamente muitas vezes posteriormente  
 - Decomposição procedural: permitem dividir o sistema desenvolvido em partes, com tarefas bem definidas  
 
-### 7.1.1 Prototipação de funções
-A função para ser executada em um determinado trecho de código precisa ser **chamada**.  
-A **chamada de função** requer o uso o nome e a passagem dos valores dos argumentos aos parâmetros.  
-Além disso, quando uma função é executada, ela pode devolver um valor (**retornar** valor) derivado da execução da tarefa, o qual pode ser atribuído a uma variável ou utilizado no contexto de uma expressão, por exemplo.  
-É necessário que o código em C especifique:  
-o **tipo** de valor que a função retorna;  
-o **identificador** ou **nome** da função; e  
-os **parâmetros** que a função utiliza para realizar a tarefa, cujos valores serão definidos pelos **argumentos** utilizados no código que a chamar.
+## 7.2 Chamada de funções
+Seja o exemplo `round(x,1)` escrito no trecho de um código, por exemplo, do módulo principal,  
+- A função para ser executada em um determinado trecho de código precisa ser **chamada**, na forma `round(x,1)`  
+- Para ser chamada, requer que possua um **nome** ou **identificador** - no exemplo, o nome da função é `round`  
+- Requer também uma lista de dados (variáveis ou constantes) entre parênteses, chamada de **argumento** da função - diz-se que a função **recebe** argumentos 
+- Em Python, uma cópia dos valores dos argumentos é passada aos parâmetros da função
+- Quando uma função é executada, ela pode devolver um valor (**retornar** valor) derivado da execução da tarefa, o qual pode ser atribuído a uma variável ou utilizado no contexto de uma expressão, por exemplo, `y = round(x,1)`  
+- Para que a atribuição ocorra, o corpo da função deve contemplar o uso da palavra reservada `return <valor ou expressão>` 
 
-`round(x,1)`  
-O nome da função é `round`  
-A expressão entre parênteses é chamada de **argumento** da função. Normalmente, diz-se que a função **recebe** um argumento e **retorna** um resultado. O resultado é chamado de **valor de retorno**.  
-
-### Como definir uma nova função...
+### 7.1.3 Como definir uma nova função...
 Para criar uma nova função é necessário escrever instruções atendendo a sintaxe do Python, da seguinte forma  
 ```
 def nome_da_função(lista_de_parâmetros):
   corpo de instruções
-  
+  return <valor ou expressão>
  ```  
-A lista de parâmetros contém os nome de todas as variáveis que receberão os dados para a função executar suas instruções separados por vírgulas.  
-A definição de uma função cria um **objeto de função**, que tem o tipo *function*.  
-Uma vez definida a função, ela poderá ser usada dentro de outra função.   
+Algumas considerações:  
+- A lista de parâmetros contém os nome de todas as variáveis que receberão os dados para a função executar suas instruções separados por vírgulas.
+- A definição de uma função cria um **objeto de função**, que tem o tipo *function*.  
+- Uma vez definida a função, ela poderá ser usada dentro de outra função.   
+
 #### Retornando valores ...
 Algumas funções devolvem resultado. Por exemplo, a função `round(12.345,1)` devolve o resultado 12.3. Se a instrução utilizada for `x = round(12.345,1)`, o resultado será atribuído à variável *x*.  
 Para a função devolver um resultado é necessário utilizar a instrução simples `return valor_a_retornar` no corpo das instruções.  
@@ -52,7 +51,7 @@ Por padrão, todos os nomes das variáveis atribuídos em uma função são **lo
 ### Outras considerações sobre funções  
 - A linguagem Python posssui algumas [funções embutidas](h funçõesttps://docs.python.org/pt-br/3/library/functions.html)
 
-### Exercícios sobre  
+### Exercícios sobre funções
 1. Elaborar um programa na linguagem Python que permita gerenciar a aprovação ou não de um grupo de 30 alunos, com base nas notas e na frequência. O programa deve possuir uma função para determinar a média do aluno, dada por mf=0,4.ap1+0,4.ap2+0,2.ac. Deve possuir também uma função que permita, caso o aluno seja reprovado, substituir a menor nota das ap pela nota da as (se a nota da as for superior a menor ap) e determinar a nova média final. Deve possuir também uma função para determinar a porcentagem de faltas de cada aluno. O programa deverá ler o número de aulas dadas; ler as notas de ap, ap2 e ac; ler a nota de as (se for necessário); e ler o número de faltas de cada aluno. Deverá escrever a média final de cada aluno, a porcentagem de faltas e a condição ('aprovado' ou 'reprovado'). O aluno estará aprovado se a média final for superior ou igual a 7.0 e tiver uma frequência superior a 75%. Deverá fazer a as se obtiver uma nota mf inferior a 7.0.   
 [funcoesAprovacao.py](https://github.com/claytonjasilva/prog_exemplos/blob/main/funcoesAprovacao.py)  
 2. Elaborar um programa na linguagem Python que possua um conjunto de funções para calcular a área de figuras geométricas. O programa deve permitir que o usuário digite o número de figuras cujos parâmetros serão lidos e cuja área será determinada. Deve ler, para cada figura, o seu tipo, ('t':triângul;'r':retângulo;'c':círculo) e os respectivos parâmetros para cálculo de área, escrevendo a área da figura solicitada. [funcoesGeometria.py](https://github.com/claytonjasilva/prog_exemplos/blob/main/funcoesGeometria.py)  
