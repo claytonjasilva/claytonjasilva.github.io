@@ -1,13 +1,13 @@
-# 7. Funções em Python
+# 5. Funções em Python
 
-## 7.1 Conceitos gerais sobre funções  
+## 5.1 Conceitos gerais sobre funções  
 No contexto de uma programação, uma **função** é uma sequência nomeada de instruções que proporciona um resultado. 
 [Definição de funções](https://docs.python.org/pt-br/3/reference/compound_stmts.html#function-definitions)  
 É um bloco de código de programa que pode ser chamaado várias vezes, produzindo alguns benefícios, como.
 - Reutilizar código: as funções permitem agrupar e generalizar um código para se usado arbitrariamente muitas vezes posteriormente  
 - Decomposição procedural: permitem dividir o sistema desenvolvido em partes, com tarefas bem definidas  
 
-## 7.2 Chamada de funções
+## 5.2 Chamada de funções
 Seja o exemplo `round(x,1)` escrito no trecho de um código, por exemplo, do módulo principal,  
 - A função para ser executada em um determinado trecho de código precisa ser **chamada**, na forma `round(x,1)`  
 - Para ser chamada, requer que possua um **nome** ou **identificador** - no exemplo, o nome da função é `round`  
@@ -16,25 +16,19 @@ Seja o exemplo `round(x,1)` escrito no trecho de um código, por exemplo, do mó
 - Quando uma função é executada, ela pode devolver um valor (**retornar** valor) derivado da execução da tarefa, o qual pode ser atribuído a uma variável ou utilizado no contexto de uma expressão, por exemplo, `y = round(x,1)`  
 - Para que a atribuição ocorra, o corpo da função deve contemplar o uso da palavra reservada `return <valor ou expressão>` 
 
-### 7.1.3 Como definir uma nova função...
+## 5.3 Como definir uma nova função...
 Para criar uma nova função é necessário escrever instruções atendendo a sintaxe do Python, da seguinte forma  
 ```
 def nome_da_função(lista_de_parâmetros):
   corpo de instruções
-  return <valor ou expressão>
  ```  
 Algumas considerações:  
 - A lista de parâmetros contém os nome de todas as variáveis que receberão os dados para a função executar suas instruções separados por vírgulas.
 - A definição de uma função cria um **objeto de função**, que tem o tipo *function*.  
-- Uma vez definida a função, ela poderá ser usada dentro de outra função.   
-
-#### Retornando valores ...
-Algumas funções devolvem resultado. Por exemplo, a função `round(12.345,1)` devolve o resultado 12.3. Se a instrução utilizada for `x = round(12.345,1)`, o resultado será atribuído à variável *x*.  
-Para a função devolver um resultado é necessário utilizar a instrução simples `return valor_a_retornar` no corpo das instruções.  
-A instrução simples [*return*](https://docs.python.org/pt-br/3/reference/simple_stmts.html#the-return-statement) pode acompanhar ou não a definição de uma função.   
-#### Os parâmetros são ...  
-os nomes das variáveis que receberão os **argumentos** quando a função for chamada e devem ser separados por vírgula (se houver mais de um parâmetro).  
-Na estrutura chamadora utiliza-se `função(lista_de_argumentos)`. Os valores dos argumentos são copiados para os parâmetros da função. **A alteração do valor dos parâmetros não altera o valor dos argumentos**. Por exemplo,
+- Uma vez definida a função, ela poderá ser usada dentro de outra função.
+- A lista de parâmetros compreende os nomes das variáveis que receberão os **argumentos** quando a função for chamada e devem ser separados por vírgula (se houver mais de um parâmetro).
+- Na estrutura chamadora utiliza-se `função(lista_de_argumentos)` - os valores dos argumentos são copiados para os parâmetros da função.  
+- **A alteração do valor dos parâmetros não altera o valor dos argumentos**. Por exemplo,
 ```
 def fun(x)  
   x=1  
@@ -45,10 +39,21 @@ print(x)
 ```
 Escreve o valor **2**
 
-### Escopo das variáveis  
+## 5.4 Retornando valores ...
+Algumas funções devolvem resultado. Para a função retorna um valor é necessário obedecer a sintaxe  
+```
+def nome_da_função(lista_de_parâmetros):
+  corpo de instruções
+  return <valor ou expressão>
+ ```  
+Por exemplo, a função `round(12.345,1)` devolve o resultado 12.3. Se a instrução utilizada for `x = round(12.345,1)`, o resultado será atribuído à variável *x*.  
+Para a função devolver um resultado é necessário utilizar a instrução simples `return valor_a_retornar` no corpo das instruções.  
+A instrução simples [*return*](https://docs.python.org/pt-br/3/reference/simple_stmts.html#the-return-statement) pode acompanhar ou não a definição de uma função.  
+
+## 5.5 Escopo das variáveis  
 Por padrão, todos os nomes das variáveis atribuídos em uma função são **locais**, isto é, existem apensas enquanto a função é executada. Variáveis globais são lidas e atualizadas por qualquer função ou método do programa. As variáveis locais só podem ser acessadas por código pertencente ao método ou função onde foi declarado a variável. [Ver detalhes](prog_funcoes_escopo.md)
 
-### Outras considerações sobre funções  
+## 5.6 Outras considerações sobre funções  
 - A linguagem Python posssui algumas [funções embutidas](h funçõesttps://docs.python.org/pt-br/3/library/functions.html)
 
 ### Exercícios sobre funções
@@ -67,6 +72,5 @@ Por padrão, todos os nomes das variáveis atribuídos em uma função são **lo
 O programa deve executar sucessivas vezes as operações. Na **primeira** repetição, o usuário deve digitar os valores de A e B, seguidos da operação desejada. Nas **repetições seguintes**, o usuário deve digitar o valor de um novo número, seguido da nova operação desejada. A nova operação será aplicada sobre o novo número e o resultado da repetição anterior. O programa será interrompido quando for digitada a operação 'nop' - nenhuma operação - e deverá escrever o último valor resultante da operação. [funcoesNotacaoPolonesa.py](https://github.com/claytonjasilva/prog_exemplos/blob/main/funcoesNotacaoPolonesa.py)
 6. Uma forma de calcular a potência de base *e* de um número é dada por *e^x = 1 + x + x^2/2! + x^3/!3 + ...*, onde *^* representa potência e *!* representa o fatorial do número. Elaborar um programa na linguagem Python para determinar o resultado de *e^x*, em que o usuário ditige na entrada o valor de *x* e o número de interações desejadas (número de termos da série). [funcoesSerieExp.py](https://github.com/claytonjasilva/prog_exemplos/blob/main/funcoesSerieExp.py)
 
-
 ___
-**[home](/progC_aulas.md)**
+**[home](/prog_aulas.md)**
