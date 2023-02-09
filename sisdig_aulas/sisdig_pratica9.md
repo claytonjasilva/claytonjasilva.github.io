@@ -16,3 +16,6 @@
 3. Minimizar a expressão de cada uma das saídas
 4. Propor um circuito digital para implementar a expressão minimizada com portas OR, AND e INVERSORES
 5. Implementar o circuito
+
+___
+ **[home - Sistemas Digitais](https://claytonjasilva.github.io/sisdig_aulas.html)**
