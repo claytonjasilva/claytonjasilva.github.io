@@ -5,7 +5,7 @@ Prof Clayton J A Silva
 | ---- | ------ |
 | 13/2 | Introdução | 
 | 15/2 | Conceitos fundamentais |
-| 20-22/2 | Recesso Carnaval |
+| 20,22/2 | Recesso Carnaval |
 | 27/2 | Sistemas numéricos e aritmética computacional |
 | 1/3 | Sistemas numéricos e aritmética computacional |
 | 6/3 | Modelo de máquina de níveis | 
@@ -20,7 +20,7 @@ Prof Clayton J A Silva
 | 5/4 | Arduíno 2560 |
 | 10/4 | Prática de laboratório |
 | 12/4 | Revisão |
-| 17-19/4 | Avaliação Parcial 1 |
+| 17,19/4 | Avaliação Parcial 1 (1) |
 | 24/4 | Dispositivos de Entrada/Saída |
 | 26/4 | Microcontrolador MC2560: arquitetura |
 | 1/5 | Feriado Dia do Trabalho |
@@ -37,8 +37,10 @@ Prof Clayton J A Silva
 | 7/6 | Processamento paralelo |
 | 12/6 | Exercícios |
 | 14/6 | Revisão |
-| 19-21/6 | Avaliação Parcial 2 |
-| 26-28/6 | Avaliação Substitutiva |
+| 19, 21/6 | Avaliação Parcial 2 (1) |
+| 26, 28/6 | Avaliação Substitutiva (1) |
+___
+(1) A data exata será definida oportunamente pela Coordenação
 
-#### [Home - Arquitetura - Prof Clayton J A Silva](https://claytonjasilva.github.io/arq.html)
+**[Home - Arquitetura de Computadores - Prof Clayton J A Silva](https://claytonjasilva.github.io/arq.html)**
 
