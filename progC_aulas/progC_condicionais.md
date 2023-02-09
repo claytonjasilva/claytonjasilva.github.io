@@ -27,7 +27,7 @@ A tabela especifica os operadores e a respectiva operação lógica corresponden
 
 Os operadores relacionais são aplicados a **dois operandos**.  
 Por exemplo, `3 > 2`, que compara o número 3 com o número 2.
-Os operandos podem conter **números**; **variáveis**, por exemplo, `x > 3`; e **expressões aritméticas**, por exemplo, `x + 3 <= 4 + y`. O compilador resolve primeiro as expressões aritméticas (os operadores aritméticos têm precedência sobre os lógicos).  
+Os operandos podem conter **números**; **variáveis**, por exemplo, `x > 3`; e **expressões aritméticas**, por exemplo, `x + 3 <= 4 + y`. A máquina resolve primeiro as expressões aritméticas (os operadores aritméticos têm precedência sobre os lógicos).  
 
 ### 3.1.2 Operadores lógicos
 Variáveis, expressões ou constante lógicas podem ser combinadas com operadores lógicos para formar proposições compostas.  
@@ -45,9 +45,9 @@ if (<expressão lógica>) {
   <bloco de instruções>
 }
 ```
-A expressão lógica é calculada pelo compilador.  
+A expressão lógica é calculada pela máquina.  
 A condição só pode gerar somente um resultado dentre dois possíveis: **1** (verdadeiro) ou **0** (falso).  
-A instrução (ou bloco de instruções) interna é executa somente se a expressão lógica de sua sentença resultar 1. Em caso contrário, o compilador executa seguinte ao *if* no programa.  
+A instrução (ou bloco de instruções) interna é executa somente se a expressão lógica de sua sentença resultar 1. Em caso contrário, a máquina executa a instrução seguinte ao *if* no programa.  
 O bloco das instruções internas ao *if* após a instrução condicional **deve ser delimitado entre chaves**.  
 **Se houver somente uma instrução no bloco** o compilador admite não se usar a delimitação entre chaves.  
 Observe que a indentação opera exclusivamente para proporcionar mais clareza ao código, facilitando a manutenção, legibilidade etc.  
@@ -79,10 +79,10 @@ else {
   <bloco de instruções>
 }
 ```
-A expressão lógica é calculada pelo compilador.  
+A expressão lógica é calculada pela máquina.  
 A condição só pode gerar somente um resultado dentre dois possíveis: **1** (verdadeiro) ou **0** (falso).  
 A instrução (ou bloco de instruções) interno ao *if* é executado somente se a expressão lógica de sua sentença resultar 1.   
-Em caso contrário, o compilador executa o bloco das instruções interno ao *else*.
+Em caso contrário, a máquina executa o bloco das instruções interno ao *else*.
 Como anteriormente, **o bloco de instruções deve ser delimitado entre chaves**.  
 **Se houver somente uma instrução no bloco** o compilador admite não se usar a delimitação entre chaves.
 
@@ -130,11 +130,11 @@ default:
 }
 ```  
 , cujo funcionamento é o seguinte:
-1. O compilador testa o valor da variável comparando-o com a constante 1. 
-2. Caso seja igual, o compilador executa o bloco 1 de instruções (interno ao *case*) e segue para a instrução posterior ao *switch* do código.
+1. A máquina testa o valor da variável comparando-o com a constante 1. 
+2. Caso seja igual, executa o bloco 1 de instruções (interno ao *case*) e segue para a instrução posterior ao *switch* do código.
 3. Caso não seja igual, testa o valor da variável, comparando-o com a contante 2.
 4. Executa o bloco de instruções interno ao *case* da constante 2.
-5. O compilador executa esse procedimento até alcançar *else* no caso da variável não armazenar valor igual a nenhuma das constantes.
+5. A máquina executa esse procedimento até alcançar *else* no caso da variável não armazenar valor igual a nenhuma das constantes.
 6. Nesse caso, executa o bloco de instruções interno ao *else* e segue à execução da próxima instrução do código.
 7. Importante que o **uso do *else* é opcional**.
 
