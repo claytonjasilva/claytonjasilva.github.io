@@ -15,7 +15,9 @@ Se a expressão resultar 0 (falso), passa à execução da instrução do códig
 4. Se a expressão resultar 1 (verdadeiro), a instrução ou o bloco de instruções internos (delimitados pelas chaves) será executado novamente. Novo *loop*.
 5. O processo se repete **enquanto** a expressão lógica de condição resultar 1.
 6. A repetição da instrução ou do bloco de instruções internos será interrompida **quando o resultado da expressão lógica for 0*. 
-Nesse momento, a máquina passará a executar a instrução após o *do-while*.
+Nesse momento, a máquina passará a executar a instrução após o *do-while*.  
+
+O comando *do-while* é chamado de comando de repetição com **teste de condição no fim da estrutura**.
 
 ## 5.1 Controle das repetições com **contador**  
 No caso do comando *do-while* o contador sempre deverá computar um *loop*. No exemplo abaixo utiliza-se a variável designada *cont*  
