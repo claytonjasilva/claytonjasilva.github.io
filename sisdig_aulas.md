@@ -15,11 +15,13 @@
 
 ## Práticas de laboratório
 1. [Prática 1](sisdig_aulas/sisdig_pratica1.md)
-2. [Prática 2](/arq_aulas/arq_pratica1.md)
-3. [Prática 3](/arq_aulas/arq_pratica2.md)
-4. [Prática 4](sisdig_aulas/sisdig_pratica2.md)
-5. [Prática 5](sisdig_aulas/sisdig_pratica3.md)
-6. [Prática 6](sisdig_aulas/sisdig_pratica4.md)  
+2. [Prática 2](sisdig_aulas/sisdig_pratica2.md)
+3. [Prática 3](sisdig_aulas/sisdig_pratica3.md)
+4. [Prática 4](sisdig_aulas/sisdig_pratica4.md)
+5. [Prática 5](sisdig_aulas/sisdig_pratica5.md)
+6. [Prática 9](sisdig_aulas/sisdig_pratica9.md)
+7. [Prática 10](sisdig_aulas/sisdig_pratica10.md)
+8. [Prática 11](sisdig_aulas/sisdig_pratica11.md)
 
 ## Avaliações
 ### Avaliações Bimestrais
