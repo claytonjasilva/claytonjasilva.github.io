@@ -53,10 +53,10 @@ A instrução simples [*return*](https://docs.python.org/pt-br/3/reference/simpl
 ## 5.5 Escopo das variáveis  
 Por padrão, todos os nomes das variáveis atribuídos em uma função são **locais**, isto é, existem apensas enquanto a função é executada.  
 Variáveis globais são lidas e atualizadas por qualquer função ou método do programa.  
-As variáveis locais só podem ser acessadas por código pertencente ao método ou função onde foi declarado a variável. [Ver detalhes](prog_funcoes_escopo.md)
+As variáveis locais só podem ser acessadas por código pertencente ao método ou função onde foi declarado a variável: [Escopo de funções](prog_funcoes_escopo.md)
 
 ## 5.6 Outras considerações sobre funções  
-- A linguagem Python posssui algumas [funções embutidas](https://docs.python.org/pt-br/3/library/functions.html)
+A linguagem Python posssui algumas [funções embutidas](https://docs.python.org/pt-br/3/library/functions.html)
 
 ### Exercícios sobre funções
 1. Elaborar um programa na linguagem Python que permita gerenciar a aprovação ou não de um grupo de 30 alunos, com base nas notas e na frequência. O programa deve possuir uma função para determinar a média do aluno, dada por mf=0,4.ap1+0,4.ap2+0,2.ac. Deve possuir também uma função que permita, caso o aluno seja reprovado, substituir a menor nota das ap pela nota da as (se a nota da as for superior a menor ap) e determinar a nova média final. Deve possuir também uma função para determinar a porcentagem de faltas de cada aluno. O programa deverá ler o número de aulas dadas; ler as notas de ap, ap2 e ac; ler a nota de as (se for necessário); e ler o número de faltas de cada aluno. Deverá escrever a média final de cada aluno, a porcentagem de faltas e a condição ('aprovado' ou 'reprovado'). O aluno estará aprovado se a média final for superior ou igual a 7.0 e tiver uma frequência superior a 75%. Deverá fazer a as se obtiver uma nota mf inferior a 7.0.   
