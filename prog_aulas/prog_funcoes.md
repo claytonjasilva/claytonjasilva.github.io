@@ -2,8 +2,7 @@
 
 ## 5.1 Conceitos gerais sobre funções  
 No contexto de uma programação, uma **função** é uma sequência nomeada de instruções que proporciona um resultado.   
-[Definição de funções](https://docs.python.org/pt-br/3/reference/compound_stmts.html#function-definitions)  
-É um bloco de código de programa que pode ser chamaado várias vezes, produzindo alguns benefícios, como.
+É um bloco de código de programa que pode ser chamado várias vezes, produzindo alguns benefícios, como  
 - Reutilizar código: as funções permitem agrupar e generalizar um código para se usado arbitrariamente muitas vezes posteriormente  
 - Decomposição procedural: permitem dividir o sistema desenvolvido em partes, com tarefas bem definidas  
 
