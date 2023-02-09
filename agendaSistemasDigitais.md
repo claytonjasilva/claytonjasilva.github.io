@@ -41,7 +41,7 @@ Prof Clayton J A Silva
 | 26, 28/6 | Avaliação Substitutiva (1) |
 
 ___
-(1) A data exarta será definida pela Coordenação posteriormente
+(1) A data exata será definida pela Coordenação oportunamente.
 
 ___
 **[Home - Sistemas Digitais - Prof Clayton J A Silva](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/sisdig.html)**
