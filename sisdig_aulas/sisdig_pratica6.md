@@ -1,4 +1,4 @@
-# Prática de laboratório: portas lógicas OR
+# Prática de laboratório: porta lógica OR
 
 1. Utilizando uma [porta OR 74HC32](https://claytonjasilva.github.io/sisdig_aulas/SN74HC32N_Texas.pdf), fazer as ligações de VCC e GND do circuito integrado.
 2. Montar o circuito da figura  
