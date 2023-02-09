@@ -1,4 +1,4 @@
-# Agenda - Arquitetura de Computadores - Centro
+# Agenda 2023.1 - Arquitetura de Computadores - Centro
 Prof Clayton J A Silva
 
 | Data | Tópico |
@@ -16,13 +16,13 @@ Prof Clayton J A Silva
 | 27/4 | Microcontrolador MC2560: set de instruções e *assembler* |
 | 4/5 | Microcontrolador MC2560: programação |
 | 11/5 | Prática de laboratório |
-| 18/5 | Prática de laboratório |
-| 25/5 | Nível de sistema operacional |
-| 1/6 | Processamento paralelo |
+| 18/5 | Nível de sistema operacional |
+| 25/5 | Processamento paralelo |
+| 1/6 | Exercícios/Revisão |
 | 8/6 | Feriado Corpus Christi |
-| 15/6 | Exercícios/Revisão |
-| 22/6 | Avaliação Parcial 2 |
+| 15/6 | Avaliação Parcial 2 |
+| 22/6 | - |
 | 29/6 | Avaliação Substitutiva |
 
-#### [Home - Arquitetura - Prof Clayton J A Silva](https://claytonjasilva.github.io/arq.html)
+**[Home - Arquitetura de Computadores - Prof Clayton J A Silva](https://claytonjasilva.github.io/arq.html)**
 
