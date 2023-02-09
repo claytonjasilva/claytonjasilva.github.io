@@ -20,11 +20,7 @@ for (<inicialização da variável de controle>; ;<incremento>) {
   <instrução ou bloco de instruções>
 }
 ```
-
-## 5.2 Controle das repetições com *flag*
-No caso da utilização do *flag* é bom lembrar que pelo menos uma execução do comando ou bloco de comandos interno à estrutura ocorrerè.  
-Situações em que pode não ocorrer execução alguma das instruções do *loop* são mais adequadamente tratadas pelo *while*,  
-ou usando-se os comandos ***break** ou ***continue***.
+O comando *for* admite a utilização dos comandos ***break** ou ***continue***.
 
 ___
 **[home](/progC_aulas.md)**
