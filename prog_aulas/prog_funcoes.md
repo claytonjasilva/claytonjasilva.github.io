@@ -1,12 +1,23 @@
-## Funções em Python  
+# 7. Controle de fluxo: estrutura de repetição *for*
+
+## 7.1 Conceitos gerais sobre funções  
 No contexto de uma programação, uma **função** é uma sequência nomeada de instruções que proporciona um resultado.  
-[Definição de funções](https://docs.python.org/pt-br/3/reference/compound_stmts.html#function-definitions)  
-**Por que usar funções?**     
+É um bloco de código de programa que pode ser chamaado várias vezes, produzindo alguns benefícios, como  
 - Reutilizar código: as funções permitem agrupar e generalizar um código para se usado arbitrariamente muitas vezes posteriormente  
 - Decomposição procedural: permitem dividir o sistema desenvolvido em partes, com tarefas bem definidas  
 
-### Chamada de funções
-Seja **chamada de função** `round(x,1)`  
+### 7.1.1 Prototipação de funções
+A função para ser executada em um determinado trecho de código precisa ser **chamada**.  
+A **chamada de função** requer o uso o nome e a passagem dos valores dos argumentos aos parâmetros.  
+Além disso, quando uma função é executada, ela pode devolver um valor (**retornar** valor) derivado da execução da tarefa, o qual pode ser atribuído a uma variável ou utilizado no contexto de uma expressão, por exemplo.  
+É necessário que o código em C especifique:  
+o **tipo** de valor que a função retorna;  
+o **identificador** ou **nome** da função; e  
+os **parâmetros** que a função utiliza para realizar a tarefa, cujos valores serão definidos pelos **argumentos** utilizados no código que a chamar.
+
+
+
+`round(x,1)`  
 O nome da função é `round`  
 A expressão entre parênteses é chamada de **argumento** da função. Normalmente, diz-se que a função **recebe** um argumento e **retorna** um resultado. O resultado é chamado de **valor de retorno**.  
 
@@ -58,3 +69,8 @@ Por padrão, todos os nomes das variáveis atribuídos em uma função são **lo
 - cubo da soma, 'csoma', que resulta no cubo da soma de A e B.  
 O programa deve executar sucessivas vezes as operações. Na **primeira** repetição, o usuário deve digitar os valores de A e B, seguidos da operação desejada. Nas **repetições seguintes**, o usuário deve digitar o valor de um novo número, seguido da nova operação desejada. A nova operação será aplicada sobre o novo número e o resultado da repetição anterior. O programa será interrompido quando for digitada a operação 'nop' - nenhuma operação - e deverá escrever o último valor resultante da operação. [funcoesNotacaoPolonesa.py](https://github.com/claytonjasilva/prog_exemplos/blob/main/funcoesNotacaoPolonesa.py)
 6. Uma forma de calcular a potência de base *e* de um número é dada por *e^x = 1 + x + x^2/2! + x^3/!3 + ...*, onde *^* representa potência e *!* representa o fatorial do número. Elaborar um programa na linguagem Python para determinar o resultado de *e^x*, em que o usuário ditige na entrada o valor de *x* e o número de interações desejadas (número de termos da série). [funcoesSerieExp.py](https://github.com/claytonjasilva/prog_exemplos/blob/main/funcoesSerieExp.py)
+
+
+___
+**[home](/progC_aulas.md)**
+
