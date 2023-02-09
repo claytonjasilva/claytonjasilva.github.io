@@ -39,6 +39,7 @@ Prof Clayton J A Silva
 | 14/6 | Revisão |
 | 19, 21/6 | Avaliação Parcial 2 (1) |
 | 26, 28/6 | Avaliação Substitutiva (1) |
+
 ___
 (1) A data exata será definida oportunamente pela Coordenação
 
