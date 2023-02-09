@@ -32,7 +32,7 @@
 hardware, software (*download* da IDE) e documentação (inclusive a referência da linguagem).
     * [Logisim](http://www.cburch.com/logisim/pt/index.html): *Home Page* contendo informações sobre *download* e documentação da ferramenta -
 muito útil para encaminhar os primeiros passos sobre circuitos digitais.
-    * {Microchip Studio for AVR and SAM devices](https://www.microchip.com/en-us/tools-resources/develop/microchip-studio): IDE para 'debugar' aplicações baseadas nos produtos da AVR, incluindo o microcontrolador ATmega 2560, utilizado nas disciplinas de Arquitetura de Computadores, Sistemas Digitais e atividades extra classe.
+    * [Microchip Studio for AVR and SAM devices](https://www.microchip.com/en-us/tools-resources/develop/microchip-studio): IDE para 'debugar' aplicações baseadas nos produtos da AVR, incluindo o microcontrolador ATmega 2560, utilizado nas disciplinas de Arquitetura de Computadores, Sistemas Digitais e atividades extra classe.
     * [Octave](https://octave.org/): *Home Page* da linguagem Octave, excelente alternativa *open source* ao MatLab para desenvolvimento de soluções a problemas científicos, incluindo simulação. Linguagem interpretada, disponível para várias plataformas de Sistema Operacional.
 
   
