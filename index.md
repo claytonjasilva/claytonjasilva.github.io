@@ -1,5 +1,5 @@
 # Prof Clayton J A Silva - Ibmec RJ
-*Atualizado janeiro 2023*
+*Em atualização das disciplinas e atividades extra classe 2023.1*
 
 
 ## Disciplinas
@@ -27,7 +27,7 @@
     * [AVR Assembler](https://ww1.microchip.com/downloads/en/DeviceDoc/40001917A.pdf)
     * [Atmel Studio 7 - Getting Started with Atmel Studio 7](https://www.microchip.com/content/dam/mchp/documents/MCU08/ProductDocuments/UserGuides/Getting-Started-with-Microchip-Studio-DS50002712B.pdf)
     * [Atmel Studio 7 User Guide](https://ww1.microchip.com/downloads/en/DeviceDoc/Getting-Started-with-Atmel-Studio7.pdf)
-  3. Referências na Internet:
+* Referências gerais na Internet:
     * [IDE Arduíno](https://www.arduino.cc/en/software)
     * [Logisim](http://www.cburch.com/logisim/pt/index.html)
   
