@@ -37,7 +37,7 @@ Objetivo 5: Analisar, projetar e aplicar circuitos conversores analógico-digita
 - [**TOCCI**, RONALD J.;**WIDMER**, NEAL S.; **MOSS**, GREGORY L.; **SISTEMAS DIGITAIS princípios e aplicações**;	**PEARSON Prenticce Hall**;	2007](https://plataforma.bvirtual.com.br/Leitor/Publicacao/168497/pdf/0)
 
 ### REFERÊNCIAS COMPLEMENTARES
-- - [HAUPT, aLEXANDRE G.; DACHI, ÉDISON P.; ELETRÔNICA DIGITAL; EDGARD BLUCHER LTDA.; 2018](https://plataforma.bvirtual.com.br/Leitor/Publicacao/158767/pdf/0)
+- [HAUPT, ALEXANDRE G.; DACHI, ÉDISON P.; ELETRÔNICA DIGITAL; EDGARD BLUCHER LTDA.; 2018](https://plataforma.bvirtual.com.br/Leitor/Publicacao/158767/pdf/0)
 - FLETCHER, WILLIAM I.;	ENGENEERING APPROACH TO DIGITAL DESIGN; Prentice-Hall International;	1980  
 - CAPUANO, Francisco Gabriel C.;	Sistemas digitais: Circuitos combinacionais e sequenciais; Editora Érica;	2018  
 - KLEITZ, WILLIAM;	DIGITAL ELETRONIC a practical approach with VHDL; Pearson;	2012  
