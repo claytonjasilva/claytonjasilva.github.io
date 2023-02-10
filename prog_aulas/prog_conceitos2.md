@@ -11,6 +11,7 @@
 | <= | Menor ou igual |
 | != | Diferente |
 | == | Igual |
+
 3. O resultado das operações de uma expressão lógica só pode ser ***False*** ou ***True***.
 4. Os operadores relacionais são aplicados a **dois operandos**.
 Por exemplo, `3 > 2`, que compara o número 3 com o número 2.
