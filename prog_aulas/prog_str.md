@@ -1,8 +1,11 @@
-## Strings 
+# 7. Strings 
 
-### 1. Sobre strings...
-- Dados não numéricos que constituem cadeias de caracteres e podem ser criados pela delimitação entre aspas simples ou aspas duplas da cadeia de caracteres. Por exemplo, "existem 26 caracteres" ou '4 números inteiros'. A função print() com ambos os argumentos resulta no mesmo resultado.
-- Alguns caracteres - chamados **caracteres de escape** - podem estare presentes nas strings. São eles
+## 7.1 Características gerais sobre strings
+1. *Strings* são dados não numéricos que constituem **cadeias de caracteres** e podem ser **criados pela delimitação entre aspas simples ou aspas duplas** da cadeia de caracteres.  
+Por exemplo, "existem 26 caracteres" ou '4 números inteiros'.  
+A função `print()` com ambos os argumentos resulta no mesmo resultado.  
+
+2. Alguns caracteres, chamados **caracteres de escape**, podem estar presentes nas strings. São eles
 
 | Caractere de escape | Significado |
 | ------------------- | ----------- |
@@ -15,25 +18,37 @@
 | \\" | Caractere de aspas duplas. |
 | \\' | Caractere de aspas simples. |
 
-- As strings podem abranger várias linhas. Para que o fim da linha seja incluído automaticamente uma maneira é usar as aspas triplas: """...""" ou '''...'''. 
-- Strings são um conjunto **ordenado** de caracteres, usado para armazenar e representar informações textuais, logo os caracteres podem ser referenciados por um índice de indexação definido entre colchetes, como uma lista.  
+3. As strings podem abranger várias linhas: para que o fim da linha seja incluído automaticamente uma maneira é usar as aspas triplas: """...""" ou '''...'''. 
+
+4. *Strings* são conjuntos **ordenados** de caracteres, usado para armazenar e representar informações textuais, logo **os caracteres podem ser referenciados por um índice de indexação definido entre colchetes**, como uma lista.  
 Por exemplo,  
+
 ```
 x = 'palavra'
 print(x[0])
 ``` 
 produz *p*.
-- Tratam-se de um tipo de sequência **imutável**, ou seja, que não podem ser alteradas após serem criadas.
-- [Métodos para strings](https://docs.python.org/pt-br/3/library/stdtypes.html#textseq)  
-- [Operações com strings](https://docs.python.org/pt-br/3/library/string.html?highlight=m%C3%A9todos%20string)
-- Algumas operações simples:  
-  - `+` - concatena strings. Por exemplo `'a casa ' + 'eh bonita'`, resulta `'a casa eh bonita'`.    
-  - A função `len('nome da string')` retorna o número de caracteres. Por exemplo `len('a casa eh bonita')` retorna 16.   
+
+5. *Strings* caracterizam-se como um tipo de sequência **imutável**, ou seja, que não podem ser alteradas após serem criadas.
+
+## 7.2 Métodos e operações sobre *strings*
+
+| Operação | Operador | Exemplo |
+| - | - | - |
+| Concatenação | `+` | Concatena strings, por exemplo `'a casa ' + 'eh bonita'`, resulta `'a casa eh bonita'`. |   
+
+
+- A função `len('nome da string')` retorna o número de caracteres. Por exemplo `len('a casa eh bonita')` retorna 16.   
   - O método `string.count('teste')` gera o número de vezes que teste está na string. Por exemplo, o programa abaixo retorna 3. 
 ```
 x = 'palavra'
 print(x.count('a'))
 ```
+
+
+
+- [Métodos para strings](https://docs.python.org/pt-br/3/library/stdtypes.html#textseq)  
+- [Operações com strings](https://docs.python.org/pt-br/3/library/string.html?highlight=m%C3%A9todos%20string)
 
 ### Alguns exercícios com manipulação de strings
 1. Elaborar um script em Python que permita ler uma palavra digitada pelo usuário. O programa deverá escrever todas as letras da palavra diferentes da letra ‘a’.  [StringExercicio1.py](https://github.com/claytonjasilva/prog_exemplos/blob/main/StringExercicio1.py)
