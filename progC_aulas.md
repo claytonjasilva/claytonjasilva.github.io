@@ -10,34 +10,23 @@ Ministrado como atividade extra classe.
 5. [Controle de fluxo: estrutura de repetição *do-while*](progC_aulas/progC_repeticaodowhile.md)  
 6. [Controle de fluxo: estrutura de repetição *for*](progC_aulas/progC_repeticaofor.md)  
 7. [Funções](progC_aulas/progC_funcoes.md)
-8. [Listas](progC_aulas/prog_listas.md)
-9. [Strings](progC_aulas/prog_str.md)
-10. [Tuplas](progC_aulas/prog_tuplas.md)
-11. [Dicionários](progC_aulas/prog_dicionarios.md)
-12. [Conjuntos](progC_aulas/prog_conjuntos.md)
-13. [Arquivos](progC_aulas/prog_arquivos.md)
-14. [Exceção](progC_aulas/prog_excecao.md)
-15. [Módulos](progC_aulas/prog_modulos.md) e [pacotes](prog_aulas/prog_pacotes.md)
-16. Pacotes [NumPy](https://numpy.org/doc/stable/user/absolute_beginners.html), [Matplotlib](https://matplotlib.org/stable/plot_types/index.html) e [SciPy](https://docs.scipy.org/doc/scipy/getting_started.html#getting-started-ref)
-
-## Exercícios propostos
-Os tópicos da disciplina são concluídos com exercícios cuja solução é discutida em sala e está disponível no link do GitHub [prog_exemplos](https://github.com/claytonjasilva/prog_exemplos).  
-Em cada exercício está indicado o link da respectiva solução.   
-1. [Conceitos iniciais](prog_aulas/exercicios_conceitosIniciais.md)  
-2. [Instruções compostas condicionais](prog_aulas/exercicios_condicionais.md)  
-3. [Instruções compostas de repetição](prog_aulas/exercicios_repeticao.md)
-4. [Funções](prog_aulas/exercicios_funcoes.md)  
-5. [Listas](prog_aulas/exercicios_listas.md)
-6. [Strings](prog_aulas/exercicios_strings.md)
-7. [Tuplas e dicionários](prog_aulas/exercicios_tuplas_dicionarios.md)
+8. [Ponteiros](progC_aulas/progC_ponteiros.md)
+9. [Vetores](progC_aulas/progC_vetores.md)
+10. [Filas](progC_aulas/progC_filas.md)
+11. [Pilhas](progC_aulas/progC_pilhas.md)
+12. [Árvores](progC_aulas/progC_arvores.md)
+13. [Arquivos](progC_aulas/progC_arquivos.md)
+14. [Exceção](progC_aulas/progC_excecao.md)
 
 ## Guia Rápido
 O guia rápido compreende um **resumo** da sintaxe da linguagem Python, com atenção especial **aos tópicos discutidos em sala**.  
 É um instrumento especialmente para apoiar o aluno na elaboração dos códigos para solucionar exercícios propostos.  
 O guia não tem a pretenção de esgotar todas as definições de sintaxe e semântica da linguagem Python.  
-[**Acessar o Guia Rápido**](prog_aulas/guia_rapido.md)
+[**Acessar o Guia Rápido**](progC_aulas/guiaC_rapido.md)
 
 ## Referências da linguagem C
 ...
 
-#### [Home - Programação com C - Prof Clayton J A Silva](index.md)
+
+___
+**[Home - Programação com C - Prof Clayton J A Silva](index.md)**
