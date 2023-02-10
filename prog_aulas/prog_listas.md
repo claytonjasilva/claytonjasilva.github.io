@@ -130,49 +130,39 @@ S = [0] # Cria a lista unitária
 | `lista.extend(lista argumento)` | inclui uma lista argumento no fim da lista | Por exemplo, na *lista = [1,2.4,6.7,3]*, `lista.extend([4,2.3])` produz *lista = [1,2.4,6.7,3,4,2.3]*.  |
 | `lista.sort()` | ordena crescentemente a lista | Por exemplo, na *lista = [1,2.4,6.7,3]*, `lista.sort()` produz *lista = [1,2.4,3,6.7]* |  
 | `lista.insert(i,elemento)` | insere um elemento em uma posição i | Por exemplo, na *lista = [1,2.4,6.7,3]*, `lista.insert(1,8)` produz *lista = [1,8,2.4,6.7,3]* |
-5. Método `lista.pop(i)`: remove e retorna o elemento da posição i. Por exemplo, na *lista = [1,2.4,6.7,3]*, `x = lista.pop(1)` produz *lista = [1,6.7,3]* e *x = 2.4*.  
-6. Método `lista.remove(elemento)`: remove o primeiro elemento na lista. Por exemplo, na *lista = [1,2.4,6.7,3]*, `lista.remove(6.7)` produz *lista = [1,2.4,3]*.
-7. Função `sum(lista)`: retorna a soma todos os elementos da lista. Por exemplo, na *lista = [1,2.4,6,3]*, `sum(lista)` retorna a soma de seus elementos, *12.4*.  
-8. Função `len(lista)`: retorna o tamanho, ou seja, o número de elementos da lista. Por exemplo, na *lista = [1,2.4,6.7,3]*, `len(lista)` retorna o número de seus elementos, *4*.  
-Mais métodos podem ser obtidos em  
- *<https://docs.python.org/pt-br/3/tutorial/datastructures.html>* ou  
- *<https://docs.python.org/3/library/stdtypes.html#index-23>*
+| `lista.pop(i)` | remove e retorna o elemento da posição i | Por exemplo, na *lista = [1,2.4,6.7,3]*, `x = lista.pop(1)` produz *lista = [1,6.7,3]* e *x = 2.4* |  
+| `lista.remove(elemento)` | remove o primeiro elemento na lista | Por exemplo, na *lista = [1,2.4,6.7,3]*, `lista.remove(6.7)` produz *lista = [1,2.4,3]* |
+| `sum(lista)` | retorna a soma todos os elementos da lista | Por exemplo, na *lista = [1,2.4,6,3]*, `sum(lista)` retorna a soma de seus elementos, *12.4* |  
+| `len(lista)` | retorna o tamanho, ou seja, o número de elementos da lista | Por exemplo, na *lista = [1,2.4,6.7,3]*, `len(lista)` retorna o número de seus elementos, *4* |
 
-#### 2.4 Considerações adicionais
-**Percorrendo os elementos da lista**: é possível percorrer os elementos de uma lista com a instrução composta de repetição *for*, da maneira abaixo  
+**Mais métodos podem ser obtidos em**   
+ 1. *<https://docs.python.org/pt-br/3/tutorial/datastructures.html>* ou  
+ 2. *<https://docs.python.org/3/library/stdtypes.html#index-23>*
+
+### 6.3.3 Considerações adicionais
+1. **Percorrendo os elementos da lista**: é possível percorrer os elementos de uma lista com a instrução composta de repetição *for*, da maneira abaixo  
+
 ```
-for variavel in lista:
+for <variavel> in <lista>:
 ```
-Por exemplo, seja a *lista = [1,3,7,2,4]*, o código
+
+Utiliza-se o **operador *in*** de pertencimento. Por exemplo, seja a *lista = [1,3,7,2,4]*, o código  
+
 ```
 for x in lista:
  print(x)
 ```
 irá escrever todos os elementos da lista.  
 
-**Compreensão de lista**: é possível usar uma estrutura sintática, por exemplo, para **criar uma nova lista** com um código sobre uma lista existente.  
-Pode-se usar para criar uma nova lista a forma sintática ilustrada abaixo
-```
-t = [j for j in range(N)]
-print(t)
-```
-escreve a lista [0, 1, 2, 3, 4, 5, 6, 7, 8, 9].  
+2. Operar com **matrizes**: como é possível aninhar listas, é possível construir matrizes a partir de uma lista com sub-listas aninhadas. 
 
-**Matrizes**: como é possível aninhar listas, é possível construir matrizes a partir de uma lista com sub-listas aninhadas. Por exemplo,  
+Por exemplo,  
 ```
 matriz =[[1,2,3],[4,5,6],[7,8,9]]
 ```
 é uma lista cujo primeiro objeto, *matriz[0]* é a lista *[1,2,3]*, logo *matriz[0][2]* retorna o elemento *3*. 
 
-
-___ 
-**[home](https://claytonjasilva.github.io/progPython_aulas.html)**
-
-
-
-
-
-#### Exercícios com listas  
+## 6.4 Exercícios com listas  
 1. Elaborar um programa na linguagem Python que leia e armazene os dados de um grupo de 30 pessoas: nome, idade, peso, altura. Para a idade de cada pessoa lida, o programa deverá recomendar exercícios do tipo A, para pessoas acima de 60 anos; do tipo B, para pessoas entre 40 e 60 anos; do tipo C, para pessoas entre 15 e 40 anos; e do tipo D, para crianças (idade inferior a 15 anos). Com base no peso e na altura, o programa deve calcular o IMC (dado por peso/altura^2), determinando as dietas: 'magra', IMC superior a 25; 'normal', IMC entre 19 e 25; e 'gorda', IMC inferior a 19. O programa deverá armazenar a dieta de cada pessoa e o respectivo IMC.  [listaDieta.py](https://github.com/claytonjasilva/prog_exemplos/blob/main/listaDieta.py)
 2. Elaborar um programa na linguagem Python que leia e armazene as matrículas e notas de um grupo de 20 alunos. O programa deverá calcular a média das notas lidas e o desvio padrão, usando a fórmula  
 ![desvio](/prog_aulas/desvio.png)  
@@ -181,4 +171,6 @@ onde MA é a média aritmética. Deverá escrever somente as matrículas dos alu
 5. Elaborar um programa na linguagem Python para cadastrar os códigos de um grupo de clientes de uma loja e o valor das respectivas compras realizadas em um determinado mês. O código 0 significa que não será cadastrado novo cliente. Após os clientes serem cadastrados, o usuário poderá fazer uma consulta ao sistema, digitando um valor qualquer. O sistema deverá escrever os códigos dos clientes que realizaram compras acima desse valor.  [listaCliente.py](https://github.com/claytonjasilva/prog_exemplos/blob/main/listaCliente.py)
 6. Elaborar um programa na linguagem Python para registrar os lançamentos contáveis de uma empresa ao longo de um ano. O programa deverá ler o CNPJ da empresa no início do ano juntamente com o saldo de caixa do ano anterior. Deverá cadastrar, mês a mês, a receita e a despesa. Ao final do ano, o programa deverá apresentar o extrato do balanço contábil, contendo o mês, receita, despesa, saldo parcial.  [listaBalanco.py](https://github.com/claytonjasilva/prog_exemplos/blob/main/listaBalanco.py)
 
-**[home](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/progPython_aulas.md)**
+
+___ 
+**[home](https://claytonjasilva.github.io/progPython_aulas.html)**
