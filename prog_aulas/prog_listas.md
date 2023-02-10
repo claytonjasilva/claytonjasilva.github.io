@@ -28,7 +28,7 @@ O elemento 6 ocupa a posição indexada [2]. O elemento 1 ocupa a posição [0].
 ```  
 Quando a regra de formação dos elementos da lista **não é arbitrária**, ou seja, os elementos podem ser definidos por meio de uma expressão, 
 usar a compreensão de lista produz um *script* mais sintético.  
-O caso mais simples é a sequência *{1,2,3,4,...,20}*, cuja criação como lista seria `num = [i for i in range(1,21)]`.
+O caso mais simples é a sequência *{1,2,3,4,...,20}*, cuja criação como lista seria `num = [i for i in range(1,21)]`.  
 Complicando um pouco, admita a lista da sequência definida por $x_i=2.i+3$ com 10 termos, sendo o primeiro termo x<sub>1</sub>=5, logo *i=1*.  
 Portanto *i* varia de 1 a 10, produzindo a sequência será *{5, 7, 10, ..., 23}*. Poderá ser criada por `termo = [2*i+3 for i in range(1,11)]`.
 
