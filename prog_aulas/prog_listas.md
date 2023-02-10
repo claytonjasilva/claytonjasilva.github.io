@@ -12,17 +12,17 @@
 As listas são definidas por elementos entre **colchetes**, separados por **vírgulas**, como `[e1, e2, e3, ..., en]`  
 
 ### 6.2.1 Criação de listas
-1. **Uma forma comum** é inscrever os elementos entre colchetes e atribuir à lista um nome, como descrito abaixo  
+1. Uma forma comum é **inscrever os elementos entre colchetes e atribuir à lista um nome**, como descrito abaixo  
 ```
 <nome da lista> = [ lista de elementos ]
-```
+```  
 Por exemplo,  
 ```
 numero = [1,3,6,7]
-```
+```  
 O elemento 6 ocupa a posição indexada [2]. O elemento 1 ocupa a posição [0].  
 
-2. Uma segunda forma, muito útil em vários casos, é usar o que se designa **compreensão de lista**, como descrito abaixo
+2. Uma segunda forma, muito útil em vários casos, é **usar o que se designa como compreensão de lista**, como descrito abaixo
 ```
 <nome da lista> = [<expressão da lista> for <variável de controle> in <comando range>]
 ```  
@@ -32,7 +32,7 @@ O caso mais simples é a sequência *{1,2,3,4,...,20}*, cuja criação como list
 Complicando um pouco, admita a lista da sequência definida por $x_i=2.i+3$ com 10 termos, sendo o primeiro termo x<sub>1</sub>=5, logo *i=1*.  
 Portanto *i* varia de 1 a 10, produzindo a sequência será *{5, 7, 10, ..., 23}*. Poderá ser criada por `termo = [2*i+3 for i in range(1,11)]`.
 
-3. Algumas ocasiões pode ser necessário criar uma **lista vazia**, para posteriormente atribuir os elementos da lista.  
+3. Algumas ocasiões pode ser necessário criar uma **lista vazia**, para **posteriormente atribuir os elementos da lista**.  
 Para isso, pode-se inserir elementos utilizando o **método** `append()`, na forma  
 ```
 <nome da lista>.append(<elemento>) 
@@ -46,28 +46,57 @@ numero.append(3)
 numero.append(6)
 numero.append(7)
 ```
-A lista é criada vazia. **O método insere o novo dado após o último**.  
+A lista é criada vazia. **O método *append* insere o novo dado após o último**.  
 
-4. 
+4. Pode-se também **ler os dados e atribuí-los a uma lista inicialmente vazia**
+Admitindo-se uma lista com tamanho *N*.  
+Nesse caso, uma solução pode ser
+```
+numero = []
+[numero.append(int(input('Digite a entrada: '))) for i in range(N)]
+```
+Claro que o valor de *N* deve ter sido definido a priori.
+**Se a lista não for criada preliminarmente o interpretador irá acusar o erro**.
 
-Toda lista é designada por um nome, de forma semelhante a uma variável simples.   
-Cada elemento de uma lista é referenciado pelo nome, seguido pelo **índice** (entre colchetes), que sinaliza a posição que ocupa, a partir do índice 0 até o índice n-1, na forma `nome da lista[indice do elemento]`. Nos exemplos, o elemento *6* ocupa a posição *2*, logo pode ser tratado por `numero[2]`.    
-O comprimento de uma sequência n possui elementos cujos índices variam de 0 a n-1. Nos exemplos, a lista *numero* possui 4 elementos, indexados do índice 0 ao índice 3.  
-Pode-se utilizar o operador de **fatias** para referenciação a um grupo de elementos da lista.
+5. Pode-se também criar uma **lista com vários elementos iguais**  
+Para isso, pode-se criar a lista unitária e multiplicar o número de elementos, na forma  
+```
+<nome da lista> = [<valor>] * <número de elementos> 
+```  
+Por exemplo,  
+```
+numero = [1] * 3
+```
+
+6. Muitas vezes é necessário criar uma lista de uma **uma série com elementos recursivos**    
+A lista é composta por elementos cujos valores são definidos recursivamente, isto é, o valor do elemento de ordem *n* depende de *n-1*.  
+Por exemplo, seja a série $x_i=3.x_{i-1}+4$. Admitindo que o valor inicial da série é x<ub)1</sub>, igual a 0. A série com 10 elementos será *S={0, 4, 18, ...,}*.   
+Nesse caso, pode-se utilizar a compreensão de lista, lembrando que é necessário **inicializar a lista com um elemento, igual ao primeiro da lista**.  
+A forma pode ser    
+```
+S = [0] # Cria a lista unitária
+[S.append(3*S[i-1]+4) for i in range(1,10)]
+```
+
+**Observações gerais:**
+- Toda lista é designada por um nome, de forma semelhante a uma variável simples.   
+- **Cada elemento** de uma lista é referenciado pelo nome, seguido pelo **índice** (entre colchetes), que sinaliza a ordem que ocupa, 
+**a partir do índice *0* até o índice *n-1***, na forma `nome da lista[indice do elemento]`. Na lista `numero=[1, 2 , 6, 4]`, o elemento *6* ocupa a posição *2*, logo pode ser tratado por `numero[2]`.    
+- Pode-se utilizar o operador de **fatias** para referenciação a um grupo de elementos da lista.
 ```
 nome da lista[indice inferior:indice superior]
-```
-
+```  
+Inclusive os elementos dos índicessão considerados. Por exemplo, na lista numero=[1,2,3,4], `print(numero[1:2])` resulta `[2, 3]`. 
 ```
 nome da lista[:indice superior]
 ```
-
+Fatia a lista a partir do índice 0 até o índice superior (inclusive). Por exemplo, na lista numero=[1,2,3,4], `print(numero[0:2])` resulta `[1, 2, 3]`. 
 ```
 nome da lista[indice inferior:]
 ```
-Nos exemplos, `numero[1:3]` refere-se aos elementos *numero[1]* ao *numero[3]*; `numero[:1]` refere-se aos elementos *numero[0]* ao *numero[1]*; e `numero[2:]` refere-se aos elementos *numero[2]* ao *numero[3]*.  
-Cada elemento da lista pode ser tratado como uma variável simples do seu respectivo tipo. Por exemplo, *pessoa[1]* é um inteiro e *pessoa[2]* é um ponto flutuante na lista `pessoa = ['pedro',18,73.2]`.  
-Pode-se aninhar listas, ou seja, criar uma lista que contém listas como elementos. Por exemplo, `pessoa = ['pedro',[98,1.89]]`. O elemento *pessoa[1]* é a lista *[98,1.89]*. Em consequência, *pessoa[1][0]* refere-se ao número 98, ou seja, ao elemento na posição [0] de *pessoa[1]*.    
+Fatia a lista a partir do índice inferior  (inclusive) até o último elemento. Por exemplo, na lista numero=[1,2,3,4], `print(numero[2:])` resulta `[3, 4]`.   
+- Cada elemento da lista pode ser tratado como uma variável simples do seu respectivo tipo. Por exemplo, *pessoa[1]* é um inteiro e *pessoa[2]* é um ponto flutuante na lista `pessoa = ['pedro',18,73.2]`.  
+- Pode-se **aninhar listas**, ou seja, criar uma lista que contém listas como elementos. Por exemplo, `pessoa = ['pedro',[98,1.89]]`. O elemento *pessoa[1]* é a lista *[98,1.89]*. Em consequência, *pessoa[1][0]* refere-se ao número 98, ou seja, ao elemento na posição [0] de *pessoa[1]*.    
 
 
 
