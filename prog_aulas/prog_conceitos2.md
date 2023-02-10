@@ -4,7 +4,7 @@
 2. Por enquanto discutiremos os operadores lógicos **relacionais** ou **de comparação**, que são os seguintes:  
 
 | Operador | Descrição |
-| -------- | --------- |
+| - | - |
 | > | Maior |
 | < | Menor |
 | >= | Maior ou igual |
