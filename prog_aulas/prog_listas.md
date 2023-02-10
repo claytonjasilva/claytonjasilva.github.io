@@ -14,7 +14,7 @@ As listas são definidas por elementos entre **colchetes**, separados por **vír
 ### 6.2.1 Criação de listas
 1. Uma forma comum é **inscrever os elementos entre colchetes e atribuir à lista um nome**, como descrito abaixo  
 ```
-<nome da lista> = [ lista de elementos ]
+<nome da lista> = [lista de elementos]
 ```  
 Por exemplo,  
 ```
@@ -28,16 +28,24 @@ O elemento 6 ocupa a posição indexada [2]. O elemento 1 ocupa a posição [0].
 ```  
 Quando a regra de formação dos elementos da lista **não é arbitrária**, ou seja, os elementos podem ser definidos por meio de uma expressão, 
 usar a compreensão de lista produz um *script* mais sintético.  
-O caso mais simples é a sequência *{1,2,3,4,...,20}*, cuja criação como lista seria `num = [i for i in range(1,21)]`.  
+
+O caso mais simples é a sequência *{1,2,3,4,...,20}*, cuja criação como lista seria  
+
+`num = [i for i in range(1,21)]`.    
+
 Complicando um pouco, admita a lista da sequência definida por $x_i=2.i+3$ com 10 termos, sendo o primeiro termo x<sub>1</sub>=5, logo *i=1*.  
-Portanto *i* varia de 1 a 10, produzindo a sequência será *{5, 7, 10, ..., 23}*. Poderá ser criada por `termo = [2*i+3 for i in range(1,11)]`.
+Portanto *i* varia de 1 a 10, produzindo a sequência será *{5, 7, 10, ..., 23}* e poderá ser criada por  
+
+`termo = [2*i+3 for i in range(1,11)]`.
 
 3. Algumas ocasiões pode ser necessário criar uma **lista vazia**, para **posteriormente atribuir os elementos da lista**.  
 Para isso, pode-se inserir elementos utilizando o **método** `append()`, na forma  
+
 ```
 <nome da lista>.append(<elemento>) 
 ```
 , que insere o elemento no final da lista.  
+
 Por exemplo,  
 ```
 numero = []
@@ -46,16 +54,17 @@ numero.append(3)
 numero.append(6)
 numero.append(7)
 ```
+
 A lista é criada vazia. **O método *append* insere o novo dado após o último**.  
 
-4. Pode-se também **ler os dados e atribuí-los a uma lista inicialmente vazia**
-Admitindo-se uma lista com tamanho *N*.  
-Nesse caso, uma solução pode ser
+4. Pode-se também **ler os dados e atribuí-los a uma lista inicialmente vazia**  
+Admitindo-se uma lista com tamanho *N*, a forma poderia ser   
+
 ```
 numero = []
 [numero.append(int(input('Digite a entrada: '))) for i in range(N)]
 ```
-Claro que o valor de *N* deve ter sido definido a priori.
+, em que o valor de *N* deve ter sido definido a priori, obviamente.  
 **Se a lista não for criada preliminarmente o interpretador irá acusar o erro**.
 
 5. Pode-se também criar uma **lista com vários elementos iguais**  
@@ -67,54 +76,60 @@ Por exemplo,
 ```
 numero = [1] * 3
 ```
+, produzindo a lista *numero=[1, 1, 1]*.
 
 6. Muitas vezes é necessário criar uma lista de uma **uma série com elementos recursivos**    
 A lista é composta por elementos cujos valores são definidos recursivamente, isto é, o valor do elemento de ordem *n* depende de *n-1*.  
-Por exemplo, seja a série $x_i=3.x_{i-1}+4$. Admitindo que o valor inicial da série é x<ub)1</sub>, igual a 0. A série com 10 elementos será *S={0, 4, 18, ...,}*.   
+Por exemplo, seja a série $x_i=3.x_{i-1}+4$. Admitindo que o valor inicial da série é x<ub)1</sub>, igual a 0.     
 Nesse caso, pode-se utilizar a compreensão de lista, lembrando que é necessário **inicializar a lista com um elemento, igual ao primeiro da lista**.  
 A forma pode ser    
+
 ```
 S = [0] # Cria a lista unitária
 [S.append(3*S[i-1]+4) for i in range(1,10)]
 ```
+, produzindo-se a série com 10 elementos *S={0, 4, 18, ...,}*. 
 
-**Observações gerais:**
+### 6.2.2 Observações gerais
 - Toda lista é designada por um nome, de forma semelhante a uma variável simples.   
 - **Cada elemento** de uma lista é referenciado pelo nome, seguido pelo **índice** (entre colchetes), que sinaliza a ordem que ocupa, 
 **a partir do índice *0* até o índice *n-1***, na forma `nome da lista[indice do elemento]`. Na lista `numero=[1, 2 , 6, 4]`, o elemento *6* ocupa a posição *2*, logo pode ser tratado por `numero[2]`.    
-- Pode-se utilizar o operador de **fatias** para referenciação a um grupo de elementos da lista.
-```
-nome da lista[indice inferior:indice superior]
-```  
-Inclusive os elementos dos índicessão considerados. Por exemplo, na lista numero=[1,2,3,4], `print(numero[1:2])` resulta `[2, 3]`. 
-```
-nome da lista[:indice superior]
-```
-Fatia a lista a partir do índice 0 até o índice superior (inclusive). Por exemplo, na lista numero=[1,2,3,4], `print(numero[0:2])` resulta `[1, 2, 3]`. 
-```
-nome da lista[indice inferior:]
-```
-Fatia a lista a partir do índice inferior  (inclusive) até o último elemento. Por exemplo, na lista numero=[1,2,3,4], `print(numero[2:])` resulta `[3, 4]`.   
+- Pode-se utilizar o operador de **fatias** para referenciação a um grupo de elementos da lista.  
+  ```
+  nome da lista[indice inferior:indice superior]
+  ```  
+  Inclusive os elementos dos índicessão considerados. Por exemplo, na lista numero=[1,2,3,4], `print(numero[1:2])` resulta `[2, 3]`.
+  
+  ```
+  nome da lista[:indice superior]
+  ```
+  Fatia a lista a partir do índice 0 até o índice superior (inclusive). Por exemplo, na lista numero=[1,2,3,4], `print(numero[0:2])` resulta `[1, 2, 3]`.
+  
+  ```
+  nome da lista[indice inferior:]
+  ```
+  Fatia a lista a partir do índice inferior  (inclusive) até o último elemento. Por exemplo, na lista numero=[1,2,3,4], `print(numero[2:])` resulta `[3, 4]`.
+  
 - Cada elemento da lista pode ser tratado como uma variável simples do seu respectivo tipo. Por exemplo, *pessoa[1]* é um inteiro e *pessoa[2]* é um ponto flutuante na lista `pessoa = ['pedro',18,73.2]`.  
 - Pode-se **aninhar listas**, ou seja, criar uma lista que contém listas como elementos. Por exemplo, `pessoa = ['pedro',[98,1.89]]`. O elemento *pessoa[1]* é a lista *[98,1.89]*. Em consequência, *pessoa[1][0]* refere-se ao número 98, ou seja, ao elemento na posição [0] de *pessoa[1]*.    
 
+## 6.3 Operações, métodos e funções de listas
 
+### 6.3.1 Operações
 
-___ 
-**[home](https://claytonjasilva.github.io/progPython_aulas.html)**
+| Operação | Operador | Exemplo |
+| - | - | - |
+| Concatenação | `+` | Por exemplo, `[1,2,3] + [9,3]` resulta na lista `[1,2,3,9,3]` |  
+| Repetição | `*` | Por exemplo, `[1,2]*2` resulta na lista `[1,2,1,2]` |  
 
+### 6.3.2 Métodos e funções
 
-
-
-#### 2.2 Operações com listas
-**Concatenação**: operador `+`. Por exemplo, `[1,2,3] + [9,3]` resulta na lista `[1,2,3,9,3]`.  
-**Repetição**: operador `*`. Por exemplo, `[1,2]*2` resulta na lista `[1,2,1,2]`.  
-
-#### 2.3 Alguns métodos e funções sobre listas  
-1. Método `lista.append(elemento)`: insere um novo elemento ao fim da lista. Por exemplo, na *lista = [1,2.4,6.7,3]*, `lista.append(4)` produz *lista = [1,2.4,6.7,3,4]*. 
-2. Método `lista.extend(lista argumento)`: inclui uma lista argumento no fim da lista. Por exemplo, na *lista = [1,2.4,6.7,3]*, `lista.extend([4,2.3])` produz *lista = [1,2.4,6.7,3,4,2.3]*.  
-3. Método `lista.sort()`: ordena crescentemente a lista. Por exemplo, na *lista = [1,2.4,6.7,3]*, `lista.sort()` produz *lista = [1,2.4,3,6.7]*.  
-4. Método `lista.insert(i,elemento)`: insere um elemento em uma posição i. Por exemplo, na *lista = [1,2.4,6.7,3]*, `lista.insert(1,8)` produz *lista = [1,8,2.4,6.7,3]*. 
+| Operação | Objetivo | Exemplo |
+| - | - | - |
+| `lista.append(elemento)` | insere um novo elemento ao fim da lista | Por exemplo, na *lista = [1,2.4,6.7,3]*, `lista.append(4)` produz *lista = [1,2.4,6.7,3,4]* |
+| `lista.extend(lista argumento)` | inclui uma lista argumento no fim da lista | Por exemplo, na *lista = [1,2.4,6.7,3]*, `lista.extend([4,2.3])` produz *lista = [1,2.4,6.7,3,4,2.3]*.  |
+| `lista.sort()` | ordena crescentemente a lista | Por exemplo, na *lista = [1,2.4,6.7,3]*, `lista.sort()` produz *lista = [1,2.4,3,6.7]* |  
+| `lista.insert(i,elemento)` | insere um elemento em uma posição i | Por exemplo, na *lista = [1,2.4,6.7,3]*, `lista.insert(1,8)` produz *lista = [1,8,2.4,6.7,3]* |
 5. Método `lista.pop(i)`: remove e retorna o elemento da posição i. Por exemplo, na *lista = [1,2.4,6.7,3]*, `x = lista.pop(1)` produz *lista = [1,6.7,3]* e *x = 2.4*.  
 6. Método `lista.remove(elemento)`: remove o primeiro elemento na lista. Por exemplo, na *lista = [1,2.4,6.7,3]*, `lista.remove(6.7)` produz *lista = [1,2.4,3]*.
 7. Função `sum(lista)`: retorna a soma todos os elementos da lista. Por exemplo, na *lista = [1,2.4,6,3]*, `sum(lista)` retorna a soma de seus elementos, *12.4*.  
@@ -148,6 +163,14 @@ escreve a lista [0, 1, 2, 3, 4, 5, 6, 7, 8, 9].
 matriz =[[1,2,3],[4,5,6],[7,8,9]]
 ```
 é uma lista cujo primeiro objeto, *matriz[0]* é a lista *[1,2,3]*, logo *matriz[0][2]* retorna o elemento *3*. 
+
+
+___ 
+**[home](https://claytonjasilva.github.io/progPython_aulas.html)**
+
+
+
+
 
 #### Exercícios com listas  
 1. Elaborar um programa na linguagem Python que leia e armazene os dados de um grupo de 30 pessoas: nome, idade, peso, altura. Para a idade de cada pessoa lida, o programa deverá recomendar exercícios do tipo A, para pessoas acima de 60 anos; do tipo B, para pessoas entre 40 e 60 anos; do tipo C, para pessoas entre 15 e 40 anos; e do tipo D, para crianças (idade inferior a 15 anos). Com base no peso e na altura, o programa deve calcular o IMC (dado por peso/altura^2), determinando as dietas: 'magra', IMC superior a 25; 'normal', IMC entre 19 e 25; e 'gorda', IMC inferior a 19. O programa deverá armazenar a dieta de cada pessoa e o respectivo IMC.  [listaDieta.py](https://github.com/claytonjasilva/prog_exemplos/blob/main/listaDieta.py)
