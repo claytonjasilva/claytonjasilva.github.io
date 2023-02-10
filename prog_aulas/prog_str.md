@@ -33,24 +33,20 @@ produz *p*.
 
 ## 7.2 Métodos e operações sobre *strings*
 
-| Operação | Operador | Exemplo |
+| Sintaxe | Objetivo | Exemplo |
 | - | - | - |
-| Concatenação | `+` | Concatena strings, por exemplo `'a casa ' + 'eh bonita'`, resulta `'a casa eh bonita'`. |   
+| `+` | Concatenação | Por exemplo, `'a casa ' + 'eh bonita'`, resulta `'a casa eh bonita'`. |
+| `*` | Replicação | Por exemplo, `'a' * 3` produz *aaa* | 
+| ´len(<nome da *string*>)`| Calcular números de caracteres | Por exemplo, `x = len('a casa')` retorna * x = 6* |
+| ´<nome da *string*>[i:j]`| Fatiar/criar *substrings* | Por exemplo, `print('a casa'[2:5])` escreve *cas* |
+| ´<nome da *string*>.count(<*substring*>)`| Contar o número de *substrings* | Por exemplo, `x = 'ana joao pedro ana casa'.count('ana')` retorna *x = 2* |
 
+Outras maneiras de manipular *strings* em Python podem ser obtidas em 
+1. [Métodos para strings](https://docs.python.org/pt-br/3/library/stdtypes.html#textseq)  
+2. [Operações comuns de *strings*](https://docs.python.org/pt-br/3/library/string.html)
+3. [Mais exemplos...](https://algoritmosempython.com.br/cursos/programacao-python/strings/)
 
-- A função `len('nome da string')` retorna o número de caracteres. Por exemplo `len('a casa eh bonita')` retorna 16.   
-  - O método `string.count('teste')` gera o número de vezes que teste está na string. Por exemplo, o programa abaixo retorna 3. 
-```
-x = 'palavra'
-print(x.count('a'))
-```
-
-
-
-- [Métodos para strings](https://docs.python.org/pt-br/3/library/stdtypes.html#textseq)  
-- [Operações com strings](https://docs.python.org/pt-br/3/library/string.html?highlight=m%C3%A9todos%20string)
-
-### Alguns exercícios com manipulação de strings
+## 7.3 Alguns exercícios com manipulação de strings
 1. Elaborar um script em Python que permita ler uma palavra digitada pelo usuário. O programa deverá escrever todas as letras da palavra diferentes da letra ‘a’.  [StringExercicio1.py](https://github.com/claytonjasilva/prog_exemplos/blob/main/StringExercicio1.py)
 2. Elaborar um script em Python que permita ler um texto digitado pelo usurário. O programa deverá calcular o número de vogais presentes no texto digitado.  
 Solução 1: [StringExercicio2.py](https://github.com/claytonjasilva/prog_exemplos/blob/main/StringExercicio2.py)  
