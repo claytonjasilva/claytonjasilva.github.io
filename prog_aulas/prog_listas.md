@@ -1,6 +1,6 @@
-## Listas 
+# 6. Listas
 
-### 1. Sobre listas...
+## 6.1 Conceitos gerais
 - Constituem um dos tipos de **sequências**: conjuntos **ordenados** finitos de **elementos**, **indexados** por números não negativos.   
 - Tratam-se de um tipo de sequência **mutável**, ou seja, que pode ser alterada após ser criada. 
 - Definem uma **ordenação** posicional dos objetos, da esquerda para a direita. 
@@ -8,13 +8,13 @@
 - Podem conter qualquer tipo de objeto - os elementos não precisam ser do mesmo tipo, mas **geralmente** são usadas com elementos do mesmo tipo - estrutura **homogênea**.
 - Admitem **aninhamento arbitrário**, ou seja, podem ser construídas listas de listas.
 
-### 2. Sintaxe  
+## 6.2 Sintaxe  
 As listas são definidas por elementos entre **colchetes**, separados por **vírgulas**, como `[e1, e2, e3, ..., en]`  
 
-#### 2.1 Criação de listas
-Colocando os elementos entre colchetes  
+### 6.2.1 Criação de listas
+1. **Uma forma comum** é inscrever os elementos entre colchetes e atribuir à lista um nome, como descrito abaixo  
 ```
-nome da lista = [ lista de elementos ]
+<nome da lista> = [ lista de elementos ]
 ```
 Por exemplo,  
 ```
@@ -22,7 +22,23 @@ numero = [1,3,6,7]
 ```
 O elemento 6 ocupa a posição indexada [2]. O elemento 1 ocupa a posição [0].  
 
-Criando uma **lista vazia** e inserindo elementos pelo **método** `append()`, na forma `nome da lista.append(elemento)` - que insere o elemento no final da lista.  Por exemplo,
+2. Uma segunda forma, muito útil em vários casos, é usar o que se designa **compreensão de lista**, como descrito abaixo
+```
+<nome da lista> = [<expressão da lista> for <variável de controle> in <comando range>]
+```  
+Quando a regra de formação dos elementos da lista **não é arbitrária**, ou seja, os elementos podem ser definidos por meio de uma expressão, 
+usar a compreensão de lista produz um *script* mais sintético.  
+O caso mais simples é a sequência *{1,2,3,4,...,20}*, cuja criação como lista seria `num = [i for i in range(1,21)]`.
+Complicando um pouco, admita a lista da sequência definida por $x_i=2.i+3$ com 10 termos, sendo o primeiro termo x<sub>1</sub>=5, logo *i=1*.  
+Portanto *i* varia de 1 a 10, produzindo a sequência será *{5, 7, 10, ..., 23}*. Poderá ser criada por `termo = [2*i+3 for i in range(1,11)]`.
+
+3. Algumas ocasiões pode ser necessário criar uma **lista vazia**, para posteriormente atribuir os elementos da lista.  
+Para isso, pode-se inserir elementos utilizando o **método** `append()`, na forma  
+```
+<nome da lista>.append(<elemento>) 
+```
+, que insere o elemento no final da lista.  
+Por exemplo,  
 ```
 numero = []
 numero.append(1)
@@ -30,7 +46,9 @@ numero.append(3)
 numero.append(6)
 numero.append(7)
 ```
-A lista é criada vazia. O método insere o novo dado após o último.  
+A lista é criada vazia. **O método insere o novo dado após o último**.  
+
+4. 
 
 Toda lista é designada por um nome, de forma semelhante a uma variável simples.   
 Cada elemento de uma lista é referenciado pelo nome, seguido pelo **índice** (entre colchetes), que sinaliza a posição que ocupa, a partir do índice 0 até o índice n-1, na forma `nome da lista[indice do elemento]`. Nos exemplos, o elemento *6* ocupa a posição *2*, logo pode ser tratado por `numero[2]`.    
@@ -50,6 +68,14 @@ nome da lista[indice inferior:]
 Nos exemplos, `numero[1:3]` refere-se aos elementos *numero[1]* ao *numero[3]*; `numero[:1]` refere-se aos elementos *numero[0]* ao *numero[1]*; e `numero[2:]` refere-se aos elementos *numero[2]* ao *numero[3]*.  
 Cada elemento da lista pode ser tratado como uma variável simples do seu respectivo tipo. Por exemplo, *pessoa[1]* é um inteiro e *pessoa[2]* é um ponto flutuante na lista `pessoa = ['pedro',18,73.2]`.  
 Pode-se aninhar listas, ou seja, criar uma lista que contém listas como elementos. Por exemplo, `pessoa = ['pedro',[98,1.89]]`. O elemento *pessoa[1]* é a lista *[98,1.89]*. Em consequência, *pessoa[1][0]* refere-se ao número 98, ou seja, ao elemento na posição [0] de *pessoa[1]*.    
+
+
+
+___ 
+**[home](https://claytonjasilva.github.io/progPython_aulas.html)**
+
+
+
 
 #### 2.2 Operações com listas
 **Concatenação**: operador `+`. Por exemplo, `[1,2,3] + [9,3]` resulta na lista `[1,2,3,9,3]`.  
