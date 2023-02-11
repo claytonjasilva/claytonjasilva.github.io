@@ -17,7 +17,7 @@ a **especificação do nome e dos parâmetros da função**;
 
 ___
 
-As instruções dos progrfamas em C são sempre separadas pelo caractere especial `;`, delimitando o fim de uma instrução e o início da instrução seguinte.  
+As instruções dos programas em C são sempre separadas pelo caractere especial `;`, delimitando o fim de uma instrução e o início da instrução seguinte.  
 Por exemplo,  
 ```
 x = 3 * 4 + y;
