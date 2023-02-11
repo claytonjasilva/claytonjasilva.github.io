@@ -11,7 +11,7 @@ Ministrado como atividade extra classe.
 6. [Controle de fluxo: estrutura de repetição *for*](progC_aulas/progC_repeticaofor.md)  
 7. [Funções](progC_aulas/progC_funcoes.md)
 8. [Ponteiros](progC_aulas/progC_ponteiros.md)
-9. [Vetores](progC_aulas/progC_vetores.md)
+9. [Strings e Vetores](progC_aulas/progC_stringsvetores.md)
 10. [Filas](progC_aulas/progC_filas.md)
 11. [Pilhas](progC_aulas/progC_pilhas.md)
 12. [Árvores](progC_aulas/progC_arvores.md)
