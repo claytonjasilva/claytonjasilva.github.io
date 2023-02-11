@@ -40,7 +40,8 @@ void main(){
   printf("/nO valor de x e: %i",x);
 }
 ```
-, observado o comportamento do resultado o resultado de saída do programa é o mesmo nas duas linhas porque a função *dobro* altera o valor do conteúdo do endereço da variável. Por essa razão, se diz que em C **as funções também podem passar argumentos por referência**.
+, observado o comportamento do resultado o resultado de saída do programa é o mesmo nas duas linhas porque a função *dobro* altera o valor do conteúdo do endereço da variável.  
+Por essa razão, se diz que em C **as funções também podem passar argumentos por referência**.
 
 
 
