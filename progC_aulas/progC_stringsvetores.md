@@ -8,7 +8,9 @@ Os caracteres são um tipo de dado:*char*. Alinguagem C as trata como sendo vari
 A sintaxe para indicar ao compilador que o dado é um caractere é inscrevê-lo entre **aspas simples**, `'<caractere>'`.  
 Como vimaos anteriormente, a declaraço de uma variável do tipo *char* deve ser `char <nome da variável>;`.   
 **Uma peculiaridade do C:** pode-se também usar *char* para armazenar valores numéricos inteiros.
-Para escrever o *char* como inteiro basta formatar a saída com `%d`ou `%i`. O *char* utilizado como inteiro é identificado pela sua equivalência decimal no código ASCII.
+Para escrever o *char* como inteiro basta formatar a saída com `%d`ou `%i`.  
+O *char* utilizado como inteiro é identificado pela sua equivalência decimal no código ASCII. Por exemplo, a letra *B* é identificada pelo decimal 66. [Ver a tabelas ASCII](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/sisdig_aulas/circuitosDecodificadores.md).
+
 
 ### 9.1.2 Entrada e Saída de caracteres
 1. Utilizando `scanf`
