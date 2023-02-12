@@ -78,6 +78,9 @@ O bit não utilizado pode ser utilizado de diferentes maneiras.
 | 1 | 1 | 1 | 0 |   | SO | RS | . | > | N | ^ | n | ~ |
 | 1 | 1 | 1 | 1 |   | SI | US | / | ? | O | _ | o | DEL |
 
+Cada caractere pode ser referenciado pela sua representação binária e, de modo equivalente, pela sua representação decimal ou hexadecimmal.  
+Por exemplo, o caractere *B* possui a codificação 1000010, logo 0x42 ou 68 na representação decimal.
+
 ## 6.2 Circuitos codificadores
 São circuitos lógicos que aceitam *M* entradas, em que **somente uma entrada é ativada por vez**, e ativa as saídas que correspondem à palavra do código de *N* bits que representa a entrada.  
 A entrada ativada representa o símbolo discreto representado pela palavra de saída.  
