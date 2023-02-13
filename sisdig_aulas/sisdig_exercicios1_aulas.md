@@ -25,4 +25,4 @@ c. $\overline{W+P.\bar{Q}}$, dado que W=0, P=Q=1
 5. Considerando os circuitos apresentados na figura da questão 4, apresentar as tabelas-verdade que representam o comportamento do circuito para todas as combinações de entradas.
 
 ___
-**[home](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/sisdig_aulas.md)** 
+**[Home Conteúdo Sistemas Digitais](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/sisdig_aulas.md)**  
