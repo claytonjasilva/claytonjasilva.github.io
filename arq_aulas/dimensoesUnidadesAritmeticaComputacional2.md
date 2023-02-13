@@ -60,5 +60,5 @@ Por conveniência da representação das informações em sistemas computacionai
 
 ___
 **Representação de números negativos: [próximo>>](dimensoesUnidadesAritmeticaComputacional3.md)**  
-**[home](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/arq_aulas.md)**   
+**[home](https://claytonjasilva.github.io/arq_aulas.html)**   
 **[<<anterior](dimensoesUnidadesAritmeticaComputacional1.md)**  
