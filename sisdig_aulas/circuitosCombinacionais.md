@@ -90,20 +90,5 @@ O método de simplificação com o uso e *don't care* consiste em:
 5. Incluir na expressão os 1s isolados, ou seja, aqueles que não puderam ser incluídos em nenhum grupo
 
 ___    
-**[Home Conteúdo Sistemas Digitais](/sisdig_aulas.md)**
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+**[Home Conteúdo Sistemas Digitais](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/sisdig_aulas.md)**  
 
