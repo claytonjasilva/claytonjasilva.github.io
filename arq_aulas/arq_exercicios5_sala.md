@@ -56,4 +56,4 @@ STOR M(X), 1000d
 ```
 
 ___
-**[home](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/arq_aulas.md)**  
+**[Home Conteúdo Arquitetura de Computadores](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/arq_aulas.md)**   
