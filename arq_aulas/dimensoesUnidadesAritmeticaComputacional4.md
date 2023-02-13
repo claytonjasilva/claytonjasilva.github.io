@@ -3,9 +3,7 @@
 ## 1.7 Representação em ponto flutuante
 Os números reais, particularmente os números fracionários, podem ser representados usando-se **notação científica**, na forma
 
-$$
-N=f\times10^e
-$$
+$$ N=f\times10^e $$
 
 , onde *f* é a **fração ou mantissa** e *e* é o **expoente**.  
 
