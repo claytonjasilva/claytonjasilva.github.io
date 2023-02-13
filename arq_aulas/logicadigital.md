@@ -109,7 +109,7 @@ A tabela deve possuir **somente uma** coluna de saída, pois uma função só ad
 
 ___
 **[home](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/arq_aulas.md)**  
-**Álgebra booleana e portas lógicas: [próximo>>](logicadigital2.md)**  
+**Álgebra booleana e portas lógicas: [próximo>>](logicadigital1.md)**  
 
 
 
