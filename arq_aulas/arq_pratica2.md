@@ -19,4 +19,5 @@
 1. Elaborar o *sketch* conforme [código](https://github.com/claytonjasilva/prog_exemplos/blob/main/pratica4.ico)
 2. Descrever as alterações das instruções utilizadas no *sketck*
 
-
+___
+**[Home Conteúdo Arquitetura de Computadores](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/arq_aulas.md)**   
