@@ -160,6 +160,6 @@ Algumas operações propiciadas pelos demux são as inversas do multiplexador, c
 
 
 ___
-**[Home Conteúdo Sistemas Digitais](/sisdig_aulas.md)**  
+**[Home Conteúdo Sistemas Digitais](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/sisdig_aulas.md)**  
 
 
