@@ -72,7 +72,7 @@ Por conveniência da representação das informações em sistemas computacionai
 | 1 ***byte*** | **8** bits |
 
 ___  
-**[<<anterior](https://claytonjasilva.github.io/arq_aulas/dimensoesUnidadesAritmeticaComputacional1.html)**    
-**[home](https://claytonjasilva.github.io/arq_aulas.html)**   
-**Representação de números negativos: [próximo>>](https://claytonjasilva.github.io/arq_aulas/dimensoesUnidadesAritmeticaComputacional3.html)**  
+**[<<anterior](dimensoesUnidadesAritmeticaComputacional1.md)**    
+**[home](/arq_aulas.md)**   
+**Representação de números negativos: [próximo>>](dimensoesUnidadesAritmeticaComputacional3.md)**  
 
