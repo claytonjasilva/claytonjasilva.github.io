@@ -51,4 +51,4 @@ armazenar o resultado da soma dos 3 termos de uma progressão aritmética com ra
 **Admitir que os demais endereços da MP da máquina IAS não especificados nos enunciados estão disponíveis para uso dos programas**
 
 ___
-**[home](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/arq_aulas.md)**  
+**[Home Conteúdo Arquitetura de Computadores](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/arq_aulas.md)**   
