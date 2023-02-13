@@ -18,4 +18,4 @@ Desenhe as formas de onda de *Z* para a posição das chaves na figura.
 ![Circuitos questão 3.6](/sisdig_aulas/images_sisdig/circuitosexercicio3_6.jpg) 
 
 ___
-**[home](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/sisdig_aulas.md)** 
+**[Home Conteúdo Sistemas Digitais](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/sisdig_aulas.md)**  
