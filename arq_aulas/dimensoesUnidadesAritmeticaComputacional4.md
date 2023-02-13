@@ -14,7 +14,8 @@ Admtindo que a a faixa de representação da notação usada para a mantissa sej
 - no semi eixo dos números negativos, *-N.10<sup>+Q</sup>* a *-10<sup>-P</sup>*  
 - 0 (mantissa igual a 0)   
 - no semi eixo dos númerospositivos, *+10<sup>-P</sup>* -------------> *+M.10<sup>+Q</sup>*  
-A representação pode ser caracterizada pela **faixa de representação** (limites da representação numerica) e pela **precisão**: 
+
+A representação pode ser caracterizada pela **faixa de representação** (limites da representação numerica) e pela **precisão**:  
 - a faixa de representação é determinada pelo **número de dígitos do expoente**; e
 - a precisão é determinada pelo **número de dígitos da mantissa**. 
 
