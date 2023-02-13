@@ -93,5 +93,5 @@ A *Phlips* produz a porta [74HC00](https://github.com/claytonjasilva/claytonjasi
 
 __  
 **[<<anterior](algebraPortasLogicas1.md)**  
-**[Home Conteúdo Sistemas Digitais](/sisdig_aulas.md)** ou **[Home Conteúdo Arquitetura de Computadores](/arq_aulas.md)**  
+**[Home Conteúdo Sistemas Digitais](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/sisdig_aulas.md)** ou **[Home Conteúdo Arquitetura de Computadores](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/arq_aulas.md)**  
 
