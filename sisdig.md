@@ -6,4 +6,4 @@
 4. [Conteúdo das Aulas](sisdig_aulas.md)
 
 
-##### [Home - Prof Clayton J A Silva](/./index.md)
+## [Home - Prof Clayton J A Silva](/index.md)
