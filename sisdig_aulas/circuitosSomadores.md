@@ -196,7 +196,7 @@ A saída decimal é dada por $\sum$.
 O *carry* é transportado ao módulo seguinte, caracterizando a dezena, centena, ...  
 
 ___
-**[Home Conteúdo Sistemas Digitais](/sisdig_aulas.md)**  
+**[Home Conteúdo Sistemas Digitais](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/sisdig_aulas.md)**  
 
 
 
