@@ -63,8 +63,8 @@ $N_b = d_{(m-1)}.b^{m-1}+d_{(m-2)}.b^{m-2}+...+d_0.b^0$
 - *m* é o número de dígitos usados na representação.  
 
 ___
-**Conversão de bases: [próximo>>](dimensoesUnidadesAritmeticaComputacional2.md)**  
 **[home](https://claytonjasilva.github.io/arq_aulas.html)**  
+**Conversão de bases: [próximo>>](https://claytonjasilva.github.io/arq_aulas/dimensoesUnidadesAritmeticaComputacional2.html)**  
 
 
 
