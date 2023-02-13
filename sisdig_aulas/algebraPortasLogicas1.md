@@ -74,7 +74,7 @@ Cada saída pode ser definida como **uma função das entradas**.
 
 Logo, a cada saída corresponde **uma** tabela verdade. 
 
-___
-**Teoremas e axiomas da Álgebra booleana: [próximo>>](algebraPortasLogicas2.md)**  
+___  
 **[<<anterior](algebraPortasLogicas.md)**  
-**[home](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/sisdig_aulas.md)**  
+**[Home Conteúdo Sistemas Digitais](/sisdig_aulas.md)** ou **[Home Conteúdo Arquitetura de Computadores](/arq_aulas.md)**  
+**Teoremas e axiomas da Álgebra booleana: [próximo>>](algebraPortasLogicas2.md)**  
