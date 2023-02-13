@@ -70,4 +70,4 @@ b. O que acontecerá se o dado requisitado **não estiver disponível** na cache
 c. O que acontecerá se o dado requisitado **estiver disponível** na cache?  
 
 ___
-**[home](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/arq_aulas.md)**  
+**[Home Conteúdo Arquitetura de Computadores](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/arq_aulas.md)**   
