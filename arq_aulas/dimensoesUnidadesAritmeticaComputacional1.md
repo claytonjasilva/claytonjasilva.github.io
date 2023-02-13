@@ -45,9 +45,7 @@ Independentemente da base, as grandezas numéricas podem ser representadas de ac
 #### a. Notação posicional  
 Na notação posicional, a posição relativa do dígito na representação do número determina o valor que possui na grandeza numérica. Pode-se generalizar essa representação de um número com M dígitos por:   
 
-$$
-N_b = d_{(m-1)}d_{(m-2)}...d_0
-$$
+$$ N_b = d_{(m-1)}d_{(m-2)}...d_0 $$
 
 , onde   
 - *N* é a grandeza,   
@@ -61,9 +59,7 @@ Os dígitos à esquerda são os **mais significativos**.
 #### b. Notação polinomial  
 Na notação polinomial a grandeza numérica é representada pela soma ponderada dos seus dígitos pela potência da base em que o número está representado. Um número de M dígitos será representado por:
 
-$$
-N_b = d_{(m-1)}.b^{m-1}+d_{(m-2)}.b^{m-2}+...+d_0.b^0
-$$
+$$ N_b = d_{(m-1)}.b^{m-1}+d_{(m-2)}.b^{m-2}+...+d_0.b^0 $$
 
 , onde   
 - *N* é a grandeza,   
