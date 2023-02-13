@@ -16,12 +16,18 @@ As grandezas numéricas possuem representações equivalentes entre os diferente
 
 ### 1.3.1 Conversão de grandezas numéricas da base 10 para as bases 2 e 16: Método das divisões sucessivas  
 Para obter o número representado em base 10 (N<sub>10</sub>) no seu equivalente em base 2 (N<sub>2</sub>) ou em base 16 (N<sub>16</sub>), aplica-se o seguinte método:
+
 1. Aplicar a divisão inteira de N<sub>10</sub> pela base para a qual se deseja converter (2 ou 16)  
 2. Em seguida, aplicar repetidas vezes a divisão do **quociente obtido na divisão anterior pela base** para a qual se deseja converter (2 ou 16)
 3. Parar as divisões quando obtiber quociente igual a 0.
 4. O número na nova base (2 ou 16) na notação posicional será formado pelos restos obtidos, de tal modo que **o último resto é o dígito mais significativo**. 
 
-Na conversão da base 10 para a base 2 pode-se utilizar o comportamento da notação polonomial. Do mais significativo ao menos significativo, preencher com o dígito 1 as potências de 2 e realizar a soma de modo a não ultrapassar o número a ser convertido. A tabela mostra um exemplo para 235<sub>10</sub> convertido à base 2.
+Na conversão da base 10 para a base 2 pode-se também utilizar o comportamento da notação polinomial.   
+1. **A paritr do mais significativo**,
+preencher com o binário 1 as **potências de 2 cuja soma não ultrapasse o número a ser convertido**.  
+2. Preencher com 0 as potências que não 'couberam' (cuja soma ultrapassou o número decimal a ser convertido).  
+
+A tabela mostra um exemplo para 235<sub>10</sub> convertido à base 2.
 
 | 2<sup>7</sup> | 2<sup>6</sup> | 2<sup>5</sup> | 2<sup>4</sup> | 2<sup>3</sup> | 2<sup>2</sup> | 2<sup>1</sup> | 2<sup>0</sup> |
 | ------------- | ------------- | ------------- | ------------- | ------------- | ------------- | ------------- | ------------- | 
@@ -39,19 +45,26 @@ Para obter o número representado em base 2 (N<sub>2</sub>) no seu equivalente e
 3. O número na nova base (16) na notação posicional será formado pelos dígitos em base 16 de cada grupo.
 
 ### 1.3.4 Representação das grandezas numéricas nos sistemas computacionais
-Os sistemas computacionais modernos são máquinas eletrônicas em que as grandezas numéricas são informações (ou dados) representadas por **sinais elétricos**.  
-Esses sinais elétricos possuem características particulares pela conveniência dos projetos de computadores, que satisfazem a padrões de fabricantes dos componentes eletrônicos.  
-Uma característica particular é importante ao contexto da nossa discussão aqui: **os sinais apresentam somente dois níveis de tensão elétrica**, *high* (H) ou *low* (L).  
+Os sistemas computacionais modernos são máquinas eletrônicas em que as grandezas numéricas são informações (ou dados) representadas por **sinais elétricos**.   
+
+Esses sinais elétricos possuem características particulares pela conveniência dos projetos de computadores, que satisfazem a padrões de fabricantes dos componentes eletrônicos.    
+
+Uma característica particular é importante ao contexto da nossa discussão aqui: **os sinais apresentam somente dois níveis de tensão elétrica**, *high* (H) ou *low* (L).   
+
 A abstração para tratar os dois valores de informação (ou dados) utilizados para representação dos números nos sistemas computacionais é associar o sinal H ao 1 e o sinal L ao 0. Portanto, nessa abstração as grandezas numéricas nos sistemas computacionais são representadas por dígitos binários 0s e 1s.  
+
 As grandezas numéricas utilizadas pelos computadores podem ser representads em qualquer sistema de numeração. Para não haver ambiguidade de interpretação, utilizaremos a seguinte **notação**:  
 - Números representados em **base decimal** serão indicados sucedidos pelo caracter *d*, na forma *Nd*, ou simplesmente *N* quando o contexto não deixar margem a dúvida - por exemplo, 126d;
 - Números representados em **base binária** serão indicados simplesmente pelos seus dígitos - por exemplo, 1011101;
 - Números representados em **base hexadecimal** serão indicados preferencialmente precedidos pelos caracteres *0x*, na forma *0xN* - por exemplo, 0xAF34. Eventualmente, poderão ser usadas as formas *Nh*.
 
 ### 1.3.5 A unidade elementar de informação computacional: bit
-Os sistemas computacionais modernos utilizam o sistema binário, como discutido acima.  
+Os sistemas computacionais modernos utilizam o sistema binário, como discutido acima.   
+
 A menor unidade de informação nos sistemas computacionais é o **bit**, que é um acrônimo de ***bi**nary digi**t***.  
+
 Como unidade binária, o bit só pode assumir dois valores: 0 ou 1.  
+
 Por conveniência da representação das informações em sistemas computacionais, em certas circunstâncias utiliza-se o múltiplo de de bits, chamado de ***byte***. 
 
 | Unidade | Equivalência |
