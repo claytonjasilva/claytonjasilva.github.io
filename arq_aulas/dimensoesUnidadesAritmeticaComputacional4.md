@@ -25,6 +25,6 @@ A representação pode ser caracterizada pela **faixa de representação** (limi
 - a precisão é determinada pelo **número de dígitos da mantissa**. 
 
 ___  
-**[<<anterior](https://github.com/claytonjasilva/claytonjasilva.github.io/edit/main/arq_aulas/dimensoesUnidadesAritmeticaComputacional3.md)**    
-**[home](https://claytonjasilva.github.io/arq_aulas.html)**   
-**Aritmética computacional: [próximo>>](https://github.com/claytonjasilva/claytonjasilva.github.io/edit/main/arq_aulas/dimensoesUnidadesAritmeticaComputacional5.md)**    
+**[<<anterior](dimensoesUnidadesAritmeticaComputacional3.md)**    
+**[Home Conteúdo Arquitetura de Computadores](/arq_aulas.md)**   
+**Aritmética computacional: [próximo>>](dimensoesUnidadesAritmeticaComputacional5.md)**    
