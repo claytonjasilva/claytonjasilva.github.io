@@ -67,7 +67,7 @@ $$ N_b = d_{(m-1)}.b^{m-1}+d_{(m-2)}.b^{m-2}+...+d_0.b^0 $$
 - *m* é o número de dígitos usados na representação.  
 
 ___
-**[Home: Conteúdo Arquitetura de Computadores](/arq_aulas.md)** ou **[Home: Conteúdo Sistemas Digitais](/sisdig_aulas.md)** 
+**[Home: Conteúdo Arquitetura de Computadores](/arq_aulas.md)** ou **[Home: Conteúdo Sistemas Digitais](/sisdig_aulas.md)**   
 **Conversão de bases: [próximo>>](dimensoesUnidadesAritmeticaComputacional2.md)**  
 
 
