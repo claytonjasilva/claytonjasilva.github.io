@@ -16,7 +16,7 @@ A estrutura típica de sistemas computacionais, em uma visão de alto nível, é
 ![Visão Geral dos sitemas computacionais](/arq_aulas/images/computador_visao_geral.jpg)
 
 As funções básicas que um computador desempenha são as seguintes:  
-1. Proessamento de dados
+1. Processamento de dados
 2. Armazenamento de dados
 3. Transferência de dados
 4. Controle
