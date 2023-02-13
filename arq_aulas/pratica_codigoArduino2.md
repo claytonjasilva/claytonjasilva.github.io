@@ -18,3 +18,7 @@ Observe que são utilizadas o código incorpora mais comandos.
 4. Observações:  
 - Visite o site do Arduíno para conhecer um pouco sobre a [referência da linguagem do Arduíno](https://www.arduino.cc/reference/en/)  
 - O código da prática pode ser obtido em [codigoArduino.ino](https://github.com/claytonjasilva/prog_exemplos/blob/main/codigoArduino2.ino)
+
+___
+**[Home Conteúdo Arquitetura de Computadores](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/arq_aulas.md)**  ou 
+**[Home Conteúdo Sistemas Digitais](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/sisdig_aulas.md)**   
