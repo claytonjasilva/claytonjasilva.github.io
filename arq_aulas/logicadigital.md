@@ -90,9 +90,13 @@ As proposições compostas podem apresentar características especiais, a saber:
 
 ### 4.1.3 Tabela-verdade
 As tabelas-verdade são instrumentos que permitem a representação de todas as combinações de saída das funções de variáveis.  
+
 São basicamente formada pelas **colunas das variáveis**, **colunas intermediárias** e **coluna de saída**.  
+
 Dada uma função de *n* variáveis, a tabela deve possuir ***n*** colunas das variáveis.  
+
 As colunas intermediárias são facultativas, dependendo da necessidade na solução da expressão que define a função. O mais completo é ter uma coluna intermediária para cada passo da solução da expressão, conforme a precedência discutida anteriormente.   
+
 A tabela deve possuir **somente uma** coluna de saída, pois uma função só admite um valor **para cada combinação de entradas, 0 ou 1**.  
 
 | *n* colunas de entrada | colunas intermediárias | 1 coluna de saída |
