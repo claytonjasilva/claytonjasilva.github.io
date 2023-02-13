@@ -28,4 +28,4 @@ Obs. Ver circuito abaixo
 + Usar o [manual da fonte](/manuais/Manual_fonteDC.pdf)
 + Relatar e explicar o que acontece quando se reduz a tensão de alimentação
 ___
- **[home - Sistemas Digitais](https://claytonjasilva.github.io/sisdig_aulas.html)**
+**[Home Conteúdo Sistemas Digitais](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/sisdig_aulas.md)**  
