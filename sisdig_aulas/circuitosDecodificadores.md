@@ -182,7 +182,7 @@ No caso, somente as palavras binárias do código BCD ativam saída.
 Um *datasheet* com todas as especificações de um decoder BCD-decimal está disponível para o [CD4028](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/sisdig_aulas/CD4028_Texas.pdf).
 
 ___
-**[Home Conteúdo Sistemas Digitais](/sisdig_aulas.md)**  
+**[Home Conteúdo Sistemas Digitais](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/sisdig_aulas.md)**  
 
 
 
