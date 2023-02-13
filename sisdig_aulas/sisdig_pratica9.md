@@ -18,4 +18,4 @@
 5. Implementar o circuito
 
 ___
- **[home - Sistemas Digitais](https://claytonjasilva.github.io/sisdig_aulas.html)**
+**[Home Conteúdo Sistemas Digitais](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/sisdig_aulas.md)**  
