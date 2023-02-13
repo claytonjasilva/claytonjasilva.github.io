@@ -149,7 +149,7 @@ A figura apresenta como a tabela do *set* de instruções é normalmente apresen
 | 0000 1110 | JUMP M(X,28:39) | Substitui o campo de endereço da instrução à direita da posição de memória X (bits 20 a 39), definida pelo operando, pelos 12 bits mais à direita do conteúdo do acumulador |
 
 ___
-**[home](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/arq_aulas.md)**  
+**[Home Conteúdo Arquitetura de Computadores](/arq_aulas.md)**  
 
 
 
