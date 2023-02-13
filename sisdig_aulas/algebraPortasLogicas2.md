@@ -91,12 +91,7 @@ A *Texas Instruments* produz a série de portas [CD4011/CD4012/CD4023](https://g
 
 A *Phlips* produz a porta [74HC00](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/sisdig_aulas/74HC00N_Philips.pdf).  
 
-
-[home](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/sisdig_aulas.md)  
-[<<](algebraPortasLogicas1.md)
-
-
-
-
-
+__  
+**[<<anterior](algebraPortasLogicas1.md)**  
+**[Home Conteúdo Sistemas Digitais](/sisdig_aulas.md)** ou **[Home Conteúdo Arquitetura de Computadores](/arq_aulas.md)**  
 
