@@ -5,7 +5,7 @@
 1. [Dimensões, Unidades e Aritmética Computacional](arq_aulas/dimensoesUnidadesAritmeticaComputacional1.md)
 2. [Arquitetura, Organização e Modelos de máquina de níveis](arq_aulas/arquiteturaOrganizacaoCamadas.md)
 3. [Máquina de von Neumann ou computador IAS](arq_aulas/computadorIAS.md)
-4. [Nível de lógica digital: circuitos combinacionais e circuitos sequenciais](arq_aulas/logicadigital.md)
+4. [Nível de lógica digital: circuitos combinacionais e circuitos sequenciais](https://claytonjasilva.github.io/sisdig_aulas/algebraPortasLogicas.html)
 5. [Detalhamento dos elementos fundamentais das arquiteturas](arq_aulas/arq_aulas_componentes.pdf)  
     - [Notas sobre memória](arq_aulas/notas_memoria.pdf)
 7. [Microprocessador Atmel ATmega 2560](arq_aulas/arq_aulas_mc2560.pdf)
