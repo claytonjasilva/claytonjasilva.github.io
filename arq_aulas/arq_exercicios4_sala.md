@@ -45,4 +45,4 @@ No modelo da máquina de 6 níveis, o que caracteriza o nível de microarquitetu
 No modelo da máquina de 6 níveis, o que caracteriza o nível do conjunto de instruções da arquitetura (do inglês, ISA)?
 
 ___
-**[home](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/arq_aulas.md)**  
+**[Home Conteúdo Arquitetura de Computadores](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/arq_aulas.md)**   __
