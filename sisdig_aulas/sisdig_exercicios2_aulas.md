@@ -29,4 +29,4 @@ e pressionar a tecla *enter*. A tabela abaixo ilustra a configuração de troco:
 6. Implementar os circuitos da questão anterior utilizando somente portas NAND.
 
 ___
-**[home](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/sisdig_aulas.md)** 
+**[Home Conteúdo Sistemas Digitais](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/sisdig_aulas.md)**  
