@@ -73,6 +73,6 @@ Por conveniência da representação das informações em sistemas computacionai
 
 ___  
 **[<<anterior](dimensoesUnidadesAritmeticaComputacional1.md)**    
-**[Home Conteúdo Arquitetura de Computadores](/arq_aulas.md)**   
+**[Home Conteúdo Arquitetura de Computadores](/arq_aulas.md)**  ou **[Home: Conteúdo Sistemas Digitais](/sisdig_aulas.md)**     
 **Representação de números negativos: [próximo>>](dimensoesUnidadesAritmeticaComputacional3.md)**  
 
