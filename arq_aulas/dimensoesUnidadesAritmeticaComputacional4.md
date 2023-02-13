@@ -26,5 +26,6 @@ A representação pode ser caracterizada pela **faixa de representação** (limi
 
 ___  
 **[<<anterior](dimensoesUnidadesAritmeticaComputacional3.md)**    
-**[Home Conteúdo Arquitetura de Computadores](/arq_aulas.md)**   ou **[Home: Conteúdo Sistemas Digitais](/sisdig_aulas.md)**    
+**[Home Conteúdo Arquitetura de Computadores](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/arq_aulas.md)**  ou 
+**[Home Conteúdo Sistemas Digitais](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/sisdig_aulas.md)**   
 **Aritmética computacional: [próximo>>](dimensoesUnidadesAritmeticaComputacional5.md)**    
