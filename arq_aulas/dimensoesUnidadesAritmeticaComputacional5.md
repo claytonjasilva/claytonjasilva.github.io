@@ -54,4 +54,5 @@ A subtração de dois números binários **purros** *A* e *B* de *m* bits, ou se
 
 ___  
 **[<<anterior](dimensoesUnidadesAritmeticaComputacional4.md)**    
-**[Home Conteúdo Arquitetura de Computadores](/arq_aulas.md)**  ou **[Home: Conteúdo Sistemas Digitais](/sisdig_aulas.md)**      
+**[Home Conteúdo Arquitetura de Computadores](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/arq_aulas.md)**  ou 
+**[Home Conteúdo Sistemas Digitais](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/sisdig_aulas.md)**   
