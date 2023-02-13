@@ -16,4 +16,5 @@ Circuito utilizando a placa do Arduíno 2560 como fonte de alimentação para ac
 - Conectar o Arduíno ao computador através da porta USB
 
 ___
-**[Home Conteúdo Arquitetura de Computadores](/arq_aulas.md)**
+**[Home Conteúdo Arquitetura de Computadores](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/arq_aulas.md)**  ou 
+**[Home Conteúdo Sistemas Digitais](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/sisdig_aulas.md)**   
