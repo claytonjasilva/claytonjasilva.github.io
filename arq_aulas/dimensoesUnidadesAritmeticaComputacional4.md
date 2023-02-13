@@ -21,5 +21,5 @@ A representação pode ser caracterizada pela **faixa de representação** (limi
 
 ___
 **Aritmética computacional: [próximo>>](dimensoesUnidadesAritmeticaComputacional5.md)**    
-**[home](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/arq_aulas.md)**   
+**[home](https://claytonjasilva.github.io/arq_aulas.html)**   
 **[<<anterior](dimensoesUnidadesAritmeticaComputacional3.md)**    
