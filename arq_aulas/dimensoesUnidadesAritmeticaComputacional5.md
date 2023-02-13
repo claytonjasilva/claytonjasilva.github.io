@@ -52,6 +52,6 @@ A subtração de dois números binários **purros** *A* e *B* de *m* bits, ou se
 1. Realiza-se a **adição** normalmente e **subtrai-se o resultado** do excesso na sua representação binária
 2. Realiza-se a **subtração** normalmente s **soma-se o resultado** ao excesso na sua representação binária
 
-___
+___  
+**[<<anterior](https://claytonjasilva.github.io/arq_aulas/dimensoesUnidadesAritmeticaComputacional4.html)**    
 **[home](https://claytonjasilva.github.io/arq_aulas.html)**    
-**[<<anterior](dimensoesUnidadesAritmeticaComputacional4.md)**    
