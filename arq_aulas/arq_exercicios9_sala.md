@@ -68,6 +68,5 @@ Discutimos agora que os processadores possuem no *set* de instruções, algumas 
 Explicar com suas palavras como opera uma instrução desse tipo, as vantagens e desvantagens quando comparadas com as instruções de modo direto e imediato.
 
 ___
-**[home](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/arq_aulas.md)**  
-
+**[Home Conteúdo Arquitetura de Computadores](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/arq_aulas.md)**   
 
