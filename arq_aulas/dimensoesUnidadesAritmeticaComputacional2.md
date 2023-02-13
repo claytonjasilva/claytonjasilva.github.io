@@ -50,7 +50,7 @@ As grandezas numéricas utilizadas pelos computadores podem ser representads em 
 
 ### 1.3.5 A unidade elementar de informação computacional: bit
 Os sistemas computacionais modernos utilizam o sistema binário, como discutido acima.  
-A menor unidade de informação nos sistemas computacionais é o **bit**, que é um acrônimo de ***bi**nary* *digi**t***.  
+A menor unidade de informação nos sistemas computacionais é o **bit**, que é um acrônimo de ***bi**nary digi**t***.  
 Como unidade binária, o bit só pode assumir dois valores: 0 ou 1.  
 Por conveniência da representação das informações em sistemas computacionais, em certas circunstâncias utiliza-se o múltiplo de de bits, chamado de ***byte***. 
 
