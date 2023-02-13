@@ -19,4 +19,4 @@ Conectar o *jumper* ao 5V (+), ou *HIGH (H)*, é logicamente equivalente a inser
 7. Identificar os demais pinos do 7432 e realizar o mesmo experimento. 
 
  ___
- **[home - Sistemas Digitais](https://claytonjasilva.github.io/sisdig_aulas.html)**
+ **[Home Conteúdo Sistemas Digitais](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/sisdig_aulas.md)**  
