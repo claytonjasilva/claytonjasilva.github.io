@@ -30,4 +30,4 @@ conectando o bit mais significativo na entrada de enable do MUX. Desenhe a forma
 ![Circuitos questão 4.10](/sisdig_aulas/images_sisdig/circuitosexercicio4_10.jpg) 
 
 ___
-**[home](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/sisdig_aulas.md)** 
+**[Home Conteúdo Sistemas Digitais](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/sisdig_aulas.md)**  
