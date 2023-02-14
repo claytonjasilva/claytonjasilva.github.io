@@ -29,4 +29,4 @@ O guia não tem a pretenção de esgotar todas as definições de sintaxe e sem�
 
 
 ___
-**[Home - Programação com C - Prof Clayton J A Silva](index.md)**
+**[Home Prof Clayton J A Silva](index.md)**
