@@ -14,15 +14,16 @@
     [Conversores A/D e D/A](sisdig_aulas/sisdig_9.pdf)  
 
 ## Práticas de laboratório
-1. **Práticas de revisão:** [Prática 1 Arduíno-LED](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/arq_aulas/pratica_ligaLED.md) [Prática 2 Arduíno-LED](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/arq_aulas/pratica_saidaArduino.md) 
+1. **Práticas de revisão:** [Prática 1 Arduíno-LED](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/arq_aulas/pratica_ligaLED.md) -
+[Prática 2 Arduíno-LED](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/arq_aulas/pratica_saidaArduino.md) -
 [Prática 3 Arduíno-LED](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/arq_aulas/pratica_entradaArduino.md) 
-3. [Prática 2](sisdig_aulas/sisdig_pratica2.md)
-4. [Prática 3](sisdig_aulas/sisdig_pratica3.md)
-5. [Prática 4](sisdig_aulas/sisdig_pratica4.md)
-6. [Prática 5](sisdig_aulas/sisdig_pratica5.md)
-7. [Prática 9](sisdig_aulas/sisdig_pratica9.md)
-8. [Prática 10](sisdig_aulas/sisdig_pratica10.md)
-9. [Prática 11](sisdig_aulas/sisdig_pratica11.md)
+2. [Prática 2](sisdig_aulas/sisdig_pratica2.md)
+3. [Prática 3](sisdig_aulas/sisdig_pratica3.md)
+4. [Prática 4](sisdig_aulas/sisdig_pratica4.md)
+5. [Prática 5](sisdig_aulas/sisdig_pratica5.md)
+6. [Prática 9](sisdig_aulas/sisdig_pratica9.md)
+7. [Prática 10](sisdig_aulas/sisdig_pratica10.md)
+8. [Prática 11](sisdig_aulas/sisdig_pratica11.md)
 
 ## Avaliações
 ### Avaliações Bimestrais
