@@ -42,10 +42,10 @@ O comando será executado da seguinte forma:
 5. Na última repetição *cont* passará a valer 51, logo a expressão `cont<=50` retornará 0.  
 6. Observações:  
   -- Ao invés de utilizar o limite 50, pode-se utilizar uma variável para a qual preliminarmente seja atribuído um valor limite.  
-  -- O importante é inicializar adequadamente a variável de controle, de modo que **o número de *loops* desejado seja alcançado no intervalo desde sua inicialização até o valor limite estabelecido na condição de guarda.**
+  -- O importante é inicializar adequadamente a variável de controle, de modo que **o número de *loops* desejado seja alcançado no intervalo desde sua inicialização até o valor limite estabelecido na condição de guarda.**  
   -- Caso a variável *cont* não seja incrementada, a estrutura permanecerrá em ***loop* **infinito**, pois a condição que resulta falso nunca ocorrerá.  
-  -- O teste para execução ou não é realizado no início do comando, razão pela qual a instrução muitas vezes é designada como **instrução de repetição com teste de condição no início**.  
-  -- Como já descrito anteriormente, a linguagem C dispõe do operador incremento `++` que incrementa o operando de 1, portanto a linha de comando `cont = cont + 1` pode ser substituída por `cont++;` ou `++cont;`. 
+  -- O teste para execução ou não é realizado no início do comando, razão pela qual a instrução muitas vezes é designada como **instrução de repetição com teste de condição no início**.      
+  -- Como já descrito anteriormente, a linguagem C dispõe do operador incremento `++` que incrementa o operando de 1, portanto a linha de comando `cont = cont + 1` pode ser substituída por `cont++;` ou `++cont;`.     
   -- **Observe que inserir o operador antes ou depois da variável sinaliza que qualquer outra operação sobre ela será realizada antes ou depois do incremento**.
 
 ### 4.2.2 Controle das repetições com *flag*
