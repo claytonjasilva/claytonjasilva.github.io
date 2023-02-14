@@ -36,6 +36,6 @@ Algumas funcionalidades:
 - Ferramentas de colaboração em equipe (por exemplo, Google Docs, GitHub)
 
 ___ 
-**[Home Conteúdo Programação em C](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/progC_aulas.md)**
+**[Home Conteúdo Programação em C](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/progC_aulas.md)**   
 **Primeiros passos: [próximo>>](progC_replit.md)**  
 
