@@ -129,6 +129,7 @@ void main(){
 
 ## 3.4 Aninhamento de *ifs* - comando `switch...case`
 Seja o seguinte uso de condicional composta  
+
 ```
 if (a>100) printf("a maior do que 100");
 else
@@ -139,6 +140,7 @@ O código possui dois comandos condicionais compostos *if...else*.
 Diz-se que os ***ifs* estão aninhados**.
 
 O C possui uma instrução composta cuja sintaxe é a seguinte:  
+
 ```
 switch (<variável>) {
 case <constante 1>:
@@ -157,9 +159,9 @@ default:
 2. Caso seja igual, executa o bloco 1 de instruções (interno ao *case*) e segue para a instrução posterior ao *switch* do código.
 3. Caso não seja igual, testa o valor da variável, comparando-o com a contante 2.
 4. Executa o bloco de instruções interno ao *case* da constante 2.
-5. A máquina executa esse procedimento até alcançar *else* no caso da variável não armazenar valor igual a nenhuma das constantes.
-6. Nesse caso, executa o bloco de instruções interno ao *else* e segue à execução da próxima instrução do código.
-7. Importante que o **uso do *else* é opcional**.
+5. A máquina executa esse procedimento até alcançar *default* no caso da variável não armazenar valor igual a nenhuma das constantes.
+6. Nesse caso, executa o bloco de instruções interno ao *default* e segue à execução da próxima instrução do código.
+7. Importante que o **uso do *default* é opcional**.
 
 Adaptando o exemplo anterior para ilustrar o uso do *switch*, temos:  
 ```
