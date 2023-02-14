@@ -59,14 +59,14 @@ if (<expressão lógica>) {
 }
 ```
 
-Processo de execução pela máquina:
+Processo de execução pela máquina:  
 1. A expressão lógica é calculada pela máquina.  
   A condição só pode gerar somente um resultado dentre dois possíveis: **1** (verdadeiro) ou **0** (falso).  
 2. A instrução (ou bloco de instruções) interna é executada somente se o cálculo da expressão lógica resultar 1 e a execução do programa prossegueapós a estrutura *if*
 3. Em caso contrário, se a expressão condicional resultar falso (valor 0), a máquina executa a instrução seguinte ao *if* do programa,
 sem executar a instrução (ou bloco de instruções).  
 
-Observações gerais:
+Observações gerais:  
 - O bloco das instruções internas ao *if* após a instrução condicional **deve ser delimitado entre chaves**.  
 - **Se houver somente uma instrução no bloco** o compilador admite não se usar a delimitação entre chaves.  
 - A indentação opera exclusivamente para proporcionar mais clareza ao código, facilitando a manutenção, legibilidade etc.  
@@ -88,22 +88,26 @@ void main(){
 ```
 
 ## 3.3 Condicionais compostas
-Na condicional composta, a execução de um bloco de instruções interno ao comando *if* é condicionada ao resultado da expressão lógica da sentença ser verdadeira (valor 1), enquanto a execução de **outro** bloco de instruções, interno ao comando *else*, é condicionada ao resultado ser falso (valor lógico igual a 0).
+Na condicional composta, **a execução de um bloco de instruções interno** ao comando *if* é condicionada ao resultado da expressão lógica da sentença ser verdadeiro (valor 1), enquanto a execução de **outro bloco de instruções**, interno ao *else* do comando *if*, é condicionada ao resultado ser falso (valor lógico igual a 0).
 A sintaxe é
+
 ```
 if (<expressão lógica>) {
-  <bloco de instruções>
+  <bloco 1 de instruções>
 }
 else {
-  <bloco de instruções>
+  <bloco 2 de instruções>
 }
 ```
-A expressão lógica é calculada pela máquina.  
-A condição só pode gerar somente um resultado dentre dois possíveis: **1** (verdadeiro) ou **0** (falso).  
-A instrução (ou bloco de instruções) interno ao *if* é executado somente se a expressão lógica de sua sentença resultar 1.   
-Em caso contrário, a máquina executa o bloco das instruções interno ao *else*.
-Como anteriormente, **o bloco de instruções deve ser delimitado entre chaves**.  
-**Se houver somente uma instrução no bloco** o compilador admite não se usar a delimitação entre chaves.
+Processo de execução pela máquina:  
+1. A expressão lógica é calculada pela máquina, gerando um dentre dois resultados, **1** (verdadeiro) ou **0** (falso).  
+2. A instrução (ou bloco 1 de instruções) - interno ao *if* - é executado somente se a expressão lógica de sua sentença resultar 1.  
+3. A instrução (ou bloco 2 de instruções) - interno ao *else* é executado se a expressão lógica resultar 0.
+4. Em ambas as situações, o programa prossegue sua execução a partir da instrução seguinte ao comando *if*.
+
+Observações gerais:  
+- Como anteriormente, **os blocos de instruções devem ser delimitados entre chaves**.  
+- **Se houver somente uma instrução no bloco** o compilador admite não se usar a delimitação entre chaves.
 
 Um exemplo é o seguinte:  
 ```
