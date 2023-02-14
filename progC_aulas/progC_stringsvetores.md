@@ -21,9 +21,10 @@ Por exemplo, a letra *B* é identificada pelo decimal 66. [Ver a tabelas ASCII](
 
 ### 9.1.2 Entrada e Saída de caracteres
 1. Utilizando `scanf`
-A função *scanf* opera normalmente com caracteres, desde que o formatador de entrada/saída utilize o símbolo `c`.  
 
-Por exemplo,  
+  A função *scanf* opera normalmente com caracteres, desde que o formatador de entrada/saída utilize o símbolo `c`.  
+
+  Por exemplo,  
 ```
 #include <stdio.h>
 
@@ -36,21 +37,23 @@ int main(void) {
 }
 ```
 
-2. Funções `getchar`e `putchar`  
-O modelo de entrada e saída da linguagem C é maniulado como um fluxo de caracteres.  
+2. Funções `getchar`e `putchar`
 
-Um **fluxo de texto** é uma sequência de caracteres dividida em **linhas**.  
+  O modelo de entrada e saída da linguagem C é maniulado como um fluxo de caracteres.  
 
-Cada linha possui zero ou mais caracteres seguidos por um **caracteres de nova linha**.  
+  Um **fluxo de texto** é uma sequência de caracteres dividida em **linhas**.  
 
-A biblioteca padrão provê funções para leitura e escrita de caracteres, das quais as mais simples são:  
-`getchar()`: lê o próximo caractere do fluxo de texto retorna seu valor; e  
-`putchar(<caractere>)`: imprime um caractere.
+  Cada linha possui zero ou mais caracteres seguidos por um **caracteres de nova linha**.  
 
-3. Entrada de fluxo de texto inválida  
-Os caracteres do fluxo de texto de entrada são lidos até que não há mais caractere válido.  
+  A biblioteca padrão provê funções para leitura e escrita de caracteres, das quais as mais simples são:  
+  - `getchar()`: lê o próximo caractere do fluxo de texto retorna seu valor; e  
+  - `putchar(<caractere>)`: imprime um caractere.
 
-A linguagem C requer um caractere que indique não haver mais caractere válido nos fluxos de texto. É o caractere chamado `EOF`, de *end of file*.  
+3. Entrada de fluxo de texto inválida
+
+  Os caracteres do fluxo de texto de entrada são lidos até que não há mais caractere válido.  
+
+  A linguagem C requer um caractere que indique não haver mais caractere válido nos fluxos de texto. É o caractere chamado `EOF`, de *end of file*.  
 EOF é um inteiro definido na biblioteca <stdio.h> diferente de qualquer char.  
 
 ___
