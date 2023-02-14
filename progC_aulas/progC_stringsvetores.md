@@ -56,6 +56,18 @@ int main(void) {
   A linguagem C requer um caractere que indique não haver mais caractere válido nos fluxos de texto. É o caractere chamado `EOF`, de *end of file*.  
 EOF é um inteiro definido na biblioteca <stdio.h> diferente de qualquer char.  
 
+### 9.1.3 Caracteres de escape
+Alguns caracteres não são definidos com o uso da barra invertida. A tabela apresenta.
+
+| Cracteres | Significado |
+| - | - |
+| \b | Retrocesso (*back*) |
+| \n | Nova linha |
+| \r | Retorno na linha |
+| \a | *beep* |
+
 ___
 **[Home Conteúdo Programação em C](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/progC_aulas.md)**   
+**[Vetores: próximo>>](progC_stringsvetores1.md)**   
+
 
