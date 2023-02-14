@@ -2,39 +2,48 @@
 
 ## 7.1 Conceitos gerais sobre funções  
 No contexto de uma programação, uma **função** é uma sequência nomeada de instruções que proporciona um resultado.  
-É um bloco de código de programa que pode ser chamaado várias vezes, produzindo alguns benefícios, como  
-- Reutilizar código: as funções permitem agrupar e generalizar um código para se usado arbitrariamente muitas vezes posteriormente  
-- Decomposição procedural: permitem dividir o sistema desenvolvido em partes, com tarefas bem definidas  
+
+É um bloco de código de programa que pode ser chamaado várias vezes, produzindo alguns benefícios, como:  
+- **Reutilizar código** - as funções permitem agrupar e generalizar um código para se usado arbitrariamente muitas vezes posteriormente;  
+- **Decomposição procedural** - permitem dividir o sistema desenvolvido em partes, com tarefas bem definidas.  
 
 ### 7.1.1 Prototipação de funções
-A função para ser executada em um determinado trecho de código precisa ser **chamada**.  
-A **chamada de função** requer o uso o nome e a passagem dos valores dos argumentos aos parâmetros.  
-Além disso, quando uma função é executada, ela pode devolver um valor (**retornar** valor) derivado da execução da tarefa, o qual pode ser atribuído a uma variável ou utilizado no contexto de uma expressão, por exemplo.  
-É necessário que o código em C especifique:  
-o **tipo** de valor que a função retorna;  
-o **identificador** ou **nome** da função; e  
-os **parâmetros** que a função utiliza para realizar a tarefa, cujos valores serão definidos pelos **argumentos** utilizados no código que a chamar.  
-A prototipação informa ao compilador que a função pode ser utilizada no módulo principal.  
+Conceitos:  
+- A função para ser executada em um determinado trecho de código precisa ser **chamada**.  
+- A **chamada de função** requer o uso do **nome** e a **passagem dos valores dos argumentos aos parâmetros**.  
+- Além disso, quando uma função é executada, ela pode devolver um valor (**retornar** valor) derivado da execução da tarefa, **o qual pode ser atribuído a uma variável** ou **utilizado no contexto de uma expressão**.  
+
+É necessário que o código em C especifique a função a ser usada, ou seja, que apresente o **protótipo da função**, contendo:  
+- o **tipo** de valor que a função retorna (*void*, retorna vazio; *int*, retorna inteiro, ou *float*, retorna ponto flutuante);    
+- o **identificador** ou **nome** da função; e  
+- os **parâmetros** que a função utiliza para realizar a tarefa, cujos valores serão definidos pelos **argumentos** utilizados no código que a chamar.  
+Observação: A prototipação informa ao compilador que a função pode ser utilizada no módulo principal.  
+
 A sintaxe para prototipação de uma função é dada por  
+
 ```
 <tipo de retorno> <nome da função>(<declaração dos parâmetros>);
 ```
+
 Algumas **observações**:  
 1. A função pode não retornar valor algum. Nesse caso, ao invés do tipo (*int*, *float*,...), utiliza-se a **palavra reservada** `void`.
 2. O nome da função segue as mesmas regras definidas para definição dos nomes das variáveis.
-3. Em C, todos os argumentos são passados aos parâmetros **por valor**. Isso significa que a função usará uma **cópia** do valor do argumento.  
-Sendo direto, isso significa que a alteração na função dos valores passados **não altera os valores dos argumentos**.  
-A função passa os valores às **variáveis locais** da função, conforme sua prototipação as define.
-4. As variáveis locais são aquelas que possuem somente valor dentro da função que são declaradas, incluindo a função *main*. A variável local deixa de existir quando a função é encerrada. Nos compiladores ANSI C, as variáveis precisam **não inicializadas** armazenam 'lixo'.  
-Como alternativa às variáveis locais pode ser conveniente o programador definir **variáveis globais**, ou seja, externas e fora de todas as funções.  
-Em cada função que for utilizada a variável global deverá ser declarada explícita ou **implicitamente, pelo contexto**.  
-A sintaxe da declaração explícita é dada por `extern <tipo> <nome da variável>;`.  Não há problema na redundância.
-A declaração implícita ocorrerá se no arquivo fonte a variável externa for utilizada antes da função necessitar dela.
-6. Se for desnecessário que a função utilize parâmetros o código pode informar ao compilador pelo uso da sintaxe `<tipo de retorno> <nome da função>(void);`  
-Alternativamente, o compilador reconhece a omissão da palavra reservada, usando a sintaxe `<tipo de retorno> <nome da função>();`.
+3. Em C, todos os argumentos são passados aos parâmetros **por valor**. 
+  -- Isso significa que a função usará uma **cópia** do valor do argumento.  
+  -- Sendo direto, isso significa que a alteração na função dos valores passados **não altera os valores dos argumentos**.  
+4. As funções estão diretamente relacionadas ao conceito de **escopo** das variáveis:
+  -- A função passa os valores às **variáveis locais** da função, conforme sua prototipação as define.  
+  -- As variáveis locais são aquelas que possuem somente valor dentro da função que são declaradas, incluindo a função *main*.  
+  -- A variável local deixa de existir quando a função é encerrada.  
+  -- Como alternativa às variáveis locais pode ser conveniente o programador definir **variáveis globais**, ou seja, externas e fora de todas as funções.  
+  -- Em cada função que for utilizada a variável global deverá ser declarada explícita ou **implicitamente, pelo contexto**.  
+  -- A sintaxe da declaração explícita é dada por `extern <tipo> <nome da variável>;`.  Não há problema na redundância.  
+  -- A declaração implícita ocorrerá se no arquivo fonte a variável externa for utilizada antes da função necessitar dela.  
+5. Se for desnecessário que a função utilize parâmetros o código pode informar ao compilador  
+  -- pelo uso da sintaxe `<tipo de retorno> <nome da função>(void)` ou   
+  -- o compilador reconhece a omissão da palavra reservada, usando a sintaxe `<tipo de retorno> <nome da função>();`.
 
-Na estrutura do programa em C vimos que a prototipação da função se apresenta após as diretivas de pré-processamento e antes do módulo principal *main*.  
-**A prototipação pode ser omitida se a função for definida antes do módulo principal *main***
+Na estrutura do programa em C vimos que a prototipação da função se apresenta após as diretivas de pré-processamento e antes do módulo principal *main*. **A prototipação pode ser omitida se a função for definida antes do módulo principal *main***
 
 ### 7.1.2 Definição de funções
 Para criar uma nova função é necessário escrever instruções atendendo a sintaxe do C, da seguinte forma  
