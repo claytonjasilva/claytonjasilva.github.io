@@ -23,4 +23,4 @@ for (<inicialização da variável de controle>; ;<incremento>) {
 O comando *for* admite a utilização dos comandos ***break** ou ***continue***.
 
 ___
-**[home](/progC_aulas.md)**
+**[Home Conteúdo Programação em C](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/progC_aulas.md)**   
