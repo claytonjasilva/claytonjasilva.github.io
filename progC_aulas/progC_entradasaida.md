@@ -88,4 +88,4 @@ void main(){
 6. Elaborar um programa na linguagem C para ler as dimensões dos lados de uma pista de corrida de formato retangular, ler a distância percorrida por um veículo, calcular e escrever o número completo de voltas dadas.
 
 ___
-**[home](/progC_aulas.md)**
+**[Home Conteúdo Programação em C](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/progC_aulas.md)**   
