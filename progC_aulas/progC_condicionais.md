@@ -1,21 +1,27 @@
 # 3. Controle de fluxo: condicionais simples e compostas
-Os comandos de controle de fluxo são aqueles que premitem ao programador alterar a sequência de execução das instruções do programa.  
+Os comandos de controle de fluxo são aqueles que premitem ao programador **alterar a sequência de execução das instruções** do programa.  
+
 Podem ser divididos em dois grupos:  
-- Condicionais simples
-- Condicionais compostas  
+- Condicionais **simples**
+- Condicionais **compostas**
+  
 As condições que determinam o fluxo de execução das instruções são definidas pelo resultado de uma **expressão lógica**.  
 
 ## 3.1 Expressões lógicas
-As expressões aritméticas resultam em números de ponto flutante ou inteiros.  
-As expressões lógicas são aquelas cujo reultado é um valor lógico.  
-Na linguagem C, o valor lógico verdadeiro é 1; e o valor lógico falso é 0.  
+As **expressões aritméticas** resultam em números de **ponto flutante** (tipo *float*) ou **inteiros** (tipo *int*).  
+
+As **expressões lógicas** são aquelas cujo reultado é um **valor lógico**.  
+Na linguagem C, o valor lógico **verdadeiro é 1**; e o valor lógico **falso é 0**.  
+
 Assim como os operadores aritméticos especificam à máquina uma operação aritmética,
-os operadores lógicos especificam operações lógicas, qe são de dois tipos: **relacionais** ou de commparação e operações próprias da lógica matemática.
+os **operadores lógicos** especificam **operações lógicas**, que são de dois tipos: **relacionais** ou de commparação e operações **lógicas** (próprias da lógica matemática).
 
 ### 3.1.1 Operadores lógicos de comparação
-Os operadores lógicos de comparação possibilitam criar proposições lógicas simples estabelecendo a relação comparativa entre dois dados do mesmo tipo, 
-por exemplo, duas vaariáveis, uma variávels e uma expressão aritmética, duas constantes etc.    
+Os operadores lógicos de comparação possibilitam criar **proposições simples** estabelecendo a **relação comparativa** entre dois dados do mesmo tipo, 
+por exemplo, duas variáveis, uma variável e uma expressão aritmética, duas constantes etc.   
+
 A tabela especifica os operadores e a respectiva operação lógica correspondente.
+
 | Operador | Operação |
 | - | - |
 | > | maior |
@@ -26,31 +32,44 @@ A tabela especifica os operadores e a respectiva operação lógica corresponden
 | != | diferente |
 
 Os operadores relacionais são aplicados a **dois operandos**.  
+
 Por exemplo, `3 > 2`, que compara o número 3 com o número 2.
+
 Os operandos podem conter **números**; **variáveis**, por exemplo, `x > 3`; e **expressões aritméticas**, por exemplo, `x + 3 <= 4 + y`. A máquina resolve primeiro as expressões aritméticas (os operadores aritméticos têm precedência sobre os lógicos).  
 
 ### 3.1.2 Operadores lógicos
-Variáveis, expressões ou constante lógicas podem ser combinadas com operadores lógicos para formar proposições compostas.  
-As operações são conjunção, disjunção ou negação.  
+Variáveis, expressões ou constante lógicas podem ser combinadas com operadores lógicos para formar **proposições compostas**.  
+As operações lógicas básicas são **conjunção**, **disjunção** e **negação (inversão lógica)**.  
+
 | Operador | Operação |
 | - | - |
 | && | conjunção (*and*) |
 | \|\| | disjunção (*or*) |
 | ! | negação |
 
+Existem operações que podem ser aplicadas bit a bit. Discutiremos esse ponto posteriormente.
+
 ## 3.2 Condicionais simples
-Na condicional simples, a execução da de um bloco de instruções interno ao comando é condicionada ao resultado da expressão lógica da sentença, cuja sintaxe é
+Na condicional simples, a execução de um bloco de instruções interno ao comando é condicionada ao resultado da expressão lógica da sentença.
+Sua sintaxe é
+
 ```
 if (<expressão lógica>) {
   <bloco de instruções>
 }
 ```
-A expressão lógica é calculada pela máquina.  
-A condição só pode gerar somente um resultado dentre dois possíveis: **1** (verdadeiro) ou **0** (falso).  
-A instrução (ou bloco de instruções) interna é executa somente se a expressão lógica de sua sentença resultar 1. Em caso contrário, a máquina executa a instrução seguinte ao *if* no programa.  
-O bloco das instruções internas ao *if* após a instrução condicional **deve ser delimitado entre chaves**.  
-**Se houver somente uma instrução no bloco** o compilador admite não se usar a delimitação entre chaves.  
-Observe que a indentação opera exclusivamente para proporcionar mais clareza ao código, facilitando a manutenção, legibilidade etc.  
+
+Processo de execução pela máquina:
+1. A expressão lógica é calculada pela máquina.  
+  A condição só pode gerar somente um resultado dentre dois possíveis: **1** (verdadeiro) ou **0** (falso).  
+2. A instrução (ou bloco de instruções) interna é executada somente se o cálculo da expressão lógica resultar 1 e a execução do programa prossegueapós a estrutura *if*
+3. Em caso contrário, se a expressão condicional resultar falso (valor 0), a máquina executa a instrução seguinte ao *if* do programa,
+sem executar a instrução (ou bloco de instruções).  
+
+Observações gerais:
+- O bloco das instruções internas ao *if* após a instrução condicional **deve ser delimitado entre chaves**.  
+- **Se houver somente uma instrução no bloco** o compilador admite não se usar a delimitação entre chaves.  
+- A indentação opera exclusivamente para proporcionar mais clareza ao código, facilitando a manutenção, legibilidade etc.  
 
 Um exemplo é o seguinte:  
 ```
