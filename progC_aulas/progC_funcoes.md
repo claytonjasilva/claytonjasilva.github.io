@@ -75,7 +75,7 @@ Uma relação extensa dessas funções pode ser obtida em [USP, Prof. Paulo Feof
 - cubo da diferença, 'cdif', resulta no cubo da diferença de A por B;
 - cubo da soma, 'csoma', que resulta no cubo da soma de A e B.  
 O programa deve executar sucessivas vezes as operações. Na **primeira** repetição, o usuário deve digitar os valores de A e B, seguidos da operação desejada. Nas **repetições seguintes**, o usuário deve digitar o valor de um novo número, seguido da nova operação desejada. A nova operação será aplicada sobre o novo número e o resultado da repetição anterior. O programa será interrompido quando for digitada a operação 'nop' - nenhuma operação - e deverá escrever o último valor resultante da operação. 
-6. Uma forma de calcular a potência de base *e* de um número é dada por *e^x = 1 + x + x^2/2! + x^3/!3 + ...*, onde *^* representa potência e *!* representa o fatorial do número. Elaborar um programa na linguagem C para determinar o resultado de *e^x*, em que o usuário ditige na entrada o valor de *x* e o número de interações desejadas (número de termos da série). 
+6. Uma forma de calcular a potência de base *e* de um número é dada por $e^x=1+x+x^2/2!+x^3/3!+ ...$, onde *!* representa o fatorial do número. Elaborar um programa na linguagem C para determinar o resultado de $e^x$, em que o usuário ditige na entrada o valor de *x* e o número de interações desejadas (número de termos da série). 
 
 ___
 **[Home Conteúdo Programação em C](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/progC_aulas.md)**   
