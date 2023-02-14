@@ -37,4 +37,4 @@ Situações em que pode não ocorrer execução alguma das instruções do *loop
 ou usando-se os comandos ***break** ou ***continue***.
 
 ___
-**[home](/progC_aulas.md)**
+**[Home Conteúdo Programação em C](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/progC_aulas.md)**   
