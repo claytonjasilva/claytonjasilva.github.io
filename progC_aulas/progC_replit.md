@@ -7,5 +7,5 @@
 
 ___
 **[<<anterior](progC_inicio.md)**  
+**[Home Conteúdo Programação em C](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/progC_aulas.md)**   
 **Estrutura de um programa em Python: [próximo>>](progC_estrutura.md)**  
-**[home](https://claytonjasilva.github.io/progC_aulas.html)**
