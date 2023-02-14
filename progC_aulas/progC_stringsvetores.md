@@ -41,6 +41,6 @@ Os caracteres do fluxo de texto de entrada são lidos até que não há mais car
 A linguagem C requer um caractere que indique não haver mais caractere válido nos fluxos de texto. É o caractere chamado `EOF`, de *end of file*.  
 EOF é um inteiro definido na biblioteca <stdio.h> diferente de qualquer char.  
 
-
-
+___
+**[Home Conteúdo Programação em C](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/progC_aulas.md)**   
 
