@@ -1,23 +1,27 @@
 # 2. Funções de entrada e saída 
 
 ## 2.1 Introdução às funções
-Uma função é um bloco de código que pode ser utilizado várias vezes no programa para realizar uma tarefa específica, portanto  
-- escrevê-lo somente uma vez, 
-- definindo-lhe um **nome** e os **parâmetros** necessários para realizar a tarefa  
-- **chamá-lo** no ponto adequado do código é producente.  
-No trecho de código que se desejar resolver a tarefa insere-se o nome da função, inserindo-se entre parêntesis os argumentos, de acordo com o tipo exigido pelos parâmetros da função.  
-Algumas funções respondem **retornando um valor de um determimnado tipo** após a tarefa ser realizada.   
-As funções podem ser definidas pelo programador, no entanto **outras disponíveis nas bibliotecas da linguagem podem ser usadas**.  
-Para que possam ser usadas a diretiva de inclusão `include <nome da biblioteca>` deve ser incluída no programa.
+Uma função é um **bloco de código** que pode ser utilizado várias vezes no programa para **realizar uma tarefa específica**, que:  
+- só requer ser escrito somente uma vez; 
+- possui um **nome** ou **identificador** e espera os **parâmetros** necessários para realizar a tarefa; e  
+- pode ser **chamado** no ponto adequado do programa.
+  
+Em relação ao uso das funções:
+- É inserida no trecho de código que se desejar resolver a tarefa insere-se o nome da função, atribuindo-lhe, entre parêntesis, os **argumentos**, de acordo com o tipo exigido pelos parâmetros da função.   
+- Algumas funções respondem **retornando um valor de um determimnado tipo** após a tarefa ser realizada.  
+- Podem ser definidas pelo programador, no entanto **outras disponíveis nas bibliotecas da linguagem podem ser usadas**.    
+- Para funções de bibliotecas específicas possam ser usadas a diretiva de inclusão `include <nome da biblioteca>` deve ser inderida no programa.
 
 ## 2.2 Entrada e Saída: <stdio.h>
-Os dados trocados entre fonte ou destino de dados com um programa deve escrito no código por meio de instruções.  
-São exemplos de fonte e destino de dados: teclado, disco ou outros dispositivos de I/O (entrada/saída).  
-Esses dados configuram-se como fluxo de texto e fluxo binários (bits).  
-Um fluxo de texto é uma sequência de linhas, cada uma com caracteres.  
-Um fluxo binário é uma sequência de bytes não processados, que registram dados internos.   
-Os programas precisam incluir as instruções ou comandos para possiblitar esses fluxos.  
-São categorias de funções, pertencentes à biblioteca <stdio.h>, entre outras:
+Observações gerais:
+- Os dados trocados entre fonte ou destino de dados com um programa deve escrito no código por meio de instruções.  
+- São exemplos de fonte e destino de dados: teclado, disco ou outros dispositivos de I/O (entrada/saída).  
+- Esses dados configuram-se como **fluxo de texto** e fluxo binários (bits).  
+- Um fluxo de texto é uma **sequência de linhas**, cada uma com **caracteres**.  
+- Um fluxo binário é uma sequência de bytes não processados, que registram dados internos.   
+- Os programas precisam incluir as instruções ou comandos para possiblitar esses fluxos.  
+
+São categorias de funções, pertencentes à **biblioteca <stdio.h>**, entre outras:
 - Operações de arquivo - discutida posteriormente;
 - Saída formatada;
 - Entrada foramtada.
@@ -25,12 +29,16 @@ São categorias de funções, pertencentes à biblioteca <stdio.h>, entre outras
 ### 2.2.1 Função `printf` 
 A função *printf* é uma função de saída formatada que **escreve no dispositivo de saída (normalmente a console do computador)
 caracteres e dados convertidos como especificado no argumento** e **retorna o número de caracteres gravados**.   
+
 A sintaxe da função *printf* é a seguinte:
+
 ```
 printf(<cadeia de caracteres de controle>,<lista de argumentos>);
 ```  
-A cadeia de caracteres será escrita na console.  
+**A cadeia de caracteres será escrita na console**.
+
 Na ordem em que são apresentads os argumentos na lista, na cadeia de caractreres deve ser especificado o tipo, conforme o código de especificação da tabela abaixo.  
+
 | Código | Tipo |
 | - | - |
 | %d ou %i | inteiro |
@@ -48,7 +56,8 @@ Entre o símbolo *%* e a especificação do tipo pode ser usado
 | . | especifica a separação do tamanho do campo da precisão desejada |
 | número inteiro | especifica a precisão (após o ponto) |
 
-O trecho abaixo escreve o resultado de uma operação de adição inteira:
+Por exemplo, o trecho abaixo escreve o resultado de uma operação de adição inteira:
+
 ```
 #include <stdio.h>
 
@@ -59,17 +68,22 @@ void main(){
 
 ### 2.2.2 Função `scanf` 
 A função *scanf* lê do dispositivo de entrada o fluxo de dados, com o **controle do formato** e **atribui os valores convertidos ao formato especificado** a um **ponteiro**.  
+
 A sintaxe da função *scanf* é a seguinte:
+
 ```
 scanf(<cadeia de caracteres de controle>,<lista de ponteiros dos argumentos>);
 ```  
-A cadeia de caracteres pode conter:
-- Espaços ou tabulações, que são ignorados
-- Especificações de conversão  
-Uma especificação de conversão determina a conversão do próximo campo de entrada, de acordo com o mesmo código da função *printf*.  
-Os ponteiros dos argumentos devem ser especificados pelo sinal `&`.
+
+1. A cadeia de caracteres de controle pode conter:
+- Espaços ou tabulações, que são ignorados   
+- Especificações de conversão    
+  Uma especificação de conversão determina a conversão do próximo campo de entrada, de acordo com o mesmo código da função *printf*.  
+  
+2. Os ponteiros dos argumentos devem ser especificados pelo sinal `&`.
 
 O trecho abaixo escreve o resultado de uma operação de adição inteira:
+
 ```
 #include <stdio.h>
 
