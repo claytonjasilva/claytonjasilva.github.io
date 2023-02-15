@@ -18,8 +18,10 @@ possui 7 caracteres relativos a "clayton". Considerando o caractere nulo de fim 
 Ou seja, não é necessário completar todos os caracteres da declaração da *string*. **As células não usadas contêm valor indeterminado**.  
 
 No exemplo acima, o vetor de *char* ( a *string*) foi incializada com "clayton".
+Alternativamente, pode-se usar `char nome[] = "clayton";`. **Nesse caso, o tamanho do vetor é aquele definido na sua inicialização**.
+
 Lembre-se que o nome do vetor é um ponteiro.  
-Logo pode-se inicilizar a *string* usando-se `*nome = "clayton"`.
+Logo pode-se inicializar a *string* usando essa característica `char *nome = "clayton";`.
 
 ### 9.3.2 Entrada e saída de *strings*
 #### a. Leitura de *strings*
