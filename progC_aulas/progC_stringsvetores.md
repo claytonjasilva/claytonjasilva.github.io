@@ -50,6 +50,7 @@ Alguns caracteres não são definidos com o uso da barra invertida. A tabela apr
 | \n | Nova linha |
 | \r | Retorno na linha |
 | \a | *beep* |
+| \0 | Fim de *string* |
 
 ___
 **[Home Conteúdo Programação em C](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/progC_aulas.md)**   
