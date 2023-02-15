@@ -37,7 +37,7 @@ printf(<cadeia de caracteres de controle>,<lista de argumentos>);
 ```  
 **A cadeia de caracteres será escrita na console**.
 
-Na ordem em que são apresentads os argumentos na lista, na cadeia de caractreres deve ser especificado o tipo, conforme o código de especificação da tabela abaixo.  
+Na ordem em que são apresentados os argumentos na lista, na cadeia de caracteres deve ser especificado o tipo, conforme o código de especificação da tabela abaixo.  
 
 | Código | Tipo |
 | - | - |
