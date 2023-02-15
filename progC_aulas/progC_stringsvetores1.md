@@ -54,3 +54,7 @@ int *p;
 p = idade;
 printf("O terceiro elemento do vtoer eh %i",p[2]);
 ```
+
+___
+**[Home Conteúdo Programação em C](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/progC_aulas.md)**   
+**[Strings: próximo>>](progC_stringsvetores2.md)**   
