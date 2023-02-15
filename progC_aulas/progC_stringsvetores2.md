@@ -15,7 +15,11 @@ char <nome da string>[<tamanho>];
 char nome[10] = {'c','l','a','y','t','o','n'};
 ```
 possui 7 caracteres relativos a "clayton". Considerando o caractere nulo de fim de *string*, "clayton\0", 8 caracteres.  
-Ou seja, não é necessário completar todos os caracteres da declaração da *string*. **As células não usadas contêm valor indeterminado**.
+Ou seja, não é necessário completar todos os caracteres da declaração da *string*. **As células não usadas contêm valor indeterminado**.  
+
+No exemplo acima, o vetor de *char* ( a *string*) foi incializada com "clayton".
+Lembre-se que o nome do vetor é um ponteiro.  
+Logo pode-se inicilizar a *string* usando-se `*nome = "clayton"`.
 
 ### 9.3.2 Entrada e saída de *strings*
 #### a. Leitura de *strings*
@@ -34,16 +38,8 @@ Observe que:
 A função de escrita de *strings* é similar ao uso da função *printf* para variáveis de outros tipos:
 
 ```
-printf("<Texto de saída %s",<nome da string>);
-```
-Observe que:
-(1) pelos motivos acima, **não se usa o operador unário `&`**;
-(2) no fluxo de texto da função, o especificador do tipo da variável é **%s**.
-
-
-
-
-
-
+printf(<cadeia de caracteres de controle>,<lista de argumentos>);
+```  
+, onde na cadeia de caracteres de controle, na posição a ser inserida a *string* o especificador de variável deve ser **%s**.
 
 
