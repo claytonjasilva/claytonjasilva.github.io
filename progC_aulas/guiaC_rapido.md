@@ -15,6 +15,7 @@
 ___
 <a id="ancora0"></a>
 ## Diretivas de pré-processamento
+
 1. `#include "arquivo cabeçalho"` ou `#include <arquivo cabeçalho>`
 2. `#define <macro> <código da macro>`  
 
@@ -43,7 +44,7 @@ ___
   `==`, igual  
   `!=`, diferente  
   
-  Finalidade: realizar a comparação e retornar *True* (verdadeiro) ou *False* (falso).  
+  Finalidade: realizar a comparação e retornar *True* (verdadeiro) ou *False* (falso).
 3. **Lógicos**  
   Sintaxe:  
   `||`, disjunção - ou  
@@ -98,6 +99,7 @@ ___
 [Topo](#ancora)
 
 <a id="ancora3"></a>
+## Repetição
 1. **Comando *while***  
    Sintaxe:
    ```
