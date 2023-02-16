@@ -8,7 +8,6 @@
 - [Funções](#ancora6)
 - [Ponteiros](#ancora7)
 - [*Strings* e vetores](#ancora8)
-- [Tuplas](#ancora9) 
 - [Outras](#ancora10)
 
 ___
@@ -20,7 +19,6 @@ ___
 
 [Topo](#ancora)
 ___
-
 <a id="ancora1"></a>
 ## Operadores
 1. **Aritméticos**  
@@ -53,7 +51,7 @@ ___
   Finalidade: realizar operações lógicas entre expressões que retornam *1* (verdadeiro) ou *0* (falso).  
 
 [Topo](#ancora)
-
+___
 <a id="ancora2"></a>
 ## Condicionais simples e compostas 
 1. **Comando *if***  
@@ -96,7 +94,7 @@ ___
    Finalidade: Executa o bloco 1 de instruções se a variável for igual à constante 1, senão, se a variável for igual à constante 2, executa o bloco 2, assim por diante. Se a variável não for igual a nenhuma das constantes executa o bloco interno ao *default*.   
 
 [Topo](#ancora)
-
+___
 <a id="ancora3"></a>
 ## Repetição
 1. **Comando *while***  
@@ -137,7 +135,7 @@ ___
    Finalidade: interrompe a execução do *loop* no ponto em que foi inserida e prossegue ao próximo teste de condição do comando *while*, *do-while* ou *for*.      
 
 [Topo](#ancora)  
-
+___
 <a id="ancora4"></a>
 ## Entrada e saída
 1. **Escrever uma saída**  
@@ -162,7 +160,7 @@ ___
    Finalidade: ler o valor digitado pelo usuário no 'console' e, após teclar *enter*, atribui o que foi digitado **com o tipo expecificado** à variável.  
 
 [Topo](#ancora) 
-
+___
 <a id="ancora6"></a>
 ## Funções
 1. **Prototipação de função**  
@@ -189,7 +187,7 @@ ___
    [Manual do C](https://petbcc.ufscar.br/manualc/)  
 
 [Topo](#ancora)
-
+___
 <a id="ancora7"></a>
 ## Ponteiros
 1. **Declaração de ponteiro**  
@@ -217,7 +215,7 @@ ___
    Finalidade: Atribuir o conteúdo armazenado no endereço definido pelo ponteiro a uma variável
   
 [Topo](#ancora)
-
+___
 <a id="ancora8"></a>
 ## *Strings* e vetores  
 1.  **Constante *char***  
@@ -288,7 +286,7 @@ ___
    Finalidade: Atribuir valor inicial à *string*.
 
 [Topo](#ancora)
-
+___
 <a id="ancora10"></a>
 ## Outras
 1. **Comentário:**  
