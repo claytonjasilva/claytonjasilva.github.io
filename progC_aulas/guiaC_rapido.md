@@ -1,7 +1,6 @@
 # Guia rápido em C
-
-# Guia rápido Python - Programação 2022.1
 <a name="ancora"></a>
+- [Diretivas](#ancora0)
 - [Operadores](#ancora1)
 - [Instruções simples e compostas](#ancora2)
 - [Entrada e saída](#ancora3)
@@ -12,6 +11,14 @@
 - [Tuplas](#ancora8) 
 - [Outras](#ancora9)
    - [Operações comuns a listas, strings e tuplas](#ancora10)
+___
+<a id="ancora0"></a>
+## Diretivas de pré-processamento
+1. `#include "arquivo cabeçalho"` ou `#include <arquivo cabeçalho>`
+2. `#define <macro> <código da macro>`  
+
+[Topo](#ancora)
+___
 
 <a id="ancora1"></a>
 ## Operadores
@@ -21,12 +28,12 @@
    `-`, subtração  
    `*`, multiplicação  
    `/`, divisão
-   `//`, divisão inteira  
    `%`, módulo ou resto da divisão inteira  
-    `**` , potenciação  
-    Exemplos: `x+y`, `4-z`, `8*5`, `x/4`, `x//4`, `x%4`, `x ** 2`  
+    `++`, incremento  
+    `--`, decremento
+  
     Finalidade: implementar operação aritmética.
-2. **Lógicos de comparação**  
+2. **Relacionais**  
   Sintaxe:  
   `>`, maior  
   `<`, menor  
@@ -34,15 +41,15 @@
   `<=`, menor ou igual  
   `==`, igual  
   `!=`, diferente  
-  Exemplos: `x>y`, `4<z`, `x==5`, `x!=4`, ...  
+  
   Finalidade: realizar a comparação e retornar *True* (verdadeiro) ou *False* (falso).  
 3. **Lógicos**  
   Sintaxe:  
-  `or`, disjunção - ou  
-  `and`, conjunção - e  
-  `not`, negação  
-  Exemplos: `x or y`, `x and y`, `not x`, ... onde x, y assumem os valores *True* ou *False* 
-  Finalidade: realizar operações lógicas entre expressões que retornam *True* (verdadeiro) ou *False* (falso).  
+  `||`, disjunção - ou  
+  `&&`, conjunção - e  
+  `!`, negação  
+   
+  Finalidade: realizar operações lógicas entre expressões que retornam *1* (verdadeiro) ou *0* (falso).  
 4. **Pertinência**  
    Sintaxe: `in` ou `not in`  
    Exemplos:  
@@ -334,35 +341,27 @@
 <a id="ancora9"></a>
 ## Outras
 1. **Comentário:**  
-   Sintaxe: `#`, seguido pelo texto de comentário  
-   Exemplo: `# texto explicativo do código`   
-   Finalidade: proporcionar melhor legibilidade e facilitar a manutenção do código
-2. **Arredondar um número de ponto flutuante**  
-   Sintaxe: `round(x,ndig)`  
-   Exemplo: `y=round(x,1)`  
-   Finalidade: Retorna o número arredondado para a precisão de *n* dígitos após o ponto decimal. Se *ndig* for omitido retornará o inteiro mais próximo.  
-3. **Importando pacotes**  
-   Sintaxe: `import pacote`  
-   Exemplo: `import math`  
-   Finalidade: importa todos os módulos do pacote
-   6. **Importando módulos de pacotes**
-   Sintaxe: `from pacote import módulo`  
-   Exemplo: `from math import sqrt`  
-   Finalidade: importa somente o módulo do pacote  
- <a id="ancora10"></a>
- 4. **Operações comuns a listas, strings e tuplas**
-
-| Operação | Resultado | Observação |
-| -------- | --------- | ---------- |
-| `x in s` | `True` se x está em s, `False` caso contrário | Para *strings* `"gg" in "eggs"` retorna *True* |
-| `x not in s` | `False` se x está em s, `True` caso contrário | Para *strings* `"gg" not in "eggs"` retorna *False* |
-| `s + t` | Concatena s com t | Concatenar objetos imutáveis gera um objeto imutável |
-| `s * n` ou `n * s`| Gera uma sequência s repetida n vezes | Se n igual a zero gera sequência vazia |
-| `s[i]`,`s[i:j]`, ... | Define elemento ou intervalo de elementos de s |  |
-| `len(s)` | Retorna tamanho da sequência |  |
-| `max(s)` | Retorna maior valor |  |
-| `min(s)` | Retorna menor valor |  |
-| `s.index(x)` | Retorna a posição da primeira ocorrência de x em s |  |
-| `s.count(x)` | Retorna o número de ocorrências de x em s |  |
-   
+   Sintaxe: `/*`, seguido pelo texto de comentário  
+      
+   Finalidade: abrir comentários  
+2. **Comentário:**  
+   Sintaxe: `*/`, precedido pelo texto de comentário  
+      
+   Finalidade: fechar comentários  
+3. **Comentário:**  
+   Sintaxe: `//`, seguido pelo texto de comentário  
+      
+   Finalidade: definie comentários em uma linha  
+4. **Fim de instrução**  
+   Sintaxe: `;`  
+     
+   Finalidade: Delimitar o fim de uma instrução do código.  
+5. **Início de bloco de instruções**  
+   Sintaxe: `{`  
+  
+   Finalidade: Delimitar o início de um bloco de instruções.  
+6. **Término de bloco de instruções**  
+   Sintaxe: `}`  
+  
+   Finalidade: Delimitar o término de um bloco de instruções  
 [Topo](#ancora)
