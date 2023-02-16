@@ -5,13 +5,12 @@
 - [Condicionais simples e compostas](#ancora2)  
 - [Repetição](#ancora3)
 - [Entrada e saída](#ancora4)
-- [Conversão de tipos](#ancora5)
 - [Funções](#ancora6)
 - [Ponteiros](#ancora7)
-- [Strings](#ancora8)
+- [*Strings* e vetores](#ancora8)
 - [Tuplas](#ancora9) 
 - [Outras](#ancora10)
-   - [Operações comuns a listas, strings e tuplas](#ancora10)
+
 ___
 <a id="ancora0"></a>
 ## Diretivas de pré-processamento
@@ -164,19 +163,6 @@ ___
 
 [Topo](#ancora) 
 
-<a id="ancora5"></a>
-## Conversão de tipos
-1. **Converter para inteiro**  
-   Sintaxe: `int(texto)`, em que o *texto* deve ser uma cadeia de dígitos numéricos 0-9; ou `int(float)`, em que o *float* é um número de poonto flutuante; ou `int(var)`, em que a variável é do tipo *string* com valor de dígitos numéricos ou do tipo float   
-   Exemplo: `y=int(x)`  
-   Finalidade: converter um valor texto ou float para um número inteiro. No exemplo, o valor de *x* é convertido para inteiro - por causa da atribuição, *y* recebe o número convertido.  
-2. **Converter para ponto flutuante** - usa-se **ponto flutuante** para a representação de números fracionários no computador  
-   Sintaxe: `float()`, similar ao uso do `int`  
-   Exemplo: `y=float(x)`  
-   Finalidade: converter um valor para um número de ponto flutuante. No exemplo, o valor de *x* é convertido para ponto flutuante  
-
-[Topo](#ancora)
-
 <a id="ancora6"></a>
 ## Funções
 1. **Prototipação de função**  
@@ -233,37 +219,74 @@ ___
 [Topo](#ancora)
 
 <a id="ancora8"></a>
-## Strings  
-1.  **Delimitação de strings - cadeias de caracteres**  
-   Sintaxe: `'texto'` ou `"texto"`  
-   Exemplo: `"Digite o valor"`  
-   Finalidade: Definir uma cadeia de caracteres  
-2. **Caracteres de escape**
+## *Strings* e vetores  
+1.  **Constante *char***  
+   Sintaxe:  
+   `'<caractere>'` 
+  
+   Finalidade: Definir uma constante *char*
+2.  **Constante *string***  
+   Sintaxe:  
+   `"<cadeia de caracteres>"` 
+  
+   Finalidade: Definir uma constante *string*  
+3. **Caracteres de escape**  
+   Sintaxe:   
+   | Caracteres | Significado |
+   | - | - |
+   | \b | Retrocesso (*back*) |
+   | \n | Nova linha |
+   | \r | Retorno na linha |
+   | \a | *beep* |
+   | \0 | Fim de *string* |
+4. **Declaração de vetor**  
+   Sintaxe:
+   ```
+   <tipo> <nome do vetor>[dimensão];
+   ```
+   
+   Finalidade: Definir uma representação simbólica e espaço de alocação de dados de um tipo a cada elemento do vetor.  
+5. **Inicialização de vetor**  
+   Sintaxe:
+   ```
+   <tipo> <nome do vetor>[<dimensão do vetor>] = {<lista de valores>};
+   ```
+   
+   Finalidade: Definir uma representação simbólica e espaço de alocação de dados de um tipo a cada elemento do vetor, atribuindo valores iniciais a cada um.  
+6. **Indexação de vetor a um ponteiro**  
+   Sintaxe:
+   ```
+   <nome do ponteiro> = <nome do vetor>;
+   ```
+   
+   Finalidade: Associar os elementos do vetor a endereços relacionados com o ponteiro.
+ 7. **Declaração de *string***  
+   Sintaxe:
+   ```
+   char <nome da string>[<tamanho>];
+   ```
+   
+   Finalidade: Definir uma representação simbólica e espaço de alocação de dados à *string*.
+ 8. **Inicialização de *string***  
+   Sintaxe:
+   ```
+   char <nome da string>[<dimensão da string>] = {<lista de caracteres>};
+   ```
+   ou  
+   ```
+   char <nome da string>[<dimensão da string>] = <contante string>;
+   ```
+   ou  
+   ```
+   char <nome da string>[] = <contante string>;
+   ```
+   ou
+   ```
+   char *<nome da string> = <contante string>;
+   ```
+      
+   Finalidade: Atribuir valor inicial à *string*.
 
-| Caractere de escape | Significado |
-| ------------------- | ----------- |
-| \n |  Nova linha. Move o cursor para o início da próxima linha. |
-| \t | Tabulação Horizontal. Move o cursor para a próxima parada de tabulação (tab). |
-| \r | Retorno de carro. Move o cursor para o início da linha atual; não avança para a próxima linha. |
-| \b | Backspace. Retrocede o cursor um caractere. |
-| \a | Alerta. Emite o som de sino do sistema. |
-| \ | Barra invertida (Backslash). |
-| \\" | Caractere de aspas duplas. |
-| \\' | Caractere de aspas simples. |
-
-[Topo](#ancora)
-
-<a id="ancora9"></a>
-## Tuplas
-1. **Criação**  
-   Sintaxe: `tupla = (<elementos separados por vírgula>)` ou `tupla = <elementos separados por vírgula`  
-   Exemplo: `vogais = ('a','e','i','o','u')` ou `vogais = 'a','e','i','o','u'`  
-   Finalidade: criar a tupla  
-2. **Função *tuple***  
-   Sintaxe: `tupla = tuple(<objeto>)`  
-   Exemplo: `tupla = tuple([1,2,3])`  
-   produz a tupla (1,2,3)  
-   Finalidade: criar a tupla a partir da lista  
 [Topo](#ancora)
 
 <a id="ancora10"></a>
