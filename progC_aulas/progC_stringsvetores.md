@@ -6,7 +6,7 @@ As *strings* são cadeias de caracteres. Na linguagem C existem alguma peculiari
 ### 9.1.1 Caracteres (*char*): conceitos gerais
 - Os caracteres são um tipo de dado:*char*. A linguagem C as trata como sendo variáveis de 1 *byte*.  
 - A sintaxe para indicar ao compilador que o dado é um caractere é inscrevê-lo entre **aspas simples**, `'<caractere>'`.  
-- Como vimaos anteriormente, a declaraço de uma variável do tipo *char* deve ser `char <nome da variável>;`.   
+- Como vimos anteriormente, a declaraço de uma variável do tipo *char* deve ser `char <nome da variável>;`.   
 - **Uma peculiaridade do C:** pode-se também usar *char* para armazenar valores numéricos inteiros.  
 - Para escrever o *char* como inteiro basta formatar a saída com `%d`ou `%i`.  
 - O *char* utilizado como inteiro é identificado pela sua equivalência decimal no código ASCII.
