@@ -180,8 +180,7 @@ ___
    
    Finalidade: Definir uma representação simbólica e a especificação dos parâmetros da função (tipo e nome).  
 2. **Definição de função**  
-   Sintaxe: `return <valores ou variáveis separadas por vírgula>`  
-   Exemplo:  
+   Sintaxe:   
    ```
    <tipo de retorno> <nome da função>(<declaração dos parâmetros>) {
       <declarações de variáveis>
