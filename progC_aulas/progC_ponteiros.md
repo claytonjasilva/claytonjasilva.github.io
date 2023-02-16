@@ -24,7 +24,7 @@ Uma variável ponteiro para um dado de um determinado tipo deve ser declarada da
 
 ## 8.2 Ponteiros e argumentos de funções
 Como em C os argumentos das funções são passados por valor (isto é, uma cópia dos argumentos é utilizada como parâmetro), 
-uma forma de alteraruma variável de escopo mais externo por uma função é passar para a função como argumentos o endereço de variáveis.  
+uma forma de alterar uma variável de escopo mais externo por uma função é passar para a função como argumentos o endereço de variáveis.  
 Claro que se deve declarar os parâmetros da função como ponteiros.  
 Por exemplo,  
 ```
