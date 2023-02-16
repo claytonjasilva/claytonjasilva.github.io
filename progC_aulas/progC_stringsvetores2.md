@@ -9,19 +9,27 @@ A declaração de uma *string* em C deve obedecer a sintaxe
 char <nome da string>[<tamanho>];
 ```
 , onde o tamanho deve ser definido presumindo o número de caracteres necessários para o problema a ser tratado pelo código.   
-**Nem sempre serão atribuídos caracteres a todos os elementos da *string***. Por exemplo,
+
+### 9.3.2 Inicializando uma *string*
+**Nem sempre serão atribuídos caracteres a todos os elementos da declaração da *string***. 
+A *string* pode ser **inicializada** na sua declaração tratando-a como um vetor 
 
 ```
 char nome[10] = {'c','l','a','y','t','o','n'};
 ```
-possui 7 caracteres relativos a "clayton". Considerando o caractere nulo de fim de *string*, "clayton\0", 8 caracteres.  
+Embora de tamanho 10, a *string* foi inicializada com 7 caracteres ("clayton"). Considerando o caractere nulo de fim de *string*, possui 8 caracteres ("clayton\0").  
 Ou seja, não é necessário completar todos os caracteres da declaração da *string*. **As células não usadas contêm valor indeterminado**.  
 
-No exemplo acima, o vetor de *char* ( a *string*) foi incializada com "clayton".
-Alternativamente, pode-se usar `char nome[] = "clayton";`. **Nesse caso, o tamanho do vetor é aquele definido na sua inicialização**.
+Alternativamente, pode-se usar a sintaxe de constantes *strings* (caracteres entre aspas duplas) para inicializar *strings*, na forma    
+`char nome[10] = "clayton";` ou  
+`char nome[]="clayton";`. **Nesse último caso, o tamanho do vetor é aquele definido pela *string* da sua inicialização**.  
 
 Lembre-se que o nome do vetor é um ponteiro.  
-Logo pode-se inicializar a *string* usando essa característica `char *nome = "clayton";`.
+Logo também se pode inicializar a *string* usando essa característica, na forma  
+`char *nome = "clayton";`.
+
+**(Obs)**. Em relação às constantes *strings* é bom salientar que o caractere entre aspas simples é um *char*, que é diferente do mesmo caractere entre aspas duplas, que é uma *string*.  
+Por exemplo, 'a' é um *char*, enquanto "a" é uma *string* com dois caracteres, 'a' e '\0'.
 
 ### 9.3.2 Entrada e saída de *strings*
 #### a. Leitura de *strings*
