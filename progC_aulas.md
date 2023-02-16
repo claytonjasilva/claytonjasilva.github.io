@@ -19,14 +19,10 @@ Ministrado como atividade extra classe.
 14. [Exceção](progC_aulas/progC_excecao.md)
 
 ## Guia Rápido
-O guia rápido compreende um **resumo** da sintaxe da linguagem Python, com atenção especial **aos tópicos discutidos em sala**.  
+O guia rápido compreende um **resumo** da sintaxe da linguagem C, com atenção especial **aos tópicos discutidos em sala**.  
 É um instrumento especialmente para apoiar o aluno na elaboração dos códigos para solucionar exercícios propostos.  
-O guia não tem a pretenção de esgotar todas as definições de sintaxe e semântica da linguagem Python.  
+O guia não tem a pretenção de esgotar todas as definições de sintaxe e semântica da linguagem C.  
 [**Acessar o Guia Rápido**](progC_aulas/guiaC_rapido.md)
-
-## Referências da linguagem C
-...
-
 
 ___
 **[Home Prof Clayton J A Silva](index.md)**
