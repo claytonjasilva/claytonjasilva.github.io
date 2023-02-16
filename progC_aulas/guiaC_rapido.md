@@ -50,18 +50,6 @@ ___
   `!`, negação  
    
   Finalidade: realizar operações lógicas entre expressões que retornam *1* (verdadeiro) ou *0* (falso).  
-4. **Pertinência**  
-   Sintaxe: `in` ou `not in`  
-   Exemplos:  
-   ```
-   x = 2
-   k = 5
-   lista = [1, 2, 3]
-   y = x in lista
-   w = k in lista
-   ```  
-   retorna *True* para *y*, pois 2 pertence a lista; e retorna *False* para *w*. O operador `not in` retorna a negação de `in`.  
-   Finalidade: determinar se um elemento pertence ou não a um objeto
 
 [Topo](#ancora)
 
@@ -162,13 +150,25 @@ ___
 <a id="ancora3"></a>
 ## Entrada e saída
 1. **Escrever uma saída**  
-   Sintaxe: `print(lista de argumentos)`, em que `lista de argumentos` possui a sintaxe `var, ...`, `número, ...` ou combinação de variáveis e números
-   Exemplo: `print(x)`    
-   Finalidade: apresentar no 'console' o valor armazenado em *x*. No exemplo, o valor guardao em *x* será 'escrito' na tela de 'console'.
+   Sintaxe: `printf(<cadeia de caracteres de controle>,<lista de argumentos>);`, em que  
+   a *cadeia de caracteres de controle* deve estar entre `"` e incluir a especificação do tipo
+   | Código | Tipo |
+   | - | - |
+   | %d ou %i | inteiro |
+   | %x ou %X | hexadecimal |
+   | %c | caractere único (*char*) |
+   | %s | cadeia de caracteres (*string*) |
+   | %f | ponto flutuante |
+   
+   e a *lista de argumentos* deve conter o nome de todas as variáveis, separados por vírgula (`,`).  
+   
+   Finalidade: apresentar no 'console' o valor armazenado em cada uma das variáveis da lista.
 2. **Ler entrada**  
-   Sintaxe: `input(texto)`, em que `texto` é uma cadeia de caracteres delimitada por aspas duplas `"` ou aspas simples `'`   
-   Exemplo: `x=input("Digite o valor")`  
-   Finalidade: ler o valor digitado pelo usuário no 'console', após ele teclar *enter* e armazena que foi digitado **como tipo texto** em *x*. No exemplo, o texto digitado pelo usuário será armazenado em *x*.  
+   Sintaxe: `scanf(<cadeia de caracteres de controle>,<lista de ponteiros dos argumentos>);`, em que  
+   a *cadeia de caracteres de controle* deve estar entre `"` e incluir a especificação do tipo e  
+   a *lista de ponteiros dos argumentos* deve conter o operador unário `&` antes do nome de cada variável (ponteiro da variável), todos separados por vírgula. 
+   
+   Finalidade: ler o valor digitado pelo usuário no 'console' e, após teclar *enter*, atribui o que foi digitado **com o tipo expecificado** à variável.  
 
 [Topo](#ancora) 
 
@@ -364,4 +364,13 @@ ___
    Sintaxe: `}`  
   
    Finalidade: Delimitar o término de um bloco de instruções  
+7. **Declaração de variáveis**  
+   Sintaxe: `<tipo> <nome da variável ou lista de nomes de variáveis>`  
+  
+   Finalidade: Definir uma representação simbólica e espaço de alocação de dados de um tipo a uma variável  
+8. **Atribuição de valor a uma variável**  
+   Sintaxe: `<nome da variável> = <expressão aritmética ou variável ou número>`  
+  
+   Finalidade: Atribuir o resultado de uma expressão, o valor de uma variável ou uma constante, à direita do sinal *=*, à variável à esquerda do sinal.   
+
 [Topo](#ancora)
