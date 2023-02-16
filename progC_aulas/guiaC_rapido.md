@@ -33,7 +33,7 @@ ___
   
     Finalidade: implementar operação aritmética.
 2. **Relacionais**  
-  Sintaxe:  
+      Sintaxe:  
   `>`, maior  
   `<`, menor  
   `>=`, maior ou igual  
@@ -41,14 +41,14 @@ ___
   `==`, igual  
   `!=`, diferente  
   
-  Finalidade: realizar a comparação e retornar *True* (verdadeiro) ou *False* (falso).
+   Finalidade: realizar a comparação e retornar *True* (verdadeiro) ou *False* (falso).  
 3. **Lógicos**  
-  Sintaxe:  
-  `||`, disjunção - ou  
-  `&&`, conjunção - e  
-  `!`, negação  
+   Sintaxe:  
+   `||`, disjunção - ou  
+   `&&`, conjunção - e  
+   `!`, negação  
    
-  Finalidade: realizar operações lógicas entre expressões que retornam *1* (verdadeiro) ou *0* (falso).  
+   Finalidade: realizar operações lógicas entre expressões que retornam *1* (verdadeiro) ou *0* (falso).  
 
 [Topo](#ancora)
 ___
@@ -139,8 +139,12 @@ ___
 <a id="ancora4"></a>
 ## Entrada e saída
 1. **Escrever uma saída**  
-   Sintaxe: `printf(<cadeia de caracteres de controle>,<lista de argumentos>);`, em que  
-   a *cadeia de caracteres de controle* deve estar entre `"` e incluir a especificação do tipo
+   Sintaxe: 
+   ``` 
+   printf(<cadeia de caracteres de controle>,<lista de argumentos>);
+   ```
+   , em que    
+   (1) a *cadeia de caracteres de controle* deve estar entre `"` e incluir a especificação do tipo
    | Código | Tipo |
    | - | - |
    | %d ou %i | inteiro |
@@ -149,13 +153,17 @@ ___
    | %s | cadeia de caracteres (*string*) |
    | %f | ponto flutuante |
    
-   e a *lista de argumentos* deve conter o nome de todas as variáveis, separados por vírgula (`,`).  
+   (2) e a *lista de argumentos* deve conter o nome de todas as variáveis, separados por vírgula (`,`).  
    
    Finalidade: apresentar no 'console' o valor armazenado em cada uma das variáveis da lista.
 2. **Ler entrada**  
-   Sintaxe: `scanf(<cadeia de caracteres de controle>,<lista de ponteiros dos argumentos>);`, em que  
-   a *cadeia de caracteres de controle* deve estar entre `"` e incluir a especificação do tipo e  
-   a *lista de ponteiros dos argumentos* deve conter o operador unário `&` antes do nome de cada variável (ponteiro da variável), todos separados por vírgula. 
+   Sintaxe: 
+   ```
+   scanf(<cadeia de caracteres de controle>,<lista de ponteiros dos argumentos>);
+   ```
+   , em que  
+   (1) a *cadeia de caracteres de controle* deve estar entre `"` e incluir a especificação do tipo e  
+   (2) a *lista de ponteiros dos argumentos* deve conter o operador unário `&` antes do nome de cada variável (ponteiro da variável), todos separados por vírgula. 
    
    Finalidade: ler o valor digitado pelo usuário no 'console' e, após teclar *enter*, atribui o que foi digitado **com o tipo expecificado** à variável.  
 
@@ -217,16 +225,20 @@ ___
 [Topo](#ancora)
 ___
 <a id="ancora8"></a>
-## *Strings* e vetores  
-1.  **Constante *char***  
+## *Strings* e vetores
+1. **Constante *char***  
    Sintaxe:  
-   `'<caractere>'` 
-  
-   Finalidade: Definir uma constante *char*
-2.  **Constante *string***  
+   ```
+   '<caractere>'
+   ```
+   
+   Finalidade: Definir uma constante *char*  
+2.  **Constante *string***    
    Sintaxe:  
-   `"<cadeia de caracteres>"` 
-  
+   ```
+   "<cadeia de caracteres>"
+   ```
+   
    Finalidade: Definir uma constante *string*  
 3. **Caracteres de escape**  
    Sintaxe:   
@@ -264,7 +276,7 @@ ___
    char <nome da string>[<tamanho>];
    ```
    
-   Finalidade: Definir uma representação simbólica e espaço de alocação de dados à *string*.
+   Finalidade: Definir uma representação simbólica e espaço de alocação de dados à *string*.  
  8. **Inicialização de *string***  
    Sintaxe:
    ```
@@ -282,7 +294,7 @@ ___
    ```
    char *<nome da string> = <contante string>;
    ```
-      
+   
    Finalidade: Atribuir valor inicial à *string*.
 
 [Topo](#ancora)
