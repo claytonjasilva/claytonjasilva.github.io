@@ -28,8 +28,13 @@ Lembre-se que o nome do vetor é um ponteiro.
 Logo também se pode inicializar a *string* usando essa característica, na forma  
 `char *nome = "clayton";`.
 
-**(Obs)**. Em relação às constantes *strings* é bom salientar que o caractere entre aspas simples é um *char*, que é diferente do mesmo caractere entre aspas duplas, que é uma *string*.  
-Por exemplo, 'a' é um *char*, enquanto "a" é uma *string* com dois caracteres, 'a' e '\0'.
+**Observações gerais**  
+1. Em relação às constantes *strings* é bom salientar que o caractere entre aspas simples é um *char*, que é diferente do mesmo caractere entre aspas duplas, que é uma *string*.  
+  Por exemplo, 'a' é um *char*, enquanto "a" é uma *string* com dois caracteres, 'a' e '\0'.
+2. Em relação à operação de atribuição de valor a uma variável *string*, lembrar que, por se tratar de vetor de *char*, **não são válidas as operações de**:  
+  atribuição na forma `nome = "clayton";`  
+  comparação na forma `nome == "clayton"`.  
+  Para *strings* essas operações requerem o uso de **funções definidas nas bibliotecas <stdio.h> e <string.h>**.
 
 ### 9.3.3 Entrada e saída de *strings*
 #### a. Leitura de *strings*
@@ -52,4 +57,12 @@ printf(<cadeia de caracteres de controle>,<lista de argumentos>);
 ```  
 , onde na cadeia de caracteres de controle, na posição a ser inserida a *string* o especificador de variável deve ser **%s**.
 
-### 9.3.4 Atribuição valores a *strings* 
+### 9.3.4 Bibliotecas de funções para *strings*
+As bibliotecas e respectivas funções podem ser obtidas no [projeto Manual C](https://petbcc.ufscar.br/sobre/).
+
+(1) Biblioteca *<string.h>* - a descrição das funções da biblioteca pode ser obtida em [string.h](https://petbcc.ufscar.br/string/).
+
+(2) Biblioteca *<stdio.h>* - a descrição das funções da biblioteca pode ser obtida em [stdio.h](https://petbcc.ufscar.br/stdio/).
+
+(3) Biblioteca *<stdlib.h>* - a descrição das funções da biblioteca pode ser obtida em [stdlib.h](https://petbcc.ufscar.br/stdlib/).
+
