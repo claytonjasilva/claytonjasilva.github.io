@@ -43,5 +43,5 @@ Prof Clayton J A Silva
 ___
 (1) A data exata será definida oportunamente pela Coordenação
 
-**[Home - Arquitetura de Computadores - Prof Clayton J A Silva](https://claytonjasilva.github.io/arq.html)**
+**[Home - Arquitetura de Computadores - Prof Clayton J A Silva](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/arq.md)**
 
