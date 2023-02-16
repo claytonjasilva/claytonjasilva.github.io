@@ -125,20 +125,19 @@ ___
    }
    ```  
    
-   Finalidade: Executa o bloco de instruções em um número de *loops* controlado por x. Em cada *loop* o valor de *x* é incrementado em 1, dentro dos limites de 0 a (limite-1)  
-
-7. **Comando *break***  
+   Finalidade: Inicializa a variável de controle e executa o bloco de instruções se a expressão lógica resultar valor igual a 1 (valor lógico verdadeiro). Em cada *loop* incrementa a variável de controle antes de testar novamente a condição.  
+4. **Comando *break***  
    Sintaxe: `break`  
    
    Finalidade: interrompe a execução do *loop* no ponto em que foi inserida e prossegue a execução do programa a partir da instrução do código seguinte ao *while*, *do-while* ou ao *for*.   
-7. **Comando *continue***  
+5. **Comando *continue***  
    Sintaxe: `continue`  
    
    Finalidade: interrompe a execução do *loop* no ponto em que foi inserida e prossegue ao próximo teste de condição do comando *while*, *do-while* ou *for*.      
 
 [Topo](#ancora)  
 
-<a id="ancora3"></a>
+<a id="ancora4"></a>
 ## Entrada e saída
 1. **Escrever uma saída**  
    Sintaxe: `printf(<cadeia de caracteres de controle>,<lista de argumentos>);`, em que  
@@ -163,7 +162,7 @@ ___
 
 [Topo](#ancora) 
 
-<a id="ancora4"></a>
+<a id="ancora5"></a>
 ## Conversão de tipos
 1. **Converter para inteiro**  
    Sintaxe: `int(texto)`, em que o *texto* deve ser uma cadeia de dígitos numéricos 0-9; ou `int(float)`, em que o *float* é um número de poonto flutuante; ou `int(var)`, em que a variável é do tipo *string* com valor de dígitos numéricos ou do tipo float   
@@ -176,7 +175,7 @@ ___
 
 [Topo](#ancora)
 
-<a id="ancora5"></a>
+<a id="ancora6"></a>
 ## Funções
 1. **Definição de função**  
    Sintaxe:   
@@ -207,7 +206,7 @@ ___
 
 [Topo](#ancora)
 
-<a id="ancora6"></a>
+<a id="ancora7"></a>
 ## Listas
 1. **Inicializar lista vazia**  
    Sintaxe: `lista=[]`  
@@ -295,7 +294,7 @@ ___
    Finalidade: função para retornar a soma todos os elementos da lista.  
 [Topo](#ancora)
 
-<a id="ancora7"></a>
+<a id="ancora8"></a>
 ## Strings  
 1.  **Delimitação de strings - cadeias de caracteres**  
    Sintaxe: `'texto'` ou `"texto"`  
@@ -316,7 +315,7 @@ ___
 
 [Topo](#ancora)
 
-<a id="ancora8"></a>
+<a id="ancora9"></a>
 ## Tuplas
 1. **Criação**  
    Sintaxe: `tupla = (<elementos separados por vírgula>)` ou `tupla = <elementos separados por vírgula`  
@@ -329,7 +328,7 @@ ___
    Finalidade: criar a tupla a partir da lista  
 [Topo](#ancora)
 
-<a id="ancora9"></a>
+<a id="ancora10"></a>
 ## Outras
 1. **Comentário:**  
    Sintaxe: `/*`, seguido pelo texto de comentário  
