@@ -24,5 +24,5 @@ Prof Clayton J A Silva
 | 22/6 | - |
 | 29/6 | Avaliação Substitutiva |
 
-**[Home - Arquitetura de Computadores - Prof Clayton J A Silva](https://claytonjasilva.github.io/arq.html)**
+**[Home - Arquitetura de Computadores - Prof Clayton J A Silva](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/arq.md)**
 
