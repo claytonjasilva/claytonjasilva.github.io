@@ -179,32 +179,28 @@ ___
 
 <a id="ancora6"></a>
 ## Funções
-1. **Definição de função**  
+1. **Prototipação de função**  
    Sintaxe:   
    ```
-   def nome_da_função(parâmetros):
-      bloco de instruções
-      return valor
+   <tipo de retorno> <nome da função>(<declaração dos parâmetros>);
    ```  
-   em que os parâmetros são a lista das variáveis, `var, ...`  
-   Exemplo:
-   ```
-   def soma(a,b):
-      c = a+b
-      return c
-   ```
-   Finalidade: criar e definir as instruções executadas por uma função.  
-2. **Retornando tupla**  
+   em que os parâmetros são declarados como variáveis, separados por vírgula.  
+   
+   Finalidade: Definir uma representação simbólica e a especificação dos parâmetros da função (tipo e nome).  
+2. **Definição de função**  
    Sintaxe: `return <valores ou variáveis separadas por vírgula>`  
    Exemplo:  
    ```
-   def add_mult(n,m):
-      a = n * m
-      b = n + m
-      retiurn a , b
+   <tipo de retorno> <nome da função>(<declaração dos parâmetros>) {
+      <declarações de variáveis>
+      <corpo de instruções>
+      return <valor ou expressão de retorno>
+   }
    ```  
-   retorna a tupla (a, b).  
-   Finalidade: criar uma tupla por função.  
+    
+   Finalidade: Código da função.  
+3. **Bibiotecas do C**  
+   [Manual do C](https://petbcc.ufscar.br/manualc/)  
 
 [Topo](#ancora)
 
