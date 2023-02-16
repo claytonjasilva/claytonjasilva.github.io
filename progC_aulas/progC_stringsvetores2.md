@@ -67,5 +67,5 @@ As bibliotecas e respectivas funções podem ser obtidas no [projeto Manual C](h
 (3) Biblioteca *<stdlib.h>* - a descrição das funções da biblioteca pode ser obtida em [stdlib.h](https://petbcc.ufscar.br/stdlib/).
 
 ___
-**[<<anterior](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/progC_aulas/progC_stringsvetores1.md)**
+**[<<anterior](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/progC_aulas/progC_stringsvetores1.md)**  
 **[Home Conteúdo Programação em C](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/progC_aulas.md)**   
