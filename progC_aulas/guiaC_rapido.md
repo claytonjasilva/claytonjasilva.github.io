@@ -7,7 +7,7 @@
 - [Entrada e saída](#ancora4)
 - [Conversão de tipos](#ancora5)
 - [Funções](#ancora6)
-- [Listas](#ancora7)
+- [Ponteiros](#ancora7)
 - [Strings](#ancora8)
 - [Tuplas](#ancora9) 
 - [Outras](#ancora10)
@@ -205,91 +205,31 @@ ___
 [Topo](#ancora)
 
 <a id="ancora7"></a>
-## Listas
-1. **Inicializar lista vazia**  
-   Sintaxe: `lista=[]`  
-   Exemplo: `nota=[]`  
-   Finalidade: criar uma lista vazia.
-2. **Inicializar lista não vazia**  
-   Sintaxe: `lista=[item, item, ...]`  
-   Exemplo: `nota=[8,9,10,3]`  
-   Finalidade: criar e inicializar uma lista com seus elementos.
-3. **Elemento de uma lista**  
-   Sintaxe: `nome[indice]`  
-   Exemplo: `nota[0]`  
-   Finalidade: associa ao dado de nota na posição [0]
-4. **Fatiar listas** 
-   Sintaxe: `nome da lista[indice inferior:indice superior]` ou `nome da lista[:indice superior]` ou `nome da lista[indice inferior:]`  
-   Exemplo:  
+## Ponteiros
+1. **Declaração de ponteiro**  
+   Sintaxe: 
    ```
-   nota = [1,4,2,8,8]
-   print(nota[:1], nota[1:3), nota[2:])
-   ```  
-   produz as listas [1,4] [4,2,8] [2,8,8]  
-   Finalidade: tomar e manipular trechos de lista  
-5. **Método *append***  
-   Sintaxe: `lista.append(item)`  
-   Exemplo: 
+   <tipo apontado> *<nome da variável>;
+   ```   
+   
+   Finalidade: Definir uma representação simbólica e espaço de alocação de dados para o ponteiro.
+2. **Inicialização de ponteiro**  
+   Sintaxe: 
    ```
-   nota = []
-   nota.append(0)
-   ```  
-   insere o valor 0 na lista vazia.  
-   Finalidade: método para inserir elemento após o último elemento da lista.  
-6. **Método *extend***  
-   Sintaxe: `lista.extend(lista)`  
-   Exemplo:
+   <declaração de variável>
+   <declaração de ponteiro>
+   <nome da variável> = &<nome do ponteiro>; 
    ```
-   nota = [1,2,5,6]
-   nota.extend([4,6])
+     
+   Finalidade: Definir um endereço válido para o ponteiro no sistema.
+3. **Atribuição de valor a variável usando ponteiro**  
+   Sintaxe:
    ```
-   produz a lista [1,2,5,6,4,6].  
-   Finalidade: método para incluir uma lista argumento no fim da lista  
-7. **Método *sort()***  
-   Sintaxe: `lista.sort()`  
-   Exemplo:
+   <nome da variável> = *<nome do ponteiro>; 
    ```
-   nota = [4,1,0,3]
-   print(nota.sort())
-   ```
-   produz a lista [0,1,3,4].  
-   Finalidade: método para ordenar crescentemente a lista.
-8. **Método *insert***
-   Sintaxe: `lista.insert(i,elemento)`  
-   Exemplo: 
-   ```
-   lista = [1,2.4,6.7,3]
-   lista.insert(1,8)
-   ```
-   produz a lista [1,8,2.4,6.7,3]  
-   Finalidade: método para inserir um elemento em uma posição i.
-9. **Método *pop***  
-   Sintaxe: `lista.pop()`  
-   Exemplo: 
-   ```
-   lista = [1,2,4,6,7,3]
-   x = lista.pop(4)
-   ```
-   retorna 7 e atribui a x e produz a lista [1,2,4,6,3]  
-   Finalidade: método para remove e retorna o elemento da posição i.  
-10. **Método *remove***
-   Sintaxe: `lista.remove(elemento)`  
-   Exemplo:  
-     ```  
-      lista = [1,2,4,2,7,3]
-      x = lista.remove(2)
-      ```  
-      resulta na remoção do primeiro 2 e definição da lista [1,4,2,7,3]  
-   Finalidade: remover primeiro elemento definido no argumento uma lista  
-11. **Função *sum***  
-   Sintaxe: `sum(lista)`  
-   Exemplo:  
-      ```
-      lista = [1,2,4,2,7,3]
-      x = sum(lista)
-      ```  
-      calcula a soma igual a 19 e atribui à variável x  
-   Finalidade: função para retornar a soma todos os elementos da lista.  
+     
+   Finalidade: Atribuir o conteúdo armazenado no endereço definido pelo ponteiro a uma variável
+  
 [Topo](#ancora)
 
 <a id="ancora8"></a>
