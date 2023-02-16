@@ -2,14 +2,15 @@
 <a name="ancora"></a>
 - [Diretivas](#ancora0)
 - [Operadores](#ancora1)
-- [Instruções simples e compostas](#ancora2)
-- [Entrada e saída](#ancora3)
-- [Conversão de tipos](#ancora4)
-- [Funções](#ancora5)
-- [Listas](#ancora6)
-- [Strings](#ancora7)
-- [Tuplas](#ancora8) 
-- [Outras](#ancora9)
+- [Condicionais simples e compostas](#ancora2)  
+- [Repetição](#ancora3)
+- [Entrada e saída](#ancora4)
+- [Conversão de tipos](#ancora5)
+- [Funções](#ancora6)
+- [Listas](#ancora7)
+- [Strings](#ancora8)
+- [Tuplas](#ancora9) 
+- [Outras](#ancora10)
    - [Operações comuns a listas, strings e tuplas](#ancora10)
 ___
 <a id="ancora0"></a>
@@ -54,96 +55,86 @@ ___
 [Topo](#ancora)
 
 <a id="ancora2"></a>
-## Instruções simples e compostas 
-1. **Atribuição**  
-   Sintaxe: `var = var` ou `var = numero` ou `var = expressão`  
-   Exemplo: `x = 24`  
-   Finalidade: atribuir um valor à direita do sinal da equação a uma variável à esquerda do sinal. No exemplo, *x* **recebe** 24.
-2. **Comando if**  
+## Condicionais simples e compostas 
+1. **Comando *if***  
    Sintaxe:  
    ```
-   if cond:
-      instrução ou bloco de instruções
+   if (<expressão lógica>) {
+      <bloco de instruções>
+   }
    ```  
-   Exemplo:  
-   ```
-   if x<0:
-      print(x)
-   ```
-   Finalidade: Executa a instrução ou o bloco de instruções somente se a condição for verdadeira.  
-3. **Comando if...else...**  
+   
+   Finalidade: Executa o bloco de instruções somente se o resultado do cálculo da expresso lógica for igual a 1 (verdadeiro).  
+2. **Comando *if...else...***  
    Sintaxe:  
    ```
-   if cond:
-      instrução ou bloco de instruções 1
-   else:
-      instrução ou bloco de instruções 2
+   if (<expressão lógica>) {
+      <bloco 1 de instruções>
+   }
+   else {
+      <bloco 2 de instruções>
+   }
    ```
-   Exemplo:
-   ```
-   if x<0:
-      print(x)
-   else:
-      print(y)
-   ```
-   Finalidade: Executa o bloco 1 de instruções somente se a condição for verdadeira. Se a condição for falsa executa o bloco 2 de instruções.  
-4. **Comando if...elif...else...**  
+   
+   Finalidade: Executa o bloco 1 de instruções se o valor da expressão lógica igual a 1 (verdadeiro) e executa o bloco 2 de instruções se o valor for igual a 0 (falso).  
+3. **Comando *switch...case...***  
    Sintaxe:
    ```
-   if cond 1:
-      instrução ou bloco de instruções 1
-   elif cond 2:
-      instrução ou bloco de instruções 2
-   ...
-   elif cond n:
-      instrução ou bloco de instruções n
-   else:
-      instruções C
+   switch (<variável>) {
+      case <constante 1>:
+         <bloco 1 de instruções>
+         break;
+      case <constante 2>:
+         <bloco 2 de instruções>
+         break;
+      ...
+      default:
+         <bloco n de instruções>
+   }
    ```
-   Exemplo:
-   ```
-   if x<16:
-      print(x)
-   elif x<25:
-      print(x+16)
-   else:
-      print(x+25)
-   ```
-   Finalidade: Executa o bloco 1 de instruções somente se a condição 1 for verdadeira. Se a condição for falsa, testa a condição 2. Se for verdadeira, executa o bloco 2 de instruções, assim por diante. **O *else...* é opcional**   
-5. **Comando while...**  
+   
+   Finalidade: Executa o bloco 1 de instruções se a variável for igual à constante 1, senão, se a variável for igual à constante 2, executa o bloco 2, assim por diante. Se a variável não for igual a nenhuma das constantes executa o bloco interno ao *default*.   
+
+[Topo](#ancora)
+
+<a id="ancora3"></a>
+1. **Comando *while***  
    Sintaxe:
    ```
-   while cond:
-      instrução ou bloco de instruções
+   while (<expressão lógica>) {
+      <instrução ou bloco de instruções>
+   }
    ```
-   Exemplo:
-   ```
-   x = 1
-   while x<16:
-      print(x)
-      x = x + 1
-   ```
-   Finalidade: Executa o bloco de instruções enquanto a condição for verdadeira e volta a testa a condição. Se a condição for falsa, prossegue para à execução da instrução seguinte ao *while*  
-6. **Comando for...**  
+   
+   Finalidade: Testa a expressão lógica (**teste no inicio**) e se ela resultar valor lógico igual a 1 (verdadeiro), executa o bloco de instruções (*loop*). Volta a testar e repetir o *loop* enquanto o valor for igual a 1. Se a condição for igual a 0 (falso) interrompe o *loop* e prossegue para à execução da instrução seguinte ao *while*.  
+2. **Comando *do...while***  
    Sintaxe:
    ```
-   for var in range(limite):
-      bloco de instruções
+   do {
+      <instrução ou bloco de instruções>
+   }
+   while (<expressão lógica>);
    ```  
-   Exemplo:
+   
+   Finalidade: Executa o bloco de instruções (*loop*) e testa a expressão lógica (**teste no final**). Se ela resultar valor lógico igual a 1 (verdadeiro) volta a executar o *loop*. Se a condição for igual a 0 (falso) interrompe o *loop* e prossegue para à execução da instrução seguinte ao *do-while*.  
+3. **Comando *for***  
+   Sintaxe:
    ```
-   for x in range(16):
-      print(x)
-   ```
+   for (<inicialização da variável de controle>;<expressão lógica>;<incremento>) {
+      <instrução ou bloco de instruções>
+   }
+   ```  
+   
    Finalidade: Executa o bloco de instruções em um número de *loops* controlado por x. Em cada *loop* o valor de *x* é incrementado em 1, dentro dos limites de 0 a (limite-1)  
-  7. **Função range**  
-   Sintaxe: `range(stop)` ou `range(start, stop)` ou `range(start, stop, step)`  
-   Exemplo:
-      ```
-      for x in range(1,16):
-         print(x)
-      ```
-      Finalidade: retorna um objeto interável de inteiros que inicia em *start*, incrementa em *step* até o limite de *stop*   
+
+7. **Comando *break***  
+   Sintaxe: `break`  
+   
+   Finalidade: interrompe a execução do *loop* no ponto em que foi inserida e prossegue a execução do programa a partir da instrução do código seguinte ao *while*, *do-while* ou ao *for*.   
+7. **Comando *continue***  
+   Sintaxe: `continue`  
+   
+   Finalidade: interrompe a execução do *loop* no ponto em que foi inserida e prossegue ao próximo teste de condição do comando *while*, *do-while* ou *for*.      
 
 [Topo](#ancora)  
 
