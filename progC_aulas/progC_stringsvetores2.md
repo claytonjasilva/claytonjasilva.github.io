@@ -31,7 +31,7 @@ Logo também se pode inicializar a *string* usando essa característica, na form
 **(Obs)**. Em relação às constantes *strings* é bom salientar que o caractere entre aspas simples é um *char*, que é diferente do mesmo caractere entre aspas duplas, que é uma *string*.  
 Por exemplo, 'a' é um *char*, enquanto "a" é uma *string* com dois caracteres, 'a' e '\0'.
 
-### 9.3.2 Entrada e saída de *strings*
+### 9.3.3 Entrada e saída de *strings*
 #### a. Leitura de *strings*
 A função de leitura de *strings* em C tem uma peculiaridade explicada pelo fato de que *strings* são vetores de *char* e
 de que os nome de vetores são ponteiros.
@@ -52,4 +52,4 @@ printf(<cadeia de caracteres de controle>,<lista de argumentos>);
 ```  
 , onde na cadeia de caracteres de controle, na posição a ser inserida a *string* o especificador de variável deve ser **%s**.
 
-
+### 9.3.4 Atribuição valores a *strings* 
