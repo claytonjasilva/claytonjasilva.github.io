@@ -1,5 +1,9 @@
-# 2. Conceitos de programação procedural: tipos, operadores, entrada/saída  
-## 2.1 [Tipos numéricos](https://docs.python.org/pt-br/3/library/stdtypes.html#numeric-types-int-float-complex)
+# 2. Conceitos básicos de programação estruturada: tipos, operadores, entrada/saída  
+## 2.1 Tipos numéricos
+- Os tipos numéricos, como tratamos, podem ser inteiros, de ponto flutuante ou complexos;  
+- Os inteiros são escritos simplesmente com os dígitos do **sistema de numeração** desejado;  
+- No sistema octal (dígitos do conjunto {0, 1, ...,7}) precede-se o número por `0o`.
+[Mais sobre tipos numéricos](https://docs.python.org/pt-br/3/library/stdtypes.html#numeric-types-int-float-complex)
 
 ## 2.2 Mais sobre variáveis  
 - São criadas **na primeira vez** que recebem um valor   
