@@ -1,8 +1,8 @@
 ## 1.6 Estrutura de programa em Python
 
-Os programas em Python podem ser decompostos em módulos, instruções, expressões e objetos:
+Os programas em Python podem ser decompostos em pacotes, módulos, instruções, expressões e objetos:
 
-- Os programas são compostos de **módulos**. Posteriormente discutiremos os módulos com mais detalhes.
+- Os programas são organizados em **módulos**, que podem ser estruturados em **pacotes**. Posteriormente discutiremos os [módulos e pacotes com mais detalhes](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/prog_aulas/prog_modulos.md).
 - Os módulos contêm **instruções**.  
 As instruções são executadas sequencialmente pelo interpretador.  
 ![Estrutura Python](/prog_aulas/images_prog/estruturapython.jpg)  
@@ -15,19 +15,40 @@ As expressões que geram objetos contemplam:
 
 1. [Funções da biblioteca-padrão](https://docs.python.org/pt-br/3/library/functions.html).  
 Funções são elementos da expressão que realizam um trabalho, entregando um resultado após serem executadas.  
-Por exemplo, *print(argumento)* apresenta na área de console o valor do argumento.
+Por exemplo, *print(argumento)* apresenta na área de console o valor do argumento. Posteriormente estudaremos [funções com mais detalhes](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/prog_aulas/prog_funcoes.md).
 3. Objetos de vários **tipos**:  
-  a. **Números**  
-  b. Strings  
-  c. Listas  
-  d. Tuplas  
-  e. Dicionários  
-  f. Arquivos  
-3. Expressões e operações aritméticas: utilizam operadores `+`, `-`, `*` e `/`. Divisão (`/`) sempre retorna número na representação em **ponto flutuante (float)**. Para fazer uma divisão com resultado inteiro (descartando a parte fracionária) pode-se usar o operador divisão inteira (`//`); para calcular o resto da divisão inteira pode-se usar o operador **módulo** (`%`).
-4. Objetos de referência - **variáveis** -, que armazenam os valores dos objetos e são referenciadas por um **identificador** (nome).
-5. Constantes, que possuem valores pré-estabelecidos, chamados pela sua identificação.  
+  a. Números  
+    Os números em Python podem pertencer, por padrão, a três **tipos de dados**:  
+        (i) **inteiros** (`int`)  
+        (ii) **ponto flutuante** (`float`) - números de ponto flutuante são a representação computacional de números fracionários da matemática, com as implcações de precisão da representação computacional, além da faixa de representação    
+        (iii) **complexos** (`complex`).
+        
+    b. Strings - estudaremos [*strings* com mais detalhes](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/prog_aulas/prog_str.md);  
+    c. Listas - estudaremos [listas com mais detalhes](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/prog_aulas/prog_listas.md);   
+    d. Tuplas - estudaremos [tuplas com mais detalhes](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/prog_aulas/prog_tuplas.md);    
+    e. Dicionários - estudaremos [tuplas com mais detalhes](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/prog_aulas/prog_dicionarios.md);     
+    f. Arquivos - estudaremos [tuplas com mais detalhes](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/prog_aulas/prog_arquivos.md).      
+4. Expressões e operações aritméticas e lógicas:  
+  As expressões **aritméticas** utilizam **operadores aritméticos**, ou seja, operadores que indicam uma instrução aritmética, cuja sintaxe em Python é
+  
+    | Operador | Operação |
+    | - | - |
+    | `+` | Adição |
+    | `-` | Subtração |
+    | `*` | Multiplicação |
+    | `/` | Divisão |
+    | `//` | Divisão inteira |
+    | `%` | Módulo ou Resto de divisão inteira |
+  
+  
+    Observações:  
+    (1) A divisão (`/`) sempre retorna número na representação em **ponto flutuante (float)**. 
+    Para fazer uma divisão com resultado inteiro (descartando a parte fracionária) pode-se usar o operador divisão inteira (`//`)  
+    (2) Para calcular o resto da divisão inteira pode-se usar o operador **módulo** (`%`).  
+5. Objetos de referência - **variáveis** -, que armazenam os valores dos objetos e são referenciadas por um **identificador** (nome).
+6. Constantes, que possuem valores pré-estabelecidos, chamados pela sua identificação.  
 Por exemplo, a constante matemática *pi*.
-6. Sentença de **atribuição**: o valor armazenado em uma variável ou resultante de uma expressão aritmética é passado a uma variável.
+7. Sentença de **atribuição**: o valor armazenado em uma variável ou resultante de uma expressão aritmética é passado a uma variável.
   
 ## 1.8 Modos de utilização do interpretador
 ### 1.8.1 Modo interativo
@@ -64,4 +85,5 @@ Vamos criá-lo utilizando o Replit:
 
 ___
 **[<<anterior](prog_replit.md)**  
-**[home](https://claytonjasilva.github.io/progPython_aulas.html)**
+**[Home Programação Estruturada com Python](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/progPython_aulas.md)**  
+
