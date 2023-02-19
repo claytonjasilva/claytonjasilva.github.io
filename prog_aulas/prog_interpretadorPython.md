@@ -38,7 +38,7 @@ Nas linguagens compiladas, após a compilação (e ligação) é realizada e pos
 É possível transformar seus códigos Python em códigos executáveis em nível de máquina.  
 O código executável (*.exe*) inclui, empacotados, o interpretados Python (PVM) com o código Python e demais arquivos de suporte. 
 
-Um dos sistemas para obter o binário congelado é o pacote *Installer*.
+Um dos sistemas para obter o binário congelado é o pacote [*PyInstaller*](https://pyinstaller.org/en/stable/).
 
 
 
