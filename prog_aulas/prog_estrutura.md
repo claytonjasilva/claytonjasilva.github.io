@@ -45,15 +45,30 @@ Por exemplo, *print(argumento)* apresenta na área de console o valor do argumen
     (1) A divisão (`/`) sempre retorna número na representação em **ponto flutuante (float)**. 
     Para fazer uma divisão com resultado inteiro (descartando a parte fracionária) pode-se usar o operador divisão inteira (`//`)  
     (2) Para calcular o resto da divisão inteira pode-se usar o operador **módulo** (`%`).  
-5. Objetos de referência - **variáveis** -, que armazenam os valores dos objetos e são referenciadas por um **identificador** (nome).
+5. Objetos de referência - **variáveis**, que armazenam os valores dos objetos e são referenciadas por um **identificador** (nome).  
+  Variáveis são **representações simbólicas** de dados que pertencem a um determinado conjunto (possuem a um determinado tipo).  
+  O uso das variáveis em Python **não requer a declaração do tipo**, pois o Python é de **tipagem dinâmica** (o interpretador reconhece automaticamente o tipo de dado).  
+  Quando uma variável é declarada, o interpretador reserva **um endereço de memória** disponível no computador, com o tamanho necessário para armazenar o dado, e associa a ele um **endereço de memória**.  
+  O **identificador** ou **nome** deve obedecer as regras:  
+    - Nomes de variáveis são formados por letras e dígitos;  
+    - O primeiro caractere deve ser uma letra - o caractere *_* é considerado uma letra;  
+    - Letras maiúsculas e minúsculas são caracteres distintos.    
+
 6. Constantes, que possuem valores pré-estabelecidos, chamados pela sua identificação.  
 Por exemplo, a constante matemática *pi*.
-7. Sentença de **atribuição**: o valor armazenado em uma variável ou resultante de uma expressão aritmética é passado a uma variável.
+7. Sentença de **atribuição**: o valor armazenado em uma variável ou resultante de uma expressão aritmética é passado a uma variável.  
+    Por exemplo,
+    ```
+    x = 2 * 3 + (4 / y)
+    ```
   
 ## 1.8 Modos de utilização do interpretador
 ### 1.8.1 Modo interativo
-Quando os comandos são lidos a partir do **console**, diz-se que o interpretador está em **modo interativo**.  
-No modo interativo o interpretador solicita um próximo comando através do *prompt* primário.  
+Quando os comandos são lidos a partir do **console**, diz-se que o interpretador está em **modo interativo**. 
+O modo interativo é uma excelente forma para experimentar uma linguagem e realizar testes de sintaxe rápidos.  
+Para uso de modo interativo utiliza-se uma janela de *shell* do sistema.  
+![*Prompt* de *shell* do Python](/prog_aulas/images_prog/shellpython.jpg)  
+No modo interativo o interpretador solicita um próximo comando através do *prompt* primário (`>>>`), como apresenta figura.  
 Usando o interpretador Python como calculadora no modo interativo...
 
 ### 1.8.2 Modo de *script*
@@ -72,6 +87,24 @@ Vamos criá-lo utilizando o Replit:
 1. Criar um *New Repl* - **definir um nome e selecionar o *Template* Python**. O nome escolhido é o que define o projeto Python.
 2. O projeto contemplará um arquivo *main.py* que se constitui o **módulo principal** do projeto criado - **não alterar o nome *main.py***
 3. Escrever as instruções e executar o *script*
+
+### 1.8.3 Elementos de uma Linguagem de Programação
+Quando se expressa nas linguagens naturais (por exemplo, Português), especialmente na forma escrita, é necessário obedecer a um conjunto de regras.  
+Quando se deseja expressar um conjunto de instruções em qualquer devem ser obedecidas regras, de modo que o responsável pela execução das intruções as 
+compreenda para poder executá-las corretamente.  
+Nas linguagens formais de programação (LP) o mesmo ocorre:  
+  - cada uma possui um **alfabeto**, com um conjunto de caracteres usados para construção de **unidades léxicas** (*tokens*) que satisfazem a um padrão;  
+  - os *tokens* podem ser agrupados para elaborar **sentenças** corretas - a **sintaxe** da LP;  
+  - cada sentença possui um **signficado** que é traduzido em um conjunto de operações realizadas pela máquina - a **semântica** da LP.  
+
+Os *scrips* elaborados pelo programador **devem obedecer à sintaxe** da LP 
+de modo que as sentenças propiciem a realização das operações para solucionar problemas.  
+Quando o programador não atende no código corretamente as regras de sintaxe, **o interpretador sinaliza o erro, indicando o local e o tipo de erro**
+![Erro de sintaxe](/prog_aulas/images_prog/erropython.jpg)  
+Observe que o interpretador Replit indica o erro e o ponto do código.  
+Obviamente, a operação de divisão inteira tem a sintaxe `//`. A sintaxe `///` não foi reconhecida pelo intrpretador, o que resultou no erro indicado.  
+Observe que o código apresentado utiliza **o caractere `#` - que indica um comentário lançado pelo programador**.  
+O comentário **não é compilado para a PVM*.  
 
 ## 1.9 Exercícios de aula 
 1. **Utilizando o interpretador Python como calculadora**, criar *scripts* da linguagem Python que contenham expressões aritméticas para determinar o resultado dos seguintes problemas, utilizando os dados apresentados:  
