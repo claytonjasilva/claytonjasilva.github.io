@@ -7,5 +7,6 @@
 
 ___
 **[<<anterior](prog_inicio.md)**  
+**[Home Programação Estruturada com Python](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/progPython_aulas.md)**  
 **Estrutura de um programa em Python: [próximo>>](prog_estrutura.md)**  
-**[home](https://claytonjasilva.github.io/progPython_aulas.html)**
+
