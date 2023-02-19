@@ -1,8 +1,12 @@
 # 2. Conceitos básicos de programação estruturada: tipos, operadores, entrada/saída  
 ## 2.1 Tipos numéricos
-- Os tipos numéricos, como tratamos, podem ser inteiros, de ponto flutuante ou complexos;  
-- Os inteiros são escritos simplesmente com os dígitos do **sistema de numeração** desejado;  
-- No sistema octal (dígitos do conjunto {0, 1, ...,7}) precede-se o número por `0o`.
+- Os tipos numéricos, como tratamos, podem ser inteiros, de ponto flutuante ou complexos.  
+- Os inteiros são escritos simplesmente com os dígitos do **sistema de numeração** desejado:  
+  No sistema octal (dígitos do conjunto {0, 1, ...,7}) precede-se o número por `0o`
+  No sistema hexadcimenal (dígitos do conjunto {0, 1, ..., 9, ..., A, ..., F}) precede-se o número por `0x`;
+  A omisssão do prefixo indica que a base considerada é a decimal.
+- Os números de ponto flutuante são grafados com **ponto de fração** para separa a parte inteira da parte fracionária.
+- Os números complexos são grafados utilizando a forma `<parte inteira>+<parte fracionária>j`.  
 [Mais sobre tipos numéricos](https://docs.python.org/pt-br/3/library/stdtypes.html#numeric-types-int-float-complex)
 
 ## 2.2 Mais sobre variáveis  
