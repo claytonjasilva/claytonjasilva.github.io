@@ -22,8 +22,8 @@ Você pode verfificar se os seus códigos compilados foram gravados na sua máqu
 Uma vez que o código seja compilado em código de *byte*, será posteriormente executado pela **Máquina Virtual Python (PVM)**.  
 A PVM é o **mecanismo de tempo de execução** do Python (*runtime*).  
 É o componente que realmente executa os *scripts*.  
-A figura ilustra o modelo de *runtime*.
-![Modelo de *runtime*]()
+A figura ilustra o modelo de *runtime*.  
+![Modelo de *runtime*](/prog_aulas/images_prog/runtimepython.jpg)  
 Observação: todo esse processo é praticamente oculto aos proramadores, 
 que simplesmente codificam e executam os programas.
 
