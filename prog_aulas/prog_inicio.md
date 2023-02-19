@@ -23,7 +23,7 @@ Um conjunto de **instruções** que devem obedecem à **sintaxe** e à **semânt
 ### 1.4.1 O que é um interpretador?
 As instruções de um programa escrito em certa linguagem (por exemplo, Python) precisam ser convertidas para instruções que o computador reconheça. Um programa interpretador converte cada instrução de um programa em um conjunto de instruções do nível inferior antes de executar a instrução.
 
-Em Python, o programa *nome.py* é compilado em um **código de byte** para ser executado pela chamada **Máquina Virtual Python (PVM)** - última etapa do interpretador Python.
+Em Python, o programa *nome.py* é compilado em um ***código de byte*** para ser executado pela chamada **Máquina Virtual Python (PVM)** - última etapa do interpretador Python. [Ver um pouco mais ...](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/prog_aulas/prog_interpretadorPython.md)
 
 ### 1.4.2 O que é uma IDE?
 Abreviatura do termo em inglês *Integrated Development Enviroment*, ou seja, ambiente de desenvolvimento integrado, 
@@ -49,6 +49,6 @@ Algumas funcionalidades:
 - Provedor de nuvem
 - Ferramentas de colaboração em equipe (por exemplo, Google Docs, GitHub)
 
-___ 
+___   
+**[Home Programação Estruturada com Python](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/progPython_aulas.md)**  
 **Primeiros passos: [próximo>>](prog_replit.md)**  
-**[home](https://claytonjasilva.github.io/progPython_aulas.html)**
