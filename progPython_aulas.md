@@ -2,8 +2,8 @@
 
 ## Conteúdo  
 1. [Iniciando...](prog_aulas/prog_inicio.md)  
-2. [Conceitos de programação procedural: tipos, variáveis, operadores, entrada/saída](prog_aulas/prog_conceitos1.md)     
-3. [Conceitos de programação procedural: condicionais simples e compostas](prog_aulas/prog_conceitos2.md)    
+2. [Conceitos básicos de programação estruturada: tipos, variáveis, operadores, entrada/saída](prog_aulas/prog_conceitos1.md)     
+3. [Conceitos básicos de programação estruturada: condicionais simples e compostas](prog_aulas/prog_conceitos2.md)    
 4. [Conceitos de programação procedural: estruturas de repetição](prog_aulas/prog_repeticaowhile.md)  
 5. [Funções](prog_aulas/prog_funcoes.md)
 6. [Listas](prog_aulas/prog_listas.md)
