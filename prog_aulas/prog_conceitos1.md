@@ -41,6 +41,7 @@ por exemplo, `y = x`, o que ocorre na realidade é que a nova variável *y* **fa
   print(x)
   ```
   não produz erro, pois na instrução `x = 2` a variável faz referência ao objeto *2* do tipo inteiro e na instrução `x = 'a'` para a fazer referência a um novo objeto, *'a'*, do tipo caractere.
+- As referências para os objetos são descartadas sempre que a variável recebe um novo objeto.
 - **As referências são semelhantes a ponteiros na linguagem C. As variáveis e Python são sempre ponteiros para objetos e não rótulos de áreas de memória alteráveis.**
 
 ## 2.3 Interação do usuário com o interpretador: funções de entrada e saída
