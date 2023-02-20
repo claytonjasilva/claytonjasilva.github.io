@@ -19,11 +19,12 @@ Experimente escrever a expressão no modo interativo e verificar o resultado.
 5. Os operandos podem conter **objetos numéricos**; **variáveis**, por exemplo, `x > 3`; e **expressões aritméticas**, por exemplo, `x + 3 <= 4 + y`. O interpretador resolve primeiro as expressões aritméticas (os operadores aritméticos têm precedência sobre os lógicos).  
 
 ## 3.2 Instruções condicionais simples e instruções condicionais compostas
-As [instruções compostas](https://docs.python.org/pt-br/3/reference/compound_stmts.html) contêm (grupos de) outras instruções; Elas afetam ou controlam a execução dessas outras instruções de alguma maneira. Em geral, instruções compostas abrangem múltiplas linhas.
+As [instruções compostas](https://docs.python.org/pt-br/3/reference/compound_stmts.html) contêm (grupos de) outras instruções; Elas afetam ou controlam a execução dessas outras instruções de alguma maneira. Em geral, instruções compostas abrangem múltiplas linhas.  
+Em Python, como já tratamos, as instruções do *script* são tratadas, na sequência apresentada, uma após a outra. As instruções compostas possibilitam que essa sequência ordenada não seja cumprida, sob determinadas condições, razão pela qual são chamadas de **instruções de controle de fluxo**.
+
 
 ### 3.2.1 Instrução condicional simples - *if ...*
 Uma das instruções compostas é a **instrução condicional simples** - executa uma ação (ou conjunto de ações) dependendo do resultado da avaliação de uma **expressão lógica (condição)** ser verdadeiro ou falso.  
-Em Python, como já tratamos, as instruções do *script* são tratadas, na sequência apresentada, uma após a outra. As instruções compostas possibilitam que essa sequência ordenada não seja cumprida, sob determinadas condições, razão pela qual são chamadas de **instruções de controle de fluxo**.
 
 1. A figura ilustra o fluxo de execução das instruções no *script*  
 ![Condicional simples](/prog_aulas/images_prog/condicionalsimples.jpg)  
@@ -56,6 +57,8 @@ and a > d:
    print(a)
 ```  
 é uma forma válida.  
+
+### 3.2.2 Expressões lógicas compostas
 No exemplo, utiliza-se um **operador lógico da operação lógica de conjunção - *and***. São outros operadores logicos, além daqueles destinados à comparação:  
 
 | Operador | Operação |
@@ -93,7 +96,7 @@ O resultado depende dos valores lógicos de *p*, definido pela tabela
 | False | True |
 | True | False |
 
-### 3.2.2 Instrução condicional composta - *if ... else*  
+### 3.2.3 Instrução condicional composta - *if ... else*  
 A **instrução condicional composta** - executa uma ação (ou conjunto de ações) dependendo do resultado da avaliação de uma **expressão lógica (condição)** ser verdadeiro e outra ação (ou conjunto de ações) se for falso.
 
 1. A sintaxe em Python da condicional composta é  
@@ -117,7 +120,7 @@ Adaptando o exemplo anterior,
       ```  
       Obviamente admite-se que os valores de *a* e *b* são diferentes.
 
-### 3.2.3 Aninhamento de *ifs* - comando *elif*
+### 3.2.4 Aninhamento de *ifs* - comando *elif*
 Seja o seguinte uso de condicional composta  
 ```
 if a>100:
