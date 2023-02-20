@@ -51,8 +51,12 @@ Por exemplo, *print(argumento)* apresenta na área de console o valor do argumen
   A variável é **criada** ao receber um valor pela primeira vez. As atribuições futuras alteram a variável a um novo valor.
   O **identificador** ou **nome** deve obedecer as regras:  
     - Nomes de variáveis são formados por letras e dígitos;  
-    - O primeiro caractere deve ser uma letra - o caractere *_* é considerado uma letra;  
-    - Letras maiúsculas e minúsculas são caracteres distintos.    
+    - Nomes devem obedecer a algumas regras simples 
+      - formados por uma sequência de letras (a → z, A → Z) e números (0 → 9)
+      - sequência deve sempre começar com uma letra
+      - sequência **não admite** letras acentuadas, cedilhas, espaços, caracteres especiais como $, #, @, etc. 
+      - primeiro caractere caractere da sequência **deve ser uma letra** - o caractere *_* é considerado uma letra;  
+      - letras maiúsculas e minúsculas são caracteres distintos - Python é *case sensitive*.    
 
 6. Constantes, que possuem valores pré-estabelecidos, chamados pela sua identificação.  
 Por exemplo, a constante matemática *pi*.
