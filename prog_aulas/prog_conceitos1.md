@@ -54,22 +54,26 @@ por exemplo, `y = x`, o que ocorre na realidade é que a nova variável *y* **fa
   A função *print* simplesmente escreve objetos - por suas referências ou não, separados por *sep*, seguidos por *end*, ambos cadeia de caracteres - escritos entre aspas simples.   
   Onde *sep*, *end*, se houver, **devem ser fornecidos. Se não houver podem ser omitidos**.  
   Por exemplo,
-  ```
-  x , y = 3, 5
-  print(x, 3*x, sep= '-', end= ' , ')
-  print(y)
-  ```
-  resulta `3-9 , 5`
+    ```
+    x , y = 3, 5
+    print(x, 3*x, sep= '-', end= ' , ')
+    print(y)
+    ```
+    resulta `3-9 , 5`  
   Observe que o argumento pode conter **expressões e que os objetos são separados por vírgula**.  
   - **Função de entrada**  
-  `x=input("o valor de x e: ")`  
-  , que permite ao usuário inserir o dado na console.  
-  No exemplo, *x* é o nome da variável; o texto "o valor ..." é chamado de ***string*** (uma *string* é uma **cadeia de caracteres**) e aparecerá no console.  
-Em Python, *strings* podem ser delimitadas por aspas simples `'texto'` ou aspas duplas `"texto"`  
-O programador pode definir no *script* o nome da variável e a *string* - recomenda-se utilizar nomes de variáveis que sugiram o seu papel.  
-O dado digitado pelo usuário **será atribuído para a variável como tipo *string***.  
-É possível converter um tipo *string* para tipo inteiro usando o comando `int(string)` ou para tipo ponto flutuante usando `float(string)`, 
-logo o comando de entrada pode ser dado `x = int(input('Digite o número: ')` para o valor atribuído à variável *x* ser do tipo inteiro.
+  `input(<cadeia de caracteres>)`  
+  , onde a cadeia de caracteres é **devolvida na console de saída em tempo de execução**  
+  seguida do ***prompt* de comando e  
+  aguardando que o usuário dê entrada em um objeto**.  
+  **Retorna o objeto** digitado pelo usuário **como uma *string***.  
+  Por exemplo,  
+  `x = input("Digite o valor ")`  
+  devolve para a console `Digite o valor_`, onde _ representa o *prompt* de comando.  
+  Se o usuário digitar *24* esse objeto será atribuído a *x* - como uma cadeia de caracteres - *string*.  
+  Observação: uma *string* é uma **cadeia de caracteres** e que, em Python, podem ser delimitadas por aspas simples `'texto'` ou aspas duplas `"texto"`.  
+  **É possível converter um tipo *string* para tipo inteiro usando o comando `int(string)` ou para tipo ponto flutuante usando `float(string)`**, 
+  logo o comando de entrada pode ser dado `x = int(input('Digite o valor: ')` para o valor atribuído à variável *x* ser do tipo inteiro.
 
 ## 2.4 Exercícios com tipos, operadores, entrada/saída  
 1. Elaborar um programa na linguagem Python para ler as notas da ap1, ap2 e ac; calcular e escrever a média do semestre do aluno, de acordo com as regras do Ibmec.  [*Script 2.1*](https://github.com/claytonjasilva/prog_exemplos/blob/main/calcNota.py)
