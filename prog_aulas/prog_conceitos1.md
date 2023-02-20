@@ -45,18 +45,26 @@ por exemplo, `y = x`, o que ocorre na realidade é que a nova variável *y* **fa
 - **As referências são semelhantes a ponteiros na linguagem C. As variáveis e Python são sempre ponteiros para objetos e não rótulos de áreas de memória alteráveis.**
 
 ## 2.3 Interação do usuário com o interpretador: funções de entrada e saída
-O usuário do *script* executado precisa, na maioria dos casos, apresentar os dados para o interpretador realizar as tarefas e receber as informações do interpretador durante a realização das tarefas.  
-Para o usuário **apresentar** os dados ao interpretador, o *script* deve conter **comando de entrada**.  
-Para o usuário **receber** os dados do interpretador, o *script* deve conter **comando de saída**.  
-Em Python,  
-- **Função de saída**  
-`print(argumento)`  
-, que apresenta o conteúdo ou o resultado do argumento ao usuário na console.  
-O argumento pode conter **listas de expressão, número ou variável - separadas por vírgula**.  
-- **Função de entrada**  
-`x=input("o valor de x e: ")`  
-, que permite ao usuário inserir o dado na console.  
-No exemplo, *x* é o nome da variável; o texto "o valor ..." é chamado de ***string*** (uma *string* é uma **cadeia de caracteres**) e aparecerá no console.  
+- O usuário do *script* executado precisa, na maioria dos casos, apresentar os dados para o interpretador realizar as tarefas e receber as informações do interpretador durante a realização das tarefas.  
+- Para o usuário **apresentar** os dados ao interpretador, o *script* deve conter **comando de entrada**.  
+- Para o usuário **receber** os dados do interpretador, o *script* deve conter **comando de saída**.  
+- Em Python,
+  - **Função de saída**  
+  `print(<objetos>, sep=<caractere>, end=<caractere>)`  
+  A função *print* simplesmente escreve objetos - por suas referências ou não, separados por *sep*, seguidos por *end*, ambos cadeia de caracteres - escritos entre aspas simples.   
+  Onde *sep*, *end*, se houver, **devem ser fornecidos. Se não houver podem ser omitidos**.  
+  Por exemplo,
+  ```
+  x , y = 3, 5
+  print(x, 3*x, sep= '-', end= ' , ')
+  print(y)
+  ```
+  resulta `3-9 , 5`
+  Observe que o argumento pode conter **expressões e que os objetos são separados por vírgula**.  
+  - **Função de entrada**  
+  `x=input("o valor de x e: ")`  
+  , que permite ao usuário inserir o dado na console.  
+  No exemplo, *x* é o nome da variável; o texto "o valor ..." é chamado de ***string*** (uma *string* é uma **cadeia de caracteres**) e aparecerá no console.  
 Em Python, *strings* podem ser delimitadas por aspas simples `'texto'` ou aspas duplas `"texto"`  
 O programador pode definir no *script* o nome da variável e a *string* - recomenda-se utilizar nomes de variáveis que sugiram o seu papel.  
 O dado digitado pelo usuário **será atribuído para a variável como tipo *string***.  
