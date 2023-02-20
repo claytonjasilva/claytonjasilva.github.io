@@ -189,8 +189,9 @@ A execução ocorre da seguinte maneira
 4. Se não houver nenhuma comparação cujo resultado seja verdadeiro, executa o bloco interno ao último *case*.
 Observação: no cabeçalho do *case* pode-se usar múltiplos valores, com o operador `|`, por exemplo, `case <valor 1> | <valor 2>:`.
       
+## 3.3 [Mais sobre instruções compostas](https://docs.python.org/pt-br/3/reference/compound_stmts.html)
 
-## 3.3 Exercícios com condicionais simples e compostas  
+## 3.4 Exercícios com condicionais simples e compostas  
 1. Elaborar um programa na linguagem Python para ler dois números; calcular e escrever o maior dos números lidos. [*Script 3.1*](https://github.com/claytonjasilva/prog_exemplos/blob/main/maior2num.py)
 2. Elaborar um programa na linguagem Python para ler a idade de uma pessoa. Se a idade for igual ou inferior a 10 anos, classificar a pessoa como 'criança'. Caso a idade seja inferior a 18 anos e superior a 10 anos, classificar como 'adolescente'. Em qualquer outro caso, classificar como 'adulto'. Apresentar a classificação atribuída. [*Script 3.2*](https://github.com/claytonjasilva/prog_exemplos/blob/main/classIdade.py)  
 3. Elaborar um programa na linguagem Python para ler os nomes, pesos e altura de 3 pessoas; calcular e escrever os nomes de cada pessoa com IMC superior a 22 ('valor alto') ou com IMC inferior a 20 ('valor baixo'), seguido do respectivo IMC calculado. [*Script 3.3*](https://github.com/claytonjasilva/prog_exemplos/blob/main/calcIMC3.py)  
