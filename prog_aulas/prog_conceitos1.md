@@ -3,10 +3,10 @@
 ### 2.1.1 Considerações gerais sobre tipos numéricos
 - Os tipos numéricos, como tratamos, podem ser inteiros, de ponto flutuante ou complexos.  
 - Os inteiros são escritos simplesmente com os dígitos do **sistema de numeração** desejado:  
-  No sistema octal (dígitos do conjunto {0, 1, ...,7}) precede-se o número por `0o`
-  No sistema hexadcimenal (dígitos do conjunto {0, 1, ..., 9, ..., A, ..., F}) precede-se o número por `0x`;
-  A omisssão do prefixo indica que a base considerada é a decimal.
-- Os números de ponto flutuante são grafados com **ponto de fração** para separa a parte inteira da parte fracionária.
+  No sistema octal (dígitos do conjunto {0, 1, ...,7}) precede-se o número por `0o`;  
+  No sistema hexadcimenal (dígitos do conjunto {0, 1, ..., 9, ..., A, ..., F}) precede-se o número por `0x`;  
+  A omisssão do prefixo indica que a base considerada é a decimal.  
+- Os números de ponto flutuante são grafados com **ponto de fração** para separar a parte inteira da parte fracionária.  
 - Os números complexos são grafados utilizando a forma `<parte inteira>+<parte fracionária>j`.  
 [Mais sobre tipos numéricos](https://docs.python.org/pt-br/3/library/stdtypes.html#numeric-types-int-float-complex)
 
@@ -22,14 +22,15 @@
   A descrição completa das **constante e funções de *math* podem ser obtidas no tutorial [*math* Funções matemáticas](https://docs.python.org/pt-br/3/library/math.html#:~:text=Este%20m%C3%B3dulo%20fornece%20acesso%20%C3%A0s,de%20suporte%20para%20n%C3%BAmeros%20complexos.)**
   
 ## 2.2 Mais sobre variáveis  
-- São criadas **na primeira vez** que recebem um valor   
-- Para receber um valor deve ser usado um comando de **atribuição**, por exemplo, `x=3`.
+- Como vimos, as variáveis são criadas **na primeira vez** que recebem um valor, utilizando-se um comando de **atribuição**, por exemplo, `x=3`.
+- 
 - Após ser criada a variável pode ser usada em **expressões aritméticas ou lógicas**, por exemplo, `(x + x**2 + 3) * 4`
 - São identificadas por **um nome**, que devem obedecer a algumas regras simples 
   - é uma sequência de letras (a → z, A → Z) e números (0 → 9)
   - deve sempre começar com uma letra
   - **não admite** admite letras acentuadas, cedilhas, espaços, caracteres especiais como $, #, @, etc. 
 - Na resolução da expressão pelo interpretador, as variáveis são substituídas por seus valores  
+
 **Obs. As variáveis se referem a objetos e nunca são declaradas antecipadamente**  
 
 ## 2.3 Interação do usuário com o interpretador: funções de entrada e saída
