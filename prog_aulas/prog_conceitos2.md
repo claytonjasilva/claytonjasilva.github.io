@@ -165,7 +165,29 @@ else:
 3. O interpretador repete esse processo, calculando todas as expressões lógicas até obter resultado *True*, executando o respectivo bloco de instruções, ou seguindo adiante à próxima expressão lógica.
 4. O último *else* é opcional. Se todas as expressões lógicas resultarem *False* nenhum comnado interno é executado e o interpretador segue ao próximo comando do *script* **se não for utilizado o último *else*.
 5. Se o último *else* for utilizado, após todas as espressões lógicas resultarem *False* o comando (ou bloco de comandos) interno a ele será executado. após isso, o interpretador passa à instrução seguinte do *script*.
-                  
+
+### 3.2.5 Instruções *match*
+Uma instrução match pega uma expressão e compara seu valor com padrões sucessivos fornecidos como um ou mais blocos de case.  
+Isso é superficialmente semelhante a uma instrução *switch* em C, mas também pode extrair componentes (elementos de sequência ou atributos de objeto) do valor em variáveis.  
+Apenas o primeiro padrão que corresponder será executado, podendo também extrair componentes (elementos de sequência ou atributos de objetos) do valor para variáveis.  
+A forma é:
+```
+match <variável ou expressão>:
+      case <valor 1>:
+            <bloco 1 de instruções>
+      case <valor 2>:
+            <bloco 2 de instruções>
+      ...
+      case _:
+            <bloco n de instruções>
+```
+1. O interpretador compara o valor da variável ou da expressão com o *valor 1*, executando o *bloco 1* se o resultado for verdadeiro e interrompendo a instrução;  
+2. Se for falso, comparada com o *valor 2*, executando o *bloco 2* se for verdadeiro;
+3. Prossegue testando, na ordem, todos os valores se o resultado for falso ou executando o respectivo bloco de instruções;
+4. Se não houver nenhuma comparação cujo resultado seja verdadeiro, executa o bloco interno ao último *case*.
+Observação: no cabeçalho do *case* pode-se usar múltiplos valores, com o operador `|`, por exemplo, `case <valor 1> | <valor 2>:`.
+      
+
 ## 3.3 Exercícios com condicionais simples e compostas  
 1. Elaborar um programa na linguagem Python para ler dois números; calcular e escrever o maior dos números lidos. [*Script 3.1*](https://github.com/claytonjasilva/prog_exemplos/blob/main/maior2num.py)
 2. Elaborar um programa na linguagem Python para ler a idade de uma pessoa. Se a idade for igual ou inferior a 10 anos, classificar a pessoa como 'criança'. Caso a idade seja inferior a 18 anos e superior a 10 anos, classificar como 'adolescente'. Em qualquer outro caso, classificar como 'adulto'. Apresentar a classificação atribuída. [*Script 3.2*](https://github.com/claytonjasilva/prog_exemplos/blob/main/classIdade.py)  
