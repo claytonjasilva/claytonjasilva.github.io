@@ -71,8 +71,9 @@ por exemplo, `y = x`, o que ocorre na realidade é que a nova variável *y* **fa
   `x = input("Digite o valor ")`  
   devolve para a console `Digite o valor_`, onde _ representa o *prompt* de comando.  
   Se o usuário digitar *24* esse objeto será atribuído a *x* - como uma cadeia de caracteres - *string*.  
-  Observação: uma *string* é uma **cadeia de caracteres** e que, em Python, podem ser delimitadas por aspas simples `'texto'` ou aspas duplas `"texto"`.  
-  **É possível converter um tipo *string* para tipo inteiro usando o comando `int(string)` ou para tipo ponto flutuante usando `float(string)`**, 
+  Observação:  
+  (i) uma *string* é uma **cadeia de caracteres** e que, em Python, podem ser delimitadas por aspas simples `'texto'` ou aspas duplas `"texto"`.  
+  (ii) **É possível converter um tipo *string* para tipo inteiro usando o comando `int(string)` ou para tipo ponto flutuante usando `float(string)`**, 
   logo o comando de entrada pode ser dado `x = int(input('Digite o valor: ')` para o valor atribuído à variável *x* ser do tipo inteiro.
 
 ## 2.4 Exercícios com tipos, operadores, entrada/saída  
