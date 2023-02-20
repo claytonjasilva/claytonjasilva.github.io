@@ -76,7 +76,11 @@ Por exemplo, a constante matemática *pi*.
     Uma outra forma é a **atribuição com destino múltiplo** - nessa forma o mesmo objeto pode ser atribuído a vários nomes  
     Por exemplo, `x = y = 5`  
     Também é interessante a forma de **atribuição com desempacotamento de tupla** (aprofundaremos depois) - dois nomes podem ser associados em ordem a dois objetos separados por vírgula (uma tupla)  
-    Por exemplo, `x, y = 3, 5`
+    Por exemplo, `x, y = 3, 5`  
+    **Atribuição ampliada** - são atalhos que envolvem **a combinação de uma expressão com uma atribuição**:  
+    `x += y` equivale a `x = x + y`  
+    `x -= y` equivale a `x = x - y`
+    ...
   
 ## 1.8 Modos de utilização do interpretador
 ### 1.8.1 Modo interativo
@@ -111,7 +115,7 @@ compreenda para poder executá-las corretamente.
 Nas linguagens formais de programação (LP) o mesmo ocorre:  
   - cada uma possui um **alfabeto**, com um conjunto de caracteres usados para construção de **unidades léxicas** (*tokens*) que satisfazem a um padrão;  
   - os *tokens* podem ser agrupados para elaborar **sentenças** corretas - a **sintaxe** da LP;  
-  - cada sentença possui um **signficado** que é traduzido em um conjunto de operações realizadas pela máquina - a **semântica** da LP.  
+  - cada sentença possui um **significado** que é traduzido em um conjunto de operações realizadas pela máquina - a **semântica** da LP.  
 
 Os *scrips* elaborados pelo programador **devem obedecer à sintaxe** da LP 
 de modo que as sentenças propiciem a realização das operações para solucionar problemas.  
