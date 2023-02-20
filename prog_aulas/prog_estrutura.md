@@ -57,11 +57,11 @@ Por exemplo, *print(argumento)* apresenta na área de console o valor do argumen
       - sequência **não admite** letras acentuadas, cedilhas, espaços, caracteres especiais como $, #, @, etc.;
       - letras maiúsculas e minúsculas são caracteres distintos - **Python é *case sensitive***;
       - existem palavras que **não podem ser usadas - palavras reservadas**  
-| and	| as	| assert| break | class	| continue | def	| del |
-| elif | else |	except | False | finally	| for	| from	| global | if	| import | in	| is | lambda	None	nonlocal	not
-or	pass	raise	return
-True	try	while	with
-yield			      
+      
+|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | 
+| - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | 
+| and	| as | assert | break | class	| continue | def | del | elif | else | except | False | finally	| for	| from	| global | if	| import | in	| is | 
+| lambda	| None	| nonlocal |	not | or	| pass	| raise	| return | True	| try	| while	| with | yield	|		      
 
 
 6. Constantes, que possuem valores pré-estabelecidos, chamados pela sua identificação.  
