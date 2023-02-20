@@ -1,4 +1,4 @@
-# 3. Conceitos de programação procedural: condicionais simples e compostas
+# 3. Conceitos básicos de programação estruturada: condicionais simples e compostas
 ## 3.1 [Expressões lógicas (booleanas) e comparações](https://docs.python.org/pt-br/3/library/stdtypes.html#boolean-operations-and-or-not)
 1. Assim como as expressões aritméticas utilizam operadores aritméticos cujas operações resultam números, as expressões lógicas utilizam **operadores lógicos**.
 2. Por enquanto discutiremos os operadores lógicos **relacionais** ou **de comparação**, que são os seguintes:  
@@ -16,13 +16,14 @@
 4. Os operadores relacionais são aplicados a **dois operandos**.
 Por exemplo, `3 > 2`, que compara o número 3 com o número 2.
 Experimente escrever a expressão no modo interativo e verificar o resultado.
-5. Os operandos podem conter **números**; **variáveis**, por exemplo, `x > 3`; e **expressões aritméticas**, por exemplo, `x + 3 <= 4 + y`. O interpretador resolve primeiro as expressões aritméticas (os operadores aritméticos têm precedência sobre os lógicos).  
+5. Os operandos podem conter **objetos numéricos**; **variáveis**, por exemplo, `x > 3`; e **expressões aritméticas**, por exemplo, `x + 3 <= 4 + y`. O interpretador resolve primeiro as expressões aritméticas (os operadores aritméticos têm precedência sobre os lógicos).  
 
 ## 3.2 Instruções condicionais simples e instruções condicionais compostas
 As [instruções compostas](https://docs.python.org/pt-br/3/reference/compound_stmts.html) contêm (grupos de) outras instruções; Elas afetam ou controlam a execução dessas outras instruções de alguma maneira. Em geral, instruções compostas abrangem múltiplas linhas.
 
 ### 3.2.1 Instrução condicional simples - *if ...*
-Uma das instruções compostas é a **instrução condicional simples** - executa uma ação (ou conjunto de ações) dependendo do resultado da avaliação de uma **expressão lógica (condição)** ser verdadeiro ou falso.
+Uma das instruções compostas é a **instrução condicional simples** - executa uma ação (ou conjunto de ações) dependendo do resultado da avaliação de uma **expressão lógica (condição)** ser verdadeiro ou falso.  
+Em Python, como já tratamos, as instruções do *script* são tratadas, na sequência apresentada, uma após a outra. As instruções compostas possibilitam que essa sequência ordenada não seja cumprida, sob determinadas condições, razão pela qual são chamadas de **instruções de controle de fluxo**.
 
 1. A figura ilustra o fluxo de execução das instruções no *script*  
 ![Condicional simples](/prog_aulas/images_prog/condicionalsimples.jpg)  
@@ -30,10 +31,13 @@ Uma das instruções compostas é a **instrução condicional simples** - execut
 3. A instrução (ou bloco de instruções) interna é executa somente se a expressão lógica de sua sentença resultar verdadeira. Em caso contrário, o interpretador executa a instrução do *script* após a instrução condicional.
 4. A sintaxe em Python da condicional simples é
       ```
-      if <expressao logica>:  
-            <instrucao ou bloco de instruções>
+      if <expressão logica>:  
+            <instrucção ou bloco de instruções>
       ```  
-      Os limites da instrução ou do bloco de instruções **internos (identificados pela indentação)** são detectados automaticamente pelo interpretador.  
+      **Todas as instruções compostas em Python possuem um cabeçalho seguido do caractere `:`.**  
+      O fim do cabeçalho (delimitado por :) determina o início do bloco de instruções internas à instrução composta.  
+      **Os limites da instrução ou do bloco de instruções internas (que são identificadas pela indentação)** são detectados automaticamente pelo interpretador.  
+
 5. A expressão lógica poderá conter um dos operadores lógicos, por exemplo, o operador *>*.
       ```
       if a>b:  
@@ -43,6 +47,51 @@ Uma das instruções compostas é a **instrução condicional simples** - execut
       A expressão lógica `a>b` pode resultar *True* ou *False*, dependendo do valor de *a* e de *b*.
       Se o valor de *a* for maior do que *b* a expressão retornará como resultado *True* e as instruções dentro da indentação serão executadas.
       Em caso contrário, o interpretador irá a executar a instrução após o bloco de instruções indentado.  
+      
+Observação: Em certas ocasiões, as instruções compostas podem ficar muito longas, o que prejudica a legibilidade do código. 
+Nesse caso, o interpretador Python admitie o uso de `\` - barra invertida - para quebrar linha. Por exemplo,  
+```
+if a > b and a > c \
+and a > d:
+   print(a)
+```  
+é uma forma válida.  
+No exemplo, utiliza-se um **operador lógico da operação lógica de conjunção - *and***. São outros operadores logicos, além daqueles destinados à comparação:  
+
+| Operador | Operação |
+| - | - |
+| and | Conjunção |
+| or | Disjunção |
+| not | Negação |
+
+Os operadores lógicos propiciam construir expressões lógicas compostas e o resultado das operações é dada por  
+**(a) Operação lógica de CONJUNÇÃO - *AND***    
+O resultado depende dos valores lógicos de *p* e de *q*, definido pela tabela  
+
+| *p* | *q* | *p and q* |
+| ----- | --- | --- |
+| False | False | False |
+| False | True | False |
+| True | False | False |
+| True | True | True |
+
+**(b) Operação lógica de DISJUNÇÃO - *OR***    
+O resultado depende dos valores lógicos de *p* e de *q*, definido pela tabela  
+
+| *p* | *q* | *p aor q* |
+| ----- | --- | --- |
+| False | False | False |
+| False | True | True |
+| True | False | True |
+| True | True | True |
+
+**(c) Operação de inverção lógica, NEGAÇÃO, - *NOT***  
+O resultado depende dos valores lógicos de *p*, definido pela tabela  
+
+| *p* | *not p* |
+| ----- | --- |
+| False | True |
+| True | False |
 
 ### 3.2.2 Instrução condicional composta - *if ... else*  
 A **instrução condicional composta** - executa uma ação (ou conjunto de ações) dependendo do resultado da avaliação de uma **expressão lógica (condição)** ser verdadeiro e outra ação (ou conjunto de ações) se for falso.
