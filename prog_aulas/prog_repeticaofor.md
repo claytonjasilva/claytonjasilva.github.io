@@ -35,7 +35,7 @@ Substituindo o *scritpt* por
 ```
 for i in range(1,10):
   print(i)
-```
+``` 
 O interpretador escreverá os valores inteiros 1, 2, ..., 9.  
 Finalmente, substituindo o *scritpt* por  
 ```
@@ -43,6 +43,24 @@ for i in range(1,10,3):
   print(i)
 ```
 O interpretador escreverá os valores inteiros 1, 4, 7.  
+
+Observações:
+(i) A instrução *for* substitui o uso do *while* para operação de contagem com mais simplicidade;  
+(ii) Antecipando o uso com outros objetos, **pode-se usar o objeto *string* para varrer os seus caracteres**, na forma, por exemplo,     
+```
+for caractere in 'palavra':
+  print(caractere)
+```  
+(iii) Para varrer elementos de uma **[lista](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/prog_aulas/prog_listas.md)**, por exemplo,
+```
+for elemento in [1, 'a', 4, 'item', 6]:
+  print(elemento)
+```  
+(iv) Pode-se utilizar a função `zip` para **varrer elementos paralelamente** em listas   
+```
+for (x,y) in zip(['a', 'b', 'c', 'd'],[1, 2, 3, 4]):
+  print(x,y)
+```
 
 ## 4.4 Exercícios de aula com instruções de repetição
 1. Elaborar um programa na linguagem Python que leia as notas de um grupo de N=30 alunos; calcule e escreva a média aritmética das notas dos alunos.  [*Script 4.1*](https://github.com/claytonjasilva/prog_exemplos/blob/main/le30Notas.py)   
@@ -52,7 +70,6 @@ O interpretador escreverá os valores inteiros 1, 4, 7.
 5. Elaborar um programa na linguagem Python que leia o cpf (no formato de 11 caracteres numéricos sem pontos e travessão) de uma pessoa. O programa deverá verificar se o cpf é válido usando a regra proposta pela [Associação Comercial e Empresarial de Guarulhos](https://www.aceguarulhos.com.br/blog/como-saber-se-um-cpf-e-verdadeiro/#gsc.tab=0).  
 [*Script 4.5*](https://github.com/claytonjasilva/prog_exemplos/blob/main/testaCPF.py)
 
-
 ___
-**[<<anterior](prog_repeticaowhile.md)**  
-**[home](https://claytonjasilva.github.io/progPython_aulas.html)**
+**[<<anterior](prog_repeticaowhile.md)**      
+**[Home Programação Estruturada com Python](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/progPython_aulas.md)**  
