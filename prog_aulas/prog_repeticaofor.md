@@ -44,7 +44,7 @@ for i in range(1,10,3):
 ```
 O interpretador escreverá os valores inteiros 1, 4, 7.  
 
-Observações:
+**Observações:**  
 (i) A instrução *for* substitui o uso do *while* para operação de contagem com mais simplicidade;  
 (ii) Antecipando o uso com outros objetos, **pode-se usar o objeto *string* para varrer os seus caracteres**, na forma, por exemplo,     
 ```
