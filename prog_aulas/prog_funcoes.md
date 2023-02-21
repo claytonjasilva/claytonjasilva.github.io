@@ -16,14 +16,22 @@ def nome_da_função(lista_de_parâmetros):
  ```  
 ### 5.2.1 A instrução *def*
 - *def* é uma instrução executável - a função não  existe até que o Python a busque e execute;
-- Pode-se aninhar instruções *def* dentro de *if*, *loops* etc.;
-- *def* gera um objeto função e atribui um nome ao objeto
+- Pode-se aninhar instruções *def* dentro de *if*, *loops* etc., em qualquer ponto do código - inclusive dentro de outra função;
+- *def* cria um **objeto de função**, que tem o tipo *function*;
+- A lista de parâmetros compreende os nomes das variáveis que receberão os **argumentos** quando a função for chamada e devem ser separados por vírgula (se houver mais de um parâmetro);
+- Os argumentos pertencentes ao código chamador e a função compartilham objetos pelas referências - a alteração de objetos mutáveis passados pode alterar os objetos compartilhados (posteriromente discutiremos essa questão);
+- A instrução `return` **pode aparecer em qualquer lugar no bloco interno** de instruções da função - 
+ela finaliza a chamada de função e envia o resultado para o código que fez a chamada;
+- **A instrução `return` é opcional**;
+- Por padrão, todos os nomes definidos em uma função possuem escopo **local**, ou seja, são reconhecidos somente dentro da função. 
+- 
+- 
+  
+
 
 Algumas considerações:  
 - A lista de parâmetros contém os nome de todas as variáveis que receberão os dados para a função executar suas instruções separados por vírgulas.
-- A definição de uma função cria um **objeto de função**, que tem o tipo *function*.  
-- Uma vez definida a função, ela poderá ser usada dentro de outra função.
-- A lista de parâmetros compreende os nomes das variáveis que receberão os **argumentos** quando a função for chamada e devem ser separados por vírgula (se houver mais de um parâmetro).
+
 - Na estrutura chamadora utiliza-se `função(lista_de_argumentos)` - os valores dos argumentos são copiados para os parâmetros da função.  
 - **A alteração do valor dos parâmetros não altera o valor dos argumentos**. Por exemplo,
 ```
