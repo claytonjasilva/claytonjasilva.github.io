@@ -19,7 +19,7 @@ A respeito da sintaxe cabe comentar:
     (iii) `range(M, N, passo)`: retorna a sequência que inicia no valor de *i* igual a *M* e encerra no valor de *i* menor do que N, com incremento de *passo*, logo *S=M+passo.i, i=0, ..., n-1*, onde *n* é o número de elementos da sequência  
       **O passo pode ser negativo** - nesse caso a sequência encerra-se no valor de *i* maior do que N, a partir de *i* igual a *M*  
       ___
-5. O operador `in` testa o pertencimento. Verifica se o operando pertence ou não ao objeto definido à direita. Retorna *True* - se pertence, ou *False* - se não pertence.
+5. **O operador `in` testa o pertencimento**. Verifica se o operando pertence ou não ao objeto definido à direita. Retorna *True* - se pertence, ou *False* - se não pertence.
 3. O número de repetições do comando *for* é definido pela dimensão (número de valores do objeto retornado pela função *range*).
 4. O comando *for* inicializa a variável de controle no menor valor retornado pela função *range* e executa a instrução ou bloco de instruções.  
 5. Em seguida, a variável de controle irá assumir o próximo valor do objeto e executar a instrução ou bloco de intruções.
