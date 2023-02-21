@@ -1,17 +1,24 @@
 ## 4.3 Instrução composta `for` 
 A instrução `for` é usada também para executar um *loop* de instruções ou bloco de instruções.  
-A regra de sintaxe do *for* em Python é a seguinte  
+A regra geral de sintaxe do *for* em Python é a seguinte  
 ```
-for <variável de controle> in <função *range*>:
-  instrução ou bloco de instruções
+for <variável de controle> in <objeto>:
+  <instrução ou bloco 1 de instruções>
+else:
+  <bloco 2 de instruções>
 ```
 A respeito da sintaxe cabe comentar:
-1. A função *range* retorna um objeto que compreende uma sequência ordenada de números inteiros.  
-Admite três formas:  
-- `range(N)`: retorna a sequência de 0 a N-1, com incremento de 1  
-- `range(M, N)`: retorna a sequência que inicia no valor de M e encerra no valor de N-1, com incremento de 1
-- `range(M, N, passo)`: retorna a sequência que inicia no valor de M e encerra no valor de N-1, com incremento de passo
-2. O operador `in` testa o pertencimento. Verifica se o operando pertence ou não ao objeto definido à direita. Retorna *True* - se pertence, ou *False* - se não pertence.
+1. A cláusula *else* (como no comando *while*) também é opcional.
+2. Atribui itens do objeto à variável de controle até percorrer todo o objeto - o que determina o número de operações. Veremos oportunamente o seu uso com vários objetos. No momento especificamente o objeto retornado pela função `range`.
+3. A função `range`retorna uma sequência inteira.
+  É uma função nativa da linguagem que é **utilizada para gerar uma sequência numérica dentro de um intervalo determinado**.
+4. A função *range* retorna um objeto que compreende uma sequência ordenada de números inteiros.  
+  Admite três formas:  
+  (i) `range(N)`: retorna a sequência *i* de *0* a *N-1*, com incremento de *1* (passo ou *step*), logo *S={0, 1, 2,..., N-1}*    
+  (ii) `range(M, N)`: retorna a sequência que inicia no valor de *i* igual a *M* e encerra no valor de *i* igual a *N-1*, com incremento de 1, logo *S={M, M+1, ..., N-1}*    
+  (iii) `range(M, N, passo)`: retorna a sequência que inicia no valor de *i* igual a *M* e encerra no valor de *i* menor do que N, com incremento de *passo*, logo *S=M+passo.i, i=0, ..., n-1*, onde *n* é o número de elementos da sequência
+  **O passo pode ser negativo** - nesse caso a sequência encerra-se no valor de *i* maior do que N, a partir de *i* igual a *M*  
+5. O operador `in` testa o pertencimento. Verifica se o operando pertence ou não ao objeto definido à direita. Retorna *True* - se pertence, ou *False* - se não pertence.
 3. O número de repetições do comando *for* é definido pela dimensão (número de valores do objeto retornado pela função *range*).
 4. O comando *for* inicializa a variável de controle no menor valor retornado pela função *range* e executa a instrução ou bloco de instruções.  
 5. Em seguida, a variável de controle irá assumir o próximo valor do objeto e executar a instrução ou bloco de intruções.
