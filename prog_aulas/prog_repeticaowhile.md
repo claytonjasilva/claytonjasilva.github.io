@@ -1,4 +1,4 @@
-# 4. Conceitos de programação procedural: estruturas de repetição  
+# 4. Conceitos básicos de programação estruturada: estruturas de repetição  
 Os programas muitas vezes precisam automatizar tarefas repetitivas. A repetição ou **iteração** pode ser obtida pela utilização de instruções compostas chamadas instruções de repetição.  
 
 As duas instruções de repetição disponíveis na linguagem Python são `while` e `for`.
