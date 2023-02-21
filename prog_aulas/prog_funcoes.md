@@ -3,24 +3,22 @@
 ## 5.1 Conceitos gerais sobre funções  
 No contexto de uma programação, uma **função** é uma sequência nomeada de instruções que proporciona um resultado.   
 É um bloco de código de programa que pode ser chamado várias vezes, produzindo alguns benefícios, como  
-- Reutilizar código: as funções permitem agrupar e generalizar um código para se usado arbitrariamente muitas vezes posteriormente  
-- Decomposição procedural: permitem dividir o sistema desenvolvido em partes, com tarefas bem definidas  
+- **Reutilizar código**: as funções permitem agrupar e generalizar um código para se usado arbitrariamente muitas vezes posteriormente  
+- **Decomposição procedural**: permitem dividir o sistema desenvolvido em partes, com tarefas bem definidas  
+Além das funções internas (nativas) da linguagem Python, os programadores podem desenvolver suas próprias funções, que: são **chamadas** em sentenças, **recebem valores** e **retornam** resultados.
 
-## 5.2 Chamada de funções
-Seja o exemplo `round(x,1)` escrito no trecho de um código, por exemplo, do módulo principal,  
-- A função para ser executada em um determinado trecho de código precisa ser **chamada**, na forma `round(x,1)`  
-- Para ser chamada, requer que possua um **nome** ou **identificador** - no exemplo, o nome da função é `round`  
-- Requer também uma lista de dados (variáveis ou constantes) entre parênteses, chamada de **argumento** da função - diz-se que a função **recebe** argumentos 
-- Em Python, uma cópia dos valores dos argumentos é passada aos parâmetros da função
-- Quando uma função é executada, ela pode devolver um valor (**retornar** valor) derivado da execução da tarefa, o qual pode ser atribuído a uma variável ou utilizado no contexto de uma expressão, por exemplo, `y = round(x,1)`  
-- Para que a atribuição ocorra, o corpo da função deve contemplar o uso da palavra reservada `return <valor ou expressão>` 
-
-## 5.3 Como definir uma nova função...
-Para criar uma nova função é necessário escrever instruções atendendo a sintaxe do Python, da seguinte forma  
+## 5.2 Como definir uma nova função
+**Para criar uma nova função** é necessário escrever instruções atendendo a sintaxe do Python, da seguinte forma  
 ```
 def nome_da_função(lista_de_parâmetros):
   corpo de instruções
+  return <valor ou expressão>
  ```  
+### 5.2.1 A instrução *def*
+- *def* é uma instrução executável - a função não  existe até que o Python a busque e execute;
+- Pode-se aninhar instruções *def* dentro de *if*, *loops* etc.;
+- *def* gera um objeto função e atribui um nome ao objeto
+
 Algumas considerações:  
 - A lista de parâmetros contém os nome de todas as variáveis que receberão os dados para a função executar suas instruções separados por vírgulas.
 - A definição de uma função cria um **objeto de função**, que tem o tipo *function*.  
@@ -37,6 +35,15 @@ fun(x)
 print(x)
 ```
 Escreve o valor **2**
+
+## 5.3 Chamada de funções
+Seja o exemplo `round(x,1)` escrito no trecho de um código, por exemplo, do módulo principal,  
+- A função para ser executada em um determinado trecho de código precisa ser **chamada**, na forma `round(x,1)`  
+- Para ser chamada, requer que possua um **nome** ou **identificador** - no exemplo, o nome da função é `round`  
+- Requer também uma lista de dados (variáveis ou constantes) entre parênteses, chamada de **argumento** da função - diz-se que a função **recebe** argumentos 
+- Em Python, uma cópia dos valores dos argumentos é passada aos parâmetros da função
+- Quando uma função é executada, ela pode devolver um valor (**retornar** valor) derivado da execução da tarefa, o qual pode ser atribuído a uma variável ou utilizado no contexto de uma expressão, por exemplo, `y = round(x,1)`  
+- Para que a atribuição ocorra, o corpo da função deve contemplar o uso da palavra reservada `return <valor ou expressão>` 
 
 ## 5.4 Retornando valores ...
 Algumas funções devolvem resultado. Para a função retorna um valor é necessário obedecer a sintaxe  
