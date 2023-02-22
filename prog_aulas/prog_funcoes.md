@@ -65,8 +65,9 @@ ela finaliza a chamada de função e envia o resultado para o código que fez a 
   ```
   produz a saída >> 12.3 >> 12.3 >> 12.3 e >> 61.5  
   
-### 5.2.2 Passando argumentos
-- A função para ser executada em um determinado trecho de código precisa ser **chamada** - no exemplo, `fun(x)`;    
+### 5.2.3 Passando argumentos
+- A função para ser executada em um determinado trecho de código precisa ser **chamada** - no exemplo, `fun(x)`; 
+   
 - Para ser chamada, requer que possua um **nome** ou **identificador** (*fun*) que referencia o objeto função;  
 - Requer também uma lista de dados (variáveis ou constantes) entre parênteses, chamados de **argumento** da função - no exemplo, *x*. Diz-se que a função **recebe** argumentos;   
 - A sintaxe é na estrutura chamadora: `função(lista_de_argumentos)` - os valores dos argumentos são copiados para os parâmetros da função. Por exemplo, 
@@ -93,7 +94,7 @@ ela finaliza a chamada de função e envia o resultado para o código que fez a 
   print(Y)
   ```
   não altera o valor de X, porém altera o valor de Y, pois Y é um **objeto mutável** - [lista](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/prog_aulas/prog_listas.md) (discutiremos listas posteriormente).
-5. Existem algumas **formas de correspondência de argumento** para os parâmetros definidos na função:  
+- Existem algumas **formas de correspondência de argumento** para os parâmetros definidos na função:  
   (i) posicional - o mais normal, **da esquerda para a direita pela correspondência das posições**;  
   (ii) palavras-chave - o código que chama pode **indicar qual parâmetro da função deve receber um valor**    
     Por exemplo,  
