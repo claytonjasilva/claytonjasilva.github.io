@@ -48,8 +48,8 @@ Algumas considerações:
 - Requer também uma lista de dados (variáveis ou constantes) entre parênteses, chamada de **argumento** da função - no exemplo, *x*. Diz-se que a função **recebe** argumentos 
 - **A alteração do valor dos parâmetros não altera o valor dos argumentos**. No exemplo, a variável *x* manteve o mesmo valor atribuído `x = 2`, embora no corpo da função *fun* seja definida uma variável local *x* que recebeu o valor *1*.
 
-## 5.3 Outras considerações sobre funções  
-A linguagem Python posssui algumas [funções embutidas](https://docs.python.org/pt-br/3/library/functions.html)
+## 5.3 Funções nativas do Python
+**A linguagem Python posssui algumas [funções embutidas](https://docs.python.org/pt-br/3/library/functions.html)**
 
 ### Exercícios sobre funções
 1. Elaborar um programa na linguagem Python que permita gerenciar a aprovação ou não de um grupo de 30 alunos, com base nas notas e na frequência. O programa deve possuir uma função para determinar a média do aluno, dada por mf=0,4.ap1+0,4.ap2+0,2.ac. Deve possuir também uma função que permita, caso o aluno seja reprovado, substituir a menor nota das ap pela nota da as (se a nota da as for superior a menor ap) e determinar a nova média final. Deve possuir também uma função para determinar a porcentagem de faltas de cada aluno. O programa deverá ler o número de aulas dadas; ler as notas de ap, ap2 e ac; ler a nota de as (se for necessário); e ler o número de faltas de cada aluno. Deverá escrever a média final de cada aluno, a porcentagem de faltas e a condição ('aprovado' ou 'reprovado'). O aluno estará aprovado se a média final for superior ou igual a 7.0 e tiver uma frequência superior a 75%. Deverá fazer a as se obtiver uma nota mf inferior a 7.0.   
