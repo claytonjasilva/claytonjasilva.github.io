@@ -14,9 +14,9 @@
     [Conversores A/D e D/A](sisdig_aulas/sisdig_9.pdf)  
 
 ## Práticas de laboratório
-1. **Práticas de revisão:** [Prática 1 Arduíno-LED](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/arq_aulas/pratica_ligaLED.md) -
-[Prática 2 Arduíno-LED](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/arq_aulas/pratica_saidaArduino.md) -
-[Prática 3 Arduíno-LED](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/arq_aulas/pratica_entradaArduino.md) 
+1. **Práticas de revisão:** [Prática 1a Arduíno-LED](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/arq_aulas/pratica_ligaLED.md) -
+[Prática 1b Arduíno-LED](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/arq_aulas/pratica_saidaArduino.md) -
+[Prática 1c Arduíno-LED](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/arq_aulas/pratica_entradaArduino.md) 
 2. [Prática 3](sisdig_aulas/sisdig_pratica3.md)
 3. [Prática 4](sisdig_aulas/sisdig_pratica4.md)
 4. [Prática 5](sisdig_aulas/sisdig_pratica5.md)
