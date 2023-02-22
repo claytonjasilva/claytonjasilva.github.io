@@ -27,8 +27,9 @@ ela finaliza a chamada de função e envia o resultado para o código que fez a 
 - Por padrão, todos os nomes definidos em uma função possuem **escopo local**, ou seja, são reconhecidos somente dentro da função  
   (i) As variáveis **locais existem apensas enquanto a função é executada**;   
   (ii) **Variáveis globais** são lidas e atualizadas por qualquer função ou método do programa;    
-  (iii) As variáveis locais só podem ser acessadas por código pertencente ao método ou função onde foi declarado a variável;  
-  **Ver mais em [escopo de funções](prog_funcoes_escopo.md)**
+  (iii) As variáveis locais só podem ser acessadas por código pertencente ao método ou função onde foi declarado a variável.  
+  
+  **Ver mais em [regras de escopo de funções](prog_funcoes_escopo.md)**
 
 <a id="ancora_parametros"></a>
 ### 5.2.2 A lista de parâmetros
