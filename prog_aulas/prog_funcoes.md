@@ -18,58 +18,37 @@ def nome_da_função(lista_de_parâmetros):
 - *def* é uma instrução executável - a função não  existe até que o Python a busque e execute;
 - Pode-se aninhar instruções *def* dentro de *if*, *loops* etc., em qualquer ponto do código - inclusive dentro de outra função;
 - *def* cria um **objeto de função**, que tem o tipo *function*;
-- A lista de parâmetros compreende os nomes das variáveis que receberão os **argumentos** quando a função for chamada e devem ser separados por vírgula (se houver mais de um parâmetro);
-- Os argumentos pertencentes ao código chamador e a função compartilham objetos pelas referências - a alteração de objetos mutáveis passados pode alterar os objetos compartilhados (posteriromente discutiremos essa questão);
+- A lista de **parâmetros** compreende os nomes das variáveis que receberão os argumentos quando a função for chamada e **devem ser separados por vírgula (se houver mais de um parâmetro)**;
+- Os argumentos pertencentes ao código chamador e a função compartilham objetos pelas referências - a alteração de objetos mutáveis passados pode alterar os objetos compartilhados (posteriormente discutiremos essa questão);
 - A instrução `return` **pode aparecer em qualquer lugar no bloco interno** de instruções da função - 
 ela finaliza a chamada de função e envia o resultado para o código que fez a chamada;
-- **A instrução `return` é opcional**;
-- Por padrão, todos os nomes definidos em uma função possuem escopo **local**, ou seja, são reconhecidos somente dentro da função. 
-- 
-- 
-  
+- **A instrução `return` é opcional** - pode acompanhar ou não a definição de uma função.  Ver mais em [*return*](https://docs.python.org/pt-br/3/reference/simple_stmts.html#the-return-statement) 
+- O valor retornado pela execução da função pode ser atribuído a uma variável ou utilizado no contexto de uma expressão, por exemplo, `y = round(x,1)`;
+- Por padrão, todos os nomes definidos em uma função possuem **escopo local**, ou seja, são reconhecidos somente dentro da função  
+  (i) As variáveis **locais existem apensas enquanto a função é executada**;   
+  (ii) **Variáveis globais** são lidas e atualizadas por qualquer função ou método do programa;    
+  (iii) As variáveis locais só podem ser acessadas por código pertencente ao método ou função onde foi declarado a variável;  
+  **Ver mais em [escopo de funções](prog_funcoes_escopo.md)**
 
+### 5.2.2 Chamada de funções
+- Na estrutura chamadora utiliza-se `função(lista_de_argumentos)` - os valores dos argumentos são copiados para os parâmetros da função. Por exemplo, 
+  ```
+  def fun(x):  
+    x=1  
+    return 0     
+  x=2
+  y=fun(x)  
+  print(x)
+  ```
+  escreve o valor **2**.  
 
-Algumas considerações:  
-- A lista de parâmetros contém os nome de todas as variáveis que receberão os dados para a função executar suas instruções separados por vírgulas.
+Algumas considerações:
+- A função para ser executada em um determinado trecho de código precisa ser **chamada** - no exemplo, `fun(x)`  
+- Para ser chamada, requer que possua um **nome** ou **identificador** (*fun*) que referencia o objeto, como descrito acima  
+- Requer também uma lista de dados (variáveis ou constantes) entre parênteses, chamada de **argumento** da função - no exemplo, *x*. Diz-se que a função **recebe** argumentos 
+- **A alteração do valor dos parâmetros não altera o valor dos argumentos**. No exemplo, a variável *x* manteve o mesmo valor atribuído `x = 2`, embora no corpo da função *fun* seja definida uma variável local *x* que recebeu o valor *1*.
 
-- Na estrutura chamadora utiliza-se `função(lista_de_argumentos)` - os valores dos argumentos são copiados para os parâmetros da função.  
-- **A alteração do valor dos parâmetros não altera o valor dos argumentos**. Por exemplo,
-```
-def fun(x)  
-  x=1  
- return 0*     
-x=2    
-fun(x)  
-print(x)
-```
-Escreve o valor **2**
-
-## 5.3 Chamada de funções
-Seja o exemplo `round(x,1)` escrito no trecho de um código, por exemplo, do módulo principal,  
-- A função para ser executada em um determinado trecho de código precisa ser **chamada**, na forma `round(x,1)`  
-- Para ser chamada, requer que possua um **nome** ou **identificador** - no exemplo, o nome da função é `round`  
-- Requer também uma lista de dados (variáveis ou constantes) entre parênteses, chamada de **argumento** da função - diz-se que a função **recebe** argumentos 
-- Em Python, uma cópia dos valores dos argumentos é passada aos parâmetros da função
-- Quando uma função é executada, ela pode devolver um valor (**retornar** valor) derivado da execução da tarefa, o qual pode ser atribuído a uma variável ou utilizado no contexto de uma expressão, por exemplo, `y = round(x,1)`  
-- Para que a atribuição ocorra, o corpo da função deve contemplar o uso da palavra reservada `return <valor ou expressão>` 
-
-## 5.4 Retornando valores ...
-Algumas funções devolvem resultado. Para a função retorna um valor é necessário obedecer a sintaxe  
-```
-def nome_da_função(lista_de_parâmetros):
-  corpo de instruções
-  return <valor ou expressão>
- ```  
-Por exemplo, a função `round(12.345,1)` devolve o resultado 12.3. Se a instrução utilizada for `x = round(12.345,1)`, o resultado será atribuído à variável *x*.  
-Para a função devolver um resultado é necessário utilizar a instrução simples `return valor_a_retornar` no corpo das instruções.  
-A instrução simples [*return*](https://docs.python.org/pt-br/3/reference/simple_stmts.html#the-return-statement) pode acompanhar ou não a definição de uma função.  
-
-## 5.5 Escopo das variáveis  
-Por padrão, todos os nomes das variáveis atribuídos em uma função são **locais**, isto é, existem apensas enquanto a função é executada.  
-Variáveis globais são lidas e atualizadas por qualquer função ou método do programa.  
-As variáveis locais só podem ser acessadas por código pertencente ao método ou função onde foi declarado a variável: [Escopo de funções](prog_funcoes_escopo.md)
-
-## 5.6 Outras considerações sobre funções  
+## 5.3 Outras considerações sobre funções  
 A linguagem Python posssui algumas [funções embutidas](https://docs.python.org/pt-br/3/library/functions.html)
 
 ### Exercícios sobre funções
@@ -88,5 +67,5 @@ A linguagem Python posssui algumas [funções embutidas](https://docs.python.org
 O programa deve executar sucessivas vezes as operações. Na **primeira** repetição, o usuário deve digitar os valores de A e B, seguidos da operação desejada. Nas **repetições seguintes**, o usuário deve digitar o valor de um novo número, seguido da nova operação desejada. A nova operação será aplicada sobre o novo número e o resultado da repetição anterior. O programa será interrompido quando for digitada a operação 'nop' - nenhuma operação - e deverá escrever o último valor resultante da operação. [funcoesNotacaoPolonesa.py](https://github.com/claytonjasilva/prog_exemplos/blob/main/funcoesNotacaoPolonesa.py)
 6. Uma forma de calcular a potência de base *e* de um número é dada por *e^x = 1 + x + x^2/2! + x^3/!3 + ...*, onde *^* representa potência e *!* representa o fatorial do número. Elaborar um programa na linguagem Python para determinar o resultado de *e^x*, em que o usuário ditige na entrada o valor de *x* e o número de interações desejadas (número de termos da série). [funcoesSerieExp.py](https://github.com/claytonjasilva/prog_exemplos/blob/main/funcoesSerieExp.py)
 
-___ 
-**[home](https://claytonjasilva.github.io/progPython_aulas.html)**
+___   
+**[Home Programação Estruturada com Python](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/progPython_aulas.md)**  
