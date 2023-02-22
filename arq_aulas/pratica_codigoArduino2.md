@@ -14,7 +14,7 @@ Conforme **a palavra do código de entrada**, o programa realiza uma função es
 #### II - Vamos iniciar a prática com a placa do Arduíno Mega 2560...
 1. Montar  o circuito conforme a figura abaixo.  
 ![Entrada de 3 bits](/arq_aulas/images/ckt3teclas.jpg)  
-2. Utilizando a IDE do Arduíno, elabore o código que permite acender/apagar o LED de acordo com a combinação das chaves acionada.
+2. Utilizando a IDE do Arduíno, elabore o código que permite ativar uma função dependendo da combinação binária da entrada.
 3. Observações:  
 - Visite o site do Arduíno para conhecer um pouco sobre a [referência da linguagem do Arduíno](https://www.arduino.cc/reference/en/)  
 - O código da prática pode ser obtido em [pratica3teclas1.ino](https://github.com/claytonjasilva/prog_exemplos/blob/main/pratica3chaves1.ino)
