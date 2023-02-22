@@ -63,7 +63,6 @@ ela finaliza a chamada de função e envia o resultado para o código que fez a 
   print(conversao(x,5,'dolar'))
   ```
   produz a saída >> 12.3 >> 12.3 >> 12.3 e >> 61.5  
-- Funções também podem ser chamadas usando argumentos nomeados da forma chave=valor. Por exemplo, a função a seguir:
   
 ### 5.2.2 Chamada de funções
 - Na estrutura chamadora utiliza-se `função(lista_de_argumentos)` - os valores dos argumentos são copiados para os parâmetros da função. Por exemplo, 
