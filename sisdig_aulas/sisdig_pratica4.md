@@ -1,6 +1,6 @@
 # Prática 5 de laboratório: inversores
 
-1. Utilizando um [inversor 74HC04](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/sisdig_aulas/SN74HC04_Philips.pdf), fazer as ligações de VCC e GND do circuito integrado.
+1. Utilizando um [inversor 74HC04](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/sisdig_aulas/SN74HC04_Philips.pdf), **fazer as ligações de VCC e GND do circuito integrado**.
 2. Montar o circuito da figura - sugestão: utilizar o software Logisim   
 ![Inversor lógico](/sisdig_aulas/images_sisdig/praticanot.jpg)   
 3. Utilizar a entrada 1A, conforme especificado no *datasheet*, ligando-a com *jumper*:  
