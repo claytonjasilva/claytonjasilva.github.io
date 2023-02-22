@@ -1,4 +1,4 @@
-# Datasheet - Módulo Buzzer
+# *Datasheet* - Módulo Buzzer
 
 ## 1. Especificações
 1. Sinalizador piezoelétrico de 12mm.
