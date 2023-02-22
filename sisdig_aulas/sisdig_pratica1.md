@@ -1,14 +1,12 @@
-## Prática 1: Relembrando o Arduíno
+## Prática 2: Um pouco de eletrônica...
 
 ### Conectando o Arduíno...
 1. Conectar a alimentação da placa do Arduíno pela porta USB
-2. Conectar o pino 3,3 V ao terminal 1 do potenciômetro
+2. Conectar o pino 3,3 V ao terminal 1 do **potenciômetro**
 3. Conectar o pino GND da placa Arduíno ao terminal 3 do potenciômetro
 4. Conectar um terminal do resistor limitador de corrente ao terminal 2 do potenciômetro
 5. Conectar o outro terminal do resistor limitador de corrente ao anodo (+) do led
 6. Conectar o catodo (-) do led ao outro pino GND da placa do Arduíno
-
-Obs. Ver circuito abaixo
 
 #### Observações
 + Utilizar as trilhas adequadamente do *protoboard* - Ver <https://www.robocore.net/tutoriais/como-utilizar-uma-protoboard>
