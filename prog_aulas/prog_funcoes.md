@@ -18,7 +18,7 @@ def nome_da_função(lista_de_parâmetros):
 - *def* é uma instrução executável - a função não  existe até que o Python a busque e execute;
 - Pode-se aninhar instruções *def* dentro de *if*, *loops* etc., em qualquer ponto do código - inclusive dentro de outra função;
 - *def* cria um **objeto de função**, que tem o tipo *function*;
-- A lista de **parâmetros** compreende os nomes das variáveis que receberão os argumentos quando a função for chamada e **devem ser separados por vírgula (se houver mais de um parâmetro)**;
+- A [**lista de parâmetros**](#ancora_parametros) compreende os nomes das variáveis que receberão os argumentos quando a função for chamada; 
 - Os argumentos pertencentes ao código chamador e a função compartilham objetos pelas referências - a alteração de objetos mutáveis passados pode alterar os objetos compartilhados (posteriormente discutiremos essa questão);
 - A instrução `return` **pode aparecer em qualquer lugar no bloco interno** de instruções da função - 
 ela finaliza a chamada de função e envia o resultado para o código que fez a chamada;
@@ -30,6 +30,41 @@ ela finaliza a chamada de função e envia o resultado para o código que fez a 
   (iii) As variáveis locais só podem ser acessadas por código pertencente ao método ou função onde foi declarado a variável;  
   **Ver mais em [escopo de funções](prog_funcoes_escopo.md)**
 
+<a id="ancora_parametros"></a>
+### 5.2.2 A lista de parâmetros
+- Os **parâmetros devem ser separados por vírgula** (se houver mais de um parâmetro).  
+  Nessa definição, os argumentos correspondem aos parâmetros na ordem em que são inseridos quando a função é chamada. Por exemplo,  
+  ```
+  def diferenca(a,b):
+    return a-b
+  x = 5
+  y = 3
+  print(diferenca(x,y))
+  ```
+  escreve 2, pois o objeto referenciado por *x* é associado a *a* e o objeto referenciado por *y*, a *b*.
+- É possível especificar **argumentos com valor padrão**, criando uma função que pode ser invocada com menos argumentos do que os que foram definidos.  
+  Nessa definição, os parâmetros que não possuem um valor padrão são relacionados na lista separados por vírgula (como no caso anterior) e **os parâmetros que possuem um valor padrão são apresentados em seguida, também separados por vírgula, com o correspondente valor padrão**.   
+  Na chamada da função, os argumentos que possuem o valor padrão podem ser omitidos.  
+  A sintaxe é  
+  ```
+  def <nome da função>(<lista de parâmetros>,<parâmetro 1>=<valor padrão>, ..., <parâmetro n>=<valor padrão>):  
+  ```  
+  Por exemplo,  
+  ```
+  def conversao(a,cambio=1,moeda='real'):
+    if moeda == 'real' or cambio == 1:
+      return a
+    else: 
+      return a * cambio
+  x = 12.30
+  print(conversao(x))
+  print(conversao(x,1.56))
+  print(conversao(x,'dolar'))
+  print(conversao(x,5,'dolar'))
+  ```
+  produz a saída >> 12.3 >> 12.3 >> 12.3 e >> 61.5  
+- Funções também podem ser chamadas usando argumentos nomeados da forma chave=valor. Por exemplo, a função a seguir:
+  
 ### 5.2.2 Chamada de funções
 - Na estrutura chamadora utiliza-se `função(lista_de_argumentos)` - os valores dos argumentos são copiados para os parâmetros da função. Por exemplo, 
   ```
