@@ -51,5 +51,6 @@
   ```
   O resultado é a apresentação de 5.
   
-___   
+___  
+**[<<anterior](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/prog_aulas/prog_funcoes.md)**  
 **[Home Programação Estruturada com Python](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/progPython_aulas.md)**  
