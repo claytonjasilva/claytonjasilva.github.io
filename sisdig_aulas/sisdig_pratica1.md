@@ -2,11 +2,14 @@
 
 ### Conectando o Arduíno...
 1. Conectar a alimentação da placa do Arduíno pela porta USB
-2. Conectar o pino 3,3 V ao terminal 1 do **potenciômetro**
-3. Conectar o pino GND da placa Arduíno ao terminal 3 do potenciômetro
-4. Conectar um terminal do resistor limitador de corrente ao terminal 2 do potenciômetro
-5. Conectar o outro terminal do resistor limitador de corrente ao anodo (+) do led
-6. Conectar o catodo (-) do led ao outro pino GND da placa do Arduíno
+2. Conectar o pino 5 V ao **anodo (+)** do LED
+3. Conectar o **catodo (-)** do LED a um terminal do resistor
+4. Conectar o outro terminial do resistor ao **terminal 1** do **potenciômetro**
+5. Conectar os **terminais 2-3** do **potenciômetro** ao GND do Arduíno.
+
+Ver o circuito  
+![Circuito com potenciometro](/sisdig_aulas/images_sisdig/praticatrimpot.jpg)   
+
 
 #### Observações
 + Utilizar as trilhas adequadamente do *protoboard* - Ver <https://www.robocore.net/tutoriais/como-utilizar-uma-protoboard>
@@ -18,9 +21,9 @@
   + É possível mudar a conexão para o pino 5 V da placa do Arduíno?
 
 ### Retirando o Arduíno...
-1. Conectar o circuito a uma fonte de tensão de 3,3 VDC
+1. Conectar o circuito a **uma fonte de tensão** e ajustar a tensão para 3,3 VDC
 2. Subir a tensão da fonte para 5 VDC
-3. Reduzir a tensão da fonte  
+3. Manter a tensão da fonte em 5V e ajustar o potenciômetro  
 
 #### Observações
 + Usar o [manual da fonte](/manuais/Manual_fonteDC.pdf)
