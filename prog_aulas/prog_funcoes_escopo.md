@@ -50,7 +50,27 @@
   f1()
   ```
   O resultado é a apresentação de 5.
-  
+
+### Passando argumentos
+1. Os argumentos são passados pela **atribuição de objetos a nomes locais** - definidios pelos parâmetros da função chamada;
+2. A atribuição de **nomes de argumento** dentro de uma função não altera o código que fez a chamada;
+3. A atribuição de **objetos mutáveis** pode produzir impacto sobre o código que fez a chamada - por exemplo,
+  ```
+  def changer(x,y):
+    x = 2
+    y[0] = 'spam'
+  X = 1
+  Y = [1, 2]
+  changer(X, Y)
+  print(X)
+  print(Y)
+  ```
+  não altera o valor de X, porém altera o valor de Y, pois Y é um **objeto mutável** - lista.
+5. Existem algumas **formas de correspondência de argumento** para os parâmetros definidos na função:
+  (i) posicional - o mais normal, da esquerda para a direita pela correspondência das posições;
+  (ii) palavras-chave = o código que chama pode indicar qual parâmentro da função deve receber um valor;
+  (iii) 
+
 ___  
 **[<<anterior](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/prog_aulas/prog_funcoes.md)**  
 **[Home Programação Estruturada com Python](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/progPython_aulas.md)**  
