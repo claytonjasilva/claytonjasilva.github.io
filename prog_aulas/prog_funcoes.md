@@ -64,8 +64,11 @@ ela finaliza a chamada de função e envia o resultado para o código que fez a 
   ```
   produz a saída >> 12.3 >> 12.3 >> 12.3 e >> 61.5  
   
-### 5.2.2 Chamada de funções
-- Na estrutura chamadora utiliza-se `função(lista_de_argumentos)` - os valores dos argumentos são copiados para os parâmetros da função. Por exemplo, 
+### 5.2.2 Passando argumentos
+- A função para ser executada em um determinado trecho de código precisa ser **chamada** - no exemplo, `fun(x)`;    
+- Para ser chamada, requer que possua um **nome** ou **identificador** (*fun*) que referencia o objeto função;  
+- Requer também uma lista de dados (variáveis ou constantes) entre parênteses, chamados de **argumento** da função - no exemplo, *x*. Diz-se que a função **recebe** argumentos;   
+- A sintaxe é na estrutura chamadora: `função(lista_de_argumentos)` - os valores dos argumentos são copiados para os parâmetros da função. Por exemplo, 
   ```
   def fun(x):  
     x=1  
@@ -74,13 +77,31 @@ ela finaliza a chamada de função e envia o resultado para o código que fez a 
   y=fun(x)  
   print(x)
   ```
-  escreve o valor **2**.  
-
-Algumas considerações:
-- A função para ser executada em um determinado trecho de código precisa ser **chamada** - no exemplo, `fun(x)`  
-- Para ser chamada, requer que possua um **nome** ou **identificador** (*fun*) que referencia o objeto, como descrito acima  
-- Requer também uma lista de dados (variáveis ou constantes) entre parênteses, chamada de **argumento** da função - no exemplo, *x*. Diz-se que a função **recebe** argumentos 
-- **A alteração do valor dos parâmetros não altera o valor dos argumentos**. No exemplo, a variável *x* manteve o mesmo valor atribuído `x = 2`, embora no corpo da função *fun* seja definida uma variável local *x* que recebeu o valor *1*.
+  escreve o valor **2**. 
+- Os argumentos são passados pela **atribuição de objetos a nomes locais** - definidios pelos parâmetros da função chamada;   
+- A atribuição de **nomes de argumento** dentro de uma função não altera o código que fez a chamada - no exemplo, a variável *x* manteve o mesmo valor atribuído `x = 2`, embora no corpo da função *fun* seja definida uma variável local *x* que recebeu o valor *1*;  
+- A atribuição de **objetos mutáveis** pode produzir impacto sobre o código que fez a chamada - por exemplo,
+  ```
+  def changer(x,y):
+    x = 2
+    y[0] = 'spam'
+  X = 1
+  Y = [1, 2]
+  changer(X, Y)
+  print(X)
+  print(Y)
+  ```
+  não altera o valor de X, porém altera o valor de Y, pois Y é um **objeto mutável** - [lista](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/prog_aulas/prog_listas.md) (discutiremos listas posteriormente).
+5. Existem algumas **formas de correspondência de argumento** para os parâmetros definidos na função:  
+  (i) posicional - o mais normal, **da esquerda para a direita pela correspondência das posições**;  
+  (ii) palavras-chave - o código que chama pode **indicar qual parâmetro da função deve receber um valor**    
+    Por exemplo,  
+    ```
+    def diferenca(a,b):
+      return a-b
+    print(diferenca(b=1,a=3))
+    ```    
+  (iii) padrões: omitindo os argumentos que satisfazem ao padrão estabelecido nos parâmetros. 
 
 ## 5.3 Funções nativas do Python
 **A linguagem Python posssui algumas [funções embutidas](https://docs.python.org/pt-br/3/library/functions.html)**
