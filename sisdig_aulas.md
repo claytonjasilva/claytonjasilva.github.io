@@ -17,10 +17,10 @@
 1. **Práticas de revisão:** [Prática 1 Arduíno-LED](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/arq_aulas/pratica_ligaLED.md) -
 [Prática 2 Arduíno-LED](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/arq_aulas/pratica_saidaArduino.md) -
 [Prática 3 Arduíno-LED](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/arq_aulas/pratica_entradaArduino.md) 
-2. [Prática 2](sisdig_aulas/sisdig_pratica2.md)
-3. [Prática 3](sisdig_aulas/sisdig_pratica3.md)
-4. [Prática 4](sisdig_aulas/sisdig_pratica4.md)
-5. [Prática 5](sisdig_aulas/sisdig_pratica5.md)
+2. [Prática 3](sisdig_aulas/sisdig_pratica2.md)
+3. [Prática 4](sisdig_aulas/sisdig_pratica3.md)
+4. [Prática 5](sisdig_aulas/sisdig_pratica4.md)
+5. [Prática 6](sisdig_aulas/sisdig_pratica5.md)
 6. [Prática 9](sisdig_aulas/sisdig_pratica9.md)
 7. [Prática 10](sisdig_aulas/sisdig_pratica10.md)
 8. [Prática 11](sisdig_aulas/sisdig_pratica11.md)
