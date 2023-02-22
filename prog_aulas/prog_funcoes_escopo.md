@@ -1,7 +1,7 @@
-## Funções em Python: escopos e argumentos  
-### Regras de escopo  
-- O Python utiliza o local de atribuição de nome para associá-lo a um **espaço de nome** em particular
-- O espaço de nome de um objeto determina o **escopo de visibilidade**
+## Funções em Python: Regras de escopo
+ 
+- O Python utiliza o local de atribuição de nome para associá-lo a um **espaço de nome** em particular;
+- O espaço de nome de um objeto determina o **escopo de visibilidade**;
 - O Python **utiliza o local de atribuição de um nome para associá-lo a um espaço de nome da função**;
 - Os nomes definidos dentro de uma instrução *def* **só podem ser vistos pelo código que está dentro da função** - não se pode sequer usar o nome fora desse espaço;
 - Os nomes definidos dentro de uma instrução *def* **não entram em conflito com os nomes das variáveis fora da função** - ainda que possuam o mesmo nome são tratados como variáveis diferentes;
