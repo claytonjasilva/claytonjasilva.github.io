@@ -149,41 +149,39 @@ Observe que o código apresentado utiliza **o caractere `#` - que indica um come
 
 1. Utilizando o **modo interativo** do Replit, calcular o valor das seguintes expressões  
 
-a. $3 + 4 \times 5 - [2 \times (4 + 6) ]$
+  a. $3 + 4 \times 5 - [2 \times (4 + 6) ]$
   
-b. $\frac{3 + 4 \times 5} {[2 \times (4 + 6) ]}$  
+  b. $\frac{3 + 4 \times 5} {[2 \times (4 + 6) ]}$  
   
-c. $3^{4 \times 5 \times [2 \times (4 + 6) ]}$  
+  c. $3^{4 \times 5 \times [2 \times (4 + 6) ]}$  
   
-d. $\sqrt{2 \times (5 + 3) ^ {34}}$  
+  d. $\sqrt{2 \times (5 + 3) ^ {34}}$  
   
 2. Utilizando o **modo interativo** do Replit, calcular o valor das seguintes expressões  
 
-a. $a + 4 \times b - [2 \times (c + 6) ]$, onde a=b=3 e c=5  
+  a. $a + 4 \times b - [2 \times (c + 6) ]$, onde a=b=3 e c=5  
 
-b. $\frac{x + y \times 5} {[2 \times (4 + 6) ]}$, onde x=5, y=3  
+  b. $\frac{x + y \times 5} {[2 \times (4 + 6) ]}$, onde x=5, y=3  
 
-c. $3^{a \times 5 \times [b \times (4 + 6) ]}$, onde a=4.3, b=3  
+  c. $3^{a \times 5 \times [b \times (4 + 6) ]}$, onde a=4.3, b=3  
 
-d. $\sqrt{k \times (5 + 3) ^ {34}}$, onde k=2.5  
+  d. $\sqrt{k \times (5 + 3) ^ {34}}$, onde k=2.5  
   
 3. Utilizando o **modo interativo** do Replit, determinar  
  
-a. Quantos minutos dois dias e 18 horas contemplam?    
-b. Qual é a área de um terreno retangular com lados de 50 metros e 15 metros?  
-c. Quantas voltas completas um corredor alcança em uma pista com perímetro de 400 metros se ele conseguiu correr 2.300 metros?  
-d. Um veículo consome em média 2 litros de gasolina para percorrer 19,5 quilômetros. Quantos quilômetros o veículo deverá percorrer se o tanque de combustível possuir capacidade de armazenar 50 litros?  
-e. A fórmula para determinação da nota final é definida por uma média ponderada em que a nota de cada avaliação parcial possui peso de 40% e a avaliação continuada, peso de 20%. A média para aprovação é 7,0. Se o aluno obtiver nota 6,5 na AP1; nota 8,3 na AP2; e nota 6,9 na AC; ele será aprovado?  
+  a. Quantos minutos dois dias e 18 horas contemplam?    
+  b. Qual é a área de um terreno retangular com lados de 50 metros e 15 metros?  
+  c. Quantas voltas completas um corredor alcança em uma pista com perímetro de 400 metros se ele conseguiu correr 2.300 metros?  
+  d. Um veículo consome em média 2 litros de gasolina para percorrer 19,5 quilômetros. Quantos quilômetros o veículo deverá percorrer se o tanque de combustível possuir capacidade de armazenar 50 litros?  
+  e. A fórmula para determinação da nota final é definida por uma média ponderada em que a nota de cada avaliação parcial possui peso de 40% e a avaliação continuada, peso de 20%. A média para aprovação é 7,0. Se o aluno obtiver nota 6,5 na AP1; nota 8,3 na AP2; e nota 6,9 na AC; ele será aprovado?  
 
 4. Utilizando o **modo de *script***, criar um programa na linguagem Python para  
 
-a. Determinar quantos minutos *x* dias e *y* horas possuem.[Ver solução em *script* 1.1](https://github.com/claytonjasilva/prog_exemplos/blob/main/minutos.py)  
-b. Determinar qual é a área de um terreno retangular com lados de *l1* metros e *l2* metros. [Ver solução em *script* 1.2](https://github.com/claytonjasilva/prog_exemplos/blob/main/area.py)   
-c. Determinar quantas voltas completas um corredor alcança em uma pista com perímetro de *p* metros se ele conseguiu correr *x* metros?[Ver solução em *script* 1.3](https://github.com/claytonjasilva/prog_exemplos/blob/main/volta.py)    
-d. Determinar o consumo de Um veículo que consome em média *x* litros de gasolina para percorrer *l* quilômetros; e quantos quilômetros o veículo deverá percorrer se o tanque de combustível possuir capacidade de armazenar *c* litros?  [Ver solução em *script* 1.5](https://github.com/claytonjasilva/prog_exemplos/blob/main/veiculo.py)  
- [*Script* 1.6](https://github.com/claytonjasilva/prog_exemplos/blob/main/nota.py)   
-e. Determinar a a nota final de um aluno do Ibmec, conhecidas as notas de AP1, AP2 e AC. [Ver solução em *script* 1.7](https://github.com/claytonjasilva/prog_exemplos/blob/main/nota2.py)
-
+  a. Determinar quantos minutos *x* dias e *y* horas possuem.[Ver solução em *script* 1.1](https://github.com/claytonjasilva/prog_exemplos/blob/main/minutos.py)  
+  b. Determinar qual é a área de um terreno retangular com lados de *l1* metros e *l2* metros. [Ver solução em *script* 1.2](https://github.com/claytonjasilva/prog_exemplos/blob/main/area.py)   
+  c. Determinar quantas voltas completas um corredor alcança em uma pista com perímetro de *p* metros se ele conseguiu correr *x* metros?[Ver solução em *script* 1.3](https://github.com/claytonjasilva/prog_exemplos/blob/main/volta.py)    
+  d. Determinar o consumo de Um veículo que consome em média *x* litros de gasolina para percorrer *l* quilômetros; e quantos quilômetros o veículo deverá percorrer se o tanque de combustível possuir capacidade de armazenar *c* litros?  [Ver solução em *script* 1.5](https://github.com/claytonjasilva/prog_exemplos/blob/main/veiculo.py)  
+  e. Determinar a a nota final de um aluno do Ibmec, conhecidas as notas de AP1, AP2 e AC. [Ver solução em *script* 1.7](https://github.com/claytonjasilva/prog_exemplos/blob/main/nota2.py) ou em [*script* 1.6](https://github.com/claytonjasilva/prog_exemplos/blob/main/nota.py)   
 
 **Observações**:
 - Criar um novo *Repl* para cada *script*  
