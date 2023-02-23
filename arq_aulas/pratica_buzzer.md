@@ -8,7 +8,7 @@ O *buzzer* é um sinalizador piezoelétrico que produz um sinal contínuo, sendo
 2. *Buzzer*
 3. Arduíno Mega 2560
 
-#### II - Vamos iniciar a prática com a placa do Arduíno Mega 2560...
+#### II - Vamos realizar a prática com a placa do Arduíno Mega 2560...
 1. Montar  o circuito conforme a figura abaixo.  
 ![Aplicação com *buzzer*](/arq_aulas/images/praticabuzzer.jpg)  
 2. Utilizando a IDE do Arduíno, elaborar o código que gera em cada *buzzer* tons de 50 Hz, 1 kHz e 2 kHz.
