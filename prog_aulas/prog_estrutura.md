@@ -67,17 +67,22 @@ Por exemplo, *print(argumento)* apresenta na área de console o valor do argumen
 6. Constantes, que possuem valores pré-estabelecidos, chamados pela sua identificação.  
 Por exemplo, a constante matemática *pi*.
 7. Sentença de **atribuição**: destina-se a atribuir objetos a nomes e, em sua forma básica, escreve-se com o **destino**, à esquerda, separado por um sinal de `=` do **objeto fonte** a ser atribuído, à direita.  
-    Por exemplo,
+    (i) Por exemplo,
     ```
     x = 2 * 3 + (4 / y)
     ```
-    Importante destacar que **antes de um nome ser usado deve ter havido uma atribuição de objeto a ele**, sob pena de haver um erro na interpretação.  
-    Existem **atribuições implícitas** que discutiremos posteriormente, como `import`, `for`, argumentos de função etc.  
-    Uma outra forma é a **atribuição com destino múltiplo** - nessa forma o mesmo objeto pode ser atribuído a vários nomes  
-    Por exemplo, `x = y = 5`  
-    Também é interessante a forma de **atribuição com desempacotamento de tupla** (aprofundaremos depois) - dois nomes podem ser associados em ordem a dois objetos separados por vírgula (uma tupla)  
-    Por exemplo, `x, y = 3, 5`  
-    **Atribuição ampliada** - são atalhos que envolvem **a combinação de uma expressão com uma atribuição**:  
+    (ii) Importante destacar que **antes de um nome ser usado deve ter havido uma atribuição de objeto a ele**, sob pena de haver um erro na interpretação.  
+    (iii) Existem **atribuições implícitas** que discutiremos posteriormente, como `import`, `for`, argumentos de função etc.  
+    (iv) Uma outra forma é a **atribuição com destino múltiplo** - nessa forma o mesmo objeto pode ser atribuído a vários nomes, como
+    
+    `x = y = 5`  
+    
+    (v) Também é interessante a forma de **atribuição com desempacotamento de tupla** (aprofundaremos depois) - dois nomes podem ser associados em ordem a dois objetos separados por vírgula (uma tupla), como   
+    
+    `x, y = 3, 5`  
+    
+    (vi) **Atribuição ampliada** - são atalhos que envolvem **a combinação de uma expressão com uma atribuição**, como 
+    
     `x += y` equivale a `x = x + y`  
     `x -= y` equivale a `x = x - y`
     ...
