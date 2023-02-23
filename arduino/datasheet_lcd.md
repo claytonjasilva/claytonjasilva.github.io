@@ -1,5 +1,5 @@
 # *Datasheet* - LCD 1602
-Referência [*Piezo Buzzer* EFM260](https://pdf1.alldatasheet.com/datasheet-pdf/view/234280/FORYARD/EFM-260.html)  
+Referência [LCD 1602](https://www.openhacks.com/uploadsproductos/eone-1602a1.pdf)  
 Trata-se de uma família de LCD de 16 caracteres com 2 linhas, monocromático.  
 
 ## 1. Especificações
@@ -18,14 +18,17 @@ Trata-se de uma família de LCD de 16 caracteres com 2 linhas, monocromático.
 | 15 | A | ‘Anodo’, +5V |
 | 16 | K |	‘Catodo’, Gnd |
 
-
-
-| Característica | Valor |
-| - | - |
-| Tensão de operação | 3~24 VDC |
-| Som de saída | ≥ 85 dB | 
-| Frequência de Resonância | 3.5 ± 0.5 kHz | 
-| Natureza do tom | Contínuo | 
+### 1.2 Operação
+1. Os caracteres são apresentados em duas linhas de 16 caracteres cada uma. 
+2. O LCD 1602 possui também um cursor, que indica a posição do caractere lido/escrito em um instante. 
+3. A pinagem inicia-se a partir do pino 1 – na esquerda superior da figura -, até o pino 16.
+![LCD 1602](/arduino/arduino_images/lcd1602.jpg)
+4. Um esquema de utilização está apresentado na figura
+![Circuito Arduino-LCD 1602](/arduino/arduino_images/arduinolcd1602.jpg)
+  4.1 No pino V0 do LCD 1602 a tensão de entrada será regulada por um potenciômetro de 10 kohms;
+  4.2 O pino RW será conectado ao Gnd porque a operação a ser realizada será somente de escrita no LCD 1602;
+  4.3 Será utilizado o modo de 4-bits do LCD 1602, que, por default, opera em DB4-7;
+  4.4 No *backlight* do LCD 1602 (pinos de anodo e catodo), o pino de anodo será alimentado por uma tensão de + 5VDC com uma proteção dada por um resistor.
 
 ## 2. Referência com Arduíno
 ### Função [*tone*](https://www.arduino.cc/reference/en/language/functions/advanced-io/tone/)  
