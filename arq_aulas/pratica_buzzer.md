@@ -1,6 +1,6 @@
 ### Prática 7 - Dispositivos de saída
 Circuito utilizando a placa do Arduíno 2560 e três saídas digitais (pinos 2, 3 e 4).  
-Cada saída conecta-se a um *buzzer* - [Ver especificações técnicas(https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/arduino/datasheet_buzzer.md).  
+Cada saída conecta-se a um *buzzer* - **[Ver especificações técnicas](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/arduino/datasheet_buzzer.md)**.  
 O *buzzer* é um sinalizador piezoelétrico que produz um sinal contínuo, sendo útil para aplicações em instrumentos eletrônicos, controle etc.
 
 #### I - Apresentação de instrumental e ferramental
