@@ -45,8 +45,8 @@ Por exemplo, *print(argumento)* apresenta na área de console o valor do argumen
     (1) A divisão (`/`) sempre retorna número na representação em **ponto flutuante (float)**. 
     Para fazer uma divisão com resultado inteiro (descartando a parte fracionária) pode-se usar o operador divisão inteira (`//`)  
     (2) Para calcular o resto da divisão inteira pode-se usar o operador **módulo** (`%`).  
-5. **Objetos de referência - variáveis**, que armazenam os valores dos objetos e são referenciadas por um **identificador** (nome).  
-  Variáveis são **representações simbólicas** de dados que pertencem a um determinado conjunto (possuem a um determinado tipo).  
+5. **Objetos de referência - variáveis**, que referenciam os valores dos objetos e são identificadas por um **nome** (identificador).  
+  Variáveis são **representações simbólicas** de dados que pertencem a um determinado conjunto (possuem um determinado tipo).  
   O uso das variáveis em Python **não requer a declaração do tipo**, pois o Python é de **tipagem dinâmica** (o interpretador reconhece automaticamente o tipo de dado).  
   A variável é **criada** ao receber um valor pela primeira vez. As atribuições futuras alteram a variável a um novo valor.
   O **identificador** ou **nome** deve obedecer as regras:  
