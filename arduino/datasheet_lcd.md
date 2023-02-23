@@ -31,10 +31,22 @@ Trata-se de uma família de LCD de 16 caracteres com 2 linhas, monocromático.
   4.4 No *backlight* do LCD 1602 (pinos de anodo e catodo), o pino de anodo será alimentado por uma tensão de + 5VDC com uma proteção dada por um resistor.
 
 ## 2. Referência com Arduíno
-### Função [*tone*](https://www.arduino.cc/reference/en/language/functions/advanced-io/tone/)  
-Em resumo,  
-- Gera uma **onda quadrada** da frequência especificada (e 50% do *duty cycle* -ciclo de trabalho) em um pino.  
-- Uma duração pode ser especificada, caso contrário, a onda continua até uma chamada para `noTone()`.   
-- Não é possível gerar tons inferiores a 31Hz. 
-- Para detalhes técnicos, veja as [notas de Brett Hagman](https://github.com/bhagman/Tone#ugly-details)
+### Biblioteca [*LiquidCrystal.h*](https://www.arduino.cc/reference/en/libraries/liquidcrystal/?_gl=1*1ho1w4v*_ga*MTA5OTg3MjYxMy4xNjU4MzM3NTM2*_ga_NEXN8H46L5*MTY3NzE2NTk1MS4xNy4wLjE2NzcxNjU5NTEuMC4wLjA.)
+Esta biblioteca permite que uma placa Arduino controle monitores LiquidCrystal (LCDs) com base no chipset Hitachi HD44780 (ou compatível), que é encontrado na maioria dos LCDs baseados em texto.  
+A biblioteca funciona com no modo de 4 ou 8 bits (ou seja, usando 4 ou 8 linhas de dados, além do *rs*, *enable* e, opcionalmente, as linhas de controle *rw*).
+
+### Função [*LiquidCrytal*](https://www.arduino.cc/reference/en/libraries/liquidcrystal/liquidcrystal/)
+Cria uma variável do tipo *LiquidCrystal*.  
+A exibição pode ser controlada usando 4 ou 8 linhas de dados.  
+
+### Função [*lcd.begin*](https://www.arduino.cc/reference/en/libraries/liquidcrystal/begin/)
+Inicializa a interface para a tela LCD e especifica as dimensões (largura e altura) da tela.  
+`begin()` precisa ser chamado antes de qualquer outro comando de biblioteca LCD.  
+
+### Função [*lcd.print*](https://www.arduino.cc/reference/en/libraries/liquidcrystal/print/)
+Escreve o texto no LCD.  
+
+### Função [*lcd.setCursor*](https://www.arduino.cc/reference/en/libraries/liquidcrystal/setcursor/)
+Posiciona o cursor LCD; ou seja, define o local no qual o texto subsequente gravado no LCD será exibido.  
+Tanto coluna quanto linha iniciam na posição *0*.
 
