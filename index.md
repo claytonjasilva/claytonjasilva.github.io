@@ -13,6 +13,7 @@
 * [Sistemas Digitais](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/sisdig.md)
 
 ## Cursos complementares
+
 * Linguagem C
   1. [Notas sobre C](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/progC_aulas.md)
   2. Referências na Internet:
@@ -40,7 +41,9 @@ muito útil para encaminhar os primeiros passos sobre circuitos digitais.
     * [Replit](https://replit.com/): *Home Page* da IDE *online* para várias linguagens, como Python, C e C++.
     * [Visual Studio Code](https://code.visualstudio.com/): *Home Page* do editor de código, que admite *plugins* para várias linguagens, como C, C++ e Python. 
 
-  ## Projetos
+
+## Projetos
+
 * [Sistemas Embarcados](https://github.com/claytonjasilva/sistemas-embarcados)  
   Projeto destinado a desenvolver soluções de engenharia baseadas em microcontroladores. Versão atuaL: PROJETO DE CASA INTELIGENTE.
 * [Simulador para Sistemas de Comunicações Móveis](https://github.com/claytonjasilva/simuladorSisCom)  
