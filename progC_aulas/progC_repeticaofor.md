@@ -20,7 +20,7 @@ for (<inicialização da variável de controle>; ;<incremento>) {
   <instrução ou bloco de instruções>
 }
 ```
-O comando *for* admite a utilização dos comandos ***break** ou ***continue***.
+O comando *for* admite a utilização dos comandos ***break* ou ***continue***.
 
 ___
 **[Home Conteúdo Programação em C](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/progC_aulas.md)**   
