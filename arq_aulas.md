@@ -19,6 +19,7 @@
 5. [Prática 5 Arduíno: mais sobre código](arq_aulas/pratica_codigoArduino2.md)
 6. [Prática 6 Arduíno: mais sobre código](arq_aulas/pratica_codigoArduino3.md)
 7. [Prática 7 Arduíno: dispositivos de saída - *buzzer*](arq_aulas/pratica_buzzer.md)
+8. [Prática 8 Arduíno: dispositivos de saída - LCD 1602](arq_aulas/pratica_lcd1.md)
 
 
 ## Avaliações
