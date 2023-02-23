@@ -40,5 +40,12 @@ muito útil para encaminhar os primeiros passos sobre circuitos digitais.
     * [Replit](https://replit.com/): *Home Page* da IDE *online* para várias linguagens, como Python, C e C++.
     * [Visual Studio Code](https://code.visualstudio.com/): *Home Page* do editor de código, que admite *plugins* para várias linguagens, como C, C++ e Python. 
 
-  
+  ## Projetos
+* [Sistemas Embarcados](https://github.com/claytonjasilva/sistemas-embarcados)  
+  Projeto destinado a desenvolver soluções de engenharia baseadas em microcontroladores. Versão atuaL: PROJETO DE CASA INTELIGENTE.
+* [Simulador para Sistemas de Comunicações Móveis](https://github.com/claytonjasilva/simuladorSisCom)  
+  Projeto baseado em Python para simular sinais e conceitos aplicados na disciplina de Sistemas de Comunicações Móveis, da Engenharia da Computação.
+* [Compilador TINY](https://github.com/claytonjasilva/compiladorTINY)  
+  Projeto baseado em C/C++ de compilador para uma linguagem intitulada TINY, adaptada de uma das referências utilizadas na disciplina de Linguagens Formais e Compiladores, da Engenharia da Computação.
+
   
