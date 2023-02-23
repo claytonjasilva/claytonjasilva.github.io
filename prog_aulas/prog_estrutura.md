@@ -167,14 +167,29 @@ c. $3^{a \times 5 \times [b \times (4 + 6) ]}$, onde a=4.3, b=3
 
 d. $\sqrt{k \times (5 + 3) ^ {34}}$, onde k=2.5  
   
-3. **Utilizando o interpretador Python como calculadora**, criar *scripts* da linguagem Python que contenham expressões aritméticas para determinar o resultado dos seguintes problemas, utilizando os dados apresentados:  
-- Quantos minutos dois dias e 18 horas contemplam? [*Script* 1.1](https://github.com/claytonjasilva/prog_exemplos/blob/main/minutos.py)  
-- Qual é a área de um terreno retangular com lados de 50 metros e 15 metros? [*Script* 1.2](https://github.com/claytonjasilva/prog_exemplos/blob/main/area.py)   
-- Quantas voltas um corredor completou em uma pista com perímetro de 400 metros se ele conseguiu correr 2.300 metros? [*Script* 1.3](https://github.com/claytonjasilva/prog_exemplos/blob/main/volta.py)  
-- Um veículo consome em média 2 litros de gasolina para percorrer 19,5 quilômetros. Quantos quilômetros o veículo deverá percorrer se o tanque de combustível possuir capacidade de armazenar 50 litros? [*Script* 1.5](https://github.com/claytonjasilva/prog_exemplos/blob/main/veiculo.py)  
-- A fórmula para determinação da nota final é definida por uma média ponderada em que a nota de cada avaliação parcial possui peso de 40% e a avaliação continuada, peso de 20%. A média para aprovação é 7,0. Se o aluno obtiver nota 6,5 na AP1; nota 8,3 na AP2; e nota 6,9 na AC; ele será aprovado? [*Script* 1.6](https://github.com/claytonjasilva/prog_exemplos/blob/main/nota.py)  
+3. Utilizando o **modo interativo** do Replit, determinar  
+ 
+a. Quantos minutos dois dias e 18 horas contemplam?    
+b. Qual é a área de um terreno retangular com lados de 50 metros e 15 metros?  
+c. Quantas voltas completas um corredor alcança em uma pista com perímetro de 400 metros se ele conseguiu correr 2.300 metros?  
+d. Um veículo consome em média 2 litros de gasolina para percorrer 19,5 quilômetros. Quantos quilômetros o veículo deverá percorrer se o tanque de combustível possuir capacidade de armazenar 50 litros?  
+e. A fórmula para determinação da nota final é definida por uma média ponderada em que a nota de cada avaliação parcial possui peso de 40% e a avaliação continuada, peso de 20%. A média para aprovação é 7,0. Se o aluno obtiver nota 6,5 na AP1; nota 8,3 na AP2; e nota 6,9 na AC; ele será aprovado?  
+
+4. Utilizando o **modo de *script***, criar um programa na linguagem Python para  
+
+a. Determinar quantos minutos *x* dias e *y* horas possuem.[Ver solução em *script* 1.1](https://github.com/claytonjasilva/prog_exemplos/blob/main/minutos.py)  
+b. Determinar qual é a área de um terreno retangular com lados de *l1* metros e *l2* metros. [Ver solução em *script* 1.2](https://github.com/claytonjasilva/prog_exemplos/blob/main/area.py)   
+c. Determinar quantas voltas completas um corredor alcança em uma pista com perímetro de *p* metros se ele conseguiu correr *x* metros?[Ver solução em *script* 1.3](https://github.com/claytonjasilva/prog_exemplos/blob/main/volta.py)    
+d. Determinar o consumo de Um veículo que consome em média *x* litros de gasolina para percorrer *l* quilômetros; e quantos quilômetros o veículo deverá percorrer se o tanque de combustível possuir capacidade de armazenar *c* litros?  [Ver solução em *script* 1.5](https://github.com/claytonjasilva/prog_exemplos/blob/main/veiculo.py)  
+ [*Script* 1.6](https://github.com/claytonjasilva/prog_exemplos/blob/main/nota.py)   
+e. Determinar a a nota final de um aluno do Ibmec, conhecidas as notas de AP1, AP2 e AC. [Ver solução em *script* 1.7](https://github.com/claytonjasilva/prog_exemplos/blob/main/nota2.py)
+
+
+**Observações**:
+- Criar um novo *Repl* para cada *script*  
+- Utilizar o arquivo *main.py* do *Repl* criado - **não alterar o nome** 
+- Utilizar variáveis para generalizar a solução, **inicializando a variável com um valor desejado para testar a soluçãO**.
 **Não esqueça de salvar os *scrips* criados usando um nome de arquivo adequado**
-2. Criar *scripts* da linguagem Python, utilizando variáveis e atribuindo a elas os dados especificados nas questões acima, assim como o resultado de cada uma das expressões. Lembre-se de utilizar **nomes de variáveis** que facilitem a legibilidade do *script*. [*Script* 1.7](https://github.com/claytonjasilva/prog_exemplos/blob/main/nota2.py)
 
 ___
 **[<<anterior](prog_replit.md)**  
