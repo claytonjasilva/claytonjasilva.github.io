@@ -90,17 +90,23 @@ Por exemplo, a constante matemática *pi*.
 ## 1.8 Modos de utilização do interpretador
 ### 1.8.1 Modo interativo
 Quando os comandos são lidos a partir do **console**, diz-se que o interpretador está em **modo interativo**. 
+
 O modo interativo é uma excelente forma para experimentar uma linguagem e realizar testes de sintaxe rápidos.  
+
 Para uso de modo interativo utiliza-se uma janela de *shell* do sistema.  
 ![*Prompt* de *shell* do Python](/prog_aulas/images_prog/shellpython.jpg)  
+
 No modo interativo o interpretador solicita um próximo comando através do *prompt* primário (`>>>`), como apresenta figura.  
 Usando o interpretador Python como calculadora no modo interativo...
 
 ### 1.8.2 Modo de *script*
 O outro modo de utilização do interpretador é através da **criação de *scripts***.  
+
 Um *script* é um conjunto de instruções escritas de forma ordenada, organizadas em um arquivo com extensão ***.py***, 
 que serão convertidas individualmente para a máquina virtual.  
+
 O arquivo constitui um **programa** que será executado pela IDE pra execução de uma **tarefa**.  
+
 Um exemplo de *script* é apresentado abaixo:
 ```
 x = 5
@@ -115,8 +121,10 @@ Vamos criá-lo utilizando o Replit:
 
 ### 1.8.3 Elementos de uma Linguagem de Programação
 Quando se expressa nas linguagens naturais (por exemplo, Português), especialmente na forma escrita, é necessário obedecer a um conjunto de regras.  
+
 Quando se deseja expressar um conjunto de instruções em qualquer devem ser obedecidas regras, de modo que o responsável pela execução das intruções as 
 compreenda para poder executá-las corretamente.  
+
 Nas linguagens formais de programação (LP) o mesmo ocorre:  
   - cada uma possui um **alfabeto**, com um conjunto de caracteres usados para construção de **unidades léxicas** (*tokens*) que satisfazem a um padrão;  
   - os *tokens* podem ser agrupados para elaborar **sentenças** corretas - a **sintaxe** da LP;  
@@ -124,12 +132,15 @@ Nas linguagens formais de programação (LP) o mesmo ocorre:
 
 Os *scrips* elaborados pelo programador **devem obedecer à sintaxe** da LP 
 de modo que as sentenças propiciem a realização das operações para solucionar problemas.  
+
 Quando o programador não atende no código corretamente as regras de sintaxe, **o interpretador sinaliza o erro, indicando o local e o tipo de erro**
 ![Erro de sintaxe](/prog_aulas/images_prog/erropython.jpg)  
 Observe que o interpretador Replit indica o erro e o ponto do código.  
+
 Obviamente, a operação de divisão inteira tem a sintaxe `//`. A sintaxe `///` não foi reconhecida pelo intrpretador, o que resultou no erro indicado.  
 Observe que o código apresentado utiliza **o caractere `#` - que indica um comentário lançado pelo programador**.  
-O comentário **não é compilado para a PVM*.  
+
+**O comentário não é compilado para a PVM*.  
 
 ## 1.9 Exercícios de aula 
 1. **Utilizando o interpretador Python como calculadora**, criar *scripts* da linguagem Python que contenham expressões aritméticas para determinar o resultado dos seguintes problemas, utilizando os dados apresentados:  
