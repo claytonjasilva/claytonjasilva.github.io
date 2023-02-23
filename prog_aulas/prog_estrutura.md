@@ -36,6 +36,7 @@ Por exemplo, *print(argumento)* apresenta na área de console o valor do argumen
     | `+` | Adição |
     | `-` | Subtração |
     | `*` | Multiplicação |
+    | `**` | Exponenciação |
     | `/` | Divisão |
     | `//` | Divisão inteira |
     | `%` | Módulo ou Resto de divisão inteira |
@@ -47,6 +48,7 @@ Por exemplo, *print(argumento)* apresenta na área de console o valor do argumen
     (3) Python dispõe de um módulo chamado **[*math*](https://docs.python.org/pt-br/3.10/library/math.html)**, que possui funções  interessantes para construir expressões matemáticas, como  
     `math.pow(x, y)`  
     `math.sqrt(x)`  
+    (4) Existe precedência entre operadores. [Ver a precedência](https://algoritmosempython.com.br/cursos/programacao-python/operadores/)
     
 4. **Objetos de referência - variáveis**, que referenciam os valores dos objetos e são identificadas por um **nome** (identificador).  
   Variáveis são **representações simbólicas** de dados que pertencem a um determinado conjunto (possuem um determinado tipo).  
