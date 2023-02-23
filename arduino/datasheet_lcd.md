@@ -8,7 +8,7 @@ Trata-se de uma família de LCD de 16 caracteres com 2 linhas, monocromático.
 
 | Id | Função	| Descrição |
 | - | - | - |
-| 1 |	Gnd |	Terra |
+| 1 |	VSS |	Terra (GND) |
 | 2 |	Vcc |	Alimentação DC – 3,3 V a 5V (típico) |
 | 3 |	V0 |	Tensão para ajuste de contraste |
 | 4 |	RS |	‘Register Select’, Low=comando, High=dados |
@@ -21,14 +21,20 @@ Trata-se de uma família de LCD de 16 caracteres com 2 linhas, monocromático.
 ### 1.2 Operação
 1. Os caracteres são apresentados em duas linhas de 16 caracteres cada uma. 
 2. O LCD 1602 possui também um cursor, que indica a posição do caractere lido/escrito em um instante. 
-3. A pinagem inicia-se a partir do pino 1 – na esquerda superior da figura -, até o pino 16.  
+3. A pinagem inicia-se a partir do pino 1 até o pino 16.  
 ![LCD 1602](/arduino/arduino_images/lcd1602.jpg)  
-4. Um esquema de utilização está apresentado na figura  
+4. Um esquema de utilização do LCD 1602 está apresentado na figura  
 ![Circuito Arduino-LCD 1602](/arduino/arduino_images/arduinolcd1602.jpg)  
-  4.1 No pino V0 do LCD 1602 a tensão de entrada será regulada por um potenciômetro de 10 kohms;  
-  4.2 O pino RW será conectado ao Gnd porque a operação a ser realizada será somente de escrita no LCD 1602;  
-  4.3 Será utilizado o modo de 4-bits do LCD 1602, que, por default, opera em DB4-7;  
-  4.4 No *backlight* do LCD 1602 (pinos de anodo e catodo), o pino de anodo será alimentado por uma tensão de + 5VDC com uma proteção dada por um resistor.
+  4.1 O pino VSS será conectado ao GND do Arduíno.  
+  4.2 O pino VDD será conectado ao 5V do Arduíno.  
+  4.3 O pino VEE (ou V0) será regulada por um potenciômetro de 10 kohms para ajuste do contraste  
+        - A conexão física do potenciômetro requer - (i) terminal 1 ligado ao 5V; (ii) terminal 2 (central) ligado ao VEE; (iii) terminal 3 ligado ao GND.  
+  4.4 O pino pode ser conectado ao pino 10 do Arduíno (ou outro pino de entrada/saída digital).  
+  4.5 O pino RW será conectado ao GND porque a operação a ser realizada será somente de escrita no LCD 1602.  
+  4.6 O pino de *enable* será conectado ao pino 8 do Arduíno (ou outro pino de entrada/saída digital).  
+  4.7 Será utilizado o modo de 4-bits do LCD 1602, que, por default, opera em DB4-7 - podem ser usados os pinos 2 a 5 do Arduíno (ou outro pino de entrada/saída digital).  
+  4.8 O *backlight* do LCD 1602 (pino A), de anodo, será alimentado por uma tensão (pino de +5VDC do Arduíno) - recomenda-se usar uma proteção dada por um resistor de 300 ohms limitador de corrente - se o valor do resistor for muito alto a luz do *display* fica com pouca intensidade.
+  4.9 O pino K, de catodo, será conectado ao pino GND do ARduíno. 
 
 ## 2. Referência com Arduíno
 ### Biblioteca [*LiquidCrystal.h*](https://www.arduino.cc/reference/en/libraries/liquidcrystal/?_gl=1*1ho1w4v*_ga*MTA5OTg3MjYxMy4xNjU4MzM3NTM2*_ga_NEXN8H46L5*MTY3NzE2NTk1MS4xNy4wLjE2NzcxNjU5NTEuMC4wLjA.)
