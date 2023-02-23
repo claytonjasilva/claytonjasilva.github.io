@@ -189,6 +189,16 @@ Observe que o código apresentado utiliza **o caractere `#` - que indica um come
 - Utilizar variáveis para generalizar a solução, **inicializando a variável com um valor desejado para testar a soluçãO**.
 **Não esqueça de salvar os *scrips* criados usando um nome de arquivo adequado**
 
+5. É comum cometer erros durante a elaboração de programas. Normalmente os erros derivam de desobediência às regras léxicas ou sintáticas da linguagem. Testar e responder o seguinte
+
+  a. Em uma instrução `print`, o que acontece se for omitido um dos parênteses (ou ambos)?  
+  b. Se estiver tentando imprimir uma *string*, o que acontece se omitir uma das aspas (ou ambas)?  
+  c. O que acontece se você utilizar um número de ponto flutuante na forma `2,6`, por exemplo, com vírgula e não ponto de fração?  
+  d. É possível utilizar o sinal de - precedendo um número para indicar que ele é negativo, por exemplo, -6?
+  e. Na matemática, preceder um número com 0 não altera o valor da gradeza representada. Em Python pode-se utilizar a mesma forma?
+  f. O que acontece se você utilizar dois números sem operador entre eles?
+  
+
 ___
 **[<<anterior](prog_replit.md)**  
 **[Home Programação Estruturada com Python](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/progPython_aulas.md)**  
