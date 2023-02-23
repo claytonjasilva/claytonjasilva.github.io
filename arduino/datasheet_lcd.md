@@ -33,7 +33,7 @@ Trata-se de uma família de LCD de 16 caracteres com 2 linhas, monocromático.
   4.5 O pino RW será conectado ao GND porque a operação a ser realizada será somente de escrita no LCD 1602.  
   4.6 O pino de *enable* será conectado ao pino 8 do Arduíno (ou outro pino de entrada/saída digital).  
   4.7 Será utilizado o modo de 4-bits do LCD 1602, que, por default, opera em DB4-7 - podem ser usados os pinos 2 a 5 do Arduíno (ou outro pino de entrada/saída digital).  
-  4.8 O *backlight* do LCD 1602 (pino A), de anodo, será alimentado por uma tensão (pino de +5VDC do Arduíno) - recomenda-se usar uma proteção dada por um resistor de 300 ohms limitador de corrente - se o valor do resistor for muito alto a luz do *display* fica com pouca intensidade.
+  4.8 O *backlight* do LCD 1602 (pino A), de anodo, será alimentado por uma tensão (pino de +5VDC do Arduíno) - recomenda-se usar uma proteção dada por um resistor de 300 ohms limitador de corrente - se o valor do resistor for muito alto a luz do *display* fica com pouca intensidade.  
   4.9 O pino K, de catodo, será conectado ao pino GND do ARduíno. 
 
 ## 2. Referência com Arduíno
