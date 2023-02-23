@@ -16,7 +16,7 @@ As expressões que geram objetos contemplam:
 1. [Funções da biblioteca-padrão](https://docs.python.org/pt-br/3/library/functions.html).  
 Funções são elementos da expressão que realizam um trabalho, entregando um resultado após serem executadas.  
 Por exemplo, *print(argumento)* apresenta na área de console o valor do argumento. Posteriormente estudaremos [funções com mais detalhes](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/prog_aulas/prog_funcoes.md).
-3. Objetos de vários **tipos**:  
+2. Objetos de vários **tipos**:  
   a. Números  
     Os números em Python podem pertencer, por padrão, a três **tipos de dados**:  
         (i) **inteiros** (`int`)  
@@ -28,7 +28,7 @@ Por exemplo, *print(argumento)* apresenta na área de console o valor do argumen
     d. Tuplas - estudaremos [tuplas com mais detalhes](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/prog_aulas/prog_tuplas.md);    
     e. Dicionários - estudaremos [tuplas com mais detalhes](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/prog_aulas/prog_dicionarios.md);     
     f. Arquivos - estudaremos [tuplas com mais detalhes](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/prog_aulas/prog_arquivos.md).      
-4. Expressões e operações aritméticas e lógicas:  
+3. Expressões e operações aritméticas e lógicas:  
   As expressões **aritméticas** utilizam **operadores aritméticos**, ou seja, operadores que indicam uma instrução aritmética, cuja sintaxe em Python é
   
     | Operador | Operação |
@@ -39,13 +39,16 @@ Por exemplo, *print(argumento)* apresenta na área de console o valor do argumen
     | `/` | Divisão |
     | `//` | Divisão inteira |
     | `%` | Módulo ou Resto de divisão inteira |
-  
-  
+    
     Observações:  
     (1) A divisão (`/`) sempre retorna número na representação em **ponto flutuante (float)**. 
     Para fazer uma divisão com resultado inteiro (descartando a parte fracionária) pode-se usar o operador divisão inteira (`//`)  
     (2) Para calcular o resto da divisão inteira pode-se usar o operador **módulo** (`%`).  
-5. **Objetos de referência - variáveis**, que referenciam os valores dos objetos e são identificadas por um **nome** (identificador).  
+    (3) Python dispõe de um módulo chamado **[*math*](https://docs.python.org/pt-br/3.10/library/math.html)**, que possui funções  interessantes para construir expressões matemáticas, como  
+    `math.pow(x, y)`  
+    `math.sqrt(x)`  
+    
+4. **Objetos de referência - variáveis**, que referenciam os valores dos objetos e são identificadas por um **nome** (identificador).  
   Variáveis são **representações simbólicas** de dados que pertencem a um determinado conjunto (possuem um determinado tipo).  
   O uso das variáveis em Python **não requer a declaração do tipo**, pois o Python é de **tipagem dinâmica** (o interpretador reconhece automaticamente o tipo de dado).  
   A variável é **criada** ao receber um valor pela primeira vez. As atribuições futuras alteram a variável a um novo valor.
@@ -64,9 +67,9 @@ Por exemplo, *print(argumento)* apresenta na área de console o valor do argumen
 | global | if	| import | in	| is | lambda	| None	| nonlocal |	not | or	| pass	| raise	| return | True	| try	| 
 | while	| with | yield	|		      
 
-6. Constantes, que possuem valores pré-estabelecidos, chamados pela sua identificação.  
+5. Constantes, que possuem valores pré-estabelecidos, chamados pela sua identificação.  
 Por exemplo, a constante matemática *pi*.
-7. Sentença de **atribuição**: destina-se a atribuir objetos a nomes e, em sua forma básica, escreve-se com o **destino**, à esquerda, separado por um sinal de `=` do **objeto fonte** a ser atribuído, à direita.  
+6. Sentença de **atribuição**: destina-se a atribuir objetos a nomes e, em sua forma básica, escreve-se com o **destino**, à esquerda, separado por um sinal de `=` do **objeto fonte** a ser atribuído, à direita.  
     (i) Por exemplo,
     ```
     x = 2 * 3 + (4 / y)
@@ -143,7 +146,28 @@ Observe que o código apresentado utiliza **o caractere `#` - que indica um come
 **O comentário não é compilado para a PVM*.  
 
 ## 1.9 Exercícios de aula 
-1. **Utilizando o interpretador Python como calculadora**, criar *scripts* da linguagem Python que contenham expressões aritméticas para determinar o resultado dos seguintes problemas, utilizando os dados apresentados:  
+
+1. Utilizando o **modo interativo** do Replit, calcular o valor das seguintes expressões  
+
+a. $3 + 4 \times 5 - [2 \times (4 + 6) ]$
+  
+b. $\frac{3 + 4 \times 5} {[2 \times (4 + 6) ]}$  
+  
+c. $3^{4 \times 5 \times [2 \times (4 + 6) ]}$  
+  
+d. $\sqrt{2 \times (5 + 3) ^ {34}}$  
+  
+2. Utilizando o **modo interativo** do Replit, calcular o valor das seguintes expressões  
+
+a. $a + 4 \times b - [2 \times (c + 6) ]$, onde a=b=3 e c=5  
+
+b. $\frac{x + y \times 5} {[2 \times (4 + 6) ]}$, onde x=5, y=3  
+
+c. $3^{a \times 5 \times [b \times (4 + 6) ]}$, onde a=4.3, b=3  
+
+d. $\sqrt{k \times (5 + 3) ^ {34}}$, onde k=2.5  
+  
+3. **Utilizando o interpretador Python como calculadora**, criar *scripts* da linguagem Python que contenham expressões aritméticas para determinar o resultado dos seguintes problemas, utilizando os dados apresentados:  
 - Quantos minutos dois dias e 18 horas contemplam? [*Script* 1.1](https://github.com/claytonjasilva/prog_exemplos/blob/main/minutos.py)  
 - Qual é a área de um terreno retangular com lados de 50 metros e 15 metros? [*Script* 1.2](https://github.com/claytonjasilva/prog_exemplos/blob/main/area.py)   
 - Quantas voltas um corredor completou em uma pista com perímetro de 400 metros se ele conseguiu correr 2.300 metros? [*Script* 1.3](https://github.com/claytonjasilva/prog_exemplos/blob/main/volta.py)  
