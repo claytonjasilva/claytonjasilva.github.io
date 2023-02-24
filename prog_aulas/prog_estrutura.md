@@ -219,7 +219,7 @@ Observe que o código apresentado utiliza **o caractere `#` - que indica um come
   z = x**2 + y**2 + 2 * (x + y)
   print(z)
   ```
-  Ajustar o código se for necessário.
+  Ajustar o código se for necessário.  
   k. Explicar o que acontece se você produzir o código seguinte:
   ```
   y = 6;
