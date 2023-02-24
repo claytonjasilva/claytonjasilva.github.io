@@ -199,7 +199,7 @@ Observe que o código apresentado utiliza **o caractere `#` - que indica um come
 - Criar um novo *Repl* para cada *script*  
 - Utilizar o arquivo *main.py* do *Repl* criado - **não alterar o nome** 
 - Utilizar variáveis sugeridas para generalizar a solução, **inicializando a variável com um valor desejado para testar a soluçãO**.
-- Caso os nomes de variáveis não estejam sugeridos, arbitrar os nomes adequados.
+- Caso os nomes de variáveis não estejam sugeridos, arbitrar os **nomes adequados**.
 - **Não esquecer de salvar os *scrips* criados usando um nome de arquivo adequado**
 
 6. É comum cometer erros durante a elaboração de programas. Normalmente os erros derivam de desobediência às regras léxicas ou sintáticas da linguagem. Testar e responder o seguinte
