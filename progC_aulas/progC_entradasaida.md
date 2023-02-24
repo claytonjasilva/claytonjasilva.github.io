@@ -94,6 +94,37 @@ void main(){
 }
 ```
 
+### 2.2.3 Funções `getchar` e `putchar`
+São funções de leitura e escrita de caracteres.  
+
+
+## 2.3 Entrada e saída: <conio.h>
+Para ler e escrever caracteres podem ser usadas as funções *getch* e *getche*, que **não são definidas pelo padrão ANSI**, embora estejam normalmente incluídas em vários compiladores, especilamente para Windows.  
+O protótipo das funções é o seguinte:  
+```
+int getch(void);
+```
+Observe que a função retorna um valor inteiro, o que não é problema, pois o valor lido corresponde ao inteiro equivalente à palavra do código ASCII do caractere.  
+Observe também que, **como a função retorna um valor, para esse valor ser armazenado é necessário o uso de um comando de atribuição para uma variável do tipo char.**
+O exemplo abaixo ilustra o funcionamento   
+```
+#include <stdio.h>
+#include <conio.h>
+/* Referencia: Aprenda a Programar em C, C++ e C#, de Hickson, R.*/
+int main()
+{
+    char Ch;
+    Ch=getch();
+    printf("Voce pressionou a tecla %c",Ch);
+    return(0);
+}
+```
+A função *getche()* possui prototipo similar
+```
+int getche(void);
+```  
+A diferença básica entre as duas é que a função *getche* retorna um **eco**, isto é, apresenta na caonsole o valor digitado pelo usuário.
+
 ## 2.4 Exercícios com tipos, operadores, entrada/saída  
 1. Elaborar um programa na linguagem C para ler as notas da ap1, ap2 e ac; calcular e escrever a média do semestre do aluno, de acordo com as regras do Ibmec. 
 2. Elaborar um programa na linguagem C para ler os coeficientes de uma equação do segundo grau.
