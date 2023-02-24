@@ -166,6 +166,21 @@ res = (12 + 3) * 1.35;
 
 Observe que **as sentenças são separadas pelo `;`**
 
+## 1.9 Entrada e Saída
+Os dois comandos básicos de entrada e saída em C são os seguintes:
+```
+printf(<cadeia de caracteres de controle>,<lista de argumentos>);
+```
+A cadeia de caracteres de controle e deve conter uma especificação de tipo, por exemplo, `%d`, para inteiro e `%f`, para números de ponto flutuante.  
+A cadeia será escrita na console. A especificação de tipo será substituída pela variável.
+
+```
+scanf(<cadeia de caracteres de controle>,<lista de ponteiros dos argumentos>);
+```
+A cadeia de caracteres de controle deve conter a especificação de tipos das variáveis lidas, em ordem.  
+A lista de pinteiros contém os nomes das variáveis, cada uma precedido pelo operador unário `&`, indicando o endereço, seprados por vírgula. 
+[Ver mais sobre entrada e saída em C](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/progC_aulas/progC_entradasaida.md)
+
 ## 1.9 Exercícios de aula
 Elaborar um programa na linguagem C para resolver o seguinte problema
 1. Escrever "Ola! Agora vou conseguir aprender o C!".
