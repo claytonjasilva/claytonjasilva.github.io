@@ -133,7 +133,7 @@ Como são representações simbólicas possuem um **identificador** ou **nome**,
 O uso das variáveis requer a **declaração do tipo**, cuja sintaxe em C é:
 
 ```
-<tipo> <nome da variável ou lista de nomes de variáveis>
+<tipo> <nome da variável ou lista de nomes de variáveis>;
 ```
 , onde a lista de nomes de variáveis é um conjunto de nomes separados por vírgula.
 
@@ -153,7 +153,7 @@ A sentença de atribuição se caracteriza pela atribuição de um valor a uma v
 A sintaxe para o comando de atribuição é  
 
 ```
-<nome da variável> = <expressão aritmética ou variável ou número>
+<nome da variável> = <expressão aritmética ou variável ou número>;
 ```
 
 Por exemplo,
