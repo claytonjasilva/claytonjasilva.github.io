@@ -209,10 +209,10 @@ Observe que o código apresentado utiliza **o caractere `#` - que indica um come
   c. O que acontece se você utilizar um número de ponto flutuante na forma `2,6`, por exemplo, com vírgula e não ponto de fração?    
   d. É possível utilizar o sinal de - precedendo um número para indicar que ele é negativo, por exemplo, -6?  
   e. Na matemática, preceder um número com 0 não altera o valor da gradeza representada. Em Python pode-se utilizar a mesma forma?  
-  f. O que acontece se você utilizar dois números sem operador entre eles?
+  f. O que acontece se você utilizar dois números sem operador entre eles?  
   g. O que acontece se você inserir uma atribuição na forma `42 = n`?  
-  h. Na matemática, é comum não explicitar o operador de multiplicação entre duas variáveis, como *xy*. É possível usar essa mesma sintaxe em Python?
-  i. O que acontecerá se você arbitrar para resolver o exerecício 5.g os seguintes nomes de variáveis: *n_*, para o número de livros; *preço*, para referenciar o preço de capa; *desconto*, para referenciar o desconto dado para as livrarias?
+  h. Na matemática, é comum não explicitar o operador de multiplicação entre duas variáveis, como *xy*. É possível usar essa mesma sintaxe em Python?  
+  i. O que acontecerá se você arbitrar para resolver o exerecício 5.g os seguintes nomes de variáveis: *n_*, para o número de livros; *preço*, para referenciar o preço de capa; *desconto*, para referenciar o desconto dado para as livrarias?  
   j. Explicar o que acontece se você produzir o código seguinte:
   ```
   y = 6
