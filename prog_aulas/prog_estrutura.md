@@ -191,8 +191,8 @@ Observe que o código apresentado utiliza **o caractere `#` - que indica um come
   c. Determinar quantas voltas completas um corredor alcança em uma pista com perímetro de *p* metros se ele conseguiu correr *x* metros?[Ver solução em *script* 1.3](https://github.com/claytonjasilva/prog_exemplos/blob/main/volta.py)    
   d. Determinar o consumo de Um veículo que consome em média *x* litros de gasolina para percorrer *l* quilômetros; e quantos quilômetros o veículo deverá percorrer se o tanque de combustível possuir capacidade de armazenar *c* litros?  [Ver solução em *script* 1.5](https://github.com/claytonjasilva/prog_exemplos/blob/main/veiculo.py)  
   e. Determinar a nota final de um aluno do Ibmec, conhecidas as notas de AP1, AP2 e AC. [Ver solução em *script* 1.7](https://github.com/claytonjasilva/prog_exemplos/blob/main/nota2.py) ou em [*script* 1.6](https://github.com/claytonjasilva/prog_exemplos/blob/main/nota.py)   
-  f. Determinar o volume de uma esfera de raio *r*. O volume de uma esfera é dado por $V=\frac{4}{3} \pi r^3$.
-  g. Determinar o custo total de *n* livros encomendados por uma livraria, sabendo o preço de capa e o desconto dado às livrarias. O transporte do primeiro exemplar custa R$ 3,00 e dos demais exemplares custa R$ 0,75. 
+  f. Determinar o volume de uma esfera de raio *r*. O volume de uma esfera é dado por $V=\frac{4}{3} \pi r^3$.  
+  g. Determinar o custo total de *n* livros encomendados por uma livraria, sabendo o preço de capa e o desconto dado às livrarias. O transporte do primeiro exemplar custa R$ 3,00 e dos demais exemplares custa R$ 0,75.   
   h. Determinar a hora de chegada em casa, conhecendo o momento de partida (dia, hora e minuto), a distância percorrida em quilômetros e o tempo gasto em minutos para percorrer um quilômetro.
 
 **Observações**:
