@@ -166,14 +166,46 @@ res = (12 + 3) * 1.35;
 
 Observe que **as sentenças são separadas pelo `;`**
 
-## 1.9 Exercícios de aula 
-1. Criar códigos na linguagem C que contenham expressões aritméticas para determinar o resultado dos seguintes problemas, utilizando os dados apresentados:  
+## 1.9 Exercícios de aula
+Elaborar um programa na linguagem C para resolver o seguinte problema
+1. Escrever "Ola! Agora vou conseguir aprender o C!".
+2. Converter um determinado número de dias em anos.
+3. Escrever "Ola! Agora vou conseguir aprender o C!", por chamada de função. 
+4. Ler um número inteiro, calcula e escreve o quadrado do número lido - utilizar uma função.
+5. Calcular o produto de quatro numeros, dois atribuídos a variáveis, 23.5 e 12.9, e duas constantes 3.87 e 2 - utilizar uma função.
+6. Calcular o produto de dois numeros inteiros, duas constantes 12 e 7 - utilizar uma função que retorna valor.
+7. Calcular o produto de dois numeros de ponto flutuante, duas constantes 45.2 e 0...67 - utilizar uma função que retorna valor. A função principal *main* deve sinalizar que foi executada sem erro.
+8. Dado o código abaixo, se o usuário digitar 1, qual é o valor da saída na console?
+```
+#include <stdio.h>
+/* Referencia: Aprenda a Programar em C, C++ e C#, de Hickson, R.*/
+int x; /* Declaração de uma variável global */
+main()
+{
+    int a;
+    printf("Digite um valor: ");
+    scanf("%d",&a);
+    x=2*a+3;
+    printf("%d e %d",x,soma(a)); /* Atenção para a ordem de execução dos argumentos*/
+}
+
+soma(z)
+int z; /* Declara o tipo do parâmetro da função */
+{
+    x=2*x+z;
+    return(x);
+}
+```
+9. Escrever o caractere *D*, como um caractere e como um inteiro.
+10. Ler um caractere do teclado e escreve na console **sem a necessidade de teclar *enter***.  
+11. Escrever o código referente à solução anterior, utilizando a função *scanf*. Qual é a diferença observada?
+12. Criar códigos na linguagem C que contenham expressões aritméticas para determinar o resultado dos seguintes problemas, utilizando os dados apresentados:  
 - Quantos minutos dois dias e 18 horas contemplam?  
 - Qual é a área de um terreno retangular com lados de 50 metros e 15 metros? 
 - Quantas voltas um corredor completou em uma pista com perímetro de 400 metros se ele conseguiu correr 2.300 metros? 
 - Um veículo consome em média 2 litros de gasolina para percorrer 19,5 quilômetros. Quantos quilômetros o veículo deverá percorrer se o tanque de combustível possuir capacidade de armazenar 50 litros?  
 - A fórmula para determinação da nota final é definida por uma média ponderada em que a nota de cada avaliação parcial possui peso de 40% e a avaliação continuada, peso de 20%. A média para aprovação é 7,0. Se o aluno obtiver nota 6,5 na AP1; nota 8,3 na AP2; e nota 6,9 na AC; ele será aprovado?  
-2. Criar *scripts* da linguagem C, utilizando variáveis e atribuindo a elas os dados especificados nas questões acima, assim como o resultado de cada uma das expressões. Lembre-se de utilizar **nomes de variáveis** que facilitem a legibilidade do *script*. 
+13. Criar códigos da linguagem C, utilizando variáveis e atribuindo a elas os dados especificados nas questões acima, assim como o resultado de cada uma das expressões. Lembre-se de utilizar **nomes de variáveis** que facilitem a legibilidade do *script*. 
 
 ___
 **[<<anterior](progC_replit.md)**  
