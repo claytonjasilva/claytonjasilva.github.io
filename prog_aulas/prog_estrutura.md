@@ -180,9 +180,9 @@ Observe que o código apresentado utiliza **o caractere `#` - que indica um come
 4. Utilizando o **modo de *script*** do Replit e algumas funções da biblioteca padrão
 
   a. Determinar o valor absoluto do resultado do exercício 1.a.  
-  b. Utililzando a sintaxe `import math` na primeira linha do *script*, $V=\frac{4}{3} \pi 4.5^3$
-  c. Utililzando a sintaxe `import math` na primeira linha do *script*, $\sqrt{6.237 \times (5 + 3) ^ {34}}$
-  d. Arredondar o valor calculado no exercicio 4.a, em uma casa decimal.
+  b. Utililzando a sintaxe `import math` na primeira linha do *script*, $V=\frac{4}{3} \pi 4.5^3$  
+  c. Utililzando a sintaxe `import math` na primeira linha do *script*, $\sqrt{6.237 \times (5 + 3) ^ {34}}$  
+  d. Arredondar o valor calculado no exercicio 4.a, em uma casa decimal.  
 
 5. Utilizando o **modo de *script***, criar um programa na linguagem Python para  
 
