@@ -150,49 +150,38 @@ Observe que o código apresentado utiliza **o caractere `#` - que indica um come
 ## 1.9 Exercícios de aula 
 
 1. Utilizando o **modo interativo** do Replit, calcular o valor das seguintes expressões  
-
-  a. $3 + 4 \times 5 - [2 \times (4 + 6) ]$
-  
+  a. $3 + 4 \times 5 - [2 \times (4 + 6) ]$  
   b. $\frac{3 + 4 \times 5} {[2 \times (4 + 6) ]}$  
-  
   c. $3^{4 \times 5 \times [2 \times (4 + 6) ]}$  
-  
   d. $\sqrt{2 \times (5 + 3) ^ {34}}$  
   
 2. Utilizando o **modo interativo** do Replit, calcular o valor das seguintes expressões  
-
   a. $a + 4 \times b - [2 \times (c + 6) ]$, onde a=b=3 e c=5  
-
   b. $\frac{x + y \times 5} {[2 \times (4 + 6) ]}$, onde x=5, y=3  
-
   c. $3^{a \times 5 \times [b \times (4 + 6) ]}$, onde a=4.3, b=3  
-
   d. $\sqrt{k \times (5 + 3) ^ {34}}$, onde k=2.5  
   
 3. Utilizando o **modo interativo** do Replit, determinar  
- 
-  a. Quantos minutos dois dias e 18 horas contemplam?    
+  a. Quantos minutos dois dias e 18 horas contemplam?  
   b. Qual é a área de um terreno retangular com lados de 50 metros e 15 metros?  
   c. Quantas voltas completas um corredor alcança em uma pista com perímetro de 400 metros se ele conseguiu correr 2.300 metros?  
   d. Um veículo consome em média 2 litros de gasolina para percorrer 19,5 quilômetros. Quantos quilômetros o veículo deverá percorrer se o tanque de combustível possuir capacidade de armazenar 50 litros?  
   e. A fórmula para determinação da nota final é definida por uma média ponderada em que a nota de cada avaliação parcial possui peso de 40% e a avaliação continuada, peso de 20%. A média para aprovação é 7,0. Se o aluno obtiver nota 6,5 na AP1; nota 8,3 na AP2; e nota 6,9 na AC; ele será aprovado?  
 
-4. Utilizando o **modo de *script*** do Replit e algumas funções da biblioteca padrão
-
+4. Utilizando o **modo de *script*** do Replit e algumas funções da biblioteca padrão  
   a. Determinar o valor absoluto do resultado do exercício 1.a.  
   b. Utililzando a sintaxe `import math` na primeira linha do *script*, $V=\frac{4}{3} \pi 4.5^3$  
   c. Utililzando a sintaxe `import math` na primeira linha do *script*, $\sqrt{6.237 \times (5 + 3) ^ {34}}$  
   d. Arredondar o valor calculado no exercicio 4.a, em uma casa decimal.  
 
 5. Utilizando o **modo de *script***, criar um programa na linguagem Python para  
-
-  a. Determinar quantos minutos *x* dias e *y* horas possuem.[Ver solução em *script* 1.1](https://github.com/claytonjasilva/prog_exemplos/blob/main/minutos.py)  
-  b. Determinar qual é a área de um terreno retangular com lados de *l1* metros e *l2* metros. [Ver solução em *script* 1.2](https://github.com/claytonjasilva/prog_exemplos/blob/main/area.py)   
-  c. Determinar quantas voltas completas um corredor alcança em uma pista com perímetro de *p* metros se ele conseguiu correr *x* metros?[Ver solução em *script* 1.3](https://github.com/claytonjasilva/prog_exemplos/blob/main/volta.py)    
-  d. Determinar o consumo de Um veículo que consome em média *x* litros de gasolina para percorrer *l* quilômetros; e quantos quilômetros o veículo deverá percorrer se o tanque de combustível possuir capacidade de armazenar *c* litros?  [Ver solução em *script* 1.5](https://github.com/claytonjasilva/prog_exemplos/blob/main/veiculo.py)  
-  e. Determinar a nota final de um aluno do Ibmec, conhecidas as notas de AP1, AP2 e AC. [Ver solução em *script* 1.7](https://github.com/claytonjasilva/prog_exemplos/blob/main/nota2.py) ou em [*script* 1.6](https://github.com/claytonjasilva/prog_exemplos/blob/main/nota.py)   
-  f. Determinar o volume de uma esfera de raio *r*. O volume de uma esfera é dado por $V=\frac{4}{3} \pi r^3$.  
-  g. Determinar o custo total de *n* livros encomendados por uma livraria, sabendo o preço de capa e o desconto dado às livrarias. O transporte do primeiro exemplar custa R$ 3,00 e dos demais exemplares custa R$ 0,75.   
+  a. Determinar quantos minutos *x* dias e *y* horas possuem.[Ver solução em *script* 1.1](https://github.com/claytonjasilva/prog_exemplos/blob/main/minutos.py)    
+  b. Determinar qual é a área de um terreno retangular com lados de *l1* metros e *l2* metros. [Ver solução em *script* 1.2](https://github.com/claytonjasilva/prog_exemplos/blob/main/area.py)     
+  c. Determinar quantas voltas completas um corredor alcança em uma pista com perímetro de *p* metros se ele conseguiu correr *x* metros?[Ver solução em *script* 1.3](https://github.com/claytonjasilva/prog_exemplos/blob/main/volta.py)      
+  d. Determinar o consumo de Um veículo que consome em média *x* litros de gasolina para percorrer *l* quilômetros; e quantos quilômetros o veículo deverá percorrer se o tanque de combustível possuir capacidade de armazenar *c* litros?  [Ver solução em *script* 1.5](https://github.com/claytonjasilva/prog_exemplos/blob/main/veiculo.py)    
+  e. Determinar a nota final de um aluno do Ibmec, conhecidas as notas de AP1, AP2 e AC. [Ver solução em *script* 1.7](https://github.com/claytonjasilva/prog_exemplos/blob/main/nota2.py) ou em [*script* 1.6](https://github.com/claytonjasilva/prog_exemplos/blob/main/nota.py)     
+  f. Determinar o volume de uma esfera de raio *r*. O volume de uma esfera é dado por $V=\frac{4}{3} \pi r^3$.    
+  g. Determinar o custo total de *n* livros encomendados por uma livraria, sabendo o preço de capa e o desconto dado às livrarias. O transporte do primeiro exemplar custa R$ 3,00 e dos demais exemplares custa R$ 0,75.     
   h. Determinar a hora de chegada em casa, conhecendo o momento de partida (dia, hora e minuto), a distância percorrida em quilômetros e o tempo gasto em minutos para percorrer um quilômetro.
 
 **Observações**:
@@ -202,31 +191,30 @@ Observe que o código apresentado utiliza **o caractere `#` - que indica um come
 - Caso os nomes de variáveis não estejam sugeridos, arbitrar os **nomes adequados**.
 - **Não esquecer de salvar os *scrips* criados usando um nome de arquivo adequado**
 
-6. É comum cometer erros durante a elaboração de programas. Normalmente os erros derivam de desobediência às regras léxicas ou sintáticas da linguagem. Testar e responder o seguinte
-
-  a. Em uma instrução `print`, o que acontece se for omitido um dos parênteses (ou ambos)?  
-  b. Se estiver tentando imprimir uma *string*, o que acontece se omitir uma das aspas (ou ambas)?    
-  c. O que acontece se você utilizar um número de ponto flutuante na forma `2,6`, por exemplo, com vírgula e não ponto de fração?    
-  d. É possível utilizar o sinal de - precedendo um número para indicar que ele é negativo, por exemplo, -6?  
-  e. Na matemática, preceder um número com 0 não altera o valor da gradeza representada. Em Python pode-se utilizar a mesma forma?  
-  f. O que acontece se você utilizar dois números sem operador entre eles?  
-  g. O que acontece se você inserir uma atribuição na forma `42 = n`?  
-  h. Na matemática, é comum não explicitar o operador de multiplicação entre duas variáveis, como *xy*. É possível usar essa mesma sintaxe em Python?  
-  i. O que acontecerá se você arbitrar para resolver o exerecício 5.g os seguintes nomes de variáveis: *n_*, para o número de livros; *preço*, para referenciar o preço de capa; *desconto*, para referenciar o desconto dado para as livrarias?  
-  j. Explicar o que acontece se você produzir o código seguinte:
-  ```
-  y = 6
-  z = x**2 + y**2 + 2 * (x + y)
-  print(z)
-  ```
-  Ajustar o código se for necessário.  
-  k. Explicar o que acontece se você produzir o código seguinte:
-  ```
-  y = 6;
-  z = y**2 + 2 * (0,6 + y);
-  print(z);
-  ```
-  Ajustar o código se for necessário.
+6. É comum cometer erros durante a elaboração de programas. Normalmente os erros derivam de desobediência às regras léxicas ou sintáticas da linguagem. Testar e responder o seguinte  
+  a. Em uma instrução `print`, o que acontece se for omitido um dos parênteses (ou ambos)?    
+  b. Se estiver tentando imprimir uma *string*, o que acontece se omitir uma das aspas (ou ambas)?      
+  c. O que acontece se você utilizar um número de ponto flutuante na forma `2,6`, por exemplo, com vírgula e não ponto de fração?      
+  d. É possível utilizar o sinal de - precedendo um número para indicar que ele é negativo, por exemplo, -6?    
+  e. Na matemática, preceder um número com 0 não altera o valor da gradeza representada. Em Python pode-se utilizar a mesma forma?    
+  f. O que acontece se você utilizar dois números sem operador entre eles?    
+  g. O que acontece se você inserir uma atribuição na forma `42 = n`?    
+  h. Na matemática, é comum não explicitar o operador de multiplicação entre duas variáveis, como *xy*. É possível usar essa mesma sintaxe em Python?    
+  i. O que acontecerá se você arbitrar para resolver o exerecício 5.g os seguintes nomes de variáveis: *n_*, para o número de livros; *preço*, para referenciar o preço de capa; *desconto*, para referenciar o desconto dado para as livrarias?    
+  j. Explicar o que acontece se você produzir o código seguinte:  
+    ```  
+    y = 6  
+    z = x**2 + y**2 + 2 * (x + y)  
+    print(z)  
+    ```  
+    Ajustar o código se for necessário.  
+  k. Explicar o que acontece se você produzir o código seguinte:  
+    ```  
+    y = 6;  
+    z = y**2 + 2 * (0,6 + y);  
+    print(z);  
+    ```  
+    Ajustar o código se for necessário.
 
 ___
 **[<<anterior](prog_replit.md)**  
