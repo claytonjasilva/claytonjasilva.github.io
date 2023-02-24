@@ -177,7 +177,7 @@ Observe que o código apresentado utiliza **o caractere `#` - que indica um come
   d. Um veículo consome em média 2 litros de gasolina para percorrer 19,5 quilômetros. Quantos quilômetros o veículo deverá percorrer se o tanque de combustível possuir capacidade de armazenar 50 litros?  
   e. A fórmula para determinação da nota final é definida por uma média ponderada em que a nota de cada avaliação parcial possui peso de 40% e a avaliação continuada, peso de 20%. A média para aprovação é 7,0. Se o aluno obtiver nota 6,5 na AP1; nota 8,3 na AP2; e nota 6,9 na AC; ele será aprovado?  
 
-4. Utilizando o **modo de *script** do Replit e algumas funções da biblioteca padrão
+4. Utilizando o **modo de *script*** do Replit e algumas funções da biblioteca padrão
 
   a. Determinar o valor absoluto do resultado do exercício 1.a.  
   b. Utililzando a sintaxe `import math` na primeira linha do *script*, $V=\frac{4}{3} \pi 4.5^3$
