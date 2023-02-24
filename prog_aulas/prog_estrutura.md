@@ -183,23 +183,28 @@ Observe que o código apresentado utiliza **o caractere `#` - que indica um come
   b. Determinar qual é a área de um terreno retangular com lados de *l1* metros e *l2* metros. [Ver solução em *script* 1.2](https://github.com/claytonjasilva/prog_exemplos/blob/main/area.py)   
   c. Determinar quantas voltas completas um corredor alcança em uma pista com perímetro de *p* metros se ele conseguiu correr *x* metros?[Ver solução em *script* 1.3](https://github.com/claytonjasilva/prog_exemplos/blob/main/volta.py)    
   d. Determinar o consumo de Um veículo que consome em média *x* litros de gasolina para percorrer *l* quilômetros; e quantos quilômetros o veículo deverá percorrer se o tanque de combustível possuir capacidade de armazenar *c* litros?  [Ver solução em *script* 1.5](https://github.com/claytonjasilva/prog_exemplos/blob/main/veiculo.py)  
-  e. Determinar a a nota final de um aluno do Ibmec, conhecidas as notas de AP1, AP2 e AC. [Ver solução em *script* 1.7](https://github.com/claytonjasilva/prog_exemplos/blob/main/nota2.py) ou em [*script* 1.6](https://github.com/claytonjasilva/prog_exemplos/blob/main/nota.py)   
+  e. Determinar a nota final de um aluno do Ibmec, conhecidas as notas de AP1, AP2 e AC. [Ver solução em *script* 1.7](https://github.com/claytonjasilva/prog_exemplos/blob/main/nota2.py) ou em [*script* 1.6](https://github.com/claytonjasilva/prog_exemplos/blob/main/nota.py)   
+  f. Determinar o volume de uma esfera de raio *r*. O volume de uma esfera é dado por $V=\frac{4}{3} \pi r^3$.
+  g. Determinar o custo total de *n* livros encomendados por uma livraria, sabendo o preço de capa e o desconto dado às livrarias. O transporte do primeiro exemplar custa R$ 3,00 e dos demais exemplares custa R$ 0,75. 
+  h. Determinar a hora de chegada em casa, conhecendo o momento de partida (dia, hora e minuto), a distância percorrida em quilômetros e o tempo gasto em minutos para percorrer um quilômetro.
 
 **Observações**:
 - Criar um novo *Repl* para cada *script*  
 - Utilizar o arquivo *main.py* do *Repl* criado - **não alterar o nome** 
-- Utilizar variáveis para generalizar a solução, **inicializando a variável com um valor desejado para testar a soluçãO**.
-**Não esqueça de salvar os *scrips* criados usando um nome de arquivo adequado**
+- Utilizar variáveis sugeridas para generalizar a solução, **inicializando a variável com um valor desejado para testar a soluçãO**.
+- Caso os nomes de variáveis não estejam sugeridos, arbitrar os nomes adequados.
+- **Não esquecer de salvar os *scrips* criados usando um nome de arquivo adequado**
 
 5. É comum cometer erros durante a elaboração de programas. Normalmente os erros derivam de desobediência às regras léxicas ou sintáticas da linguagem. Testar e responder o seguinte
 
   a. Em uma instrução `print`, o que acontece se for omitido um dos parênteses (ou ambos)?  
-  b. Se estiver tentando imprimir uma *string*, o que acontece se omitir uma das aspas (ou ambas)?  
-  c. O que acontece se você utilizar um número de ponto flutuante na forma `2,6`, por exemplo, com vírgula e não ponto de fração?  
-  d. É possível utilizar o sinal de - precedendo um número para indicar que ele é negativo, por exemplo, -6?
-  e. Na matemática, preceder um número com 0 não altera o valor da gradeza representada. Em Python pode-se utilizar a mesma forma?
+  b. Se estiver tentando imprimir uma *string*, o que acontece se omitir uma das aspas (ou ambas)?    
+  c. O que acontece se você utilizar um número de ponto flutuante na forma `2,6`, por exemplo, com vírgula e não ponto de fração?    
+  d. É possível utilizar o sinal de - precedendo um número para indicar que ele é negativo, por exemplo, -6?  
+  e. Na matemática, preceder um número com 0 não altera o valor da gradeza representada. Em Python pode-se utilizar a mesma forma?  
   f. O que acontece se você utilizar dois números sem operador entre eles?
-  
+  g. O que acontece se você inserir uma atribuição na forma `42 = n`?  
+  h. Na matemática, é comum não explicitar o operador de multiplicação entre duas variáveis, como *xy*. É possível usar essa mesma sintaxe em Python?
 
 ___
 **[<<anterior](prog_replit.md)**  
