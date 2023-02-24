@@ -23,7 +23,7 @@ Por exemplo, *print(argumento)* apresenta na área de console o valor do argumen
         (ii) **ponto flutuante** (`float`) - números de ponto flutuante são a representação computacional de números fracionários da matemática, com as implcações de precisão da representação computacional, além da faixa de representação    
         (iii) **complexos** (`complex`).
         
-    b. Strings - estudaremos [*strings* com mais detalhes](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/prog_aulas/prog_str.md);  
+    b. Strings, cadeias de caracteres (em Python podem ser delimitadas por aspas simples ou aspas duplas) - estudaremos [*strings* com mais detalhes](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/prog_aulas/prog_str.md);  
     c. Listas - estudaremos [listas com mais detalhes](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/prog_aulas/prog_listas.md);   
     d. Tuplas - estudaremos [tuplas com mais detalhes](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/prog_aulas/prog_tuplas.md);    
     e. Dicionários - estudaremos [tuplas com mais detalhes](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/prog_aulas/prog_dicionarios.md);     
@@ -177,7 +177,14 @@ Observe que o código apresentado utiliza **o caractere `#` - que indica um come
   d. Um veículo consome em média 2 litros de gasolina para percorrer 19,5 quilômetros. Quantos quilômetros o veículo deverá percorrer se o tanque de combustível possuir capacidade de armazenar 50 litros?  
   e. A fórmula para determinação da nota final é definida por uma média ponderada em que a nota de cada avaliação parcial possui peso de 40% e a avaliação continuada, peso de 20%. A média para aprovação é 7,0. Se o aluno obtiver nota 6,5 na AP1; nota 8,3 na AP2; e nota 6,9 na AC; ele será aprovado?  
 
-4. Utilizando o **modo de *script***, criar um programa na linguagem Python para  
+4. Utilizando o **modo de *script** do Replit e algumas funções da biblioteca padrão
+
+  a. Determinar o valor absoluto do resultado do exercício 1.a.  
+  b. Utililzando a sintaxe `import math` na primeira linha do *script*, $V=\frac{4}{3} \pi 4.5^3$
+  c. Utililzando a sintaxe `import math` na primeira linha do *script*, $\sqrt{6.237 \times (5 + 3) ^ {34}}$
+  d. Arredondar o valor calculado no exercicio 4.a, em uma casa decimal.
+
+5. Utilizando o **modo de *script***, criar um programa na linguagem Python para  
 
   a. Determinar quantos minutos *x* dias e *y* horas possuem.[Ver solução em *script* 1.1](https://github.com/claytonjasilva/prog_exemplos/blob/main/minutos.py)  
   b. Determinar qual é a área de um terreno retangular com lados de *l1* metros e *l2* metros. [Ver solução em *script* 1.2](https://github.com/claytonjasilva/prog_exemplos/blob/main/area.py)   
@@ -195,7 +202,7 @@ Observe que o código apresentado utiliza **o caractere `#` - que indica um come
 - Caso os nomes de variáveis não estejam sugeridos, arbitrar os nomes adequados.
 - **Não esquecer de salvar os *scrips* criados usando um nome de arquivo adequado**
 
-5. É comum cometer erros durante a elaboração de programas. Normalmente os erros derivam de desobediência às regras léxicas ou sintáticas da linguagem. Testar e responder o seguinte
+6. É comum cometer erros durante a elaboração de programas. Normalmente os erros derivam de desobediência às regras léxicas ou sintáticas da linguagem. Testar e responder o seguinte
 
   a. Em uma instrução `print`, o que acontece se for omitido um dos parênteses (ou ambos)?  
   b. Se estiver tentando imprimir uma *string*, o que acontece se omitir uma das aspas (ou ambas)?    
@@ -205,6 +212,21 @@ Observe que o código apresentado utiliza **o caractere `#` - que indica um come
   f. O que acontece se você utilizar dois números sem operador entre eles?
   g. O que acontece se você inserir uma atribuição na forma `42 = n`?  
   h. Na matemática, é comum não explicitar o operador de multiplicação entre duas variáveis, como *xy*. É possível usar essa mesma sintaxe em Python?
+  i. O que acontecerá se você arbitrar para resolver o exerecício 5.g os seguintes nomes de variáveis: *n_*, para o número de livros; *preço*, para referenciar o preço de capa; *desconto*, para referenciar o desconto dado para as livrarias?
+  j. Explicar o que acontece se você produzir o código seguinte:
+  ```
+  y = 6
+  z = x**2 + y**2 + 2 * (x + y)
+  print(z)
+  ```
+  Ajustar o código se for necessário.
+  k. Explicar o que acontece se você produzir o código seguinte:
+  ```
+  y = 6;
+  z = y**2 + 2 * (0,6 + y);
+  print(z);
+  ```
+  Ajustar o código se for necessário.
 
 ___
 **[<<anterior](prog_replit.md)**  
