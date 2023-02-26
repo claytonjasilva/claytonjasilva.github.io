@@ -154,13 +154,15 @@ int getche(void);
 ```  
 A diferença básica entre as duas é que a função *getche* retorna um **eco**, isto é, apresenta na caonsole o valor digitado pelo usuário.  
 
-## 2.4 *Strings* e e entrada/saída de *strings*
+## 2.4 *Strings*, entrada/saída de *strings*
 Na linguagem C, uma *string* é um **vetor de caracteres** - depois aprofundaremos esses conceitos.   
 **Toda *strings* possui um caractere 'terminador' definido no ASCII pelo caractere `\0`**.   
 Por exemplo, a palavra "Maria" é uma *string*, que na lingaugem C é definida em memória por
 | 0 | 1 | 2 | 3 | 4 | 5 |
 | - | - | - | - | - | - |
 | 'M' | 'a' | 'r' | 'i' | 'a' | '\0' | 
+
+Para declarar uma *string* e realizar mais operações [ver a seção *strings*]().
 
 
 
