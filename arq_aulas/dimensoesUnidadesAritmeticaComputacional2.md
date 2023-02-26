@@ -23,7 +23,7 @@ Para obter o número representado em base 10 (N<sub>10</sub>) no seu equivalente
 4. O número na nova base (2 ou 16) na notação posicional será formado pelos restos obtidos, de tal modo que **o último resto é o dígito mais significativo**. 
 
 Na conversão da base 10 para a base 2 pode-se também utilizar o comportamento da notação polinomial.   
-1. **A paritr do mais significativo**,
+1. **A partir do mais significativo**,
 preencher com o binário 1 as **potências de 2 cuja soma não ultrapasse o número a ser convertido**.  
 2. Preencher com 0 as potências que não 'couberam' (cuja soma ultrapassou o número decimal a ser convertido).  
 
