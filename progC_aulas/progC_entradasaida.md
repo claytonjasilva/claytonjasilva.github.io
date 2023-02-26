@@ -95,17 +95,40 @@ void main(){
 ```
 
 ### 2.2.3 Funções `getchar` e `putchar`
-São funções de leitura e escrita de caracteres.  
+São funções de leitura e escrita de caracteres.
 
+A função *getchar* possui o protótipo
+```
+int getchar(void);
+```
+Observe que a função retorna um valor inteiro, o que não é problema, pois o valor lido corresponde ao inteiro equivalente à palavra do código ASCII do caractere.  
+Observe também que, como a função retorna um valor, **para esse valor ser armazenado é necessário o uso de um comando de atribuição para uma variável do tipo char.**
+
+**Observação!!!** O problema da função é que o caractere lido é colocado em uma área intermediária até que o usuário digita um *enter* - é muito comum o programador perceber os problemas em ambientes interativos.
+
+A função *putchar* possui um protótipo similar ao *getchar*. Devolve um inteiro e **apresenta o caractere na console**.
+O exemplo a seguir mostra o uso de ambas as funções  
+```
+#include <stdio.h>
+#include <conio.h>
+/* Referencia: Aprenda a Programar em C, C++ e C#, de Hickson, R.*/
+int main()
+{
+    char Ch;
+    Ch=getchar();
+    printf("Voce pressionou a tecla ");
+    putchar(Ch);
+    return(0);
+}
+```
 
 ## 2.3 Entrada e saída: <conio.h>
-Para ler e escrever caracteres podem ser usadas as funções *getch* e *getche*, que **não são definidas pelo padrão ANSI**, embora estejam normalmente incluídas em vários compiladores, especilamente para Windows.  
+Para ler e escrever caracteres podem também ser usadas as funções *getch* e *getche*, que **não são definidas pelo padrão ANSI**, embora estejam normalmente incluídas em vários compiladores, especialmente para Windows.  
 O protótipo das funções é o seguinte:  
 ```
 int getch(void);
 ```
-Observe que a função retorna um valor inteiro, o que não é problema, pois o valor lido corresponde ao inteiro equivalente à palavra do código ASCII do caractere.  
-Observe também que, **como a função retorna um valor, para esse valor ser armazenado é necessário o uso de um comando de atribuição para uma variável do tipo char.**
+
 O exemplo abaixo ilustra o funcionamento   
 ```
 #include <stdio.h>
@@ -123,7 +146,8 @@ A função *getche()* possui prototipo similar
 ```
 int getche(void);
 ```  
-A diferença básica entre as duas é que a função *getche* retorna um **eco**, isto é, apresenta na caonsole o valor digitado pelo usuário.
+A diferença básica entre as duas é que a função *getche* retorna um **eco**, isto é, apresenta na caonsole o valor digitado pelo usuário.  
+
 
 ## 2.4 Exercícios com tipos, operadores, entrada/saída  
 1. Elaborar um programa na linguagem C para ler as notas da ap1, ap2 e ac; calcular e escrever a média do semestre do aluno, de acordo com as regras do Ibmec. 
