@@ -160,11 +160,61 @@ Na linguagem C, uma *string* é um **vetor de caracteres** - depois aprofundarem
 Por exemplo, a palavra "Maria" é uma *string*, que na lingaugem C é definida em memória por
 | 0 | 1 | 2 | 3 | 4 | 5 |
 | - | - | - | - | - | - |
-| 'M' | 'a' | 'r' | 'i' | 'a' | '\0' | 
+| 'M' | 'a' | 'r' | 'i' | 'a' | '\0' |   
 
-Para declarar uma *string* e realizar mais operações [ver a seção *strings*]().
+Para declarar uma *string* e realizar operações mais elaboradas [ver a seção *strings*](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/progC_aulas/progC_stringsvetores2.md).  
 
+Tratando objetivamente de **entrada** e **saída** com *strings* podemos antecipar:  
 
+**(1)** Declaração de *string*
+```
+char nome[tamanho];
+```  
+**(2)** Inicialização de *string*  
+```
+char nome[tamanho]=<constante string>;
+```  
+, onde a constante *string* é a cadeia de caracteres entre aspas duplas.  
+**(3)** Entrada de *string*  
+Uma forma comum é    
+```
+scanf("%s",<nome da string>);
+```
+, onde o nome da *string* **não é precedido** do operador unário `&`.  Por exemplo,  
+```
+#include <stdio.h>
+
+int main()
+{
+    char palavra[10];
+    scanf("%s",palavra);
+    printf("Voce digitou a palavra %s",palavra);
+    return(0);
+}
+```  
+
+Outra forma é  
+```
+gets(<nome da string>);
+```  
+Por exemplo,  
+```
+#include <stdio.h>
+#include <conio.h>
+
+int main()
+{
+    char palavra[10];
+    gets(palavra);
+    printf("Voce digitou a palavra %s",palavra);
+    return(0);
+}
+```
+**(4)** Saída de *string*  
+```
+printf(<cadeia de controle>,<nome da string>);
+```
+, onde a cadeia de controle deve incluir o especificador `%s` onde a *string* for inserida.  
 
 ## 2.5 Exercícios com tipos, operadores, entrada/saída  
 1. Elaborar um programa na linguagem C para ler as notas da ap1, ap2 e ac; calcular e escrever a média do semestre do aluno, de acordo com as regras do Ibmec. 
