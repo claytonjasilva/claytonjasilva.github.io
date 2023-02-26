@@ -4,13 +4,13 @@ Prof Clayton J A Silva
 | Data | Tópico |
 | ---- | ------ |
 | 16/2 | Introdução e conceitos fundamentais | 
-| 23/2 | Sistemas numéricos e aritmética computacional |
-| 2/3 | Modelo de máquina de níveis/A máquina de von Neumman |
-| 9/3 | Nível de lógica digital/Nível de microarquitetura |
-| 16/3 | Nível ISA/Nível *assembly* |
-| 23/3 | Sistema de memória/Barramento |
-| 30/3 | Processadores/Arduíno 2560 |
-| 6/4 | Prática de laboratório/Revisão |
+| 23/2 | Recesso CARNAVAL |
+| 2/3 | Sistemas numéricos e aritmética computacional |
+| 9/3 | Modelo de máquina de níveis/A máquina de von Neumman |
+| 16/3 | Nível de lógica digital/Nível de microarquitetura |
+| 23/3 | Nível ISA/Nível *assembly* |
+| 30/3 | Sistema de memória/Barramento |
+| 6/4 | Processadores/Arduíno 2560/Revisão |
 | 13/4 | Avaliação Parcial 1 |
 | 20/4 | Dispositivos de Entrada/Saída/Microcontrolador MC2560: arquitetura |
 | 27/4 | Microcontrolador MC2560: set de instruções e *assembler* |
