@@ -99,14 +99,18 @@ São funções de leitura e escrita de caracteres.
 
 A função *getchar* possui o protótipo
 ```
-int getchar(void);
+char getchar(void);
 ```
-Observe que a função retorna um valor inteiro, o que não é problema, pois o valor lido corresponde ao inteiro equivalente à palavra do código ASCII do caractere.  
-Observe também que, como a função retorna um valor, **para esse valor ser armazenado é necessário o uso de um comando de atribuição para uma variável do tipo char.**
+Observe que a função retorna um valor char após o usuário digitar um valor de entrada e teclar *enter*.  
+**Para esse valor ser armazenado é necessário o uso de um comando de atribuição para uma variável do tipo char.**  
+**Observação!!!** O problema da função é que o caractere lido é colocado em uma área intermediária até que o usuário digita um *enter* - é muito comum o programador perceber os problemas em ambientes interativos.  
 
-**Observação!!!** O problema da função é que o caractere lido é colocado em uma área intermediária até que o usuário digita um *enter* - é muito comum o programador perceber os problemas em ambientes interativos.
+A função *putchar* possui o protótipo seguinte
+```
+int putchar(int c);
+```
+Devolve um inteiro e **apresenta o caractere na console**. O parâmetro pode ser um inteiro equivalente ao caractere no código ASCII ou o próprio caractere.  
 
-A função *putchar* possui um protótipo similar ao *getchar*. Devolve um inteiro e **apresenta o caractere na console**.
 O exemplo a seguir mostra o uso de ambas as funções  
 ```
 #include <stdio.h>
@@ -128,7 +132,9 @@ O protótipo das funções é o seguinte:
 ```
 int getch(void);
 ```
-
+Observe que a função retorna um valor int, o que não é problema, pois o valor lido corresponde ao inteiro equivalente à palavra do código ASCII do caractere
+quando o usuário digitar um caractere. **A função não requer o uso do *enter*.**  
+Como a função retorna um valor, **para esse valor ser armazenado é necessário o uso de um comando de atribuição para uma variável do tipo char.**  
 O exemplo abaixo ilustra o funcionamento   
 ```
 #include <stdio.h>
