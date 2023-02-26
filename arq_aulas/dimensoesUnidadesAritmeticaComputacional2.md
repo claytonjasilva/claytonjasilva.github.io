@@ -19,7 +19,7 @@ Para obter o número representado em base 10 (N<sub>10</sub>) no seu equivalente
 
 1. Aplicar a divisão inteira de N<sub>10</sub> pela base para a qual se deseja converter (2 ou 16)  
 2. Em seguida, aplicar repetidas vezes a divisão do **quociente obtido na divisão anterior pela base** para a qual se deseja converter (2 ou 16)
-3. Parar as divisões quando obtiber quociente igual a 0.
+3. Parar as divisões quando obter quociente igual a 0.
 4. O número na nova base (2 ou 16) na notação posicional será formado pelos restos obtidos, de tal modo que **o último resto é o dígito mais significativo**. 
 
 Na conversão da base 10 para a base 2 pode-se também utilizar o comportamento da notação polinomial.   
