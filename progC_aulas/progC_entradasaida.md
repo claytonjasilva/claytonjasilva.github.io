@@ -154,8 +154,17 @@ int getche(void);
 ```  
 A diferença básica entre as duas é que a função *getche* retorna um **eco**, isto é, apresenta na caonsole o valor digitado pelo usuário.  
 
+## 2.4 *Strings* e e entrada/saída de *strings*
+Na linguagem C, uma *string* é um **vetor de caracteres** - depois aprofundaremos esses conceitos.   
+**Toda *strings* possui um caractere 'terminador' definido no ASCII pelo caractere `\0`**.   
+Por exemplo, a palavra "Maria" é uma *string*, que na lingaugem C é definida em memória por
+| 0 | 1 | 2 | 3 | 4 | 5 |
+| - | - | - | - | - | - |
+| 'M' | 'a' | 'r' | 'i' | 'a' | '\0' | 
 
-## 2.4 Exercícios com tipos, operadores, entrada/saída  
+
+
+## 2.5 Exercícios com tipos, operadores, entrada/saída  
 1. Elaborar um programa na linguagem C para ler as notas da ap1, ap2 e ac; calcular e escrever a média do semestre do aluno, de acordo com as regras do Ibmec. 
 2. Elaborar um programa na linguagem C para ler os coeficientes de uma equação do segundo grau.
 3. Elaborar um programa na linguagem C para calcular e escrever a área interna e o perímetro de um círculo de raio r e seu perímetro.
