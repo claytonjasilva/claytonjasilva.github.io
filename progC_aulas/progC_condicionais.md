@@ -62,7 +62,7 @@ if (<expressão lógica>) {
 Processo de execução pela máquina:  
 1. A expressão lógica é calculada pela máquina.  
   A condição só pode gerar somente um resultado dentre dois possíveis: **1** (verdadeiro) ou **0** (falso).  
-2. A instrução (ou bloco de instruções) interna é executada somente se o cálculo da expressão lógica resultar 1 e a execução do programa prossegueapós a estrutura *if*
+2. A instrução (ou bloco de instruções) interna é executada somente se o cálculo da expressão lógica resultar 1 e a execução do programa prossegue após a estrutura *if*
 3. Em caso contrário, se a expressão condicional resultar falso (valor 0), a máquina executa a instrução seguinte ao *if* do programa,
 sem executar a instrução (ou bloco de instruções).  
 
