@@ -18,7 +18,9 @@ Conforme **a palavra do código de entrada**, o programa realiza uma função es
 3. Observar o funcionamento do circuito utilizando o Monitor Serial da IDE (menu *Ferramentas*, item *Moniotor Serial*).
 4. Observações:  
 - Visite o site do Arduíno para conhecer um pouco sobre a [referência da linguagem do Arduíno](https://www.arduino.cc/reference/en/)  
-- O código da prática pode ser obtido em [pratica3teclas.ino](https://github.com/claytonjasilva/prog_exemplos/blob/main/pratica3chaves.ino)
+- O código da prática pode ser obtido em [pratica3teclas.ino](https://github.com/claytonjasilva/prog_exemplos/blob/main/pratica3chaves.ino)  
+5. Veja o vídeo com uma explicação sucinta da prática no [Youtube]()
+
 
 **[Home Conteúdo Arquitetura de Computadores](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/arq_aulas.md)**  ou 
 **[Home Conteúdo Sistemas Digitais](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/sisdig_aulas.md)**   
