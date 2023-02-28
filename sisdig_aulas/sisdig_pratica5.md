@@ -13,5 +13,7 @@
 6. Realizar a mesma prática utilizando a **fonte de tensão DC**.
 7. Identificar os demais pinos do 74HC04 e realizar o mesmo experimento. 
 
+8. Veja o vídeo com o experimento no [Youtube](https://www.youtube.com/watch?v=0vhaHfz2db0)
+
  ___
  **[Home Conteúdo Sistemas Digitais](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/sisdig_aulas.md)**  
