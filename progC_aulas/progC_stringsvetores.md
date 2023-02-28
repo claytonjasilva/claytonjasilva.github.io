@@ -42,7 +42,7 @@ int main(void) {
   - EOF é um inteiro definido na biblioteca <stdio.h> diferente de qualquer char.  
 
 ### 9.1.3 Sequência ou caracteres de *escape*
-Alguns caracteres não são definidos com o uso da barra invertida. A tabela apresenta.
+Alguns caracteres não são definidos com o uso da barra invertida. A tabela apresenta algumas
 
 | Caracteres | Significado |
 | - | - |
@@ -54,7 +54,7 @@ Alguns caracteres não são definidos com o uso da barra invertida. A tabela apr
 | \t | Tabulação |
 | \ | Aspa |
 
-
+Veja a [relação completa](https://learn.microsoft.com/pt-br/cpp/c-language/escape-sequences?view=msvc-170)
 ___
 **[Home Conteúdo Programação em C](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/progC_aulas.md)**   
 **[Vetores: próximo>>](progC_stringsvetores1.md)**   
