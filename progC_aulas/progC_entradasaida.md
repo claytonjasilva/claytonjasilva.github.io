@@ -245,6 +245,11 @@ printf(<cadeia de controle>,<nome da string>);
 ```
 , onde a cadeia de controle deve incluir o especificador `%s` onde a *string* for inserida.  
 
+Alternativamente à função *printf*, pode-se usar a função *puts* para escrever na console uma *string* e cuja sintaxe é
+```
+puts(<nome da string>);
+```
+
 ## 2.5 Exercícios com entrada/saída  
 1. Elaborar um programa na linguagem C para ler as notas da ap1, ap2 e ac; calcular e escrever a média do semestre do aluno, de acordo com as regras do Ibmec. 
 2. Elaborar um programa na linguagem C para ler os coeficientes de uma equação do segundo grau.
