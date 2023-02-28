@@ -29,6 +29,7 @@
 
 ### Avaliação Continuada
 Os instrumentos de avaliação continuada serão disponibilizados à medida que as aulas forem ministradas.
+[Form 1](https://forms.gle/MGsMCpGSf5sTQAWq9)
 
 ## Exercícios  
 1. [Lista 1 de Exercícios](arq_aulas/arq_exercicios1_sala.md)  
