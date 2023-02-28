@@ -16,6 +16,7 @@ O *buzzer* é um sinalizador piezoelétrico que produz um sinal contínuo, sendo
 4. Observações:  
 - Visite o site do Arduíno para conhecer um pouco sobre a [referência da linguagem do Arduíno](https://www.arduino.cc/reference/en/)  
 - O código da prática pode ser obtido em [praticabuzzer.ino](https://github.com/claytonjasilva/prog_exemplos/blob/main/praticabuzzer.ino)
+5. Veja um resumo da prática no vídeo do [Youtube](https://www.youtube.com/watch?v=S2ER0awnogo)
 
 **[Home Conteúdo Arquitetura de Computadores](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/arq_aulas.md)**  ou 
 **[Home Conteúdo Sistemas Digitais](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/sisdig_aulas.md)**   
