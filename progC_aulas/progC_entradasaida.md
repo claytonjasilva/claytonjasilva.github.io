@@ -236,7 +236,8 @@ int main()
 ```
 
 **Obs.** A função *gets* não é considerada segura porque dependendo da variável lida pode haver um estouro da declaração da *string*,  
-ou seja, o usuário pode digitar uma *string* maior do que a definida.
+ou seja, o usuário pode digitar uma *string* maior do que a definida, fazendo com que uma área da memória não reservada seja ocupada, 
+o que configura o chamado **estouro de *buffer***.
 
 **(4)** Saída de *string*  
 ```
