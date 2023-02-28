@@ -18,6 +18,8 @@ A **saída do sistema consiste de uma palavra de 3 bits**. Os bits de saída est
 3. Observações:  
 - Visite o site do Arduíno para conhecer um pouco sobre a [referência da linguagem do Arduíno](https://www.arduino.cc/reference/en/)  
 - O código da prática pode ser obtido em [pratica3teclas3.ino](https://github.com/claytonjasilva/prog_exemplos/blob/main/pratica3chaves2.ino)
+4. (https://www.youtube.com/watch?v=cd_3GezNKXY&t=7s)
+
 
 **[Home Conteúdo Arquitetura de Computadores](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/arq_aulas.md)**  ou 
 **[Home Conteúdo Sistemas Digitais](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/sisdig_aulas.md)**   
