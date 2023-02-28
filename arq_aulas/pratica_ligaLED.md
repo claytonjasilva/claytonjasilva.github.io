@@ -14,6 +14,7 @@ Circuito utilizando a placa do Arduíno 2560 como fonte de alimentação para ac
 - Atenção com a **polarização** do LED
 - Utilizar as trilhas da placa de *protoboard* corretamente
 - Conectar o Arduíno ao computador através da porta USB
+3. Veja o vídeo com uma explicação sucinta da prática no [Youtube](https://www.youtube.com/watch?v=O9RfIBl4RHw&t=104s) 
 
 ___
 **[Home Conteúdo Arquitetura de Computadores](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/arq_aulas.md)**  ou 
