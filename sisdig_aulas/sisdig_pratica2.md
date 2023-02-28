@@ -10,6 +10,7 @@
 Ver o circuito  
 ![Circuito com potenciometro](/sisdig_aulas/images_sisdig/praticatrimpot.jpg)   
 
+Veja o vídeo com um resumo da prática no [Youtube](https://www.youtube.com/watch?v=Ky6uSzrd9Fk)
 
 #### Observações
 + Utilizar as trilhas adequadamente do *protoboard* - Ver <https://www.robocore.net/tutoriais/como-utilizar-uma-protoboard>
