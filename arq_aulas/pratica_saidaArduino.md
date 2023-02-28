@@ -14,6 +14,8 @@ Circuito utilizando a placa do Arduíno 2560 para acender um de três LEDs conec
 3. Observações:  
 - Visite o site do Arduíno para conhecer um pouco sobre a [referência da linguagem do Arduíno](https://www.arduino.cc/reference/en/)  
 - O código da prática pode ser obtido em [saidaArduino.ino](https://github.com/claytonjasilva/prog_exemplos/blob/main/saidaArduino.ino)
+4. Veja o vídeo com uma explicação sucinta da prática no [Youtube](https://www.youtube.com/watch?v=U2NmfuJggFA) 
+
 
 ___
 **[Home Conteúdo Arquitetura de Computadores](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/arq_aulas.md)**  ou 
