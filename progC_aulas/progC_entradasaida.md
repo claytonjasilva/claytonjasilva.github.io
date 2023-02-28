@@ -157,10 +157,14 @@ A diferença básica entre as duas é que a função *getche* retorna um **eco**
 ## 2.4 *Strings*, entrada/saída de *strings*
 Na linguagem C, uma *string* é um **vetor de caracteres** - depois aprofundaremos esses conceitos.   
 **Toda *strings* possui um caractere 'terminador' definido no ASCII pelo caractere `\0`**.   
-Por exemplo, a palavra "Maria" é uma *string*, que na lingaugem C é definida em memória por
+Por exemplo, a palavra "Maria" é uma *string*, que na linguagem C é definida em memória por
 | 0 | 1 | 2 | 3 | 4 | 5 |
 | - | - | - | - | - | - |
 | 'M' | 'a' | 'r' | 'i' | 'a' | '\0' |   
+
+Uma *string* é um **vetor de caracteres**.  
+O nome de um vetor define o **ponteiro** do vetor, ou seja, a variável que aponta para o endereço onde o vetor está armazenado em memória.  
+Veremos [ponteiros com mais detalhes](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/progC_aulas/progC_ponteiros.md).
 
 Para declarar uma *string* e realizar operações mais elaboradas [ver a seção *strings*](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/progC_aulas/progC_stringsvetores2.md).  
 
@@ -210,13 +214,37 @@ int main()
     return(0);
 }
 ```
+
+A função *gets* possui o protótipo  
+```
+char *gets(char *s);
+```
+, evidenciando que o operador unário `*` indica que a função retona um **ponteiro de char**, que endereça a *string* lida.  
+Logo o código escrito acima também pode ser escrito da forma  
+```
+#include <stdio.h>
+#include <conio.h>
+
+int main()
+{
+    char palavra[10];
+    char *p;
+    p = gets(palavra);
+    printf("Voce digitou a palavra %s",p);
+    return(0);
+}
+```
+
+**Obs.** A função *gets* não é considerada segura porque dependendo da variável lida pode haver um estouro da declaração da *string*,  
+ou seja, o usuário pode digitar uma *string* maior do que a definida.
+
 **(4)** Saída de *string*  
 ```
 printf(<cadeia de controle>,<nome da string>);
 ```
 , onde a cadeia de controle deve incluir o especificador `%s` onde a *string* for inserida.  
 
-## 2.5 Exercícios com tipos, operadores, entrada/saída  
+## 2.5 Exercícios com entrada/saída  
 1. Elaborar um programa na linguagem C para ler as notas da ap1, ap2 e ac; calcular e escrever a média do semestre do aluno, de acordo com as regras do Ibmec. 
 2. Elaborar um programa na linguagem C para ler os coeficientes de uma equação do segundo grau.
 3. Elaborar um programa na linguagem C para calcular e escrever a área interna e o perímetro de um círculo de raio r e seu perímetro.
