@@ -19,7 +19,7 @@ Conforme **a palavra do código de entrada**, o programa realiza uma função es
 4. Observações:  
 - Visite o site do Arduíno para conhecer um pouco sobre a [referência da linguagem do Arduíno](https://www.arduino.cc/reference/en/)  
 - O código da prática pode ser obtido em [pratica3teclas.ino](https://github.com/claytonjasilva/prog_exemplos/blob/main/pratica3chaves.ino)  
-
+https://www.youtube.com/watch?v=c_S7Vv2eOwY
 
 **[Home Conteúdo Arquitetura de Computadores](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/arq_aulas.md)**  ou 
 **[Home Conteúdo Sistemas Digitais](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/sisdig_aulas.md)**   
