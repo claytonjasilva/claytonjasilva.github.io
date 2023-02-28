@@ -252,8 +252,8 @@ puts(<nome da string>);
 
 ## 2.5 Exercícios com entrada/saída  
 1. Elaborar um programa na linguagem C para ler as notas da ap1, ap2 e ac; calcular e escrever a média do semestre do aluno, de acordo com as regras do Ibmec. 
-2. Elaborar um programa na linguagem C para ler os coeficientes de uma equação do segundo grau.
-3. Elaborar um programa na linguagem C para calcular e escrever a área interna e o perímetro de um círculo de raio r e seu perímetro.
+2. Elaborar um programa na linguagem C para ler os coeficientes de uma equação do segundo grau e calcular as raízes da equação.
+3. Elaborar um programa na linguagem C para calcular e escrever a área interna e o perímetro de um círculo de raio *r* e seu perímetro.
 5. Elaborar um programa na linguagem C para calcular e escrever o índice de massa (imc) corporal de uma pessoa. O imc é calculado dividindo-se o peso pelo quadrado da altura.
 6. Elaborar um programa na linguagem C para ler as dimensões dos lados de uma pista de corrida de formato retangular, ler a distância percorrida por um veículo, calcular e escrever o número completo de voltas dadas.
 
