@@ -19,5 +19,7 @@
 7. Realizar a mesma prática utilizando a **fonte de tensão DC**.
 8. Identificar os demais pinos do 74HC08N e realizar o mesmo experimento. 
 
+9. Veja o video com o experimento no [Youtube](https://www.youtube.com/watch?v=Ynat7reMCrs)
+
  ___
  **[Home Conteúdo Sistemas Digitais](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/sisdig_aulas.md)**  
