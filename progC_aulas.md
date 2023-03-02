@@ -11,12 +11,13 @@ Ministrado como atividade extra classe.
 6. [Controle de fluxo: estrutura de repetição *for*](progC_aulas/progC_repeticaofor.md)  
 7. [Funções](progC_aulas/progC_funcoes.md)
 8. [Ponteiros](progC_aulas/progC_ponteiros.md)
-9. [Strings e Vetores](progC_aulas/progC_stringsvetores.md)
-10. [Filas](progC_aulas/progC_filas.md)
-11. [Pilhas](progC_aulas/progC_pilhas.md)
-12. [Árvores](progC_aulas/progC_arvores.md)
-13. [Arquivos](progC_aulas/progC_arquivos.md)
-14. [Exceção](progC_aulas/progC_excecao.md)
+9. [Strings e Vetores(*arrays*](progC_aulas/progC_stringsvetores.md)
+10. [Matrizes]()
+11. [Estruturas (*struct*)]()
+12. [Tipos definidos pelo usuário (*typedef*)]()
+13. [Arquivos]()
+14. [Erros e exceção]()
+15. [Tópicos avançados]()
 
 ## Guia Rápido
 O guia rápido compreende um **resumo** da sintaxe da linguagem C, com atenção especial **aos tópicos discutidos em sala**.  
