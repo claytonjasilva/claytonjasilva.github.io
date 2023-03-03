@@ -1,12 +1,18 @@
-# *Datasheet* - Driver de motor de passo
-Referência [ULN 2003](https://d229kd5ey79jzj.cloudfront.net/878/datasheetULN200x.pdf)  
+# *Datasheet* - Driver e motor de passo
+1. Driver: Referência [ULN 2003](https://d229kd5ey79jzj.cloudfront.net/878/datasheetULN200x.pdf)  
 Trata-se de um *driver* cujas aplicações básicas são de alimentação de dispositivos.  
-Integra 7 transistores de alta potência *Darlington*. 
+Compõe-se de:  
+- Circuito integrado ULN2003, que integra 7 transistores de alta potência *Darlington*.
 Permite a operação diretamente com dispositivos TTL ou CMOS operando em tensões de alimentação de 5 V ou 3,3 V.
+- Placa com pinagem para conexões e soquete para o ULN2003.
+
+2. Motor de passo: Referência [28BYJ-48]
 
 ## 1. Especificações
 
-### 1.1 Pinagem
+### 1.1 Pinagem do CI
+A figura apresenta o CI ULN2003  
+![Pinagem ULN 2003](/arduino/arduino_images/xxx)  
 
 | Id | Função	| Descrição |
 | - | - | - |
@@ -30,7 +36,46 @@ Permite a operação diretamente com dispositivos TTL ou CMOS operando em tensõ
 Obs. Um diodo adequado, chamado de diodo *flyback*, colocado sobre o indutor para absorver com segurança a energia do pulso 
 provocado por um corte abrupto da fonte para o motor.
 
-### 1.2 Operação
+### 1.2 Pinagem da placa
+A figura apresenta a placa de montagem do ULN2003  
+![Placa com soquete para ULN 2003](/arduino/arduino_images/xxx)  
+
+| Id | Descrição |
+| - | - |
+|  | Conector de encaixe dos fios do motor |
+| IN1 |	Entrada de controle |
+| IN2 |	Entrada de controle |
+| IN3 |	Entrada de controle |
+| IN4	| Entrada de controle |
+| A-B-C-D	| Saídas de LED |
+| GND | Terra |
+| Alimentação | 5V, 1A |
+
+### 1.3 Espeficiações do motor
+| Requisito | Alvo |
+| - | - |
+| Tipo | Motor de passo unipolar |
+| Modelo | 28BYJ-48 |
+| Tensão | 5 VDC |
+| Número de fases | 4 |
+| Número de vias | 5 |
+| Caixa de Redução | 1/64 |
+| Diâmetro do eixo | 5mm |
+| Frequência | 100Hz |
+| Resistência DC | 50Ω ± 7%(25℃) |
+| Torque | 34,3 mN.m |
+| Diâmetro do motor | 28mm |
+| Sequência das fases | 1: Azul, 2: Rosa, 3: Amarelo e 4: alaranjado |
+
+Obs. O terminal central das bobinas do motor é interligado ao fio vermelho.
+
+### 1.2 Operação do motor de passo
+Os motores de passo são um tipo de motor que tem a capacidade de converter um sinal de entrada em um **ângulo de rotação**.  
+A precisão do ângulo de rotação do motor de passo é determinada pelo seu **número de passos**.  
+Na nossa prática, o Arduíno se encarrega de realizar o controle do funcionamento do motor,
+enviando o sinal que será convertido em um ângulo de rotação.  
+Cada pulso corresponde à um passo de 1,8 graus (na maioria dos motores de passo) dado pelo motor. Já a velocidade do motor é dada pela frequência de entrada dos pulsos.
+
 1. Os caracteres são apresentados em duas linhas de 16 caracteres cada uma. 
 2. O LCD 1602 possui também um cursor, que indica a posição do caractere lido/escrito em um instante. 
 3. A pinagem inicia-se a partir do pino 1 até o pino 16.  
