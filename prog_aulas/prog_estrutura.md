@@ -172,7 +172,7 @@ Observe que o código apresentado utiliza **o caractere `#` - que indica um come
   a. Determinar o valor absoluto do resultado da expressão da questão 2.a. Escrever o resultado usando a função `print(resultado)`.    
   b. Utililzando a sintaxe `import math` na primeira linha do *script*, escrever o resultado da expressão $V=\frac{4}{3} \pi 4.5^3$.  
   c. Utililzando a sintaxe `import math` na primeira linha do *script*, escrever o resultado da expressão $\sqrt{6.237 \times (5 + 3) ^ {34}}$.  
-  d. Arredondar e escrever o valor calculado no exercicio 4.a, em uma casa decimal.  
+  d. Arredondar e escrever o valor calculado no exercicio 4.b, em uma casa decimal.  
 
 5. Utilizando o **modo de *script***, criar um programa na linguagem Python para  
   a. Determinar quantos minutos *x* dias e *y* horas possuem.[Ver solução em *script* 1.1](https://github.com/claytonjasilva/prog_exemplos/blob/main/minutos.py)    
