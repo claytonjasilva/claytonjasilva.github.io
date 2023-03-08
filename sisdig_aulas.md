@@ -33,7 +33,7 @@
 
 ### Avaliação Continuada
 Os instrumentos de avaliação continuada serão disponibilizados à medida que as aulas forem ministradas.  
-- [Form 1](https://forms.gle/RxZtSksM3vLSs4kt7)  
+- [Form 1](https://1drv.ms/b/s!AsTd8oN7mu8pkdZ0vjkxxgZlbIpRUA?e=Cdmdwn)  
 - [Form 2](https://forms.gle/RSD78Vn4NeTbY2Sj9)  
 
 ### Listas de exercício
