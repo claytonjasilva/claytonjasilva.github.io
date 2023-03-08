@@ -181,46 +181,49 @@ A cadeia de caracteres de controle deve conter a especificação de tipos das va
 A lista de pinteiros contém os nomes das variáveis, cada uma precedido pelo operador unário `&`, indicando o endereço, seprados por vírgula. 
 [Ver mais sobre entrada e saída em C](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/progC_aulas/progC_entradasaida.md)
 
-## 1.9 Exercícios de aula
-Elaborar um programa na linguagem C para resolver o seguinte problema
-1. Escrever "Ola! Agora vou conseguir aprender o C!".
-2. Converter um determinado número de dias em anos.
-3. Ler dois números inteiros e escrever a soma dos números lidos - utilizar uma MACRO para definir a soma das variáveis.
-4. Escrever "Ola! Agora vou conseguir aprender o C!", por chamada de função. 
-5. Ler um número inteiro, calcula e escreve o quadrado do número lido - utilizar uma função.
-6. Calcular o produto de quatro numeros, dois atribuídos a variáveis, 23.5 e 12.9, e duas constantes 3.87 e 2 - utilizar uma função.
-7. Calcular o produto de dois numeros inteiros, duas constantes 12 e 7 - utilizar uma função que retorna valor.
-8. Calcular o produto de dois numeros de ponto flutuante, duas constantes 45.2 e 0...67 - utilizar uma função que retorna valor. A função principal *main* deve sinalizar que foi executada sem erro.
-9. Dado o código abaixo, se o usuário digitar 1, qual é o valor da saída na console?
-```
-#include <stdio.h>
-/* Referencia: Aprenda a Programar em C, C++ e C#, de Hickson, R.*/
-int x; /* Declaração de uma variável global */
-main()
-{
-    int a;
-    printf("Digite um valor: ");
-    scanf("%d",&a);
-    x=2*a+3;
-    printf("%d e %d",x,soma(a)); /* Atenção para a ordem de execução dos argumentos*/
-}
+## 1.10 Exemplos de aula
+#### 1.10.1 Criando os primeiros programas e escrevendo saídas
+**a.** Escrever a mensagem `Meu primeiro programa em C`. Incluir **comentários**. Veja o [exemplo](https://github.com/claytonjasilva/prog_exemplos/blob/main/cursoC1101a.c)  
 
-soma(z)
-int z; /* Declara o tipo do parâmetro da função */
-{
-    x=2*x+z;
-    return(x);
-}
-```
-10. Escrever o caractere *D*, como um caractere e como um inteiro.
-11. Ler um caractere do teclado e escreve na console **sem a necessidade de teclar *enter***.  
-12. Escrever o código referente à solução anterior, utilizando a função *scanf*. Qual é a diferença observada?
-13. Determinar o resultado dos seguintes problemas, utilizando os dados apresentados:  
-- Quantos minutos dois dias e 18 horas contemplam?  
-- Qual é a área de um terreno retangular com lados de 50 metros e 15 metros? 
-- Quantas voltas um corredor completou em uma pista com perímetro de 400 metros se ele conseguiu correr 2.300 metros? 
-- Um veículo consome em média 2 litros de gasolina para percorrer 19,5 quilômetros. Quantos quilômetros o veículo deverá percorrer se o tanque de combustível possuir capacidade de armazenar 50 litros?  
-- A fórmula para determinação da nota final é definida por uma média ponderada em que a nota de cada avaliação parcial possui peso de 40% e a avaliação continuada, peso de 20%. A média para aprovação é 7,0. Se o aluno obtiver nota 6,5 na AP1; nota 8,3 na AP2; e nota 6,9 na AC; ele será aprovado?  
+Agora produza seu primeiro código...  
+**b.** Escrever uma mensagem `Agora vou iniciar...`. Escrever **na linha seguinte** `produzindo um novo codigo`. Incluir os comentários.  
+Veja [uma solução](https://github.com/claytonjasilva/prog_exemplos/blob/main/cursoC1101b.c)
+
+**c.** Escrever o resultado das expressões abaixo  
+  - $3 + 4 \times 5 - [2 \times (4 + 6) ]$: **veja o [exemplo](https://github.com/claytonjasilva/prog_exemplos/blob/main/cursoC1101c.c)**    
+  - $6 + 4 \times 8 \times (3 + 7 + 27)$  
+  - $\frac{3 + 4 \times 5} {[2 \times (4 + 6) ]}$: **veja o [exemplo](https://github.com/claytonjasilva/prog_exemplos/blob/main/cursoC1101c_1.c)**   
+  - $\frac{3} {[6 \times (1.25 + 6.78)]}$  
+ 
+ **d.** Usando a biblioteca `math.h`, escrever o resultado das expressões abaixo    
+  - $3^{4 \times 5 \times [2 \times (4 + 6) ]}$: **veja o [exemplo](https://github.com/claytonjasilva/prog_exemplos/blob/main/cursoC1101d.c)**    
+  - $\sqrt{2 \times (5 + 3) ^ {34}}$  -   
+
+#### 1.10.2 Declarando e usando variáveis
+**a.** Escrever um programa para atribuir as notas 8,5 (oito vírgula cinco), 7,3 (sete vírgula três) e 5 (cinco) respectivamente para ap1, ap2 e ac de um aluno.
+Calcular e escrever a média.   
+Ver **[uma solução](https://github.com/claytonjasilva/prog_exemplos/blob/main/cursoC1102a.c)**
+
+**b.** Converter um determinado número de dias em anos.
+
+**c.** Calcular a área de um círculo de raio r=2,1 metros.  
+Ver **[uma solução](https://github.com/claytonjasilva/prog_exemplos/blob/main/cursoC1102c.c)**
+
+#### 1.10.3 Lendo dados na console
+**a.** Escrever um programa em C para ler dois números inteiros e escrever a soma dos números lidos.  
+Ver **[uma solução](https://github.com/claytonjasilva/prog_exemplos/blob/main/cursoC1103a.c)**
+
+**b.** Escrever um programa em C para ler um **número inteiro**, calcular e escrever o quadrado do número lido.
+
+Outros exemplos...  
+**c.** Escrever um programa em C para calcular o produto de dois numeros inteiros, digitados pelo usuário.  
+**d.** Escrever um programa para ler as notas de ap1, ap2 e ac de um aluno.
+Calcular e escrever a média.   
+**e.** Escrever um programa em C para ler o consumo de combustível de um veículo. Ler também a capacidade do tanque de combustível. Escrever quantos quilômetros o veículo irá rodar com um tanque cheio.    
+**f.** Escrever um programa em C para ler o perímetro de uma pista. Ler também a distância percorrida pelo veículo em um determinado tempo. 
+O programa deverá escrever quantas voltas completas o veículo realizou e qual distância percorreu após completar a última volta.
+Ver **[uma solução](https://github.com/claytonjasilva/prog_exemplos/blob/main/cursoC1103f.c)**
+
 
 ___
 **[<<anterior](progC_replit.md)**  
