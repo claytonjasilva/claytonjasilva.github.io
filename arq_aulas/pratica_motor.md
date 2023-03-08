@@ -1,4 +1,4 @@
-### Prática 9 - Dispositivos de saída
+### Prática 10 - Dispositivos de saída
 Circuito utilizando a placa do Arduíno 2560 e saídas digitais para conexão com um motor de passo  
 O funcionamento do motor requer outros elementos - **[Ver especificações técnicas](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/arduino/datasheet_drivermotor.md)**.  
 
