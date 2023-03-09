@@ -270,8 +270,12 @@ Ver **[uma solução](https://github.com/claytonjasilva/prog_exemplos/blob/main/
 **c.** Elaborar um programa na linguagem C para **criar uma variável que armazene o seu próprio nome**.   
 Ver **[uma solução](https://github.com/claytonjasilva/prog_exemplos/blob/main/cursoC252c.c)**   
 **d.** Elaborar um programa na linguagem C para criar uma variável que armazene o seu prórpio nome. **Inicializar a variável como um vetor**.   
-**e.** Elaborar um programa na linguagem C para ler o nome de uma pessoa. Escrever o nome lido.
+**e.** Elaborar um programa na linguagem C para ler o nome de uma pessoa. Escrever o nome lido.  
 Ver **[uma solução](https://github.com/claytonjasilva/prog_exemplos/blob/main/cursoC252e.c)**   
+**f.** Elaborar um programa para armazenar o seu próprio nome, **usando uma variável ponteiro**. Escrever o quinto caractere do seu nome.  
+Ver **[uma solução](https://github.com/claytonjasilva/prog_exemplos/blob/main/cursoC252f.c)**   
+
+
 
 
 
