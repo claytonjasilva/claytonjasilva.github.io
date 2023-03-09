@@ -259,7 +259,7 @@ Ver **[uma solução](https://github.com/claytonjasilva/prog_exemplos/blob/main/
 **b.** Elaborar um programa na linguagem C para calcular e escrever a área interna e o perímetro de um círculo de raio *r*.  
 **c.** Elaborar um programa na linguagem C para calcular e escrever o índice de massa (imc) corporal de uma pessoa. O imc é calculado dividindo-se o peso pelo quadrado da altura.  
 **d.** Elaborar um programa na linguagem C para ler cinco caracteres e **escrever seus respectivos valores decimais** em ASCII.  
-Ver **[uma solução](https://github.com/claytonjasilva/prog_exemplos/blob/main/cursoC25d.c)**  
+Ver **[uma solução](https://github.com/claytonjasilva/prog_exemplos/blob/main/cursoC251d.c)**  
 **e.** Elaborar um programa na linguagem C para ler cinco caracteres e **escrever os caracteres sem usar a função *printf***.  
 Ver **[uma solução](https://github.com/claytonjasilva/prog_exemplos/blob/main/cursoC251e.c)**  
 
