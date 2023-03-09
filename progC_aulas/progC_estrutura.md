@@ -183,7 +183,8 @@ A lista de pinteiros contém os nomes das variáveis, cada uma precedido pelo op
 
 ## 1.10 Exemplos de aula
 #### 1.10.1 Criando os primeiros programas e escrevendo saídas
-**a.** Escrever a mensagem `Meu primeiro programa em C`. Incluir **comentários**. Veja o [exemplo](https://github.com/claytonjasilva/prog_exemplos/blob/main/cursoC1101a.c)  
+**a.** Escrever a mensagem `Meu primeiro programa em C`. Incluir **comentários**.  
+Veja **[uma solução](https://github.com/claytonjasilva/prog_exemplos/blob/main/cursoC1101a.c)**  
 
 Agora produza seu primeiro código...  
 **b.** Escrever uma mensagem `Agora vou iniciar...`. Escrever **na linha seguinte** `produzindo um novo codigo`. Incluir os comentários.  
