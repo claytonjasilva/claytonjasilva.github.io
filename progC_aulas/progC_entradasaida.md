@@ -267,8 +267,14 @@ Ver **[uma solução](https://github.com/claytonjasilva/prog_exemplos/blob/main/
 **a.** Elaborar um programa na linguagem C para ler cinco caracteres, **sem produzir o *eco* na console**. Escrever a sequência de caracteres lidos.  
 Ver **[uma solução](https://github.com/claytonjasilva/prog_exemplos/blob/main/cursoC252a.c)**  
 **b.** Elaborar um programa na linguagem C para ler cinco caracteres, **produzindo o *eco* na console**. Escrever a sequência de caracteres lidos.   
-**c.** Elaborar um programa na linguagem C para **criar uma variável que armazene o seu prórpio nome**.   
-Ver **[uma solução](https://github.com/claytonjasilva/prog_exemplos/blob/main/cursoC252c.c)**  
+**c.** Elaborar um programa na linguagem C para **criar uma variável que armazene o seu próprio nome**.   
+Ver **[uma solução](https://github.com/claytonjasilva/prog_exemplos/blob/main/cursoC252c.c)**   
+**d.** Elaborar um programa na linguagem C para criar uma variável que armazene o seu prórpio nome. **Inicializar a variável como um vetor**.   
+**e.** Elaborar um programa na linguagem C para ler o nome de uma pessoa. Escrever o nome lido.
+Ver **[uma solução](https://github.com/claytonjasilva/prog_exemplos/blob/main/cursoC252e.c)**   
+
+
+
 
 
 
