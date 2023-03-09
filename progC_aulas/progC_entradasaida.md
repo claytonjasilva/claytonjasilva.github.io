@@ -253,25 +253,29 @@ puts(<nome da string>);
 ## 2.5 Exemplose de aula
 #### 2.5.1 Formatando saída
 **a.** Elaborar um programa na linguagem C para ler os coeficientes de uma equação do segundo grau e calcular as raízes da equação.  
-Apresentar a solução com duas casas decimais.
+Apresentar a solução com duas casas decimais.  
 Ver **[uma solução](https://github.com/claytonjasilva/prog_exemplos/blob/main/cursoC251a.c)**
 
 **b.** Elaborar um programa na linguagem C para calcular e escrever a área interna e o perímetro de um círculo de raio *r*.  
 **c.** Elaborar um programa na linguagem C para calcular e escrever o índice de massa (imc) corporal de uma pessoa. O imc é calculado dividindo-se o peso pelo quadrado da altura.  
 **d.** Elaborar um programa na linguagem C para ler cinco caracteres e **escrever seus respectivos valores decimais** em ASCII.  
 Ver **[uma solução](https://github.com/claytonjasilva/prog_exemplos/blob/main/cursoC251d.c)**  
+
 **e.** Elaborar um programa na linguagem C para ler cinco caracteres e **escrever os caracteres sem usar a função *printf***.  
 Ver **[uma solução](https://github.com/claytonjasilva/prog_exemplos/blob/main/cursoC251e.c)**  
 
 #### 2.5.2 Lendo caracteres e cadeias de caracteres
 **a.** Elaborar um programa na linguagem C para ler cinco caracteres, **sem produzir o *eco* na console**. Escrever a sequência de caracteres lidos.  
 Ver **[uma solução](https://github.com/claytonjasilva/prog_exemplos/blob/main/cursoC252a.c)**  
+
 **b.** Elaborar um programa na linguagem C para ler cinco caracteres, **produzindo o *eco* na console**. Escrever a sequência de caracteres lidos.   
 **c.** Elaborar um programa na linguagem C para **criar uma variável que armazene o seu próprio nome**.   
 Ver **[uma solução](https://github.com/claytonjasilva/prog_exemplos/blob/main/cursoC252c.c)**   
+
 **d.** Elaborar um programa na linguagem C para criar uma variável que armazene o seu prórpio nome. **Inicializar a variável como um vetor**.   
 **e.** Elaborar um programa na linguagem C para ler o nome de uma pessoa. Escrever o nome lido.  
 Ver **[uma solução](https://github.com/claytonjasilva/prog_exemplos/blob/main/cursoC252e.c)**   
+
 **f.** Elaborar um programa para armazenar o seu próprio nome, **usando uma variável ponteiro**. Escrever o quinto caractere do seu nome.  
 Ver **[uma solução](https://github.com/claytonjasilva/prog_exemplos/blob/main/cursoC252f.c)**   
 
