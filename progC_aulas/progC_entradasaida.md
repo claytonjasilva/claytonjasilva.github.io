@@ -250,7 +250,7 @@ Alternativamente à função *printf*, pode-se usar a função *puts* para escre
 puts(<nome da string>);
 ```
 
-## 2.5 Exemplose de aula
+## 2.5 Exemplos de aula
 #### 2.5.1 Formatando saída
 **a.** Elaborar um programa na linguagem C para ler os coeficientes de uma equação do segundo grau e calcular as raízes da equação.  
 Apresentar a solução com duas casas decimais.  
