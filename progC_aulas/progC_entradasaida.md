@@ -264,8 +264,12 @@ Ver **[uma solução](https://github.com/claytonjasilva/prog_exemplos/blob/main/
 Ver **[uma solução](https://github.com/claytonjasilva/prog_exemplos/blob/main/cursoC251e.c)**  
 
 #### 2.5.2 Lendo caracteres e cadeias de caracteres
-**a.** Elaborar um programa na linguagem C para ler cinco caracteres **sem produzir o *eco* na console**. Escrever a sequência de caracteres lidos.  
+**a.** Elaborar um programa na linguagem C para ler cinco caracteres, **sem produzir o *eco* na console**. Escrever a sequência de caracteres lidos.  
 Ver **[uma solução](https://github.com/claytonjasilva/prog_exemplos/blob/main/cursoC252a.c)**  
+**b.** Elaborar um programa na linguagem C para ler cinco caracteres, **produzindo o *eco* na console**. Escrever a sequência de caracteres lidos.   
+**c.** Elaborar um programa na linguagem C para **criar uma variável que armazene o seu prórpio nome**.   
+Ver **[uma solução](https://github.com/claytonjasilva/prog_exemplos/blob/main/cursoC252c.c)**  
+
 
 
 ___
