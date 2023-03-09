@@ -177,11 +177,31 @@ default:
 }
 ```
                   
-## 3.3 Exercícios com condicionais simples e compostas  
-1. Elaborar um programa na linguagem C para ler dois números; calcular e escrever o maior dos números lidos.
-2. Elaborar um programa na linguagem C para ler a idade de uma pessoa. Se a idade for igual ou inferior a 10 anos, classificar a pessoa como 'criança'. Caso a idade seja inferior a 18 anos e superior a 10 anos, classificar como 'adolescente'. Em qualquer outro caso, classificar como 'adulto'. Apresentar a classificação atribuída.
-3. Elaborar um programa na linguagem C para ler os nomes, pesos e altura de 3 pessoas; calcular e escrever os nomes de cada pessoa com IMC superior a 22 ('valor alto') ou com IMC inferior a 20 ('valor baixo'), seguido do respectivo IMC calculado.
-4. Elaborar um programa na linguagem C para ler o nome e a idade de 3 animais; calcular e escrever o nome do animal mais velho. 
+## 3.5 Exemplos de aula
+
+#### 3.5.1 Expressões lógicas
+Escrever um programa em C para resolver as seguintes expressões lógicas (descritas sem seguir a sintaxe de C) e escrever o resultado:  
+**a.** $(2 > x) e (3 + 4 = 6)$, dado que *x*=7
+Ver [uma solução](https://github.com/claytonjasilva/prog_exemplos/blob/main/cursoC351a.c)
+
+**b.** Ajustar a expressão lógica para que o resultado dê **verdadeiro** e verificar o resultado alterando o código anterior.  
+**c.** $(x > y) ou (x + y = 6)$, dado que *x*=3, *y*=5  
+**d.** $\overline{(x > y) ou (x + y = 6)}$  
+
+#### 3.5.2 Condicionais simples e compostas
+**a.** Elaborar um programa na linguagem C para ler dois diferentes números; calcular e escrever o maior dos números lidos.  
+Ver [uma solução](https://github.com/claytonjasilva/prog_exemplos/blob/main/cursoC352a.c)
+
+**b.** Elaborar um programa na linguagem C para ler dois números; calcular e escrever o maior dos números lidos.
+Admitir que o usuário pode digitar números iguais.
+**c.** Elaborar um programa na linguagem C para ler a idade de uma pessoa. Se a idade for igual ou inferior a 10 anos, classificar a pessoa como 'criança'. Caso a idade seja inferior a 18 anos e superior a 10 anos, classificar como 'adolescente'. Em qualquer outro caso, classificar como 'adulto'. Escrever a classificação atribuída.
+Ver [uma solução](https://github.com/claytonjasilva/prog_exemplos/blob/main/cursoC352c.c)  
+
+**d.** Elaborar um programa na linguagem C para ler os nomes, pesos e altura de 3 pessoas; calcular e escrever os nomes de cada pessoa com IMC superior a 22 ('valor alto') ou com IMC inferior a 20 ('valor baixo'), seguido do respectivo IMC calculado.  
+**e.** Elaborar um programa na linguagem C para ler o nome e a idade de 3 animais; calcular e escrever o nome do animal mais velho. 
+
+#### 3.5.3 *Switch case*
+**a.** Elaborar um programa na linguagem C para ler um caractere maiúsculo do alfabeto. Se a letra digitada pelo usuário for igual a *A* ou igual a *B*, o programa deve ler dois números e escrever o resultado da soma. Se a letra digitada for igual a *C*, o programa deve ler um número e escrever o quadrado do número lido. Se a letra digitada pelo usuário for igual a *D*, o programa deve ler três números e escrever o maior dentre os números lidos. Para qualquer outra letra digitada pelo usuário o programa deve escrever a mensagem "Entrada invalida".
 
 
 ___
