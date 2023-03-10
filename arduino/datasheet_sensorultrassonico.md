@@ -36,5 +36,5 @@ Imprime dados na porta serial como texto ASCII, seguido por
 - um caractere de nova linha (ASCII 10 ou '\n').  
 
 Além das funções de comunicações também é usada a função avançada de I/O:  
-[pulseIn](https://www.arduino.cc/reference/en/language/functions/advanced-io/pulsein/):
-Basicamente, lê um pulso em um pino e retorna a largura do pulso em microssegundos.
+[pulseIn](https://www.arduino.cc/reference/en/language/functions/advanced-io/pulsein/), que, 
+basicamente, lê um pulso em um pino e retorna a largura do pulso em microssegundos.
