@@ -16,6 +16,7 @@ O sistema aguarda no monitor serial um comando (caractere 'A') através do qual 
 - Visite o site do Arduíno para conhecer um pouco sobre a [referência da linguagem do Arduíno](https://www.arduino.cc/reference/en/)  
 - O código da prática pode ser obtido em [pratica 9 - sensor ultrassonico](https://github.com/claytonjasilva/prog_exemplos/blob/main/pratica_sensorultrassonico.ino)  
 6. Você pode ver um resumo da pratica no vídeo do [Youtube](https://www.youtube.com/watch?v=17DMZC9p-jM)  
+7. Uma explicação sucinta sobre o código... [Youtube](https://youtu.be/F5vX2qY2nHA)  
 
 **[Home Conteúdo Arquitetura de Computadores](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/arq_aulas.md)**  ou 
 **[Home Conteúdo Sistemas Digitais](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/sisdig_aulas.md)**   
