@@ -1,5 +1,6 @@
 ### Prática 9 - Dispositivos de entrada/saída
 Circuito utilizando a placa do Arduíno 2560 e entrada com sensor ultrassônico.  
+O sistema aguarda no monitor serial um comando (caractere 'A') através do qual calcula e gera a distância em centímetros do objeto.
 
 #### I - Apresentação de instrumental e ferramental
 1. *Protoboard*
