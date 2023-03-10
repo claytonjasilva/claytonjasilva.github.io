@@ -12,6 +12,7 @@ O sinal de eco é um pulso de onda quadrada com uma largura proporcional à dist
 | 1 (Direita inferior) | Gnd |
 | 2 (Central) | Entrada do sinal de *trigger* | 
 | 3 (Esquerda inferior) | Alimentação | 
+
 (\*) **Observação**: O módulo não possui a identificação da pinagem, portanto **a referência é a visão do circuito pelo observador**.
 
 ![Pinagem módulo sensor de movimento](/arduino/arduino_images/sensormovimento.jpg)
@@ -25,7 +26,7 @@ O sinal de eco é um pulso de onda quadrada com uma largura proporcional à dist
 | Ângulo de detecção máximo | 110o | 
 | Duração sinal High da saída | 5 ~ 300 s (2) |
 
-(1) Ajustável pelo potenciômetro 1
+(1) Ajustável pelo potenciômetro 1  
 (2) Ajustável pelo potenciômetro 2
 
 
