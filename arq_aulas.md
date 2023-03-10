@@ -21,7 +21,8 @@
 7. [Prática 7 Arduíno: dispositivos de saída - *buzzer*](arq_aulas/pratica_buzzer.md)
 8. [Prática 8 Arduíno: dispositivos de saída - LCD 1602](arq_aulas/pratica_lcd1.md)
 9. [Prática 9 Arduíno: dispositivos de entrada/saída - sensor ultrassônico](arq_aulas/pratica_sensorultrassonico.md)
-10. [Prática 10 Arduíno: dispositivos de saída - motor de passo](arq_aulas/pratica_motor.md)
+10. [Prática 10: dispositivos de saída](arq_aulas/pratica_sensormovimento.md)
+11. [Prática 11 Arduíno: dispositivos de saída - motor de passo](arq_aulas/pratica_motor.md)
 
 
 ## Avaliações
