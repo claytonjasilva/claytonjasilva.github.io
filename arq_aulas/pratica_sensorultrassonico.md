@@ -9,7 +9,7 @@ O sistema aguarda no monitor serial um comando (caractere 'A') através do qual 
 
 #### II - Vamos realizar a prática com a placa do Arduíno Mega 2560...
 1. Montar  o circuito conforme a figura abaixo.  
-![Esquema de ligação sensor ultrassônico com Arduino](/arq_aulas/images/pratica_sensorultrassonico.jpg) 
+![Esquema de ligação sensor ultrassônico com Arduino](/arq_aulas/images/praticasensorultrassonico.jpg) 
 3. Utilizando a IDE do Arduíno, elaborar o código que determina a distância de um objeto posicionado no setor de alcance do sensor.
 4. Observações:  
 - Ver o [*datasheet* do sensor ultrassônico](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/arduino/datasheet_sensorultrassonico.md) para conhecer seu funcionamento.  
