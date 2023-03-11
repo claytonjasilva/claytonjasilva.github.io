@@ -8,7 +8,7 @@
 4. [Nível de lógica digital: circuitos combinacionais e circuitos sequenciais](https://claytonjasilva.github.io/sisdig_aulas/algebraPortasLogicas.html)
 5. [Detalhamento dos elementos fundamentais das arquiteturas](arq_aulas/arq_aulas_componentes.pdf)  
     - [Notas sobre memória](arq_aulas/notas_memoria.pdf)
-7. [Microprocessador Atmel ATmega 2560](arq_aulas/arq_aulas_mc2560.pdf)
+7. [Microcontrolador Atmel ATmega 2560](arq_aulas/microcontrolador2560.md)
 8. Sistemas Operacionais: [*download* material](https://1drv.ms/p/s!AsTd8oN7mu8pkcB4b7de8Z0_eLNtFA?e=PIgZwh)
 
 ## Práticas    
