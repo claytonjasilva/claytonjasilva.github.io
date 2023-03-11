@@ -26,24 +26,9 @@ O sinal de eco é um pulso de onda quadrada com uma largura proporcional à dist
 | Ângulo de detecção máximo | 110o | 
 | Duração sinal High da saída | 5 ~ 300 s (2) |
 
-(1) Ajustável pelo potenciômetro 1  
-(2) Ajustável pelo potenciômetro 2
+(1) Ajustável pelo potenciômetro 1 - à direita
+(2) Ajustável pelo potenciômetro 2 - à esquerda
 
 
 ## 2. Referência com Arduíno
 É necessário somente usar as funções disponíveis na biblioteca do Arduíno: [referência](https://www.arduino.cc/reference/en/)  
-Para teste da placa normalmente são usadas as  
-[Funções de comunicações do Arduíno](https://www.arduino.cc/reference/en/language/functions/communication/serial/), especialmente  
-
-[Serial.begin()](https://www.arduino.cc/reference/en/language/functions/communication/serial/begin/)  
-Define a taxa de dados em bits por segundo (*baud*) para transmissão de dados seriais.  
-Para se comunicar com o *Serial Monitor* certifique-se de usar uma das taxas de transmissão listadas no menu no canto inferior direito da tela.  
-
-[Serial.println()](https://www.arduino.cc/reference/en/language/functions/communication/serial/println/)  
-Imprime dados na porta serial como texto ASCII, seguido por   
-- um caractere de retorno de carro (ASCII 13 ou '\r') e
-- um caractere de nova linha (ASCII 10 ou '\n').  
-
-Além das funções de comunicações também é usada a função avançada de I/O:  
-[pulseIn](https://www.arduino.cc/reference/en/language/functions/advanced-io/pulsein/), que, 
-basicamente, lê um pulso em um pino e retorna a largura do pulso em microssegundos.
