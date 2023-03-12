@@ -37,7 +37,9 @@ Em cada exercício está indicado o link da respectiva solução.
 Os instrumentos de avaliação (testes, exercícios e trabalhos) relativos à Avaliação Continuada serão disponbilizados à medida que as aulas forem ministradas.  
 Ver a forma de avaliação definida no início do curso.  
 As soluções dos instrumentos de avaliação **serão apresentadas e discutidas em sala de aula**.  
-É necessário que o aluno acompanhe as aulas para acessar s soluções propostas. **Não será fornecido o gabarito da solução**.
+É necessário que o aluno acompanhe as aulas para acessar as soluções propostas. **Não será fornecido o gabarito da solução**.
+
+**- [Form 1 de AC](https://forms.gle/XgMWfrN7UdA6PCC1A)**
 
 ## Guia Rápido
 O guia rápido compreende um **resumo** da sintaxe da linguagem Python, com atenção especial **aos tópicos discutidos em sala**.  
