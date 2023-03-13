@@ -23,9 +23,10 @@
 5. [Prática 5](sisdig_aulas/sisdig_pratica5.md)
 6. [Prática 6](sisdig_aulas/sisdig_pratica6.md)
 7. [Prática 7](sisdig_aulas/sisdig_pratica7.md)
-8. [Prática 9](sisdig_aulas/sisdig_pratica9.md)
-9. [Prática 10](sisdig_aulas/sisdig_pratica10.md)
-10. [Prática 11](sisdig_aulas/sisdig_pratica11.md)
+8. [Prática 8](sisdig_aulas/sisdig_pratica8.md)
+9. [Prática 9](sisdig_aulas/sisdig_pratica9.md)
+10. [Prática 10](sisdig_aulas/sisdig_pratica10.md)
+11. [Prática 11](sisdig_aulas/sisdig_pratica11.md)
 
 ## Avaliações
 ### Avaliações Bimestrais
