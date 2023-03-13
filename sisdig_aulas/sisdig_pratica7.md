@@ -1,6 +1,6 @@
 # Prática 7 de laboratório: porta lógica NOR
 
-1. Utilizando uma [porta NAND 74HC02](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/sisdig_aulas/SN74HC02N_Texas.pdf), **fazer as ligações de VCC e GND do circuito integrado**.
+1. Utilizando uma [porta NOR 74HC02](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/sisdig_aulas/SN74HC02N_Texas.pdf), **fazer as ligações de VCC e GND do circuito integrado**.
 2. Montar o circuito da figura - sugestão: utilizar o software Logisim   
 ![Porta NOR](/sisdig_aulas/images_sisdig/praticanor.jpg)   
 3. Utilizar as entrada 1A e 1B, conforme especificado no *datasheet*, ligando-as com *jumpers*:  
