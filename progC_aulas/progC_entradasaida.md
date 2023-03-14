@@ -296,7 +296,7 @@ Usando o mesmo código tente inserir um nome composto. **O que acontece?**
   - A função *scanf* não lê espaços em branco.
 
 **Contornado a limitação da função *scanf***:  
-(i) Altere o código usando a função ***gets*** da biblioteca *conio.h*... Resolveu a limitação? - **Lembre-se do inconveniente da função *gets**** 
+(i) Altere o código usando a função ***gets*** da biblioteca *conio.h*... Resolveu a limitação? - **Lembre-se do inconveniente da função *gets*** 
 
 (ii) Utilizando o especificador `[^\n]`.
 Ver **[uma solução](https://github.com/claytonjasilva/prog_exemplos/blob/main/cursoC252d1.c)**  
