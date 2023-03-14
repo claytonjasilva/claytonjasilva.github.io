@@ -256,6 +256,9 @@ puts(<nome da string>);
 Apresentar a solução com duas casas decimais.  
 Ver **[uma solução](https://github.com/claytonjasilva/prog_exemplos/blob/main/cursoC251a.c)**
 
+**Como usar números complexos em C**  
+Ver **[uma solução](https://github.com/claytonjasilva/prog_exemplos/blob/main/cursoC251a1.c)**
+
 **b.** Elaborar um programa na linguagem C para calcular e escrever a área interna e o perímetro de um círculo de raio *r*.  
 **c.** Elaborar um programa na linguagem C para calcular e escrever o índice de massa (imc) corporal de uma pessoa. O imc é calculado dividindo-se o peso pelo quadrado da altura.  
 **d.** Elaborar um programa na linguagem C para ler cinco caracteres e **escrever seus respectivos valores decimais** em ASCII.  
