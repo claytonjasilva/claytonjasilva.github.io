@@ -188,7 +188,7 @@ Veja **[uma solução](https://github.com/claytonjasilva/prog_exemplos/blob/main
 
 Agora produza seu primeiro código...  
 **b.** Escrever uma mensagem `Agora vou iniciar...`. Escrever **na linha seguinte** `produzindo um novo codigo`. Incluir os comentários.  
-Veja [uma solução](https://github.com/claytonjasilva/prog_exemplos/blob/main/cursoC1101b.c)
+Veja **[uma solução](https://github.com/claytonjasilva/prog_exemplos/blob/main/cursoC1101b.c)**
 
 **c.** Escrever o resultado das expressões abaixo  
   - $3 + 4 \times 5 - [2 \times (4 + 6) ]$: **veja o [exemplo](https://github.com/claytonjasilva/prog_exemplos/blob/main/cursoC1101c.c)**    
