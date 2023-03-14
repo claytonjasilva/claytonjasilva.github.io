@@ -263,7 +263,7 @@ Consulte outras funções da biblioteca [complex.h](https://pubs.opengroup.org/o
 Ver **[uma solução](https://github.com/claytonjasilva/prog_exemplos/blob/main/cursoC251ab.c)**
 
 **c.** Elaborar um programa na linguagem C para calcular e escrever o índice de massa (imc) corporal de uma pessoa. O imc é calculado dividindo-se o peso pelo quadrado da altura.  
-**d.** Elaborar um programa na linguagem C para **ler e escrever cinco caracteres, suando as funções *scanf* e *printf***.  
+**d.** Elaborar um programa na linguagem C para **ler e escrever cinco caracteres, usando as funções *scanf* e *printf***.  
 Ver **[uma solução](https://github.com/claytonjasilva/prog_exemplos/blob/main/cursoC251d.c)**  
 
 **e.** Elaborar um programa na linguagem C para **escrever os caracteres das vogais usando a função *printf***.  
@@ -276,6 +276,7 @@ Ver **[uma solução](https://github.com/claytonjasilva/prog_exemplos/blob/main/
 
 **g.** Elaborar um programa na linguagem C para **escrever os caracteres minúsculos do alfabeto**.  
 Ver **[uma solução](https://github.com/claytonjasilva/prog_exemplos/blob/main/cursoC251g.c)**  
+**Tente agora com as lestras maiúsculas!**
 
 #### 2.5.2 Lendo cadeias de caracteres
 **a.** Elaborar um programa na linguagem C para ler cinco caracteres, **sem produzir o *eco* na console**. Escrever a sequência de caracteres lidos.  
