@@ -278,7 +278,7 @@ Ver **[uma solução](https://github.com/claytonjasilva/prog_exemplos/blob/main/
 Ver **[uma solução](https://github.com/claytonjasilva/prog_exemplos/blob/main/cursoC251g.c)**  
 **Tente agora com as lestras maiúsculas!**
 
-#### 2.5.2 Lendo cadeias de caracteres
+#### 2.5.2 Usando a biblioteca *conio.h* e lendo cadeias de caracteres
 **a.** Elaborar um programa na linguagem C para ler cinco caracteres, **sem produzir o *eco* na console**. Escrever a sequência de caracteres lidos.  
 Ver **[uma solução](https://github.com/claytonjasilva/prog_exemplos/blob/main/cursoC252a.c)**  
 
