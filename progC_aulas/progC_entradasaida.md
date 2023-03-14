@@ -280,9 +280,11 @@ Ver **[uma solução](https://github.com/claytonjasilva/prog_exemplos/blob/main/
 
 #### 2.5.2 Usando a biblioteca *conio.h* e lendo cadeias de caracteres
 **a.** Elaborar um programa na linguagem C para ler cinco caracteres, **sem produzir o *eco* na console**. Escrever a sequência de caracteres lidos.  
-Ver **[uma solução](https://github.com/claytonjasilva/prog_exemplos/blob/main/cursoC252a.c)**  
+Ver **[uma solução](https://github.com/claytonjasilva/prog_exemplos/blob/main/cursoC252a.c)**    
+Tente agora mudar a funcao *getch* pela funcao *getche* e veja o que acontece - **a função *getche* gera um eco do caractere digitado**
 
-**b.** Elaborar um programa na linguagem C para ler cinco caracteres, **produzindo o *eco* na console**. Escrever a sequência de caracteres lidos.   
+**b.** Elaborar um programa na linguagem C para ler uma frase, utilizando a função *getch*, e escrever a frase digitada.   
+
 **c.** Elaborar um programa na linguagem C para **criar uma variável que armazene o seu próprio nome**.   
 Ver **[uma solução](https://github.com/claytonjasilva/prog_exemplos/blob/main/cursoC252c.c)**   
 
