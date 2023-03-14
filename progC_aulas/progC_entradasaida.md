@@ -251,7 +251,7 @@ puts(<nome da string>);
 ```
 
 ## 2.5 Exemplos de aula
-#### 2.5.1 Formatando saída
+#### 2.5.1 Formatando saída, lendo e escrevendo caracteres
 **a.** Elaborar um programa na linguagem C para ler os coeficientes de uma equação do segundo grau e calcular as raízes da equação.  
 Apresentar a solução com duas casas decimais.  
 Ver **[uma solução](https://github.com/claytonjasilva/prog_exemplos/blob/main/cursoC251a.c)**
@@ -277,7 +277,7 @@ Ver **[uma solução](https://github.com/claytonjasilva/prog_exemplos/blob/main/
 **g.** Elaborar um programa na linguagem C para **escrever os caracteres minúsculos do alfabeto**.  
 Ver **[uma solução](https://github.com/claytonjasilva/prog_exemplos/blob/main/cursoC251g.c)**  
 
-#### 2.5.2 Lendo caracteres e cadeias de caracteres
+#### 2.5.2 Lendo cadeias de caracteres
 **a.** Elaborar um programa na linguagem C para ler cinco caracteres, **sem produzir o *eco* na console**. Escrever a sequência de caracteres lidos.  
 Ver **[uma solução](https://github.com/claytonjasilva/prog_exemplos/blob/main/cursoC252a.c)**  
 
