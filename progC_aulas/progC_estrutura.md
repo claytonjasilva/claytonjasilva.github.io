@@ -223,6 +223,8 @@ Calcular e escrever a média.
 Ver **[uma solução](https://github.com/claytonjasilva/prog_exemplos/blob/main/cursoC1103d.c)**
 
 **e.** Escrever um programa em C para ler o consumo de combustível de um veículo. Ler também a capacidade do tanque de combustível. Escrever quantos quilômetros o veículo irá rodar com um tanque cheio.    
+Ver **[uma solução](https://github.com/claytonjasilva/prog_exemplos/blob/main/cursoC1103e.c)**
+
 **f.** Escrever um programa em C para ler o perímetro de uma pista. Ler também a distância percorrida pelo veículo em um determinado tempo. 
 O programa deverá escrever quantas voltas completas o veículo realizou e qual distância percorreu após completar a última volta.  
 Ver **[uma solução](https://github.com/claytonjasilva/prog_exemplos/blob/main/cursoC1103f.c)**
