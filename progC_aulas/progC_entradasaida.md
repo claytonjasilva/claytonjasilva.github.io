@@ -283,12 +283,13 @@ Ver **[uma solução](https://github.com/claytonjasilva/prog_exemplos/blob/main/
 Ver **[uma solução](https://github.com/claytonjasilva/prog_exemplos/blob/main/cursoC252a.c)**    
 Tente agora mudar a funcao *getch* pela funcao *getche* e veja o que acontece - **a função *getche* gera um eco do caractere digitado**
 
-**b.** Elaborar um programa na linguagem C para ler uma frase, utilizando a função *getch*, e escrever a frase digitada.   
+**b.** Elaborar um programa na linguagem C para ler uma frase com 15 caracteres - preencher a frase com espaços em branco se ela não possuir 15 caracteres, utilizando a função *getch*, e escrever a frase digitada.   
+Ver **[uma solução](https://github.com/claytonjasilva/prog_exemplos/blob/main/cursoC252b.c)**    
 
-**c.** Elaborar um programa na linguagem C para **criar uma variável que armazene o seu próprio nome**.   
+**c.** Elaborar um programa na linguagem C para **criar uma variável que armazene uma *string* com o seu próprio nome**.   
 Ver **[uma solução](https://github.com/claytonjasilva/prog_exemplos/blob/main/cursoC252c.c)**   
 
-**d.** Elaborar um programa na linguagem C para criar uma variável que armazene o seu prórpio nome. **Inicializar a variável como um vetor**.   
+**d.** Elaborar um programa na linguagem C para criar uma variável que armazene o seu próprio nome. **Inicializar a variável como um vetor**.   
 **e.** Elaborar um programa na linguagem C para ler o nome de uma pessoa. Escrever o nome lido.  
 Ver **[uma solução](https://github.com/claytonjasilva/prog_exemplos/blob/main/cursoC252e.c)**   
 
