@@ -191,13 +191,13 @@ Agora produza seu primeiro código...
 Veja **[uma solução](https://github.com/claytonjasilva/prog_exemplos/blob/main/cursoC1101b.c)**
 
 **c.** Escrever o resultado das expressões abaixo  
-  - $3 + 4 \times 5 - [2 \times (4 + 6) ]$: **veja o [exemplo](https://github.com/claytonjasilva/prog_exemplos/blob/main/cursoC1101c.c)**    
+  - $3 + 4 \times 5 - [2 \times (4 + 6) ]$: veja **[uma solução](https://github.com/claytonjasilva/prog_exemplos/blob/main/cursoC1101c.c)**    
   - $6 + 4 \times 8 \times (3 + 7 + 27)$  
-  - $\frac{3 + 4 \times 5} {[2 \times (4 + 6) ]}$: **veja o [exemplo](https://github.com/claytonjasilva/prog_exemplos/blob/main/cursoC1101c_1.c)**   
+  - $\frac{3 + 4 \times 5} {[2 \times (4 + 6) ]}$: veja **[uma solução](https://github.com/claytonjasilva/prog_exemplos/blob/main/cursoC1101c_1.c)**   
   - $\frac{3} {[6 \times (1.25 + 6.78)]}$  
  
  **d.** Usando a biblioteca `math.h`, escrever o resultado das expressões abaixo    
-  - $3^{4 \times 5 \times [2 \times (4 + 6) ]}$: **veja o [exemplo](https://github.com/claytonjasilva/prog_exemplos/blob/main/cursoC1101d.c)**    
+  - $3^{4 \times 5 \times [2 \times (4 + 6) ]}$: veja **[uma solução](https://github.com/claytonjasilva/prog_exemplos/blob/main/cursoC1101d.c)**    
   - $\sqrt{2 \times (5 + 3) ^ {34}}$  -   
 
 #### 1.10.2 Declarando e usando variáveis
