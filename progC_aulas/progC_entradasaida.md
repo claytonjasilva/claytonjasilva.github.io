@@ -255,9 +255,9 @@ puts(<nome da string>);
 **a.** Elaborar um programa na linguagem C para ler os coeficientes de uma equação do segundo grau e calcular as raízes da equação.  
 Apresentar a solução com duas casas decimais.  
 Ver **[uma solução](https://github.com/claytonjasilva/prog_exemplos/blob/main/cursoC251a.c)**
-
 **Como usar números complexos em C**  
 Ver **[uma solução](https://github.com/claytonjasilva/prog_exemplos/blob/main/cursoC251a1.c)**
+Consulte outras funções da biblioteca [complex.h](https://pubs.opengroup.org/onlinepubs/9699919799/basedefs/complex.h.html)
 
 **b.** Elaborar um programa na linguagem C para calcular e escrever a área interna e o perímetro de um círculo de raio *r*.  
 **c.** Elaborar um programa na linguagem C para calcular e escrever o índice de massa (imc) corporal de uma pessoa. O imc é calculado dividindo-se o peso pelo quadrado da altura.  
