@@ -288,8 +288,11 @@ Ver **[uma solução](https://github.com/claytonjasilva/prog_exemplos/blob/main/
 
 **c.** Elaborar um programa na linguagem C para **criar uma variável que armazene uma *string* com o seu próprio nome**.   
 Ver **[uma solução](https://github.com/claytonjasilva/prog_exemplos/blob/main/cursoC252c.c)**   
+Faça o mesmo código, porém **inicializando a *string* com um vetor *{e[0],e[1],e[2],...}*, onde cada elemento do vetor é um caractere**
 
-**d.** Elaborar um programa na linguagem C para criar uma variável que armazene o seu próprio nome. **Inicializar a variável como um vetor**.   
+**d.** Elaborar um programa na linguagem C para ler o nome de uma pessoa, utilizando a função *scanf*, e escrever o nome lido.  
+
+
 **e.** Elaborar um programa na linguagem C para ler o nome de uma pessoa. Escrever o nome lido.  
 Ver **[uma solução](https://github.com/claytonjasilva/prog_exemplos/blob/main/cursoC252e.c)**   
 
