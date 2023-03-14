@@ -260,6 +260,8 @@ Ver **[uma solução](https://github.com/claytonjasilva/prog_exemplos/blob/main/
 Consulte outras funções da biblioteca [complex.h](https://pubs.opengroup.org/onlinepubs/9699919799/basedefs/complex.h.html)
 
 **b.** Elaborar um programa na linguagem C para calcular e escrever a área interna e o perímetro de um círculo de raio *r*.  
+Ver **[uma solução](https://github.com/claytonjasilva/prog_exemplos/blob/main/cursoC251ab.c)**
+
 **c.** Elaborar um programa na linguagem C para calcular e escrever o índice de massa (imc) corporal de uma pessoa. O imc é calculado dividindo-se o peso pelo quadrado da altura.  
 **d.** Elaborar um programa na linguagem C para ler cinco caracteres e **escrever seus respectivos valores decimais** em ASCII.  
 Ver **[uma solução](https://github.com/claytonjasilva/prog_exemplos/blob/main/cursoC251d.c)**  
