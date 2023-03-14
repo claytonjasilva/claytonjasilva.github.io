@@ -292,11 +292,16 @@ Faça o mesmo código, porém **inicializando a *string* com um vetor *{e[0],e[1
 
 **d.** Elaborar um programa na linguagem C para ler o primeiro nome de uma pessoa, utilizando a função *scanf*, e escrever o nome lido.  
 Ver **[uma solução](https://github.com/claytonjasilva/prog_exemplos/blob/main/cursoC252d.c)**   
-Usando o mesmo código tente inserir um nome composto. **O que acontece?**  - A função *scanf* não lê espaços em branco.
-Altere o código usando a função *gets* da biblioteca *conio.h*...  
-Você pode contornar a limitação da função *scanf* utilizando o especificador `[^\n]`.
-Ver **[uma solução](https://github.com/claytonjasilva/prog_exemplos/blob/main/cursoC252d1.c)**  **OU**  
-utilizando a função *fgets*, que tem a sintaxe   
+Usando o mesmo código tente inserir um nome composto. **O que acontece?**  
+  - A função *scanf* não lê espaços em branco.
+
+**Contornado a limitação da função *scanf***:  
+(i) Altere o código usando a função ***gets*** da biblioteca *conio.h*... Resolveu a limitação? - **Lembre-se do inconveniente da função *gets**** 
+
+(ii) Utilizando o especificador `[^\n]`.
+Ver **[uma solução](https://github.com/claytonjasilva/prog_exemplos/blob/main/cursoC252d1.c)**  
+
+(iii) Utilizando a função *fgets*, que tem a sintaxe   
 ```
 fgets(<nome da string>, <tamanho da string>, stdin);
 ```
