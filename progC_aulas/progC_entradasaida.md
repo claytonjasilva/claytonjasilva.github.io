@@ -274,7 +274,7 @@ Ver **[uma solução](https://github.com/claytonjasilva/prog_exemplos/blob/main/
 **f.** Elaborar um programa na linguagem C para **ler cinco caracteres e escrever seu respectivo valor ASCII, usando as funções *scanf* e *printf***.  
 Ver **[uma solução](https://github.com/claytonjasilva/prog_exemplos/blob/main/cursoC251f.c)**  
 
-**g.** Elaborar um programa na linguagem C para ler cinco caracteres e **escrever os caracteres sem usar a função *printf***.  
+**g.** Elaborar um programa na linguagem C para **escrever 25 caracteres minúsculos do alfabeto**.  
 Ver **[uma solução](https://github.com/claytonjasilva/prog_exemplos/blob/main/cursoC251g.c)**  
 
 #### 2.5.2 Lendo caracteres e cadeias de caracteres
