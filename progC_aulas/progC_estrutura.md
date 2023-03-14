@@ -220,6 +220,8 @@ Outros exemplos...
 **c.** Escrever um programa em C para calcular o produto de dois numeros inteiros, digitados pelo usuário.  
 **d.** Escrever um programa para ler as notas de ap1, ap2 e ac de um aluno.
 Calcular e escrever a média.   
+Ver **[uma solução](https://github.com/claytonjasilva/prog_exemplos/blob/main/cursoC1103d.c)**
+
 **e.** Escrever um programa em C para ler o consumo de combustível de um veículo. Ler também a capacidade do tanque de combustível. Escrever quantos quilômetros o veículo irá rodar com um tanque cheio.    
 **f.** Escrever um programa em C para ler o perímetro de uma pista. Ler também a distância percorrida pelo veículo em um determinado tempo. 
 O programa deverá escrever quantas voltas completas o veículo realizou e qual distância percorreu após completar a última volta.  
