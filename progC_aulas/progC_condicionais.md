@@ -183,7 +183,7 @@ default:
 Escrever um programa em C para resolver as seguintes expressões lógicas (descritas sem seguir a sintaxe de C) e escrever o resultado:  
 **a.** $(2 > x) e (3 + 4 = 6)$, dado que *x*=7  
 Ver **[uma solução](https://github.com/claytonjasilva/prog_exemplos/blob/main/cursoC351a.c)**  
-**Pergunta*!** Há como ajustar o valor de *x* na expressão lógica para que o resultado dê **verdadeiro**?.  
+**Pergunta!** Há como ajustar o valor de *x* na expressão lógica para que o resultado dê **verdadeiro**?.  
 
 **b.** $(x > y) ou (x + y = 6)$, dado que *x*=3, *y*=5  
 **Lembre-se que:**  
