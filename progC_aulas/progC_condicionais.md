@@ -196,7 +196,13 @@ Ver **[uma solução](https://github.com/claytonjasilva/prog_exemplos/blob/main/
 
 #### 3.5.2 Condicionais simples e compostas
 **a.** Elaborar um programa na linguagem C para ler dois diferentes números; calcular e escrever o maior dos números lidos.  
-Ver **[uma solução](https://github.com/claytonjasilva/prog_exemplos/blob/main/cursoC352a.c)**
+Ver **[uma solução](https://github.com/claytonjasilva/prog_exemplos/blob/main/cursoC352a.c)**  
+Observe o uso do comando `goto`, cujo formato geral é  
+```
+<nome do rotulo>: <instrução>
+...
+goto <nome do rótulo>;
+```
 
 **b.** Elaborar um programa na linguagem C para ler dois números; calcular e escrever o maior dos números lidos.
 Admitir que o usuário pode digitar números iguais.
