@@ -254,8 +254,8 @@ puts(<nome da string>);
 #### 2.5.1 Formatando saída, lendo e escrevendo caracteres
 **a.** Elaborar um programa na linguagem C para ler os coeficientes de uma equação do segundo grau e calcular as raízes da equação.  
 Apresentar a solução com duas casas decimais.  
-Ver **[uma solução](https://github.com/claytonjasilva/prog_exemplos/blob/main/cursoC251a.c)**
-**Como usar números complexos em C**  
+Ver **[uma solução](https://github.com/claytonjasilva/prog_exemplos/blob/main/cursoC251a.c)**  
+**Como usar números complexos em C?**  
 Ver **[uma solução](https://github.com/claytonjasilva/prog_exemplos/blob/main/cursoC251a1.c)**
 Consulte outras funções da biblioteca [complex.h](https://pubs.opengroup.org/onlinepubs/9699919799/basedefs/complex.h.html)
 
