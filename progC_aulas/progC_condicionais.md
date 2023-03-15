@@ -197,15 +197,25 @@ Ver **[uma solução](https://github.com/claytonjasilva/prog_exemplos/blob/main/
 #### 3.5.2 Condicionais simples e compostas
 **a.** Elaborar um programa na linguagem C para ler dois diferentes números; calcular e escrever o maior dos números lidos.  
 Ver **[uma solução](https://github.com/claytonjasilva/prog_exemplos/blob/main/cursoC352a.c)**  
-Observe o uso do comando `goto`, cujo formato geral é  
+
+**Observe o uso do comando `goto`,** cujo formato geral é  
 ```
 <nome do rotulo>: <instrução>
 ...
 goto <nome do rótulo>;
 ```
 
-**b.** Elaborar um programa na linguagem C para ler dois números; calcular e escrever o maior dos números lidos.
-Admitir que o usuário pode digitar números iguais.
+**O operador ?**  
+Em C a forma *if <expressão lógica> {<bloco 1>} else {<bloco 2>}* pode ser substituída pelo uso do operador `? com a seguinte sintaxe:  
+```
+<expressão lógica>? <bloco 1>:<bloco 2>;
+```
+Ver **[uma solução](https://github.com/claytonjasilva/prog_exemplos/blob/main/cursoC352a1.c)**  
+
+**b.** Elaborar um programa na linguagem C para ler o nome e a respectiva idade de duas pessoas; calcular e escrever o nome da pessoa mais velha.
+Admitir que as pessoas podem ter a mesma idade.  
+Ver **[uma solução](https://github.com/claytonjasilva/prog_exemplos/blob/main/cursoC352b.c)**  
+
 **c.** Elaborar um programa na linguagem C para ler a idade de uma pessoa. Se a idade for igual ou inferior a 10 anos, classificar a pessoa como 'criança'. Caso a idade seja inferior a 18 anos e superior a 10 anos, classificar como 'adolescente'. Em qualquer outro caso, classificar como 'adulto'. Escrever a classificação atribuída.
 Ver **[uma solução](https://github.com/claytonjasilva/prog_exemplos/blob/main/cursoC352c.c)**  
 
