@@ -47,7 +47,7 @@ As operações lógicas básicas são **conjunção**, **disjunção** e **nega�
 | \|\| | disjunção (*or*) |
 | ! | negação |
 
-Existem operações que podem ser aplicadas bit a bit. Discutiremos esse ponto posteriormente.
+Existem operações que podem ser aplicadas **bit a bit**. Discutiremos esse ponto posteriormente.
 
 ## 3.2 Condicionais simples
 Na condicional simples, a execução de um bloco de instruções interno ao comando é condicionada ao resultado da expressão lógica da sentença.
