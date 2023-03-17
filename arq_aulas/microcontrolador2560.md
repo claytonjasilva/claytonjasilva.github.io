@@ -176,8 +176,10 @@ Ao usar comandos específicos IN e OUT, devem ser utilizados os endereços de I/
 Ao endereçar registradores de E/S como espaço de dados usando as instruções LD e ST, 0x20 deve ser adicionado a esses endereços.  
 
 ### 9.2.6 *Set* de instruções
-O manual do *set* de instruções pode ser consultado em ...
+O manual do *set* de instruções pode ser consultado em ...  
 
+A consulta ao manual segue um padrão  
+![Manual do *set* de instruções do Atmega 2560](/arq_aulas/images/atmegamanualsetinstrucoes.jpg)
 
 ### 9.2.6 *Assembly* e *Assembler*
 
