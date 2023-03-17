@@ -22,16 +22,41 @@ Microcontroladores são computadores de um único chip.
   - 16 canais conversor AD
 ...
 - I/O
-
-[Datasheet Atmega 2560](https://ww1.microchip.com/downloads/en/devicedoc/atmel-2549-8-bit-avr-microcontroller-atmega640-1280-1281-2560-2561_datasheet.pdf)
+Ao combinar uma **CPU RISC** de 8 bits com Flash autoprogramável no sistema em um chip monolítico, o Atmel 
+ATmega2560 é um poderoso microcontrolador que fornece uma solução altamente flexível e econômica 
+para muitas aplicações de controle embarcadas.
+**Todos os detalhes do microcontrolador podem ser obtidos em**  
+**[Datasheet Atmega 2560](https://ww1.microchip.com/downloads/en/devicedoc/atmel-2549-8-bit-avr-microcontroller-atmega640-1280-1281-2560-2561_datasheet.pdf)**
 
 ### 9.2.2 Pinagem
-A figura apresenta a pinagem do Atmega 2560.
+A figura apresenta a pinagem do Atmega 2560.  
+
 ![Pinagem do Atmega 2560](/arq_aulas/images/atmegapinagem.jpg)
 
-
+#### Descrição geral dos pinos
+Os primncipais pinos são:  
+1. Portas A, B, C, D E, F , G, H, J, K, L, cada uma de 8 bits (P7...P0), bi-direcionais. Algumas possuem funcionalidades específicas, como descritas no *datasheet*.
+2. Alimentação, VDD e GND.
+3. RESET.
 
 ### 9.2.3 Diagrama em blocos
+A figura apresenta o diagrama de blocos do Atmega 2560.
+
+![Diagrama em blocos do Atmega 2560](/arq_aulas/images/atmegapinagem.jpg)
+
+O ATmega fornece os seguintes recursos, entre outros:  
+1. Sistema de memória constitído de 256 KB de memória In-System Programável Flash (Read-While-Write), 4KB de EEPROM, 8KB de SRAM e 32 registradores de uso geral
+  - O Flash ISP no chip permite que a memória do programa seja reprogramada no sistema através de uma interface serial SPI, por um conversor não volátil convencional programador de memória, ou por um programa de inicialização On-chip rodando no núcleo AVR.
+3. 4 portas de comunicação serial assíncrona (USART);
+4. Conversor analógico digital (ADC) de 16 canais e 10 bits;
+5. Porta serial SPI, IEEE® std;
+6. O dispositivo é fabricado usando a tecnologia de memória não volátil de alta densidade da Atmel. 
+
+### 9.2.4 Núcleo da CPU
+A figura apresenta o núcleo da CPU do Atmega 2560.
+
+![Núcleo da CPU do Atmega 2560](/arq_aulas/images/atmegacpu.jpg)
+
 
 ### 9.2.4 Endereçamento
 
