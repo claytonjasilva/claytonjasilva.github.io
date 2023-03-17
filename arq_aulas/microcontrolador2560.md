@@ -127,7 +127,27 @@ para endereçamento indireto do espaço de dados. Os três registradores de ende
 definido como descrito na figura.  
 ![Registradores de endereço do Atmega 2560](/arq_aulas/images/atmegaregistradorendereco.jpg)
 
-### 9.2.4 Endereçamento
+### 9.2.5 Sistema de memória 
+A arquitetura AVR tem dois espaços de memória principais, a Memória de Dados e o espaço de Memória de Programa. Além disso, possui uma memória EEPROM para armazenamento de dados. Todos os três espaços de memória são lineares e regulares.
+
+#### a. Memória de programa *flash* reprogramável no sistema  
+O ATmega contém 256KB On-chip In-System Reprogrammable Flash para armazenamento de programas.  
+Como todas as instruções do AVR têm 16 ou 32 bits de largura, a Flash é organizada como 128K × 16 bits.  
+Para segurança de software, o espaço de memória do Programa Flash é dividido em duas seções,  
+Seção Programa de Inicialização e   
+uma seção Programa Aplicativo.  
+O ATmega possui contador de programa (PC) tem  com 17 bits de largura, endereçando assim os locais de memória de programa de 128K.
+A figura ilustra a organização dos registrdores de uso geral  
+![Memória *flash* do Atmega 2560](/arq_aulas/images/atmegaflash.jpg)
+
+#### b. SRAM  
+A figura mostra como a memória SRAM do ATmega é organizada.
+![Memória SRAM do Atmega 2560](/arq_aulas/images/atmegasram.jpg)
+
+Uma SRAM de dados externa opcional pode ser usada com o ATmega. Esta SRAM ocupará
+uma área nos locais de endereço restantes no espaço de endereço de 64 K. Esta área começa no endereço seguinte ao da
+RAM interna.
+
 
 ### 9.2.5 *Set* de instruções
 
