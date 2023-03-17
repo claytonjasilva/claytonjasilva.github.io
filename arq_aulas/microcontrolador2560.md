@@ -146,10 +146,38 @@ A figura mostra como a memória SRAM do ATmega é organizada.
 
 Uma SRAM de dados externa opcional pode ser usada com o ATmega. Esta SRAM ocupará
 uma área nos locais de endereço restantes no espaço de endereço de 64 K. Esta área começa no endereço seguinte ao da
-RAM interna.
+RAM interna.  
+Os cinco modos de endereçamento diferentes para a cobertura da memória de dados: Direto, Indireto com Deslocamento, Indireto, Indireto
+com Pré-decremento e Indireto com Pós-incremento.  
+O endereçamento direto atinge todo o espaço de dados.  
+O modo Indireto com Deslocamento atinge 63 localizações de endereço a partir do endereço base fornecido pelo registrador Y
+ou registrador Z.  
+Os registradores R26 a R31 apresentam os registradores de ponteiro de endereçamento indireto.  
+Ao usar modos de endereçamento indireto de registro com pré-decremento e pós-incremento automáticos, o endereço
+os registradores X, Y e Z são decrementados ou incrementados.  
+Os 32 registradores de uso geral, 64 registradores de E/S e os 8.192 bytes de SRAM de dados internos no
+ATmega são todos acessíveis através de todos esses modos de endereçamento. 
 
+#### c. EEPROM
+O ATmega contém 4 KB de memória EEPROM de dados.  
+É organizado separadamente do espaço de dados, no qual bytes individuais podem ser lidos e escritos. 
+O acesso entre a EEPROM e a UCP é descrito a seguir, especificando o EEPROM Address Registers, EEPROM Data Register e EEPROM Control Register.  
+Os registradores de acesso EEPROM são acessíveis no espaço de E/S.  
+Se o código do usuário contém instruções que gravam a EEPROM, algumas precauções devem ser tomadas.
 
-### 9.2.5 *Set* de instruções
+#### d. Memória de I/O  
+Todos os periféricos e E/S do ATmega são colocados no espaço de E/S. Todos os locais de E/S podem ser
+acessado pelas instruções LD/LDS/LDD e ST/STS/STD, transferindo dados entre os 32
+registradores de trabalho e o espaço de E/S.  
+Registradores de E/S dentro da faixa de endereço 0x00 - 0x1F são diretamente acessíveis por bit
+usando as instruções SBI e CBI. Nesses registradores, o valor de bits individuais pode ser verificado usando as instruções SBIS
+e SBIC. 
+Ao usar comandos específicos IN e OUT, devem ser utilizados os endereços de I/O 0x00 - 0x3F.   
+Ao endereçar registradores de E/S como espaço de dados usando as instruções LD e ST, 0x20 deve ser adicionado a esses endereços.  
+
+### 9.2.6 *Set* de instruções
+O manual do *set* de instruções pode ser consultado em ...
+
 
 ### 9.2.6 *Assembly* e *Assembler*
 
