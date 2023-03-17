@@ -3,7 +3,8 @@
 ## 9.1 Definição de microcontroladores
 
 Circuitos integrados que possuem internamente todos os componentes necessário ao seu funcionamento (exceto fonte de alimentação).  
-Microcontroladores são computadores de um único chip. 
+Microcontroladores são computadores de um único chip.   
+
 ![Microcontroladores - visão geral](/arq_aulas/images/microcontrolador.jpg)
 
 ## 9.2 Sobre o 2560
@@ -25,6 +26,10 @@ Microcontroladores são computadores de um único chip.
 [Datasheet Atmega 2560](https://ww1.microchip.com/downloads/en/devicedoc/atmel-2549-8-bit-avr-microcontroller-atmega640-1280-1281-2560-2561_datasheet.pdf)
 
 ### 9.2.2 Pinagem
+A figura apresenta a pinagem do Atmega 2560.
+![Pinagem do Atmega 2560](/arq_aulas/images/atmegapinagem.jpg)
+
+
 
 ### 9.2.3 Diagrama em blocos
 
