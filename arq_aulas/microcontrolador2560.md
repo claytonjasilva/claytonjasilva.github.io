@@ -4,7 +4,7 @@
 
 Circuitos integrados que possuem internamente todos os componentes necessário ao seu funcionamento (exceto fonte de alimentação).  
 Microcontroladores são computadores de um único chip. 
-
+![Microcontroladores - visão geral](/arq_aulas/images/microcontrolador.jpg)
 
 ## 9.2 Sobre o 2560
 
