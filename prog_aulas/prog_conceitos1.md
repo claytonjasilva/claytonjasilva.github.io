@@ -79,7 +79,7 @@ por exemplo, `y = x`, o que ocorre na realidade é que a nova variável *y* **fa
 ## 2.4 Exercícios com tipos, operadores, entrada/saída  
 1. Elaborar um programa na linguagem Python para ler as notas da ap1, ap2 e ac; calcular e escrever a média do semestre do aluno, de acordo com as regras do Ibmec.  [*Script 2.1*](https://github.com/claytonjasilva/prog_exemplos/blob/main/calcNota.py)
 2. Elaborar um programa na linguagem Python para ler os coeficientes de uma equação do segundo grau. Lembre que  
-$x_1=\frac{-b+\sqrt{\Delta}}{2a}$ e $x_1=\frac{-b-\sqrt{\Delta}}{2a}$, onde $\Delta=b^2 - 4.a.c$  
+$x_1=\frac{-b+\sqrt{\Delta}}{2a}$ e $x_2=\frac{-b-\sqrt{\Delta}}{2a}$, onde $\Delta=b^2 - 4.a.c$  
 Obs. Para calcular a raiz quadrada pode-se incluir o comando `import math` e usar o método `math.sqrt(numero)` [*Script 2.3*](https://github.com/claytonjasilva/prog_exemplos/blob/main/calcRaiz.py)  
 3. Elaborar um programa na linguagem Python para calcular e escrever a área interna e o perímetro de um círculo de raio r e seu perímetro. [*Script 2.4*](https://github.com/claytonjasilva/prog_exemplos/blob/main/calcAreaCirc.py)
 5. Elaborar um programa na linguagem Python para calcular e escrever o índice de massa (imc) corporal de uma pessoa. O imc é calculado dividindo-se o peso pelo quadrado da altura. [*Script 2.5*](https://github.com/claytonjasilva/prog_exemplos/blob/main/calcIMC.py)
