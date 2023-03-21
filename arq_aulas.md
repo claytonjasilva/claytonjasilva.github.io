@@ -33,7 +33,8 @@
 ### Avaliação Continuada
 Os instrumentos de avaliação continuada serão disponibilizados à medida que as aulas forem ministradas.  
 - [Form 1](https://forms.gle/MGsMCpGSf5sTQAWq9) - Semana 1
-- **[Form 2](https://forms.gle/yevnRzMavaEaK5jz9) - Semana 2**
+- [Form 2](https://forms.gle/yevnRzMavaEaK5jz9) - Semana 2
+- **[Form 3](https://forms.gle/P7JJUpwKbSWtLt4t9) - Semana 4**
 
 
 ## Exercícios  
