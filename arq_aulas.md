@@ -32,8 +32,8 @@
 
 ### Avaliação Continuada
 Os instrumentos de avaliação continuada serão disponibilizados à medida que as aulas forem ministradas.  
-- ![Form 1](/arq_aulas/images/ArquiteturaForm1.pdf) - Semana 1
-- ![Form 2](/arq_aulas/images/ArquiteturaForm2.pdf) - Semana 2
+- [Form 1](/arq_aulas/images/ArquiteturaForm1.pdf) - Semana 1
+- [Form 2](/arq_aulas/images/ArquiteturaForm2.pdf) - Semana 2
 - **[Form 3](https://forms.gle/P7JJUpwKbSWtLt4t9) - Semana 4**
 
 
