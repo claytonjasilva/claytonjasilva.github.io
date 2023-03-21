@@ -43,7 +43,7 @@ Os prinncipais pinos são:
 ### 9.2.3 Diagrama em blocos
 A figura apresenta o diagrama de blocos do Atmega 2560.
 
-![Diagrama em blocos do Atmega 2560](/arq_aulas/images/atmegapinagem.jpg)
+![Diagrama em blocos do Atmega 2560](/arq_aulas/images/atmegablocos.jpg)
 
 O ATmega fornece os seguintes recursos, entre outros:  
 1. Sistema de memória constitído de 256 KB de memória In-System Programável Flash (Read-While-Write), 4KB de EEPROM, 8KB de SRAM e 32 registradores de uso geral
