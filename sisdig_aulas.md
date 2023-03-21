@@ -35,8 +35,9 @@
 
 ### Avaliação Continuada
 Os instrumentos de avaliação continuada serão disponibilizados à medida que as aulas forem ministradas.  
-- [Form 1](https://1drv.ms/b/s!AsTd8oN7mu8pkdZ0vjkxxgZlbIpRUA?e=Cdmdwn)  
-- [Form 2](https://forms.gle/RSD78Vn4NeTbY2Sj9)  
+- [Form 1](/sisdig_aulas/images_sisdig/SistemasDigitaisForm1.pdf)
+- [Form 2](/sisdig_aulas/images_sisdig/SistemasDigitaisForm2.pdf)
+- **[Form 3](https://forms.gle/D52hTkCX3hazDBcR8)**
 
 ### Listas de exercício
 1. [Lista 1 de Exercícios](sisdig_aulas/sisdig_exercicios1_aulas.md)
