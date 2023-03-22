@@ -200,6 +200,17 @@ A consulta ao manual segue um padrão
 
 ### 9.2.6 *Assembly* e *Assembler*
 
+#### a. [O *set* de instruções do Atmega2560](https://ww1.microchip.com/downloads/en/DeviceDoc/AVR-Instruction-Set-Manual-DS40002198A.pdf)
+O manual apresenta detalhadamente a sintaxe, o formato binário (*opcode* e operando) e a semântica de todas as instruções do Atmega2560.  
+Apresenta também um conjunto de exemplos ilustrativos da utilização de cada instrução.
+
+#### b. [O *assembler* do Atmega2560](https://ww1.microchip.com/downloads/en/DeviceDoc/40001917A.pdf)
+O manual apresenta:  
+1. A sintaxe do *assmebler*;
+2. As diretivas, ou seja, a especificação de como o *assembler* deve trabalhar;
+3. As diretivas de pre-processamento; e
+4. As expressões aceitas pelo *assembler*. 
+
 ___
 **[Home Conteúdo Arquitetura de Computadores](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/arq_aulas.md)**  ou 
 **[Home Conteúdo Sistemas Digitais](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/sisdig_aulas.md)**   
