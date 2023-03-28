@@ -5,9 +5,10 @@
 2. [Álgebra Booleana e Portas Lógicas](sisdig_aulas/algebraPortasLogicas.md)  
 3. [Projeto de circuitos combinacionais](sisdig_aulas/circuitosCombinacionais.md)
 4. [Revisão: grandezas numéricas nos sistemas digitais](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/arq_aulas/dimensoesUnidadesAritmeticaComputacional1.md)
-5. [Circuitos aritméticos - somadores binários](sisdig_aulas/circuitosSomadores.md)
-6. [Circuitos codificadores/decodificadores](sisdig_aulas/circuitosDecodificadores.md)
-7. [Circuitos multiplexadores](sisdig_aulas/circuitosMultiplexadores.md)
+5. [Circuitos aritméticos - somadores binários e subtratores](sisdig_aulas/circuitosSomadores.md)
+6. [Circuitos lógicos - comparadores](sisdig_aulas/circuitosComparadores.md)
+7. [Circuitos codificadores/decodificadores](sisdig_aulas/circuitosDecodificadores.md)
+8. [Circuitos multiplexadores](sisdig_aulas/circuitosMultiplexadores.md)
 * Circuitos sequenciais  
     [Flip Flops](sisdig_aulas/sisdig_7.pdf)  
     [Aplicações com FF](sisdig_aulas/sisdig_8.pdf)  
