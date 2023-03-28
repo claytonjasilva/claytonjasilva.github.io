@@ -197,6 +197,8 @@ O *carry* é transportado ao módulo seguinte, caracterizando a dezena, centena,
 
 ___
 **[Home Conteúdo Sistemas Digitais](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/sisdig_aulas.md)**  
+**[Subtratores: próximo >>](https://github.com/claytonjasilva/claytonjasilva.github.io/edit/main/sisdig_aulas/circuitosSubtratores.md)**  
+
 
 
 
