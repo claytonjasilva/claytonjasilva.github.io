@@ -1,4 +1,4 @@
-# 5. Circuitos aritméticos - somadores binários 
+# 5. Circuitos aritméticos - somadores e subtratores binários 
 
 Sistemas digitais são projetados para realizar uma variedade de operações aritméticas com bits.  
 
