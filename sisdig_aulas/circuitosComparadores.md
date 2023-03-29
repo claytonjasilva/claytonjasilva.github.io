@@ -1,104 +1,40 @@
 # 6. Circuitos comparadores 
 
-Um comparador é um circuito combinacional projetado para comparar a grandeza relativa de grandezas binárias.
+## 6.1 Comparador de 2 bits
 
-A figura apresenta o diagrama funcional do circuito.
+Um comparador é um circuito combinacional projetado para comparar a grandeza relativa de grandezas binárias.  
+A figura apresenta o diagrama funcional do circuito.  
 ![Comparador de 2 bits](/sisdig_aulas/images_sisdig/comparador2bits.jpg)
 
+A tabela verdade que ilustra o funcionamento do circuito é a seguinte
 
+| A<sub>1</sub> | A<sub>0</sub> | B<sub>1</sub> | B<sub>0</sub> | A>B | A=B | A<B |
+| - | - | - | - | - | - | - |
+| 0 | 0 | 0 | 0 | 0 | 1 | 0 |
+| 0 | 0 | 0 | 1 | 0 | 0 | 1 |
+| 0 | 0 | 1 | 0 | 0 | 0 | 1 |
+| 0 | 0 | 1 | 1 | 0 | 0 | 1 |
+| 0 | 1 | 0 | 0 | 1 | 0 | 0 |
+| 0 | 1 | 0 | 1 | 0 | 1 | 0 |
+| 0 | 1 | 1 | 0 | 0 | 0 | 1 |
+| 0 | 1 | 1 | 1 | 0 | 0 | 1 |
+| 1 | 0 | 0 | 0 | 1 | 0 | 0 |
+| 1 | 0 | 0 | 1 | 1 | 0 | 0 |
+| 1 | 0 | 1 | 0 | 0 | 1 | 0 |
+| 1 | 0 | 1 | 1 | 0 | 0 | 1 |
+| 1 | 1 | 0 | 0 | 1 | 0 | 0 |
+| 1 | 1 | 0 | 1 | 1 | 0 | 0 |
+| 1 | 1 | 1 | 0 | 1 | 0 | 0 |
+| 1 | 1 | 1 | 1 | 0 | 1 | 0 |
 
+A figura abaixo apresenta o mapa K para a saída A>B.  
+![Mapa K: A>B](/sisdig_aulas/images_sisdig/mapaKamaiorb.jpg)
 
-## 5.2 Somador completo
-O somador completo apresenta o comportamento descrito pela tabela verdade apresentada abaixo  
-
-| A | B | C<sub>in</sub> | SOMA | C<sub>out</sub> |
-| - | - | -------------- |---- | ----- |
-| 0 | 0 | 0 | 0 | 0 |
-| 0 | 0 | 1 | 1 | 0 |
-| 0 | 1 | 0 | 1 | 0 |
-| 0 | 1 | 1 | 0 | 1 |
-| 1 | 0 | 0 | 1 | 0 |
-| 1 | 0 | 1 | 0 | 1 |
-| 1 | 1 | 0 | 0 | 1 |
-| 1 | 1 | 1 | 1 | 1 |
-
-, onde C<sub>in</sub> e C<sub>out</sub> representam respectivamente *carry* de entrada e *carry* de saída.  
-
-Logicamente o somador completo será representado pela figura abaixo.  
-![Somador completo](/sisdig_aulas/images_sisdig/somadorcompleto.jpg)
-
-Similarmente ao caso do meio-somador, pode-se obter a expressão booleana relativa a cada uma das saídaso somador completo.  
-Dela pode-se obter os respectivos circuitos digitais, implementados por portas lógicas.  
-
-## 5.3 Somador de *n* bits 
-Um somador de dois números binários A e B de *n* bits pode ser implementado modularmente,
-utilizando-se o **cascateamento** de **1 meio-somador** e ***n-1* somadores completos**.    
-
-O meio-somador realiza a operação de adição dos dígitos binários menos significativos de A e B, A<sub>0</sub> e B<sub>0</sub>.  
-
-O *carry* do meio-somador será **transportado** para o módulo seguinte.  
-
-A soma do meio-somador é o dígito menos significativo da soma resultante, S<sub>0</sub>.  
-
-O meio-somador é cascateado com um somador commpleto.
-
-As entradas A e B do somador completo recebem os respectivos dígitos do número binário a ser somado, A<sub>1</sub> e B<sub>1</sub>.
-
-No módulo do somador completo, a entrada de *carry in* recebe o bit transportado do módulo do meio-somador.  
-
-A saída do primeiro somador completo é S<sub>1</sub>.  
-
-Nos próximos módulos a arquitetura se repete como no primeior somador completo.  
-
-A figura ilustra o modelo lógico.  
-![Somador modular](/sisdig_aulas/images_sisdig/somadormodular.jpg)
-Observe que o dígito mais significativo da soma é *carry* do último módulo do somador.
-
-## 5.4 CI somador
+## 6.2 CI comparador
 
 ### 5.4.1 Circuitos integrados digitais (CIs)
 
-O **chip** é um conjunto de elementos eletrônicos integrados em um substrato de semicondutor.  
 
-Os elementos integrados são **encapsulados** em uma embalagem protetora de um determinado tipo (por exemplo, DIP).  
-
-Dependendo da quantidade de elementos integrados em um único substrado define-se o **grau de integração** do chip.  
-
-Os graus de integração são:  
-- SSI, de *small scale integration*,
-- MSI, de *medium scale integration*,
-- LSI, de *large scale integration*,
-- VLSI, de *very large scale integration*,
-- ULSI, de *ultra large scale integration*,
-- GSI, de *giga scale integration*.  
-
-As figuras abaixo ilustram a orgnização do chip.  
-![Encapsulamento chip](/sisdig_aulas/images_sisdig/circuitointegrado.jpg)  
-
-A figura (a) evidencia a pinagem do chip, através da qual são estabelecidas as conexões.
-
-Observe que a figura (b) indica um *chanfro* (entalhe) que os chips possuem a fim de indicar a numeração da **pinagem**.  
-
-A complexidade pode ser definida pelo número de portas que são integradas no substrato.  
-
-A tabela apresenta o grau de complexidade e o respectivo número de portas.
-
-| Complexidade | Número de portas |
-| ------------ | ---------------- |
-| SSI | menor do que 12 |
-| MSI | 12 a 99 |
-| LSI | 100 a 9.999 |
-| VLSI | 10.000 a 99.999 |
-| ULSI | 100.000 a 999.999 |
-| GSI | maior do que 1.000.000 |
-
-### 5.4.2 Somadores integrados 
-Existem diversos tipos de chips cuja função é produzir a soma de dígitos binários.  
-
-Pela demanda existente, os circuitos constituídos de portas para realizar a soma são integrados e 
-encapsulados em chips por diversos fabricantes de componentes digitais, como a *National Semiconductor*.  
-
-São identificados por um código. Por exemplo, 54LS283.
 
 Ver o *datasheet* em [*Datasheet* do 54LS283](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/sisdig_aulas/74LS283_National.pdf).  
 
