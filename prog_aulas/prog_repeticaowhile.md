@@ -94,6 +94,11 @@ Em caso contrário, o interpretador executará as repetições do *while* normal
 #### b. **Instrução `continue`**  
 A instrução `continue` interrompe a execução do *loop* no ponto em que foi inserido e remete a execução para o próximo teste de condição do `while` ou para o próximo *loop* do `for`. 
 
+### 4.2.4 Exemplos discutidos em sala
+1. Elaborar um *script* em Python que leia o nome e a idade de um grupo de animais. Escrever o nome do animal mais velho.  
+Interromper a leitura quando o usuário digitar idade igual a 0.
+2. 
+
 ___     
 **[Home Programação Estruturada com Python](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/progPython_aulas.md)**  
 **Instrução composta de repetição *for*: [próximo>>](prog_repeticaofor.md)**  
