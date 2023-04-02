@@ -10,7 +10,7 @@ Cada **palavra do código** define uma representação binária inequívoca, ou 
 
 Caso haja duas palavras distintas para representar o mesmo elemento discreto o código é **ambíguo**, o que é uma característica indesejável.  
 
-Existem diferente esquemas de codificação, cada um com suas particularidade, vantagens e desvantagens (Não as discutiremos aqui).  
+Existem diferente esquemas de codificação, cada um com suas particularidades, vantagens e desvantagens (Não as discutiremos aqui).  
 
 ### 6.1.1 Código BCD (*Binary Coded Decimal*)
 O código BCD representa os dígitos decimais.  
