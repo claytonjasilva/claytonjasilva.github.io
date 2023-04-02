@@ -35,7 +35,7 @@ Existem aplicações em que é desjável representar valores numéricos bem como
 
 Esse tipo de código possui distância unitária, portanto é chamado de **código UCD**. 
 
-Um código UCD conhecido é o chamado código de Gray de 4 bits.  
+Um código UDC conhecido é o chamado código de Gray de 4 bits.  
 
 | Palavra | Decimal |
 | ------- | ------- |
