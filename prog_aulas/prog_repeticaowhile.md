@@ -99,6 +99,11 @@ A instrução `continue` interrompe a execução do *loop* no ponto em que foi i
 Interromper a leitura quando o usuário digitar idade igual a 0.
 2. Elaborar um *script* em Python que leia o nome e a idade de um grupo de animais. Escrever a média das idades lidas.  
 Interromper a leitura quando o usuário digitar idade igual a 0.
+3. Elaborar um *script* em Python que leia a classificação (J - jovem, A - adulto, V - velho), a idade e o peso de um grupo de animais.   
+Escrever a média das idades dos animais jovens.  
+Escrever a idade do animal mais pesado dentre os adultos.  
+Escrever o percentual dos animais velhos.  
+Interromper a leitura quando o usuário digitar idade igual a 0.
 
 ___     
 **[Home Programação Estruturada com Python](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/progPython_aulas.md)**  
