@@ -106,6 +106,11 @@ Escrever a média das idades dos animais jovens.
 Escrever a idade do animal mais pesado dentre os adultos.  
 Escrever o percentual dos animais velhos.  
 Interromper a leitura quando o usuário digitar idade igual a 0.
+5. Elaborar um *script* em Python para ler um número inteiro e uma dentre 4 opções de operação: fatorial, primos, soma e pares.  
+Se a opção dada for fatorial, o *script* deve escrever o fatorial do número.  
+Se for primos, escrever os primos inferiroes ao número lido.  
+Se for soma, escrever a soma dos números inferiores não negativos.  
+Se for pares, escrever todos os pares inferiores ao número.
 
 
 ___     
