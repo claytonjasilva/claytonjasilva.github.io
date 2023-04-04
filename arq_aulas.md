@@ -27,7 +27,7 @@
 
 ## Avaliações
 ### Avaliações Bimestrais
-1. **[Trabalho AP1]() - a ser definido oportunamente**   
+1. **[Trabalho AP1](/arq_aulas/images/ArquiteturaTrabalhoAP1_2023.pdf) - ENTREGA EM 3 DE MAIO DE 2023**   
 2. **[Trabalho AP2]() - a ser definido oportunamente**    
 
 ### Avaliação Continuada
