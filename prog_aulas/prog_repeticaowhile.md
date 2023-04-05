@@ -100,7 +100,9 @@ Interromper a leitura quando o usuário digitar idade igual a 0.
 - Uma solução utilizando a estrutura `while`: [solução 1](https://github.com/claytonjasilva/prog_exemplos/blob/main/cursoPythonflag.py)  
 
 2. Elaborar um *script* em Python que leia o nome e a idade de um grupo de 50 animais. Escrever o nome do animal mais velho.  
-Interromper a leitura se o usuário digitar idade igual a 0.
+Interromper a leitura se o usuário digitar idade igual a 0.  
+- Uma solução utilizando a estrutura `while`: [solução 1](https://github.com/claytonjasilva/prog_exemplos/blob/main/cursoPythonflag2.py)  
+- 
 3. Elaborar um *script* em Python que leia o nome e a idade de um grupo de animais. Escrever a média das idades lidas.  
 Interromper a leitura quando o usuário digitar idade igual a 0.
 4. Elaborar um *script* em Python que leia a classificação (J - jovem, A - adulto, V - velho), a idade e o peso de um grupo de animais.   
