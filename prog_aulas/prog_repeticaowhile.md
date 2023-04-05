@@ -96,7 +96,9 @@ A instrução `continue` interrompe a execução do *loop* no ponto em que foi i
 
 ### 4.2.4 Exemplos discutidos em sala
 1. Elaborar um *script* em Python que leia o nome e a idade de um grupo de animais. Escrever o nome do animal mais velho.  
-Interromper a leitura quando o usuário digitar idade igual a 0.
+Interromper a leitura quando o usuário digitar idade igual a 0.  
+- Uma solução utilizando a estrutura `while`: [solução 1](https://github.com/claytonjasilva/prog_exemplos/blob/main/cursoPythonflag.py)  
+
 2. Elaborar um *script* em Python que leia o nome e a idade de um grupo de 50 animais. Escrever o nome do animal mais velho.  
 Interromper a leitura se o usuário digitar idade igual a 0.
 3. Elaborar um *script* em Python que leia o nome e a idade de um grupo de animais. Escrever a média das idades lidas.  
