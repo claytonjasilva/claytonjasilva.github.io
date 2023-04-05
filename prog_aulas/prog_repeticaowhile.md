@@ -110,7 +110,8 @@ Interromper a leitura quando o usuário digitar idade igual a 0.
 Escrever a média das idades dos animais jovens.  
 Escrever a idade do animal mais pesado dentre os adultos.  
 Escrever o percentual dos animais velhos.  
-Interromper a leitura quando o usuário digitar idade igual a 0.
+Interromper a leitura quando o usuário digitar idade igual a 0.  
+- [Uma solução](https://github.com/claytonjasilva/prog_exemplos/blob/main/cursoPythonmatch.py)
 5. Elaborar um *script* em Python para ler um número inteiro e uma dentre 4 opções de operação: fatorial, primo, soma e par.  
 Se a opção dada for fatorial, o *script* deve escrever o fatorial do número.  
 Se for primo, escrever o número.  
