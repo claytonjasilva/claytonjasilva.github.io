@@ -27,7 +27,11 @@
 
 ## Avaliações
 ### Avaliações Bimestrais
-1. **[Trabalho AP1](/arq_aulas/images/ArquiteturaTrabalhoAP1_2023.pdf) - ENTREGA EM 3 DE MAIO DE 2023**   
+1. **[Trabalho AP1](/arq_aulas/images/ArquiteturaTrabalhoAP1_2023.pdf)**   
+**Requisitos similares para todas as turmas**
+- TURMA 2ª/4ª: ENTREGA EM 3 DE MAIO DE 2023   
+- TURMA 3ª: ENTREGA 2 DE MAIO DE 2023
+- TURMA 5ª: ENTREGA 4 DE MAIO DE 2023
 2. **[Trabalho AP2]() - a ser definido oportunamente**    
 
 ### Avaliação Continuada
