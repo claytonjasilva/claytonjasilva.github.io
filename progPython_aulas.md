@@ -29,7 +29,7 @@ Em cada exercício está indicado o link da respectiva solução.
 
 ## Avaliações Bimestrais
 ### AP1 
-**![Trabalho AP1](/prog_aulas/images_prog/Trabalho_Programação_AP1_parte 2_2023.pdf)**
+**[Trabalho AP1](/prog_aulas/images_prog/Trabalho_Programacao_AP1_parte 2_2023.pdf)**
 ### AP2   
 **Trabalho AP2: será disponibilizadao oportunamente**
 
