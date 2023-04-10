@@ -29,7 +29,7 @@ Em cada exercício está indicado o link da respectiva solução.
 
 ## Avaliações Bimestrais
 ### AP1 
-**Trabalho AP1: será disponibilizadao oportunamente**
+**[Trabalho AP1]()**
 ### AP2
 **Trabalho AP2: será disponibilizadao oportunamente**
 
