@@ -40,6 +40,7 @@ Os instrumentos de avaliação continuada serão disponibilizados à medida que 
 - [Form 2](/arq_aulas/images/ArquiteturaForm2.pdf) - Semana 2
 - [Form 3](https://forms.gle/P7JJUpwKbSWtLt4t9) - Semana 4
 - [Form 4](https://forms.gle/HcXR6VUs2fJCQbjH7) - Semana 8
+- [Form 5](https://forms.gle/cU8PLRqg3CgErSDs5) - Semana 8  
 - [Trabalho 1 - turma 2a e 4a](/arq_aulas/images/ArquiteturaTrabalho1.pdf)  
 - [Trabalho 1 - turma 3a](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/arq_aulas/images/ArquiteturaTrabalho2_2023.pdf)  
 **Obs. Um exemplo de código do trabalho 1 AC pode ser obtido em: [Uma solução](https://github.com/claytonjasilva/prog_exemplos/blob/main/trabalho1AC.ino)**
