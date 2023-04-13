@@ -101,4 +101,7 @@ Além disso, podem ser construídas com meios magnéticos e meios ópticos.
 - A memória cache é construída em semicondutor, internamente ao próprio processador ou não, com tecnologia ROM, média/baixa capacidade de armazenamento, custo elevado. Sua principal função é armazenar os dados do programa de máquina e os dados armazenados local e temporalmente mais prováveis de serem acessados pelo processador. Utiliza o chamado princípio de localidade.  
 - Os registradores possuem capacidade de armazenamento de dezenas de unidade de bits, são construídos em dispositivos semicondutores e localizam-se internamente ao processador.  
 
+___
+**[Home Conteúdo Arquitetura de Computadores](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/arq_aulas.md)**
+**Memória Principal ou Primária: [próximo>>](memoria2.md)** 
 
