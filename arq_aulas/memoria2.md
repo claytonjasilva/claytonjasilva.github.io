@@ -43,7 +43,7 @@ Por exemplo, a memória Motorola MCM2114 possui tempo de ciclo de leitura fixo d
 nesse sentido entre a requisição do dado pelo processador e a liberação do dado no barramento serão consumidos 200 ns. 
 
 ___  
-**[<<anterior](memoria2.md)**    
+**[<<anterior](memoria.md)**    
 **[Home Conteúdo Arquitetura de Computadores](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/arq_aulas.md)**  
 **Memória cache: [próximo>>](memoria3.md)**  
 
