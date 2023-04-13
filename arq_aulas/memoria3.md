@@ -22,7 +22,7 @@ A figura apresenta um sistema de memória em que se utiliza três níveis de cac
 - uma cache no pacote da CPU – nos circuitos diretamente ligados ao processador, de nível 2 (L2); e  
 - uma cache externa de nível 3 (L3).
 
-![Níveis de cache](/arq_aulas/images/niviescache.jpg)
+![Níveis de cache](/arq_aulas/images/niveiscache.jpg)
 
 No nível L1, instruções e dados do programa de máquina são separados.  
 No nível L2, instruções e dados do nível L3 são armazenados de modo a estarem prontamente disponíveis para leitura/escrita 
