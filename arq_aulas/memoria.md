@@ -102,6 +102,6 @@ Além disso, podem ser construídas com meios magnéticos e meios ópticos.
 - Os registradores possuem capacidade de armazenamento de dezenas de unidade de bits, são construídos em dispositivos semicondutores e localizam-se internamente ao processador.  
 
 ___
-**[Home Conteúdo Arquitetura de Computadores](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/arq_aulas.md)**
+**[Home Conteúdo Arquitetura de Computadores](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/arq_aulas.md)**  
 **Memória Principal ou Primária: [próximo>>](memoria2.md)** 
 
