@@ -177,5 +177,8 @@ Uma forma mais eficiente de realizar a substituição é adiar para realizá-la 
 
 ![Técnica de escrita retardada MP-cache](/arq_aulas/images/escritaretardadampcache.jpg)
 
+___
+**[<<anterior](memoria.md)**   
+**[Home Conteúdo Arquitetura de Computadores](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/arq_aulas.md)**  
 
 
