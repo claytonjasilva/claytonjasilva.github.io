@@ -34,6 +34,7 @@ Como a arquitetura explora na operação o princípio de localidade em favor do 
 Vamos tratar especificamente do nível L3 e generalizar a operação para os demais níveis.  
 Para controlar a operação da cache é necessário utilizar um circuito chamado **controlador de cache**,
 que produz sinais de controle de sincronização dos procedimentos de leitura e dados do processador no sistema de memória.  
+
 A figura destaca o controlador.
 
 ![Controlador de cache](/arq_aulas/images/controladorcache.jpg)
@@ -83,7 +84,7 @@ onde *c* é o tempo de acesso à cache; *m* é o tempo de acesso à MP; e *h* é
 A taxa de acertos pode ser calculada admitindo que em *k* acessos à memória ocorreu *k-1* acertos e *1* falta,
 logo a taxa de acertos é a razão *(k-1)/k*. 
 
-#### Mapeamento MP-cache
+### 5.4.3 Mapeamento MP-cache
 
 Para o processo descrito acima ser executado é necessário definir uma política de mapeamento dos dados da memória primária na cache que objetive dizer quais blocos da cache serão copiados na MP.  
 Existem três técnicas de mapeamento:  
@@ -110,25 +111,29 @@ $$B=L mod M$$
 No exemplo,  
 os endereços da MP *0* a *K-1* ocupam a linha *0*;  
 os endereços da MP *K* a *2K-1* ocupam a linha *1*;  
-...
+...  
 os endereços da MP *(N-1).K* a *N.K-1* ocupam a linha *N-1*. 
 
 Generalizando essa relação pode-se deduzir que a expressão que relaciona o endereçamento da MP com o endereçamento da linha é dada por
-$$L=EndMP div K$$
+*L = EndMP div K*  
 , onde *L* é o endereçamento da linha de cache, `div` é a operação de divisão inteira e *K* é o número de posições de endereço de cada linha(e de cada bloco).
 
 De modo similar, pode-se obter que
-$$B=EndCache div K$$
+*B = EndCache div K*  
 , onde *B* é o endereçamento do bloco, `div` é a operação de divisão inteira e *K* é o número de posições de endereço de cada linha(e de cada bloco).
 
+A posição de endereço em uma linha de cache ou bloco depende do número de células em cada linha/bloco.  
+Por exemplo, na figura o endereço 25 da MP está na posição 1 da linha 6.  
+O endereço 11 da cache está na posição 3 da cache.  
+Pode-se obter essa posição aplicando-se simplesmente  
+*P = End mod K*  
+, onde *P* é a posição, *End* é o endereço e *K* é o número de células, na linha ou no bloco.
 
-
-
-
-
-
-Os endereços da MP 0,1,2,3 pertencem à linha de cache 0 na MP e estão mapeados nos respectivos endereços 0,1, 2 e 3 do bloco 0 da cache; os endereços da MP 4, 5, 6 e 7 pertencem à linha de cache 1 na MP e estão mapeados nos respectivos endereços 4, 5, 6 e 7 da cache, que correspondem aos endereços 0, 1, 2 e 3 do bloco 1. 
-Para o controlador de cache executar o algoritmo apresentado na Figura 10, o início é a requisição pela CPU da instrução ou dado em um endereço da MP. O controlador verifica qual é a linha de cache que armazena o dado e em qual bloco o dado ou instrução poderia estar mapeado.
-
+A cache é organizada de modo que:  
+- cada bloco possui um campo com o conjunto de dados (data) do tamanho da linha de cache da MP;  
+- cada bloco possui um campo com um *flag* indicando se os dados do bloco são válidos ou não, isto é, informando se os dados que precisam ser lidos estão presentes na cache; e  
+- possui um campo que descreve qual é a linha de cache da MP que está armazenada no campo de dados (campo *tag*). 
+ 
+Com essas informações de entrada da cache é possível o controlador implementar a leitura dos dados do sistema de memória seja da cache seja da MP, otimizando o desempenho global do sistema. 
 
 
