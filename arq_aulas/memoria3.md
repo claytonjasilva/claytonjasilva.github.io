@@ -115,18 +115,18 @@ os endereços da MP *K* a *2K-1* ocupam a linha *1*;
 os endereços da MP *(N-1).K* a *N.K-1* ocupam a linha *N-1*. 
 
 Generalizando essa relação pode-se deduzir que a expressão que relaciona o endereçamento da MP com o endereçamento da linha é dada por
-*L = EndMP div K*  
+$$L = EndMP (div) K$$    
 , onde *L* é o endereçamento da linha de cache, `div` é a operação de divisão inteira e *K* é o número de posições de endereço de cada linha(e de cada bloco).
 
 De modo similar, pode-se obter que
-*B = EndCache div K*  
+$$B = EndCache (div) K$$  
 , onde *B* é o endereçamento do bloco, `div` é a operação de divisão inteira e *K* é o número de posições de endereço de cada linha(e de cada bloco).
 
 A posição de endereço em uma linha de cache ou bloco depende do número de células em cada linha/bloco.  
 Por exemplo, na figura o endereço 25 da MP está na posição 1 da linha 6.  
 O endereço 11 da cache está na posição 3 da cache.  
 Pode-se obter essa posição aplicando-se simplesmente  
-*P = End mod K*  
+$$P = End mod K$$    
 , onde *P* é a posição, *End* é o endereço e *K* é o número de células, na linha ou no bloco.
 
 A cache é organizada de modo que:  
@@ -135,5 +135,47 @@ A cache é organizada de modo que:
 - possui um campo que descreve qual é a linha de cache da MP que está armazenada no campo de dados (campo *tag*). 
  
 Com essas informações de entrada da cache é possível o controlador implementar a leitura dos dados do sistema de memória seja da cache seja da MP, otimizando o desempenho global do sistema. 
+
+#### 5.4.3.1 Mapeamento direto
+
+A técnica de mapeamento direto aumenta a eficiência do sistema, 
+entretanto possui o inconveniente de manter dados armazenados na cache mesmo quando não são muito utilizados
+em virtude do relacionamento pré-determinado linhas de cache da MP-blocos da cache.
+
+#### 5.4.3.2 Mapeamento totalmente associativo
+
+Na técnica de mapeamento totalmente associativo não há uma relação pré-determinada de linhas de cache com blocos, 
+o que implica aumento de eficiência.  
+No entanto, aumenta-se a complexidade do circuito necessário à implementação do processo de espelhamento de dados. 
+
+#### 5.4.3.3 Mapeamento associativo por conjunto
+
+O mapeamento associativo por conjunto concilia a simplicidade do mapeamento direto com a eficiência do totalmente associativo.
+
+### 5.4.4 Substituição de dados da cache
+
+No mapeamento dos dados da MP para a cache, uma vez que o dado de um determinado endereço não esteja presente na cache, ou seja, tendo ocorrido uma falta, é necessário buscar o dado na memória e **substituir** os dados de algum dos blocos da cache.  
+Existem algumas técnicas que o controlador pode utilizar como:  
+- FIFO – *First-In-First-Out*, em que o bloco cujos dados foram os primeiros a ser inseridos são aqueles a ser substituídos;  
+- LRU – *Least Recently Used*, em que o bloco que há mais tempo não é acessado deve ser substituído.  
+
+### 5.4.5 Política de escrita de dados na memória MP-cache
+
+O controlador de cache não opera somente com a implementação do processo de atendimento à requisição de leitura de dados pelo processador.  
+O controlador também deve se encarregar de atualizar os dados escritos na cache para a MP.  
+Existem algumas técnicas possíveis de implementar a atualização dos dados da cache na MP, como, por exemplo,   
+- escrita direta (*write through*) e
+- a escrita retroativa ou retardada (*write back* ou *write deferred*).
+
+Na **escrita direta**, quando se escreve um dado na cache o controlador simultaneamente escreve os dados também na MP.  
+Dessa forma os dados de uma linha de cache da MP sempre são iguais aos do bloco da cache.   
+Isso implica perda de eficiência em virtude do tempo necessário para realizar a escrita na MP.
+
+![Técnica de escrita direta MP-cache](/arq_aulas/images/escritadiretampcache.jpg)
+
+Uma forma mais eficiente de realizar a substituição é adiar para realizá-la somente quando um bloco da cache precisar ser substituído por um novo, uma vez que tenha se configurado uma falta.
+
+![Técnica de escrita retardada MP-cache](/arq_aulas/images/escritaretardadampcache.jpg)
+
 
 
