@@ -126,7 +126,7 @@ A posição de endereço em uma linha de cache ou bloco depende do número de c�
 Por exemplo, na figura o endereço 25 da MP está na posição 1 da linha 6.  
 O endereço 11 da cache está na posição 3 da cache.  
 Pode-se obter essa posição aplicando-se simplesmente  
-$$P = End mod K$$    
+$$P = End (mod) K$$    
 , onde *P* é a posição, *End* é o endereço e *K* é o número de células, na linha ou no bloco.
 
 A cache é organizada de modo que:  
