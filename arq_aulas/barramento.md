@@ -39,7 +39,17 @@ especificada pelo barramento de endereços;
 
 O barramento do sistema é um conjunto de condutores elétricos que se estendem por todos os componentes do sistema computacional.  
 A maioria dos sistemas de computação utiliza múltiplos barramentos, geralmente organizados hierarquicamente.  
-Tipicamente a hierarquia contempla quatro localizações dos barramentos nessa estrutura hieráquica:  
+O barramento opera basicamente da seguinte forma:  
+a. Um módulo do sistema precisa enviar dados a outro módulo  
+1. Obtém o controle do barramento;
+2. Envia os dados.
+
+b. Um módulo precisa requisitar dados de outro módulo
+1. Obtém o controle do barramento;
+2. Envia uma requisição de transferência de dados;
+3. Aguarda os dados requisitados serem enviados.
+
+Tipicamente a hierarquia do barramento contempla quatro localizações dos barramentos nessa estrutura hieráquica:  
 - Barramento local;
 - Barramento do sistema;
 - Barramento de expansão; e
@@ -47,5 +57,16 @@ Tipicamente a hierarquia contempla quatro localizações dos barramentos nessa e
 
 A figura ilustra a organização.
 
+![Estrutura hierárquica do barramento](/arq_aulas/images/hierarquiabarramento.jpg)
+
+Através do barramento local são interligados processador, memória cache e outros dispositivos de alta velocidade.  
+O controlador da cache se conecta ao **barramento local**.  
+O controlador da cache também se conecta ao **barramento de sistema**.
+No barramento de sistema se conecta também a memória principal.  
+O barramento do sistema permite que as transferências entre dispositivos de I/O e memória principal não interferem na atividade do processador.  
+Embora o barramento de sistemas isole o processador, ainda não é uma solução eficiente.
+Para a ligação dos dispositivos de I/O utiliza-se um **barramento de expansão**.  
+Para a ligação dos dispositivos de I/O utiliza-se uma interface que permite armazenar temporariamente os dados.
+Finalmente, para dispositivos de alta velocidade utiliza-se um **barramento de alta velocidade**.
 
 
