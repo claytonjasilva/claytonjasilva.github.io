@@ -33,9 +33,28 @@ das saídas relativas às entradas passadas - *feedback*.
 Pode-se definir fundamentalmente memória como um dispositivo no qual valores binários podem ser armazenados ou retidos
 até que seja comandada a substituição do valor atual por um novo valor.  
 Os dispositivos de memória normalmente tratados são aqueles mais complexos, como as memórias RAM, ROM etc.  
-Trataremos aqui da unidade mais elementar dessas memórias mais complexas, que designaremos como **célula binária**.
+Trataremos aqui da unidade mais elementar dessas memórias mais complexas, que designaremos como **célula binária** ou ***latch***.
 **A célula binária é um circuito sequencial elementar que possui a capcidade de armazenar 1 bit.**  
 
 ![Célula binária com portas NAND](/sisdig_aulas/images_sisdig/celulabinarianand.jpg)
 
-Observe que a célula possui uma entrada *SET*
+Observe que a célula possui uma entrada *SET* e uma entrada *CLEAR* (ou *RESET*).   
+O papel da célula é **armazenar 1 bit**.  
+Para armazenar o bit *1*, deve se atribuir 0 para entrada *SET*. A saída *Q* irá armazenar o bit 1.  
+Para armazenar o bit *0*, deve ser atribuído 0 para a entrada *CLEAR*. A saída *Q* irá armazenar o bit 0.  
+
+Para entender o funcionamento das células binárias é importante definir os **estados** possíveis das entradas *SET* e *CLEAR*.
+
+| Estado | Entradas | Comportamento |
+| - | - | - |
+| Repouso | *SET*=1, *CLEAR*=1 | Não tem nenhum efeito sobre a saída. As saídas *Q* e $\bar{Q}$ permanecem com os mesmos valores anteriores |
+| Resetar | *SET*=1, *CLEAR*=0 | A saídas *Q*=0 e $\bar{Q}=1$, permanecendo 0 mesmo que *CLEAR* retorne ao valor 1 |
+| Setar | *SET*=0, *CLEAR*=1 | A saídas *Q*=1 e $\bar{Q}=0$, permanecendo 1 mesmo que *SET* retorne ao valor 1 |
+| Ambíguo | *SET*=0, *CLEAR*=0 | A saída é instável - tenta-se resetar e setar o *latch* ao mesmo tempo |
+
+
+
+
+
+
+
