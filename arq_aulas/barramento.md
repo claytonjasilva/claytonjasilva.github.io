@@ -127,10 +127,33 @@ Todos os dispositivos conectados ao barramento podem ler a linha de relógico.
 
 ![Barramento com transmissão síncrona](/arq_aulas/images/barramentosincrono.jpg)
 
+Basicamente, o *master*, em um instante sincronizado pelo relógio, disponibiliza um sinal para escrita/leitura no dispositivo.  
+Após um número determinado de ciclos de clock do relógio o dispositivo *slave* estará pronto para receber os dados transmitidos pelo *master*.  
 Admitindo que a CPU é o *master*, ela pode precisar ficar em **espera** (*wait state*) até que a leitura/escrita possa ser realizada.  
 Obviamente isso é um inconveniente e leva a uma perda de performance do sistema.
 
+Em um esquema de **transmissão assíncrona**, a ocorrência de um evento no barramento depende de um evento ocorrido anteriormente.  
 
+![Barramento com transmissão assíncrona](/arq_aulas/images/barramentoassincrono.jpg)
 
+No caso de transmissão assíncronona, o *master* disponibiliza em uma linha de controle que precisa fazer uma leitura/escrita.  
+O *slave* reconhece o sinal e devolve um sinal de *acknowledge*, que indica estar pronto para escrever/ler os dados do *master*.  
+É evidente que Não existe temporização – há uma série de eventos sequenciados.  
+Embora seja mais eficiente, implica mais complexidade para implementação.
 
+### 5.5.5 Padrões de barramento
+Existem vários padrões de barramento, cada um dos quais define **protocolos** de comunicação, assim como padrões físicos, lógicos e elétricos.  
 
+São exemplos de alguns:
+1. Barramento ISA (*Industry Standard Architecture*): 8 bits (16 bits), clock de 8,33 MHz  
+2. Barramento PCI (*Peripheral Component Interconnect*): 32 bits e clock de 33 MHz
+3. Barramento AGP (*Accelerated Graphics Port*): 
+  - AGP 1.0: 32 bits, 66 MHz; AGP 2.0 ...
+4. Barramento PCI-X (*Peripheral Component Interconnect eXtended*):
+  - PCI-X 1.0: 64 bits, 66 MHz, 100 MHz e 133 MHz
+  - PCI-X 2.0: 64 bits, 266 MHz e 533 MHz
+
+![Barramento PCI-X](/arq_aulas/images/barramentopcix.jpg)
+
+___
+**[Home Conteúdo Arquitetura de Computadores](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/arq_aulas.md)**  
