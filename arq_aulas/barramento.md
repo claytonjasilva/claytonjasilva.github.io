@@ -8,7 +8,7 @@ Os barramentos não armazenam dados. Veiculam sinais elétricos que possuem algu
 De acordo com a função do sinal, consequentemente do meio que serve para que seja trafegado, os barramentos podem ser classificados 
 **quanto à funcionalidade** em:  
 - Barramento de dados;
-- Barramento de endereço;  
+- Barramento de endereços;  
 - Barramento de controle.
 
 O barramento de dados veicula os bits relativos às instruções armazenadas em memória e os dados operados pelas instruções.  
@@ -35,7 +35,16 @@ especificada pelo barramento de endereços;
 10. **Relógio**, usado para temporização de operações;
 11. ***Reset***, usado para inicializar todos os módulos do sistema.
 
-### Estrutura do barramento
+Independentemente da classificação funcional do barramento uma característica fundamental do barramento é sua **largura**.  
+Entende-se por **largura do barramento** como o número de linhas distintas, em cada uma das quais é trafegado 1 bit de dados, endereço ou de controle.  
+
+![Classificação funcional e largura dos barramentos](/arq_aulas/images/classificacaobarramentos.jpg)
+
+A largura do barramento tem impactos sobre o desempenho do sistema.  
+Quanto maior a largura do barramento de dados maior será o número de bits transferidos de cada vez.  
+A largura do barramento de endereços também tem impacto sobre o desempenho do sistema: quanto maior o barramento de endereços maior é o número de posições endereçadas pela processador.
+
+### 5.5.2 Estrutura do barramento
 
 O barramento do sistema é um conjunto de condutores elétricos que se estendem por todos os componentes do sistema computacional.  
 A maioria dos sistemas de computação utiliza múltiplos barramentos, geralmente organizados hierarquicamente.  
@@ -68,5 +77,60 @@ Embora o barramento de sistemas isole o processador, ainda não é uma solução
 Para a ligação dos dispositivos de I/O utiliza-se um **barramento de expansão**.  
 Para a ligação dos dispositivos de I/O utiliza-se uma interface que permite armazenar temporariamente os dados.
 Finalmente, para dispositivos de alta velocidade utiliza-se um **barramento de alta velocidade**.
+
+### 5.5.3 Multiplexação de barramento
+
+As linhas de barramento podem ser construídas de duas formas diferentes:  
+- **dedicadas**; e
+- **multiplexadas**.
+
+Uma linha de barramento dedicada possui uma função fixa ou é associada a um subconjunto de componentes físicos de um computador.  
+Em caso contrário, ou seja, em que a linha pode ser usada para mais de uma função, diz-se que o barramento é multiplexado.  
+Um exemplo comum de multiplexação de barramento é sua utilização tanto para dados quanto para endereçamento.  
+Para que esse uso com dupla função possa ocorrer é necessário sinalizar no barramento de controle se os bits no barramento se referem ou não a algumm endereço válido.  
+Além disso, a mulitplexação requer que não se utilizem os bits de dados e endereços na mesma janela temporal. A isso se dá o nome de **multiplexação no tempo**.  
+A vantagem de multiplexar o barramento de dados e endereço é economizar espaço e custo do circuito.  
+
+### 5.5.4 Protocolos de barramento
+Os processos de comunicação envolvendo os módulos do sistema computacional deve ser regulados pelo que se chama protocolo de barramento.  
+São regras que definem a comunicação entre os elementos do sistema computacional.
+
+#### a. Arbitração de barramentos
+Em qualquer sistema, a menos daqueles muito simples, é muito comum um módulo precisar ter o controle do barramento para transferir dados para outro módulo.   
+Como apenas uma unidade pode realizar uma transmissão por meio do barramento de cada vez, é necessário utilizar algum **método de arbitração**.  
+Os vários métodos podem ser classificados como:  
+- centralizados; ou
+- distribuídos.
+
+No **método centralizado** um único dispositivo, chamado de **controlador de barramento** ou **árbitro**, é responsável por alocar o tempo de utilização do barramento para cada módulo.
+No **método distribuído** cada módulo do sistema contém uma lógica de controle de acesso e os módulos agem de forma conjunta para compartilhar o barramento.  
+
+![Controlador de barramento](/arq_aulas/images/controladorbarramento.jpg)
+
+Em ambos os métodos de arbitração, sempre haverá um **mestre** e um **escravo** no processo de comunicação:  
+- *Master* (mestre) - Elementos ativos, que podem iniciar a transferência de dados;
+- *Slave* (escravo) – Elementos passivos, que esperam as requisições para transferência de dados.
+
+![Master/Slave de barramento](/arq_aulas/images/masterslavebarramento.jpg)
+
+#### b. Temporização de barramentos
+A **temporização de um barramento** se refere ao modo pelo qual os eventos são coordenados.  
+Existem dois esquemas básicos de transmissão de dados entre os módulos:  
+- transmissão síncrona; e
+- transmissão assíncrona.
+
+Na **transmissão síncrona**, a ocorrência de eventos é determinada por um sinal intitulado **relógio**.  
+O barramento inclui uma **linha de relógio** no barramento de controle, por meio da qual um sinal, que pode assumir dois níveis lógicos,
+estabelece a referência temporal da execução das tarefas.  
+Ou seja, essa linha dá a referência para a ocorrência dos eventos de comunicação.
+Todos os dispositivos conectados ao barramento podem ler a linha de relógico.
+
+![Barramento com transmissão síncrona](/arq_aulas/images/barramentosincrono.jpg)
+
+Admitindo que a CPU é o *master*, ela pode precisar ficar em **espera** (*wait state*) até que a leitura/escrita possa ser realizada.  
+Obviamente isso é um inconveniente e leva a uma perda de performance do sistema.
+
+
+
 
 
