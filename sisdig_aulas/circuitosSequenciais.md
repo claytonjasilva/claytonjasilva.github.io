@@ -32,4 +32,10 @@ Como discutido, as saídas dos circuitos sequenciais dependem da entrada em um d
 das saídas relativas às entradas passadas - *feedback*.  
 Pode-se definir fundamentalmente memória como um dispositivo no qual valores binários podem ser armazenados ou retidos
 até que seja comandada a substituição do valor atual por um novo valor.  
+Os dispositivos de memória normalmente tratados são aqueles mais complexos, como as memórias RAM, ROM etc.  
+Trataremos aqui da unidade mais elementar dessas memórias mais complexas, que designaremos como **célula binária**.
+**A célula binária é um circuito sequencial elementar que possui a capcidade de armazenar 1 bit.**  
 
+![Célula binária com portas NAND](/sisdig_aulas/images_sisdig/celulabinarianand.jpg)
+
+Observe que a célula possui uma entrada *SET*
