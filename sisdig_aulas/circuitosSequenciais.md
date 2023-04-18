@@ -52,6 +52,11 @@ Para entender o funcionamento das células binárias é importante definir os **
 | Setar | *SET*=0, *CLEAR*=1 | A saídas *Q*=1 e $\bar{Q}=0$, permanecendo 1 mesmo que *SET* retorne ao valor 1 |
 | Ambíguo | *SET*=0, *CLEAR*=0 | A saída é instável - tenta-se resetar e setar o *latch* ao mesmo tempo |
 
+Vamos analisar o funcionamento. A análise dos circuitos sequenciais requer sempre admitir uma **condição inicial**, em virtude da existência de memória.  
+
+![Célula binária em repouso](/sisdig_aulas/images_sisdig/latchrepouso.jpg)
+
+As codições inicias, são mostradas nas imagens (a) e (b), ou seja, anteriormente tem-se *Q=0* ou *Q=1*.
 
 
 
