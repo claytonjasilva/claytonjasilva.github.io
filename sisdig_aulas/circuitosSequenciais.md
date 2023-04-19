@@ -53,10 +53,69 @@ Para entender o funcionamento das células binárias é importante definir os **
 | Ambíguo | *SET*=0, *CLEAR*=0 | A saída é instável - tenta-se resetar e setar o *latch* ao mesmo tempo |
 
 Vamos analisar o funcionamento. A análise dos circuitos sequenciais requer sempre admitir uma **condição inicial**, em virtude da existência de memória.  
+Analisando o estado de repouso...
 
 ![Célula binária em repouso](/sisdig_aulas/images_sisdig/latchrepouso.jpg)
 
-As codições inicias, são mostradas nas imagens (a) e (b), ou seja, anteriormente tem-se *Q=0* ou *Q=1*.
+As condições inicias, são mostradas nas imagens (a) e (b), ou seja, anteriormente tem-se *Q=0* ou *Q=1*.
+
+Analisando o estado de *latch* 'setado'...
+
+![Célula binária 'setada' - primeira condição inicial](/sisdig_aulas/images_sisdig/latchsetado.jpg)
+
+Verifique que as condições iniciais podem ser decompostas em duas partes:
+1 - Ambas as entradas *SET* e *CLEAR* iguais a 1, *Q=0*   
+Neste caso, a transição da entrada *SET* de 1 para 0 leva a saída *Q* à transição do nível baixo (0) para o nível alto (1).  
+Quando o valor de *SET* retornar a 1, o bit 1 mantém-se na saída *Q* - memória, armazenamento de 1 bit.  
+Por outro lado, a análise admite uma segunda condição inicial:
+2 - Ambas as entradas *SET* e *CLEAR* iguais a 1, *Q=1*
+
+![Célula binária 'setada' - segunda condição inicial](/sisdig_aulas/images_sisdig/latchsetado2.jpg)
+
+Neste caso, a transição da entrada *SET* de 1 para 0 leva a saída *Q* a permanecer no nível alto (1).  
+Quando o valor de *SET* retornar a 1, o bit 1 mantém-se na saída *Q* - memória, armazenamento de 1 bit.  
+
+Analisando o estado do *latch* 'resetado'...
+
+![Célula binária 'resetada' - primeira condição inicial](/sisdig_aulas/images_sisdig/latchresetado.jpg)
+
+A análise é similar à análise realizada no caso anterior.  
+Admitindo duas condições iniciais, pode-se observar o comportamento apresnetado na figura.
+
+Podemos sintetizar o comportamento do *latch* na tabela verdade apresentada abaixo>
+
+| Set | Clear | Saída |
+| - | - | - |
+| 1 | 1 | Não muda |
+| 0 | 1 | *Q=1* |
+| 1 | 0 | *Q=0* |
+| 0 | 0 | Inválido |
+
+## 9.3 Circuitos síncronos e assíncronos
+Vimos a definição de circuitos sequenciais.  
+Muitas aplicações de circuitos sequenciais envolvem o emprego de uma referência temporal, 
+chamada de **relógio** ou **clock**.  
+Circuitos cujo comportamento independe de um sinal de relógio são chamados de circuitos **assíncronos**.  
+Circuitos cujo comportamento é regulado pela referência do sinal de clock são chamados de **circuitos síncronos**.
+O comportamento do sinal de clock está apresnetado na figura.  
+
+![Sinal de clock](/sisdig_aulas/images_sisdig/clock.jpg)
+
+Tipicamente, o sinal de clock é um **trem de ondas quadradas**.  
+Observe que o sinal varia entre dois níveis: alto e baixo. Para circuitos sequenciais é importante salientar que
+a transição de um nível para outro é importante. A transição possui uma **borda**, ou seja, um limite entre os dois níveis.  
+Embora teoricamente essa transição seja por salto, os sinais reais possuem uma transição que requer um intervalo de tempo $\Delta$ t no circuito.  
+Todo sinal de clock é **periódico**, consequentemente possui um ciclo temporal definido por *T<sub>Ck</sub>*.  
+O número de ciclos na unidade de tempo define a frequência do sinal, *f<sub>Ck</sub>*, que satisfaz
+$$f_{Ck}=\frac{1}{T_{Ck}}$$  
+A relação entre o tempo em que o sinal está no nível alto (1) e o período é chamada de *duty cycle*, ou seja, 
+$$Duty Cycle=\frac{T_{on}}{T_{Ck}}$$  
+, normalmente definido em porcentagem.  
+
+## 9.4 Máquina de estados finitos
+
+
+
 
 
 
