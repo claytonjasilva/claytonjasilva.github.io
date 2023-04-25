@@ -59,6 +59,18 @@ Um esquema em bloco do circuito está apresentado na figura.
 
 ### 5.2.2 Análise de circuitos sequenciais síncronos
 
+Nos processos de análise de circuitos sequenciais duas determinações devem ser feitas:  
+(1) Qual é a classe do circito a ser analisado; e  
+(2) O que deve resultar do processo de análise.  
+Em outras palavras, o problema requer um **circuito combinacional** ou **sequencial**?  
+Se for um circuito sequencial, ele é **síncrono** ou **assíncrono**?  
+Qual é a informação que deve ser obtida da análise?  
+
+A partir daí, na análise será necessário:  
+(1) Identificar os **estados**  
+(2) Quais são as **entradas** relacionadas com as mudanças de estado  
+(3) Quais são as **sequências de transições**.
+
 O comportamento da **saída *A*** da máquina sequencial pode ser representado pelo mapa.  
 
 | *AB* | *00* | *01* | *10* | *11* |
