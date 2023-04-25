@@ -114,7 +114,7 @@ $$Duty Cycle=\frac{T_{on}}{T_{Ck}}$$
 
 ___
 **[Home Conteúdo Sistemas Digitais](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/sisdig_aulas.md)**  
-**Máquina de estados [>> próximo](circuitosSequenciais2.md)**
+**Máquina de estados [próximo >>](circuitosSequenciais2.md)**
 
 
 
