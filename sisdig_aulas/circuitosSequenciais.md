@@ -112,7 +112,6 @@ A relação entre o tempo em que o sinal está no nível alto (1) e o período �
 $$Duty Cycle=\frac{T_{on}}{T_{Ck}}$$  
 , normalmente definido em porcentagem.  
 
-## 9.4 Máquina de estados finitos
 
 
 
