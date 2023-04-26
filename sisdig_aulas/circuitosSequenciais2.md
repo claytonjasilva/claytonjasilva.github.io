@@ -153,4 +153,7 @@ $$B=B.\bar{X}.Z+A.\bar{X}.Z+\bar{A}.X.\bar{Z}$$
 $$Z=A.B+B.\bar{X}+A.\bar{X}+\bar{A}.\bar{B}.X.\bar{Z}$$
 
 ___
+**[<<anterior](circuitosSequenciais.md)**  
 **[Home Conteúdo Sistemas Digitais](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/sisdig_aulas.md)**  
+
+
