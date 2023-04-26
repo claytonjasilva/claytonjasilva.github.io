@@ -10,7 +10,7 @@
 7. [Circuitos codificadores/decodificadores](sisdig_aulas/circuitosDecodificadores.md)
 8. [Circuitos multiplexadores](sisdig_aulas/circuitosMultiplexadores.md)
 9. [Fundamentos de máquinas sequenciais](sisdig_aulas/circuitosSequenciais.md)
-10. [Memória: células de memória e Flip-Flops](sisdig_aulas/memoria.md)
+10. [Memória: células de memória e Flip-Flops](sisdig_aulas/flipflop.md)
 * Circuitos sequenciais  
     [Flip Flops](sisdig_aulas/sisdig_7.pdf)  
     [Aplicações com FF](sisdig_aulas/sisdig_8.pdf)  
