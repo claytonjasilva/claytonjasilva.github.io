@@ -102,13 +102,13 @@ O comportamento da **saída *B*** da máquina sequencial pode ser representado p
 Procedimento similar pode ser adotado para análise do diagrama de estados do **exemplo 2**.  
 O comportamento da **saída *A*** da máquina sequencial pode ser representado pelo mapa.  
 
-| *AB* | *00* | *01* | *10* | *11* |
+| *AB* | *00* | *01* | *11* | *10* |
 | - | - | - | - | - |
-| *ZX* | - | - | - | - |
-| 0 | 0 | 0 | 1 | 1 |
-| 1 | 0 | 1 | 1 | 0 |
-| 0 | 0 | 0 | 1 | 1 |
-| 1 | 0 | 1 | 1 | 0 |
+| *XZ* | - | - | - | - |
+| *00* | 0 | 0 | 0 | 1 |
+| *01* | 0 | 1 | 0 | 0 |
+| *11* | 0 | 0 | 0 | 1 |
+| *10* | 0 | 1 | 0 | 0 |
 
 ___
 **[Home Conteúdo Sistemas Digitais](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/sisdig_aulas.md)**  
