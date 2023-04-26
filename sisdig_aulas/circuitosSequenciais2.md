@@ -1,6 +1,6 @@
-## 5.2 Máquina de estados
+## 9.3 Máquina de estados
 
-### 5.2.1 O diagrama de estados
+### 9.3.1 O diagrama de estados
 
 Existem técnicas para analisar e projetar circuitos sequenciais.  
 Uma das técnicas consiste na utilização de **diagramas de estados**.  
