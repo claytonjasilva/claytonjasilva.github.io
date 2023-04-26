@@ -110,5 +110,25 @@ O comportamento da **saída *A*** da máquina sequencial pode ser representado p
 | *11* | 0 | 0 | 0 | 1 |
 | *10* | 0 | 1 | 0 | 0 |
 
+O comportamento da **saída *B*** da máquina sequencial pode ser representado pelo mapa.  
+
+| *AB* | *00* | *01* | *11* | *10* |
+| - | - | - | - | - |
+| *XZ* | - | - | - | - |
+| *00* | 0 | 0 | 0 | 0 |
+| *01* | 0 | 1 | 1 | 1 |
+| *11* | 0 | 0 | 0 | 0 |
+| *10* | 1 | 1 | 0 | 0 |
+
+O comportamento da **saída *Z*** da máquina sequencial pode ser representado pelo mapa.  
+
+| *AB* | *00* | *01* | *11* | *10* |
+| - | - | - | - | - |
+| *XZ* | - | - | - | - |
+| *00* | 0 | 1 | 1 | 1 |
+| *01* | 0 | 1 | 1 | 1 |
+| *11* | 0 | 0 | 1 | 0 |
+| *10* | 1 | 0 | 1 | 0 |
+
 ___
 **[Home Conteúdo Sistemas Digitais](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/sisdig_aulas.md)**  
