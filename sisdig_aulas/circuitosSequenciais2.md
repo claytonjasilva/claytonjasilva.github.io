@@ -57,7 +57,7 @@ Um esquema em bloco do circuito está apresentado na figura.
 
 ![Máquina sequencial - diagrama](/sisdig_aulas/images_sisdig/maquinasequencial2.jpg)
 
-### 5.2.2 Análise de circuitos sequenciais síncronos
+### 9.3.2 Análise de circuitos sequenciais síncronos
 
 Nos processos de análise de circuitos sequenciais duas determinações devem ser feitas:  
 (1) Qual é a classe do circuito a ser analisado; e  
