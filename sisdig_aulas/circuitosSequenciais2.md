@@ -77,11 +77,11 @@ O mapa é muito útil para tabular os circuitos.
 Vamos tomar **exemplo 1**.  
 O comportamento da **saída *A*** da máquina sequencial pode ser representado pelo mapa.  
 
-| *AB* | *00* | *01* | *10* | *11* |
+| *AB* | *00* | *01* | *11* | *10* |
 | - | - | - | - | - |
 | *X* | - | - | - | - |
 | 0 | 0 | 0 | 1 | 1 |
-| 1 | 0 | 1 | 1 | 0 |
+| 1 | 0 | 1 | 0 | 1 |
 
 O comportamento representa o comportamento da saída *A* em função do estado predecessor e da variável *X*.  
 Observe que quando *X=0*, o estado permace inalterado. Nesse caso, o valor da variável  *A* após a transição de clock não se altera.  
@@ -93,11 +93,22 @@ nas transições *01* para *10* e de *10* para *11*.
 Em raciocínio similar, pode-se definir o comportamento da variável de estado *B*.  
 O comportamento da **saída *B*** da máquina sequencial pode ser representado pelo mapa.  
 
-| *AB* | *00* | *01* | *10* | *11* |
+| *AB* | *00* | *01* | *11* | *10* |
 | - | - | - | - | - |
 | *X* | - | - | - | - |
-| 0 | 0 | 1 | 0 | 1 |
-| 1 | 1 | 0 | 1 | 0 |
+| *0* | 0 | 1 | 1 | 0 |
+| *1* | 1 | 0 | 1 | 0 |
+
+Procedimento similar pode ser adotado para análise do diagrama de estados do **exemplo 2**.  
+O comportamento da **saída *A*** da máquina sequencial pode ser representado pelo mapa.  
+
+| *AB* | *00* | *01* | *10* | *11* |
+| - | - | - | - | - |
+| *ZX* | - | - | - | - |
+| 0 | 0 | 0 | 1 | 1 |
+| 1 | 0 | 1 | 1 | 0 |
+| 0 | 0 | 0 | 1 | 1 |
+| 1 | 0 | 1 | 1 | 0 |
 
 ___
 **[Home Conteúdo Sistemas Digitais](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/sisdig_aulas.md)**  
