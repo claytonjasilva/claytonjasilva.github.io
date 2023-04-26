@@ -24,10 +24,20 @@ A maneira como os sinais *x(t)* e *u(t)* são combinados determina como será pr
 | Deve possuir realimentação | Não possui realimentação |
 
 As duas propriedades básicas descritas na tabela para os sistemas sequenciais são necessárias, mas não são suficientes.  
-Os circuitos sequenciais possuem uma propriedade operacional básica: **são cíclicos** sob determinadas condições de controle.
+Os circuitos sequenciais possuem uma propriedade operacional básica: **são cíclicos** sob determinadas condições de controle.  
+Um modelo geral de sistemas controlados digitais, ou máquinas sequenciais ou máquina de estados finitos está apresentado na figura.  
+
+![Modelo geral de sistemas sequenciais](/sisdig_aulas/images_sisdig/sistemasequencial.jpg)
+
+Observam-se três blocos, a saber:  
+1. O primeiro bloco recebe as entradas e as saídas em **feedback** para produzir entradas controladas ou modificadas;
+2. No segundo estágio ou bloco as saídas do bloco anterior são armazenadas no elemento de memória para realimentar a entrada;
+3. No terceiro bloco, aplica-se a lógica necessária para produzir a saída desejada.  
+
+O modelo ilustra como se constroi a **máquina sequencial** ou **máquina de estados finitos**. 
 
 ## 9.2 Conceito de memória
-A memória é um elemento essencial para o funcionamento dos sistemas sequenciais.  
+A memória é um elemento essencial para o funcionamento dos sistemas sequenciais, como mostrado na figura acima.  
 Como discutido, as saídas dos circuitos sequenciais dependem da entrada em um determinado instante e 
 das saídas relativas às entradas passadas - *feedback*.  
 Pode-se definir fundamentalmente memória como um dispositivo no qual valores binários podem ser armazenados ou retidos
