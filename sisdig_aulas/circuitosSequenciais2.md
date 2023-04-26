@@ -60,7 +60,7 @@ Um esquema em bloco do circuito está apresentado na figura.
 ### 5.2.2 Análise de circuitos sequenciais síncronos
 
 Nos processos de análise de circuitos sequenciais duas determinações devem ser feitas:  
-(1) Qual é a classe do circito a ser analisado; e  
+(1) Qual é a classe do circuito a ser analisado; e  
 (2) O que deve resultar do processo de análise.  
 Em outras palavras, o problema requer um **circuito combinacional** ou **sequencial**?  
 Se for um circuito sequencial, ele é **síncrono** ou **assíncrono**?  
@@ -71,17 +71,17 @@ A partir daí, na análise será necessário:
 (2) Quais são as **entradas** relacionadas com as mudanças de estado  
 (3) Quais são as **sequências de transições**.
 
-Para a análise, uma ferramenta importante é o **mapa para cada p´roximo estado**.  
-O mapa é muito útil para tabular os circuitos.
+Para a análise, uma ferramenta importante é o **mapa para cada próximo estado** a partir das saídas do estado anterior.  
+O mapa é muito útil para construir os circuitos.
 
 Vamos tomar **exemplo 1**.  
 O comportamento da **saída *A*** da máquina sequencial pode ser representado pelo mapa.  
 
 | *AB* | *00* | *01* | *11* | *10* |
 | - | - | - | - | - |
-| *X* | - | - | - | - |
-| 0 | 0 | 0 | 1 | 1 |
-| 1 | 0 | 1 | 0 | 1 |
+| ***X*** | - | - | - | - |
+| ***0*** | 0 | 0 | 1 | 1 |
+| ***1*** | 0 | 1 | 0 | 1 |
 
 O comportamento representa o comportamento da saída *A* em função do estado predecessor e da variável *X*.  
 Observe que quando *X=0*, o estado permace inalterado. Nesse caso, o valor da variável  *A* após a transição de clock não se altera.  
@@ -95,40 +95,62 @@ O comportamento da **saída *B*** da máquina sequencial pode ser representado p
 
 | *AB* | *00* | *01* | *11* | *10* |
 | - | - | - | - | - |
-| *X* | - | - | - | - |
-| *0* | 0 | 1 | 1 | 0 |
-| *1* | 1 | 0 | 1 | 0 |
+| ***X*** | - | - | - | - |
+| ***0*** | 0 | 1 | 1 | 0 |
+| ***1*** | 1 | 0 | 1 | 0 |
 
 Procedimento similar pode ser adotado para análise do diagrama de estados do **exemplo 2**.  
 O comportamento da **saída *A*** da máquina sequencial pode ser representado pelo mapa.  
 
 | *AB* | *00* | *01* | *11* | *10* |
 | - | - | - | - | - |
-| *XZ* | - | - | - | - |
-| *00* | 0 | 0 | 0 | 1 |
-| *01* | 0 | 1 | 0 | 0 |
-| *11* | 0 | 0 | 0 | 1 |
-| *10* | 0 | 1 | 0 | 0 |
+| ***XZ*** | - | - | - | - |
+| ***00*** | 0 | 0 | 0 | 1 |
+| ***01*** | 0 | 1 | 0 | 0 |
+| ***11*** | 0 | 0 | 0 | 1 |
+| ***10*** | 0 | 1 | 0 | 0 |
 
 O comportamento da **saída *B*** da máquina sequencial pode ser representado pelo mapa.  
 
 | *AB* | *00* | *01* | *11* | *10* |
 | - | - | - | - | - |
-| *XZ* | - | - | - | - |
-| *00* | 0 | 0 | 0 | 0 |
-| *01* | 0 | 1 | 1 | 1 |
-| *11* | 0 | 0 | 0 | 0 |
-| *10* | 1 | 1 | 0 | 0 |
+| ***XZ*** | - | - | - | - |
+| ***00*** | 0 | 0 | 0 | 0 |
+| ***01*** | 0 | 1 | 1 | 1 |
+| ***11*** | 0 | 0 | 0 | 0 |
+| ***10*** | 1 | 1 | 0 | 0 |
 
 O comportamento da **saída *Z*** da máquina sequencial pode ser representado pelo mapa.  
 
 | *AB* | *00* | *01* | *11* | *10* |
 | - | - | - | - | - |
-| *XZ* | - | - | - | - |
-| *00* | 0 | 1 | 1 | 1 |
-| *01* | 0 | 1 | 1 | 1 |
-| *11* | 0 | 0 | 1 | 0 |
-| *10* | 1 | 0 | 1 | 0 |
+| ***XZ*** | - | - | - | - |
+| ***00*** | 0 | 1 | 1 | 1 |
+| ***01*** | 0 | 1 | 1 | 1 |
+| ***11*** | 0 | 0 | 1 | 0 |
+| ***10*** | 1 | 0 | 1 | 0 |
+
+Identificado o mapa de próximo estado para cada uma das saídas, é possível 
+**escrever a expressão booleana para cada saída de próximo estado**.  
+A escrita da expressão é similar à utilização do mapa K.   
+No exemplo 1, os mapas relativos às saídas *A* e *B* são
+
+![Máquina sequencial - diagrama](/sisdig_aulas/images_sisdig/mapakexemplo1diagrama.jpg)
+
+Dos quais se obtém as expressões:  
+$$A=A.\bar{X}+\bar{A}.B.X+A.\bar{B}.X$$
+$$B=B.\bar{X}+\bar{A}.\bar{B}.X+A.B.X$$
+
+É importante lembrar que a variável de saída, à esquerda da equação, é o valor atual e à direita da equação é o seu valor anterior.
+
+No exemplo 2, os mapas relativos às saídas *A*, *B* e *Z* são
+
+![Máquina sequencial - diagrama](/sisdig_aulas/images_sisdig/mapakexemplo2diagrama.jpg)
+
+Dos quais se obtém as expressões:  
+$$A=A.\bar{B}.\bar{X}.\bar{Z}+\bar{A}.B.\bar{X}.Z+A.\bar{B}.X.Z+\bar{A}.B.X.\bar{Z}$$
+$$B=B.\bar{X}.Z+A.\bar{X}.Z+\bar{A}.X.\bar{Z}$$
+$$Z=A.B+B.\bar{X}+A.\bar{X}+\bar{A}.\bar{B}.X.\bar{Z}$$
 
 ___
 **[Home Conteúdo Sistemas Digitais](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/sisdig_aulas.md)**  
