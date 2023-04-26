@@ -13,8 +13,8 @@ De modo geral, os circuitos sequenciais são classificados da seguintes forma:
 O êxito de projetos e análise de máquinas sequenciais depende fortemente dos objetivos e das técnicas empregadas.  
 Uma delas é a técnica de diagrama de estados.  
 O diagrama de estados descreve as possíveis transações entre todos os estados possíveis da máquina.    
-O diagrama de estados para as máquinas sequnciais é equivalente à tabela verdade para as máquinas combinacionais.  
-Seja o exemplo da figura.
+O diagrama de estados para as máquinas sequenciais é equivalente à tabela verdade para as máquinas combinacionais.  
+Seja a figura.
 
 ![Diagrama de estados](/sisdig_aulas/images_sisdig/diagramaestados.jpg)
 
@@ -24,7 +24,7 @@ A figura ilustra um típico diagrama de estados e seus elementos:
 3. Toda transição requer **condições de entrada** para o estado de interesse;
 4. Toda transição entre estados se refere **às saídas no estado predecessor para uma entrada condicional**.
 
-Um exemplo simples que ilutra o funcionamento de uma máquina sequencial com a utilização de diagrama de estados está apresentado na figura.
+O **exemplo 1** ilustra o funcionamento de uma máquina sequencial com a utilização de diagrama de estados está apresentado na figura.
 
 ![Exemplo diagrama de estados](/sisdig_aulas/images_sisdig/exdiagramaestados.jpg)
 
@@ -46,7 +46,7 @@ No caso de *X=0*, independentmente da transição do clock, a saída será manti
 
 ![Máquina sequencial - diagrama](/sisdig_aulas/images_sisdig/maquinasequencial.jpg)
 
-Um novo exemplo de diagrama de estados esstá apresentado na figura.
+O **exemplo 2** de diagrama de estados está apresentado na figura.
 
 ![Exemplo diagrama de estados](/sisdig_aulas/images_sisdig/ex2diagramaestados.jpg)
 
@@ -71,6 +71,10 @@ A partir daí, na análise será necessário:
 (2) Quais são as **entradas** relacionadas com as mudanças de estado  
 (3) Quais são as **sequências de transições**.
 
+Para a análise, uma ferramenta importante é o **mapa para cada p´roximo estado**.  
+O mapa é muito útil para tabular os circuitos.
+
+Vamos tomar **exemplo 1**.  
 O comportamento da **saída *A*** da máquina sequencial pode ser representado pelo mapa.  
 
 | *AB* | *00* | *01* | *10* | *11* |
@@ -79,6 +83,14 @@ O comportamento da **saída *A*** da máquina sequencial pode ser representado p
 | 0 | 0 | 0 | 1 | 1 |
 | 1 | 0 | 1 | 1 | 0 |
 
+O comportamento representa o comportamento da saída *A* em função do estado predecessor e da variável *X*.  
+Observe que quando *X=0*, o estado permace inalterado. Nesse caso, o valor da variável  *A* após a transição de clock não se altera.  
+Assim, se *A* for igual a *0* se manterá *0* na transição do clock, portanto, no mapa, a representação da saída é *0*.  
+Por outro lado, se *A* for igual a *1* se manterá *1* e, no mapa, a saída deverá ser representada por *1*.
+Quando *X=1*, a análise deve levar em consideração as transições que ocorrem entre estados, de modo que a saída será indicada por 1
+nas transições *01* para *10* e de *10* para *11*. 
+
+Em raciocínio similar, pode-se definir o comportamento da variável de estado *B*.  
 O comportamento da **saída *B*** da máquina sequencial pode ser representado pelo mapa.  
 
 | *AB* | *00* | *01* | *10* | *11* |
@@ -86,3 +98,6 @@ O comportamento da **saída *B*** da máquina sequencial pode ser representado p
 | *X* | - | - | - | - |
 | 0 | 0 | 1 | 0 | 1 |
 | 1 | 1 | 0 | 1 | 0 |
+
+___
+**[Home Conteúdo Sistemas Digitais](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/sisdig_aulas.md)**  
