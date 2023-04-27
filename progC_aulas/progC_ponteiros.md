@@ -80,7 +80,12 @@ pois variáveis do tipo inteiro ocupam 16 bits (2 *bytes*) de memória.
 No primeiro caso (*char*), se a memória possui posições de endereço de 1 *byte* e o valor de p for igual a 0 (mero exemplo), 
 `p++` implica que o nvo valor de *p* será igual a 1. Por outro lado (*int*), o comando `p++` implicará um novo valor igual a 2. 
 
-
+### 8.3.3 Exemplos
+1. Escrever um código em C para ler dois números de ponto flutuante. Escrever a soma dos números e o endereço onde a soma está armazenada na memória. 
+[Uma solução](https://github.com/claytonjasilva/prog_exemplos/blob/main/cursoCponteiro1.c)  
+2. Escrever um código em C para ler e armazenar 10 números de ponto flutuante.  
+Escrever cada um dos números lidos seguidos da média.  
+[Uma solução](https://github.com/claytonjasilva/prog_exemplos/blob/main/cursoCponteiro2.c)
 
 ___
 **[Home Conteúdo Programação em C](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/progC_aulas.md)**   
