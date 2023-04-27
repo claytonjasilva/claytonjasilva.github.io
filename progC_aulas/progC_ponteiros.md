@@ -110,7 +110,7 @@ Relembrando, o complemento de *N* é definido pela diferença $C(N)=M-N$, onde M
 A função deve retornar `void`, **devendo alterar o valor do argumento**.  
 [Uma solução](https://github.com/claytonjasilva/prog_exemplos/blob/main/cursoCponteiro3.c)  
 4. Escrever um código em C para calcular a expressão *e<sup>x</sup>* aplicando a aproximação dada abaixo  
-$$e_x=1+x+\frac{x^2}{2!}+\frac{x^3}{3!}+...$$  
+$$e^x=1+x+\frac{x^2}{2!}+\frac{x^3}{3!}+...$$  
 Utilizar uma função cujos parâmetros são o expoente *x* e o número *N* de termos da aproximação.
 
 
