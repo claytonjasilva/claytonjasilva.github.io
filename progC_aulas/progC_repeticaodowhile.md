@@ -34,7 +34,21 @@ A execução do código é similar à aplicação com o *while*.
 ## 5.2 Controle das repetições com *flag*
 No caso da utilização do *flag* é bom lembrar que pelo menos uma execução do comando ou bloco de comandos interno à estrutura ocorrerè.  
 Situações em que pode não ocorrer execução alguma das instruções do *loop* são mais adequadamente tratadas pelo *while*,  
-ou usando-se os comandos ***break** ou ***continue***.
+ou usando-se os comandos ***break*** ou ***continue***.
+
+## 5.3 Exemplos
+1. Elaborar um código em C para ler um número inteiro não negativo e escrever a soma dos números infeirores ao número lido.  
+[Uma solução](https://github.com/claytonjasilva/prog_exemplos/blob/main/cursoCcomandoDoWhile1.c)  
+2. Elaborar um código em C para ler um conjunto de números não nulos e escrever somente os números pares. 
+Caso o número lido não seja par escrever a mensagem "numero impar".
+O usuário poderá interromper o programa digitando o número 0.   
+[Uma solução](https://github.com/claytonjasilva/prog_exemplos/blob/main/cursoCcomandoDoWhile2.c)
+3. Elaborar um código em C para ler um número inteiro *n* positivo. O usuário deve escolher uma opção de 1 a 3.  
+A opção 1 deve escrever a soma dos *n* termos da série S = 1/(k+3), k=0,...,n-1  
+A opção 2 deve escrever a soma dos *n* termos da série S = 2k/(k+1), k=0,...,n-1  
+A opção 3 deve escrever a soma dos *n* termos da série S = k, k=0,...,n-1  
+Se o usuário digitar uma opção inválida o programa deve permanecer solicitando uma opção válida.
+
 
 ___
 **[Home Conteúdo Programação em C](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/progC_aulas.md)**   
