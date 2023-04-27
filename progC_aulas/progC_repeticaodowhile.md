@@ -49,6 +49,11 @@ A opção 2 deve escrever a soma dos *n* termos da série S = 2k/(k+1), k=0,...,
 A opção 3 deve escrever a soma dos *n* termos da série S = k, k=0,...,n-1  
 Se o usuário digitar uma opção inválida o programa deve permanecer solicitando uma opção válida.  
 [Uma solução](https://github.com/claytonjasilva/prog_exemplos/blob/main/cursoCcomandoDoWhile3.c)  
+4. Escrever um código em C para calcular a expressão *e<sup>x</sup>* aplicando a aproximação dada abaixo  
+$$e^x=1+x+\frac{x^2}{2!}+\frac{x^3}{3!}+...$$  
+Utilizar uma função cujos parâmetros são o expoente *x* e o número *N* de termos da aproximação.  
+[Uma solução](https://github.com/claytonjasilva/prog_exemplos/blob/main/cursoCcomandoFor.c)
+
 
 ___
 **[Home Conteúdo Programação em C](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/progC_aulas.md)**   
