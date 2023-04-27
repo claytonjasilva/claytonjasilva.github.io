@@ -86,18 +86,18 @@ A função `malloc()` é usada para alocação dinâmica de um bloco de memória
 quantidade de dados a armazenar.  
 A função pertence à biblioteca `stdlib.h`, 
 portanto é necessário inclu´-la nas diretivas de pré-processamento.  
-``
+```
 #include <stdlib.h>
 ```
 A quantidade de memória a alocar depende do tipo de dado.  
 Uma forma de alocar é mediane o uso da linha de comando  
 ```
-float \*\p;
+float *p;
 p = (<tipo> <* ponteiro>) malloc(<quantidade de dados>*sizeof(<tipo>)); 
 ```
-Observe que é usada a função sizeof().
-  A função recebe uma variável como argumento e devolve o número de bytes.  
-  
+Observe que é usada a função `sizeof()`.
+A função recebe uma variável como argumento e devolve o número de bytes.  
+Admite como argumento a variável ou simplesmente o tipo char, int ou float, por exemplo.
 
 ## 8.4 Exemplos
 1. Escrever um código em C para ler dois números de ponto flutuante. Escrever a soma dos números e o endereço onde a soma está armazenada na memória. 
