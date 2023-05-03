@@ -60,7 +60,9 @@ printf("O terceiro elemento do vtoer eh %i",p[2]);
 [Uma solução](https://github.com/claytonjasilva/prog_exemplos/blob/main/cursoCarray1.md)  
 2. Criar um vetor que armazene os seguintes nomes: "ana", "joao", "pedro", "carlos", "jose", "joaquim", "zenildo".  
 Com o vetor criado, o usuario poderá digitar um nome, se o nome pertencer ao conjunto, o programa deverá responder "NOME ENCONTRADO!".  
-Se o nome digitado pelo usuário não pertencer ao conjunto, o programa deverá responder "NOME PERTENCE A RELAÇÃO!".
+Se o nome digitado pelo usuário não pertencer ao conjunto, o programa deverá responder "NOME NAO PERTENCE A RELACAO!".
+[Uma solução](https://github.com/claytonjasilva/prog_exemplos/blob/main/cursoCarray2.md)  
+**Resolvendo com ponteiro...**  
 
 
 
