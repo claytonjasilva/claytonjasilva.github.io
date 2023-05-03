@@ -55,6 +55,12 @@ p = idade;
 printf("O terceiro elemento do vtoer eh %i",p[2]);
 ```
 
+### 9.2.5 Exemplos
+1. Escrever um código em C para ler 10 números quaisquer. Determinar e escrever cada número lido seguido da média dos números lidos.   
+[Uma solução](https://github.com/claytonjasilva/prog_exemplos/blob/main/cursoCarray1.md)  
+3. 
+
+
 ___
 **[Home Conteúdo Programação em C](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/progC_aulas.md)**   
 **[Strings: próximo>>](progC_stringsvetores2.md)**   
