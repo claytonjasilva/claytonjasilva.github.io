@@ -52,7 +52,7 @@ Os instrumentos de avaliação continuada serão disponibilizados à medida que 
 2. [Lista 2 de Exercícios](arq_aulas/arq_exercicios2_sala.md)  
 3. [Lista 3 de Exercícios](arq_aulas/arq_exercicios3_sala.md)  
 4. [Lista 4 de Exercícios](arq_aulas/arq_exercicios4_sala.md)  
-5. [Lista 5 de Exercícios](arq_aulas/arq_exercicios5_sala.md)
+5. [Lista 5: máquina de von Neumman](arq_aulas/arq_exercicios5_sala.md)
 6. [Lista 6 de Exercícios](arq_aulas/arq_exercicios6_sala.md)
 7. [Lista 7 de Exercícios](arq_aulas/arq_exercicios7_sala.md)
 8. [Lista 8 de Exercícios](arq_aulas/arq_exercicios8_sala.md)
