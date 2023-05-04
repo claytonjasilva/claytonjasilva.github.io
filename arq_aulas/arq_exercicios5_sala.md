@@ -60,6 +60,11 @@ Armazenar o maior dos números no endereço seguinte aos dados comparados.
 Admitir que o código está armazenado a partir do endereço 0x000.  
 **[Soluções em ...](https://github.com/claytonjasilva/prog_exemplos/blob/main/exlistaAssembly1.md)**  
 
+15. Somar os dados armazenados nas 5 posições de memória a partir do endereço 0x100.  
+Armazenar o resultado na posição de memória seguinte aos dados.  
+O código está armazenado a partir do endereço 0x000.  
+**[Soluções em ...](https://github.com/claytonjasilva/prog_exemplos/blob/main/exlistaAssembly2.md)  
+
 
 
 
