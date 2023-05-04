@@ -72,7 +72,7 @@ Escrever a média das idades.
 O usuário deverá digitar quantos alunos a turma possui, antes de informar os nomes do aluno da turma.
 Ao final, o programa deve escrever o primeiro nome digitado pelo usuário.  
 [Uma solução](https://github.com/claytonjasilva/prog_exemplos/blob/main/cursoCarray4.c)
-
+5. Cadastrar nomes e notas de ma turma com 10 alunos. Determinar a maior nota e o respectivo nome do aluno.
 
 ___
 **[Home Conteúdo Programação em C](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/progC_aulas.md)**   
