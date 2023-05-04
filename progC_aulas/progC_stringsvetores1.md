@@ -57,11 +57,11 @@ printf("O terceiro elemento do vtoer eh %i",p[2]);
 
 ### 9.2.5 Exemplos
 1. Escrever um código em C para ler 10 números quaisquer. Determinar e escrever cada número lido seguido da média dos números lidos.   
-[Uma solução](https://github.com/claytonjasilva/prog_exemplos/blob/main/cursoCarray1.md)  
+[Uma solução](https://github.com/claytonjasilva/prog_exemplos/blob/main/cursoCarray1.c)  
 2. Criar um vetor que armazene os seguintes nomes: "ana", "joao", "pedro", "carlos", "jose", "joaquim", "zenildo".  
 Com o vetor criado, o usuario poderá digitar um nome, se o nome pertencer ao conjunto, o programa deverá responder "NOME ENCONTRADO!".  
 Se o nome digitado pelo usuário não pertencer ao conjunto, o programa deverá responder "NOME NAO PERTENCE A RELACAO!".  
-[Uma solução](https://github.com/claytonjasilva/prog_exemplos/blob/main/cursoCarray2.md)  
+[Uma solução](https://github.com/claytonjasilva/prog_exemplos/blob/main/cursoCarray2.c)  
 **Resolvendo com ponteiro...**    
 [Outra solução](https://github.com/claytonjasilva/prog_exemplos/blob/main/cursoCarray3.c)
 3. Criar um vetor para armazenar os nomes de alunos de uma turma de aula.   
