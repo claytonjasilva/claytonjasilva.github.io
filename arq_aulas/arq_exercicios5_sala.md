@@ -57,8 +57,8 @@ STOR M(X), 1000d
 
 14. Elaborar um programa em *assembly* para a arquitetura de von Neumman que compare dois números armazenados em memória nos endereços 0x1AA e 0x1AB.  
 Armazenar o maior dos números no endereço seguinte aos dados comparados.  
-Admitir que o código está armazenado a partir do endereço 0x000.
-[Soluções em ...](https://github.com/claytonjasilva/prog_exemplos/blob/main/exlistaAssembly1.md)  
+Admitir que o código está armazenado a partir do endereço 0x000.  
+**[Soluções em ...](https://github.com/claytonjasilva/prog_exemplos/blob/main/exlistaAssembly1.md)**  
 
 
 
