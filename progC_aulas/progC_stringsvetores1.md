@@ -64,8 +64,14 @@ Se o nome digitado pelo usuário não pertencer ao conjunto, o programa deverá 
 [Uma solução](https://github.com/claytonjasilva/prog_exemplos/blob/main/cursoCarray2.c)  
 **Resolvendo com ponteiro...**    
 [Outra solução](https://github.com/claytonjasilva/prog_exemplos/blob/main/cursoCarray3.c)
-3. Criar um vetor para armazenar os nomes de alunos de uma turma de aula.   
+3. Criar um vetor para armazenar as idades de um grupo de pessoas.  
+O usuário deverá digitar quantas pessoas serão cadastradas.  
+Escrever a média das idades.  
+[Uma solução](https://github.com/claytonjasilva/prog_exemplos/blob/main/cursoCarray5.c)  
+4. Criar um vetor para armazenar os nomes de alunos de uma turma de aula.   
 O usuário deverá digitar quantos alunos a turma possui, antes de informar os nomes do aluno da turma.
+Ao final, o programa deve escrever o primeiro nome digitado pelo usuário.
+[Uma solução](https://github.com/claytonjasilva/prog_exemplos/blob/main/cursoCarray4.c)
 
 
 
