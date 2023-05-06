@@ -12,8 +12,16 @@ De modo geral, os circuitos sequenciais são classificados da seguintes forma:
 
 O êxito de projetos e análise de máquinas sequenciais depende fortemente dos objetivos e das técnicas empregadas.  
 Uma delas é a técnica de diagrama de estados.  
-O diagrama de estados descreve as possíveis transações entre todos os estados possíveis da máquina.    
-O diagrama de estados para as máquinas sequenciais é equivalente à tabela verdade para as máquinas combinacionais.  
+O **estado** define um **conjunto de informações sobre o sistema** em um determinado momento.  
+Uma máquina que se encontra em um determinado estado pode passar a outro quando um **evento** ocorre.  
+A mudança de estados define uma **transição** de estados.  
+O diagrama de estados representa o **comportamento dinâmico** de uma máquina sequencial, apresentando os seguintes elementos:  
+- **Estados** possíveis, definidos por um **rótulo**;
+- **Transições** possíveis, indicadas por uma seta que representa **origem-destino**;
+- **Eventos**, definidos pelas variáveis de entrada, que produzem a transição de estados do sistema;
+- **Saídas**, definidas por **variáveis** - variáveis de estado - cujos valores são alterados na transição do estado de origem para o estado de destino.
+
+**O diagrama de estados para as máquinas sequenciais é equivalente à tabela verdade para as máquinas combinacionais.**  
 Seja a figura.
 
 ![Diagrama de estados](/sisdig_aulas/images_sisdig/diagramaestados.jpg)
@@ -24,24 +32,26 @@ A figura ilustra um típico diagrama de estados e seus elementos:
 3. Toda transição requer **condições de entrada** para o estado de interesse;
 4. Toda transição entre estados se refere **às saídas no estado predecessor para uma entrada condicional**.
 
-O **exemplo 1** ilustra o funcionamento de uma máquina sequencial com a utilização de diagrama de estados está apresentado na figura.
+O **exemplo 1** ilustra o funcionamento de uma máquina sequencial com a utilização de diagrama de estados.
 
 ![Exemplo diagrama de estados](/sisdig_aulas/images_sisdig/exdiagramaestados.jpg)
 
-No exemplo, o estado *a* é definido pelo código correspondente as saídas *00*, ou seja *A=0*, *B=0*.  
-Se no estado *00* a entrada *X*  for igual a *1*, ocorrerá uma transição do estado *a* para o estado *b* -
+Entendendo o comportamento do sistema:
+1. O estado **a** produz saída *00*, ou seja *A=0*, *B=0*, que definem o estado.
+2. Quando uma variável de entrada *X* assume o valor *0*, o sistema permanece no estado atual, *00*.
+3. Quando *X* passar ao valor *1* será produzida uma transição do estado **a** para o estado **b** -
 a variável *B* passa de *0* a *1* e a variável *A* não se altera, permanecendo igual a *0*.  
-Do estado *01* a entrada *X* igual a *1* acarreta uma transição do estado *b* para o estado *c* -
-a variável *B* passa de *1* a *0* e a variável *A* passa de *0* a *1*.  
-Do estado *10* a entrada *X* igual a *1* acarreta uma transição do estado *c* para o estado *d* -
-a variável *B* passa de *0* a *1* e a variável *A* permanece igual a *1*.  
-A partir do estado *d* uma nova entrada *X=1* leva a máquina 
-a retornar ao estado inicial *A=0,B=0*, renovando o ciclo.  
-Em qualquer estado, as saídas da máquina permanecem no mesmo estado, ou seja, as variáveis não mudam, se ela receber como entrada um sinal *X=0*.  
+4. Do estado **b**, se a entrada *X* passar a *1* será produzida uma transição para o estado **c** -
+a variável *B* passa de *1* a *0* e a variável *A* passa de *0* a *1* - em caso contrário, se *X* = 0, o sistema permanece no estado.  
+5. Do estado **c**, se a entrada *X* passar a *1* será produzida uma transição para o estado **d** -
+a variável *B* passa de *0* a *1* e a variável *A* permanece igual a *1* - em caso contrário, se *X* = 0, o sistema permanece no estado.  
+6. Do estado **d** uma nova entrada *X=1* leva a máquina a retornar ao estado inicial *A=0,B=0*, renovando o ciclo.  
+  
 O comportamento da máquina sequencial poderá ser síncrono ou assíncrono.  
-
-No caso síncrono, a transição poderá ser *gatilhada* pela transição de um sinal de clock (por exemplo de *LOW* para *HIGH*).   
-Nesse caso, mantido *X=1*, as transições entre estados *00-01-10-11* ocorrerão sempre que houver a transição do clock.  
+No caso síncrono, a transição ocorre dependendo também de um sinal de entrada do clock.  
+Além de *X* a transição depende da mudança do valor do sinal de clock de nível baixo (*LOW*) para alto (*HIGH*).  
+Essa variação do sinal de clock é chamada de **gatilhamento pela borda**.   
+Ou seja, no exemplo, mantido *X=1*, as transições entre estados *00-01-10-11* ocorrerão sempre que houver a transição do clock.  
 No caso de *X=0*, independentmente da transição do clock, a saída será mantida no estado em que se encontrar quando *X* for resetado.  
 
 ![Máquina sequencial - diagrama](/sisdig_aulas/images_sisdig/maquinasequencial.jpg)
