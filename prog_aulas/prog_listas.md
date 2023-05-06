@@ -167,8 +167,8 @@ matriz =[[1,2,3],[4,5,6],[7,8,9]]
 escreva uma mensagem informando se o número lido é maior ou menor do que a soma dos números da lista.
 2. Elaborar um programa em Python para criar uma lista contendo os 20 números pares a partir de um número digitado pelo usuário.  
 Se o número digitado pelo usuário não for par, o programa deve solicitar que o usuário digite um número válido.
-3. Elaborar um programa em Python para ler uma lista contendo os nomes e as notas de um grupo de 20 alunos.  
-Escrever os nomes dos alunos cuja nota seja inferior à média da turma. 
+3. Elaborar um programa em Python para ler uma lista contendo as notas de um grupo de 20 alunos.  
+Escrever as notas inferiores à média da turma. 
 4. Elaborar um programa na linguagem Python que leia e armazene os dados de um grupo de 30 pessoas: nome, idade, peso, altura. Para a idade de cada pessoa lida, o programa deverá recomendar exercícios do tipo A, para pessoas acima de 60 anos; do tipo B, para pessoas entre 40 e 60 anos; do tipo C, para pessoas entre 15 e 40 anos; e do tipo D, para crianças (idade inferior a 15 anos). Com base no peso e na altura, o programa deve calcular o IMC (dado por peso/altura^2), determinando as dietas: 'magra', IMC superior a 25; 'normal', IMC entre 19 e 25; e 'gorda', IMC inferior a 19. O programa deverá armazenar a dieta de cada pessoa e o respectivo IMC.  [listaDieta.py](https://github.com/claytonjasilva/prog_exemplos/blob/main/listaDieta.py)
 5. Elaborar um programa na linguagem Python que leia e armazene as matrículas e notas de um grupo de 20 alunos. O programa deverá calcular a média das notas lidas e o desvio padrão, usando a fórmula  
 ![desvio](/prog_aulas/desvio.png)  
