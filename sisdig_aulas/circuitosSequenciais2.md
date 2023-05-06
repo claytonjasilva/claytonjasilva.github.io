@@ -60,9 +60,9 @@ O **exemplo 2** de diagrama de estados está apresentado na figura.
 
 ![Exemplo diagrama de estados](/sisdig_aulas/images_sisdig/ex2diagramaestados.jpg)
 
-No novo exemplo, ao invés do uso de símbolos *a*,...,*d* para designar os estados, utiliza-se o próprio código que define cada estado.  
-Como o código já está definido omite-se no diagrama as saídas correspondentes às **variáveis de estado**.  
-No diagrama, apresenta-se uma nova variável Z, cujo valor de saída está associada a cada transição de estado.
+No novo exemplo, ao invés do uso de símbolos **a**,...,**d** para designar os estados, utiliza-se o próprio código que define cada estado.  
+Como o código já está definido, omite-se no diagrama as saídas correspondentes às variáveis de estado.  
+No diagrama, apresenta-se uma nova variável *Z*, cujo valor de saída está associada a cada transição de estado, embora não se configure como variável deestado.
 Um esquema em bloco do circuito está apresentado na figura.  
 
 ![Máquina sequencial - diagrama](/sisdig_aulas/images_sisdig/maquinasequencial2.jpg)
