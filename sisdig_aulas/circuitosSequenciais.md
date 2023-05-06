@@ -1,13 +1,14 @@
 # 9. Fundamentos de máquinas sequenciais
 
 ## 9.1 Conceito de sistemas sequenciais
-Nosso estudo tem sido dedicado até o momento aos circuitos combinacionais.  
+Nosso estudo tem sido dedicado até o momento aos **circuitos combinacionais**.  
 Existe um segmento muito importante dos sistemas digitais, cujos circuitos são categorizados como **circuitos sequenciais**.  
-Existe uma ampla gama de problemas em que as técnicas de sistemas digitais podem ser aplicadas. Uma delas se refere ao controle,
+Para uma ampla gama de problemas as técnicas de sistemas digitais podem ser aplicadas. Uma delas se refere ao controle de sistemas,
 em que sinais digitais são recebidos e interpretados por um sistema digital, gerando saídas de controle de acordo com
 **uma sequência** em que os sinais são recebidos.  
 Nessas aplicações, circuitos com as características dos circuitos combinacionais não são próprios para resolver o problema.  
 Estas aplicações exigem que as saídas geradas sejam uma **função das variáveis de entrada presentes e dos valores passados das variáveis de entrada**.
+
 Um modelo de sistema controlado por realimentação (*feedback*) está apresentado na figura.
 
 ![Sistema controlado por realimentação](/sisdig_aulas/images_sisdig/sistemafeedback.jpg)
