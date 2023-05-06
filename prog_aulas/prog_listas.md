@@ -127,6 +127,7 @@ S = [0] # Cria a lista unitária
 | Operação | Objetivo | Exemplo |
 | - | - | - |
 | `lista.append(elemento)` | insere um novo elemento ao fim da lista | Por exemplo, na *lista = [1,2.4,6.7,3]*, `lista.append(4)` produz *lista = [1,2.4,6.7,3,4]* |
+| `lista.index(elemento)` | devolve a posição do elemento na lista | Por exemplo, na *lista = [1,2.4,6.7,3]*, `lista.index(4)` retorna 2 |
 | `lista.extend(lista argumento)` | inclui uma lista argumento no fim da lista | Por exemplo, na *lista = [1,2.4,6.7,3]*, `lista.extend([4,2.3])` produz *lista = [1,2.4,6.7,3,4,2.3]*.  |
 | `lista.sort()` | ordena crescentemente a lista | Por exemplo, na *lista = [1,2.4,6.7,3]*, `lista.sort()` produz *lista = [1,2.4,3,6.7]* |  
 | `lista.insert(i,elemento)` | insere um elemento em uma posição i | Por exemplo, na *lista = [1,2.4,6.7,3]*, `lista.insert(1,8)` produz *lista = [1,8,2.4,6.7,3]* |
@@ -178,8 +179,10 @@ Em seguida, o programa deverá permitir que o usuário digite um nome qualquer p
 o tipo sanguineo válido de uma das pessoas cadastradas.  
 Se o usuário digitar uma pessoa não cadastrada o programa deverá informar.  
 O programa deverá localizar a pessoa na lista anterior e cadastrar um tipo sanguíneo válido ('O','A','B' ou 'AB'). 
-7. Elaborar um programa na linguagem Python que leia e armazene os dados de um grupo de 30 pessoas: nome, idade, peso, altura. Para a idade de cada pessoa lida, o programa deverá recomendar exercícios do tipo A, para pessoas acima de 60 anos; do tipo B, para pessoas entre 40 e 60 anos; do tipo C, para pessoas entre 15 e 40 anos; e do tipo D, para crianças (idade inferior a 15 anos). Com base no peso e na altura, o programa deve calcular o IMC (dado por peso/altura^2), determinando as dietas: 'magra', IMC superior a 25; 'normal', IMC entre 19 e 25; e 'gorda', IMC inferior a 19. O programa deverá armazenar a dieta de cada pessoa e o respectivo IMC.  [listaDieta.py](https://github.com/claytonjasilva/prog_exemplos/blob/main/listaDieta.py)
-8. Elaborar um programa na linguagem Python que leia e armazene as matrículas e notas de um grupo de 20 alunos. O programa deverá calcular a média das notas lidas e o desvio padrão, usando a fórmula  
+7. Elaborar um programa em Python para ler uma lista contendo 10 nomes de pessoas.  
+Em seguida, o programa deverá cadastrar para cada nome a respectiva idade   
+8. Elaborar um programa na linguagem Python que leia e armazene os dados de um grupo de 30 pessoas: nome, idade, peso, altura. Para a idade de cada pessoa lida, o programa deverá recomendar exercícios do tipo A, para pessoas acima de 60 anos; do tipo B, para pessoas entre 40 e 60 anos; do tipo C, para pessoas entre 15 e 40 anos; e do tipo D, para crianças (idade inferior a 15 anos). Com base no peso e na altura, o programa deve calcular o IMC (dado por peso/altura^2), determinando as dietas: 'magra', IMC superior a 25; 'normal', IMC entre 19 e 25; e 'gorda', IMC inferior a 19. O programa deverá armazenar a dieta de cada pessoa e o respectivo IMC.  [listaDieta.py](https://github.com/claytonjasilva/prog_exemplos/blob/main/listaDieta.py)
+9. Elaborar um programa na linguagem Python que leia e armazene as matrículas e notas de um grupo de 20 alunos. O programa deverá calcular a média das notas lidas e o desvio padrão, usando a fórmula  
 ![desvio](/prog_aulas/desvio.png)  
 onde MA é a média aritmética. Deverá escrever somente as matrículas dos alunos com nota inferior à nota média.   [listaDevPad.py](https://github.com/claytonjasilva/prog_exemplos/blob/main/listaDevPad.py)
 4. Elaborar um programa na linguagem Python que leia uma sequência de vários números inteiros não nulos, até que o usuário digite 0. Para cada número da sequência lida o programa deverá determinar: (i) a soma da série {0,1,2, ..., N}; (ii) a soma da série {1/N,2/N-1, ..., N/1}. O programa deverá escrever todos os números superiores ao primeiro número lido. Deverá escrever também todos os números inferiores ao último número lido antes do 0. [listaSerie.py](https://github.com/claytonjasilva/prog_exemplos/blob/main/listaSerie.py)
