@@ -181,7 +181,7 @@ Se o usuário digitar uma pessoa não cadastrada o programa deverá informar.
 O programa deverá localizar a pessoa na lista anterior e cadastrar um tipo sanguíneo válido ('O','A','B' ou 'AB'). 
 7. Elaborar um programa em Python para ler uma lista contendo 10 nomes de pessoas.  
 Em seguida, o programa deverá cadastrar para cada nome a respectiva idade.   
-8. Elaborar um programa em Python para ler uma lista contendo idade e peso de um grupo de 10 pessoas.  
+8. Elaborar um programa em Python para ler uma lista contendo peso e altura de um grupo de 10 pessoas.  
 Em seguida, o programa deverá criar uma nova lista contendo o IMC das pessoas.  
 O IMC é calculado pela razão $IMC=\frac{peso}{altura²}$.  
 9. Elaborar um programa na linguagem Python que leia e armazene os dados de um grupo de 30 pessoas: nome, idade, peso, altura. Para a idade de cada pessoa lida, o programa deverá recomendar exercícios do tipo A, para pessoas acima de 60 anos; do tipo B, para pessoas entre 40 e 60 anos; do tipo C, para pessoas entre 15 e 40 anos; e do tipo D, para crianças (idade inferior a 15 anos). Com base no peso e na altura, o programa deve calcular o IMC (dado por peso/altura^2), determinando as dietas: 'magra', IMC superior a 25; 'normal', IMC entre 19 e 25; e 'gorda', IMC inferior a 19. O programa deverá armazenar a dieta de cada pessoa e o respectivo IMC.  [listaDieta.py](https://github.com/claytonjasilva/prog_exemplos/blob/main/listaDieta.py)
