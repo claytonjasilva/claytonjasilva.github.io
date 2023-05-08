@@ -175,11 +175,11 @@ Escrever as 10 maiores idades em ordem crescente.
 5. Elaborar um programa em Python para cadastrar duas listas, uma contendo o nome e outra contendo a idade de um grupo de 15 pessoas.    
 O nome e a idade serão digitados pelo usuário.  
 Escrever os nomes dos alunos com nota inferior à média da turma.
-6. Elaborar um programa em Python para ler uma lista contendo 10 nomes de pessoas.  
+6. Elaborar um programa em Python para cadastrar uma lista contendo 10 nomes de pessoas, digitados pelo usuário.  
 Em seguida, o programa deverá permitir que o usuário digite um nome qualquer para cadastrar 
 o tipo sanguineo válido de uma das pessoas cadastradas.  
-Se o usuário digitar uma pessoa não cadastrada o programa deverá informar.  
-O programa deverá localizar a pessoa na lista anterior e cadastrar um tipo sanguíneo válido ('O','A','B' ou 'AB'). 
+Se o usuário digitar uma pessoa não cadastrada o programa deverá informar com a mensagem PESSOA NAO CADASTRADA.
+Se a pessoa tiver o nome cadastrado na lista, o programa deverá cadastrar o respectivo tipo sanguíneo. Os tipos sanguíneos válidos são 'O','A','B' ou 'AB'. 
 7. Elaborar um programa em Python para ler uma lista contendo 10 nomes de pessoas.  
 Em seguida, o programa deverá cadastrar para cada nome a respectiva idade.   
 8. Elaborar um programa em Python para ler uma lista contendo peso e altura de um grupo de 10 pessoas.  
