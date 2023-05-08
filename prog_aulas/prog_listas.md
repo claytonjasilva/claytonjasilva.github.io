@@ -164,7 +164,7 @@ matriz =[[1,2,3],[4,5,6],[7,8,9]]
 é uma lista cujo primeiro objeto, *matriz[0]* é a lista *[1,2,3]*, logo *matriz[0][2]* retorna o elemento *3*. 
 
 ## 6.4 Exercícios com listas  
-1. Elaborar um programa na Linguagem Python que, dada a lista *lista=[1.5, 6.6, 7, 8.9, 15,12.56]*, leia um número qualquer e 
+1. Elaborar um programa na Linguagem Python que, dada a *lista=[1.5, 6.6, 7, 8.9, 15,12.56]*, leia um número qualquer digitadao pelo usuário e 
 escreva uma mensagem informando se o número lido é maior ou menor do que a soma dos números da lista.
 2. Elaborar um programa em Python para criar uma lista contendo os 20 números pares a partir de um número digitado pelo usuário.  
 Se o número digitado pelo usuário não for par, o programa deve solicitar que o usuário digite um número válido.
