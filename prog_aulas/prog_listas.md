@@ -182,7 +182,7 @@ Se o usuário digitar uma pessoa não cadastrada o programa deverá informar com
 Se a pessoa tiver o nome cadastrado na lista, o programa deverá cadastrar o respectivo tipo sanguíneo. Os tipos sanguíneos válidos são 'O','A','B' ou 'AB'. 
 7. Elaborar um programa em Python para cadastrar uma lista contendo 10 nomes de pessoas, digitados pelo usuário.  
 Em seguida, o programa deverá cadastrar para cada nome a respectiva idade.   
-8. Elaborar um programa em Python para ler uma lista contendo peso e altura de um grupo de 10 pessoas.  
+8. Elaborar um programa em Python para cadastrar uma lista contendo peso e altura de um grupo de 10 pessoas, digitados pelo usuário.  
 Em seguida, o programa deverá criar uma nova lista contendo o IMC das pessoas.  
 O IMC é calculado pela razão $IMC=\frac{peso}{altura²}$.  
 9. Elaborar um programa em Python para cadastrar uma lista contendo nome e altura de um grupo de 10 pessoas.  
