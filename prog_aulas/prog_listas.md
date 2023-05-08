@@ -170,8 +170,8 @@ escreva uma mensagem informando se o número lido é maior ou menor do que a som
 Se o número digitado pelo usuário não for par, o programa deve solicitar que o usuário digite um número válido.
 3. Elaborar um programa em Python para cadastrar uma lista contendo as notas de um grupo de 20 alunos digitadas pelo usuário.  
 Escrever as notas inferiores à média da turma. 
-4. Elaborar um programa em Python para ler uma lista contendo a idade de um grupo de 15 pessoas.  
-Ordenar crescentemente a lista e escrever as 10 maiores idades. 
+4. Elaborar um programa em Python para cadastrar uma lista contendo a idade de um grupo de 15 pessoas digitada pelo usuário.  
+Escrever as 10 maiores idades em ordem crescente. 
 5. Elaborar um programa em Python para ler uma lista contendo o nome e outra lista contendo a idade de um grupo de 15 pessoas.  
 Escrever os nomes dos alunos com nota inferior à média da turma.
 6. Elaborar um programa em Python para ler uma lista contendo 10 nomes de pessoas.  
