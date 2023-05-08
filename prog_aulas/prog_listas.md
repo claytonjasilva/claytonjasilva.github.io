@@ -168,7 +168,7 @@ matriz =[[1,2,3],[4,5,6],[7,8,9]]
 escreva uma mensagem informando se o número lido é maior ou menor do que a soma dos números da lista.
 2. Elaborar um programa em Python para criar uma lista contendo os 20 números pares a partir de um número digitado pelo usuário.  
 Se o número digitado pelo usuário não for par, o programa deve solicitar que o usuário digite um número válido.
-3. Elaborar um programa em Python para ler uma lista contendo as notas de um grupo de 20 alunos.  
+3. Elaborar um programa em Python para cadastrar uma lista contendo as notas de um grupo de 20 alunos digitadas pelo usuário.  
 Escrever as notas inferiores à média da turma. 
 4. Elaborar um programa em Python para ler uma lista contendo a idade de um grupo de 15 pessoas.  
 Ordenar crescentemente a lista e escrever as 10 maiores idades. 
