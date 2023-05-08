@@ -172,7 +172,8 @@ Se o número digitado pelo usuário não for par, o programa deve solicitar que 
 Escrever as notas inferiores à média da turma. 
 4. Elaborar um programa em Python para cadastrar uma lista contendo a idade de um grupo de 15 pessoas digitada pelo usuário.  
 Escrever as 10 maiores idades em ordem crescente. 
-5. Elaborar um programa em Python para ler uma lista contendo o nome e outra lista contendo a idade de um grupo de 15 pessoas.  
+5. Elaborar um programa em Python para cadastrar duas listas, uma contendo o nome e outra contendo a idade de um grupo de 15 pessoas.    
+O nome e a idade serão digitados pelo usuário.  
 Escrever os nomes dos alunos com nota inferior à média da turma.
 6. Elaborar um programa em Python para ler uma lista contendo 10 nomes de pessoas.  
 Em seguida, o programa deverá permitir que o usuário digite um nome qualquer para cadastrar 
