@@ -27,13 +27,13 @@ Para entender o funcionamento das células binárias é importante definir os **
 | Setar | *SET*=0, *CLEAR*=1 | A saídas *Q*=1 e $\bar{Q}=0$, permanecendo 1 mesmo que *SET* retorne ao valor 1 |
 | Ambíguo | *SET*=0, *CLEAR*=0 | A saída é instável - tenta-se resetar e setar o *latch* ao mesmo tempo |
 
-#### Vamos analisar o funcionamento do *latch*  
+### Vamos analisar o funcionamento do *latch*  
 A análise dos circuitos sequenciais requer sempre admitir uma **condição inicial**, em virtude da existência de memória.  
 Analisando o estado de repouso...
 
 ![Célula binária em repouso](/sisdig_aulas/images_sisdig/latchrepouso.jpg)
 As condições inicias, são mostradas nas imagens (a) e (b), ou seja, anteriormente tem-se *Q=0* ou *Q=1*.  
-Analisando o estado de *latch* 'setado'...
+#### Analisando o estado de *latch* 'setado'...
 
 ![Célula binária 'setada' - primeira condição inicial](/sisdig_aulas/images_sisdig/latchsetado.jpg)
 Verifique que as condições iniciais podem ser decompostas em duas partes:  
@@ -48,7 +48,7 @@ Por outro lado, a análise admite uma segunda condição inicial:
 Neste caso, a transição da entrada *SET* de 1 para 0 leva a saída *Q* a permanecer no nível alto (1).  
 Quando o valor de *SET* retornar a 1, o bit 1 mantém-se na saída *Q* - memória, armazenamento de 1 bit.  
 
-Analisando o estado do *latch* 'resetado'...
+#### Analisando o estado do *latch* 'resetado'...
 
 ![Célula binária 'resetada' - primeira condição inicial](/sisdig_aulas/images_sisdig/latchresetado.jpg)
 
