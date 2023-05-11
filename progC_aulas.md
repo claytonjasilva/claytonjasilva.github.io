@@ -12,7 +12,7 @@ Ministrado como atividade extra classe.
 7. [Funções](progC_aulas/progC_funcoes.md)
 8. [Ponteiros](progC_aulas/progC_ponteiros.md)
 9. [Strings e Vetores(*arrays*)](progC_aulas/progC_stringsvetores.md)
-10. [Matrizes]()
+10. [Matrizes](progC_aulas/progC_matrizes.md)
 11. [Estruturas (*struct*)]()
 12. [Tipos definidos pelo usuário (*typedef*)]()
 13. [Arquivos]()
