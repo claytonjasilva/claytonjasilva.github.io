@@ -15,9 +15,27 @@ O índice da esquerda indexa as linhas e o índice da direita indexa as colunas.
 Lembrando que a indexação sempre será a **partir de *0***.  
 O problema clássico de matrizes bidimensionais é o de leitura da varredura dos dados, **por linha ou por coluna**.
 
-## 10.n Exemplos
+## 10.2 Inicialização de matrizes
+O formato geral de incialização de matrizes é dado por  
+```
+<tipo> <nome> [tam 1][tam 2]...[tam n] = {lista de valores};
+```
+
+A lista de valores é composta por valores (do mesmo tipo da variável) separados por vírgula.  
+Os valores devem ser apresentados **na ordem em que serão colocados na matriz**.
+
+## 10.3 Exemplos
 1. Elaborar um programa em C que preencha, linha por linha, com dados de 1 a 200, uma matriz de 20x10.  
 2. Elaborar um programa em C que leia as temperaturas (em graus Celsius), entre 2h e 24h do dia, em intervalos de 2h, para 20 cidades.  
 Armazene as temperaturas da cidade em uma matriz.  
 Determine e armazene a temperatura média na mesma matriz.  
+3. Elaborar um programa em C para armazenar em uma matriz de duas linhas as vogais.  
+Na primeira linha, as vogais em minúscula.  
+Na segunda linha, as vogais em maiúscula.  
+4. Elaborar um programa em C que leia os dados de peso de 10 pessoas mês a mês, de janeiro a dezembro.  
+Armazene os pesos das pessoas em uma matriz.  
+Utilizar ponteiro.  
+
+
+
 
