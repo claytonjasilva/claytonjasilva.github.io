@@ -85,4 +85,9 @@ A imagem mostra o comportamento do dispositivo.
 Quando a entrada é *T=0*, independentemente da transição da entrada de clock, o FF T mantém a saída em um instante igual a saída no instante anterior.  
 Quando a entrada é *T=1*, independentemente da transição da entrada de clock, o FF T mantém a saída em um instante igual a saída no instante anterior **invertida**.  
 
+___
+**[<<anterior](flipflop1.md)**
+**[Home Conteúdo Sistemas Digitais](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/sisdig_aulas.md)**  
+**Flip-Flops [próximo >>](flipflop3.md)**
+
 
