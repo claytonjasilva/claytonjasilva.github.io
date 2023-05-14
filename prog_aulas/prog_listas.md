@@ -184,7 +184,8 @@ Escrever os nomes dos alunos com nota inferior à média da turma.
 Em seguida, o programa deverá permitir que o usuário digite um nome qualquer para cadastrar 
 o tipo sanguineo válido de uma das pessoas cadastradas.  
 Se o usuário digitar uma pessoa não cadastrada o programa deverá informar com a mensagem PESSOA NAO CADASTRADA.
-Se a pessoa tiver o nome cadastrado na lista, o programa deverá cadastrar o respectivo tipo sanguíneo. Os tipos sanguíneos válidos são 'O','A','B' ou 'AB'. 
+Se a pessoa tiver o nome cadastrado na lista, o programa deverá cadastrar o respectivo tipo sanguíneo. Os tipos sanguíneos válidos são 'O','A','B' ou 'AB'.   
+[Uma solução](https://github.com/claytonjasilva/prog_exemplos/blob/main/cursoPythonlista6.py)
 7. Elaborar um programa em Python para cadastrar uma lista contendo 10 nomes de pessoas, digitados pelo usuário.  
 Em seguida, o programa deverá cadastrar para cada nome a respectiva idade.   
 8. Elaborar um programa em Python para cadastrar uma lista contendo peso e altura de um grupo de 10 pessoas, digitados pelo usuário.  
