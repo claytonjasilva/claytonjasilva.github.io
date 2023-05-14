@@ -75,4 +75,14 @@ O diagrama de tempo apresentado na figura abaixo ilustra o funcionamento.
 
 ![Flip-Flop D - temporização](/sisdig_aulas/images_sisdig/temporizacao_ffd.jpg)
 
+**d. Flip-Flop T**
+
+O Flip-Flop T possui a representação e a respectiva tabela verdade apresentados na figura.  
+
+![Flip-Flop T](/sisdig_aulas/images_sisdig/flipflopt.jpg)
+
+A imagem mostra o comportamento do dispositivo.  
+Quando a entrada é *T=0*, independentemente da transição da entrada de clock, o FF T mantém a saída em um instante igual a saída no instante anterior.  
+Quando a entrada é *T=1*, independentemente da transição da entrada de clock, o FF T mantém a saída em um instante igual a saída no instante anterior **invertida**.  
+
 
