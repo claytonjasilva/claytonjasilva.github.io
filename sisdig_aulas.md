@@ -11,10 +11,8 @@
 8. [Circuitos multiplexadores](sisdig_aulas/circuitosMultiplexadores.md)
 9. [Fundamentos de máquinas sequenciais](sisdig_aulas/circuitosSequenciais.md)
 10. [Memória: células de memória e Flip-Flops](sisdig_aulas/flipflop.md)
-* Circuitos sequenciais  
-    [Flip Flops](sisdig_aulas/sisdig_7.pdf)  
-    [Aplicações com FF](sisdig_aulas/sisdig_8.pdf)  
-    [Conversores A/D e D/A](sisdig_aulas/sisdig_9.pdf)  
+11. [Aplicações com FF: Registradores](sisdig_aulas/registradores.md)
+12. [Conversores A/D e D/A](sisdig_aulas/sisdig_9.pdf)  
 
 ## Práticas de laboratório
 1. **Práticas de revisão:** [Prática 1a Arduíno-LED](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/arq_aulas/pratica_ligaLED.md) -
