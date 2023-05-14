@@ -165,7 +165,8 @@ matriz =[[1,2,3],[4,5,6],[7,8,9]]
 
 ## 6.4 Exercícios com listas  
 1. Elaborar um programa na Linguagem Python que, dada a *lista=[1.5, 6.6, 7, 8.9, 15,12.56]*, leia um número qualquer digitadao pelo usuário e 
-escreva uma mensagem informando se o número lido é maior ou menor do que a soma dos números da lista.
+escreva uma mensagem informando se o número lido é maior ou menor do que a soma dos números da lista.  
+[Uma solução](https://github.com/claytonjasilva/prog_exemplos/blob/main/cursoPythonlista1.py)
 2. Elaborar um programa em Python para criar uma lista contendo os 20 números pares a partir de um número digitado pelo usuário.  
 Se o número digitado pelo usuário não for par, o programa deve solicitar que o usuário digite um número válido.
 3. Elaborar um programa em Python para cadastrar uma lista contendo as notas de um grupo de 20 alunos digitadas pelo usuário.  
