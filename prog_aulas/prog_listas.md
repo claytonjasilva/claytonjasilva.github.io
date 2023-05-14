@@ -171,7 +171,8 @@ escreva uma mensagem informando se o número lido é maior ou menor do que a som
 Se o número digitado pelo usuário não for par, o programa deve solicitar que o usuário digite um número válido.  
 [Uma solução](https://github.com/claytonjasilva/prog_exemplos/blob/main/cursoPythonlista2.py)
 3. Elaborar um programa em Python para cadastrar uma lista contendo as notas de um grupo de 20 alunos digitadas pelo usuário.  
-Escrever as notas inferiores à média da turma. 
+Escrever as notas inferiores à média da turma.   
+[Uma solução](https://github.com/claytonjasilva/prog_exemplos/blob/main/cursoPythonlista3.py)  
 4. Elaborar um programa em Python para cadastrar uma lista contendo a idade de um grupo de 15 pessoas digitada pelo usuário.  
 Escrever as 10 maiores idades em ordem crescente. 
 5. Elaborar um programa em Python para cadastrar duas listas, uma contendo o nome e outra contendo a idade de um grupo de 15 pessoas.    
