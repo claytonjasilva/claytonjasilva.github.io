@@ -178,7 +178,8 @@ Escrever as 10 maiores idades em ordem crescente.
 [Uma solução](https://github.com/claytonjasilva/prog_exemplos/blob/main/cursoPythonlista4.py)
 5. Elaborar um programa em Python para cadastrar duas listas, uma contendo o nome e outra contendo a idade de um grupo de 15 pessoas.    
 O nome e a idade serão digitados pelo usuário.  
-Escrever os nomes dos alunos com nota inferior à média da turma.
+Escrever os nomes dos alunos com nota inferior à média da turma.  
+[Uma solução](https://github.com/claytonjasilva/prog_exemplos/blob/main/cursoPythonlista5.py)
 6. Elaborar um programa em Python para cadastrar uma lista contendo 10 nomes de pessoas, digitados pelo usuário.  
 Em seguida, o programa deverá permitir que o usuário digite um nome qualquer para cadastrar 
 o tipo sanguineo válido de uma das pessoas cadastradas.  
