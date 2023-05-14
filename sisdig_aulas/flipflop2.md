@@ -88,6 +88,6 @@ Quando a entrada é *T=1*, independentemente da transição da entrada de clock,
 ___
 **[<<anterior](flipflop.md)**  
 **[Home Conteúdo Sistemas Digitais](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/sisdig_aulas.md)**  
-**Flip-Flops [próximo >>](flipflop3.md)**
+**Algumas aplicações com Flip-Flops [próximo >>](flipflop3.md)**
 
 
