@@ -34,4 +34,45 @@ O Flip-Flop SR possui a representação e a respectiva tabela verdade apresentad
 
 ![Flip-Flop RS](/sisdig_aulas/images_sisdig/flipfloprs.jpg)
 
+A imagem mostra o comportamento do dispositivo.  
+Quando a entrada é *S=1,C=0*, independentemente da transição da entrada de clock, o FF SR seta (armazena) a saída igual a 1.  
+Quando a entrada é *S=0,C=1*, independentemente da transição de entrada de clock, o FF SR reseta (armazena) a saída igual a 0.  
+Quando a entrada é *S=0,C=0*, independentemente da transição de entrada de clock, o FF SR mantém (armazena) a saída em um instante igual a saída no instante anterior.   
+Não se usa entradas *S* e *C* ambas iguais a 1.   
+
+O diagrama de tempo apresentado na figura abaixo ilustra o funcionamento.  
+
+![Flip-Flop RS - temporização](/sisdig_aulas/images_sisdig/temporizacao_ffsr.jpg)
+
+Observe a utilização das entradas *S,R*, ambas iguais a 0.
+
+**b. Flip-Flop JK**
+
+O Flip-Flop JK possui a representação e a respectiva tabela verdade apresentados na figura.  
+
+![Flip-Flop JK](/sisdig_aulas/images_sisdig/flipflopjk.jpg)
+
+A imagem mostra o comportamento do dispositivo.  
+Quando a entrada é *J=1,K=0*, independentemente da transição da entrada de clock, o FF JK seta (armazena) a saída igual a 1.  
+Quando a entrada é *J=0,K=1*, independentemente da transição de entrada de clock, o FF JK reseta (armazena) a saída igual a 0.  
+Quando a entrada é *J=0,K=0*, independentemente da transição de entrada de clock, o FF JK mantém (armazena) a saída em um instante igual a saída no instante anterior.   
+Quando a entrada é *J=1,K=1*, independentemente da transição de entrada de clock, o FF JK mantém (armazena) a saída em um instante igual a saída no instante anterior **invertida**.   
+
+O diagrama de tempo apresentado na figura abaixo ilustra o funcionamento.  
+
+![Flip-Flop JK - temporização](/sisdig_aulas/images_sisdig/temporizacao_ffjk.jpg)
+
+**c. Flip-Flop D**
+
+O Flip-Flop D possui a representação e a respectiva tabela verdade apresentados na figura.  
+
+![Flip-Flop D](/sisdig_aulas/images_sisdig/flipflopd.jpg)
+
+A imagem mostra o comportamento do dispositivo.  
+Quando a entrada é *D=0*, independentemente da transição da entrada de clock, o FF D seta (armazena) a saída igual a 0.  
+Quando a entrada é *D=1*, independentemente da transição da entrada de clock, o FF D seta (armazena) a saída igual a 1.  
+O diagrama de tempo apresentado na figura abaixo ilustra o funcionamento.  
+
+![Flip-Flop D - temporização](/sisdig_aulas/images_sisdig/temporizacao_ffd.jpg)
+
 
