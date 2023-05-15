@@ -96,7 +96,7 @@ print(x)
 ```
 
 ## 8.6 Exercícios com tuplas
-1. Criar uma tupla para armazenar números inteiros de 1 a 20.   
+1. Criar uma tupla para armazenar números inteiros de 1 a 10.   
 Cada número inteiro define o código de um aluno.  
 Cadastrar três notas de cada um dos alunos, digitadas pelo usuário.  
 2. Elaborar um programa na linguagem Python que armazene as vogais em uma tupla. Leia também uma string, verifique e escreva em uma lista quantas vezes cada vogal está presente na string lida. [tuplaExemplo1.py](https://github.com/claytonjasilva/prog_exemplos/blob/main/tuplaExemplo1.py)
