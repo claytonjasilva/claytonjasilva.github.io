@@ -1,11 +1,11 @@
-## Tuplas 
+# 8. Tuplas 
 
-### Visão geral
+## 8.1 Visão geral
 - Constituem um dos tipos de **sequências**, assim como as listas e as strings, ou seja, **conjuntos ordenados finitos indexados por números não negativos**. 
 - Podem conter qualquer tipo de objeto - os elementos não precisam ser do mesmo tipo, mas **geralmente** são usadas com elementos **heterogêneos**.
 - A diferença importante entre tuplas e listas é que as tuplas são **imutáveis**, ou seja, **não** podem ser alteradas após serem criadas.
 
-### Criação de tuplas 
+## 8.2 Criação de tuplas 
 - Uma tupla consiste em uma sequência de valores separados por vírgulas, de expressões entre **parênteses**. Por exemplo,
 
 ```
@@ -40,6 +40,7 @@ lista = [1, 2, 3, 4]
 t = tuple(lista)
 print(t)
 ```
+## 8.3 Operações com tuplas
 - Algumas operações com tuplas (sequências imutáveis) são comuns às operações com listas (sequências mutáveis). Por exemplo,
 
 | Operação | Resultado | Observação |
@@ -56,7 +57,7 @@ print(t)
 | `s.count(x)` | Retorna o número de ocorrências de x em s |  |
 
 
-### Tupla com retorno de função
+## 8.4 Tupla com retorno de função
 - Uma função pode retornar mais de um valor. Por exemplo,  
 
 ```
@@ -67,7 +68,7 @@ def mult(n):
 ```
 O valor retornado é uma tupla.
 
-### Tupla como argumento e parâmetro de função
+## 8.5 Tupla como argumento e parâmetro de função
 - É possível **espalhar** (*scatter*) os elementos de uma tupla como **argumento** da chamada de uma função. Por exemplo,  
 
 ```
@@ -94,7 +95,7 @@ x = gather(1,3,5)
 print(x)
 ```
 
-### Exercícios com tuplas
+## 8.6 Exercícios com tuplas
 1. Criar uma tupla para armazenar números inteiros de 1 a 20.   
 Cada número inteiro define o código de um aluno.  
 Cadastrar três notas de cada um dos alunos, digitadas pelo usuário.  
