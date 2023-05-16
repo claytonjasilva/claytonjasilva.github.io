@@ -24,6 +24,7 @@
 9. [Prática 9 Arduíno: dispositivos de entrada/saída - sensor ultrassônico](arq_aulas/pratica_sensorultrassonico.md)
 10. [Prática 10: dispositivos de saída - sensor de movimento](arq_aulas/pratica_sensormovimento.md)
 11. [Prática 11 Arduíno: dispositivos de saída - motor de passo](arq_aulas/pratica_motor.md)
+12. [Prática 12 - Assembler: AVR Atmega2560](arq_aulas/pratica_assembler.md)
 
 
 ## Avaliações
