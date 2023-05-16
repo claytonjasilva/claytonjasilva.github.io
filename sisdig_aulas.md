@@ -28,6 +28,7 @@
 9. [Prática 9](sisdig_aulas/sisdig_pratica9.md)
 10. [Prática 10](sisdig_aulas/sisdig_pratica10.md)
 11. [Prática 11](sisdig_aulas/sisdig_pratica11.md)
+12. [Prática 12: Circuitos sequenciais](sisdig_aulas/sisdig_pratica12.md)
 
 ## Avaliações
 ### Avaliações Bimestrais
