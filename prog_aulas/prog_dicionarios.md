@@ -33,7 +33,7 @@ print(aluno)
 ## 9.3 Pesquisa em conjunto
 
 ### 9.3.1 Pesquisa pela chave
-#### a
+#### a. Busca pela chave no dicionário
 É interessante imaginar um dicionário como um **conjunto não-ordenado** de pares **chave:valor**, onde as chaves são únicas em uma dada instância do dicionário, logo o elemento pode ser instanciado por sua respectiva chave. Por exemplo,  
 
 ```
@@ -46,8 +46,11 @@ else:
 ```
 Realiza-se a pesquisa **no conjunto das chaves** usando-se o operador `in`, que verifica se o operando a sua esquerda está contido no objeto à sua direita, da mesma forma que o operador `not in` que verifica o contrário. A operação de ambos retorna *True* ou *False*.
 
-#### b.
-Pode-se realizar uma pesquisa de valores usando-se o método `dict.keys()`. O método gera o objeto chaves do dicionário: `dict_keys(['ana', 'carlos', 'joao', 'jose'])`, que pode ser percorrido usando-se o comando `for <valor> in <objeto>:`, em que valor assume todos os valores do objeto. Por exemplo,   
+#### b. Busca pelo método *dict.keys()*
+Pode-se realizar uma pesquisa de valores usando-se o método `dict.keys()`.  
+O método gera o objeto chaves do dicionário: `dict_keys(['ana', 'carlos', 'joao', 'jose'])`,   
+que pode ser percorrido usando-se o comando `for <valor> in <objeto>:`, em que o valor assume todos os valores do objeto.  
+Por exemplo,   
 
 ```
 alunos = {'ana': 4.5, 'carlos': 3.4, 'joao': 6.5, 'jose': 9}
@@ -69,7 +72,6 @@ if valor in alunos.values():
 else:
     print('Valor inexistente')
 ```
-
 
 #### Outros métodos e funções nativas do Python que podem ser aplicadas sobre dicionários podem ser obtidas em (https://docs.python.org/3/library/stdtypes.html#mapping-types-dict).  
 
