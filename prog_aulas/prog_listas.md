@@ -213,4 +213,4 @@ onde MA é a média aritmética. Deverá escrever somente as matrículas dos alu
 
 
 ___ 
-**[home](https://claytonjasilva.github.io/progPython_aulas.html)**
+**[home](https://claytonjasilva.github.io/progPython_aulas.md)**
