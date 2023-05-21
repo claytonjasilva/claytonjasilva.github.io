@@ -34,10 +34,10 @@
 - TURMA 2ª/4ª: ENTREGA EM 3 DE MAIO DE 2023   
 - TURMA 3ª: ENTREGA 2 DE MAIO DE 2023
 - TURMA 5ª: ENTREGA 4 DE MAIO DE 2023
-2. **[Trabalho AP2]() - a ser definido oportunamente**    
+2. **[Trabalho AP2](/arq_aulas/images/ArquiteturaTrabalhoAP2_2023.pdf)**    
 
 ### Avaliação Continuada
-Os instrumentos de avaliação continuada serão disponibilizados à medida que as aulas forem ministradas.  
+Os instrumentos de avaliação co2tinuada srão disponibilizados à medida que as aulas forem ministradas.  
 - [Form 1](/arq_aulas/images/ArquiteturaForm1.pdf) - Semana 1
 - [Form 2](/arq_aulas/images/ArquiteturaForm2.pdf) - Semana 2
 - [Form 3](/arq_aulas/images/Arquitetura_Form3.pdf) - Semana 4
