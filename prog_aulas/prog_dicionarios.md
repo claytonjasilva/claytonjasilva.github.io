@@ -9,7 +9,8 @@ Por exemplo,
 aluno = {'um': ['ana',5.6], 'dois': ['joao',3.4], 'tres': ['pedro',6.7]}
 print(aluno)
 ```
-onde as chaves são 'um', 'dois' e 'tres'. Dicionários são delimitados por chaves: `{ }` e contêm uma **lista de pares *chave:valor* separada por vírgulas**.
+onde as chaves são 'um', 'dois' e 'tres'.   
+Dicionários são delimitados por chaves: `{ }` e contêm uma **lista de pares *chave:valor* separada por vírgulas**.  
 Chaves podem ser de qualquer tipo **imutável** (como strings, inteiros e tuplas - se contiverem apenas strings, inteiros ou outras tuplas).
 
 ## 9.2 Inicialização
