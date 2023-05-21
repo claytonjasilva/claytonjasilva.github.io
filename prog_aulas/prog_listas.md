@@ -188,15 +188,18 @@ Se a pessoa tiver o nome cadastrado na lista, o programa deverá cadastrar o res
 [Uma solução](https://github.com/claytonjasilva/prog_exemplos/blob/main/cursoPythonlista6.py)
 7. Elaborar um programa em Python para cadastrar uma lista contendo 10 nomes de pessoas, digitados pelo usuário.  
 Em seguida, o programa deverá cadastrar para cada nome a respectiva idade.   
+[Uma solução](https://github.com/claytonjasilva/prog_exemplos/blob/main/cursoPythonlista7.py)  
 8. Elaborar um programa em Python para cadastrar uma lista contendo peso e altura de um grupo de 10 pessoas, digitados pelo usuário.  
 Em seguida, o programa deverá criar uma nova lista contendo o IMC das pessoas.  
+[Uma solução](https://github.com/claytonjasilva/prog_exemplos/blob/main/cursoPythonlista8.py)
 O IMC é calculado pela razão $IMC=\frac{peso}{altura²}$.  
 9. Elaborar um programa em Python para cadastrar uma lista contendo nome e altura de um grupo de 10 pessoas.  
 Em seguida, o programa deverá ler o nome e retornar a altura da pessoa.  
 Se a pessoa não tiver sido cadastrada, o programa deverá retornar a mensagem PESSOA NÃO CADASTRADA.
 10. Elaborar um programa em Python para cadastrar os dados de temperatura de 3 cidades em uma matriz.  
 Cada linha armazena as temperaturas de uma cidade em 5 horas diferentes do dia.  
-O usuário deve poder digitar o código da cidade (0, 1 ou 2). O programa retornarnará a temperatura média do dia.
+O usuário deve poder digitar o código da cidade (0, 1 ou 2). O programa retornarnará a temperatura média do dia.  
+[Uma solução](https://github.com/claytonjasilva/prog_exemplos/blob/main/cursoPythonlista10.py)  
 11. Elaborar um programa em Python para cadastrar dados em uma matriz de N X M elementos - N e M definidos pelo usuário.  
 O usuário deve poder digitar uma célula da matriz, na forma [linha,coluna].   
 O programa deverá alterar o valor cadastrado anteriormente por um novo dado digitado pelo usuário.
