@@ -78,18 +78,22 @@ else:
 
 ### Exercícios  
 Elaborar o *script* de um código em Python para...
-1. Criar um dicionário com as matrículas, nomes e notas finais de um grupo de 30 alunos. Com o dicionário criado, o usuário poderá digitar uma matrícula e o programa deverá retornar os dados cadastrados. [dicionarioEx1.py](https://github.com/claytonjasilva/prog_exemplos/blob/main/dicionarioEx1.py)
-2. Criar uma agenda com os campos de dados de nome, email e celular, utilizando o celular como chave.
+1. Elaborar um programa em Python para ler o cpf de 10 pessoas.  
+Para cada cpf lido, cadastrar em um dicionário o respectivo número de telefone celular.  
+2. Elaborar um programa em Python para cadastrar os dados de uma matriz 3x5 em um dicionário.  
+Utilizar como chave uma tupla com a linha e coluna.  
+3. Criar um dicionário com as matrículas, nomes e notas finais de um grupo de 30 alunos. Com o dicionário criado, o usuário poderá digitar uma matrícula e o programa deverá retornar os dados cadastrados. [dicionarioEx1.py](https://github.com/claytonjasilva/prog_exemplos/blob/main/dicionarioEx1.py)
+4. Criar uma agenda com os campos de dados de nome, email e celular, utilizando o celular como chave.
 Quando o usuário digitar celular igual a 0 a criação do dicionário se encerra.
 Deve permitir também exclusão de todos os campos. [dicionarioEx2.py](https://github.com/claytonjasilva/prog_exemplos/blob/main/dicionarioEx2.py)
-3. Criar um dicionário com a matrícula (chave) e nome de um grupo de 30 alunos.
+5. Criar um dicionário com a matrícula (chave) e nome de um grupo de 30 alunos.
 Deseja-se implementar uma função que retorna a matrícula dado um nome.
 À medida que cada letra do nome é digitada a relação de matrículas que 'casa' com a formação do nome é apresentada.
 [dicionarioEx3.py](https://github.com/claytonjasilva/prog_exemplos/blob/main/dicionarioEx3.py)
-4. Criar um sistema com dois dicionários. O programa deve armazenar os valores no dicionário principal, fazendo automaticamente o backup no dicionário de *backup*. O dicionário principal possui uma capacidade máxima para armazenar 5 elementos.
+6. Criar um sistema com dois dicionários. O programa deve armazenar os valores no dicionário principal, fazendo automaticamente o backup no dicionário de *backup*. O dicionário principal possui uma capacidade máxima para armazenar 5 elementos.
 Cada vez que o dicionário principal atingir a sua capacidade limite o programa deve apresentar os valores na console e apagar o seu conteúdo.
 [dicionarioEx4.py](https://github.com/claytonjasilva/prog_exemplos/blob/main/dicionarioEx4.py)
-5. Criar uma matriz MxN utilizando dicionário. Cada chave deve ser definida por uma tupla que defina linha e coluna do elemento.
+7. Criar uma matriz MxN utilizando dicionário. Cada chave deve ser definida por uma tupla que defina linha e coluna do elemento.
 Todos os elementos da matriz são números de ponto flutuante. [dicionarioEx5.py](https://github.com/claytonjasilva/prog_exemplos/blob/main/dicionarioEx5.py)
 
 **[home](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/progPython_aulas.md)**
