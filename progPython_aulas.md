@@ -34,7 +34,8 @@ Em cada exercício está indicado o link da respectiva solução.
 **2. [AP1-segunda parte](https://forms.gle/gqWTWy2BL6ghA3K89)**
 
 ### AP2   
-**Trabalho AP2: será disponibilizadao oportunamente**
+**1. [Trabalho AP2](/prog_aulas/images_prog/Trabalho_ProgPython_AP2.pdf)**  
+**2. [AP1-segunda parte]() - INDISPONÍVEL**
 
 ## Avaliação Continuada
 Os instrumentos de avaliação (testes, exercícios e trabalhos) relativos à Avaliação Continuada serão disponbilizados à medida que as aulas forem ministradas.  
