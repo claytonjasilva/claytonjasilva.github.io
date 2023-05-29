@@ -1,8 +1,8 @@
 # 9. Dicionários
 
 ## 9.1 Conceitos gerais
-Dicionários são também chamados de **memória associativa** ou **vetor associativo** em outras linguagens.  
-Diferentemente de sequências que são indexadas por inteiros, dicionários são indexados por **chaves (*keys*)**.   
+1. Dicionários são também chamados de **memória associativa** ou **vetor associativo** em outras linguagens.  
+2. Diferentemente de sequências que são indexadas por inteiros, dicionários são indexados por **chaves (*keys*)**.   
 Por exemplo,  
 
 ```
@@ -10,17 +10,19 @@ aluno = {'um': ['ana',5.6], 'dois': ['joao',3.4], 'tres': ['pedro',6.7]}
 print(aluno)
 ```
 onde as chaves são 'um', 'dois' e 'tres'.   
-Dicionários são delimitados por chaves: `{ }` e contêm uma **lista de pares *chave:valor* separada por vírgulas**.  
-Chaves podem ser de qualquer tipo **imutável** (como strings, inteiros e tuplas - se contiverem apenas strings, inteiros ou outras tuplas).
+
+3. Dicionários são delimitados por chaves: `{ }` e contêm uma **lista de pares *chave:valor* separada por vírgulas**.  
+    - Chaves podem ser de qualquer tipo **imutável** (como strings, inteiros e tuplas - se contiverem apenas strings, inteiros ou outras tuplas).
 
 ## 9.2 Inicialização
 
-### 9.2.1. Pode ser incializado como um conjunto de pares *chave:valor*
+### 9.2.1. Pode ser inicializado como um conjunto de pares *chave:valor*
 Por exemplo,  
 ```
 alunos = {'12345': ['ana', 7.8], '12346': ['carlos', 8.8], '12347': ['diogo', 4.8]}
 ```
-### 9.2.2. Podem ser criados sem elementos com a função `dict()`, sendo cada elemento individulamente adicionado pela chave, `nome[chave]=elemento`.
+### 9.2.2. Podem ser criados sem elementos com a função `dict()`
+1. Cada elemento é individualmente adicionado pela chave, `nome[chave]=elemento`.
 Por exemplo,  
 
 ```
@@ -35,7 +37,9 @@ print(aluno)
 
 ### 9.3.1 Pesquisa pela chave
 #### a. Busca pela chave no dicionário
-É interessante imaginar um dicionário como um **conjunto não-ordenado** de pares **chave:valor**, onde as chaves são únicas em uma dada instância do dicionário, logo o elemento pode ser instanciado por sua respectiva chave. Por exemplo,  
+1. É interessante imaginar um dicionário como um **conjunto não-ordenado** de pares **chave:valor**,  
+onde as **chaves são únicas** em uma dada instância do dicionário, logo o elemento pode ser instanciado por sua respectiva chave.  
+Por exemplo,  
 
 ```
 alunos = {'12345': ['ana', 7.8], '12346': ['carlos', 8.8], '12347': ['diogo', 4.8]}
@@ -45,11 +49,12 @@ if matr in alunos: # Verifica se uma chave está contida no dicionário
 else:
     print('Matrícula não presente')
 ```
+
 Realiza-se a pesquisa **no conjunto das chaves** usando-se o operador `in`, que verifica se o operando a sua esquerda está contido no objeto à sua direita, da mesma forma que o operador `not in` que verifica o contrário. A operação de ambos retorna *True* ou *False*.
 
 #### b. Busca pelo método *dict.keys()*
-Pode-se realizar uma pesquisa de valores usando-se o método `dict.keys()`.  
-O método gera o objeto chaves do dicionário: `dict_keys(['ana', 'carlos', 'joao', 'jose'])`,   
+1. Pode-se realizar uma pesquisa de valores usando-se o método `dict.keys()`.  
+2. O método gera o objeto chaves do dicionário: `dict_keys(['ana', 'carlos', 'joao', 'jose'])`,   
 que pode ser percorrido usando-se o comando `for <valor> in <objeto>:`, em que o valor assume todos os valores do objeto.  
 Por exemplo,   
 
@@ -62,7 +67,7 @@ for chave in alunos.keys():
 ```
 
 ### 9.3.2 Pesquisa pelos valores
-Pode-se realizar a pesquisa no **conjunto de valores** usando-se o método `dict.values()`.  
+1. Pode-se realizar a pesquisa no **conjunto de valores** usando-se o método `dict.values()`.    
 Por exemplo,    
 
 ```
