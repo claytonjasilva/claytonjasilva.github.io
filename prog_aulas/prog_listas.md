@@ -195,7 +195,8 @@ Em seguida, o programa deverá criar uma nova lista contendo o IMC das pessoas.
 O IMC é calculado pela razão $IMC=\frac{peso}{altura²}$.  
 9. Elaborar um programa em Python para cadastrar uma lista contendo nome e altura de um grupo de 10 pessoas.  
 Em seguida, o programa deverá ler o nome e retornar a altura da pessoa.  
-Se a pessoa não tiver sido cadastrada, o programa deverá retornar a mensagem PESSOA NÃO CADASTRADA.
+Se a pessoa não tiver sido cadastrada, o programa deverá retornar a mensagem PESSOA NÃO CADASTRADA.  
+[Uma solução](https://github.com/claytonjasilva/prog_exemplos/blob/main/cursoPythonlista9.py)  
 10. Elaborar um programa em Python para cadastrar os dados de temperatura de 3 cidades em uma matriz.  
 Cada linha armazena as temperaturas de uma cidade em 5 horas diferentes do dia.  
 O usuário deve poder digitar o código da cidade (0, 1 ou 2). O programa retornarnará a temperatura média do dia.  
