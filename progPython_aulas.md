@@ -44,7 +44,7 @@ As soluções dos instrumentos de avaliação **serão apresentadas e discutidas
 É necessário que o aluno acompanhe as aulas para acessar as soluções propostas. **Não será fornecido o gabarito da solução**.
 
 **- [Form 1 de AC](https://forms.gle/XgMWfrN7UdA6PCC1A)**  
-**- [Form 2 de AC](https://forms.gle/1s2AhFErLxCAdnaT7)**
+**- [Form 2 de AC](https://forms.gle/1s2AhFErLxCAdnaT7)**  
 **- [Form 3 de AC](https://forms.gle/CzKZQ8u4ZEb73Bgp6)**
 
 ## Guia Rápido
