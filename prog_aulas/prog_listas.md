@@ -203,7 +203,8 @@ O usuário deve poder digitar o código da cidade (0, 1 ou 2). O programa retorn
 [Uma solução](https://github.com/claytonjasilva/prog_exemplos/blob/main/cursoPythonlista10.py)  
 11. Elaborar um programa em Python para cadastrar dados em uma matriz de N X M elementos - N e M definidos pelo usuário.  
 O usuário deve poder digitar uma célula da matriz, na forma [linha,coluna].   
-O programa deverá alterar o valor cadastrado anteriormente por um novo dado digitado pelo usuário.
+O programa deverá alterar o valor cadastrado anteriormente por um novo dado digitado pelo usuário.    
+[Uma solução](https://github.com/claytonjasilva/prog_exemplos/blob/main/cursoPythonlista11.py)    
 12. Elaborar um programa na linguagem Python que leia e armazene os dados de um grupo de 30 pessoas: nome, idade, peso, altura. Para a idade de cada pessoa lida, o programa deverá recomendar exercícios do tipo A, para pessoas acima de 60 anos; do tipo B, para pessoas entre 40 e 60 anos; do tipo C, para pessoas entre 15 e 40 anos; e do tipo D, para crianças (idade inferior a 15 anos). Com base no peso e na altura, o programa deve calcular o IMC (dado por peso/altura^2), determinando as dietas: 'magra', IMC superior a 25; 'normal', IMC entre 19 e 25; e 'gorda', IMC inferior a 19. O programa deverá armazenar a dieta de cada pessoa e o respectivo IMC.  [listaDieta.py](https://github.com/claytonjasilva/prog_exemplos/blob/main/listaDieta.py)
 13. Elaborar um programa na linguagem Python que leia e armazene as matrículas e notas de um grupo de 20 alunos. O programa deverá calcular a média das notas lidas e o desvio padrão, usando a fórmula  
 ![desvio](/prog_aulas/desvio.png)  
