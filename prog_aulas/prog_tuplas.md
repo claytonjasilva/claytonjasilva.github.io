@@ -106,7 +106,7 @@ Deverá digitar o par de dados válidos (identidade e cpf) para cadastrar o sal�
 Se o par de dados não for correto ou se a pessoa não tiver sido cadastrada, o programa deverá apresentar uma mensagem de alerta.  
 [Uma solução](https://github.com/claytonjasilva/prog_exemplos/blob/main/cursoPythontupla2.py)  
 3. Criar uma tupla com os dados de um grupo de 10 pessoas.  
-Cada elemento da tupla conté uma lista com cpf, renda e imposto a pagar de cada pessoa.  
+Cada elemento da tupla contém uma lista com cpf, renda e imposto a pagar de cada pessoa.  
 Escrever o cpf das pessoas com salário acima do salário mínimo (R$ 1.320,00).  
 Aumentar o salário em 15% das pessoas com salário menor do que o salário mínimo.  
 4. Elaborar um programa na linguagem Python que armazene as vogais em uma tupla. Leia também uma string, verifique e escreva em uma lista quantas vezes cada vogal está presente na string lida. [tuplaExemplo1.py](https://github.com/claytonjasilva/prog_exemplos/blob/main/tuplaExemplo1.py)
