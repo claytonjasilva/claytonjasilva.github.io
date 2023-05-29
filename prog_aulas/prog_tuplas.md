@@ -98,11 +98,13 @@ print(x)
 ## 8.6 Exercícios com tuplas
 1. Criar uma tupla para armazenar números inteiros de 1 a 10.   
 Cada número inteiro define o código de um aluno.  
-Cadastrar três notas de cada um dos alunos, digitadas pelo usuário.  
+Cadastrar três notas de cada um dos alunos, digitadas pelo usuário.    
+[Uma solução](https://github.com/claytonjasilva/prog_exemplos/blob/main/cursoPythontupla1.py)  
 2. Criar uma lista contendo um par de dados de identificação (identidade e cpf) de um grupo de 30 pessoas.
 Após cadastrar os dados, o usuário poderá digitar cadastrar o salário de uma pessoa.  
 Deverá digitar o par de dados válidos (identidade e cpf) para cadastrar o salário.  
-Se o par de dados não for correto ou se a pessoa não tiver sido cadastrada, o progrfama deverá apresentar uma mensagem de alerta.
+Se o par de dados não for correto ou se a pessoa não tiver sido cadastrada, o programa deverá apresentar uma mensagem de alerta.  
+[Uma solução](https://github.com/claytonjasilva/prog_exemplos/blob/main/cursoPythontupla2.py)  
 3. Criar uma tupla com os dados de um grupo de 10 pessoas.  
 Cada elemento da tupla conté uma lista com cpf, renda e imposto a pagar de cada pessoa.  
 Escrever o cpf das pessoas com salário acima do salário mínimo (R$ 1.320,00).  
