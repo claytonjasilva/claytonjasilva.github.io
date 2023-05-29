@@ -45,6 +45,7 @@ As soluções dos instrumentos de avaliação **serão apresentadas e discutidas
 
 **- [Form 1 de AC](https://forms.gle/XgMWfrN7UdA6PCC1A)**  
 **- [Form 2 de AC](https://forms.gle/1s2AhFErLxCAdnaT7)**
+**- [Form 3 de AC](https://forms.gle/CzKZQ8u4ZEb73Bgp6)**
 
 ## Guia Rápido
 O guia rápido compreende um **resumo** da sintaxe da linguagem Python, com atenção especial **aos tópicos discutidos em sala**.  
