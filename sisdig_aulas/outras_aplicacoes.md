@@ -42,6 +42,19 @@ O estado que não pertence ao ciclo é anulado pela inserção de uma porta NAND
 No exemplo, quando B=C=1, a entrada clear se torna 0 durante um intervalo de tempo para reciclar o contador.  
 
 ![Diagrama de estados do contador de módulo menor do que N](/sisdig_aulas/images_sisdig/diagramaestadosmenorN.jpg)
+O diagrama de temporização é dado por  
 
+![Temporização do contador menor do que N](/sisdig_aulas/images_sisdig/temporizacaocontadormenorN.jpg)
 
+### Contador decádico
+Utilizando-se o mesmo recurso das entradas de sobreposição dos FF, é possível construir um **contador decádico**.  
+O contador decádico ou BCD realiza a contagem de 0 a 9, em binário.  
+
+![Contador decádico](/sisdig_aulas/images_sisdig/contadordecadico.jpg)  
+
+### Contadores de sequência não crescente
+Em algumas aplicações digitais deseja-se utilizar uma sequência não crescente.  
+Por exemplo,  
+
+![Diagrama de estados não crescente](/sisdig_aulas/images_sisdig/diagramaestadosnaocrescente.jpg)  
 
