@@ -31,17 +31,23 @@ Na UC,
 - O decodificador de instruções, responsável pela conversão da instrução em um conjunto específico de bits e que alimenta os circuitos de controle
 - Circuitos de controle, responsáveis pelos sinais de controle que são encaminhados aos demais componentes da máquina.
 
-### Núcleos (*kernel*) e *threads*
+### Núcleos (*core*) e *threads*
+#### Processadores multicore
 Os processadores mais modernos multiplicam a configuração apresentada na figura anterior.  
 São os chamados processadores *multicore*.  
 Cada núcleo ou *core* contém todos os componentes de um processador independente.  
 Obviamente, quanto mais núcleos maior complexidade para construir o processador.  
+
+#### *Threads*
 Relacionado com o núcleo existe o conceito de *threads* do processador. A relação entre núcleos e *threads* é fundamental.       
 *Threads* são sequências de instruções executadas em um núcleo do processador,   
-cada um representando uma **tarefa independente** que o processador deve realizar.  
+cada um representando uma **tarefa independente** que o processador deve realizar. 
+
 A implantação do conceito de multitarefa permite que os núcleos do processador trabalhem em várias tarefas simultaneamente,  
 cada um dos quais executando um ou vários *threads*.    
+
 Em processadores básicos, cada núcleo executa um *thread* por vez. Porém, alguns processadores mais avançados permitem que um núcleo execute vários *threads* simultaneamente, melhorando o desempenho e a eficiência em determinadas tarefas.
+
 A capacidade de um processador executar vários *threads* é útil em aplicativos que exigem alto grau de paralelismo, como edição de vídeo, renderização 3D e processamento de dados em larga escala. Também permite que você otimize a distribuição de tarefas e evite que os núcleos fiquem ociosos enquanto aguardam a conclusão de um determinado thread.
 Deve-se observar que o aumento de desempenho fornecido pela capacidade de executar vários *threads* em um núcleo não é o mesmo que adicionar núcleos adicionais ao processador. Embora melhore o desempenho em determinadas situações, não dobra o desempenho de um kernel, pois os recursos do kernel ainda são compartilhados entre as threads.
 
@@ -120,13 +126,14 @@ da instrução estava sendo executada, a busca (MBR e MAR) e a execução (ULA) 
 Graças aos avanços da tecnologia existem CPUs que executam mais de uma instrução 
 por ciclo, sendo chamadas de **superescalares**.
 
-1. *Pipeline*  
+**a. *Pipeline***  
 O pipeline é uma técnica de implementação de CPU onde múltiplas instruções estão em 
 execução ao mesmo tempo. O processador é construído com diversos estágios distintos, cada um 
 responsável pela execução de uma parte da instrução e possuindo o seu próprio bloco de controle. Assim 
 que um estágio completa sua tarefa com uma instrução passa esta para o estágio seguinte e começa a
 tratar da próxima instrução. Uma vez que diversas instruções são executadas ao mesmo tempo, obtêm-se 
 um acréscimo no desempenho do processador.
+
 Pode-se dividir, por exemplo, a execução de uma instrução em 5 estágios básicos:
   1. Busca da Instrução (*fetch*)
   2. Decodificação (*decode*)
@@ -139,7 +146,7 @@ Pode-se dividir, por exemplo, a execução de uma instrução em 5 estágios bá
 A implementação do *pipeline* implica problemas que devem ser resolvidos, como conflitos de dados, conflitos estruturais e de controle.  
 Aumenta-se a complexidade para resolver tais problemas em proveito do aumento de performance.
 
-2. Unidades de execução especializadas
+**b. Unidades de execução especializadas
 Para resolver paralelamente a execução das instruções a arquitetura pode contemplara a organização de unidades especializadas.  
 A figura ilustra>
 
