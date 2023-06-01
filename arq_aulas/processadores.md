@@ -126,7 +126,7 @@ da instrução estava sendo executada, a busca (MBR e MAR) e a execução (ULA) 
 Graças aos avanços da tecnologia existem CPUs que executam mais de uma instrução 
 por ciclo, sendo chamadas de **superescalares**.
 
-**a. *Pipeline***  
+**a. *Pipeline***    
 O pipeline é uma técnica de implementação de CPU onde múltiplas instruções estão em 
 execução ao mesmo tempo. O processador é construído com diversos estágios distintos, cada um 
 responsável pela execução de uma parte da instrução e possuindo o seu próprio bloco de controle. Assim 
@@ -146,7 +146,7 @@ Pode-se dividir, por exemplo, a execução de uma instrução em 5 estágios bá
 A implementação do *pipeline* implica problemas que devem ser resolvidos, como conflitos de dados, conflitos estruturais e de controle.  
 Aumenta-se a complexidade para resolver tais problemas em proveito do aumento de performance.
 
-**b. Unidades de execução especializadas
+**b. Unidades de execução especializadas**  
 Para resolver paralelamente a execução das instruções a arquitetura pode contemplara a organização de unidades especializadas.  
 A figura ilustra>
 
