@@ -52,32 +52,37 @@ Um exemplo é a instrução IJMP do microcontrolador AVR Atmega2560.
 A operação executa desvio incondicional.  
 - O campo de operando pode referenciar um dado - a instrução é **monádica**.  
 Um exemplo é a instrução INC Rd do microcontrolador AVR Atmega2560.  
-A operação executa incremento do valor armazenado no registrador Rd. Rd <- Rd + 1.
+A operação executa incremento do valor armazenado no registrador Rd: Rd <- Rd + 1.
 - O campo de operando pode referenciar dois dados - a instrução é **diádica**.  
 Um exemplo é a instrução ADD Rr,Rd do microcontrolador AVR Atmega2560.  
-A operação executa adição do valor armazenado nos registradores Rr e Rd. Rr <- Rr + Rd.
+A operação executa adição do valor armazenado nos registradores Rr e Rd: Rr <- Rr + Rd.
 
 A referência ao dado em memória é chamada de **modo de endereçamento da instrução**.  
 Os principais modos de endereçamento são:
 1. imediato
-- operando contém o próprio dado
-- dado é buscado juntamente na busca da instrução a execução da instrução tipicamente mais rápida
-- Exemplo:
-CALL k
-operação
-- PC  k, carrega no Contador de Programa o valor do operando
-![image](https://github.com/claytonjasilva/claytonjasilva.github.io/assets/80921613/f2867bfb-e473-431f-a4d4-334df9b5bb14)
+- operando contém o próprio dado;  
+- dado é buscado juntamente na busca da instrução a execução da instrução tipicamente mais rápida;  
+- Exemplo:   
+LDI Rs,k, cuja operação é definida por Rs <- k, carrega no registrador Rs o valor k.  
+2. direto 
+- operando contém o endereço do dado em memória;  
+- dado é buscado em memória em um acesso;  
+- Exemplo:  
+LDS Rs,k, cuja operação é definida por Rs <- DS[k], carrega no registrador Rs o valor armazenado no endereço de memória (DS, *Data Space*) k.   
+3. indireto do registrador   
+- operando contém o registrador cujo valor contém o endereço do dado em memória;  
+- o registrador que contém o endereço do dado é chamado de **ponteiro**;  
+- Exemplo:  
+LD Rs,x+, cuja operação é definida por Rs <- DS[[x+]], carrega no registrador Rs o dado do endereço de memória (DS, *Data Space*) definido pelo conteúdo do registrador x+.   
+4. indexado 
+- operando contém o registrador cujo valor contém o endereço do dado em memória e o valor a ser indexado ao registrador;  
+- Exemplo:  
+LDD Rs, X+k, cuja operação é definida por Rs <- DS[[x+]+k], carrega no registrador Rs o dado do endereço de memória (DS, *Data Space*) acrescido de K definido pelo conteúdo do registrador x+.   
 
-
-direto 
-registrador 
-indireto do registrador 
-indexado 
-de base indexado
-de pilha 
-para instruções de desvio
-![image](https://github.com/claytonjasilva/claytonjasilva.github.io/assets/80921613/7a31d71d-b9b5-4644-bba4-b51aaaf21600)
-
+Os principais tipos de instrução mais comuns são:  
+- instruções para movimentação de dados, que transferem uma cópia do dado armazenado em um elemento para outro elemento;
+- instruções de comparações e desvios condicionais, que permitem estabelecer fluxos alternativos de execução do programa;
+- instruções aritméticas e lógicas, que permiem realizar operações lógicas e aritméticas.
 
 ### Arquiteturas RISC X CISC
 Existem basicamente duas estratégias de construção das instruções de processadores: RISC (*Reduced Instruction Set Computing*) x CISC(*Complex Instruction Set Computing*).  
