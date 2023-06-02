@@ -31,9 +31,10 @@
 ### Avaliações Bimestrais
 1. **[Trabalho AP1](/arq_aulas/images/ArquiteturaTrabalhoAP1_2023.pdf)**   
 
-2. **[Trabalho AP2](/arq_aulas/images/ArquiteturaTrabalhoAP2_2023.pdf)**    
-**Requisitos similares para todas as turmas**
-- TURMA 2ª/4ª: ENTREGA EM 19 DE JUNHO DE 2023   
+2. **[Trabalho AP2 - turmas 2a/4a e 3a](/arq_aulas/images/ArquiteturaTrabalhoAP2_2023.pdf)**    
+**Requisitos similares para ambas as turmas**
+- TURMA 2ª/4ª: ENTREGA EM 19 DE JUNHO DE 2023 
+- TURMA 3ª: ENTREGA EM 20 DE JUNHO DE 2023  
 
 ### Avaliação Continuada
 Os instrumentos de avaliação co2tinuada srão disponibilizados à medida que as aulas forem ministradas.  
