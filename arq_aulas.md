@@ -35,6 +35,7 @@
 **Requisitos similares para ambas as turmas**
 - TURMA 2ª/4ª: ENTREGA EM 19 DE JUNHO DE 2023 
 - TURMA 3ª: ENTREGA EM 20 DE JUNHO DE 2023  
+- Obs. Sugestão de código para o teclado pode ser obtida em [codigo teclado](https://github.com/claytonjasilva/prog_exemplos/blob/main/pratica_teclado.ino)
 
 ### Avaliação Continuada
 Os instrumentos de avaliação co2tinuada srão disponibilizados à medida que as aulas forem ministradas.  
