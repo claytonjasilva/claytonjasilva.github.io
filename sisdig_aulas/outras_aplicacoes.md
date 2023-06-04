@@ -1,6 +1,6 @@
-# Outras aplicações com FF
+# 12. Outras aplicações com FF
 
-## Divisores de frequência
+## 12.1 Divisores de frequência
 Flip Flops JK cascateados podem proporcionar como saída um circuito que divide a fequência do sinal de clock.  
 Esse resultado é obtido porque o FF opera somente no gatilhamento da borda do FF JK.
 
@@ -17,16 +17,16 @@ Trata-se do comportamento de um contador síncrono de 3 bits, que reproduz o seg
 
 ![Diagrama de estados do contador binário de 3 bits](/sisdig_aulas/images_sisdig/diagramacontador3bits.jpg)
 
-## Contadores
+## 12.2 Contadores
 
-### Contadores síncronos de módulo N
+### 12.2.1 Contadores síncronos de módulo N
 O circuito anterior, que proporciona o diagrama de oito estados, é chamado **contador de módulo 8**.  
 **Módulo** é o número de estados distintos que o contador atinge antes de reciclar – iniciar um novo ciclo.  
 O módulo pode ser aumentado adicionando-se mais FF ao contador, de forma que  
 Módulo = 2<sup>𝑁</sup>  
 onde N é o número de FF utilizados.  
 
-### Contadores síncronos de módulo<N
+### 12.2.2 Contadores síncronos de módulo<N
 As entradas dos FF estudas até agora são chamadas **entradas de controle (S, C, J, K, D, T)**.   
 A maioria dos FF também possui entradas chamadas de **entradas assíncronas (entradas de sobreposição)**,   
 que podem ser usadas em qualquer instante independentemente das condições das demais.
@@ -46,15 +46,18 @@ O diagrama de temporização é dado por
 
 ![Temporização do contador menor do que N](/sisdig_aulas/images_sisdig/temporizacaocontadormenorN.jpg)
 
-### Contador decádico
+### 12.2.3 Contador decádico
 Utilizando-se o mesmo recurso das entradas de sobreposição dos FF, é possível construir um **contador decádico**.  
 O contador decádico ou BCD realiza a contagem de 0 a 9, em binário.  
 
 ![Contador decádico](/sisdig_aulas/images_sisdig/contadordecadico.jpg)  
 
-### Contadores de sequência não crescente
+### 12.2.4 Contadores de sequência não crescente
 Em algumas aplicações digitais deseja-se utilizar uma sequência não crescente.  
 Por exemplo,  
 
 ![Diagrama de estados não crescente](/sisdig_aulas/images_sisdig/diagramaestadosnaocrescente.jpg)  
 
+___
+**[Home Conteúdo Sistemas Digitais](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/sisdig_aulas.md)**  
+**Aplicações com diagramas de estados [próximo >>](outras_aplicacoes1.md)**
