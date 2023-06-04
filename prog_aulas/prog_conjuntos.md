@@ -1,9 +1,11 @@
-## Conjuntos
+# 10. Conjuntos
 
-### Sobre conjuntos...
+## 10.1 Conceitos gerais
 - Constituem **conjuntos desordenados finitos** de elementos, **sem elementos repetidos**.
 - Não admitem modificar elementos existentes - seus elementos são imutáveis, no entanto permitem incluir novos elementos.
 - Não se configuram como sequências, logo seus elementos não podem ser indexados.
+
+## 10.2 Operações matemáticas
 - Conjuntos também suportam operações matemáticas como  
 união **(operador:  `|`  )**,  
 interseção **(operador: `&`)**,  
@@ -31,9 +33,12 @@ print(vogais)
 | set1.update(set2) | Atualiza os elementos de set 1 com os elementos de set2 |
 | set.copy() | Cria um novo conjunto contendo os mesmos elementos do conjunto set |
 
-### Exercícios
+## 10.3 Exercícios
 #### Elaborar um *script* em Python para
-1. Criar dois conjuntos com alunos de duas turmas com, no máximo, 5 alunos cada.
+1. Criar um conjunto com o nome de 10 pessoas. 
+Escrever os elementos do conjunto.  
+Inserir nomes iguais e verificar o que axcontece.  
+2. Criar dois conjuntos com alunos de duas turmas com, no máximo, 5 alunos cada.
 Os conjuntos devem conter as matrículas dos alunos. Os alunos são matriculados inicialmente na turma A.
 Quando a capacidade da turma A for completada o programa passa a matricular na turma B.
 Quando a capacidade da turma B for completada o programa deve ser encerrado.
