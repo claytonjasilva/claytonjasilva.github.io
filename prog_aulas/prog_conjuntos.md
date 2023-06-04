@@ -37,23 +37,26 @@ print(vogais)
 #### Elaborar um *script* em Python para
 1. Criar um conjunto com o nome de 10 pessoas. 
 Escrever os elementos do conjunto.  
-Inserir nomes iguais e verificar o que axcontece.  
-2. Criar dois conjuntos com alunos de duas turmas com, no máximo, 5 alunos cada.
+Inserir nomes iguais e verificar o que acontece.  
+2. Ler os dados de matrícula de alunos de duas turmas diferentes.  
+Admitindo que cada aluno possui uma matrícula que o identifica de modo único, verificar se o mesmo aluno está matriculado nas duas turmas.
+3. Criar dois conjuntos com alunos de duas turmas com, no máximo, 5 alunos cada.
 Os conjuntos devem conter as matrículas dos alunos. Os alunos são matriculados inicialmente na turma A.
 Quando a capacidade da turma A for completada o programa passa a matricular na turma B.
 Quando a capacidade da turma B for completada o programa deve ser encerrado.
 Após cadastrar os dados o programa deverá apresentar a relação de matriculados em cada turma. [conjuntoEx1.py](https://github.com/claytonjasilva/prog_exemplos/blob/main/conjuntoEx1.py)
-2. Criar dois conjuntos A e B com N elementos cada. Escrever os elementos que pertencem ao conjunto A e não pertencem ao B.
+4. Criar dois conjuntos A e B com N elementos cada. Escrever os elementos que pertencem ao conjunto A e não pertencem ao B.
 Escrever os elementos que pertencem a ambos os conjuntos. [conjuntoEx2.py](https://github.com/claytonjasilva/prog_exemplos/blob/main/conjuntoEx2.py)
-3. Criar um conjunto contendo as matrículas de um grupo de 10 alunos.
+5. Criar um conjunto contendo as matrículas de um grupo de 10 alunos.
 Considerando o conjunto de matrículas, o programa deve ler uma matrícula digitada, verificar se pertence ao conjunto,
 criando um dicionário, com chave matrícula e a respectiva nota. Caso não pertença, incluir a matrícula no conjunto. [conjuntoEx3.py](https://github.com/claytonjasilva/prog_exemplos/blob/main/conjuntoEx3.py)
-4. Dados 5 conjuntos contendo o cpf de pessoas, cada conjunto de uma instituição financeira, determinar quantos e quais clientes possuem conta em pelo menos três instituições.
-5. Dada uma turma de alunos cuja matrícula e nome estão cadastrados em um conjunto, ler uma nova matrícula e nome.
+6. Dados 5 conjuntos contendo o cpf de pessoas, cada conjunto de uma instituição financeira, determinar quantos e quais clientes possuem conta em pelo menos três instituições.
+7. Dada uma turma de alunos cuja matrícula e nome estão cadastrados em um conjunto, ler uma nova matrícula e nome.
 Se o aluno já estiver matriculado, o programa deverá apresentar uma mensagem.
 Se não estiver matriculado e a turma possuir menos do que 20 alunos, atualizar o conjunto.
 Caso a turma já esteja completa, apresentar a mensagem.
 
+___
 **[home](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/progPython_aulas.md)**
 
 
