@@ -41,7 +41,7 @@ else:
 Embora funcione, **esse tratamento é específico** para o problema em pauta.
 Se o seu código utilizar funções e módulos em que esse caso possa ocorrer com frequência **para cada caso** você precisará escrever um tratamento próprio.
 
-## Tratar, construir e lançar exceções
+## 12.2 Tratar, construir e lançar exceções
 
 ### Tratamento de exceções
 O Python dispõe de várias **classes de exceção** pré-definidas como:
