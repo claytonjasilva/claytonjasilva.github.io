@@ -151,7 +151,7 @@ while True:
             raise ValueError
         else:
             print('A operação é ', op, ', superior ou igual ao limite ',N)
-    except ValueError
+    except ValueError:
         print('Limite não superado')
 ```
 A exceção `ValueError` não é precisa, portanto **pode ser usada com flexibilidade** no código em várias situações.
