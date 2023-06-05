@@ -1,6 +1,6 @@
-# Erros e Exceções em Python
+# 12. Erros e Exceções em Python
 
-## Visão geral
+## 12.1 Visão geral
 
 Uma **exceção** é um objeto da classe *Exception*, que **permite armazenar informações sobre situações anormais ou erros na execução de um comando**.  
 
@@ -192,7 +192,8 @@ while True:
 
 ## Exercícios
 Elaborar um scrip de Python para...
-1. Criar um dicionário cuja chave seja a matrícula de um grupo de 20 alunos, para armazenar as notas.
+1. Utilizar tratamento de exceção no exercício 1 de dicionário para cpf inválido.
+2. Criar um dicionário cuja chave seja a matrícula de um grupo de 20 alunos, para armazenar as notas.
 Após criar o dicionário, o usuário poderá pesquisar a nota de um determinado aluno.
 Caso a matrícula não esteja cadastrada o programa deve emitir uma mensagem de erro e prosseguir a pesquisa.
 **Usar tratamento de exceção**. [excecaoEx1.py](https://github.com/claytonjasilva/prog_exemplos/blob/main/excecaoEx1.py) ou 
