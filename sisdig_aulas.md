@@ -35,7 +35,7 @@
 ## Avaliações
 ### Avaliações Bimestrais
 1. **[Trabalho AP1](/sisdig_aulas/images_sisdig/Trabalho_SistemasDigitais_AP1.pdf) - ENTREGA 03 DE MAIO DE 2023**   
-2. **[Trabalho AP2](/sisdig_aulas/images_sisdig/Trabalho_SistemasDigitais_AP2.pdf) - ENTREGA 21 DE JUNHO DE 2022**    
+2. **[Trabalho AP2](/sisdig_aulas/images_sisdig/Trabalho_SistemasDigitais_AP2.pdf) - ENTREGA 21 DE JUNHO DE 2023**    
 
 ### Avaliação Continuada
 Os instrumentos de avaliação continuada serão disponibilizados à medida que as aulas forem ministradas.  
