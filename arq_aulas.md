@@ -37,6 +37,8 @@
 -TURMA 3ª: ENTREGA EM 20 DE JUNHO DE 2023    
 -Obs. Sugestão de código para o teclado pode ser obtida em [codigo teclado](https://github.com/claytonjasilva/prog_exemplos/blob/main/pratica_teclado.ino)
 
+3. **[Trabalho AP2 - turmas 5a - Centro](/arq_aulas/images/ArquiteturaTrabalhoAP2_2023-turmaCentro.pdf)**    
+
 ### Avaliação Continuada
 Os instrumentos de avaliação co2tinuada srão disponibilizados à medida que as aulas forem ministradas.  
 - [Form 1](/arq_aulas/images/ArquiteturaForm1.pdf) - Semana 1
