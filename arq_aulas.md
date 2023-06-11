@@ -46,8 +46,8 @@ Os instrumentos de avaliação co2tinuada srão disponibilizados à medida que a
 - [Form 3](/arq_aulas/images/Arquitetura_Form3.pdf) - Semana 4
 - [Form 4](/arq_aulas/images/Arquitetura_Form4.pdf) - Semana 8
 - [Form 5](/arq_aulas/images/Arquitetura_Form5.pdf) - Semana 8  
-- [Form 6](https://forms.gle/eUVL7DFXCPziBHLq6) - Semana 10
-- [Form 7](https://forms.gle/pggxSNd71Rjn5HVPA) - Semana 12
+- [Form 6](/arq_aulas/images/Arquiteturaform6.pdf) - Semana 10
+- [Form 7](/arq_aulas/images/Arquiteturaform7.pdf) - Semana 12
 - [Form 8](https://forms.gle/FieP8181V6DwxEvt8) - Semana 14
 - [Trabalho 1 - turma 2a e 4a](/arq_aulas/images/ArquiteturaTrabalho1.pdf)  
 - [Trabalho 1 - turma 3a](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/arq_aulas/images/ArquiteturaTrabalho2_2023.pdf)  
