@@ -43,9 +43,11 @@ Ver a forma de avaliação definida no início do curso.
 As soluções dos instrumentos de avaliação **serão apresentadas e discutidas em sala de aula**.  
 É necessário que o aluno acompanhe as aulas para acessar as soluções propostas. **Não será fornecido o gabarito da solução**.
 
-**- [Form 1 de AC](https://forms.gle/XgMWfrN7UdA6PCC1A)**  
-**- [Form 2 de AC](https://forms.gle/1s2AhFErLxCAdnaT7)**  
-**- [Form 3 de AC](https://forms.gle/CzKZQ8u4ZEb73Bgp6)**
+- [Form 1 de AC](https://forms.gle/XgMWfrN7UdA6PCC1A)    
+- [Form 2 de AC](https://forms.gle/1s2AhFErLxCAdnaT7)    
+- [Form 3 de AC](https://forms.gle/CzKZQ8u4ZEb73Bgp6)  
+- **[Form 4](https://forms.gle/FEBu9mWQ1ZqVGZ6i8) - Preparação AP2**
+
 
 ## Guia Rápido
 O guia rápido compreende um **resumo** da sintaxe da linguagem Python, com atenção especial **aos tópicos discutidos em sala**.  
