@@ -9,7 +9,8 @@
 5. [Sistema de memória](arq_aulas/memoria.md)
 6. [Barramento](arq_aulas/barramento.md)
 7. [Processadores](arq_aulas/processadores.md)  
-8. [Microcontrolador Atmel ATmega 2560](arq_aulas/microcontrolador2560.md)
+8. [Microcontrolador Atmel ATmega 2560](arq_aulas/microcontrolador2560.md)  
+- Veja algumas instruções do Atmega 2560 que utilizamos recorrentemente - [exemplos de instruções](/arq_aulas/images/tabela_instrucoes.pdf)
 9. Sistemas Operacionais: [*download* material](https://1drv.ms/p/s!AsTd8oN7mu8pkcB4b7de8Z0_eLNtFA?e=PIgZwh)
 
 ## Práticas    
