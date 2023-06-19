@@ -42,7 +42,7 @@
 
 4. **Parte 1 - AP2**  
  [Parte 1 AP2](https://forms.gle/N3V7Q5sKJ5SoRUf18) 15/6/2023 - Turma 5a  
- [Parte 1 AP2]() 20/6/2023 - Turma 5a
+ [Parte 1 AP2]() 20/6/2023 - Turma 3a
 
    
 
