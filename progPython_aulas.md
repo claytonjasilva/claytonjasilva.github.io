@@ -37,6 +37,8 @@ Em cada exercício está indicado o link da respectiva solução.
 **1. [Trabalho AP2](/prog_aulas/images_prog/Trabalho_ProgPython_AP2.pdf)**  
 **2. [AP2-segunda parte]()**
 
+### [AS](https://forms.gle/bUJw372VHvdcpKxF7) 
+
 ## Avaliação Continuada
 Os instrumentos de avaliação (testes, exercícios e trabalhos) relativos à Avaliação Continuada serão disponbilizados à medida que as aulas forem ministradas.  
 Ver a forma de avaliação definida no início do curso.  
