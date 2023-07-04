@@ -1,5 +1,5 @@
 # Prof Clayton J A Silva - Ibmec RJ
-*Em atualização das disciplinas e atividades extra classe 2023.1*
+*Em atualização das disciplinas e atividades extra classe 2023.2*
 
 
 ## Disciplinas
@@ -7,6 +7,7 @@
 * [Arquitetura de Computadores](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/arq.md)  
 * [Eletrônica](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/eletronica.md)  
 * [Linguagens Formais e Compiladores](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/compiladores.md)
+* [Pensamento Computacional](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/pensamentoComputacional.md)
 * [Programação](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/progPython.md)
 * [Projetos em Engenharia](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/projetos.md)
 * [Sistemas de Comunicações Móveis](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/siscom.md)
