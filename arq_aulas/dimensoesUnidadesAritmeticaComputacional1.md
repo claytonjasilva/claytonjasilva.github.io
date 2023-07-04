@@ -68,7 +68,8 @@ $$ N_b = d_{(m-1)}.b^{m-1}+d_{(m-2)}.b^{m-2}+...+d_0.b^0 $$
 
 ___
 **[Home Conteúdo Arquitetura de Computadores](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/arq_aulas.md)**  ou 
-**[Home Conteúdo Sistemas Digitais](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/sisdig_aulas.md)**   
+**[Home Conteúdo Sistemas Digitais](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/sisdig_aulas.md)**  
+**[Home Conteúdo Pensamento Computacional](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/pensamentoComputacional_aulas.md)**    
 **Conversão de bases: [próximo>>](dimensoesUnidadesAritmeticaComputacional2.md)** 
 
 
