@@ -1,6 +1,6 @@
 # Pensamento Computacional - 2023.2
 
-1. Agenda
+1. Agenda  
 **A definir**  
 3. [Grid](arq_aulas/Grid_pensamentoComputacional.md)
 4. [Sistema de Avaliações](/./avaliacoes.md)
