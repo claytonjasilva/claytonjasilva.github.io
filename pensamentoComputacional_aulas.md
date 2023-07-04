@@ -3,17 +3,17 @@
 
 ## Tópicos
 1. [Dimensões, Unidades e Aritmética Computacional](arq_aulas/dimensoesUnidadesAritmeticaComputacional1.md)
-2. [Arquitetura, Organização e Modelos de máquina de níveis](arq_aulas/arquiteturaOrganizacaoCamadas.md)
-3. [Máquina de von Neumann ou computador IAS](arq_aulas/computadorIAS.md)
-4. [Nível de lógica digital: circuitos combinacionais e circuitos sequenciais](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/sisdig_aulas/algebraPortasLogicas.md)
-5. [Sistema de memória](arq_aulas/memoria.md)
-6. [Barramento](arq_aulas/barramento.md)
-7. [Processadores](arq_aulas/processadores.md)  
-8. [Microcontrolador Atmel ATmega 2560](arq_aulas/microcontrolador2560.md)  
-- Veja algumas instruções do Atmega 2560 que utilizamos recorrentemente - [exemplos de instruções](/arq_aulas/images/tabela_instrucoes.pdf)
-9. Sistemas Operacionais: [*download* material](https://1drv.ms/p/s!AsTd8oN7mu8pkcB4b7de8Z0_eLNtFA?e=PIgZwh)
+2. [Arquitetura de Computadores](pensamentoComputacional_aulas/arquiteturaComputadores.md)
+3. [Algoritmos e Linguagens de Programação](pensamentoComputacional_aulas/algoritmosLinguagens.md)
+5. [Operações Aritméticas e Lógicas](pensamentoComputacional_aulas/operacoes.md)
+6. [Estruturas Condicionais](pensamentoComputacional_aulas/condicionais.md)
+7. [Estruturas de repetição](pensamentoComputacional_aulas/repeticao.md)
+8. [Estruturas de dados](pensamentoComputacional_aulas/estruturas.md)
+9. [Algoritmos clássicos](pensamentoComputacional_aulas/algoritmos.md)
 
-## Projetos    
+## Práticas e Projetos    
+- [Snap! Linguagem de Programação visual](pensamentoComputacional_aulas/snap.md)
+- [Portugol Studio](https://www.udemy.com/course/logica-de-programacao-com-portugol-studio-a-partir-do-zero/)
 1. 
 
 ## Avaliações
