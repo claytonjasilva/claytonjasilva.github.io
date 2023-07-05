@@ -5,7 +5,7 @@
 ## Disciplinas
 
 * [Arquitetura de Computadores](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/arq.md) - Rev 2023.2   
-* [Eletrônica](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/eletronica.md)  
+* [Eletrônica e Design de Circuitos](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/eletronica.md) - Rev 2023.2  
 * [Linguagens Formais e Compiladores](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/compiladores.md)
 * [Pensamento Computacional](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/pensamentoComputacional.md) - Rev 2023.2  
 * [Programação](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/progPython.md)
