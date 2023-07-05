@@ -1,18 +1,17 @@
 # Conteúdo das Aulas - Eletrônica - 2022.2
 
 ## Tópicos
-1. Fundamentos de eletrônica: tensão-corrente-resistência
-2. Instrumentos de medida
-3. Sinais elétricos
-4. Diodos
-5. Capacitores e aplicações
-6. Indutores e aplicações
-7. Outros componentes passivos
-8. Transistores  
-   8.1 Análise DC  
-   8.2 Análise AC
-9. Amplificadores Operacionais e aplicações
-10. Amplificadores
+1. [Fundamentos de eletrônica](eletronica/fundamentosEletronica.md)
+2. Sinais elétricos
+3. Diodos
+4. Capacitores e aplicações
+5. Indutores e aplicações
+6. Outros componentes passivos
+7. Transistores  
+   7.1 Análise DC  
+   7.2 Análise AC
+8. Amplificadores Operacionais e aplicações
+9. Amplificadores
 
 ## Exercícios
 1. Lista 1: Fundamentos de eletrônica
@@ -24,6 +23,7 @@
 7. Lista 7: amplificadores operacionais
 
 ## Práticas de laboratório
+Instrumentos de medida
 - Prática 1: medindo corrente e tensão - Lei de Ohm
 - Prática 2: medindo sinais elétricos de corrente contínua (CC) e corrente alternada (CA)
 - Prática 3: projetando circuitos com diodos
