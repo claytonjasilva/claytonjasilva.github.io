@@ -147,7 +147,7 @@ Qualquer circuito formado por múltiplas malhas pode ser reduzido a um **circuit
 | 4 | Calcular a resistência 'vista' nos terminais da carga - resistência de Thevenin |
 
 ___
-**[Eletrônica e Design de Circuitos](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/eletronica_aulas.md)**
+**[Home Eletrônica e Design de Circuitos](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/eletronica_aulas.md)**
 
 
 
