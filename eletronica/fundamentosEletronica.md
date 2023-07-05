@@ -44,8 +44,7 @@ que é diferente da **potência instantânea**.
 produz um sinal de saída, que se configura como uma **resposta** do circuito.
 - Os componentes elétricos podem ser associados **em série ou em paralelo** para construir circuitos.
 - Os componentes elétricos podem ser classificados como **ativos e passivos - resistivos ou reativos**.
-- Os circuitos são representados esquematicamente por **diagramas unifilares**, em que os componentes elétricos são representados 
-de acordo com uma convenção e interligados por uma linha ou fio.
+- Os circuitos são representados esquematicamente por **diagramas unifilares**, em que os componentes elétricos são representados de acordo com uma convenção e interligados por uma linha ou fio.
 
 ### 1.2.1 Componentes ativos e resistivos
 #### Fontes de tensão
@@ -62,7 +61,7 @@ comporta-se como uma fonte ideal em série com uma resistência pequena. Veja o 
 ![Fonte real](/eletronica/imageElt/fontereal.jpg)  
 Observe que utiliza-se uma representação simbólica alternativa da fonte. Na parte superior é identificado **valor nominal**
 de tensão que ela entrega.   
-- As fontes de tensão podem ser **associadas em série**,  
+- Na construção dos circuitos elétricos, as fontes de tensão podem ser **associadas em série**,  
 ![Associação de fontes](/eletronica/imageElt/associacaofonte.jpg)    
 de forma que a tensão nominal da associação de *n* fontes é a **soma das tensões nominais individuais**.  
 
@@ -79,5 +78,42 @@ construídos de moldagem de composto de carbono, de filmes de metal ou de elemen
   - a **tolerância**, normalmente estabelecida em um percentual do valor nominal.
 - A resposta do resistor a um sinal elétrico de entrada é **linear**.  
 ![Resposta do resistor](/eletronica/imageElt/respostaresistor.jpg)    
-- Pode-se observar pelo comportamento tensão (V) versus corrente (I). A inclinação da curva é dada por *1/R*, onde *R* é o valor nominal do resistor
+- Pode-se observar pelo comportamento tensão (V) versus corrente (I). A inclinação da curva é dada por *1/R*, onde *R* é o valor nominal do resistor.
+- A representação dos resistores nos diagramas unifilares de circuitos elétricos é dada por  
+![Resistor](/eletronica/imageElt/resistor.jpg)    
+, onde na parte superior é identificado o **valor nominal** de resistência.
+- Na construção dos circuitos os resistores podem ser associados em série ou em paralelo.
+
+#### Associação de resistores em série
+![Resistor](/eletronica/imageElt/resistorserie.jpg)    
+- A resistência de dois resistores R1 e R2 em série é dada pela relação $R_{eq}=R_1+R_2$.
+- Generalizando, a resistência equivalente da associação em série de *n* resistores é dada por
+
+$$
+R_{eq} = \sum R_j
+$$
+
+, onde *j=1,...,n*.
+
+#### Associação de resistores em paralelo
+![Resistor](/eletronica/imageElt/resistorparalelo.jpg)    
+- A resistência de dois resistores R1 e R2 em paralelo é dada pela relação $R_{eq}=\frac{R_1+R_2}{R_1.R_2}$.
+- Generalizando, a resistência equivalente da associação em paralelo de *n* resistores é dada por
+
+$$
+R_{eq} = \frac {1} {\sum \frac{1}{R_j}}
+$$
+
+, onde *j=1,...,n*.
+
+#### Potenciômetros
+- Resistor variável. Geralmente possui **três terminais**, em que o terminal central é deslizante. Se todos os terminais são usados opera como um **divisor de tensão**.  
+![Potenciômetro](/eletronica/imageElt/potenciometro.jpg)    
+
+### 1.2.2 Contruindo circuitos elétricos
+- Os circuitos elétricos representados pelo diagramas unifilares consistem em **ligações entre os terminais** dos componentes através de fios.
+- Os fios dos diagramas são condutores ideais, através dos quais flui uma corrente elétrica.
+- Como tratamos anteriormente, os elementos ou componentes podem ser associados em paralelo ou série.
+
+
 
