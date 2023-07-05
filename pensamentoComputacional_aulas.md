@@ -2,6 +2,7 @@
 ## Pensamento Computacional - 2023.2
 
 ## Tópicos
+### Introdução
 1. [Dimensões, Unidades e Aritmética Computacional](arq_aulas/dimensoesUnidadesAritmeticaComputacional1.md)
 2. [Arquitetura de Computadores](pensamentoComputacional_aulas/arquiteturaComputadores.md)
 3. [Algoritmos e Linguagens de Programação](pensamentoComputacional_aulas/algoritmosLinguagens.md)
