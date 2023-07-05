@@ -14,7 +14,7 @@
 8. [Modularização de código](pensamentoComputacional_aulas/modulos.md)
 9. [Algoritmos clássicos](pensamentoComputacional_aulas/algoritmos.md)
 ### Introdução Orientação a Objetos
-10. [Conceitos de Orientção a Objetos](pensamentoComputacional_aulas/poo.md)
+10. [Conceitos de Orientação a Objetos](pensamentoComputacional_aulas/poo.md)
 
 ## Práticas e Projetos    
 - [Snap! Linguagem de Programação visual](pensamentoComputacional_aulas/snap.md)
