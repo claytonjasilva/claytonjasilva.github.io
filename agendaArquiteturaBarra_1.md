@@ -3,8 +3,8 @@ Prof Clayton J A Silva
 
 | Data | Tópico |
 | ---- | ------ |
-| 14/2 | Introdução e conceitos fundamentais | 
-| 21/2 | Recesso Carnaval |
+| 1/8 | Introdução e conceitos fundamentais | 
+| 2/8 | Recesso Carnaval |
 | 28/2 | Sistemas numéricos e aritmética computacional |
 | 7/3 | Modelo de máquina de níveis/A máquina de von Neumman |
 | 14/3 | Nível de lógica digital/Nível de microarquitetura |
