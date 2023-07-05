@@ -115,5 +115,43 @@ $$
 - Os fios dos diagramas são condutores ideais, através dos quais flui uma corrente elétrica.
 - Como tratamos anteriormente, os elementos ou componentes podem ser associados em paralelo ou série.
 
+#### Nós e malhas
+- O caminho através do qual circula a corrente elétrica constitui um **ramo** do circuito. 
+Um ramo é definido por um fio do diagrama unifilar. Por um ramo circula uma corrente elétrica.
+- Um **nó** é a interseção de dois caminhos ou ramos diferentes do circuito. Os terminais dos componentes elétricos definem nós.
+- Entre dois nós é sempre possível definir uma diferença de potencial ou tensão.
+- Uma **malha** é um laço fechado no diagrama unifilar de circuito.  
+![Nó e malha](/eletronica/imageElt/nomalha.jpg)
+
+#### Curto circuito e circuito aberto
+Nos diagramas unifilares de circuitos elétricos, um curto-circuito é aquele em que a diferença de potencial é zero entre dois nós.  
+![Curto circuito](/eletronica/imageElt/curto.jpg)  
+Nos diagramas unifilares de circuitos elétricos, um circuito aberto é um laço em que a resistência da carga é infinita entre dois nós.  
+![Circuito aberto](/eletronica/imageElt/circuitoaberto.jpg)  
+
+#### Lei das correntes e das tensões de *Kirchhof*
+1. A soma das correntes que **entram em um nó (ponto)** de um circuito é **igual à soma das correntes que saem** do nó do circuito. Conservação de carga.  
+2. **A soma das tensões em uma malha (circuito fechado) é igual a zero**. A tensão entre dois nós de um circuito é única, independentemente do caminho do entre os dois nós.
+
+#### Teorema de Thévenin
+Qualquer circuito formado por múltiplas malhas pode ser reduzido a um **circuito equivalente** constituído por uma única malha, constituído por uma **Tensão de Thevenin (V<sub>TH</sub>) e Resistência de Thevenin (R<sub>TH</sub>)**.  
+![Circuito equivalente de Thevenin](/eletronica/imageElt/thevenin.jpg)  
+
+**Procedimento para obter o circuito equivalente de Thevenin**
+
+| Passo | Ação |
+| - | - |
+| 1 | Abrir o resistor de carga |
+| 2 | Calcular ou medir a tensão nos terminais - tensão de Thevenin |
+| 3 | Substituir a fonte de tensão por um curto circuito |
+| 4 | Calcular a resistência 'vista' nos terminais da carga - resistência de Thevenin |
+
+___
+**[Eletrônica e Design de Circuitos](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/eletronica_aulas.md)**
+
+
+
+
+
 
 
