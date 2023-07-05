@@ -5,16 +5,23 @@
 1. [Dimensões, Unidades e Aritmética Computacional](arq_aulas/dimensoesUnidadesAritmeticaComputacional1.md)
 2. [Arquitetura de Computadores](pensamentoComputacional_aulas/arquiteturaComputadores.md)
 3. [Algoritmos e Linguagens de Programação](pensamentoComputacional_aulas/algoritmosLinguagens.md)
-5. [Operações Aritméticas e Lógicas](pensamentoComputacional_aulas/operacoes.md)
-6. [Estruturas Condicionais](pensamentoComputacional_aulas/condicionais.md)
-7. [Estruturas de repetição](pensamentoComputacional_aulas/repeticao.md)
-8. [Estruturas de dados](pensamentoComputacional_aulas/estruturas.md)
+### Algoritmos estruturados
+4. [Operações Aritméticas e Lógicas](pensamentoComputacional_aulas/operacoes.md)
+5. [Estruturas Condicionais](pensamentoComputacional_aulas/condicionais.md)
+6. [Estruturas de repetição](pensamentoComputacional_aulas/repeticao.md)
+7. [Estruturas de dados](pensamentoComputacional_aulas/estruturas.md)
+8. [Modularização de código](pensamentoComputacional_aulas/modulos.md)
 9. [Algoritmos clássicos](pensamentoComputacional_aulas/algoritmos.md)
+### Introdução Orientação a Objetos
+10. [Conceitos de Orientção a Objetos](pensamentoComputacional_aulas/poo.md)
 
 ## Práticas e Projetos    
 - [Snap! Linguagem de Programação visual](pensamentoComputacional_aulas/snap.md)
-- [Portugol Studio](https://www.udemy.com/course/logica-de-programacao-com-portugol-studio-a-partir-do-zero/)
-1. 
+- [Fluxogramas](pensamentoComputacional_aulas/fluxograma.md)
+- [Portugol Studio](https://dgadelha.github.io/Portugol-Webstudio/)
+1. Hardware e Software
+2. Arquitetura e organização de computadores
+3. Projetos com Snap!
 
 ## Avaliações
 ### Avaliações Bimestrais
@@ -34,11 +41,10 @@ Os instrumentos de avaliação continuada serão disponibilizados à medida que 
 - Form 9
 
 ## Referências  
-*Obs. É necessário o acesso pela Biblioteca Virtual do Ibmec*    
 1. PAIVA, S.R.; Introdução à Programação: Pensamento Computacional; 2012: CIÊNCIA MODERNA.
 2. SCHIMIGUEL, JULIANO;	PENSAMENTO COMPUTACIONAL;	2022: CIÊNCIA MODERNA.
 3. WIRTH, Niklaus; Algoritmos e estruturas de dados; 1986: LTC.
 4. CORMEN, Thomas H., LEISERSON, Charles E., RIVEST, Ronald L. e STEIN, Clifford;	Algoritmos - Teoria e Prática; 2012:	Elsevier.
 5. MEDINA, Marco;	Algoritmos e programação; 2006:	Novatec.
 
-#### [Home - Arquitetura - Prof Clayton J A Silva](/arq.md)
+#### [Home - Pensamento Computacional - Prof Clayton J A Silva](/pensamentoComputacional.md)
