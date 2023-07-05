@@ -29,4 +29,7 @@
 - Prática 3: projetando circuitos com diodos
 - Prática 4: projetando circuitos com indutores e capacitores
 - Prática 5: projetando circuitos com transistores
-- Prática 6: projetando circuitos com amplificadores operacionais 
+- Prática 6: projetando circuitos com amplificadores operacionais
+
+____
+#### [Home - Eletrônica e Design de Circuitos - Prof Clayton J A Silva](/eletronica.md)
