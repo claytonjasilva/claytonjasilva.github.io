@@ -1,4 +1,4 @@
-# Eletrônica - 2022.2
+# Eletrônica - 2023.2
 
 1. Agenda (em construção)
 2. [Grid](eletronica/Grid_Eletronica.md)
