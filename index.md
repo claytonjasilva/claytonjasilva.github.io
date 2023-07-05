@@ -4,13 +4,13 @@
 
 ## Disciplinas
 
-* [Arquitetura de Computadores](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/arq.md)  
+* [Arquitetura de Computadores](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/arq.md) - Rev 2023.2   
 * [Eletrônica](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/eletronica.md)  
 * [Linguagens Formais e Compiladores](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/compiladores.md)
-* [Pensamento Computacional](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/pensamentoComputacional.md)
+* [Pensamento Computacional](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/pensamentoComputacional.md) - Rev 2023.2  
 * [Programação](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/progPython.md)
 * [Projetos em Engenharia](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/projetos.md)
-* [Sistemas de Comunicações Móveis](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/siscom.md)
+* [Sistemas de Comunicações Móveis](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/siscom.md) - Rev 2023.2
 * [Sistemas Digitais](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/sisdig.md)
 
 ## Cursos complementares
