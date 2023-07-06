@@ -27,6 +27,40 @@ mesmo que tensões e correntes sejam variantes no tempo.
 - Na análise de circuitos, uma característica importante dos sinais periódicos é que:  
 **a soma de dois sinais periódicos de período *T* também é um sinal periódico de período *T*.**
 
+#### Outros parâmetros de sinais senoidais
+1. Amplitude pico a pico - Os sinais senoidais gerados pela fontes de tensão alternada são muitas vezes medido em função
+do seu valor entre a amplitude máxima e mínima, chamada tensão de amplitude pico a pico, normalmente indicada por V</sub>pp<sub>.
+2. Amplitude RMS (raiz média quadrada) - O valor médio de um sinal senoidal é 0. Muitas vezes a amplitude utilizada se refere ao valor médio quadrático ou RMS, que, para sinais senoidais, é obtido por  
+
+$$
+V_{RMS} = \frac{1}{\sqrt{2}}.A
+$$
+
+, onde *A* é a amplitude do sinal.  
+
+3. Decibeis - Para comparar sinais é mais conveniente em muitas circunstâncias utilizar escala logarítmica, pois a diferença de grandezas pode envolver números grandes.  
+A razão entre dois sinais de amplitudes A<sub>1</sub> e A<sub>2</sub>, medida em decibeis (dB), é dada por
+
+$$
+dB=20log\frac{A_2}{A_1}
+$$
+
+A medida em dB pode ser obtida pela relação logaritmica entre potências, obtida de
+
+$$
+dB=10log\frac{P_2}{P_1}
+$$
+
+, onde P<sub>1</sub> e P<sub>2</sub> são as potências instantâneas.
+
+O valor da potência de um sinal pode ser definido pela razão logaritmica com um sinal de 1 mW, na definição de dBm, logo obtida por
+
+$$
+dB=10log\frac{P}{1 mW}
+$$
+
+, onde P é a potência instantânea do sinal considerado.
+
 ## 2.3 Circuitos lineares
 - Os circuitos lineares são aqueles cuja saída, quando alimentado por vários sinais de entrada,
 é igual à soma das saídas individuais, cada uma delas resposta do circuito ao respectivo sinal de entrada.
