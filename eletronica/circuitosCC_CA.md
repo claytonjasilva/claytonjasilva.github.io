@@ -30,13 +30,21 @@ mesmo que tensões e correntes sejam variantes no tempo.
 #### Outros parâmetros de sinais senoidais
 1. Amplitude pico a pico - Os sinais senoidais gerados pela fontes de tensão alternada são muitas vezes medido em função
 do seu valor entre a amplitude máxima e mínima, chamada tensão de amplitude pico a pico, normalmente indicada por V</sub>pp<sub>.
-2. Amplitude RMS (raiz média quadrada) - O valor médio de um sinal senoidal é 0. Muitas vezes a amplitude utilizada se refere ao valor médio quadrático ou RMS, que, para sinais senoidais, é obtido por  
+2. Amplitude RMS (raiz média quadrática) - O valor médio de um sinal senoidal é 0. Muitas vezes a amplitude utilizada se refere ao valor médio quadrático ou RMS, que, para sinais senoidais, é obtido por  
 
 $$
 V_{RMS} = \frac{1}{\sqrt{2}}.A
 $$
 
 , onde *A* é a amplitude do sinal.  
+Como a amplitude de sinais senoidais pode ser medida pelo seu valor quadrático, também é comum utilizar a referência à potência RMS, dada por
+
+$$
+P_{RMS} = \frac{V_{RMS}^2}{R}
+$$
+
+, onde *R* é a resistência da carga e *V<sub>RMS</sub> é a tensão RMS sobre a carga.  
+Nesse sentido, para circuito CA é importante destacar se a potência é de pico (P=V.I) ou RMS.
 
 3. Decibeis - Para comparar sinais é mais conveniente em muitas circunstâncias utilizar escala logarítmica, pois a diferença de grandezas pode envolver números grandes.  
 A razão entre dois sinais de amplitudes A<sub>1</sub> e A<sub>2</sub>, medida em decibeis (dB), é dada por
@@ -71,5 +79,9 @@ Y(t) = Y_1(t) + Y_2(t) + ...+ Y_n(t)
 $$
 
 , onde $Y_i(t)$ é a resposta de saída à i-ésima entrada $X_i(t)$.
-- Circuitos lineares alimentados por uma entrada senoidal responde sempre com saída senoidal,
+- Circuitos lineares alimentados por uma entrada senoidal respondem sempre com saída senoidal,
 embora com fase e amplitude geralmente modificados.
+
+___
+**[Home Eletrônica e Design de Circuitos](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/eletronica_aulas.md)**
+
