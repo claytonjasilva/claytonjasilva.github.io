@@ -3,7 +3,7 @@
 ## Tópicos
 1. [Fundamentos de eletrônica](eletronica/fundamentosEletronica.md)
 2. [Circuitos de corrente contínua (CC) e de corrente alternada (CA)](eletronica/circuitosCC_CA.md)
-3. Diodos
+3. [Diodos](eletronica/diodos.md)
 4. Capacitores e aplicações
 5. Indutores e aplicações
 6. Outros componentes passivos
