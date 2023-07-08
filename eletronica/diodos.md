@@ -53,5 +53,46 @@ A curva característica mostra que o diodo pode operar em duas regiões:
 - DIRETA - quando lhé é aplicada uma **tensão de polarização** - tensão entre o anodo e o catodo - positiva. Nesse caso diz-se que a polarização é direta.
 - REVERSA - quando lhe é aplicada uma tensão de polarização negativa. Nesse caso, aplica-se a chamada polarização reversa.
 
+## 3.3 Projetos com diodos
+### 3.3.1 Aproximações
+- Para elaborar projetos utilizando diodo é necessário admitir uma aproximação do seu comportamento real.
+- Uma das aproximações admite o funcionamento do diodo como uma chave, que permite a passagem ou não da corrente.
+- O diagrama unifilar do circuito vai representar uma das duas situações na **aproximação 1**.
+![Aproximação 1 do diodo](/eletronica/imageElt/diodoaproximacao1.jpg)  
+- Uma segunda aproximação admite o funcionamento do diodo como uma chave (aberta ou fechada) em série com uma bateria cujo valor de tensão é tensão de joelho.
+- O diagrama unifilar do circuito vai representar a **aproximação 2** do modo seguinte.
+![Aproximação 1 do diodo](/eletronica/imageElt/diodoaproximacao2.jpg)
+- Uma terceira aproximação admite o funcionamento do diodo como uma chave (aberta ou fechada) em série com uma bateria cujo valor de tensão é tensão de joelho e um resisto cujo valor é o valor da sua resistência interna.
+- O diagrama unifilar do circuito vai representar a **aproximação 3** é similar ao da aproximação 2 com a resistência interna em série com a bateria.
 
+### 3.3.2 Linha de carga
+- Existem alguns tipos de diodos. No caso que estudaremos vamos considerar o uso de **diodos retificadores e de pequeno sinal.**
+- Para projetar o circuito é necessário definir o **ponto de operação**, ou seja, a tensão que vai polarizar o diodo (*V<sub>D</sub>*) e a corrente que irá atravessá-lo quando o diodo conduzir.
+- Para obter o ponto de operação traça-se a linha de carga.
+![Linha de carga](/eletronica/imageElt/linhacarga.jpg)
+- Linha de carga. A linha de carga é definida por dois pontos:   
+(a) o ponto de saturação, (V=0, Imáx);   
+(b) o ponto de corte, (V=Vs, 0).  
+A interseção da linha de carga com a curva do diodo é o ponto Q. A partir do ponto Q pode-se determinar o ponto de operação.   
+A interseção da linha de carga com a curva característica determina o ponto de operação.
+A corrente de operação serádada por
+
+$$
+I_{op}=\frac{V_s - V_{op}}{R_s}
+$$
+
+, onde a tensão **Vs indica a tensão da fonte** a ser utilizada no projeto do circuito,  
+e a resistência **Rs será a resistência do resistor a ser utilizado no projeto** em série com o diodo.  
+**Obs. Desejando-se mais precisão para os cálculos, considerar a resistência interna da fonte DC e do diodo.**  
+
+### 3.3.3. O projeto da polarização do diodo
+O projeto do circuito retificador será   
+![Circuito retificador](/eletronica/imageElt/retificador.jpg)  
+Algumas recomendações ao projeto:
+1. Diodos retificadores e de sinal pequeno. Explorar o funcionamento na região positiva, ou seja, Vs deve ser acima da tensão de joelho.
+2. Assegurar que o circuito na operação não exceda sua tensão de ruptura. A tensão de ruptura é especificada pelo fabricante no *datasheet*.
+3. Assegurar que a potência não ultrapasse a máxima que o diodo suporta. O fabricante especifica indiretamente a potência máxima pela corrente máxima (Imáx) no *datasheet*.
+4. Para assegurar a operação no limite da potência, normalmente utiliza-se um resistor limitador de corrente (Rs) em série com o diodo.
+
+## 3.4 Projeto retificador
 
