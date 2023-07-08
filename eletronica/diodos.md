@@ -2,7 +2,7 @@
 
 ## 3.1 Visão geral
 - Componente eletrônico passivo (não produz energia), composto de elementos semicondutores como silício e germânio,
-cuja resposta a um sinal elétrico de entrada é não linear.
+cuja resposta a um sinal elétrico de entrada é **não linear**.
 Os valores dependem da compreensão da sua resposta, porém os valores mais importantes são a **corrente e a tensão de operação (ponto Q)**.
 - Possuem dois terminais, conhecidos como **anodo** e **catodo**, que está relacionada à direção preferencial do fluxo de corrente elétrica
 através do componente.
@@ -31,7 +31,7 @@ Observe que os terminais anodo e catodo são bem claros na representação simb�
 ## 3.2 Curva característica
 - Chama-se de curva característica a curva de resposta da corrente que atravessa um componente quando submetido a uma tensão nos terminais.
 - No caso de resistores, a curva característica é tipicamente linear, definida pela lei de Ohm. A inclinação da curva VxI é definida pelo inverso da resistência, 1/R.
-- No caso dos diodos, a curva é não linear, apresentada na figura.
+- No caso dos diodos, a curva é não linear, apresentada na figura.  
 ![Curva característica do diodo](/eletronica/imageElt/curvadiodo.jpg)  
 - Alguns parâmetros típicos dos diodos são definidos em função de comportamento.  
 #### Tensão de joelho *(V<sub>j</sub>)*
@@ -85,14 +85,29 @@ $$
 e a resistência **Rs será a resistência do resistor a ser utilizado no projeto** em série com o diodo.  
 **Obs. Desejando-se mais precisão para os cálculos, considerar a resistência interna da fonte DC e do diodo.**  
 
-### 3.3.3. O projeto da polarização do diodo
-O projeto do circuito retificador será   
+### 3.3.3. Polarização do diodo
+O projeto da polarização do diodo será   
 ![Circuito retificador](/eletronica/imageElt/retificador.jpg)  
 Algumas recomendações ao projeto:
-1. Diodos retificadores e de sinal pequeno. Explorar o funcionamento na região positiva, ou seja, Vs deve ser acima da tensão de joelho.
+1. Diodos retificadores e de sinal pequeno. **Explorar o funcionamento na região positiva**, ou seja, Vs deve ser acima da tensão de joelho.
 2. Assegurar que o circuito na operação não exceda sua tensão de ruptura. A tensão de ruptura é especificada pelo fabricante no *datasheet*.
 3. Assegurar que a potência não ultrapasse a máxima que o diodo suporta. O fabricante especifica indiretamente a potência máxima pela corrente máxima (Imáx) no *datasheet*.
 4. Para assegurar a operação no limite da potência, normalmente utiliza-se um resistor limitador de corrente (Rs) em série com o diodo.
 
-## 3.4 Projeto retificador
+## 3.4 Circuitos com diodo
+A maioria dos sistemas eletrônicos, como os aparelhos de televisão, DVD e
+CD e computadores, precisa de uma fonte de alimentação CC para funcionar
+corretamente.  
+Como a energia elétrica disponível é em tensão alternada, a
+primeira providência que devemos tomar é **converter a tensão da rede elétrica
+CA em uma tensão CC**.  
+Os circuitos que fazem a corrente circular em apenas um sentido
+são chamados de **retificadores**.
+O esquema abaixo apresenta as etapas do processo de conversão de um sinal da concessionária para alimentar 
+os circuitos eletrônicos.
+![Diagrama em blocos da fonte retificada](/eletronica/imageElt/fonteretificada.jpg)  
+
+Os elementos são os seguintes:
+#### Transformador
+Converte uma tensão alternada de entrada em uma tensão alternada de saída.  
 
