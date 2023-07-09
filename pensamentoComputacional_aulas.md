@@ -18,7 +18,7 @@
 10. [Conceitos de Orientação a Objetos](pensamentoComputacional_aulas/poo.md)
 
 ## Práticas e Projetos    
-- [Snap! Linguagem de Programação visual](pensamentoComputacional_aulas/snap.md)
+- [Snap! Linguagem de Programação visual](pensamento/snap.md)
 - [Fluxogramas](pensamentoComputacional_aulas/fluxograma.md)
 - [Portugol Studio](https://dgadelha.github.io/Portugol-Webstudio/)
 1. Hardware e Software
