@@ -17,8 +17,7 @@ Uma revisão rápida sobre [dimensões, unidades e aritmética computacional](ht
 ## 1.2 Sinais analógicos, discretos e digitais
 
 ### 1.2.1 Sinais analógicos 
-Apresentam uma variação contínua de valores e definida em qualquer instante de tempo durante uma janela temporal de observação.  
-
+Apresentam uma variação contínua de valores e definida em qualquer instante de tempo durante uma janela temporal de observação. 
 A continuidade dos valores observados (variável dependente *x*) e continuidade do tempo (variável independente *t*) em relação ao qual é medida a grandeza pode ser definida matematicamente da seguinte forma
 
 $$ x(t)=f(t) $$
@@ -35,26 +34,26 @@ Os sistemas computacionais possuem capacidade **finita** de representar números
 - Apróximar os valores medidos a um conjunto finito de valores, **quantiando o sinal**.
 
 ### 1.2.2 Amostragem de sinais analógicos
-Os sinais *x(t)* analógicos são registrados somente em intervalos de tempo. A esse procedimento se dá o nome de **amostragem**.  
-
-Por uma conveninência de implementação, a amostragem do sinal analógico é realizado em intervalos de tempo periódicos constantes. O intervalo de amostragem é chamado **período de amostragem**, T<sub>A</sub>. A figura ilustra o sinal amostrado.
+Os sinais *x(t)* analógicos são registrados somente em intervalos de tempo.  
+A esse procedimento se dá o nome de **amostragem**.   
+Por uma conveninência de implementação, a amostragem do sinal analógico é realizado em intervalos de tempo periódicos constantes. O intervalo de amostragem é chamado **período de amostragem**, *T<sub>A</sub>*. 
+A figura ilustra o sinal amostrado.  
 
 ![Sinal amostrado](/sisdig_aulas/images_sisdig/amostrado.jpg)
 
-Não é difícil observar que quanto menor T<sub>A</sub>, mais o sinal amostrado se aproxima do sinal analógico.  
+Não é difícil observar que quanto menor o intervalo de amostragem (*T<sub>A</sub>*), mais o sinal amostrado se aproxima do sinal analógico. Ou seja, quando *T<sub>A</sub>* converge a 0, o sinal amostrado se aproxima do sinal analógico.  
+Por outro lado, quanto maior o intervalo de amostragem, menor é a fidedignidade do sinal resultante em relação ao original.  
 
-Ou seja, quando T<sub>A</sub> -> 0, o sinal amostrado se aproxima do sinal analógico.
+Fisicamente, a todo sinal de período *T* corresponde uma frequência *f=1/T*, medida em Hertz (Hz), logo para o intervalo ou período de amostragem corresponde uma frequência de amostragem em que 
 
-Fisicamente, a todo sinal de período *T* corresponde uma frequência *f=1/T*, medida em Hertz (Hz).
+$$T_A = \frac{1}{f_A}$$.  
 
-Isso vale para a amostragem, em que *T<sub>A</sub> = 1/f<sub>A</sub>*.  
+**Teorema de Nyquist.** Aprofundaremos posteriormente, mas o teorema de Nyquist postula que um sinal *S(t)* com banda *B* deve ser amostrado com uma frequência de amostragem tal que
 
-Conforme discutido acima, pela relação entre período e frequência, quanto maior a frequência de amostragem mais o sinal amostrado se aproxima do sinal analógico.  
+$$f_A≥2.B$$.
 
 Não é difícil concluir também que existe **perda de informação** quando se realiza a aproximação
-de um sinal analógico para um sinal digital.  
-
-Por outro lado, para a computação é conveniente lidar com sinais digitais por diversos motivos, a despeito de alguma perda na amostragem.  
+de um sinal analógico para um sinal digital. Por outro lado, para a computação é conveniente lidar com sinais digitais por diversos motivos, a despeito de alguma perda na amostragem.  
 
 Embora o sinal seja contínuo nos valores observados (variável dependente *x*), após amostrado passa a discreto no tempo, consequentemente pode ser definido em instantes discretos *n = 0, 1, 2, ...* correpondente ao tempo *n.T<sub>A</sub>*, logo que pode ser definido matematicamente da seguinte forma
 
