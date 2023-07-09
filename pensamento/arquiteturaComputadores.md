@@ -14,4 +14,4 @@ A estrutura geral da máquina IAS consiste em:
 - Uma Unidade de Controle (UC), que interpreta e executa as instruções armazenadas na memória  
 - Dispositivos de entrada e saída (E/S) operados pela Unidade de Controle.
 
-## [Arquitetura, Organização e Modelos de máquina de níveis](arq_aulas/arquiteturaOrganizacaoCamadas.md)
+## [Arquitetura, Organização e Modelos de máquina de níveis](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/arq_aulas/arquiteturaOrganizacaoCamadas.md)
