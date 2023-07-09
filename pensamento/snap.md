@@ -66,14 +66,24 @@ Snap! oferece uma variedade de objetos que permitem interações e manipulaçõe
 ## Exemplos de Projetos Snap!
 A seguir estão alguns exemplos de projetos Snap!, organizados em ordem crescente de complexidade:
 
-- [Projeto 1: Movendo um Sprite](https://snap.berkeley.edu/project?user=snapexamples&project=moving-a-sprite): Um exemplo simples que mostra como mover um sprite pelo palco usando eventos e blocos de movimento.
+- [Projeto 1: Desenho com o Mouse](https://snap.berkeley.edu/project?user=snapexamples&project=drawing-with-mouse): Este projeto permite que você desenhe no palco usando o mouse. Ao arrastar o mouse, o sprite de desenho acompanha o movimento e deixa um rastro no palco.
 
-- [Projeto 2: Jogo de Adivinhação](https://snap.berkeley.edu/project?user=snapexamples&project=guessing-game): Um jogo de adivinhação em que o jogador precisa acertar um número aleatório. Utiliza estruturas condicionais e blocos de entrada/saída.
+- [Projeto 2: Jogo da Velha](https://snap.berkeley.edu/project?user=snapexamples&project=tic-tac-toe): Este projeto implementa o clássico jogo da velha (tic-tac-toe). Você pode jogar contra o computador ou contra outro jogador. Use os blocos de eventos e estruturas condicionais para controlar a lógica do jogo.
 
-- [Projeto 3: Jogo de Plataforma](https://snap.berkeley.edu/project?user=snapexamples&project=platform-game): Um jogo de plataforma em que o jogador controla um sprite para pular e evitar obstáculos. Utiliza estruturas de repetição, colisões e eventos de teclado.
+- [Projeto 3: Relógio Analógico](https://snap.berkeley.edu/project?user=snapexamples&project=analog-clock): Este projeto cria um relógio analógico que exibe a hora atual. Os ponteiros do relógio são ajustados de acordo com o tempo real. Explore os blocos de movimento e eventos para animar os ponteiros.
 
-- [Projeto 4: Criando uma Animação](https://snap.berkeley.edu/project?user=snapexamples&project=creating-an-animation): Um exemplo que mostra como criar uma animação simples com sprites e blocos de movimento.
+- [Projeto 4: Jogo de Pong](https://snap.berkeley.edu/project?user=snapexamples&project=pong): Recrie o clássico jogo Pong em Snap! Desafie um amigo ou jogue contra o computador. Use blocos de movimento e colisão para controlar a bola e as paletas.
+
+- [Projeto 5: Gerador de Fractais](https://snap.berkeley.edu/project?user=snapexamples&project=fractal-generator): Crie imagens fractais fascinantes com este projeto. Experimente diferentes padrões e cores usando iterações e recursividade.
+
+- [Projeto 6: Simulação de Sistema Solar](https://snap.berkeley.edu/project?user=snapexamples&project=solar-system): Simule o sistema solar com este projeto. Observe os planetas em órbita ao redor do sol e experimente ajustar suas velocidades e tamanhos.
+
+- [Projeto 7: Gerador de Labirinto](https://snap.berkeley.edu/project?user=snapexamples&project=maze-generator): Crie um labirinto aleatório com este projeto. Use algoritmos de geração de labirinto para criar diferentes desafios para os jogadores.
+
+- [Projeto 8: Quiz Interativo](https://snap.berkeley.edu/project?user=snapexamples&project=interactive-quiz): Crie um quiz interativo com perguntas e respostas. Use estruturas condicionais para verificar as respostas e fornecer feedback aos jogadores.
+
+- [Projeto 9: Animação de Dança](https://snap.berkeley.edu/project?user=snapexamples&project=dance-animation): Crie uma animação de dança com este projeto. Use blocos de movimento e efeitos visuais para criar uma coreografia animada.
+
+- [Projeto 10: Jogo de Labirinto](https://snap.berkeley.edu/project?user=snapexamples&project=maze-game): Crie um jogo de labirinto onde o jogador deve encontrar a saída. Use estruturas de repetição para mover o jogador e detectar colisões com as paredes.
 
 Esses exemplos fornecem uma introdução gradual ao uso da linguagem Snap! e demonstram alguns dos recursos e conceitos principais.
-
-Agora você pode copiar e colar o texto acima em um arquivo Markdown no GitHub para obter o formato adequado, incluindo os links para as referências principais, a definição da linguagem Snap!, os principais elementos de estruturas condicionais e de repetição, as estruturas de dados, os principais objetos e os exemplos de projetos.
