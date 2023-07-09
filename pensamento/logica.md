@@ -83,3 +83,6 @@ Através das tabelas verdade, podemos determinar os valores lógicos resultantes
 Em eletrônica digital, as portas lógicas são componentes físicos que implementam operações lógicas básicas. Elas recebem um ou mais sinais lógicos de entrada e produzem um sinal de saída com base em uma tabela de verdade específica. Alguns exemplos de portas lógicas são a porta AND, a porta OR e a porta NOT.
 
 A compreensão dos conceitos lógicos apresentados nesta seção é essencial para a análise e o desenvolvimento de sistemas lógicos e computacionais.
+
+___
+**[Home Pensamento Computacional](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/pensamentoComputacional_aulas.md)**
