@@ -11,14 +11,14 @@ Na lógica, uma proposição é uma afirmação que pode ser considerada verdade
 - "2 é um número primo"
 
 ## Proposições Compostas
-As proposições compostas são construídas a partir de proposições simples usando conectivos lógicos, como "e", "ou" e "não". Permitem combinar afirmações para formar proposições mais complexas.
+As proposições compostas são construídas a partir de proposições simples usando conectivos lógicos, como a conjunção (representada por '.') e a disjunção (representada por '+'). Permitem combinar afirmações para formar proposições mais complexas.
 
 ### Exemplo de Proposição Composta
 Suponha que:
 - p: "Está chovendo"
 - q: "Está frio"
 
-A proposição composta "Está chovendo e está frio" é formada pela conjunção das proposições p e q.
+A proposição composta "Está chovendo e está frio" pode ser expressa como p.q.
 
 ## Valor Lógico
 O valor lógico de uma proposição é seu estado de verdade, ou seja, se ela é verdadeira ou falsa. Na lógica clássica, uma proposição pode ter apenas um desses dois valores. O valor lógico de uma proposição composta depende dos valores lógicos das proposições simples que a compõem, bem como do conectivo lógico utilizado.
@@ -29,39 +29,17 @@ A lógica matemática é uma área da lógica que se dedica a estudar as estrutu
 ## Operações e Operadores Lógicos
 Os operadores lógicos são símbolos ou palavras que representam as operações lógicas aplicadas às proposições. Alguns dos principais operadores lógicos são:
 
-- **Conjunção (E):** Representada pelo símbolo "∧" ou pela palavra "e". Indica que duas proposições devem ser ambas verdadeiras para que a proposição composta seja verdadeira.
+- **Conjunção (E):** Representada pelo operador '.'. Indica que duas proposições devem ser ambas verdadeiras para que a proposição composta seja verdadeira.
 
-### Tabela Verdade para a Conjunção (p E q):
-| p   | q   | p E q |
-| --- | --- | ----- |
-| V   | V   | V     |
-| V   | F   | F     |
-| F   | V   | F     |
-| F   | F   | F     |
+- **Disjunção (OU):** Representada pelo operador '+'. Indica que pelo menos uma das proposições deve ser verdadeira para que a proposição composta seja verdadeira.
 
-- **Disjunção (OU):** Representada pelo símbolo "∨" ou pela palavra "ou". Indica que pelo menos uma das proposições deve ser verdadeira para que a proposição composta seja verdadeira.
-
-### Tabela Verdade para a Disjunção (p OU q):
-| p   | q   | p OU q |
-| --- | --- | ------ |
-| V   | V   | V      |
-| V   | F   | V      |
-| F   | V   | V      |
-| F   | F   | F      |
-
-- **Negação (NÃO):** Representada pelo símbolo "¬" ou pela palavra "não". Inverte o valor lógico de uma proposição, tornando uma proposição verdadeira falsa e vice-versa.
-
-### Tabela Verdade para a Negação (NÃO p):
-| p   | ¬p  |
-| --- | --- |
-| V   | F   |
-| F   | V   |
+- **Negação (NÃO):** Representada pelo símbolo '~'. Inverte o valor lógico de uma proposição, tornando uma proposição verdadeira falsa e vice-versa.
 
 ## Precedência entre Operações Lógicas
 Assim como na matemática, a lógica possui uma ordem de precedência entre os operadores lógicos. Em geral, a negação possui a maior precedência, seguida pela conjunção e pela disjunção. Parênteses podem ser usados para modificar a precedência padrão e agrupar operações.
 
 ## Variáveis e Expressões Lógicas
-Além das proposições, a lógica também utiliza variáveis para representar valores lógicos desconhecidos. As variáveis lógicas podem assumir os valores "verdadeiro" ou "falso" e são usadas para formar expressões lógicas mais complexas.
+Além das proposições, a lógica também utiliza variáveis para representar valores lógicos desconhecidos. As variáveis lógicas podem assumir os valores "verdadeiro" (V) ou "falso" (F) e são usadas para formar expressões lógicas mais complexas.
 
 A tabela verdade é uma ferramenta útil para analisar o valor lógico de expressões lógicas com base nos valores das variáveis envolvidas. Ela lista todas as combinações possíveis de valores das variáveis e indica o resultado da expressão lógica para cada combinação.
 
@@ -71,31 +49,33 @@ Suponha que:
 - q: "Está frio"
 - r: "É segunda-feira"
 
-#### Expressão 1: p OU (q E r)
+#### Expressão 1: p + (q.r)
 Tabela Verdade para a Expressão 1:
-| p   | q   | r   | q E r | p OU (q E r) |
-| --- | --- | --- | ----- | ----------- |
-| V   | V   | V   | V     | V           |
-| V   | V   | F   | F     | V           |
-| V   | F   | V   | F     | V           |
-| V   | F   | F   | F     | V           |
-| F   | V   | V   | V     | V           |
-| F   | V   | F   | F     | F           |
-| F   | F   | V   | F     | V           |
-| F   | F   | F   | F     | F           |
+| p   | q   | r   | q.r | p + (q.r) |
+| --- | --- | --- | --- | --------- |
+| V   | V   | V   | V   | V         |
+| V   | V   | F   | F   | V         |
+| V   | F   | V   | F   | V         |
+| V   | F   | F   | F   | V         |
+| F   | V   | V   | V   | V         |
+| F   | V   | F   | F   | F         |
+| F   | F   | V   | F   | F         |
+| F   | F   | F   | F   | F         |
 
-#### Expressão 2: (p E q) OU (r E ¬p)
+#### Expressão 2: (p.q) + (r.~p)
 Tabela Verdade para a Expressão 2:
-| p   | q   | r   | ¬p  | p E q | r E ¬p | (p E q) OU (r E ¬p) |
-| --- | --- | --- | --- | ----- | ------ | ----------------- |
-| V   | V   | V   | F   | V     | F      | V                 |
-| V   | V   | F   | F   | V     | F      | V                 |
-| V   | F   | V   | F   | F     | V      | V                 |
-| V   | F   | F   | F   | F     | F      | F                 |
-| F   | V   | V   | V   | F     | V      | V                 |
-| F   | V   | F   | V   | F     | F      | F                 |
-| F   | F   | V   | V   | F     | V      | V                 |
-| F   | F   | F   | V   | F     | F      | V                 |
+| p   | q   | r   | ~p  | p.q | r.~p | (p.q) + (r.~p) |
+| --- | --- | --- | --- | --- | ---- | -------------- |
+| V   | V   | V   | F   | V   | V    | V              |
+| V   | V   | F   | F   | V   | F    | V              |
+| V   | F   | V   | F   | F   | V    | V              |
+| V   | F   | F   | F   | F   | F    | F              |
+| F   | V   | V   | V   | F   | V    | V              |
+| F   | V   | F   | V   | F   | F    | F              |
+| F   | F   | V   | V   | F   | V    | V              |
+| F   | F   | F   | V   | F   | F    | F              |
+
+Através das tabelas verdade, podemos determinar os valores lógicos resultContinuação do texto acima:
 
 Através das tabelas verdade, podemos determinar os valores lógicos resultantes das expressões lógicas, permitindo a análise e o raciocínio lógico mais complexo.
 
