@@ -1,15 +1,15 @@
 # GRID DA DISCIPLINA 
 
 **CURSO: Engenharia de Computação**  
-**DISCIPLINA: Sistemas de Comunicações Móveis - 2022/2**  
+**DISCIPLINA: Sistemas de Comunicações Móveis - 2023/2**  
 **PROFESSOR: Clayton Jones Alves da Silva, MSc**
 
 ## I. OBJETIVOS
 - Modelar sistemas móveis, decompondo-o nos subsistemas de transmissão, do canal de comunicações e de recepção  
 - Analisar e simular o comportamento de canais de comunicações
-- Analisar e simular o comportamento de sinais modulados
-- Projetar e simular equalizadores de canais
-- Planejar sistemas de comunicações móveis
+- Analisar e simular o comportamento de sinais modulados analogicamente
+- Analisar e simular o comportamento de sinais modulados digitalmente
+- Planejar sistemas de comunicações celulares
 
 ## II. CONTEÚDO
 1. Sistema de comunicações: transmissor, canal de comunicações e receptor
