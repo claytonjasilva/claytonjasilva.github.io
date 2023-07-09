@@ -4,8 +4,9 @@
 ## Tópicos
 ### Introdução
 1. [Dimensões, Unidades e Aritmética Computacional](arq_aulas/dimensoesUnidadesAritmeticaComputacional1.md)
-2. [Arquitetura de Computadores](pensamentoComputacional_aulas/arquiteturaComputadores.md)
-3. [Algoritmos e Linguagens de Programação](pensamentoComputacional_aulas/algoritmosLinguagens.md)
+2. [Arquitetura de Computadores](pensamento/arquiteturaComputadores.md)
+3. [Lógica](pensamento/logica.md)
+4. [Algoritmos e Linguagens de Programação](pensamentoComputacional_aulas/algoritmosLinguagens.md)
 ### Algoritmos estruturados
 4. [Operações Aritméticas e Lógicas](pensamentoComputacional_aulas/operacoes.md)
 5. [Estruturas Condicionais](pensamentoComputacional_aulas/condicionais.md)
