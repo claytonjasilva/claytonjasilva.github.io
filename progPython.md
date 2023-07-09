@@ -1,13 +1,8 @@
 # Programação - 2023.1
 
-1. [Agenda](agendaProgramacaoPython.md) 
-2. [Grid](prog_aulas/Grid_programacao.md)
-3. [Sistema de Avaliações](/./avaliacoes.md)
-4. [Conteúdo das Aulas](progPython_aulas.md)
-5. Ferramentas de Apoio  
-   * [Python](https://www.python.org/downloads/)
-   * [PyCharm Edu](https://www.jetbrains.com/pt-br/pycharm-edu/)
-   * [Replit](https://replit.com)
-
+1. **Agenda**
+2. **[Grid](prog_aulas/Grid_programacao.md)**
+3. **[Sistema de Avaliações](/./avaliacoes.md)**
+4. **[Conteúdo das Aulas](progPython_aulas.md)**
 
 ##### [Home - Prof Clayton J A Silva](https://claytonjasilva.github.io/)
