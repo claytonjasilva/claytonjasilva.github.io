@@ -2,10 +2,9 @@
 
 ## Referências Principais
 - [Site Oficial do Snap!](https://snap.berkeley.edu/): O site oficial do Snap! é a fonte principal de informações sobre a linguagem. Ele fornece documentação detalhada, tutoriais e exemplos para ajudar os programadores a explorar a linguagem.
-
-- [Snap! Wiki](https://snapwiki.rocks/): A Snap! Wiki é uma comunidade online dedicada à linguagem. Ela oferece uma variedade de recursos, incluindo dicas, truques e exemplos de projetos Snap! criados por usuários.
-
-- [Snap!Ed](https://snap.berkeley.edu/educate): O Snap!Ed é uma iniciativa educacional baseada no Snap! que visa promover a programação e o pensamento computacional nas escolas. O site oferece recursos e suporte para educadores interessados em utilizar o Snap! em sala de aula.
+- [Download Snap! Offline](https://snap.berkeley.edu/offline)
+- [Manual Snap!](https://snap.berkeley.edu/snap/help/SnapManual.pdf)
+- [Software livre na educação](https://www.ufrgs.br/soft-livre-edu/software-educacional-livre-na-wikipedia/snap-linguagem-de-programacao/)
 
 ## O que é Snap!
 Snap! é uma linguagem de programação visual de código aberto que segue o paradigma Low Code. O objetivo do Snap! é tornar a programação mais acessível, permitindo que pessoas com diferentes níveis de experiência possam criar projetos interativos sem a necessidade de escrever código tradicional.
