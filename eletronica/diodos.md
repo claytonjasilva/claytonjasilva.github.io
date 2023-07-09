@@ -134,6 +134,13 @@ O circuito abaixo, em que se utiliza o diodo como elemento principal é chamado 
 Corta (retifica) o sinal senoidal de uma fonte alternada.  
 ![Retificador com diodo](/eletronica/imageElt/retificador1.jpg)  
 
+Analisando a resposta do retificador de meia onda, não é difícil verificar que:  
+1. O sinal de entrada tem a forma $V_s=A.sen(wt)$, onde *w* é a frequência angular, tal que $w=2.\pi.f$, *f* é a frequência em Hz.
+2. Quando $V_s$ se torna maior do que a barreira de potencial ($V_j$), o diodo conduz produzindo na carga a tensão $V_s - V_j$.
+3. Quando $V_s$ se torna menor do que $V_j$, o diodo não conduz, logo a queda de tensão é 0V na carga.
+
+Considerando a utilização da fonte retificada com o sinal alternado derivado da concessionária temos que incluir o transformador abaixador, daí o circuito se torna.
+
 
 
 
