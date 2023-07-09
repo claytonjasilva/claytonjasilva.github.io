@@ -107,7 +107,41 @@ O esquema abaixo apresenta as etapas do processo de conversão de um sinal da co
 os circuitos eletrônicos.
 ![Diagrama em blocos da fonte retificada](/eletronica/imageElt/fonteretificada.jpg)  
 
-Os elementos são os seguintes:
-#### Transformador
-Converte uma tensão alternada de entrada em uma tensão alternada de saída.  
+### 3.4.1 Transformador
+Transformadores elétricos são dispositivos utilizados para transferir energia elétrica entre diferentes níveis de tensão alternada, seja para aumentar (**transformador elevador**) ou reduzir (**transformador abaixador**) a tensão.  
+A figura apresenta a representação esquemática dos transofrmadores nos diagramas unifilares
+![Representação de transformadores](/eletronica/imageElt/transformador.jpg)  
+
+a. **Componentes dos transformadores**: núcleo, enrolamentos primário e secundário, isolamento e terminais.  
+
+a.1. Núcleo: O núcleo é a parte central do transformador e é responsável por fornecer um caminho para o fluxo magnético. Os núcleos podem ser construídos com chapas finas de aço-silício laminado, empilhadas e isoladas entre si para reduzir as perdas por correntes parasitas, também conhecidas como perdas de histerese e perdas de correntes de Foucault. O núcleo pode ter diferentes formas, como em E, I, U ou toroidal.  
+a.2. Enrolamentos: Os enrolamentos são bobinas de fio de cobre ou alumínio, que são colocadas em torno do núcleo. Existem pelo menos dois enrolamentos em um transformador: o enrolamento primário e o enrolamento secundário. O enrolamento primário é conectado à fonte de energia elétrica, enquanto o enrolamento secundário fornece a energia transformada ao dispositivo ou sistema de carga. Os enrolamentos são isolados eletricamente entre si e do núcleo para evitar curtos-circuitos.  
+a.3. Isolamento: O isolamento é uma parte crucial na construção do transformador. O fio dos enrolamentos é revestido com isolantes, como vernizes ou esmaltes, para evitar curtos-circuitos entre as diferentes espiras do enrolamento. Além disso, são utilizados isolantes sólidos ou líquidos para isolar os enrolamentos do núcleo e garantir a segurança elétrica.  
+a.4. Terminais: Os terminais são conectores ou pontos de acesso aos enrolamentos do transformador. Eles permitem a conexão dos fios dos enrolamentos com os circuitos externos, facilitando a entrada e saída de energia elétrica.
+
+b. **Relação de transformação**:
+A relação entre a tensão na entrada e a tensão na saída de um transformador é determinada pelo número de espiras nos enrolamentos primário e secundário. Essa relação é conhecida como relação de transformação e é expressa pela equação:  
+
+$$
+N_1:N_2 = \frac{V_1}{V_2}
+$$
+
+, onde $N_1$ e $N_2$ são, respectivamente, o números de espiras no enrolamento primário e secundário,  
+$V_1$ e $V_2$ são, respectivamente, as tensões de entrada e de saída.  Por exemplo, se um transformador tiver 100 espiras no enrolamento primário e 50 espiras no enrolamento secundário, a relação de transformação será de 2:1. Isso significa que a tensão de saída será a metade da tensão de entrada.  
+
+### 3.4.2 Retificador de meia onda
+O circuito abaixo, em que se utiliza o diodo como elemento principal é chamado de retificador.   
+Corta (retifica) o sinal senoidal de uma fonte alternada.  
+![Retificador com diodo](/eletronica/imageElt/retificador1.jpg)  
+
+
+
+
+
+
+
+
+
+
+
 
