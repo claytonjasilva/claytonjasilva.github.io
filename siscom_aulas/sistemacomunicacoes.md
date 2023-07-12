@@ -45,7 +45,8 @@ Em muitas circunstâncias, trabalha-se com a amplitude da raiz média quadrátic
 
 Os circuitos lineares alimentados por um sinal senoidal respondem também com um sinal senoidal, de mesma frequência, porém com fase e amplitude alterada. Além disso, a linearidade assegura que os circuitos lineares alimentados por vários sinais senoidais de entrada $X_1, X_2, ..., X_n$ apresenta uma resposta igual à soma das saídas individuais $Y_1, Y_2, ..., Y_n$, tal que $Y_i$ é resposta à entrada $X_i$. Matematicamente, $Y(t)=Y_1(t)+Y_2(t)+⋯+Y_n(t)$, onde $Y_i$ é resposta à entrada $X_i$.  
 
-### 1.2.3 Representação de sinais periódicos: série de Fourier
+### 1.2.3 Representação de sinais no domínio do tempo e no domínio da frequência
+### 1.2.3.1 Representação de sinais periódicos: série de Fourier
 Todo sinal periódico pode ser representado como uma soma de sinais senoidais, definida pela expressão  
 
 $$
@@ -74,7 +75,7 @@ A figura abaixo apresenta a representação do comportamento do sinal periódico
 
 A figura evidencia que há um decaimento da amplitude do sinal nos harmônicos de mais alto valor. A análise desse comportamento é muito útil para a eletrônica, a fim de projetar os circuitos, de modo a explorar as propriedades do sinal não somente no domínio do tempo, mas também explorá-las no domínio da frequência.
 
-### 1.2.4 Representação de sinais não periódicos: transformada de Fourier 
+### 1.2.3.2 Representação de sinais não periódicos: transformada de Fourier 
 A representação em série de Fourier é útil para qualquer tipo de sinal, desde que se queira sua representação apenas no intervalo de *0* a *T*. Todo sinal arbitrário *S(t)* pode ser representado por uma combinação linear de funções exponenciais em um intervalo *T* por 
 
 $$
@@ -105,7 +106,8 @@ $\mathcal{F}[x(t)]=X(f)$, $\mathcal{F}[\mathcal{F}[x(t)]]=x(t)$
 4. **Deslocamento em *t* de $t_0$:** implica deslocamento em *f* de $w.t_0$
 5. **Deslocamento em *w* de $w_0$:** implica atraso em *t* de $t.w_0$ 
 
-Algumas transformadas de Fourier são muito utilizados na eletrônica porque apresentam características que as tornam úteis à análise de circuitos.
+## 1.2.4 Sinais especiais
+Alguns sinais elétricos e suas respectivas transformadas de Fourier são muito utilizados na eletrônica porque apresentam características que as tornam úteis à análise de circuitos.
 
 #### Sinal pulso retangular
 O pulso retangular pode ser definido por  
@@ -125,9 +127,59 @@ $$
 X(f) = \text{sinc}\left(\frac{\pi fT}{2}\right) \cdot AT \cdot e^{-j\pi fT}
 $$
 
-A figura apresenta um exemplo de pulso retangular, a partir da origem t=0.  
+A figura abaixo apresenta um exemplo de pulso retangular, a partir da origem t=0.  
+O sinal pode ser deslocado no tempo, atrasado de $\Delta{t}$.  
+A correspondente transformada de Fourier (conforme a propriedade 4) será deslocada em frequência.   
+![Sinal pulso](/siscom_aulas/imagemSiscom/pulso.jpg)
 
-#### Função sinc
+A expressão da transformada de Fourier da função pulso é a função sinc, cuja figura apresenta.
+![Sinal sinc](/siscom_aulas/imagemSiscom/sinc.jpg)
+
+Observe que a largura do primeiro zero da função é dada pela frequência igual ao inverso da duração do pulso (*1/T*). Os demais zeros são observados em múltiplos da frequência fundamental. 
+
+A figura apresenta o comportamento do pulso e de sua respectiva transformada quando varia-se a sua largura.
+![Sinal pulso e transformada com variação de largura](/siscom_aulas/imagemSiscom/pulsovariando.jpg)
+
+Analisando o comportamento da variação da largura do sinal do pulso, não é difícil verificar que quando a largura do pulso tende a 0 seg, o primeiro zero da transformada tende a infinito, ou seja, a resposta de frequência tende a ser constante. Esse comportamento indica a convergência para o comportamento do **sinal delta de Dirac**. Por outro lado, quando a largura do pulso tende a infinito, a sua transformada tende a um pulso unitário. Nesse caso configura-se a função **degrau unitário**.
+
+#### Sinal delta de Dirac
+A função sinc pode ser definida por
+
+$$
+\delta(t) =
+\begin{cases}
+\infty, & \text{se } t = 0 \\
+0, & \text{caso contrário}
+\end{cases}
+$$
+
+e sua transformada de Fourier por
+
+$$
+\mathcal{F}[\delta(t)] = \int_{-\infty}^{\infty} \delta(t) e^{-i\omega t} dt = 1
+$$
+
+A figura apresenta o comportamento do sinal.
+![Sinal delta de Dirac](/siscom_aulas/imagemSiscom/dirac.jpg)
+
+#### Sinal degrau unitário
+A função sinc pode ser definida por
+
+$$
+u(t) =
+\begin{cases}
+0, & \text{se } t < 0 \\
+1, & \text{se } t \geq 0
+\end{cases}
+$$
+
+e sua transformada de Fourier por
+
+$$
+\mathcal{F}[u(t)] = \frac{1}{i\omega} + \pi\delta(\omega)
+$$
+
+#### Sinal sinc
 A função sinc pode ser definida por
 
 $$
@@ -139,10 +191,6 @@ e sua transformada de Fourier por
 $$
 \text{Sinc}(f) = \int_{-\infty}^{+\infty} \text{sinc}(t) \cdot e^{-2\pi i f t} dt
 $$
-
-
-O sinal pode ser deslocado no tempo, atrasado de t. A correspondente transformada de Fourier, conforme a propriedade c, será deslocada em frequência. 
-
 
 
 ___
