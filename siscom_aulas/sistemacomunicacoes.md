@@ -127,6 +127,18 @@ $$
 
 A figura apresenta um exemplo de pulso retangular, a partir da origem t=0.  
 
+#### Função sinc
+A função sinc pode ser definida por
+
+$$
+\text{sinc}(x) = \frac{\sin(\pi x)}{\pi x}
+$$
+
+e sua transformada de Fourier por
+
+$$
+\text{Sinc}(f) = \int_{-\infty}^{+\infty} \text{sinc}(t) \cdot e^{-2\pi i f t} dt
+$$
 
 
 O sinal pode ser deslocado no tempo, atrasado de t. A correspondente transformada de Fourier, conforme a propriedade c, será deslocada em frequência. 
