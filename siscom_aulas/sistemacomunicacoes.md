@@ -117,9 +117,19 @@ x(t) = \begin{cases}
 \end{cases}
 $$
 
-(A,0≤t≤T@0,T<t)┤
-, onde T é a largura do pulso. 
-A Figura 13 apresenta um exemplo de pulso retangular, a partir da origem t=0. O sinal pode ser deslocado no tempo, atrasado de t. A correspondente transformada de Fourier, conforme a propriedade c, será deslocada em frequência. 
+, onde *T* é a largura do pulso.
+
+A sua Transformada de Fourier é
+
+$$
+X(f) = \text{sinc}\left(\frac{\pi fT}{2}\right) \cdot AT \cdot e^{-j\pi fT}
+$$
+
+A figura apresenta um exemplo de pulso retangular, a partir da origem t=0.  
+
+
+
+O sinal pode ser deslocado no tempo, atrasado de t. A correspondente transformada de Fourier, conforme a propriedade c, será deslocada em frequência. 
 
 
 
