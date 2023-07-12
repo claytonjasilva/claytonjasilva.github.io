@@ -110,10 +110,12 @@ Algumas transformadas de Fourier são muito utilizados na eletrônica porque apr
 #### Sinal pulso retangular
 O pulso retangular pode ser definido por  
 
-$x(t) = \begin{cases}
+$$
+x(t) = \begin{cases}
     A, & \text{se } |t| \leq \frac{T}{2}, \\
     0, & \text{caso contrário}.
-\end{cases}$
+\end{cases}
+$$
 
 (A,0≤t≤T@0,T<t)┤
 , onde T é a largura do pulso. 
