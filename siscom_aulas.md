@@ -1,8 +1,9 @@
 # Conteúdo - Sistemas de Comunicações Móveis - 2022.2
 
-1. [Elementos dos sistemas de comunicações](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/siscom_aulas/sistemacomunicacoes.md)
-2. [Codificadores de voz](siscom_aulas/codec_voz.pdf) 
-3. Técnicas de modulação:   
+1. [Sinais e sua representação nos domíniios do tempo e da frequência](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/siscom_aulas/sistemacomunicacoes.md)
+2. [Elementos dos sistemas de comunicações](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/siscom_aulas/sistemacomunicacoes.md)
+3. [Codificadores de voz](siscom_aulas/codec_voz.pdf) 
+4. Técnicas de modulação:   
     [modulação analógica](siscom_aulas/modulacao_analogica.pdf)  
     [modulação digital](siscom_aulas/modulacao_digital.pdf)  
     [Serviços de telecomunicações](siscom_aulas/servicos.pdf)
