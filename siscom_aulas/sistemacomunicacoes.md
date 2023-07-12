@@ -130,9 +130,10 @@ $$
 A figura abaixo apresenta um exemplo de pulso retangular, a partir da origem t=0.  
 O sinal pode ser deslocado no tempo, atrasado de $\Delta{t}$.  
 A correspondente transformada de Fourier (conforme a propriedade 4) será deslocada em frequência.   
-![Sinal pulso](/siscom_aulas/imagemSiscom/pulso.jpg)
 
-A expressão da transformada de Fourier da função pulso é a função sinc, cuja figura apresenta.
+![Sinal pulso](/siscom_aulas/imagemSiscom/sinalpulso.jpg)
+
+A expressão da transformada de Fourier da função pulso é a função sinc, cuja figura apresenta.  
 ![Sinal sinc](/siscom_aulas/imagemSiscom/sinc.jpg)
 
 Observe que a largura do primeiro zero da função é dada pela frequência igual ao inverso da duração do pulso (*1/T*). Os demais zeros são observados em múltiplos da frequência fundamental. 
