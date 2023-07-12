@@ -59,11 +59,65 @@ $a_n=\frac{2}{T}\int_{0}^{T}V(t)cos⁡(n.w_0.t)dt$
 $b_n=\frac{2}{T}\int_{0}^{T}V(t)sen⁡(n.w_0.t)dt$    
 
 A expressão da série de Fourier pode ser apresentada de forma compacta por  
-$S(t)=C_0+\sum_{n=1}^{\infty} C_ncos⁡(nw_0t+\theta_n)$  
-, onde C_n=√(a_n^2+b_n^2 ) e θ_n=-arctan⁡(b_n/a_n ), t=1,2,...
-Analisando a expressão da série de Fourier na sua forma compacta, fica evidenciado que qualquer sinal periódico contém um valor constante C0, que independe da variação de frequência, chamado de componente DC.
-Os termos da série dependentes da variação em frequência, n.w0, possuem o valor mais baixo para n=1. Essa é a chamada frequência fundamental w0 (frequência angular obviamente). As frequências múltiplas da frequência fundamental são chamadas de harmônicos.
-A Figura 9 apresenta a representação do comportamento do sinal periódico S(t) em uma janela de observação de 1 segundo. Apresenta também a representação da amplitude do sinal em função da frequência, |S(f)|. 
+
+$$
+S(t)=C_0+\sum_{(n=1)}^{∞}[C_ncos⁡(nw_0t+\theta_n)]
+$$
+
+, onde $C_n=\sqrt{(a_n^2+b_n^2)}$ e $θ_n=-arctan⁡(\frac{b_n}{a_n})$, t=1,2,...
+
+Analisando a expressão da série de Fourier na sua forma compacta, fica evidenciado que qualquer sinal periódico contém um valor constante $C_0$, que independe da variação de frequência, chamado de componente DC.  
+Os termos da série dependentes da variação em frequência, $n.w_0$, possuem o valor mais baixo para *n=1*. Essa é a chamada **frequência fundamental $w_0$ (frequência angular obviamente)**. **As frequências múltiplas da frequência fundamental são chamadas de harmônicos**.  
+A figura abaixo apresenta a representação do comportamento do sinal periódico *S(t)* em uma janela de observação de 1 segundo. Apresenta também a representação da amplitude do sinal em função da frequência, *|S(f)|*. 
+
+![Sinal periódico: domínio do tempo x domínio da frequência](/siscom_aulas/imagemSiscom/seriefourier.jpg)
+
+A figura evidencia que há um decaimento da amplitude do sinal nos harmônicos de mais alto valor. A análise desse comportamento é muito útil para a eletrônica, a fim de projetar os circuitos, de modo a explorar as propriedades do sinal não somente no domínio do tempo, mas também explorá-las no domínio da frequência.
+
+### 1.2.4 Representação de sinais não periódicos: transformada de Fourier 
+A representação em série de Fourier é útil para qualquer tipo de sinal, desde que se queira sua representação apenas no intervalo de *0* a *T*. Todo sinal arbitrário *S(t)* pode ser representado por uma combinação linear de funções exponenciais em um intervalo *T* por 
+
+$$
+S(t)=\sum_{-∞}^{∞}[F_ne^{-jnw_0t}]
+$$
+
+, onde $F_n=\frac{1}{T}\int_{-T/2}^{T/2}f(t)e^{-jnw_0t}dt$, *t=1, 2, ...*  
+
+A expressão da fórmula é apenas uma maneira diferente de expressar a série de Fourier utilizando a exponencial complexa $e^{jw_0t}$. O termo $F_n$ expressa a **amplitude espectral** (da frequência) associada a cada componente de frequência $nw_0$. 
+
+Matematicamente, pode-se definir que quando o intervalo de observação de um sinal de qualquer natureza tende a infinito, o comportamento espectral – ou seja, no domínio da frequência –, pode ser definido pela expressão 
+
+$$
+F(w)=\int_{-∞}^{∞}S(t)e^{-jωt}dt
+$$
+
+, chamada de **Transformada de Fourier**, também chamada de integral de Fourier, cuja representação simplificada é $\mathcal{F}[S(t)]=F(w)$.  
+Assim, a observação do **comportamento espectral de um sinal, isto é, como varia de acordo com as frequências que o compõem**, pode ser aplicada tanto a sinais periódicos quanto a sinais não periódicos.
+
+#### Propriedades da Transformada de Fourier
+A Transformada de Fourier possui algumas propriedades úteis à análise de sinais no domínio da frequência:
+1. **Linearidade:**   
+$αx(t)=αy(t)$, onde $y(t)=f[x(t)]$  
+$f(x_1)=y_1$, $f(x_2)=y_2$ → $f(x_1+x_2)=y_1+y_2$  
+2. **Escalonamento:** o sinal comprimido no tempo se expande em frequência
+3. **Simetria nas funções pares:**  
+$\mathcal{F}[x(t)]=X(f)$, $\mathcal{F}[\mathcal{F}[x(t)]]=x(t)$
+4. **Deslocamento em *t* de $t_0$:** implica deslocamento em *f* de $w.t_0$
+5. **Deslocamento em *w* de $w_0$:** implica atraso em *t* de $t.w_0$ 
+
+Algumas transformadas de Fourier são muito utilizados na eletrônica porque apresentam características que as tornam úteis à análise de circuitos.
+
+#### Sinal pulso retangular
+O pulso retangular pode ser definido por  
+
+$$
+p(t)=\left \{
+$$ 
+
+(A,0≤t≤T@0,T<t)┤
+, onde T é a largura do pulso. 
+A Figura 13 apresenta um exemplo de pulso retangular, a partir da origem t=0. O sinal pode ser deslocado no tempo, atrasado de t. A correspondente transformada de Fourier, conforme a propriedade c, será deslocada em frequência. 
+
 
 
 ___
