@@ -1,6 +1,6 @@
 # Conteúdo - Sistemas de Comunicações Móveis - 2022.2
 
-1. [Sinais e sua representação nos domíniios do tempo e da frequência](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/siscom_aulas/sinais.md)
+1. [Sinais e sua representação nos domínios do tempo e da frequência](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/siscom_aulas/sinais.md)
 2. [Elementos dos sistemas de comunicações](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/siscom_aulas/elementosSiscom.md)
 3. [Codificadores de voz](siscom_aulas/codec_voz.pdf) 
 4. Técnicas de modulação:   
