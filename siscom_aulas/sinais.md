@@ -33,7 +33,8 @@ Graficamente, **o comportamento do sinal senoidal é observado conforme sua vari
 A figura ilustra os parâmetros que definem o sinal: amplitude, frequência e fase. Esses parâmetros constituem-se **informações que caracterizam o sinal**. Matematicamente, o comportamento do mesmo sinal **pode ser observado segundo o comportamento das taxas de variação no tempo - de acordo com as frequências que o compõe**, não somente de acordo com o tempo. Ou seja, o sinal (variável dependente) apresenta um comportamento de acordo com a frequência (variável independente).  
 ![Amplitude do sinal senoidal em relação a frequência](/siscom_aulas/imagemSiscom/fftsinalsenoidal.jpg)
 
-Observe que a amplitude *A=15* é apresentada na frequência fundamental de $f_0=60 Hz$. Nas demais frequências a amplitude é nula.
+Observe que a amplitude *A=15* é apresentada na frequência fundamental de $f_0=60 Hz$. Nas demais frequências a amplitude é nula, uma vez que o sinal varia somente na taxa de 60 ciclos por segundo.  
+
 Uma propriedade especial do sinal senoidal é seu comportamento periódico ao longo do tempo. Esse comportamento caracteriza o sinal $V(t)=15sen(2.\pi.60-\frac{\pi}{5})$ em função da frequência.
 
 Um comportamento fundamental do sinal senoidal é de que se repete em ciclos regulares, ou seja, é periódico. Um sinal é periódico em relação ao tempo (t) se o seu domínio contiver *t+T*, tal que $V(t)=V(t+T)$, onde *T* é o período da função $V(t)$, portanto intervalo de tempo durante o qual a função repete seu comportamento.
