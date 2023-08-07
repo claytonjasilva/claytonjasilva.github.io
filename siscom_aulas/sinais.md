@@ -27,10 +27,10 @@ $$V(t)=A.sen(2\pi.f_0.t-\theta)=A.sen(w_0.t-\theta)$$
 
 , onde $A$ representa a amplitude do sinal, $f_0$ representa a frequência fundamental, medida em ciclos por segundo (ou Hertz), $w_0=2.\pi.f_0$, representa a frequência fundamental angular e $\theta$ representa o atraso inicial do sinal – em radianos.
 
-Graficamente, **o comportamento do sinal senoidal é observado conforme sua variação em relação à variáção do tempo (variável independente)** como apresenta a figura
+Graficamente, **o comportamento do sinal senoidal é observado conforme sua variação em relação à variação do tempo (variável independente)** como apresenta a figura
 ![Sinal senoidal - parâmetros](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/eletronica/imageElt/sinalsenoidal.jpg)
 
-A figura ilustra os parâmetros que definem o sinal: amplitude, frequência e fase. Esses parâmetros constituem-se **informações que caracetrizam o sinal**. Matematicamente, o comportamento do mesmo sinal **pode ser observado segundo sua variação de acordo com a frequência que o compõe**, não de acordo com o tempo. Ou seja, utilizando-se a frequência como variável independente.  
+A figura ilustra os parâmetros que definem o sinal: amplitude, frequência e fase. Esses parâmetros constituem-se **informações que caracterizam o sinal**. Matematicamente, o comportamento do mesmo sinal **pode ser observado segundo o comportamento das taxas de variação no tempo - de acordo com as frequências que o compõe**, não somente de acordo com o tempo. Ou seja, o sinal (variável dependente) apresenta um comportamento de acordo com a frequência (variável independente).  
 ![Amplitude do sinal senoidal em relação a frequência](/siscom_aulas/imagemSiscom/fftsinalsenoidal.jpg)
 
 Observe que a amplitude *A=15* é apresentada na frequência fundamental de $f_0=60 Hz$. Nas demais frequências a amplitude é nula.
