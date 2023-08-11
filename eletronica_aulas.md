@@ -24,7 +24,7 @@
 
 ## Práticas de laboratório
 Instrumentos de medida
-- [Prática 1: Fundamentos de eletrônica](eletronica/pratica1elt.md)
+- [Prática 1: Fundamentos de eletrônica](eletronica/pratica1_elt.md)
 - Prática 2: medindo sinais elétricos de corrente contínua (CC) e corrente alternada (CA)
 - Prática 3: projetando circuitos com diodos
 - Prática 4: projetando circuitos com indutores e capacitores
