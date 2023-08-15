@@ -1,6 +1,7 @@
-# 2. Elementos típicos dos sistemas de comunicações
+# 2. Modelo do sistema de comunicações
 
-## 2.1 Transdutores
+A figura apresenta o modelo inicial do sistema de comunicações  
+![Modelo do sistema de comunicações](modelosiscom.jpg)
 
 Boa parte dos sinais que precisam ser tratados se originam de fenômenos cuja energia não é elétrica. 
 Por exemplo, os sons de um modo geral, imagens etc.  
