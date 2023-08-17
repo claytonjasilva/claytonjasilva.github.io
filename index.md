@@ -12,6 +12,7 @@
 * [Projetos em Engenharia](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/projetos.md)
 * [Sistemas de Comunicações Móveis](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/siscom.md) - Rev 2023.2
 * [Sistemas Digitais](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/sisdig.md)
+* [Aspectos Regulatórios de Telecomunicações](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/regulatelecom.md)
 
 ## Cursos complementares
 
