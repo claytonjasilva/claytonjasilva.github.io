@@ -34,7 +34,7 @@ $$
 P = V.I
 $$
 
-Utilizando a lei de Ohm, não difícil chegar que $V=R.I^2$.
+Utilizando a lei de Ohm, não difícil chegar que $P=R.I^2$.
 - Quando os circuitos eletrônicos operam com tensões e correntes que variam com o tempo o correto é trabalhar com **potência média**,
 que é diferente da **potência instantânea**.
 
