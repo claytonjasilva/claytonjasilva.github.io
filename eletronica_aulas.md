@@ -1,4 +1,4 @@
-# Conteúdo das Aulas - Eletrônica - 2022.2
+# Conteúdo das Aulas - Eletrônica - 2023.2
 
 ## Tópicos
 1. [Fundamentos de eletrônica](eletronica/fundamentosEletronica.md)
@@ -21,6 +21,9 @@
 5. Lista 5: indutores
 6. Lista 6: transistores
 7. Lista 7: amplificadores operacionais
+
+## Avaliação Continuada
+- [Form 1](https://forms.gle/LyLxmNLKb7AoY23y9)
 
 ## Práticas de laboratório
 Instrumentos de medida
