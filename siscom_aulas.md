@@ -1,7 +1,7 @@
-# Conteúdo - Sistemas de Comunicações Móveis - 2022.2
+# Conteúdo - Sistemas de Comunicações Móveis - 2023.2
 
 1. [Sinais e sua representação nos domínios do tempo e da frequência](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/siscom_aulas/sinais.md)
-2. [Elementos dos sistemas de comunicações](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/siscom_aulas/elementosSiscom.md)
+2. [Elementos dos sistemas de comunicações](siscom_aulas/Aula_Sinais_Modelo_SisCom.pdf)
 3. [Codificadores de voz](siscom_aulas/codec_voz.pdf) 
 4. Técnicas de modulação:   
     [modulação analógica](siscom_aulas/modulacao_analogica.pdf)  
@@ -20,19 +20,20 @@
 ## [Um simulador de sistemas de comunicações móveis](https://github.com/claytonjasilva/simuladorSisCom)  
 
 ## Avaliações
-1. [AP1 - Trabalho](siscom_aulas/Orientacao_trabalho_AP1.pdf)
+### Avaliação Continuada
+1. [Form 1 - conceitos iniciais](https://forms.gle/fApG26FpfVGc5tUs7)
+2. Form 2
+3. Form 3
+
+### Avaliações Bimestrais
+1. [AP1 - Trabalho - a definir]()
+2. [AP2 - Trabalho - a definir]()
 
 ## Exercícios  
-
-**AP1**  
-
 1. [Lista 1](siscom_aulas/Lista1_siscom.pdf) - simulação dos elementos básicos dos sistemas de comunicações móveis  
 2. [Lista 2](siscom_aulas/Lista2_siscom.pdf) - conceitos sobre os elementos básicos dos sistemas de comunicações móveis  
 3. [Lista 3](siscom_aulas/Lista3_siscom.pdf) - conceitos e simulação de codec de voz, moduladores analógicos e digitais
 4. [Lista 4](siscom_aulas/Lista4_siscom.pdf) - aspectos de regulação de serviços de comunicações móveis e uso do espectro de radiofrequências  
-  
-**AP2**  
-
 5. [Lista 5](siscom_aulas/Lista5_siscom.pdf) - códigos de correção de erros: [gabarito](siscom_aulas/Lista5_siscom_solucao.pdf)
 6. [Lista 6](siscom_aulas/Lista6_siscom.pdf) - canal móvel de comunicações: [gabarito](siscom_aulas/Lista6_siscom_solucao.pdf)
 7. [Lista 7](siscom_aulas/Lista7_siscom.pdf) - tipos e arquitetura de sistemas móveis de comunicações
