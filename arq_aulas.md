@@ -35,7 +35,7 @@
 ### Avaliação Continuada
 Os instrumentos de avaliação continuada srão disponibilizados à medida que as aulas forem ministradas.  
 - [Form 1: Introdução](https://forms.gle/U9JG5qJu3vpNv13N9)
-- Form 2
+- [Form 2: aritmética binária - adição](https://forms.gle/XnU8q1oBoEZ6v8w28)
 - Form 3
 - Form 4
 - Form 5  
