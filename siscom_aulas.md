@@ -22,7 +22,7 @@
 ## Avaliações
 ### Avaliação Continuada
 1. [Form 1 - conceitos iniciais](https://forms.gle/fApG26FpfVGc5tUs7)
-2. Form 2
+2. [Form 2 - elementos dos sistemas de comunicações](https://forms.gle/fkptqabUwBeTAmjS7)
 3. Form 3
 
 ### Avaliações Bimestrais
