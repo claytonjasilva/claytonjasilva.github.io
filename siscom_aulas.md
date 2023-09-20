@@ -23,10 +23,9 @@
 ### Avaliação Continuada
 1. [Form 1 - conceitos iniciais](https://forms.gle/fApG26FpfVGc5tUs7)
 2. [Form 2 - elementos dos sistemas de comunicações](https://forms.gle/fkptqabUwBeTAmjS7)
-3. Form 3
+3. [Form 3 - conceitos iniciais, transmissor e modulação AM](https://forms.gle/7QW9FdMM9Q4gtdtZ7)
 
 ### Avaliações Bimestrais
-1. [AP1 - Trabalho - a definir]()
 2. [AP2 - Trabalho - a definir]()
 
 ## Exercícios  
