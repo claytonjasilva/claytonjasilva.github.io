@@ -2,15 +2,15 @@
 
 1. [Sinais e sua representação nos domínios do tempo e da frequência](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/siscom_aulas/sinais.md)
 2. [Elementos dos sistemas de comunicações](siscom_aulas/Aula_Sinais_Modelo_SisCom.pdf)
-3. [Codificadores de voz](siscom_aulas/codec_voz.pdf) 
-4. Técnicas de modulação:   
-    [modulação analógica](siscom_aulas/modulacao_analogica.pdf)  
+3. [Modulação Analógica](siscom_aulas/Aula_Modulacao_Analogica.pdf)
+4. [Codificadores de voz](siscom_aulas/codec_voz.pdf) 
+5. Técnicas de modulação digital:   
     [modulação digital](siscom_aulas/modulacao_digital.pdf)  
     [Serviços de telecomunicações](siscom_aulas/servicos.pdf)
-5. [Códigos corretores de erros](siscom_aulas/codificacao_erros.pdf)
-6. [Comportamento do canal móvel de comunicações](siscom_aulas/canais.pdf): mecanismos básicos de propagação, perdas em larga escala- modelos de propagação *outdoor*, modelos de propagação *indoor*, atenuação em pequena escala e caminhos múltiplos
-7. Técnicas de acesso múltiplo: FDMA, TDMA, CDMA e outras
-8. Sistemas móveis de rádio convencionais, troncalizados, celulares e satelitaistroncalizados (*trunking*): APCO25, TETRA e outros  
+6. [Códigos corretores de erros](siscom_aulas/codificacao_erros.pdf)
+7. [Comportamento do canal móvel de comunicações](siscom_aulas/canais.pdf): mecanismos básicos de propagação, perdas em larga escala- modelos de propagação *outdoor*, modelos de propagação *indoor*, atenuação em pequena escala e caminhos múltiplos
+8. Técnicas de acesso múltiplo: FDMA, TDMA, CDMA e outras
+9. Sistemas móveis de rádio convencionais, troncalizados, celulares e satelitaistroncalizados (*trunking*): APCO25, TETRA e outros  
 -[download do material](https://1drv.ms/p/s!AsTd8oN7mu8pkb8NTEdBBqdbmD50OA?e=zoyUiu)-
 
 ## Notas de aula  
