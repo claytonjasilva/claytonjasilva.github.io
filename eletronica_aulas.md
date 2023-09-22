@@ -25,6 +25,7 @@
 ## Avaliação Continuada
 - [Form 1](https://forms.gle/LyLxmNLKb7AoY23y9)
 - [Form 2](https://forms.gle/VzMt8uEb11WD4RvPA)
+- [Form 3](https://forms.gle/xiips3sAKWJ2vb1RA)
 
 ## Práticas de laboratório
 Instrumentos de medida
