@@ -23,9 +23,9 @@
 7. Lista 7: amplificadores operacionais
 
 ## Avaliação Continuada
-- [Form 1](https://forms.gle/LyLxmNLKb7AoY23y9)
-- [Form 2](https://forms.gle/VzMt8uEb11WD4RvPA)
-- [Form 3](https://forms.gle/xiips3sAKWJ2vb1RA)
+- [Form 1](https://forms.gle/LyLxmNLKb7AoY23y)
+- [Form 2](eletronica/solucao_form2.pdf)
+- [Form 3](eletronica/solucao_form3.pdf)
 
 ## Práticas de laboratório
 Instrumentos de medida
