@@ -37,7 +37,7 @@ Os instrumentos de avaliação continuada srão disponibilizados à medida que a
 - [Form 1: Introdução](https://forms.gle/U9JG5qJu3vpNv13N9)
 - [Form 2: aritmética binária - adição](https://forms.gle/XnU8q1oBoEZ6v8w28)
 - [Form 3: máquina de níveis](https://forms.gle/2JZcJ9JN4B5w6VgVA)
-- [Form 4: teste de revisão](https://forms.gle/3N6JAe485hjdbdYr9)
+- [Form 4: teste de revisão - **COM GABARITO**](https://1drv.ms/b/s!AsTd8oN7mu8pkf4GS3GTn8YSZZy3ng?e=XoNhwy)
 - Form 5  
 - Form 6
 - Form 7
