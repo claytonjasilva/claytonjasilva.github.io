@@ -29,7 +29,7 @@
 
 ## Avaliações
 ### Avaliações Bimestrais
-1. **Trabalho AP1 - a definir**   
+1. [Trabalho AP1](arq_aulas/ArquiteturaTrabalhoAP1_2023.pdf)   
 2. **Trabalho AP2 - a definir**    
 
 ### Avaliação Continuada
