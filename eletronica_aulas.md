@@ -22,6 +22,9 @@
 6. Lista 6: transistores
 7. Lista 7: amplificadores operacionais
 
+## Avaliação Bimestral
+- [Trabalho AP1](eletronica/EletronicaTrabalhoAP1_2023.pdf)
+
 ## Avaliação Continuada
 - [Form 1](https://forms.gle/LyLxmNLKb7AoY23y)
 - [Form 2](eletronica/solucao_form2.pdf)
