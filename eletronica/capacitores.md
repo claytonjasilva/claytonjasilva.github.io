@@ -1,4 +1,4 @@
-# Capacitores: Nota de Aula
+# 4. Capacitores
 
 ## 1. Definição
 Um capacitor é um componente eletrônico que armazena carga elétrica. Consiste em dois condutores separados por um isolante, conhecido como dielétrico. Quando uma diferença de potencial (tensão) é aplicada aos terminais do capacitor, ocorre o acúmulo de carga nas placas, criando um campo elétrico entre elas.
