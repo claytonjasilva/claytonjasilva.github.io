@@ -23,9 +23,49 @@ $$I(t) = C \frac{dV(t)}{dt}$$
 
 , onde $I(t)$ é a corrente instantânea, $C$ é a capacitância, e $\frac{dV(t)}{dt}$ é a taxa de variação da tensão em relação ao tempo.
 
-Observação:
-- Em corrente contínua (CC), o capacitor atua como um circuito aberto após atingir a carga máxima.
-- Em corrente alternada (CA), o capacitor exibe reatância capacitiva ($X_C$) dada por: $X_C = \frac{1}{2 \pi f C}$, onde $f$ é a frequência.
+- Operação em corrente contínua (CC)
+
+Em corrente contínua (CC), o capacitor atua como um circuito aberto após atingir a carga máxima. Vamos analisar matematicamente esse comportamento.
+A corrente *I* em um capacitor em função do tempo *t* é dada pela equação diferencial acima.  
+Em regime permanente, em corrente contínua, a tensão *V* é constante $V = V_0$ e a derivada $\frac{dV(t)}{dt} = 0$. Portanto, a corrente
+
+$$I(t) = C \frac{dV(t)}{dt}=C.0=0$$
+
+, ou seja, a corrente é nula (*I = 0*).  
+No entanto, a carga *Q* armazenada no capacitor é dada por
+
+$$Q = C \cdot V$$
+
+Se a tensão *V* é constante, a carga *Q* também é constante. 
+
+- Operação em corrente alternada (CA)
+O capacitor exibe **reatância capacitiva** ($X_C$) dada por: $X_C = \frac{1}{2 \pi f C}$, onde $f$ é a frequência.
+
+**Detalhando**  
+Em um circuito de corrente alternada, quando aplicamos uma tensão senoidal $V(t) = V_0 \sin(\omega t)$ a um capacitor, a corrente *I(t)* através do capacitor pode ser determinada pela seguinte equação diferencial:
+
+$$I(t) = C \frac{dV(t)}{dt} = C \omega V_0 \cos(\omega t)$$
+
+Onde:
+- $V_0$ é a amplitude da tensão senoidal.
+- $\omega$ é a frequência angular $2\pi$ vezes a frequência *f*.
+
+**Reatância *X***  
+A reatância *X* é a oposição oferecida por um componente elétrico à passagem de corrente em um circuito de corrente alternada. Para o capacitor, a reatância é calculada como apresentado a seguir.
+
+**Reatância Capacitiva**  
+A reatância capacitiva $X_C$ específica para um capacitor é devida à capacidade do capacitor de armazenar e liberar cargas. Quanto maior a capacitância *C*, menor será a reatância capacitiva à corrente em uma determinada frequência *f*.  
+A corrente através do capacitor em um circuito de corrente alternada não está em fase com a tensão devido à presença da reatância capacitiva $X_C$. A reatância capacitiva é dada por:
+
+$$X_C = \frac{1}{\omega C}$$
+
+Portanto, a corrente através do capacitor é dada por:
+
+$$I(t) = \frac{V_0}{X_C} \sin(\omega t - \phi)$$
+
+Onde:
+- $\phi$ é o ângulo de fase entre a corrente e a tensão.
+
 
 ## 4. Tipos de Capacitores
 Existem vários tipos de capacitores, incluindo:
