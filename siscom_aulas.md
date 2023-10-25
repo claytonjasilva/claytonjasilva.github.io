@@ -5,9 +5,7 @@
 3. [Modulação Analógica](siscom_aulas/Aula_Modulacao_Analogica.pdf)
 4. [Modulação Digital](siscom_aulas/Aula_Modulacao_Digital.pdf)
 5. [Codificadores de voz](siscom_aulas/codec_voz.pdf) 
-6. Técnicas de modulação digital:   
-    [modulação digital](siscom_aulas/modulacao_digital.pdf)  
-    [Serviços de telecomunicações](siscom_aulas/servicos.pdf)
+6. [Serviços de telecomunicações](siscom_aulas/servicos.pdf)
 7. [Códigos corretores de erros](siscom_aulas/codificacao_erros.pdf)
 8. [Comportamento do canal móvel de comunicações](siscom_aulas/canais.pdf): mecanismos básicos de propagação, perdas em larga escala- modelos de propagação *outdoor*, modelos de propagação *indoor*, atenuação em pequena escala e caminhos múltiplos
 9. Técnicas de acesso múltiplo: FDMA, TDMA, CDMA e outras
