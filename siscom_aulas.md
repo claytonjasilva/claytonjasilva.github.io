@@ -24,6 +24,7 @@
 2. [Form 2 - elementos dos sistemas de comunicações](https://forms.gle/fkptqabUwBeTAmjS7)
 3. [Form 3 - conceitos iniciais, transmissor e modulação AM](https://forms.gle/7QW9FdMM9Q4gtdtZ7)
 4. [Form 4 - modulação FM e modulação digital](https://forms.gle/t4xqZcSb7mJpviio6)
+5. [Form 5 - Codificadores de erros](https://forms.gle/mCRfVPRTpXq3mHwQ9)
 
 ### Avaliações Bimestrais
 2. [AP2 - Trabalho - a definir]()
