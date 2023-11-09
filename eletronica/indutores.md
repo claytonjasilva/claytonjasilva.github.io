@@ -1,9 +1,9 @@
 # 5. Indutores
 
-## 1. Definição
+## 5.1. Definição
 Um indutor é um componente eletrônico que armazena energia na forma de campo magnético quando uma corrente elétrica passa por ele. Consiste em uma bobina de fio enrolada em torno de um núcleo, frequentemente de material ferromagnético.
 
-## 2. Propriedades
+## 5.2. Propriedades
 - **Indutância (L)**  
 Mede a capacidade do indutor de armazenar energia magnética por unidade de corrente. É medida em Henrys (H).
 
@@ -16,7 +16,7 @@ A energia armazenada em um indutor é dada por
 
 $$W = \frac{1}{2} L I^2$$
 
-## 3. Resposta Característica V x I
+## 5.3. Resposta Característica V x I
 A relação entre a tensão \(V\) e a corrente \(I\) em um indutor é dada pela equação diferencial
 
 $$V(t) = L \frac{di(t)}{dt}$$
@@ -58,13 +58,13 @@ $$I(t) = \frac{V_0}{X_L} \sin(\omega t - \phi)$$
 Onde:
 - $\phi$ é o ângulo de fase entre a corrente e a tensão.
 
-## 4. Tipos de Indutores
+## 5.4. Tipos de Indutores
 Existem vários tipos de indutores, incluindo:
 - Indutores de núcleo de ar
 - Indutores toroidais
 - Indutores acoplados magneticamente
 
-## 5. Associação de Indutores
+## 5.5. Associação de Indutores
 - **Associação em Série**
 
 $$L_{\text{eq}} = L_1 + L_2 + ... + L_n$$
@@ -73,7 +73,7 @@ $$L_{\text{eq}} = L_1 + L_2 + ... + L_n$$
 
 $$\frac{1}{L_{\text{eq}}} = \frac{1}{L_1} + \frac{1}{L_2} + ... + \frac{1}{L_n}$$
 
-## 6. Circuitos com Indutores
+## 5.6. Circuitos com Indutores
 - **Filtro RL**
 
 Em um circuito *RL*, a constante de tempo $\tau$ é dada por $\tau = \frac{L}{R}$. Este circuito é usado em filtros para atenuar sinais.
@@ -86,10 +86,10 @@ $$I(t) = I_0 e^{-\frac{R}{L}t}$$
 
 # 6. Impedância
 
-## 1. Definição
+## 6.1. Definição
 Impedância é a medida da oposição total que um circuito oferece à passagem da corrente alternada. Ela inclui resistência, reatância indutiva e reatância capacitiva. A unidade de impedância é o ohm $\Omega\$.
 
-## 2. Relação com Resistência e Reatância
+## 6.2. Relação com Resistência e Reatância
 A impedância *Z* em um circuito é composta por duas partes principais:
 
 $$Z = R + jX$$
@@ -107,7 +107,7 @@ e o ângulo de fase $\phi$ é determinado por:
 
 $$\tan(\phi) = \frac{X}{R}$$
 
-## 3. Associação de Impedâncias
+## 6.3. Associação de Impedâncias
 - **Associação em Série**
 
 $$Z_{\text{eq}} = Z_1 + Z_2 + ... + Z_n$$
@@ -116,7 +116,7 @@ $$Z_{\text{eq}} = Z_1 + Z_2 + ... + Z_n$$
 
 $$\frac{1}{Z_{\text{eq}}} = \frac{1}{Z_1} + \frac{1}{Z_2} + ... + \frac{1}{Z_n}$$
 
-## 4. Lei de Ohm para Circuitos de Corrente Alternada
+## 6.4. Lei de Ohm para Circuitos de Corrente Alternada
 Na corrente alternada, a lei de Ohm para impedância é expressa como:
 
 $$V = I \cdot Z$$
@@ -126,7 +126,7 @@ onde:
 - *I* é a corrente em amperes (A),
 - *Z* é a impedância em ohms $\Omega$.
 
-## 5. Impedância em Componentes Individuais
+## 6.5. Impedância em Componentes Individuais
 - **Resistência (*R*)**
 
 A impedância é igual à resistência, sem componente imaginário $X = 0$.
