@@ -8,10 +8,9 @@
 5. Indutores e aplicações
 6. Outros componentes passivos
 7. Transistores  
-   7.1 Análise DC  
-   7.2 Análise AC
-8. Amplificadores Operacionais e aplicações
-9. Amplificadores
+   7.1 [Análise DC](https://1drv.ms/b/s!AsTd8oN7mu8pjdZDBNdgmr31g84Vow?e=8PK5pA)  
+   7.2 [Análise AC](https://1drv.ms/b/s!AsTd8oN7mu8pjdZCRwCioKBO5AFp9Q?e=7UnUCs)
+8. [Amplificadores Operacionais e aplicações](https://1drv.ms/b/s!AsTd8oN7mu8pjdZBmNEngss3wfQFrg?e=aSW8xS)
 
 ## Exercícios
 1. Lista 1: Fundamentos de eletrônica
