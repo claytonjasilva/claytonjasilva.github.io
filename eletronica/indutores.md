@@ -131,7 +131,7 @@ onde:
 
 A impedância é igual à resistência, sem componente imaginário $X = 0$.
 
-$$ = R$$
+$$Z = R$$
 
 - **Reatância Indutiva ($X_L$)**
 
