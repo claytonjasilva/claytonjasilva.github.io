@@ -145,7 +145,7 @@ Para um capacitor, a impedância é puramente imaginária, sem resistência (\(R
 
 $$Z_{C} = -jX_{C}$$
 
-## 6. Impedância Complexa
+## 6.6. Impedância Complexa
 A impedância complexa (*Z*) é expressa na forma polar como:
 
 $$Z = |Z| \angle \phi$$
