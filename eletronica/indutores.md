@@ -83,3 +83,78 @@ Em um circuito *RL*, a constante de tempo $\tau$ é dada por $\tau = \frac{L}{R}
 $$I(t) = I_0 e^{-\frac{R}{L}t}$$
 
 , onde *I(t)* é a corrente no indutor no tempo *t*, $I_0$ é a corrente inicial, *R* é a resistência, e *L* é a indutância.
+
+# 6. Impedância
+
+## 1. Definição
+Impedância é a medida da oposição total que um circuito oferece à passagem da corrente alternada. Ela inclui resistência, reatância indutiva e reatância capacitiva. A unidade de impedância é o ohm $\Omega\$.
+
+## 2. Relação com Resistência e Reatância
+A impedância *Z* em um circuito é composta por duas partes principais:
+
+$$Z = R + jX$$
+
+onde:
+- *R* é a resistência, medida em ohms $\Omega\$,
+- *X* é a parte imaginária representando a combinação de reatância indutiva $X_L$ e reatância capacitiva $X_C$,
+- *j* é a unidade imaginária $j^2 = -1$.
+
+A magnitude da impedância é dada por:
+
+$$|Z| = \sqrt{R^2 + X^2}$$
+
+e o ângulo de fase $\phi$ é determinado por:
+
+$$\tan(\phi) = \frac{X}{R}$$
+
+## 3. Associação de Impedâncias
+- **Associação em Série**
+
+$$Z_{\text{eq}} = Z_1 + Z_2 + ... + Z_n$$
+
+- **Associação em Paralelo**
+
+$$\frac{1}{Z_{\text{eq}}} = \frac{1}{Z_1} + \frac{1}{Z_2} + ... + \frac{1}{Z_n}$$
+
+## 4. Lei de Ohm para Circuitos de Corrente Alternada
+Na corrente alternada, a lei de Ohm para impedância é expressa como:
+
+$$V = I \cdot Z$$
+
+onde:
+- *V* é a tensão em volts (V),
+- *I* é a corrente em amperes (A),
+- *Z* é a impedância em ohms $\Omega$.
+
+## 5. Impedância em Componentes Individuais
+- **Resistência (*R*)**
+
+A impedância é igual à resistência, sem componente imaginário $X = 0$.
+
+$$ = R$$
+
+- **Reatância Indutiva ($X_L$)**
+
+Para uma bobina, a impedância é puramente imaginária, sem resistência (\(R = 0\)).
+
+$$Z_{L} = jX_{L}$$
+
+- **Reatância Capacitiva ($X_C$)**
+
+Para um capacitor, a impedância é puramente imaginária, sem resistência (\(R = 0\)).
+
+$$Z_{C} = -jX_{C}$$
+
+## 6. Impedância Complexa
+A impedância complexa (*Z*) é expressa na forma polar como:
+
+$$Z = |Z| \angle \phi$$
+
+onde *|Z|* é a magnitude da impedância e $\phi$ é o ângulo de fase.
+
+A relação com as partes real e imaginária é dada por:
+
+$$Z = R + jX = |Z| (\cos(\phi) + j\sin(\phi))$$
+
+A impedância complexa também pode ser representada no plano complexo.
+
