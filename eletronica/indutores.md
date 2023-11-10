@@ -17,11 +17,11 @@ A energia armazenada em um indutor é dada por
 $$W = \frac{1}{2} L I^2$$
 
 ## 5.3. Resposta Característica V x I
-A relação entre a tensão \(V\) e a corrente \(I\) em um indutor é dada pela equação diferencial
+A relação entre a tensão *V* e a corrente *I* em um indutor é dada pela equação diferencial
 
 $$V(t) = L \frac{di(t)}{dt}$$
 
-, onde \(V(t)\) é a tensão instantânea, \(L\) é a indutância, e \(\frac{di(t)}{dt}\) é a taxa de variação da corrente em relação ao tempo.
+, onde *V(t)* é a tensão instantânea, *L* é a indutância, e $\frac{di(t)}{dt}$ é a taxa de variação da corrente em relação ao tempo.
 
 - **Operação em corrente contínua (CC)**
 
