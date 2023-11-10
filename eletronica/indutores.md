@@ -9,7 +9,7 @@ Mede a capacidade do indutor de armazenar energia magnética por unidade de corr
 
 $$V = L \frac{di}{dt}$$
 
-onde *V* é a tensão induzida (em Volts), \(L\) é a indutância (em Henrys), e $\frac{di}{dt}$ é a taxa de variação da corrente em relação ao tempo.
+onde *V* é a tensão induzida (em Volts), *L* é a indutância (em Henrys), e $\frac{di}{dt}$ é a taxa de variação da corrente em relação ao tempo.
 
 - **Energia Armazenada (W)**  
 A energia armazenada em um indutor é dada por
