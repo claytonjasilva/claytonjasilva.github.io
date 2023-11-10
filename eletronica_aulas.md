@@ -5,7 +5,7 @@
 2. [Circuitos de corrente contínua (CC) e de corrente alternada (CA)](eletronica/circuitosCC_CA.md)
 3. [Diodos](eletronica/diodos.md)
 4. [Capacitores e aplicações](eletronica/capacitores.md)
-5. Indutores e aplicações
+5. [Indutores e aplicações](eletronica/indutores.md)
 6. Outros componentes passivos
 7. Transistores  
    7.1 [Análise DC](https://1drv.ms/b/s!AsTd8oN7mu8pjdZDBNdgmr31g84Vow?e=8PK5pA)  
