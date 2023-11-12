@@ -6,7 +6,7 @@
 4. [Modulação Digital](siscom_aulas/Aula_Modulacao_Digital.pdf)
 5. [Codificadores de canal](siscom_aulas/Aula_Codificador_Canal.pdf)
 6. [O canal móvel de comunicações](siscom_aulas/Aula_Canal_Movel.pdf)
-7. [Arqutitetur de Sistemas Móveis de Comunicações](siscom_aulas/Aula_ArquiteturaSistemasMoveis.pdf)
+7. [Arqutitetura de Sistemas Móveis de Comunicações](siscom_aulas/Aula_ArquiteturaSistemasMoveis.pdf)
 
 ## Notas de aula  
 
