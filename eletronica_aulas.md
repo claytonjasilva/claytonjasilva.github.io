@@ -12,15 +12,6 @@
    7.2 [Análise AC](https://1drv.ms/b/s!AsTd8oN7mu8pjdZCRwCioKBO5AFp9Q?e=7UnUCs)
 8. [Amplificadores Operacionais e aplicações](https://1drv.ms/b/s!AsTd8oN7mu8pjdZBmNEngss3wfQFrg?e=aSW8xS)
 
-## Exercícios
-1. Lista 1: Fundamentos de eletrônica
-2. Lista 2: sinais elétricos
-3. Lista 3: diodos
-4. Lista 4: capacitores
-5. Lista 5: indutores
-6. Lista 6: transistores
-7. Lista 7: amplificadores operacionais
-
 ## Avaliação Bimestral
 - [Trabalho AP1](eletronica/EletronicaTrabalhoAP1_2023.pdf)
 
@@ -29,13 +20,14 @@
 - [Form 2](eletronica/solucao_form2.pdf)
 - [Form 3](eletronica/solucao_form3.pdf)
 
+## Lista de orientação AP2
+- [Capacitores, indutores e aplicações](https://forms.gle/MH6hDKoJ7vo1SMvQ7)
+
 ## Práticas de laboratório
-Instrumentos de medida
+
 - [Prática 1: Fundamentos de eletrônica](eletronica/pratica1_elt.md)
 - [Prática 2: projetando circuitos com diodos](eletronica/pratica2_elt.md)
-- Prática 4: projetando circuitos com indutores e capacitores
-- Prática 5: projetando circuitos com transistores
-- Prática 6: projetando circuitos com amplificadores operacionais
+
 
 ____
 #### [Home - Eletrônica e Design de Circuitos - Prof Clayton J A Silva](/eletronica.md)
