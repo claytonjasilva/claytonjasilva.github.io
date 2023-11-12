@@ -6,7 +6,7 @@
 4. [Modulação Digital](siscom_aulas/Aula_Modulacao_Digital.pdf)
 5. [Codificadores de canal](siscom_aulas/Aula_Codificador_Canal.pdf)
 6. [O canal móvel de comunicações](siscom_aulas/Aula_Canal_Movel.pdf)
-7. [Arqutitetura de Sistemas Móveis de Comunicações](siscom_aulas/Aula_ArquiteturaSistemasMoveis.pdf)
+7. [Arquitetura de Sistemas Móveis de Comunicações](siscom_aulas/Aula_ArquiteturaSistemasMoveis.pdf)
 
 ## [Um simulador de sistemas de comunicações móveis](https://github.com/claytonjasilva/simuladorSisCom)  
 
@@ -18,6 +18,7 @@
 4. [Form 4 - modulação FM e modulação digital](https://forms.gle/t4xqZcSb7mJpviio6)
 5. [Form 5 - Codificadores de erros](https://forms.gle/mCRfVPRTpXq3mHwQ9)
 6. [Form 6 - Canal móvel de comunicações](https://forms.gle/hj3YZzdwRiYP81Hw5)
+7. [Form 7 - Arquitetura de Sistemas Móveis de Comunicações](https://forms.gle/bUNadM5LMv1Jokv88)
 
 ### Avaliações Bimestrais
 2. [AP2 - Trabalho - a definir]()
