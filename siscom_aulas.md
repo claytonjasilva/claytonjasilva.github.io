@@ -8,10 +8,6 @@
 6. [O canal móvel de comunicações](siscom_aulas/Aula_Canal_Movel.pdf)
 7. [Arqutitetura de Sistemas Móveis de Comunicações](siscom_aulas/Aula_ArquiteturaSistemasMoveis.pdf)
 
-## Notas de aula  
-
-1. [Nota: introdução, codec de voz e moduladores](siscom_aulas/nota-intro-codec-modulador.pdf)  Rev 12/9/22
-
 ## [Um simulador de sistemas de comunicações móveis](https://github.com/claytonjasilva/simuladorSisCom)  
 
 ## Avaliações
