@@ -21,7 +21,7 @@
 7. [Form 7 - Arquitetura de Sistemas Móveis de Comunicações](https://forms.gle/bUNadM5LMv1Jokv88)
 
 ### Avaliações Bimestrais
-2. [AP2 - Trabalho - a definir]()
+2. **[AP2 - Trabalho](siscom_aulas/trabalhoAP2.md)**
 
 ## Exercícios  
 1. [Lista 1](siscom_aulas/Lista1_siscom.pdf) - simulação dos elementos básicos dos sistemas de comunicações móveis  
