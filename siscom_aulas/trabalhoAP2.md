@@ -1,5 +1,5 @@
 # TRABALHO
-## Segunda Avaliação Bimestral - AP2
+## Segunda Avaliação Bimestral - AP2 - 2023.2
 
 Elaborar um sistema utilizando Python que:  
 	1. Leia a sequência de n bits de uma fonte discreta, de um arquivo .txt.  
