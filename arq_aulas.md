@@ -38,11 +38,9 @@ Os instrumentos de avaliação continuada srão disponibilizados à medida que a
 - [Form 2: aritmética binária - adição](https://forms.gle/XnU8q1oBoEZ6v8w28)
 - [Form 3: máquina de níveis](https://forms.gle/2JZcJ9JN4B5w6VgVA)
 - [Form 4: teste de revisão - **COM GABARITO**](https://1drv.ms/b/s!AsTd8oN7mu8pkf4GS3GTn8YSZZy3ng?e=XoNhwy)
-- [Form 5: assembly da máquina de von Neumman](https://forms.gle/QqResBWURuxEpVEd6)  
-- [Form 6: nível de lógica digital](https://forms.gle/4vUSYeEFByhtP7oZ8)
-- Form 7
-- Form 8
-- Form 9
+- [Form 5: assembly da máquina de von Neumman](https://1drv.ms/b/s!AsTd8oN7mu8pkol3TP8E0uif3xKpqg?e=zhE3jM)  
+- [Form 6: nível de lógica digital](https://1drv.ms/b/s!AsTd8oN7mu8pkol4KTN3ykEGzRwu0g?e=6l7Hs3)
+
 
 ## Exercícios  
 1. [Lista 1 de Exercícios](arq_aulas/arq_exercicios1_sala.md)  
