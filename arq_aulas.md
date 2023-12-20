@@ -1,5 +1,5 @@
 # Conteúdo das Aulas  
-## Arquitetura de Computadores - 2023.2
+## Arquitetura de Computadores - 2024.1
 
 ## Tópicos
 1. [Dimensões, Unidades e Aritmética Computacional](arq_aulas/dimensoesUnidadesAritmeticaComputacional1.md)
@@ -34,12 +34,11 @@
 
 ### Avaliação Continuada
 Os instrumentos de avaliação continuada srão disponibilizados à medida que as aulas forem ministradas.  
-- [Form 1: Introdução](https://forms.gle/U9JG5qJu3vpNv13N9)
-- [Form 2: aritmética binária - adição](https://forms.gle/XnU8q1oBoEZ6v8w28)
-- [Form 3: máquina de níveis](https://forms.gle/2JZcJ9JN4B5w6VgVA)
-- [Form 4: teste de revisão - **COM GABARITO**](https://1drv.ms/b/s!AsTd8oN7mu8pkf4GS3GTn8YSZZy3ng?e=XoNhwy)
-- [Form 5: assembly da máquina de von Neumman](https://1drv.ms/b/s!AsTd8oN7mu8pkol3TP8E0uif3xKpqg?e=zhE3jM)  
-- [Form 6: nível de lógica digital](https://1drv.ms/b/s!AsTd8oN7mu8pkol4KTN3ykEGzRwu0g?e=6l7Hs3)
+- [Form 1: Introdução]() **Não disponível**
+- [Form 2: aritmética binária - adição]() **Não disponível**
+- [Form 3: máquina de níveis]() **Não disponível**
+- [Form 4: assembly da máquina de von Neumman]() **Não disponível**  
+- [Form 5: nível de lógica digital]() **Não disponível**
 
 
 ## Exercícios  
