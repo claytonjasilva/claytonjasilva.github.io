@@ -29,8 +29,8 @@
 
 ## Avaliações
 ### Avaliações Bimestrais
-1. ** Trabalho AP1 - a ser definida oportunamente **
-2. ** Trabalho AP2 - a ser definida oportunamente **
+1. **Trabalho AP1 - a ser definida oportunamente**
+2. **Trabalho AP2 - a ser definida oportunamente**
 
 ### Avaliação Continuada
 Os instrumentos de avaliação continuada srão disponibilizados à medida que as aulas forem ministradas.  
