@@ -29,8 +29,8 @@
 
 ## Avaliações
 ### Avaliações Bimestrais
-1. [Trabalho AP1](arq_aulas/ArquiteturaTrabalhoAP1_2023.pdf)   
-2. **[Trabalho AP2](https://forms.gle/PhKriHkCHtyeGe8aA)** - conforme explicação de 21/11/2023. **Entrega dia 24/11/2023**   
+1. ** Trabalho AP1 - a ser definida oportunamente **
+2. ** Trabalho AP2 - a ser definida oportunamente **
 
 ### Avaliação Continuada
 Os instrumentos de avaliação continuada srão disponibilizados à medida que as aulas forem ministradas.  
