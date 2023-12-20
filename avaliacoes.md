@@ -11,8 +11,8 @@
 ### Avaliações Bimestrais - **AP**
 
 - Serão aplicadas duas avaliações bimestrais (AP1 e AP2);
-- Cada avaliação bimestral será composta por **duas partes:**
-  (1) trabalho em grupo, a ser regulado por regras específicas - **peso 30%**;
+- Cada avaliação bimestral será composta por **duas partes:**  
+  (1) trabalho em grupo, a ser regulado por regras específicas - **peso 30%**;  
   (2) prova individual - **peso 70%**.  
 
 ### Observações gerais
