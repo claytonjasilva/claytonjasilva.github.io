@@ -21,7 +21,6 @@
 - O meio para entrega de formulários, listas e trabalhos de avaliação continuada será definido caso a caso; 
 - A avaliação continuada possui o peso de 20% da nota final e cada avaliação bimestral possui o peso 40%. 
 
-##### [Home - Prof Clayton J A Silva](/index.md)
 
 
 
