@@ -1,4 +1,4 @@
-# Arquitetura de Computadores - 2023.2
+# Arquitetura de Computadores - 2024.1
 
 1. [Agenda](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/arq_aulas/Cronograma_2af.pdf)   
 2. [Grid](arq_aulas/Grid_Arquitetura.md)
