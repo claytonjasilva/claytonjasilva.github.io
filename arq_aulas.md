@@ -34,7 +34,7 @@
 
 ### Avaliação Continuada
 Os instrumentos de avaliação continuada srão disponibilizados à medida que as aulas forem ministradas.  
-- [Form 1: Introdução]() **Não disponível**
+- [Form 1: Turma 2a feira]()   [Form 1: Turma 3a feira](https://forms.gle/C2872C8vn7VQA5KK9)   [Form 1: Turma 4a feira](https://forms.gle/kV5x2fWQBwu7Tbrx9)
 - [Form 2: aritmética binária - adição]() **Não disponível**
 - [Form 3: máquina de níveis]() **Não disponível**
 - [Form 4: assembly da máquina de von Neumman]() **Não disponível**  
