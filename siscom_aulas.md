@@ -1,4 +1,4 @@
-# Conteúdo - Sistemas de Comunicações Móveis - 2023.2
+# Conteúdo - Sistemas de Comunicações Móveis - 2024.1
 
 1. [Sinais e sua representação nos domínios do tempo e da frequência](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/siscom_aulas/sinais.md)
 2. [Elementos dos sistemas de comunicações](siscom_aulas/Aula_Sinais_Modelo_SisCom.pdf)
@@ -8,7 +8,8 @@
 6. [O canal móvel de comunicações](siscom_aulas/Aula_Canal_Movel.pdf)
 7. [Arquitetura de Sistemas Móveis de Comunicações](siscom_aulas/Aula_ArquiteturaSistemasMoveis.pdf)
 
-## [Um simulador de sistemas de comunicações móveis](https://github.com/claytonjasilva/simuladorSisCom)  
+## Simulador
+1. [Captura do sinal de voz](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/siscom_aulas/audioProject.py)
 
 ## Avaliações
 ### Avaliação Continuada
