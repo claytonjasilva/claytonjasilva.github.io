@@ -39,7 +39,7 @@
 
 ### Avaliação Continuada
 Os instrumentos de avaliação continuada serão disponibilizados à medida que as aulas forem ministradas.  
-- [Form 1](/sisdig_aulas/images_sisdig/SistemasDigitaisForm1.pdf)
+- [Form 1](https://forms.gle/WYG6b4gP25n41MJD9)
 - [Form 2](/sisdig_aulas/images_sisdig/SistemasDigitaisForm2.pdf)
 - [Form 3](/sisdig_aulas/images_sisdig/SisDig_Form3.pdf)  
 - [Form 4](https://forms.gle/GBH7K1XD1QpkS3fD6)
