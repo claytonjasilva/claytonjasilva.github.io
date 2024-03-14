@@ -1,4 +1,4 @@
-# Aulas de Sistemas Digitais - 2023.1
+# Aulas de Sistemas Digitais - 2024.1
 
 ## Conteúdo
 1. [Sinais Analógicos e Digitais](sisdig_aulas/digitaisAnalogicos.md)
