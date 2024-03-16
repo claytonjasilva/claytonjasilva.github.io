@@ -36,7 +36,7 @@
 Os instrumentos de avaliação continuada srão disponibilizados à medida que as aulas forem ministradas.  
 - [Form 1: Turma 2a feira](https://forms.gle/ENA5pZ76qDwGyySJ8) / [Form 1: Turma 3a feira](https://forms.gle/C2872C8vn7VQA5KK9) / [Form 1: Turma 4a feira](https://forms.gle/kV5x2fWQBwu7Tbrx9)
 - [Form 2: Turma 2a feira](https://forms.gle/5JX82d6kxFRhdk6x5) / [Form 2: Turma 3a feira](https://forms.gle/Di6xLEt4nYrMkGCr8) / [Form 2: Turma 4a feira](https://forms.gle/am5hVSCkzhGbqCNcA)
-- [Form 3: máquina de níveis]() **Não disponível**
+- [Form 3: Turma 2a feira]() / [Form 3: Turma 3a feira](https://forms.gle/QR4JGR6YUrx2LKpt9) / [Form 3: Turma 4a feira](https://forms.gle/65kQTqpekFycAfHP7)  
 - [Form 4: assembly da máquina de von Neumman]() **Não disponível**  
 - [Form 5: nível de lógica digital]() **Não disponível**
 
