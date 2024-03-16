@@ -1,4 +1,4 @@
-# Sistemas Digitais - 2023.1
+# Sistemas Digitais - 2024.1
 
 1. **Agenda**
 2. [Grid](sisdig_aulas/Grid_SisDig.md)
