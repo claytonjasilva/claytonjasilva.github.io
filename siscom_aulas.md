@@ -1,13 +1,16 @@
 # Conteúdo - Sistemas de Comunicações Móveis - 2024.1
 
+## Slides das aulas
 1. [Sinais e sua representação nos domínios do tempo e da frequência](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/siscom_aulas/sinais.md)
-2. [Elementos dos sistemas de comunicações](siscom_aulas/Aula_Sinais_Modelo_SisCom.pdf) - **Slides em pdf**
+2. [Elementos dos sistemas de comunicações](siscom_aulas/Aula_Sinais_Modelo_SisCom.pdf)
+3. [Modulação Analógica](siscom_aulas/Aula_Modulacao_Analogica.pdf)
+4. [Modulação Digital](siscom_aulas/Aula_Modulacao_Digital.pdf)
+5. [Codificadores de canal](siscom_aulas/Aula_Codificador_Canal.pdf)
+6. [O canal móvel de comunicações](siscom_aulas/Aula_Canal_Movel.pdf)
+7. [Arquitetura de Sistemas Móveis de Comunicações](siscom_aulas/Aula_ArquiteturaSistemasMoveis.pdf)
 
-3. [Modulação Analógica](siscom_aulas/Aula_Modulacao_Analogica.pdf) - **Slides em pdf**
-4. [Modulação Digital](siscom_aulas/Aula_Modulacao_Digital.pdf) - **Slides em pdf**
-5. [Codificadores de canal](siscom_aulas/Aula_Codificador_Canal.pdf) - **Slides em pdf**
-6. [O canal móvel de comunicações](siscom_aulas/Aula_Canal_Movel.pdf) - **Slides em pdf**
-7. [Arquitetura de Sistemas Móveis de Comunicações](siscom_aulas/Aula_ArquiteturaSistemasMoveis.pdf) - **Slides em pdf**
+## Notas de aula
+1. **Nota 1**
 
 ## Simulador
 ### Representação e digitalização do sinal de voz
