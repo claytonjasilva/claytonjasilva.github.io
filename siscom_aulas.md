@@ -22,13 +22,13 @@
 
 ## Avaliações
 ### Avaliação Continuada
-1. [Form 1 - conceitos iniciais](https://forms.gle/h9jn2EuZZ7wEPDvb7)
-2. [Form 2 - elementos dos sistemas de comunicações](https://forms.gle/fkptqabUwBeTAmjS7)
-3. [Form 3 - conceitos iniciais, transmissor e modulação AM](https://forms.gle/7QW9FdMM9Q4gtdtZ7)
-4. [Form 4 - modulação FM e modulação digital](https://forms.gle/t4xqZcSb7mJpviio6)
-5. [Form 5 - Codificadores de erros](https://forms.gle/mCRfVPRTpXq3mHwQ9)
-6. [Form 6 - Canal móvel de comunicações](https://forms.gle/hj3YZzdwRiYP81Hw5)
-7. [Form 7 - Arquitetura de Sistemas Móveis de Comunicações](https://forms.gle/bUNadM5LMv1Jokv88)
+1. [Form 1 - Conceitos iniciais 1](https://forms.gle/h9jn2EuZZ7wEPDvb7)
+2. [Form 2 - Conceitos iniciais 2](https://forms.gle/1GhH2D8BBrqiVcTk7)
+3. [Form 3 - Elementos dos sistemas de comunicações](https://forms.gle/iDFFVyrQGzXw1wCr8)
+4. [Form 4 - A definir]()
+5. [Form 5 - A definir]()
+6. [Form 6 - A definir]()
+7. [Form 7 - A definir]()
 
 ### Avaliações Bimestrais
 2. **[AP2 - Trabalho](siscom_aulas/trabalhoAP2.md)**
