@@ -11,6 +11,8 @@
 ## Simulador
 1. [Captura do sinal de voz](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/siscom_aulas/audioProject.py)
 2. [Representa o sinal de voz no dominio do tempo](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/siscom_aulas/audioProject2.py)
+3. [Representa o sinal de voz no domínio da frequência](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/siscom_aulas/audioProject3.py)
+   
 
 ## Avaliações
 ### Avaliação Continuada
