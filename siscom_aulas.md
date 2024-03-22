@@ -1,14 +1,16 @@
 # Conteúdo - Sistemas de Comunicações Móveis - 2024.1
 
 1. [Sinais e sua representação nos domínios do tempo e da frequência](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/siscom_aulas/sinais.md)
-2. [Elementos dos sistemas de comunicações](siscom_aulas/Aula_Sinais_Modelo_SisCom.pdf)
-3. [Modulação Analógica](siscom_aulas/Aula_Modulacao_Analogica.pdf)
-4. [Modulação Digital](siscom_aulas/Aula_Modulacao_Digital.pdf)
-5. [Codificadores de canal](siscom_aulas/Aula_Codificador_Canal.pdf)
-6. [O canal móvel de comunicações](siscom_aulas/Aula_Canal_Movel.pdf)
-7. [Arquitetura de Sistemas Móveis de Comunicações](siscom_aulas/Aula_ArquiteturaSistemasMoveis.pdf)
+2. [Elementos dos sistemas de comunicações](siscom_aulas/Aula_Sinais_Modelo_SisCom.pdf) - **Slides em pdf**
+
+3. [Modulação Analógica](siscom_aulas/Aula_Modulacao_Analogica.pdf) - **Slides em pdf**
+4. [Modulação Digital](siscom_aulas/Aula_Modulacao_Digital.pdf) - **Slides em pdf**
+5. [Codificadores de canal](siscom_aulas/Aula_Codificador_Canal.pdf) - **Slides em pdf**
+6. [O canal móvel de comunicações](siscom_aulas/Aula_Canal_Movel.pdf) - **Slides em pdf**
+7. [Arquitetura de Sistemas Móveis de Comunicações](siscom_aulas/Aula_ArquiteturaSistemasMoveis.pdf) - **Slides em pdf**
 
 ## Simulador
+### Representação e digitalização do sinal de voz
 1. [Captura do sinal de voz](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/siscom_aulas/audioProject.py)
 2. [Representa o sinal de voz no dominio do tempo](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/siscom_aulas/audioProject2.py)
 3. [Representa o sinal de voz no domínio da frequência](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/siscom_aulas/audioProject3.py)
@@ -31,7 +33,8 @@
 7. [Form 7 - A definir]()
 
 ### Avaliações Bimestrais
-2. **[AP2 - Trabalho](siscom_aulas/trabalhoAP2.md)**
+1. **[AP1 - Trabalho - A definir]()**
+2. **[AP2 - Trabalho - A definir]()**
 
 ## Exercícios  
 1. [Lista 1](siscom_aulas/Lista1_siscom.pdf) - simulação dos elementos básicos dos sistemas de comunicações móveis  
