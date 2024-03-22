@@ -13,6 +13,8 @@
 2. [Representa o sinal de voz no dominio do tempo](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/siscom_aulas/audioProject2.py)
 3. [Representa o sinal de voz no domínio da frequência](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/siscom_aulas/audioProject3.py)
 4. [Quantização do sinal de voz](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/siscom_aulas/audioProject4.py)
+5. [Quantização do sinal de voz em níveis inteiros](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/siscom_aulas/audioProject5.py)
+   
    
    
 
