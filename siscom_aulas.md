@@ -10,7 +10,7 @@
 7. [Arquitetura de Sistemas Móveis de Comunicações](siscom_aulas/Aula_ArquiteturaSistemasMoveis.pdf)
 
 ## Notas de aula
-1. [Nota Capítulo 1 - Sinais e modelo dos sistemas de comunicações](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/siscom_aulas/Capitulo1.pdf) Lista para auto-avaliação: [Lista capítulo1[()  
+1. [Nota Capítulo 1 - Sinais e modelo dos sistemas de comunicações](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/siscom_aulas/Capitulo1.pdf) Lista para auto-avaliação: [Lista capítulo1](Lista_auto_avaliacao.md)  
 
 ## Simulador
 ### Representação e digitalização do sinal de voz
