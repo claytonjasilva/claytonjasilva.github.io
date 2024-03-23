@@ -1,4 +1,4 @@
-# Questões Sinais e modelo de sistemas de comunicações
+# Questões sinais e modelo de sistemas de comunicações
 
 1. O objetivo principal de um sistema de comunicação é:
    - A) Maximizar a largura de banda do canal.
