@@ -2,7 +2,7 @@
 
 ## Slides das aulas
 1. [Sinais e sua representação nos domínios do tempo e da frequência](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/siscom_aulas/sinais.md)
-2. [Sinais e modelo dos sistemas de comunicações](siscom_aulas/Aula_Sinais_Modelo_SisCom.pdf)
+2. [Sinais e modelo dos sistemas de comunicações](siscom_aulas/Aula_Sinais_Modelo_SisCom.pdf) - Revisado 2024.1
 3. [Modulação Analógica](siscom_aulas/Aula_Modulacao_Analogica.pdf)
 4. [Modulação Digital](siscom_aulas/Aula_Modulacao_Digital.pdf)
 5. [Codificadores de canal](siscom_aulas/Aula_Codificador_Canal.pdf)
@@ -10,7 +10,7 @@
 7. [Arquitetura de Sistemas Móveis de Comunicações](siscom_aulas/Aula_ArquiteturaSistemasMoveis.pdf)
 
 ## Notas de aula
-1. **Nota 1**
+1. [Nota 1](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/siscom_aulas/Capitulo1.pdf)
 
 ## Simulador
 ### Representação e digitalização do sinal de voz
