@@ -29,7 +29,7 @@
 
 ## Avaliações
 ### Avaliações Bimestrais
-1. [Trabalho AP1](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/arq_aulas/TRABALHO_AP1_IBMEC_RJ.pdf) **Data da apresentação da solução: aula após a prova**     
+1. [Trabalho AP1](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/arq_aulas/TRABALHO_AP1_IBMEC_RJ.pdf) **Data da apresentação da solução: semana de 15 a 19 abr, durante a aula**     
 2. **Trabalho AP2 - a ser definida oportunamente**
 
 ### Avaliação Continuada
