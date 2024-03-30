@@ -29,7 +29,7 @@
 
 ## Avaliações
 ### Avaliações Bimestrais
-1. **Trabalho AP1 - a ser definida oportunamente**
+1. [Trabalho AP1](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/arq_aulas/TRABALHO_AP1_IBMEC_RJ.pdf)  
 2. **Trabalho AP2 - a ser definida oportunamente**
 
 ### Avaliação Continuada
