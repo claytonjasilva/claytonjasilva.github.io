@@ -10,8 +10,8 @@
 7. [Arquitetura de Sistemas Móveis de Comunicações](siscom_aulas/Aula_ArquiteturaSistemasMoveis.pdf)
 
 ## Notas de aula
-1. [Nota Capítulo 1 - Sinais e modelo dos sistemas de comunicações](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/siscom_aulas/Capitulo1.pdf) Lista para auto-avaliação: [Lista capítulo1](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/siscom_aulas/Lista_auto_avaliacao.md)
-2. [Nota Capítulo 2 - Modulação em sistemas de comunicações móveis](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/siscom_aulas/Capitulo2.pdf) Lista para auto-avaliação: [Lista capítulo2]()
+1. [Nota Capítulo 1 - Sinais e modelo dos sistemas de comunicações](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/siscom_aulas/Capitulo1.pdf) Lista para auto-avaliação: [Lista capítulo1](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/siscom_aulas/Lista1_auto_avaliacao.md)
+2. [Nota Capítulo 2 - Modulação em sistemas de comunicações móveis](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/siscom_aulas/Capitulo2.pdf) Lista para auto-avaliação: [Lista capítulo2](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/siscom_aulas/Lista2_auto_avaliacao.md)
 
 ## Simulador
 ### Representação e digitalização do sinal de voz
