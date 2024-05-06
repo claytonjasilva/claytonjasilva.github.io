@@ -12,7 +12,7 @@
 8. [Microcontrolador Atmel ATmega 2560](arq_aulas/microcontrolador2560.md)  
 9. Sistemas Operacionais: [*download* material](https://1drv.ms/p/s!AsTd8oN7mu8pkcB4b7de8Z0_eLNtFA?e=PIgZwh)
 
-## Práticas    
+## Práticas Arduíno   
 1. [Prática 1 Arduíno: alimentação de LEDs](arq_aulas/pratica_ligaLED.md)    
 2. [Prática 2 Arduíno: código, pinos e função de saída](arq_aulas/pratica_saidaArduino.md)     
 3. [Prática 3 Arduíno: código, pinos e função de entrada](arq_aulas/pratica_entradaArduino.md)
@@ -25,6 +25,9 @@
 10. [Prática 10: dispositivos de saída - sensor de movimento](arq_aulas/pratica_sensormovimento.md)
 11. [Prática 11 Arduíno: dispositivos de saída - motor de passo](arq_aulas/pratica_motor.md)
 12. [Prática 12 - Assembler: AVR Atmega2560](arq_aulas/pratica_assembler.md)
+
+## Práticas *Assembly*   
+1. [Prática 1 Assembly: registradores, memória RAM e operações aritméticas básicas](arq_aulas/assembly1.md)
 
 
 ## Avaliações
