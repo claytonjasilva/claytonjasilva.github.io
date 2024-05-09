@@ -1,4 +1,4 @@
-## Prática 10: Cicuitos combinacionais com MSI
+## Prática 10: Cicuitos combinacionais MSI
 
 # Circuitos somadores
 Testar o CI [ADDER 74LS283](74LS283_National.pdf).   
