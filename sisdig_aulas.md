@@ -27,8 +27,8 @@
 7. [Prática 7](sisdig_aulas/sisdig_pratica7.md)
 8. [Prática 8](sisdig_aulas/sisdig_pratica8.md)
 9. [Prática 9](sisdig_aulas/sisdig_pratica9.md)
-10. [Prática 10: Cicuitos combinacionais MSI](sisdig_aulas/sisdig_pratica10.md)
-11. [Prática 11](sisdig_aulas/sisdig_pratica11.md)
+10. [Prática 10: Cicuitos combinacionais MSI, somador e decodificador](sisdig_aulas/sisdig_pratica10.md)
+11. [Prática 11: Cicuitos combinacionais MSI, multiplexador](sisdig_aulas/sisdig_pratica11.md)
 12. [Prática 12: Circuitos sequenciais](sisdig_aulas/sisdig_pratica12.md)
 13. [Prática 13: Circuitos sequenciais - registradores](sisdig_aulas/sisdig_pratica13.md)
 
