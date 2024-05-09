@@ -1,4 +1,4 @@
-# Lista 4 de Exercícios: Flip-flops
+# Lista 5 de Exercícios: Flip-flops
 
 1.	Seja o circuito digital apresentado abaixo. Apresentar o diagrama de temporização do sinal Q, dados A e B de entrada. 
 Presumir que no início da operação o valor de Q=0.  
