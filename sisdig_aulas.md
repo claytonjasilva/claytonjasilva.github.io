@@ -51,6 +51,7 @@ Os instrumentos de avaliação continuada serão disponibilizados à medida que 
 2. [Lista 2 de Exercícios](sisdig_aulas/sisdig_exercicios2_aulas.md)
 3. [Lista 3 de Exercícios](sisdig_aulas/sisdig_exercicios3_aulas.md)
 4. [Lista 4 de Exercícios](sisdig_aulas/sisdig_exercicios4_aulas.md)
+5. [Lista 5 de Exercícios](sisdig_aulas/sisdig_exercicios5_aulas.md)
 
 ### *Datasheets* de referência  
 + [Porta AND CD14082BCP](sisdig_aulas/CD14082BCP_Motorola.pdf)  
