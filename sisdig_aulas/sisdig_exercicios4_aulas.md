@@ -1,4 +1,4 @@
-# Lista 3 de Exercícios: Multiplexadores
+# Lista 4 de Exercícios: Multiplexadores
 
 1.	O circuito abaixo utiliza três multiplexadores de duas entradas. Determine a função realizada por esse circuito.
 ![Circuitos questão 3.1](/sisdig_aulas/images_sisdig/circuitosexercicio3_1.jpg)
