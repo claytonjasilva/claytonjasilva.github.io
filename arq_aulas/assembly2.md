@@ -7,13 +7,11 @@ no endereço 0x20B. **Uso da instrução LDS.**
 2. Elaborar um programa em assembly para ler dois dados armazenados nos endereços 0x20B e 0x20C.
 Realizar a operação 'ou exclusivo' entre os dados, armazenando o resultado no endereço de memória 0x20D.
  **Uso da instrução EOR.**
-3. Elaborar um programa em assembly para somar os dados dos endereços 0x20E a 0x213,
-subtraindoo o valor obtido do valor armazenado no endereço 0x214, armazenando o resultado no endereço 0x215.
+3. Elaborar um programa em assembly para inicializar o registrador r0 com 30, incrementar o valor 10 vezes.
+4. Elaborar um programa em assembly para somar os dados dos endereços 0x20E a 0x213,
+subtraindo o valor obtido do valor armazenado no endereço 0x214, armazenando o resultado no endereço 0x215.
 Em seguida desviar a execução ao endereço 0x20.
-**Uso da instrução ADD.**   
-5. Armazenar os valores armazenados no registrador r5 na posição de endereço 0x200 da memória RAM do microcontrolador Atmega2560.
-**Uso da instrução STS.**
-6. Instrução **BREAK**
+**Uso da instrução JMP, instrução RJMP.**   
 
 ## *Assembler* do Atmega2560
 1. Comentários  
