@@ -4,7 +4,7 @@
 1. [Sinais e sua representação nos domínios do tempo e da frequência](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/siscom_aulas/sinais.md)
 2. [Sinais e modelo dos sistemas de comunicações](siscom_aulas/Aula_Sinais_Modelo_SisCom.pdf) - Revisado 2024.1
 3. [Modulação em sistemas de comunicações móveis](siscom_aulas/Aula_Modulacao.pdf) - Revisado 2024.1
-4. [Codificadores da fonte e do canal](siscom_aulas/Aula_Codificador_Canal.pdf)
+4. [Codificadores da fonte e do canal](siscom_aulas/Aula_Codecs.pdf) - Revisado 2024.1
 6. [O canal móvel de comunicações](siscom_aulas/Aula_Canal_Movel.pdf)
 7. [Arquitetura de Sistemas Móveis de Comunicações](siscom_aulas/Aula_ArquiteturaSistemasMoveis.pdf)
 
