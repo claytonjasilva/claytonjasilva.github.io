@@ -28,6 +28,7 @@
 
 ## Práticas *Assembly*   
 1. [Prática 1 Assembly: registradores, memória RAM e operações aritméticas básicas](arq_aulas/assembly1.md)
+2. [Prática 2 Assembly: registradores, memória RAM e operações de desvio](arq_aulas/assembly2.md)
 
 
 ## Avaliações
