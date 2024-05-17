@@ -47,8 +47,6 @@ Os instrumentos de avaliação continuada srão disponibilizados à medida que a
 
 **[Acesso aos pdf's - Forms 1, 2, 3 e 4](https://1drv.ms/f/s!AsTd8oN7mu8pkp1TDW6MheK9-BrnUQ?e=ebIaek)**
 
-- [Form 7: assembly da máquina de von Neumman]() **Não disponível**  
-- [Form 8: nível de lógica digital]() **Não disponível**
 
 
 ## Exercícios  
