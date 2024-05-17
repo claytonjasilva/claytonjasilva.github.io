@@ -8,7 +8,7 @@
 ; Exercicio 1. Implementar um código em linguagem de montagem ('assembly') para o montador ('assembler') 
 ; do microcontrolador Atmega2560 que:
 
-; a. Armazene uma tabela de 16 valores em memória, 
+; a. Armazene uma tabela de 7 valores em memória, 
 ; a partir do endereço 0x200. Definir arbitrariamente os números.
 
 ldi r16,3 ; arbitra o numero e carrega no registrador r16
