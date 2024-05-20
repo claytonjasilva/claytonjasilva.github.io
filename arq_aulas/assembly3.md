@@ -35,7 +35,7 @@ Operação: Desvia o código para +-k posições
 - BRNEQ: Desvia para o endereço se os operandos forem diferentes  
 Sintaxe: `BRNE k, onde -64 ≤ k ≤ +63`   
 Operação: Desvia o código para +-k posições
-- ST: Armazena indiretamente dados em memória
+- ST: Armazena indiretamente dados em memória  
 Sintaxe: `ST X, Rr, onde 0 ≤ r ≤ 31`   
 Operação: Armazena o conteúdo de Rr no endereço de memória definido em X (r27,r26)    
 
@@ -49,5 +49,5 @@ b. Some os dez primeiros número pares a partir de um par definido arbitrariamen
 
 a. Usando as instruções `CP` e `BRNE`, realize um loop de 10 repetições.   
 b. Armazene os dez números pares a partir de um número par inicial definido arbitrariamente nos endereços a partir de 0x200.  
-[Uma proposta de solução]()   
+[Uma proposta de solução](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/arq_aulas/assembly6.asm)   
 
