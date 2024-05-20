@@ -48,6 +48,6 @@ b. Some os dez primeiros número pares a partir de um par definido arbitrariamen
 #### Exercicio 6. Implementar um código em linguagem de montagem ('assembly') para o montador ('assembler') do microcontrolador Atmega2560 que:
 
 a. Usando as instruções `CP` e `BRNE`, realize um loop de 10 repetições.   
-b. Armazene os dez números pares a partir de um número par inicial definido arbitrariamente nos endereços a partir de 0x200.  
+b. Usando a instrução `ST`, armazene os dez números pares a partir de um número par inicial definido arbitrariamente nos endereços a partir de 0x200.  
 [Uma proposta de solução](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/arq_aulas/assembly6.asm)   
 
