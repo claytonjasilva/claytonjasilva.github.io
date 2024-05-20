@@ -23,7 +23,7 @@ c. Retorne a execução para o primeiro endereço livre da memória flash.
 
 a. Inicialize um registrador com um valor qualquer.  
 b. Armazene em  memória, a partir do endereço 0x200, o valor inicial e os cinco valores subsequentes.  
-[Uma proposta de solução](arq_aulas/assembly4.asm)   
+[Uma proposta de solução](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/arq_aulas/assembly4.asm)   
 
 ## Novas instruções
 - CP: Compara o valor armazenado em dois registradores.  
@@ -37,4 +37,4 @@ Operação: Desvia o código para +-k posições
 
 a. Usando as instruções `CP` e `BREQ`, leia os dados de uma tabela de 16 valores em memória, a partir do endereço 0x200.   
 b. Some os dados da tabela armazenando na posição de endereço seguinte à última linha.  
-[Uma proposta de solução](arq_aulas/assembly5.asm)   
+[Uma proposta de solução]()   
