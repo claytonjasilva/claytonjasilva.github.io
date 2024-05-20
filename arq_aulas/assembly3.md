@@ -29,8 +29,11 @@ b. Armazene em  memória, a partir do endereço 0x200, o valor inicial e os cinc
 - CP: Compara o valor armazenado em dois registradores.  
 Sintaxe:`CP Rd,Rr, onde 0 ≤ d ≤ 31, 0 ≤ r ≤ 31`    
 Operação: Rd - Rr, se o resultado igual a 0x00, 'seta' o bit 1 do registrador de status  
-- BREQ: Desvia se os operandos forem iguais a um endereço  
+- BREQ: Desvia para o endereço se os operandos forem iguais  
 Sintaxe: `BREQ k, onde -64 ≤ k ≤ +63`   
+Operação: Desvia o código para +-k posições  
+- BRNEQ: Desvia para o endereço se os operandos forem diferentes  
+Sintaxe: `BRNEQ k, onde -64 ≤ k ≤ +63`   
 Operação: Desvia o código para +-k posições  
 
 #### Exercicio 5. Implementar um código em linguagem de montagem ('assembly') para o montador ('assembler') do microcontrolador Atmega2560 que:
