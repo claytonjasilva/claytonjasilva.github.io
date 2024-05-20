@@ -38,6 +38,6 @@ Operação: Desvia o código para +-k posições
 
 #### Exercicio 5. Implementar um código em linguagem de montagem ('assembly') para o montador ('assembler') do microcontrolador Atmega2560 que:
 
-a. Usando as instruções `CP` e `BREQ`, realize um loop de 10 repetições.   
+a. Usando as instruções `CP` e `BRNE`, realize um loop de 10 repetições.   
 b. Some os dez primeiros número pares a partir de um par definido arbitrariamente.  
-[Uma proposta de solução]()   
+[Uma proposta de solução](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/arq_aulas/assembly5.asm)   
