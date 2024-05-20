@@ -4,7 +4,7 @@
 
 a. Armazene uma tabela de 7 valores em memória, a partir do endereço 0x200. Definir arbitrariamente os números.  
 b. Some os dados da tabela armazenando na posição de endereço seguinte à última linha.  
-[Uma proposta de solução](arq_aulas/assembly1.asm)   
+[Uma proposta de solução]([arq_aulas/assembly1.asm](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/4983b81071d4d47d987ee9d03eea9a3bd2169029/arq_aulas/assembly1.asm))   
 
 #### Exercicio 2. Implementar um código em linguagem de montagem ('assembly') para o montador ('assembler') do microcontrolador Atmega2560 que:
 
