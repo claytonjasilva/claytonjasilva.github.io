@@ -17,7 +17,7 @@ b. Verifique se os dados da tabela são iguais. Se forem iguais, armazene 0 no e
 a. Inicie a execução a partir de um endereço 0xa da memória flash.  
 b. Leia os dados de uma tabela armazenada nos cinco primeiros endereço a partir da posição 0x200.  
 c. Retorne a execução para o primeiro endereço livre da memória flash.  
-[Uma proposta de solução](arq_aulas/assembly3.asm)   
+[Uma proposta de solução](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/arq_aulas/assembly3.asm)    
 
 #### Exercicio 4. Implementar um código em linguagem de montagem ('assembly') para o montador ('assembler') do microcontrolador Atmega2560 que:
 
