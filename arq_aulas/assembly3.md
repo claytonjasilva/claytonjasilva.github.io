@@ -35,6 +35,6 @@ Operação: Desvia o código para +-k posições
 
 #### Exercicio 5. Implementar um código em linguagem de montagem ('assembly') para o montador ('assembler') do microcontrolador Atmega2560 que:
 
-a. Usando as instruções `CP` e `BREQ`, leia os dados de uma tabela de 16 valores em memória, a partir do endereço 0x200.   
-b. Some os dados da tabela armazenando na posição de endereço seguinte à última linha.  
+a. Usando as instruções `CP` e `BREQ`, realize um loop de 10 repetições.   
+b. Some os dez primeiros número pares a partir de um par definido arbitrariamente.  
 [Uma proposta de solução]()   
