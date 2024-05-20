@@ -27,8 +27,9 @@
 12. [Prática 12 - Assembler: AVR Atmega2560](arq_aulas/pratica_assembler.md)
 
 ## Práticas *Assembly*   
-1. [Prática 1 Assembly: registradores, memória RAM e operações aritméticas básicas](arq_aulas/assembly1.md)
-2. [Prática 2 Assembly: registradores, memória RAM e operações de desvio](arq_aulas/assembly2.md)
+1. [Prática 1 Assembly: registradores, memória RAM e instruções aritméticas básicas](arq_aulas/assembly1.md)
+2. [Prática 2 Assembly: registradores, memória RAM e instruções de desvio](arq_aulas/assembly2.md)
+3. [Prática 3 Assembly: registradores, memória RAM e instruções de comparação](arq_aulas/assembly3.md) 
 
 
 ## Avaliações
