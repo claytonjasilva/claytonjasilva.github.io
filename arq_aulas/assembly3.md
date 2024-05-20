@@ -10,7 +10,7 @@ b. Some os dados da tabela armazenando na posição de endereço seguinte à úl
 
 a. Armazene uma tabela de 7 valores em memória, a partir do endereço 0x200. Definir arbitrariamente os números.  
 b. Verifique se os dados da tabela são iguais. Se forem iguais, armazene 0 no endereço após a última linha da tabela.  
-[Uma proposta de solução](arq_aulas/assembly2.asm)   
+[Uma proposta de solução](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/arq_aulas/assembly2.asm)   
 
 #### Exercicio 3. Implementar um código em linguagem de montagem ('assembly') para o montador ('assembler') do microcontrolador Atmega2560 que:
 
