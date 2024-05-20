@@ -11,7 +11,7 @@
 ; b. Some os dez primeiros número pares a partir de um par definido arbitrariamente.
 
 ; inicializa registradores
-ldi r16,1 ; valor inicial de r16: contador
+ldi r16,0 ; valor inicial de r16: contador
 ldi r17,10 ; r17 - flag: armazena o valor final do loop
 ldi r18,34 ; inicializa r18 - par inicial
 ldi r19,2 ; r19: incremento de par
