@@ -32,7 +32,7 @@ Operação: Rd - Rr, se o resultado igual a 0x00, 'seta' o bit 1 do registrador 
 - BREQ: Desvia para o endereço se os operandos forem iguais  
 Sintaxe: `BREQ k, onde -64 ≤ k ≤ +63`   
 Operação: Desvia o código para +-k posições  
-- BRNEQ: Desvia para o endereço se os operandos forem diferentes  
+- BRNE: Desvia para o endereço se os operandos forem diferentes  
 Sintaxe: `BRNE k, onde -64 ≤ k ≤ +63`   
 Operação: Desvia o código para +-k posições
 - ST: Armazena indiretamente dados em memória  
