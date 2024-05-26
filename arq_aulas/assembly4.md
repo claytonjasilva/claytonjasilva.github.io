@@ -6,7 +6,7 @@ a. Armazene inicialmente os 20 impares acima de 100 nos endereços de memória a
 b. Em seguida, leia sequencialemnte cada um dos números armazenados na tabela, armazenando também em sequência o par imediatamente inferior ao número lido
 em uma nova tabela iniciada a contar do endereço após a última linha da tabela anterior.  
 c. Aramazenar, por último: o endereço inicial da primeira tabela; e o tamanho (número de linhas) de cada tabela.  
-[Uma proposta de solução](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/arq_aulas/assembly5.asm)   
+[Uma proposta de solução](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/arq_aulas/assembly7.asm)   
 
 #### Exercicio 2. Implementar um código em linguagem de montagem ('assembly') para o montador ('assembler') do microcontrolador Atmega2560 que:
 
