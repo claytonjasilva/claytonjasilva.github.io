@@ -2,30 +2,18 @@
 
 #### Exercicio 1. Implementar um código em linguagem de montagem ('assembly') para o montador ('assembler') do microcontrolador Atmega2560 que:
 
-a. Armazene inicialmente os 20 impares acima de 100 nos endereços de memória acima de 0x200, construindo uma tabela de dados.
+a. Armazene inicialmente os 20 impares acima de 100 nos endereços de memória acima de 0x200, construindo uma tabela de dados.  
 b. Em seguida, leia sequencialmente cada um dos números armazenados na tabela, armazenando também em sequência o par imediatamente inferior ao número lido
 em uma nova tabela iniciada a contar do endereço após a última linha da tabela anterior.  
-c. Aramazenar, por último: o endereço inicial da primeira tabela; e o tamanho (número de linhas) de cada tabela.  
+c. Armazenar, por último: o endereço inicial da primeira tabela; e o tamanho (número de linhas) de cada tabela.  
 [Uma proposta de solução](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/arq_aulas/assembly7.asm)   
 
 #### Exercicio 2. Implementar um código em linguagem de montagem ('assembly') para o montador ('assembler') do microcontrolador Atmega2560 que:
 
-a. Armazene uma tabela de 7 valores em memória, a partir do endereço 0x200. Definir arbitrariamente os números.  
-b. Verifique se os dados da tabela são iguais. Se forem iguais, armazene 0 no endereço após a última linha da tabela.  
-[Uma proposta de solução](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/arq_aulas/assembly2.asm)   
-
-#### Exercicio 3. Implementar um código em linguagem de montagem ('assembly') para o montador ('assembler') do microcontrolador Atmega2560 que:
-
-a. Inicie a execução a partir de um endereço 0xa da memória flash.  
-b. Leia os dados de uma tabela armazenada nos cinco primeiros endereço a partir da posição 0x200.  
-c. Retorne a execução para o primeiro endereço livre da memória flash.  
-[Uma proposta de solução](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/arq_aulas/assembly3.asm)    
-
-#### Exercicio 4. Implementar um código em linguagem de montagem ('assembly') para o montador ('assembler') do microcontrolador Atmega2560 que:
-
-a. Inicialize um registrador com um valor qualquer.  
-b. Armazene em  memória, a partir do endereço 0x200, o valor inicial e os cinco valores subsequentes.  
-[Uma proposta de solução](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/arq_aulas/assembly4.asm)   
+a. Armazenar dois números em memória, nos endereços 0x200 e 0x201. Definir arbitrariamente os números.  
+b. Se os números forem iguais armazenar a soma no endereço 0x202.  
+c. Se os números forem diferentes armazenar a diferença no endereço 0x203.  
+[Uma proposta de solução](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/arq_aulas/assembly8.asm)   
 
 ## Novas instruções
 - LD: Carrega indiretamente registrador  
