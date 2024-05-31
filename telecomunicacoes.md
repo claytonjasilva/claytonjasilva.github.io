@@ -29,23 +29,23 @@ Até agora, todas as referências aos decibéis foram feitas em termos de razõe
 
 A fórmula pode ser escrita da seguinte maneira:
 
-\[ \text{Potência (dBm)} = 10 \log \left( \frac{\text{potência (mW)}}{1 \text{mW}} \right) \]
+$$\text{Potência (dBm)} = 10 \log \left( \frac{\text{potência (mW)}}{1 \text{mW}} \right)$$
 
 **Exemplo 1:** Um amplificador tem uma saída de 20 W. Qual é a saída em dBm?  
-\[ \text{Potência (dBm)} = 10 \log \left( \frac{20 \text{W}}{1 \text{mW}} \right) = 10 \log \left( \frac{20 \times 10^3 \text{mW}}{1 \text{mW}} \right) = +43 \text{dBm} \]
+$$\text{Potência (dBm)} = 10 \log \left( \frac{20 \text{W}}{1 \text{mW}} \right) = 10 \log \left( \frac{20 \times 10^3 \text{mW}}{1 \text{mW}} \right) = +43 \text{dBm}$$
 
 **Exemplo 2:** A entrada para uma rede é 0.0004 W. Qual é a entrada em dBm?  
-\[ \text{Potência (dBm)} = 10 \log \left( \frac{0.0004 \text{W}}{1 \text{mW}} \right) = 10 \log \left( 4 \times 10^{-1} \text{mW} \right) = -4 \text{dBm} \]
+$$\text{Potência (dBm)} = 10 \log \left( \frac{0.0004 \text{W}}{1 \text{mW}} \right) = 10 \log \left( 4 \times 10^{-1} \text{mW} \right) = -4 \text{dBm}$$
 
 #### 1.4.2 O dBW
 
 O dBW é usado extensivamente em aplicações de micro-ondas. É uma unidade de decibel absoluto e pode ser definida como decibéis referidos a 1 W:
 
-\[ \text{Nível de potência (dBW)} = 10 \log \left( \frac{\text{potência (W)}}{1 \text{W}} \right) \]
+$$\text{Nível de potência (dBW)} = 10 \log \left( \frac{\text{potência (W)}}{1 \text{W}} \right)$$
 
 Lembre-se das seguintes relações:
 
-\[ +30 \text{dBm} = 0 \text{dBW} \]  
+$$+30 \text{dBm} = 0 \text{dBW}$$  
 \[ -30 \text{dBW} = 0 \text{dBm} \]
 
 Considere esta rede:
@@ -56,13 +56,13 @@ Sua saída em dBW é +20 dBW. Lembre-se de que o ganho da rede é 20 dB ou 100. 
 
 A unidade absoluta de decibel dBmV é amplamente usada na transmissão de vídeo. Um nível de voltagem pode ser expresso em decibéis acima ou abaixo de 1 mV através de 75 Ω, o que é dito ser o nível em decibel-milivolts ou dBmV. Em outras palavras,
 
-\[ \text{Nível de voltagem (dBmV)} = 20 \log_{10} \left( \frac{\text{voltagem (mV)}}{1 \text{mV}} \right) \]
+$$\text{Nível de voltagem (dBmV)} = 20 \log_{10} \left( \frac{\text{voltagem (mV)}}{1 \text{mV}} \right)$$
 
 #### 1.5 O Neper
 
 Uma unidade de transmissão usada em alguns países do norte da Europa como alternativa ao decibel é o neper (Np). Para converter decibéis em nepers, multiplique o número de decibéis por 0.1151. Para converter nepers em decibéis, multiplique o número de nepers por 8.686. Matematicamente,
 
-\[ N_p = \frac{1}{2} \log_e \left( \frac{P2}{P1} \right) \]
+$$N_p = \frac{1}{2} \log_e \left( \frac{P2}{P1} \right)$$
 
 #### 1.6 Adição de Níveis de Potência em dB (dBm/dBW ou Unidades Logarítmicas Absolutas Similares)
 
@@ -74,15 +74,15 @@ Figura 1.1 é uma curva para determinar diretamente o nível em unidades de deci
 
 Como exemplo, vamos adicionar dois níveis de potência, 10 dBm e 6.0 dBm. A diferença entre eles é 4 dB. Marque esse valor na escala horizontal (a abcissa) na curva. Projete o ponto para cima até onde ele intersecta a curva de "adição" (a curva superior). Tome o número correspondente à direita e adicione-o ao nível maior.
 
-\[ 10 \text{dBm} + 1.45 \text{dB(m)} = 11.45 \text{dBm} \]
+$$10 \text{dBm} + 1.45 \text{dB(m)} = 11.45 \text{dBm}$$
 
 Suponha que subtraiamos o sinal de 6.0 dBm do sinal de 10 dBm. Novamente a diferença é 4 dB. Marque esse valor na escala horizontal como antes. Projete o ponto para cima até onde ele encontra a curva de "subtração" (a curva inferior). Tome o número correspondente e subtraia-o do nível maior. Assim,
 
-\[ 10 \text{dBm} - 2.3 \text{dB(m)} = 7.7 \text{dBm} \]
+$$10 \text{dBm} - 2.3 \text{dB(m)} = 7.7 \text{dBm}$$
 
 Quando é necessário adicionar níveis absolutos iguais expressos em decibéis, adicione 10 log (o número de potências iguais) ao valor de nível. Por exemplo, adicione quatro sinais de +10 dBm cada um:
 
-\[ 10 \text{dBm} + 10 \log 4 = 10 \text{dBm} + 6 \text{dB} = +16 \text{dBm} \]
+$$10 \text{dBm} + 10 \log 4 = 10 \text{dBm} + 6 \text{dB} = +16 \text{dBm}$$
 
 #### 1.7 Distribuição Normal – Desvio Padrão
 
@@ -94,7 +94,7 @@ A dispersão é a variação, dispersão dos dados, ou a falta de tendência par
 
 O desvio padrão é a raiz quadrada média ($rms$) dos desvios da média aritmética e é expresso pela pequena letra grega sigma ($\sigma$):
 
-\[ \sigma = \sqrt{\frac{\sum (X' - \bar{X})^2}{N}} \]
+$$\sigma = \sqrt{\frac{\sum (X' - \bar{X})^2}{N}}$$
 
 onde $X'$ = desvios da média aritmética ($X - \bar{X}$), e $N$ = número total de itens.
 
@@ -157,7 +157,7 @@ Os níveis do sistema geralmente são obtidos de uma tabela de níveis ou desenh
 
 Outros pontos podem ser mostrados usando a unidade dBr (referência de dB). Um sinal negativo indica que o nível está abaixo da referência e um sinal positivo indica que o nível está acima da referência. A unidade dBm0 é uma unidade de potência absoluta em dBm referida ao TLP 0. dBm pode ser relacionado a dBr e dBm0 pela fórmula:
 
-\[ dBm = dBm0 + dBr \]
+$$dBm = dBm0 + dBr$$
 
 Por exemplo, um valor de -32 dBm em um ponto de -22 dBr corresponde a um nível de referência de -10 dBm0. Um sinal
 
@@ -198,34 +198,34 @@ Cada elemento do equipamento e o meio de transmissão contribuem para o ruído t
 
 O ruído térmico é uma expressão geral que se refere ao ruído baseado em agitação térmica. O termo "ruído branco" refere-se à distribuição espectral uniforme de energia em relação à frequência. O ruído térmico é diretamente proporcional à largura de banda e à temperatura. A quantidade de ruído térmico a ser encontrada em 1 Hz de largura de banda em um dispositivo real é:
 
-\[ P_n = kT \]
+$$P_n = kT$$
 
 onde k = constante de Boltzmann \(1.3803 \times 10^{-23}\) J/K  
 T = temperatura absoluta (K) do ruído térmico.
 
 A uma temperatura ambiente de 17°C ou 290K,
 
-\[ P_n = 4.00 \times 10^{-21} \text{W/Hz de largura de banda} = -204 \text{ dBW/Hz de largura de banda} = -174 \text{ dBm/Hz de largura de banda} \]
+$$P_n = 4.00 \times 10^{-21} \text{W/Hz de largura de banda} = -204 \text{ dBW/Hz de largura de banda} = -174 \text{ dBm/Hz de largura de banda}$$
 
 Para um sistema limitado por banda, ou seja, um sistema com uma largura de banda específica,
 
-\[ P_n = kTB \]
+$$P_n = kTB$$
 
 onde B refere-se à largura de banda (Hz). A 0K,
 
-\[ P_n = -228.6 \text{ dBW/Hz de largura de banda} \]
+$$P_n = -228.6 \text{ dBW/Hz de largura de banda}$$
 
 Para um sistema limitado por banda,
 
-\[ P_n = -228.6 \text{ dBW} + 10 \log T + 10 \log B \]
+$$P_n = -228.6 \text{ dBW} + 10 \log T + 10 \log B$$
 
 **Exemplo 1:** Dado um receptor com uma temperatura de ruído efetiva de 100K e uma largura de banda de 10 MHz, qual nível de ruído térmico devemos esperar na saída?
 
-\[ P_n = -228.6 \text{ dBW} + 10 \log 1 \times 10^2 + 10 \log 1 \times 10^7 = -228.6 + 20 + 70 = -138.6 \text{ dBW} \]
+$$P_n = -228.6 \text{ dBW} + 10 \log 1 \times 10^2 + 10 \log 1 \times 10^7 = -228.6 + 20 + 70 = -138.6 \text{ dBW}$$
 
 **Exemplo 2:** Dado um amplificador com uma temperatura de ruído efetiva de 10,000K e uma largura de banda de 10 MHz, qual nível de ruído térmico devemos esperar na saída?
 
-\[ P_n = -228.6 \text{ dBW} + 10 \log 1 \times 10^4 + 10 \log 1 \times 10^7 = -228.6 + 40 + 70 = -118.6 \text{ dBW} \]
+$$P_n = -228.6 \text{ dBW} + 10 \log 1 \times 10^4 + 10 \log 1 \times 10^7 = -228.6 + 40 + 70 = -118.6 \text{ dBW}$$
 
 A partir dos exemplos, pode-se ver que há pouca relação direta entre a temperatura física e a temperatura de ruído efetiva.
 
@@ -338,6 +338,3 @@ O campo das telecomunicações está em constante evolução, com novas tecnolog
 
 Freeman, Roger L. *Telecommunication Transmission Handbook*. John Wiley & Sons, Inc., 1981.
 
----
-
-Aqui está o texto completo em uma forma contínua. Vou agora criar os arquivos em .docx, .md e LaTeX.
