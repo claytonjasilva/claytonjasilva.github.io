@@ -334,6 +334,130 @@ O campo das telecomunicações está em constante evolução, com novas tecnolog
 - **Comunicações por satélite:** Novos satélites de órbita baixa estão sendo desenvolvidos para fornecer internet de alta velocidade em áreas remotas.
 - **Redes definidas por software (SDN) e virtualização de funções de rede (NFV):** Permitem a criação de redes mais flexíveis e eficientes através da virtualização e do controle baseado em software.
 
+### Capítulo 2: Transmissão Telefônica (continuação)
+
+#### 2.5 O Equivalente de Referência (continuação)
+
+##### 2.5.1 Definição (continuação)
+
+Vamos ver como o sistema de equivalente de referência foi desenvolvido, lembrando que é uma medida subjetiva que lida com as preferências e aversões do ser humano "médio". O desenvolvimento ocorreu na Europa. Um padrão para equivalente de referência é determinado usando uma equipe de pessoal qualificado em um laboratório. Uma conexão telefônica foi estabelecida no laboratório que era considerada o sistema telefônico mais eficiente conhecido. O sistema de referência original ou único mestre consistia do seguinte:
+
+- Um transmissor telefônico de fundo sólido
+- Um receptor telefônico Bell
+- Interconectando esses, um laço de assinante de "perda zero de decibéis"
+- Conectando o laço, uma central manual, bateria central, comutador de 22 V DC
+
+A equipe de teste, para evitar ambiguidades de linguagem, usou uma linguagem de teste que consistia em logatomos. Um logatomo é uma palavra monossilábica composta por uma consoante, uma vogal e outra consoante.
+
+Atualmente, métodos de medição mais precisos foram desenvolvidos. Um sistema de referência mais moderno está agora disponível no laboratório da UIT em Genebra, Suíça, chamado de NOSFER. A partir dessa referência mestre, testes de campo estão disponíveis para empresas de telefonia, administrações e indústria para estabelecer o equivalente de referência de subsets telefônicos em uso. Esses testes de campo são equivalentes ao NOSFER.
+
+O NOSFER é composto por um transmissor, receptor e rede telefônicos padrão. O equivalente de referência de um subset de assinante, juntamente com a linha de assinante associada e a ponte de alimentação, é uma quantidade obtida equilibrando o volume dos sinais de fala recebidos e é expressa em relação ao todo ou a uma parte correspondente do sistema de referência NOSFER (ou de campo).
+
+##### 2.5.2 Aplicação
+
+Essencialmente, conforme mencionado anteriormente, testes de tipo são realizados em subsets de assinante ou nos subsets mais um comprimento fixo de laço de assinante de características conhecidas. Esses são testes subjetivos realizados em um laboratório para estabelecer o equivalente de referência de um subset específico em comparação com um padrão de referência. O microfone ou transmissor e o fone ou receptor são classificados separadamente e chamados, respectivamente, de SLR (nível de referência do transmissor) e RLR (nível de referência do receptor).
+
+#### 2.6 Limites de Sinalização de Laço Telefônico
+
+Os limites de sinalização são uma função da condutividade do cabo e do diâmetro ou calibre do condutor. Para esta discussão introdutória, podemos considerar que os limites de transmissão são controlados pelos mesmos parâmetros.
+
+Considere um condutor de cobre. Quanto maior o condutor, maior a condutividade e, portanto, maior pode ser o comprimento do laço para os fins de sinalização. O cobre é caro, então não podemos fazer o condutor tão grande quanto gostaríamos e estender laços de assinante por longas distâncias. Esses limites econômicos do comprimento do laço são discutidos em detalhes a seguir.
+
+Primeiro, devemos descrever o que um assinante considera ouvir suficientemente bem, o que é incorporado no "projeto de transmissão" (regulando o laço do assinante).
+
+Vamos agora prosseguir com o próximo conjunto de páginas.
+
+### Capítulo 2: Transmissão Telefônica
+
+#### 2.1 Geral
+
+A Seção 1.8 introduziu a conexão telefônica simples. Este capítulo explora mais profundamente a telefonia e os problemas de transmissão telefônica. Trata exclusivamente da transmissão de fala por sistemas de fios. Outros meios de transmissão são tratados apenas no abstrato, para que possamos considerar problemas nas redes telefônicas. O laço do assinante, um segmento importante da rede telefônica, também é abordado aqui.
+
+#### 2.2 O Instrumento Telefônico
+
+O dispositivo de entrada-saída (I/O) que fornece a interface humana com a rede telefônica é o instrumento telefônico ou subset. Ele converte energia sonora em energia elétrica, e vice-versa. O grau de eficiência e fidelidade com que ele desempenha essas funções tem um efeito vital na qualidade do serviço telefônico oferecido. O subset telefônico moderno consiste em um transmissor (microfone), um receptor (auricular) e uma rede elétrica para equalização, circuitos laterais e dispositivos para sinalização e supervisão. Todos esses itens estão contidos em um dispositivo que, quando produzido em massa, é vendido por cerca de US$ 40.
+
+Vamos discutir os transmissores e receptores por um momento.
+
+##### 2.2.1 Transmissores
+
+O transmissor converte energia acústica em energia elétrica por meio de um transmissor de grânulos de carbono. O transmissor requer uma potencial DC, geralmente na ordem de 3-5 V, através de seus eletrodos. Chamamos isso de bateria de conversa, e em sistemas modernos ela é fornecida pela linha (bateria central) a partir do comutador. A corrente da bateria flui através dos grânulos de carbono ou grãos quando o telefone é retirado do gancho. Quando o som atinge o diafragma do transmissor, as variações de pressão do ar são transferidas para o carbono, e a resistência do caminho elétrico através do carbono muda proporcionalmente à pressão. Resulta uma corrente pulsante direta. A resposta de frequência dos transmissores de carbono atinge picos entre 800 e 1000 Hz.
+
+##### 2.2.2 Receptores
+
+Um receptor típico consiste em um diafragma de material magnético, frequentemente uma liga de ferro macio, colocado em um campo magnético constante fornecido por um ímã permanente e um campo magnético variável, causado pelas correntes de voz que fluem pelas bobinas de voz. Tais correntes de voz são alternadas (AC) por natureza e se originam no transmissor telefônico distante. Essas correntes fazem com que o campo magnético do receptor aumente e diminua alternadamente, fazendo com que o diafragma se mova e responda às variações de pressão acústica. Como resultado, uma onda de pressão acústica é configurada, reproduzindo, mais ou menos exatamente, a onda sonora original do transmissor telefônico distante. O receptor telefônico, como um conversor de energia elétrica para energia acústica, tem uma eficiência comparativamente baixa, na ordem de 2-3%.
+
+O tom lateral é o som da voz do falante ouvido em seu próprio fone. O nível do tom lateral deve ser controlado. Quando o nível é alto, a reação humana natural é fazer com que o falante abaixe a voz. Assim, ao regular o tom lateral, os níveis de fala podem ser regulados. Se muito tom lateral for alimentado de volta ao receptor, o nível de saída do transmissor é reduzido devido ao falante abaixar a voz, reduzindo assim o nível (volume da voz) no receptor distante, deteriorando o desempenho.
+
+#### 2.3 O Laço Telefônico
+
+Falamos do assinante telefônico como o usuário do subset. Como mencionado na Seção 1.8, os sets telefônicos dos assinantes são interconectados através de uma rede de comutadores. O serviço telefônico comercial atual prevê a transmissão e recepção no mesmo par de fios que conecta o assinante ao comutador local. Vamos agora definir alguns termos.
+
+O par de fios que conecta o assinante ao comutador local que o serve é o laço do assinante. É um laço DC no qual é um par de fios que fornece um caminho metálico para o seguinte:
+
+1. Bateria de conversa para o transmissor telefônico.
+2. Uma voltagem de toque AC para o sino do instrumento telefônico, fornecida por uma fonte de toque especial.
+3. Corrente para fluir através do laço quando o instrumento telefônico é retirado do gancho, indicando ao comutador que ele requer "acesso" e causando a ocupação da linha no centro de comutação.
+4. O disco telefônico que, quando operado, faz e quebra a corrente DC no laço fechado, indicando ao equipamento de comutação o número do telefone distante com o qual a comunicação é desejada.
+
+O laço do assinante típico é alimentado por bateria através de um circuito de alimentação de bateria no comutador. Tal circuito é mostrado na Figura 2.1. Um aspecto importante da alimentação de bateria é o equilíbrio da linha. A voltagem da bateria telefônica tem sido bastante padronizada em -48 V.
+
+A Figura 2.2 mostra os elementos funcionais de um laço de assinante, terminação de comutador local e subset de assinante.
+
+#### 2.4 Limites de Comprimento do Laço Telefônico
+
+Do ponto de vista econômico, é desejável permitir comprimentos de laço de assinante tão longos quanto possível. Assim, a área do assinante atendida por um único centro de comutação pode ser muito maior. Como consequência, o número total de comutadores ou centrais telefônicas pode ser reduzido ao mínimo. Por exemplo, se os laços fossem limitados a 4 km de comprimento, um centro de comutação poderia atender todos os assinantes dentro de um raio de algo menos que 4 km. Se 10 km fosse o comprimento máximo do laço, o raio de uma área equivalente que uma única central poderia cobrir seria estendido em mais 6 km, totalizando quase 10 km. É evidente que, para atender uma área maior, menos comutadores (centros de comutação) são necessários para a situação de 10 km do que para a de 4 km. O resultado é menos edifícios, menos terrenos a serem adquiridos, menos locais onde a manutenção é necessária, e todos os benefícios decorrentes de uma maior centralização, que se tornam ainda mais evidentes à medida que a densidade de assinantes diminui, como em áreas rurais.
+
+Os dois critérios básicos que devem ser considerados ao projetar laços de assinante e que limitam seu comprimento são os seguintes:
+
+1. Limites de atenuação (cobertos sob o que chamamos de **projeto de transmissão**).
+2. Limites de sinalização (cobertos sob o que chamamos de **projeto de resistência**).
+
+A atenuação, neste caso, refere-se à perda do laço em decibéis (ou nepers) em:
+
+- 1000 Hz na América do Norte
+- 800 Hz na Europa e em muitas outras partes do mundo
+
+#### 2.5 O Equivalente de Referência
+
+##### 2.5.1 Definição
+
+Ouvir "suficientemente bem" em uma conexão telefônica é um assunto subjetivo sob a rubrica geral de satisfação do cliente. Vários métodos foram desenvolvidos ao longo dos anos para classificar as conexões telefônicas em relação à satisfação do cliente (assinante). A satisfação do assinante será afetada pelos seguintes fatores em relação ao sinal telefônico recebido:
+
+- Nível (veja a Seção 1.9.5)
+- Relação sinal-ruído (veja a Seção 1.10)
+- Resposta ou característica de atenuação de frequência (veja a Seção 1.9.3)
+
+Um sistema comum de classificação em uso hoje para medir a satisfação do cliente é o sistema de equivalente de referência. Este sistema considera apenas o primeiro critério mencionado acima, ou seja, o nível. Deve-se enfatizar que a satisfação do assinante é subjetiva. Para medir a satisfação, a União Internacional de Telecomunicações, o órgão regulador mundial para telecomunicações, desenvolveu um sistema de classificação de nível suficiente para "satisfazer", usando o decibel familiar como a unidade de medida. É particularmente conveniente, nesse caso, desconsiderar essencialmente o subset telefônico do assinante, as perdas e os ganhos (medidos a 800 Hz) na rede interveniente de ponta a ponta, e determinar o equivalente de referência de um circuito ao adicionar essa soma a um decibel atribuído ao subset, ou a um subset mais um laço de assinante fixo com o calibre do fio indicado
+
+Vamos ver como o sistema de equivalente de referência foi desenvolvido, lembrando que é uma medida subjetiva que lida com as preferências e aversões do ser humano "médio". O desenvolvimento ocorreu na Europa. Um padrão para equivalente de referência é determinado usando uma equipe de pessoal qualificado em um laboratório. Uma conexão telefônica foi estabelecida no laboratório que era considerada o sistema telefônico mais eficiente conhecido. O sistema de referência original ou único mestre consistia do seguinte:
+
+- Um transmissor telefônico de fundo sólido
+- Um receptor telefônico Bell
+- Interconectando esses, um laço de assinante de "perda zero de decibéis"
+- Conectando o laço, uma central manual, bateria central, comutador de 22 V DC
+
+A equipe de teste, para evitar ambiguidades de linguagem, usou uma linguagem de teste que consistia em logatomos. Um logatomo é uma palavra monossilábica composta por uma consoante, uma vogal e outra consoante.
+
+Atualmente, métodos de medição mais precisos foram desenvolvidos. Um sistema de referência mais moderno está agora disponível no laboratório da UIT em Genebra, Suíça, chamado de NOSFER. A partir dessa referência mestre, testes de campo estão disponíveis para empresas de telefonia, administrações e indústria para estabelecer o equivalente de referência de subsets telefônicos em uso. Esses testes de campo são equivalentes ao NOSFER.
+
+O NOSFER é composto por um transmissor, receptor e rede telefônicos padrão. O equivalente de referência de um subset de assinante, juntamente com a linha de assinante associada e a ponte de alimentação, é uma quantidade obtida equilibrando o volume dos sinais de fala recebidos e é expressa em relação ao todo ou a uma parte correspondente do sistema de referência NOSFER (ou de campo).
+
+##### 2.5.2 Aplicação
+
+Essencialmente, conforme mencionado anteriormente, testes de tipo são realizados em subsets de assinante ou nos subsets mais um comprimento fixo de laço de assinante de características conhecidas. Esses são testes subjetivos realizados em um laboratório para estabelecer o equivalente de referência de um subset específico em comparação com um padrão de referência. O microfone ou transmissor e o fone ou receptor são classificados separadamente e chamados, respectivamente, de SLR (nível de referência do transmissor) e RLR (nível de referência do receptor).
+
+#### 2.6 Limites de Sinalização de Laço Telefônico
+
+Os limites de sinalização são uma função da condutividade do cabo e do diâmetro ou calibre do condutor. Para esta discussão introdutória, podemos considerar que os limites de transmissão são controlados pelos mesmos parâmetros.
+
+Considere um condutor de cobre. Quanto maior o condutor, maior a condutividade e, portanto, maior pode ser o comprimento do laço para os fins de sinalização. O cobre é caro, então não podemos fazer o condutor tão grande quanto gostaríamos e estender laços de assinante por longas distâncias. Esses limites econômicos do comprimento do laço são discutidos em detalhes a seguir.
+
+Primeiro, devemos descrever o que um assinante considera ouvir suficientemente bem, o que é incorporado no "projeto de transmissão" (regulando o laço do assinante).
+
+Vamos agora prosseguir com o próximo conjunto de páginas.
+
+
 ### Referência à Fonte
 
 Freeman, Roger L. *Telecommunication Transmission Handbook*. John Wiley & Sons, Inc., 1981.
