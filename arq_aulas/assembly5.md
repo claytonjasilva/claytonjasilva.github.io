@@ -10,7 +10,7 @@ Sintaxe:`BRMI k, onde -64 ≤ k ≤ +63`
 
 a. Execute uma operação de ler uma tabela, com 64 linhas, de dados, armazenada a partir de 0x200.  
 b. Em seguida, conte quantos números da tabela são inferiores a 50, armazenando o resultado no endereço após a tabela.  
-[Uma proposta de solução](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/arq_aulas/assembly8.asm)   
+[Uma proposta de solução](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/arq_aulas/assembly9.asm)   
 
 ## *Assembler* do Atmega2560
 1. Diretiva `.def`
