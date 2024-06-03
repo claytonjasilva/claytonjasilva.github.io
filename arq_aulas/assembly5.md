@@ -1,6 +1,6 @@
 # Assembly Atmega2560
 
-### Instruções básicas
+### Novas instruções
 - BRLO k: Desvia se menor  
 Sintaxe:`BRLO k, onde -64 ≤ k ≤ +63`
 - BRMI k: Desvia se negativo
@@ -11,21 +11,6 @@ Sintaxe:`BRMI k, onde -64 ≤ k ≤ +63`
 a. Execute uma operação de ler uma tabela, com 64 linhas, de dados, armazenada a partir de 0x200.  
 b. Em seguida, conte quantos números da tabela são inferiores a 50, armazenando o resultado no endereço após a tabela.  
 [Uma proposta de solução](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/arq_aulas/assembly7.asm)   
-
-#### Exercicio 2. Implementar um código em linguagem de montagem ('assembly') para o montador ('assembler') do microcontrolador Atmega2560 que:
-
-a. Armazenar dois números em memória, nos endereços 0x200 e 0x201. Definir arbitrariamente os números.  
-b. Se os números forem iguais armazenar a soma no endereço 0x202.  
-c. Se os números forem diferentes armazenar a diferença no endereço 0x203.  
-[Uma proposta de solução](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/arq_aulas/assembly8.asm)   
-
-## Novas instruções
-- LD: Carrega indiretamente registrador  
-Sintaxe: `LD Rr,Y, onde 0 ≤ r ≤ 31`   
-Operação: Armazena o conteúdo do endereço de memória Y (r29,r28) no registrador Rr
-- DEC: Decrementa o registrador  
-Sintaxe: `DEC Rr, onde 0 ≤ r ≤ 31`   
-Operação: Decrementa o registrador Rr em 1
 
 ## *Assembler* do Atmega2560
 1. Diretiva `.def`
