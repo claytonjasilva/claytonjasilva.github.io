@@ -1,11 +1,15 @@
 # Assembly Atmega2560
 
+### Instruções básicas
+- BRLO k: Desvia se menor  
+Sintaxe:`BRLO k, onde -64 ≤ k ≤ +63`
+- BRMI k: Desvia se negativo
+Sintaxe:`BRMI k, onde -64 ≤ k ≤ +63`
+
 #### Exercicio 1. Implementar um código em linguagem de montagem ('assembly') para o montador ('assembler') do microcontrolador Atmega2560 que:
 
-a. Armazene inicialmente os 20 impares acima de 100 nos endereços de memória acima de 0x200, construindo uma tabela de dados.  
-b. Em seguida, leia sequencialmente cada um dos números armazenados na tabela, armazenando também em sequência o par imediatamente inferior ao número lido
-em uma nova tabela iniciada a contar do endereço após a última linha da tabela anterior.  
-c. Armazenar, por último: o endereço inicial da primeira tabela; e o tamanho (número de linhas) de cada tabela.  
+a. Execute uma operação de ler uma tabela, com 64 linhas, de dados, armazenada a partir de 0x200.  
+b. Em seguida, conte quantos números da tabela são inferiores a 50, armazenando o resultado no endereço após a tabela.  
 [Uma proposta de solução](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/arq_aulas/assembly7.asm)   
 
 #### Exercicio 2. Implementar um código em linguagem de montagem ('assembly') para o montador ('assembler') do microcontrolador Atmega2560 que:
