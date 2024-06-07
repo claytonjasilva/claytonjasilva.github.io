@@ -36,7 +36,7 @@
 ## Avaliações
 ### Avaliações Bimestrais
 1. [Trabalho AP1 - Revisão 2](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/arq_aulas/TRABALHO_AP1_IBMEC_RJ_rev1.pdf) **Data da apresentação da solução: semana de 22 a 26 abr, durante a aula**     
-2. **Trabalho AP2 - a ser definida oportunamente**
+2. [Trabalho AP2](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/arq_aulas/TRABALHO_AP2_IBMEC_RJ.pdf)   
 
 ### Avaliação Continuada
 Os instrumentos de avaliação continuada srão disponibilizados à medida que as aulas forem ministradas.  
