@@ -33,9 +33,8 @@
 2. [Form 2 - Conceitos iniciais 2](https://forms.gle/1GhH2D8BBrqiVcTk7)
 3. [Form 3 - Elementos dos sistemas de comunicações](https://forms.gle/iDFFVyrQGzXw1wCr8)
 4. [Form 4 - Codificadores de fonte e do canal](https://forms.gle/eyxJZwbHcLCFD9sUA)
-5. [Form 5 - A definir]()
+5. [Form 5 - O canal móvel de comunicações](https://forms.gle/HC3KGsPAts4S2DRS6)
 6. [Form 6 - A definir]()
-7. [Form 7 - A definir]()
 
 ### Avaliações Bimestrais
 1. **[AP1 - Trabalho - A definir]()**
