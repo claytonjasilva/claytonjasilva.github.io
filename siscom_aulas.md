@@ -12,7 +12,7 @@
 1. [Nota Capítulo 1 - Sinais e modelo dos sistemas de comunicações](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/siscom_aulas/Capitulo1.pdf) Lista para auto-avaliação: [Lista capítulo1](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/siscom_aulas/Lista1_auto_avaliacao.md)
 2. [Nota Capítulo 2 - Modulação em sistemas de comunicações móveis](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/siscom_aulas/Capitulo2.pdf) Lista para auto-avaliação: [Lista capítulo2](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/siscom_aulas/Lista2_auto_avaliacao.md)
 3. [Nota Capítulo 3 - Codificadores de fonte e de canal](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/siscom_aulas/Capitulo3.pdf) Lista para auto-avaliação: [Lista capítulo3](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/siscom_aulas/Lista3_auto_avaliacao.md)
-4. [Nota Capítulo 4 - O canal móvel de comunicações](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/siscom_aulas/Capitulo4.pdf) Lista para auto-avaliação: [Lista capítulo4]()
+4. [Nota Capítulo 4 - O canal móvel de comunicações](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/siscom_aulas/Capitulo4.pdf) Lista para auto-avaliação: [Lista capítulo4](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/siscom_aulas/Lista4_auto_avaliacao.md)
 
 ## Simulador
 ### Representação e digitalização do sinal de voz
