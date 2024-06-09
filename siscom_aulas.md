@@ -32,7 +32,7 @@
 1. [Form 1 - Conceitos iniciais 1](https://forms.gle/h9jn2EuZZ7wEPDvb7)
 2. [Form 2 - Conceitos iniciais 2](https://forms.gle/1GhH2D8BBrqiVcTk7)
 3. [Form 3 - Elementos dos sistemas de comunicações](https://forms.gle/iDFFVyrQGzXw1wCr8)
-4. [Form 4 - A definir]()
+4. [Form 4 - Codificadores de fonte e do canal](https://forms.gle/eyxJZwbHcLCFD9sUA)
 5. [Form 5 - A definir]()
 6. [Form 6 - A definir]()
 7. [Form 7 - A definir]()
