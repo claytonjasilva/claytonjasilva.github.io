@@ -23,13 +23,13 @@ Convém lembrar que para medir capacidade de armazenamento de memórias é comum
 
 ### 1.2.1 Representação de grandezas numéricas
 
-As grandezas numéricas são utilizadas para quantificar os fenômenos observados na natureza. Para a engenharia a dimensão dos fenômenos normalmente é definida pela **grandeza numérica** seguida por uma **unidade de medida**.    
+As grandezas numéricas são utilizadas para quantificar os fenômenos observados na natureza. Para a engenharia a dimensão dos fenômenos normalmente é definida pela **grandeza numérica** seguida por uma **unidade de medida**.
 
 A representação da grandeza numérica consagrada historicamente foi a representação que emprega 10 **dígitos numéricos**, definidos pelo **conjunto ordenado** B<sub>10</sub> = {0, 1, 2 , 3, 4, 5 , 6, 7, 8, 9}. A esse sistema de representação numérica dá-se o nome de **sistema decimal**.  
 
 Por conjunto ordenado entende-se como aquele conjunto cujos elementos possuem um valor relativo entre eles. No caso do sistema decimal, o dígito *8* é superior aos dígitos *7*, *6*, ...*0*, assim por diante.  
 
-Nos sistemas computacionais, como discutiremos com maiores detalhes no decorrer da disciplina, são particularmente importantes os sistemas de **base 2 (binário)** e o sistema de **base 16 (hexadecimal)**. 
+Nos sistemas computacionais, como discutiremos com maiores detalhes no decorrer da disciplina, são particularmente importantes os sistemas de **base 2 (binário)** e o sistema de **base 16 (hexadecimal)**.
 
 **BASE 2**
 
@@ -39,18 +39,21 @@ Nos sistemas computacionais, como discutiremos com maiores detalhes no decorrer 
 |  16  | B<sub>16</sub> = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, A, B, C, D, E, F} |
 
 Independentemente da base, as grandezas numéricas podem ser representadas de acordo com duas notações:  
+
 - Notação **posicional** ou
 - Notação **polinomial**
 
 #### a. Notação posicional  
+
 Na notação posicional, a posição relativa do dígito na representação do número determina o valor que possui na grandeza numérica. Pode-se generalizar essa representação de um número com M dígitos por:   
 
 $$ N_b = d_{(m-1)}d_{(m-2)}...d_0 $$
 
-, onde   
-- *N* é a grandeza,   
-- *b* é a base,   
-- *m* é o número de dígitos usados na representação.   
+, onde
+
+- *N* é a grandeza,
+- *b* é a base,
+- *m* é o número de dígitos usados na representação.
 
 Os índices *0* a *m-1* representam a posição relativa do dígito na grandeza.  
 
