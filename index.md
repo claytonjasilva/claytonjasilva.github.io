@@ -16,6 +16,11 @@
   1. [Notas sobre Python](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/progPython.md)
   2. [Notas sobre C](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/progC_aulas.md)
   
+#### IDE
+
+* [Replit](https://replit.com/): *Home Page* da IDE *online* para várias linguagens, como Python, C e C++.  
+* [Visual Studio Code](https://code.visualstudio.com/): *Home Page* do editor de código, que admite *plugins* para várias linguagens, como C, C++ e Python.
+
 ### Arduíno 2560
 
   1. [Notas sobre Arduíno MEGA 2560](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/arduino.md)
@@ -33,8 +38,6 @@ hardware, software (*download* da IDE) e documentação (inclusive a referência
 muito útil para encaminhar os primeiros passos sobre circuitos digitais.   
     - [Microchip Studio for AVR and SAM devices](https://www.microchip.com/en-us/tools-resources/develop/microchip-studio): IDE para 'debugar' aplicações baseadas nos produtos da AVR, incluindo o microcontrolador ATmega 2560, utilizado nas disciplinas de Arquitetura de Computadores, Sistemas Digitais e atividades extra classe
     - [Octave](https://octave.org/): *Home Page* da linguagem Octave, excelente alternativa *open source* ao MatLab para desenvolvimento de soluções a problemas científicos, incluindo simulação. Linguagem interpretada, disponível para várias plataformas de Sistema Operacional.  
-    - [Replit](https://replit.com/): *Home Page* da IDE *online* para várias linguagens, como Python, C e C++.  
-    - [Visual Studio Code](https://code.visualstudio.com/): *Home Page* do editor de código, que admite *plugins* para várias linguagens, como C, C++ e Python. 
 
 
 ## Projetos
