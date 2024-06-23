@@ -15,11 +15,7 @@
 
   1. [Notas sobre Python](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/progPython.md)
   2. [Notas sobre C](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/progC_aulas.md)
-  3. Referências na Internet:  
-    [Eclipse IDE](https://www.eclipse.org/downloads/)  
-    [C: como programar](https://plataforma.bvirtual.com.br/Leitor/Publicacao/2660/pdf/0)  
-    [IME-USP](https://www.ime.usp.br/~pf/algoritmos/index.html)  
-
+  
 ### Arduíno 2560
 
   1. [Notas sobre Arduíno MEGA 2560](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/arduino.md)
