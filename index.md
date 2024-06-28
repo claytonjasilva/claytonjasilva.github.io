@@ -16,7 +16,7 @@
   1. [Notas sobre Python](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/progPython.md)
   2. [Notas sobre C](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/progC_aulas.md)
 
-  AS PROGRAMAÇÃO ESTRUTURADA - PROFESSOR VICTOR SILVA - [CADERNO DE RESPOSTAS](https://forms.gle/ujVpPUeg4L5FyrSH8)
+  AS PROGRAMAÇÃO ESTRUTURADA - PROFESSOR VICTOR SILVA - [CADERNO DE RESPOSTAS](https://forms.gle/ak5pLy42XcH8GEvs8)
   
 #### IDE
 
