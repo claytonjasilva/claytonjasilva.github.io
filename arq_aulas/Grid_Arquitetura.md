@@ -1,7 +1,7 @@
 # GRID DA DISCIPLINA 
 
 **CURSO: Engenharia da Computação**  
-**DISCIPLINA: Arquitetura de Computadores - 2024.1**  
+**DISCIPLINA: Arquitetura de Computadores - 2024.2**  
 **PROFESSOR: Clayton Jones Alves da Silva, MSc**
 
 ## I - OBJETIVOS 
@@ -10,7 +10,7 @@
 2. Projetar e implementar circuitos digitais combinacionais básicos, lógicos e aritméticos, aplicando testes com simuladores e de bancada, para produção de sistemas computacionais. 
 3. Desenvolver programas no nível (ISA) em linguagem de montagem (*assembly*), aplicando o *set* de instruções de processadores e diretivas para *assembler* de microcontroladores/microprocessadores, gerando o código embarcado em plataformas computacionais. 
 4. Desenvolver programas básicos de rotinas de Sistemas Operacionais, utilizando linguagem C, para produção de rotinas típicas de gestão de arquivos, memória, dispositivos de entrada/saída e processos.  
-5. Projetar e implementar sistemas embarcados, baseados em microcontroladores, prototipando soluções em plataformas como *Arduíno* e *Raspbarry Py*, utilizando dispositivos de entrada/saída disponíveis no mercado.
+5. Projetar e implementar sistemas embarcados, baseados em microcontroladores, prototipando soluções na plataformas do *Arduíno*, utilizando dispositivos de entrada/saída disponíveis no mercado.
  
 ## II – CONTEÚDOS
 
