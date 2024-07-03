@@ -1,5 +1,5 @@
 # Conteúdo das Aulas  
-## Arquitetura de Computadores - 2024.1
+## Arquitetura de Computadores - 2024.2
 
 ## Tópicos
 1. [Dimensões, Unidades e Aritmética Computacional](arq_aulas/dimensoesUnidadesAritmeticaComputacional1.md)
