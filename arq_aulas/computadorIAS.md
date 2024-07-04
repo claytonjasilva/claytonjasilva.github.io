@@ -7,17 +7,19 @@ A ideia principal da máquina IAS, atribuída a von Neumann, é a do **conceito 
 O coonceito de programa armazenado consiste no armazenamento do programa a ser executado pela UCP em memória, juntamente com os dados. O processador busca as instruções e os dados do programa diretamente da memória. Instruções e dados estão armazenados em posições específicas inequívocas da memória, cada uma definida por um **endereço de memória**.
 
 ![Organização da máquina IAS](/arq_aulas/images/maquinaIAS.jpg)
- 
+
 A estrutura geral da máquina IAS consiste em:
+
 - Uma memória principal, que armazena dados e instruções  
 - Uma Unidade Lógica e Aritmética (ULA), capaz de realizar as operações matemáticas binárias e as operações lógicas  
 - Uma Unidade de Controle (UC), que interpreta e executa as instruções armazenadas na memória  
 - Dispositivos de entrada e saída (E/S) operados pela Unidade de Controle.
 
-## 3.2 Visão detalhada do computador IAS 
+## 3.2 Visão detalhada do computador IAS
+
 A figura abaixo ilustra a organiza detalhada do computador IAS.
 
-![Organizadação datalhada do computador IAS](/arq_aulas/images/maquinaIAS_detalhada.jpg)
+![Organização detalhada do computador IAS](/arq_aulas/images/maquinaIAS_detalhada.jpg)
 
 1. **Registrador Temporário da Memória** (MBR, *Memory Buffer Register*): capacidade de armazenar **40 bits** e contém uma palavra com um par de instruções a ser lida ou escrita na memória. Registradores são dispositivos de armazenamento de dados internos ao processador que possuem tipicamente baixo tempo de acesso (posteriormente discutiremos o conceito), embora baixa capacidade de armazenamento de bits.
 2. **Acumulador** (Acc) e **Quociente de Multiplicação** (MQ, *Multiplier Quotient*): capacidade de armazenar **40 bits** e **armazenam temporariamente** os operandos e o resultado das operações realizadas pelos circuitos lógicos e aritméticos da ULA. Em operações com mais de 40 bits, o Acc armazena os 40 bits mais significativos e o MQ armazena os 40 bits menos significativos.
@@ -31,7 +33,7 @@ A figura abaixo ilustra a organiza detalhada do computador IAS.
 
 A figura abaixo ilustra a relação da memória com os barramentos de dados e de endereços do computador IAS.
 
-![Relação da memória com os baramentos de dados e endereço do computador IAS](/arq_aulas/images/memoriaIAS.jpg)
+![Relação da memória com os barramentos de dados e endereço do computador IAS](/arq_aulas/images/memoriaIAS.jpg)
 
 Cada linha de dados aponta para uma palavra, que ocupa um endereço de memória.  
 Os endereços são inequívocos, ou seja, não existem dois endereços iguais.  
@@ -39,6 +41,7 @@ Os endereços são inequívocos, ou seja, não existem dois endereços iguais.
 ## 3.3. Visão detalhada das células de memória do computador IAS
 
 ### 3.3.1 Armazenamento de instruções
+
 Um par de instruções ocupa cada linha de endereço. A estrutura da linha é dada por
 
 ![Par de instruções em memória](/arq_aulas/images/instrucoes.jpg)
@@ -51,18 +54,21 @@ Nem toda instrução do processador da máquina IAS requer um operando. Nesse ca
 ![Estrutura das instruções em memória](/arq_aulas/images/instrucoes_estrutura.jpg)
 
 ### 3.3.2 Ciclo de instrução
+
 O programa consiste na execução das instruções armazenadas em memória.  
 As instruções são normalmente armazenadas em **posições de memória adjacentes** e **executadas sequencialmente**, a execução das instruções de um endereço é seguida da execução das instruções do endereço seguinte.  
 As instruções são executadas sincronizadamente. O **sincronismo** é dado pelos circuitos de controle.  
 Após a execução de cada instrução os registradores armazenam um valor. Os valores de cada elemento definem o **estado** da máquina.
 As etapas (microoperações) de execução de cada operação variam de acordo com cada instrução do programa.  
 O conjunto de microinstruções executadas define o chamado **ciclo de instrução**, que é composto por duas partes:
+
 - **Busca** do par de instruções
 - **Execução** das instruções
 
 ![Ciclo de instrução do computador IAS](/arq_aulas/images/ciclo_instrucao.jpg)
 
 O ciclo de instruções pode ser descrito por:
+
 1. Programa e dados armazenados em memória: conceito de programa armazenado
 2. PC contém o endereço da próxima palavra (par de instruções)
 3. Evento de controle - o endereço do par de instruções é carregado no MAR
@@ -84,16 +90,16 @@ O ciclo de instruções pode ser descrito por:
 19. O processo prossegue para decodificação da segunda instrução e busca do dado
 20. O par de instruções seguinte é buscado ...
 
-Veja o [**vídeo ilustrativo**](https://1drv.ms/v/s!AsTd8oN7mu8pkchLNfDytNnrgyqLpw?e=gwRYPz).
-
 ### 3.3.3 Instruções do processador IAS
-Todo processador psosui um *set* (conjunto) de instruções. O processador do computador IAS também possui o seu *set* de instruções.  
+
+Todo processador possui um *set* (conjunto) de instruções. O processador do computador IAS também possui o seu *set* de instruções.  
 As instruções podem ser classificadas como segue:
+
 - **Transferência de dados**: os dados são transferidos entre a memória e os registradores da CPU ou entre registradores.
 - **Desvio incondicional**: normalmente a UC executa as instruções em sequência na memória, que pode ser alterada pelo uso desse desvio independentemente de qualquer condição, quando a instrução é executada.
 - **Desvio condicional**: o desvio é executado dependendo de um teste de condição estabelecido pela instrução.
 - **Lógicas e aritméticas**, como adição, subtração, multiplicação e divisão binárias.
-- **Alteração de endereços**: instruções para calcular endereços para inseri-los em instruções armazenadas na memória, propiciando flexibilidade de endereçamento dos programas. 
+- **Alteração de endereços**: instruções para calcular endereços para inseri-los em instruções armazenadas na memória, propiciando flexibilidade de endereçamento dos programas.
 
 Os programas executados pelo processador (na **linguagem de máquina**) podem ser escritos por uma representação simbólica (*assembly*) utilizando-se menmônicos.  
 O código em linguagem de máquina, como tratamos, é todo constituído de sequência binária de instruções, ou seja, em sequência de bits.  
@@ -150,8 +156,3 @@ A figura apresenta como a tabela do *set* de instruções é normalmente apresen
 
 ___
 **[Home Conteúdo Arquitetura de Computadores](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/arq_aulas.md)**   
-
-
- 
-
-

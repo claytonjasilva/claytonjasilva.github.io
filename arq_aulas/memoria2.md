@@ -1,4 +1,4 @@
-## 5.3 Memória Principal ou Primária
+# 5.3 Memória Principal ou Primária
 
 A MP armazena programas e dados.  
 Os programas executados pela CPU contemplam um conjunto de instruções no nível do *set* de instruções do processador.  
@@ -13,18 +13,18 @@ cada uma das quais armazenando 0 ou 1, organizadas como uma matriz.
 Cada linha corresponderá a um endereço específico. Em cada linha estão armazenados os dados,
 cada um dos quais pode ser lido/escrito naquele endereço – naquela linha da matriz.   
 A MP contém *M* linhas de endereço de palavra de *N* bits.   
-Os endereços podem ser apontados na forma binária por 2<sup>L</sup>, onde *L* é o número de bits do endereço, tal que *2<sup>L</sup>=M*.   
-Em cada posição de endereço a MP armazena *N* bits. 
+Os endereços podem ser apontados na forma binária por 2<sup>L</sup>, onde *L* é o número de bits do endereço, tal que *2<sup>L</sup>=M*.  
+Em cada posição de endereço a MP armazena *N* bits.
 
 O funcionamento da memória e como são armazenados os bits pode ser melhor entendido se explorada a figura, 
 que apresenta a memória RAM do fabricante Motorola, que possui capacidade de armazenar 4096 bits ou seja 4kbits. 
 
 ![Exemplo de memória RAM - Motorola 4kbits](/arq_aulas/images/exemploram.jpg)
 
-Os pinos A0-A9 recebem os bits do barramento de endereço, portanto 10 linhas de bits, 
-sendo o menos significativo A0 e o mais significativo A9.   
+Os pinos A0-A9 recebem os bits do barramento de endereço, portanto 10 linhas de bits,
+sendo o menos significativo A0 e o mais significativo A9.
 Como o barramento de endereços entrega 10 bits, é possível armazenar em 2<sup>10</sup>, ou seja, 1024 posições distintas de memória, 
-na faixa 000H a 3FFH (hexadecimal).   
+na faixa 000H a 3FFH (hexadecimal).
 Os pinos I/O1-I/O4 recebem os bits do barramento de dados, ou seja, em cada posição de memória é possível ler/escrever uma palavra de 4 bits.  
 O pino $\bar{W}$ habilita leitura ou escrita na memória (a memória RAM possiblita leitura ou escrita dos dados armazenados)  
 Se $\bar{W}=0$, os dados do barramento de dados serão escritos na posição de endereço indicada em A0-A9.  
@@ -46,4 +46,3 @@ ___
 **[<<anterior](memoria.md)**    
 **[Home Conteúdo Arquitetura de Computadores](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/arq_aulas.md)**  
 **Memória cache: [próximo>>](memoria3.md)**  
-

@@ -1,16 +1,18 @@
 # 5. Sistema de memória
 
 ## 5.1 Hierarquia do sistema de memória
+
 A estratégia de armazenamento de dados nos sistemas de computação pode ser resumida conforme apresenta a figura.
 
 ![Hierarquia do sistema de memória](/arq_aulas/images/hierarquiamemoria.jpg)
- 
+
 As características de performance de cada tipo de memória usado no sistema de computação podem ser representadas por uma pirâmide, 
 que representa  
+
 - a capacidade de armazenamento de bits,  
-- a velocidade e   
-- o custo. 
- 
+- a velocidade e
+- o custo.
+
 Quanto mais o tipo se aproxima da base, maior é a capacidade de armazenamento e o tempo de uso e menor é o custo por bit armazenado.  
 Todos são dispositivos de armazenamento de dados e sua distribuição na arquitetura depende das características mencionadas acima.
 
@@ -43,11 +45,12 @@ A figura apresenta as diversas tecnologias existentes no mercado.
 ![Tecnologias de memória](/arq_aulas/images/tecnologiasmemoria.jpg)
 
 A árvore de classificação distingue claramente duas tecnologias:  
-- ROM e  
-- RAM. 
+
+- ROM e
+- RAM.
 
 Quanto à **forma de acesso**, o acesso aleatório da construção de memória relaciona-se com o tempo de acesso curto e
-igual para todas as células. Nas memórias de **acesso aleatório**, não há necessidade de ler outras posições antes de acessar uma célula.   
+igual para todas as células. Nas memórias de **acesso aleatório**, não há necessidade de ler outras posições antes de acessar uma célula.  
 Tempo de acesso curto e igual para todas as células.  
 Existem tecnologias em que o acesso a uma célula requer uma sucessão preliminar de posições antes de acessar a posição de interesse.  
 Nesse caso a memória é de **acesso sequencial**.  
@@ -65,20 +68,21 @@ Os sistemas de computação prescindem também do uso de memórias que sejam nã
 que mantenham os dados armazenados mesmo quando haja ausência de alimentação elétrica.  
 O principal inconveniente das memórias ROM, não admitir nova programação após a primeira ter sido feita,   
 foi progressivamente sendo vencido pelo avanço tecnológico, com o surgimento de:  
+
 - memórias que suportavam ser programadas conforme o interesse, embora somente uma vez (PROM, do inglês *Programmable ROM*);  
 - apagadas e programadas novamente (EPROM, do inglês *Erasable PROM*) e  
 - reprogramadas - apagadas e gravadas - eletricamente (EEPROM, do inlgês Electrically-Erasable PROM).
- 
+
 Mais recentemente, a memória *flash* é um tipo de EEPROM que pode ser reprogramada no próprio circuito,  
-sendo cada vez mais utilizada nos sistemas de computação. 
+sendo cada vez mais utilizada nos sistemas de computação.
 
 As ROMs têm as seguintes aplicações típicas nos sistemas de computação:
-•	*Firmware* – armazenamento para inicialização das máquinas, integra hardware+software;
-•	*Bootstrap* – memória que armazena código de inicialização para chamar o sistema operacional;
-•	Tabela de dados – armazenar dados não voláteis;
-•	Conversor de códigos;
-•	Gerador de funções;
-•	Armazenamento auxiliar.
+• *Firmware* – armazenamento para inicialização das máquinas, integra hardware+software;
+• *Bootstrap* – memória que armazena código de inicialização para chamar o sistema operacional;
+• Tabela de dados – armazenar dados não voláteis;
+• Conversor de códigos;
+• Gerador de funções;
+• Armazenamento auxiliar.
 
 O tipo de armazenamento pode ainda ser realizado de duas formas: uma vez inserido o dado, ele permanece armazenado, o que define a tecnologia de **memória estática**; ou uma vez inserido o dado, para que ele se mantenha armazenado é necessário periodicamente uma recarga (*refresh*), o que define a **memória dinâmica**.  
 Assim, as RAMs podem ser estáticas ou, por outro lado, podem ser construídas de forma que o sinal armazenado (1 ou 0) se mantém somente se houver um *refresh* (recarga) do valor armazenado em intervalos de tempo - ou seja, podem ser também dinâmicas.  
@@ -96,6 +100,7 @@ São duas tecnologias  muito utilizadas: MOS, semicondutor de óxido metálico e
 Além disso, podem ser construídas com meios magnéticos e meios ópticos.  
 
 **Considerando as tecnologias de construção** e voltando à hierarquia do sistema de memória na arquitetura pode-se definir que:  
+
 - As memórias secundárias são construídas em meios ópticos e magnéticos e sua função é armazenar grandes quantidades de dados, com a desvantagem de possuir tempo de acesso e de ciclo lentos, porém a um custo baixo;  
 - A memória principal é construída em semicondutor, com tecnologia de RAMs estáticas ou dinâmicas, possui média capacidade de armazenamento e custo. Sua principal função é armazenar os dados do programa de máquina e os dados armazenados a serem acessados pelo processador.  
 - A memória cache é construída em semicondutor, internamente ao próprio processador ou não, com tecnologia ROM, média/baixa capacidade de armazenamento, custo elevado. Sua principal função é armazenar os dados do programa de máquina e os dados armazenados local e temporalmente mais prováveis de serem acessados pelo processador. Utiliza o chamado princípio de localidade.  
@@ -104,4 +109,3 @@ Além disso, podem ser construídas com meios magnéticos e meios ópticos.
 ___
 **[Home Conteúdo Arquitetura de Computadores](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/arq_aulas.md)**  
 **Memória Principal ou Primária: [próximo>>](memoria2.md)** 
-
