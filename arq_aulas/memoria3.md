@@ -1,6 +1,6 @@
-## 5.4 Memória cache
+# 5.4 Memória cache
 
-### 5.4.1 Organização MP e cache
+## 5.4.1 Organização MP e cache
 
 Considerando a hierarquia do sistema de memória discutido anteriormente, a memória cache ocupa o terceiro nível a partir da base da pirâmide.  
 Tipicamente, possui média/baixa capacidade armazenamento, custo alto, porém velocidade elevada.  
@@ -18,6 +18,7 @@ Observe que o princípio de localidade está diretamente relacionado à **probab
 executada**, seja por sua localização no endereço, seja pelo tempo transcorrido desde que foi executada.  
 
 A figura apresenta um sistema de memória em que se utiliza três níveis de cache:  
+
 - uma cache interna ao encapsulamento do processador, chamada cache de nível 1 (L1);  
 - uma cache no pacote da CPU – nos circuitos diretamente ligados ao processador, de nível 2 (L2); e  
 - uma cache externa de nível 3 (L3).
@@ -51,7 +52,8 @@ A figura ilustra com um exemplo a organização da memória principal para a exp
 5. Assim, no total, A MP possui *N.K* posições de endereço; a cache possui *M.K* posições de endereço.  
 
 O endereçamento do sistema MP-cache fica estabelecido da seguinte forma:
-1. Os endereços da MP são definidos de *0* a *N.K-1*; 
+
+1. Os endereços da MP são definidos de *0* a *N.K-1*;
 2. Cada linha de cache possui endereçamento de *0* a *N-1* – assim cada linha de cache define uma faixa de endereços da MP;  
 3. Como toda memória, os endereços da cache são definidos de *0* a *M.K-1*; 
 4. A cache é dividida em blocos numerados a partir de *0* até *M-1*;
@@ -60,21 +62,22 @@ A figura ilustra com um exemplo o relacionamento das linhas de cache da MP com o
 
 ![Exemplo de relacionamento das linhas de cache da MP com blocos da cache](/arq_aulas/images/relacionamentolinhasblocoscache.jpg)
 
-### 5.4.2 Processo de requisição de dados à cache
+## 5.4.2 Processo de requisição de dados à cache
 
 A capacidade de armazenamento da MP é maior do que a cache, consequentemente *N>M*, ou seja, nem todos dados da MP podem ser mapeados na cache. A utilização da cache na arquitetura requer a aplicação de um processo.
 
 ![Exemplo de relacionamento das linhas de cache da MP com blocos da cache](/arq_aulas/images/processorequisicaodadocache.jpg)
 
 Descrição do processo:  
-1. Na execução de um programa o processador requisita um dado ou instrução armazenado em um endereço de dados da MP. A requisição é realizada ao controlador da cache. 
-2. O controlador verifica inicialmente se o dado do endereço requisitado está presente na cache, em qual bloco e endereço da cache se encontra. 
+
+1. Na execução de um programa o processador requisita um dado ou instrução armazenado em um endereço de dados da MP. A requisição é realizada ao controlador da cache.
+2. O controlador verifica inicialmente se o dado do endereço requisitado está presente na cache, em qual bloco e endereço da cache se encontra.
 3. Caso esteja presente, configura-se o que se chama de **acerto**.  
-  - O dado/instrução é disponibilizado ao processador no tempo de resposta da cache.
+    O dado/instrução é disponibilizado ao processador no tempo de resposta da cache.
 4. Caso o dado não esteja presente na cache, caracteriza-se o que se chama de **falta**  
-  - O dado/instrução é buscado no endereço da MP, com o tempo de resposta da MP; 
-  - **a cache é atualizada**; e
-  - o dado é disponibilizado para o processador. 
+    4.1 O dado/instrução é buscado no endereço da MP, com o tempo de resposta da MP;
+    4.2 **A cache é atualizada**; e
+    4.3 O dado é disponibilizado para o processador. 
 
 A eficácia do uso desse mecanismo pode ser facilmente determinada pelo
 **tempo médio de acesso à memória com e sem a utilização da cache**.  
@@ -84,10 +87,11 @@ onde *c* é o tempo de acesso à cache; *m* é o tempo de acesso à MP; e *h* é
 A taxa de acertos pode ser calculada admitindo que em *k* acessos à memória ocorreu *k-1* acertos e *1* falta,
 logo a taxa de acertos é a razão *(k-1)/k*. 
 
-### 5.4.3 Mapeamento MP-cache
+## 5.4.3 Mapeamento MP-cache
 
 Para o processo descrito acima ser executado é necessário definir uma política de mapeamento dos dados da memória primária na cache que objetive dizer quais blocos da cache serão copiados na MP.  
 Existem três técnicas de mapeamento:  
+
 - mapeamento direto;  
 - mapeamento totalmente associativo; e  
 - mapeamento associativo por conjunto.
@@ -115,7 +119,7 @@ os endereços da MP *K* a *2K-1* ocupam a linha *1*;
 os endereços da MP *(N-1).K* a *N.K-1* ocupam a linha *N-1*. 
 
 Generalizando essa relação pode-se deduzir que a expressão que relaciona o endereçamento da MP com o endereçamento da linha é dada por
-$$L = EndMP (div) K$$    
+$$L = EndMP (div) K$$
 , onde *L* é o endereçamento da linha de cache, `div` é a operação de divisão inteira e *K* é o número de posições de endereço de cada linha(e de cada bloco).
 
 De modo similar, pode-se obter que
@@ -126,36 +130,38 @@ A posição de endereço em uma linha de cache ou bloco depende do número de c�
 Por exemplo, na figura o endereço 25 da MP está na posição 1 da linha 6.  
 O endereço 11 da cache está na posição 3 da cache.  
 Pode-se obter essa posição aplicando-se simplesmente  
-$$P = End (mod) K$$    
+$$P = End (mod) K$$
 , onde *P* é a posição, *End* é o endereço e *K* é o número de células, na linha ou no bloco.
 
 A cache é organizada de modo que:  
+
 - cada bloco possui um campo com o conjunto de dados (data) do tamanho da linha de cache da MP;  
 - cada bloco possui um campo com um *flag* indicando se os dados do bloco são válidos ou não, isto é, informando se os dados que precisam ser lidos estão presentes na cache; e  
 - possui um campo que descreve qual é a linha de cache da MP que está armazenada no campo de dados (campo *tag*). 
- 
+
 Com essas informações de entrada da cache é possível o controlador implementar a leitura dos dados do sistema de memória seja da cache seja da MP, otimizando o desempenho global do sistema. 
 
-#### 5.4.3.1 Mapeamento direto
+### 5.4.3.1 Mapeamento direto
 
 A técnica de mapeamento direto aumenta a eficiência do sistema, 
 entretanto possui o inconveniente de manter dados armazenados na cache mesmo quando não são muito utilizados
 em virtude do relacionamento pré-determinado linhas de cache da MP-blocos da cache.
 
-#### 5.4.3.2 Mapeamento totalmente associativo
+### 5.4.3.2 Mapeamento totalmente associativo
 
 Na técnica de mapeamento totalmente associativo não há uma relação pré-determinada de linhas de cache com blocos, 
 o que implica aumento de eficiência.  
 No entanto, aumenta-se a complexidade do circuito necessário à implementação do processo de espelhamento de dados. 
 
-#### 5.4.3.3 Mapeamento associativo por conjunto
+### 5.4.3.3 Mapeamento associativo por conjunto
 
 O mapeamento associativo por conjunto concilia a simplicidade do mapeamento direto com a eficiência do totalmente associativo.
 
-### 5.4.4 Substituição de dados da cache
+## 5.4.4 Substituição de dados da cache
 
 No mapeamento dos dados da MP para a cache, uma vez que o dado de um determinado endereço não esteja presente na cache, ou seja, tendo ocorrido uma falta, é necessário buscar o dado na memória e **substituir** os dados de algum dos blocos da cache.  
 Existem algumas técnicas que o controlador pode utilizar como:  
+
 - FIFO – *First-In-First-Out*, em que o bloco cujos dados foram os primeiros a ser inseridos são aqueles a ser substituídos;  
 - LRU – *Least Recently Used*, em que o bloco que há mais tempo não é acessado deve ser substituído.  
 
@@ -164,6 +170,7 @@ Existem algumas técnicas que o controlador pode utilizar como:
 O controlador de cache não opera somente com a implementação do processo de atendimento à requisição de leitura de dados pelo processador.  
 O controlador também deve se encarregar de atualizar os dados escritos na cache para a MP.  
 Existem algumas técnicas possíveis de implementar a atualização dos dados da cache na MP, como, por exemplo,   
+
 - escrita direta (*write through*) e
 - a escrita retroativa ou retardada (*write back* ou *write deferred*).
 
@@ -180,5 +187,3 @@ Uma forma mais eficiente de realizar a substituição é adiar para realizá-la 
 ___
 **[<<anterior](memoria.md)**   
 **[Home Conteúdo Arquitetura de Computadores](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/arq_aulas.md)**  
-
-
