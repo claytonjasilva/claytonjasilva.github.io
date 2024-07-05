@@ -24,9 +24,8 @@
 9. [Prática 9 Arduíno: dispositivos de entrada/saída - sensor ultrassônico](arq_aulas/pratica_sensorultrassonico.md)
 10. [Prática 10: dispositivos de saída - sensor de movimento](arq_aulas/pratica_sensormovimento.md)
 11. [Prática 11 Arduíno: dispositivos de saída - motor de passo](arq_aulas/pratica_motor.md)
-12. [Prática 12 - Assembler: AVR Atmega2560](arq_aulas/pratica_assembler.md)
 
-## Práticas *Assembly*   
+## Práticas Linguagem de montagem (*assembly*)   
 1. [Prática 1 Assembly: registradores, memória RAM e instruções aritméticas básicas](arq_aulas/assembly1.md)
 2. [Prática 2 Assembly: registradores, memória RAM e instruções de desvio](arq_aulas/assembly2.md)
 3. [Prática 3 Assembly: registradores, memória RAM e instruções de comparação](arq_aulas/assembly3.md)
@@ -35,28 +34,11 @@
 
 ## Avaliações
 ### Avaliações Bimestrais
-1. [Trabalho AP1 - Revisão 2](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/arq_aulas/TRABALHO_AP1_IBMEC_RJ_rev1.pdf) **Data da apresentação da solução: semana de 22 a 26 abr, durante a aula**     
-2. [Trabalho AP2](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/arq_aulas/TRABALHO_AP2_IBMEC_RJ.pdf)   
+1. **Trabalho AP1** - a definir  
+2. **Trabalho AP2** - a definir    
 
 ### Avaliação Continuada
 Os instrumentos de avaliação continuada srão disponibilizados à medida que as aulas forem ministradas.  
-- [Form 1: Turma 2a feira](https://forms.gle/ENA5pZ76qDwGyySJ8) / [Form 1: Turma 3a feira](https://forms.gle/C2872C8vn7VQA5KK9) / [Form 1: Turma 4a feira](https://forms.gle/kV5x2fWQBwu7Tbrx9)   - [Form 1. pdf](https://1drv.ms/b/s!AsTd8oN7mu8pkpwcAYFp_B5Rafm2Rw?e=Rdhleo)  
-- [Form 2: Turma 2a feira](https://forms.gle/5JX82d6kxFRhdk6x5) / [Form 2: Turma 3a feira](https://forms.gle/Di6xLEt4nYrMkGCr8) / [Form 2: Turma 4a feira](https://forms.gle/am5hVSCkzhGbqCNcA)
-- [Form 3: Turma 2a feira](https://forms.gle/HV8wqnH2WFxfeLBZA) / [Form 3: Turma 3a feira](https://forms.gle/QR4JGR6YUrx2LKpt9) / [Form 3: Turma 4a feira](https://forms.gle/65kQTqpekFycAfHP7)
-- [Form 4: Turma 2a feira](https://forms.gle/vkCiWu1nSNDiFngq5)/ [Form 4: Turma 3a feira](https://forms.gle/CAnFHEZErgs47TRy5) / [Form 4: Turma 4a feira](https://forms.gle/ofutTj1qGVauSkEE9)
-- [Form 5: Turma 2a feira](https://forms.gle/9naPzrMvBkNEXJr96)/ [Form 5: Turma 3a feira](https://forms.gle/xMQDJvjUgew5DN5KA) / [Form 5: Turma 4a feira](https://forms.gle/VZbqGqHY8UE44FmVA)
-- [Form 6: Turma 2a feira](https://forms.gle/J2BrMMyk33JrcWbR6)/ [Form 6: Turma 3a feira](https://forms.gle/DwwuPBDMjSWmybSp7) / [Form 6: Turma 4a feira](https://forms.gle/2anUPtV8Rjq2RFuq7)
-- [Form 7: Turma 2a feira](https://forms.gle/k27vMm5EoHRYaJQ29)/ [Form 7: Turma 3a feira](https://forms.gle/3gLbK8XNtE8QjJdb6) / [Form 7: Turma 4a feira](https://forms.gle/t6ukpGMAXAjwA4vK7)
-- [TESTE AC](https://forms.gle/C432ycQQRpXymKFn7)
-
-**[Acesso aos pdf's - Forms 1, 2, 3 e 4](https://1drv.ms/f/s!AsTd8oN7mu8pkp1TDW6MheK9-BrnUQ?e=ebIaek)**
-
-#### Prepare-se para a AP2
-
-- **[Acesso ao Form 5.pdf](https://1drv.ms/b/s!AsTd8oN7mu8pktAjZU2Pf4CDOBupKg?e=8wBdFH)**  
-- **[Acesso ao Form 6.pdf](https://1drv.ms/b/s!AsTd8oN7mu8pktAk2Q34cLIejrsaLg?e=7FVDk7)**  
-- **[Acesso ao Form 7.pdf](https://1drv.ms/b/s!AsTd8oN7mu8pktAlqn1qrwTL2xlA5A?e=HjAuNP)**  
-
 
 ## Exercícios  
 1. [Lista 1 de Exercícios](arq_aulas/arq_exercicios1_sala.md)  
