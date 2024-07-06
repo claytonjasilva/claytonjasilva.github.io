@@ -6,7 +6,7 @@
 
 1. [Conceitos iniciais](gestao_processos_aulas/gestao_processos_cap1.md)
 2. [Identificação de Processos](gestao_processos_aulas/gestao_processos_cap2.md)
-3. [Modelagem de processos]()
+3. [Modelagem de processos](gestao_processos_aulas/gestao_processos_cap3.md)
 4. [Desenho de processos]()
 5. [Gerenciamento de desempenho]()  
 6. [Análise de processo]()
