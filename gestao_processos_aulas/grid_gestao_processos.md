@@ -36,10 +36,10 @@ Capacitar o aluno a compreender de forma integrada a
 ### REFERÊNCIA BÁSICA
 
 - COSTA JÚNIOR, Eudes Luiz. Gestão em Processos Produtivos. 1. Curitiba­PR: InterSaberes, 2012. 1.  
-Disponível em: (https://plataforma.bvirtual.com.br/Leitor/Publicacao/6387/pdf)  
+Disponível em: https://plataforma.bvirtual.com.br/Leitor/Publicacao/6387/pdf  
 - LAGE JÚNIOR, Murís. Mapeamento de processos de gestão empresarial. 1. Curitiba­PR: InterSaberes, 2016. 1.  
-Disponível em: (https://plataforma.bvirtual.com.br/Leitor/Publicacao/42174/pdf)
+Disponível em: https://plataforma.bvirtual.com.br/Leitor/Publicacao/42174/pdf
 - WILDAUER, Egon Walter; WILDAUER, Laila Del Bem Seleme. Mapeamento de processos: Conceitos, Técnicas e Ferramentas. 1. Curitiba­PR: InterSaberes, 2015. 1.  
-Disponível em: (https://plataforma.bvirtual.com.br/Leitor/Publicacao/31406/pdf)  
+Disponível em: https://plataforma.bvirtual.com.br/Leitor/Publicacao/31406/pdf  
 
 #### [Home - Gestão de Processos - Prof Clayton J A Silva](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/gestao_processos.md)
