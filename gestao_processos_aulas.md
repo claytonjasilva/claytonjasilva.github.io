@@ -11,7 +11,7 @@
 5. [Desenho de processos](gestao_processos_aulas/gestao_processos_cap5.md)
 6. [Análise qualitativa de processos](gestao_processos_aulas/gestao_processos_cap6.md)  
 7. [Análise quantitativa de processos](gestao_processos_aulas/gestao_processos_cap7.md)
-8. [Transformação de processos]()
+8. [Redesenho de processos](gestao_processos_aulas/gestao_processos_cap8.md)
 9. [Automação de processos]()
 10. [Inteligência de processos]()
 11. [Internet das Coisas (IoT) em processos industriais]()
@@ -34,13 +34,10 @@ Os instrumentos de avaliação continuada serão disponibilizados à medida que 
 
 ## Referências  
 
-*Obs. É necessário o acesso pela Biblioteca Virtual do Ibmec*
-
-- COSTA JÚNIOR, Eudes Luiz. Gestão em Processos Produtivos. 1. Curitiba­PR: InterSaberes, 2012. 1.  
-Disponível em: https://plataforma.bvirtual.com.br/Leitor/Publicacao/6387/pdf  
+- DUMAS, MARLON; ROSA, M. L. Fundamentals of Business Process Management. London: Springer, 2013.  
 - LAGE JÚNIOR, Murís. Mapeamento de processos de gestão empresarial. 1. Curitiba­PR: InterSaberes, 2016. 1.  
 Disponível em: https://plataforma.bvirtual.com.br/Leitor/Publicacao/42174/pdf
 - WILDAUER, Egon Walter; WILDAUER, Laila Del Bem Seleme. Mapeamento de processos: Conceitos, Técnicas e Ferramentas. 1. Curitiba­PR: InterSaberes, 2015. 1.  
 Disponível em: https://plataforma.bvirtual.com.br/Leitor/Publicacao/31406/pdf  
 
-### [Home - Arquitetura - Prof Clayton J A Silva](/gestao_processos.md)
+### [Home - Gestão de Processos - Prof Clayton J A Silva](/gestao_processos.md)
