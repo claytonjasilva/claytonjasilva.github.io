@@ -12,14 +12,10 @@
 6. [Análise qualitativa de processos](gestao_processos_aulas/gestao_processos_cap6.md)  
 7. [Análise quantitativa de processos](gestao_processos_aulas/gestao_processos_cap7.md)
 8. [Transformação de processos]()
-9. [Gestão da qualidade]()
-10. [Gestão de riscos de processos]()
-11. [Organização do gerenciamento de processos]()
-12. [*Robotic Process Automation* (RPA)]()
-13. [*Process Mining*]()
-14. [Inteligência Artificial (IA) em processos]()
-15. [Internet das Coisas (IoT) em processos industriais]()
-16. [Plataformas de desenvolvimento *Low-Code/No-Code* de gerenciamento de processos]()
+9. [Automação de processos]()
+10. [Inteligência de processos]()
+11. [Internet das Coisas (IoT) em processos industriais]()
+12. [Plataformas de desenvolvimento *Low-Code/No-Code* de gerenciamento de processos]()
 
 ## Práticas de Laboratório
 
