@@ -13,11 +13,14 @@
 7. [Análise quantitativa de processos](gestao_processos_aulas/gestao_processos_cap7.md)
 8. [Redesenho de processos](gestao_processos_aulas/gestao_processos_cap8.md)
 9. [Automação de processos](gestao_processos_aulas/gestao_processos_cap9.md)
-10. [Inteligência de processos]()
+10. [Inteligência de processos](gestao_processos_aulas/gestao_processos_cap10.md)
 11. [Internet das Coisas (IoT) em processos industriais]()
 12. [Plataformas de desenvolvimento *Low-Code/No-Code* de gerenciamento de processos]()
 
 ## Práticas de Laboratório
+
+1. Utilizando o Bizagi Modeler: https://help.bizagi.com/process-modeler/en/index.html?modeler_architecture.htm  
+2. 
 
 ## Avaliações
 
