@@ -12,7 +12,7 @@
 6. [Análise qualitativa de processos](gestao_processos_aulas/gestao_processos_cap6.md)  
 7. [Análise quantitativa de processos](gestao_processos_aulas/gestao_processos_cap7.md)
 8. [Redesenho de processos](gestao_processos_aulas/gestao_processos_cap8.md)
-9. [Automação de processos]()
+9. [Automação de processos](gestao_processos_aulas/gestao_processos_cap9.md)
 10. [Inteligência de processos]()
 11. [Internet das Coisas (IoT) em processos industriais]()
 12. [Plataformas de desenvolvimento *Low-Code/No-Code* de gerenciamento de processos]()
