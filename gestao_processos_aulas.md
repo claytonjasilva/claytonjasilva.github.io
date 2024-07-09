@@ -38,6 +38,7 @@ Os instrumentos de avaliação continuada serão disponibilizados à medida que 
 ## Referências  
 
 - DUMAS, MARLON; ROSA, M. L. Fundamentals of Business Process Management. London: Springer, 2013.  
+- ABPMP, Guia para o Gerenciamento de Processos de Negócio CBOK V3.0, ABPMP Brasil 2013.
 - LAGE JÚNIOR, Murís. Mapeamento de processos de gestão empresarial. 1. Curitiba­PR: InterSaberes, 2016. 1.  
 Disponível em: https://plataforma.bvirtual.com.br/Leitor/Publicacao/42174/pdf
 - WILDAUER, Egon Walter; WILDAUER, Laila Del Bem Seleme. Mapeamento de processos: Conceitos, Técnicas e Ferramentas. 1. Curitiba­PR: InterSaberes, 2015. 1.  
