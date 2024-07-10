@@ -8,7 +8,7 @@
 2. [Identificação de Processos](gestao_processos_aulas/gestao_processos_cap2.md)
 3. [Modelagem de processos - parte1](gestao_processos_aulas/gestao_processos_cap3.md)
 4. [Modelagem de processos - parte 2](gestao_processos_aulas/gestao_processos_cap4.md)
-5. [Desenho de processos](gestao_processos_aulas/gestao_processos_cap5.md)
+5. [Descoberta de processos](gestao_processos_aulas/gestao_processos_cap5.md)
 6. [Análise qualitativa de processos](gestao_processos_aulas/gestao_processos_cap6.md)  
 7. [Análise quantitativa de processos](gestao_processos_aulas/gestao_processos_cap7.md)
 8. [Redesenho de processos](gestao_processos_aulas/gestao_processos_cap8.md)
