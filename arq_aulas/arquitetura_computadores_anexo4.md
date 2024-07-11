@@ -1,6 +1,6 @@
-## 1.8 Aritmética computacional
+# ANEXO IV - Aritmética computacional
 
-### 1.8.1 Adição e subtração de bits
+## IV.1 Adição e subtração de bits
 Sejam dois bits, a soma é dada pela tabela  
 
 | + | 0 | 1 |
@@ -19,7 +19,7 @@ Sejam dois bits, a subtração é dada pela tabela
 
 O bit mais significativo 1 resultante da operação *0 - 1* é chamado de ***borrow*** ou 'toma um'.
 
-### 1.8.2. Adição e subtração de números binários
+## IV.2. Adição e subtração de números binários
 
 **ADIÇÃO**
 
@@ -53,6 +53,4 @@ A subtração de dois números binários **purros** *A* e *B* de *m* bits, ou se
 2. Realiza-se a **subtração** normalmente s **soma-se o resultado** ao excesso na sua representação binária
 
 ___  
-**[<<anterior](dimensoesUnidadesAritmeticaComputacional4.md)**    
-**[Home Conteúdo Arquitetura de Computadores](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/arq_aulas.md)**  ou 
-**[Home Conteúdo Sistemas Digitais](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/sisdig_aulas.md)**   
+**[Home Conteúdo Arquitetura de Computadores](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/arq_aulas.md)**
