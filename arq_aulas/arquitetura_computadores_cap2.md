@@ -1,4 +1,4 @@
-# 2. Arquitetura, Organização e Modelos de máquina de níveis
+# Cap. 2 - Arquitetura, Organização e Modelos de máquina de níveis
 
 ## 2.1 Arquitetura e Organização
 
