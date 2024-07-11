@@ -1,6 +1,6 @@
-# 1. Dimensões, Unidades e Aritmética Computacional
+# ANEXO III - Representação numérica: binário puro, inteiros negativos 
 
-## 1.4 Representação de números em binário puro
+## III.1 Representação de números em binário puro
 As grandezas numéricas representadas nos sistemas computacionais utilizam o sistema binário de numeração.  
 
 Os conjuntos dos números discutidos na matemática do "sistema decimal" também merecem um tratamento próprio nos sistemas computacionais.  
@@ -8,7 +8,7 @@ Os conjuntos dos números discutidos na matemática do "sistema decimal" também
 Nos sistemas computacionais, em certas circunstâncias, é necessário tratar somente o **valor absoluto**, isto é, sem sinal, do **número inteiro**.  
 Designaremos essa representação dos números dos sistemas computacionais como **representação em binário puro.**  
 
-## 1.5 A **palavra de máquina**
+## III.2 A **palavra de máquina**
 "Em ciência da computação, palavra (em inglês: word) é a unidade natural de informação usada por cada tipo de computador em particular.
 É uma sequência de bits de tamanho fixo que é processado em conjunto numa máquina." 
 [Wikipédia](https://pt.wikipedia.org/wiki/Palavra_(ci%C3%AAncia_da_computa%C3%A7%C3%A3o)#:~:text=Em%20ci%C3%AAncia%20da%20computa%C3%A7%C3%A3o%2C%20palavra,processado%20em%20conjunto%20numa%20m%C3%A1quina.)
@@ -16,14 +16,14 @@ Designaremos essa representação dos números dos sistemas computacionais como 
 Para não haver equívoco, sempre que nos referirmos a uma grandeza numérica tratada pelos sistemas computacionais, 
 definiremos o tamanho da **palavra**, conforme o sentido descrito acima, da arquitetura.
 
-## 1.6 Representação de **números inteiros negativos**  
+## III.3 Representação de **números inteiros negativos**  
 Seja um número binário negativo com *m* bits, ele pode ser representado das seguintes notações:  
 - Representação em **bit sinal (sinal e magnitude)**  
 - Representação em **complemento de 1** 
 - Representação em **complemento de 2**  
 - Representação em **excesso 2<sup>m-1</sup>** 
 
-### 1.6.1 Representação em sinal e magnitude (bit sinal)
+### III.3.1 Representação em sinal e magnitude (bit sinal)
 #### a. Representação
 Seja um número de *m* bits, ***N = b<sub>m-1</sub> ... b<sub>1</sub> b<sub>0</sub>***, usando a notação em bit sinal,
 1. Na posição **mais significativa**, utiliza-se o bit sinal para os números positivos e negativos
@@ -40,7 +40,7 @@ Seja um número de *m* bits, ***N = b<sub>m-1</sub> ... b<sub>1</sub> b<sub>0</s
 2. **Faixa de representação**: -(2<sup>m-1</sup>-1) a +(2<sup>m-1</sup>-1). A faixa de representação representa os limites dos números contemplados, desde o inteiro mais negativo até o inteiro mais positivos.
 3. **Dupla representação do 0** – todos os bits iguais a 0, com bit sinal 0 ou 1.
 
-### 1.6.2 Representação em complemento de 1
+### III.3.2 Representação em complemento de 1
 #### a. Complemento de números    
 O complemento de um número de *m* dígitos é a diferença entre o maior número de *m* dígitos naquela base e o número considerado.  
 Por exemplo, na base 10, o complemento de 12 é 87, pois 99 (maior número com 2 dígitos) menos 12 é igual a 87.   
@@ -65,7 +65,7 @@ Considerando o que foi tratado acima, seja um número de *m* bits, ***N = b<sub>
 2. **Faixa de representação**: -(2<sup>m-1</sup>-1) a +(2<sup>m-1</sup>-1).
 3. **Dupla representação do 0** – todos os bits iguais a 0 todos os bits iguais a 1.  
 
-### 1.6.3 Representação em complemento de 2  
+### III.3.3 Representação em complemento de 2  
 #### a. Representação
 O complemento 2 de números binários obtém-se pela soma do complemento de 1 com o bit 1.   
 
@@ -87,7 +87,7 @@ Considerando o que foi tratado acima, seja um número de *m* bits, ***N = b<sub>
 2. **Faixa de representação**: -(2<sup>m-1</sup>) a +(2<sup>m-1</sup>-1).
 3. **Não** possui dupla representação do 0.  
 
-### 1.6.4 Representação em excesso de 2<sup>m-1<sup>  
+### III.3.4 Representação em excesso de 2<sup>m-1<sup>  
 #### a. Representação
 Seja um número de *m* bits, ***N = b<sub>m-1</sub> ... b<sub>1</sub> b<sub>0</sub>***, usando a notação em excesso **m-1**, a representação binária é a mesma da representação em binário puro deslocada de até a faixa dos negativos em *2<sup>m-1</sup>*.  
 
@@ -102,7 +102,7 @@ Por exemplo, em palavras de 4 bits, o excesso é 2<sup>3</sup>=8. A representaç
 2. **Faixa de representação**: -(2<sup>m-1</sup>) a +(2<sup>m-1</sup>-1).
 3. **Não** possui dupla representação do 0.  
 
-## 1.7 Visão geral
+## III.5 Visão geral
 A tabela apresenta uma comparação entre representações de inteiros negativos e positivos em um sistema cuja palavra possui 4 bits.
   
 | base 10 | Sinal e magnitude | Complemento de 1 | Complemento de 2 | excesso 8 |
@@ -126,11 +126,7 @@ A tabela apresenta uma comparação entre representações de inteiros negativos
 | -8 | - | - | 1000 | 0000 |
 
 ___  
-**[<<anterior](dimensoesUnidadesAritmeticaComputacional2.md)**    
-**[Home Conteúdo Arquitetura de Computadores](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/arq_aulas.md)**  ou 
-**[Home Conteúdo Sistemas Digitais](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/sisdig_aulas.md)**       
-**Representação de números de ponto flutuante: [próximo>>](dimensoesUnidadesAritmeticaComputacional4.md)**    
-
+**[Home Conteúdo Arquitetura de Computadores](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/arq_aulas.md)**
 
 
 
