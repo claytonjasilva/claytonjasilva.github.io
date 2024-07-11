@@ -1,7 +1,7 @@
-# 2. Álgebra Booleana e Portas Lógicas
+# Cap. 3 - Nível de lógica digital
 
-## 2.1 Álgebra Booleana
-### 2.1.1 Proposição e valor lógico
+## 3.1 Álgebra Booleana
+### 3.1.1 Proposição e valor lógico
 A base do nosso estudo é o conteito de **proposição**:  
 
 Oração declarativa **afirmativa ou negativa**, sobre a qual se pode atribuir um e somente um **valor lógico**: (*F*) falso ou (*V*) verdadeiro. **Abstrairemos como padrão *F* como *0* e *V* como *1***.
@@ -18,7 +18,7 @@ A concatenação das proposições simples é realizada através de **operadores
 
 As operações lógicas **primitivas** são: **conjunção**, **disjunção** e **negação**.   
 
-### 2.1.2 Operação lógica de CONJUNÇÃO - *AND*  
+### 3.1.2 Operação lógica de CONJUNÇÃO - *AND*  
 A proposição composta *S* resultante da operação de conjunção de duas proposições simples *p* e *q* é indicada por
 ```
 S = p.q
@@ -32,7 +32,7 @@ S = p.q
 | 0 | 1 | 0 |
 | 1 | 1 | 1 |
 
-### 2.1.3 Operação lógica de DISJUNÇÃO - *OR*  
+### 3.1.3 Operação lógica de DISJUNÇÃO - *OR*  
 A proposição composta *S* resultante da operação de conjunção de duas proposições simples *p* e *q* é indicada por
 ```
 S = p+q
@@ -46,7 +46,7 @@ S = p+q
 | 1 | 1 | 0 |
 | 1 | 1 | 1 |
 
-### 2.1.4 Operação de inverção lógica, NEGAÇÃO, - *NOT*  
+### 3.1.4 Operação de inverção lógica, NEGAÇÃO, - *NOT*  
 A proposição composta *S* resultante da operação **unária** (ou seja, que só possui um operando) de negação de uma proposição simples
 *p* é indicada por
 ```
@@ -66,7 +66,7 @@ Outros operadores utilizados
 | Disjunção | $\lor$, *ou* |
 | Negação | $\bar{X}$, *não* |
 
-### 2.1.2 Expressões lógicas ou booleanas
+### 3.1.5 Expressões lógicas ou booleanas
 As expressões lógicas consistem na operação lógica de proposições, expressa pelo uso de operadores lógicos, cujo resultado depende do valor lógico de cada uma das proposições constituintes.  
 Para a construção de expressões lógicas devemos definir alguns termos:  
 - **Variável** lógica: representação simbólica de qualquer proposição, consequentemente que pode assumir somente um dos valores do conjunto *C={0,1}*.
@@ -86,7 +86,7 @@ As proposições compostas podem apresentar características especiais, a saber:
 
 **Observação:** Se uma expressão booleana utiliza *n* variáveis, é possível elaborar *2<sup>n</sup>* combinações possíveis para determinar o valor da expressão.
 
-## 2.2 Tabela-verdade  
+## 3.2 Tabela-verdade  
 As tabelas-verdade são instrumentos que permitem a representação de todas as combinações de saída das funções de variáveis.  
 
 São basicamente formada pelas **colunas das variáveis**, **colunas intermediárias** e **coluna de saída**.  
@@ -106,5 +106,5 @@ A tabela deve possuir **somente uma** coluna de saída, pois uma função só ad
 **Os circuitos eletrônicos digitais implementam funções lógicas.**
 
 ___
-**[Home Conteúdo Sistemas Digitais](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/sisdig_aulas.md)** ou **[Home Conteúdo Arquitetura de Computadores](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/arq_aulas.md)**  
+**[Home Conteúdo Arquitetura de Computadores](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/arq_aulas.md)**  
 **Álgebra booleana e portas lógicas: [próximo>>](algebraPortasLogicas1.md)**  
