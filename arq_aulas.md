@@ -2,8 +2,8 @@
 ## Arquitetura de Computadores - 2024.2
 
 ## Tópicos
-1. [Arquitetura, Organização e Modelos de máquina de níveis](arq_aulas/arquiteturaOrganizacaoCamadas.md)
-2. [Máquina de von Neumann ou computador IAS](arq_aulas/computadorIAS.md)
+1. [Cap. 1 - Máquina de von Neumman](arq_aulas/arquitetura_computadores_cap1.md)
+2. [Arquitetura, Organização e Modelos de máquina de níveis](arq_aulas/arquiteturaOrganizacaoCamadas.md)
 3. [Nível de lógica digital: circuitos combinacionais e circuitos sequenciais](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/sisdig_aulas/algebraPortasLogicas.md)
 4. [Sistema de memória](arq_aulas/memoria.md)
 5. [Barramento](arq_aulas/barramento.md)
