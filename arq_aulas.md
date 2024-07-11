@@ -11,11 +11,11 @@
 7. [Processadores](arq_aulas/processadores.md)  
 8. [Microcontrolador Atmel ATmega 2560](arq_aulas/microcontrolador2560.md)  
 9. Sistemas Operacionais: [*download* material](https://1drv.ms/p/s!AsTd8oN7mu8pkcB4b7de8Z0_eLNtFA?e=PIgZwh)
-__
-[ANEXO I - UNIDADES E GRANDEZAS NUMÉRICAS](arq_aulas/arquitetura_computadores_anexo1.md)  
-[ANEXO II - CONVERSÃO DE BASE E INFORMAÇÕES BINÁRIAS](arq_aulas/arquitetura_computadores_anexo2.md)  
-[ANEXO III - REPRESENTAÇÃO NUMÉRICA](arq_aulas/arquitetura_computadores_anexo3.md)  
-[ANEXO IV - ARITMETICA BINÁRIA](arq_aulas/arquitetura_computadores_anexo4.md)
+
+- [ANEXO I - UNIDADES E GRANDEZAS NUMÉRICAS](arq_aulas/arquitetura_computadores_anexo1.md)  
+- [ANEXO II - CONVERSÃO DE BASE E INFORMAÇÕES BINÁRIAS](arq_aulas/arquitetura_computadores_anexo2.md)  
+- [ANEXO III - REPRESENTAÇÃO NUMÉRICA](arq_aulas/arquitetura_computadores_anexo3.md)  
+- [ANEXO IV - ARITMETICA BINÁRIA](arq_aulas/arquitetura_computadores_anexo4.md)
 
 ## Práticas Arduíno   
 1. [Prática 1 Arduíno: alimentação de LEDs](arq_aulas/pratica_ligaLED.md)    
