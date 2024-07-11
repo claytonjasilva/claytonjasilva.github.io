@@ -12,6 +12,8 @@
 8. [Microcontrolador Atmel ATmega 2560](arq_aulas/microcontrolador2560.md)  
 9. Sistemas Operacionais: [*download* material](https://1drv.ms/p/s!AsTd8oN7mu8pkcB4b7de8Z0_eLNtFA?e=PIgZwh)
 
+[ANEXO I - UNIDADES E GRANDEZAS NUMÉRICAS](arquitetura_computadores_anexo1.md)
+
 ## Práticas Arduíno   
 1. [Prática 1 Arduíno: alimentação de LEDs](arq_aulas/pratica_ligaLED.md)    
 2. [Prática 2 Arduíno: código, pinos e função de saída](arq_aulas/pratica_saidaArduino.md)     
