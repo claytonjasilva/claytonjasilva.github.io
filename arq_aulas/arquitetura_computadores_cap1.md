@@ -19,9 +19,31 @@ A estrutura geral da máquina IAS consiste em:
 
 ### 1.1.1 Memória
 
-A memória é o elemento dos sistemas computacionais responsável pelo armazenamento das informações. As informações nos sistemas computacionais atuais são armazenadas na forma binária (Ver [anexo II](arq_aulas/arquitetura_computadores_anexo2.md)). Rigorosamente, nos sistemas computacionais distinguem-se dados de informações, conforme discutiremos na seção seguinte. No momento trataremos como dados o que as memórias armazenam.
+A memória é o elemento dos sistemas computacionais responsável pelo armazenamento das informações. As informações nos sistemas computacionais atuais são armazenadas na forma binária (Ver [anexo II](arq_aulas/arquitetura_computadores_anexo2.md)). Rigorosamente, nos sistemas computacionais distinguem-se dados de informações, conforme discutiremos na seção seguinte. No momento trataremos como dados e informações de modo indistinto.
 
-Os sistemas computacionais moder dados armazenados nos elementos de memória dos sistemas computacionais
+Uma das evoluções dos sistemas computacionais tem sido no sentido dos elementos de memória possuírem uma capacidade cada vez maior de armazenar dados (Ver [anexo I](arq_aulas/arquitetura_computadores_anexo1.md)). Uma analogia fácil de estabelecer para compreender como as memórias são organizadas é entendê-las como um armário com várias gavetas, organizadas em linhas e colunas. Em cada gaveta armazena-se uma unidade de dado, chamada bit (1 ou 0).
+
+Os dados armazenados podem ser numéricos inteiros ou reais (computacionamente chamadaos de ponto flutuante) (Ver [anexo III](arq_aulas/arquitetura_computadores_anexo3.md)), mas também podem ser não numéricos - como caracteres alfabéticos e outros símbolos discretos. Nessa representação de símbolos discretos se enquadram as instruções que comandam o funcionamento das máquinas computacionais.
+
+Todas as tarefas realizadas pelos sistemas computacionais decorrem da execução de uma sucessão de instruções binárias armazenadas, que podem manipular dados, também armazenados na memória, intitulados programas. Os programas constituem o software e comandam os elementos eletromecânicos, chamados de hardware.
+
+As característcas tecnológicas dos dispositivos de memória têm evoluído rapidamente, propiciando uma elevada capacidade de armazenamento, mas também velocidade de resposta às solicitações emanadas pela unidade central de processamento (CPU), a quem cabe executar as instruções.
+
+### 1.1.2 Unidade Central de Processamento
+
+A Unidade Central de Processamento (CPU, do inglês Central Processing Unit) é o elemento concebido na arquitetura para realizar duas funções básicas principais: (i) interpretar as instruções e controlar o funcionamento das elementos do sistema, na Unidade de Controle (UC); e (ii) executar as instruções, na Unidade Lógica e Aritméetica (ULA).
+
+Para o controle, o sistema computacional utiliza uma referência temporal dada por um sinal elétrico chamado de clock. Pense no computador como uma máquina similar a um engenho mecânico, cuja operação é sincronizada por engrenagens. O sinal elétrico do clock é que permite o sincronismo de funcionamento de toddas as operações dos computadores. O sinal de clock é peródico, ou seja, repete-se em intervalos regulares de tempo, chamados de peeríodo ou ciclo. O número de repetições de ciclos na unidade de tempo é chamado de frequência.
+
+A evolução dos sistemas computacionais tem sido no sentido de produzir CPUs com referência de clock cada vez mais velozes. Ou seja, a interpretação das instruções dos programas armazenados na memória tem sido cada vez mais rápida, ou seja, os programas são executados, consequentemente as tarefas são realizadas em tempos cada vez mais curtos.
+
+Por outro lado, as instruções são resolvidas pela ULA. Instruções definidas em fábrica são decodificadas pela UC, mas são efetivamente executadas pelos circuitos lógicos e aritméticos da ULA. Como o próprio nome define, a ULA possui os circuitos para executar operações cujo resultado pode ser verdadeiro ou falso - operações lógicas. Lembre-se que fisicamente os computadores representamm os valores lógicos como sinais elétricos, por exemplo, 5V ou 0V, os quais podem ser abstraídos como 0s e 1s.
+
+Além das operações lógicas, a ULA também possui os circuitos que podem resolver operações aritméticas, obviamente lidando com dados numéricos representados na forma binária.
+
+### 1.1.3 Dispositivos de entrada e saída
+
+
 
 ## 1.2 Visão detalhada do computador IAS
 
