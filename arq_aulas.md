@@ -2,15 +2,14 @@
 ## Arquitetura de Computadores - 2024.2
 
 ## Tópicos
-1. [Dimensões, Unidades e Aritmética Computacional](arq_aulas/dimensoesUnidadesAritmeticaComputacional1.md)
-2. [Arquitetura, Organização e Modelos de máquina de níveis](arq_aulas/arquiteturaOrganizacaoCamadas.md)
-3. [Máquina de von Neumann ou computador IAS](arq_aulas/computadorIAS.md)
-4. [Nível de lógica digital: circuitos combinacionais e circuitos sequenciais](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/sisdig_aulas/algebraPortasLogicas.md)
-5. [Sistema de memória](arq_aulas/memoria.md)
-6. [Barramento](arq_aulas/barramento.md)
-7. [Processadores](arq_aulas/processadores.md)  
-8. [Microcontrolador Atmel ATmega 2560](arq_aulas/microcontrolador2560.md)  
-9. Sistemas Operacionais: [*download* material](https://1drv.ms/p/s!AsTd8oN7mu8pkcB4b7de8Z0_eLNtFA?e=PIgZwh)
+1. [Arquitetura, Organização e Modelos de máquina de níveis](arq_aulas/arquiteturaOrganizacaoCamadas.md)
+2. [Máquina de von Neumann ou computador IAS](arq_aulas/computadorIAS.md)
+3. [Nível de lógica digital: circuitos combinacionais e circuitos sequenciais](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/sisdig_aulas/algebraPortasLogicas.md)
+4. [Sistema de memória](arq_aulas/memoria.md)
+5. [Barramento](arq_aulas/barramento.md)
+6. [Processadores](arq_aulas/processadores.md)
+7. [Microcontrolador Atmel ATmega 2560](arq_aulas/microcontrolador2560.md)
+8. Sistemas Operacionais: [*download* material](https://1drv.ms/p/s!AsTd8oN7mu8pkcB4b7de8Z0_eLNtFA?e=PIgZwh)
 
 - [ANEXO I - UNIDADES E GRANDEZAS NUMÉRICAS](arq_aulas/arquitetura_computadores_anexo1.md)  
 - [ANEXO II - CONVERSÃO DE BASE E INFORMAÇÕES BINÁRIAS](arq_aulas/arquitetura_computadores_anexo2.md)  
