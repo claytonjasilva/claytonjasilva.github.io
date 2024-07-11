@@ -1,4 +1,4 @@
-# 1. Dimensões, Unidades e Aritmética Computacional
+# ANEXO II - Conversão de base e Informações binárias
 
 ## 1.3 Conversão de bases  
 As grandezas numéricas possuem representações equivalentes entre os diferentes sistemas de numeração. A tabela apresenta a equivalência dos dígitos numéricos dos sistemas de base 2 (**binária**), 10 (**decimal**) e 16 (**hexadecimal**).
