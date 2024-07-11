@@ -13,7 +13,7 @@
 9. Sistemas Operacionais: [*download* material](https://1drv.ms/p/s!AsTd8oN7mu8pkcB4b7de8Z0_eLNtFA?e=PIgZwh)
 
 [ANEXO I - UNIDADES E GRANDEZAS NUMÉRICAS](arq_aulas/arquitetura_computadores_anexo1.md)  
-[ANEXO II - CONVERSÃO DE BASE E INFORMAÇÕES BINÁRIAS](arq_aulas/arquitetura_computadores_anexo2.md)
+[ANEXO II - CONVERSÃO DE BASE E INFORMAÇÕES BINÁRIAS](arq_aulas/arquitetura_computadores_anexo2.md)  
 [ANEXO III - REPRESENTAÇÃO NUMÉRICA: BINÁRIO PURO, INTEIROS NEGATIVOS](arq_aulas/arquitetura_computadores_anexo3.md)
 
 ## Práticas Arduíno   
