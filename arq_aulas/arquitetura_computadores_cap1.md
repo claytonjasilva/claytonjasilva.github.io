@@ -43,7 +43,17 @@ Além das operações lógicas, a ULA também possui os circuitos que podem reso
 
 ### 1.1.3 Dispositivos de entrada e saída
 
+Os computadores precisam assegurar uma ligação com os usuários. Para isso são necessários elementos que permitam ao usuário inserir os dados por meio de dispositivos de entrada. Por exemplo, um teclado possibilita que um usuário digite um texto que seja tratado pela máquina. Por outro lado, os resultados produzidos pela máquina precisam ser apresentados ao ambiente externo através dos chamados dispositivos de saída, por exmplo, monitores de vídeo.
 
+Mas não somente para as pessoas os dispositivos de entrada e saída são produzidos. Máquinas diferetenes precisam se comunicar. Os elementos de entrada e saída propiciam a comunicação do ambiente interno com o ambiente externo.
+
+### 1.1.4 Barramento
+
+Ficou evidente que os programas armazenados em memória possuem instruções interpretadas e executadas pela CPU. Por sua vez, os dados resultantes das operações lógicas e aritméticas precisam ser armazenados em memória ou precisam ser enviados a outra máquina através de dispositivos de E/S. Para que o tráfego de dados ocorra entre os elementos do computador são necessárias vias de comunicações, chamadas de barramento.
+
+Através dos barramentos sao trafegados os sinais elétricos abstraídos matematicamente como 0s e 1s. Esses barrramentos são funcionalmente classificados como barramento de dados. Mas os dados fluem entre elementos bem definidos, portanto a definição da localização do destinatário do dado é crucial para o tráfego de dados. Cada componente do coputador é endereçável, de forma que o dado seja enviado ao destino correto. As vias que trafegam os endereços são chamadas de barramento de endereços.
+
+Finalmente, o controle produzido pela UC é veiculado pelo chamado barramento de controle.
 
 ## 1.2 Visão detalhada do computador IAS
 
