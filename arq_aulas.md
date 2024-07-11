@@ -14,7 +14,7 @@
 
 [ANEXO I - UNIDADES E GRANDEZAS NUMÉRICAS](arq_aulas/arquitetura_computadores_anexo1.md)  
 [ANEXO II - CONVERSÃO DE BASE E INFORMAÇÕES BINÁRIAS](arq_aulas/arquitetura_computadores_anexo2.md)
-
+[ANEXO III - REPRESENTAÇÃO NUMÉRICA: BINÁRIO PURO, INTEIROS NEGATIVOS](arq_aulas/arquitetura_computadores_anexo3.md)
 
 ## Práticas Arduíno   
 1. [Prática 1 Arduíno: alimentação de LEDs](arq_aulas/pratica_ligaLED.md)    
