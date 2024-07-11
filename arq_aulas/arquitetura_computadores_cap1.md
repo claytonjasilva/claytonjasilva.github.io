@@ -1,9 +1,11 @@
-# 3. Máquina de von Neumann ou computador IAS
+# Cap. 1 - Máquina de von Neumann
 
-## 3.1 [Breve histórico](https://pt.wikipedia.org/wiki/Computador_IAS)
+## 1.1 [Breve histórico](https://pt.wikipedia.org/wiki/Computador_IAS)
 
-A tarefa de carregar e modificar programas nas máquinas historicamente precedentes à máquina IAS era extremamente tediosa.  
-A ideia principal da máquina IAS, atribuída a von Neumann, é a do **conceito de progama armazenado**.  
+A tarefa de carregar e modificar programas nas máquinas historicamente precedentes à máquina IAS era extremamente tediosa.
+
+A ideia principal da máquina IAS, atribuída a von Neumann, é a do **conceito de progama armazenado**.
+
 O coonceito de programa armazenado consiste no armazenamento do programa a ser executado pela UCP em memória, juntamente com os dados. O processador busca as instruções e os dados do programa diretamente da memória. Instruções e dados estão armazenados em posições específicas inequívocas da memória, cada uma definida por um **endereço de memória**.
 
 ![Organização da máquina IAS](/arq_aulas/images/maquinaIAS.jpg)
@@ -15,7 +17,13 @@ A estrutura geral da máquina IAS consiste em:
 - Uma Unidade de Controle (UC), que interpreta e executa as instruções armazenadas na memória  
 - Dispositivos de entrada e saída (E/S) operados pela Unidade de Controle.
 
-## 3.2 Visão detalhada do computador IAS
+### 1.1.1 Memória
+
+A memória é o elemento dos sistemas computacionais responsável pelo armazenamento das informações. As informações nos sistemas computacionais atuais são armazenadas na forma binária (Ver [anexo II](arq_aulas/arquitetura_computadores_anexo2.md)). Rigorosamente, nos sistemas computacionais distinguem-se dados de informações, conforme discutiremos na seção seguinte. No momento trataremos como dados o que as memórias armazenam.
+
+Os sistemas computacionais moder dados armazenados nos elementos de memória dos sistemas computacionais
+
+## 1.2 Visão detalhada do computador IAS
 
 A figura abaixo ilustra a organiza detalhada do computador IAS.
 
@@ -38,9 +46,9 @@ A figura abaixo ilustra a relação da memória com os barramentos de dados e de
 Cada linha de dados aponta para uma palavra, que ocupa um endereço de memória.  
 Os endereços são inequívocos, ou seja, não existem dois endereços iguais.  
 
-## 3.3. Visão detalhada das células de memória do computador IAS
+## 1.3. Visão detalhada das células de memória do computador IAS
 
-### 3.3.1 Armazenamento de instruções
+### 1.3.1 Armazenamento de instruções
 
 Um par de instruções ocupa cada linha de endereço. A estrutura da linha é dada por
 
@@ -53,7 +61,7 @@ Nem toda instrução do processador da máquina IAS requer um operando. Nesse ca
 
 ![Estrutura das instruções em memória](/arq_aulas/images/instrucoes_estrutura.jpg)
 
-### 3.3.2 Ciclo de instrução
+### 1.3.2 Ciclo de instrução
 
 O programa consiste na execução das instruções armazenadas em memória.  
 As instruções são normalmente armazenadas em **posições de memória adjacentes** e **executadas sequencialmente**, a execução das instruções de um endereço é seguida da execução das instruções do endereço seguinte.  
@@ -90,7 +98,7 @@ O ciclo de instruções pode ser descrito por:
 19. O processo prossegue para decodificação da segunda instrução e busca do dado
 20. O par de instruções seguinte é buscado ...
 
-### 3.3.3 Instruções do processador IAS
+### 1.3.3 Instruções do processador IAS
 
 Todo processador possui um *set* (conjunto) de instruções. O processador do computador IAS também possui o seu *set* de instruções.  
 As instruções podem ser classificadas como segue:
