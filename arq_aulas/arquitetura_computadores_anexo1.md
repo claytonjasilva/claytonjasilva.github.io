@@ -1,4 +1,4 @@
-# ANEXO 1 - Dimensões, Unidades e Aritmética Computacional
+# ANEXO 1 - Unidades e Gradezas Numéricas
 
 ## 1.1 Unidades métricas
 
