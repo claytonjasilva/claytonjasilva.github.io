@@ -119,7 +119,7 @@ A tabela deve possuir **somente uma** coluna de saída, pois uma função só ad
 
 **Os circuitos eletrônicos digitais implementam funções lógicas.**
 
-## 2.3 Portas lógicas
+## 3.3 Portas lógicas
 
 Os circuitos digitais são circuitos elétricos que utilizam como componentes elementos básicos digitais, isto é,
 que operam com dois níveis de sinais lógicos elétricos (H, de *high*, alto) e (L, de *low*, baixo).   
@@ -134,7 +134,7 @@ Os componentes elétricos básicos dos circuitos digitais são as **portas lógi
 
 As portas lógicas básicas são: ***and***, ***or*** e ***not**.
 
-### 2.3.1 Portas *or*
+### 3.3.1 Portas *or*
 
 Implementam a operação de disjunção. A figura apresenta a sua representação simbólica e sua respectiva tabela verdade.
 
@@ -154,7 +154,7 @@ Para utilizar as portas é necessário obedecer as especificações definidas no
 - **Características elétricas**: como um componente eletrônicos, os chips precisam receber uma energia elétrica (tensãoxcorrente) para operar corretamente, pois são **componente ativos**;
 - **Características mecânicas**: especificações como temperatua de operação, umidade, entre outras, afetam o desempenho do chip.
 
-### 2.3.2 Portas *and*
+### 3.3.2 Portas *and*
 
 Implementam a operação de conjunção. A figura apresenta a sua representação simbólica e sua respectiva tabela verdade.
 
@@ -168,7 +168,7 @@ Observe que elas difereme pelo número de entradas das portas.
 
 A *Philips* também fabrica portas *and* como as portas [74HC08N](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/sisdig_aulas/74HC08N_Philips.pdf).
 
-### 2.3.3 Inversor *not*
+### 3.3.3 Inversor *not*
 
 Implementam a operação de negação. A figura apresenta a sua representação simbólica e sua respectiva tabela verdade.
 
@@ -176,7 +176,7 @@ Implementam a operação de negação. A figura apresenta a sua representação 
 
 A *Philips* produz os inversores [7404](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/sisdig_aulas/SN74HC04_Philips.pdf). 
 
-### 2.3.4 Os circuitos lógicos digitais
+### 3.3.4 Os circuitos lógicos digitais
 
 Os circuitos lógicos são classificados em dois tipos: **circuitos combinacionais** e **circuitos sequenciais**.  
 
@@ -201,4 +201,3 @@ Cada saída pode ser definida como **uma função das entradas**.
 Logo, a cada saída corresponde **uma** tabela verdade. 
 ___
 **[Home Conteúdo Arquitetura de Computadores](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/arq_aulas.md)**  
-**Álgebra booleana e portas lógicas: [próximo>>](algebraPortasLogicas1.md)**  
