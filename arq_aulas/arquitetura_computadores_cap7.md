@@ -1,20 +1,22 @@
-# Nível do Sistema Operacional
+# Cap. 7 - Nível do Sistema Operacional
 
-## Curso: Engenharia de Computação
-**Disciplina:** Arquitetura de Computadores  
-**Professor:** Clayton J A Silva MSc  
-**Email:** clayton.silva@professores.ibmec.edu.br
+## 7.1 Visão geral
 
----
+É a camada que contém todas as instruções de nível ISA – impacto sobre a portabilidade dos S.O. bem como o conjunto de novas instruçõese o conjunto completo de instruções disponíveis para os programadores de aplicação: chamadas de sistema.
 
-## Objetivos
+O nível do sistema operacional é sempre interpretado.
+
+Seus principais objetivos são:
 - **Conveniência:** Tornar o uso do computador mais conveniente.
 - **Eficiência:** Permitir uma utilização mais eficiente dos recursos do sistema.
 
-## O que é um Sistema Operacional?
-- Contém todas as instruções de nível ISA – impacto sobre a portabilidade dos S.O. bem como o conjunto de novas instruções.
-- Contém o conjunto completo de instruções disponíveis para os programadores de aplicação: chamadas de sistema.
-- O nível do sistema operacional é sempre interpretado.
+Os principais elementos constituintes do Sistema Operacional são:
+- **Núcleo (Kernel)**
+- **Código de Inicialização (Boot Code)**
+- **Drivers**
+- **Programas Utilitários**
+
+
 
 ## Chamadas de Sistema
 - Mecanismo de interrupção utilizado pelas aplicações para serem atendidos pelo sistema.
@@ -42,12 +44,6 @@
 
 6. **Monitoramento:**
    - Monitora parâmetros de desempenho.
-
-## Elementos do Sistema Operacional
-- **Núcleo (Kernel)**
-- **Código de Inicialização (Boot Code)**
-- **Drivers**
-- **Programas Utilitários**
 
 ### Código de Inicialização
 - Reconhecer os dispositivos instalados, testá-los e configurá-los adequadamente para seu uso posterior.
