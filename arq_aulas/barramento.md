@@ -1,6 +1,6 @@
-# 5.5 Barramento
+# Cap. 5 - Barramento
 
-### 5.5.1 Classificação funcional dos barramentos
+## 5.1 Classificação funcional dos barramentos
 
 O barramento nada mais é do que o meio de comunicações por meio do qual os elementos da arquitetura se comunicam.  
 É bom salientar que por meio dos barramentos trafegam sinais elétricos.  
@@ -44,7 +44,7 @@ A largura do barramento tem impactos sobre o desempenho do sistema.
 Quanto maior a largura do barramento de dados maior será o número de bits transferidos de cada vez.  
 A largura do barramento de endereços também tem impacto sobre o desempenho do sistema: quanto maior o barramento de endereços maior é o número de posições endereçadas pela processador.
 
-### 5.5.2 Estrutura do barramento
+## 5.2 Estrutura do barramento
 
 O barramento do sistema é um conjunto de condutores elétricos que se estendem por todos os componentes do sistema computacional.  
 A maioria dos sistemas de computação utiliza múltiplos barramentos, geralmente organizados hierarquicamente.  
@@ -78,7 +78,7 @@ Para a ligação dos dispositivos de I/O utiliza-se um **barramento de expansão
 Para a ligação dos dispositivos de I/O utiliza-se uma interface que permite armazenar temporariamente os dados.
 Finalmente, para dispositivos de alta velocidade utiliza-se um **barramento de alta velocidade**.
 
-### 5.5.3 Multiplexação de barramento
+## 5.3 Multiplexação de barramento
 
 As linhas de barramento podem ser construídas de duas formas diferentes:  
 - **dedicadas**; e
@@ -91,11 +91,11 @@ Para que esse uso com dupla função possa ocorrer é necessário sinalizar no b
 Além disso, a mulitplexação requer que não se utilizem os bits de dados e endereços na mesma janela temporal. A isso se dá o nome de **multiplexação no tempo**.  
 A vantagem de multiplexar o barramento de dados e endereço é economizar espaço e custo do circuito.  
 
-### 5.5.4 Protocolos de barramento
+## 5.4 Protocolos de barramento
 Os processos de comunicação envolvendo os módulos do sistema computacional deve ser regulados pelo que se chama protocolo de barramento.  
 São regras que definem a comunicação entre os elementos do sistema computacional.
 
-#### a. Arbitração de barramentos
+### 5.4.1. Arbitração de barramentos
 Em qualquer sistema, a menos daqueles muito simples, é muito comum um módulo precisar ter o controle do barramento para transferir dados para outro módulo.   
 Como apenas uma unidade pode realizar uma transmissão por meio do barramento de cada vez, é necessário utilizar algum **método de arbitração**.  
 Os vários métodos podem ser classificados como:  
@@ -113,7 +113,7 @@ Em ambos os métodos de arbitração, sempre haverá um **mestre** e um **escrav
 
 ![Master/Slave de barramento](/arq_aulas/images/masterslavebarramento.jpg)
 
-#### b. Temporização de barramentos
+### 5.4.2. Temporização de barramentos
 A **temporização de um barramento** se refere ao modo pelo qual os eventos são coordenados.  
 Existem dois esquemas básicos de transmissão de dados entre os módulos:  
 - transmissão síncrona; e
@@ -141,7 +141,7 @@ O *slave* reconhece o sinal e devolve um sinal de *acknowledge*, que indica esta
 É evidente que Não existe temporização – há uma série de eventos sequenciados.  
 Embora seja mais eficiente, implica mais complexidade para implementação.
 
-### 5.5.5 Padrões de barramento
+## 5.5 Padrões de barramento
 Existem vários padrões de barramento, cada um dos quais define **protocolos** de comunicação, assim como padrões físicos, lógicos e elétricos.  
 
 São exemplos de alguns:
