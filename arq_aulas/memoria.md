@@ -1,6 +1,6 @@
-# 5. Sistema de memória
+# Cap. 4 - Sistema de memória
 
-## 5.1 Hierarquia do sistema de memória
+## 4.1 Hierarquia do sistema de memória
 
 A estratégia de armazenamento de dados nos sistemas de computação pode ser resumida conforme apresenta a figura.
 
@@ -37,7 +37,7 @@ O ciclo de memória é o tempo decorrido entre duas operações sucessivas de ac
 Nesse sentido, o ciclo de memória compreende o tempo de acesso mais o tempo necessário para a realização de outras operações do sistema, 
 logo *t<sub>C</sub> = t<sub>A</sub> + t<sub>S</sub>*.
 
-## 5.2 Tecnologias de construção
+## 4.2 Tecnologias de construção
 
 As características dos tipos de memória dependem fortemente da tecnologia de construção utilizada.  
 A figura apresenta as diversas tecnologias existentes no mercado.  
