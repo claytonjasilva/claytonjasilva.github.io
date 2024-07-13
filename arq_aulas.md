@@ -6,8 +6,8 @@
 2. [Cap. 2 - Organização e Modelos de máquina de níveis](arq_aulas/arquitetura_computadores_cap2.md)
 3. [Cap. 3 - Nível de lógica digital: circuitos combinacionais e circuitos sequenciais](arq_aulas/arquitetura_computadores_cap3.md)
 4. [Cap.4 - Sistema de memória](arq_aulas/memoria.md)
-5. [Barramento](arq_aulas/barramento.md)
-6. [Processadores](arq_aulas/processadores.md)
+5. [Cap. 5 - Barramento](arq_aulas/barramento.md)
+6. [Cap. 6 - Processadores](arq_aulas/processadores.md)
 7. [Microcontrolador Atmel ATmega 2560](arq_aulas/microcontrolador2560.md)
 8. Sistemas Operacionais: [*download* material](https://1drv.ms/p/s!AsTd8oN7mu8pkcB4b7de8Z0_eLNtFA?e=PIgZwh)
 
