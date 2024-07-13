@@ -8,8 +8,10 @@
 4. [Cap.4 - Sistema de memória](arq_aulas/memoria.md)
 5. [Cap. 5 - Barramento](arq_aulas/barramento.md)
 6. [Cap. 6 - Processadores](arq_aulas/processadores.md)
-7. [Microcontrolador Atmel ATmega 2560](arq_aulas/microcontrolador2560.md)
-8. Sistemas Operacionais: [*download* material](https://1drv.ms/p/s!AsTd8oN7mu8pkcB4b7de8Z0_eLNtFA?e=PIgZwh)
+7. [Cap. 7 - Microcontroladores: MC Atmel ATmega 2560](arq_aulas/microcontrolador2560.md)
+8. [Cap.8 - Sistemas Operacionais:]()
+
+[*download* material](https://1drv.ms/p/s!AsTd8oN7mu8pkcB4b7de8Z0_eLNtFA?e=PIgZwh)
 
 - [ANEXO I - UNIDADES E GRANDEZAS NUMÉRICAS](arq_aulas/arquitetura_computadores_anexo1.md)  
 - [ANEXO II - CONVERSÃO DE BASE E INFORMAÇÕES BINÁRIAS](arq_aulas/arquitetura_computadores_anexo2.md)  
