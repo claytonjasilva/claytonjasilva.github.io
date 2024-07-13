@@ -1,17 +1,17 @@
-# 7. Processadores
+# Cap. 6 - Processadores
 
-## 7.1 Áreas e elementos funcionais
+## 6.1 Áreas e elementos funcionais
 
-### ULA e UC
 Os processadores possuem duas áreas funcionais básicas:
 - Unidade Lógica e Aritmética (ULA)
-- Unidade de Controle
+- Unidade de Controle (UC)
 
 A ULA é responsável pela execução das operações definidaas no *set* de instruções.  
 Na ULA são realizadas todas as operações lógicas e aritméticas da máquina.
 A UC é a unidade responsável pela busca, interpretação e controle das instruções.
 
 ![Processador: unidades funcionais](/arq_aulas/images/processador1.jpg)
+
 Observe que, conforme discutido em barramentos, as os elementos das duas áreas se interligam por meio de um barramento local.   
 As áreas funcionais possuem elementos para executar essas funções.   
 A figura ilustra os elementos:
@@ -31,14 +31,15 @@ Na UC,
 - O decodificador de instruções, responsável pela conversão da instrução em um conjunto específico de bits e que alimenta os circuitos de controle
 - Circuitos de controle, responsáveis pelos sinais de controle que são encaminhados aos demais componentes da máquina.
 
-### Núcleos (*core*) e *threads*
-#### Processadores multicore
+## 6.2 - Núcleos (*core*) e *threads*
+
+### 6.2.1 Processadores multicore
 Os processadores mais modernos multiplicam a configuração apresentada na figura anterior.  
 São os chamados processadores *multicore*.  
 Cada núcleo ou *core* contém todos os componentes de um processador independente.  
 Obviamente, quanto mais núcleos maior complexidade para construir o processador.  
 
-#### *Threads*
+### 6.2.2 *Threads*
 Relacionado com o núcleo existe o conceito de *threads* do processador. A relação entre núcleos e *threads* é fundamental.       
 *Threads* são sequências de instruções executadas em um núcleo do processador,   
 cada um representando uma **tarefa independente** que o processador deve realizar. 
@@ -51,7 +52,8 @@ Em processadores básicos, cada núcleo executa um *thread* por vez. Porém, alg
 A capacidade de um processador executar vários *threads* é útil em aplicativos que exigem alto grau de paralelismo, como edição de vídeo, renderização 3D e processamento de dados em larga escala. Também permite que você otimize a distribuição de tarefas e evite que os núcleos fiquem ociosos enquanto aguardam a conclusão de um determinado thread.
 Deve-se observar que o aumento de desempenho fornecido pela capacidade de executar vários *threads* em um núcleo não é o mesmo que adicionar núcleos adicionais ao processador. Embora melhore o desempenho em determinadas situações, não dobra o desempenho de um kernel, pois os recursos do kernel ainda são compartilhados entre as threads.
 
-## 7.2 *Set* de instruções
+## 6.3 *Set* de instruções
+
 Cada processador é construído de modo a executar um conjunto finito, pré-definido de instruções.  
 Esse conjunto caracteriza o *set* de instruções do processador.  
 As instruções são interpretadas pelo processador, decodificadas pela UC.  
@@ -59,7 +61,8 @@ Cada instrução corresponde um comportamento específico.
 Considerando cada tarefa executada por um processador, essa tarefa é o resultado de um programa cujas instruções são tipicamente armazenadas em posições lineares de endereço de memória.  
 Normalmente as instruções possuem visibilidade sobre alguns registradores.  
 
-### Formatos e modos de endereçamento das instruções
+### 6.3.1 Formatos e modos de endereçamento das instruções
+
 A instrução pode ser dividida em dois campos, opcode, ou código da instrução; e operando.   
 O opcode define a palavra do código binário associado à operação realizada pela instrução.  
 O operando **referencia o dado** a ser usado pela instrução.  
@@ -102,9 +105,10 @@ Os principais tipos de instrução mais comuns são:
 - instruções de comparações e desvios condicionais, que permitem estabelecer fluxos alternativos de execução do programa;
 - instruções aritméticas e lógicas, que permiem realizar operações lógicas e aritméticas.
 
-## 7.3 Desempenho
+## 6.3,2 Desempenho
 
-### Unidades de medida de desempenho
+#### Unidades de medida de desempenho
+
 O desempenho dos processadores é principalmente medido pela velocidade com que executam as instruções.   
 1. Um dos parâmetros é a unidade **MIPS – Milhões de Instruções Por Segundo**.  
 O MIPS mede apenas a execução de instruções, embora existam diferentes instruções,  
@@ -115,7 +119,8 @@ inteiros e multiplicação de números reais (ponto flutuante).
 o desempenho da ULA, analisando apenas as instruções mais complexas (as que envolvem 
 ponto flutuante).  
 
-### Paralelismo de execução das instruções
+## 6.3.3 Paralelismo de execução das instruções
+
 Descrevendo o funcionamento da CPU na realização de seus ciclos de instrução foi observado 
 que, embora o ciclo de instrução seja composto de várias etapas, ele é realizado de forma seqüencial, isto 
 é, uma etapa se inicia após a conclusão da etapa anterior.  
@@ -152,7 +157,8 @@ A figura ilustra>
 
 ![Unidades funcionais](/arq_aulas/images/processador4.jpg)
 
-## 7.4 Arquiteturas RISC X CISC
+## 6.4 Arquiteturas RISC X CISC
+
 Existem basicamente duas estratégias de construção das instruções de processadores: RISC (*Reduced Instruction Set Computing*) x CISC(*Complex Instruction Set Computing*).  
 As diferenças entre as arquiteturas RISC e CISC são principalmente a complexidade das instruções e o número de ciclos de clock necessários para executar uma instrução.   
 A arquitetura RISC é uma arquitetura de processador que usa um conjunto de instruções reduzido e simples para acelerar o desempenho do processador.   
