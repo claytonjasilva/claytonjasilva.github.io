@@ -1,6 +1,6 @@
-# Cap. 7 - Nível do Sistema Operacional
+# Cap. 8 - Nível do Sistema Operacional
 
-## 7.1 Visão geral
+## 8.1 Visão geral
 
 É a camada que contém todas as instruções de nível ISA – impacto sobre a portabilidade dos S.O. bem como o conjunto de novas instruçõese o conjunto completo de instruções disponíveis para os programadores de aplicação: chamadas de sistema.
 
