@@ -14,7 +14,9 @@ Os principais elementos constituintes do Sistema Operacional são:
 - **Drivers**
 - **Programas Utilitários**
 
-### 8.1.1 O Núcleo do Sistema Operacional
+## 8.2 Elementos do SO
+
+### 8.2.1 O Núcleo do Sistema Operacional
 
 O núcleo, ou kernel, é o componente central do sistema operacional. É responsável por gerenciar os recursos do sistema e facilitar a interação entre o hardware e o software. Um entendimento profundo do kernel é fundamental para compreender como os sistemas operacionais funcionam e como eles proporcionam um ambiente eficiente e seguro para a execução de aplicações.
 
@@ -48,7 +50,7 @@ Kernels híbridos combinam elementos de ambos os modelos monolítico e micronúc
 
 O kernel é a espinha dorsal de um sistema operacional, gerenciando recursos e fornecendo a interface entre o hardware e o software. Seu design e implementação têm um impacto significativo no desempenho, segurança e funcionalidade do sistema. Entender como o kernel funciona é essencial para qualquer profissional de computação, pois ele forma a base sobre a qual todos os outros componentes do sistema operam.
 
-## 8.1.2 Código de Inicialização do Sistema Operacional
+## 8.2.2 Código de Inicialização do Sistema Operacional
 
 O código de inicialização do sistema operacional é responsável por preparar o ambiente necessário para que o sistema operacional possa ser carregado e executado. Este processo é fundamental para garantir que todos os componentes do sistema estejam funcionando corretamente antes que o controle seja entregue ao sistema operacional.
 
@@ -98,7 +100,7 @@ UEFI, ou *Unified Extensible Firmware Interface*, é uma interface de firmware m
 
 A UEFI representa um avanço significativo em relação ao BIOS tradicional, oferecendo uma interface mais amigável, melhor suporte para hardware moderno, tempos de inicialização mais rápidos e recursos de segurança aprimorados. Essas melhorias tornam a UEFI a escolha preferida para sistemas modernos, proporcionando uma base mais sólida e segura para a operação de computadores pessoais e servidores.
 
-## 8.1.3 Drivers como Componentes do Sistema Operacional
+## 8.2.3 Drivers como Componentes do Sistema Operacional
 
 Drivers são programas que permitem ao sistema operacional se comunicar com hardware específico. Eles são essenciais para o funcionamento correto dos dispositivos conectados ao computador, desde teclados e mouses até placas de vídeo e impressoras. Sem drivers, o sistema operacional não seria capaz de entender como interagir com o hardware, resultando em dispositivos inoperantes.
 
@@ -137,7 +139,7 @@ Drivers de usuário operam em modo de usuário e têm acesso limitado ao hardwar
 
 Drivers são componentes fundamentais do sistema operacional, responsáveis por permitir a comunicação eficaz entre o hardware e o software. Eles garantem que os dispositivos funcionem corretamente, proporcionando uma interface padronizada para interação e facilitando a atualização e melhoria contínua dos sistemas computacionais.
 
-## 8.1.4 Programas Utilitários como Componentes do Sistema Operacional
+## 8.2.4 Programas Utilitários como Componentes do Sistema Operacional
 
 Programas utilitários são ferramentas de software fornecidas pelo sistema operacional ou por terceiros que ajudam a gerenciar, manter e otimizar o funcionamento do computador. Eles desempenham uma ampla variedade de funções que complementam o núcleo do sistema operacional, proporcionando aos usuários e administradores maior controle sobre o sistema e seus recursos.
 
@@ -176,46 +178,24 @@ Alguns exemplos de Programas Utilitários são
 
 Programas utilitários são componentes essenciais do ecossistema do sistema operacional, fornecendo ferramentas que ajudam na manutenção, diagnóstico, segurança, gerenciamento de arquivos e backup do sistema. Eles complementam as funções básicas do sistema operacional, oferecendo aos usuários uma forma de manter e otimizar seus sistemas de maneira eficiente e segura.
 
+## 8.3 Self-Test (POST)
 
+O Power-On Self-Test (POST) é um conjunto de testes realizados pelo firmware do sistema (BIOS ou UEFI) durante a inicialização. Suas principais funções são:
 
-## Self-Test (POST)
-O Power-On Self-Test (POST) é um conjunto de testes realizados pelo firmware do sistema (BIOS ou UEFI) durante a inicialização. Seus objetivos principais são:
-
-### Funções do Self-Test
 1. **Verificação de Hardware:**
    - O POST verifica a integridade e a funcionalidade dos componentes de hardware do sistema, como memória RAM, processador, dispositivos de armazenamento e periféricos.
 
 2. **Diagnóstico de Problemas:**
    - Se forem encontrados problemas, o POST pode exibir códigos de erro ou sinais sonoros (beeps) para indicar a natureza do problema, facilitando o diagnóstico e a solução.
 
-### Processo do POST
-1. **Inicialização do Firmware:**
-   - O firmware do sistema é carregado e inicia os testes.
+O processo do POST consiste na **inicialização do firmware**, que é carregado e iniciados os testes. Na sequência, realiza-se a **verificação dos componentes.** Os componentes críticos são verificados, incluindo memória, CPU, e dispositivos de I/O. O status dos testes é indicado através de mensagens na tela ou códigos de beep.
 
-2. **Verificação dos Componentes:**
-   - Componentes críticos são verificados, incluindo memória, CPU, e dispositivos de I/O.
+O bootloader é geralmente armazenado em uma memória não volátil, que retém seu conteúdo mesmo quando o sistema está desligado. Tipos comuns de memória que armazenam o bootloader incluem ROM (ou flash). 
 
-3. **Indicação de Status:**
-   - O status dos testes é indicado através de mensagens na tela ou códigos de beep.
-
-## Memória que Armazena o Bootloader
-O bootloader é geralmente armazenado em uma memória não volátil, que retém seu conteúdo mesmo quando o sistema está desligado. Tipos comuns de memória que armazenam o bootloader incluem:
-
-### Tipos de Memória
-1. **ROM (Read-Only Memory):**
-   - Memória que é pré-programada e não pode ser alterada. Usada em sistemas mais antigos.
-
-2. **Flash Memory:**
-   - Tipo de memória regravável que pode ser atualizada. Usada em sistemas modernos para armazenar firmware, incluindo o bootloader.
-
-### Vantagens da Flash Memory
-- **Atualizável:** Permite atualizações de firmware sem substituir o hardware.
-- **Confiável:** Mantém os dados armazenados mesmo sem energia.
-
-## Conclusão
 O código de inicialização do sistema operacional é um componente crucial que prepara o ambiente para a execução do sistema. O bootloader e o POST desempenham papéis essenciais nesse processo, garantindo que o sistema esteja pronto para funcionar corretamente. A escolha da memória para armazenar o bootloader é igualmente importante para a confiabilidade e a flexibilidade do sistema.
 
-## Chamadas de Sistema
+## 8.4 Chamadas de Sistema
+
 - Mecanismo de interrupção utilizado pelas aplicações para serem atendidos pelo sistema.
 - Geralmente oferecida às aplicações pela biblioteca do sistema (system library): prepara os parâmetros, invoca a chamada e devolve os resultados.
 - O conjunto de chamadas de sistema define a API (Application Programming Interface).
