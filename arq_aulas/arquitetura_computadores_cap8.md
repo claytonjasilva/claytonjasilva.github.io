@@ -252,14 +252,68 @@ Uma das formas de modelar um processo é através do chamado modelo com cinco es
 - Processos podem ser criados e encerrados dinamicamente.
 - Para executar processamento paralelo, é necessário uma chamada de sistema para criar um novo processo.
 
-No contexto da gestão de processos um elemento de dados importante é o Bloco de Controle de Processos do Sistema Operacional, que deve conter os seguintes dados:
+O modelo de cinco estados é uma abordagem clássica para a gestão de processos em sistemas operacionais. Este modelo descreve as possíveis condições ou estados em que um processo pode se encontrar durante seu ciclo de vida, assim como as transições entre esses estados. Compreender este modelo é fundamental para entender como os sistemas operacionais gerenciam a execução de múltiplos processos de maneira eficiente e eficaz.
+
+Os estados do modelo de cinco estados são os seguintes:
+
+#### 1. **Estado Novo (New)**
+- **Descrição:** Quando um processo é criado, ele entra no estado "Novo". Neste estado, o processo está sendo inicializado e ainda não está pronto para execução.
+- **Transição:** Do estado "Novo" para "Pronto".
+- **Eventos de Transição:** O processo foi completamente inicializado.
+
+#### 2. **Estado Pronto (Ready)**
+- **Descrição:** Um processo no estado "Pronto" está preparado para ser executado pelo processador, mas ainda não foi selecionado para execução.
+- **Transição:**
+  - De "Pronto" para "Executando".
+  - De "Executando" para "Pronto" (quando um processo é preemptado).
+- **Eventos de Transição:** 
+  - Seleção pelo escalonador de curto prazo.
+  - Preempção pelo sistema operacional.
+- **Identificação e Elementos de Dados:** 
+  - **Process Control Block (PCB):** Armazena informações essenciais do processo, como registradores, contadores, lista de arquivos abertos, etc.
+  - **Fila de Prontos:** Fila onde processos prontos aguardam a seleção pelo escalonador.
+
+#### 3. **Estado Executando (Running)**
+- **Descrição:** Um processo no estado "Executando" está atualmente utilizando o processador para executar suas instruções.
+- **Transição:**
+  - De "Executando" para "Pronto".
+  - De "Executando" para "Esperando".
+  - De "Executando" para "Terminado".
+- **Eventos de Transição:**
+  - Preempção (tempo de CPU esgotado).
+  - Espera por um evento de E/S.
+  - Conclusão da execução.
+- **Identificação e Elementos de Dados:** 
+  - **CPU Registers:** Registradores do processador contendo o estado atual do processo.
+  - **Program Counter:** Endereço da próxima instrução a ser executada.
+
+#### 4. **Estado Esperando (Waiting)**
+- **Descrição:** Um processo no estado "Esperando" não pode continuar sua execução até que ocorra um evento específico (por exemplo, a conclusão de uma operação de E/S).
+- **Transição:**
+  - De "Esperando" para "Pronto".
+- **Eventos de Transição:** 
+  - Ocorrência do evento esperado (por exemplo, término da operação de E/S).
+- **Identificação e Elementos de Dados:** 
+  - **Lista de Espera:** Fila onde processos aguardam até que o evento esperado ocorra.
+
+#### 5. **Estado Terminado (Terminated)**
+- **Descrição:** Um processo no estado "Terminado" completou sua execução ou foi explicitamente finalizado pelo sistema operacional.
+- **Transição:** 
+  - Não há transições a partir do estado "Terminado".
+- **Eventos de Transição:** 
+  - Conclusão normal ou término forçado.
+
+No contexto da gestão de processos um elemento de dados importante é o Bloco de Controle de Processos (PCB). O bloco de controle do processos ainda pode conter informações de contabilidade até que sejam removidas pelo sistema operacional. Deve conter os seguintes dados:
 - Identificador: Cada processo tem um identificador distinto.
 - Estado: Um dos cinco estados possíveis.
 - Contexto: Dados contidos nos registradores do processador e do contador de programas.
 - Estado de E/S: Dados sobre os requisitos pendentes de E/S, dispositivos alocados, lista de arquivos alocados.
 - Contabilidade: Quantidade de tempo do processador, tempo total já usado pelo processo, limites de tempo de execução, contabilização de uso dos recursos.
 
-## Escalonamento de Processos
+O modelo de cinco estados na gestão de processos proporciona uma visão clara e estruturada de como os processos são gerenciados pelo sistema operacional. Compreender esses estados e as transições entre eles é essencial para apreciar a complexidade e eficiência dos mecanismos de gerenciamento de processos em sistemas operacionais modernos.
+
+Na gestão de processos é importante a atividade de escalonamento de processos, que pode cer classificadda em:
+
 - **Escalonamento de Longo Prazo:** Decisão de acrescentar um novo processo ao conjunto de processos a serem executados pelo processador.
 - **Escalonamento de Médio Prazo:** Decisão de acrescentar um processo a um conjunto de processos que estão parcial ou completamente carregados na memória principal.
 - **Escalonamento de Curto Prazo:** Decisão sobre qual dos processos disponíveis na memória principal será executado pelo processador, realizada frequentemente pelo despachante (dispatcher).
