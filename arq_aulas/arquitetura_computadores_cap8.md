@@ -67,6 +67,41 @@ Existem diversos tipos de bootloaders, entre eles:
 - **BIOS Bootloaders:** Tradicionalmente usados em sistemas baseados em BIOS.
 - **UEFI Bootloaders:** Utilizados em sistemas modernos baseados em UEFI, oferecendo mais funcionalidades e uma interface gráfica.
 
+UEFI, ou *Unified Extensible Firmware Interface*, é uma interface de firmware moderna que se destina a substituir o BIOS, que foi amplamente utilizado desde os primeiros dias da computação pessoal. A especificação UEFI foi desenvolvida para superar as limitações do BIOS e fornecer um ambiente mais robusto e flexível para a inicialização do sistema. As principais Funcionalidades da UEFI são
+
+### 1. Interface Gráfica e Navegação Melhorada
+- **Interface Gráfica:** Diferente do BIOS, que possui uma interface de texto simples, a UEFI pode oferecer uma interface gráfica mais avançada, facilitando a navegação e a configuração.
+- **Suporte a Mouse:** A UEFI suporta o uso do mouse, tornando a interação com as configurações do firmware mais intuitiva.
+
+### 2. Suporte para Discos Grandes
+- **Tabelas de Partição GPT:** A UEFI suporta o esquema de particionamento GPT (GUID Partition Table), que permite o uso de discos rígidos maiores que 2 TB, uma limitação comum no BIOS que utiliza MBR (Master Boot Record).
+- **Mais Partições:** Com GPT, é possível ter mais de quatro partições primárias em um único disco, ao contrário do MBR que é limitado a quatro.
+
+### 3. Tempos de Boot Mais Rápidos
+- **Inicialização Rápida:** A UEFI pode inicializar o sistema operacional mais rapidamente do que o BIOS, graças a otimizações que reduzem o tempo necessário para executar os testes e carregar o SO.
+- **Secure Boot:** Esta funcionalidade impede que software não autorizado (malware) seja carregado durante o processo de boot, aumentando a segurança do sistema.
+
+### 4. Flexibilidade e Atualizações
+- **Drivers Modulares:** A UEFI permite o uso de drivers modulares que podem ser atualizados independentemente do firmware principal, proporcionando maior flexibilidade e compatibilidade com novos dispositivos.
+- **Firmware Atualizável:** A UEFI facilita a atualização do firmware, permitindo que os fabricantes implementem melhorias e correções de segurança mais facilmente.
+
+## Comparação entre UEFI e BIOS
+
+| Característica             | UEFI                                         | BIOS                                 |
+|----------------------------|----------------------------------------------|--------------------------------------|
+| Interface                  | Gráfica, suporta mouse                       | Texto, teclado apenas                |
+| Suporte a Discos           | GPT (discos > 2 TB)                          | MBR (discos ≤ 2 TB)                  |
+| Número de Partições        | Mais de quatro                               | Até quatro                           |
+| Tempo de Boot              | Mais rápido                                  | Mais lento                           |
+| Segurança                  | Secure Boot                                  | Não possui Secure Boot               |
+| Atualizações               | Mais fácil e flexível                        | Mais difícil                         |
+
+A UEFI representa um avanço significativo em relação ao BIOS tradicional, oferecendo uma interface mais amigável, melhor suporte para hardware moderno, tempos de inicialização mais rápidos e recursos de segurança aprimorados. Essas melhorias tornam a UEFI a escolha preferida para sistemas modernos, proporcionando uma base mais sólida e segura para a operação de computadores pessoais e servidores.
+
+
+
+
+
 ## Self-Test (POST)
 O Power-On Self-Test (POST) é um conjunto de testes realizados pelo firmware do sistema (BIOS ou UEFI) durante a inicialização. Seus objetivos principais são:
 
