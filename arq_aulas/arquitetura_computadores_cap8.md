@@ -240,39 +240,19 @@ Um exemplo clássico de chamada de sistema é a leitura de um arquivo:
 
 As Chamadas de Sistema fornecem uma camada de abstração que permite aos desenvolvedores de aplicações interagir com o hardware de forma segura e controlada, sem precisar conhecer os detalhes internos do hardware. Isso garante que as operações críticas sejam executadas de maneira consistente e segura, protegendo a integridade do sistema.
 
+## 8.5 Áreas do Sistema Operacional
 
-### Níveis de Privilégio
-- **Núcleo**
-- **Usuário**
+As áreas típias do Sistema Operacional são **Gestão de Processos**, executando tarefas como criar, carregar código, terminar, esperar, ler/mudar atributos; **Gestão da memória**, executando tarefas como alocar/liberar/modificar áreas de memória; **Gestão de Arquivos**, executando tarefas como criar, remover, abrir, fechar, ler, escrever, ler/mudar atributos; **Comunicação**, executando tarefas como criar/destruir canais de comunicação, receber/enviar dados; **Gestão de dispositivos**, executando tarefas como ler/mudar configurações, ler/escrever dados; e **Gestão do sistema**, executando tarefas como ler/mudar data e hora, desligar/suspender/reiniciar o sistema.
 
-## Áreas do Sistema Operacional
-1. **Gestão de Processos:**
-   - Criar, carregar código, terminar, esperar, ler/mudar atributos.
+### 8.5.1 Gestão de processos
 
-2. **Gestão da Memória:**
-   - Alocar/liberar/modificar áreas de memória.
+Um **processo** é uma unidade de contexto, contêiner de recursos utilizados por uma ou mais tarefas para sua execução, que pode conter várias tarefas que compartilham esses recursos.
 
-3. **Gestão de Arquivos:**
-   - Criar, remover, abrir, fechar, ler, escrever, ler/mudar atributos.
-
-4. **Comunicação:**
-   - Criar/destruir canais de comunicação, receber/enviar dados.
-
-5. **Gestão de Dispositivos:**
-   - Ler/mudar configurações, ler/escrever dados.
-
-6. **Gestão do Sistema:**
-   - Ler/mudar data e hora, desligar/suspender/reiniciar o sistema.
-
-## Tarefas x Processos
-- **Processo:** Unidade de contexto, contêiner de recursos utilizados por uma ou mais tarefas para sua execução.
-- Um processo pode conter várias tarefas que compartilham esses recursos.
-
-## Modelo de Processo com Cinco Estados
+Uma das formas de modelar um processo é através do chamado modelo com cinco estados:
 - Processos podem ser criados e encerrados dinamicamente.
 - Para executar processamento paralelo, é necessário uma chamada de sistema para criar um novo processo.
 
-## Bloco de Controle de Processos do Sistema Operacional
+No contexto da gestão de processos um elemento de dados importante é o Bloco de Controle de Processos do Sistema Operacional, que deve conter os seguintes dados:
 - Identificador: Cada processo tem um identificador distinto.
 - Estado: Um dos cinco estados possíveis.
 - Contexto: Dados contidos nos registradores do processador e do contador de programas.
