@@ -52,10 +52,8 @@ O kernel é a espinha dorsal de um sistema operacional, gerenciando recursos e f
 
 O código de inicialização do sistema operacional é responsável por preparar o ambiente necessário para que o sistema operacional possa ser carregado e executado. Este processo é fundamental para garantir que todos os componentes do sistema estejam funcionando corretamente antes que o controle seja entregue ao sistema operacional.
 
-## Bootloader
-O bootloader é um programa essencial na sequência de inicialização do sistema. Ele é carregado pela BIOS ou pelo firmware do sistema e tem como principais responsabilidades:
+O **bootloader** é um programa essencial na sequência de inicialização do sistema. É carregado pela BIOS ou pelo firmware do sistema e tem como principais responsabilidades:
 
-### Funções do Bootloader
 1. **Carregar o Kernel:**
    - O bootloader localiza o kernel do sistema operacional no disco de armazenamento e o carrega na memória principal (RAM).
 
@@ -65,7 +63,6 @@ O bootloader é um programa essencial na sequência de inicialização do sistem
 3. **Transferência de Controle:**
    - Após carregar o kernel e configurar o ambiente, o bootloader transfere o controle para o kernel, permitindo que o sistema operacional inicie sua execução.
 
-### Tipos de Bootloader
 Existem diversos tipos de bootloaders, entre eles:
 - **BIOS Bootloaders:** Tradicionalmente usados em sistemas baseados em BIOS.
 - **UEFI Bootloaders:** Utilizados em sistemas modernos baseados em UEFI, oferecendo mais funcionalidades e uma interface gráfica.
