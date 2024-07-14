@@ -1,15 +1,15 @@
-# 8. Microcontrolador 2560 Atmel Atmega 2560
+# Cap. 7 - MICROCONTROLADORES: Atmel Atmega 2560
 
-## 8.1 Definição de microcontroladores
+## 7.1 Definição de microcontroladores
 
 Circuitos integrados que possuem internamente todos os componentes necessário ao seu funcionamento (exceto fonte de alimentação).  
 Microcontroladores são computadores de um único chip.   
 
 ![Microcontroladores - visão geral](/arq_aulas/images/microcontrolador.jpg)
 
-## 8.2 Sobre o 2560
+## 7.2 Sobre o 2560
 
-### 8.2.1 Características gerais
+### 7.2.1 Características gerais
 - Arquitetura RISC
 - 135 instruções
 - Até 16 MIPS em 16 MHz
@@ -29,7 +29,7 @@ para muitas aplicações de controle embarcadas.
 
 ### **[Datasheet Atmega 2560](https://ww1.microchip.com/downloads/en/devicedoc/atmel-2549-8-bit-avr-microcontroller-atmega640-1280-1281-2560-2561_datasheet.pdf)**
 
-### 8.2.2 Pinagem
+### 7.2.2 Pinagem
 A figura apresenta a pinagem do Atmega 2560.  
 
 ![Pinagem do Atmega 2560](/arq_aulas/images/atmegapinagem.jpg)
@@ -40,7 +40,7 @@ Os principais pinos são:
 2. Alimentação, VDD e GND.
 3. RESET.
 
-### 8.2.3 Diagrama em blocos
+### 7.2.3 Diagrama em blocos
 A figura apresenta o diagrama de blocos do Atmega 2560.
 
 ![Diagrama em blocos do Atmega 2560](/arq_aulas/images/atmegablocos.jpg)
@@ -53,7 +53,7 @@ O ATmega fornece os seguintes recursos, entre outros:
 4. Porta serial SPI, IEEE® std;
 5. O dispositivo é fabricado usando a tecnologia de memória não volátil de alta densidade da Atmel. 
 
-### 8.2.4 Núcleo da CPU
+### 7.2.4 Núcleo da CPU
 
 #### a. Visão geral  
 A figura apresenta o núcleo da CPU do Atmega 2560.
@@ -133,7 +133,7 @@ para endereçamento indireto do espaço de dados. Os três registradores de ende
 definido como descrito na figura.  
 ![Registradores de endereço do Atmega 2560](/arq_aulas/images/atmegaregistradorendereco.jpg)
 
-### 8.2.5 Sistema de memória 
+### 7.2.5 Sistema de memória 
 A arquitetura AVR tem dois espaços de memória principais, a Memória de Dados e o espaço de Memória de Programa. Além disso, possui uma memória EEPROM para armazenamento de dados. Todos os três espaços de memória são lineares e regulares.
 
 #### a. Memória de programa *flash* reprogramável no sistema  
@@ -192,13 +192,13 @@ e SBIC.
 Ao usar comandos específicos IN e OUT, devem ser utilizados os endereços de I/O 0x00 - 0x3F.   
 Ao endereçar registradores de E/S como espaço de dados usando as instruções LD e ST, 0x20 deve ser adicionado a esses endereços.  
 
-### 8.2.6 *Set* de instruções
+### 7.2.6 *Set* de instruções
 O manual do *set* de instruções pode ser consultado em ...  
 
 A consulta ao manual segue um padrão  
 ![Manual do *set* de instruções do Atmega 2560](/arq_aulas/images/atmegamanualsetinstrucoes.jpg)
 
-### 8.2.7 *Assembly* e *Assembler*
+### 7.2.7 *Assembly* e *Assembler*
 
 #### a. [O *set* de instruções do Atmega2560](https://ww1.microchip.com/downloads/en/DeviceDoc/AVR-Instruction-Set-Manual-DS40002198A.pdf)
 O manual apresenta detalhadamente a sintaxe, o formato binário (*opcode* e operando) e a semântica de todas as instruções do Atmega2560.  
@@ -212,8 +212,6 @@ O manual apresenta:
 4. As expressões aceitas pelo *assembler*. 
 
 ___
-**[Home Conteúdo Arquitetura de Computadores](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/arq_aulas.md)**  ou 
-**[Home Conteúdo Sistemas Digitais](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/sisdig_aulas.md)**   
-**Conversão de bases: [próximo>>](dimensoesUnidadesAritmeticaComputacional2.md)** 
+**[Home Conteúdo Arquitetura de Computadores](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/arq_aulas.md)**
 
 
