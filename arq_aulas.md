@@ -9,7 +9,7 @@
 5. [Cap. 5 - Barramento](arq_aulas/barramento.md)
 6. [Cap. 6 - Processadores](arq_aulas/processadores.md)
 7. [Cap. 7 - Microcontroladores: MC Atmel ATmega 2560](arq_aulas/microcontrolador2560.md)
-8. [Cap.8 - Sistemas Operacionais:](arq_aulas/arquitetura_computadores_cap8)
+8. [Cap.8 - Sistemas Operacionais:](arq_aulas/arquitetura_computadores_cap8.md)
 
 [*download* material](https://1drv.ms/p/s!AsTd8oN7mu8pkcB4b7de8Z0_eLNtFA?e=PIgZwh)
 
