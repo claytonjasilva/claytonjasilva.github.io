@@ -35,8 +35,6 @@ O kernel oferece um sistema de arquivos que organiza os dados em estruturas hier
 #### 5. Segurança e Proteção
 O kernel implementa mecanismos de segurança para proteger os recursos do sistema contra acesso não autorizado. Ele controla o acesso aos arquivos, dispositivos e memória, assegurando que apenas os processos e usuários autorizados possam realizar operações específicas.
 
-### 8.1.2 Estrutura
-
 O kernel pode ser estruturado de diferentes maneiras, incluindo:
 
 #### 1. Monolítico
