@@ -196,35 +196,50 @@ O código de inicialização do sistema operacional é um componente crucial que
 
 ## 8.4 Chamadas de Sistema
 
-- Mecanismo de interrupção utilizado pelas aplicações para serem atendidos pelo sistema.
-- Geralmente oferecida às aplicações pela biblioteca do sistema (system library): prepara os parâmetros, invoca a chamada e devolve os resultados.
-- O conjunto de chamadas de sistema define a API (Application Programming Interface).
+As Chamadas de Sistema (System Calls) são interfaces programadas no kernel do sistema operacional. Elas fornecem uma forma para que os programas de usuário solicitem serviços diretamente ao kernel, que possui acesso privilegiado ao hardware e a outros recursos do sistema. Esse mecanismo é crucial para a operação segura e eficiente dos sistemas operacionais.
 
-## Atividades Típicas do SO
-1. **Criação de Programas:**
-   - Auxiliar o programador no desenvolvimento de programas.
-   - Fornecer programas utilitários (ex.: compactação de dados, aumento de desempenho, limpeza de discos rígidos, acesso à internet).
+Trata-se de um mecanismo de interrupção utilizado pelas aplicações para serem atendidos pelo sistema. Geralmente oferecida às aplicações pela biblioteca do sistema (system library): prepara os parâmetros, invoca a chamada e devolve os resultados. O conjunto de chamadas de sistema define a API (Application Programming Interface).
 
-2. **Execução de Programas:**
-   - Carregar instruções e dados na memória.
-   - Inicializar arquivos e dispositivos de entrada e saída.
+Permitem que o software de aplicação execute operações de baixo nível de forma segura e controlada. Exemplos dessas operações incluem:
 
-3. **Gerenciar Dispositivos de Entrada e Saída:**
-   - Encarga-se do gerenciamento desses dispositivos que possuem um conjunto peculiar de instruções.
+- Operações de entrada/saída
+- Gerenciamento de processos
+- Comunicação entre processos
+- Controle de dispositivos
 
-4. **Gerenciar Arquivos:**
-   - Controla o formato dos arquivos no meio de armazenamento, caminho de diretórios, etc.
+Algumas categorias comuns de Chamadas de Sistema são
 
-5. **Gerenciar Acesso ao Sistema:**
-   - Em sistemas compartilhados, controla o acesso ao sistema e a recursos específicos.
-   - Fornece proteção contra uso não autorizado tanto para recursos quanto para dados de usuários.
+### 1. Gerenciamento de Processos
+- **Criação e Término:** `fork()`, `exit()`
+- **Controle de Processo:** `wait()`, `exec()`
 
-6. **Monitoramento:**
-   - Monitora parâmetros de desempenho.
+### 2. Gerenciamento de Arquivos
+- **Manipulação de Arquivos:** `open()`, `close()`, `read()`, `write()`
+- **Informação de Arquivos:** `stat()`, `chmod()`, `chown()`
 
-### Código de Inicialização
-- Reconhecer os dispositivos instalados, testá-los e configurá-los adequadamente para seu uso posterior.
-- Carregar o núcleo do sistema operacional em memória e iniciar sua execução.
+### 3. Gerenciamento de Dispositivos
+- **Manipulação de Dispositivos:** `ioctl()`, `read()`, `write()`
+- **Controle de Dispositivos:** `mount()`, `umount()`
+
+### 4. Comunicação
+- **Comunicação entre Processos:** `pipe()`, `shmget()`, `shmat()`
+- **Sinalização:** `signal()`, `kill()`
+
+### 5. Informações do Sistema
+- **Relatórios de Estado:** `getpid()`, `alarm()`, `sleep()`
+- **Controle de Sistema:** `syslog()`, `settimeofday()`
+
+Quando uma aplicação faz uma chamada de sistema, a execução do programa passa do modo usuário para o modo kernel. O modo kernel permite que o sistema operacional execute operações com privilégios elevados, que são necessários para acessar diretamente o hardware e outros recursos críticos do sistema.
+
+Um exemplo clássico de chamada de sistema é a leitura de um arquivo:
+
+1. Aplicativo faz uma chamada de sistema `read()`.
+2. O controle é passado do modo usuário para o modo kernel.
+3. O kernel executa a operação de leitura do arquivo do sistema de arquivos e coloca os dados em um buffer.
+4. O controle é devolvido ao modo usuário e o aplicativo continua sua execução com os dados lidos.
+
+As Chamadas de Sistema fornecem uma camada de abstração que permite aos desenvolvedores de aplicações interagir com o hardware de forma segura e controlada, sem precisar conhecer os detalhes internos do hardware. Isso garante que as operações críticas sejam executadas de maneira consistente e segura, protegendo a integridade do sistema.
+
 
 ### Níveis de Privilégio
 - **Núcleo**
