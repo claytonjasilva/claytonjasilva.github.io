@@ -4,9 +4,7 @@
 
 É a camada que contém todas as instruções de nível ISA – impacto sobre a portabilidade dos S.O. bem como o conjunto de novas instruçõese o conjunto completo de instruções disponíveis para os programadores de aplicação: chamadas de sistema.
 
-O nível do sistema operacional é sempre interpretado.
-
-Seus principais objetivos são:
+O nível do sistema operacional é sempre interpretado. Seus principais objetivos são:
 - **Conveniência:** Tornar o uso do computador mais conveniente.
 - **Eficiência:** Permitir uma utilização mais eficiente dos recursos do sistema.
 
@@ -16,43 +14,43 @@ Os principais elementos constituintes do Sistema Operacional são:
 - **Drivers**
 - **Programas Utilitários**
 
-# O Núcleo do Sistema Operacional
+### 8.1.1 O Núcleo do Sistema Operacional
 
-## Introdução
-O núcleo, ou kernel, é o componente central do sistema operacional. Ele é responsável por gerenciar os recursos do sistema e facilitar a interação entre o hardware e o software. Um entendimento profundo do kernel é fundamental para compreender como os sistemas operacionais funcionam e como eles proporcionam um ambiente eficiente e seguro para a execução de aplicações.
+O núcleo, ou kernel, é o componente central do sistema operacional. É responsável por gerenciar os recursos do sistema e facilitar a interação entre o hardware e o software. Um entendimento profundo do kernel é fundamental para compreender como os sistemas operacionais funcionam e como eles proporcionam um ambiente eficiente e seguro para a execução de aplicações.
 
-## Funções do Kernel
 O kernel desempenha várias funções críticas, incluindo:
 
-### 1. Gestão de Processos
+#### 1. Gestão de Processos
 O kernel é responsável pela criação, escalonamento e terminação de processos. Ele gerencia o tempo de CPU alocado a cada processo, garantindo que múltiplos processos possam ser executados simultaneamente de forma eficiente através de técnicas como o escalonamento de curto prazo, médio prazo e longo prazo.
 
-### 2. Gestão da Memória
+#### 2. Gestão da Memória
 O kernel controla a alocação e desalocação de memória para diferentes processos. Ele utiliza mecanismos como a paginação e a segmentação para garantir que os processos tenham acesso à memória de forma organizada e eficiente, além de implementar a memória virtual para permitir que o sistema operacional utilize mais memória do que a fisicamente disponível.
 
-### 3. Gestão de Dispositivos
+#### 3. Gestão de Dispositivos
 A interação com dispositivos de entrada e saída (I/O) é mediada pelo kernel. Ele utiliza drivers específicos para cada dispositivo, que são módulos de código que permitem ao sistema operacional se comunicar com o hardware de maneira padronizada e eficiente.
 
-### 4. Gestão de Arquivos
+#### 4. Gestão de Arquivos
 O kernel oferece um sistema de arquivos que organiza os dados em estruturas hierárquicas, facilitando a criação, leitura, escrita e exclusão de arquivos. Ele garante que os dados sejam armazenados e recuperados de forma confiável e eficiente.
 
-### 5. Segurança e Proteção
+#### 5. Segurança e Proteção
 O kernel implementa mecanismos de segurança para proteger os recursos do sistema contra acesso não autorizado. Ele controla o acesso aos arquivos, dispositivos e memória, assegurando que apenas os processos e usuários autorizados possam realizar operações específicas.
 
-## Estrutura do Kernel
+### 8.1.2 Estrutura
+
 O kernel pode ser estruturado de diferentes maneiras, incluindo:
 
-### 1. Monolítico
+#### 1. Monolítico
 Em um kernel monolítico, todos os componentes do sistema operacional estão integrados em um único grande bloco de código executável. Isso pode oferecer desempenho mais rápido devido à menor sobrecarga de comunicação entre os componentes, mas pode tornar a manutenção e a adição de novos recursos mais complexas.
 
-### 2. Micronúcleo (Microkernel)
+#### 2. Micronúcleo (Microkernel)
 Um micronúcleo minimiza a quantidade de código executado no modo kernel, movendo a maior parte das funcionalidades do sistema operacional para processos no espaço do usuário. Isso pode aumentar a segurança e a estabilidade, pois falhas nos componentes do sistema operacional não afetam diretamente o kernel.
 
-### 3. Híbrido
+#### 3. Híbrido
 Kernels híbridos combinam elementos de ambos os modelos monolítico e micronúcleo. Eles buscam equilibrar desempenho e modularidade, permitindo que partes críticas do sistema operacional sejam executadas no espaço do kernel, enquanto outras partes são executadas no espaço do usuário.
 
-## Conclusão
 O kernel é a espinha dorsal de um sistema operacional, gerenciando recursos e fornecendo a interface entre o hardware e o software. Seu design e implementação têm um impacto significativo no desempenho, segurança e funcionalidade do sistema. Entender como o kernel funciona é essencial para qualquer profissional de computação, pois ele forma a base sobre a qual todos os outros componentes do sistema operam.
+
+
 
 ## Chamadas de Sistema
 - Mecanismo de interrupção utilizado pelas aplicações para serem atendidos pelo sistema.
