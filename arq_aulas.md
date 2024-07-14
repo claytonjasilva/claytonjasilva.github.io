@@ -10,9 +10,6 @@
 6. [Cap. 6 - Processadores](arq_aulas/processadores.md)
 7. [Cap. 7 - Microcontroladores: MC Atmel ATmega 2560](arq_aulas/arquitetura_computadores_cap7.md)
 8. [Cap.8 - Sistemas Operacionais:](arq_aulas/arquitetura_computadores_cap8.md)
-
-[*download* material](https://1drv.ms/p/s!AsTd8oN7mu8pkcB4b7de8Z0_eLNtFA?e=PIgZwh)
-
 - [ANEXO I - UNIDADES E GRANDEZAS NUMÉRICAS](arq_aulas/arquitetura_computadores_anexo1.md)  
 - [ANEXO II - CONVERSÃO DE BASE E INFORMAÇÕES BINÁRIAS](arq_aulas/arquitetura_computadores_anexo2.md)  
 - [ANEXO III - REPRESENTAÇÃO NUMÉRICA](arq_aulas/arquitetura_computadores_anexo3.md)  
