@@ -48,7 +48,64 @@ Kernels híbridos combinam elementos de ambos os modelos monolítico e micronúc
 
 O kernel é a espinha dorsal de um sistema operacional, gerenciando recursos e fornecendo a interface entre o hardware e o software. Seu design e implementação têm um impacto significativo no desempenho, segurança e funcionalidade do sistema. Entender como o kernel funciona é essencial para qualquer profissional de computação, pois ele forma a base sobre a qual todos os outros componentes do sistema operam.
 
+## 8.1.2 Código de Inicialização do Sistema Operacional
 
+O código de inicialização do sistema operacional é responsável por preparar o ambiente necessário para que o sistema operacional possa ser carregado e executado. Este processo é fundamental para garantir que todos os componentes do sistema estejam funcionando corretamente antes que o controle seja entregue ao sistema operacional.
+
+## Bootloader
+O bootloader é um programa essencial na sequência de inicialização do sistema. Ele é carregado pela BIOS ou pelo firmware do sistema e tem como principais responsabilidades:
+
+### Funções do Bootloader
+1. **Carregar o Kernel:**
+   - O bootloader localiza o kernel do sistema operacional no disco de armazenamento e o carrega na memória principal (RAM).
+
+2. **Configurar o Ambiente:**
+   - Ele configura o ambiente de execução inicial, incluindo a configuração dos modos de operação do processador e a inicialização de dispositivos básicos.
+
+3. **Transferência de Controle:**
+   - Após carregar o kernel e configurar o ambiente, o bootloader transfere o controle para o kernel, permitindo que o sistema operacional inicie sua execução.
+
+### Tipos de Bootloader
+Existem diversos tipos de bootloaders, entre eles:
+- **BIOS Bootloaders:** Tradicionalmente usados em sistemas baseados em BIOS.
+- **UEFI Bootloaders:** Utilizados em sistemas modernos baseados em UEFI, oferecendo mais funcionalidades e uma interface gráfica.
+
+## Self-Test (POST)
+O Power-On Self-Test (POST) é um conjunto de testes realizados pelo firmware do sistema (BIOS ou UEFI) durante a inicialização. Seus objetivos principais são:
+
+### Funções do Self-Test
+1. **Verificação de Hardware:**
+   - O POST verifica a integridade e a funcionalidade dos componentes de hardware do sistema, como memória RAM, processador, dispositivos de armazenamento e periféricos.
+
+2. **Diagnóstico de Problemas:**
+   - Se forem encontrados problemas, o POST pode exibir códigos de erro ou sinais sonoros (beeps) para indicar a natureza do problema, facilitando o diagnóstico e a solução.
+
+### Processo do POST
+1. **Inicialização do Firmware:**
+   - O firmware do sistema é carregado e inicia os testes.
+
+2. **Verificação dos Componentes:**
+   - Componentes críticos são verificados, incluindo memória, CPU, e dispositivos de I/O.
+
+3. **Indicação de Status:**
+   - O status dos testes é indicado através de mensagens na tela ou códigos de beep.
+
+## Memória que Armazena o Bootloader
+O bootloader é geralmente armazenado em uma memória não volátil, que retém seu conteúdo mesmo quando o sistema está desligado. Tipos comuns de memória que armazenam o bootloader incluem:
+
+### Tipos de Memória
+1. **ROM (Read-Only Memory):**
+   - Memória que é pré-programada e não pode ser alterada. Usada em sistemas mais antigos.
+
+2. **Flash Memory:**
+   - Tipo de memória regravável que pode ser atualizada. Usada em sistemas modernos para armazenar firmware, incluindo o bootloader.
+
+### Vantagens da Flash Memory
+- **Atualizável:** Permite atualizações de firmware sem substituir o hardware.
+- **Confiável:** Mantém os dados armazenados mesmo sem energia.
+
+## Conclusão
+O código de inicialização do sistema operacional é um componente crucial que prepara o ambiente para a execução do sistema. O bootloader e o POST desempenham papéis essenciais nesse processo, garantindo que o sistema esteja pronto para funcionar corretamente. A escolha da memória para armazenar o bootloader é igualmente importante para a confiabilidade e a flexibilidade do sistema.
 
 ## Chamadas de Sistema
 - Mecanismo de interrupção utilizado pelas aplicações para serem atendidos pelo sistema.
