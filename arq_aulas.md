@@ -1,7 +1,9 @@
 # Conteúdo das Aulas  
+
 ## Arquitetura de Computadores - 2024.2
 
 ## Tópicos
+
 1. [Cap. 1 - Máquina de von Neumman](arq_aulas/arquitetura_computadores_cap1.md)
 2. [Cap. 2 - Organização e Modelos de máquina de níveis](arq_aulas/arquitetura_computadores_cap2.md)
 3. [Cap. 3 - Nível de lógica digital: circuitos combinacionais e circuitos sequenciais](arq_aulas/arquitetura_computadores_cap3.md)
@@ -10,13 +12,15 @@
 6. [Cap. 6 - Processadores](arq_aulas/arquitetura_computadores_cap6.md)
 7. [Cap. 7 - Microcontroladores: MC Atmel ATmega 2560](arq_aulas/arquitetura_computadores_cap7.md)
 8. [Cap.8 - Sistemas Operacionais:](arq_aulas/arquitetura_computadores_cap8.md)
+
 - [ANEXO I - UNIDADES E GRANDEZAS NUMÉRICAS](arq_aulas/arquitetura_computadores_anexo1.md)  
 - [ANEXO II - CONVERSÃO DE BASE E INFORMAÇÕES BINÁRIAS](arq_aulas/arquitetura_computadores_anexo2.md)  
 - [ANEXO III - REPRESENTAÇÃO NUMÉRICA](arq_aulas/arquitetura_computadores_anexo3.md)  
 - [ANEXO IV - ARITMETICA BINÁRIA](arq_aulas/arquitetura_computadores_anexo4.md)
 
-## Práticas Arduíno   
-1. [Prática 1 Arduíno: alimentação de LEDs](arq_aulas/pratica_ligaLED.md)    
+## Práticas Arduíno
+
+1. [Prática 1 Arduíno: alimentação de LEDs](arq_aulas/arquitetura_computadores_pratica1.md)  
 2. [Prática 2 Arduíno: código, pinos e função de saída](arq_aulas/pratica_saidaArduino.md)     
 3. [Prática 3 Arduíno: código, pinos e função de entrada](arq_aulas/pratica_entradaArduino.md)
 4. [Prática 4 Arduíno: mais sobre código](arq_aulas/pratica_codigoArduino.md)     
