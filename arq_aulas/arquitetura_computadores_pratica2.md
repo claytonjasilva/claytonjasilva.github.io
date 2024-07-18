@@ -1,4 +1,4 @@
-# Prática 2 - Conhecendo o Arduíno 2560
+# Prática 2 Assembly Atmega2560
 Circuito utilizando a placa do Arduíno 2560 para acender um de três LEDs conectados a três pinos de saída do Arduíno.
 
 ## I - Apresentação de instrumental e ferramental
