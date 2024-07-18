@@ -20,10 +20,10 @@ Operação: DS(k) ← Rr
 ### Exemplos
 
 1. Elaborar um programa em assembly para armazenar os 32 primeiros números pares nos registradores do processador do Atmega2560.  
-   
+
 2. Elaborar um programa em assembly para inicializar os registradores r0 a r5 do processador do Atmega2560 com 2, 4, 6, 8, 10 e 12.
    Incrementar r0 uma vez; r1, duas vezes; assim por diante.
-   
+
 4. Considerando os dados armazenados nos registradores r0 a r5 da questão anterior, somar os valores, acumulando o resultado da soma no registrador r5.  
 
 5. Armazenar os valores armazenados no registrador r5 na posição de endereço 0x200 da memória RAM do microcontrolador Atmega2560.  
@@ -31,12 +31,16 @@ Operação: DS(k) ← Rr
 6. Instrução **BREAK**  
 
 ## *Assembler* do Atmega2560
+
 1. **Comentários**  
+
 ```
 ; The rest of the line is a comment
 ```
+
 2. **Operandos**  
 Os seguintes operandos podem ser usados:
+
 - **Rótulos** definidos pelo usuário, que recebem o valor do contador de localização no ponto em que aparecem;  
 - Variáveis definidas pelo usuário criadas pela diretiva SET;  
 - Constantes definidas pelo usuário estabelecidas pela diretiva EQU;  
