@@ -338,4 +338,3 @@ Uma forma mais eficiente de realizar a substituição é adiar para realizá-la 
 
 ___
 **[Home Conteúdo Arquitetura de Computadores](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/arq_aulas.md)**  
-**Memória Principal ou Primária: [próximo>>](memoria2.md)** 
