@@ -21,33 +21,37 @@
 ## Práticas Arduíno
 
 1. [Prática 1 Arduíno: alimentação de LEDs](arq_aulas/arquitetura_computadores_pratica1.md)  
-2. [Prática 2 Arduíno: código, pinos e função de saída](arq_aulas/pratica_saidaArduino.md)     
-3. [Prática 3 Arduíno: código, pinos e função de entrada](arq_aulas/pratica_entradaArduino.md)
-4. [Prática 4 Arduíno: mais sobre código](arq_aulas/pratica_codigoArduino.md)     
-5. [Prática 5 Arduíno: mais sobre código](arq_aulas/pratica_codigoArduino2.md)
-6. [Prática 6 Arduíno: mais sobre código](arq_aulas/pratica_codigoArduino3.md)
-7. [Prática 7 Arduíno: dispositivos de saída - *buzzer*](arq_aulas/pratica_buzzer.md)
-8. [Prática 8 Arduíno: dispositivos de saída - LCD 1602](arq_aulas/pratica_lcd1.md)
-9. [Prática 9 Arduíno: dispositivos de entrada/saída - sensor ultrassônico](arq_aulas/pratica_sensorultrassonico.md)
-10. [Prática 10: dispositivos de saída - sensor de movimento](arq_aulas/pratica_sensormovimento.md)
-11. [Prática 11 Arduíno: dispositivos de saída - motor de passo](arq_aulas/pratica_motor.md)
+2. [Prática 2 Arduíno: código, pinos e função de saída](arq_aulas/arquitetura_computadores_pratica2.md)     
+3. [Prática 3 Arduíno: código, pinos e função de entrada](arq_aulas/arquitetura_computadores_pratica3.md)
+4. [Prática 4 Arduíno: funções no Arduíno](arq_aulas/arquitetura_computadores_pratica4.md)
+5. [Prática 5 Arduíno: estrutura de repetição while no Arduíno](arq_aulas/arquitetura_computadores_pratica5.md)
+6. [Prática 6 Arduíno: executando inversão - complemento de 1](arq_aulas/arquitetura_computadores_pratica6.md)
+7. [Prática 7 Arduíno: dispositivos de saída - *buzzer*](arq_aulas/arquitetura_computadores_pratica7.md)
+8. [Prática 8 Arduíno: dispositivos de saída - LCD 1602](arq_aulas/arquitetura_computadores_pratica8.md)
+9. [Prática 9 Arduíno: dispositivos de entrada - sensor ultrassônico](arq_aulas/arquitetura_computadores_pratica9.md)
+10. [Prática 10: dispositivos de entrada - sensor de movimento](arq_aulas/arquitetura_computadores_pratica10.md)
 
-## Práticas Linguagem de montagem (*assembly*)   
-1. [Prática 1 Assembly: registradores, memória RAM e instruções aritméticas básicas](arq_aulas/assembly1.md)
-2. [Prática 2 Assembly: registradores, memória RAM e instruções de desvio](arq_aulas/assembly2.md)
-3. [Prática 3 Assembly: registradores, memória RAM e instruções de comparação](arq_aulas/assembly3.md)
-4. [Prática 4 Assembly: registradores, memória RAM e instruções de comparação](arq_aulas/assembly4.md)
-5. [Prática 5 Assembly: diretivas do assembler](arq_aulas/assembly5.md)
+## Práticas Linguagem de montagem (*assembly*)
+
+1. [Prática 1 Assembly: registradores, memória RAM e instruções aritméticas básicas](arq_aulas/arquitetura_computadores_pratica_assembly1.md)
+2. [Prática 2 Assembly: registradores, memória RAM e instruções de desvio](arq_aulas/arquitetura_computadores_pratica_assembly2.md)
+3. [Prática 3 Assembly: registradores, memória RAM e instruções de comparação](arq_aulas/arquitetura_computadores_pratica_assembly3.md)
+4. [Prática 4 Assembly: registradores, memória RAM e instruções de comparação](arq_aulas/arquitetura_computadores_pratica_assembly4.md)
+5. [Prática 5 Assembly: diretivas do assembler](arq_aulas/arquitetura_computadores_pratica_assembly5.md)
 
 ## Avaliações
+
 ### Avaliações Bimestrais
+
 1. **Trabalho AP1** - a definir  
-2. **Trabalho AP2** - a definir    
+2. **Trabalho AP2** - a definir
 
 ### Avaliação Continuada
+
 Os instrumentos de avaliação continuada srão disponibilizados à medida que as aulas forem ministradas.  
 
 ## Exercícios  
+
 1. [Lista 1 de Exercícios](arq_aulas/arq_exercicios1_sala.md)  
 2. [Lista 2 de Exercícios](arq_aulas/arq_exercicios2_sala.md)  
 3. [Lista 3 de Exercícios](arq_aulas/arq_exercicios3_sala.md)  
@@ -59,7 +63,9 @@ Os instrumentos de avaliação continuada srão disponibilizados à medida que a
 9. [Lista 9 de Exercícios](arq_aulas/arq_exercicios9_sala.md)
 
 ## Referências  
-*Obs. É necessário o acesso pela Biblioteca Virtual do Ibmec*    
+
+*Obs. É necessário o acesso pela Biblioteca Virtual do Ibmec*
+
 1. [Tanenbaum, Andrew S.; Organização estruturada de computadores; 5a ed; Prenticce-Hall, 2007](https://plataforma.bvirtual.com.br/Leitor/Publicacao/355/pdf/0)
 2. [Stallings, William; Arquitetura e Organização de Computadores; 10a ed; Pearson, 2018](https://plataforma.bvirtual.com.br/Leitor/Publicacao/151479/pdf/0)
 3. [Corrêa, Ana G. D.; Organização e Arquitetura de Computadores; Pearson, 2017](https://plataforma.bvirtual.com.br/Leitor/Publicacao/124147/pdf/0)
