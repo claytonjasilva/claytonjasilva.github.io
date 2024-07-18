@@ -1,17 +1,20 @@
 # Assembly Atmega2560 
+
 ## Visão inicial
+
 ### Instruções básicas
+
 - LDI: Carrega operando no registrador  
-Sintaxe:`LDI Rd, onde K 16 ≤ d ≤ 31, 0 ≤ K ≤ 255`    
-Operação: Rd <- k 
+Sintaxe:`LDI Rd`, onde K 16 ≤ d ≤ 31, 0 ≤ K ≤ 255`  
+Operação: Rd <- k
 - INC: Incrementa registrador  
-Sintaxe:`INC Rd, onde 0 ≤ d ≤ 31 `    
+Sintaxe:`INC Rd`, onde 0 ≤ d ≤ 31 `
 Operação: Rd <- Rd + 1
 - ADD: Soma os valores de dois registradores  
-Sintaxe:`ADD Rd,Rr, onde 0 ≤ d ≤ 31, 0 ≤ r ≤ 31`    
+Sintaxe:`ADD Rd,Rr`, onde 0 ≤ d ≤ 31, 0 ≤ r ≤ 31`
 Operação: Rd <- Rd + Rr
 - STS: Armazena dado de registrador diretamente em memória  
-Sintaxe:`STS k,Rr, onde 0 ≤ r ≤ 31, 0 ≤ k ≤ 65535`    
+Sintaxe:`STS k,Rr`, onde 0 ≤ r ≤ 31, 0 ≤ k ≤ 65535`
 Operação: DS(k) ← Rr  
 
 ### Exemplos
