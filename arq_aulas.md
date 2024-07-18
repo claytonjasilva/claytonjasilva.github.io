@@ -48,7 +48,7 @@
 
 ### Avaliação Continuada
 
-Os instrumentos de avaliação continuada srão disponibilizados à medida que as aulas forem ministradas.  
+Os instrumentos de avaliação continuada serão disponibilizados à medida que as aulas forem ministradas.  
 
 ## Exercícios  
 
