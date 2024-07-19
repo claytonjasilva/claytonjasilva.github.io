@@ -1,4 +1,4 @@
-# Aulas de Sistemas Digitais - 2024.1
+# Aulas de Sistemas Digitais - 2024.2
 
 ## Conteúdo
 
