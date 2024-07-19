@@ -1,6 +1,7 @@
-# 3. Projeto de circuitos combinacionais
+# Cap 3. Projeto de circuitos combinacionais
 
 ## 3.1 Formas canônicas
+
 Toda expressão booleana possui uma expressão logicamente equivalente 
 que pode ser escrita na forma de **disjunção (soma) da conjunção (produto) de termos** com todas as variáveis independentes.  
 
@@ -27,17 +28,21 @@ A segunda forma canônica é **dual** da soma-de-produtos. É chamada de **produ
 que consiste na equivalência à **conjunção da disjunção de termos com todas as variáveis independentes**. **Não a utilizaremos neste curso.**  
 
 Pode-se obter a expressão equivalente a uma função qualquer na forma de soma de produtos de duas maneiras:  
+
 - aplicando-se os teoremas e axiomas da Álgebra Booleana;
 - aplicando-se a tabela verdade.  
 
 **Método**:
+
 1. Gerar a tabela para a expressão original
 2. Identificar os mintermos que resultam 1
 3. Gerar a expressão equivalente ao mintermo que resulta 1
 4. Escrever a expressão na forma da disjunção dos mintermos 
 
 ## 3.2 Projeto de circuitos combinacionais
+
 ### 3.2.1 **Método 1**: Um passo a passo recomendado para projetar os circuitos pode ser:  
+
 1. Interpretar um problema, **expressando a solução na forma algébrica**
 2. Substituir as operações pelas portas lógicas equivalentes
 
@@ -45,6 +50,7 @@ Os dois passos apresentados acima não consideram que a expressão obtida da int
 Em consequência, é conveniente, pelas razõs já discutidas, buscar minimizar a expressão lógica. O passo a passo se tornará o seguinte.  
 
 ### 3.2.2 **Método 2**: Outro passo a passo recomendado para projetar os circuitos pode ser:  
+
 1. Interpretar um problema, **expressando a solução na forma algébrica**
 2. **Minimizar a expressão** aplicando os teoremas e axiomas da Álgebra Booleana
 3. Substituir as operações pelas portas lógicas equivalentes 
@@ -52,6 +58,7 @@ Em consequência, é conveniente, pelas razõs já discutidas, buscar minimizar 
 Nem sempre inferir diretamente a expressão algébrica a partir do problema formulado é simples.  
 
 ### 3.2.3 **Método 3**: Nesse caso pode-se usar uma abordagem deiferente:  
+
 1. Interpretar um problema, **expressando a solução na forma de tabela verdade**
 2. Construir a expressão da **solução na forma canônica da soma de produtos**
 3. **Minimizar a expressão** aplicando os teoremas e axiomas da Álgebra Booleana - nesse caso, a utilização de lógica adjacente é direta
@@ -60,6 +67,7 @@ Nem sempre inferir diretamente a expressão algébrica a partir do problema form
 Um quarto método pode ser utilizado: **MINIMIZAÇÃO COM MAPA DE KARNAUGH** - Discutiremos em seguida.
 
 ## 3.3 Simplificação das expressões algébricas com Mapa de Karnaugh (mapa K)
+
 Método gráfico para simplificar expressão booleana.  
 
 O **mapa K** compreende uma tabela com as variáveis de cada mintermos apresentadas nas linhas e colunas.  
@@ -73,6 +81,7 @@ As variáveis rotulam cada linha na forma do mintermo assegurando uma adjacênci
 ![Mapas K - 3 e 4 variáveis](/sisdig_aulas/images_sisdig/mapasK.jpg)
 
 O método de simplifcação consiste nos seguintes passos:  
+
 1. Construir o mapa K
 2. Agrupar pares, quartetos ou octetos de 1s – desenhar no mapa as maiores combinações de 1s possíveis – pode haver interseção de grupos
 3. Substituir cada grupo pela expressão equivalente, considerando somente as variáveis que não se alteram no grupo 
@@ -83,6 +92,7 @@ O método de simplifcação consiste nos seguintes passos:
 8. Existem problemas em que ‘não importa’ o valor da saída para certas condições de entrada: condição *don’t care*
 
 O método de simplificação com o uso e *don't care* consiste em:
+
 1. Construir o mapa K, incluindo X (don’t care) nas células
 2. **Incluir X nos grupos de 1 somente se for possível constituir maiores grupos de 1s**
 3. **Desconsiderar o X (admitir iguais a 0) nas situações em que não contribuir para constituir grupos maiores de 1s**  

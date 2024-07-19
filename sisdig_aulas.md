@@ -1,9 +1,10 @@
 # Aulas de Sistemas Digitais - 2024.1
 
 ## Conteúdo
-1. [Sinais Analógicos e Digitais](sisdig_aulas/digitaisAnalogicos.md)
-2. [Álgebra Booleana e Portas Lógicas](sisdig_aulas/algebraPortasLogicas.md)  
-3. [Projeto de circuitos combinacionais](sisdig_aulas/circuitosCombinacionais.md)
+
+1. [Sinais Analógicos e Digitais](sisdig_aulas/sistemas_digitais_cap1.md)
+2. [Álgebra Booleana e Portas Lógicas](sisdig_aulas/sistemas_digitais_cap2.md)  
+3. [Projeto de circuitos combinacionais](sisdig_aulas/sistemas_digitais_cap3.md)
 4. [Revisão: grandezas numéricas nos sistemas digitais](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/arq_aulas/dimensoesUnidadesAritmeticaComputacional1.md)
 5. [Circuitos aritméticos - somadores binários e subtratores](sisdig_aulas/circuitosSomadores.md)
 6. [Circuitos lógicos - comparadores](sisdig_aulas/circuitosComparadores.md)
