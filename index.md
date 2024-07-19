@@ -6,7 +6,7 @@
 * [Eletrônica e Design de Circuitos](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/eletronica.md) - Rev 2023.2  
 * [Linguagens Formais e Compiladores](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/compiladores.md)
 * [Sistemas de Comunicações Móveis](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/siscom.md) - Rev 2024.1
-* [Sistemas Digitais](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/sisdig.md) - Rev 2024.1
+* [Sistemas Digitais](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/sisdig.md) - Rev 2024.2
 * [Gestão de Processos](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/gestao_processos.md) - Rev 2024.2
 * [Aspectos Regulatórios de Telecomunicações](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/regulatelecom.md)
 
