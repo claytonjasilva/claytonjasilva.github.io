@@ -1,4 +1,4 @@
-# 6. Circuitos decodificadores
+# Cap 6. Circuitos decodificadores
 
 ## 6.1 Códigos binários
 
@@ -13,6 +13,7 @@ Caso haja duas palavras distintas para representar o mesmo elemento discreto o c
 Existem diferente esquemas de codificação, cada um com suas particularidades, vantagens e desvantagens (Não as discutiremos aqui).  
 
 ### 6.1.1 Código BCD (*Binary Coded Decimal*)
+
 O código BCD representa os dígitos decimais.  
 
 Existema vários tipos de códigos BCD, tratarems especificamente do código 8421 BCD, algumas vezes designado como NBCD, de *Natural Binary Coded Decimal*.   
@@ -31,6 +32,7 @@ Existema vários tipos de códigos BCD, tratarems especificamente do código 842
 | 1001 | 9 |
 
 ### 6.1.2 Códigos UDC (*Unit Distance Code*)
+
 Existem aplicações em que é desjável representar valores numéricos bem como outras informações em que uma palavra da adjacente muda somente uma posição.  
 
 Esse tipo de código possui distância unitária, portanto é chamado de **código UCD**. 
@@ -57,12 +59,14 @@ Um código UDC conhecido é o chamado código de Gray de 4 bits.
 | 1000 | 15 |
 
 ### 6.1.3 Códigos alfanuméricos
+
 Quando os elementos discretos incluem incluem, além dos dígitos decimais, caraceres alfabéticos e símbolos especiais caracteriza-se um **código alfanumérico**.  
 
 Um código alfanumérico amplamente usado é o códgo ASCII, padronizado pela *American Standard Code For Information Interchange*.  
 Cada palavra do código ASCII possui 8 bits.  
 
 O código utiliza 7 bits para representar um conjunto de 128 sinais:  
+
 - 95 sinais gráficos (letras do alfabeto latino, algarismos arábicos, sinais de pontuação e sinais matemáticos) e
 - 33 sinais de controle.  
 
@@ -92,6 +96,7 @@ Cada caractere pode ser referenciado pela sua representação binária e, de mod
 Por exemplo, o caractere *B* possui a codificação 0100 0010, logo 0x42 ou 66 na representação decimal.
 
 ## 6.2 Circuitos codificadores
+
 São circuitos lógicos que aceitam *M* entradas, em que **somente uma entrada é ativada por vez**, e ativa as saídas que correspondem à palavra do código de *N* bits que representa a entrada.  
 
 A entrada ativada representa o símbolo discreto representado pela palavra de saída.  
@@ -146,6 +151,7 @@ Observe que o CD4511 possui também **entradas de controle** que influenciam a p
 embora realize de fato a *decodificação* do código BCD e codificação para o código de 7 segmentos.**
 
 ## 6.3 Circuitos decodificadores (*decoders*)
+
 Realizando a operação inversa dos circuitos codificadores, os *decoders* são circuitos lógicos que aceitam *N* entradas de um código, cada uma representando a palavra de um código,
 e **ativam somente uma das *M* saídas**, que corresponde ao elemento do conjunto discreto relacionado por aquela palavra.  
 
@@ -174,7 +180,7 @@ O sinal de controle é chamado de ***enable***.
 O sinal de *enable* normalmente habilita ou desabilita o circuito para realizar a função para a qual foi projetado.  
 
 A figura ilustra o esquema geral de um *decoder* BCD produzindo uma saída decimal.  
-![DEcoder BCD-decimal](/sisdig_aulas/images_sisdig/decoderbcddecimal.jpg)
+![Decoder BCD-decimal](/sisdig_aulas/images_sisdig/decoderbcddecimal.jpg)
 
 Observe que, diferentemente da tabela verdade apresentada acima, nem todas as combinações das entradas ativam uma saída. 
 No caso, somente as palavras binárias do código BCD ativam saída.
@@ -183,6 +189,3 @@ Um *datasheet* com todas as especificações de um decoder BCD-decimal está dis
 
 ___
 **[Home Conteúdo Sistemas Digitais](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/sisdig_aulas.md)**  
-
-
-
