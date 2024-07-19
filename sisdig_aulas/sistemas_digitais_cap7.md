@@ -1,11 +1,13 @@
-# 7. Circuitos multiplexadores
+# Cap 7. Circuitos multiplexadores
 
 ## 7.1 Conceito
+
 Os circuitos multiplexadores são também chamados de **seletores de dados**.  
 
 São circuitos lógicos que aceitam vários dados de entrada e selecionam um deles em um determinado instante.  
 
 Possuem dois tipos de entradas:
+
 - Entradas de **dados**.
 - Entradas **de seleção ou de endereço**.  
 
@@ -47,6 +49,7 @@ Similarmente pode-se projetar um multiplexador de 4 entradas. Utilizando portas 
 ![Circuito multiplexador de 4 entradas](/sisdig_aulas/images_sisdig/multiplexador4entradas.jpg)
 
 ## 7.2 Circuito Integrado de multiplexação
+
 A figura ilustra um circuito integrado 74151, de 8 entradas.   
 ![Circuito multiplexador de 8 entradas](/sisdig_aulas/images_sisdig/multiplexador8entradas.jpg)
 
@@ -72,15 +75,19 @@ apresenta os detalhes elétricos e mecânicos do CI, além das entradas e saída
 Observe que o CI da *Texas INstruments* possui alguma modificação da identificação da pinagem do esquema lógico apresentado acima.
 
 ## 7.3 Aplicações com multiplexadores
+
 Os multiplexadores podem ser usados para algumas aplicações específicas, como:
+
 - Conversor paralelo-série
 - Gerador de funções
 
 ### 7.3.1 Mux como Conversor paralelo-série
+
 A figura abaixo ilustra o projeto de um conversor paralelo-série utilizando um mux.
 ![Conversor paralelo-série com multiplexador](/sisdig_aulas/images_sisdig/conversorparaleloserie.jpg)
 
 O princípio geral de funcionamento é o seguinte:  
+
 1. As entradas de dados podem ser conectadas as saídas de um registrador (portanto, bits simultaneamente armazenados).  
 A conexão de um registrador poderia ser feita a um barramento paralelo. Nesse caso, os bits seriam simultaneamente transferidos.  
 Por outro lado, pode-se desejar transferir os bits por um barramento serial.  
@@ -100,7 +107,8 @@ Por outro lado, automaticamente, operando de acordo com um sinal de *clock* (rel
 Nesse caso, as entradas seletoras operam alimentadas por um circuito que se designa **contador paralelo síncrono**.  
 ![Saída de um contador síncrono](/sisdig_aulas/images_sisdig/contadorsincrono.jpg)    
 
-Verique que:
+Verifique que:
+
 - O sinal de referência é o sinal de *clock*
 - O sinal A possui metade da frequência do sinal de *clock*
 - O sinal B possui metade da frequência do sinal A  
@@ -130,10 +138,12 @@ Observe que o período do sinal *S<sub>0</sub>* é a metade do período do sinal
 O período de *S<sub>0</sub>* corresponde ao tempo em que cada bit do registrador é transferido serialmente.
 
 ### 7.3.2 Mux como gerador de funções
+
 A figura abaixo ilustra o projeto de um gerador de funções utilizando um mux.  
 ![Gerador de funções com multiplexador](/sisdig_aulas/images_sisdig/geradorfuncoes.jpg)  
 
 O princípio geral de funcionamento é o seguinte:  
+
 - As entradas seletora são as variáveis booleanas independente da função
 - Cada combinação das entradas corresponde à conexão da entrada de dados com 0 ou 1  
   
@@ -151,14 +161,12 @@ A tabela verdade abaixo é a tabela referente à função obtida pelo circuito.
 | 1 | 1 | 1 | 1 |
 
 ## 7.4 Demultiplexador
+
 Os demultiplexadores realizam a operação inversa do mux. A figura ilustra.  
 ![Demultiplexador](/sisdig_aulas/images_sisdig/demultiplexador.jpg)  
 
 Algumas operações propiciadas pelos demux são as inversas do multiplexador, como **conversor série-paralelo**.  
 ![Demultiplexador](/sisdig_aulas/images_sisdig/conversorserieparalelo.jpg)  
 
-
 ___
 **[Home Conteúdo Sistemas Digitais](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/sisdig_aulas.md)**  
-
-

@@ -1,10 +1,11 @@
-# 5. Circuitos aritméticos - somadores e subtratores binários 
+# Cap 4. Circuitos aritméticos - somadores e subtratores binários 
 
 Sistemas digitais são projetados para realizar uma variedade de operações aritméticas com bits.  
 
 Uma das operações mais comuns é a **adição binária**.
 
-## 5.1 Meio-somador
+## 4.1 Meio-somador
+
 Conforme já discutido anteriormente, a operação de adição de dois bits é dada por  
 
 | + | 0 | 1 |
@@ -40,7 +41,8 @@ Logicamente o meio-somador será representado simplesmente pela figura abaixo
 Observando o meio-somador verifica-se que não possui uma entrada de *carry*. Possui somente dois bits de entrada.
 Portanto, para implementação modular de um somador é necessário um outro módulo, chamado de **somador-completo**.
 
-## 5.2 Somador completo
+## 4.2 Somador completo
+
 O somador completo apresenta o comportamento descrito pela tabela verdade apresentada abaixo  
 
 | A | B | C<sub>in</sub> | SOMA | C<sub>out</sub> |
@@ -62,7 +64,8 @@ Logicamente o somador completo será representado pela figura abaixo.
 Similarmente ao caso do meio-somador, pode-se obter a expressão booleana relativa a cada uma das saídaso somador completo.  
 Dela pode-se obter os respectivos circuitos digitais, implementados por portas lógicas.  
 
-## 5.3 Somador de *n* bits 
+## 4.3 Somador de *n* bits
+
 Um somador de dois números binários A e B de *n* bits pode ser implementado modularmente,
 utilizando-se o **cascateamento** de **1 meio-somador** e ***n-1* somadores completos**.    
 
@@ -86,9 +89,9 @@ A figura ilustra o modelo lógico.
 ![Somador modular](/sisdig_aulas/images_sisdig/somadormodular.jpg)
 Observe que o dígito mais significativo da soma é *carry* do último módulo do somador.
 
-## 5.4 CI somador
+## 4.4 CI somador
 
-### 5.4.1 Circuitos integrados digitais (CIs)
+### 4.4.1 Circuitos integrados digitais (CIs)
 
 O **chip** é um conjunto de elementos eletrônicos integrados em um substrato de semicondutor.  
 
@@ -97,6 +100,7 @@ Os elementos integrados são **encapsulados** em uma embalagem protetora de um d
 Dependendo da quantidade de elementos integrados em um único substrado define-se o **grau de integração** do chip.  
 
 Os graus de integração são:  
+
 - SSI, de *small scale integration*,
 - MSI, de *medium scale integration*,
 - LSI, de *large scale integration*,
@@ -124,7 +128,8 @@ A tabela apresenta o grau de complexidade e o respectivo número de portas.
 | ULSI | 100.000 a 999.999 |
 | GSI | maior do que 1.000.000 |
 
-### 5.4.2 Somadores integrados 
+### 4.4.2 Somadores integrados
+
 Existem diversos tipos de chips cuja função é produzir a soma de dígitos binários.  
 
 Pela demanda existente, os circuitos constituídos de portas para realizar a soma são integrados e 
@@ -149,7 +154,8 @@ da mesma maneira que a indicada logicamente na construção modular dos somadore
 A figura ilustra como realizar o cascateamento de somadores de 4 bits.  
 ![Cascateamento de CIs somadores](/sisdig_aulas/images_sisdig/somadorcascata.jpg)  
 
-### 5.4.3 Somador BCD (*Binary Code Decimal*)
+### 4.4.3 Somador BCD (*Binary Code Decimal*)
+
 Estudaremos mais à fente diversos tipos de códigos.  
 
 Uma das formas de implementar eletronicamente números decimais é utilizar módulos que permitem
@@ -195,13 +201,62 @@ A saída decimal é dada por $\sum$.
 
 O *carry* é transportado ao módulo seguinte, caracterizando a dezena, centena, ...  
 
+## 4.5 Subtratores
+
+Embora não sejam comumente usados, os circuitos subtratores são interessantes. Recordando, a tabela abaixo apresenta a subtração binária.  
+
+| - | 0 | 1 |
+| - | - | - |
+| **0** | 0 | 1 |
+| **1** | **1**1 | 0 |
+
+**A subtração binária normalmente é realizada pela adição do minuendo ao complemento de 1 ou complemento de 2 do subtraendo.**    
+Normalmente não se implementa computacionalmente a operação de subtração, no entanto caso seja necessário implementar o circuito 
+pode-se adotar o mesmo método da adição e utilizar o **meio-subtrator** e **subtrator completo**.  
+
+A tabela verdade do meio-subtrator será
+
+| A | B | A-B | BORROW |
+| - | - | - | - |
+| 0 | 0 | 0 | 0 |
+| 0 | 1 | 1 | 1 |
+| 1 | 0 | 1 | 0 |
+| 1 | 1 | 0 | 0 |
+
+Obtendo a expressão booleana e minimizando não é difícil obter que  
+
+$$ A-B=(\bar A \.B+A.\bar B \)= A \oplus B $$  
+
+e
+
+$$ BORROW = \bar A \.B $$  
+
+Logicamente o meio-somador será representado simplesmente pela figura abaixo  
+![Meio-subtrator](/sisdig_aulas/images_sisdig/meio-subtrator.jpg)
+
+O circuito com portas lógicas está apresentado abaixo.  
+![Circuito meio-subtrator](/sisdig_aulas/images_sisdig/circuitomeiosubtrator.jpg)
+
+De modo similar à construção do somador completo, pode-se desenvolver o subtrator completo, como 
+descrito pela tabela verdade apresentada abaixo  
+
+| A | B | B<sub>in</sub> | DIF | B<sub>out</sub> |
+| - | - | -------------- |---- | ----- |
+| 0 | 0 | 0 | 0 | 0 |
+| 0 | 0 | 1 | 1 | 1 |
+| 0 | 1 | 0 | 1 | 1 |
+| 0 | 1 | 1 | 0 | 1 |
+| 1 | 0 | 0 | 1 | 0 |
+| 1 | 0 | 1 | 0 | 0 |
+| 1 | 1 | 0 | 0 | 0 |
+| 1 | 1 | 1 | 1 | 1 |
+
+, onde B<sub>in</sub> e B<sub>out</sub> representam respectivamente *borrow* de entrada e *borrow* de saída.  
+
+Logicamente o somador completo será representado por uma figura similar à do somador-completo, com as devidas substituições.  
+
+Um subtrator de dois números binários A e B de *n* bits pode ser implementado modularmente,
+utilizando-se o **cascateamento** de **1 meio-subtrator** e ***n-1* subtratores completos**.    
+
 ___
 **[Home Conteúdo Sistemas Digitais](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/sisdig_aulas.md)**  
-**[Subtratores: próximo >>](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/sisdig_aulas/circuitosSubtratores.md)**  
-
-
-
-
-
-
-

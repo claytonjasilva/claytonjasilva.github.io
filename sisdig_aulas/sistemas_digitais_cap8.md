@@ -1,10 +1,81 @@
-## 9.3 Máquina de estados
+# Cap 8. Fundamentos de máquinas sequenciais
 
-### 9.3.1 O diagrama de estados
+## 8.1 Conceito de sistemas sequenciais
+
+Nosso estudo tem sido dedicado até o momento aos **circuitos combinacionais**.  
+Existe um segmento muito importante dos sistemas digitais, cujos circuitos são categorizados como **circuitos sequenciais**.  
+Para uma ampla gama de problemas as técnicas de sistemas digitais podem ser aplicadas. Uma delas se refere ao controle de sistemas,
+em que sinais digitais são recebidos e interpretados por um sistema digital, gerando saídas de controle de acordo com
+**uma sequência** em que os sinais são recebidos.  
+Nessas aplicações, circuitos com as características dos circuitos combinacionais não são próprios para resolver o problema.  
+Estas aplicações exigem que as saídas geradas sejam uma **função das variáveis de entrada presentes e dos valores passados das variáveis de entrada**.
+
+Um modelo de sistema controlado por realimentação (*feedback*) está apresentado na figura.
+
+![Sistema controlado por realimentação](/sisdig_aulas/images_sisdig/sistemafeedback.jpg)
+
+Na figura estão identificados três blocos:  
+
+- Circuito comparador - circuito digital que recebe a saída do sistema a ser controlado no instante anterior;
+- Circuito controlado - circuito que deve ser controlado de modo que as saídas desejadas sejam obtidas.  
+As entradas *x(t)* são recebidas de outro módulo qualquer do sistema.  
+Os sinais *y(t)* são aqueles obtidos da transformação de *x(t)* pelo *feedback* das saídas no instante anterior.  
+As saídas *u(t)* são aquelas que representam o comportamento desejado para o sistema.  
+
+**Distinção entre máquinas sequenciais e combinacionais**
+
+| Sequenciais | Combinacionais |
+| - | - |
+| Deve possuir capacidade de memória | A saída é estritamente função da entrada - não tem memória |
+| Deve possuir realimentação | Não possui realimentação |
+
+As duas propriedades básicas descritas na tabela para os sistemas sequenciais são necessárias, mas não são suficientes.  
+Os circuitos sequenciais possuem uma propriedade operacional básica: **são cíclicos** sob determinadas condições de controle.  
+Um **modelo geral** de sistemas controlados digitais, ou máquinas sequenciais ou máquina de estados finitos está apresentado na figura.  
+
+![Modelo geral de sistemas sequenciais](/sisdig_aulas/images_sisdig/sistemasequencial.jpg)
+
+Observam-se três blocos, a saber:  
+
+1. O primeiro bloco recebe as entradas e as saídas em ***feedback*** para produzir entradas controladas ou modificadas;
+2. No segundo estágio ou bloco as saídas do bloco anterior são armazenadas no **elemento de memória** para realimentar a entrada;
+3. No terceiro bloco, aplica-se a lógica necessária para produzir a saída desejada.  
+
+### O modelo acima ilustra como se constroi a **máquina sequencial** ou **máquina de estados finitos**. 
+
+## 8.2 Circuitos síncronos e assíncronos
+
+Vimos a definição de circuitos sequenciais.  
+Muitas aplicações de circuitos sequenciais envolvem o emprego de uma referência temporal, 
+chamada de **relógio** ou **clock**.  
+Quanto ao uso ou não do sinal de clock, os circuitos podem ser classificados como **assíncronos** ou **sincronos**:  
+
+- Circuitos cujo comportamento independe de um sinal de relógio são chamados de circuitos **assíncronos**.  
+- Circuitos cujo comportamento é regulado pela referência do sinal de clock são chamados de **circuitos síncronos**.
+O comportamento do sinal de clock está apresnetado na figura.  
+
+![Sinal de clock](/sisdig_aulas/images_sisdig/clock.jpg)
+
+Tipicamente, o sinal de clock é um **trem de ondas quadradas**.  
+Observe que o sinal varia entre dois níveis lógicos: alto e baixo.  
+Para circuitos sequenciais é importante salientar que a **transição de um nível para outro** é importante.  
+A transição possui uma **borda**, ou seja, um limite entre os dois níveis.  
+Embora teoricamente essa transição seja por salto, os sinais reais possuem uma transição que requer um intervalo de tempo $\Delta$ t no circuito.  
+Todo sinal de clock é **periódico**, consequentemente possui um ciclo temporal definido por *T<sub>Ck</sub>*.  
+O número de ciclos na unidade de tempo define a frequência do sinal, *f<sub>Ck</sub>*, que satisfaz
+$$f_{Ck}=\frac{1}{T_{Ck}}$$  
+A relação entre o tempo em que o sinal está no nível alto e o período é chamada de *duty cycle*, ou seja, 
+$$Duty Cycle=\frac{T_{on}}{T_{Ck}}$$  
+, normalmente definido em porcentagem.  
+
+## 8.3 Máquina de estados
+
+### 8.3.1 O diagrama de estados
 
 Existem técnicas para analisar e projetar circuitos sequenciais.  
 Uma das técnicas consiste na utilização de **diagramas de estados**.  
 De modo geral, os circuitos sequenciais são classificados da seguintes forma:  
+
 - Detectores de sequência de códigos;
 - Contadores e registradores;
 - Geradores de códigos;
@@ -16,6 +87,7 @@ O **estado** define um **conjunto de informações sobre o sistema** em um deter
 Uma máquina que se encontra em um determinado estado pode passar a outro quando um **evento** ocorre.  
 A mudança de estados define uma **transição** de estados.  
 O diagrama de estados representa o **comportamento dinâmico** de uma máquina sequencial, apresentando os seguintes elementos:  
+
 - **Estados** possíveis, definidos por um **rótulo**;
 - **Transições** possíveis, indicadas por uma seta que representa **origem-destino**;
 - **Eventos**, definidos pelas variáveis de entrada, que produzem a transição de estados do sistema;
@@ -27,6 +99,7 @@ Seja a figura.
 ![Diagrama de estados](/sisdig_aulas/images_sisdig/diagramaestados.jpg)
 
 A figura ilustra um típico diagrama de estados e seus elementos:
+
 1. Todo estado é definido pelo **símbolo de identificação** do estado e respectivo **código**;
 2. Em relação a um estado de **interesse** o diagrama indica o seu **estado predecessor** pelo sentido da seta de **transição de estados**;
 3. Toda transição requer **condições de entrada** para o estado de interesse;
@@ -37,6 +110,7 @@ O **exemplo 1** ilustra o funcionamento de uma máquina sequencial com a utiliza
 ![Exemplo diagrama de estados](/sisdig_aulas/images_sisdig/exdiagramaestados.jpg)
 
 Entendendo o comportamento do sistema:
+
 1. O estado **a** produz saída *00*, ou seja *A=0*, *B=0*, que definem o estado.
 2. Quando uma variável de entrada *X* assume o valor *0*, o sistema permanece no estado atual, *00*.
 3. Quando *X* passar ao valor *1* será produzida uma transição do estado **a** para o estado **b** -
@@ -62,12 +136,12 @@ O **exemplo 2** de diagrama de estados está apresentado na figura.
 
 No novo exemplo, ao invés do uso de símbolos **a**,...,**d** para designar os estados, utiliza-se o próprio código que define cada estado.  
 Como o código já está definido, omite-se no diagrama as saídas correspondentes às variáveis de estado.  
-No diagrama, apresenta-se uma nova variável *Z*, cujo valor de saída está associada a cada transição de estado, embora não se configure como variável deestado.
+No diagrama, apresenta-se uma nova variável *Z*, cujo valor de saída está associada a cada transição de estado, embora não se configure como variável de estado.
 Um esquema em bloco do circuito está apresentado na figura.  
 
 ![Máquina sequencial - diagrama](/sisdig_aulas/images_sisdig/maquinasequencial2.jpg)
 
-### 9.3.2 Análise de circuitos sequenciais síncronos
+### 8.3.2 Análise de circuitos sequenciais síncronos
 
 Nos processos de análise de circuitos sequenciais duas determinações devem ser feitas:  
 (1) Qual é a classe do circuito a ser analisado; e  
@@ -163,7 +237,4 @@ $$B=B.\bar{X}.Z+A.\bar{X}.Z+\bar{A}.X.\bar{Z}$$
 $$Z=A.B+B.\bar{X}+A.\bar{X}+\bar{A}.\bar{B}.X.\bar{Z}$$
 
 ___
-**[<<anterior](circuitosSequenciais.md)**  
 **[Home Conteúdo Sistemas Digitais](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/sisdig_aulas.md)**  
-
-
