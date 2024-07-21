@@ -6,7 +6,7 @@ A tarefa de carregar e modificar programas nas máquinas historicamente preceden
 
 A ideia principal da máquina IAS, atribuída a von Neumann, é a do **conceito de progama armazenado**.
 
-O coonceito de programa armazenado consiste no armazenamento do programa a ser executado pela UCP em memória, juntamente com os dados. O processador busca as instruções e os dados do programa diretamente da memória. Instruções e dados estão armazenados em posições específicas inequívocas da memória, cada uma definida por um **endereço de memória**.
+O conceito de programa armazenado consiste no armazenamento do programa a ser executado pela UCP em memória, juntamente com os dados. O processador busca as instruções e os dados do programa diretamente da memória. Instruções e dados estão armazenados em posições específicas inequívocas da memória, cada uma definida por um **endereço de memória**.
 
 ![Organização da máquina IAS](/arq_aulas/images/maquinaIAS.jpg)
 
@@ -27,13 +27,13 @@ Os dados armazenados podem ser numéricos inteiros ou reais (computacionamente c
 
 Todas as tarefas realizadas pelos sistemas computacionais decorrem da execução de uma sucessão de instruções binárias armazenadas, que podem manipular dados, também armazenados na memória, intitulados programas. Os programas constituem o software e comandam os elementos eletromecânicos, chamados de hardware.
 
-As característcas tecnológicas dos dispositivos de memória têm evoluído rapidamente, propiciando uma elevada capacidade de armazenamento, mas também velocidade de resposta às solicitações emanadas pela unidade central de processamento (CPU), a quem cabe executar as instruções.
+As características tecnológicas dos dispositivos de memória têm evoluído rapidamente, propiciando uma elevada capacidade de armazenamento, mas também velocidade de resposta às solicitações emanadas pela unidade central de processamento (CPU), a quem cabe executar as instruções.
 
 ### 1.1.2 Unidade Central de Processamento
 
 A Unidade Central de Processamento (CPU, do inglês Central Processing Unit) é o elemento concebido na arquitetura para realizar duas funções básicas principais: (i) interpretar as instruções e controlar o funcionamento das elementos do sistema, na Unidade de Controle (UC); e (ii) executar as instruções, na Unidade Lógica e Aritméetica (ULA).
 
-Para o controle, o sistema computacional utiliza uma referência temporal dada por um sinal elétrico chamado de clock. Pense no computador como uma máquina similar a um engenho mecânico, cuja operação é sincronizada por engrenagens. O sinal elétrico do clock é que permite o sincronismo de funcionamento de toddas as operações dos computadores. O sinal de clock é peródico, ou seja, repete-se em intervalos regulares de tempo, chamados de peeríodo ou ciclo. O número de repetições de ciclos na unidade de tempo é chamado de frequência.
+Para o controle, o sistema computacional utiliza uma referência temporal dada por um sinal elétrico chamado de clock. Pense no computador como uma máquina similar a um engenho mecânico, cuja operação é sincronizada por engrenagens. O sinal elétrico do clock é que permite o sincronismo de funcionamento de todas as operações dos computadores. O sinal de clock é peródico, ou seja, repete-se em intervalos regulares de tempo, chamados de período ou ciclo. O número de repetições de ciclos na unidade de tempo é chamado de frequência.
 
 A evolução dos sistemas computacionais tem sido no sentido de produzir CPUs com referência de clock cada vez mais velozes. Ou seja, a interpretação das instruções dos programas armazenados na memória tem sido cada vez mais rápida, ou seja, os programas são executados, consequentemente as tarefas são realizadas em tempos cada vez mais curtos.
 
@@ -43,7 +43,7 @@ Além das operações lógicas, a ULA também possui os circuitos que podem reso
 
 ### 1.1.3 Dispositivos de entrada e saída
 
-Os computadores precisam assegurar uma ligação com os usuários. Para isso são necessários elementos que permitam ao usuário inserir os dados por meio de dispositivos de entrada. Por exemplo, um teclado possibilita que um usuário digite um texto que seja tratado pela máquina. Por outro lado, os resultados produzidos pela máquina precisam ser apresentados ao ambiente externo através dos chamados dispositivos de saída, por exmplo, monitores de vídeo.
+Os computadores precisam assegurar uma ligação com os usuários. Para isso são necessários elementos que permitam ao usuário inserir os dados por meio de dispositivos de entrada. Por exemplo, um teclado possibilita que um usuário digite um texto que seja tratado pela máquina. Por outro lado, os resultados produzidos pela máquina precisam ser apresentados ao ambiente externo através dos chamados dispositivos de saída, por exemplo, monitores de vídeo.
 
 Mas não somente para as pessoas os dispositivos de entrada e saída são produzidos. Máquinas diferetenes precisam se comunicar. Os elementos de entrada e saída propiciam a comunicação do ambiente interno com o ambiente externo.
 
@@ -51,7 +51,7 @@ Mas não somente para as pessoas os dispositivos de entrada e saída são produz
 
 Ficou evidente que os programas armazenados em memória possuem instruções interpretadas e executadas pela CPU. Por sua vez, os dados resultantes das operações lógicas e aritméticas precisam ser armazenados em memória ou precisam ser enviados a outra máquina através de dispositivos de E/S. Para que o tráfego de dados ocorra entre os elementos do computador são necessárias vias de comunicações, chamadas de barramento.
 
-Através dos barramentos sao trafegados os sinais elétricos abstraídos matematicamente como 0s e 1s. Esses barrramentos são funcionalmente classificados como barramento de dados. Mas os dados fluem entre elementos bem definidos, portanto a definição da localização do destinatário do dado é crucial para o tráfego de dados. Cada componente do coputador é endereçável, de forma que o dado seja enviado ao destino correto. As vias que trafegam os endereços são chamadas de barramento de endereços.
+Através dos barramentos sao trafegados os sinais elétricos abstraídos matematicamente como 0s e 1s. Esses barrramentos são funcionalmente classificados como barramento de dados. Mas os dados fluem entre elementos bem definidos, portanto a definição da localização do destinatário do dado é crucial para o tráfego de dados. Cada componente do computador é endereçável, de forma que o dado seja enviado ao destino correto. As vias que trafegam os endereços são chamadas de barramento de endereços.
 
 Finalmente, o controle produzido pela UC é veiculado pelo chamado barramento de controle.
 
