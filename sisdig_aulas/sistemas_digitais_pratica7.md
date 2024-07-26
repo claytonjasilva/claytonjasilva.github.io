@@ -1,6 +1,11 @@
-## # Prática 9 de laboratório: Projeto de circuitos combinacionais
+# Prática 7. Circuitos combinacionais utilizando portas lógicas
 
-# Projetar um circuito para controle de linha de produção
+## Caso 1. Dado o circuito apresentado na figura abaixo, atender ao que se pede.
+
+[Circuito 1. Circuito combinacional com portas lógicas AND, OR e NOT](/sisdig_aulas/images_sisdig/Schematic_sistemas_digitais_pratica7_2024-07-26.png)
+
+Projetar um circuito para controle de linha de produção
+
 1. Seja uma linha de produção definida pelas células apresentadas na figura  
 ![linha](F9CD7947-8D73-4819-8C92-A17A9F139462.jpeg)  
 2. As células B e C realizam as mesmas operações
