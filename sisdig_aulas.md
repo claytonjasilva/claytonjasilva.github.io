@@ -16,14 +16,14 @@
 
 ## Práticas de laboratório
 
-1. [Prática 1: ports lógicas *AND*](sisdig_aulas/sistemas_digitais_pratica1.md)
-2. [Prática 2](sisdig_aulas/sistemas_digitais_pratica2.md)
-3. [Prática 3](sisdig_aulas/sistemas_digitais_pratica3.md)
-4. [Prática 4](sisdig_aulas/sistemas_digitais_pratica4.md)
-5. [Prática 5](sisdig_aulas/sistemas_digitais_pratica5.md)
-6. [Prática 6](sisdig_aulas/sistemas_digitais_pratica6.md)
-7. [Prática 7](sisdig_aulas/sistemas_digitais_pratica7.md)
-8. [Prática 8](sisdig_aulas/sistemas_digitais_pratica8.md)
+1. [Prática 1: portas lógicas *AND*](sisdig_aulas/sistemas_digitais_pratica1.md)
+2. [Prática 2: portas lógicas *OR*](sisdig_aulas/sistemas_digitais_pratica2.md)
+3. [Prática 3: inversor, *NOT*](sisdig_aulas/sistemas_digitais_pratica3.md)
+4. [Prática 4: portas lógicas *NAND*](sisdig_aulas/sistemas_digitais_pratica4.md)
+5. [Prática 5: portas lógicas *NOR*](sisdig_aulas/sistemas_digitais_pratica5.md)
+6. [Prática 6: portas *XOR*](sisdig_aulas/sistemas_digitais_pratica6.md)
+7. [Prática 7: Circuitos combinacionais utilizando portas lógicas](sisdig_aulas/sistemas_digitais_pratica7.md)
+8. [Prática 8: Projeto de circuitos combinacionais](sisdig_aulas/sistemas_digitais_pratica8.md)
 9. [Prática 9: Circuitos combinacionais MSI, somador e decodificador](sisdig_aulas/sistemas_digitais_pratica9.md)
 10. [Prática 10: Circuitos combinacionais MSI, multiplexador](sisdig_aulas/sistemas_digitais_pratica10.md)
 11. [Prática 11: Circuitos sequenciais](sisdig_aulas/sistemas_digitais_pratica11.md)
