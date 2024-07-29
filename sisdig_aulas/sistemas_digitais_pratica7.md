@@ -72,14 +72,15 @@ A tabela que represente todas as combinações possíveis da soma *A+B* está ap
 |1|1|0|0|1|1|
 |1|1|1|1|0|0|
 
-A expressão lógica para a saída do bit 1 (S1) da soma de um número binário de 2 bits \( A1A0 \) com um número binário de 1 bit \( B \) é:
-
-\[ S1 = A1 \cdot (A0 \oplus B) \]
+$$
+S_1 = A_1 \cdot (A_0 \oplus B) + \overline{A_1} \cdot A_0 \cdot B
+$$
 
 Onde:
 
-- \( \cdot \) representa a operação AND
-- \( \oplus \) representa a operação XOR
+- $\cdot$ representa a operação AND
+- $\oplus$ representa a operação XOR
+- $\overline{x}$ representa a operação NOT sobre $x$
 
 1. Propor um circuito digital para implementar a expressão, utilizando portas OR, AND e INVERSORES
 2. Simular o circuito utilizando o EasyEDA, verificando a tabela de soma para S1.
