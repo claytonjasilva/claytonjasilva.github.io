@@ -2,17 +2,17 @@
 
 ## Conteúdo
 
-1. [Sinais Analógicos e Digitais](sisdig_aulas/sistemas_digitais_cap1.md)
-2. [Álgebra Booleana e Portas Lógicas](sisdig_aulas/sistemas_digitais_cap2.md)  
-3. [Projeto de circuitos combinacionais](sisdig_aulas/sistemas_digitais_cap3.md)
-4. [Circuitos aritméticos - somadores binários e subtratores](sisdig_aulas/sistemas_digitais_cap4.md)
-5. [Circuitos lógicos - comparadores](sisdig_aulas/sistemas_digitais_cap5.md)
-6. [Circuitos codificadores/decodificadores](sisdig_aulas/sistemas_digitais_cap6.md)
-7. [Circuitos multiplexadores](sisdig_aulas/sistemas_digitais_cap7.md)
-8. [Fundamentos de máquinas sequenciais](sisdig_aulas/sistemas_digitais_cap8.md)
-9. [Memória: células de memória e Flip-Flops](sisdig_aulas/sistemas_digitais_cap9.md)
-10. [Aplicações com FF: Registradores](sisdig_aulas/sistemas_digitais_cap10.md)
-11. [Aplicações com FF: Divisores de frequência e contadores](sisdig_aulas/sistemas_digitais_cap11.md)
+1. [Cap 1: Sinais Analógicos e Digitais](sisdig_aulas/sistemas_digitais_cap1.md)
+2. [Cap 2: Álgebra Booleana e Portas Lógicas](sisdig_aulas/sistemas_digitais_cap2.md)  
+3. [Cap 3: Projeto de circuitos combinacionais](sisdig_aulas/sistemas_digitais_cap3.md)
+4. [Cap 4: Circuitos aritméticos - somadores binários e subtratores](sisdig_aulas/sistemas_digitais_cap4.md)
+5. [Cap 5: Circuitos lógicos - comparadores](sisdig_aulas/sistemas_digitais_cap5.md)
+6. [Cap 6: Circuitos codificadores/decodificadores](sisdig_aulas/sistemas_digitais_cap6.md)
+7. [Cap 7: Circuitos multiplexadores](sisdig_aulas/sistemas_digitais_cap7.md)
+8. [Cap 8: Fundamentos de máquinas sequenciais](sisdig_aulas/sistemas_digitais_cap8.md)
+9. [Cap 9: Memória - células de memória e Flip-Flops](sisdig_aulas/sistemas_digitais_cap9.md)
+10. [Cap 10: Aplicações com FF - Registradores](sisdig_aulas/sistemas_digitais_cap10.md)
+11. [Cap 11: Aplicações com FF - Divisores de frequência e contadores](sisdig_aulas/sistemas_digitais_cap11.md)
 
 ## Práticas de laboratório
 

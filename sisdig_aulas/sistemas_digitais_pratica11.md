@@ -1,4 +1,4 @@
-# Prática 12 de laboratório: Introdução circuitos sequenciais
+# Prática 11 de laboratório: Introdução circuitos sequenciais
 
 1. Utilizando um gerador de sinais, produzir um sinal periódico, do tipo trem de pulso quadrado, com frequências de 1 kHz, amplitude de 5 V.
 Observar o comportamento do sinal produzido no osciloscópio.
