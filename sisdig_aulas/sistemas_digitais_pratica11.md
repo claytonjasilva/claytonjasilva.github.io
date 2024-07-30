@@ -8,5 +8,6 @@ Observar o comportamento discutido em sala.
 3. Utilizando portas NOR, montar um *latch*
 Observar o comportamento. O comportamento é similar ao circuito anterior?
 4. Propor um registrador de 2 bits. Explicar o seu funcionamento.
+
  ___
  **[Home Conteúdo Sistemas Digitais](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/sisdig_aulas.md)**  

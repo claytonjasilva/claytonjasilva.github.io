@@ -1,6 +1,6 @@
 # Prática 7 de laboratório. Portas universais. Porta lógica NOR.
 
-1. Identificar a pinagem de um inversor 74HC02. Acessar o  *datasheet* da [porta NOR 74HC02](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/sisdig_aulas/SN74HC02N_Texas.pdf).
+1. Identificar a pinagem de um inversor 74HC02. Acessar o  *datasheet* da [porta NOR 74HC02](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/sisdig_aulas/sistemas_digitais_datasheet_SN74HC02N_Texas.pdf).
 
 - Ler o *datasheet*, identificando **Quadruple 2-input positive NOR gates**, ou seja, quatro portas NOR de duas entradas
 - identificando especificações mecânicas (temperatura,...)

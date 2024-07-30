@@ -137,7 +137,7 @@ encapsulados em chips por diversos fabricantes de componentes digitais, como a *
 
 São identificados por um código. Por exemplo, 54LS283.
 
-Ver o *datasheet* em [*Datasheet* do 54LS283](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/sisdig_aulas/74LS283_National.pdf).  
+Ver o *datasheet* em [*Datasheet* do 54LS283](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/sisdig_aulas/sistemas_digitais_datasheet_74LS283_National.pdf).  
 
 O 54LS283 é um somador de 4 bits, cujas características básicas são as seguintes (conforme especificado no *datasheet*):  
 

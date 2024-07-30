@@ -2,7 +2,7 @@
 
 ## 11.1 Divisores de frequência
 
-Flip Flops JK cascateados podem proporcionar como saída um circuito que divide a fequência do sinal de clock.  
+Flip Flops JK cascateados podem proporcionar como saída um circuito que divide a frequência do sinal de clock.  
 Esse resultado é obtido porque o FF opera somente no gatilhamento da borda do FF JK.
 
 ![Divisor de frequência](/sisdig_aulas/images_sisdig/divisor.jpg)
@@ -34,12 +34,14 @@ As entradas dos FF estudas até agora são chamadas **entradas de controle (S, C
 A maioria dos FF também possui entradas chamadas de **entradas assíncronas (entradas de sobreposição)**,   
 que podem ser usadas em qualquer instante independentemente das condições das demais.
 As entradas de sobreposição **permitem limpar o contador**.  
-                                     
-![Entradas assíncronas de FF](/sisdig_aulas/images_sisdig/entradasassincronasff.jpg)                                
+
+![Entradas assíncronas de FF](/sisdig_aulas/images_sisdig/entradasassincronasff.jpg)   
+
 As entradas assíncronas são utilizadas para obter contadores de módulo menor do que N.  
 A figura apresenta um contador de módulo menor do que 8.  
 
-![Contador de módulo<8](/sisdig_aulas/images_sisdig/contadormodulomenor.jpg)                            
+![Contador de módulo<8](/sisdig_aulas/images_sisdig/contadormodulomenor.jpg)
+
 Observe que para obter o resultado desejado é utilizada uma **entrada assíncrona** do FF.  
 O estado que não pertence ao ciclo é anulado pela inserção de uma porta NAND.   
 No exemplo, quando B=C=1, a entrada clear se torna 0 durante um intervalo de tempo para reciclar o contador.  
@@ -73,8 +75,8 @@ Sejam duas avenidas, como mostra a figura abaixo.
 Você precisa projetar um sistema de controle digital dos semáforos A e B.  
 O controle deve satisfazer a seguinte regra:  
 
-1. Se um usuário (Ua) acionar o controle, o semáforo A deve liberar a pista para o pedestre, permanencendo a outra pista liberada somente a veículos;
-2. Se um usuário (Ub) acionar o controle, o semáforo B deve liberar a pista para o pedestre, permanencendo a outra pista liberada somente a veículos;
+1. Se um usuário (Ua) acionar o controle, o semáforo A deve liberar a pista para o pedestre, permanecendo a outra pista liberada somente a veículos;
+2. Se um usuário (Ub) acionar o controle, o semáforo B deve liberar a pista para o pedestre, permanecendo a outra pista liberada somente a veículos;
 3. Sem pedestres os sinais A e B alternam de modo temporizado.
 
 **Método:**

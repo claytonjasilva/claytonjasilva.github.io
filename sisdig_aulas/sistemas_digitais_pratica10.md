@@ -1,6 +1,6 @@
-## Prática: Sistemas Digitais
+# Prática: Sistemas Digitais
 
-# Aplicações de multiplexadores
+## Aplicações de multiplexadores
 
 1. Utilizando multiplexadores SN74HC151N, **projetar** e construir um multiplexador 24 para 1.
 2. Utilizando multiplexador SN74HC151N, **projetar** um circuito que produza como saída a função booleana Z = A.B.C + ~A.B + B.~C.

@@ -144,9 +144,9 @@ As portas lógicas são encapsuladas em chips (discutiremos com mais detalhes po
 
 Vários fabricantes desenvolvem e lnaçma no mercado esses chips. Um deles é a *Texas Instruments*.  
 
-Os chips são identificados pelo fabricante. A *Texas* produz as portas *or* [SN54HC32/SN74HC32](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/sisdig_aulas/SN74HC32N_Texas.pdf).  
+Os chips são identificados pelo fabricante. A *Texas* produz as portas *or* [SN54HC32/SN74HC32](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/sisdig_aulas/sistemas_digitais_datasheet_SN74HC32N_Texas.pdf).  
 
-Para utilizar as portas é necessário obedecer as especificações definidas nos *datsasheets* (folhas de dados) dos componentes eletrônicos.  
+Para utilizar as portas é necessário obedecer as especificações definidas nos *datasheets* (folhas de dados) dos componentes eletrônicos.  
 
 É possível observar que as especificações compreendem, entre outras coisas:  
 
@@ -162,11 +162,11 @@ Implementam a operação de conjunção. A figura apresenta a sua representaçã
 
 Assim como a *Texas Instruments*, outro fabricante de chips de portas lógicas é a *Motorola*.  
 
-A *Motorola* fabrica uma série de componentes, entre eles as portas *and* [MC14081/MC14082](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/sisdig_aulas/CD14082BCP_Motorola.pdf).  
+A *Motorola* fabrica uma série de componentes, entre eles as portas *and* [MC14081/MC14082](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/sisdig_aulas/sistemas_digitais_datasheet_CD14082BCP_Motorola.pdf).  
 
-Observe que elas difereme pelo número de entradas das portas.
+Observe que elas diferem pelo número de entradas das portas.
 
-A *Philips* também fabrica portas *and* como as portas [74HC08N](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/sisdig_aulas/74HC08N_Philips.pdf).
+A *Philips* também fabrica portas *and* como as portas [74HC08N](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/sisdig_aulas/sistemas_digitais_datasheet_74HC08N_Philips.pdf).
 
 ### 2.3.3 Inversor *not*
 
@@ -174,7 +174,7 @@ Implementam a operação de negação. A figura apresenta a sua representação 
 
 ![Tabela verdade e representação do inversor *not*](/sisdig_aulas/images_sisdig/not.jpg)
 
-A *Philips* produz os inversores [7404](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/sisdig_aulas/SN74HC04_Philips.pdf). 
+A *Philips* produz os inversores [7404](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/sisdig_aulas/sistemas_digitais_datasheet_SN74HC04_Philips.pdf). 
 
 ### 2.3.4 Os circuitos lógicos digitais
 
@@ -285,7 +285,7 @@ Implementa a operação de **negação da disjunção**.
 
 ![Porta NOR](/sisdig_aulas/images_sisdig/nor.jpg)
 
-A *Texas Instruments* produz as portas [SN54HC02/SN74HC02](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/sisdig_aulas/SN74HC02N_Texas.pdf).  
+A *Texas Instruments* produz as portas [SN54HC02/SN74HC02](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/sisdig_aulas/sistemas_digitais_datasheet_SN74HC02N_Texas.pdf).  
 
 ### 2.5.2 Porta *NAND*
 
@@ -293,9 +293,9 @@ Implementa a operação de **negação da conjunção**.
 
 ![Porta NOR](/sisdig_aulas/images_sisdig/nand.jpg)
 
-A *Texas Instruments* produz a série de portas [CD4011/CD4012/CD4023](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/sisdig_aulas/CD4011BE_Texas.pdf).  
+A *Texas Instruments* produz a série de portas [CD4011/CD4012/CD4023](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/sisdig_aulas/sistemas_digitais_datasheet_CD4011BE_Texas.pdf).  
 
-A *Philips* produz a porta [74HC00](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/sisdig_aulas/74HC00N_Philips.pdf).  
+A *Philips* produz a porta [74HC00](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/sisdig_aulas/sistemas_digitais_datasheet_74HC00N_Philips.pdf).  
 
 ___
 **[Home Conteúdo Sistemas Digitais](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/sisdig_aulas.md)**  
