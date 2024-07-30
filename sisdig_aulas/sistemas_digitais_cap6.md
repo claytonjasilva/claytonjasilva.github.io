@@ -4,7 +4,7 @@
 
 O processo de codificação digital consiste na definição de um grupo de dígitos binários para representar um conjunto discreto de elementos.  
 
-Sinteticamente, um **código** é uma representação simbólica de uma transformação da infomação.  
+Sinteticamente, um **código** é uma representação simbólica de uma transformação da informação.  
 
 Cada **palavra do código** define uma representação binária inequívoca, ou seja, que não se confunde com nenhuma outra, única, de cada elemento discreto.  
 
@@ -16,7 +16,7 @@ Existem diferente esquemas de codificação, cada um com suas particularidades, 
 
 O código BCD representa os dígitos decimais.  
 
-Existema vários tipos de códigos BCD, tratarems especificamente do código 8421 BCD, algumas vezes designado como NBCD, de *Natural Binary Coded Decimal*.   
+Existem vários tipos de códigos BCD, trataremos especificamente do código 8421 BCD, algumas vezes designado como NBCD, de *Natural Binary Coded Decimal*.   
 
 | Palavra | Decimal |
 | ------- | ------- |
@@ -33,7 +33,7 @@ Existema vários tipos de códigos BCD, tratarems especificamente do código 842
 
 ### 6.1.2 Códigos UDC (*Unit Distance Code*)
 
-Existem aplicações em que é desjável representar valores numéricos bem como outras informações em que uma palavra da adjacente muda somente uma posição.  
+Existem aplicações em que é desejável representar valores numéricos bem como outras informações em que uma palavra da adjacente muda somente uma posição.  
 
 Esse tipo de código possui distância unitária, portanto é chamado de **código UCD**. 
 
@@ -60,9 +60,9 @@ Um código UDC conhecido é o chamado código de Gray de 4 bits.
 
 ### 6.1.3 Códigos alfanuméricos
 
-Quando os elementos discretos incluem incluem, além dos dígitos decimais, caraceres alfabéticos e símbolos especiais caracteriza-se um **código alfanumérico**.  
+Quando os elementos discretos incluem incluem, além dos dígitos decimais, caracteres alfabéticos e símbolos especiais caracteriza-se um **código alfanumérico**.  
 
-Um código alfanumérico amplamente usado é o códgo ASCII, padronizado pela *American Standard Code For Information Interchange*.  
+Um código alfanumérico amplamente usado é o código ASCII, padronizado pela *American Standard Code For Information Interchange*.  
 Cada palavra do código ASCII possui 8 bits.  
 
 O código utiliza 7 bits para representar um conjunto de 128 sinais:  
@@ -92,7 +92,7 @@ O bit não utilizado pode ser utilizado de diferentes maneiras.
 | 1 | 1 | 1 | 0 |   | SO | RS | . | > | N | ^ | n | ~ |
 | 1 | 1 | 1 | 1 |   | SI | US | / | ? | O | _ | o | DEL |
 
-Cada caractere pode ser referenciado pela sua representação binária e, de modo equivalente, pela sua representação decimal ou hexadecimmal.  
+Cada caractere pode ser referenciado pela sua representação binária e, de modo equivalente, pela sua representação decimal ou hexadecimal.  
 Por exemplo, o caractere *B* possui a codificação 0100 0010, logo 0x42 ou 66 na representação decimal.
 
 ## 6.2 Circuitos codificadores
@@ -129,7 +129,7 @@ A entrada A<sub>j</sub> ativada implica como saída a palavra binária de 3 bits
 
 É necessário observar que dependendo do projeto o codificador também pode definir palavras relacionadas a outra combinação binária própria das entradas.  
 
-Um exemplo típico é o [CD4511B](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/sisdig_aulas/CD4511_Texas.pdf).  
+Um exemplo típico é o [CD4511B](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/sisdig_aulas/sistemas_digitais_datasheet_CD4511_Texas.pdf).  
 
 Trata-se de um CI que possui 4 bits de entradas lógicas e 7 bits de saídas lógicas.  
 
@@ -185,7 +185,7 @@ A figura ilustra o esquema geral de um *decoder* BCD produzindo uma saída decim
 Observe que, diferentemente da tabela verdade apresentada acima, nem todas as combinações das entradas ativam uma saída. 
 No caso, somente as palavras binárias do código BCD ativam saída.
 
-Um *datasheet* com todas as especificações de um decoder BCD-decimal está disponível para o [CD4028](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/sisdig_aulas/CD4028_Texas.pdf).
+Um *datasheet* com todas as especificações de um decoder BCD-decimal está disponível para o [CD4028](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/sisdig_aulas/sistemas_digitais_datasheet_CD4028_Texas.pdf).
 
 ___
 **[Home Conteúdo Sistemas Digitais](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/sisdig_aulas.md)**  

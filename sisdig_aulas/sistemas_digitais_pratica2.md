@@ -1,6 +1,6 @@
 # Prática 2 de laboratório. Portas lógicas. Porta lógica OR
 
-1. Identificar a pinagem de uma porta OR 74HC32. Acessar o  *datasheet* dA [porta OR 74HC32](https://claytonjasilva.github.io/sisdig_aulas/SN74HC32N_Texas.pdf).
+1. Identificar a pinagem de uma porta OR 74HC32. Acessar o  *datasheet* dA [porta OR 74HC32](https://claytonjasilva.github.io/sisdig_aulas/sistemas_digitais_datasheet_SN74HC32N_Texas.pdf).
 
 - Ler o *datasheet*, identificando **Quadruple 2-input positive OR gates**, ou seja, quatro portas OR de duas entradas
 - identificando a pinagem na figura

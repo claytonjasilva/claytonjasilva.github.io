@@ -1,6 +1,6 @@
 # Prática 4 de laboratório. Portas universais. Porta lógica NAND.
 
-1. Identificar a pinagem de um inversor 74HC00N. Acessar o  *datasheet* da [porta NAND 74HC00N](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/sisdig_aulas/74HC00N_Philips.pdf).
+1. Identificar a pinagem de um inversor 74HC00N. Acessar o  *datasheet* da [porta NAND 74HC00N](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/sisdig_aulas/sistemas_digitais_datasheet_74HC00N_Philips.pdf).
 
 - Ler o *datasheet*, identificando **Quad 2-input NAND gate**, ou seja, quatro portas NAND de duas entradas
 - identificando DESCRIÇÃO, '...dispositivo CMOS...provê função NAND de duas entradas...'

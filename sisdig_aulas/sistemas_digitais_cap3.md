@@ -80,7 +80,7 @@ As variáveis rotulam cada linha na forma do mintermo assegurando uma adjacênci
 
 ![Mapas K - 3 e 4 variáveis](/sisdig_aulas/images_sisdig/mapasK.jpg)
 
-O método de simplifcação consiste nos seguintes passos:  
+O método de simplificação consiste nos seguintes passos:  
 
 1. Construir o mapa K
 2. Agrupar pares, quartetos ou octetos de 1s – desenhar no mapa as maiores combinações de 1s possíveis – pode haver interseção de grupos

@@ -60,7 +60,7 @@ $$f_A≥2.B$$.
 Não é difícil concluir também que existe **perda de informação** quando se realiza a aproximação
 de um sinal analógico para um sinal digital. Por outro lado, para a computação é conveniente lidar com sinais digitais por diversos motivos, a despeito de alguma perda na amostragem.  
 
-Embora o sinal seja contínuo nos valores observados (variável dependente *x*), após amostrado passa a discreto no tempo, consequentemente pode ser definido em instantes discretos *n = 0, 1, 2, ...* correpondente ao tempo *n.T<sub>A</sub>*, logo que pode ser definido matematicamente da seguinte forma
+Embora o sinal seja contínuo nos valores observados (variável dependente *x*), após amostrado passa a discreto no tempo, consequentemente pode ser definido em instantes discretos *n = 0, 1, 2, ...* correspondente ao tempo *n.T<sub>A</sub>*, logo que pode ser definido matematicamente da seguinte forma
 
 $$ x(n)=f(n) $$
 
@@ -94,7 +94,7 @@ $$ x_Q(n)=f(t) $$
 
 Os sinais digitais assumem somente dois níveis lógicos cuja abstração matemática é *{0,1}*.  
 Fisicamente, os bits 1 e 0 se apresentam como sinais elétricos cujos valores dependem da tecnologia empregada.  
-Existem várias famílias de circuitos elétricos que reproduzem fisicamente blocos lógicos (serão discutidos posteriromente), como *RTL, Resitor Transistor Logic*, *DTL, Diode Trnsistor Logic*, *TTL, Transistor Transistor Logic*, *CMOS, Complementary Metal-Oxide Semiconductor*, como discutiremos psoteriormente.  
+Existem várias famílias de circuitos elétricos que reproduzem fisicamente blocos lógicos (serão discutidos posteriromente), como *RTL, Resistor Transistor Logic*, *DTL, Diode Transistor Logic*, *TTL, Transistor Transistor Logic*, *CMOS, Complementary Metal-Oxide Semiconductor*, como discutiremos posteriormente.  
 Considerando a abstração dos sinais elétricos como 0s e 1s, o sinal analógico, após quantizado e amostrado, assume a forma apresentada na figura.  
 
 ![Sinal digital](/sisdig_aulas/images_sisdig/digital.jpg)

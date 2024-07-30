@@ -1,6 +1,6 @@
 # Prática 1 de laboratório. Portas lógicas. Portas lógicas AND
 
-1. Identificar a pinagem de uma porta AND 74HC08N. Acessar o  *datasheet* da [porta AND 74HC08N](https://claytonjasilva.github.io/sisdig_aulas/74HC08N_Philips.pdf).
+1. Identificar a pinagem de uma porta AND 74HC08N. Acessar o  *datasheet* da [porta AND 74HC08N](https://claytonjasilva.github.io/sisdig_aulas/sistemas_digitais_datasheet_74HC08N_Philips.pdf).
 
 - Ler o *datasheet*, identificando **Quad 2-input AND gate**, ou seja, quatro portas AND de duas entradas
 - identificando DESCRIÇÃO, '...dispositivo CMOS...provê função AND de duas entradas...'

@@ -69,7 +69,7 @@ O circuito integrado também possui uma entrada de controle *enable*, assim a ta
 
 Além de possuir uma saída invertida do sinal de entrada multiplexado.
 
-O [*datasheet* completo do 74151](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/sisdig_aulas/SN74HC151N_Texas.pdf)
+O [*datasheet* completo do 74151](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/sisdig_aulas/sistemas_digitais_datasheet_SN74HC151N_Texas.pdf)
 apresenta os detalhes elétricos e mecânicos do CI, além das entradas e saída lógicas.  
 
 Observe que o CI da *Texas INstruments* possui alguma modificação da identificação da pinagem do esquema lógico apresentado acima.
@@ -91,7 +91,7 @@ O princípio geral de funcionamento é o seguinte:
 1. As entradas de dados podem ser conectadas as saídas de um registrador (portanto, bits simultaneamente armazenados).  
 A conexão de um registrador poderia ser feita a um barramento paralelo. Nesse caso, os bits seriam simultaneamente transferidos.  
 Por outro lado, pode-se desejar transferir os bits por um barramento serial.  
-2. As entradas seletoras S<sub>2</sub>S<sub>1</sub>S<sub>0</sub> recebem três bits que determinam a entrada a trasferir,
+2. As entradas seletoras S<sub>2</sub>S<sub>1</sub>S<sub>0</sub> recebem três bits que determinam a entrada a transferir,
 variando crescentemente de 000, 001 até 111.
 3. A entrada de controle *enable* está ativada no nível baixo.
 4. Conforme a variação dos bits de seleção a respectiva entrada lógica (saída do registrador) é transferida para a saída *Z* do mux,

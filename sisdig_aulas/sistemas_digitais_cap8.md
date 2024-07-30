@@ -48,11 +48,11 @@ Observam-se três blocos, a saber:
 Vimos a definição de circuitos sequenciais.  
 Muitas aplicações de circuitos sequenciais envolvem o emprego de uma referência temporal, 
 chamada de **relógio** ou **clock**.  
-Quanto ao uso ou não do sinal de clock, os circuitos podem ser classificados como **assíncronos** ou **sincronos**:  
+Quanto ao uso ou não do sinal de clock, os circuitos podem ser classificados como **assíncronos** ou **síncronos**:  
 
 - Circuitos cujo comportamento independe de um sinal de relógio são chamados de circuitos **assíncronos**.  
 - Circuitos cujo comportamento é regulado pela referência do sinal de clock são chamados de **circuitos síncronos**.
-O comportamento do sinal de clock está apresnetado na figura.  
+O comportamento do sinal de clock está apresentado na figura.  
 
 ![Sinal de clock](/sisdig_aulas/images_sisdig/clock.jpg)
 
@@ -126,7 +126,7 @@ No caso síncrono, a transição ocorre dependendo também de um sinal de entrad
 Além de *X* a transição depende da mudança do valor do sinal de clock de nível baixo (*LOW*) para alto (*HIGH*).  
 Essa variação do sinal de clock é chamada de **gatilhamento pela borda**.   
 Ou seja, no exemplo, mantido *X=1*, as transições entre estados *00-01-10-11* ocorrerão sempre que houver a transição do clock.  
-No caso de *X=0*, independentmente da transição do clock, a saída será mantida no estado em que se encontrar quando *X* for resetado.  
+No caso de *X=0*, independentemente da transição do clock, a saída será mantida no estado em que se encontrar quando *X* for resetado.  
 
 ![Máquina sequencial - diagrama](/sisdig_aulas/images_sisdig/maquinasequencial.jpg)
 
@@ -168,7 +168,7 @@ O comportamento da **saída *A*** da máquina sequencial pode ser representado p
 | ***1*** | 0 | 1 | 0 | 1 |
 
 O comportamento representa o comportamento da saída *A* em função do estado predecessor e da variável *X*.  
-Observe que quando *X=0*, o estado permace inalterado. Nesse caso, o valor da variável  *A* após a transição de clock não se altera.  
+Observe que quando *X=0*, o estado permanece inalterado. Nesse caso, o valor da variável  *A* após a transição de clock não se altera.  
 Assim, se *A* for igual a *0* se manterá *0* na transição do clock, portanto, no mapa, a representação da saída é *0*.  
 Por outro lado, se *A* for igual a *1* se manterá *1* e, no mapa, a saída deverá ser representada por *1*.
 Quando *X=1*, a análise deve levar em consideração as transições que ocorrem entre estados, de modo que a saída será indicada por 1

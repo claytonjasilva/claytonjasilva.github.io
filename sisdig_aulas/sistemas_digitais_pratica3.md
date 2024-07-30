@@ -1,6 +1,6 @@
 # Prática 3 de laboratório. Inversores. NOT
 
-1. Identificar a pinagem de um inversor 74HC04. Acessar o  *datasheet* do [inversor 74HC04](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/sisdig_aulas/SN74HC04_Philips.pdf).
+1. Identificar a pinagem de um inversor 74HC04. Acessar o  *datasheet* do [inversor 74HC04](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/sisdig_aulas/sistemas_digitais_datasheet_SN74HC04_Philips.pdf).
 
 - Ler o *datasheet*, identificando DESCRIÇÃO, '...dispositivo CMOS...provê seis inversores...'
 - identificando especificações mecânicas (temperatura,...)
