@@ -25,7 +25,7 @@ que designa uma ferramenta de desenvolvimento para **editar o código, acessar u
 
 Exemplos de IDE para o C:  
 
-- [Eclipse Foundation](https://eclipseide.org/))
+- [Eclipse Foundation](https://eclipseide.org/)
 
 - [VSCode](https://code.visualstudio.com/)
 
@@ -33,11 +33,9 @@ Exemplos de IDE para o C:
 
 ### 1.4.3 É possível usar uma IDE online
 
-#### Por exemplo, [Replit](https://replit.com/cloud-development-environment)
+Por exemplo, o [replit](https://replit.com/cloud-development-environment) é plataforma para criar e compartilhar software.
 
-Plataforma para criar e compartilhar software.  
-Pode ser usado para escrever e hospedar códigos em diversas linguagens de programação no mesmo lugar.  
-Também é útil para o aprendizado, dispondo de alguns recursos educacionais integrados.
+Pode ser usado para escrever e hospedar códigos em diversas linguagens de programação no mesmo lugar. Também é útil para o aprendizado, dispondo de alguns recursos educacionais integrados.
 
 Algumas funcionalidades:
 
@@ -46,13 +44,14 @@ Algumas funcionalidades:
 - Provedor de nuvem
 - Ferramentas de colaboração em equipe (por exemplo, Google Docs, GitHub)
 
-### Primeiros passos
+Primeiros passos para usar o replit:
 
-- Criando uma conta no [Replit](https://replit.com/site/ide)...
-- Conhecendo a área de trabalho...
-- Criando as pastas para armazenar os seus códigos...
-- Configurando o tema (*Dark/Sun*)...
-- Pedindo [ajuda sobre o Replit](https://docs.replit.com/).
+- Acessar e criar uma conta em https://replit.com/site/ide
+- Conhecer a área de trabalho
+- Criar as pastas para armazenar os seus códigos
+- Configurar o tema (*Dark/Sun*)
+
+O Help do replit pode ser encontrado em https://docs.replit.com/.
 
 ## 1.5 Estrutura de programa em C
 
@@ -164,6 +163,10 @@ Se o arquivo `arquivo.h` estiver em um diretório pai, por exemplo, no diretóri
 #include "../arquivo.h"
 ```
 
+#### c. Utilização de diretórios padrão
+
+Quando um arquivo de cabeçalho é incluído usando colchetes angulares (< >), como em `#include <arquivo.h>`, o compilador procura o arquivo de cabeçalho apenas nos diretórios padrão onde os arquivos de cabeçalho do sistema estão localizados. Ele não procura no diretório do arquivo de origem atual.
+
 **Observação: Um arquivo cabeçalho também pode conter diretivas *include*.** 
 
 ### 1.5.4 Substituição de Macro
@@ -185,7 +188,7 @@ Por exemplo, a sequência mais simples de substituição de macro pode ser
 
 ### 1.5.5 As expressões aritméticas do programa C
 
-As expressões aritméticas contemplam **operadores** e **operandos** (**variáveis** e **constantes**) de vários **tipos** (Ver o conceito de tipos de dados em: https://press.rebus.community/programmingfundamentals/chapter/data-types/. 
+As expressões aritméticas contemplam **operadores** e **operandos** (**variáveis** e **constantes**) de vários **tipos** (Ver o conceito de [tipos de dados](https://press.rebus.community/programmingfundamentals/chapter/data-types/). 
 
 Os **operadores aritméticos** sinalizam para o compilador a operação aritmética correspondente. São eles:
 
@@ -200,14 +203,18 @@ Os **operadores aritméticos** sinalizam para o compilador a operação aritmét
 | `--` | Decremento |
 
 Os operadores possuem **prioridade** para serem resolvidos, logo é importante organizá-los na expressão da forma adequada.  
-**Admite-se o uso do `(` e `)` para delimitar operações que devem ser priorizadas**.  
+Ver a [precedência entre todos os operadores na linguagem C](https://www.ime.usp.br/~pf/algoritmos/apend/precedence.html).
 
-Os operandos são os dados sobre os quais serão realizadas as operações. Os dados numéricos pode ser dos seguintes **tipos**:
+Importante verificar que os operadores podem ser unários (um só operando) ou binários (dois operandos).  
+
+Os operandos são os dados sobre os quais serão realizadas as operações. Inicialmente trataremos os dados numéricos dos seguintes **tipos**:
 
 | Tipo | Descrição |
 | - | - |
 | `int` | números inteiros, podendo variar para `long` ou `short` em função da capacidade de representação desejada |
 | `float` | números de **ponto flutuante**, que representam números fracionários computacionalmente, podendo variar para `double` - a parte fracionária é separada da inteira pelo ponto de fração (`.`) |
+
+**Observação**. Uma biblioteca padrão muito útil para realização de operação matemáticas é a [math.h](https://petbcc.ufscar.br/math/).
 
 ### 1.5.6 Variáveis em C
 
@@ -235,12 +242,11 @@ int i, cont;
 float res;
 ```
 
-Quando uma variável é declarada o compilador C reserva **um endereço de memória** disponível no computador, com o **tamanho necessário** (Ver o espaço ocupado por tipo de variável em https://intellipaat.com/blog/tutorial/c-tutorial/c-data-types/) para armazenar o dado numérico, e associa a ele um **endereço de memória**.  
-Em C, é muito importante entender essa dinâmica.
+Quando uma variável é declarada o compilador C reserva **um endereço de memória** disponível no computador, com o **tamanho necessário** (Ver o [espaço ocupado por tipo de variável](https://intellipaat.com/blog/tutorial/c-tutorial/c-data-types/)) para armazenar o dado numérico, e associa a ele um **endereço de memória**. Em C, **é muito importante entender essa dinâmica**.
 
 ### 1.5.7 Sentença de atribuição
 
-A sentença de atribuição se caracteriza pela atribuição de um valor a uma variável.  
+A sentença de atribuição se caracteriza pela **atribuição de um valor a uma variável**.  
 
 A sintaxe para o comando de atribuição é  
 
@@ -276,8 +282,29 @@ O comando básico é:
 printf(<cadeia de caracteres de controle>,<lista de argumentos>);
 ```
 
-A cadeia de caracteres de controle e deve conter uma especificação de tipo, por exemplo, `%d`, para inteiro e `%f`, para números de ponto flutuante. **[Ver a relação completa de especificadores na página 344 da referência ISO/IEC 9899](https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1256.pdf)**  
-A cadeia será escrita na console. A especificação de tipo será substituída pela variável.
+A cadeia de caracteres de controle e deve conter uma especificação de tipo, por exemplo, `%d`, para inteiro e `%f`, para números de ponto flutuante. **[Ver a relação completa de especificadores](https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1256.pdf) na página 344 da referência ISO/IEC 9899**.
+
+A cadeia de caracteres (**delimitada entre aspas duplas**) será escrita na console. A especificação de tipo será substituída pela variável.
+
+A cadeia de caracteres de controle poderá conter também outros caracteres, além do especificador de tipo, normalmente usada para produzir uma saída formatada. Por exemplo,
+
+```c
+x = 2;
+y = 5;
+soma = x + y;
+printf("A soma de x e y e %d",soma);
+```
+
+Podendo usar para múltiplas variáveis, por exemplo,
+
+```c
+x = 2;
+y = 5;
+soma = x + y;
+printf("A soma de %d", x, " + %d", y, " resulta %d",soma);
+```
+
+O argumento pode ser uma variável ou uma expressão aritmética.
 
 #### b. Função `scanf`
 
@@ -287,18 +314,21 @@ O comando básico é:
 scanf(<cadeia de caracteres de controle>,<lista de ponteiros dos argumentos>);
 ```
 
-A cadeia de caracteres de controle deve conter a especificação de tipos das variáveis lidas, em ordem.  
-A lista de ponteiros contém os nomes das variáveis, cada uma precedido pelo operador unário `&`, indicando o endereço ocupado pela variável, separados por vírgula.  
+A cadeia de caracteres de controle deve conter a especificação de tipos das variáveis lidas, **na ordem em que são listadas**.
+
+A lista de **ponteiros das variáveis** contém os nomes das variáveis, cada uma precedido pelo operador unário `&`, indicando o endereço ocupado pela variável, separados por vírgula.
+
 Estudaremos mais sobre comandos de entrada e saída nas próximas seções.
 
 ## 1.6  Exemplos
 
 1. Elaborar um programa na linguagem C que produza a mensagem `Meu primeiro programa em C`. Incluir **comentários**.  
-Veja **[uma solução](https://github.com/claytonjasilva/prog_exemplos/blob/main/cursoC1101a.c)**  
+
+[Solução proposta do exercício 1](https://github.com/claytonjasilva/prog_exemplos/blob/main/linguagem_c/exercicio1.c)
 
 2. Elaborar um programa na linguagem C que produza uma mensagem `Agora vou iniciar...`. Escrever **na linha seguinte** `produzindo um novo codigo`. Incluir os comentários.
 
-Veja **[uma solução](https://github.com/claytonjasilva/prog_exemplos/blob/main/cursoC1101b.c)**
+[Solução proposta do exercício 2](https://github.com/claytonjasilva/prog_exemplos/blob/main/linguagem_c/exercicio2.c)
 
 3. Elaborar um programa na linguagem C que produza o resultado das expressões abaixo  
 
@@ -307,40 +337,50 @@ Veja **[uma solução](https://github.com/claytonjasilva/prog_exemplos/blob/main
 - $\frac{3 + 4 \times 5} {[2 \times (4 + 6) ]}$: veja **[uma solução](https://github.com/claytonjasilva/prog_exemplos/blob/main/cursoC1101c_1.c)**
 - $\frac{3} {[6 \times (1.25 + 6.78)]}$  
 
+[Solução proposta do exercício 1](https://github.com/claytonjasilva/prog_exemplos/blob/main/linguagem_c/exercicio3.c)
+
 4. Elaborar um programa na linguagem C, usando a biblioteca [math.h](https://petbcc.ufscar.br/math/), para escrever o resultado das expressões abaixo
 
-- $3^{4 \times 5 \times [2 \times (4 + 6) ]}$: veja **[uma solução](https://github.com/claytonjasilva/prog_exemplos/blob/main/cursoC1101d.c)**
-- $\sqrt{2 \times (5 + 3) ^ {34}}$  -
+- $3^{4 \times 5 \times [2 \times (4 + 6) ]}$
+- $\sqrt{2 \times (5 + 3) ^ {34}}$ 
+
+[Solução proposta do exercício 1](https://github.com/claytonjasilva/prog_exemplos/blob/main/linguagem_c/exercicio4.c)
 
 5. Elaborar um programa na linguagem C para atribuir as notas 8,5 (oito vírgula cinco), 7,3 (sete vírgula três) e 5 (cinco) respectivamente para ap1, ap2 e ac de um aluno. Calcular e escrever a média.
 
-Ver **[uma solução](https://github.com/claytonjasilva/prog_exemplos/blob/main/cursoC1102a.c)**
+[Solução proposta do exercício 1](https://github.com/claytonjasilva/prog_exemplos/blob/main/linguagem_c/exercicio5.c)
 
 6. Elaborar um programa na linguagem C para converter um determinado número de dias em anos.
 
+[Solução proposta do exercício 1](https://github.com/claytonjasilva/prog_exemplos/blob/main/linguagem_c/exercicio6.c)
+
 7. Elaborar um programa na linguagem C para calcular a área de um círculo de raio r=2,1 metros.  
 
-Ver **[uma solução](https://github.com/claytonjasilva/prog_exemplos/blob/main/cursoC1102c.c)**
+[Solução proposta do exercício 1](https://github.com/claytonjasilva/prog_exemplos/blob/main/linguagem_c/exercicio7.c)
 
 8. Elaborar um programa na linguagem C para ler dois números inteiros e escrever a soma dos números lidos.  
 
-Ver **[uma solução](https://github.com/claytonjasilva/prog_exemplos/blob/main/cursoC1103a.c)**
+[Solução proposta do exercício 1](https://github.com/claytonjasilva/prog_exemplos/blob/main/linguagem_c/exercicio1.c)
 
 9. Elaborar um programa na linguagem C para ler um **número inteiro**, calcular e escrever o quadrado do número lido.
 
+[Solução proposta do exercício 1](https://github.com/claytonjasilva/prog_exemplos/blob/main/linguagem_c/exercicio1.c)
+
 10. Elaborar um programa na linguagem C para calcular o produto de dois numeros inteiros, digitados pelo usuário.  
+
+[Solução proposta do exercício 1](https://github.com/claytonjasilva/prog_exemplos/blob/main/linguagem_c/exercicio1.c)
 
 11. Elaborar um programa na linguagem C para ler as notas de ap1, ap2 e ac de um aluno. Calcular e escrever a média.
  
-Ver **[uma solução](https://github.com/claytonjasilva/prog_exemplos/blob/main/cursoC1103d.c)**
+[Solução proposta do exercício 1](https://github.com/claytonjasilva/prog_exemplos/blob/main/linguagem_c/exercicio1.c)
 
 12. Elaborar um programa na linguagem C para ler o consumo de combustível de um veículo. Ler também a capacidade do tanque de combustível. Escrever quantos quilômetros o veículo irá rodar com um tanque cheio.
  
-Ver **[uma solução](https://github.com/claytonjasilva/prog_exemplos/blob/main/cursoC1103e.c)**
+[Solução proposta do exercício 1](https://github.com/claytonjasilva/prog_exemplos/blob/main/linguagem_c/exercicio1.c)
 
 13. Elaborar um programa na linguagem C para ler o perímetro de uma pista. Ler também a distância percorrida pelo veículo em um determinado tempo. O programa deverá escrever quantas voltas completas o veículo realizou e qual distância percorreu após completar a última volta.
 
-Ver **[uma solução](https://github.com/claytonjasilva/prog_exemplos/blob/main/cursoC1103f.c)**
+[Solução proposta do exercício 1](https://github.com/claytonjasilva/prog_exemplos/blob/main/linguagem_c/exercicio1.c)
 
 ___ 
 **[Home Conteúdo Programação em C](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/progC_aulas.md)**   
