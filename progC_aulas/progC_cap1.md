@@ -332,31 +332,31 @@ Estudaremos mais sobre comandos de entrada e saída nas próximas seções.
 
 3. Elaborar um programa na linguagem C que produza o resultado das expressões abaixo  
 
-- $3 + 4 \times 5 - [2 \times (4 + 6) ]$: veja **[uma solução](https://github.com/claytonjasilva/prog_exemplos/blob/main/cursoC1101c.c)**
+- $3 + 4 \times 5 - [2 \times (4 + 6) ]$
 - $6 + 4 \times 8 \times (3 + 7 + 27)$  
-- $\frac{3 + 4 \times 5} {[2 \times (4 + 6) ]}$: veja **[uma solução](https://github.com/claytonjasilva/prog_exemplos/blob/main/cursoC1101c_1.c)**
+- $\frac{3 + 4 \times 5} {[2 \times (4 + 6) ]}$
 - $\frac{3} {[6 \times (1.25 + 6.78)]}$  
 
-[Solução proposta do exercício 1](https://github.com/claytonjasilva/prog_exemplos/blob/main/linguagem_c/exercicio3.c)
+[Solução proposta do exercício 3](https://github.com/claytonjasilva/prog_exemplos/blob/main/linguagem_c/exercicio3.c)
 
 4. Elaborar um programa na linguagem C, usando a biblioteca [math.h](https://petbcc.ufscar.br/math/), para escrever o resultado das expressões abaixo
 
 - $3^{4 \times 5 \times [2 \times (4 + 6) ]}$
 - $\sqrt{2 \times (5 + 3) ^ {34}}$ 
 
-[Solução proposta do exercício 1](https://github.com/claytonjasilva/prog_exemplos/blob/main/linguagem_c/exercicio4.c)
+[Solução proposta do exercício 4](https://github.com/claytonjasilva/prog_exemplos/blob/main/linguagem_c/exercicio4.c)
 
 5. Elaborar um programa na linguagem C para atribuir as notas 8,5 (oito vírgula cinco), 7,3 (sete vírgula três) e 5 (cinco) respectivamente para ap1, ap2 e ac de um aluno. Calcular e escrever a média.
 
-[Solução proposta do exercício 1](https://github.com/claytonjasilva/prog_exemplos/blob/main/linguagem_c/exercicio5.c)
+[Solução proposta do exercício 5](https://github.com/claytonjasilva/prog_exemplos/blob/main/linguagem_c/exercicio5.c)
 
 6. Elaborar um programa na linguagem C para converter um determinado número de dias em anos.
 
-[Solução proposta do exercício 1](https://github.com/claytonjasilva/prog_exemplos/blob/main/linguagem_c/exercicio6.c)
+[Solução proposta do exercício 6](https://github.com/claytonjasilva/prog_exemplos/blob/main/linguagem_c/exercicio6.c)
 
 7. Elaborar um programa na linguagem C para calcular a área de um círculo de raio r=2,1 metros.  
 
-[Solução proposta do exercício 1](https://github.com/claytonjasilva/prog_exemplos/blob/main/linguagem_c/exercicio7.c)
+[Solução proposta do exercício 7](https://github.com/claytonjasilva/prog_exemplos/blob/main/linguagem_c/exercicio7.c)
 
 8. Elaborar um programa na linguagem C para ler dois números inteiros e escrever a soma dos números lidos.  
 
