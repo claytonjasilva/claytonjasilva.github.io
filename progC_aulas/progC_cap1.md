@@ -360,19 +360,19 @@ Estudaremos mais sobre comandos de entrada e saída nas próximas seções.
 
 8. Elaborar um programa na linguagem C para ler dois números inteiros e escrever a soma dos números lidos.  
 
-[Solução proposta do exercício 1](https://github.com/claytonjasilva/prog_exemplos/blob/main/linguagem_c/exercicio1.c)
+[Solução proposta do exercício 8](https://github.com/claytonjasilva/prog_exemplos/blob/main/linguagem_c/exercicio8.c)
 
 9. Elaborar um programa na linguagem C para ler um **número inteiro**, calcular e escrever o quadrado do número lido.
 
-[Solução proposta do exercício 1](https://github.com/claytonjasilva/prog_exemplos/blob/main/linguagem_c/exercicio1.c)
+[Solução proposta do exercício 9](https://github.com/claytonjasilva/prog_exemplos/blob/main/linguagem_c/exercicio9.c)
 
-10. Elaborar um programa na linguagem C para calcular o produto de dois numeros inteiros, digitados pelo usuário.  
+10. Elaborar um programa na linguagem C para calcular o produto de dois números inteiros, digitados pelo usuário.  
 
-[Solução proposta do exercício 1](https://github.com/claytonjasilva/prog_exemplos/blob/main/linguagem_c/exercicio1.c)
+[Solução proposta do exercício 10](https://github.com/claytonjasilva/prog_exemplos/blob/main/linguagem_c/exercicio10.c)
 
 11. Elaborar um programa na linguagem C para ler as notas de ap1, ap2 e ac de um aluno. Calcular e escrever a média.
  
-[Solução proposta do exercício 1](https://github.com/claytonjasilva/prog_exemplos/blob/main/linguagem_c/exercicio1.c)
+[Solução proposta do exercício 11](https://github.com/claytonjasilva/prog_exemplos/blob/main/linguagem_c/exercicio11.c)
 
 12. Elaborar um programa na linguagem C para ler o consumo de combustível de um veículo. Ler também a capacidade do tanque de combustível. Escrever quantos quilômetros o veículo irá rodar com um tanque cheio.
  
