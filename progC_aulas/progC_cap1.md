@@ -333,9 +333,9 @@ Estudaremos mais sobre comandos de entrada e saída nas próximas seções.
 3. Elaborar um programa na linguagem C que produza o resultado das expressões abaixo  
 
 - $3 + 4 \times 5 - [2 \times (4 + 6) ]$
-- $6 + 4 \times 8 \times (3 + 7 + 27)$  
+- $6 + 4 \times 8 \times (3 + 7 + 27)$
 - $\frac{3 + 4 \times 5} {[2 \times (4 + 6) ]}$
-- $\frac{3} {[6 \times (1.25 + 6.78)]}$  
+- $\frac{3} {[6 \times (1.25 + 6.78)]}$
 
 [Solução proposta do exercício 3](https://github.com/claytonjasilva/prog_exemplos/blob/main/linguagem_c/exercicio3.c)
 
