@@ -10,13 +10,14 @@
 * [Gestão de Processos](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/gestao_processos.md) - Rev 2024.2
 * [Aspectos Regulatórios de Telecomunicações](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/regulatelecom.md)
 
-## Linguagens de Programação
+## Notas sobre Linguagens de Programação
 
-1. [Notas sobre Python](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/progPython.md)
+1.Conteúdo
 
-2. [Notas sobre C](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/progC_aulas.md)
+* [Notas sobre Python](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/progPython.md)
+* [Notas sobre C](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/progC_aulas.md)
 
-3. IDE
+2.IDE
 
 * [Replit](https://replit.com/): Página da IDE *online* para várias linguagens, como Python, C e C++.  
 * [Visual Studio Code](https://code.visualstudio.com/): Página do editor de código, que admite *plugins* para várias linguagens, como C, C++ e Python.
@@ -26,7 +27,6 @@
 ## Material de apoio
 
 1. [Notas sobre Arduíno MEGA 2560](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/arduino.md)
-
 2. Manuais do ATmega2560  
 
 * [Atmel ATmega640/V-1280/V-1281/V-2560/V-2561/V (datasheet)](https://ww1.microchip.com/downloads/en/devicedoc/atmel-2549-8-bit-avr-microcontroller-atmega640-1280-1281-2560-2561_datasheet.pdf)
@@ -35,21 +35,16 @@
 * [Atmel Studio 7 - Getting Started with Atmel Studio 7](https://www.microchip.com/content/dam/mchp/documents/MCU08/ProductDocuments/UserGuides/Getting-Started-with-Microchip-Studio-DS50002712B.pdf)  
 * [Atmel Studio 7 User Guide](https://ww1.microchip.com/downloads/en/DeviceDoc/Getting-Started-with-Atmel-Studio7.pdf)
   
-3. [Arduíno](https://www.arduino.cc/): Página do Arduíno, onde podem ser obtidas as informações sobre hardware, software (*download* da IDE) e documentação (inclusive a referência da linguagem).
-  
-4. [Git Hub](https://github.com/): plataforma para gestão de desenvolvimento, armazenamento, compartilhamento e comunicação em projetos, especialmente projetos de software.
-  
-5. [Tinkercad](https://www.tinkercad.com/): Página do Tinkercad, aplicativo Web gratuito para projetos 3D, eletrônica e codificação.
-
+3.[Arduíno](https://www.arduino.cc/): Página do Arduíno, onde podem ser obtidas as informações sobre hardware, software (*download* da IDE) e documentação (inclusive a referência da linguagem).
+4.[Git Hub](https://github.com/): plataforma para gestão de desenvolvimento, armazenamento, compartilhamento e comunicação em projetos, especialmente projetos de software.
+5.[Tinkercad](https://www.tinkercad.com/): Página do Tinkercad, aplicativo Web gratuito para projetos 3D, eletrônica e codificação.
 6. [Bizagi Modeler](https://help.bizagi.com/process-modeler/en/index.html?modeler_architecture.htm): Página do modelador do Bizagi.
 
 ## Projetos
 
 * [Sistemas Embarcados](https://github.com/claytonjasilva/sistemas-embarcados)  
   Projeto destinado a desenvolver soluções de engenharia baseadas em microcontroladores. Versão atuaL: PROJETO DE CASA INTELIGENTE.
-
 * [Simulador para Sistemas de Comunicações Móveis](https://github.com/claytonjasilva/simuladorSisCom)  
   Projeto baseado em Python para simular sinais e conceitos aplicados na disciplina de Sistemas de Comunicações Móveis, da Engenharia da Computação.
-
 * [Compilador TINY](https://github.com/claytonjasilva/compiladorTINY)  
   Projeto baseado em C/C++ de compilador para uma linguagem intitulada TINY, adaptada de uma das referências utilizadas na disciplina de Linguagens Formais e Compiladores, da Engenharia da Computação.
