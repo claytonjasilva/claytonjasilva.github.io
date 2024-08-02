@@ -1,25 +1,25 @@
 # Programação com C
 
-O curso não está na grade de disciplinas do Ibmec.  
+O curso não está na grade de disciplinas do Ibmec.
+
 Ministrado como atividade extra classe.
 
 ## Conteúdo  
 
 1. [Iniciando...](progC_aulas/progC_cap1.md)  
-2. [Entrada e saída](progC_aulas/progC_entradasaida.md)     
-3. [Controle de fluxo: condicionais simples e compostas](progC_aulas/progC_condicionais.md)    
-4. [Controle de fluxo: estrutura de repetição *while*](progC_aulas/progC_repeticaowhile.md)  
-5. [Controle de fluxo: estrutura de repetição *do-while*](progC_aulas/progC_repeticaodowhile.md)  
-6. [Controle de fluxo: estrutura de repetição *for*](progC_aulas/progC_repeticaofor.md)  
-7. [Funções](progC_aulas/progC_funcoes.md)
-8. [Ponteiros](progC_aulas/progC_ponteiros.md)
-9. [Strings e Vetores(*arrays*)](progC_aulas/progC_stringsvetores.md)
-10. [Matrizes](progC_aulas/progC_matrizes.md)
-11. Estruturas (*struct*)
-12. Tipos definidos pelo usuário (*typedef*)
-13. Arquivos
-14. Erros e exceção
-15. Tópicos avançados
+2. [Controle de fluxo: condicionais simples e compostas](progC_aulas/progC_cap2.md)
+3. [Controle de fluxo: estrutura de repetição *while*](progC_aulas/progC_repeticaowhile.md)  
+4. [Controle de fluxo: estrutura de repetição *do-while*](progC_aulas/progC_repeticaodowhile.md)  
+5. [Controle de fluxo: estrutura de repetição *for*](progC_aulas/progC_repeticaofor.md)  
+6. [Funções](progC_aulas/progC_funcoes.md)
+7. [Ponteiros](progC_aulas/progC_ponteiros.md)
+8. [Strings e Vetores(*arrays*)](progC_aulas/progC_stringsvetores.md)
+9. [Matrizes](progC_aulas/progC_matrizes.md)
+10. Estruturas (*struct*)
+11. Tipos definidos pelo usuário (*typedef*)
+12. Arquivos
+13. Erros e exceção
+14. Tópicos avançados
 
 ## Guia Rápido
 
