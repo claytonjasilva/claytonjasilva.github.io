@@ -376,18 +376,7 @@ no caso de *strings*, a especificação de tipo é
 
 #### Função `scanf` 
 
-A função *scanf* lê do dispositivo de entrada o fluxo de dados, com o **controle do formato** e **atribui os valores convertidos ao formato especificado** a um **ponteiro**.  
 
-A sintaxe da função *scanf* é a seguinte:
-
-```
-scanf(<cadeia de caracteres de controle>,<lista de ponteiros dos argumentos>);
-```  
-
-1. A cadeia de caracteres de controle pode conter:
-- Espaços ou tabulações, que são ignorados   
-- Especificações de conversão    
-  Uma especificação de conversão determina a conversão do próximo campo de entrada, de acordo com o mesmo código da função *printf*.  
   
 2. Os ponteiros dos argumentos devem ser especificados pelo sinal `&`.
 
