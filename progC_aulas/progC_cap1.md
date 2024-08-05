@@ -188,7 +188,7 @@ Por exemplo, a sequência mais simples de substituição de macro pode ser
 
 ### 1.5.5 As expressões aritméticas do programa C
 
-As expressões aritméticas contemplam **operadores** e **operandos** (**variáveis** e **constantes**) de vários **tipos** (Ver o conceito de [tipos de dados](https://press.rebus.community/programmingfundamentals/chapter/data-types/). 
+As expressões aritméticas contemplam **operadores** e **operandos** (**variáveis** e **constantes**) de vários **tipos** (Ver o conceito de [tipos de dados](https://press.rebus.community/programmingfundamentals/chapter/data-types/).
 
 Os **operadores aritméticos** sinalizam para o compilador a operação aritmética correspondente. São eles:
 
@@ -264,7 +264,26 @@ res = (12 + 3) * 1.35;
 
 Observe que **as sentenças são separadas pelo `;`**
 
+Quando se atribui um valor a uma variável pela primeira vez, diz-se a variável foi **inicializada**. A inicialização pode ser feita por um comando de atribuição em uma linha de instrução separada ou **pode ser feita na mesma linha em que se declara a variável**.
+
+Nesse caso, para variáveis *int* e *float* a sintaxe é
+
+```c
+int x = <valor>;
+float y = <valor>;
+```
+
 ### 1.5.8 Comandos básicos de entrada e saída
+
+Os dados trocados entre fonte ou destino de dados com um programa deve escrito no código por meio de instruções. São exemplos de fonte e destino de dados: teclado, disco ou outros dispositivos de I/O (entrada/saída). Esses dados configuram-se como **fluxo de texto** e **fluxo binários (bits)**.
+
+Um fluxo de texto é uma **sequência de linhas**, cada uma com **caracteres**. Um fluxo binário é uma sequência de bytes não processados, que registram dados internos. Os programas precisam incluir as instruções ou comandos para possibilitar esses fluxos.  
+
+São categorias de funções pertencentes à **biblioteca padrão <stdio.h>**, entre outras:
+
+- Operações de arquivo;
+- Saída formatada;
+- Entrada formatada.
 
 Os dois comandos básicos de entrada e saída em C são `printf` e `scanf`. Ambas são funções pertencentes à biblioteca [stdio.h](https://petbcc.ufscar.br/stdio/).
 
@@ -276,17 +295,39 @@ A biblioteca stdio.h (*Standard Input Output Header*) é fundamental na linguage
 
 #### a. Função `printf`
 
+A função *printf* é uma **função de saída** formatada que escreve no dispositivo de saída (normalmente a console do computador)
+caracteres e dados convertidos como especificado no argumento** e **retorna o número de caracteres gravados** (ou seja, a execução do comando devolve para o programa o número de caracteres gravados).
+
 O comando básico é:
 
 ```c
-printf(<cadeia de caracteres de controle>,<lista de argumentos>);
+printf("<cadeia de caracteres de controle>",<lista de argumentos>);
 ```
 
-A cadeia de caracteres de controle e deve conter uma especificação de tipo, por exemplo, `%d`, para inteiro e `%f`, para números de ponto flutuante. **[Ver a relação completa de especificadores](https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1256.pdf) na página 344 da referência ISO/IEC 9899**.
+A cadeia de caracteres de controle deve conter uma especificação de tipo, por exemplo, `%d`, para inteiro e `%f`, para números de ponto flutuante. **[Ver a relação completa de especificadores](https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1256.pdf) na página 344 da referência ISO/IEC 9899**. A tabela abaixo apresenta um resumo
 
-A cadeia de caracteres (**delimitada entre aspas duplas**) será escrita na console. A especificação de tipo será substituída pela variável.
+| Código | Tipo |
+| - | - |
+| %d ou %i | inteiro |
+| %x ou %X | hexadecimal |
+| %c | caractere único (*char*) |
+| %s | cadeia de caracteres (*string*) |
+| %f | ponto flutuante |
 
-A cadeia de caracteres de controle poderá conter também outros caracteres, além do especificador de tipo, normalmente usada para produzir uma saída formatada. Por exemplo,
+A cadeia de carateres também pode conter entre o símbolo *%* e a especificação do tipo o seguinte
+
+| Símbolo | Significado |
+| - | - |
+| + | especifica que o número será impresso com sinal |
+| número inteiro | especifica o tamanho mínimo do campo |
+| . | especifica a separação do tamanho do campo da precisão desejada |
+| número inteiro | especifica a precisão (após o ponto) |
+
+A cadeia de caracteres (**delimitada entre aspas duplas**) será escrita na console. A especificação de tipo será substituída pela variável. Poderá conter também outros caracteres, além do especificador de tipo, normalmente usada para produzir uma saída formatada. 
+
+A lista de argumentos contém os nomes da variáveis separados por vírgulas.
+
+Por exemplo,
 
 ```c
 x = 2;
@@ -304,17 +345,23 @@ soma = x + y;
 printf("A soma de %d", x, " + %d", y, " resulta %d",soma);
 ```
 
-O argumento pode ser uma variável ou uma expressão aritmética.
+A lista de argumentos também pode conter constantes ou expressões aritméticas.
 
 #### b. Função `scanf`
 
-O comando básico é:
+A função *scanf* lê do dispositivo de entrada o fluxo de dados, com o **controle do formato** e **atribui os valores convertidos ao formato especificado** a um **ponteiro**.  
+
+A sintaxe do comando básico é:
 
 ```c
 scanf(<cadeia de caracteres de controle>,<lista de ponteiros dos argumentos>);
 ```
+A cadeia de caracteres de controle pode conter:
 
-A cadeia de caracteres de controle deve conter a especificação de tipos das variáveis lidas, **na ordem em que são listadas**.
+- Espaços ou tabulações, que são ignorados;
+- Especificações de conversão;
+
+Uma especificação de conversão determina a conversão do próximo campo de entrada, de acordo com o mesmo código da função *printf*. A cadeia de caracteres de controle deve conter também a especificação de tipos das variáveis lidas, **na ordem em que são listadas**.
 
 A lista de **ponteiros das variáveis** contém os nomes das variáveis, cada uma precedido pelo operador unário `&`, indicando o endereço ocupado pela variável, separados por vírgula.
 

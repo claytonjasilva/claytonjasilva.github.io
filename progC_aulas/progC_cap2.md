@@ -287,38 +287,309 @@ goto <nome do rótulo>;
 
 O rótulo (*label*) pode ser um nome qualquer, contanto que siga as regras de nomenclatura dos identificadores. Um rótulo é definido como um identificador seguido de dois pontos (`:`), e pode ser colocado antes de qualquer instrução em uma função.
 
-## 2.7 Exemplos
+## 2.7 Tipos caracteres e cadeias de caracteres
+
+Vimos o conceito de [tipos de dados](https://press.rebus.community/programmingfundamentals/chapter/data-types/). 
+
+Além dos tipos de dados numéricos a linguagem C permite operar com constantes e variáveis não numéricos, como caracteres e cadeias de caracteres (*strings*).
+
+### 2.7.1 Tipo caractere (*char*)
+
+Os caracteres são tipo *char*. Os caracteres válidos na linguagem de programação C são baseados no conjunto de caracteres ASCII. O ASCII (*American Standard Code for Information Interchange*) é um padrão de codificação de caracteres que representa texto em computadores e outros dispositivos que utilizam texto. O ASCII usa valores numéricos para representar caracteres, incluindo letras, dígitos, sinais de pontuação e caracteres de controle.
+
+Caracteres ASCII em C
+Letras: A-Z (maiúsculas), a-z (minúsculas)
+Dígitos: 0-9
+Sinais de pontuação: ! " # $ % & ' ( ) * + , - . / : ; < = > ? @ [ \ ] ^ _ { | } ~ `
+Caracteres de controle: como \n (nova linha), \t (tabulação), \0 (nulo), entre outros.
+
+Os caracteres são representados internamente por seus valores ASCII, que são inteiros decimais correspondentes a cada caractere. A tabela ASCII (American Standard Code for Information Interchange) define esses valores para um conjunto padrão de caracteres.
+
+A tabela ASCII mapeia caracteres para números inteiros. Por exemplo,
+
+- Letras Maiúsculas: 'A': 65; 'B': 66; 'Z': 90
+- Letras Minúsculas: 'a': 97; 'b': 98
+- Dígitos: '0': 48; '1': 49; '9': 57
+- Sinais de Pontuação e Outros Símbolos: '!': 33; '@': 64; '#': 35
+- Caracteres de Controle (não imprimíveis): '\n' (nova linha): 10; '\t' (tabulação): 9
+
+Os caracteres individuais precisam ser delimitados por aspas simples (' '). Alguns caracteres de controle comuns também são representados usando aspas simples, mas com sequências de escape (`\`).
+
+A declaração de variáveis do tipo *char* possui a seguinte sintaxe:
+
+```c
+char x;
+```
+
+e a declaração com inicialização
+
+```c
+char x = '<caractere>';
+```
+
+As atribuições podem ser realizadas para caracteres da mesma forma que para variáveis *int* e *float*, `<nome> = '<caractere>'`.
+
+Além disso, pode-se comparar caracteres diretamente usando os operadores de comparação (==, !=, <, >, <=, >=), pois os caracteres são representados internamente por seus valores ASCII. Similarmente, entre eles podem ser aplicados operadores lógicos bit a bit.
+
+### 2.7.2 Tipo cadeia de caracteres (*string*)
+
+As cadeias de caracteres são definidas com os caracteres entre aspas duplas ("). **Para a linguagem C, um caractere inscrito entre aspas duplas é uma *string*.**
+
+No caso de variáveis, as *strings* precisam ser declaradas **sem inicialização**, da seguinte forma
+
+| Tipo | Descrição |
+| - | - |
+| `char <nome>[<tamanho>];` | Declaração sem inicialização |
+
+onde o `nome` é um identificador cujas regras são similares as de qualquer outra variável
+
+e o `tamanho` representa o número máximo de caracteres que a *string* pode conter, **incluindo o caractere nulo ('\0') que termina toda *string***. Isso significa que o tamanho do array deve ser grande o suficiente para acomodar todos os caracteres da string mais o terminador nulo.
+
+Podem também ser declaradas com a inicialização, da seguinte forma
+
+| Tipo | Descrição |
+| - | - |
+| `char <nome>[] = "<cadeia de caracteres>"` | Declaração sem inicialização  |
+
+**Observações**.
+
+1. Os comandos de atribuição não podem ser utilizados nas *strings* da mesma forma que nas variáveis *int*,*float* e *char*;
+2. As *strings* não podem ser usadas diretamente em operações lógicas da mesma forma que variáveis inteiras ou caracteres. ***Strings* em C são arrays de caracteres terminados com o caractere nulo '\0', cujo nome em uma expressão é interpretado como um ponteiro** para o primeiro caractere da *string*. No entanto, há maneiras de realizar operações lógicas e comparações envolvendo strings utilizando funções da biblioteca padrão [string.h](https://petbcc.ufscar.br/string/).
+
+## 2.8 Entrada e saída com caracteres e cadeias de caracteres
+
+### 2.8.1 Entrada e Saída com funções da biblioteca padrão <stdio.h>
+
+#### Função `printf`
+
+Como vimos na seção anterior, a sintaxe da função *printf* é a seguinte:
+
+```c
+printf("<cadeia de caracteres de controle>",<lista de argumentos>);
+```
+
+no caso de *strings*, a especificação de tipo é
+
+| Código | Tipo |
+| - | - |
+| %s | cadeia de caracteres (*string*) |
+
+#### Função `scanf` 
+
+A função *scanf* lê do dispositivo de entrada o fluxo de dados, com o **controle do formato** e **atribui os valores convertidos ao formato especificado** a um **ponteiro**.  
+
+A sintaxe da função *scanf* é a seguinte:
+
+```
+scanf(<cadeia de caracteres de controle>,<lista de ponteiros dos argumentos>);
+```  
+
+1. A cadeia de caracteres de controle pode conter:
+- Espaços ou tabulações, que são ignorados   
+- Especificações de conversão    
+  Uma especificação de conversão determina a conversão do próximo campo de entrada, de acordo com o mesmo código da função *printf*.  
+  
+2. Os ponteiros dos argumentos devem ser especificados pelo sinal `&`.
+
+O trecho abaixo escreve o resultado de uma operação de adição inteira:
+
+```
+#include <stdio.h>
+
+void main(){
+  int x, y;
+  scanf("%i %i",&x,&y);
+  printf("A soma de x + y eh %i", x+y);
+}
+```
+
+### 2.2.3 Funções `getchar` e `putchar`
+São funções de leitura e escrita de caracteres.
+
+A função *getchar* possui o protótipo
+```
+char getchar(void);
+```
+Observe que a função retorna um valor char após o usuário digitar um valor de entrada e teclar *enter*.  
+**Para esse valor ser armazenado é necessário o uso de um comando de atribuição para uma variável do tipo char.**  
+**Observação!!!** O problema da função é que o caractere lido é colocado em uma área intermediária até que o usuário digita um *enter* - é muito comum o programador perceber os problemas em ambientes interativos.  
+
+A função *putchar* possui o protótipo seguinte
+```
+int putchar(int c);
+```
+Devolve um inteiro e **apresenta o caractere na console**. O parâmetro pode ser um inteiro equivalente ao caractere no código ASCII ou o próprio caractere.  
+
+O exemplo a seguir mostra o uso de ambas as funções  
+```
+#include <stdio.h>
+#include <conio.h>
+/* Referencia: Aprenda a Programar em C, C++ e C#, de Hickson, R.*/
+int main()
+{
+    char Ch;
+    Ch=getchar();
+    printf("Voce pressionou a tecla ");
+    putchar(Ch);
+    return(0);
+}
+```
+
+## 2.3 Entrada e saída: <conio.h>
+Para ler e escrever caracteres podem também ser usadas as funções *getch* e *getche*, que **não são definidas pelo padrão ANSI**, embora estejam normalmente incluídas em vários compiladores, especialmente para Windows.  
+O protótipo das funções é o seguinte:  
+```
+int getch(void);
+```
+Observe que a função retorna um valor int, o que não é problema, pois o valor lido corresponde ao inteiro equivalente à palavra do código ASCII do caractere
+quando o usuário digitar um caractere. **A função não requer o uso do *enter*.**  
+Como a função retorna um valor, **para esse valor ser armazenado é necessário o uso de um comando de atribuição para uma variável do tipo char.**  
+O exemplo abaixo ilustra o funcionamento   
+```
+#include <stdio.h>
+#include <conio.h>
+/* Referencia: Aprenda a Programar em C, C++ e C#, de Hickson, R.*/
+int main()
+{
+    char Ch;
+    Ch=getch();
+    printf("Voce pressionou a tecla %c",Ch);
+    return(0);
+}
+```
+A função *getche()* possui prototipo similar
+```
+int getche(void);
+```  
+A diferença básica entre as duas é que a função *getche* retorna um **eco**, isto é, apresenta na caonsole o valor digitado pelo usuário.  
+
+## 2.4 *Strings*, entrada/saída de *strings*
+Na linguagem C, uma *string* é um **vetor de caracteres** - depois aprofundaremos esses conceitos.   
+**Toda *strings* possui um caractere 'terminador' definido no ASCII pelo caractere `\0`**.   
+Por exemplo, a palavra "Maria" é uma *string*, que na linguagem C é definida em memória por
+| 0 | 1 | 2 | 3 | 4 | 5 |
+| - | - | - | - | - | - |
+| 'M' | 'a' | 'r' | 'i' | 'a' | '\0' |   
+
+Uma *string* é um **vetor de caracteres**.  
+O nome de um vetor define o **ponteiro** do vetor, ou seja, a variável que aponta para o endereço onde o vetor está armazenado em memória.  
+Veremos [ponteiros com mais detalhes](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/progC_aulas/progC_ponteiros.md).
+
+Para declarar uma *string* e realizar operações mais elaboradas [ver a seção *strings*](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/progC_aulas/progC_stringsvetores2.md).  
+
+Tratando objetivamente de **entrada** e **saída** com *strings* podemos antecipar:  
+
+**(1)** Declaração de *string*
+```
+char nome[tamanho];
+```  
+**(2)** Inicialização de *string*  
+```
+char nome[tamanho]=<constante string>;
+```  
+, onde a constante *string* é a cadeia de caracteres entre aspas duplas.  
+**(3)** Entrada de *string*  
+Uma forma comum é    
+```
+scanf("%s",<nome da string>);
+```
+, onde o nome da *string* **não é precedido** do operador unário `&`.  Por exemplo,  
+```
+#include <stdio.h>
+
+int main()
+{
+    char palavra[10];
+    scanf("%s",palavra);
+    printf("Voce digitou a palavra %s",palavra);
+    return(0);
+}
+```  
+
+Outra forma é  
+```
+gets(<nome da string>);
+```  
+Por exemplo,  
+```
+#include <stdio.h>
+#include <conio.h>
+
+int main()
+{
+    char palavra[10];
+    gets(palavra);
+    printf("Voce digitou a palavra %s",palavra);
+    return(0);
+}
+```
+
+A função *gets* possui o protótipo  
+```
+char *gets(char *s);
+```
+, evidenciando que o operador unário `*` indica que a função retona um **ponteiro de char**, que endereça a *string* lida.  
+Logo o código escrito acima também pode ser escrito da forma  
+```
+#include <stdio.h>
+#include <conio.h>
+
+int main()
+{
+    char palavra[10];
+    char *p;
+    p = gets(palavra);
+    printf("Voce digitou a palavra %s",p);
+    return(0);
+}
+```
+
+**Obs.** A função *gets* não é considerada segura porque dependendo da variável lida pode haver um estouro da declaração da *string*,  
+ou seja, o usuário pode digitar uma *string* maior do que a definida, fazendo com que uma área da memória não reservada seja ocupada, 
+o que configura o chamado **estouro de *buffer***.
+
+**(4)** Saída de *string*  
+```
+printf(<cadeia de controle>,<nome da string>);
+```
+, onde a cadeia de controle deve incluir o especificador `%s` onde a *string* for inserida.  
+
+Alternativamente à função *printf*, pode-se usar a função *puts* para escrever na console uma *string* e cuja sintaxe é
+```
+puts(<nome da string>);
+```
+
+
+
+
+
+
+
+## 2.9 Exemplos
 
 1. Escrever um programa em C para resolver as seguintes expressões lógicas (descritas sem seguir a sintaxe de C) e escrever o resultado:
   
 **a.** $(2 > x) e (3 + 4 = 6)$, dado que *x*=7  
-Ver **[uma solução](https://github.com/claytonjasilva/prog_exemplos/blob/main/cursoC351a.c)**  
-**Pergunta!** Há como ajustar o valor de *x* na expressão lógica para que o resultado dê **verdadeiro**?.  
-
 **b.** $(x > y) ou (x + y = 6)$, dado que *x*=3, *y*=5  
-**Lembre-se que:**  
-0 || 0 = 0  
-0 || 1 = 1  
-1 || 0 = 1  
-1 || 1 = 1
-
 **c.** $\overline{(x > y) ou (x + y = 6)}$  
 
-1. Elaborar um programa na linguagem C para ler dois diferentes números; calcular e escrever o maior dos números lidos.  
-Ver **[uma solução](https://github.com/claytonjasilva/prog_exemplos/blob/main/cursoC352a.c)**  
+Ver **[uma solução](https://github.com/claytonjasilva/prog_exemplos/blob/main/linguagem_c/exemplo14.c)**
 
-Ver **[uma solução](https://github.com/claytonjasilva/prog_exemplos/blob/main/cursoC352a1.c)**  
+2. Elaborar um programa na linguagem C para ler dois diferentes números; calcular e escrever o maior dos números lidos.
 
-3. Elaborar um programa na linguagem C para ler o nome e a respectiva idade de duas pessoas; calcular e escrever o nome da pessoa mais velha. Admitir que as pessoas podem ter a mesma idade.  
-Ver **[uma solução](https://github.com/claytonjasilva/prog_exemplos/blob/main/cursoC352b.c)**  
+Ver **[uma solução](https://github.com/claytonjasilva/prog_exemplos/blob/main/linguagem_c/exemplo15.c)**
 
-4. Elaborar um programa na linguagem C para ler a idade de uma pessoa. Se a idade for igual ou inferior a 10 anos, classificar a pessoa como 'criança'. Caso a idade seja inferior a 18 anos e superior a 10 anos, classificar como 'adolescente'. Em qualquer outro caso, classificar como 'adulto'. Escrever a classificação atribuída.
+3. Elaborar um programa na linguagem C para ler o nome e a respectiva idade de duas pessoas; calcular e escrever o nome da pessoa mais velha. Admitir que as pessoas podem ter a mesma idade.
+
+Ver **[uma solução](https://github.com/claytonjasilva/prog_exemplos/blob/main/linguagem_c/exemplo16.c)**  
+
+1. Elaborar um programa na linguagem C para ler a idade de uma pessoa. Se a idade for igual ou inferior a 10 anos, classificar a pessoa como 'criança'. Caso a idade seja inferior a 18 anos e superior a 10 anos, classificar como 'adolescente'. Em qualquer outro caso, classificar como 'adulto'. Escrever a classificação atribuída.
 Ver **[uma solução](https://github.com/claytonjasilva/prog_exemplos/blob/main/cursoC352c.c)**  
 
-5. Elaborar um programa na linguagem C para ler os nomes, pesos e altura de 3 pessoas; calcular e escrever os nomes de cada pessoa com IMC superior a 22 ('valor alto') ou com IMC inferior a 20 ('valor baixo'), seguido do respectivo IMC calculado.  
+1. Elaborar um programa na linguagem C para ler os nomes, pesos e altura de 3 pessoas; calcular e escrever os nomes de cada pessoa com IMC superior a 22 ('valor alto') ou com IMC inferior a 20 ('valor baixo'), seguido do respectivo IMC calculado.  
 **e.** Elaborar um programa na linguagem C para ler o nome e a idade de 3 animais; calcular e escrever o nome do animal mais velho. 
 
-6. Elaborar um programa na linguagem C para ler um caractere maiúsculo do alfabeto. Se a letra digitada pelo usuário for igual a *A* ou igual a *B*, o programa deve ler dois números e escrever o resultado da soma. Se a letra digitada for igual a *C*, o programa deve ler um número e escrever o quadrado do número lido. Se a letra digitada pelo usuário for igual a *D*, o programa deve ler três números e escrever o maior dentre os números lidos. Para qualquer outra letra digitada pelo usuário o programa deve escrever a mensagem "Entrada invalida".  
+1. Elaborar um programa na linguagem C para ler um caractere maiúsculo do alfabeto. Se a letra digitada pelo usuário for igual a *A* ou igual a *B*, o programa deve ler dois números e escrever o resultado da soma. Se a letra digitada for igual a *C*, o programa deve ler um número e escrever o quadrado do número lido. Se a letra digitada pelo usuário for igual a *D*, o programa deve ler três números e escrever o maior dentre os números lidos. Para qualquer outra letra digitada pelo usuário o programa deve escrever a mensagem "Entrada invalida".  
 Ver **[uma solução](https://github.com/claytonjasilva/prog_exemplos/blob/main/cursoC353a.c)**  
 
 ___
