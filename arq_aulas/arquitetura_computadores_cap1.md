@@ -21,9 +21,9 @@ A estrutura geral da máquina IAS consiste em:
 
 A memória é o elemento dos sistemas computacionais responsável pelo armazenamento das informações. As informações nos sistemas computacionais atuais são armazenadas na forma binária (Ver [anexo II](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/arq_aulas/arquitetura_computadores_anexo2.md)). Rigorosamente, nos sistemas computacionais distinguem-se dados de informações, conforme discutiremos na seção seguinte. No momento trataremos como dados e informações de modo indistinto.
 
-Uma das evoluções dos sistemas computacionais tem sido no sentido dos elementos de memória possuírem uma capacidade cada vez maior de armazenar dados (Ver [anexo I](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/arq_aulas/arquitetura_computadores_anexo1.md). Uma analogia fácil de estabelecer para compreender como as memórias são organizadas é entendê-las como um armário com várias gavetas, organizadas em linhas e colunas. Em cada gaveta armazena-se uma unidade de dado, chamada bit (1 ou 0).
+Uma das evoluções dos sistemas computacionais tem sido no sentido dos elementos de memória possuírem uma capacidade cada vez maior de armazenar dados (Ver [anexo I](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/arq_aulas/arquitetura_computadores_anexo1.md)). Uma metáfora fácil de estabelecer para compreender como as memórias são organizadas é entendê-las como um armário com várias gavetas, organizadas em linhas e colunas. Em cada gaveta armazena-se uma unidade de dado, chamada bit (1 ou 0).
 
-Os dados armazenados podem ser numéricos inteiros ou reais (computacionamente chamadaos de ponto flutuante) (Ver [anexo III](arq_aulas/arquitetura_computadores_anexo3.md)), mas também podem ser não numéricos - como caracteres alfabéticos e outros símbolos discretos. Nessa representação de símbolos discretos se enquadram as instruções que comandam o funcionamento das máquinas computacionais.
+Os dados armazenados podem ser numéricos inteiros ou reais (computacionalmente chamados de ponto flutuante) (Ver [anexo III](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/arq_aulas/arquitetura_computadores_anexo3.md)), mas também podem ser não numéricos - como caracteres alfabéticos e outros símbolos discretos. Nessa representação de símbolos discretos se enquadram as instruções que comandam o funcionamento das máquinas computacionais.
 
 Todas as tarefas realizadas pelos sistemas computacionais decorrem da execução de uma sucessão de instruções binárias armazenadas, que podem manipular dados, também armazenados na memória, intitulados programas. Os programas constituem o software e comandam os elementos eletromecânicos, chamados de hardware.
 
@@ -31,13 +31,13 @@ As características tecnológicas dos dispositivos de memória têm evoluído ra
 
 ### 1.1.2 Unidade Central de Processamento
 
-A Unidade Central de Processamento (CPU, do inglês Central Processing Unit) é o elemento concebido na arquitetura para realizar duas funções básicas principais: (i) interpretar as instruções e controlar o funcionamento das elementos do sistema, na Unidade de Controle (UC); e (ii) executar as instruções, na Unidade Lógica e Aritméetica (ULA).
+A **Unidade Central de Processamento** (CPU, do inglês *Central Processing Unit*) é o elemento concebido na arquitetura para realizar duas funções básicas principais: (i) interpretar as instruções e controlar o funcionamento das elementos do sistema, na **Unidade de Controle** (UC); e (ii) executar as instruções, na **Unidade Lógica e Aritmética** (ULA).
 
-Para o controle, o sistema computacional utiliza uma referência temporal dada por um sinal elétrico chamado de clock. Pense no computador como uma máquina similar a um engenho mecânico, cuja operação é sincronizada por engrenagens. O sinal elétrico do clock é que permite o sincronismo de funcionamento de todas as operações dos computadores. O sinal de clock é peródico, ou seja, repete-se em intervalos regulares de tempo, chamados de período ou ciclo. O número de repetições de ciclos na unidade de tempo é chamado de frequência.
+Para o controle, o sistema computacional utiliza uma referência temporal dada por um sinal elétrico chamado de clock. Pense no computador como uma máquina similar a um engenho mecânico, cuja operação é sincronizada por engrenagens. O sinal elétrico do clock é que permite o sincronismo de funcionamento de todas as operações dos computadores. O sinal de clock é periódico, ou seja, repete-se em intervalos regulares de tempo, chamados de **período** ou **ciclo**. O número de ciclos por unidade de tempo é chamado de **frequência**.
 
 A evolução dos sistemas computacionais tem sido no sentido de produzir CPUs com referência de clock cada vez mais velozes. Ou seja, a interpretação das instruções dos programas armazenados na memória tem sido cada vez mais rápida, ou seja, os programas são executados, consequentemente as tarefas são realizadas em tempos cada vez mais curtos.
 
-Por outro lado, as instruções são resolvidas pela ULA. Instruções definidas em fábrica são decodificadas pela UC, mas são efetivamente executadas pelos circuitos lógicos e aritméticos da ULA. Como o próprio nome define, a ULA possui os circuitos para executar operações cujo resultado pode ser verdadeiro ou falso - operações lógicas. Lembre-se que fisicamente os computadores representamm os valores lógicos como sinais elétricos, por exemplo, 5V ou 0V, os quais podem ser abstraídos como 0s e 1s.
+Por outro lado, as instruções são resolvidas pela ULA. Instruções definidas em fábrica são decodificadas pela UC, mas são efetivamente executadas pelos circuitos lógicos e aritméticos da ULA. Como o próprio nome define, a ULA possui os circuitos para executar operações cujo resultado pode ser verdadeiro ou falso - operações lógicas. Lembre-se que fisicamente os computadores representam os valores lógicos como sinais elétricos, por exemplo, 5V ou 0V, os quais podem ser abstraídos como 0s e 1s.
 
 Além das operações lógicas, a ULA também possui os circuitos que podem resolver operações aritméticas, obviamente lidando com dados numéricos representados na forma binária.
 
@@ -45,15 +45,15 @@ Além das operações lógicas, a ULA também possui os circuitos que podem reso
 
 Os computadores precisam assegurar uma ligação com os usuários. Para isso são necessários elementos que permitam ao usuário inserir os dados por meio de dispositivos de entrada. Por exemplo, um teclado possibilita que um usuário digite um texto que seja tratado pela máquina. Por outro lado, os resultados produzidos pela máquina precisam ser apresentados ao ambiente externo através dos chamados dispositivos de saída, por exemplo, monitores de vídeo.
 
-Mas não somente para as pessoas os dispositivos de entrada e saída são produzidos. Máquinas diferetenes precisam se comunicar. Os elementos de entrada e saída propiciam a comunicação do ambiente interno com o ambiente externo.
+Mas não somente para as pessoas os dispositivos de entrada e saída são produzidos. Máquinas diferentes precisam se comunicar. Os elementos de entrada e saída propiciam a comunicação do ambiente interno com o ambiente externo.
 
 ### 1.1.4 Barramento
 
 Ficou evidente que os programas armazenados em memória possuem instruções interpretadas e executadas pela CPU. Por sua vez, os dados resultantes das operações lógicas e aritméticas precisam ser armazenados em memória ou precisam ser enviados a outra máquina através de dispositivos de E/S. Para que o tráfego de dados ocorra entre os elementos do computador são necessárias vias de comunicações, chamadas de barramento.
 
-Através dos barramentos sao trafegados os sinais elétricos abstraídos matematicamente como 0s e 1s. Esses barrramentos são funcionalmente classificados como barramento de dados. Mas os dados fluem entre elementos bem definidos, portanto a definição da localização do destinatário do dado é crucial para o tráfego de dados. Cada componente do computador é endereçável, de forma que o dado seja enviado ao destino correto. As vias que trafegam os endereços são chamadas de barramento de endereços.
+Através dos barramentos sao trafegados os sinais elétricos abstraídos matematicamente como 0s e 1s resultantes das operações, assim como relativos às instruções a serem executadas. Esses barramentos são funcionalmente classificados como **barramento de dados**. Mas os dados fluem entre elementos bem definidos, portanto a definição da localização do destinatário do dado é crucial para o tráfego de dados. Cada componente do computador é endereçável, de forma que o dado seja enviado ao destino correto. As vias que trafegam os endereços são chamadas de **barramento de endereços**.
 
-Finalmente, o controle produzido pela UC é veiculado pelo chamado barramento de controle.
+Finalmente, o controle produzido pela UC é veiculado pelo chamado **barramento de controle**. Através dele circulam os sinais elétricos para ativar leitura/escrita em memória, habilitação/desabilitação de elemento etc.
 
 ## 1.2 Visão detalhada do computador IAS
 
