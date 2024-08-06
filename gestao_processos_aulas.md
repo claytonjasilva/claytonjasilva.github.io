@@ -20,7 +20,6 @@
 ## Práticas de Laboratório
 
 1. Utilizando o Bizagi Modeler: https://help.bizagi.com/process-modeler/en/index.html?modeler_architecture.htm  
-2. 
 
 ## Avaliações
 
