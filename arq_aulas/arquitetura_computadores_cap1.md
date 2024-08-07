@@ -8,7 +8,7 @@ A ideia principal da máquina IAS, atribuída a von Neumann, é a do **conceito 
 
 O conceito de programa armazenado consiste no armazenamento do programa a ser executado pela UCP em memória, juntamente com os dados. O processador busca as instruções e os dados do programa diretamente da memória. Instruções e dados estão armazenados em posições específicas inequívocas da memória, cada uma definida por um **endereço de memória**.
 
-![Organização da máquina IAS](/arq_aulas/images/figura1_1.png) Máquina original de von Neumann (fonte. Organização estruturada de computadores, Tanenbaum)
+![Organização da máquina IAS](/arq_aulas/images/figura1_1.png)Máquina original de von Neumann (fonte. Organização estruturada de computadores, Tanenbaum)
 
 A estrutura geral da máquina IAS consiste em:
 
