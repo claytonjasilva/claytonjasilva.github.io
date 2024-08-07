@@ -8,7 +8,7 @@ A ideia principal da máquina IAS, atribuída a von Neumann, é a do **conceito 
 
 O conceito de programa armazenado consiste no armazenamento do programa a ser executado pela UCP em memória, juntamente com os dados. O processador busca as instruções e os dados do programa diretamente da memória. Instruções e dados estão armazenados em posições específicas inequívocas da memória, cada uma definida por um **endereço de memória**.
 
-![Organização da máquina IAS](/arq_aulas/images/maquinaIAS.jpg)
+![Organização da máquina IAS](/arq_aulas/images/figura1_1.jpg) Máquina original de von Neumann (fonte. Organização estruturada de computadores, Tanenbaum)
 
 A estrutura geral da máquina IAS consiste em:
 
@@ -114,14 +114,14 @@ O ciclo de instruções pode ser descrito por:
 3. Evento de controle - o endereço do par de instruções é carregado no MAR
 4. Evento de controle - o endereço das instruções é disponibilizado no barramento de endereços
 5. Evento de controle - o endereço das instruções é decodificado e a posição do par de instruções é selecionada
-6. Evento de controle - o par de instruções é disponibilizdo no barramento de dados
+6. Evento de controle - o par de instruções é disponibilizado no barramento de dados
 7. Evento de controle - o par de instruções é armazenado no MBR
 8. Evento de controle - o opcode da instrução à esquerda é armazenado no IR, o operando da instrução é armazenado no MAR e a instrução à direita é armazenada no IBR
 9. Evento de controle - a primeira instrução é decodificada
 10. Evento de controle - o MAR é ativado para disponibilizar o endereço do dado
 11. Evento de controle - o endereço do dado é disponibilizado no barramento de endereços
 12. Evento de controle - o endereço do dado é decodificado e a posição do dado é selecionada
-13. Evento de controle - o dado é disponibilizdo no barramento de dados
+13. Evento de controle - o dado é disponibilizado no barramento de dados
 14. Evento de controle - o dado é armazenado no MBR
 15. Evento de controle - a ULA realiza a operação
 16. Evento de controle - o par de instruções é armazenado no MBR
@@ -141,7 +141,7 @@ As instruções podem ser classificadas como segue:
 - **Lógicas e aritméticas**, como adição, subtração, multiplicação e divisão binárias.
 - **Alteração de endereços**: instruções para calcular endereços para inseri-los em instruções armazenadas na memória, propiciando flexibilidade de endereçamento dos programas.
 
-Os programas executados pelo processador (na **linguagem de máquina**) podem ser escritos por uma representação simbólica (*assembly*) utilizando-se menmônicos.  
+Os programas executados pelo processador (na **linguagem de máquina**) podem ser escritos por uma representação simbólica (*assembly*) utilizando-se mnemônicos.  
 O código em linguagem de máquina, como tratamos, é todo constituído de sequência binária de instruções, ou seja, em sequência de bits.  
 A figura apresenta como a tabela do *set* de instruções é normalmente apresentada.
 
@@ -182,7 +182,7 @@ A figura apresenta como a tabela do *set* de instruções é normalmente apresen
 | 0000 0111 | ADD \|M(X)\| | Soma o **módulo** do conteúdo da posição de memória X, definida pelo operando, com o conteúdo do acumulador; armazena o resultado no acumulador |
 | 0010 0110 | SUB M(X) | Subtrai o conteúdo da posição de memória X, definida pelo operando, do conteúdo do acumulador; armazena o resultado no acumulador |
 | 0000 1000 | SUB \|M(X)\| | Subtrai o **módulo** do conteúdo da posição de memória X, definida pelo operando, do conteúdo do acumulador; armazena o resultado no acumulador |
-| 0000 1011 | MUL M(X) | Multiplica o conteúdo da posição de memória X, definida pelo operando, por MQ; armazena os bits mais singificativos do resultado em ACC e os bits menos significativos em MQ |
+| 0000 1011 | MUL M(X) | Multiplica o conteúdo da posição de memória X, definida pelo operando, por MQ; armazena os bits mais significativos do resultado em ACC e os bits menos significativos em MQ |
 | 0000 1100 | DIV M(X) | Divide o conteúdo de ACC pelo conteúdo da posição de memória X, definida pelo operando; armazena o quociente em MQ e o resto em ACC |
 | 0001 0100 | LSH | Multiplica o conteúdo do acumulador por 2 |
 | 0001 0101 | RSH | Divide o conteúdo do acumulador por 2 |

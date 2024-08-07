@@ -4,7 +4,7 @@
 
 ## Tópicos
 
-1. [Cap. 1 - Máquina de von Neumman](arq_aulas/arquitetura_computadores_cap1.md)
+1. [Cap. 1 - Máquina de von Neumann](arq_aulas/arquitetura_computadores_cap1.md)
 2. [Cap. 2 - Organização e Modelos de máquina de níveis](arq_aulas/arquitetura_computadores_cap2.md)
 3. [Cap. 3 - Nível de lógica digital: circuitos combinacionais e circuitos sequenciais](arq_aulas/arquitetura_computadores_cap3.md)
 4. [Cap.4 - Sistema de memória](arq_aulas/arquitetura_computadores_cap4.md)
