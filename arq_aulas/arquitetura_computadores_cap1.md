@@ -8,9 +8,9 @@ A ideia principal da máquina IAS, atribuída a von Neumann, é a do **conceito 
 
 O conceito de programa armazenado consiste no armazenamento do programa a ser executado pela UCP em memória, juntamente com os dados. O processador busca as instruções e os dados do programa diretamente da memória. Instruções e dados estão armazenados em posições específicas inequívocas da memória, cada uma definida por um **endereço de memória**.
 
-![Organização da máquina IAS](/arq_aulas/images/figura1_1.png)
+![Máquina original de von Neumann](/arq_aulas/images/figura1_1.png)
 
-Máquina original de von Neumann (fonte. Organização estruturada de computadores, Tanenbaum)
+Figura 1.1 Máquina original de von Neumann (fonte. Organização estruturada de computadores, Tanenbaum)
 
 A estrutura geral da máquina IAS consiste em:
 
@@ -61,7 +61,9 @@ Finalmente, o controle produzido pela UC é veiculado pelo chamado **barramento 
 
 A figura abaixo ilustra a organiza detalhada do computador IAS.
 
-![Organização detalhada do computador IAS](/arq_aulas/images/maquinaIAS_detalhada.jpg)
+![Estrutura do IAS](/arq_aulas/images/figura1_2.png)
+
+Estrutura do IAS (fonte. Stallings, Arquitetura e Organização de Computadores)
 
 1. **Registrador Temporário da Memória** (MBR, *Memory Buffer Register*): capacidade de armazenar **40 bits** e contém uma palavra com um par de instruções a ser lida ou escrita na memória. Registradores são dispositivos de armazenamento de dados internos ao processador que possuem tipicamente baixo tempo de acesso (posteriormente discutiremos o conceito), embora baixa capacidade de armazenamento de bits.
 2. **Acumulador** (Acc) e **Quociente de Multiplicação** (MQ, *Multiplier Quotient*): capacidade de armazenar **40 bits** e **armazenam temporariamente** os operandos e o resultado das operações realizadas pelos circuitos lógicos e aritméticos da ULA. Em operações com mais de 40 bits, o Acc armazena os 40 bits mais significativos e o MQ armazena os 40 bits menos significativos.
