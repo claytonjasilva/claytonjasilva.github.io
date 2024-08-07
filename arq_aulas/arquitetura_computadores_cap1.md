@@ -10,7 +10,7 @@ O conceito de programa armazenado consiste no armazenamento do programa a ser ex
 
 ![Máquina original de von Neumann](/arq_aulas/images/figura1_1.png)
 
-Figura 1.1 Máquina original de von Neumann (fonte. Organização estruturada de computadores, Tanenbaum)
+Figura 1.1 Máquina original de von Neumann (fonte. Tanenbaum, Organização estruturada de computadores)
 
 A estrutura geral da máquina IAS consiste em:
 
@@ -99,9 +99,9 @@ Cada instrução é possui um grupo de bits chamado de *opcode*, a palavra de um
 E outro grupo de bits, chamado de operando, que contém o endereço do dado a ser buscado pelo processador em memória.  
 Nem toda instrução do processador da máquina IAS requer um operando. Nesse caso, quando busca a instrução o processador desconsidera os bits relativos ao operando.
 
-![Formato das instruções na memória IAS](/arq_aulas/images/figura1_5.jpg)
+![Formato da linha de memória IAS](/arq_aulas/images/figura1_5.jpg)
 
-Figura 1.5 Formato das instruções na memória IAS
+Figura 1.5 Formato da linha de memória IAS: acima, número; abaixo, par de instruções (fonte. Adaptado de Stallings, Arquitetura e Organização de Computadores)
 
 ### 1.3.2 Ciclo de instrução
 
@@ -119,7 +119,7 @@ O conjunto de microinstruções executadas define o chamado **ciclo de instruç�
 
 Figura 1.6 Ciclo de instruções da máquina IAS (fonte. Adaptado de Stallings, Arquitetura e Organização de Computadores)
 
-O ciclo de instruções pode ser detalhado por:
+O fluxograma da execução das instruções pode ser detalhado por:
 
 1. Programa e dados armazenados em memória: conceito de programa armazenado
 2. PC contém o endereço da próxima palavra (par de instruções)
@@ -130,6 +130,7 @@ O ciclo de instruções pode ser detalhado por:
 7. Evento de controle - o par de instruções é armazenado no MBR
 8. Evento de controle - o opcode da instrução à esquerda é armazenado no IR, o operando da instrução é armazenado no MAR e a instrução à direita é armazenada no IBR
 9. Evento de controle - a primeira instrução é decodificada
+A partir desse ponto o fluxo dependerá do **modo de endereçamento do dado (operando) pela instrução**. Existem instruções que não requerem operando; o operando é o próprio dado; o operando referencia o endereço do dado; o operando referencia o endereço, no qual está armazenado o endereço do dado. No caso do operando referenciar o endereço do dado, prosseguindo o fluxo...
 10. Evento de controle - o MAR é ativado para disponibilizar o endereço do dado
 11. Evento de controle - o endereço do dado é disponibilizado no barramento de endereços
 12. Evento de controle - o endereço do dado é decodificado e a posição do dado é selecionada
@@ -144,7 +145,15 @@ O ciclo de instruções pode ser detalhado por:
 
 ![Fluxograma da operação do IAS](/arq_aulas/images/figura1_7.png)
 
-Figura 1.7 Fluxograma da operação do IAS (fonte. Stallings, Arquitetura e Organização de Computadores)
+Figura 1.7 Fluxograma da operação do IAS (fonte. Adaptado de Stallings, Arquitetura e Organização de Computadores)
+
+Detalhando mais a operação na ULA.
+
+A ULA efetua adição, subtração e outras operações simples sobre suas entradas, produzindo assim um resultado no registrador de saída, o qual pode ser armazenado em um registrador. Mais tarde, ele pode ser escrito (isto é, armazenado) na memória, se desejado. Nem todos os projetos têm os registradores A, B e de saída. No exemplo, ilustramos uma adição, mas as ULAs também realizam outras operações.
+
+![0 caminho de dados de uma típica máquina de von Neumann](/arq_aulas/images/figura1_8.png)
+
+Figura 1.8 0 caminho de dados de uma típica máquina de von Neumann (fonte. Tanenbaum, Organização estruturada de computadores)
 
 ### 1.3.3 Instruções do processador IAS
 
