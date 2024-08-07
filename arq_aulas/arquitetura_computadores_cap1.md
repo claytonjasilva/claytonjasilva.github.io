@@ -79,7 +79,7 @@ A figura abaixo ilustra a relação da memória com os barramentos de dados e de
 
 ![Decodificação de endereço de memória IAS](/arq_aulas/images/figura1_3.jpg)
 
-Decodificação de endereço de memória IAS
+Figura 1.3 Decodificação de endereço de memória IAS
 
 Cada linha de dados aponta para uma palavra, que ocupa um endereço de memória.  
 Os endereços são inequívocos, ou seja, não existem dois endereços iguais.  
@@ -90,14 +90,18 @@ Os endereços são inequívocos, ou seja, não existem dois endereços iguais.
 
 Um par de instruções ocupa cada linha de endereço. A estrutura da linha é dada por
 
-![Par de instruções em memória](/arq_aulas/images/instrucoes.jpg)
+![Par de instruções na memória IAS](/arq_aulas/images/figura1_4.jpg)
+
+Figura 1.4 Par de instruções na memória IAS
 
 A instrução à esquerda ocupa os bits b<sub>0</sub> a b<sub>19</sub>. As instruções à direita ocupam os bits b<sub>20</sub> a b<sub>39</sub>.
 Cada instrução é possui um grupo de bits chamado de *opcode*, a palavra de um código que define as instruções do processador.  
 E outro grupo de bits, chamado de operando, que contém o endereço do dado a ser buscado pelo processador em memória.  
 Nem toda instrução do processador da máquina IAS requer um operando. Nesse caso, quando busca a instrução o processador desconsidera os bits relativos ao operando.
 
-![Estrutura das instruções em memória](/arq_aulas/images/instrucoes_estrutura.jpg)
+![Formato das instruções na memória IAS](/arq_aulas/images/figura1_5.jpg)
+
+Figura 1.5 Formato das instruções na memória IAS
 
 ### 1.3.2 Ciclo de instrução
 
@@ -111,7 +115,9 @@ O conjunto de microinstruções executadas define o chamado **ciclo de instruç�
 - **Busca** do par de instruções
 - **Execução** das instruções
 
-![Ciclo de instrução do computador IAS](/arq_aulas/images/ciclo_instrucao.jpg)
+![Ciclo de instruções da máquina IAS](/arq_aulas/images/figura1_6.png)
+
+Figura 1.6 Ciclo de instruções da máquina IAS (fonte. Adaptado de Stallings, Arquitetura e Organização de Computadores)
 
 O ciclo de instruções pode ser descrito por:
 
