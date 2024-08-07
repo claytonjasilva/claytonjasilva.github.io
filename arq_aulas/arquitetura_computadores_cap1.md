@@ -170,7 +170,9 @@ Os programas executados pelo processador (na **linguagem de máquina**) podem se
 O código em linguagem de máquina, como tratamos, é todo constituído de sequência binária de instruções, ou seja, em sequência de bits.  
 A figura apresenta como a tabela do *set* de instruções é normalmente apresentada.
 
-![Forma da tabela do *set* de instruções](/arq_aulas/images/forma_set_instrucoes.jpg)
+![Forma da tabela do *set* de instruções da IAS](/arq_aulas/images/figura1_9.jpg)
+
+Figura 1.9 Forma da tabela do *set* de instruções da IAS
 
 ***SET* DE INSTRUÇÕES**  
 **Instruções de transferência de dados**  
