@@ -63,7 +63,7 @@ A figura abaixo ilustra a organiza detalhada do computador IAS.
 
 ![Estrutura do IAS](/arq_aulas/images/figura1_2.png)
 
-Estrutura do IAS (fonte. Stallings, Arquitetura e Organização de Computadores)
+Figura 1.2 Estrutura do IAS (fonte. Stallings, Arquitetura e Organização de Computadores)
 
 1. **Registrador Temporário da Memória** (MBR, *Memory Buffer Register*): capacidade de armazenar **40 bits** e contém uma palavra com um par de instruções a ser lida ou escrita na memória. Registradores são dispositivos de armazenamento de dados internos ao processador que possuem tipicamente baixo tempo de acesso (posteriormente discutiremos o conceito), embora baixa capacidade de armazenamento de bits.
 2. **Acumulador** (Acc) e **Quociente de Multiplicação** (MQ, *Multiplier Quotient*): capacidade de armazenar **40 bits** e **armazenam temporariamente** os operandos e o resultado das operações realizadas pelos circuitos lógicos e aritméticos da ULA. Em operações com mais de 40 bits, o Acc armazena os 40 bits mais significativos e o MQ armazena os 40 bits menos significativos.
@@ -77,7 +77,9 @@ Estrutura do IAS (fonte. Stallings, Arquitetura e Organização de Computadores)
 
 A figura abaixo ilustra a relação da memória com os barramentos de dados e de endereços do computador IAS.
 
-![Relação da memória com os barramentos de dados e endereço do computador IAS](/arq_aulas/images/memoriaIAS.jpg)
+![Decodificação de endereço de memória IAS](/arq_aulas/images/figura1_3.png)
+
+Decodificação de endereço de memória IAS
 
 Cada linha de dados aponta para uma palavra, que ocupa um endereço de memória.  
 Os endereços são inequívocos, ou seja, não existem dois endereços iguais.  
