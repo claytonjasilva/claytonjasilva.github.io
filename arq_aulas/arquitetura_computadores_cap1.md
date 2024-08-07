@@ -77,7 +77,7 @@ Figura 1.2 Estrutura do IAS (fonte. Stallings, Arquitetura e Organização de Co
 
 A figura abaixo ilustra a relação da memória com os barramentos de dados e de endereços do computador IAS.
 
-![Decodificação de endereço de memória IAS](/arq_aulas/images/figura1_3.png)
+![Decodificação de endereço de memória IAS](/arq_aulas/images/figura1_3.jpg)
 
 Decodificação de endereço de memória IAS
 
