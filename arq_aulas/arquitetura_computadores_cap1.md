@@ -119,7 +119,7 @@ O conjunto de microinstruções executadas define o chamado **ciclo de instruç�
 
 Figura 1.6 Ciclo de instruções da máquina IAS (fonte. Adaptado de Stallings, Arquitetura e Organização de Computadores)
 
-O ciclo de instruções pode ser descrito por:
+O ciclo de instruções pode ser detalhado por:
 
 1. Programa e dados armazenados em memória: conceito de programa armazenado
 2. PC contém o endereço da próxima palavra (par de instruções)
@@ -141,6 +141,10 @@ O ciclo de instruções pode ser descrito por:
 18. Evento de controle - o opcode da segunda instrução é transferida do IBR para o IR e o operando é transferido para o MAR
 19. O processo prossegue para decodificação da segunda instrução e busca do dado
 20. O par de instruções seguinte é buscado ...
+
+![Fluxograma da operação do IAS](/arq_aulas/images/figura1_7.png)
+
+Figura 1.7 Fluxograma da operação do IAS (fonte. Stallings, Arquitetura e Organização de Computadores)
 
 ### 1.3.3 Instruções do processador IAS
 
