@@ -356,6 +356,7 @@ A sintaxe do comando básico é:
 ```c
 scanf(<cadeia de caracteres de controle>,<lista de ponteiros dos argumentos>);
 ```
+
 A cadeia de caracteres de controle pode conter:
 
 - Espaços ou tabulações, que são ignorados;
@@ -364,6 +365,18 @@ A cadeia de caracteres de controle pode conter:
 Uma especificação de conversão determina a conversão do próximo campo de entrada, de acordo com o mesmo código da função *printf*. A cadeia de caracteres de controle deve conter também a especificação de tipos das variáveis lidas, **na ordem em que são listadas**.
 
 A lista de **ponteiros das variáveis** contém os nomes das variáveis, cada uma precedido pelo operador unário `&`, indicando o endereço ocupado pela variável, separados por vírgula.
+
+O trecho abaixo escreve o resultado de uma operação de adição inteira:
+
+```c
+#include <stdio.h>
+
+void main(){
+  int x, y;
+  scanf("%i %i",&x,&y);
+  printf("A soma de x + y eh %i", x+y);
+}
+```
 
 Estudaremos mais sobre comandos de entrada e saída nas próximas seções.
 

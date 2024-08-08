@@ -356,61 +356,74 @@ Podem também ser declaradas com a inicialização, da seguinte forma
 1. Os comandos de atribuição não podem ser utilizados nas *strings* da mesma forma que nas variáveis *int*,*float* e *char*;
 2. As *strings* não podem ser usadas diretamente em operações lógicas da mesma forma que variáveis inteiras ou caracteres. ***Strings* em C são arrays de caracteres terminados com o caractere nulo '\0', cujo nome em uma expressão é interpretado como um ponteiro** para o primeiro caractere da *string*. No entanto, há maneiras de realizar operações lógicas e comparações envolvendo strings utilizando funções da biblioteca padrão [string.h](https://petbcc.ufscar.br/string/).
 
+Na linguagem C, uma *string* é um **vetor de caracteres** - depois aprofundaremos esses conceitos.
+
+**Toda *strings* possui um caractere 'terminador' definido no ASCII pelo caractere de escape `\0`**. Por exemplo, a palavra "Maria" é uma *string*, que na linguagem C é definida em memória por
+
+| 0 | 1 | 2 | 3 | 4 | 5 |
+| - | - | - | - | - | - |
+| 'M' | 'a' | 'r' | 'i' | 'a' | '\0' |
+
+Uma *string* é um **vetor de caracteres**. O nome de um vetor define o **ponteiro** do vetor, ou seja, a variável que aponta para o endereço onde o primeiro caractere do vetor está armazenado em memória.  
+
 ## 2.8 Entrada e saída com caracteres e cadeias de caracteres
 
 ### 2.8.1 Entrada e Saída com funções da biblioteca padrão <stdio.h>
 
-#### Função `printf`
+#### Funções `printf` e `scanf`
 
-Como vimos na seção anterior, a sintaxe da função *printf* é a seguinte:
-
-```c
-printf("<cadeia de caracteres de controle>",<lista de argumentos>);
-```
-
-no caso de *strings*, a especificação de tipo é
+A sintaxe de ambas foi discutida na seção anterior. A especificação de tipo em ambas, no caso de *strings*, é
 
 | Código | Tipo |
 | - | - |
 | %s | cadeia de caracteres (*string*) |
 
-#### Função `scanf` 
+Na função `scanf`, **não se aplica a indicação `&` antes do nome de variável, pois uma string é um vetor em que o primeiro caractere é o conteúdo associado ao ponteiro de mesmo nome**. Por exemplo, a *string* nome = "Casa de festas" é um vetor (estudaremos mais adiante) em que o primeiro caractere ('C') é o conteúdo do ponteiro nome.
 
+Para permitir que o `scanf` leia *strings* contendo espaços em C, você pode usar uma **expressão regular** para capturar a *string* inteira até a quebra de linha: `scanf(" %[^\n]", <nome da string>)`.
 
-  
-2. Os ponteiros dos argumentos devem ser especificados pelo sinal `&`.
-
-O trecho abaixo escreve o resultado de uma operação de adição inteira:
-
-```
+```c
 #include <stdio.h>
 
 void main(){
-  int x, y;
-  scanf("%i %i",&x,&y);
-  printf("A soma de x + y eh %i", x+y);
+    char nome[20];
+    printf("Digite o nome: \n");
+    scanf(" %[^\n]",nome);
+    printf("O nome digitado e %s",nome);
+
+    return 0;
 }
 ```
 
-### 2.2.3 Funções `getchar` e `putchar`
+Uma expressão regular (ou regex) é uma sequência de caracteres que define um padrão de pesquisa. Em muitos contextos, é usada para encontrar, substituir ou manipular padrões de texto. Expressões regulares são extremamente poderosas e versáteis, permitindo realizar operações complexas de manipulação de strings.
+
+No contexto da linguagem C, o uso de expressões regulares é um pouco mais limitado do que em linguagens modernas, mas ainda é possível. Existem bibliotecas como [regex.h](https://www.piazinho.com.br/download/expressoes-regulares-3-tabelas.pdf) que permitem trabalhar com expressões regulares em C.
+  
+#### Funções `getchar` e `putchar`
+
 São funções de leitura e escrita de caracteres.
 
-A função *getchar* possui o protótipo
-```
+A função `getchar` possui o protótipo
+
+```c
 char getchar(void);
 ```
-Observe que a função retorna um valor char após o usuário digitar um valor de entrada e teclar *enter*.  
-**Para esse valor ser armazenado é necessário o uso de um comando de atribuição para uma variável do tipo char.**  
+
+Observe que **a função retorna um valor char** após o usuário digitar um valor de entrada e teclar *enter*. Logo **para esse valor ser armazenado, é necessário o uso de um comando de atribuição para uma variável do tipo char.**
+
 **Observação!!!** O problema da função é que o caractere lido é colocado em uma área intermediária até que o usuário digita um *enter* - é muito comum o programador perceber os problemas em ambientes interativos.  
 
-A função *putchar* possui o protótipo seguinte
-```
+A função `putchar` possui o protótipo seguinte
+
+```c
 int putchar(int c);
 ```
+
 Devolve um inteiro e **apresenta o caractere na console**. O parâmetro pode ser um inteiro equivalente ao caractere no código ASCII ou o próprio caractere.  
 
 O exemplo a seguir mostra o uso de ambas as funções  
-```
+
+```c
 #include <stdio.h>
 #include <conio.h>
 /* Referencia: Aprenda a Programar em C, C++ e C#, de Hickson, R.*/
@@ -424,17 +437,71 @@ int main()
 }
 ```
 
-## 2.3 Entrada e saída: <conio.h>
-Para ler e escrever caracteres podem também ser usadas as funções *getch* e *getche*, que **não são definidas pelo padrão ANSI**, embora estejam normalmente incluídas em vários compiladores, especialmente para Windows.  
-O protótipo das funções é o seguinte:  
+#### As funções `gets` e `puts`
+
+A função *gets* possui o protótipo
+
+```c
+char *gets(char *s);
 ```
+
+, evidenciando que o operador unário `*` indica que a função retorna um **ponteiro de char**, que endereça a *string* lida.  
+
+A função `gets` é insegura porque não permite especificar o tamanho do buffer onde a string será armazenada, o que **pode levar a estouro de buffer (*buffer overflow*)**. Isso ocorre porque `gets` continuará lendo caracteres até encontrar um caractere de nova linha ou o fim do arquivo, sem verificar se há espaço suficiente no buffer para armazenar esses caracteres.
+
+Alternativa Segura: `fgets`
+Devido aos problemas de segurança com `gets`, a função `fgets` é recomendada como uma alternativa mais segura. A função permite especificar o tamanho do buffer, o que ajuda a prevenir estouros de buffer. Por exemplo,
+
+```c
+#include <stdio.h>
+
+int main() {
+    char buffer[100];
+
+    printf("Digite uma string: ");
+    if (fgets(buffer, sizeof(buffer), stdin) != NULL) {
+        printf("Você digitou: %s", buffer);
+    } else {
+        printf("Erro ao ler a string.\n");
+    }
+
+    return 0;
+}
+```
+
+Como `fgets` funciona. Parâmetros:
+
+- *buffer*: Um ponteiro para a área de memória onde a string será armazenada.
+- *sizeof(buffer)*: O tamanho máximo que pode ser armazenado no buffer (incluindo o caractere nulo).
+- *stdin*: O fluxo de entrada padrão (teclado).
+
+`fgets` retorna o buffer se a leitura for bem-sucedida. Caso contrário, retorna NULL. 
+
+NULL é um macro definido na linguagem C (e também em C++) que representa um ponteiro nulo. Em termos simples, NULL é usado para indicar que um ponteiro não aponta para nenhum objeto ou endereço válido na memória.
+
+Alternativamente à função `printf`, pode-se usar a função `puts` para escrever na console uma *string* e cuja sintaxe é
+
+```c
+puts(<nome da string>);
+```
+
+### 2.8.2 Entrada e saída: <conio.h>
+
+Para ler e escrever caracteres podem também ser usadas as funções `getch` e `getche`, que **não são definidas pelo padrão ANSI**, embora estejam normalmente incluídas em vários compiladores, especialmente para Windows.  
+
+O protótipo das funções é o seguinte:
+
+```c
 int getch(void);
 ```
-Observe que a função retorna um valor int, o que não é problema, pois o valor lido corresponde ao inteiro equivalente à palavra do código ASCII do caractere
-quando o usuário digitar um caractere. **A função não requer o uso do *enter*.**  
+
+Observe que a função retorna um valor int. O que não é problema, pois o valor lido corresponde ao inteiro equivalente à palavra do código ASCII do caractere quando o usuário digitar um caractere. **A função não requer o uso do *enter*.**  
+
 Como a função retorna um valor, **para esse valor ser armazenado é necessário o uso de um comando de atribuição para uma variável do tipo char.**  
-O exemplo abaixo ilustra o funcionamento   
-```
+
+O exemplo abaixo ilustra o funcionamento
+
+```c
 #include <stdio.h>
 #include <conio.h>
 /* Referencia: Aprenda a Programar em C, C++ e C#, de Hickson, R.*/
@@ -446,113 +513,14 @@ int main()
     return(0);
 }
 ```
-A função *getche()* possui prototipo similar
-```
+
+A função `getche()` possui prototipo similar
+
+```c
 int getche(void);
-```  
-A diferença básica entre as duas é que a função *getche* retorna um **eco**, isto é, apresenta na caonsole o valor digitado pelo usuário.  
-
-## 2.4 *Strings*, entrada/saída de *strings*
-Na linguagem C, uma *string* é um **vetor de caracteres** - depois aprofundaremos esses conceitos.   
-**Toda *strings* possui um caractere 'terminador' definido no ASCII pelo caractere `\0`**.   
-Por exemplo, a palavra "Maria" é uma *string*, que na linguagem C é definida em memória por
-| 0 | 1 | 2 | 3 | 4 | 5 |
-| - | - | - | - | - | - |
-| 'M' | 'a' | 'r' | 'i' | 'a' | '\0' |   
-
-Uma *string* é um **vetor de caracteres**.  
-O nome de um vetor define o **ponteiro** do vetor, ou seja, a variável que aponta para o endereço onde o vetor está armazenado em memória.  
-Veremos [ponteiros com mais detalhes](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/progC_aulas/progC_ponteiros.md).
-
-Para declarar uma *string* e realizar operações mais elaboradas [ver a seção *strings*](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/progC_aulas/progC_stringsvetores2.md).  
-
-Tratando objetivamente de **entrada** e **saída** com *strings* podemos antecipar:  
-
-**(1)** Declaração de *string*
-```
-char nome[tamanho];
-```  
-**(2)** Inicialização de *string*  
-```
-char nome[tamanho]=<constante string>;
-```  
-, onde a constante *string* é a cadeia de caracteres entre aspas duplas.  
-**(3)** Entrada de *string*  
-Uma forma comum é    
-```
-scanf("%s",<nome da string>);
-```
-, onde o nome da *string* **não é precedido** do operador unário `&`.  Por exemplo,  
-```
-#include <stdio.h>
-
-int main()
-{
-    char palavra[10];
-    scanf("%s",palavra);
-    printf("Voce digitou a palavra %s",palavra);
-    return(0);
-}
-```  
-
-Outra forma é  
-```
-gets(<nome da string>);
-```  
-Por exemplo,  
-```
-#include <stdio.h>
-#include <conio.h>
-
-int main()
-{
-    char palavra[10];
-    gets(palavra);
-    printf("Voce digitou a palavra %s",palavra);
-    return(0);
-}
 ```
 
-A função *gets* possui o protótipo  
-```
-char *gets(char *s);
-```
-, evidenciando que o operador unário `*` indica que a função retona um **ponteiro de char**, que endereça a *string* lida.  
-Logo o código escrito acima também pode ser escrito da forma  
-```
-#include <stdio.h>
-#include <conio.h>
-
-int main()
-{
-    char palavra[10];
-    char *p;
-    p = gets(palavra);
-    printf("Voce digitou a palavra %s",p);
-    return(0);
-}
-```
-
-**Obs.** A função *gets* não é considerada segura porque dependendo da variável lida pode haver um estouro da declaração da *string*,  
-ou seja, o usuário pode digitar uma *string* maior do que a definida, fazendo com que uma área da memória não reservada seja ocupada, 
-o que configura o chamado **estouro de *buffer***.
-
-**(4)** Saída de *string*  
-```
-printf(<cadeia de controle>,<nome da string>);
-```
-, onde a cadeia de controle deve incluir o especificador `%s` onde a *string* for inserida.  
-
-Alternativamente à função *printf*, pode-se usar a função *puts* para escrever na console uma *string* e cuja sintaxe é
-```
-puts(<nome da string>);
-```
-
-
-
-
-
-
+A diferença básica entre as duas é que a função `getche` retorna um **eco**, isto é, apresenta na console o valor digitado pelo usuário.  
 
 ## 2.9 Exemplos
 
@@ -580,6 +548,68 @@ Ver **[uma solução](https://github.com/claytonjasilva/prog_exemplos/blob/main/
 
 1. Elaborar um programa na linguagem C para ler um caractere maiúsculo do alfabeto. Se a letra digitada pelo usuário for igual a *A* ou igual a *B*, o programa deve ler dois números e escrever o resultado da soma. Se a letra digitada for igual a *C*, o programa deve ler um número e escrever o quadrado do número lido. Se a letra digitada pelo usuário for igual a *D*, o programa deve ler três números e escrever o maior dentre os números lidos. Para qualquer outra letra digitada pelo usuário o programa deve escrever a mensagem "Entrada invalida".  
 Ver **[uma solução](https://github.com/claytonjasilva/prog_exemplos/blob/main/cursoC353a.c)**  
+
+#### 2.5.1 Formatando saída, lendo e escrevendo caracteres
+**a.** Elaborar um programa na linguagem C para ler os coeficientes de uma equação do segundo grau e calcular as raízes da equação.  
+Apresentar a solução com duas casas decimais.  
+Ver **[uma solução](https://github.com/claytonjasilva/prog_exemplos/blob/main/cursoC251a.c)**  
+**Como usar números complexos em C?**  
+Ver **[uma solução](https://github.com/claytonjasilva/prog_exemplos/blob/main/cursoC251a1.c)**
+Consulte outras funções da biblioteca [complex.h](https://pubs.opengroup.org/onlinepubs/9699919799/basedefs/complex.h.html)
+
+**b.** Elaborar um programa na linguagem C para calcular e escrever a área interna e o perímetro de um círculo de raio *r*.  
+Ver **[uma solução](https://github.com/claytonjasilva/prog_exemplos/blob/main/cursoC251b.c)**
+
+**c.** Elaborar um programa na linguagem C para calcular e escrever o índice de massa (imc) corporal de uma pessoa. O imc é calculado dividindo-se o peso pelo quadrado da altura.  
+**d.** Elaborar um programa na linguagem C para **ler e escrever cinco caracteres, usando as funções *scanf* e *printf***.  
+Ver **[uma solução](https://github.com/claytonjasilva/prog_exemplos/blob/main/cursoC251d.c)**  
+
+**e.** Elaborar um programa na linguagem C para **escrever os caracteres das vogais usando a função *printf***.  
+Ver **[uma solução](https://github.com/claytonjasilva/prog_exemplos/blob/main/cursoC251e.c)**  
+**Pode-se usar a função *putchar***  
+Ver **[uma solução](https://github.com/claytonjasilva/prog_exemplos/blob/main/cursoC251e1.c)**  
+
+**f.** Elaborar um programa na linguagem C para **ler cinco caracteres e escrever seu respectivo valor ASCII, usando as funções *scanf* e *printf***.  
+Ver **[uma solução](https://github.com/claytonjasilva/prog_exemplos/blob/main/cursoC251f.c)**  
+
+**g.** Elaborar um programa na linguagem C para **escrever os caracteres minúsculos do alfabeto**.  
+Ver **[uma solução](https://github.com/claytonjasilva/prog_exemplos/blob/main/cursoC251g.c)**  
+**Tente agora com as lestras maiúsculas!**
+
+#### 2.5.2 Usando a biblioteca *conio.h* e lendo cadeias de caracteres
+**a.** Elaborar um programa na linguagem C para ler cinco caracteres, **sem produzir o *eco* na console**. Escrever a sequência de caracteres lidos.  
+Ver **[uma solução](https://github.com/claytonjasilva/prog_exemplos/blob/main/cursoC252a.c)**    
+Tente agora mudar a funcao *getch* pela funcao *getche* e veja o que acontece - **a função *getche* gera um eco do caractere digitado**
+
+**b.** Elaborar um programa na linguagem C para ler uma frase com 15 caracteres - preencher a frase com espaços em branco se ela não possuir 15 caracteres, utilizando a função *getch*, e escrever a frase digitada.   
+Ver **[uma solução](https://github.com/claytonjasilva/prog_exemplos/blob/main/cursoC252b.c)**    
+
+**c.** Elaborar um programa na linguagem C para **criar uma variável que armazene uma *string* com o seu próprio nome**.   
+Ver **[uma solução](https://github.com/claytonjasilva/prog_exemplos/blob/main/cursoC252c.c)**   
+Faça o mesmo código, porém **inicializando a *string* com um vetor *{e[0],e[1],e[2],...}*, onde cada elemento do vetor é um caractere**
+
+**d.** Elaborar um programa na linguagem C para ler o primeiro nome de uma pessoa, utilizando a função *scanf*, e escrever o nome lido.  
+Ver **[uma solução](https://github.com/claytonjasilva/prog_exemplos/blob/main/cursoC252d.c)**   
+Usando o mesmo código tente inserir um nome composto. **O que acontece?**  
+  - A função *scanf* não lê espaços em branco.
+
+**Contornado a limitação da função *scanf***:  
+(i) Altere o código usando a função ***gets*** da biblioteca *conio.h*... Resolveu a limitação? - **Lembre-se do inconveniente da função *gets*** 
+
+(ii) Utilizando o especificador `[^\n]`. O especificador varre a entrada de teclado até encontrar o caractere \n - quebra de linha.    
+Ver **[uma solução](https://github.com/claytonjasilva/prog_exemplos/blob/main/cursoC252d1.c)**  
+
+(iii) Utilizando a função *fgets*, que tem a sintaxe   
+```
+fgets(<nome da string>, <tamanho da string>, stdin);
+```
+Ver **[uma solução](https://github.com/claytonjasilva/prog_exemplos/blob/main/cursoC252d2.c)**
+
+**e.** Elaborar um programa na linguagem C para ler o nome de uma pessoa, **declarando o nome da string como um ponteiro**. Escrever o nome lido.  
+Ver **[uma solução](https://github.com/claytonjasilva/prog_exemplos/blob/main/cursoC252e.c)**   
+
+**f.** Elaborar um programa para armazenar o seu próprio nome, **usando uma variável ponteiro**. Escrever o quinto caractere do seu nome.  
+Ver **[uma solução](https://github.com/claytonjasilva/prog_exemplos/blob/main/cursoC252f.c)**   
 
 ___
 **[Home Conteúdo Programação em C](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/progC_aulas.md)**   

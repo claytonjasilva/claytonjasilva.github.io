@@ -16,7 +16,7 @@
 - [ANEXO I - UNIDADES E GRANDEZAS NUMÉRICAS](arq_aulas/arquitetura_computadores_anexo1.md)  
 - [ANEXO II - CONVERSÃO DE BASE E INFORMAÇÕES BINÁRIAS](arq_aulas/arquitetura_computadores_anexo2.md)  
 - [ANEXO III - REPRESENTAÇÃO NUMÉRICA](arq_aulas/arquitetura_computadores_anexo3.md)  
-- [ANEXO IV - ARITMETICA BINÁRIA](arq_aulas/arquitetura_computadores_anexo4.md)
+- [ANEXO IV - ARITMÉTICA BINÁRIA](arq_aulas/arquitetura_computadores_anexo4.md)
 
 ## Práticas Arduíno
 
