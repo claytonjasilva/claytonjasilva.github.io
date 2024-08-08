@@ -236,13 +236,11 @@ Na tabela do *set* de instruções da máquina IAS, a coluna **Representação s
 
 Exemplo 1:
 
-```
 | Opcode | Operando | Comentários |
 | - | - | - |
 | LOAD M(X) | 0x00F | Transfere o conteúdo da posição de memória 0x00F para o ACC |
 | ADD M(X) | 0x010 | Soma o conteúdo da posição de memória 0x010 com o conteúdo do ACC |
 | STOR M(X) | 0x011 | Transfere o conteúdo do ACC para a posição de memória 0x011 |
-```
 
 Existem programas nos computadores responsáveis pela **tradução** de códigos de uma linguagem para outra. Quando a linguagem-fonte é, basicamente, uma representação simbólica para uma linguagem de máquina numérica, o tradutor é denominado **assembler (montador)** e a linguagem-fonte é denominada linguagem de montagem (linguagem *assembly*). 
 
@@ -257,14 +255,11 @@ Na primeira linha do código em linguagem de máquina contém 40 bits porque é 
 
 Lembrando que cada linha está ocupando uma linha de endereços, que poderia ser indicada no código em *assembly* pela inclusão de um rótulo à tabela.
 
-
-```
 | Rótulo | Opcode | Operando | Comentários |
 | - | - | - | - |
 | Início: | LOAD M(X) | 0x00F | Transfere o conteúdo da posição de memória 0x00F para o ACC |
 | | ADD M(X) | 0x010 | Soma o conteúdo da posição de memória 0x010 com o conteúdo do ACC |
 | | STOR M(X) | 0x011 | Transfere o conteúdo do ACC para a posição de memória 0x011 |
-```
 
 O rótulo (*label*) indica o endereço da primeira linha de instruções de forma simbólica (Início). Obviamente o código armazenado ocupará uma posição na memória IAS, ou seja, entre os endereços 0x000 e 0x3FF (entre 0 e 1023, em hexadecimal).
 
