@@ -135,16 +135,18 @@ O fluxograma da execução das instruções pode ser detalhado por:
 7. Evento de controle - o par de instruções é armazenado no MBR
 8. Evento de controle - o opcode da instrução à esquerda é armazenado no IR, o operando da instrução é armazenado no MAR e a instrução à direita é armazenada no IBR
 9. Evento de controle - a primeira instrução é decodificada
+
 A partir desse ponto o fluxo dependerá do **modo de endereçamento do dado (operando) pela instrução**. Existem instruções que não requerem operando; o operando é o próprio dado; o operando referencia o endereço do dado; o operando referencia o endereço, no qual está armazenado o endereço do dado. No caso do operando referenciar o endereço do dado, prosseguindo o fluxo...
-10. Evento de controle - o MAR é ativado para disponibilizar o endereço do dado
-11. Evento de controle - o endereço do dado é disponibilizado no barramento de endereços
-12. Evento de controle - o endereço do dado é decodificado e a posição do dado é selecionada
-13. Evento de controle - o dado é disponibilizado no barramento de dados
-14. Evento de controle - o dado é armazenado no MBR
-15. Evento de controle - a ULA realiza a operação
-16. Evento de controle - o par de instruções é armazenado no MBR
-17. Evento de controle - o resultado da operação é armazenado no ACC ou MQ
-18. Evento de controle - o opcode da segunda instrução é transferida do IBR para o IR e o operando é transferido para o MAR
+
+10.  Evento de controle - o MAR é ativado para disponibilizar o endereço do dado
+11.  Evento de controle - o endereço do dado é disponibilizado no barramento de endereços
+12.  Evento de controle - o endereço do dado é decodificado e a posição do dado é selecionada
+13.  Evento de controle - o dado é disponibilizado no barramento de dados
+14.  Evento de controle - o dado é armazenado no MBR
+15.  Evento de controle - a ULA realiza a operação
+16.  Evento de controle - o par de instruções é armazenado no MBR
+17.  Evento de controle - o resultado da operação é armazenado no ACC ou MQ
+18.  Evento de controle - o opcode da segunda instrução é transferida do IBR para o IR e o operando é transferido para o MAR
 19. O processo prossegue para decodificação da segunda instrução e busca do dado
 20. O par de instruções seguinte é buscado ...
 
