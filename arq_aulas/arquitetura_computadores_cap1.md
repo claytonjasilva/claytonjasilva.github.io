@@ -59,7 +59,7 @@ Finalmente, o controle produzido pela UC é veiculado pelo chamado **barramento 
 
 ## 1.2 Visão detalhada do computador IAS
 
-A figura abaixo ilustra a organiza detalhada do computador IAS.
+A figura abaixo ilustra a organização detalhada do computador IAS.
 
 ![Estrutura do IAS](/arq_aulas/images/figura1_2.png)
 
@@ -101,16 +101,21 @@ Nem toda instrução do processador da máquina IAS requer um operando. Nesse ca
 
 ![Formato da linha de memória IAS](/arq_aulas/images/figura1_5.jpg)
 
-Figura 1.5 Formato da linha de memória IAS: acima, número; abaixo, par de instruções (fonte. Adaptado de Stallings, Arquitetura e Organização de Computadores)
+Figura 1.5 Formato da linha de memória IAS: acima, número; abaixo, par de instruções (fonte. Stallings, Arquitetura e Organização de Computadores)
+
+O ISA define os formatos de instruções, códigos de operação da instrução (opcodes), registradores, memória de dados e instrução; o efeito das instruções executadas nos registradores e na memória; e um algoritmo para o controle da execução das instruções. ISA é a arquitetura de conjunto de instrução (ISA — do inglês, *Instruction Set Architecture*). 
+
+Os atributos da camada ISA incluem o conjunto de instrução, o número de bits usados para representar vários tipos de dados (por exemplo, números, caracteres), mecanismos de E/S e técnicas para endereçamento de memória. 
 
 ### 1.3.2 Ciclo de instrução
 
-O programa consiste na execução das instruções armazenadas em memória.  
+A execução das tarefas do computador consiste na execução sucessiva das instruções armazenadas em memória, as quais constituem os programas armazenados. 
+
 As instruções são normalmente armazenadas em **posições de memória adjacentes** e **executadas sequencialmente**, a execução das instruções de um endereço é seguida da execução das instruções do endereço seguinte.  
+
 As instruções são executadas sincronizadamente. O **sincronismo** é dado pelos circuitos de controle.  
-Após a execução de cada instrução os registradores armazenam um valor. Os valores de cada elemento definem o **estado** da máquina.
-As etapas (microoperações) de execução de cada operação variam de acordo com cada instrução do programa.  
-O conjunto de microinstruções executadas define o chamado **ciclo de instrução**, que é composto por duas partes:
+
+Após a execução de cada instrução os registradores armazenam um valor. Os valores de cada elemento definem o **estado** da máquina. As etapas (microoperações) de execução de cada operação variam de acordo com cada instrução do programa.  O conjunto de microinstruções executadas define o chamado **ciclo de instrução**, que é composto por duas partes:
 
 - **Busca** do par de instruções
 - **Execução** das instruções
@@ -220,6 +225,48 @@ Figura 1.9 Forma da tabela do *set* de instruções da IAS
 | ---------------------- | --------------------------- | ------------- |
 | 0001 0010 | STOR M(X,8:19) | Substitui o campo de endereço da instrução à esquerda da posição de memória X (bits 0 a 19), definida pelo operando, pelos 12 bits mais à direita do conteúdo do acumulador |
 | 0000 1110 | JUMP M(X,28:39) | Substitui o campo de endereço da instrução à direita da posição de memória X (bits 20 a 39), definida pelo operando, pelos 12 bits mais à direita do conteúdo do acumulador |
+
+### 1.3.4 Linguagem de montagem (*assembly*)
+
+Uma linguagem de montagem pura é uma linguagem na qual cada declaração produz exatamente uma instrução de máquina. Em outras palavras, **há uma correspondência um-para-um entre instruções de máquina e declarações no programa de montagem (mnemônicos)**. Se cada linha no programa em linguagem de montagem contiver exatamente uma declaração e cada palavra de máquina contiver exatamente uma instrução de máquina, então um programa de montagem de n linhas produzirá um programa em linguagem de máquina de n instruções.
+
+A razão por que as pessoas usam linguagem de montagem, ao contrário de programação em linguagem de máquina (em binário ou hexadecimal), é que é muito mais fácil programar. A utilização de nomes simbólicos e endereços simbólicos em vez de binários ou hexadecimais faz uma enorme diferença. A maioria das pessoas pode se lembrar de que as abreviaturas para somar, subtrair, multiplicar e dividir são ADD, SUB, MUL e DIV, mas poucas conseguem se recordar dos valores numéricos correspondentes que a máquina usa. O programador de linguagem de montagem só precisa se lembrar dos nomes simbólicos porque o assembler os traduz para instruções de máquina.
+
+Na tabela do *set* de instruções da máquina IAS, a coluna **Representação simbólica** define as instruções correspondentes ao código binário da operação. O programa armazenado em memória constituído das instruções binárias é o chamado programa em **linguagem de máquina**. Admitiremos que o programa em linguagem de montagem correspondente será formado pela sua representação simbólica seguida do operando da instrução, **representado em hexadecimal**.
+
+Exemplo 1:
+
+```
+| Opcode | Operando | Comentários |
+| - | - | - |
+| LOAD M(X) | 0x00F | Transfere o conteúdo da posição de memória 0x00F para o ACC |
+| ADD M(X) | 0x010 | Soma o conteúdo da posição de memória 0x010 com o conteúdo do ACC |
+| STOR M(X) | 0x011 | Transfere o conteúdo do ACC para a posição de memória 0x011 |
+```
+
+Existem programas nos computadores responsáveis pela **tradução** de códigos de uma linguagem para outra. Quando a linguagem-fonte é, basicamente, uma representação simbólica para uma linguagem de máquina numérica, o tradutor é denominado **assembler (montador)** e a linguagem-fonte é denominada linguagem de montagem (linguagem *assembly*). 
+
+O código do exemplo 1 seria o código na linguagem de montagem do IAS referente ao seguinte código em linguagem de máquina
+
+```
+0000 0001 0000 0000 1111 0000 0101 0000 0001 0000
+0010 0001 0000 0001 0001
+```
+
+Na primeira linha do código em linguagem de máquina contém 40 bits porque é o número de bits armazenados em uma linha da máquina IAS. Correspondem às instruções `LOAD` E `ADD`. Na linha seguinte estão apresentados os 20 bits relativos à última instrução, `STOR`.
+
+Lembrando que cada linha está ocupando uma linha de endereços, que poderia ser indicada no código em *assembly* pela inclusão de um rótulo à tabela.
+
+
+```
+| Rótulo | Opcode | Operando | Comentários |
+| - | - | - | - |
+| Início: | LOAD M(X) | 0x00F | Transfere o conteúdo da posição de memória 0x00F para o ACC |
+| | ADD M(X) | 0x010 | Soma o conteúdo da posição de memória 0x010 com o conteúdo do ACC |
+| | STOR M(X) | 0x011 | Transfere o conteúdo do ACC para a posição de memória 0x011 |
+```
+
+O rótulo (*label*) indica o endereço da primeira linha de instruções de forma simbólica (Início). Obviamente o código armazenado ocupará uma posição na memória IAS, ou seja, entre os endereços 0x000 e 0x3FF (entre 0 e 1023, em hexadecimal).
 
 ___
 **[Home Conteúdo Arquitetura de Computadores](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/arq_aulas.md)**   
