@@ -9,17 +9,15 @@ Ministrado como atividade extra classe.
 1. [Iniciando...](progC_aulas/progC_cap1.md)  
 2. [Controle de fluxo: condicionais simples e compostas](progC_aulas/progC_cap2.md)
 3. [Controle de fluxo: estruturas de repetição](progC_aulas/progC_cap3.md)  
-4. [Controle de fluxo: estrutura de repetição *do-while*](progC_aulas/progC_repeticaodowhile.md)  
-5. [Controle de fluxo: estrutura de repetição *for*](progC_aulas/progC_repeticaofor.md)  
-6. [Funções](progC_aulas/progC_funcoes.md)
-7. [Ponteiros](progC_aulas/progC_ponteiros.md)
-8. [Strings e Vetores(*arrays*)](progC_aulas/progC_stringsvetores.md)
-9. [Matrizes](progC_aulas/progC_matrizes.md)
-10. Estruturas (*struct*)
-11. Tipos definidos pelo usuário (*typedef*)
-12. Arquivos
-13. Erros e exceção
-14. Tópicos avançados
+4. [Funções](progC_aulas/progC_funcoes.md)
+5. [Ponteiros](progC_aulas/progC_ponteiros.md)
+6. [Strings e Vetores(*arrays*)](progC_aulas/progC_stringsvetores.md)
+7. [Matrizes](progC_aulas/progC_matrizes.md)
+8.  Estruturas (*struct*)
+9.  Tipos definidos pelo usuário (*typedef*)
+10. Arquivos
+11. Erros e exceção
+12. Tópicos avançados
 
 ## Guia Rápido
 
