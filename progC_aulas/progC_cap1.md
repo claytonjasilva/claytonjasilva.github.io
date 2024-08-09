@@ -384,11 +384,11 @@ Estudaremos mais sobre comandos de entrada e saída nas próximas seções.
 
 1. Elaborar um programa na linguagem C que produza a mensagem `Meu primeiro programa em C`. Incluir **comentários**.  
 
-[Solução proposta do exercício 1](https://github.com/claytonjasilva/prog_exemplos/blob/main/linguagem_c/exercicio1.c)
+[Solução proposta](https://github.com/claytonjasilva/prog_exemplos/blob/main/linguagem_c/exercicio1.c)
 
 2. Elaborar um programa na linguagem C que produza uma mensagem `Agora vou iniciar...`. Escrever **na linha seguinte** `produzindo um novo codigo`. Incluir os comentários.
 
-[Solução proposta do exercício 2](https://github.com/claytonjasilva/prog_exemplos/blob/main/linguagem_c/exercicio2.c)
+[Solução proposta](https://github.com/claytonjasilva/prog_exemplos/blob/main/linguagem_c/exercicio2.c)
 
 3. Elaborar um programa na linguagem C que produza o resultado das expressões abaixo  
 
@@ -397,50 +397,50 @@ Estudaremos mais sobre comandos de entrada e saída nas próximas seções.
 - $\frac{3 + 4 \times 5} {[2 \times (4 + 6) ]}$
 - $\frac{3} {[6 \times (1.25 + 6.78)]}$
 
-[Solução proposta do exercício 3](https://github.com/claytonjasilva/prog_exemplos/blob/main/linguagem_c/exercicio3.c)
+[Solução proposta](https://github.com/claytonjasilva/prog_exemplos/blob/main/linguagem_c/exercicio3.c)
 
 4. Elaborar um programa na linguagem C, usando a biblioteca [math.h](https://petbcc.ufscar.br/math/), para escrever o resultado das expressões abaixo
 
 - $3^{4 \times 5 \times [2 \times (4 + 6) ]}$
 - $\sqrt{2 \times (5 + 3) ^ {34}}$ 
 
-[Solução proposta do exercício 4](https://github.com/claytonjasilva/prog_exemplos/blob/main/linguagem_c/exercicio4.c)
+[Solução proposta](https://github.com/claytonjasilva/prog_exemplos/blob/main/linguagem_c/exercicio4.c)
 
 5. Elaborar um programa na linguagem C para atribuir as notas 8,5 (oito vírgula cinco), 7,3 (sete vírgula três) e 5 (cinco) respectivamente para ap1, ap2 e ac de um aluno. Calcular e escrever a média.
 
-[Solução proposta do exercício 5](https://github.com/claytonjasilva/prog_exemplos/blob/main/linguagem_c/exercicio5.c)
+[Solução proposta](https://github.com/claytonjasilva/prog_exemplos/blob/main/linguagem_c/exercicio5.c)
 
 6. Elaborar um programa na linguagem C para converter um determinado número de dias em anos.
 
-[Solução proposta do exercício 6](https://github.com/claytonjasilva/prog_exemplos/blob/main/linguagem_c/exercicio6.c)
+[Solução proposta](https://github.com/claytonjasilva/prog_exemplos/blob/main/linguagem_c/exercicio6.c)
 
 7. Elaborar um programa na linguagem C para calcular a área de um círculo de raio r=2,1 metros.  
 
-[Solução proposta do exercício 7](https://github.com/claytonjasilva/prog_exemplos/blob/main/linguagem_c/exercicio7.c)
+[Solução proposta](https://github.com/claytonjasilva/prog_exemplos/blob/main/linguagem_c/exercicio7.c)
 
 8. Elaborar um programa na linguagem C para ler dois números inteiros e escrever a soma dos números lidos.  
 
-[Solução proposta do exercício 8](https://github.com/claytonjasilva/prog_exemplos/blob/main/linguagem_c/exercicio8.c)
+[Solução proposta](https://github.com/claytonjasilva/prog_exemplos/blob/main/linguagem_c/exercicio8.c)
 
 9. Elaborar um programa na linguagem C para ler um **número inteiro**, calcular e escrever o quadrado do número lido.
 
-[Solução proposta do exercício 9](https://github.com/claytonjasilva/prog_exemplos/blob/main/linguagem_c/exercicio9.c)
+[Solução proposta](https://github.com/claytonjasilva/prog_exemplos/blob/main/linguagem_c/exercicio9.c)
 
 10. Elaborar um programa na linguagem C para calcular o produto de dois números inteiros, digitados pelo usuário.  
 
-[Solução proposta do exercício 10](https://github.com/claytonjasilva/prog_exemplos/blob/main/linguagem_c/exercicio10.c)
+[Solução proposta](https://github.com/claytonjasilva/prog_exemplos/blob/main/linguagem_c/exercicio10.c)
 
 11. Elaborar um programa na linguagem C para ler as notas de ap1, ap2 e ac de um aluno. Calcular e escrever a média.
  
-[Solução proposta do exercício 11](https://github.com/claytonjasilva/prog_exemplos/blob/main/linguagem_c/exercicio11.c)
+[Solução proposta](https://github.com/claytonjasilva/prog_exemplos/blob/main/linguagem_c/exercicio11.c)
 
 12. Elaborar um programa na linguagem C para ler o consumo de combustível de um veículo. Ler também a capacidade do tanque de combustível. Escrever quantos quilômetros o veículo irá rodar com um tanque cheio.
  
-[Solução proposta do exercício 12](https://github.com/claytonjasilva/prog_exemplos/blob/main/linguagem_c/exercicio12.c)
+[Solução proposta](https://github.com/claytonjasilva/prog_exemplos/blob/main/linguagem_c/exercicio12.c)
 
 13. Elaborar um programa na linguagem C para ler o perímetro de uma pista. Ler também a distância percorrida pelo veículo em um determinado tempo. O programa deverá escrever quantas voltas completas o veículo realizou e qual distância percorreu após completar a última volta.
 
-[Solução proposta do exercício 13](https://github.com/claytonjasilva/prog_exemplos/blob/main/linguagem_c/exercicio13.c)
+[Solução proposta](https://github.com/claytonjasilva/prog_exemplos/blob/main/linguagem_c/exercicio13.c)
 
 ___ 
 **[Home Conteúdo Programação em C](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/progC_aulas.md)**   

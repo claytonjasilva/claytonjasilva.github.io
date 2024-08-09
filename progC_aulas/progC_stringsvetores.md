@@ -55,6 +55,13 @@ Alguns caracteres não são definidos com o uso da barra invertida. A tabela apr
 | \ | Aspa |
 
 Veja a [relação completa](https://learn.microsoft.com/pt-br/cpp/c-language/escape-sequences?view=msvc-170)
+
+15. Elaborar um programa na linguagem C para ler o nome de uma pessoa, **declarando o nome da string como um ponteiro**. Escrever o nome lido.  
+Ver **[uma solução](https://github.com/claytonjasilva/prog_exemplos/blob/main/cursoC252e.c)**   
+
+**f.** Elaborar um programa para armazenar o seu próprio nome, **usando uma variável ponteiro**. Escrever o quinto caractere do seu nome.  
+Ver **[uma solução](https://github.com/claytonjasilva/prog_exemplos/blob/main/cursoC252f.c)**   
+
 ___
 **[Home Conteúdo Programação em C](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/progC_aulas.md)**   
 **[Vetores: próximo>>](progC_stringsvetores1.md)**   

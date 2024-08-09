@@ -349,7 +349,7 @@ Podem também ser declaradas com a inicialização, da seguinte forma
 
 | Tipo | Descrição |
 | - | - |
-| `char <nome>[] = "<cadeia de caracteres>"` | Declaração sem inicialização  |
+| `char <nome>[] = "<cadeia de caracteres>"` | Declaração com inicialização  |
 
 **Observações**.
 
@@ -364,7 +364,14 @@ Na linguagem C, uma *string* é um **vetor de caracteres** - depois aprofundarem
 | - | - | - | - | - | - |
 | 'M' | 'a' | 'r' | 'i' | 'a' | '\0' |
 
-Uma *string* é um **vetor de caracteres**. O nome de um vetor define o **ponteiro** do vetor, ou seja, a variável que aponta para o endereço onde o primeiro caractere do vetor está armazenado em memória.  
+Com uma *string* é um **vetor de caracteres**, o nome do vetor define um **ponteiro** do vetor, ou seja, a variável que aponta para o endereço onde o primeiro caractere do vetor está armazenado em memória. Em razão disso, os elementos da *string* (os carateres) podem ser identificados pela sua posição relativa. A sintaxe para a identificação é, como mostrado no exemplo, `nome da string[<posição do caractere>]`
+
+```c
+char nome = "Maria";
+printf("A primeira letra do nome e %c: ",nome[0]);
+```
+
+É bom destacar que a posição sempre é iniciada a partir de 0.
 
 ## 2.8 Entrada e saída com caracteres e cadeias de caracteres
 
@@ -372,13 +379,36 @@ Uma *string* é um **vetor de caracteres**. O nome de um vetor define o **pontei
 
 #### Funções `printf` e `scanf`
 
-A sintaxe de ambas foi discutida na seção anterior. A especificação de tipo em ambas, no caso de *strings*, é
+A sintaxe de ambas foi discutida na seção anterior. A especificação de tipo em ambas, no caso de *char* e *strings*, é
 
 | Código | Tipo |
 | - | - |
+| %c | caractere (char) |
 | %s | cadeia de caracteres (*string*) |
 
-Na função `scanf`, **não se aplica a indicação `&` antes do nome de variável, pois uma string é um vetor em que o primeiro caractere é o conteúdo associado ao ponteiro de mesmo nome**. Por exemplo, a *string* nome = "Casa de festas" é um vetor (estudaremos mais adiante) em que o primeiro caractere ('C') é o conteúdo do ponteiro nome.
+Para *char*, o uso de duas leituras sucessivas com `scanf`, como no exemplo abaixo, 
+
+```c
+printf("Digite o caractere 1: ");
+scanf("%c",&c1);
+printf("Digite o caractere 2: ");
+scanf("%c",&c2);
+printf("Digite o caractere 3: ");
+```
+
+gera um problema na execução, pois quando se digita o primeiro caractere e pressiona <Enter>, o `scanf("%c", &c1);` lê o caractere corretamente, **mas o caractere de nova linha (\n) que você digitou ao pressionar <Enter> permanece no *buffer* de entrada**. Quando o `scanf("%c", &c2);` é chamado para ler o próximo caractere, ele acaba lendo esse caractere de nova linha (\n) em vez de esperar pela próxima entrada do usuário.
+
+Uma solução é **adicionar um espaço antes do especificador %c no `scanf`**, que faz com que o `scanf` ignore quaisquer caracteres de espaço em branco (incluindo \n, espaço, tabulação) antes de ler o próximo caractere, por exemplo,
+
+```c
+char c1,c2,c3; // Declara variáveis de tipo caractere
+printf("Digite o caractere 1: ");
+scanf("%c",&c1);
+printf("Digite o caractere 2: ");
+scanf(" %c",&c2); // inserido espaço antes do identificador
+```
+
+Para *strings*, na função `scanf`, **não se aplica a indicação `&` antes do nome de variável, pois uma string é um vetor em que o primeiro caractere é o conteúdo associado ao ponteiro de mesmo nome**. Por exemplo, a *string* nome = "Casa de festas" é um vetor (estudaremos mais adiante) em que o primeiro caractere ('C') é o conteúdo do ponteiro nome.
 
 Para permitir que o `scanf` leia *strings* contendo espaços em C, você pode usar uma **expressão regular** para capturar a *string* inteira até a quebra de linha: `scanf(" %[^\n]", <nome da string>)`.
 
@@ -411,7 +441,13 @@ char getchar(void);
 
 Observe que **a função retorna um valor char** após o usuário digitar um valor de entrada e teclar *enter*. Logo **para esse valor ser armazenado, é necessário o uso de um comando de atribuição para uma variável do tipo char.**
 
-**Observação!!!** O problema da função é que o caractere lido é colocado em uma área intermediária até que o usuário digita um *enter* - é muito comum o programador perceber os problemas em ambientes interativos.  
+De modo similar ao comando `scanf`, a leitura de dois caracteres sucessivos pode gerar problema, pois o segundo `getchar` consome o caractere de escape \n (devido ao <Enter>). Uma solução simples é
+
+```c
+printf("\nDigite o caractere 1: ");
+c1 = getchar();
+getchar(); // consome o \n do <Enter>
+```
 
 A função `putchar` possui o protótipo seguinte
 
@@ -425,7 +461,6 @@ O exemplo a seguir mostra o uso de ambas as funções
 
 ```c
 #include <stdio.h>
-#include <conio.h>
 /* Referencia: Aprenda a Programar em C, C++ e C#, de Hickson, R.*/
 int main()
 {
@@ -530,86 +565,59 @@ A diferença básica entre as duas é que a função `getche` retorna um **eco**
 **b.** $(x > y) ou (x + y = 6)$, dado que *x*=3, *y*=5  
 **c.** $\overline{(x > y) ou (x + y = 6)}$  
 
-Ver **[uma solução](https://github.com/claytonjasilva/prog_exemplos/blob/main/linguagem_c/exemplo14.c)**
+Ver **[Solução proposta](https://github.com/claytonjasilva/prog_exemplos/blob/main/linguagem_c/exemplo14.c)**
 
 2. Elaborar um programa na linguagem C para ler dois diferentes números; calcular e escrever o maior dos números lidos.
 
-Ver **[uma solução](https://github.com/claytonjasilva/prog_exemplos/blob/main/linguagem_c/exemplo15.c)**
+Ver **[Solução proposta](https://github.com/claytonjasilva/prog_exemplos/blob/main/linguagem_c/exemplo15.c)**
 
 3. Elaborar um programa na linguagem C para ler o nome e a respectiva idade de duas pessoas; calcular e escrever o nome da pessoa mais velha. Admitir que as pessoas podem ter a mesma idade.
 
-Ver **[uma solução](https://github.com/claytonjasilva/prog_exemplos/blob/main/linguagem_c/exemplo16.c)**  
+Ver **[Solução proposta](https://github.com/claytonjasilva/prog_exemplos/blob/main/linguagem_c/exemplo16.c)**  
 
-1. Elaborar um programa na linguagem C para ler a idade de uma pessoa. Se a idade for igual ou inferior a 10 anos, classificar a pessoa como 'criança'. Caso a idade seja inferior a 18 anos e superior a 10 anos, classificar como 'adolescente'. Em qualquer outro caso, classificar como 'adulto'. Escrever a classificação atribuída.
-Ver **[uma solução](https://github.com/claytonjasilva/prog_exemplos/blob/main/cursoC352c.c)**  
+4. Elaborar um programa na linguagem C para ler a idade de uma pessoa. Se a idade for igual ou inferior a 10 anos, classificar a pessoa como 'criança'. Caso a idade seja inferior a 18 anos e superior a 10 anos, classificar como 'adolescente'. Em qualquer outro caso, classificar como 'adulto'. Escrever a classificação atribuída.
 
-1. Elaborar um programa na linguagem C para ler os nomes, pesos e altura de 3 pessoas; calcular e escrever os nomes de cada pessoa com IMC superior a 22 ('valor alto') ou com IMC inferior a 20 ('valor baixo'), seguido do respectivo IMC calculado.  
-**e.** Elaborar um programa na linguagem C para ler o nome e a idade de 3 animais; calcular e escrever o nome do animal mais velho. 
+Ver **[Solução proposta](https://github.com/claytonjasilva/prog_exemplos/blob/main/linguagem_c/exemplo17.c)**  
 
-1. Elaborar um programa na linguagem C para ler um caractere maiúsculo do alfabeto. Se a letra digitada pelo usuário for igual a *A* ou igual a *B*, o programa deve ler dois números e escrever o resultado da soma. Se a letra digitada for igual a *C*, o programa deve ler um número e escrever o quadrado do número lido. Se a letra digitada pelo usuário for igual a *D*, o programa deve ler três números e escrever o maior dentre os números lidos. Para qualquer outra letra digitada pelo usuário o programa deve escrever a mensagem "Entrada invalida".  
-Ver **[uma solução](https://github.com/claytonjasilva/prog_exemplos/blob/main/cursoC353a.c)**  
+5. Elaborar um programa na linguagem C para ler os nomes, pesos e altura de 3 pessoas; calcular e escrever os nomes de cada pessoa com IMC superior a 22 ('valor alto') ou com IMC inferior a 20 ('valor baixo'), seguido do respectivo IMC calculado.
 
-#### 2.5.1 Formatando saída, lendo e escrevendo caracteres
-**a.** Elaborar um programa na linguagem C para ler os coeficientes de uma equação do segundo grau e calcular as raízes da equação.  
-Apresentar a solução com duas casas decimais.  
-Ver **[uma solução](https://github.com/claytonjasilva/prog_exemplos/blob/main/cursoC251a.c)**  
-**Como usar números complexos em C?**  
-Ver **[uma solução](https://github.com/claytonjasilva/prog_exemplos/blob/main/cursoC251a1.c)**
-Consulte outras funções da biblioteca [complex.h](https://pubs.opengroup.org/onlinepubs/9699919799/basedefs/complex.h.html)
+Ver **[Solução proposta](https://github.com/claytonjasilva/prog_exemplos/blob/main/linguagem_c/exemplo18.c)**  
 
-**b.** Elaborar um programa na linguagem C para calcular e escrever a área interna e o perímetro de um círculo de raio *r*.  
-Ver **[uma solução](https://github.com/claytonjasilva/prog_exemplos/blob/main/cursoC251b.c)**
+6. Elaborar um programa na linguagem C para ler o nome e a idade de 3 animais; calcular e escrever o nome do animal mais velho.
 
-**c.** Elaborar um programa na linguagem C para calcular e escrever o índice de massa (imc) corporal de uma pessoa. O imc é calculado dividindo-se o peso pelo quadrado da altura.  
-**d.** Elaborar um programa na linguagem C para **ler e escrever cinco caracteres, usando as funções *scanf* e *printf***.  
-Ver **[uma solução](https://github.com/claytonjasilva/prog_exemplos/blob/main/cursoC251d.c)**  
+Ver **[Solução proposta](https://github.com/claytonjasilva/prog_exemplos/blob/main/linguagem_c/exemplo19.c)**  
 
-**e.** Elaborar um programa na linguagem C para **escrever os caracteres das vogais usando a função *printf***.  
-Ver **[uma solução](https://github.com/claytonjasilva/prog_exemplos/blob/main/cursoC251e.c)**  
-**Pode-se usar a função *putchar***  
-Ver **[uma solução](https://github.com/claytonjasilva/prog_exemplos/blob/main/cursoC251e1.c)**  
+7. Elaborar um programa na linguagem C para ler um caractere maiúsculo do alfabeto. Se a letra digitada pelo usuário for igual a *A* ou igual a *B*, o programa deve ler dois números e escrever o resultado da soma. Se a letra digitada for igual a *C*, o programa deve ler um número e escrever o quadrado do número lido. Se a letra digitada pelo usuário for igual a *D*, o programa deve ler três números e escrever o maior dentre os números lidos. Para qualquer outra letra digitada pelo usuário o programa deve escrever a mensagem "Entrada invalida".
 
-**f.** Elaborar um programa na linguagem C para **ler cinco caracteres e escrever seu respectivo valor ASCII, usando as funções *scanf* e *printf***.  
-Ver **[uma solução](https://github.com/claytonjasilva/prog_exemplos/blob/main/cursoC251f.c)**  
+Ver **[Solução proposta](https://github.com/claytonjasilva/prog_exemplos/blob/main/linguagem_c/exemplo20.c)**  
 
-**g.** Elaborar um programa na linguagem C para **escrever os caracteres minúsculos do alfabeto**.  
-Ver **[uma solução](https://github.com/claytonjasilva/prog_exemplos/blob/main/cursoC251g.c)**  
-**Tente agora com as lestras maiúsculas!**
+8. Elaborar um programa na linguagem C para ler os coeficientes de uma equação do segundo grau e calcular as raízes da equação.  
+Apresentar a solução com duas casas decimais. Utilizar a biblioteca [complex.h](https://pubs.opengroup.org/onlinepubs/9699919799/basedefs/complex.h.html)
 
-#### 2.5.2 Usando a biblioteca *conio.h* e lendo cadeias de caracteres
-**a.** Elaborar um programa na linguagem C para ler cinco caracteres, **sem produzir o *eco* na console**. Escrever a sequência de caracteres lidos.  
-Ver **[uma solução](https://github.com/claytonjasilva/prog_exemplos/blob/main/cursoC252a.c)**    
-Tente agora mudar a funcao *getch* pela funcao *getche* e veja o que acontece - **a função *getche* gera um eco do caractere digitado**
+Ver **[Solução proposta](https://github.com/claytonjasilva/prog_exemplos/blob/main/linguagem_c/exemplo21.c)**
 
-**b.** Elaborar um programa na linguagem C para ler uma frase com 15 caracteres - preencher a frase com espaços em branco se ela não possuir 15 caracteres, utilizando a função *getch*, e escrever a frase digitada.   
-Ver **[uma solução](https://github.com/claytonjasilva/prog_exemplos/blob/main/cursoC252b.c)**    
+9. Elaborar um programa na linguagem C para ler o raio *r* de um círculo, calcular e escrever a área interna e o perímetro.
 
-**c.** Elaborar um programa na linguagem C para **criar uma variável que armazene uma *string* com o seu próprio nome**.   
-Ver **[uma solução](https://github.com/claytonjasilva/prog_exemplos/blob/main/cursoC252c.c)**   
-Faça o mesmo código, porém **inicializando a *string* com um vetor *{e[0],e[1],e[2],...}*, onde cada elemento do vetor é um caractere**
+Ver **[Solução proposta](https://github.com/claytonjasilva/prog_exemplos/blob/main/linguagem_c/exemplo22.c)**
 
-**d.** Elaborar um programa na linguagem C para ler o primeiro nome de uma pessoa, utilizando a função *scanf*, e escrever o nome lido.  
-Ver **[uma solução](https://github.com/claytonjasilva/prog_exemplos/blob/main/cursoC252d.c)**   
-Usando o mesmo código tente inserir um nome composto. **O que acontece?**  
-  - A função *scanf* não lê espaços em branco.
+10. Elaborar um programa na linguagem C para ler e **escrever três caracteres, usando as funções *scanf* e *printf***. Alternativamente, ler e escrever três caracteres usando as funções `getchar` e `putchar`.
 
-**Contornado a limitação da função *scanf***:  
-(i) Altere o código usando a função ***gets*** da biblioteca *conio.h*... Resolveu a limitação? - **Lembre-se do inconveniente da função *gets*** 
+Ver **[Solução proposta](https://github.com/claytonjasilva/prog_exemplos/blob/main/linguagem_c/exemplo23.c)**
 
-(ii) Utilizando o especificador `[^\n]`. O especificador varre a entrada de teclado até encontrar o caractere \n - quebra de linha.    
-Ver **[uma solução](https://github.com/claytonjasilva/prog_exemplos/blob/main/cursoC252d1.c)**  
+11. Adaptar o programa do exercício anterior na linguagem C para **escrever o respectivo valor ASCII dos caracteres**.
+ 
+Ver **[Solução proposta](https://github.com/claytonjasilva/prog_exemplos/blob/main/linguagem_c/exemplo24.c)**
 
-(iii) Utilizando a função *fgets*, que tem a sintaxe   
-```
-fgets(<nome da string>, <tamanho da string>, stdin);
-```
-Ver **[uma solução](https://github.com/claytonjasilva/prog_exemplos/blob/main/cursoC252d2.c)**
+12. Adaptar o programa de anterior, utilizando as funções `getch` para ler o primeiro caractere e `getche` para ler os demais, ambos da biblioteca `conio.h`.
+  
+Ver **[Solução proposta](https://github.com/claytonjasilva/prog_exemplos/blob/main/linguagem_c/exemplo25.c)**
 
-**e.** Elaborar um programa na linguagem C para ler o nome de uma pessoa, **declarando o nome da string como um ponteiro**. Escrever o nome lido.  
-Ver **[uma solução](https://github.com/claytonjasilva/prog_exemplos/blob/main/cursoC252e.c)**   
+13. Elaborar um programa na linguagem C para **criar uma variável que armazene uma *string* com o seu próprio nome**. Em seguida, escrever as quatro primeiras iniciais do nome. Se o caractere for espaço em branco escrever o próximo caractere.
 
-**f.** Elaborar um programa para armazenar o seu próprio nome, **usando uma variável ponteiro**. Escrever o quinto caractere do seu nome.  
-Ver **[uma solução](https://github.com/claytonjasilva/prog_exemplos/blob/main/cursoC252f.c)**   
+Ver **[Solução proposta](https://github.com/claytonjasilva/prog_exemplos/blob/main/linguagem_c/exemplo26.c)**
 
+14.  Adaptar o programa anterior para **ler** o nome completo de uma pessoa, produzindo o mesmo resultado.
+
+Ver **[Solução proposta](https://github.com/claytonjasilva/prog_exemplos/blob/main/linguagem_c/exemplo27.c)**
 ___
 **[Home Conteúdo Programação em C](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/progC_aulas.md)**   
