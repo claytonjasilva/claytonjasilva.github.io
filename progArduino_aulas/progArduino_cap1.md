@@ -185,6 +185,8 @@ char input = Serial.read();
 
 ## 1.6 Exemplos
 
+**Observação. Na IDE nativa do Arduino, você não pode executar um código (sketch) diretamente sem estar conectado a uma placa Arduino física. A IDE do Arduino é projetada para compilar e enviar o código para o microcontrolador na placa, e sem a placa conectada, não há como executar o código.**
+
 1. Elaborar um programa no Arduino que produza a mensagem `Meu primeiro programa em Arduino`. Incluir **comentários**.
 
 ```cpp
