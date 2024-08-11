@@ -20,6 +20,12 @@
 
 ## Práticas Arduíno
 
+### Programação com Arduíno
+
+1. [Conceitos iniciais](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/progArduino_aulas/progArduino_cap1.md)
+
+### Práticas
+
 1. [Prática 1 Arduíno: alimentação de LEDs](arq_aulas/arquitetura_computadores_pratica1.md)  
 2. [Prática 2 Arduíno: código, pinos e função de saída](arq_aulas/arquitetura_computadores_pratica2.md)     
 3. [Prática 3 Arduíno: código, pinos e função de entrada](arq_aulas/arquitetura_computadores_pratica3.md)
