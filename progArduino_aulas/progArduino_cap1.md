@@ -17,7 +17,7 @@ O programa responsável por essa conversão é o **compilador** do Arduino.
 
 ## 1.4 Ambiente de desenvolvimento no Arduino
 
-### 1.4.2 O que é a IDE do Arduino?
+### 1.4.1 O que é a IDE do Arduino?
 
 A **IDE do Arduino** é um **ambiente de desenvolvimento integrado** (IDE) que fornece uma interface simples para escrever, compilar e carregar programas (sketches) para a placa Arduino. Ele também permite o acesso ao monitor serial, que pode ser usado para depuração e comunicação com o microcontrolador durante a execução.
 
@@ -29,7 +29,7 @@ Exemplos de IDEs para Arduino:
 
 - [VSCode com PlatformIO](https://code.visualstudio.com/)
 
-### 1.4.3 IDEs online para Arduino
+### 1.4.2 IDEs online para Arduino
 
 Também é possível usar uma IDE online, como o [Arduino Web Editor](https://create.arduino.cc/editor), que permite programar e compartilhar projetos Arduino diretamente no navegador.
 
