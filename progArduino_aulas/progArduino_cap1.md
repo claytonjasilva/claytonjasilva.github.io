@@ -214,9 +214,9 @@ void loop() {
 
 3. Elaborar um programa no Arduino que produza o resultado das expressões abaixo:
 
-- $3 + 4 \times 5 - 2 	imes (4+6)$
-- $6 + 4 \times 8 	imes (3 + 7 + 27)$
-- $rac{3 + 4 \times 5} {[2 	imes (4 + 6) ]}$
+- $3 + 4 \times 5 - 2 \times (4+6)$
+- $6 + 4 \times 8 \times (3 + 7 + 27)$
+- $rac{3 + 4 \times 5} {[2 \times (4 + 6) ]}$
 - $rac{3} {[6 \times (1.25 + 6.78)]}$
 
 ```cpp
@@ -239,7 +239,7 @@ void loop() {
 
 4. Elaborar um programa no Arduino para calcular e exibir o valor das expressões abaixo:
 
-- $3^{4 \times 5 	imes [2 	imes (4 + 6) ]}$
+- $3^{4 \times 5 \times [2 \times (4 + 6) ]}$
 - $\sqrt{2 \times (5 + 3) ^ {34}}$ 
 
 ```cpp
