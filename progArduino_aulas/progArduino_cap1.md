@@ -17,7 +17,7 @@ O programa responsável por essa conversão é o **compilador** do Arduino.
 
 ## 1.4 Ambiente de desenvolvimento no Arduino
 
-### 1.4.2 O que é a IDE do Arduino?
+### 1.4.1 O que é a IDE do Arduino?
 
 A **IDE do Arduino** é um **ambiente de desenvolvimento integrado** (IDE) que fornece uma interface simples para escrever, compilar e carregar programas (sketches) para a placa Arduino. Ele também permite o acesso ao monitor serial, que pode ser usado para depuração e comunicação com o microcontrolador durante a execução.
 
@@ -29,7 +29,7 @@ Exemplos de IDEs para Arduino:
 
 - [VSCode com PlatformIO](https://code.visualstudio.com/)
 
-### 1.4.3 IDEs online para Arduino
+### 1.4.2 IDEs online para Arduino
 
 Também é possível usar uma IDE online, como o [Arduino Web Editor](https://create.arduino.cc/editor), que permite programar e compartilhar projetos Arduino diretamente no navegador.
 
@@ -216,10 +216,10 @@ void loop() {
 
 3. Elaborar um programa no Arduino que produza o resultado das expressões abaixo:
 
-- $3 + 4 \times 5 - 2 	imes (4+6)$
-- $6 + 4 \times 8 	imes (3 + 7 + 27)$
-- $rac{3 + 4 \times 5} {[2 	imes (4 + 6) ]}$
-- $rac{3} {[6 \times (1.25 + 6.78)]}$
+- $3 + 4 \times 5 - 2 \times (4+6)$
+- $6 + 4 \times 8 \times (3 + 7 + 27)$
+- $\frac{3 + 4 \times 5} {[2 \times (4 + 6) ]}$
+- $\frac{3} {[6 \times (1.25 + 6.78)]}$
 
 ```cpp
 void setup() {
@@ -241,7 +241,7 @@ void loop() {
 
 4. Elaborar um programa no Arduino para calcular e exibir o valor das expressões abaixo:
 
-- $3^{4 \times 5 	imes [2 	imes (4 + 6) ]}$
+- $3^{4 \times 5 \times [2 \times (4 + 6) ]}$
 - $\sqrt{2 \times (5 + 3) ^ {34}}$ 
 
 ```cpp
