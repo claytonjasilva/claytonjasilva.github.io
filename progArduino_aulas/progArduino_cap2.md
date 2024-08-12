@@ -433,6 +433,7 @@ Onde
 
 - nome é um identificador
 - tamanho é o número máximo de caracteres (incluindo o caractere nulo)
+
 **Observações**.
 
 1. Os comandos de atribuição não podem ser utilizados nas *strings* baseadas em `char` da mesma forma que nas variáveis *int*, *float* e *char*; Para manipulação de strings no Arduino, você pode usar o objeto `String` que permite atribuições diretas, como `String nome = "Maria";`.
@@ -452,13 +453,16 @@ Serial.print("A primeira letra do nome é ");
 Serial.println(nome[0]);
 ```
 
-
-
-
-
-
-
 É bom destacar que a posição sempre é iniciada a partir de 0.
+
+### 2.7.3 Tipo *String*
+
+Na linguagem Arduino uma cadeia de caracteres também pode ser declarada com um objeto tipo String. Nesse caso, deve ser declarado da seguinte forma:
+
+| Tipo | Descrição |
+| - | - |
+| `String <nome> = "<cadeia de caracteres>";` | Declaração com inicialização  |
+| `String <nome>;` | Declaração sem inicialização  |
 
 ## 2.8 Entrada e saída com caracteres e cadeias de caracteres no Arduino
 
