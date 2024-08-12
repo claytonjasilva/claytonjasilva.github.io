@@ -422,13 +422,14 @@ Além disso, pode-se comparar caracteres diretamente usando os operadores de com
 
 As cadeias de caracteres podem ser definidas de duas formas no Arduino: usando vetores de caracteres (`char`) ou objetos `String`. **Para a linguagem Arduino, um conjunto de caracteres entre aspas duplas é considerado uma *string*.**
 
-No caso de variáveis, as *strings* baseadas em `char` precisam ser declaradas **sem inicialização**, da seguinte forma:
+No caso de variáveis, as *strings* baseadas em `char` precisam ser declaradas **sem inicialização** ou **com inicialização** da seguinte forma:
 
 | Tipo | Descrição |
 | - | - |
 | `char <nome>[<tamanho>];` | Declaração sem inicialização |
+| `char <nome>[] = "<cadeia de caracteres>"` | Declaração com inicialização  |
 
-Onde o `nome` é um identificador cujas regras são similares às de qualquer outra variável.
+
 
 
 
