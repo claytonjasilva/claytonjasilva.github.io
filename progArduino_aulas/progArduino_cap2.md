@@ -418,14 +418,17 @@ As atribuições podem ser realizadas para caracteres da mesma forma que para va
 
 Além disso, pode-se comparar caracteres diretamente usando os operadores de comparação (==, !=, <, >, <=, >=), pois os caracteres são representados internamente por seus valores ASCII. Similarmente, entre eles podem ser aplicados operadores lógicos bit a bit.
 
+### 2.7.2 Tipo cadeia de caracteres (*string*)
+
+As cadeias de caracteres podem ser definidas de duas formas no Arduino: usando vetores de caracteres (`char`) ou objetos `String`. **Para a linguagem Arduino, um conjunto de caracteres entre aspas duplas é considerado uma *string*.**
+
+
+
+
+
+
 
 É bom destacar que a posição sempre é iniciada a partir de 0.
-
-
-
-
-
-
 
 ## 2.8 Entrada e saída com caracteres e cadeias de caracteres no Arduino
 
