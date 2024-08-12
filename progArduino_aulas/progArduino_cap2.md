@@ -378,6 +378,54 @@ goto <nome do rótulo>;
 
 O rótulo (*label*) pode ser um nome qualquer, contanto que siga as regras de nomenclatura dos identificadores. Um rótulo é definido como um identificador seguido de dois pontos (`:`), e pode ser colocado antes de qualquer instrução em uma função.
 
+## 2.7 Tipos caracteres e cadeias de caracteres
+
+### 2.7.1 Tipo caractere (*char*)
+
+Os caracteres são tipo *char*. Os caracteres válidos na linguagem do Arduíno são baseados no conjunto de caracteres ASCII. O ASCII (*American Standard Code for Information Interchange*) é um padrão de codificação de caracteres que representa texto em computadores e outros dispositivos que utilizam texto. O ASCII usa valores numéricos para representar caracteres, incluindo letras, dígitos, sinais de pontuação e caracteres de controle.
+
+Caracteres ASCII no Arduíno
+Letras: A-Z (maiúsculas), a-z (minúsculas)
+Dígitos: 0-9
+Sinais de pontuação: ! " # $ % & ' ( ) * + , - . / : ; < = > ? @ [ \ ] ^ _ { | } ~ `
+Caracteres de controle: como \n (nova linha), \t (tabulação), \0 (nulo), entre outros.
+
+Os caracteres são representados internamente por seus valores ASCII, que são inteiros decimais correspondentes a cada caractere. A tabela ASCII (American Standard Code for Information Interchange) define esses valores para um conjunto padrão de caracteres.
+
+A tabela ASCII mapeia caracteres para números inteiros. Por exemplo,
+
+- Letras Maiúsculas: 'A': 65; 'B': 66; 'Z': 90
+- Letras Minúsculas: 'a': 97; 'b': 98
+- Dígitos: '0': 48; '1': 49; '9': 57
+- Sinais de Pontuação e Outros Símbolos: '!': 33; '@': 64; '#': 35
+- Caracteres de Controle (não imprimíveis): '\n' (nova linha): 10; '\t' (tabulação): 9
+
+Os caracteres individuais precisam ser delimitados por aspas simples (' '). Alguns caracteres de controle comuns também são representados usando aspas simples, mas com sequências de escape (`\`).
+
+A declaração de variáveis do tipo *char* possui a seguinte sintaxe:
+
+```cpp
+char x;
+```
+
+e a declaração com inicialização
+
+```cpp
+char x = '<caractere>';
+```
+
+As atribuições podem ser realizadas para caracteres da mesma forma que para variáveis *int* e *float*, `<nome> = '<caractere>'`.
+
+Além disso, pode-se comparar caracteres diretamente usando os operadores de comparação (==, !=, <, >, <=, >=), pois os caracteres são representados internamente por seus valores ASCII. Similarmente, entre eles podem ser aplicados operadores lógicos bit a bit.
+
+
+É bom destacar que a posição sempre é iniciada a partir de 0.
+
+
+
+
+
+
 
 ## 2.8 Entrada e saída com caracteres e cadeias de caracteres no Arduino
 
