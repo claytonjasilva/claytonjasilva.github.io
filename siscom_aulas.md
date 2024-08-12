@@ -1,12 +1,12 @@
-# Conteúdo - Sistemas de Comunicações Móveis - 2024.1
+# Conteúdo - Sistemas de Comunicações Móveis - 2024.2
 
 ## Slides das aulas
-1. [Sinais e sua representação nos domínios do tempo e da frequência](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/siscom_aulas/sinais.md)
-2. [Sinais e modelo dos sistemas de comunicações](siscom_aulas/Aula_Sinais_Modelo_SisCom.pdf) - Revisado 2024.1
-3. [Modulação em sistemas de comunicações móveis](siscom_aulas/Aula_Modulacao.pdf) - Revisado 2024.1
-4. [Codificadores da fonte e do canal](siscom_aulas/Aula_Codecs.pdf) - Revisado 2024.1
-6. [O canal móvel de comunicações](siscom_aulas/Aula_Canal_Movel.pdf) - Revisado 2024.1
-7. [Arquitetura de Sistemas Móveis de Comunicações](siscom_aulas/Aula_ArquiteturaSistemasMoveis.pdf)
+
+1. [Sinais e modelo dos sistemas de comunicações](siscom_aulas/Aula_Sinais_Modelo_SisCom.pdf) - Revisado 2024.1
+2. [Modulação em sistemas de comunicações móveis](siscom_aulas/Aula_Modulacao.pdf) - Revisado 2024.1
+3. [Codificadores da fonte e do canal](siscom_aulas/Aula_Codecs.pdf) - Revisado 2024.1
+4. [O canal móvel de comunicações](siscom_aulas/Aula_Canal_Movel.pdf) - Revisado 2024.1
+5. [Arquitetura de Sistemas Móveis de Comunicações](siscom_aulas/Aula_ArquiteturaSistemasMoveis.pdf)
 
 ## Notas de aula
 1. [Nota Capítulo 1 - Sinais e modelo dos sistemas de comunicações](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/siscom_aulas/Capitulo1.pdf) Lista para auto-avaliação: [Lista capítulo1](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/siscom_aulas/Lista1_auto_avaliacao.md)
