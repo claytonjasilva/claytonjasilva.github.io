@@ -2,7 +2,7 @@
 
 ## Slides das aulas
 
-1. [Sinais e modelo dos sistemas de comunicações](siscom_aulas/Aula_Sinais_Modelo_SisCom.pdf) - Revisado 2024.1
+1. [Sinais e modelo dos sistemas de comunicações](siscom_aulas/Aula_Sinais_Modelo_SisCom.pdf) - Revisado 2024.2
 2. [Modulação em sistemas de comunicações móveis](siscom_aulas/Aula_Modulacao.pdf) - Revisado 2024.1
 3. [Codificadores da fonte e do canal](siscom_aulas/Aula_Codecs.pdf) - Revisado 2024.1
 4. [O canal móvel de comunicações](siscom_aulas/Aula_Canal_Movel.pdf) - Revisado 2024.1
