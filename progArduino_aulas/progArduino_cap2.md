@@ -439,6 +439,7 @@ Onde o `nome` é um identificador cujas regras são similares às de qualquer ou
 
 
 
+
 **Toda string baseada em `char` possui um caractere 'terminador' definido no ASCII pelo caractere de escape `/0`**. Por exemplo, a palavra "Maria" é uma *string* que na linguagem Arduino é definida em memória por:
 
 | 0 | 1 | 2 | 3 | 4 | 5 |
