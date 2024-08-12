@@ -433,6 +433,10 @@ Onde
 
 - nome é um identificador
 - tamanho é o número máximo de caracteres (incluindo o caractere nulo)
+**Observações**.
+
+1. Os comandos de atribuição não podem ser utilizados nas *strings* baseadas em `char` da mesma forma que nas variáveis *int*, *float* e *char*; Para manipulação de strings no Arduino, você pode usar o objeto `String` que permite atribuições diretas, como `String nome = "Maria";`.
+2. As *strings* baseadas em `char` não podem ser usadas diretamente em operações lógicas da mesma forma que variáveis inteiras ou caracteres. ***Strings* em C (e Arduino) são arrays de caracteres terminados com o caractere nulo.
 
 **Toda string baseada em `char` possui um caractere 'terminador' definido no ASCII pelo caractere de escape `/0`**. Por exemplo, a palavra "Maria" é uma *string* que na linguagem Arduino é definida em memória por:
 
