@@ -218,3 +218,163 @@ void loop() {
 }
 ```
 
+## 2.4 Aninhamento de *ifs* - comando `switch...case`
+
+Seja o seguinte uso de condicional composta
+
+```cpp
+void setup() {
+  Serial.begin(9600); // Inicializa a comunicação serial a 9600 bps
+}
+
+void loop() {
+  int a; // Declaração da variável a
+
+  // Solicitar ao usuário que insira um número
+  Serial.println("Digite um numero: ");
+  
+  // Esperar até que o usuário insira um número no monitor serial
+  while (Serial.available() == 0) {
+    // Aguarda a entrada do usuário
+  }
+  
+  // Lê o número inserido
+  a = Serial.parseInt();
+
+  // Verificar o valor de 'a' e enviar a resposta correspondente
+  if (a > 100) {
+    Serial.println("a maior do que 100");
+  } else if (a > 50) {
+    Serial.println("a maior do que 50");
+  } else {
+    Serial.println("a menor ou igual a 50");
+  }
+  
+  // Adiciona um pequeno atraso antes de reiniciar o loop
+  delay(1000); 
+}
+```
+
+O código possui dois comandos condicionais compostos *if...else*. Diz-se que os ***ifs* estão aninhados**.
+
+A linguagem do Arduíno possui uma instrução composta (`switch...case`) de condicional composta múltipla cuja sintaxe é a seguinte:  
+
+```cpp
+switch (<expressão integral>) {
+case <dado inteiro, caractere ou enumerador>:
+  <bloco 1 de instruções>
+  break;
+case <dado inteiro, caractere ou enumerador>:
+  <bloco 2 de instruções>
+  break;
+...
+default:
+  <bloco n de instruções>
+}
+```
+
+O argumento do *switch* é a expressão que você deseja avaliar. **Esta expressão pode ser de qualquer tipo de dado integral, ou seja, que representa inteiros**, como int, char, enum, etc. O valor desta expressão é comparado com os valores especificados em cada case.
+
+O argumento do case pode ser:
+
+- Constante inteira;
+- Constante caractere;
+- Enumeradores. Enumeradores são tipos definidos pela palavra reservada `enum` definidos pelo identificador seguidos de valores entre {} separados por vírgulas. Por exemplo, `enum Dias {SEG, TER, QUA, QUI, SEX, SAB, DOM};`. Em C, os elementos de uma enumeração (enum) devem ser valores inteiros constantes. 
+
+O funcionamento do `switch...case` é o seguinte:
+
+1. A máquina testa o valor do argumento do `switch` comparando-o com o argumento do primeiro `case`.
+2. Caso seja igual, executa o bloco 1 de instruções (interno ao *case*) e segue para a instrução posterior ao *switch* do código.
+3. Caso não seja igual, testa o valor do argumento do `switch`, comparando-o com o argumento do próximo `case`.
+4. Caso seja igual, executa o bloco de instruções interno ao *case*; em caso contrário, segue ao próximo `case`.
+5. A máquina executa esse procedimento até alcançar `default`, caso o argumento do `switch` não seja igual aos argumentos dos `case`.
+6. Nesse caso, executa o bloco de instruções interno ao `default` e segue à execução da próxima instrução do código.
+7. Importante que o **uso do *default* é opcional**.
+
+Adaptando o exemplo anterior para ilustrar o uso do `switch...case`, temos:
+
+```cpp
+void setup() {
+  Serial.begin(9600); // Inicializa a comunicação serial a 9600 bps
+}
+
+void loop() {
+  int a; // Declaração da variável a
+
+  // Solicitar ao usuário que insira um número
+  Serial.println("Digite um numero: ");
+  
+  // Esperar até que o usuário insira um número no monitor serial
+  while (Serial.available() == 0) {
+    // Aguarda a entrada do usuário
+  }
+  
+  // Lê o número inserido
+  a = Serial.parseInt();
+
+  // Usando switch para verificar o valor de 'a'
+  switch (a) {
+    case 100:
+      Serial.println("Voce digitou 100");
+      break;
+    case 50:
+      Serial.println("Voce digitou 50");
+      break;
+    default:
+      Serial.println("Voce digitou numero diferente de 50 e de 100");
+      break;
+  }
+
+  // Adiciona um pequeno atraso antes de reiniciar o loop
+  delay(1000); 
+}
+```
+
+**Observação**. Você pode usar o mesmo bloco de instruções subordinado a vários `case` diferentes. Isso é feito simplesmente omitindo as instruções de `break` entre os `case`, permitindo que a execução "caia" (*fall through*) para o próximo case. Por exemplo,
+
+```cpp
+switch (<expressão integral>) {
+case <dado inteiro, caractere ou enumerador>: 
+case <dado inteiro, caractere ou enumerador>:
+  <bloco 2 de instruções>
+  break;
+...
+default:
+  <bloco n de instruções>
+}
+```
+
+## 2.5 O operador ternário `? :`
+
+Na linguagem do Arduíno, o operador ternário `? :` é uma forma concisa de expressão condicional que pode substituir a estrutura `if-else` para operações simples. Este operador é também conhecido como operador condicional.
+
+A sintaxe é
+
+```cpp
+<condição> ? <instrução ou bloco de instruções 1> : <instrução ou bloco de instruções 2>;
+```
+
+, onde
+
+- condição: Uma expressão lógica que é avaliada como verdadeira (não zero) ou falsa (zero).
+- instrução ou bloco de instruções 1: A expressão que é avaliada e retornada se a condição for 1 (verdadeira).
+- instrução ou bloco de instruções 2: A expressão que é avaliada e retornada se a condição for 0 (falsa).
+
+## 2.6 Desvio incondicional. Comando `goto`
+
+Na linguagem do Arduíno dispõe-se de um comando de **desvio incondicional**, `goto`. Precisa ser utilizado com muito cuidado, pois é próprio de uma linguagem não estruturada.
+
+O comando `goto` é frequentemente associado a linguagens de programação não estruturadas, **onde o fluxo de controle pode ser alterado arbitrariamente, levando a um código difícil de seguir e manter**. No entanto, é importante entender que o C, embora seja uma linguagem de programação estruturada, inclui o comando goto por razões históricas e por permitir certos usos específicos onde pode ser conveniente.
+
+As linguagens não estruturadas são caracterizadas pela ausência de estruturas claras para o **controle de fluxo de execução das instruções**, como *loops* e condicionais, o que frequentemente leva ao uso excessivo de comandos `goto`, resultando em código espaguete (*spaghetti code*). Exemplos incluem linguagens de primeira geração como Assembly.
+
+O formato geral do `goto` é
+
+```cpp
+<nome do rotulo>: <instrução>
+...
+goto <nome do rótulo>;
+```
+
+O rótulo (*label*) pode ser um nome qualquer, contanto que siga as regras de nomenclatura dos identificadores. Um rótulo é definido como um identificador seguido de dois pontos (`:`), e pode ser colocado antes de qualquer instrução em uma função.
+
