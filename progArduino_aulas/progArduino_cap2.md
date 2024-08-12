@@ -425,6 +425,23 @@ As cadeias de caracteres podem ser definidas de duas formas no Arduino: usando v
 
 
 
+**Toda string baseada em `char` possui um caractere 'terminador' definido no ASCII pelo caractere de escape `/0`**. Por exemplo, a palavra "Maria" é uma *string* que na linguagem Arduino é definida em memória por:
+
+| 0 | 1 | 2 | 3 | 4 | 5 |
+| - | - | - | - | - | - |
+| 'M' | 'a' | 'r' | 'i' | 'a' | '/0' |
+
+Como uma *string* baseada em `char` é um **vetor de caracteres**, o nome do vetor define um **ponteiro** do vetor, ou seja, a variável que aponta para o endereço onde o primeiro caractere do vetor está armazenado em memória. Em razão disso, os elementos da *string* (os caracteres) podem ser identificados pela sua posição relativa. A sintaxe para a identificação é, como mostrado no exemplo:
+
+```cpp
+char nome[] = "Maria";
+Serial.print("A primeira letra do nome é ");
+Serial.println(nome[0]);
+```
+
+
+
+
 
 
 
