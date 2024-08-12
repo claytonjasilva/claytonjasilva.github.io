@@ -71,3 +71,18 @@ As operações lógicas bit a bit (ou *bitwise*) são usadas para manipular bits
 
 As operações de conjunção, disjunção e negação são aplicadas a cada bit dos operandos. Os operadores bit a bit operam diretamente sobre os bits individuais dos operandos.
 
+As operações de deslocamento requerem como operando o inteiro cuja representação em bita será aplicado o deslocamento, bem como o número de bits de posições de deslocamento. Por exemplo,
+
+```cpp
+int a = 3; // 11 em binário
+int res = a << 2; // Desloca os bits de 'a' duas posições para a esquerda
+Serial.begin(9600);
+Serial.println(res); // Imprime o valor de 'res' no monitor serial
+```
+
+irá apresentar na console do monitor serial o valor 12 (1100 em binário).
+
+Operações lógicas bit a bit são projetadas para serem usadas com tipos de dados inteiros (como int, unsigned int, char, short, long). Aplicar esses operadores a tipos de dados de ponto flutuante (como float e double) não é apropriado e geralmente resulta em comportamento indefinido ou em um erro de compilação, dependendo do compilador e das configurações.
+
+Os caracteres podem ser usados com operadores bit a bit porque **cada caractere é internamente representado por um valor inteiro correspondente ao seu código ASCII**.
+
