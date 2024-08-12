@@ -117,7 +117,6 @@ Observações gerais:
 
 Um exemplo é o seguinte:  
 
-```cpp
 void setup() {
   Serial.begin(9600); // Inicializa a comunicação serial a 9600 bps
 }
@@ -151,7 +150,6 @@ void loop() {
   // Adiciona um pequeno atraso antes de reiniciar o loop
   delay(1000); 
 }
-```
 
 ## 2.3 Condicionais compostas
 
