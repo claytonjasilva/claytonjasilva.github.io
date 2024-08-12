@@ -15,6 +15,7 @@
 1. Conteúdo
    - [Notas sobre Python](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/progPython.md)
    - [Notas sobre C](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/progC_aulas.md)
+   - [Notas sobre linguagem do Arduíno](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/progArduino_aulas.md)
 2. IDE
    - [Replit](https://replit.com/): Página da IDE *online* para várias linguagens, como Python, C e C++.
    - [Visual Studio Code](https://code.visualstudio.com/): Página do editor de código, que admite *plugins* para várias linguagens, como C, C++ e Python.
