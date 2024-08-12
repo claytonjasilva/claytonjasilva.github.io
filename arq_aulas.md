@@ -23,6 +23,7 @@
 ### Programação com Arduíno
 
 1. [Conceitos iniciais](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/progArduino_aulas/progArduino_cap1.md)
+2. [Condicionais simples e compostas](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/progArduino_aulas/progArduino_cap2.md)
 
 ### Práticas
 
