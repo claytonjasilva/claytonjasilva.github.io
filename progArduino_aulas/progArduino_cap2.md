@@ -1,4 +1,4 @@
-# 2. Controle de fluxo: condicionais simples e compostas
+# 2. Programando com Arduino. Controle de fluxo: condicionais simples e compostas
 
 Os comandos de controle de fluxo para o Arduíno são aqueles que permitem ao programador **alterar a sequência de execução das instruções** do programa, similares à linguagem C/C++.  
 
