@@ -86,3 +86,135 @@ Operações lógicas bit a bit são projetadas para serem usadas com tipos de da
 
 Os caracteres podem ser usados com operadores bit a bit porque **cada caractere é internamente representado por um valor inteiro correspondente ao seu código ASCII**.
 
+## 2.2 Condicionais simples
+
+Na condicional simples, a execução de um bloco de instruções interno ao comando é condicionada ao resultado da expressão lógica da sentença.
+
+Sua sintaxe é
+
+```cpp
+if (<condição>) {
+  <bloco de instruções>
+}
+```
+
+Processo de execução pela máquina:  
+
+1. A condição via de regra é uma expressão lógica, cujo valor é calculado pela máquina.  **A condição só pode gerar um resultado dentre dois possíveis: diferente de 0 - 1 se a condição for expressão lógica, (verdadeiro), ou 0, (falso)**.
+
+- Na linguagem para a Arduíno, não existe uma constante de linguagem chamada *True*. Em vez disso, valores lógicos são representados por 0 e diferente de 0. Por convenção, 0 é considerado falso (*false*), e qualquer valor diferente de 0 é considerado verdadeiro (*true*), com 1 sendo usado frequentemente para representar verdadeiro ou resultante de uma expressão lógica.
+
+2. A instrução (ou bloco de instruções) interna é executada somente se a condição ou o cálculo da expressão lógica resultar diferente de 0 e a execução do programa prossegue após a estrutura *if*.
+
+3. Em caso contrário, se a condição for falsa (valor 0), a máquina executa a instrução seguinte ao *if* do programa,
+sem executar a instrução (ou bloco de instruções).  
+
+Observações gerais:  
+
+- O bloco das instruções internas ao *if* após a instrução condicional **deve ser delimitado entre chaves**.  
+- **Se houver somente uma instrução no bloco** o compilador admite não se usar a delimitação entre chaves.  
+- A indentação opera exclusivamente para proporcionar mais clareza ao código, facilitando a manutenção, legibilidade etc.  
+
+Um exemplo é o seguinte:  
+
+```cpp
+void setup() {
+  Serial.begin(9600); // Inicializa a comunicação serial a 9600 bps
+}
+
+void loop() {
+  int num; // Declaração da variável num
+
+  // Solicitar ao usuário que insira um número
+  Serial.println("Digite um numero: ");
+  
+  // Esperar até que o usuário insira um número no monitor serial
+  while (Serial.available() == 0) {
+    // Aguarda a entrada do usuário
+  }
+  
+  // Lê o número inserido
+  num = Serial.parseInt();
+
+  // Verificar o valor de 'num' e enviar a resposta correspondente
+  if (num > 10) {
+    Serial.println("\n\nO numero e maior do que 10");
+  }
+  if (num == 10) {
+    Serial.println("\n\nVoce acertou!\n");
+    Serial.println("\nO numero e igual a 10");
+  }
+  if (num < 10) {
+    Serial.println("\n\nO numero e menor do que 10");
+  }
+  
+  // Adiciona um pequeno atraso antes de reiniciar o loop
+  delay(1000); 
+}
+```
+
+## 2.3 Condicionais compostas
+
+Na condicional composta, **a execução de um bloco de instruções interno** ao comando *if* é condicionada ao valor da condição ou resultado da expressão lógica da sentença ser verdadeiro (diferente de 0), enquanto a execução de **outro bloco de instruções**, interno ao *else* do comando *if*, é condicionada ao resultado ser falso (valor lógico igual a 0).
+
+A sintaxe é
+
+```cpp
+if (<condição>) {
+  <bloco 1 de instruções>
+}
+else {
+  <bloco 2 de instruções>
+}
+```
+
+Processo de execução pela máquina:  
+
+1. A condição é avaliada ou a expressão lógica é calculada pela máquina, gerando um dentre dois resultados, **diferente de 0** (verdadeiro) ou **0** (falso).  
+2. A instrução (ou bloco 1 de instruções) - interno ao *if* - é executado somente se a expressão lógica de sua sentença resultar 1.  
+3. A instrução (ou bloco 2 de instruções) - interno ao *else* é executado se a expressão lógica resultar 0.
+4. Em ambas as situações, o programa prossegue sua execução a partir da instrução seguinte ao comando *if*.
+
+Observações gerais:  
+
+- Como anteriormente, **os blocos de instruções devem ser delimitados entre chaves**.  
+- **Se houver somente uma instrução no bloco** o compilador admite não se usar a delimitação entre chaves.
+
+Um exemplo é o seguinte:
+
+```cpp
+void setup() {
+  Serial.begin(9600); // Inicializa a comunicação serial a 9600 bps
+}
+
+void loop() {
+  int num; // Declaração da variável num
+
+  // Solicitar ao usuário que insira um número
+  Serial.println("Digite um numero: ");
+  
+  // Esperar até que o usuário insira um número no monitor serial
+  while (Serial.available() == 0) {
+    // Aguarda a entrada do usuário
+  }
+  
+  // Lê o número inserido
+  num = Serial.parseInt();
+
+  // Verificar o valor de 'num' e enviar a resposta correspondente
+  if (num > 10) {
+    Serial.println("\n\nO numero e maior do que 10");
+  } else {
+    Serial.println("\n\nO numero e menor ou igual a 10");
+    if (num < 5) {
+      Serial.println("\n\nO numero e menor do que 5\n");
+      Serial.print("\nO numero e ");
+      Serial.println(num);
+    }
+  }
+  
+  // Adiciona um pequeno atraso antes de reiniciar o loop
+  delay(1000); 
+}
+```
+
