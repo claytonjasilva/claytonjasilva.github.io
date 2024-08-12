@@ -429,18 +429,6 @@ No caso de variáveis, as *strings* baseadas em `char` precisam ser declaradas *
 | `char <nome>[<tamanho>];` | Declaração sem inicialização |
 | `char <nome>[] = "<cadeia de caracteres>"` | Declaração com inicialização  |
 
-
-
-
-
-
-
-
-
-
-
-
-
 **Toda string baseada em `char` possui um caractere 'terminador' definido no ASCII pelo caractere de escape `/0`**. Por exemplo, a palavra "Maria" é uma *string* que na linguagem Arduino é definida em memória por:
 
 | 0 | 1 | 2 | 3 | 4 | 5 |
