@@ -378,3 +378,337 @@ goto <nome do rótulo>;
 
 O rótulo (*label*) pode ser um nome qualquer, contanto que siga as regras de nomenclatura dos identificadores. Um rótulo é definido como um identificador seguido de dois pontos (`:`), e pode ser colocado antes de qualquer instrução em uma função.
 
+
+## 2.8 Entrada e saída com caracteres e cadeias de caracteres no Arduino
+
+### 2.8.1 Entrada e Saída com o Monitor Serial do Arduino
+
+#### Funções `Serial.print()` e `Serial.println()`
+
+No Arduino, as funções `Serial.print()` e `Serial.println()` são usadas para enviar dados do Arduino para o Monitor Serial no computador.
+
+- `Serial.print()`: Imprime os dados na janela do Monitor Serial sem adicionar uma nova linha ao final.
+- `Serial.println()`: Imprime os dados na janela do Monitor Serial e move o cursor para a próxima linha.
+
+Exemplo básico:
+
+```cpp
+void setup() {
+  Serial.begin(9600);  // Inicializa a comunicação serial a 9600 bps
+}
+
+void loop() {
+  Serial.print("Digite um caractere: ");
+  while (Serial.available() == 0) {
+    // Aguarda até que um caractere seja digitado no Monitor Serial
+  }
+  char c = Serial.read();  // Lê o caractere digitado
+  Serial.print("Você digitou: ");
+  Serial.println(c);
+  delay(1000);
+}
+```
+
+#### Função `Serial.read()`
+
+A função `Serial.read()` lê o primeiro byte de dados disponíveis na entrada serial e o retorna como um valor inteiro. Esse valor pode ser convertido em um caractere se necessário.
+
+Exemplo:
+
+```cpp
+void setup() {
+  Serial.begin(9600);
+}
+
+void loop() {
+  if (Serial.available() > 0) {
+    char c = Serial.read();  // Lê o caractere digitado
+    Serial.print("Você digitou: ");
+    Serial.println(c);
+  }
+}
+```
+
+#### Função `Serial.readString()`
+
+A função `Serial.readString()` lê a entrada serial e retorna uma `String` contendo os caracteres recebidos até um delimitador ou timeout. Por padrão, o delimitador é o caractere de nova linha (`
+`).
+
+Exemplo:
+
+```cpp
+void setup() {
+  Serial.begin(9600);
+}
+
+void loop() {
+  if (Serial.available() > 0) {
+    String texto = Serial.readString();
+    Serial.print("Você digitou: ");
+    Serial.println(texto);
+  }
+}
+```
+
+#### Função `Serial.parseInt()`
+
+A função `Serial.parseInt()` lê a entrada serial e converte os números recebidos em um valor inteiro (`int`).
+
+Exemplo:
+
+```cpp
+void setup() {
+  Serial.begin(9600);
+}
+
+void loop() {
+  Serial.println("Digite um número:");
+  while (Serial.available() == 0) {
+    // Aguarda a entrada do usuário
+  }
+  int num = Serial.parseInt();
+  Serial.print("Você digitou: ");
+  Serial.println(num);
+}
+```
+
+### 2.8.2 Manipulação de Strings no Arduino
+
+As `String` são objetos utilizados no Arduino para manipulação de texto. As `String` podem ser manipuladas de diversas maneiras, utilizando métodos específicos.
+
+Exemplo de criação e manipulação de uma `String`:
+
+```cpp
+void setup() {
+  Serial.begin(9600);
+  String nome = "Arduino";  // Cria uma String
+  Serial.print("O nome é: ");
+  Serial.println(nome);
+  
+  nome += " Uno";  // Concatena " Uno" à String
+  Serial.print("O nome completo é: ");
+  Serial.println(nome);
+}
+
+void loop() {
+  // O loop fica vazio neste exemplo
+}
+```
+
+### 2.8.3 Entrada e Saída com Funções Avançadas
+
+No ambiente do Arduino, a entrada e saída de caracteres e strings podem ser manipuladas com outras funções específicas para diferentes situações.
+
+#### Funções `getchar()` e `putchar()`
+
+As funções `getchar()` e `putchar()` não são diretamente disponíveis no Arduino, mas podem ser simuladas usando `Serial.read()` e `Serial.write()` para leitura e escrita de caracteres.
+
+Exemplo:
+
+```cpp
+void setup() {
+  Serial.begin(9600);
+}
+
+void loop() {
+  if (Serial.available() > 0) {
+    char c = Serial.read();  // Simula getchar()
+    Serial.write(c);         // Simula putchar()
+  }
+}
+```
+
+#### Funções `getString()` e `putString()`
+
+Para ler e escrever `String` completas, usa-se `Serial.readString()` e `Serial.print()` ou `Serial.println()`.
+
+Exemplo:
+
+```cpp
+void setup() {
+  Serial.begin(9600);
+}
+
+void loop() {
+  if (Serial.available() > 0) {
+    String texto = Serial.readString();
+    Serial.print("Você digitou: ");
+    Serial.println(texto);
+  }
+}
+```
+
+## 2.9 Exemplos
+
+1. Escrever um programa no Arduíno para resolver as seguintes expressões lógicas (descritas sem seguir a sintaxe de C) e escrever o resultado:
+  
+**a.** $(2 > x) e (3 + 4 = 6)$, dado que *x*=7  
+**b.** $(x > y) ou (x + y = 6)$, dado que *x*=3, *y*=5  
+**c.** $\overline{(x > y) ou (x + y = 6)}$  
+
+```cpp
+void setup() {
+  Serial.begin(9600);
+  
+  int x = 7;
+  bool resultado_a = (2 > x) && (3 + 4 == 6);
+  Serial.print("Resultado a: ");
+  Serial.println(resultado_a);
+  
+  int y = 5;
+  bool resultado_b = (x > y) || (x + y == 6);
+  Serial.print("Resultado b: ");
+  Serial.println(resultado_b);
+  
+  bool resultado_c = !((x > y) || (x + y == 6));
+  Serial.print("Resultado c: ");
+  Serial.println(resultado_c);
+}
+
+void loop() {
+  // O loop está vazio porque a execução ocorre no setup
+}
+```
+
+2. Elaborar um programa na linguagem do Arduíno para ler dois diferentes números; calcular e escrever o maior dos números lidos.
+
+```cpp
+int num1, num2;
+
+void setup() {
+  Serial.begin(9600);
+  Serial.println("Digite o primeiro numero:");
+  while (Serial.available() == 0) {}
+  num1 = Serial.parseInt();
+  
+  Serial.println("Digite o segundo numero:");
+  while (Serial.available() == 0) {}
+  num2 = Serial.parseInt();
+  
+  if (num1 > num2) {
+    Serial.print("O maior numero é: ");
+    Serial.println(num1);
+  } else {
+    Serial.print("O maior numero é: ");
+    Serial.println(num2);
+  }
+}
+
+void loop() {
+  // O loop está vazio porque a execução ocorre no setup
+}
+```
+
+3. Elaborar um programa na linguagem do Arduíno para ler o nome e a respectiva idade de duas pessoas; calcular e escrever o nome da pessoa mais velha. Admitir que as pessoas podem ter a mesma idade.
+
+```cpp
+char nome1[20], nome2[20];
+int idade1, idade2;
+
+void setup() {
+  Serial.begin(9600);
+  
+  Serial.println("Digite o nome da primeira pessoa:");
+  while (Serial.available() == 0) {}
+  Serial.readBytesUntil('\n', nome1, 20);
+  
+  Serial.println("Digite a idade da primeira pessoa:");
+  while (Serial.available() == 0) {}
+  idade1 = Serial.parseInt();
+  
+  Serial.println("Digite o nome da segunda pessoa:");
+  while (Serial.available() == 0) {}
+  Serial.readBytesUntil('\n', nome2, 20);
+  
+  Serial.println("Digite a idade da segunda pessoa:");
+  while (Serial.available() == 0) {}
+  idade2 = Serial.parseInt();
+  
+  if (idade1 > idade2) {
+    Serial.print(nome1);
+    Serial.println(" é mais velho.");
+  } else if (idade2 > idade1) {
+    Serial.print(nome2);
+    Serial.println(" é mais velho.");
+  } else {
+    Serial.println("Ambos têm a mesma idade.");
+  }
+}
+
+void loop() {
+  // O loop está vazio porque a execução ocorre no setup
+}
+```
+
+4. Elaborar um programa na linguagem do Arduíno para ler a idade de uma pessoa. Se a idade for igual ou inferior a 10 anos, classificar a pessoa como 'criança'. Caso a idade seja inferior a 18 anos e superior a 10 anos, classificar como 'adolescente'. Em qualquer outro caso, classificar como 'adulto'. Escrever a classificação atribuída.
+
+```cpp
+int idade;
+
+void setup() {
+  Serial.begin(9600);
+  
+  Serial.println("Digite a idade:");
+  while (Serial.available() == 0) {}
+  idade = Serial.parseInt();
+  
+  if (idade <= 10) {
+    Serial.println("A pessoa é criança.");
+  } else if (idade < 18) {
+    Serial.println("A pessoa é adolescente.");
+  } else {
+    Serial.println("A pessoa é adulta.");
+  }
+}
+
+void loop() {
+  // O loop está vazio porque a execução ocorre no setup
+}
+```
+
+5. Elaborar um programa na linguagem C para ler os nomes, pesos e altura de 3 pessoas; calcular e escrever os nomes de cada pessoa com IMC superior a 22 ('valor alto') ou com IMC inferior a 20 ('valor baixo'), seguido do respectivo IMC calculado.
+
+```cpp
+char nome[20];
+float peso, altura, imc;
+
+void setup() {
+  Serial.begin(9600);
+  
+  for (int i = 1; i <= 3; i++) {
+    Serial.print("Pessoa ");
+    Serial.println(i);
+    
+    Serial.println("Digite o nome:");
+    while (Serial.available() == 0) {}
+    Serial.readBytesUntil('\n', nome, 20);
+    
+    Serial.println("Digite o peso:");
+    while (Serial.available() == 0) {}
+    peso = Serial.parseFloat();
+    
+    Serial.println("Digite a altura:");
+    while (Serial.available() == 0) {}
+    altura = Serial.parseFloat();
+    
+    imc = peso / (altura * altura);
+    
+    if (imc < 20) {
+      Serial.print(nome);
+      Serial.print(" - valor baixo, IMC = ");
+      Serial.println(imc);
+    } else if (imc > 22) {
+      Serial.print(nome);
+      Serial.print(" - valor alto, IMC = ");
+      Serial.println(imc);
+    }
+  }
+}
+
+void loop() {
+  // O loop está vazio porque a execução ocorre no setup
+}
+```
+
+___
+**[Home Conteúdo Programação em C](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/progC_aulas.md)**   
