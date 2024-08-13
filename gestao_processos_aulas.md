@@ -35,7 +35,8 @@
 ### Avaliação Continuada
 
 Os instrumentos de avaliação continuada serão disponibilizados à medida que as aulas forem ministradas. 
-1. [Form 1 - Conceitos iniciais]() 
+
+1. [Form 1 - Conceitos iniciais](https://forms.gle/mRfZqWQutcDfgQnK9) 
 
 ## Exercícios  
 
