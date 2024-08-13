@@ -6,7 +6,7 @@
 
 1. Conceitos iniciais
 
-   [Cap 1 - Conceitos iniciais](gestao_processos_aulas/gestao_processos_cap1.md)
+   [Cap 1 - Conceitos iniciais](gestao_processos_aulas/gestao_processos_cap1.md)  
    [Cap 1 - Conceitos iniciais - slides](gestao_processos_aulas/gestao_processos_cap1.pdf)
 
 2. [Identificação de Processos](gestao_processos_aulas/gestao_processos_cap2.md)
