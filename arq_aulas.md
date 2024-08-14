@@ -57,7 +57,8 @@
 
 Os instrumentos de avaliação continuada serão disponibilizados à medida que as aulas forem ministradas.  
 
-1. [Form 1 - Conceitos iniciais](https://forms.gle/ra1ige6fQtfPiXRs9)
+1. [Form 1 - Conceitos iniciais](arq_aulas/arquitetura_computadores_form1.md) - Questões
+2. [Form 2 - Conceitos inciais](https://forms.gle/3vuzoisXXuKyQoqm6)
 
 ## Exercícios  
 
