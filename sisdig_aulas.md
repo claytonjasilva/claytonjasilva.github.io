@@ -38,7 +38,9 @@
 
 ### Avaliação Continuada
 
-Os instrumentos de avaliação continuada serão disponibilizados à medida que as aulas forem ministradas.  
+Os instrumentos de avaliação continuada serão disponibilizados à medida que as aulas forem ministradas.
+
+1. [Form 1: Sinais analógicos e digitais](https://forms.gle/e9oTGWAsXU9U2og46)
 
 ### Listas de exercício
 
