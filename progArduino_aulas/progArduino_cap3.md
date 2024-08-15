@@ -1,4 +1,4 @@
-# 3. Funções e controle de fluxo com estruturas de repetição
+# 3. Funções e controle de fluxo com estruturas de repetição com programação para o Arduíno
 
 ## 3.1 Conceitos gerais sobre funções  
 
@@ -11,7 +11,7 @@ No contexto de uma programação, uma **função** é uma sequência nomeada de 
 
 ### 3.1.1 Prototipação de funções
 
-Na estrutura do programa em C vimos que a prototipação da função se apresenta após as diretivas de pré-processamento e antes do módulo principal *main*.
+Na estrutura do programa em C vimos que a prototipação da função se apresenta após as diretivas de pré-processamento e antes do módulo  *setup*.
 
 Uma função para ser executada em um determinado trecho de código precisa ser **chamada**.
 
@@ -19,7 +19,7 @@ A **chamada de função** requer o uso do **nome** e a **passagem dos valores do
 
 Além disso, quando uma função é executada, ela pode devolver um valor (**retornar** valor) derivado da execução da tarefa, **o qual pode ser atribuído a uma variável** ou **utilizado no contexto de uma expressão**.  
 
-No padrão ANSI C (C89/C90), a **prototipação de funções** não é obrigatória, mas é fortemente recomendada. Se uma função é utilizada antes de ser definida ou prototipada, o compilador assume que a função retorna um valor do tipo int e que seus parâmetros são do tipo padrão (normalmente int ou double, dependendo de como os argumentos são passados). Isso pode causar problemas se a função realmente retornar outro tipo de dado ou tiver parâmetros de tipos diferentes, pois o compilador não terá as informações corretas para verificar o tipo ou o número de argumentos passados para a função.
+Como no padrão ANSI C (C89/C90), a **prototipação de funções** não é obrigatória, mas é fortemente recomendada. Se uma função é utilizada antes de ser definida ou prototipada, o compilador assume que a função retorna um valor do tipo int e que seus parâmetros são do tipo padrão (normalmente int ou double, dependendo de como os argumentos são passados). Isso pode causar problemas se a função realmente retornar outro tipo de dado ou tiver parâmetros de tipos diferentes, pois o compilador não terá as informações corretas para verificar o tipo ou o número de argumentos passados para a função.
 
 A prototipação ajuda a evitar esses problemas, pois permite ao compilador verificar se as chamadas de função estão corretas em termos de número e tipo dos argumentos. Para prototipar é necessário que o código em C especifique a função a ser usada, contendo:
 
@@ -27,13 +27,13 @@ A prototipação ajuda a evitar esses problemas, pois permite ao compilador veri
 - o **identificador** ou **nome** da função; e  
 - os **parâmetros** que a função utiliza para realizar a tarefa, cujos valores serão definidos pelos **argumentos** utilizados no código que a chamar.  
 
-A prototipação informa ao compilador que a função pode ser utilizada no módulo principal. A sintaxe para prototipação é dada por  
+A prototipação informa ao compilador que a função pode ser utilizada nos módulos `setup` e `loop`. A sintaxe para prototipação é dada por  
 
-```C
+```cpp
 <tipo de retorno> <nome da função>(<declaração dos parâmetros>);
 ```
 
-Se a função não retornar valor algum utiliza-se a **palavra reservada** `void`. Na linguagem C não se distingue *procedure* (quando não há retorno de valor) de *function* como em outras linguagens. Caso não se utilize a palavra reservada `void`, o compilador assume que a função retorna inteiro.
+Se a função não retornar valor algum utiliza-se a **palavra reservada** `void`. Na linguagem do Arduíno não se distingue *procedure* (quando não há retorno de valor) de *function* como em outras linguagens. Caso não se utilize a palavra reservada `void`, o compilador assume que a função retorna inteiro.
 
 O nome da função segue as mesmas regras definidas para definição dos nomes das variáveis.
 
@@ -62,9 +62,9 @@ A sintaxe da declaração explícita é dada por `extern <tipo> <nome da variáv
 
 ### 3.1.3 Definição de funções
 
-Para criar uma nova função é necessário escrever instruções atendendo a sintaxe do C, da seguinte forma  
+Para criar uma nova função é necessário escrever instruções atendendo a sintaxe da linguagem do Arduíno, da seguinte forma  
 
-```c
+```cpp
 <tipo de retorno> <nome da função>(<declaração dos parâmetros>) {
   <declarações de variáveis>
   <corpo de instruções>
@@ -74,25 +74,23 @@ Para criar uma nova função é necessário escrever instruções atendendo a si
 
 As definições de funções podem estar em qualquer ordem, em um arquivo fonte ou diversos, porém **nenhuma função pode estar dividida em dois arquivos**.
 
-Se a definição da função for apresentada antes do módulo principal a prototipação é desnecessária, no entanto, se a prototipação for usada, **se a definição da função não estiver de acordo com o seu protótipo será apresentado um erro na compilação.**
+Se a definição da função for apresentada antes dos módulos `setup`e `loop` a prototipação é desnecessária, no entanto, se a prototipação for usada, **se a definição da função não estiver de acordo com o seu protótipo será apresentado um erro na compilação.**
 
 ### 3.1.4 Biblioteca-padrão
 
-As funções, tipos e macros da biblioteca-padrão são declaradas em *cabeçalhos*-padrão.
-
-Uma relação extensa dessas funções pode ser obtida em [USP, Prof. Paulo Feofiloff](https://www.ime.usp.br/~pf/algoritmos/apend/interfaces.html)
+As funções, tipos e macros da biblioteca-padrão são declaradas em *cabeçalhos*-padrão. Na linguagem do Arduíno há um rico conjunto de bibliotecas, usualmente oferecidas pelos fabricantes.
 
 ## 3.2 Instruções de controle de fluxo com repetição  
 
 Os programas muitas vezes precisam automatizar tarefas repetitivas. A repetição ou **iteração** pode ser obtida pela utilização de instruções compostas chamadas instruções de repetição.
 
-As três instruções de repetição disponíveis na linguagem C são `while`, `do-while` e `for`.
+As três instruções de repetição disponíveis na linguagem do Arduíno são `while`, `do-while` e `for`.
 
 ### 3.2.1 O comando `while`
 
 A instrução `while` possui a seguinte sintaxe  
 
-```c
+```cpp
 while (<expressão lógica>) {
   <instrução ou bloco de instruções>
 }
@@ -109,7 +107,7 @@ A máquina executa a instrução *while* da seguinte forma:
 
 É muito comum a repetição ser controlada por uma variável de contagem. No exemplo abaixo utiliza-se a variável designada *cont*  
 
-```c
+```cpp
 cont = 1;
 while (cont<=50) {
   <instrução ou bloco de instruções>
@@ -122,7 +120,7 @@ O comando será executado da seguinte forma:
 1. Inicialmente a máquina executa a instrução de atribuição `cont = 1`. A operação é normalmente chamada de **inicialização** da variável de controle.
 2. Em seguida, executa a expressão lógica `cont<50`, que retorna 1, consequentemente levando à execução de
 
-  ```c
+  ```cpp
     <instrução ou bloco de instruções>
     cont = cont + 1;
   ```
@@ -147,7 +145,7 @@ Outra situação também muito comum é utilizar uma variável de controle (pode
 
 Por exemplo,  
 
-```c
+```cpp
 flag = 1;
 while (flag==1) {
   <instrução ou bloco de instruções>
@@ -161,7 +159,7 @@ O código será executado da seguinte forma:
 1. Inicialmente executa-se a instrução de atribuição `flag = 1`.
 2. Em seguida, executa-se a expressão lógica `flag==1`, que retorna 1, consequentemente levando à execução de
 
-  ```c
+  ```cpp
     <instrução ou bloco de instruções>
     if (<condição>)
       flag = 0;
@@ -182,22 +180,33 @@ A instrução `break` interrompe a execução do *loop* no ponto em que foi inse
 
 Por exemplo, no código,  
 
-```c
-while (<condição>) {
-  <instruções ou bloco de instruções>
-  y = 3;
-  printf("Digite número: ");  
-  scanf("%i", &x);
-  if (x == 0)
-    break;
-  y = 30;
+```cpp
+int y;
+int x;
+
+void setup() {
+  Serial.begin(9600); // Inicializa a comunicação serial
 }
-print("%i", y);
+
+void loop() {
+  y = 3;
+  Serial.println("Digite número:");  
+  while (!Serial.available()) {
+    // Aguarda a entrada do usuário
+  }
+  x = Serial.parseInt(); // Lê um número inteiro da entrada serial
+  if (x == 0) {
+    Serial.println("Saindo do loop");
+    return; // Sai da função loop, terminando o programa
+  }
+  y = 30;
+
+  Serial.print("Valor de y: ");
+  Serial.println(y); // Imprime o valor de y
+}
 ```  
 
-Independentemente do valor lógico da condição, a máquina interromperá o *loop* e **escreverá 3** no console quando o usuário digitar 0 no comando de entrada *scanf*.
-
-Em caso contrário, executará as repetições do *while* normalmente e escreverá 30 (último valor atribuído ao y no *loop*.
+Independentemente do valor lógico da condição, a máquina interromperá o *loop* e **escreverá 3** no monitor serial quando o usuário digitar 0 na entrada. Em caso contrário, executará as repetições do *while* normalmente e escreverá 30 (último valor atribuído ao y no *loop*.
 
 ##### b. **Instrução `continue`**
 
@@ -207,7 +216,7 @@ A instrução `continue` interrompe a execução do *loop* no ponto em que foi i
 
 A instrução `do-while` possui a seguinte sintaxe
 
-```c
+```cpp
 do {
   <instrução ou bloco de instruções>
 }
@@ -230,7 +239,7 @@ O comando `do-while` é chamado de comando de repetição com **teste de condiç
 
 No caso do comando `do-while` o contador sempre deverá computar um *loop*. No exemplo abaixo utiliza-se a variável designada *cont*  
 
-```c
+```cpp
 cont = 1;
 do {
   <instrução ou bloco de instruções>
@@ -250,7 +259,7 @@ Situações em que pode não ocorrer execução alguma das instruções do *loop
 
 O loop for em C é normalmente usado para **iterar sobre uma sequência de valores**. A instrução `for` possui a seguinte sintaxe
 
-```c
+```cpp
 for (<inicialização da variável de controle>;<condição>;<incremento>) {
   <instrução ou bloco de instruções>
 }
@@ -275,7 +284,7 @@ for (<inicialização da variável de controle>; ;<incremento>) {
 
 É possível e comum declarar a variável de controle diretamente dentro do argumento do `for`. A variável terá escopo limitado ao loop `for`. Por exemplo,
 
-```c
+```cpp
 for (int i=0;i<N;i++>){
     <bloco de instruções>
 }
@@ -283,60 +292,3 @@ for (int i=0;i<N;i++>){
 
 O comando `for` também admite a utilização dos comandos ***break*** ou ***continue***.
 
-## 3.3 Exemplos
-
-1. Elaborar um código em C para ler um número inteiro não negativo e escrever a soma dos números **inferiores ao número lido**.
-
-Ver **[Solução proposta](https://github.com/claytonjasilva/prog_exemplos/blob/main/linguagem_c/exemplo28.c)**
-
-2. Elaborar um código em C para ler um conjunto de números não nulos e escrever somente os números pares. Caso o número lido não seja par escrever a mensagem "numero impar". O usuário poderá interromper o programa digitando o número 0.
-
-Ver **[Solução proposta](https://github.com/claytonjasilva/prog_exemplos/blob/main/linguagem_c/exemplo29.c)**
-
-3. Elaborar um código em C para ler um número inteiro *n* positivo. O usuário deve escolher uma opção de 1 a 3:
-
-- A opção 1 deve escrever a soma dos *n* termos da série S = 1/(k+3), k=0,...,n-1
-- A opção 2 deve escrever a soma dos *n* termos da série S = 2k/(k+1), k=0,...,n-1
-- A opção 3 deve escrever a soma dos *n* termos da série S = k, k=0,...,n-1  
-
-Se o usuário digitar uma opção inválida o programa deve permanecer solicitando uma opção válida.
-
-Ver **[Solução proposta](https://github.com/claytonjasilva/prog_exemplos/blob/main/linguagem_c/exemplo30.c)**
-
-4. Escrever um código em C para calcular a expressão *e<sup>x</sup>* aplicando a aproximação dada abaixo  
-$$e^x=1+x+\frac{x^2}{2!}+\frac{x^3}{3!}+...$$  
-Utilizar uma função cujos parâmetros são o expoente *x* e o número *N* de termos da aproximação.
-
-Ver **[Solução proposta](https://github.com/claytonjasilva/prog_exemplos/blob/main/linguagem_c/exemplo31.c)**
-
-5. Elaborar um programa na linguagem C para **escrever os caracteres minúsculos do alfabeto**.
-
-Ver **[Solução proposta](https://github.com/claytonjasilva/prog_exemplos/blob/main/linguagem_c/exemplo32.c)**
-
-6. Elaborar um programa na linguagem C para ler uma frase com até 15 caracteres - preencher a frase com espaços em branco se ela não possuir 15 caracteres, utilizando a função *getch*, e escrever a frase digitada.
-
-Ver **[Solução proposta](https://github.com/claytonjasilva/prog_exemplos/blob/main/linguagem_c/exemplo33.c)**
-
-7. Elaborar um programa na linguagem C que permita gerenciar a aprovação ou não de um grupo de 30 alunos, com base nas notas e na frequência. O programa deve possuir uma função para determinar a média do aluno, dada por mf=0,4.ap1+0,4.ap2+0,2.ac. Deve possuir também uma função que permita, caso o aluno seja reprovado, substituir a menor nota das ap pela nota da as (se a nota da as for superior a menor ap) e determinar a nova média final. Deve possuir também uma função para determinar a porcentagem de faltas de cada aluno. O programa deverá ler o número de aulas dadas; ler as notas de ap, ap2 e ac; ler a nota de as (se for necessário); e ler o número de faltas de cada aluno. Deverá escrever a média final de cada aluno, a porcentagem de faltas e a condição ('aprovado' ou 'reprovado'). O aluno estará aprovado se a média final for superior ou igual a 7.0 e tiver uma frequência superior a 75%. Deverá fazer a as se obtiver uma nota mf inferior a 7.0.
-
-8. Elaborar um programa na linguagem C que possua um conjunto de funções para calcular a área de figuras geométricas. O programa deve permitir que o usuário digite o número de figuras cujos parâmetros serão lidos e cuja área será determinada. Deve ler, para cada figura, o seu tipo, ('t':triângul;'r':retângulo;'c':círculo) e os respectivos parâmetros para cálculo de área, escrevendo a área da figura solicitada.
-
-9.  Elaborar um programa na linguagem C que leia um número inteiro. Se o número for par não negativo, o programa deve executar uma função para calcular o valor da soma dos termos positivos de uma série aritmética de razão 1, cujo maior termo é N dado, ou seja, soma=1+2+3+...+N. Se o número for impar não negativo, o programa deve executar uma função para determinar a soma dos seus divisores. Se o número for negativo, o programa deve calcular a soma dos quadrados do número até 0. 
-
-10. Elaborar um programa na linguagem Python que leia os dados de uma pessoa: nome, idade, peso, altura. Para a idade lida, o programa deverá recomendar exercícios do tipo A, para pessoas acima de 60 anos; do tipo B, para pessoas entre 40 e 60 anos; do tipo C, para pessoas entre 15 e 40 anos; e do tipo D, para crianças (idade inferior a 15 anos). Com base no peso e na altura, o programa deve calcular o IMC (dado por peso/altura^2), determinando as dietas: 'magra', IMC superior a 25; 'normal', IMC entre 19 e 25; e 'gorda', IMC inferior a 19. 
-
-11. Elaborar um programa na linguagem C que permita realizar várias operações diferentes com um par de números digitados pelo usuário, A e B. As operações são as seguintes:
-
-- soma dos quadrados, designada 'sq', que resulta na soma do quadrado de A com o quadrado de B;  
-- soma dos cubos, designada 'sc', que resulta na soma de A elevado à terceira potência com B elevado à terceita potência;
-- quadrado da diferença, 'qdif', que resulta no quadrado da diferença de A por B;
-- quadrado da soma, 'qsoma', que resulta no quadrado da soma de A e B;
-- cubo da diferença, 'cdif', resulta no cubo da diferença de A por B;
-- cubo da soma, 'csoma', que resulta no cubo da soma de A e B.  
-
-O programa deve executar sucessivas vezes as operações. Na **primeira** repetição, o usuário deve digitar os valores de A e B, seguidos da operação desejada. Nas **repetições seguintes**, o usuário deve digitar o valor de um novo número, seguido da nova operação desejada. A nova operação será aplicada sobre o novo número e o resultado da repetição anterior. O programa será interrompido quando for digitada a operação 'nop' - nenhuma operação - e deverá escrever o último valor resultante da operação. 
-
-12. Uma forma de calcular a potência de base *e* de um número é dada por $e^x=1+x+x^2/2!+x^3/3!+ ...$, onde *!* representa o fatorial do número. Elaborar um programa na linguagem C para determinar o resultado de $e^x$, em que o usuário ditige na entrada o valor de *x* e o número de interações desejadas (número de termos da série). 
-
-___
-**[Home Conteúdo Programação em C](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/progC_aulas.md)**   
