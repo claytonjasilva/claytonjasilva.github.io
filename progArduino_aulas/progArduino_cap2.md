@@ -297,7 +297,7 @@ default:
 
 O argumento do *switch* é a expressão que você deseja avaliar. **Esta expressão pode ser de qualquer tipo de dado integral, ou seja, que representa inteiros**, como int, char, enum, etc. O valor desta expressão é comparado com os valores especificados em cada case.
 
-O argumento do case pode ser:
+O argumento do `case` pode ser:
 
 - Constante inteira;
 - Constante caractere;
@@ -333,6 +333,11 @@ void loop() {
   
   // Lê o número inserido
   a = Serial.parseInt();
+
+  // Limpa o buffer serial para evitar caracteres residuais
+  while (Serial.available() > 0) {
+    Serial.read();
+  }
 
   // Usando switch para verificar o valor de 'a'
   switch (a) {
@@ -456,7 +461,7 @@ Onde
 - nome é um identificador
 - tamanho é o número máximo de caracteres (incluindo o caractere nulo)
 
-**Observações**.
+**Observações:**
 
 1. Os comandos de atribuição não podem ser utilizados nas *strings* baseadas em `char` da mesma forma que nas variáveis *int*, *float* e *char*; Para manipulação de strings no Arduino, você pode usar o objeto `String` que permite atribuições diretas, como `String nome = "Maria";`.
 2. As *strings* baseadas em `char` não podem ser usadas diretamente em operações lógicas da mesma forma que variáveis inteiras ou caracteres. ***Strings* em C (e Arduino) são arrays de caracteres terminados com o caractere nulo.
@@ -492,7 +497,7 @@ Na linguagem Arduino uma cadeia de caracteres também pode ser declarada com um 
 
 #### Funções `Serial.print()` e `Serial.println()`
 
-No Arduino, as funções `Serial.print()` e `Serial.println()` são usadas para enviar dados do Arduino para o Monitor Serial no computador.
+Como já utilizado nos exemplos anteriores, no Arduino as funções `Serial.print()` e `Serial.println()` são usadas para enviar dados do Arduino para o Monitor Serial no computador.
 
 - `Serial.print()`: Imprime os dados na janela do Monitor Serial sem adicionar uma nova linha ao final.
 - `Serial.println()`: Imprime os dados na janela do Monitor Serial e move o cursor para a próxima linha.
@@ -505,14 +510,18 @@ void setup() {
 }
 
 void loop() {
+    // Limpa o buffer serial
+  while (Serial.available() > 0) {
+    Serial.read();  // Lê e descarta qualquer dado restante no buffer
+  }
   Serial.print("Digite um caractere: ");
   while (Serial.available() == 0) {
     // Aguarda até que um caractere seja digitado no Monitor Serial
   }
-  char c = Serial.read();  // Lê o caractere digitado
-  Serial.print("Você digitou: ");
+  char c = Serial.read();  // Lê o caractere digitado 
+  Serial.print("\nVocê digitou: ");
   Serial.println(c);
-  delay(1000);
+  delay(1000);  // Pequeno atraso para dar tempo ao usuário
 }
 ```
 
@@ -528,18 +537,21 @@ void setup() {
 }
 
 void loop() {
+  delay(1000);
   if (Serial.available() > 0) {
     char c = Serial.read();  // Lê o caractere digitado
     Serial.print("Você digitou: ");
     Serial.println(c);
+    while (Serial.available()>0)
+      Serial.read();
   }
+  
 }
 ```
 
 #### Função `Serial.readString()`
 
-A função `Serial.readString()` lê a entrada serial e retorna uma `String` contendo os caracteres recebidos até um delimitador ou timeout. Por padrão, o delimitador é o caractere de nova linha (`
-`).
+A função `Serial.readString()` lê a entrada serial e retorna uma `String` contendo os caracteres recebidos até um delimitador ou timeout. Por padrão, o delimitador é o caractere de nova linha (`\n`).
 
 Exemplo:
 
@@ -574,6 +586,10 @@ void loop() {
     // Aguarda a entrada do usuário
   }
   int num = Serial.parseInt();
+  while (Serial.available() > 0) {
+    // Limpa o buffer
+    Serial.read();
+  }
   Serial.print("Você digitou: ");
   Serial.println(num);
 }
@@ -592,7 +608,7 @@ void setup() {
   Serial.print("O nome é: ");
   Serial.println(nome);
   
-  nome += " Uno";  // Concatena " Uno" à String
+  nome += " Mega";  // Concatena " Mega" à String
   Serial.print("O nome completo é: ");
   Serial.println(nome);
 }
@@ -602,48 +618,27 @@ void loop() {
 }
 ```
 
-### 2.8.3 Entrada e Saída com Funções Avançadas
+A tabela abaixo apresenta um resumo dos principais métodos para trabalhar com o monitor serial
 
-No ambiente do Arduino, a entrada e saída de caracteres e strings podem ser manipuladas com outras funções específicas para diferentes situações.
+| Método                    | Descrição                                                                                       | Entrada                                      | Saída                          |
+|---------------------------|-------------------------------------------------------------------------------------------------|----------------------------------------------|--------------------------------|
+| `Serial.begin(baudrate)`   | Inicializa a comunicação serial com a taxa de baud especificada.                               | `baudrate` (taxa de transmissão em bps)      | Nenhuma                        |
+| `Serial.available()`       | Retorna o número de bytes disponíveis para leitura na porta serial.                            | Nenhuma                                      | Número de bytes disponíveis    |
+| `Serial.read()`            | Lê o próximo byte de dados recebidos no buffer serial.                                         | Nenhuma                                      | Byte lido (int, -1 se falha)   |
+| `Serial.peek()`            | Olha o próximo byte de dados recebidos sem removê-lo do buffer.                                | Nenhuma                                      | Byte lido (int, -1 se falha)   |
+| `Serial.flush()`           | Aguarda até que a transmissão de dados em andamento seja concluída.                            | Nenhuma                                      | Nenhuma                        |
+| `Serial.print(data)`       | Envia dados para o monitor serial em formato texto.                                            | `data` (int, float, string, etc.)            | Nenhuma                        |
+| `Serial.println(data)`     | Envia dados para o monitor serial em formato texto, seguido por uma nova linha.                | `data` (int, float, string, etc.)            | Nenhuma                        |
+| `Serial.write(val)`        | Envia um byte ou uma sequência de bytes para o monitor serial.                                 | `val` (byte, char, array, string)            | Número de bytes escritos       |
+| `Serial.end()`             | Finaliza a comunicação serial, liberando os pinos digitais usados.                             | Nenhuma                                      | Nenhuma                        |
+| `Serial.parseInt()`        | Lê os dados da porta serial como um valor inteiro.                                             | Nenhuma                                      | Valor inteiro lido             |
+| `Serial.parseFloat()`      | Lê os dados da porta serial como um valor flutuante (float).                                   | Nenhuma                                      | Valor float lido               |
+| `Serial.find(target)`      | Lê os dados recebidos até encontrar uma correspondência com o valor de destino especificado.   | `target` (string ou char)                    | `true` se encontrado, `false` se não |
+| `Serial.readString()`      | Lê todos os caracteres recebidos como uma string até que um tempo limite expire.               | Nenhuma                                      | String lida                    |
+| `Serial.readBytes(buffer, length)` | Lê uma quantidade específica de bytes no buffer fornecido.                               | `buffer` (char array), `length` (int)        | Número de bytes lidos          |
+| `Serial.findUntil(target, terminator)` | Lê os dados até encontrar um alvo ou terminador, o que ocorrer primeiro.         | `target`, `terminator` (string ou char)      | `true` se encontrado, `false` se não |
+| `Serial.setTimeout(timeout)` | Define o tempo limite para operações de leitura.                                            | `timeout` (milissegundos)                    | Nenhuma                        |
 
-#### Funções `getchar()` e `putchar()`
-
-As funções `getchar()` e `putchar()` não são diretamente disponíveis no Arduino, mas podem ser simuladas usando `Serial.read()` e `Serial.write()` para leitura e escrita de caracteres.
-
-Exemplo:
-
-```cpp
-void setup() {
-  Serial.begin(9600);
-}
-
-void loop() {
-  if (Serial.available() > 0) {
-    char c = Serial.read();  // Simula getchar()
-    Serial.write(c);         // Simula putchar()
-  }
-}
-```
-
-#### Funções `getString()` e `putString()`
-
-Para ler e escrever `String` completas, usa-se `Serial.readString()` e `Serial.print()` ou `Serial.println()`.
-
-Exemplo:
-
-```cpp
-void setup() {
-  Serial.begin(9600);
-}
-
-void loop() {
-  if (Serial.available() > 0) {
-    String texto = Serial.readString();
-    Serial.print("Você digitou: ");
-    Serial.println(texto);
-  }
-}
-```
 
 ## 2.9 Exemplos
 
