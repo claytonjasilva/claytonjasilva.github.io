@@ -24,6 +24,7 @@
 
 1. [Conceitos iniciais](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/progArduino_aulas/progArduino_cap1.md)
 2. [Condicionais simples e compostas](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/progArduino_aulas/progArduino_cap2.md)
+3. [Funções e controle de fluxo de repetição com Arduíno](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/progArduino_aulas/progArduino_cap3.md)
 
 ### Práticas
 
