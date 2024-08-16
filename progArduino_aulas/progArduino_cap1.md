@@ -152,6 +152,28 @@ float res;
 
 Quando uma variável é declarada, o microcontrolador reserva espaço na memória para armazenar o valor.
 
+A declaração pressupõe limites de representação. Para as aplicações em sistemas para plataformas com processadores mais poderosos, esse aspecto quase sempre passa sem ser observado. No caso do Arduíno Mega 2560, no entanto, merece a apresentação desses limites.
+
+| Tipo de Dado        | Tamanho       | Intervalo                                                      |
+|---------------------|---------------|----------------------------------------------------------------|
+| `int`               | 2 bytes (16 bits)  | -32.768 a 32.767                                              |
+| `unsigned int`      | 2 bytes (16 bits)  | 0 a 65.535                                                    |
+| `long`              | 4 bytes (32 bits)  | -2.147.483.648 a 2.147.483.647                                |
+| `unsigned long`     | 4 bytes (32 bits)  | 0 a 4.294.967.295                                             |
+| `float`             | 4 bytes (32 bits)  | Aproximadamente 6-7 dígitos significativos                    |
+|                     |               | -3,4028235E+38 a 3,4028235E+38                                 |
+| `double`            | 4 bytes (32 bits)  | Mesmo que `float`                                             |
+| `byte`              | 1 byte (8 bits)    | 0 a 255                                                       |
+| `char`              | 1 byte (8 bits)    | -128 a 127                                                    |
+| `unsigned char`     | 1 byte (8 bits)    | 0 a 255                                                       |
+| `boolean`           | 1 byte (8 bits)    | `true` (1) ou `false` (0)                                     |
+
+**Considerações Importantes**:
+
+- Precisão de *float* e *double*: no Arduino Mega 2560, ambos têm a mesma precisão limitada (32 bits). Isso pode afetar cálculos que envolvem números muito grandes, pequenos ou operações que exigem alta precisão.
+- Overflow: os tipos de dados inteiros podem sofrer *overflow* se os cálculos excederem o intervalo permitido pelo tipo. Por exemplo, somar dois valores int que excedem 32.767 resultará em overflow e o valor será "envolvido" (wrap around).
+- Uso de memória: Considere o uso de memória, especialmente em sistemas embarcados como o Arduino, onde a memória RAM disponível é limitada (**8 KB de SRAM no Mega 2560**). O uso excessivo de tipos como long ou arrays grandes pode rapidamente consumir a memória disponível.
+
 ### 1.5.7 Sentença de atribuição no Arduino
 
 A sentença de atribuição no Arduino segue a mesma sintaxe do C:
@@ -259,3 +281,5 @@ void loop() {
   // Não há necessidade de código no loop para este exemplo
 }
 ```
+
+**O que acontecerá na execução? Explique o resultado consultando o texto anterior.**
