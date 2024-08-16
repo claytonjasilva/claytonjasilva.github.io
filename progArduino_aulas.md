@@ -6,6 +6,7 @@ O curso integra a disciplina de Arquitetura de Computadores. Não está isoladam
 
 1. [Iniciando...](progArduino_aulas/progArduino_cap1.md)  
 2. [Controle de fluxo: condicionais simples e compostas](progArduino_aulas/progArduino_cap2.md)
+3. [Funções e controle de fluxo de repetição com Arduíno](progArduino_aulas/progArduino_cap.md)
 
 ## Guia Rápido
 
