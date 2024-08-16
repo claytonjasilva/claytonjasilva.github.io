@@ -618,7 +618,7 @@ void loop() {
 }
 ```
 
-A tabela abaixo apresenta um resumo dos principais métodos para trabalhar com o monitor serial
+A tabela abaixo apresenta um resumo dos principais métodos para trabalhar com o monitor serial.
 
 | Método                    | Descrição                                                                                       | Entrada                                      | Saída                          |
 |---------------------------|-------------------------------------------------------------------------------------------------|----------------------------------------------|--------------------------------|
@@ -639,6 +639,12 @@ A tabela abaixo apresenta um resumo dos principais métodos para trabalhar com o
 | `Serial.findUntil(target, terminator)` | Lê os dados até encontrar um alvo ou terminador, o que ocorrer primeiro.         | `target`, `terminator` (string ou char)      | `true` se encontrado, `false` se não |
 | `Serial.setTimeout(timeout)` | Define o tempo limite para operações de leitura.                                            | `timeout` (milissegundos)                    | Nenhuma                        |
 
+Os métodos descritos na tabela são aplicáveis a qualquer objeto da classe `HardwareSerial` (da qual `Serial` é uma instância) no Arduino, e não apenas ao monitor serial. A classe `HardwareSerial` é usada para se comunicar com dispositivos seriais em geral, o que inclui:
+
+- Monitor Serial: Comumente usado para comunicação entre o Arduino e o computador via USB.
+- Portas Seriais Físicas: Em placas que possuem múltiplas portas seriais (como o Arduino Mega), você pode usar objetos como Serial1, Serial2, etc., para comunicação com outros dispositivos seriais, como módulos GPS, módulos Bluetooth, sensores, entre outros.
+
+Esses métodos permitem que você envie e receba dados através de qualquer interface serial disponível na placa, seja ela conectada ao monitor serial no computador ou a outro dispositivo serial externo.
 
 ## 2.9 Exemplos
 
@@ -682,10 +688,12 @@ void setup() {
   Serial.println("Digite o primeiro numero:");
   while (Serial.available() == 0) {}
   num1 = Serial.parseInt();
+  while (Serial.available() > 0) Serial.read();
   
   Serial.println("Digite o segundo numero:");
   while (Serial.available() == 0) {}
   num2 = Serial.parseInt();
+  while (Serial.available() > 0) Serial.read();
   
   if (num1 > num2) {
     Serial.print("O maior numero é: ");
@@ -713,18 +721,22 @@ void setup() {
   Serial.println("Digite o nome da primeira pessoa:");
   while (Serial.available() == 0) {}
   Serial.readBytesUntil('\n', nome1, 20);
+  while (Serial.available() > 0) Serial.read();
   
   Serial.println("Digite a idade da primeira pessoa:");
   while (Serial.available() == 0) {}
   idade1 = Serial.parseInt();
-  
+  while (Serial.available() > 0) Serial.read();
+    
   Serial.println("Digite o nome da segunda pessoa:");
   while (Serial.available() == 0) {}
   Serial.readBytesUntil('\n', nome2, 20);
-  
+  while (Serial.available() > 0) Serial.read();
+    
   Serial.println("Digite a idade da segunda pessoa:");
   while (Serial.available() == 0) {}
   idade2 = Serial.parseInt();
+  while (Serial.available() > 0) Serial.read();
   
   if (idade1 > idade2) {
     Serial.print(nome1);
@@ -753,6 +765,8 @@ void setup() {
   Serial.println("Digite a idade:");
   while (Serial.available() == 0) {}
   idade = Serial.parseInt();
+  while (Serial.available() > 0) Serial.read();
+
   
   if (idade <= 10) {
     Serial.println("A pessoa é criança.");
@@ -771,7 +785,7 @@ void loop() {
 5. Elaborar um programa na linguagem C para ler os nomes, pesos e altura de 3 pessoas; calcular e escrever os nomes de cada pessoa com IMC superior a 22 ('valor alto') ou com IMC inferior a 20 ('valor baixo'), seguido do respectivo IMC calculado.
 
 ```cpp
-char nome[20];
+String nome;
 float peso, altura, imc;
 
 void setup() {
@@ -783,15 +797,18 @@ void setup() {
     
     Serial.println("Digite o nome:");
     while (Serial.available() == 0) {}
-    Serial.readBytesUntil('\n', nome, 20);
+    nome = Serial.readString();
+    while (Serial.available() > 0) Serial.read();
     
     Serial.println("Digite o peso:");
     while (Serial.available() == 0) {}
     peso = Serial.parseFloat();
+    while (Serial.available() > 0) Serial.read();
     
     Serial.println("Digite a altura:");
     while (Serial.available() == 0) {}
     altura = Serial.parseFloat();
+    while (Serial.available() > 0) Serial.read();
     
     imc = peso / (altura * altura);
     
@@ -811,6 +828,3 @@ void loop() {
   // O loop está vazio porque a execução ocorre no setup
 }
 ```
-
-___
-**[Home Conteúdo Programação em C](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/progC_aulas.md)**   
