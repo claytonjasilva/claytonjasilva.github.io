@@ -7,13 +7,13 @@ Podem ser divididos em dois grupos:
 - Condicionais **simples**
 - Condicionais **compostas**
   
-As condições que determinam o fluxo de execução das instruções são definidas pelo resultado de uma **expressão lógica**.  
+As condições que determinam o fluxo de execução das instruções geralmente são definidas pelo resultado de uma **expressão lógica**.  
 
 ## 2.1 Expressões lógicas
 
 As **expressões aritméticas** resultam em números, por exemplo **ponto flutuante** (tipo *float*) ou **inteiros** (tipo *int*).  
 
-As **expressões lógicas** são aquelas cujo resultado é um **valor lógico**. Na linguagem C, o valor lógico **retornado por uma expressão lógica verdadeira é 1**; e o valor lógico **falso é 0**.
+As **expressões lógicas** são aquelas cujo resultado é um **valor lógico**. Na linguagem do Arduíno (como em C/C++), o valor lógico **retornado por uma expressão lógica verdadeira é 1**; e o valor lógico **falso é 0**.
 
 Nesse ponto cabe uma observação:
 
@@ -67,7 +67,7 @@ As operações lógicas também podem ser utilizadas **bit a bit**. Nesse caso, 
 | << | deslocamento à esquerda |
 | >> | deslocamento à direita |
 
-As operações lógicas bit a bit (ou *bitwise*) são usadas para manipular bits individuais de um número. Em C, essas operações são realizadas usando operadores específicos que operam diretamente nos bits de um operando. **Essas operações são úteis em muitas aplicações de baixo nível, como manipulação de registros, criptografia, e controle de hardware**.
+As operações lógicas bit a bit (ou *bitwise*) são usadas para manipular bits individuais de um número. Na linguagem do Arduíno (assim como em C/C++), essas operações são realizadas usando operadores específicos que operam diretamente nos bits de um operando. **Essas operações são úteis em muitas aplicações de baixo nível, como manipulação de registros, criptografia, e controle de hardware**.
 
 As operações de conjunção, disjunção e negação são aplicadas a cada bit dos operandos. Os operadores bit a bit operam diretamente sobre os bits individuais dos operandos.
 
@@ -82,7 +82,7 @@ Serial.println(res); // Imprime o valor de 'res' no monitor serial
 
 irá apresentar na console do monitor serial o valor 12 (1100 em binário).
 
-Operações lógicas bit a bit são projetadas para serem usadas com tipos de dados inteiros (como int, unsigned int, char, short, long). Aplicar esses operadores a tipos de dados de ponto flutuante (como float e double) não é apropriado e geralmente resulta em comportamento indefinido ou em um erro de compilação, dependendo do compilador e das configurações.
+Operações lógicas bit a bit são projetadas para serem usadas com tipos de dados inteiros (como `int`, `unsigned int`, `char`, `short`, `long`). Aplicar esses operadores a tipos de dados de ponto flutuante (como `float` e `double`) não é apropriado e geralmente resulta em comportamento indefinido ou em um erro de compilação, dependendo do compilador e das configurações.
 
 Os caracteres podem ser usados com operadores bit a bit porque **cada caractere é internamente representado por um valor inteiro correspondente ao seu código ASCII**.
 
@@ -136,6 +136,11 @@ void loop() {
   // Lê o número inserido
   num = Serial.parseInt();
 
+  // Limpa o buffer serial para evitar caracteres residuais
+  while (Serial.available() > 0) {
+    Serial.read();
+  }
+
   // Verificar o valor de 'num' e enviar a resposta correspondente
   if (num > 10) {
     Serial.println("\n\nO numero e maior do que 10");
@@ -152,6 +157,13 @@ void loop() {
   delay(1000); 
 }
 ```
+
+Nesse exemplo, acho importante destacar:
+
+1. `Serial.available()`: é um método da classe que o objeto Serial representa. Verifica quantos bytes estão disponíveis para leitura na porta serial e retorna o número de bytes disponíveis para leitura na porta serial. Em outras palavras, indica quantos caracteres (ou bytes) foram recebidos pela porta serial e estão prontos para serem lidos.
+2. A estrutura `while (Serial.available() == 0):`: é uma estrutura de repetição - como trataremos mais adiante, que continua a rodar em *loop* enquanto `Serial.available()` retorna 0, ou seja, mantém o Arduino preso dentro do *loop* até que pelo menos um byte de dados esteja disponível para leitura. Quando o usuário digita um número e pressiona "Enter", os bytes correspondentes ao número (e possivelmente um caractere de nova linha \n ou \r, `Serial.available()` retorna um valor maior que 0, significando que há pelo menos um byte de dados na fila de recepção serial, e o loop while termina, permitindo que o código continue sua execução.
+3. `while (Serial.available() > 0):` é um *loop* que continua a rodar enquanto `Serial.available()` retorna um valor maior que 0, indicando que há dados disponíveis residuais no *buffer* serial. `Serial.read()` é um método lê um byte de dados do buffer serial, logo, nesse caso, limpando o *buffer*.
+4. `Serial.parseInt():`: é um método que lê a entrada serial até encontrar um número válido e busca convertê-lo em um inteiro (int). Ignora automaticamente qualquer caractere não numérico (exceto sinais de negativo) até encontrar o início de um número. Assim que encontra um dígito numérico, começa a construir o número até que ele encontre um número completo ou até que o tempo limite (*timeout*, 1 segundo, que pode ser ajustado com o método `Serial.setTimeout()`) seja alcançado. O método retorna o número inteiro que foi lido e convertido. Esse valor pode ser armazenado em uma variável, como no exemplo. continua lendo caracteres do buffer serial. Observação: caracteres como espaços, quebras de linha (\n), ou qualquer caractere não numérico (exceto sinais de negativo) são ignorados até que o método encontre um número válido.
 
 ## 2.3 Condicionais compostas
 
@@ -201,6 +213,11 @@ void loop() {
   // Lê o número inserido
   num = Serial.parseInt();
 
+  // Limpa o buffer serial para evitar caracteres residuais
+  while (Serial.available() > 0) {
+    Serial.read();
+  }
+
   // Verificar o valor de 'num' e enviar a resposta correspondente
   if (num > 10) {
     Serial.println("\n\nO numero e maior do que 10");
@@ -240,6 +257,11 @@ void loop() {
   
   // Lê o número inserido
   a = Serial.parseInt();
+
+  // Limpa o buffer serial para evitar caracteres residuais
+  while (Serial.available() > 0) {
+    Serial.read();
+  }
 
   // Verificar o valor de 'a' e enviar a resposta correspondente
   if (a > 100) {
