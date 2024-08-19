@@ -301,6 +301,7 @@ void loop() {
 
 A instrução `continue` interrompe a execução do *loop* no ponto em que foi inserido e remete a execução para o próximo teste de condição do `while` (ou `do-while`) ou para o próximo *loop* do `for`. Por exemplo, 
 
+```cpp
 void setup() {
   Serial.begin(9600); // Inicializa a comunicação serial
 }
