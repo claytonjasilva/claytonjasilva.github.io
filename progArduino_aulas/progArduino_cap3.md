@@ -279,36 +279,47 @@ A instrução `break` interrompe a execução do *loop* no ponto em que foi inse
 Por exemplo, no código,  
 
 ```cpp
-int y;
-int x;
+void setup() {
+  Serial.begin(9600); // Inicializa a comunicação serial
+}
+
+void loop() {
+  int x;
+  while (1){ // loop de while infinito
+    Serial.print("Digite um numero diferente de 0");
+    while (Serial.available() == 0) {}
+    x = Serial.parseInt(); // Lê um número inteiro da entrada serial
+    while (Serial.available() > 0) Serial.read(); // limpa buffer
+    if (x == 0) break; // saída se o digito igual a 0
+  }
+  Serial.println("O numero lido e igual a 0. Digite outro numero");
+  delay(1000);
+}
+```  
+
+##### b. **Instrução `continue`**
+
+A instrução `continue` interrompe a execução do *loop* no ponto em que foi inserido e remete a execução para o próximo teste de condição do `while` (ou `do-while`) ou para o próximo *loop* do `for`. Por exemplo, 
 
 void setup() {
   Serial.begin(9600); // Inicializa a comunicação serial
 }
 
 void loop() {
-  y = 3;
-  Serial.println("Digite número:");  
-  while (!Serial.available()) {
-    // Aguarda a entrada do usuário
+  int x;
+  while (1){ // loop de while infinito
+    Serial.print("Digite um numero diferente de 0");
+    while (Serial.available() == 0) {}
+    x = Serial.parseInt(); // Lê um número inteiro da entrada serial
+    while (Serial.available() > 0) Serial.read(); // limpa buffer
+    if (x == 0) continue; // saída se o digito igual a 0
   }
-  x = Serial.parseInt(); // Lê um número inteiro da entrada serial
-  if (x == 0) {
-    Serial.println("Saindo do loop");
-    return; // Sai da função loop, terminando o programa
-  }
-  y = 30;
-
-  Serial.print("Valor de y: ");
-  Serial.println(y); // Imprime o valor de y
+  Serial.println("O numero lido e igual a 0. Digite outro numero");
+  delay(1000);
 }
-```  
+```
 
-Independentemente do valor lógico da condição, a máquina interromperá o *loop* e **escreverá 3** no monitor serial quando o usuário digitar 0 na entrada. Em caso contrário, executará as repetições do *while* normalmente e escreverá 30 (último valor atribuído ao y no *loop*.
-
-##### b. **Instrução `continue`**
-
-A instrução `continue` interrompe a execução do *loop* no ponto em que foi inserido e remete a execução para o próximo teste de condição do `while` (ou `do-while`) ou para o próximo *loop* do `for` 
+Compare com o código anterior.
 
 ### 3.2.2 O comando `do-while`
 
@@ -355,7 +366,7 @@ Situações em que pode não ocorrer execução alguma das instruções do *loop
 
 ### 3.2.3 O comando `for`
 
-O loop for em C é normalmente usado para **iterar sobre uma sequência de valores**. A instrução `for` possui a seguinte sintaxe
+O loop `for` na linguagem do Arduíno é similar ao C, normalmente usado para **iterar sobre uma sequência de valores**. A instrução `for` possui a seguinte sintaxe
 
 ```cpp
 for (<inicialização da variável de controle>;<condição>;<incremento>) {
@@ -374,7 +385,7 @@ Se a condição resultar 0 (falso), passa à execução da instrução do códig
 
 O *loop* infinito pode ocorrer se não for especificada a condição de controle  
 
-```c
+```cpp
 for (<inicialização da variável de controle>; ;<incremento>) {
   <instrução ou bloco de instruções>
 }
@@ -389,4 +400,3 @@ for (int i=0;i<N;i++>){
 ```
 
 O comando `for` também admite a utilização dos comandos ***break*** ou ***continue***.
-
