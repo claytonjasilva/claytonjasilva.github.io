@@ -82,13 +82,17 @@ O formato geral de inicialização de matrizes é dado por
 
 A lista de valores pode ser apresentada de duas maneiras:
 
-- Composta pelos valores (do mesmo tipo da variável) separados por vírgula, de todas as colunas, da primeira à ultima linha. Ou seja, 
+- Composta pelos valores (do mesmo tipo da variável) separados por vírgula, de todas as colunas, da primeira à ultima linha. Ou seja,
 
-{[0][0],[0][1],...,[0][M-1],[1][0],[1][1],...,[1][M-1]...[N-1][0],[N-1][1],...,[N-1][M-1]}, ou
+```c
+{[0][0],[0][1],...,[0][M-1],[1][0],[1][1],...,[1][M-1]...[N-1][0],[N-1][1],...,[N-1][M-1]}
+```
 
-- Composta pelos valores separados por vírgula das linhas delimitadas por chaves, da primeira à ultima. Ou seja,
+- Ou composta pelos valores separados por vírgula das linhas delimitadas por chaves, da primeira à ultima. Ou seja,
 
-{{linha [0]},{linha [1]},...,{linha [N-1]}}.
+```c
+{{linha [0]},{linha [1]},...,{linha [N-1]}}
+```
 
 Por exemplo,
 
@@ -268,7 +272,7 @@ Como no exemplo anterior, `printf("O valor armazenado no endereço %p eh o valor
 A particularidade do uso de ponteiros para referenciar dados de estrutura homogênea se deve à possibilidade de poder obter todos os dados utilizando a sintaxe
 
 ```c
-*<nome do ponteiro>+<n>`
+*(<nome do ponteiro>+<n>)`
 ```
 
 , onde `n` varia de 1 até N-1, onde N é o número de elementos da estrutura.
