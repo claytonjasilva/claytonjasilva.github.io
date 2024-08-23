@@ -286,9 +286,11 @@ Figura 2.6 Uma matriz caso/função evoluindo para um modelo de paisagem de proc
 
 **Diretriz 3:** Se um processo muda de **estado transacional**, ele pode ser dividido verticalmente. De acordo com a teoria da ação-*workflow*, um processo de negócios passa por vários estados transacionais. Em particular, distinguimos: o estado de **iniciação**, o estado de **negociação**, o estado de **execução** e o estado de **aceitação**. No estado de iniciação, o contato entre um cliente e um fornecedor é iniciado. No estado de negociação, o cliente e o fornecedor negociam sobre os termos de serviço ou entrega de um produto. Durante o estado de execução, o fornecedor entrega o produto ou serviço ao cliente e, durante o estado de aceitação, o cliente e o fornecedor negociam sobre a aceitação e pagamento da entrega. Uma transição em um processo de um estado para outro é um indício de que o processo pode ser dividido.
 
-Para ilustrar esta diretriz, considere novamente a Figura 2.5. Suponha que durante o estado de negociação o corretor de hipotecas e o cliente negociem sobre a seleção de produtos de hipoteca, levando, em última análise, a um contrato sendo assinado por ambas as partes. Somente durante o estado de execução a hipoteca é paga ao cliente e os pagamentos mensais serão coletados. Pela lógica da Diretriz 3, portanto, dividimos o processo em um **processo de solicitação de hipoteca** e um **processo de pagamento de hipoteca**.
+Para ilustrar esta diretriz, considere novamente a Figura 2.7. Suponha que durante o estado de negociação o corretor de hipotecas e o cliente negociem sobre a seleção de produtos de hipoteca, levando, em última análise, a um contrato sendo assinado por ambas as partes. Somente durante o estado de execução a hipoteca é paga ao cliente e os pagamentos mensais serão coletados. Pela lógica da Diretriz 3, portanto, dividimos o processo em um **processo de solicitação de hipoteca** e um **processo de pagamento de hipoteca**.
 
-![Fig. 2.8](image/fig2.8.png) Uma matriz caso/função evoluindo para um modelo de paisagem de processos (aplicando Diretrizes 1, 2 e 3)
+![Fig. 2.7](image/fig2.8.png) 
+
+Figura 2.7 Uma matriz caso/função evoluindo para um modelo de paisagem de processos (aplicando Diretrizes 1, 2 e 3)
 
 **Diretriz 4:** Se um processo contém uma separação lógica no tempo, ele pode ser dividido verticalmente. Um processo contém uma separação lógica no tempo se suas partes são realizadas em diferentes intervalos de tempo. Intervalos que tipicamente podem ser distinguidos incluem: uma vez por solicitação de cliente, uma vez por dia, uma vez por mês e uma vez por ano.
 
