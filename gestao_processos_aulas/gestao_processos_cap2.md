@@ -310,7 +310,9 @@ As Diretrizes 6 e 7 são mais diretas e podem ser descritas da seguinte forma.
 
 A Figura 2.9 mostra os resultados da aplicação das Diretrizes 1 a 7 à matriz caso/função da Figura 2.5. A Figura 2.9 mostra que, após aplicar as Diretrizes 1 a 7, conforme discutido acima, existem seis processos: Desenvolvimento e Avaliação de Produtos na Holanda (PD NL), Desenvolvimento e Avaliação de Produtos na Bélgica (PD BE), Solicitação de Hipoteca na Holanda, Solicitação de Hipoteca na Bélgica, Pagamento de Hipoteca e Coleta de Hipoteca.
 
-![Fig. 2.9](image/fig2.9.png) Uma matriz caso/função evoluindo para um modelo de paisagem de processos (aplicando Diretrizes 1 a 7)
+![Fig. 2.8](image/fig2.9.png) 
+
+Figura 2.8 Uma matriz caso/função evoluindo para um modelo de paisagem de processos (aplicando Diretrizes 1 a 7)
 
 A diretriz final que discutimos aqui é a seguinte.
 
