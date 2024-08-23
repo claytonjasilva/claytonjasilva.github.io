@@ -227,9 +227,11 @@ Seja essa identificação de funções iniciada com um modelo de referência ou 
 |                                                 | 12.5 Desenvolver e gerenciar capacidade de gestão do conhecimento (KM) |
 |                                                 | 12.6 Medir e comparar                                          |
 
-Além disso, as funções podem ser organizadas de maneira diferente. Considere, por exemplo, a Figura 2.3. Ela foi retirada de um caso do mundo real e mostra partes das decomposições funcionais de dois departamentos da mesma organização, um na Europa e outro na América do Norte. O departamento europeu distingue entre compras e vendas, onde tanto compras quanto vendas são divididas em funções operacionais. Essas funções dizem respeito ao fornecimento e pedido a pagar para compras, por um lado, e marketing e operações de vendas para vendas, por outro. O departamento norte-americano distingue entre fornecimento, marketing e gestão de pedidos. Aqui, a gestão de pedidos envolve tanto o pedido a pagar quanto as atividades de vendas operacionais (mas não é decomposta mais adiante).
+Além disso, as funções podem ser organizadas de maneira diferente. Considere, por exemplo, a Figura 2.2. Ela foi retirada de um caso do mundo real e mostra partes das decomposições funcionais de dois departamentos da mesma organização, um na Europa e outro na América do Norte. O departamento europeu distingue entre compras e vendas, onde tanto compras quanto vendas são divididas em funções operacionais. Essas funções dizem respeito ao fornecimento e pedido a pagar para compras, por um lado, e marketing e operações de vendas para vendas, por outro. O departamento norte-americano distingue entre fornecimento, marketing e gestão de pedidos. Aqui, a gestão de pedidos envolve tanto o pedido a pagar quanto as atividades de vendas operacionais (mas não é decomposta mais adiante).
 
-![Fig. 2.3](image/fig2.3.png) Decomposições funcionais diferentes na mesma organização
+![Fig. 2.2](image/fig2.3.png) 
+
+Figura 2.2 Decomposições funcionais diferentes na mesma organização
 
 Claramente, no exemplo desta organização, pode ser necessária uma **etapa de negociação** entre as diferentes pessoas envolvidas para unificar as decomposições funcionais em suas partes europeias e norte-americanas. Isso é particularmente necessário se a decomposição funcional for mais do que apenas um exercício de modelagem. Ela pode também representar propriedades organizacionais reais. No caso ilustrado na Figura 2.3, os gerentes estão em posições para as diferentes funções nos diferentes níveis de decomposição. Na Europa, um gerente é nomeado para vendas, outro para compras e gerentes de nível inferior para fornecimento, pedido a pagar, marketing e vendas operacionais. Na América do Norte, há gerentes para fornecimento, marketing e gestão de pedidos. Portanto, quando a decomposição funcional dos departamentos precisa ser harmonizada, a estrutura de gestão também deve ser sujeita à harmonização.
 
@@ -246,11 +248,13 @@ Observe que essas são regras práticas, que deixam espaço para tratá-las de m
 
 #### 2.2.3 Construir Matrizes Caso/Função
 
-As duas etapas anteriores da abordagem descrita levam a uma matriz que tem os diferentes tipos de caso como colunas e as diferentes funções como linhas. Uma célula na matriz contém um 'X', se a função correspondente puder ser realizada para o tipo de caso correspondente. A Figura 2.4 mostra um exemplo de uma matriz caso/função. A matriz mostra uma decomposição de tipos de caso por tipo de cliente, resultando em três tipos de caso: um para clientes privados, um para clientes corporativos e um para clientes internos. A figura também mostra uma decomposição funcional em três funções principais e uma subsequente decomposição dessas funções principais em dez subfunções. Funções de gestão e suporte são realizadas apenas para clientes internos, enquanto funções operacionais são realizadas para clientes privados e corporativos.
+As duas etapas anteriores da abordagem descrita levam a uma matriz que tem os diferentes tipos de caso como colunas e as diferentes funções como linhas. Uma célula na matriz contém um 'X', se a função correspondente puder ser realizada para o tipo de caso correspondente. A Figura 2.3 mostra um exemplo de uma matriz caso/função. A matriz mostra uma decomposição de tipos de caso por tipo de cliente, resultando em três tipos de caso: um para clientes privados, um para clientes corporativos e um para clientes internos. A figura também mostra uma decomposição funcional em três funções principais e uma subsequente decomposição dessas funções principais em dez subfunções. Funções de gestão e suporte são realizadas apenas para clientes internos, enquanto funções operacionais são realizadas para clientes privados e corporativos.
 
-Uma matriz caso/função pode ser dividida em várias matrizes para melhorar a legibilidade. Normalmente, dividiríamos uma matriz caso/função caso uma partição das funções e tipos de caso da matriz seja possível de modo que todos os X's sejam preservados. Por exemplo, a matriz da Figura 2.4 pode ser particionada em, por um lado, uma matriz que contém as funções de gestão e suporte e os clientes internos e, por outro, uma matriz que contém as funções operacionais e os clientes privados e corporativos.
+Uma matriz caso/função pode ser dividida em várias matrizes para melhorar a legibilidade. Normalmente, dividiríamos uma matriz caso/função caso uma partição das funções e tipos de caso da matriz seja possível de modo que todos os X's sejam preservados. Por exemplo, a matriz da Figura 2.3 pode ser particionada em, por um lado, uma matriz que contém as funções de gestão e suporte e os clientes internos e, por outro, uma matriz que contém as funções operacionais e os clientes privados e corporativos.
 
-![Fig. 2.4](image/fig2.4.png) Uma matriz caso/função
+![Fig. 2.3](image/fig2.4.png) 
+
+Figura 2.3 Uma matriz caso/função
 
 #### 2.2.4 Identificar Processos
 
