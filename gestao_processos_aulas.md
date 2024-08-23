@@ -11,8 +11,8 @@
 
 2. Identificação de processos
 
-   [Identificação de Processos](gestao_processos_aulas/gestao_processos_cap2.md)  
-   [Identificação de Processos](gestao_processos_aulas/gestao_processos_cap2.md)
+   [Cap 2 - Identificação de Processos](gestao_processos_aulas/gestao_processos_cap2.md)  
+   [Cap 2 - Identificação de Processos - slides](gestao_processos_aulas/gestao_processos_cap2.md)
 
 
 4. [Modelagem de processos - parte1](gestao_processos_aulas/gestao_processos_cap3.md)
