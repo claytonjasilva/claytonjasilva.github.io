@@ -88,10 +88,10 @@ Um dos *frameworks* mais amplamente usados para avaliação de maturidade é o *
 
 A cobertura de áreas de processo e o grau de suporte fornecem a base para uma avaliação de maturidade em termos dos cinco níveis de maturidade do CMMI:
 
-- **Nível 1 (Inicial):** Nesta fase inicial, a organização executa seus processos de forma ad-hoc, sem qualquer definição clara desses processos. O controle está ausente.
-- **Nível 2 (Gerenciado):** Nesta fase, o planejamento de projetos juntamente com o monitoramento e controle de projetos foram colocados em prática. A medição e análise são estabelecidas, assim como a garantia de qualidade de processos e produtos.
+- **Nível 1 (Inicial):** Nesta fase inicial, a organização executa seus processos de forma *ad-hoc*, sem qualquer definição clara desses processos. O controle está ausente.
+- **Nível 2 (Gerenciado):** Nesta fase, o planejamento juntamente com o monitoramento e controle de processos foram colocados em prática. A medição e análise são estabelecidas, assim como a garantia de qualidade de processos e produtos.
 - **Nível 3 (Definido):** Organizações nesta fase adotaram um foco em processos. Definições de processos estão disponíveis e o treinamento organizacional é fornecido para permitir que as partes interessadas em toda a organização se envolvam na documentação e análise de processos. Gestão integrada de projetos e riscos estão em vigor. Análise e resolução de decisões também estão em vigor.
-- **Nível 4 (Gerenciado Quantitativamente):** Nesta fase, o desempenho dos processos organizacionais é rastreado. A gestão de projetos é realizada usando técnicas quantitativas.
+- **Nível 4 (Gerenciado Quantitativamente):** Nesta fase, o desempenho dos processos organizacionais é rastreado. A gestão é realizada usando técnicas quantitativas.
 - **Nível 5 (Otimização):** Nesta fase de maturidade, a organização estabeleceu a gestão do desempenho organizacional acompanhada de análise e resolução de causas.
 
 A avaliação de uma organização em termos desses níveis leva a uma chamada avaliação. Avaliações podem ser conduzidas internamente dentro de uma organização (também chamadas de autoavaliações) ou por uma organização externa com experiência em avaliação de maturidade. Diferentes tipos de avaliação são distinguidos e definidos no Método Padrão de Avaliação do CMMI para Melhoria de Processos (SCAMPI).
@@ -109,7 +109,9 @@ Como Davenport descreve:
 
 O que está acontecendo em algumas organizações é que esforços generalizados são feitos para pelo menos modelar todos os processos de negócios importantes, adiando a decisão de dar o passo para esforços mais avançados de BPM (por exemplo, redesenho ou automação de processos). A ideia é que os modelos de processos são a pedra angular de qualquer esforço futuro de BPM em qualquer caso e que sua existência ajudará a entender melhor onde as melhorias podem ser obtidas. Criar um modelo de um processo leva ao valioso insight de como esse processo funciona e pode fornecer uma boa base para pequenas melhorias que podem ser facilmente implementadas. No lado negativo, essa abordagem traz o risco de que grandes melhorias sejam perdidas e as partes interessadas desenvolvam um sentimento de falta de retorno pelos esforços. Deve-se enfatizar aqui também que a modelagem real de processos de negócios não é um elemento da fase de identificação de processos.
 
-![Fig. 2.1](image/fig2.1.png) Os diferentes níveis de detalhe em uma arquitetura de processos
+![Fig. 2.1](image/fig2.1.png)
+
+Figura 2.1 Os diferentes níveis de detalhe em uma arquitetura de processos
 
 ### 2.2 Projetando uma Arquitetura de Processos
 
