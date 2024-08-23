@@ -272,7 +272,9 @@ A Figura 2.4 mostra o exemplo em execução que usaremos para explicar as diretr
 
 A Figura 2.6 ilustra a aplicação da Diretriz 1 ao nosso exemplo em execução. Um objeto de fluxo para o processo de corretagem de hipotecas é uma **solicitação de hipoteca pelo cliente** na qual as atividades são realizadas durante uma solicitação de hipoteca por um cliente. Essas atividades incluem uma **avaliação de risco** e o **pagamento da hipoteca ao cliente**. Outro objeto de fluxo no processo de corretagem de hipotecas é um **produto de hipoteca** no qual as atividades são realizadas periodicamente para **avaliar o risco do produto** como um todo e para **desenvolver o produto**. Consequentemente, podemos dividir o processo de corretagem de hipotecas em dois processos, um que tem uma solicitação de hipoteca como objeto de fluxo e outro que tem um produto de hipoteca como objeto de fluxo. Chamamos o primeiro de **processo de solicitação de hipoteca** e o segundo de **processo de desenvolvimento e avaliação de produtos**.
 
-![Fig. 2.6](image/fig2.6.png) Uma matriz caso/função evoluindo para um modelo de paisagem de processos (aplicando a Diretriz 1)
+![Fig. 2.5](image/fig2.6.png) 
+
+Figura 2.5 Uma matriz caso/função evoluindo para um modelo de paisagem de processos (aplicando a Diretriz 1)
 
 **Diretriz 2:** Se o objeto de fluxo de um processo muda de **multiplicidade**, ou seja, em tipos de caso diferentes, o processo pode ser dividido verticalmente. Isso é típico do processamento em lotes, no qual certas atividades são realizadas para múltiplos casos de clientes em lote ao mesmo tempo. Se, no mesmo processo, o número de objetos de fluxo processados por atividade difere, isso pode ser uma razão para dividir o processo.
 
