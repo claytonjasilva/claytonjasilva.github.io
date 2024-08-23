@@ -320,7 +320,9 @@ A diretriz final que discutimos aqui é a seguinte.
 
 Por exemplo, ao observar a Figura 2.5, vemos que o processo de Solicitação de Hipoteca na Holanda tem muitas mais funções para hipotecas compostas do que para hipotecas simples. Pela lógica da Diretriz 8, dividiríamos esse processo para solicitação composta e simples. A aplicação de todas essas oito diretrizes resulta em uma arquitetura de processos para o nível um. O resultado pode ser visto na Figura 2.7, que é o modelo finalizado da paisagem de processos para nosso exemplo.
 
-![Fig. 2.10](image/fig2.10.png) Uma matriz caso/função evoluindo para um modelo de paisagem de processos (aplicando a Diretriz 8)
+![Fig. 2.9](image/fig2.10.png) 
+
+Figura 2.9 Uma matriz caso/função evoluindo para um modelo de paisagem de processos (aplicando a Diretriz 8)
 
 ### 2.2.5 Completar a Arquitetura de Processos
 
