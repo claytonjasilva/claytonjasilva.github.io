@@ -36,7 +36,8 @@
 
 Os instrumentos de avaliação continuada serão disponibilizados à medida que as aulas forem ministradas. 
 
-1. [Form 1 - Conceitos iniciais](https://forms.gle/mRfZqWQutcDfgQnK9) 
+1. [Form 1 - Conceitos iniciais](https://forms.gle/mRfZqWQutcDfgQnK9)
+2. [Form 2 - Conceitos iniciais (cont.)](https://forms.gle/dUf3SDHoyawqZ2pQA)
 
 ## Exercícios  
 
