@@ -19,7 +19,7 @@ comandado por uma chave ligada a uma entrada do Arduíno.
 3. Observações:
 
 - Visite o site do Arduíno para conhecer um pouco sobre a [referência da linguagem do Arduíno](https://www.arduino.cc/reference/en/)  
-- O código da prática pode ser obtido em [*shield* - usando entradas digitais](https://github.com/claytonjasilva/prog_exemplos/blob/main/linguagem_arduino_ino/pratica3_I.ino)
+- O código da prática pode ser obtido em [*sketch* - usando entradas digitais](https://github.com/claytonjasilva/prog_exemplos/blob/main/linguagem_arduino_ino/pratica3_I.ino)
 
 4. Veja o vídeo com uma explicação sucinta da prática no [Youtube](https://www.youtube.com/watch?v=zeFvPgiRE4U)
 
