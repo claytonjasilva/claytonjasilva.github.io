@@ -50,7 +50,7 @@ Propor um novo *shield* que utilize duas chaves (Chave 1 e Chave 2) e quatro LED
 | Ch1=1,Ch2=0 | LED1=0,LED2=0,LED3=1,LED4=0 |
 | Ch1=1,Ch2=1 | LED1=1,LED2=0,LED3=0,LED4=1 |
 
-Veja o código proposto em [Decoder](https://github.com/claytonjasilva/prog_exemplos/linguagem_arduino_ino/blob/main/pratica3_IV.ino)
+Veja o código proposto em [Decoder](https://github.com/claytonjasilva/prog_exemplos/blob/main/linguagem_arduino_ino/pratica3_IV.ino)
 
 ___
 **[Home Conteúdo Arquitetura de Computadores](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/arq_aulas.md)**  ou 
