@@ -14,14 +14,13 @@
    [Cap 2 - Identificação de Processos](gestao_processos_aulas/gestao_processos_cap2.md)  
    [Cap 2 - Identificação de Processos - slides](gestao_processos_aulas/gestao_processos_cap2.pdf)
 
-
 3. [Modelagem de processos - parte1](gestao_processos_aulas/gestao_processos_cap3.md)
 4. [Modelagem de processos - parte 2](gestao_processos_aulas/gestao_processos_cap4.md)
 5. [Descoberta de processos](gestao_processos_aulas/gestao_processos_cap5.md)
 6. [Análise qualitativa de processos](gestao_processos_aulas/gestao_processos_cap6.md)
 7. [Análise quantitativa de processos](gestao_processos_aulas/gestao_processos_cap7.md)
 8. [Redesenho de processos](gestao_processos_aulas/gestao_processos_cap8.md)
-9.  [Automação de processos](gestao_processos_aulas/gestao_processos_cap9.md)
+9. [Automação de processos](gestao_processos_aulas/gestao_processos_cap9.md)
 10. [Inteligência de processos](gestao_processos_aulas/gestao_processos_cap10.md)
 11. [Internet das Coisas (IoT) em processos industriais]()
 12. [Plataformas de desenvolvimento *Low-Code/No-Code* de gerenciamento de processos]()
@@ -41,10 +40,9 @@
 
 Os instrumentos de avaliação continuada serão disponibilizados à medida que as aulas forem ministradas. 
 
-1. [Form 1 - Conceitos iniciais](https://forms.gle/mRfZqWQutcDfgQnK9)
+1. [Form 1 - Conceitos iniciais](gestao_processos_aulas/gestao_processos_form1.md)
 2. [Form 2 - Conceitos iniciais (cont.)](https://forms.gle/dUf3SDHoyawqZ2pQA)
-
-## Exercícios  
+3. [Estudo de Caso 1: Elementos de processos](gestao_processos_aulas/gestao_processos_caso1.md)
 
 ## Referências  
 
