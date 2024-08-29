@@ -267,7 +267,7 @@ No exemplo, como o ponteiro armazena o endereço de x, obviamente o seu conteúd
 
 De modo similar ao ponteiro para uma variável simples, isso pode ser obtido pelo uso do operador unário `*` precedendo o nome da variável: `*<nome do ponteiro>`.
 
-Como no exemplo anterior, `printf("O valor armazenado no endereço %p eh o valor inteiro %i",int_p,*int_p);`, mesmo que `int_p` armazene o endereço do dado do primeiro elemento de uma estrutura homogênea, por exemplo `&vetor[0]`, onde `vetor` é um *array* de inteiros.
+Como no exemplo anterior, `printf("O endereço armazenado no ponteiro eh %p; no endereco se armazena o valor inteiro %i",int_p,*int_p);`, mesmo que `int_p` armazene o endereço do dado do primeiro elemento de uma estrutura homogênea, por exemplo `&vetor[0]`, onde `vetor` é um *array* de inteiros.
 
 A particularidade do uso de ponteiros para referenciar dados de estrutura homogênea se deve à possibilidade de poder obter todos os dados utilizando a sintaxe
 
@@ -286,7 +286,101 @@ estr_p = estrutura;
 for (int i=0;i<12;i++) printf("O termo %i eh %i\n",i,*(estr_p+i));
 ```
 
-### 4.4.4 Aritmética com endereços
+### 4.4.4 Ponteiros e funções
+
+#### a. Argumentos de funções
+
+Como a linguagem C passa argumentos para funções usando 'chamada por valor', ou seja, a função chama **não pode alterar uma variável diretamente na função chamadora**.
+
+Pode-se alterar os valores na função chamadora utilizando-se ponteiro. Para isso pode-se passar como argumento na função chamadora o endereço das variáveis cujos valores deseja-se alterar na função chamada. Quando a função chamada alterar o conteúdo do endereço apontado pelos ponteiros, automaticamente estará sendo alterado o valor também na função chamadora. 
+
+Por exemplo, seja uma função para trocar valores de duas variáveis `x` e `y`
+
+```c
+void troca(int *px, int *py){
+    int temp;
+    temp = *px;
+    *px = *py;
+    *py = temp;
+}
+
+void main(){
+    int x=3;
+    int y=4;
+    troca(x,y);
+    printf("O conteudo de x eh %i e o conteudo de y eh %i",x,y);
+}
+```
+
+#### b. Ponteiros para funções
+
+Embora na linguagem C as funções não sejam variáveis, é possível definir ponteiros para funções, utilizando oa sintaxe geral
+
+```c
+<tipo> (*<nome>)(<declaração de parâmetros>)
+```
+
+Por exemplo,
+
+```c
+int minha_funcao(int a, float b) {
+    return a + (int)b;
+}
+
+int main() {
+    int (*func_ptr)(int, float) = &minha_funcao; // Atribui o endereço da função ao ponteiro
+    int resultado = func_ptr(3, 4.5);            // Chama a função usando o ponteiro
+    printf("Resultado: %d\n", resultado);
+    return 0;
+}
+```
+
+Ponteiros de função são uma característica poderosa e flexível em C que permitem tratar funções como valores, o que proporciona uma série de aplicações vantajosas. Por exemplo, implementação de *callbacks* (*callback* é uma função que é passada como argumento para outra função e é chamada em um momento específico dentro dessa função). Por exemplo,
+
+```c
+#include <stdio.h>
+#include <stdlib.h>
+
+// Função de comparação para ordem crescente
+int comparacao_crescente(const void *a, const void *b) {
+    return (*(int*)a - *(int*)b);
+}
+
+// Função de comparação para ordem decrescente
+int comparacao_decrescente(const void *a, const void *b) {
+    return (*(int*)b - *(int*)a);
+}
+
+// Função de ordenação genérica que aceita uma função de comparação como callback
+void ordenar(int *array, size_t tamanho, int (*comparar)(const void *, const void *)) {
+    qsort(array, tamanho, sizeof(int), comparar);
+}
+
+int main() {
+    int valores[] = {40, 10, 100, 90, 20, 25};
+    size_t tamanho = sizeof(valores) / sizeof(valores[0]);
+
+    // Ordenar em ordem crescente
+    ordenar(valores, tamanho, comparacao_crescente);
+    printf("Ordem crescente: ");
+    for (size_t i = 0; i < tamanho; i++) {
+        printf("%d ", valores[i]);
+    }
+    printf("\n");
+
+    // Ordenar em ordem decrescente
+    ordenar(valores, tamanho, comparacao_decrescente);
+    printf("Ordem decrescente: ");
+    for (size_t i = 0; i < tamanho; i++) {
+        printf("%d ", valores[i]);
+    }
+    printf("\n");
+
+    return 0;
+}
+```
+
+Ponteiros podem ser usados também para redução de código duplicado, pois em vez de escrever funções quase idênticas para diferentes tipos de dados ou operações, um ponteiro de função permite abstrair o comportamento variável; entre outras diversas aplicações.
 
 ## 4.5 Exemplos
 
