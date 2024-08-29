@@ -265,5 +265,29 @@ Lembrando que cada linha está ocupando uma linha de endereços, que poderia ser
 
 O rótulo (*label*) indica o endereço da primeira linha de instruções de forma simbólica (Início). Obviamente o código armazenado ocupará uma posição na memória IAS, ou seja, entre os endereços 0x000 e 0x3FF (entre 0 e 1023, em hexadecimal).
 
+Um novo exemplo de código está apresentado abaixo. O código realiza a soma de 10 (0x00A) números binários a partir da posição de memória 0x100. Admite-se que é necessário inicializar algumas posições de memória. Observe que além de rótulo o código admite comentários, delimitado pelo `;`.
+
+```
+inicialização da memória
+M[0x000] <- 0x109
+M[0x001] <- 0x101
+M[0x002] <- 0x001
+
+INICIO:
+LOAD_M(X) 0x100 ; carregar o valor de 0x100
+LOOP: 
+ADD_M(X) 0x101 ; soma o próximo valor
+LOAD_M(X) 0x000 ; 0x000 armazena o endereço limite 0x109
+SUB_M(X) 0x001 ; 0x001 armazena o próximo endereço
+JUMP_+M(X,0:19) NOVO_END
+JUMP_M(X,20:39) FIM ; desvia para O final do programa
+
+NOVO_END: ; atualiza endereço do próximo valor
+LOAD_M(X) 0x001 ; carrega o próximo endereço
+ADD_M(X) 0x002 ; 0x002 armazena 1, logo incrementa o endereço
+JUMP_M(X,28:39) LOOP ; altera operando da instrução em LOOP
+JUMP_M(X,20:39) LOOP ; desvia para instrução em LOOP
+```
+
 ___
 **[Home Conteúdo Arquitetura de Computadores](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/arq_aulas.md)**   
