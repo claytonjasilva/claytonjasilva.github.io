@@ -384,34 +384,39 @@ Ponteiros podem ser usados também para redução de código duplicado, pois em 
 
 ## 4.5 Exemplos
 
-1. Escrever um código em C para ler 10 números quaisquer. Determinar e escrever cada número lido seguido da média dos números lidos.   
-[Uma solução](https://github.com/claytonjasilva/prog_exemplos/blob/main/cursoCarray1.c)  
+1. Escrever um código em C para ler 10 números quaisquer. Determinar e escrever cada número lido seguido da média dos números lidos.
+
+Ver **[Solução proposta](https://github.com/claytonjasilva/prog_exemplos/blob/main/linguagem_c/exemplo40.c)**
+
 2. Criar um vetor que armazene os seguintes nomes: "ana", "joao", "pedro", "carlos", "jose", "joaquim", "zenildo".  
-Com o vetor criado, o usuario poderá digitar um nome, se o nome pertencer ao conjunto, o programa deverá responder "NOME ENCONTRADO!".  
+Com o vetor criado, o usuário poderá digitar um nome, se o nome pertencer ao conjunto, o programa deverá responder "NOME ENCONTRADO!".  
 Se o nome digitado pelo usuário não pertencer ao conjunto, o programa deverá responder "NOME NAO PERTENCE A RELACAO!".  
-[Uma solução](https://github.com/claytonjasilva/prog_exemplos/blob/main/cursoCarray2.c)  
-**Resolvendo com ponteiro...**    
-[Outra solução](https://github.com/claytonjasilva/prog_exemplos/blob/main/cursoCarray3.c)
-3. Criar um vetor para armazenar as idades de um grupo de pessoas.  
-O usuário deverá digitar quantas pessoas serão cadastradas.  
-Escrever a média das idades.  
-[Uma solução](https://github.com/claytonjasilva/prog_exemplos/blob/main/cursoCarray5.c)  
-4. Criar um vetor para armazenar os nomes de alunos de uma turma de aula.   
-O usuário deverá digitar quantos alunos a turma possui, antes de informar os nomes do aluno da turma.
-Ao final, o programa deve escrever o primeiro nome digitado pelo usuário.  
-[Uma solução](https://github.com/claytonjasilva/prog_exemplos/blob/main/cursoCarray4.c)
-5. Cadastrar nomes e notas de ma turma com 10 alunos. Determinar a maior nota e o respectivo nome do aluno.
-6. Elaborar um programa em C que preencha, linha por linha, com dados de 1 a 200, uma matriz de 20x10.  
-[Uma solução](https://github.com/claytonjasilva/prog_exemplos/blob/main/progC_matrizes1.c)  
-7. Elaborar um programa em C que leia as temperaturas (em graus Celsius), entre 2h e 24h do dia, em intervalos de 2h, para 20 cidades.  
-Armazene as temperaturas da cidade em uma matriz.  
-Determine e armazene a temperatura média na mesma matriz.  
-8. Elaborar um programa em C para armazenar em uma matriz de duas linhas as vogais.  
-Na primeira linha, as vogais em minúscula.  
-Na segunda linha, as vogais em maiúscula.  
-9. Elaborar um programa em C que leia os dados de peso de 10 pessoas mês a mês, de janeiro a dezembro.  
-Armazene os pesos das pessoas em uma matriz.  
-Utilizar ponteiro.  
+
+Ver **[Solução proposta](https://github.com/claytonjasilva/prog_exemplos/blob/main/linguagem_c/exemplo41.c)**
+
+3. Elaborar um programa na linguagem C para criar um vetor para armazenar as idades de um grupo de pessoas. O usuário deverá digitar quantas pessoas serão cadastradas. Escrever a média das idades.
+
+Ver **[Solução proposta](https://github.com/claytonjasilva/prog_exemplos/blob/main/linguagem_c/exemplo42.c)**
+
+4. Elaborar um programa na linguagem C criar um vetor para armazenar os nomes de alunos de uma turma de aula. O usuário deverá digitar quantos alunos a turma possui, antes de informar os nomes do aluno da turma. Ao final, o programa deve escrever o primeiro nome digitado pelo usuário.
+
+Ver **[Solução proposta](https://github.com/claytonjasilva/prog_exemplos/blob/main/linguagem_c/exemplo43.c)**
+
+5. Elaborar um programa em C que preencha, linha por linha, com dados de 1 a 200, uma matriz de 20x10.
+
+Ver **[Solução proposta](https://github.com/claytonjasilva/prog_exemplos/blob/main/linguagem_c/exemplo44.c)**
+
+6. Elaborar um programa em C que leia as temperaturas (em graus Celsius), entre 2h e 24h do dia, em intervalos de 2h, para 20 cidades. Armazene as temperaturas da cidade em uma matriz. Determine e armazene a temperatura média na mesma matriz. 
+
+Ver **[Solução proposta](https://github.com/claytonjasilva/prog_exemplos/blob/main/linguagem_c/exemplo45.c)**
+
+7. Elaborar um programa em C para armazenar em uma matriz de duas linhas as vogais. Na primeira linha, as vogais em minúscula. Na segunda linha, as vogais em maiúscula.
+
+Ver **[Solução proposta](https://github.com/claytonjasilva/prog_exemplos/blob/main/linguagem_c/exemplo46.c)**
+
+8. Elaborar um programa em C que leia os dados de peso de 10 pessoas mês a mês, de janeiro a dezembro. Armazene os pesos das pessoas em uma matriz. Utilizar ponteiro.  
+
+Ver **[Solução proposta](https://github.com/claytonjasilva/prog_exemplos/blob/main/linguagem_c/exemplo47.c)**
 
 ___
 **[Home Conteúdo Programação em C](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/progC_aulas.md)**   
