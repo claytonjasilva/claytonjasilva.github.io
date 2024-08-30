@@ -44,6 +44,40 @@ Se for desnecessário que a função utilize parâmetros o código pode informar
 - pelo uso da sintaxe `<tipo de retorno> <nome da função>(void)` ou
 - o compilador reconhece a omissão da palavra reservada, usando a sintaxe `<tipo de retorno> <nome da função>();`.
 
+A instrução `return`
+
+A instrução `return` em C é fundamental para o controle de fluxo dentro de funções. Ela permite que uma função finalize sua execução e, opcionalmente, retorne um valor para o ponto de chamada. Quando a instrução `return` é executada em uma função, a execução dessa função é imediatamente interrompida, e o controle é devolvido ao ponto onde a função foi chamada.
+
+Dependendo da função, `return` pode ser usado para devolver um valor ao chamador da função. Esse valor pode ser de **qualquer tipo compatível com o tipo de retorno da função**.
+
+Pode ser usada também para retorno condicional, isto é, usada para sair de uma função precocemente, com ou sem um valor de retorno, dependendo de uma condição. Por exemplo,
+
+```c
+int dividir(int a, int b) {
+    if (b == 0) {
+        printf("Erro: Divisao por zero\n");
+        return 0;  // Retorna 0 ou outro valor especial em caso de erro
+    }
+    return a / b;  // Caso contrário, retorna a divisão
+}
+```
+
+Assim como pode ser usada para encerramento prematuro de funções. Por exemplo,
+
+```c
+void verificarPositivo(int num) {
+    if (num <= 0) {
+        printf("Numero nao e positivo.\n");
+        return;  // Sai da função se o número não for positivo
+    }
+    printf("Numero positivo: %d\n", num);
+}
+```
+
+Em funções declaradas como void, você não pode retornar um valor, mas pode usar return para sair da função mais cedo.
+
+A função `main` em C pode usar `return` para retornar um valor ao sistema operacional, **indicando o status de término do programa** (tipicamente 0 para sucesso, e um valor diferente de zero para erro).
+
 ### 3.1.2 Escopo de variáveis
 
 As funções estão diretamente relacionadas ao conceito de **escopo** de variáveis.
@@ -75,6 +109,17 @@ Para criar uma nova função é necessário escrever instruções atendendo a si
 As definições de funções podem estar em qualquer ordem, em um arquivo fonte ou diversos, porém **nenhuma função pode estar dividida em dois arquivos**.
 
 Se a definição da função for apresentada antes do módulo principal a prototipação é desnecessária, no entanto, se a prototipação for usada, **se a definição da função não estiver de acordo com o seu protótipo será apresentado um erro na compilação.**
+
+### 3.1.3 Recursividade de funções 
+
+Recursividade ocorre quando uma função chama a si mesma, direta ou indiretamente, como parte da sua execução. Esse tipo de chamada permite que problemas complexos sejam resolvidos de maneira elegante, quebrando-os em subproblemas menores e mais simples, que eventualmente convergem para um caso base.
+
+A estrutura de uma função recursiva compreende:
+
+- Caso base: é a condição de parada que termina a recursão. Sem um caso base, a recursão se tornaria infinita;
+- Chamada recursiva: é onde a função se chama novamente com um conjunto modificado de parâmetros, movendo o problema em direção ao caso base.
+
+O exemplo clássico do uso de recursividade é para determinação do fatorial de um número. Veja o exemplo do exercício 12.
 
 ### 3.1.4 Biblioteca-padrão
 

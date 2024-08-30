@@ -430,6 +430,27 @@ void main(){
 }
 ```
 
+Quando uma função retorna um ponteiro, é crucial que o ponteiro ainda seja válido após o retorno. Por exemplo, retornar um ponteiro para uma variável local resulta em comportamento indefinido, porque a variável local deixa de existir após a função terminar. Por exemplo,
+
+```c
+int* retornarPonteiroIncorreto() {
+    int x = 10;
+    return &x;  // Incorreto: x é uma variável local
+}
+```
+
+Para evitar problemas, você deve alocar dinamicamente a memória ou usar variáveis globais/estáticas, logo
+
+```c
+int* retornarPonteiroCorreto() {
+    int *p = (int *)malloc(sizeof(int));
+    *p = 10;
+    return p;  // Correto: memória foi alocada dinamicamente
+}
+```
+
+
+
 ### 4.4.2 Inicialização de ponteiros
 
 A inicialização de ponteiros requer muito cuidado, pois, a priori, não se pode atribuir qualquer valor à variável ponteiro, conforme tratado anteriormente, em função especialmente das restrições impostas pela arquitetura e pelo sistema operacional, a quem compete gerenciar memória.
