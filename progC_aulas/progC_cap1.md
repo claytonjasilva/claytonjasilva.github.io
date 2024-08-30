@@ -202,10 +202,15 @@ Os **operadores aritméticos** sinalizam para o compilador a operação aritmét
 | `++` | Incremento |
 | `--` | Decremento |
 
-Os operadores possuem **prioridade** para serem resolvidos, logo é importante organizá-los na expressão da forma adequada.  
-Ver a [precedência entre todos os operadores na linguagem C](https://www.ime.usp.br/~pf/algoritmos/apend/precedence.html).
+Os operadores possuem **prioridade** para serem resolvidos, logo é importante organizá-los na expressão da forma adequada.  A precedência dos operadores determina a ordem em que as operações são realizadas quando múltiplos operadores aparecem em uma expressão. Em C, a precedência dos operadores aritméticos é a seguinte (do mais alto para o mais baixo):
 
-Importante verificar que os operadores podem ser unários (um só operando) ou binários (dois operandos).  
+1. Multiplicação (*), Divisão (/), Módulo (%): Esses operadores têm a mesma precedência e são avaliados antes dos operadores de adição e subtração. Eles são avaliados da esquerda para a direita (associatividade à esquerda). **Importante verificar que os operadores podem ser unários (um só operando) ou binários (dois operandos)**.  Por exemplo, em `int resultado = 20 / 5 * 4;`, primeiro, a divisão 20 / 5 é realizada, resultando em 4; depois, a multiplicação 4 * 4 é realizada, resultando em 16. A associatividade da esquerda para a direita garante que a divisão ocorra antes da multiplicação. Em `int resultado = 18 / 3 * 2 % 5;`, a sequência de operações é `18 / 3`, `6 * 2` e `12 % 5`.
+2. Adição (+), Subtração (-): Esses operadores têm precedência mais baixa do que multiplicação, divisão e módulo. Eles também são avaliados da esquerda para a direita (associatividade à esquerda). Por exemplo, em `int resultado = 10 + 5 * 2 - 8 / 4 % 3;`, resolve-se (i) 5 * 2 (10), a expressão agora é: 10 + 10 - 8 / 4 % 3; (ii) depois, a divisão 8 / 4 (2), a expressão agora é: 10 + 10 - 2 % 3; (iii) em seguida, o módulo 2 % 3 (2), a expressão agora é: 10 + 10 - 2; (iv) em seguida, a operação 10 + 10 (20), a expressão agora é: 20 - 2; finalmente, a subtração 20 - 2 = 18. O resultado final é 18.
+3. Os parênteses () podem ser usados para alterar a ordem de avaliação de uma expressão, sobrescrevendo a precedência natural dos operadores.
+
+Em relação aos operadores de incremento e decremento, pode-se afirmar que não são operadores concorrentes com os demais operadores. Aplicam-se ao operador imediato a que se referem têm uma precedência alta e são avaliados antes dos operadores aritméticos básicos. Só podem ser aplicados a *lvalues*, que são expressões que se referem a um local na memória e, portanto, podem ser modificadas. Um *lvalue* (*left value*) é uma expressão que se refere a um local de memória que contém um valor, é algo que pode ser modificado diretamente, como uma variável.
+
+No pré-incremento (++x) e pré-decremento (--x), **modificam o valor da variável antes que ela seja usada na operação imediata seguinte**. Por exemplo, na atribuição `y=++x * z`, primeiro se incrementa x; posteriormente multiplica-se o novo valor por z; e, por último, se atribui o novo valor de x a y. No pós-incremento (x++) e pós-decremento (x--), **são avaliados após a utilização da variável na operação imediata seguinte**. Modificam o valor da variável após ela ser usada na operação. Por exemplo, na atribuição `y=x++ * z`, primeiro se realiza x * z; em seguida, incrementa-se x; e por último atribui-se o resultado a y.
 
 Os operandos são os dados sobre os quais serão realizadas as operações. Inicialmente trataremos os dados numéricos dos seguintes **tipos**:
 
