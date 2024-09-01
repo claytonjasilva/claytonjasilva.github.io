@@ -27,7 +27,7 @@ Conforme **a palavra do código de entrada**, o programa realiza uma função es
 ## III - Elaborar um novo *sketch* para o mesmo *shield*
 
 1. O *sketch* deve ler a palavra código de entrada. Caso a palavra corresponda a um número par: o sistema deverá ler via monitor serial um número inteiro; calcular a soma dos números pares não negativos inferiores ao número lido; e escrever o resultado no monitor serial.
-2. O *sketch* deve ler a palavra código de entrada. O sistema deverá apresentar uma contagem binária crescente cíclico no monitor serial a partir do código lido até 111. O contador cíclico se repete. Por exemplo, se for lido 011, o sistema deverá gerar 100-101-110-111-011-100-101... 
+2. O *sketch* deve ler a palavra código de entrada. O sistema deverá apresentar uma contagem binária crescente cíclico no monitor serial a partir do código lido até 111. O contador cíclico se repete. Por exemplo, se for lido 011, o sistema deverá gerar 011-100-101-110-111-011-100-101... 
 
 ## IV - Elaborar um novo *shield*
 
