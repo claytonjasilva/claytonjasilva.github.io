@@ -27,7 +27,12 @@ Conforme **a palavra do código de entrada**, o programa realiza uma função es
 ## III - Elaborar um novo *sketch* para o mesmo *shield*
 
 1. O *sketch* deve ler a palavra código de entrada. Caso a palavra corresponda a um número par: o sistema deverá ler via monitor serial um número inteiro; calcular a soma dos números pares não negativos inferiores ao número lido; e escrever o resultado no monitor serial.
+
+- Veja uma sugestão de solução em: https://github.com/claytonjasilva/prog_exemplos/blob/main/linguagem_arduino_ino/pratica4_III1.ino
+
 2. O *sketch* deve ler a palavra código de entrada. O sistema deverá apresentar uma contagem binária crescente cíclico no monitor serial a partir do código lido até 111. O contador cíclico se repete. Por exemplo, se for lido 011, o sistema deverá gerar 011-100-101-110-111-011-100-101... 
+
+- Veja uma sugestão de solução em: https://github.com/claytonjasilva/prog_exemplos/blob/main/linguagem_arduino_ino/pratica4_III2.ino
 
 ## IV - Elaborar um novo *shield*
 
