@@ -37,10 +37,13 @@ Conforme **a palavra do código de entrada**, o programa realiza uma função es
 ## IV - Elaborar um novo *shield*
 
 O projeto Arduíno deverá possibilitar que cada código de entrada ative as seguintes saídas:
+
 - 000 - ative um led vermelho;
 - 001 - ative um led amarelo;
 - 010 - ative um *buzzer* com frequência de 100 Hz durante 2 seg, intermitente, em intervalos de 5 seg;
 - 011 - ative um *buzzer* com frequência de 50 Hz durante 3 seg, intermitente, em intervalos de 2 seg, e ative um led verde;
 - nos demais casos, produza no monitor serial o número decimal equivalente.
+
+- Veja uma sugestão de solução em: https://github.com/claytonjasilva/prog_exemplos/blob/main/linguagem_arduino_ino/pratica4_IV.ino
 
 **[Home Conteúdo Arquitetura de Computadores](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/arq_aulas.md)**
