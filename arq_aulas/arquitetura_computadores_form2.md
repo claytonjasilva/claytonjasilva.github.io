@@ -1,20 +1,4 @@
-# Arquitetura Form 2 - Conceitos Iniciais
-
-**NOME**  
-*Campo obrigatório*
-
-**MATRÍCULA**  
-*Campo obrigatório*
-
-**TURMA**  
-*Campo obrigatório*
-
-- ( ) 2a
-- ( ) 3a - manhã
-- ( ) 3a - tarde
-- ( ) 5a
-
----
+# Enunciados das Questões - Form 2 - Arquitetura de Computadores 2024.2
 
 1. Vimos que a máquina IAS (ou modelo de von Neumann) ainda inspira as máquinas modernas. Considerando os três elementos principais do modelo, qual deles é responsável pelo armazenamento de instruções e dados?
 
