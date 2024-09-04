@@ -64,7 +64,7 @@ Os instrumentos de avaliação continuada serão disponibilizados à medida que 
 
 ## Exercícios  
 
-1. [Lista 1 de Exercícios](arq_aulas/arquitetura_computadores_exercicios1.md)  
+1. [Lista 1 de Exercícios: grandezas numéricas e conversão de bases](arq_aulas/arquitetura_computadores_exercicios1.md) **Revisado 24.2** 
 2. [Lista 2 de Exercícios](arq_aulas/arquitetura_computadores_exercicios2.md)  
 3. [Lista 3 de Exercícios](arq_aulas/arquitetura_computadores_exercicios3.md)  
 4. [Lista 4 de Exercícios](arq_aulas/arquitetura_computadores_exercicios4.md)  
