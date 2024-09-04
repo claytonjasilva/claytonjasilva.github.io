@@ -36,8 +36,8 @@ Regularmente serão disponibilizados *forms* que abordam o conteúdo.
 
 ### Avaliações Bimestrais
 
-1. **[AP1 - Trabalho - A definir]()**
-2. **[AP2 - Trabalho - A definir]()**
+1. **AP1 - Trabalho - A definir**
+2. **AP2 - Trabalho - A definir**
 
 ## Exercícios
 
