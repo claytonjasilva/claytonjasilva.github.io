@@ -41,7 +41,7 @@
 Os instrumentos de avaliação continuada serão disponibilizados à medida que as aulas forem ministradas. 
 
 1. [Form 1 - Conceitos iniciais](gestao_processos_aulas/gestao_processos_form1.md) **encerrado**
-2. [Form 2 - Conceitos iniciais (cont.)](https://forms.gle/dUf3SDHoyawqZ2pQA) **disponível**
+2. [Form 2 - Conceitos iniciais (cont.)](gestao_processos_aulas/gestao_processos_form2.md) **encerrado**
 3. [Estudo de Caso 1: Elementos de processos](gestao_processos_aulas/gestao_processos_caso1.md)
 
 ## Referências  
