@@ -27,6 +27,7 @@
 - Implementar BPM é uma decisão estratégica - logo requer compromisso da alta gerência.
 
 2. Sobre BPM
+
 Em uma organização que fabrica e vende produtos eletrônicos, identificou-se uma série de problemas operacionais e estratégicos. Por exemplo, a área de produção pode enfrentar constantes atrasos devido à falta de componentes necessários para a montagem dos produtos, enquanto a área de compras alega que as especificações nunca foram claramente comunicadas pela equipe de Pesquisa e Desenvolvimento (P&D). Essa falta de comunicação eficaz entre os departamentos é um indicativo claro de que <<os processos internos não estão bem definidos>>, causando uma cascata de falhas que afetam diretamente a eficiência da produção e, por conseguinte, a satisfação do cliente.
 
 Além disso, reclamações recorrentes sobre a qualidade dos produtos revelam outra faceta da desorganização processual. Quando os clientes reportam problemas, a empresa não possui um sistema unificado para gerenciar essas reclamações e implementar ações corretivas. Em vez disso, as reclamações são dispersas entre diferentes departamentos, como suporte ao cliente e produção, sem coordenação ou acompanhamento adequado. Isso não apenas dificulta a resolução dos problemas, mas também impede a empresa de identificar as causas raízes dos defeitos, perpetuando um ciclo de baixa qualidade e insatisfação dos clientes.
@@ -59,7 +60,7 @@ A fase subsequente é a de **descoberta dos processos**.
 
 A **descoberta dos processos** propicia a modelagem dos **processos AS-IS**, ou seja, como estão sendo executados.
 
-3. Ainda sobre o ciclo BPM
+1. Ainda sobre o ciclo BPM
 
 Considere uma empresa de serviços financeiros que oferece empréstimos e outros produtos financeiros aos seus clientes. Inicialmente, o processo de aprovação de empréstimos era totalmente centralizado, onde cada solicitação passava por diversas etapas manuais, desde a análise de crédito até a avaliação de risco e aprovação final. Esse processo envolvia várias áreas, como análise de crédito, compliance, e departamento jurídico, o que resultava em um tempo médio de aprovação de mais de duas semanas. Além disso, os clientes frequentemente reclamavam da falta de transparência e da demora na resposta, o que fazia com que muitos desistissem da contratação antes mesmo de receber uma decisão.
 
