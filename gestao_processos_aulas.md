@@ -44,7 +44,9 @@ Os instrumentos de avaliação continuada serão disponibilizados à medida que 
 2. [Form 2 - Conceitos iniciais (cont.)](gestao_processos_aulas/gestao_processos_form2.md) **encerrado**
 3. [Estudo de Caso 1: Elementos de processos](gestao_processos_aulas/gestao_processos_caso1.md) **encerrado**
 
-- Uma planilha de informações do caso proposto pode apoiar a montagem do modelo. Download em: 
+- Uma planilha de informações do caso proposto pode apoiar a montagem do modelo. Download em: https://1drv.ms/x/s!AsTd8oN7mu8pkt0j5tOA7UikH3pnFg?e=2kv2lj
+
+
 
 ## Referências  
 
