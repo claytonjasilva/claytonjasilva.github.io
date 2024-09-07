@@ -47,7 +47,7 @@ Os instrumentos de avaliação continuada serão disponibilizados à medida que 
 - Uma planilha de informações do caso proposto pode apoiar a montagem do modelo. *Download* em: [Planilha de informações: caso 1](https://1drv.ms/x/s!AsTd8oN7mu8pkt0j5tOA7UikH3pnFg?e=2kv2lj)
 - A partir da planilha de informações discutimos um modelo do Bizagi. *Download* em: [Modelo Bizagi: caso 1](https://1drv.ms/u/s!AsTd8oN7mu8pkt0eoWOchcfMigythA?e=RAVwRE)
 
- 
+4. [Estudo de Caso 2: Elementos E arquitetura de processos](gestao_processos_aulas/gestao_processos_caso2.md) **aberto** 
 
 
 ## Referências  
