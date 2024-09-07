@@ -138,3 +138,5 @@ b.c. Eventos: evento de início, solicitação de reembolso; evento intermediár
 d. Atividades: Elaborar formulário, revisar solicitação, analisar solicitação, notificar o funcionário, processar o pagamento.
 
 e. Gateways: Aprovação x rejeição da solicitação. 
+
+- A partir da identificação dos elementos, construímos um modelo do Bizagi. *Download* em: [Modelo Bizagi: caso 1](https://1drv.ms/u/s!AsTd8oN7mu8pkt0eoWOchcfMigythA?e=RAVwRE)
