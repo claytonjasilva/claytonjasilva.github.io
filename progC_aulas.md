@@ -10,7 +10,7 @@ Ministrado como atividade extra classe.
 2. [Controle de fluxo: condicionais simples e compostas](progC_aulas/progC_cap2.md)
 3. [Controle de fluxo: estruturas de repetição](progC_aulas/progC_cap3.md)
 4. [Estruturas de dados homogêneas unidimensionais, bidimensionais e multidimensionais. Ponteiros.](progC_aulas/progC_cap4.md)
-5.  Estruturas (*struct*)
+5. [Estruturas de dados heterogêneas (*struct*)](progC_aulas/progC_cap5.md)
 6.  Tipos definidos pelo usuário (*typedef*)
 7.  Arquivos
 8.  Erros e exceção
