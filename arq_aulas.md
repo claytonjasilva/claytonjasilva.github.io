@@ -52,7 +52,7 @@
 
 ### Avaliações Bimestrais
 
-1. **Trabalho AP1** - a definir  
+1. [Trabalho AP1](arq_aulas/arquitetura_computadores_trabalhoap1.md) - **disponível**
 2. **Trabalho AP2** - a definir
 
 ### Avaliação Continuada
