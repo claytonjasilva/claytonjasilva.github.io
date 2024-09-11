@@ -24,7 +24,7 @@ Desenvolver um sistema de monitoramento e controle com o microcontrolador Arduin
    - **Via monitor serial**: O usuário enviará mnemônicos (representações simbólicas) para controlar dispositivos.
    - **Via chaves binárias**: O sistema será controlado por chaves binárias, com uma chave adicional para confirmar a operação.
 
-O sistema propicia comandar sensores e atuadores através o monitor serial, sem requerer obrigatoriamente a combinação de chaves de entrada, possibilitando as funcionalidades a seguir, combinadas ou não, utilizando uma linguagem simbólica dos correspondentes códigos binários:
+O sistema propicia comandar sensores e atuadores através do monitor serial, sem requerer obrigatoriamente a combinação de chaves de entrada, possibilitando as funcionalidades a seguir, combinadas ou não, utilizando uma linguagem simbólica dos correspondentes códigos binários:
 
 - acendimento/apagamento de até 3 LEDs;
 - acendimento/apagamento de LED RGB;
@@ -229,4 +229,5 @@ Nesta sequência, o usuário usa chaves binárias para controlar o Arduino. Cada
 | **Chave "Enter"**     | 13           |
 | **Chave de Seleção de Modo** | 12   |
 
-*Trabalho AP1, Arquitetura de Computadores, Rev. 11/9/24
+---
+*Trabalho AP1, Arquitetura de Computadores, Rev. 11/9/24*
