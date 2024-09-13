@@ -42,7 +42,7 @@ Os instrumentos de avaliação continuada serão disponibilizados à medida que 
 
 1. [Form 1: Sinais analógicos e digitais](sisdig_aulas/sistemas_digitais_form1.md)   **encerrado**
 2. [Form 2: lógica e álgebra booleana](sisdig_aulas/sistemas_digitais_form2.md)    **encerrado**
-3. [Form 3: projeto de circuitos combinacionais](https://forms.gle/f7NPHaa8EqhQ32Ck6)    **aberto**
+3. [Form 3: projeto de circuitos combinacionais](sisdig_aulas/sistemas_digitais_form3.md)    **encerrado**
 
 ### Listas de exercício
 
