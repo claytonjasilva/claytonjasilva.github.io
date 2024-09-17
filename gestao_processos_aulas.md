@@ -16,7 +16,7 @@
 
 3. Modelagem de processos
     
-   [Cap 3 - Modelagem de processos - parte1](gestao_processos_aulas/gestao_processos_cap3.md)
+   [Cap 3 - Modelagem de processos - parte1](gestao_processos_aulas/gestao_processos_cap3.md)  
    [Cap 3 - Modelagem de processos - slides](gestao_processos_aulas/gestao_processos_cap3.pdf)
 
 4. [Modelagem de processos - parte 2](gestao_processos_aulas/gestao_processos_cap4.md)
