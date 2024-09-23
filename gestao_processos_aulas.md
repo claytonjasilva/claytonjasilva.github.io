@@ -52,6 +52,9 @@ Os instrumentos de avaliação continuada serão disponibilizados à medida que 
 - **Sugestão:** Criar o modelo no Bizagi utilizando as informações consolidadas na planilha de informações.
 
 4. [Estudo de Caso 2: Elementos e Arquitetura de processos](gestao_processos_aulas/gestao_processos_caso2.md) **aberto** 
+
+   - [Orientações para apresentação do Estudo de Caso 2](gestao_processos_aulas/gestao_processos_estudo_caso.md)
+   
 5. [Form 3 - elementos e arquitetura de processos](https://forms.gle/ZSBmvrKYroA57NG59) **aberto**
 
 
