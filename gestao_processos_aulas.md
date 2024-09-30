@@ -40,7 +40,7 @@
 1. **Trabalho AP1**
 
    - [Estudo de caso 3 - Instituição Financeira - FinBank](gestao_processos_aulas/gestao_processos_caso3.md)
-   - [Pedido aos grupos]()
+   - [Pedido aos grupos](gestao_processos_aulas/gestao_processos_estudo_caso3.md)
    
 2. **Trabalho AP2** - a definir
 
