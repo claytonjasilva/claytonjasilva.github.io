@@ -37,7 +37,11 @@
 
 ### Avaliações Bimestrais
 
-1. **Trabalho AP1** - a definir  
+1. **Trabalho AP1**
+
+   - [Estudo de caso 3 - Instituição Financeira - FinBank](gestao_processos_aulas/gestao_processos_caso3.md)
+   - [Pedido aos grupos](gestao_processos_aulas/gestao_processos_estudo_caso3.md)
+   
 2. **Trabalho AP2** - a definir
 
 ### Avaliação Continuada
@@ -52,9 +56,6 @@ Os instrumentos de avaliação continuada serão disponibilizados à medida que 
 - **Sugestão:** Criar o modelo no Bizagi utilizando as informações consolidadas na planilha de informações.
 
 4. [Estudo de Caso 2: Elementos e Arquitetura de processos](gestao_processos_aulas/gestao_processos_caso2.md) **aberto** 
-
-   - [Orientações para apresentação do Estudo de Caso 2](gestao_processos_aulas/gestao_processos_estudo_caso.md)
-   
 5. [Form 3 - elementos e arquitetura de processos](https://forms.gle/ZSBmvrKYroA57NG59) **aberto**
 
 
