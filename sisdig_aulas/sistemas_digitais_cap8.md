@@ -312,5 +312,62 @@ A tabela de transição de estados define as mudanças de estado com base nas en
 - **S<sub>0</sub>** (**Fechado**): Transição para **S<sub>1</sub>** quando X<sub>1</sub> = 1.
 - **S<sub>1</sub>** (**Abrindo**): Transição para **S<sub>2</sub>** quando o portão está totalmente aberto. Transição para **
 
+#### c. Contador crescente de 3 bits com saída para números ímpares
+
+O objetivo é projetar um **circuito sequencial** que implemente um **contador crescente de 3 bits**. O contador deve contar de 0 a 7, e sua saída será 1 quando o valor contado for um número **ímpar**.
+
+**Especificações**
+
+1. **Estados**:
+   - O contador possui **8 estados** representando os valores binários de 3 bits: 
+     - **S<sub>0</sub>** = 000 (decimal 0)
+     - **S<sub>1</sub>** = 001 (decimal 1)
+     - **S<sub>2</sub>** = 010 (decimal 2)
+     - **S<sub>3</sub>** = 011 (decimal 3)
+     - **S<sub>4</sub>** = 100 (decimal 4)
+     - **S<sub>5</sub>** = 101 (decimal 5)
+     - **S<sub>6</sub>** = 110 (decimal 6)
+     - **S<sub>7</sub>** = 111 (decimal 7)
+
+2. **Entradas**:
+   - O circuito não possui entradas de controle para a contagem, apenas o **clock** que controla a transição entre os estados.
+
+3. **Saída Y**:
+   - **Y = 1**: Quando o estado atual é um número **ímpar** (S<sub>1</sub>, S<sub>3</sub>, S<sub>5</sub>, S<sub>7</sub>).
+   - **Y = 0**: Quando o estado atual é um número **par** (S<sub>0</sub>, S<sub>2</sub>, S<sub>4</sub>, S<sub>6</sub>).
+
+**Regras de Operação**
+
+1. O contador começa no estado **S<sub>0</sub>** (000) e avança ciclicamente em ordem crescente até **S<sub>7</sub>** (111).
+2. Quando o estado é um número **ímpar**, a saída **Y** deve ser 1.
+3. Quando o estado é um número **par**, a saída **Y** deve ser 0.
+4. Após atingir o estado **S<sub>7</sub>**, o contador volta ao estado **S<sub>0</sub>** e continua o ciclo.
+
+**Tabela de Transição de Estados e Saída**
+
+| Estado Atual | Próximo Estado | Saída Y |
+|--------------|----------------|---------|
+| S<sub>0</sub> (000) | S<sub>1</sub> (001) | 0       |
+| S<sub>1</sub> (001) | S<sub>2</sub> (010) | 1       |
+| S<sub>2</sub> (010) | S<sub>3</sub> (011) | 0       |
+| S<sub>3</sub> (011) | S<sub>4</sub> (100) | 1       |
+| S<sub>4</sub> (100) | S<sub>5</sub> (101) | 0       |
+| S<sub>5</sub> (101) | S<sub>6</sub> (110) | 1       |
+| S<sub>6</sub> (110) | S<sub>7</sub> (111) | 0       |
+| S<sub>7</sub> (111) | S<sub>0</sub> (000) | 1       |
+
+**Saída Y**
+
+- **Y = 1**: Quando o estado atual é um número ímpar (S<sub>1</sub>, S<sub>3</sub>, S<sub>5</sub>, S<sub>7</sub>).
+- **Y = 0**: Quando o estado atual é um número par (S<sub>0</sub>, S<sub>2</sub>, S<sub>4</sub>, S<sub>6</sub>).
+
+**Diagrama de Estados**
+
+O diagrama de estados deve representar os 8 estados do contador, de S<sub>0</sub> a S<sub>7</sub>, com transições unidirecionais em ordem crescente, voltando ao estado S<sub>0</sub> após o estado S<sub>7</sub>. As transições são controladas pelo **clock** e a saída **Y** é ativada quando o estado atual for um número ímpar.
+
+---
+
+Esse exercício permite estudar o comportamento de contadores sequenciais e a lógica associada a saídas que dependem de condições específicas nos estados, como identificar números ímpares.
+
 ___
 **[Home Conteúdo Sistemas Digitais](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/sisdig_aulas.md)**  
