@@ -222,38 +222,37 @@ $$B=B.\bar{X}+\bar{A}.\bar{B}.X+A.B.X$$
 É importante lembrar que a variável de saída, à esquerda da equação, é o valor atual e à direita da equação é o seu valor anterior.
 
 ### 8.3.3 Exemplos
-
 #### a. Sistema de controle de elevador
 
-Este exercício envolve o projeto de um **circuito sequencial** que controla um **elevador** operando em quatro andares: S_0, S_1, S_2, S_3. O sistema possui **duas entradas** e **uma saída** que indicam as ações do elevador:
+Este exercício envolve o projeto de um **circuito sequencial** que controla um **elevador** operando em quatro andares: S<sub>0</sub>, S<sub>1</sub>, S<sub>2</sub>, S<sub>3</sub>. O sistema possui **duas entradas** e **uma saída** que indicam as ações do elevador:
 
-- **Entrada X_1**: Representa o botão de **subir** pressionado.
-- **Entrada X_2**: Representa o botão de **descer** pressionado.
+- **Entrada X<sub>1</sub>**: Representa o botão de **subir** pressionado.
+- **Entrada X<sub>2</sub>**: Representa o botão de **descer** pressionado.
 - **Saída Y**: Indica se o elevador está **em movimento** (Y = 1) ou **parado** (Y = 0).
 
 **Regras de Operação**
 
-1. O elevador começa no **térreo** (S_0).
-2. Quando X_1 = 1, o elevador sobe um andar, até o andar máximo (S_3).
-3. Quando X_2 = 1, o elevador desce um andar, até o andar mínimo (S_0).
+1. O elevador começa no **térreo** (S<sub>0</sub>).
+2. Quando X<sub>1</sub> = 1, o elevador sobe um andar, até o andar máximo (S<sub>3</sub>).
+3. Quando X<sub>2</sub> = 1, o elevador desce um andar, até o andar mínimo (S<sub>0</sub>).
 4. A saída Y é 1 enquanto o elevador está **em movimento** e 0 quando ele está **parado**.
 
 **Estados e Transições**
 
 O circuito terá **quatro estados** que representam os andares do elevador:
-- **S_0**: Térreo
-- **S_1**: Primeiro andar
-- **S_2**: Segundo andar
-- **S_3**: Terceiro andar
+- **S<sub>0</sub>**: Térreo
+- **S<sub>1</sub>**: Primeiro andar
+- **S<sub>2</sub>**: Segundo andar
+- **S<sub>3</sub>**: Terceiro andar
 
 **Tabela de Transição de Estados**
 
-| Estado Atual | X_1 = 0, X_2 = 0 | X_1 = 1, X_2 = 0 | X_1 = 0, X_2 = 1 | X_1 = 1, X_2 = 1 |
-|--------------|------------------|------------------|------------------|------------------|
-| S_0          | S_0 (Parado)      | S_1 (Sobe)       | S_0 (Parado)      | S_1 (Sobe)       |
-| S_1          | S_1 (Parado)      | S_2 (Sobe)       | S_0 (Desce)       | S_2 (Sobe)       |
-| S_2          | S_2 (Parado)      | S_3 (Sobe)       | S_1 (Desce)       | S_3 (Sobe)       |
-| S_3          | S_3 (Parado)      | S_3 (Parado)     | S_2 (Desce)       | S_2 (Desce)      |
+| Estado Atual | X<sub>1</sub> = 0, X<sub>2</sub> = 0 | X<sub>1</sub> = 1, X<sub>2</sub> = 0 | X<sub>1</sub> = 0, X<sub>2</sub> = 1 | X<sub>1</sub> = 1, X<sub>2</sub> = 1 |
+|--------------|--------------------------------------|--------------------------------------|--------------------------------------|--------------------------------------|
+| S<sub>0</sub>          | S<sub>0</sub> (Parado)      | S<sub>1</sub> (Sobe)       | S<sub>0</sub> (Parado)      | S<sub>1</sub> (Sobe)       |
+| S<sub>1</sub>          | S<sub>1</sub> (Parado)      | S<sub>2</sub> (Sobe)       | S<sub>0</sub> (Desce)       | S<sub>2</sub> (Sobe)       |
+| S<sub>2</sub>          | S<sub>2</sub> (Parado)      | S<sub>3</sub> (Sobe)       | S<sub>1</sub> (Desce)       | S<sub>3</sub> (Sobe)       |
+| S<sub>3</sub>          | S<sub>3</sub> (Parado)      | S<sub>3</sub> (Parado)     | S<sub>2</sub> (Desce)       | S<sub>2</sub> (Desce)      |
 
 **Saída Y**
 
@@ -262,7 +261,7 @@ O circuito terá **quatro estados** que representam os andares do elevador:
 
 **Diagrama de Estados**
 
-O diagrama de estados mostrará os quatro estados S_0, S_1, S_2, S_3 com transições entre eles baseadas nas entradas X_1 e X_2.
+O diagrama de estados mostrará os quatro estados S<sub>0</sub>, S<sub>1</sub>, S<sub>2</sub>, S<sub>3</sub> com transições entre eles baseadas nas entradas X<sub>1</sub> e X<sub>2</sub>.
 
 #### b. Circuito de controle digital de portão
 
@@ -271,14 +270,14 @@ O objetivo é projetar um **circuito sequencial** para controlar a abertura e fe
 **Especificações**
 
 1. **Estados**:
-   - **S_0**: Portão **totalmente fechado**.
-   - **S_1**: Portão **abrindo**.
-   - **S_2**: Portão **totalmente aberto**.
-   - **S_3**: Portão **fechando**.
+   - **S<sub>0</sub>**: Portão **totalmente fechado**.
+   - **S<sub>1</sub>**: Portão **abrindo**.
+   - **S<sub>2</sub>**: Portão **totalmente aberto**.
+   - **S<sub>3</sub>**: Portão **fechando**.
 
 2. **Entradas**:
-   - **X_1**: Sensor que detecta se o portão está em movimento para **abrir**.
-   - **X_2**: Sensor que detecta se o portão está em movimento para **fechar**.
+   - **X<sub>1</sub>**: Sensor que detecta se o portão está em movimento para **abrir**.
+   - **X<sub>2</sub>**: Sensor que detecta se o portão está em movimento para **fechar**.
 
 3. **Saída Y**:
    - **Y = 1**: O portão está em **movimento** (abrindo ou fechando).
@@ -286,34 +285,32 @@ O objetivo é projetar um **circuito sequencial** para controlar a abertura e fe
 
 **Regras de Operação**
 
-1. O portão começa no estado **S_0** (**totalmente fechado**).
-2. Se o botão de abrir é pressionado (X_1 = 1), o portão muda para o estado **S_1** e começa a abrir.
-3. Quando o portão está **totalmente aberto** (S_2), ele para de se mover e **Y = 0**.
-4. Se o botão de fechar é pressionado (X_2 = 1), o portão passa para o estado **S_3** e começa a fechar.
-5. Quando o portão está **totalmente fechado** (S_0), ele para de se mover e **Y = 0**.
+1. O portão começa no estado **S<sub>0</sub>** (**totalmente fechado**).
+2. Se o botão de abrir é pressionado (X<sub>1</sub> = 1), o portão muda para o estado **S<sub>1</sub>** e começa a abrir.
+3. Quando o portão está **totalmente aberto** (S<sub>2</sub>), ele para de se mover e **Y = 0**.
+4. Se o botão de fechar é pressionado (X<sub>2</sub> = 1), o portão passa para o estado **S<sub>3</sub>** e começa a fechar.
+5. Quando o portão está **totalmente fechado** (S<sub>0</sub>), ele para de se mover e **Y = 0**.
 
 **Tabela de Transição de Estados**
 
-A tabela de transição de estados define as mudanças de estado com base nas entradas X_1 e X_2:
+A tabela de transição de estados define as mudanças de estado com base nas entradas X<sub>1</sub> e X<sub>2</sub>:
 
-| Estado Atual | X_1 = 0, X_2 = 0 | X_1 = 1, X_2 = 0 | X_1 = 0, X_2 = 1 | X_1 = 1, X_2 = 1 |
-|--------------|------------------|------------------|------------------|------------------|
-| S_0          | S_0 (Parado)      | S_1 (Abrindo)    | S_0 (Parado)      | S_1 (Abrindo)    |
-| S_1          | S_1 (Abrindo)     | S_2 (Aberto)     | S_3 (Fechando)    | S_1 (Abrindo)    |
-| S_2          | S_2 (Aberto)      | S_2 (Aberto)     | S_3 (Fechando)    | S_3 (Fechando)   |
-| S_3          | S_3 (Fechando)    | S_1 (Abrindo)    | S_0 (Fechado)     | S_3 (Fechando)   |
+| Estado Atual | X<sub>1</sub> = 0, X<sub>2</sub> = 0 | X<sub>1</sub> = 1, X<sub>2</sub> = 0 | X<sub>1</sub> = 0, X<sub>2</sub> = 1 | X<sub>1</sub> = 1, X<sub>2</sub> = 1 |
+|--------------|--------------------------------------|--------------------------------------|--------------------------------------|--------------------------------------|
+| S<sub>0</sub>          | S<sub>0</sub> (Parado)      | S<sub>1</sub> (Abrindo)    | S<sub>0</sub> (Parado)      | S<sub>1</sub> (Abrindo)    |
+| S<sub>1</sub>          | S<sub>1</sub> (Abrindo)     | S<sub>2</sub> (Aberto)     | S<sub>3</sub> (Fechando)    | S<sub>1</sub> (Abrindo)    |
+| S<sub>2</sub>          | S<sub>2</sub> (Aberto)      | S<sub>2</sub> (Aberto)     | S<sub>3</sub> (Fechando)    | S<sub>3</sub> (Fechando)   |
+| S<sub>3</sub>          | S<sub>3</sub> (Fechando)    | S<sub>1</sub> (Abrindo)    | S<sub>0</sub> (Fechado)     | S<sub>3</sub> (Fechando)   |
 
 **Saída Y**
 
-- **Y = 1**: Quando o portão está em movimento (estados S_1 ou S_3).
-- **Y = 0**: Quando o portão está parado (estados S_0 ou S_2).
+- **Y = 1**: Quando o portão está em movimento (estados S<sub>1</sub> ou S<sub>3</sub>).
+- **Y = 0**: Quando o portão está parado (estados S<sub>0</sub> ou S<sub>2</sub>).
 
 **Diagrama de Estados**
 
-- **S_0** (**Fechado**): Transição para **S_1** quando X_1 = 1.
-- **S_1** (**Abrindo**): Transição para **S_2** quando o portão está totalmente aberto. Transição para **S_3** se X_2 = 1.
-- **S_2** (**Aberto**): Transição para **S_3** quando X_2 = 1.
-- **S_3** (**Fechando**): Transição para **S_0** quando o portão está totalmente fechado. Transição para **S_1** se X_1 = 1.
+- **S<sub>0</sub>** (**Fechado**): Transição para **S<sub>1</sub>** quando X<sub>1</sub> = 1.
+- **S<sub>1</sub>** (**Abrindo**): Transição para **S<sub>2</sub>** quando o portão está totalmente aberto. Transição para **
 
 ___
 **[Home Conteúdo Sistemas Digitais](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/sisdig_aulas.md)**  
