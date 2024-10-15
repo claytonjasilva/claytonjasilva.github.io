@@ -271,8 +271,10 @@ O objetivo é projetar um **circuito sequencial** para controlar a abertura e fe
 
 1. **Estados**:
    - **S<sub>0</sub>**: Portão **totalmente fechado**.
-   - **S<sub>1</sub>**: Portão **parcialmente aberto/fechado**.
+   - **S<sub>1</sub>**: Portão **parcialmente aberto, abrindo**.
    - **S<sub>2</sub>**: Portão **totalmente aberto**.
+   - **S<sub>3</sub>**: Portão **parcialmente aberto, fechando**.
+
 
 2. **Entradas**:
    - **X<sub>1</sub>**: Sensor que detecta se o portão está em movimento para **abrir**.
