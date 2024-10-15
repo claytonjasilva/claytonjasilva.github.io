@@ -188,31 +188,25 @@ O comportamento da **saída *A*** da máquina sequencial pode ser representado p
 
 | *AB* | *00* | *01* | *11* | *10* |
 | - | - | - | - | - |
-| ***XZ*** | - | - | - | - |
-| ***00*** | 0 | 0 | 0 | 1 |
-| ***01*** | 0 | 1 | 0 | 0 |
-| ***11*** | 0 | 0 | 0 | 1 |
-| ***10*** | 0 | 1 | 0 | 0 |
+| ***X*** | - | - | - | - |
+| ***0*** | 0 | 1 | 0 | 0 |
+| ***1*** | 0 | 1 | 0 | 0 |
 
 O comportamento da **saída *B*** da máquina sequencial pode ser representado pelo mapa.  
 
 | *AB* | *00* | *01* | *11* | *10* |
 | - | - | - | - | - |
-| ***XZ*** | - | - | - | - |
-| ***00*** | 0 | 0 | 0 | 0 |
-| ***01*** | 0 | 1 | 1 | 1 |
-| ***11*** | 0 | 0 | 0 | 0 |
-| ***10*** | 1 | 1 | 0 | 0 |
+| ***X*** | - | - | - | - |
+| ***0*** | 0 | 1 | 1 | 0 |
+| ***1*** | 1 | 0 | 0 | 1 |
 
 O comportamento da **saída *Z*** da máquina sequencial pode ser representado pelo mapa.  
 
 | *AB* | *00* | *01* | *11* | *10* |
 | - | - | - | - | - |
-| ***XZ*** | - | - | - | - |
-| ***00*** | 0 | 1 | 1 | 1 |
-| ***01*** | 0 | 1 | 1 | 1 |
-| ***11*** | 0 | 0 | 1 | 0 |
-| ***10*** | 1 | 0 | 1 | 0 |
+| ***X*** | - | - | - | - |
+| ***0*** | 0 | 1 | 1 | 1 |
+| ***1*** | 0 | 0 | 1 | 0 |
 
 Identificado o mapa de próximo estado para cada uma das saídas, é possível 
 **escrever a expressão booleana para cada saída de próximo estado**.  
@@ -226,15 +220,6 @@ $$A=A.\bar{X}+\bar{A}.B.X+A.\bar{B}.X$$
 $$B=B.\bar{X}+\bar{A}.\bar{B}.X+A.B.X$$
 
 É importante lembrar que a variável de saída, à esquerda da equação, é o valor atual e à direita da equação é o seu valor anterior.
-
-No exemplo 2, os mapas relativos às saídas *A*, *B* e *Z* são
-
-![Máquina sequencial - diagrama](/sisdig_aulas/images_sisdig/mapakexemplo2diagrama.jpg)
-
-Dos quais se obtém as expressões:  
-$$A=A.\bar{B}.\bar{X}.\bar{Z}+\bar{A}.B.\bar{X}.Z+A.\bar{B}.X.Z+\bar{A}.B.X.\bar{Z}$$
-$$B=B.\bar{X}.Z+A.\bar{X}.Z+\bar{A}.X.\bar{Z}$$
-$$Z=A.B+B.\bar{X}+A.\bar{X}+\bar{A}.\bar{B}.X.\bar{Z}$$
 
 ___
 **[Home Conteúdo Sistemas Digitais](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/sisdig_aulas.md)**  
