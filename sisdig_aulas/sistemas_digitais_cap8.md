@@ -250,9 +250,9 @@ O circuito terá **quatro estados** que representam os andares do elevador:
 | Estado Atual | X<sub>1</sub> = 0, X<sub>2</sub> = 0 | X<sub>1</sub> = 1, X<sub>2</sub> = 0 | X<sub>1</sub> = 0, X<sub>2</sub> = 1 | X<sub>1</sub> = 1, X<sub>2</sub> = 1 |
 |--------------|--------------------------------------|--------------------------------------|--------------------------------------|--------------------------------------|
 | S<sub>0</sub>          | S<sub>0</sub> (Parado)      | S<sub>1</sub> (Sobe)       | S<sub>0</sub> (Parado)      | S<sub>1</sub> (Sobe)       |
-| S<sub>1</sub>          | S<sub>1</sub> (Parado)      | S<sub>2</sub> (Sobe)       | S<sub>0</sub> (Desce)       | S<sub>2</sub> (Sobe)       |
-| S<sub>2</sub>          | S<sub>2</sub> (Parado)      | S<sub>3</sub> (Sobe)       | S<sub>1</sub> (Desce)       | S<sub>3</sub> (Sobe)       |
-| S<sub>3</sub>          | S<sub>3</sub> (Parado)      | S<sub>3</sub> (Parado)     | S<sub>2</sub> (Desce)       | S<sub>2</sub> (Desce)      |
+| S<sub>1</sub>          | S<sub>1</sub> (Parado)      | S<sub>2</sub> (Sobe)       | S<sub>0</sub> (Desce)       | S<sub>2</sub> (Parado)       |
+| S<sub>2</sub>          | S<sub>2</sub> (Parado)      | S<sub>3</sub> (Sobe)       | S<sub>1</sub> (Desce)       | S<sub>3</sub> (Parado)       |
+| S<sub>3</sub>          | S<sub>3</sub> (Parado)      | S<sub>3</sub> (Parado)     | S<sub>2</sub> (Desce)       | S<sub>2</sub> (Parado)      |
 
 **Saída Y**
 
