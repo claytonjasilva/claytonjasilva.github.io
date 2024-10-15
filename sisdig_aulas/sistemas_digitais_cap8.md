@@ -259,10 +259,6 @@ O circuito terá **quatro estados** que representam os andares do elevador:
 - **Y = 1**: Quando o elevador está em movimento.
 - **Y = 0**: Quando o elevador está parado.
 
-**Diagrama de Estados**
-
-O diagrama de estados mostrará os quatro estados S<sub>0</sub>, S<sub>1</sub>, S<sub>2</sub>, S<sub>3</sub> com transições entre eles baseadas nas entradas X<sub>1</sub> e X<sub>2</sub>.
-
 #### b. Circuito de controle digital de portão
 
 O objetivo é projetar um **circuito sequencial** para controlar a abertura e fechamento de um portão automático. O portão deve ter quatro estados principais e responder a dois sensores de controle. A saída do circuito indica se o portão está **abrindo**, **fechando**, **totalmente aberto** ou **totalmente fechado**.
@@ -308,10 +304,6 @@ A tabela de transição de estados define as mudanças de estado com base nas en
 - **Y = 1**: Quando o portão está em movimento (estados S<sub>1</sub> ou S<sub>3</sub>).
 - **Y = 0**: Quando o portão está parado (estados S<sub>0</sub> ou S<sub>2</sub>).
 
-**Diagrama de Estados**
-
-- **S<sub>0</sub>** (**Fechado**): Transição para **S<sub>1</sub>** quando X<sub>1</sub> = 1.
-- **S<sub>1</sub>** (**Abrindo**): Transição para **S<sub>2</sub>** quando o portão está totalmente aberto. Transição para **
 
 #### c. Contador crescente de 3 bits com saída para números ímpares
 
