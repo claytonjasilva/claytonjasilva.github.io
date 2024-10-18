@@ -4,7 +4,7 @@
 
 1. [Sinais e modelo dos sistemas de comunicações](siscom_aulas/sistemas_comunicacoes_slides_cap1.pdf) - Revisado 2024.2
 2. [Modulação em sistemas de comunicações móveis](siscom_aulas/sistemas_comunicacoes_slides_cap2.pdf) - Revisado 2024.1
-3. [Codificadores da fonte e do canal](siscom_aulas/sistemas_comunicacoes_slides_cap3.pdf) - Revisado 2024.1
+3. [Codificadores da fonte e do canal](siscom_aulas/sistemas_comunicacoes_slides_cap3.pdf) - Revisado 2024.2
 4. [O canal móvel de comunicações](siscom_aulas/sistemas_comunicacoes_slides_cap4.pdf) - Revisado 2024.1
 5. [Arquitetura de Sistemas Móveis de Comunicações](siscom_aulas/sistemas_comunicacoes_slides_cap5.pdf)
 
