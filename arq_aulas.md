@@ -2,7 +2,7 @@
 
 ## Arquitetura de Computadores - 2024.2
 
-## Tópicos
+## Tópicos do conteúdo
 
 1. [Cap. 1 - Máquina de von Neumann](arq_aulas/arquitetura_computadores_cap1.md)
 2. [Cap. 2 - Organização e Modelos de máquina de níveis](arq_aulas/arquitetura_computadores_cap2.md)
@@ -17,6 +17,11 @@
 - [ANEXO II - CONVERSÃO DE BASE E INFORMAÇÕES BINÁRIAS](arq_aulas/arquitetura_computadores_anexo2.md)  
 - [ANEXO III - REPRESENTAÇÃO NUMÉRICA](arq_aulas/arquitetura_computadores_anexo3.md)  
 - [ANEXO IV - ARITMÉTICA BINÁRIA](arq_aulas/arquitetura_computadores_anexo4.md)
+
+## Slides
+
+1. [Memória e barramento](arq_aulas/arquitetura_computadores_slides_memoria_barramento.pdf)
+
 
 ## Práticas Arduíno
 
