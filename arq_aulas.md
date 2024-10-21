@@ -67,7 +67,8 @@ Os instrumentos de avaliação continuada serão disponibilizados à medida que 
 1. [Form 1 - Conceitos iniciais](arq_aulas/arquitetura_computadores_form1.md) - **encerrado**
 2. [Form 2 - Conceitos iniciais](arq_aulas/arquitetura_computadores_form2.md) - **encerrado**
 3. [Form 3 - máquina IAS](arq_aulas/arquitetura_computadores_form3.md) - **encerrado**
-4. [Form 4 - máquina de níveis](https://forms.gle/VjWS6r251BWtoCgU6) - **aberto**
+4. [Form 4 - máquina de níveis]() - **encerrado**
+5. [Form 6 - Memória](https://forms.gle/mRFeJYcjtN9NnytcA) - **aberto**
 
 ## Exercícios  
 
