@@ -42,7 +42,7 @@ Operação: PC <- PC + 1
 - `LDI` 
 
 *Load* imediato. Carrega operando no registrador.    
-Sintaxe:`LDI Rd`, onde 16 ≤ d ≤ 31, 0 ≤ K ≤ 255`    
+Sintaxe:`LDI Rd,k`, onde 16 ≤ d ≤ 31, 0 ≤ K ≤ 255`    
 Operação: Rd <- k
 
 - `MOV` 
