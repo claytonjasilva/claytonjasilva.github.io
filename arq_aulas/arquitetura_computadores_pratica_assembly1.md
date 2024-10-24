@@ -82,6 +82,6 @@ Operação: DS(k) ← Rr
 
 [Uma solução](https://github.com/claytonjasilva/prog_exemplos/blob/main/linguagem_assembly_asm/pratica_assembly1_ex2.asm)
 
-5. Criar uma tabela de números pares na memória do Atmega2560 a partir do endereço 0x200, contendo 2, 4, 6, 8, 10 e 12, utilizando os dados armazenados nos registradores.  
+3. Criar uma tabela de números pares na memória do Atmega2560 a partir do endereço 0x200, contendo 2, 4, 6, 8, 10 e 12, utilizando os dados armazenados nos registradores.  
 
 [Uma solução](https://github.com/claytonjasilva/prog_exemplos/blob/main/linguagem_assembly_asm/pratica_assembly1_ex3.asm)
