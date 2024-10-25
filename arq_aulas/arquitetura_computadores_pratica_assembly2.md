@@ -37,6 +37,32 @@ Octal (zero à esquerda): 010, 077
 Define um nome simbólico para um registrador.   
 Sintaxe: `.DEF rótulo = registrador`
 
+- `EQU`
+
+Define um nome simbólico para um registrador.   
+Sintaxe: `.EQU rótulo = registrador`
+
+- `SET`
+
+Define um rótulo para uma expressão que resulta um valor. **Pode ser alterado no corpo do programa**.
+Sintaxe: `.SET rótulo = expressão`
+
+- `EQU`
+
+Define um rótulo para uma expressão que resulta um valor. **Não pode ser alterado no corpo do programa**.
+Sintaxe: `.EQU rótulo = expressão`
+
+
+4. **Operadores**
+
+- `+`
+
+Adição binária que retorna a adição de duas expressões.  
+
+- `*`
+
+Multiplicação binária que retorna o produto de duas expressões.
+
 ### Instruções básicas
 
 [Manual completo do *set* de instruções do 2560](https://ww1.microchip.com/downloads/en/DeviceDoc/AVR-Instruction-Set-Manual-DS40002198A.pdf)
@@ -76,8 +102,7 @@ executar as instruções em um loop infinito.
 
 [Uma solução](https://github.com/claytonjasilva/prog_exemplos/blob/main/linguagem_assembly_asm/pratica_assembly2_ex2.asm)
 
-3. Elaborar um programa em assembly para inicializar o registrador r0 com 30, incrementar o valor 10 vezes.
+3. Elaborar um programa em assembly para armazenar os dados dos cinco termos de uma série x = 3.x + 2 em uma tabela a partir do endereço 0x200 (x inicial igual a 2);  
+Calcular a soma dos termos da série e armazenar no endereço 0x205.  
 
-4. Elaborar um programa em assembly para somar os dados dos endereços 0x20E a 0x213,
-subtraindo o valor obtido do valor armazenado no endereço 0x214, armazenando o resultado no endereço 0x215.
-Em seguida desviar a execução ao endereço 0x20.
+[Uma solução](https://github.com/claytonjasilva/prog_exemplos/blob/main/linguagem_assembly_asm/pratica_assembly2_ex3.asm)
