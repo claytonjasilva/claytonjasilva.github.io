@@ -44,12 +44,12 @@ Sintaxe: `.EQU rótulo = registrador`
 
 - `SET`
 
-Define um rótulo para uma expressão que resulta um valor. **Pode ser alterado no corpo do programa**.
+Define um rótulo para uma expressão que resulta um valor. **Pode ser alterado no corpo do programa**.  
 Sintaxe: `.SET rótulo = expressão`
 
 - `EQU`
 
-Define um rótulo para uma expressão que resulta um valor. **Não pode ser alterado no corpo do programa**.
+Define um rótulo para uma expressão que resulta um valor. **Não pode ser alterado no corpo do programa**.  
 Sintaxe: `.EQU rótulo = expressão`
 
 
