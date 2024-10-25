@@ -9,7 +9,7 @@
 
 ## Visão inicial: *Assembler* do Atmega2560
 
-**[Manual completo](https://ww1.microchip.com/downloads/en/DeviceDoc/40001917A.pdf)**
+**[Manual completo do Assembler 2560](https://ww1.microchip.com/downloads/en/DeviceDoc/40001917A.pdf)**
 
 1. **Comentários**  
 
@@ -31,6 +31,8 @@ Octal (zero à esquerda): 010, 077
 
 
 ### Instruções básicas
+
+[Manual compleeto do *set* de instruções do 2560](https://ww1.microchip.com/downloads/en/DeviceDoc/AVR-Instruction-Set-Manual-DS40002198A.pdf)
 
 - `BREAK`
 
@@ -70,7 +72,6 @@ Armazena dado de registrador diretamente em memória
 Sintaxe:`STS k,Rr`, onde 0 ≤ r ≤ 31, 0 ≤ k ≤ 65535`
 Operação: DS(k) ← Rr  
 
-### 
 
 ### Exemplos
 
@@ -85,3 +86,11 @@ Operação: DS(k) ← Rr
 3. Criar uma tabela de números pares na memória do Atmega2560 a partir do endereço 0x200, contendo 2, 4, 6, 8, 10 e 12, utilizando os dados armazenados nos registradores.  
 
 [Uma solução](https://github.com/claytonjasilva/prog_exemplos/blob/main/linguagem_assembly_asm/pratica_assembly1_ex3.asm)
+
+4. Elaborar um programa que armazene uma tabela de três números pares subsequentes ao número 0xF0, armazenando-os a partir do endereço 0x200;  
+armazenar uma tabela com três número impares subsequentes ao número 0x5, armazenando-os a partir do endereço 0x210;  
+armazenar a multiplicação dos pares pelos respectivos impares na ordem da lista nos endereços a partir de 0x220. 
+
+[Uma solução](https://github.com/claytonjasilva/prog_exemplos/blob/main/linguagem_assembly_asm/pratica_assembly1_ex4.asm)
+
+
