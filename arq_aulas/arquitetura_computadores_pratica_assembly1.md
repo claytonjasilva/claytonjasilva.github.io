@@ -32,7 +32,7 @@ Octal (zero à esquerda): 010, 077
 
 ### Instruções básicas
 
-[Manual compleeto do *set* de instruções do 2560](https://ww1.microchip.com/downloads/en/DeviceDoc/AVR-Instruction-Set-Manual-DS40002198A.pdf)
+[Manual completo do *set* de instruções do 2560](https://ww1.microchip.com/downloads/en/DeviceDoc/AVR-Instruction-Set-Manual-DS40002198A.pdf)
 
 - `BREAK`
 
