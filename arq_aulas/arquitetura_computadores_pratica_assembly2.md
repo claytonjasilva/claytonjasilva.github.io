@@ -81,7 +81,7 @@ Operação: PC ← k
 
 - `RJMP`
 
-Desvio relativo ao endereço atual, em um intervalo de 4096, abaixo e acima do PC. **Trata-se de uma instrução de 16 bits**.  
+Desvio incondicional **relativo** ao endereço atual, em um intervalo de 4096, abaixo e acima do PC. **Trata-se de uma instrução de 16 bits**.  
 Sintaxe:`RJMP k`, onde -2K ≤ k < 2K  
 Operação: PC ← PC + k + 1
 
