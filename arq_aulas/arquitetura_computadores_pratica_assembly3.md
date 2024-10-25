@@ -1,4 +1,111 @@
-# Prática 3 Assembly Atmega2560
+# Prática 3 Assembly Atmega2560 
+
+## Visão inicial: arquitetura do Atmega2560
+
+- O Atmega possui 135 instruções
+- Possui 32 registradores de 8 bits **de uso geral**: r0 a r31
+- Possui 3 registradores **ponteiros**, criados a partir dos seguintes de uso geral: registrador X, r27-r26; registrador Y, r29,r28; registrador Z, r31, r30
+- Possui memória de 8 kB
+- O endereçamento da RAM interna ocupa a **faixa de 0x0200 a 0x21FF**
+
+## Visão inicial: *Assembler* do Atmega2560
+
+**[Manual completo do Assembler 2560](https://ww1.microchip.com/downloads/en/DeviceDoc/40001917A.pdf)**
+
+1. **Comentários**  
+
+```
+; The rest of the line is a comment
+```
+
+2. **Operandos**  
+Os seguintes operandos podem ser usados:
+
+- **Rótulos** definidos pelo usuário, que recebem o valor do contador de localização no ponto em que aparecem;  
+- Variáveis definidas pelo usuário criadas pela diretiva SET;  
+- Constantes definidas pelo usuário estabelecidas pela diretiva EQU;  
+- **Constantes inteiras**: as constantes podem ser fornecidas em vários formatos, incluindo:  
+**Decimal (padrão)**: 10, 255  
+**Hexadecimal (duas notações)**: 0x0a, $0a, 0xff, $ff  
+Binário: 0b00001010, 0b11111111  
+Octal (zero à esquerda): 010, 077  
+
+3. **Diretivas**
+
+- `DEF`
+
+Define um nome simbólico para um registrador.   
+Sintaxe: `.DEF rótulo = registrador`
+
+- `EQU`
+
+Define um nome simbólico para um registrador.   
+Sintaxe: `.EQU rótulo = registrador`
+
+- `SET`
+
+Define um rótulo para uma expressão que resulta um valor. **Pode ser alterado no corpo do programa**.  
+Sintaxe: `.SET rótulo = expressão`
+
+- `EQU`
+
+Define um rótulo para uma expressão que resulta um valor. **Não pode ser alterado no corpo do programa**.  
+Sintaxe: `.EQU rótulo = expressão`
+
+- `MACRO`
+
+Inicia uma macro (sequência de instruções ou comandos).  
+Sintaxe: `.MACRO rótulo`
+
+- `ENDMACRO`
+
+Finaliza uma macro.  
+Sintaxe: `.ENDMACRO`
+
+4. **Operadores**
+
+- `+`
+
+Adição binária que retorna a adição de duas expressões.  
+
+- `*`
+
+Multiplicação binária que retorna o produto de duas expressões.
+
+
+## Instruções básicas
+
+- `CP`
+
+Compara o valor armazenado em dois registradores.    
+Sintaxe:`CP Rd,Rr`, onde 0 ≤ d ≤ 31, 0 ≤ r ≤ 31
+Operação: Rd - Rr, se o resultado igual a 0x00, 'seta' o bit 1 (bit de 'Zero') do **registrador de status**
+
+- `BREQ`
+
+Desvio **condicional** relativo para o endereço se os operandos forem iguais. Testa se na comparação anterior Rd = Rr.    
+Sintaxe: `BREQ k`, onde -64 ≤ k ≤ +63
+Operação: Desvia o código para +/-k posições.  
+
+- `BRNE`
+
+Desvio **condicional** relativo para o endereço se os operandos forem diferentes. Testa se na comparação anterior Rd é diferente de Rr.   
+Sintaxe: `BRNE k`, onde -64 ≤ k ≤ +63
+Operação: Desvia o código para +/-k posições
+
+- `ST`
+
+Transfere indiretamente dados de registrador para memória. Os respectivos registradores de uso geral devem estar com os bytes de metade do endereço. Registrador X, r27-r26; registrador Y, r29,r28; registrador Z, r31, r30.    
+Sintaxe: `ST X, Rr`, `ST Y, Rr` ou `ST X, Rr`, onde 0 ≤ r ≤ 31
+Operação: Armazena o conteúdo de Rr no endereço de memória definido em X (r27,r26), Y (r29,r28) ou Z (r31,r30).
+
+- `LD`
+
+Transfere indiretamente dados da memória para registrador de uso geral. Os respectivos registradores de uso geral devem estar com os bytes de metade do endereço. Registrador X, r27-r26; registrador Y, r29,r28; registrador Z, r31, r30.    
+Sintaxe: `LD Rr,X`, `LD Rr,Y` ou `LD Rr,Z`, onde 0 ≤ r ≤ 31
+Operação: Armazena o conteúdo do endereço de memória definido em X (r27,r26), Y (r29,r28) ou Z (r31,r30) no registrador Rr.
+
+
 
 ## Exercicios
 
@@ -27,20 +134,6 @@ a. Inicialize um registrador com um valor qualquer.
 b. Armazene em  memória, a partir do endereço 0x200, o valor inicial e os cinco valores subsequentes.  
 [Uma proposta de solução](https://github.com/claytonjasilva/prog_exemplos/blob/main/assembly/assembly4.asm)
 
-## Novas instruções
-
-- CP: Compara o valor armazenado em dois registradores.  
-Sintaxe:`CP Rd,Rr`, onde 0 ≤ d ≤ 31, 0 ≤ r ≤ 31
-Operação: Rd - Rr, se o resultado igual a 0x00, 'seta' o bit 1 do registrador de status  
-- BREQ: Desvia para o endereço se os operandos forem iguais  
-Sintaxe: `BREQ k`, onde -64 ≤ k ≤ +63
-Operação: Desvia o código para +-k posições  
-- BRNE: Desvia para o endereço se os operandos forem diferentes  
-Sintaxe: `BRNE k`, onde -64 ≤ k ≤ +63
-Operação: Desvia o código para +-k posições
-- ST: Armazena indiretamente dados em memória  
-Sintaxe: `ST X, Rr`, onde 0 ≤ r ≤ 31
-Operação: Armazena o conteúdo de Rr no endereço de memória definido em X (r27,r26)
 
 1. Exercício 5. Implementar um código em linguagem de montagem ('assembly') para o montador ('assembler') do microcontrolador Atmega2560 que:
 
