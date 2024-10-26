@@ -289,6 +289,14 @@ Ver **[Solução proposta](https://github.com/claytonjasilva/prog_exemplos/blob/
 
 Ver **[Solução proposta](https://github.com/claytonjasilva/prog_exemplos/blob/main/linguagem_c/exercicio51.c)**
 
+5. Elaborar um programa na linguagem C que crie uma função chamada exibeCarro que recebe uma struct Carro e exibe seus dados.
+
+Ver **[Solução proposta](https://github.com/claytonjasilva/prog_exemplos/blob/main/linguagem_c/exercicio52.c)**
+
+6. Elaborar um programa na linguagem C que defina uma *struct* chamada Produto com os campos nome e preco. Crie uma função que atualize o preço do produto e exiba os novos dados.
+
+Ver **[Solução proposta](https://github.com/claytonjasilva/prog_exemplos/blob/main/linguagem_c/exercicio53.c)**
+
 
 ___
 **[Home Conteúdo Programação em C](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/progC_aulas.md)**   
