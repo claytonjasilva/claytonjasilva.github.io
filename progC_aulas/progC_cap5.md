@@ -271,5 +271,12 @@ nodePtr->data = 10;                    // acessando campo através do ponteiro
 nodePtr->next = NULL;                  // inicializando o próximo como NULL
 ```
 
+## 5.6 Exercícios
+
+1. Elaborar um programa na linguagem C que defina uma *struct* chamada Carro, com os campos marca, ano e preco. Inicialize uma variável dessa estrutura com dados específicos e exiba esses dados.
+
+Ver **[Solução proposta](https://github.com/claytonjasilva/prog_exemplos/blob/main/linguagem_c/exemplo48.c)**
+
+
 ___
 **[Home Conteúdo Programação em C](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/progC_aulas.md)**   
