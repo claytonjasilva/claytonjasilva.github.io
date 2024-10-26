@@ -281,5 +281,10 @@ Ver **[Solução proposta](https://github.com/claytonjasilva/prog_exemplos/blob/
 
 Ver **[Solução proposta](https://github.com/claytonjasilva/prog_exemplos/blob/main/linguagem_c/exercicio49.c)**
 
+3. Elaborar um programa na linguagem C que crie um array de 3 *structs* do tipo Aluno, contendo nome, idade e nota. Solicite os dados para cada aluno e exiba-os. 
+
+Ver **[Solução proposta](https://github.com/claytonjasilva/prog_exemplos/blob/main/linguagem_c/exercicio50.c)**
+
+
 ___
 **[Home Conteúdo Programação em C](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/progC_aulas.md)**   
