@@ -285,6 +285,10 @@ Ver **[Solução proposta](https://github.com/claytonjasilva/prog_exemplos/blob/
 
 Ver **[Solução proposta](https://github.com/claytonjasilva/prog_exemplos/blob/main/linguagem_c/exercicio50.c)**
 
+4. Elaborar um programa na linguagem C que crie uma *struct* chamada Endereco com os campos rua, cidade e cep. Crie outra struct chamada Pessoa, que contém nome, idade e endereco do tipo Endereco. Solicite os dados e exiba-os.
+
+Ver **[Solução proposta](https://github.com/claytonjasilva/prog_exemplos/blob/main/linguagem_c/exercicio51.c)**
+
 
 ___
 **[Home Conteúdo Programação em C](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/progC_aulas.md)**   
