@@ -297,6 +297,9 @@ Ver **[Solução proposta](https://github.com/claytonjasilva/prog_exemplos/blob/
 
 Ver **[Solução proposta](https://github.com/claytonjasilva/prog_exemplos/blob/main/linguagem_c/exercicio53.c)**
 
+7.  Elaborar um programa na linguagem C que crie uma *struct* chamada Aluno com nome e nota. Solicite os dados de 3 alunos e calcule a média das notas.
+
+Ver **[Solução proposta](https://github.com/claytonjasilva/prog_exemplos/blob/main/linguagem_c/exercicio54.c)**
 
 ___
 **[Home Conteúdo Programação em C](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/progC_aulas.md)**   
