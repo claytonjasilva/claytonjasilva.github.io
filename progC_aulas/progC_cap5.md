@@ -275,11 +275,11 @@ nodePtr->next = NULL;                  // inicializando o próximo como NULL
 
 1. Elaborar um programa na linguagem C que defina uma *struct* chamada Carro, com os campos marca, ano e preco. Inicialize uma variável dessa estrutura com dados específicos e exiba esses dados.
 
-Ver **[Solução proposta](https://github.com/claytonjasilva/prog_exemplos/blob/main/linguagem_c/exemplo48.c)**
+Ver **[Solução proposta](https://github.com/claytonjasilva/prog_exemplos/blob/main/linguagem_c/exercicio48.c)**
 
 2. Elaborar um programa na linguagem C que defina uma struct chamada Livro, com os campos titulo, autor, ano. Permita que o usuário insira os dados de um livro e depois os exiba.
 
-Ver **[Solução proposta](https://github.com/claytonjasilva/prog_exemplos/blob/main/linguagem_c/exemplo49.c)**
+Ver **[Solução proposta](https://github.com/claytonjasilva/prog_exemplos/blob/main/linguagem_c/exercicio49.c)**
 
 ___
 **[Home Conteúdo Programação em C](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/progC_aulas.md)**   
