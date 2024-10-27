@@ -227,31 +227,31 @@ int main() {
 
 1. Elaborar um programa na linguagem C que defina uma union chamada Medida, com os campos metros e centimetros. Inicialize e exiba os valores dos membros, observando o compartilhamento de memória.
 
-Ver **[Solução proposta](https://github.com/claytonjasilva/prog_exemplos/blob/main/linguagem_c/exercicio48.c)**
+Ver **[Solução proposta](https://github.com/claytonjasilva/prog_exemplos/blob/main/linguagem_c/exercicio55.c)**
 
 2. Elaborar um programa na linguagem C que defina uma union Numero, com membros int, float, e double. Solicite ao usuário um valor para cada tipo e exiba os resultados, observando as mudanças nos valores dos outros membros.
 
-Ver **[Solução proposta](https://github.com/claytonjasilva/prog_exemplos/blob/main/linguagem_c/exercicio49.c)**
+Ver **[Solução proposta](https://github.com/claytonjasilva/prog_exemplos/blob/main/linguagem_c/exercicio56.c)**
 
 3. Elaborar um programa na linguagem C que crie uma union Dado com um char, um int e um float. Solicite que o usuário insira um valor de cada tipo e exiba o conteúdo de cada membro após cada atribuição.. 
 
-Ver **[Solução proposta](https://github.com/claytonjasilva/prog_exemplos/blob/main/linguagem_c/exercicio50.c)**
+Ver **[Solução proposta](https://github.com/claytonjasilva/prog_exemplos/blob/main/linguagem_c/exercicio57.c)**
 
 4. Elaborar um programa na linguagem C que defina uma union chamada Temperatura com os membros celsius e fahrenheit. Crie funções para converter e exibir o valor em ambas as escalas.
 
-Ver **[Solução proposta](https://github.com/claytonjasilva/prog_exemplos/blob/main/linguagem_c/exercicio51.c)**
+Ver **[Solução proposta](https://github.com/claytonjasilva/prog_exemplos/blob/main/linguagem_c/exercicio58.c)**
 
 5. Elaborar um programa na linguagem C que implemente um programa que utilize uma union chamada Identificacao, com um número de CPF ou CNPJ, e peça ao usuário qual tipo de identificação ele quer usar, exibindo a informação corretamente.
 
-Ver **[Solução proposta](https://github.com/claytonjasilva/prog_exemplos/blob/main/linguagem_c/exercicio52.c)**
+Ver **[Solução proposta](https://github.com/claytonjasilva/prog_exemplos/blob/main/linguagem_c/exercicio59.c)**
 
 6. Elaborar um programa na linguagem C que crie um array de unions do tipo Numero para armazenar valores numéricos em diferentes formatos (inteiro e ponto flutuante) e exiba os valores, observando o comportamento dos dados.
 
-Ver **[Solução proposta](https://github.com/claytonjasilva/prog_exemplos/blob/main/linguagem_c/exercicio53.c)**
+Ver **[Solução proposta](https://github.com/claytonjasilva/prog_exemplos/blob/main/linguagem_c/exercicio60.c)**
 
 7.  Elaborar um programa na linguagem C que defina uma union Moeda com membros para real, dolar, e euro. Inicialize com um valor em reais e converta para as outras moedas com uma função.
 
-Ver **[Solução proposta](https://github.com/claytonjasilva/prog_exemplos/blob/main/linguagem_c/exercicio54.c)**
+Ver **[Solução proposta](https://github.com/claytonjasilva/prog_exemplos/blob/main/linguagem_c/exercicio61.c)**
 
 ___
 **[Home Conteúdo Programação em C](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/progC_aulas.md)**   
