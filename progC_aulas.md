@@ -26,11 +26,14 @@ O guia rápido compreende um **resumo** da sintaxe da linguagem C, com atenção
 O guia não tem a pretenção de esgotar todas as definições de sintaxe e semântica da linguagem C.  
 [**Acessar o Guia Rápido**](progC_aulas/guiaC_rapido.md)
 
-## Referências na Internet:  
+## Referências bibliográficas  
 
-[Eclipse IDE](https://www.eclipse.org/downloads/)  
-[C: como programar](https://plataforma.bvirtual.com.br/Leitor/Publicacao/2660/pdf/0)  
-[IME-USP](https://www.ime.usp.br/~pf/algoritmos/index.html)  
+Kernighan, B. & Ritchie, D. C - A linguagem de programação padrão ANSI. Editora Campus, 1990.
+
+## Referências na Internet  
+
+1. [C: como programar](https://plataforma.bvirtual.com.br/Leitor/Publicacao/2660/pdf/0)  
+2. [IME-USP](https://www.ime.usp.br/~pf/algoritmos/index.html)  
 
 
 ___
