@@ -28,9 +28,9 @@ O guia não tem a pretenção de esgotar todas as definições de sintaxe e sem�
 
 ## Referências na Internet:  
 
-    [Eclipse IDE](https://www.eclipse.org/downloads/)  
-    [C: como programar](https://plataforma.bvirtual.com.br/Leitor/Publicacao/2660/pdf/0)  
-    [IME-USP](https://www.ime.usp.br/~pf/algoritmos/index.html)  
+[Eclipse IDE](https://www.eclipse.org/downloads/)  
+[C: como programar](https://plataforma.bvirtual.com.br/Leitor/Publicacao/2660/pdf/0)  
+[IME-USP](https://www.ime.usp.br/~pf/algoritmos/index.html)  
 
 
 ___
