@@ -12,7 +12,7 @@ Ministrado como atividade extra classe.
 4. [Estruturas de dados homogêneas unidimensionais, bidimensionais e multidimensionais. Ponteiros.](progC_aulas/progC_cap4.md)
 5. [Estruturas de dados heterogêneas (*struct*)](progC_aulas/progC_cap5.md)
 6. [Estruturas de dados heterogêneas (*Union*)](progC_aulas/progC_cap6.md)
-7. Tipos definidos pelo usuário (*typedef*)
+7. [Tipos de dados com *typedef*](progC_aulas/progC_cap7.md)
 8. Arquivos
 9. Erros e exceção
 10. Tópicos avançados
