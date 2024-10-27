@@ -9,10 +9,11 @@ Ministrado como atividade extra classe.
 1. [Iniciando...](progC_aulas/progC_cap1.md)  
 2. [Controle de fluxo: condicionais simples e compostas](progC_aulas/progC_cap2.md)
 3. [Controle de fluxo: estruturas de repetição](progC_aulas/progC_cap3.md)
-4. [Estruturas de dados homogêneas unidimensionais, bidimensionais e multidimensionais. Ponteiros.](progC_aulas/progC_cap4.md)
-5. [Estruturas de dados heterogêneas (*struct*)](progC_aulas/progC_cap5.md)
-6. [Estruturas de dados heterogêneas (*Union*)](progC_aulas/progC_cap6.md)
-7. [Tipos de dados com *typedef*](progC_aulas/progC_cap7.md)
+4. [Estruturas de dados. Estruturas  *enum*](progC_aulas/progC_cap4.md)
+4. [Estruturas de dados homogêneas unidimensionais, bidimensionais e multidimensionais. Ponteiros.](progC_aulas/progC_cap5.md)
+5. [Estruturas de dados heterogêneas (*struct*)](progC_aulas/progC_cap6.md)
+6. [Estruturas de dados heterogêneas (*Union*)](progC_aulas/progC_cap7.md)
+7. [Tipos de dados com *typedef*](progC_aulas/progC_cap8.md)
 8. Arquivos
 9. Erros e exceção
 10. Tópicos avançados
