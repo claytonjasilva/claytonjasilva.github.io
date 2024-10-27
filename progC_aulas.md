@@ -16,6 +16,8 @@ Ministrado como atividade extra classe.
 8. Arquivos
 9. Erros e exceção
 10. Tópicos avançados
+11. Anexo 1: Diretivas em C
+12. Anexo 2: Tipos em C
 
 ## Guia Rápido
 
