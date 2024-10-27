@@ -11,10 +11,11 @@ Ministrado como atividade extra classe.
 3. [Controle de fluxo: estruturas de repetição](progC_aulas/progC_cap3.md)
 4. [Estruturas de dados homogêneas unidimensionais, bidimensionais e multidimensionais. Ponteiros.](progC_aulas/progC_cap4.md)
 5. [Estruturas de dados heterogêneas (*struct*)](progC_aulas/progC_cap5.md)
-6.  Tipos definidos pelo usuário (*typedef*)
-7.  Arquivos
-8.  Erros e exceção
-9.  Tópicos avançados
+6. [Estruturas de dados heterogêneas (*Union*)](progC_aulas/progC_cap6.md)
+7. Tipos definidos pelo usuário (*typedef*)
+8. Arquivos
+9. Erros e exceção
+10. Tópicos avançados
 
 ## Guia Rápido
 

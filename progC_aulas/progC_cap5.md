@@ -271,7 +271,39 @@ nodePtr->data = 10;                    // acessando campo através do ponteiro
 nodePtr->next = NULL;                  // inicializando o próximo como NULL
 ```
 
-## 5.6 Exercícios
+## 5.6 Vetores de `struct`
+
+Um vetor de `struct` permite armazenar múltiplas instâncias de uma estrutura em um array, possibilitando o uso de dados heterogêneos de maneira organizada e facilitando o acesso a elementos estruturados em grande quantidade.
+
+Para declarar um vetor de `struct`, é necessário definir a estrutura e, em seguida, criar um array do tipo dessa estrutura. Por exemplo, considere uma `struct` `Aluno` que possui os campos `nome`, `idade` e `nota`:
+
+```c
+#include <stdio.h>
+
+struct Aluno {
+    char nome[50];
+    int idade;
+    float nota;
+};
+
+int main() {
+    // Declara um array de 3 structs Aluno
+    struct Aluno turma[3] = {
+        {"Alice", 20, 8.5},
+        {"Bruno", 21, 7.3},
+        {"Carla", 22, 9.1}
+    };
+
+    // Exibe as informações dos alunos
+    for (int i = 0; i < 3; i++) {
+        printf("Aluno %d: %s, Idade: %d, Nota: %.1f\n", i + 1, turma[i].nome, turma[i].idade, turma[i].nota);
+    }
+
+    return 0;
+}
+```
+
+## 5.7 Exercícios
 
 1. Elaborar um programa na linguagem C que defina uma *struct* chamada Carro, com os campos marca, ano e preco. Inicialize uma variável dessa estrutura com dados específicos e exiba esses dados.
 
