@@ -23,7 +23,7 @@
 5. [Descoberta de processos](gestao_processos_aulas/gestao_processos_cap5.md)
 6. Análise qualitativa de processos
    
-   [Cap 6 - Análise qualitativa de processos](gestao_processos_aulas/gestao_processos_cap6.md)
+   [Cap 6 - Análise qualitativa de processos](gestao_processos_aulas/gestao_processos_cap6.md)  
    [Cap 6 - Análise qualitativa de processos - slides](gestao_processos_aulas/gestao_processos_cap6.pdf)
 
 7. [Análise quantitativa de processos](gestao_processos_aulas/gestao_processos_cap7.md)
