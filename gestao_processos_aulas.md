@@ -52,18 +52,25 @@
 
 Os instrumentos de avaliação continuada serão disponibilizados à medida que as aulas forem ministradas. 
 
+#### Forms
+
 1. [Form 1 - Conceitos iniciais](gestao_processos_aulas/gestao_processos_form1.md) **encerrado**
 2. [Form 2 - Conceitos iniciais (cont.)](gestao_processos_aulas/gestao_processos_form2.md) **encerrado**
-3. [Estudo de Caso 1: Elementos de processos](gestao_processos_aulas/gestao_processos_caso1.md) **encerrado**
+3. [Form 3 - elementos e arquitetura de processos]() **encerrado**
+4. [Form 4 - Monitoramento de Processos](https://forms.gle/yckj1Q878qLZw7N39)  **aberto**
 
-- Uma planilha de informações do caso proposto pode apoiar a montagem do modelo. *Download* em: [Planilha de informações: caso 1](https://1drv.ms/x/s!AsTd8oN7mu8pkt0j5tOA7UikH3pnFg?e=2kv2lj)
-- **Sugestão:** Criar o modelo no Bizagi utilizando as informações consolidadas na planilha de informações.
+#### Estudos de caso
 
-4. [Estudo de Caso 2: Elementos e Arquitetura de processos](gestao_processos_aulas/gestao_processos_caso2.md) **aberto** 
-5. [Form 3 - elementos e arquitetura de processos]() **encerrado**
-6. [Estudo de Caso 4: Análise qualitativa de processos](gestao_processos_aulas/gestao_processos_caso4.md)
-7. [Estudo de Caso 5: Análise qualitativa de processos](gestao_processos_aulas/gestao_processos_caso5.md)
+1. [Estudo de Caso 1: Elementos de processos](gestao_processos_aulas/gestao_processos_caso1.md)
+2. [Estudo de Caso 2: Elementos e Arquitetura de processos](gestao_processos_aulas/gestao_processos_caso2.md)
+3. [Estudo de caso 3 - Instituição Financeira - FinBank](gestao_processos_aulas/gestao_processos_caso3.md) 
+4. [Estudo de Caso 4: Análise qualitativa de processos](gestao_processos_aulas/gestao_processos_caso4.md)
+5. [Estudo de Caso 5: Análise qualitativa de processos](gestao_processos_aulas/gestao_processos_caso5.md)
 
+
+**Observação**
+- Uma planilha de informações do caso proposto pode apoiar a montagem do modelo. *Download* em: [Planilha de informações](https://1drv.ms/x/s!AsTd8oN7mu8pkt0j5tOA7UikH3pnFg?e=2kv2lj)
+- Sugere-se criar o modelo no Bizagi utilizando as informações consolidadas na planilha de informações.
 
 ## Referências  
 
