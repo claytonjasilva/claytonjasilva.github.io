@@ -21,6 +21,7 @@
 ## Slides
 
 1. [Memória e barramento](arq_aulas/arquitetura_computadores_slides_memoria_barramento.pdf)
+2. [Processadores](arq_aulas/arquitetura_computadores_slides_processadores.pdf)
 
 
 ## Práticas Arduíno
