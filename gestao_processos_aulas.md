@@ -72,6 +72,7 @@ Os instrumentos de avaliação continuada serão disponibilizados à medida que 
 3. [Estudo de caso 3 - Instituição Financeira - FinBank](gestao_processos_aulas/gestao_processos_caso3.md) 
 4. [Estudo de Caso 4: Análise qualitativa de processos](gestao_processos_aulas/gestao_processos_caso4.md)
 5. [Estudo de Caso 5: Análise qualitativa de processos](gestao_processos_aulas/gestao_processos_caso5.md)
+6. [Estudo de Caso 6: Análise quantitativa de processos](gestao_processos_aulas/gestao_processos_caso6.md)
 
 
 **Observação**

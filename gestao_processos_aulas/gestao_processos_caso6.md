@@ -11,6 +11,14 @@
 5. Assinatura do Contrato: O cliente assina o contrato de abertura de conta.
 6. Ativação da Conta: A conta é ativada no sistema, e o cliente recebe as informações necessárias para acessar os serviços.
 
+| Lane                     | Unidade Responsável                  | Atividades                                           | Atores Envolvidos                                |
+|--------------------------|--------------------------------------|------------------------------------------------------|--------------------------------------------------|
+| **Atendimento ao Cliente** | Setor de Atendimento               | Recepção da Solicitação, Verificação de Documentação Inicial | Atendente, Cliente                               |
+| **Análise de Risco e Compliance** | Setor de Análise de Risco e Compliance | Análise de Documentação, Verificação de Crédito | Analista de Risco, Especialista em Compliance    |
+| **Aprovação e Gestão de Contas** | Setor de Aprovação de Contas  | Aprovação de Conta, Associação de Produtos Financeiros | Gerente de Contas, Especialista em Produtos Financeiros |
+| **Operações e Ativação** | Setor de Operações                  | Assinatura do Contrato, Ativação da Conta             | Operador de Sistemas, Supervisor de Contas       |
+
+
 ## Indicadores
 
 1. Indicador de Tempo: Tempo Total de Abertura de Conta
