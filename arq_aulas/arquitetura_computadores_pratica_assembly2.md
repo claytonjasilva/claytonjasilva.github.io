@@ -40,7 +40,7 @@ Sintaxe: `.DEF rótulo = registrador`
 - `EQU`
 
 Define um nome simbólico para um registrador.   
-Sintaxe: `.EQU rótulo = registrador`
+Sintaxe: `.EQU rótulo = expressão`
 
 - `SET`
 
