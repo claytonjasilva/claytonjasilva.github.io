@@ -50,7 +50,7 @@ Operação: Rd <- k
 - `MOV` 
 
 Copia dado de um registrador para outro.    
-Sintaxe:`MOV Rd,Rr`, onde 16 ≤ d ≤ 31, 16 ≤ r ≤ 31    
+Sintaxe:`MOV Rd,Rr`, onde 0 ≤ d ≤ 31, 0 ≤ r ≤ 31    
 Operação: Rd <- Rr
 
 
