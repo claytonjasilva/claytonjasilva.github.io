@@ -95,15 +95,15 @@ Operação: Desvia o código para +/-k posições
 
 - `ST`
 
-Transfere indiretamente dados de registrador para memória. Os respectivos registradores de uso geral devem estar com os bytes de metade do endereço. Registrador X, r27-r26; registrador Y, r29,r28; registrador Z, r31, r30.    
-Sintaxe: `ST X, Rr`, `ST Y, Rr` ou `ST X, Rr`, onde 0 ≤ r ≤ 31
-Operação: Armazena o conteúdo de Rr no endereço de memória definido em X (r27,r26), Y (r29,r28) ou Z (r31,r30).
+Transfere indiretamente dados de registrador para memória. Os respectivos registradores de uso geral devem estar com os bytes de metade do endereço.   Registrador X, r27-r26; registrador Y, r29,r28; registrador Z, r31, r30.    
+Sintaxe: `ST X, Rr`, `ST Y, Rr` ou `ST Z, Rr`, onde 0 ≤ r ≤ 31  
+Operação: Armazena o conteúdo de Rr no endereço de memória definido em X (r27,r26), Y (r29,r28) ou Z (r31,r30).  
 
 - `LD`
 
 Transfere indiretamente dados da memória para registrador de uso geral. Os respectivos registradores de uso geral devem estar com os bytes de metade do endereço. Registrador X, r27-r26; registrador Y, r29,r28; registrador Z, r31, r30.    
-Sintaxe: `LD Rr,X`, `LD Rr,Y` ou `LD Rr,Z`, onde 0 ≤ r ≤ 31
-Operação: Armazena o conteúdo do endereço de memória definido em X (r27,r26), Y (r29,r28) ou Z (r31,r30) no registrador Rr.
+Sintaxe: `LD Rr,X`, `LD Rr,Y` ou `LD Rr,Z`, onde 0 ≤ r ≤ 31  
+Operação: Armazena o conteúdo do endereço de memória definido em X (r27,r26), Y (r29,r28) ou Z (r31,r30) no registrador Rr.  
 
 ## Exercicios
 
