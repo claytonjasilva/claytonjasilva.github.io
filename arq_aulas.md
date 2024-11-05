@@ -71,6 +71,7 @@ Os instrumentos de avaliação continuada serão disponibilizados à medida que 
 4. [Form 4 - máquina de níveis]() - **encerrado**
 5. [Form 6 - Memória](arq_aulas/arquitetura_computadores_form5.md) - **encerrado**
 6. [Form 7 - Memória cache](https://forms.gle/uS1cngyoWQEe6gQX7) **aberto**
+7. [Form 8 - Barramento. Memória.](https://forms.gle/kapJCQk8BJeghFvQA) **aberto**
 
 ## Exercícios  
 
