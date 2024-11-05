@@ -31,7 +31,7 @@
 7. Análise quantitativa de processos
   
    [Cap 7 - Análise quantitativa de processos](gestao_processos_aulas/gestao_processos_cap7.md)  
-   [Cap 7 - Monitoramento de processos - indicadores - slides](gestao_processos_aulas/gestao_processos_cap7_1.pdf)
+   [Cap 7 - Monitoramento de processos - indicadores - slides](gestao_processos_aulas/gestao_processos_cap7_1.pdf)  
    [Cap 7 - Análise quantitativa de processos](gestao_processos_aulas/gestao_processos_cap7_2.pdf)
 
 8.  [Redesenho de processos](gestao_processos_aulas/gestao_processos_cap8.md)
