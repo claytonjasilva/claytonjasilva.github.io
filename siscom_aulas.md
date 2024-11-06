@@ -33,6 +33,7 @@
 Regularmente serão disponibilizados *forms* que abordam o conteúdo.
 
 1. [Form 1: Conceitos iniciais - sinais e elementos dos sistemas de comunicações](siscom_aulas/sistema_comunicacoes_form1.md)
+2. **[Form 2: ORIENTAÇÃO PARA AP2. CODIFICADORES DE FONTE E CODIFICADORES DE CANAL](https://forms.gle/PxkkUUnxM5uvEVxz7)**
 
 ### Avaliações Bimestrais
 
