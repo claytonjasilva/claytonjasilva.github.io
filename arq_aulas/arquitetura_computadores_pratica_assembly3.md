@@ -75,6 +75,8 @@ Multiplicação binária que retorna o produto de duas expressões.
 
 ## Instruções básicas
 
+[Manual completo do *set* de instruções do 2560](https://ww1.microchip.com/downloads/en/DeviceDoc/AVR-Instruction-Set-Manual-DS40002198A.pdf)
+
 - `CP`
 
 Compara o valor armazenado em dois registradores.    
@@ -123,40 +125,10 @@ Somar todos os números pares, os números y determinados e armazenar ambos nos 
 [Uma solução](https://github.com/claytonjasilva/prog_exemplos/blob/main/linguagem_assembly_asm/pratica_assembly3_ex3.asm)
 
 4. Elaborar um programa em assembly para armazenar uma tabela de 7 valores em memória, a partir do endereço 0x200, definindo arbitrariamente os números (sugestão: usar diretiva .EQU);  
-verificar se os dados armazenados na tabela são iguais;
+verificar se os dados armazenados na tabela são iguais;  
 se os dados forem iguais, armazenar 0xFF no endereço após a última linha da tabela.
 
+[Uma solução](https://github.com/claytonjasilva/prog_exemplos/blob/main/assembly/assembly2.asm)   
 
-[Uma proposta de solução](https://github.com/claytonjasilva/prog_exemplos/blob/main/assembly/assembly2.asm)   
-
-5. Exercício. Implementar um código em linguagem de montagem ('assembly') para o montador ('assembler') do microcontrolador Atmega2560 que:
-
-a. Inicie a execução a partir de um endereço 0xa da memória flash.  
-b. Leia os dados de uma tabela armazenada nos cinco primeiros endereço a partir da posição 0x200.  
-c. Retorne a execução para o primeiro endereço livre da memória flash.  
-[Uma proposta de solução](https://github.com/claytonjasilva/prog_exemplos/blob/main/assembly/assembly3.asm)
-
-6. Exercício. Implementar um código em linguagem de montagem ('assembly') para o montador ('assembler') do microcontrolador Atmega2560 que:
-
-a. Inicialize um registrador com um valor qualquer.  
-b. Armazene em  memória, a partir do endereço 0x200, o valor inicial e os cinco valores subsequentes.  
-[Uma proposta de solução](https://github.com/claytonjasilva/prog_exemplos/blob/main/assembly/assembly4.asm)
-
-
-7. Exercício. Implementar um código em linguagem de montagem ('assembly') para o montador ('assembler') do microcontrolador Atmega2560 que:
-
-a. Usando as instruções `CP` e `BRNE`, realize um loop de 10 repetições.   
-b. Some os dez primeiros número pares a partir de um par definido arbitrariamente.  
-[Uma proposta de solução](https://github.com/claytonjasilva/prog_exemplos/blob/main/assembly/assembly5.asm)
-
-8. Exercício. Implementar um código em linguagem de montagem ('assembly') para o montador ('assembler') do microcontrolador Atmega2560 que:
-
-a. Usando as instruções `CP` e `BRNE`, realize um loop de 10 repetições.
-b. Usando a instrução `ST`, armazene os dez números pares a partir de um número par inicial definido arbitrariamente nos endereços a partir de 0x200.  
-[Uma proposta de solução](https://github.com/claytonjasilva/prog_exemplos/blob/main/assembly/assembly6.asm)
-
-9.  Exercício. Implementar um código em linguagem de montagem ('assembly') para o montador ('assembler') do microcontrolador Atmega2560 que
-
-a. Armazene uma tabela de 7 valores em memória, a partir do endereço 0x200. Definir arbitrariamente os números.  
-b. Some os dados da tabela armazenando na posição de endereço seguinte à última linha.  
-[Uma proposta de solução](https://github.com/claytonjasilva/prog_exemplos/blob/main/assembly/assembly1.asm)
+5. Elaborar um programa em assembly para armazenar 50 números pares na memória a partir do endereço 0x200;   
+em seguida armazenar os 50 números impares a partir do último par nos endereços subsequentes.
