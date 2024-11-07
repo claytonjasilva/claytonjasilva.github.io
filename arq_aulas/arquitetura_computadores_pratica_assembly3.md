@@ -122,10 +122,11 @@ Somar todos os números pares, os números y determinados e armazenar ambos nos 
 
 [Uma solução](https://github.com/claytonjasilva/prog_exemplos/blob/main/linguagem_assembly_asm/pratica_assembly3_ex3.asm)
 
-4. Exercício. Implementar um código em linguagem de montagem ('assembly') para o montador ('assembler') do microcontrolador Atmega2560 que:
+4. Elaborar um programa em assembly para armazenar uma tabela de 7 valores em memória, a partir do endereço 0x200, definindo arbitrariamente os números (sugestão: usar diretiva .EQU);  
+verificar se os dados armazenados na tabela são iguais;
+se os dados forem iguais, armazenar 0xFF no endereço após a última linha da tabela.
 
-a. Armazene uma tabela de 7 valores em memória, a partir do endereço 0x200. Definir arbitrariamente os números.  
-b. Verifique se os dados da tabela são iguais. Se forem iguais, armazene 0 no endereço após a última linha da tabela.  
+
 [Uma proposta de solução](https://github.com/claytonjasilva/prog_exemplos/blob/main/assembly/assembly2.asm)   
 
 5. Exercício. Implementar um código em linguagem de montagem ('assembly') para o montador ('assembler') do microcontrolador Atmega2560 que:
