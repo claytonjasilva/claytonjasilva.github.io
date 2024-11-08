@@ -86,6 +86,35 @@ Os resultados das operações devem ser exibidos em uma porta de saída específ
 out PORTC, r18   ; Apresenta o resultado na porta de saída PORTC
 ```
 
+#### 4.3 Resumo da alocação de endereços RAM
+
+**Tabela de Destinação de Endereços de RAM - Projeto Sistema Operacional Controlador de Memória**
+
+| Faixa de Endereço | Descrição |
+|-------------------|-----------|
+| **0x200 - 0x2FF** | Armazenamento da tabela de caracteres alfanuméricos (maiúsculas, minúsculas e dígitos) no padrão ASCII, incluindo o código do espaço em branco (0x20) e o código `<ESC>` (0x1B). |
+| **0x300 - 0x3FF** | Armazenamento das sequências de caracteres lidas a partir da entrada, criando uma tabela de sequência de caracteres. Cada sequência é finalizada por um marcador de espaço em branco antes da próxima sequência. |
+| **0x400 - 0x401** | Endereço 0x401: Armazenamento do resultado da contagem do número de caracteres presentes na tabela de sequência de caracteres. |
+| **0x402**         | Endereço de armazenamento do resultado da contagem de ocorrências de um caractere específico na tabela de sequência de caracteres. |
+| **0x403 - 0x4FF** | Armazenamento da tabela de caracteres frequentes, contendo os 10 caracteres mais frequentes e o respectivo número de ocorrências. |
+
+**Detalhamento das Funções Associadas aos Endereços:**
+
+1. **Endereço 0x200 - 0x2FF**:
+   - Utilizado para armazenar uma tabela de caracteres alfanuméricos (maiúsculas, minúsculas e dígitos), além do espaço em branco e do caractere `<ESC>`.
+
+2. **Endereço 0x300 - 0x3FF**:
+   - Destinado ao armazenamento das sequências de caracteres lidas por meio da instrução `IN`. A leitura é interrompida ao encontrar o caractere `<ESC>` ou ao alcançar o limite do espaço. Cada sequência é separada por um marcador de espaço em branco (0x20).
+
+3. **Endereço 0x401**:
+   - Utilizado para armazenar o número total de caracteres presentes na tabela de sequência de caracteres, com o resultado apresentado também em uma porta de saída através da instrução `OUT`.
+
+4. **Endereço 0x402**:
+   - Armazena o resultado da contagem de ocorrências de um caractere específico na tabela de sequência de caracteres, após leitura e validação do caractere.
+
+5. **Endereço 0x403 - 0x4FF**:
+   - Reservado para a tabela de caracteres frequentes, contendo os 10 caracteres com maior frequência e seus respectivos números de ocorrências na faixa de 0x300 a 0x3FF.
+
 
 ---
 *Trabalho AP1, Arquitetura de Computadores, Rev. 8/11/24*
