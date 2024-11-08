@@ -1,4 +1,4 @@
-# Enunciado do Trabalho - Projeto Sistema Operacional Controlador Teclado
+# Enunciado do Trabalho - Projeto Sistema Controlador de Tabela de Caracteres
 
 Disciplina Arquitetura de Computadores, Prof. Clayton J A Silva
 
@@ -7,227 +7,69 @@ Disciplina Arquitetura de Computadores, Prof. Clayton J A Silva
 - O trabalho se refere a 30% da nota da segunda avaliação bimestral do período 24.2;
 - **Data da entrega: até o final do dia da segunda avaliação parcial.** O representante do grupo deverá submeter o trabalho no respectivo *branch* do repositório do projeto no GitHub.
 - Os projetos deverão ser desenvolvidos e entregues de acordo com as equipes definidas em sala - **não serão aceitas entregas fora do grupo**;
-- Cada grupo deverá possuir um representante junto ao professor, designado na definição do grupo - **os grupos devem os mesmos constituído para o trabalho da AP1.**;
-- Os entregáveis do projeto são: (i) o código do *sketch* do sistema, compartilhado pelo representante na conta do projeto no GitHub; (ii) o *shield* com o protótipo dos componentes interligados à placa do Arduíno;
-- O *sketch* deverá relacionar, como comentário, **nome e matrícula** de todos os componentes do grupo, seguidos da auto-avaliação 'NT'-não trabalhou, 'TP'-trabalhou parcialmente, 'TA'-trabalhou ativamente - por exemplo, 12345 Fulano de Tal NT;
+- Cada grupo deverá possuir um representante junto ao professor, designado na definição do grupo - **os grupos devem ser os mesmos constituídos para o trabalho da AP1.**;
+- O código em assembly deverá relacionar, como comentário, **nome e matrícula** de todos os componentes do grupo, seguidos da auto-avaliação 'NT'-não trabalhou, 'TP'-trabalhou parcialmente, 'TA'-trabalhou ativamente - por exemplo, 12345 Fulano de Tal NT;
 - **O aluno que trabalhou parcialmente perderá 40% da pontuação atribuída ao grupo; O aluno que não trabalhou terá nota 0,0 no trabalho**;
-- A avaliação consistirá na verificação e aplicação de testes ao protótipo construído, aplicando-se os conceitos EXCELENTE, 10, *shield* e *sketch* apresentados, todas as funcionalidades atendidas; ÓTIMO, 9, *shield* e *sketch* apresentados, algumas funcionalidades não atendidas; BOM, 7, *shield* e *sketch* apresentados, muitas funcionalidades não atendidas; INSUFICIENTE, 0,0, *shield* e *sketch* não apresentados;
-- **A submissão do trabalho será na data da revisão da prova da AP1**.
+- A avaliação consistirá na verificação do código, avaliando o seguinte
+   - clareza - 10%  
+   - funcionalidades - 90%  
+   , aplicando-se os conceitos EXCELENTE; ÓTIMO; BOM; INSUFICIENTE.
 
 ## I) Objetivos:
 
-Desenvolver um sistema de monitoramento e controle com o microcontrolador Arduino, que permita:
-
-1. **Explorar entradas e saídas digitais e analógicas**, integrando sensores e atuadores (LEDs, buzzer, sensor de temperatura, sensor de distância, etc.).
-2. **Trabalhar com operações binárias e linguagem *assembly***, utilizando mnemônicos abstratos que indicam as operações a serem executadas.
-3. **Implementar dois modos de controle**:
-   - **Via monitor serial**: O usuário enviará mnemônicos (representações simbólicas) para controlar dispositivos.
-   - **Via chaves binárias**: O sistema será controlado por chaves binárias, com uma chave adicional para confirmar a operação.
-
-O sistema propicia comandar sensores e atuadores através do monitor serial, sem requerer obrigatoriamente a combinação de chaves de entrada, possibilitando as funcionalidades a seguir, combinadas ou não, utilizando uma linguagem simbólica dos correspondentes códigos binários:
-
-- acendimento/apagamento de até 3 LEDs;
-- acendimento/apagamento de LED RGB;
-- geração de alarme sonoro;
-- monitoramento de temperatura;
-- monitoramento e determinação da distância de um alvo;
-- monitoramento da presença de obstáculo.
-
-O sistema permite também que as chaves binárias de entrada realizem essas operações diretamente, mediante a habilitação por uma chave seletora.
+1. Compreender e Implementar o Controle de Memória em Sistemas de Baixo Nível. Desenvolver a habilidade de gerenciar e manipular diretamente a memória de um microcontrolador, aplicando conceitos de organização e acesso a diferentes regiões de memória (IRAM).
+2. Praticar a Programação em Linguagem Assembly para Arquiteturas de Microcontroladores. Aplicar a linguagem Assembly no desenvolvimento de um sistema operacional controlador de memória, aprimorando o entendimento da programação de baixo nível e da estrutura interna dos microcontroladores.
+3. Explorar a Interação entre Hardware e Software em Microcontroladores. Fortalecer a compreensão de como o software controla e interage com componentes de hardware, como portas de entrada/saída e registradores, para ler, processar e apresentar dados.
+4. Desenvolver e Implementar Rotinas de Processamento de Dados em Memória. Criar rotinas eficientes para leitura, armazenamento, busca e contagem de caracteres em memória, aplicando técnicas de manipulação de dados e controle de fluxo em Assembly.
+5. Promover a Aplicação de Práticas de Projeto e Documentação em Sistemas de Computação. Implementar um projeto modularizado e documentado, incluindo a utilização de diretivas, macros e comentários detalhados, de forma a garantir a clareza, a manutenção e a reutilização do código, reforçando boas práticas de desenvolvimento.
 
 ## II) Escopo:
 
-O sistema deve incluir:
+O código deverá ser elaborado em linguagem de montagem (*assembly*), de forma a ser testado utilizando-se o Assembler do Atmega2560 do MicroChip Studio, considerando o que segue:
 
-1. **Leitura e controle de múltiplos sensores e atuadores**:
-   - Sensores: Temperatura, distância, presença.
-   - Atuadores: LEDs (A, B, C), buzzer, LED RGB.
-   
-2. **Modo de Programação**:
-   - **Modo Serial**: O Arduino entra no modo de programação ao receber o comando `INICIO_PROG` via monitor serial. O sistema aceita comandos como `LED_ON A` ou `BUZZ_ON` para realizar operações.
-   - **Modo Binário**: Ativado por uma chave física. Comandos são inseridos via chaves binárias e executados ao pressionar uma chave "Enter".
+1. Armazenar uma tabela de caracteres (maiúsculas e minúsculas) na memória IRAM do Atmega2560, no padrão ASCII, a partir do endereço 0x200. Armazenar também o código ASCII do espaço em branco. Armazenar também o código correspondente ao comando <ESC>.
+2. Caso seja lido em uma porta de entrada um byte de código (0x1C), ler uma sequência de caracteres usando a instrução `IN`. Quando for lida o caractere <ESC> o programa deverá interromper a leitura. Os dados lidos devem ser armazenados em um espaço limitado de memória entre 0x300 a 0x400. Poderão ser lidas várias sequências de caracteres diferentes, ocupando o espaço destinado ainda disponível. Quando for alcançado o limite do espaço a leitura deverá ser interrompida. Cada sequência de caracteres deve ser finalizada por um marcador que ocupa uma posição de endereço antes da próxima sequência. Caso não seja válido ler um novo caractere até a entrada apresentar um caractere válido.
+3. Caso seja lido de uma porta de entrada um byte de código (0x1D), determinar o número de caracteres presentes na faixa de memória entre 0x300 e 0x400. Armazenar o resultado no endereço de memória 0x401.
+4. Caso seja lido de uma porta de entrada um byte de código (0x1E), ler um novo byte correspondente a um caractere e contar o número de vezes que o caractere está presente na faixa entre 0x300 e 0x400.  Armazenar o resultado no endereço de memória 0x402. Verificar se o caractere de entrada é válido. Caso não seja válido ler um novo caractere até a entrada apresentar um caractere válido.
+5. Armazenar uma tabela com os 10 caracteres com maior frequência na faixa de endereços entre 0x300 e 0x400, mantendo atualizada o respectivo número de ocorrências.  
+6. Cada operação realizada deverá, além de armazenar o resultado nas posições de memória indicada, apresentar em uma porta de saída.
 
-3. **Saída de informações**:
-   - Feedback no **monitor serial** para exibir os resultados de leituras de sensores e executar comandos.
-   - Controle de LEDs, buzzer e LED RGB em resposta aos comandos enviados.
+## III) Informações complementares
 
-## III) Descrição Detalhada do Sistema:
+Complementação o que foi apresentado,
 
-### Funcionamento do Sistema e Funcionalidades:
+### 1. Diretivas e Macros do Assembler
+- O código deverá incluir as diretivas necessárias para o correto funcionamento do Assembler do Atmega2560.
+- O uso de macros poderá ser feito para simplificar operações que sejam repetitivas, garantindo a modularidade e clareza do código.
 
-1. **Modo de Programação Serial**:
-   - O usuário entra no modo de programação enviando `INICIO_PROG` via monitor serial.
-   - No modo serial, o sistema aceita comandos como `LED_ON A`, `BUZZ_ON`, `TEMP_READ A`, que são interpretados e executados diretamente.
+### 2. Comentários no Código
+- O código deverá ser comentado de forma a proporcionar legibilidade e facilitar a manutenção.
+- Todos os integrantes do grupo devem ter seus nomes e matrículas mencionados como comentário no início do código, seguidos de uma autoavaliação que indique a contribuição de cada um (`NT`, `TP`, `TA`).
 
-2. **Modo de Programação Binário**:
-   - O usuário ativa o modo de programação binário através de uma chave física conectada ao pino 12.
-   - No modo binário, o usuário ajusta o estado de quatro chaves (nos pinos 2, 3, 4 e 5) para formar um comando binário. Após configurar as chaves, o usuário pressiona a chave "Enter" para executar o comando.
+### 3. Estrutura e Organização
+- O código deve ser modular, com sub-rotinas claramente definidas para cada funcionalidade descrita nos objetivos.
+- As funções devem estar organizadas de forma que possam ser chamadas e testadas individualmente.
 
-### Tabela de Funções (Com 4 bits de Opcode):
+### 4. Teste de Leitura com a Instrução `IN`
 
-| **Código Binário** | **Mnemônico**           | **Descrição**                                                |
-|--------------------|-------------------------|--------------------------------------------------------------|
-| 0000               | `LED_ON A`              | Liga o LED A.                                                |
-| 0001               | `LED_OFF A`             | Desliga o LED A.                                             |
-| 0010               | `LED_ON B`              | Liga o LED B.                                                |
-| 0011               | `LED_OFF B`             | Desliga o LED B.                                             |
-| 0100               | `BUZZ_ON`               | Liga o buzzer.                                               |
-| 0101               | `BUZZ_OFF`              | Desliga o buzzer.                                            |
-| 0110               | `TEMP_READ A`           | Lê o sensor de temperatura e exibe o valor no monitor serial. |
-| 0111               | `DIST_CHECK A`          | Lê o sensor de distância e exibe o valor no monitor serial.   |
-| 1000               | `PRES_READ A`           | Lê o sensor de presença.                                      |
-| 1001               | `RGB_SET_COLOR A RED`   | Define a cor do LED RGB para vermelho.                       |
-| 1010               | `RGB_SET_COLOR A GREEN` | Define a cor do LED RGB para verde.                          |
-| 1011               | `RGB_SET_COLOR A BLUE`  | Define a cor do LED RGB para azul.                           |
-| 1100               | `INICIO_PROG`           | Inicia o modo de programação.                                |
-| 1101               | `FIM_PROG`              | Sai do modo de programação.                                  |
-| 1110               | `LED_ON C`              | Liga o LED C.                                                |
-| 1111               | `LED_OFF C`             | Desliga o LED C.                                             |
+#### 4.1 Configuração da Porta de Entrada:
 
----
+A porta de entrada deve ser configurada como entrada, definindo o registrador de direção de dados `DDRx` com o valor `0`.
+   ```asm
+   clr r16          ; R16 como 0 para configurar os pinos como entrada
+   out DDRD, r16    ; Configura todos os pinos de PORTD como entrada
+   ```
+A instrução IN deve ser usada para ler um byte da porta de entrada e armazená-lo em um registrador.
 
-### Exemplos de Sequências de Comandos:
+```
+in r18, PIND     ; Lê o valor dos pinos de PORTD e armazena em R18
+```
 
-#### **Exemplo de Sequência via Monitor Serial**:
+Os resultados das operações devem ser exibidos em uma porta de saída específica.
 
-Nesta sequência, o usuário utiliza o monitor serial para enviar comandos para o Arduino, ligando LEDs, lendo sensores e manipulando o LED RGB.
-
-1. **Início da Programação**:
-   - O usuário envia o comando: INICIO_PROG, o Arduino entra no modo de programação serial.
-
-2. **Ligando o LED A**:
-   - O usuário envia: LED_ON A, o LED A é ligado.
-
-3. **Lendo o Sensor de Temperatura**:
-   - O usuário envia:TEMP_READ A, o valor da temperatura lida é exibido no monitor serial.
-
-4. **Ligando o Buzzer**:
-   - O usuário envia:BUZZ_ON, o buzzer é ativado.
-
-5. **Mudando a Cor do LED RGB para Vermelho**:
-   - O usuário envia: RGB_SET_COLOR A RED, o LED RGB é definido para a cor vermelha.
-
-6. **Encerrando a Programação**:
-   - O usuário envia: FIM_PROG, o Arduino sai do modo de programação.
+```
+out PORTC, r18   ; Apresenta o resultado na porta de saída PORTC
+```
 
 ---
-
-#### **Exemplo de Sequência via Entrada Binária**:
-
-Nesta sequência, o usuário usa chaves binárias para controlar o Arduino. Cada conjunto de chaves representa um comando binário de 4 bits. A chave "Enter" confirma o comando, e o Arduino o executa.
-
-1. **Início do Modo Binário**:
-   - O usuário ativa a chave de seleção de modo (conectada ao pino 12). O Arduino entra no modo de programação binário.
-
-2. **Ligando o LED A (0000)**:
-   - O usuário ajusta as chaves binárias nos pinos 2, 3, 4 e 5 para o valor **0000** (chave 1: desligada, chave 2: desligada, chave 3: desligada, chave 4: desligada).
-   - Em seguida, o usuário pressiona a chave "Enter" (conectada ao pino 13), e o LED A é ligado.
-
-3. **Desligando o LED A (0001)**:
-   - O usuário ajusta as chaves para o valor **0001** (chave 1: desligada, chave 2: desligada, chave 3: desligada, chave 4: ligada).
-   - Ao pressionar "Enter", o LED A é desligado.
-
-4. **Ligando o Buzzer (0100)**:
-   - O usuário ajusta as chaves para o valor **0100** (chave 1: desligada, chave 2: ligada, chave 3: desligada, chave 4: desligada).
-   - Ao pressionar "Enter", o buzzer é ligado.
-
-5. **Mudando a Cor do LED RGB para Azul (1011)**:
-   - O usuário ajusta as chaves para o valor **1011** (chave 1: desligada, chave 2: ligada, chave 3: ligada, chave 4: ligada).
-   - Ao pressionar "Enter", o LED RGB é definido para a cor azul.
-
-6. **Encerrando a Programação (1101)**:
-   - O usuário ajusta as chaves para o valor **1101** (chave 1: ligada, chave 2: desligada, chave 3: ligada, chave 4: ligada).
-   - Ao pressionar "Enter", o Arduino sai do modo de programação.
-
----
-
-## IV) Sugestão de Nomes das Funções para o *sketch*:
-
-- **inicioModoProgramacaoSerial**: Inicia o modo de programação via serial.
-- **inicioModoProgramacaoBinario**: Inicia o modo de programação via binário.
-- **fimModoProgramacao**: Encerra o modo de programação.
-- **ligarLed(char led)**: Liga o LED especificado (A, B ou C).
-- **desligarLed(char led)**: Desliga o LED especificado (A, B ou C).
-- **ligarBuzzer()**: Liga o buzzer.
-- **desligarBuzzer()**: Desliga o buzzer.
-- **lerTemperatura()**: Lê o valor do sensor de temperatura e exibe no monitor serial.
-- **lerDistancia()**: Lê o valor do sensor de distância e exibe no monitor serial.
-- **lerPresenca()**: Lê o valor do sensor de presença.
-- **definirCorRGB(int r, int g, int b)**: Define a cor do LED RGB.
-- **lerChavesBinarias()**: Lê o estado das chaves binárias e converte para um valor binário.
-- **processarComando(String comando)**: Processa e executa um comando enviado via serial.
-- **processarComandoBinario(int comando)**: Processa e executa um comando baseado na entrada binária.
-
-## V) Sugestão de Montagem do *shield*:
-
-### Componentes:
-
-- **LEDs A, B, C**: Conectados aos pinos 9, 10 e outros disponíveis.
-- **Buzzer A**: Conectado ao pino 8.
-- **Sensor de Temperatura**: Conectado ao pino A0 (pode ser um sensor LM35 ou DHT11).
-- **Sensor de Distância (HC-SR04)**: Conectado aos pinos 5 (Trigger) e 6 (Echo).
-- **Sensor de Presença (PIR)**: Conectado ao pino 7.
-- **LED RGB**: Com resistores conectados aos pinos 11, 12 e 13.
-- **Chaves Binárias**: Conectadas aos pinos 2, 3, 4 e 5, com a chave "Enter" no pino 13.
-- **Chave de Seleção de Modo**: Conectada ao pino 12, usada para ativar o modo binário.
-
-### Esquema de Conexões:
-
-1. **LEDs**:
-   - **LED A**: Pino 9, com resistor de 220Ω para limitar a corrente.
-   - **LED B**: Pino 10, também com resistor de 220Ω.
-   - **LED C**: Pino 11, também com resistor de 220Ω.
-
-2. **Buzzer**:
-   - O positivo do buzzer vai ao pino 8, o negativo ao GND.
-
-3. **Sensor de Temperatura**:
-   - O pino de saída do sensor LM35/DHT11 vai ao pino A0, com alimentação em 5V e GND.
-
-4. **Sensor de Distância (HC-SR04)**:
-   - **Trigger** conectado ao pino 5 e **Echo** ao pino 6.
-
-5. **Sensor de Presença (PIR)**:
-   - Conectado ao pino 7, com alimentação em 5V e GND.
-
-6. **LED RGB**:
-   - Conectado aos pinos 11 (vermelho), 12 (verde) e 13 (azul), com resistores de 220Ω para limitar a corrente.
-
-7. **Chaves Binárias**:
-   - As chaves binárias serão conectadas aos pinos **2, 3, 4 e 5** para formar o comando binário de 4 bits.
-   - A chave "Enter" será conectada ao pino **13** e será usada para confirmar e executar o comando binário.
-
-8. **Chave de Seleção de Modo**:
-   - A chave de seleção de modo será conectada ao pino **12**. Quando ativada, essa chave coloca o sistema no **modo de programação binário**.
-
-### Montagem:
-
-- Utilize uma *protoboard* para organizar todos os componentes de forma ordenada.
-- Use resistores adequados (220Ω/330Ω) para limitar a corrente dos LEDs e proteger os componentes sensíveis.
-- As chaves binárias e a chave seletora podem ser simuladas usando *jumper*, com cada chave representando um bit do comando binário, ligando o *jumper* a 5V (1) ou GND (0).
-- A chave "Enter" pode ser um botão *push-bottom* separado, que ao ser pressionado, faz o sistema ler o estado das chaves binárias e executar o comando correspondente.
-
-### Esquema de Conexões Resumido:
-
-| Componente            | Pino Arduino |
-|-----------------------|--------------|
-| **LED A**             | 9            |
-| **LED B**             | 10           |
-| **LED C**             | 11           |
-| **Buzzer**            | 8            |
-| **Sensor de Temperatura** | A0       |
-| **Sensor de Distância (Trigger)** | 5 |
-| **Sensor de Distância (Echo)**    | 6 |
-| **Sensor de Presença** | 7           |
-| **RGB (Vermelho)**    | 11           |
-| **RGB (Verde)**       | 12           |
-| **RGB (Azul)**        | 13           |
-| **Chave Binária 1**   | 2            |
-| **Chave Binária 2**   | 3            |
-| **Chave Binária 3**   | 4            |
-| **Chave Binária 4**   | 5            |
-| **Chave "Enter"**     | 13           |
-| **Chave de Seleção de Modo** | 12   |
-
----
-*Trabalho AP1, Arquitetura de Computadores, Rev. 11/9/24*
+*Trabalho AP1, Arquitetura de Computadores, Rev. 7/11/24*
