@@ -1,6 +1,6 @@
 # Conteúdo das Aulas  
 
-## Arquitetura de Computadores - 2024.2
+## Arquitetura de Computadores - 2025.1
 
 ## Tópicos do conteúdo
 
