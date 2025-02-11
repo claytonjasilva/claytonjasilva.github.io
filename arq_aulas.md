@@ -58,8 +58,8 @@
 
 ### Avaliações Bimestrais
 
-1. [Trabalho AP1]() - **encerrado**
-2. [Trabalho AP2]() - **encerrado**
+1. **Trabalho AP1** - **encerrado**
+2. **Trabalho AP2** - **encerrado**
 
 ### Avaliação Continuada
 
