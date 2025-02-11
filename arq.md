@@ -1,6 +1,6 @@
-# Arquitetura de Computadores - 2024.2
+# Arquitetura de Computadores - 2025.1
 
-1. [Agendas 2024.2](https://calendar.google.com/calendar/embed?src=df9ae7e46e67e49322b74102fcee60b1aa4963108c83470331e1f71903dcd0a9%40group.calendar.google.com&ctz=America%2FSao_Paulo)
+1. [Agendas 2025.1](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/arq_aulas/agenda_arq_cdia.html)
 3. [Grid](arq_aulas/Grid_Arquitetura.md)
 4. [Sistema de Avaliações](/./avaliacoes.md)
 5. [Conteúdo das Aulas](arq_aulas.md)
