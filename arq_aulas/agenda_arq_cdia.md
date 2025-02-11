@@ -25,4 +25,4 @@
 | 03/06/2025 | Cap. 8 - Sistemas Operacionais |
 | 10/06/2025 | Teste. Revisão AP2 |
 | 17/06/2025 | **Aplicação da AP2** |
-| 24/06/2025 | **Aplicação da AP2 (continuação)** |
+| 24/06/2025 | **Aplicação da AS** |
