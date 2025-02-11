@@ -58,8 +58,8 @@
 
 ### Avaliações Bimestrais
 
-1. [Trabalho AP1](arq_aulas/arquitetura_computadores_trabalhoap1.md) - **encerrado**
-2. [Trabalho AP2](arq_aulas/arquitetura_computadores_trabalhoap2.md) - **disponível**
+1. [Trabalho AP1]() - **encerrado**
+2. [Trabalho AP2]() - **encerrado**
 
 ### Avaliação Continuada
 
