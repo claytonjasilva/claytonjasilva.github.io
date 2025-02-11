@@ -1,6 +1,6 @@
 # Conteúdo das Aulas  
 
-## Gestão de Processos - 2024.2
+## Gestão de Processos - 2025.1
 
 ## Tópicos
 
@@ -49,11 +49,7 @@
 ### Avaliações Bimestrais
 
 1. **Trabalho AP1**
-
-   - [Estudo de caso 3 - Instituição Financeira - FinBank](gestao_processos_aulas/gestao_processos_caso3.md)
-   - [Pedido aos grupos](gestao_processos_aulas/gestao_processos_estudo_caso3.md)
-   
-2. **Trabalho AP2 - Não será aplicado trabalho para a AP2**
+2. **Trabalho AP2**
 
 ### Avaliação Continuada
 
