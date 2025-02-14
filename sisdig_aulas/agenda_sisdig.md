@@ -24,4 +24,4 @@
 | 30/05/2025 | Cap. 6 - Aplicações com FF |
 | 06/06/2025 | Teste. Revisão AP2 |
 | 13/06/2025 | **Aplicação da AP2** |
-| 20/06/2025 | **Aplicação da AS** |
+| 27/06/2025 | **Aplicação da AS** |
