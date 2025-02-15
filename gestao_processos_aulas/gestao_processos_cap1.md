@@ -29,6 +29,11 @@ A palavra “processo” está presente em diversas áreas e atividades do cotid
 
 Por exemplo, processo de fabricação, processo de produção e processo de negócio parecem se confundir; de fato, o uso de cada um destes termos dependerá sobretudo da cultura interna da organização. Espontaneamente, uma fábrica de parafusos, uma hidrelétrica e uma seguradora pensarão a obtenção de seu produto principal como, respectivamente, um processo de fabricação, um processo de produção e um processo de negócio. O termo “processo de negócio” tomou força no setor de serviços, como paralelismo aos “processos de fabricação” usado nas operações que envolvem produtos materiais. Nos setores financeiro, de telecomunicações e de consultorias fala-se livremente em “processo de negócio” para deixar claro que se trata dos processos que compõem a atividade fim. Expressões do tipo “em uma indústria automotiva não há processo de negócio, só de fabricação” não possuem nenhum efeito prático. Dificilmente há problema sobre a aplicação dos conceitos. 
 
+Segundo o CBOK 2.0, processo é a “agregação de atividades e comportamentos executados por humanos ou máquinas para alcançar um ou mais resultados.”. Segundo Hammer e Champy, processo é uma "coleção de atividades que recebem uma ou mais entradas e criam uma saída que é de valor para o cliente". Segundo Davenport (1993), processo é "uma ordenação específica de atividades de trabalho ao longo do tempo e do espaço, com um começo, um fim e claramente definidas entradas e saídas; uma estrutura para ação". 
+
+Segundo o CBOK 2.0, **processo de negócios** é todo “trabalho que entrega valor para clientes ou apoia/gerencia outros processos. Pode ser ponta a ponta, interfuncional. Ou seja, envolve todo o trabalho que pode até cruzar os limites funcionais necessários para entregar valor ao cliente. Pode ser até interorganizacional.”
+
+
 A Figura 1 apresenta uma estrutura de decomposição hierárquica dos processos.
 
 ![Fig 1.1](image/fig1-visaoestrutural.jpg)  
@@ -73,7 +78,12 @@ Modelo de estrutura para classificação de processos.
 
 Apesar de referir-se explicitamente a processos, a PCF lista atividades, sem especificar se serão realizadas como processo ou como projeto, mas vendo-as de modo horizontal e não segundo a tradicional vista por organograma. Esta lista de atividades facilita aos iniciantes a compreensão dos processos relacionados às diversas áreas das organizações. 
 
-A distribuição de macroprocessos principais possui similaridades com a Cadeia de Valor de Porter (1989). Outra forma interessante de entender os diferentes processos de organizações em geral é o modelo proposto por Scheer (2006). 
+A distribuição de macroprocessos principais possui similaridades com a Cadeia de Valor de Porter (1989). 
+
+![Fig 1.5](image/fig5-porter.jpg)  
+Modelo de estrutura para classificação de processos.
+
+Outra forma interessante de entender os diferentes processos de organizações em geral é o modelo proposto por Scheer (2006). 
 
 Este autor divide basicamente os processos em três categorias, conforme mostra a Figura 6: 
 - Processos de governança, que envolvem processos como gerenciamento de conformidades, gerenciamento de riscos, Business Intelligence, processos de BPM, desenvolvimento de estratégia, desenvolvimento de negócios e arquitetura empresarial.
@@ -183,6 +193,13 @@ Tabela Características de organização centrada e não centrada em processos
 
 Neste contexto, pode-se discutir as diferenças, por vezes consideradas apenas semânticas, entre Gerenciamento de Processos e Gerenciamento por Processos. O gerenciamento de processos os trata isoladamente, enquanto o gerenciamento por processos os trata segundo uma visão estratégica que gerencia a empresa como um todo, voltando-se para os produtos a serem entregues e os processos necessários para que isso ocorra. A aplicação exagerada de qualquer técnica organizacional pode levar a um desnecessário dispêndio de energia (O’CONNELL, PYKE e WHITEHEAD, 2006). Muitas atividades executadas nas empresas podem não usar necessariamente um formalismo tão grande, como exigido pela aplicação direta de modelagem de processos e outros aspectos do BPM. Além disso, deve-se lembrar sempre que processos de negócios nem sempre são linhas de montagem fordistas; os usuários possuem importantes conhecimentos e opiniões que podem compartilhar, agregando melhorias e contornando problemas que seriam insolúveis em linhas de montagem fordistas. Processos de negócios envolvem pessoas, comunicações de vários tipos e mudanças. Não é apenas junção de software e máquinas. Alguns processos ocorrem tão esporadicamente, ou são tão imprevisíveis, ou se constituem em modo tão particular.
 
+O CBOK 2.0 nos apresenta como os processos se instanciam através das funções de negócios.
+
+![Fig 1.10](image/fig10-processosxfuncoes.jpg)  
+Processos ao longo das funções de negócios. 
+
+Segundo o CBOK 2.0, uma função de negócios é um "grupo de atividades e competências especializadas relacionadas a objetivos ou tarefas particulares". Tipicamente, envolve: **produção e operações, recursos humanos, finanças, marketing e comercial**.
+
 ### 1.2 Processos em Todo Lugar
 *Fonte Fundamentals of Business Process Management, DUMAS, MARLON; ROSA, M. L. London: Springer, 2013.*
 
@@ -252,11 +269,21 @@ Com relação ao processo acima, considere as seguintes perguntas:
 
 À luz do exposto, definimos um processo de negócio como uma coleção de eventos, atividades e pontos de decisão inter-relacionados que envolvem vários atores e objetos, e que coletivamente levam a um resultado que é de valor para pelo menos um cliente.
 
-![Fig 1.1](image/fig1.1.png) Ingredientes de um processo de negócio
+![Fig 3.1](image/fig1.1.png)    
+Ingredientes de um processo de negócio
 
 Armados com esta definição de processo de negócio, **definimos BPM como um corpo de métodos, técnicas e ferramentas para descobrir, analisar, redesenhar, executar e monitorar processos de negócio**.
 
 Esta definição reflete o fato de que processos de negócio são o ponto focal do BPM, e também o fato de que o BPM envolve diferentes fases e atividades no ciclo de vida dos processos de negócio, como discutiremos mais adiante neste capítulo. Outras disciplinas além do BPM lidam com processos de negócio de diferentes maneiras, como explicado na seção "Disciplinas Relacionadas". Uma das características comumente associadas ao BPM é sua **ênfase no uso de modelos de processo** ao longo do ciclo de vida dos processos de negócio.
+
+Segundo o CBOK 2.0, BPM representa uma forma de visualizar as operações de negócio além das estruturas funcionais tradicionais. Compreende todo trabalho executado para entregar o produto ou serviço, independentemente das áreas funcionais. **Começa no alto nível – acima daquele em que se executa o trabalho.**
+
+![Fig 3.2](image/fig11-processosxatividades.jpg)    
+Processos orquestrando atividades
+
+BPM consiste em "disciplina gerencial que integra estratégias e objetivos organizacionais com expectativas e necessidades de clientes, por meio de foco em processos ponta a ponta. Engloba estratégias, objetivos, cultura, estruturas organizacionais, papeis, políticas, métodos e tecnologias para analisar, desenhar, implementar, gerenciar desempenho, transformar e estabelecer governança de processos." (CBOK 2.0). É a arte e ciência de supervisionar como o trabalho é realizado em uma organização para garantir resultados consistentes e aproveitar oportunidades de melhoria. Não é sobre melhorar a forma como atividades individuais são realizadas. Em vez disso, trata-se de gerenciar cadeias inteiras de eventos, atividades e decisões que, em última análise, agregam valor à organização e aos seus clientes. 
+
+O BPM deve se conectar com objetivos estratégicos, pois as organizações existem para entregar valor aos seus clientes na prestação de serviços e entrega de bens. Consequentemente, os objetivos estratégicos devem estar conectados com a entrega de valor, o que se obtém através dos processos. O gerenciamento de processos é o método que busca identificar, modelar, analisar, redesenhar, implantar, monitorar e controlar os processos. Assim, os objetivos organizacionais podem ser alcançados mediante uma gestão centrada em processos.
 
 **Disciplinas Relacionadas**
 O BPM não é de forma alguma a única disciplina que se preocupa com a melhoria do desempenho operacional das organizações. Abaixo, introduzimos brevemente algumas disciplinas relacionadas e identificamos as principais relações e diferenças entre essas disciplinas e o BPM.
@@ -271,7 +298,7 @@ O BPM não é de forma alguma a única disciplina que se preocupa com a melhoria
 
 Em resumo, podemos dizer que o BPM herda a filosofia de melhoria contínua do TQM, abraça os princípios e técnicas da gestão de operações, Lean e Six Sigma, e os combina com as capacidades oferecidas pela tecnologia da informação moderna, a fim de alinhar de forma otimizada os processos de negócio com os objetivos de desempenho de uma organização.
 
-### 1.3 Origens e História do BPM
+### 1.4 Origens e História do BPM
 
 Para entender melhor por que as organizações se engajam em BPM e quais benefícios ele traz, vale a pena olhar para as razões pelas quais o BPM surgiu e evoluiu ao longo do tempo. Abaixo, examinamos os motores da disciplina BPM de uma perspectiva histórica. Começamos com o surgimento das organizações funcionais, continuamos com a introdução do pensamento de processo, até as inovações e falhas da reengenharia de processos de negócio. Esta discussão fornece a base para a definição do ciclo de vida do BPM posteriormente.
 
@@ -391,4 +418,20 @@ Após a implementação de um processo redesenhado, ele entra em execução. Ess
 
 Esta seção forneceu uma visão geral do ciclo de vida do BPM, ilustrado na Figura 1.7. Como será discutido ao longo do curso, um ciclo de vida de BPM bem sucedido raramente se desdobra de maneira tão ordenada como pode parecer. Existem muitas iterações, retornos, curvas e dificuldades inesperadas, algumas das quais são mais fáceis de superar do que outras. No entanto, ao adotar o ciclo de vida do BPM como um guia, podemos desenvolver uma compreensão estruturada de como gerenciar processos de negócio e alcançar um entendimento claro sobre quais partes interessadas devem estar envolvidas, o que precisa ser feito em diferentes fases, que habilidades e técnicas são necessárias para realizar cada fase e o que deve ser entregado em cada fase.
 
-![Fig 1.7](image/fig1.7.png) O ciclo de vida do BPM
+![Fig 1.7](image/fig1.7.png)  
+O ciclo de vida do BPM
+
+### 1.5 Papeis nas equipes BPM
+
+Os seguintes papeis são necessários na implantação de BPM:
+- Donos de processos: Responsáveis pela execução
+- Gerentes ou gestores de processos: Acompanham e monitoram, resolvendo conflitos
+- Arquitetos de processos: Compreendem o inter-relacionamento entre processos
+- Analistas de processos: Modelam o estado atual (AS-IS)
+- Designers de processos: Modelam o estado futuro (TO-BE)
+
+A Figura ilustra as tarefas dos gestores em BPM.
+
+![Fig 1.8](image/fig12-papeis.jpg) 
+A ação dos gestores em BPM
+
