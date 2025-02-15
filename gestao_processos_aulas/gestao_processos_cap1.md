@@ -432,6 +432,6 @@ Os seguintes papeis são necessários na implantação de BPM:
 
 A Figura ilustra as tarefas dos gestores em BPM.
 
-![Fig 1.8](image/fig12-papeis.jpg) 
+![Fig 1.8](image/fig12-papeis.jpg)    
 A ação dos gestores em BPM
 
