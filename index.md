@@ -1,8 +1,3 @@
----
-title: Página Inicial
-layout: default
----
-
 # Prof Clayton J A Silva - Ibmec RJ
 
 ## Disciplinas
