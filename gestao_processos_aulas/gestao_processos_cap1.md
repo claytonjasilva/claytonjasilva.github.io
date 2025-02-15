@@ -7,8 +7,7 @@ A Gestão de Processos de Negócio (BPM) é a arte e ciência de supervisionar c
 Neste capítulo, introduzimos alguns conceitos essenciais por trás do BPM. Começaremos com uma descrição de processos típicos encontrados em organizações contemporâneas. Em seguida, discutiremos os ingredientes básicos de um processo de negócio e forneceremos uma definição para o conceito, bem como para o BPM. Para colocar o BPM em uma perspectiva mais ampla, apresentaremos um histórico da disciplina BPM. Finalmente, discutiremos como uma iniciativa de BPM em uma organização normalmente se desenrola. Esta discussão nos levará à definição de um ciclo de vida de BPM em torno do qual o curso é organizado.
 
 ### 1.1 O que são processos?
-
-Fonte: Gerenciamento de Processos de Negócios - BPM: Uma Referência para Implantação Prática, Roquemar Baldam, Henriq Rozenfeld
+*Fonte: Gerenciamento de Processos de Negócios - BPM: Uma Referência para Implantação Prática, Roquemar Baldam, Henriq Rozenfeld*
 
 Em nossa sociedade, **bens materiais e serviços** são produzidos e consumidos em massa. Racionalizar o suo de recursos é fundamental. A produção em massa baseia-se numa racionalização que inclui tarefas repetitivas, uso de ferramentas bem específicas e apropriadas, técnicas de execução em tempo mínimo. 
 
@@ -86,7 +85,106 @@ Processo de negócio como referência para operações e projetos.
 
 #### 1.1.4 Bens e serviços
 
+Os processos para a produção de bens materiais são mais fáceis de serem observados do que os de serviços. Ao visitar uma fábrica consolidada, como a de produção de automóveis, é fácil observar a linha produtiva e observar desperdícios, retrabalhos, pontos de falhas, máquinas, produtos e resíduos sendo produzidos, oportunidades de melhorias. Isso porque tudo é visível e claro, está na sua frente. 
+É interessante aqui usar uma passagem, não idêntica, mas similar à descrita por Rozenfeld et al. (2006), para entender a importância da modelagem de processos de modo gráfico, especialmente se o processo for administrativo ou serviço: se você já visitou uma montadora de automóveis, perceberá que a maioria das visitas demoram de 40 a 90 minutos e a plateia sai da fábrica entendendo como se monta automóveis. Isso ocorre porque, apesar da alta complexidade envolvida, tudo é visível, claro e físico. É possível ver os carros se movimentando, peças chegando e sendo montadas por operadores altamente treinados. 
+
+Ao contrário, se você vai por exemplo a um setor de Recursos Humanos ou Financeiro, verá pessoas em pé tomando café (e podem estar trabalhando de fato ao discutir algo), outros vendo e-mails, outros alimentando sistemas, outros mais conversando em uma mesa. Ou seja, não há tangibilidade física como há no chão de fábrica, numa linha de montagem, para entender o processo que está sendo executado. 
+Essa visão gráfica é o que procuramos nos modelos gráficos (diagramas) de processos. É essa tangibilidade que a “fotografia” mostra como a casa funciona. As características básicas dos processos de produção de bens materiais e serviços ajudam a ilustrar as diferenças entre ambos os tipos de processos, conforme podemos observar na Tabela.
+
+Tabela Características de serviços e bens materiais
+
+|Característica | Serviço | Bens materiais |
+| - | - | - |
+| Tangibilidade e estocabilidade | Geralmente tangíveis e não estocáveis | Estocáveis |
+| Transportabilidade | Não transportável | Transportável |
+| Contato com consumidor | Geralmente próximo | Distante |
+| Qualidade | Avaliação subjetiva | Avaliação direta |
+| Propriedade do processo | Geralmente vários donos | Definição clara |
+| Fronteiras | Difusas | Claras |
+| Pontos de controle | Muitas vezes não existem | Claros |
+| Medições | Difícil definição | Fácil de definir |
+| Ações corretivas | Geralmente reativa | Muito frequente |
+
+![Fig 1.7](image/fig7-outputs.jpg)  
+O output da maioria dos tipos de operações e processos é um composto de bens e serviços.
+
+Se olharmos toda a cadeia produtiva, bens e serviços se sucedem ao longo dos elos. Ao embarcarmos grãos de soja, não estão ali também embarcadas as pesquisas genéticas e de solo, a tecnologia de plantio e de colheita e toda a miríade de esforços para aumentar produtividade e poder nutritivo? Ao embarcarmos minério não há todo um estudo logístico e de obtenção das técnicas de beneficiamento de minérios? Em suma, é difícil pensar em bens que não contenham algum tipo de serviço incorporado. Por exemplo, no caso de commodities, o acompanhamento do transporte com relatórios, o próprio transporte, a educação dos clientes com relação aos produtos; em automóveis, a manutenção programada, garantia estendida; em outros bens, o treinamento para que o usuário usufrua melhor dos produtos adquirido. Como a força de trabalho do setor de serviços tem crescido significativamente e a parte do setor de serviços no PIB9 aumentou, os serviços são cada vez mais importantes para a economia. 
+
+Com essa mudança os estudos para melhoria dos serviços estão aumentando. Os maiores obstáculos para melhorar a qualidade dos serviços residem nos seguintes pontos (PYON, WOOB e PARK, 2011): 
+- A intangibilidade e a simultaneidade características dos serviços dificultam a busca de melhoria, pois tornam trabalhoso monitorar e medir os resultados. Estes são normalmente expressos apenas pelo grau de satisfação do cliente, uma informação difícil de obter. 
+- Frequentemente, os próprios clientes se envolvem na produção do serviço. Eles são entradas e fonte de inovação para o processo. A qualidade do serviço é direta e imediatamente orientada para o cliente.
+
+#### 1.1.5 Gerência, melhoria e controle
+
+A evolução de mercado faz com que alguns desafios de negócio se tornem cada vez mais presentes dentro das organizações, como por exemplo, exigências dos clientes, ciclo de vida dos produtos, pressões de custo etc. A gestão está mais difícil de ser realizada, devido às mudanças muito frequentes. Por um lado, temos a complexidade, a velocidade do negócio e da inovação aumentando, juntamente com a concorrência, com a qualidade e os riscos; por outro, temos os ciclos dos produtos e a padronização sendo reduzidos. O ambiente de atuação das organizações coloca-se como elemento demandador de **Integração, Dinâmica, Flexibilidade e Inovação**. Para lidar com as necessidades impostas por esses fatores, os processos se apresentam como um elemento central. Santos (2002) afirma que: Para **integração**, os processos devem estar alinhados, ou seja, seu projeto e execução devem estar/permitir ações integradas e não redundantes. Para **dinâmica**, os processos devem estar constantemente habilitados a mudar, de forma rápida. Para **flexibilidade**, adaptações devem ser feitas de forma rápida e consistente. E, por fim, para **inovação**, o projeto de novos processos deve ser elemento central como papel de habilitadores a criação na organização. 
+
+A orientação por processos alterou a visão vertical (**funcional**) das empresas para uma visão horizontal (**sistêmica**), onde a integração das atividades passou a ser um fator chave. Segundo Gonçalves (2000), mudar a estrutura funcional da empresa para uma orientação por processos implica em definir a responsabilidade pelo andamento do processo, minimizar as transferências (para reduzir esperas, erros e fronteiras), maximizar o agrupamento das atividades e diminuir o gasto de energia. Com isso, a estrutura por processos permite uma forma diferente de trabalho. Em lugar da estrutura rígida e do trabalho individual, a orientação por processos valoriza a cooperação e o trabalho em equipe, fazendo com que o colaborador sinta vontade de fazer um trabalho melhor. Gonçalves (2000b) afirma que essa estrutura projeta e mensura cuidadosamente seus processos e faz com que todos os funcionários entendam e se responsabilizem por eles, possibilitando o desenvolvimento de um sentimento de “propriedade do processo”. 
+
+Portanto, a orientação por processos faz com que a organização trabalhe com todas as dimensões do negócio, focando os esforços para adquirir vantagens competitivas. As principais vantagens associadas à visão processual são: 
+- Melhor coordenação e integração do trabalho. 
+- Tempos de respostas mais rápidos. 
+- Habilita a organização a ter seu foco direcionado aos clientes. 
+- Previne a ocorrência de erros. 
+- Permite à organização antecipar e controlar mudanças. 
+- Auxilia a organização a entender melhor a sua cadeia de valor. 
+- Provê uma visão sistêmica das atividades da organização. 
+
+Essas e outras vantagens têm feito com que muitas organizações migrem da estrutura “funcional” para uma “orientação por processos adicional”. Não se extingue por completo a visão funcional, mesmo porque as funções surgem das atividades que são realizadas na organização, mas emerge uma visão complementar, mais matricial que somente vertical. Muitas vezes a estrutura organizacional acomoda forças políticas e é difícil de ser alterada. Mesmo nesses casos, a orientação por processos é importante, pois o gerenciamento dos processos mede indicadores mais amplos, evitando que se pense unicamente nos ótimos locais. Algumas empresas criam comitês para os processos que envolvem agentes de diversos níveis hierárquicos e áreas funcionais. 
+
+#### 1.1.6 Processos e a estrutura organizacional
+
+Muitas são as definições para estrutura organizacional e muitas as formas de ver seu reflexo na forma de gerenciar. Para León e García (2011), a estrutura organizacional reflete o esquema formal de relacionamentos, comunicação, processos de decisão, procedimentos e sistemas, que permitem a uma organização desenvolver suas funções e atingir seus objetivos. A visão utilizada pela organização também influi no gerenciamento das informações, na distribuição do conhecimento, na capacidade em se adaptar às mudanças, na inovação e nas formas de agregar valor aos clientes. 
+
+Tradicionalmente, as organizações possuem uma visão focada nas funções exercidas pelos colaboradores. Essa visão ainda é muito utilizada, levando a uma gestão hierárquica, rígida, departamental e vertical. Porém, devido à informatização, a busca por maior flexibilidade e melhores resultados, a visão por processos se torna cada vez mais uma alternativa na busca por melhores resultados. As empresas convencionais foram projetadas com uma visão interna centrada, voltada à sua própria realidade. A implementação do ponto de vista do cliente na gestão das empresas praticamente exige que se faça o redesenho de seus processos de negócio, que são ligados à essência do funcionamento da organização (DREYFUSS, 1996). Eles são típicos da empresa em que operam e são muito diferentes de uma organização para outra. 
+
+A orientação por processos difere da gestão por funções tradicional por pelo menos três motivos: o fato de empregar objetivos externos, os empregados e recursos serem agrupados para produzir um trabalho completo e a informação seguir diretamente para onde é necessária, sem o filtro da hierarquia dos departamentos (SHEWHART, 1992). A visão por processo procura entender “o que precisa ser feito e como fazê-lo”. Nela, as tarefas não são definidas exclusivamente em função dos departamentos da organização. Ao se decidir o que precisa ser feito, primeiramente tem-se em mente as atividades que agregarão valor para a organização, sem se preocupar inicialmente em saber qual o departamento que as executará. Neste caso, como mostra a Figura 8, um processo pode cruzar departamentos e fazer solicitações a cada um deles, dependendo da atividade a ser executada. 
+
+![Fig 1.8](image/fig8-departamentalxfuncional.jpg)  
+Visão Departamental x Visão de Processos frente os produtos desejados.
+
+Além disso, a visão por processos relaciona e expõe as atividades que fazem a organização funcionar, não se limitando à estrutura fixa e departamental dos organogramas, valorizando também a cooperação, o trabalho em equipe e a responsabilidade de cada colaborador que participa e é responsável pelo processo. 
+
+Muitas são as imagens usadas para pensar as organizações. Morgan (1986), por exemplo, aponta oito maneiras habituais de visualizar as organizações: • Como máquinas. • Como organismos. • Como cérebros. • Como culturas. • Como sistemas políticos. • Como prisões mentais. • Como fluxos e transformações. • Como instrumentos de dominação. 
+
+A medida que a visão de processos se difunde, as formas contemporâneas de racionalização tendem a ver as organizações como um feixe de processos. Alguns deles pertencem a um departamento ou setor: podemos chamá-los **intrafuncionais**. Outros são **transfuncionais** ou **interfuncionais**, pois atravessam departamentos ou mesmo organizações. 
+
+A Figura 8 faz uma comparação gráfica entre as visões departamental e de processos. As técnicas fordistas eram funcionais: cada trabalhador tinha uma visão departamental. A visão por processo procura entender “o que precisa ser feito e como fazê-lo”. Nela, as tarefas não são definidas exclusivamente em função dos departamentos da organização. Ao se decidir o que precisa ser feito, primeiramente tem-se em mente as atividades que agregarão valor para a organização sem se preocupar inicialmente em saber qual o departamento que as executará. 
+
+Lambert (2001) mostra na Figura 9, exemplos de processos que para serem executados precisam passar por diversos departamentos, sem se preocupar com a sequência exata do processo. 
+
+![Fig 1.9](image/fig9-exemplosprocessos.jpg)  
+Processos transversais e silos funcionais. 
+
+As técnicas contemporâneas buscam esclarecer a contribuição de cada processo para a agregação de valor, para a geração de saídas indesejadas e questões ambientais,11 para o controle do desempenho e para a responsabilidade social da empresa. Mas isto não quer dizer que os processos ocorram, de fato, conforme o modo previsto nos documentos escritos pelos racionalizadores. Afinal, as ferramentas de que estes dispõem (como metodologias, equipamentos, software) retratam somente uma parte do conhecimento necessário e ignoram vicissitudes técnicas e financeiras. O modo como os processos ocorrem de fato depende muito de seu contexto e do conhecimento disponível.
+
+Muitas destas discrepâncias entre os processos previstos e os processos executados decorrem do que H. Simon (1979) denominou racionalidade local: Existem limites práticos à racionalidade humana e essas limitações não são estáticas, mas dependem do meio organizativo no qual o indivíduo toma suas decisões. Há mais de meio século anos, Simon13 já alertava para a necessidade de uma “memória auxiliar” que apoiasse a tomada de decisão, pois, devido à complexidade dos sistemas administrativos modernos, nenhum homem consegue dominar todos os dados necessários a uma escolha “perfeitamente racional”. O volume de informação tornou-se tão elevado, que nem mesmo informações plenamente organizadas bastam para uma perfeita racionalização das inúmeras micro decisões que gerentes e mesmo operadores têm que tomar, continuamente. 
+
+Maranhão & Macieira (2004) indicam que a administração meramente calcada nos organogramas funciona em ambientes de simplicidade de Cadeia Produtiva, ou em ambientes que possuam boa funcionalidade hierárquica, como as Forças Armadas e clero, por exemplo. Mas o que ocorre com os departamentos e organogramas com uma visão por processos? Nas palavras de Gonçalves (2000b): Os organogramas não se prestam para a análise dos processos de negócio, pois não mostram como eles funcionam na prática nem como ocorrem na empresa. Os processos de negócio estão relacionados com o funcionamento da organização e geralmente não respeitam os limites estabelecidos pelos organogramas. 
+
+A organização de uma empresa por processos pode ter a aparência de uma estrutura funcional, com áreas funcionais bem definidas, mas com processos operando efetivamente de forma ortogonal (na horizontal). Não se trata de uma estrutura matricial, embora existam relações de dupla subordinação nas organizações por processos. Muitas vezes, as mesmas pessoas participam de vários processos simultaneamente. Na prática, as áreas funcionais e suas chefias não desaparecem quando a organização se estrutura por processos. A medida que os *process owners* (“donos do processo”) vão assumindo responsabilidade cada vez maior pelo projeto, pela estruturação e pelo funcionamento dos processos essenciais das empresas, os chefes das áreas funcionais se focam cada vez mais no treinamento e na capacitação do seu pessoal.
+
+Nestas circunstâncias, dificilmente os departamentos deixariam de existir por conta da Visão por Processos. As referências em geral mostram que as inovações não eliminam a visão funcional que continua útil em muitas situações gerenciais. A quantidade de departamentos pode diminuir, alterar as responsabilidades, descentralizar, usar estrutura em matriz, mas isto não leva necessariamente à extinção por completo da estrutura hierárquica na forma de organogramas tal qual estamos habituados. Para os processos bem estruturados, com pouca interface multifuncional, pode-se sim reestruturar parte da empresa por processos, como seria comum em qualquer situação em que se percebesse que a organização funcionará melhor se uma reestruturação for feita. A gestão exclusivamente por processos em todas suas atividades seria apenas um modelo idealizado. Na prática, há empresas que “tenderiam a ser centradas em processos”, caminhando para uma maior maturidade em processos, mas com departamentos e com certa visão funcional, coexistindo com a visão de processos. 
+
+Para se ter uma ideia mais clara sobre a visão de processos na organização, Jeston & Nelis (2006) indicam as características da Tabela. Os dois “modelos ideais” representam mais um conjunto de sintomas e haverá uma mistura destas e outras formas de entender a organização. 
+
+Tabela Características de organização centrada e não centrada em processos 
+
+| Organização centrada em processos | Organização não centrada em processos |
+| - | - |
+| Entende que processos agregam significativo valor para a organização e facilitam à organização atingir seus objetivos estratégicos. | Não está completamente convencida da contribuição que os processos podem trazer para a organização e para a estratégia. |
+| Incorpora o BPM como parte da prática gerencial. | Gerenciamento de processos não é foco primário. |
+| Envolve o BPM na estratégia. | Apoia várias iniciativas isoladas de BPM. |
+| Os executivos seniores possuem foco em processos, especialmente o presidente, pois os demais tendem a seguir o líder. | Entende que processo é importante pelos problemas que causa (qualidade, lista de reclamações etc.). |
+| Possui clara visão de seus processos e como se relacionam. | Pode possuir Cadeia de Valor bem definida, lista de processos e subprocessos. Talvez até possua alguns processos modelados. |
+| A estrutura da organização reflete seus processos. | A estrutura da organização reflete seus departamentos. |
+| Entende que podem surgir tensões entre os processos e departamentos e possui meios de sanar tais situações. | Pode tornar uma tensão em frustração e criar mentalidade de punição. |
+| Possui um executivo sênior destacado para área de processos e integração dos mesmos dentro da organização. | Funcionalidades baseadas em responsabilidade que não cruzam departamentos. |
+| Recompensas e prêmios baseados em metas de processos. | Recompensas e prêmios baseados em metas de departamentos. |
+
+Neste contexto, pode-se discutir as diferenças, por vezes consideradas apenas semânticas, entre Gerenciamento de Processos e Gerenciamento por Processos. O gerenciamento de processos os trata isoladamente, enquanto o gerenciamento por processos os trata segundo uma visão estratégica que gerencia a empresa como um todo, voltando-se para os produtos a serem entregues e os processos necessários para que isso ocorra. A aplicação exagerada de qualquer técnica organizacional pode levar a um desnecessário dispêndio de energia (O’CONNELL, PYKE e WHITEHEAD, 2006). Muitas atividades executadas nas empresas podem não usar necessariamente um formalismo tão grande, como exigido pela aplicação direta de modelagem de processos e outros aspectos do BPM. Além disso, deve-se lembrar sempre que processos de negócios nem sempre são linhas de montagem fordistas; os usuários possuem importantes conhecimentos e opiniões que podem compartilhar, agregando melhorias e contornando problemas que seriam insolúveis em linhas de montagem fordistas. Processos de negócios envolvem pessoas, comunicações de vários tipos e mudanças. Não é apenas junção de software e máquinas. Alguns processos ocorrem tão esporadicamente, ou são tão imprevisíveis, ou se constituem em modo tão particular.
+
 ### 1.2 Processos em Todo Lugar
+*Fonte Fundamentals of Business Process Management, DUMAS, MARLON; ROSA, M. L. London: Springer, 2013.*
 
 Toda organização—seja um órgão governamental, uma organização sem fins lucrativos ou uma empresa—precisa gerenciar uma série de processos. Exemplos típicos de processos que podem ser encontrados na maioria das organizações incluem:
 
@@ -119,7 +217,7 @@ Quando o período de aluguel expira, o fornecedor vem buscar o equipamento. Às 
 
 Alguns dias após a retirada do equipamento, o fornecedor do equipamento envia uma fatura ao funcionário por e-mail. Nesse ponto, o funcionário pede ao engenheiro de campo para confirmar que o equipamento foi realmente alugado pelo período indicado na fatura. O funcionário também verifica se os preços de aluguel indicados na fatura estão de acordo com os do PO. Após essas verificações, o funcionário encaminha a fatura ao departamento financeiro e o departamento financeiro eventualmente paga a fatura.
 
-### 1.2 Ingredientes de um Processo de Negócio
+### 1.3 Ingredientes de um Processo de Negócio
 
 O exemplo acima mostra que um processo de negócio abrange uma série de **eventos** e **atividades**. Eventos correspondem a **fatos que acontecem de forma atômica, ou seja, não têm duração**. A chegada de um equipamento em um canteiro de obras é um evento. Este evento pode desencadear a execução de uma série de atividades. Por exemplo, quando um equipamento chega, o engenheiro de campo o inspeciona. Esta inspeção é uma atividade, no sentido de que leva tempo. A atividade pode ser definida como um **esforço de trabalho que requer a alocação de um recurso**.
 
