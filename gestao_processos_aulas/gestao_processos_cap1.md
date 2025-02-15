@@ -32,13 +32,13 @@ Por exemplo, processo de fabricação, processo de produção e processo de neg�
 
 A Figura 1 apresenta uma estrutura de decomposição hierárquica dos processos.
 
-![Fig 1.1](image/fig1-visaoestrutural.png) Uma visão de decomposição de processos
+![Fig 1.1](image/fig1-visaoestrutural.jpg) Uma visão de decomposição de processos
 
 Vale ressaltar que quase todos os conceitos de processo mencionam um **fluxo de entradas e saídas**. Fica assim claro que qualquer processo tem como objetivo a **transformação de insumos** (que podem ser materiais, formas de energia, informações ou os próprios clientes) **em produtos com valor adicionado**, a serem **disponibilizados para clientes** internos ou externos (aço, energia aproveitável, dados relevantes, pacientes curados etc.). É comum haver também adição de valor público (empregos, impostos, benefícios à vizinhança etc.), raramente documentada ou explicitada. Há também saídas indesejadas, como impactos ambientais ou acidentes de trabalho.
 
 A Figura 2 mostra o que está diretamente envolvido num processo em particular (entradas, saídas, recursos e controles). Mostra também as influências externas oriundas do contexto da organização, que podem alterar o modo de funcionamento do processo e até mesmo os produtos por ele produzidos. Por exemplo, o nível de emissões permitido pode variar de um país para outro, logo, as saídas indesejadas (poluição) e a forma de produzir poderão ser diferentes, mesmo que o produto desejado nos processos seja o mesmo. 
 
-![Fig 1.2](image/fig2-esquemageral.png) Esquema geral de processos
+![Fig 1.2](image/fig2-esquemageral.jpg) Esquema geral de processos
 
 Quanto às características dos processos, Smith e Fingar (2003) mencionam: 
 - complexidade e extensão (tamanho e/ou duração); 
@@ -55,17 +55,17 @@ As organizações, muitas vezes, **não conseguem identificar diferenças entre 
 
 Automatizar ou usar técnicas de Gerenciamento de Projeto depende da frequência de ocorrência (**instâncias**) e da intensidade de regras previsíveis. 
 
-![Fig 1.3](image/fig3-automacao.png) Uso de automação ou de técnica de gerenciamento de projeto em função de intensidade de instâncias e regras previsíveis
+![Fig 1.3](image/fig3-automacao.jpg) Uso de automação ou de técnica de gerenciamento de projeto em função de intensidade de instâncias e regras previsíveis
 
 A visão de que nem todo processo deva ser necessariamente informatizado e automatizado é ainda apoiada por Slack et al. (2008), que argumentam que se deve observar o volume, a variedade de atividades, a variação de produtos resultante do processo e a visibilidade do mesmo.6 Quanto menor o volume e maiores a variedade, a variação e a visibilidade, menor tendência à automação. Sandhu & Gunasekaran (2004) aplicam uma abordagem dupla de gerenciamento de processos e de projetos nos casos de EPC.7 Neles, há uso intenso tanto de técnicas de gerenciamento de projetos, como de gestão de processos utilizada para a realização de operações (autorizações de compra, passagens, autorizações de projeto, liberações de operação, ou seja, toda uma miríade de ações repetitivas necessárias à perfeita execução do projeto). Por fim, há ainda um entendimento segundo o qual os processos de negócios de uma organização servem de referência tanto para operações como para projetos, conforme esquematizado na Figura 4. 
 
-![Fig 1.4](image/fig4-processoreferencia.png) Processo de negócio como referência para operações e projetos.
+![Fig 1.4](image/fig4-processoreferencia.jpg) Processo de negócio como referência para operações e projetos.
 
 #### 1.1.3 Modelos de referência
 
 Cada Modelo de Referência possui uma forma própria de representar atividades (processuais ou não), sempre adequada a um determinado propósito. Embora nenhum modelo possa contemplar todos os inúmeros processos de negócios existentes nas organizações do mundo inteiro, a APQC (American Productivity & Quality Center, fundada em 1977) sugere uma Estrutura de Trabalho para Classificação de Processos (Process Classification Framework – PCF). Por ter sido elaborada com propósito de benchmarking, engloba atividades corriqueiras nas organizações, criando uma referência geral. Não são listadas todas as atividades de uma organização específica, nem todas as atividades listadas estão presentes em todas as organizações. Trata-se de uma visão de alto nível; um modelo neutro, que descreve as atividades independentemente do setor econômico a que as organizações pertencem. 
 
-![Fig 1.5](image/fig5-modelos.png) Modelo de estrutura para classificação de processos.
+![Fig 1.5](image/fig5-modelos.jpg) Modelo de estrutura para classificação de processos.
 
 Apesar de referir-se explicitamente a processos, a PCF lista atividades, sem especificar se serão realizadas como processo ou como projeto, mas vendo-as de modo horizontal e não segundo a tradicional vista por organograma. Esta lista de atividades facilita aos iniciantes a compreensão dos processos relacionados às diversas áreas das organizações. 
 
@@ -76,7 +76,7 @@ Este autor divide basicamente os processos em três categorias, conforme mostra 
 - Processos de gerenciamento (suporte e controle), que envolvem as atividades diárias e mais comuns de gerenciamento da organização, como gerenciamento financeiro, da controladoria, de informação, do BPM propriamente dito, da qualidade, de recursos humanos e de ativos. 
 - Processos operacionais, que envolvem processos destinados a desenvolver a atividade fim da empresa: CRM, logística, desenvolvimento de produto, PCP, gestão de material.
 
-![Fig 1.6](image/fig6-hierarquia.png) Processo de negócio como referência para operações e projetos.
+![Fig 1.6](image/fig6-hierarquia.jpg) Processo de negócio como referência para operações e projetos.
 
 #### 1.1.4 Bens e serviços
 
