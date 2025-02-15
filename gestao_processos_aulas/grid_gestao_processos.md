@@ -1,7 +1,7 @@
 # GRID DA DISCIPLINA
 
 **CURSO: Engenharia de Produção**  
-**DISCIPLINA: Gestão de Processos - 2024/2**  
+**DISCIPLINA: Gestão de Processos - 2025/1**  
 **PROFESSOR: Clayton Jones Alves da Silva, MSc**
 
 ## I – OBJETIVOS
@@ -35,11 +35,16 @@ Capacitar o aluno a compreender de forma integrada a
 
 ### REFERÊNCIA BÁSICA
 
-- COSTA JÚNIOR, Eudes Luiz. Gestão em Processos Produtivos. 1. Curitiba­PR: InterSaberes, 2012. 1.  
-Disponível em: https://plataforma.bvirtual.com.br/Leitor/Publicacao/6387/pdf  
+- DUMAS, MARLON; ROSA, M. L. Fundamentals of Business Process Management. London: Springer, 2013.  
+- ABPMP, Guia para o Gerenciamento de Processos de Negócio CBOK V3.0, ABPMP Brasil 2013.
+- Roquemar Baldam, Henriq Rozenfeld, Gerenciamento de Processos de Negócios - BPM: Uma Referência para Implantação Prática.
+- OMG, Business Process Model and Notation (BPMN), OMG, 2011.
 - LAGE JÚNIOR, Murís. Mapeamento de processos de gestão empresarial. 1. Curitiba­PR: InterSaberes, 2016. 1.  
 Disponível em: https://plataforma.bvirtual.com.br/Leitor/Publicacao/42174/pdf
 - WILDAUER, Egon Walter; WILDAUER, Laila Del Bem Seleme. Mapeamento de processos: Conceitos, Técnicas e Ferramentas. 1. Curitiba­PR: InterSaberes, 2015. 1.  
 Disponível em: https://plataforma.bvirtual.com.br/Leitor/Publicacao/31406/pdf  
+- COSTA JÚNIOR, Eudes Luiz. Gestão em Processos Produtivos. 1. Curitiba­PR: InterSaberes, 2012. 1.  
+Disponível em: https://plataforma.bvirtual.com.br/Leitor/Publicacao/6387/pdf  
+
 
 #### [Home - Gestão de Processos - Prof Clayton J A Silva](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/gestao_processos.md)
