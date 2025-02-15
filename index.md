@@ -2,7 +2,7 @@
 
 ## Disciplinas
 
-- [Arquitetura de Computadores](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/arq.md) - Rev 2025.1
+- [Arquitetura de Computadores](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/arq.md) Rev 2025.1
 - [Eletrônica e Design de Circuitos](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/eletronica.md) - Rev 2023.2
 - [Linguagens Formais e Compiladores](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/compiladores.md)
 - [Sistemas de Comunicações Móveis](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/siscom.md) - **Rev 2024.2**
