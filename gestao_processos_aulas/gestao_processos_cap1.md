@@ -6,7 +6,81 @@ A Gestão de Processos de Negócio (BPM) é a arte e ciência de supervisionar c
 
 Neste capítulo, introduzimos alguns conceitos essenciais por trás do BPM. Começaremos com uma descrição de processos típicos encontrados em organizações contemporâneas. Em seguida, discutiremos os ingredientes básicos de um processo de negócio e forneceremos uma definição para o conceito, bem como para o BPM. Para colocar o BPM em uma perspectiva mais ampla, apresentaremos um histórico da disciplina BPM. Finalmente, discutiremos como uma iniciativa de BPM em uma organização normalmente se desenrola. Esta discussão nos levará à definição de um ciclo de vida de BPM em torno do qual o curso é organizado.
 
-### 1.1 Processos em Todo Lugar
+### 1.1 O que são processos?
+
+Fonte: Gerenciamento de Processos de Negócios - BPM: Uma Referência para Implantação Prática, Roquemar Baldam, Henriq Rozenfeld
+
+Em nossa sociedade, **bens materiais e serviços** são produzidos e consumidos em massa. Racionalizar o suo de recursos é fundamental. A produção em massa baseia-se numa racionalização que inclui tarefas repetitivas, uso de ferramentas bem específicas e apropriadas, técnicas de execução em tempo mínimo. 
+
+Dessa necessidade nasce a ideia geral de processo. Há certamente diversas perspectivas sobre processos, contudo todas concordam num ponto: o propósito de qualquer processo é transformar uma entrada qualquer (energia, informação, materiais ou clientes) em uma ou mais saídas, com maior valor econômico ou social. 
+
+Processos só existem se geram algum benefício para algum interessado. Entretanto, frequentemente nos deparamos com processos organizacionais cuja agregação de valor não está clara para os seus próprios operadores, nem tampouco para os clientes. 
+
+Em inúmeros outros casos, o que se ignora são as saídas indesejadas (poluição, por exemplo). Neste sentido, uma boa gestão dos processos serve, antes de tudo, para dar maior transparência à organização. As organizações fornecem produtos (bens e serviços) a seus clientes. O meio através do qual elas atingem este fim são os processos. Logo, todas as empresas têm processos (SMART, MADDERN e MAULL, 2009). 
+
+Os processos existem nas organizações, gerenciados de forma às vezes consciente (modelados, e/ou conhecidos, e/ou definidos, e/ou indicados etc), às vezes inconscientes; **estruturados de forma às vezes explícita**, às vezes não documentada. O gerenciamento de processos faz parte do capital estrutural da organização, mesmo que de modo **tácito**.
+
+Assim, é necessário que a organização entenda os seus processos para que depois possa gerenciá-los (DUBANI, SOH e SEELING, 2010). Smart, Maddern e Maull (2009) destacam a importância da consciência no gerenciamento de processos: ela é fundamental para se atingir melhores resultados e para facilitar a disseminação da própria cultura de orientação por processo dentro da empresa. 
+
+Esse é um fator chave para o sucesso da implementação de BPM e da contínua melhoria dessa filosofia dentro da organização (SKRINJAR & TRKMAN, 2012). 
+
+#### 1.1.1 Conceitos comuns
+
+A palavra “processo” está presente em diversas áreas e atividades do cotidiano: processos judiciais, processos mecânicos, processos químicos etc. No contexto da gestão, o termo recebe significados às vezes um pouco conflitantes, ou pelo menos diferentes. 
+
+Por exemplo, processo de fabricação, processo de produção e processo de negócio parecem se confundir; de fato, o uso de cada um destes termos dependerá sobretudo da cultura interna da organização. Espontaneamente, uma fábrica de parafusos, uma hidrelétrica e uma seguradora pensarão a obtenção de seu produto principal como, respectivamente, um processo de fabricação, um processo de produção e um processo de negócio. O termo “processo de negócio” tomou força no setor de serviços, como paralelismo aos “processos de fabricação” usado nas operações que envolvem produtos materiais. Nos setores financeiro, de telecomunicações e de consultorias fala-se livremente em “processo de negócio” para deixar claro que se trata dos processos que compõem a atividade fim. Expressões do tipo “em uma indústria automotiva não há processo de negócio, só de fabricação” não possuem nenhum efeito prático. Dificilmente há problema sobre a aplicação dos conceitos. 
+
+A Figura 1 apresenta uma estrutura de decomposição hierárquica dos processos.
+
+![Fig 1.1](image/fig1-visaoestrutural.png) Uma visão de decomposição de processos
+
+Vale ressaltar que quase todos os conceitos de processo mencionam um **fluxo de entradas e saídas**. Fica assim claro que qualquer processo tem como objetivo a **transformação de insumos** (que podem ser materiais, formas de energia, informações ou os próprios clientes) **em produtos com valor adicionado**, a serem **disponibilizados para clientes** internos ou externos (aço, energia aproveitável, dados relevantes, pacientes curados etc.). É comum haver também adição de valor público (empregos, impostos, benefícios à vizinhança etc.), raramente documentada ou explicitada. Há também saídas indesejadas, como impactos ambientais ou acidentes de trabalho.
+
+A Figura 2 mostra o que está diretamente envolvido num processo em particular (entradas, saídas, recursos e controles). Mostra também as influências externas oriundas do contexto da organização, que podem alterar o modo de funcionamento do processo e até mesmo os produtos por ele produzidos. Por exemplo, o nível de emissões permitido pode variar de um país para outro, logo, as saídas indesejadas (poluição) e a forma de produzir poderão ser diferentes, mesmo que o produto desejado nos processos seja o mesmo. 
+
+![Fig 1.2](image/fig2-esquemageral.png) Esquema geral de processos
+
+Quanto às características dos processos, Smith e Fingar (2003) mencionam: 
+- complexidade e extensão (tamanho e/ou duração); 
+- dinamicidade; 
+- podem ser amplamente distribuídos (ou seja, executar múltiplas aplicações em plataformas tecnológicas diversas);
+- são **automatizáveis**, quando se busca velocidade e confiabilidade;
+- dependem da tecnologia;
+- dependem de julgamento e apoio da inteligência humana;
+- nem sempre são facilmente percebidos (geralmente, não são conscientes nem explícitos) e necessitam de coordenação. 
+
+As organizações, muitas vezes, **não conseguem identificar diferenças entre operações, processos e projetos**. Para uma atividade ser considerada como operação ela deve ser caracterizada por ocorrência repetitiva, inclusive com simultaneidade (coexistência de várias instâncias de processo, como no pagamento de faturas). Já um projeto é caracterizado por início e fim bem definidos. 
+
+#### 1.1.2 Automação de processos
+
+Automatizar ou usar técnicas de Gerenciamento de Projeto depende da frequência de ocorrência (**instâncias**) e da intensidade de regras previsíveis. 
+
+![Fig 1.3](image/fig3-automacao.png) Uso de automação ou de técnica de gerenciamento de projeto em função de intensidade de instâncias e regras previsíveis
+
+A visão de que nem todo processo deva ser necessariamente informatizado e automatizado é ainda apoiada por Slack et al. (2008), que argumentam que se deve observar o volume, a variedade de atividades, a variação de produtos resultante do processo e a visibilidade do mesmo.6 Quanto menor o volume e maiores a variedade, a variação e a visibilidade, menor tendência à automação. Sandhu & Gunasekaran (2004) aplicam uma abordagem dupla de gerenciamento de processos e de projetos nos casos de EPC.7 Neles, há uso intenso tanto de técnicas de gerenciamento de projetos, como de gestão de processos utilizada para a realização de operações (autorizações de compra, passagens, autorizações de projeto, liberações de operação, ou seja, toda uma miríade de ações repetitivas necessárias à perfeita execução do projeto). Por fim, há ainda um entendimento segundo o qual os processos de negócios de uma organização servem de referência tanto para operações como para projetos, conforme esquematizado na Figura 4. 
+
+![Fig 1.4](image/fig4-processoreferencia.png) Processo de negócio como referência para operações e projetos.
+
+#### 1.1.3 Modelos de referência
+
+Cada Modelo de Referência possui uma forma própria de representar atividades (processuais ou não), sempre adequada a um determinado propósito. Embora nenhum modelo possa contemplar todos os inúmeros processos de negócios existentes nas organizações do mundo inteiro, a APQC (American Productivity & Quality Center, fundada em 1977) sugere uma Estrutura de Trabalho para Classificação de Processos (Process Classification Framework – PCF). Por ter sido elaborada com propósito de benchmarking, engloba atividades corriqueiras nas organizações, criando uma referência geral. Não são listadas todas as atividades de uma organização específica, nem todas as atividades listadas estão presentes em todas as organizações. Trata-se de uma visão de alto nível; um modelo neutro, que descreve as atividades independentemente do setor econômico a que as organizações pertencem. 
+
+![Fig 1.5](image/fig5-modelos.png) Modelo de estrutura para classificação de processos.
+
+Apesar de referir-se explicitamente a processos, a PCF lista atividades, sem especificar se serão realizadas como processo ou como projeto, mas vendo-as de modo horizontal e não segundo a tradicional vista por organograma. Esta lista de atividades facilita aos iniciantes a compreensão dos processos relacionados às diversas áreas das organizações. 
+
+A distribuição de macroprocessos principais possui similaridades com a Cadeia de Valor de Porter (1989). Outra forma interessante de entender os diferentes processos de organizações em geral é o modelo proposto por Scheer (2006). 
+
+Este autor divide basicamente os processos em três categorias, conforme mostra a Figura 6: 
+- Processos de governança, que envolvem processos como gerenciamento de conformidades, gerenciamento de riscos, Business Intelligence, processos de BPM, desenvolvimento de estratégia, desenvolvimento de negócios e arquitetura empresarial.
+- Processos de gerenciamento (suporte e controle), que envolvem as atividades diárias e mais comuns de gerenciamento da organização, como gerenciamento financeiro, da controladoria, de informação, do BPM propriamente dito, da qualidade, de recursos humanos e de ativos. 
+- Processos operacionais, que envolvem processos destinados a desenvolver a atividade fim da empresa: CRM, logística, desenvolvimento de produto, PCP, gestão de material.
+
+![Fig 1.6](image/fig6-hierarquia.png) Processo de negócio como referência para operações e projetos.
+
+#### 1.1.4 Bens e serviços
+
+### 1.2 Processos em Todo Lugar
 
 Toda organização—seja um órgão governamental, uma organização sem fins lucrativos ou uma empresa—precisa gerenciar uma série de processos. Exemplos típicos de processos que podem ser encontrados na maioria das organizações incluem:
 
