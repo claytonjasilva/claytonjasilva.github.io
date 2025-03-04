@@ -353,7 +353,7 @@ A figura mostra que um gestor responsável por um processo de negócio — tamb�
 ### 1.4 O Ciclo de Vida do BPM
 
 Existem vários modelos de referência de ciclos de vida da gestão de processos de negócios. Alguns modelos são discutidos a seguir:  
-[Modelos de ciclo de gestão de processos de negócios](gestao_processos_aulas/gestao_processos_cap1_1.4.md)
+[Modelos de ciclo de gestão de processos de negócios](gestao_processos_cap1_1.4.md)
 
 Em geral, a primeira pergunta que uma equipe que embarca em uma iniciativa de BPM precisa esclarecer é
 
