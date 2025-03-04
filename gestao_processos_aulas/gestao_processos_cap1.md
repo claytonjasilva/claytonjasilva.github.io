@@ -234,6 +234,9 @@ Quando o período de aluguel expira, o fornecedor vem buscar o equipamento. Às 
 
 Alguns dias após a retirada do equipamento, o fornecedor do equipamento envia uma fatura ao funcionário por e-mail. Nesse ponto, o funcionário pede ao engenheiro de campo para confirmar que o equipamento foi realmente alugado pelo período indicado na fatura. O funcionário também verifica se os preços de aluguel indicados na fatura estão de acordo com os do PO. Após essas verificações, o funcionário encaminha a fatura ao departamento financeiro e o departamento financeiro eventualmente paga a fatura.
 
+**Veja uma sugestão de modelo com Bizagi**  
+![Uma proposta de modelo](image/exemplo1-1-locacao_equipamentos.png)
+
 ### 1.3 Ingredientes de um Processo de Negócio
 
 O exemplo acima mostra que um processo de negócio abrange uma série de **eventos** e **atividades**. Eventos correspondem a **fatos que acontecem de forma atômica, ou seja, não têm duração**. A chegada de um equipamento em um canteiro de obras é um evento. Este evento pode desencadear a execução de uma série de atividades. Por exemplo, quando um equipamento chega, o engenheiro de campo o inspeciona. Esta inspeção é uma atividade, no sentido de que leva tempo. A atividade pode ser definida como um **esforço de trabalho que requer a alocação de um recurso**.
@@ -349,6 +352,9 @@ A figura mostra que um gestor responsável por um processo de negócio — tamb�
 
 ### 1.4 O Ciclo de Vida do BPM
 
+Existem vários modelos de referência de ciclos de vida da gestão de processos de negócios. Alguns modelos são discutidos a seguir:  
+[Modelos de ciclo de gestão de processos de negócios](gestao_processos_aulas/gestao_processos_cap1_1.4.md)
+
 Em geral, a primeira pergunta que uma equipe que embarca em uma iniciativa de BPM precisa esclarecer é
 
 ``
@@ -379,7 +385,7 @@ Outros tipos de nó podem aparecer em um modelo de processo, mas podemos dizer q
 
 Hoje em dia existe um padrão amplamente utilizado para modelagem de processos, a **Notação de Modelagem de Processos de Negócio (BPMN)**. A versão mais recente do BPMN é o BPMN 2.0. Foi lançada como um padrão pelo Object Management Group (OMG) em 2011. No BPMN, as atividades são representadas como retângulos arredondados. Os nós de controle (chamados gateways) são representados usando formas de losango. As atividades e os nós de controle são conectados por meio de arcos (chamados fluxos) que determinam a ordem em que o processo é executado. A Figura 1.6 fornece um modelo representando um fragmento inicial do processo de aluguel de equipamentos, até o ponto em que o engenheiro de obras aprova ou rejeita a solicitação de aluguel de equipamentos. Este modelo de processo mostra dois pontos de decisão. No primeiro, o processo segue um dos dois caminhos, dependendo se o equipamento está disponível ou não. No segundo, a solicitação de aluguel de equipamentos é aprovada ou rejeitada. O modelo também mostra os participantes do processo envolvidos neste fragmento do processo, a saber, o engenheiro de campo, o funcionário e o engenheiro de obras. Cada um desses participantes é mostrado como uma raia separada contendo as atividades realizadas pelo participante em questão.
 
-![Fig 1.6](image/fig1.6.png) Modelo de processo para um fragmento inicial do processo de aluguel de equipamentos
+![Uma proposta de modelo](image/exemplo1-1-locacao_equipamentos.png)  Modelo de processo para um fragmento inicial do processo de aluguel de equipamentos
 
 O modelo de processo na Figura 1.6 é capturado em um alto nível de abstração. Na melhor das hipóteses, pode servir para dar a uma pessoa externa um resumo do que acontece neste processo. Em alguns casos, no entanto, o modelo precisa de mais detalhes para ser útil. Quais detalhes adicionais devem ser incluídos em um modelo de processo depende do propósito. Frequentemente, os modelos de processos são destinados a servir como documentação da forma como uma organização trabalha. Neste caso, as características-chave dos modelos de processo são simplicidade e compreensibilidade. Consequentemente, anotações de texto adicionais podem ser adicionadas ao modelo de processo para esclarecer o significado de certas atividades ou eventos, mas além dessas anotações, não seriam adicionados muitos detalhes adicionais. Em outros casos, os modelos de processos são destinados a serem analisados em detalhes, por exemplo, para medir o desempenho do processo. Neste caso, podem ser necessários mais detalhes, como quanto tempo cada tarefa leva (em média). Finalmente, em alguns casos, os modelos de processos são destinados a serem implantados em um BPMS com o propósito de coordenar a execução do processo. Nesse último caso, o modelo precisa ser estendido com uma quantidade significativa de detalhes sobre as entradas e saídas do processo e de cada uma de suas atividades.
 
