@@ -66,6 +66,7 @@
 Os instrumentos de avaliação continuada serão disponibilizados à medida que as aulas forem ministradas.  
 
 1. [Form 1 - Conceitos iniciais](https://forms.gle/e1u8tBF3fy9prwMR8)
+2. [Form 2 - Conceitos iniciais - nível de microarquitetura](https://forms.gle/9pzi3NeGfGUa9Vgu6)
 
 ## Exercícios  
 
