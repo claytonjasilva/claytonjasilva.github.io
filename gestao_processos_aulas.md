@@ -41,7 +41,7 @@
 10. [Inteligência de processos](gestao_processos_aulas/gestao_processos_cap10.md)
 
 ### ANEXO
-[MANUAL BPMN](gestao_processos_aulas/manualBPMN.md)  
+[MANUAL BPMN](gestao_processos_aulas/manualBPMN.pdf)  
 Referência: *Business Process Model and Notation (BPMN) v 2.0 Guide*.   
 Download em https://1drv.ms/b/s!AsTd8oN7mu8pk5kB64VnNTuxMzqXmg?e=8dThEi
 
