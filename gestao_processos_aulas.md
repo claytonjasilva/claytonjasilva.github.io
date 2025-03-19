@@ -63,6 +63,7 @@ Os instrumentos de avaliação continuada serão disponibilizados à medida que 
 #### Forms
 
 1. [Form 1](https://forms.gle/CV1dwHEdgXCq194X8)
+2. [Estudo de Caso 3](gestao_processos_aulas/Exemplo3Pagamento.pdf)
 
 #### Estudos de caso
 
