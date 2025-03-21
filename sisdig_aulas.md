@@ -39,6 +39,7 @@
 ### Avaliação Continuada
 
 1. [Form 1](https://forms.gle/ZSHHzDAgeNFEMjGx5)
+2. [Form 2](https://forms.gle/ZikgEAXy3NRAiYPH8)
 
 ### Listas de exercício
 
