@@ -65,8 +65,10 @@
 
 Os instrumentos de avaliação continuada serão disponibilizados à medida que as aulas forem ministradas.  
 
-1. [Form 1 - Conceitos iniciais](https://forms.gle/e1u8tBF3fy9prwMR8)
-2. [Form 2 - Conceitos iniciais - nível de microarquitetura](https://forms.gle/9pzi3NeGfGUa9Vgu6)
+1. [Form 1 - Conceitos iniciais](./arq_aulas/arquitetura_computadores_form1_2025.md)
+2. [Form 2 - Conceitos iniciais - nível de microarquitetura](./arq_aulas/arquitetura_computadores_form2_2025.md)
+3. [Form 3 - Representação de dados](./arq_aulas/arquitetura_computadores_form3_2025.md)
+4. [Form 4 - Representação de dados e programação em *assembly*](https://forms.gle/7uRy6DcE8pCqyJTB9)
 
 ## Exercícios  
 
