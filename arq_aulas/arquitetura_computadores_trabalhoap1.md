@@ -4,7 +4,7 @@ Disciplina Arquitetura de Computadores, Prof. Clayton J A Silva
 
 **Condições gerais:**
 
-- O trabalho se refere a 30% da nota da primeira avaliação bimestral do período 24.2;
+- O trabalho se refere a 30% da nota da primeira avaliação bimestral do período 25.1;
 - Os projetos deverão ser desenvolvidos e entregues de acordo com as equipes definidas em sala - **não serão aceitas entregas fora do grupo**;
 - Cada grupo deverá possuir um representante junto ao professor, designado na definição do grupo;
 - Na data agendada para a entrega **toda a equipe deverá estar presente** - o aluno ausente perderá 40% da pontuação auferida pelo grupo;
@@ -12,13 +12,16 @@ Disciplina Arquitetura de Computadores, Prof. Clayton J A Silva
 - O *sketch* deverá relacionar, como comentário, **nome e matrícula** de todos os componentes do grupo, seguidos da auto-avaliação 'NT'-não trabalhou, 'TP'-trabalhou parcialmente, 'TA'-trabalhou ativamente - por exemplo, 12345 Fulano de Tal NT;
 - **O aluno que trabalhou parcialmente perderá 40% da pontuação atribuída ao grupo; O aluno que não trabalhou terá nota 0,0 no trabalho**;
 - A avaliação consistirá na verificação e aplicação de testes ao protótipo construído, aplicando-se os conceitos EXCELENTE, 10, *shield* e *sketch* apresentados, todas as funcionalidades atendidas; ÓTIMO, 9, *shield* e *sketch* apresentados, algumas funcionalidades não atendidas; BOM, 7, *shield* e *sketch* apresentados, muitas funcionalidades não atendidas; INSUFICIENTE, 0,0, *shield* e *sketch* não apresentados;
-- **A submissão do trabalho será na data da revisão da prova da AP1**.
+- **Datas de apresentação:** 
+-- 18/4/2025;  
+-- 19/4/2025;  
+-- 20/4/2025.
 
 ## I) Objetivos:
 
 Desenvolver um sistema de monitoramento e controle com o microcontrolador Arduino, que permita:
 
-1. **Explorar entradas e saídas digitais e analógicas**, integrando sensores e atuadores (LEDs, buzzer, sensor de temperatura, sensor de distância, etc.).
+1. **Explorar entradas e saídas digitais**, integrando sensores e atuadores.
 2. **Trabalhar com operações binárias e linguagem *assembly***, utilizando mnemônicos abstratos que indicam as operações a serem executadas.
 3. **Implementar dois modos de controle**:
    - **Via monitor serial**: O usuário enviará mnemônicos (representações simbólicas) para controlar dispositivos.
