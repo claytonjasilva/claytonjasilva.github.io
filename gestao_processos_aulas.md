@@ -21,7 +21,10 @@
 
 4. [Modelagem de processos - parte 2](gestao_processos_aulas/gestao_processos_cap4.md)
 
-5. [Descoberta de processos](gestao_processos_aulas/gestao_processos_cap5.md)
+5. Descoberta de processos
+
+   [Cap 5 - Descoberta de processos](gestao_processos_aulas/gestao_processos_cap5.md)
+   [Cap 5 - Descoberta de processos - slides](gestao_processos_aulas/gestao_processos_cap5.pdf)
 
 6. Análise qualitativa de processos
    
