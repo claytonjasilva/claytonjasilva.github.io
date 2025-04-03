@@ -65,9 +65,9 @@ Os instrumentos de avaliação continuada serão disponibilizados à medida que 
 
 #### Forms
 
-1. [Form 1](gestao_processos_aulas/gestao_processos_form1_2025.md)
+1. [Form 1 - enunciados das questões](gestao_processos_aulas/gestao_processos_form1_2025.md)
 2. [Estudo de Caso 3](gestao_processos_aulas/Exemplo3Pagamento.pdf)
-3. [Form2](https://forms.gle/bni2jtAY8rVZGvL69)
+3. [Form2](gestao_processos_aulas/gestao_processos_form2_2025.md)
 
 #### Estudos de caso
 
