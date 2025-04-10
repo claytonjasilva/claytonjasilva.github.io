@@ -1,4 +1,4 @@
-# Enunciado do Trabalho - Projeto Arduino: Sistema de Monitoramento e Controle Multissensorial
+# Enunciado do Trabalho - Projeto Arduino: Sistema de Detecção de Alvo
 
 Disciplina Arquitetura de Computadores, Prof. Clayton J A Silva
 
