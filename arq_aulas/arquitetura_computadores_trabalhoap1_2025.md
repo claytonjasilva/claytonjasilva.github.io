@@ -12,7 +12,7 @@ Disciplina Arquitetura de Computadores, Prof. Clayton J A Silva
 - O *sketch* deverá relacionar, como comentário, **nome e matrícula** de todos os componentes do grupo, seguidos da auto-avaliação 'NT'-não trabalhou, 'TP'-trabalhou parcialmente, 'TA'-trabalhou ativamente - por exemplo, 12345 Fulano de Tal NT;
 - **O aluno que trabalhou parcialmente perderá 40% da pontuação atribuída ao grupo; O aluno que não trabalhou terá nota 0,0 no trabalho**;
 - A avaliação consistirá na verificação e aplicação de testes ao protótipo construído, aplicando-se os conceitos EXCELENTE, 10, *shield* e *sketch* apresentados, todas as funcionalidades atendidas; ÓTIMO, 9, *shield* e *sketch* apresentados, algumas funcionalidades não atendidas; BOM, 7, *shield* e *sketch* apresentados, muitas funcionalidades não atendidas; INSUFICIENTE, 0,0, *shield* e *sketch* não apresentados;
-- **Datas de apresentação:** 
+- **Datas de apresentação:**   
 -- 24/4/2025 (quinta-feira);  
 -- 29/4/2025 (terça-feira);    
 -- 30/4/2025 (quarta-feira);  
