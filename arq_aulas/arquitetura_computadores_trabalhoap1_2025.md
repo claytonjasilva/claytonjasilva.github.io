@@ -22,7 +22,7 @@ Disciplina Arquitetura de Computadores, Prof. Clayton J A Silva
 Desenvolver um sistema de monitoramento e controle com o microcontrolador Arduino, que permita:
 
 1. **Explorar entradas e saídas digitais**, integrando sensores e atuadores.
-2. **Trabalhar com operações binárias e linguagem *assembly***, utilizando mnemônicos abstratos que indicam as operações a serem executadas.
+2. **Trabalhar com a IDE Arduíno para elaboração do *sketch***.
 
 ## II) Escopo:
 
@@ -48,4 +48,4 @@ Outros requisitos:
 3. Estruturar o *sketch* em funções, assim como aplicar outras técnicas para apresentação de um código claro e de fácil manutenção, como comentários etc.
 
 ---
-*Trabalho AP1, Arquitetura de Computadores, Rev. 31/3/25*
+*Trabalho AP1, Arquitetura de Computadores, Rev. 17/4/25*
