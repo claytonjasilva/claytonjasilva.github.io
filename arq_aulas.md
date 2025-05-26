@@ -71,7 +71,8 @@ FORMS PRIMEIRO BIMESTRE
 3. [Form 3 - Representação de dados](./arq_aulas/arquitetura_computadores_form3_2025.md)
 4. [Form 4 - Representação de dados e programação em *assembly*](https://forms.gle/7uRy6DcE8pCqyJTB9)
 
-FORMS SEGUNDO BIMESTRE - **CONTEÚDO DA AP2**    
+FORMS SEGUNDO BIMESTRE - **CONTEÚDO DA AP2**  
+  
 5. [Form 5 - Nível de Lógica Digital](./arq_aulas/arquitetura_computadores_form5.pdf)  
 6. [Form 6 - Sistema de Memória](./arq_aulas/arquitetura_computadores_form6.pdf)
 
