@@ -75,6 +75,7 @@ FORMS SEGUNDO BIMESTRE - **CONTEÚDO DA AP2**
   
 5. [Form 5 - Nível de Lógica Digital](./arq_aulas/arquitetura_computadores_form5.pdf)  
 6. [Form 6 - Sistema de Memória](./arq_aulas/arquitetura_computadores_form6.pdf)
+7. [Form 7 - Sistema de Memória - com cache](./arq_aulas/arquitetura_computadores_form7.pdf)
 
 ## Exercícios  
 
