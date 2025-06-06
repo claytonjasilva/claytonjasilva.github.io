@@ -34,7 +34,7 @@
 ### Avaliações Bimestrais
 
 1. [**Trabalho AP1**](sisdig_aulas/sistemas_digitais_trabalhoap1_2025.md)
-2. **Trabalho AP2**  
+2. [**Trabalho AP2**](sisdig_aulas/sistemas_digitais_trabalhoap2_2025.pdf)  
 
 ### Avaliação Continuada
 
