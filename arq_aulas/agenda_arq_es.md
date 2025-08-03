@@ -4,7 +4,7 @@
 
 ### AGENDA 2025.2
 
-#### Planejamento de Aulas – Terças-feiras – 2025
+#### Planejamento de Aulas – Terças-feiras
 
 | Data       | Conteúdo |
 |------------|---------------------------------------------|
