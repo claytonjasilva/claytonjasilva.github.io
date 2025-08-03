@@ -1,6 +1,6 @@
 # Conteúdo das Aulas  
 
-## Arquitetura de Computadores - 2025.1
+## Arquitetura de Computadores - 2025.2
 
 ## Tópicos do conteúdo
 
@@ -56,39 +56,23 @@
 
 ## Avaliações
 
+Serão disponibilizados oportunamente.
+
 ### Avaliações Bimestrais
 
-1. **Trabalho AP1 - encerrado**
-2. [Trabalho AP2](arq_aulas/arquitetura_computadores_trabalhoap2_2025.md)
+1. **Trabalho AP1**
+2. **Trabalho AP2**
 
 ### Avaliação Continuada
 
-Os instrumentos de avaliação continuada serão disponibilizados à medida que as aulas forem ministradas.  
-
-FORMS PRIMEIRO BIMESTRE  
-1. [Form 1 - Conceitos iniciais](./arq_aulas/arquitetura_computadores_form1_2025.md)
-2. [Form 2 - Conceitos iniciais - nível de microarquitetura](./arq_aulas/arquitetura_computadores_form2_2025.md)
-3. [Form 3 - Representação de dados](./arq_aulas/arquitetura_computadores_form3_2025.md)
-4. [Form 4 - Representação de dados e programação em *assembly*](https://forms.gle/7uRy6DcE8pCqyJTB9)
-
-FORMS SEGUNDO BIMESTRE - **CONTEÚDO DA AP2**  
-  
-5. [Form 5 - Nível de Lógica Digital](./arq_aulas/arquitetura_computadores_form5.pdf)  
-6. [Form 6 - Sistema de Memória](./arq_aulas/arquitetura_computadores_form6.pdf)
-7. [Form 7 - Sistema de Memória - com cache](./arq_aulas/arquitetura_computadores_form7.pdf)
-8. [Form 8 - Barramento. Processadores.](https://forms.gle/nNwGYCEX2bnookod6)
-
-## Exercícios  
-
-1. [Lista 1 de Exercícios: grandezas numéricas e conversão de bases](arq_aulas/arquitetura_computadores_exercicios1.md) **Revisado 24.2** 
-2. [Lista 2 de Exercícios](arq_aulas/arquitetura_computadores_exercicios2.md)  
-3. [Lista 3 de Exercícios](arq_aulas/arquitetura_computadores_exercicios3.md)  
-4. [Lista 4 de Exercícios](arq_aulas/arquitetura_computadores_exercicios4.md)  
-5. [Lista 5: máquina de von Neumman](arq_aulas/arquitetura_computadores_exercicios5.md)
-6. [Lista 6 de Exercícios](arq_aulas/arquitetura_computadores_exercicios6.md)
-7. [Lista 7 de Exercícios](arq_aulas/arquitetura_computadores_exercicios7.md)
-8. [Lista 8 de Exercícios](arq_aulas/arquitetura_computadores_exercicios8.md)
-9. [Lista 9 de Exercícios](arq_aulas/arquitetura_computadores_exercicios9.md)
+1. **Form 1**
+2. **Form 2**
+3. **Form 3**
+4. **Form 4**
+5. **Form 5**
+6. **Form 6**
+7. **Form 7**
+8. **Form 8**
 
 ## Referências  
 
