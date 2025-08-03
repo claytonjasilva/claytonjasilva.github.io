@@ -4,6 +4,8 @@
 
 ### AGENDA 2025.2
 
+#### Planejamento de Aulas – Terças-feiras – 2025
+
 | Data       | Conteúdo |
 |------------|---------------------------------------------|
 | 05/08/2025 | Introdução ao curso |
