@@ -4,7 +4,7 @@
 
 ### AGENDA 2025.2
 
-# Planejamento de Aulas – Quintas-feiras
+#### Planejamento de Aulas – Quintas-feiras
 
 | Data       | Conteúdo |
 |------------|---------------------------------------------|
