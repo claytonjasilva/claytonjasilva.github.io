@@ -2,26 +2,23 @@
 
 ## Engenharia de Computação
 
-### AGENDA 2025.1
+### AGENDA 2025.2
 
 | Data       | Conteúdo |
 |------------|---------------------------------------------|
-| 14/02/2025 | Introdução ao curso |
-| 21/02/2025 | Cap. 1 - Sinais digitais e analógicos |
-| 28/02/2025 | Cap. 2 - Álgebra Booleana |
-| 07/03/2025 | **Recesso de Carnaval** |
-| 14/03/2025 | Cap. 2 - Álgebra Booleana (cont.) |
-| 21/03/2025 | Cap. 3 - Projeto de circuitos combinacionais |
-| 28/03/2025 | Cap. 3 - Somadores. Comparadores. Decodificadores. Revisão AP1. |
-| 04/04/2025 | **Aplicação da AP1** |
-| 11/04/2025 | Mostra da AP1. Cap 3. Multiplexadores |
-| 18/04/2025 | **Semana Santa** |
-| 25/04/2025 | Cap. 4 - Memória. FF. |
-| 02/05/2025 | **Recesso de Trabalho** |
-| 09/05/2025 | Cap. 5 - Máquina de estados |
-| 16/05/2025 | Cap. 6 - Aplicações com FF |
-| 23/05/2025 | Cap. 6 - Aplicações com FF |
-| 30/05/2025 | Cap. 6 - Aplicações com FF |
-| 06/06/2025 | Teste. Revisão AP2 |
-| 13/06/2025 | **Aplicação da AP2** |
-| 27/06/2025 | **Aplicação da AS** |
+| 08/08/2025 | Introdução ao curso |
+| 15/08/2025 | Cap. 1 - Sinais digitais e analógicos |
+| 22/08/2025 | Cap. 2 - Álgebra Booleana |
+| 29/08/2025 | Cap. 2 - Álgebra Booleana (cont.) |
+| 05/09/2025 | Cap. 3 - Projeto de circuitos combinacionais |
+| 12/09/2025 | Cap. 3 - Projeto de circuitos combinacionais |
+| 19/09/2025 | Cap. 3 - Somadores. Comparadores. Decodificadores. Revisão AP1. |
+| 26/09/2025 | **Aplicação da AP1** |
+| 03/10/2025 | Mostra da AP1. Cap 3. Multiplexadores |
+| 10/10/2025 | Cap 3. Multiplexadores |
+| 17/10/2025 | Cap. 4 - Memória. FF. |
+| 24/10/2025 | Cap. 5 - Máquina de estados |
+| 31/10/2025 | Cap. 6 - Aplicações com FF |
+| 07/11/2025 | Aplicação de Teste. Revisão. |
+| 14/11/2025 | **Aplicação da AP2** |
+| 01/12/2025 | **Aplicação da AS** - **Fora do dia de aula**|
