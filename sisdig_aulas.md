@@ -1,4 +1,4 @@
-# Aulas de Sistemas Digitais - 2025.1
+# Aulas de Sistemas Digitais - 2025.2
 
 ## Conteúdo
 
@@ -33,21 +33,15 @@
 
 ### Avaliações Bimestrais
 
-1. [**Trabalho AP1**](sisdig_aulas/sistemas_digitais_trabalhoap1_2025.md)
-2. [**Trabalho AP2**](sisdig_aulas/sistemas_digitais_trabalhoap2_2025.pdf)  
+1. **Trabalho AP1**
+2. **Trabalho AP2**  
 
 ### Avaliação Continuada
 
-1. [Form 1](https://forms.gle/ZSHHzDAgeNFEMjGx5)
-2. [Form 2](https://forms.gle/ZikgEAXy3NRAiYPH8)
-
-### Listas de exercício
-
-1. [Lista 1 de Exercícios](sisdig_aulas/sisdig_exercicios1_aulas.md)
-2. [Lista 2 de Exercícios](sisdig_aulas/sisdig_exercicios2_aulas.md)
-3. [Lista 3 de Exercícios](sisdig_aulas/sisdig_exercicios3_aulas.md)
-4. [Lista 4 de Exercícios](sisdig_aulas/sisdig_exercicios4_aulas.md)
-5. [Lista 5 de Exercícios](sisdig_aulas/sisdig_exercicios5_aulas.md)
+1. Form 1
+2. Form 2
+3. Form 3
+4. Form 4
 
 ### *Datasheets* de referência  
 

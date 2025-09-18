@@ -85,3 +85,4 @@ Serão disponibilizados oportunamente.
 5. [Maziero, Carlos; Sistemas Operacionais: Conceitos e Mecanismos; Editora da UFPR; 2019](http://wiki.inf.ufpr.br/maziero/doku.php?id=socm:start)
 
 #### [Home - Arquitetura - Prof Clayton J A Silva](/arq.md)
+
