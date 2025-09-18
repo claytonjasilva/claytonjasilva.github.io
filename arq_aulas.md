@@ -65,9 +65,9 @@ Serão disponibilizados oportunamente.
 
 ### Avaliação Continuada
 
-1. **Form 1**
-2. **Form 2**
-3. **Form 3**
+1. [Form 1](arq_aulas/arquitetura_computadores_form1_2025_2.pdf)
+2. [Form 2](arq_aulas/arquitetura_computadores_form2_2025_2.pdf)
+3. [Form 3](arq_aulas/arquitetura_computadores_form3_2025_2.pdf)
 4. **Form 4**
 5. **Form 5**
 6. **Form 6**
