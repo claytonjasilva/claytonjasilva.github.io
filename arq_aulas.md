@@ -68,7 +68,7 @@ Serão disponibilizados oportunamente.
 1. [Form 1. Conceitos Iniciais.](arq_aulas/arquitetura_computadores_form1_2025_2.pdf)
 2. [Form 2. Arquitetura de von Neumann.](arq_aulas/arquitetura_computadores_form2_2025_2.pdf)
 3. [Form 3. Medidas.](arq_aulas/arquitetura_computadores_form3_2025_2.pdf)
-4. **Form 4**
+4. [Form 4. Assembly e modelo de máquina de níveis.](arq_aulas/arquitetura_computadores_form4_2025_2.pdf)
 5. **Form 5**
 6. **Form 6**
 7. **Form 7**
