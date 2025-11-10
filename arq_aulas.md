@@ -69,10 +69,8 @@ Serão disponibilizados oportunamente.
 2. [Form 2. Arquitetura de von Neumann.](arq_aulas/arquitetura_computadores_form2_2025_2.pdf)
 3. [Form 3. Medidas.](arq_aulas/arquitetura_computadores_form3_2025_2.pdf)
 4. [Form 4. Assembly e modelo de máquina de níveis.](arq_aulas/arquitetura_computadores_form4_2025_2.pdf)
-5. **Form 5**
-6. **Form 6**
-7. **Form 7**
-8. **Form 8**
+5. [Form 5. Memória. Hierarquia do sistema de memória.](arq_aulas/arquitetura_computadores_form5_2025_2.pdf)
+6. [Form 6. Cache. Barramento.](arq_aulas/arquitetura_computadores_form6_2025_2.pdf)
 
 ## Referências  
 
