@@ -21,11 +21,9 @@ A estrutura geral da máquina IAS consiste em:
 
 ### 1.1.1 Memória
 
-A memória é o elemento dos sistemas computacionais responsável pelo armazenamento das informações. As informações nos sistemas computacionais atuais são armazenadas na forma binária (Ver [anexo II](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/arq_aulas/arquitetura_computadores_anexo2.md)). Rigorosamente, nos sistemas computacionais distinguem-se dados de informações, conforme discutiremos na seção seguinte. No momento trataremos como dados e informações de modo indistinto.
+A memória é o elemento dos sistemas computacionais responsável pelo armazenamento das informações. As informações nos sistemas computacionais atuais são armazenadas na forma binária (Ver [anexo I](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/arq_aulas/arquitetura_computadores_anexo1.md)). Rigorosamente, nos sistemas computacionais distinguem-se dados de informações, conforme discutiremos na seção seguinte. No momento trataremos como dados e informações de modo indistinto.
 
-Uma das evoluções dos sistemas computacionais tem sido no sentido dos elementos de memória possuírem uma capacidade cada vez maior de armazenar dados (Ver [anexo I](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/arq_aulas/arquitetura_computadores_anexo1.md)). Uma metáfora fácil de estabelecer para compreender como as memórias são organizadas é entendê-las como um armário com várias gavetas, organizadas em linhas e colunas. Em cada gaveta armazena-se uma unidade de dado, chamada bit (1 ou 0).
-
-Os dados armazenados podem ser numéricos inteiros ou reais (computacionalmente chamados de ponto flutuante) (Ver [anexo III](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/arq_aulas/arquitetura_computadores_anexo3.md)), mas também podem ser não numéricos - como caracteres alfabéticos e outros símbolos discretos. Nessa representação de símbolos discretos se enquadram as instruções que comandam o funcionamento das máquinas computacionais.
+Uma das evoluções dos sistemas computacionais tem sido no sentido dos elementos de memória possuírem uma capacidade cada vez maior de armazenar dados. Uma metáfora fácil de estabelecer para compreender como as memórias são organizadas é entendê-las como um armário com várias gavetas, organizadas em linhas e colunas. Em cada gaveta armazena-se uma unidade de dado, chamada bit (1 ou 0).
 
 Todas as tarefas realizadas pelos sistemas computacionais decorrem da execução de uma sucessão de instruções binárias armazenadas, que podem manipular dados, também armazenados na memória, intitulados programas. Os programas constituem o software e comandam os elementos eletromecânicos, chamados de hardware.
 

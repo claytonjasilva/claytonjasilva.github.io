@@ -1,6 +1,6 @@
 # Conteúdo das Aulas  
 
-## Arquitetura de Computadores - 2025.2
+## Arquitetura de Computadores - 2026.1
 
 ## Tópicos do conteúdo
 
@@ -10,8 +10,8 @@
 4. [Cap.4 - Sistema de memória](arq_aulas/arquitetura_computadores_cap4.md)
 5. [Cap. 5 - Barramento](arq_aulas/arquitetura_computadores_cap5.md)
 6. [Cap. 6 - Processadores](arq_aulas/arquitetura_computadores_cap6.md)
-7. [Cap. 7 - Microcontroladores: MC Atmel ATmega 2560](arq_aulas/arquitetura_computadores_cap7.md)
-8. [Cap.8 - Sistemas Operacionais:](arq_aulas/arquitetura_computadores_cap8.md)
+7. [Cap. 8 - Sistemas Operacionais:](arq_aulas/arquitetura_computadores_cap8.md)
+8. [Cap. 7 - Microcontroladores: MC Atmel ATmega 2560](arq_aulas/arquitetura_computadores_cap7.md)
 
 - [ANEXO I - UNIDADES E GRANDEZAS NUMÉRICAS](arq_aulas/arquitetura_computadores_anexo1.md)  
 - [ANEXO II - CONVERSÃO DE BASE E INFORMAÇÕES BINÁRIAS](arq_aulas/arquitetura_computadores_anexo2.md)  
@@ -60,17 +60,21 @@ Serão disponibilizados oportunamente.
 
 ### Avaliações Bimestrais
 
-1. [Trabalho AP1](arq_aulas/trabalho_ap1_2025_2.md)
+1. **Trabalho AP1**
 2. **Trabalho AP2**
 
 ### Avaliação Continuada
 
-1. [Form 1. Conceitos Iniciais.](arq_aulas/arquitetura_computadores_form1_2025_2.pdf)
-2. [Form 2. Arquitetura de von Neumann.](arq_aulas/arquitetura_computadores_form2_2025_2.pdf)
-3. [Form 3. Medidas.](arq_aulas/arquitetura_computadores_form3_2025_2.pdf)
-4. [Form 4. Assembly e modelo de máquina de níveis.](arq_aulas/arquitetura_computadores_form4_2025_2.pdf)
-5. [Form 5. Memória. Hierarquia do sistema de memória.](arq_aulas/arquitetura_computadores_form5_2025_2.pdf)
-6. [Form 6. Cache. Barramento.](arq_aulas/arquitetura_computadores_form6_2025_2.pdf)
+Serão disponibilizados oportunamente.
+
+1. [Form 1. Arquitetura de von Neumann.]()
+2. [Form 2. Representação de informações (bit, Byte)]()
+3. [Form 3. Conversão de bases e aritmética binária.]()
+4. [Form 4. Modelo de máquina de níveis.]()
+5. [Form 5. Memória.]()
+6. [Form 6. Cache.]()
+7. [Form 7. Barramento.]()
+8. [Form 8. Processadores.]()
 
 ## Referências  
 
