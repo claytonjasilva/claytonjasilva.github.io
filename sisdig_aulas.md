@@ -1,4 +1,4 @@
-# Aulas de Sistemas Digitais - 2025.2
+# Aulas de Sistemas Digitais - 2026.1
 
 ## Conteúdo
 
@@ -33,7 +33,7 @@
 
 ### Avaliações Bimestrais
 
-1. [Trabalho AP1](sisdig_aulas/sistemas_digitais_trabalhoap1_25_2.md)
+1. **Trabalho AP1**
 2. **Trabalho AP2**  
 
 ### Avaliação Continuada
