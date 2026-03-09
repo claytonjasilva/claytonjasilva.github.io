@@ -1,6 +1,6 @@
-# Cap. 8 - Nível do Sistema Operacional
+# Cap. 7 - Nível do Sistema Operacional
 
-## 8.1 Visão geral
+## 7.1 Visão geral
 
 É a camada que contém todas as instruções de nível ISA – impacto sobre a portabilidade dos S.O. bem como o conjunto de novas instruçõese o conjunto completo de instruções disponíveis para os programadores de aplicação: chamadas de sistema.
 
@@ -14,9 +14,9 @@ Os principais elementos constituintes do Sistema Operacional são:
 - **Drivers**
 - **Programas Utilitários**
 
-## 8.2 Elementos do SO
+## 7.2 Elementos do SO
 
-### 8.2.1 O Núcleo do Sistema Operacional
+### 7.2.1 O Núcleo do Sistema Operacional
 
 O núcleo, ou kernel, é o componente central do sistema operacional. É responsável por gerenciar os recursos do sistema e facilitar a interação entre o hardware e o software. Um entendimento profundo do kernel é fundamental para compreender como os sistemas operacionais funcionam e como eles proporcionam um ambiente eficiente e seguro para a execução de aplicações.
 
@@ -50,7 +50,7 @@ Kernels híbridos combinam elementos de ambos os modelos monolítico e micronúc
 
 O kernel é a espinha dorsal de um sistema operacional, gerenciando recursos e fornecendo a interface entre o hardware e o software. Seu design e implementação têm um impacto significativo no desempenho, segurança e funcionalidade do sistema. Entender como o kernel funciona é essencial para qualquer profissional de computação, pois ele forma a base sobre a qual todos os outros componentes do sistema operam.
 
-## 8.2.2 Código de Inicialização do Sistema Operacional
+## 7.2.2 Código de Inicialização do Sistema Operacional
 
 O código de inicialização do sistema operacional é responsável por preparar o ambiente necessário para que o sistema operacional possa ser carregado e executado. Este processo é fundamental para garantir que todos os componentes do sistema estejam funcionando corretamente antes que o controle seja entregue ao sistema operacional.
 
@@ -100,7 +100,7 @@ UEFI, ou *Unified Extensible Firmware Interface*, é uma interface de firmware m
 
 A UEFI representa um avanço significativo em relação ao BIOS tradicional, oferecendo uma interface mais amigável, melhor suporte para hardware moderno, tempos de inicialização mais rápidos e recursos de segurança aprimorados. Essas melhorias tornam a UEFI a escolha preferida para sistemas modernos, proporcionando uma base mais sólida e segura para a operação de computadores pessoais e servidores.
 
-## 8.2.3 Drivers como Componentes do Sistema Operacional
+## 7.2.3 Drivers como Componentes do Sistema Operacional
 
 Drivers são programas que permitem ao sistema operacional se comunicar com hardware específico. Eles são essenciais para o funcionamento correto dos dispositivos conectados ao computador, desde teclados e mouses até placas de vídeo e impressoras. Sem drivers, o sistema operacional não seria capaz de entender como interagir com o hardware, resultando em dispositivos inoperantes.
 
@@ -139,7 +139,7 @@ Drivers de usuário operam em modo de usuário e têm acesso limitado ao hardwar
 
 Drivers são componentes fundamentais do sistema operacional, responsáveis por permitir a comunicação eficaz entre o hardware e o software. Eles garantem que os dispositivos funcionem corretamente, proporcionando uma interface padronizada para interação e facilitando a atualização e melhoria contínua dos sistemas computacionais.
 
-## 8.2.4 Programas Utilitários como Componentes do Sistema Operacional
+## 7.2.4 Programas Utilitários como Componentes do Sistema Operacional
 
 Programas utilitários são ferramentas de software fornecidas pelo sistema operacional ou por terceiros que ajudam a gerenciar, manter e otimizar o funcionamento do computador. Eles desempenham uma ampla variedade de funções que complementam o núcleo do sistema operacional, proporcionando aos usuários e administradores maior controle sobre o sistema e seus recursos.
 
@@ -178,7 +178,7 @@ Alguns exemplos de Programas Utilitários são
 
 Programas utilitários são componentes essenciais do ecossistema do sistema operacional, fornecendo ferramentas que ajudam na manutenção, diagnóstico, segurança, gerenciamento de arquivos e backup do sistema. Eles complementam as funções básicas do sistema operacional, oferecendo aos usuários uma forma de manter e otimizar seus sistemas de maneira eficiente e segura.
 
-## 8.3 Self-Test (POST)
+## 7.3 Self-Test (POST)
 
 O Power-On Self-Test (POST) é um conjunto de testes realizados pelo firmware do sistema (BIOS ou UEFI) durante a inicialização. Suas principais funções são:
 
@@ -194,7 +194,7 @@ O bootloader é geralmente armazenado em uma memória não volátil, que retém 
 
 O código de inicialização do sistema operacional é um componente crucial que prepara o ambiente para a execução do sistema. O bootloader e o POST desempenham papéis essenciais nesse processo, garantindo que o sistema esteja pronto para funcionar corretamente. A escolha da memória para armazenar o bootloader é igualmente importante para a confiabilidade e a flexibilidade do sistema.
 
-## 8.4 Chamadas de Sistema
+## 7.4 Chamadas de Sistema
 
 As Chamadas de Sistema (System Calls) são interfaces programadas no kernel do sistema operacional. Elas fornecem uma forma para que os programas de usuário solicitem serviços diretamente ao kernel, que possui acesso privilegiado ao hardware e a outros recursos do sistema. Esse mecanismo é crucial para a operação segura e eficiente dos sistemas operacionais.
 
@@ -240,11 +240,11 @@ Um exemplo clássico de chamada de sistema é a leitura de um arquivo:
 
 As Chamadas de Sistema fornecem uma camada de abstração que permite aos desenvolvedores de aplicações interagir com o hardware de forma segura e controlada, sem precisar conhecer os detalhes internos do hardware. Isso garante que as operações críticas sejam executadas de maneira consistente e segura, protegendo a integridade do sistema.
 
-## 8.5 Áreas do Sistema Operacional
+## 7.5 Áreas do Sistema Operacional
 
-As áreas típias do Sistema Operacional são **Gestão de Processos**, executando tarefas como criar, carregar código, terminar, esperar, ler/mudar atributos; **Gestão da memória**, executando tarefas como alocar/liberar/modificar áreas de memória; **Gestão de Arquivos**, executando tarefas como criar, remover, abrir, fechar, ler, escrever, ler/mudar atributos; **Comunicação**, executando tarefas como criar/destruir canais de comunicação, receber/enviar dados; **Gestão de dispositivos**, executando tarefas como ler/mudar configurações, ler/escrever dados; e **Gestão do sistema**, executando tarefas como ler/mudar data e hora, desligar/suspender/reiniciar o sistema.
+As áreas típicas do Sistema Operacional são **Gestão de Processos**, executando tarefas como criar, carregar código, terminar, esperar, ler/mudar atributos; **Gestão da memória**, executando tarefas como alocar/liberar/modificar áreas de memória; **Gestão de Arquivos**, executando tarefas como criar, remover, abrir, fechar, ler, escrever, ler/mudar atributos; **Comunicação**, executando tarefas como criar/destruir canais de comunicação, receber/enviar dados; **Gestão de dispositivos**, executando tarefas como ler/mudar configurações, ler/escrever dados; e **Gestão do sistema**, executando tarefas como ler/mudar data e hora, desligar/suspender/reiniciar o sistema.
 
-### 8.5.1 Gestão de processos
+### 7.5.1 Gestão de processos
 
 Um **processo** é uma unidade de contexto, contêiner de recursos utilizados por uma ou mais tarefas para sua execução, que pode conter várias tarefas que compartilham esses recursos.
 

@@ -10,8 +10,8 @@
 4. [Cap.4 - Sistema de memória](arq_aulas/arquitetura_computadores_cap4.md)
 5. [Cap. 5 - Barramento](arq_aulas/arquitetura_computadores_cap5.md)
 6. [Cap. 6 - Processadores](arq_aulas/arquitetura_computadores_cap6.md)
-7. [Cap. 8 - Sistemas Operacionais:](arq_aulas/arquitetura_computadores_cap8.md)
-8. [Cap. 7 - Microcontroladores: MC Atmel ATmega 2560](arq_aulas/arquitetura_computadores_cap7.md)
+7. [Cap. 7 - Sistemas Operacionais:](arq_aulas/arquitetura_computadores_cap8.md)
+8. [Cap. 8 - Microcontroladores: MC Atmel ATmega 2560](arq_aulas/arquitetura_computadores_cap7.md)
 
 - [ANEXO I - UNIDADES E GRANDEZAS NUMÉRICAS](arq_aulas/arquitetura_computadores_anexo1.md)  
 - [ANEXO II - CONVERSÃO DE BASE E INFORMAÇÕES BINÁRIAS](arq_aulas/arquitetura_computadores_anexo2.md)  
@@ -67,14 +67,14 @@ Serão disponibilizados oportunamente.
 
 Serão disponibilizados oportunamente.
 
-1. [Form 1. Arquitetura de von Neumann.]()
-2. [Form 2. Representação de informações (bit, Byte)]()
-3. [Form 3. Conversão de bases e aritmética binária.]()
-4. [Form 4. Modelo de máquina de níveis.]()
-5. [Form 5. Memória.]()
-6. [Form 6. Cache.]()
-7. [Form 7. Barramento.]()
-8. [Form 8. Processadores.]()
+1. [Form 1. Arquitetura de von Neumann.](https://forms.gle/snZF6smaf51xZhN87)
+2. Form 2. Representação de informações (bit, Byte)
+3. Form 3. Conversão de bases e aritmética binária.
+4. Form 4. Modelo de máquina de níveis.
+5. Form 5. Memória.
+6. Form 6. Cache.
+7. Form 7. Barramento.
+8. Form 8. Processadores.
 
 ## Referências  
 
