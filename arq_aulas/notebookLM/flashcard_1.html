@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<title>Flashcards - Arquitetura de Computadores</title>
+
+<style>
+
+body{
+font-family: Arial;
+background:#f4f6f8;
+margin:40px;
+}
+
+h1{
+text-align:center;
+}
+
+.flashcard{
+background:white;
+padding:20px;
+margin:15px 0;
+border-radius:10px;
+box-shadow:0 2px 8px rgba(0,0,0,0.1);
+}
+
+.pergunta{
+font-weight:bold;
+margin-bottom:10px;
+}
+
+.resposta{
+display:none;
+margin-top:10px;
+background:#eef3f8;
+padding:10px;
+border-radius:6px;
+}
+
+button{
+padding:8px 12px;
+background:#2c7be5;
+color:white;
+border:none;
+border-radius:6px;
+cursor:pointer;
+}
+
+button:hover{
+background:#1f5fb8;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<h1>Flashcards — Arquitetura de Computadores</h1>
+
+<div id="cards"></div>
+
+<script>
+
+const flashcards = [
+
+["O que é um programa no contexto de computadores digitais?",
+"Uma sequência de instruções que descreve como executar uma determinada tarefa em um computador."],
+
+["Os circuitos de um computador reconhecem a linguagem humana?",
+"Não. Os circuitos eletrônicos reconhecem apenas instruções simples em linguagem de máquina."],
+
+["O que constitui a linguagem de máquina de um computador?",
+"O conjunto de instruções básicas que o hardware é capaz de executar diretamente."],
+
+["Quais são as duas formas de converter linguagem de alto nível para linguagem de máquina?",
+"Compilação e interpretação."],
+
+["Como funciona a interpretação de um programa?",
+"O interpretador traduz e executa cada instrução do programa uma de cada vez."],
+
+["Segundo Stallings, o que é arquitetura de computadores?",
+"A arquitetura refere-se aos atributos do sistema visíveis ao programador."],
+
+["O que define a organização de computadores?",
+"A forma como os componentes operacionais são interconectados e implementados."],
+
+["Qual é a principal vantagem de manter a mesma arquitetura em diferentes computadores?",
+"Permitir que o mesmo software seja executado em diferentes máquinas."],
+
+["Qual é a ideia central do conceito de programa armazenado?",
+"As instruções do programa são armazenadas na mesma memória que os dados."],
+
+["Quais são as partes básicas da máquina de Von Neumann?",
+"CPU, memória principal e dispositivos de entrada e saída."],
+
+["Para que serve o registrador acumulador em uma CPU?",
+"Para armazenar temporariamente resultados de operações aritméticas e lógicas."],
+
+["Quais elementos modernos compõem a CPU?",
+"Unidade de controle, unidade lógica e aritmética e registradores."],
+
+["Quais são as funções principais de um computador?",
+"Processamento de dados, armazenamento de dados, movimentação de dados e controle."],
+
+["Qual elemento permite a comunicação entre CPU, memória e dispositivos de entrada/saída?",
+"O barramento do sistema."],
+
+["Qual é a base do sistema decimal?",
+"A base é 10."],
+
+["Defina o termo Least Significant Bit (LSB).",
+"É o bit menos significativo de um número binário, localizado na posição mais à direita."],
+
+["Qual é a base do sistema binário?",
+"A base é 2."],
+
+["Converta o número binário 1011 para decimal.",
+"1011₂ = 11₁₀."],
+
+["Qual é o método para converter um número decimal para binário?",
+"Divisões sucessivas por 2."],
+
+["Quantos valores diferentes podem ser representados em um registrador de 8 bits (binário puro)?",
+"2⁸ = 256 valores."],
+
+["Uma CPU com barramento de endereços de 10 bits pode endereçar quantas posições de memória?",
+"2¹⁰ = 1024 posições de memória."],
+
+["Calcule a taxa de transferência de um barramento de 32 bits operando a 1 GHz.",
+"32 bits = 4 bytes por ciclo. Em 1 GHz: 4 × 10⁹ bytes/s = 4 GB/s."]
+
+];
+
+const container = document.getElementById("cards");
+
+flashcards.forEach((card,i)=>{
+
+const div = document.createElement("div");
+div.className="flashcard";
+
+div.innerHTML=`
+<div class="pergunta">${i+1}. ${card[0]}</div>
+<button onclick="toggle(${i})">Mostrar resposta</button>
+<div class="resposta" id="resp${i}">${card[1]}</div>
+`;
+
+container.appendChild(div);
+
+});
+
+function toggle(id){
+
+const r=document.getElementById("resp"+id);
+
+if(r.style.display==="block")
+r.style.display="none";
+else
+r.style.display="block";
+
+}
+
+</script>
+
+</body>
+</html>
