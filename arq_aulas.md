@@ -18,10 +18,9 @@
 - [ANEXO III - REPRESENTAÇÃO NUMÉRICA](arq_aulas/arquitetura_computadores_anexo3.md)  
 - [ANEXO IV - ARITMÉTICA BINÁRIA](arq_aulas/arquitetura_computadores_anexo4.md)
 
-## Slides
+## Textos de apoio
 
-1. [Memória e barramento](arq_aulas/arquitetura_computadores_slides_memoria_barramento.pdf)
-2. [Processadores](arq_aulas/arquitetura_computadores_slides_processadores.pdf)
+1. [Introdução a Arquitetura e Organização de Computadores](https://1drv.ms/b/c/29ef9a7b83f2ddc4/IQAMR0i3D21_TY7HfiLhHPRlAasgpGj16RSzAItFRxim-Rg?e=KfjRsW).
 
 
 ## Práticas Arduíno
