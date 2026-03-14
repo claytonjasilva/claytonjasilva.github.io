@@ -68,8 +68,8 @@ Serão disponibilizados oportunamente.
 Serão disponibilizados oportunamente.
 
 1. [Form 1. Arquitetura de von Neumann.](https://forms.gle/snZF6smaf51xZhN87)
-2. Form 2. Representação de informações (bit, Byte)
-3. Form 3. Conversão de bases e aritmética binária.
+2. [Form 2. Representação de informações (bit, Byte) e conversão de bas 10-2](https://forms.gle/PEzcQngfWYvmysxW6)
+3. Form 3. Aritmética binária.
 4. Form 4. Modelo de máquina de níveis.
 5. Form 5. Memória.
 6. Form 6. Cache.
