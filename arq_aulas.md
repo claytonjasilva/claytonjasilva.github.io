@@ -20,7 +20,7 @@
 
 ## Textos de apoio
 
-1. [Introdução a Arquitetura e Organização de Computadores](https://1drv.ms/b/c/29ef9a7b83f2ddc4/IQAMR0i3D21_TY7HfiLhHPRlAasgpGj16RSzAItFRxim-Rg?e=KfjRsW).
+1. [Introdução a Arquitetura e Organização de Computadores](https://1drv.ms/b/c/29ef9a7b83f2ddc4/IQAMR0i3D21_TY7HfiLhHPRlAasgpGj16RSzAItFRxim-Rg?e=KfjRsW). **Veja também o [vídeo](https://claytonjasilva.github.io/arq_aulas/notebookLM/Como_um_Computador_Pensa.mp4)**, que resume o conteúdo.
 
 
 ## Práticas Arduíno
