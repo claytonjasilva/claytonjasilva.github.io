@@ -71,7 +71,21 @@ O sistema deverá operar obrigatoriamente em **dois modos distintos de funcionam
 
 ### 2.2.1 Modo de entrada de programa (LOAD)
 
-Neste modo, o sistema deverá permitir que o usuário insira instruções no formato mnemônico por meio do teclado matricial.
+Neste modo, o sistema deverá permitir que o usuário insira instruções no formato mnemônico por meio do teclado matricial. 
+
+O modo de carregamento é ativado mediante o envio do caractere especial `#`. Ao receber esse comando, o sistema deve:
+
+- limpar a memória de programa;
+- inicializar o ponteiro de carga (endereço) com zero;
+- entrar no modo LOAD.
+
+Nesse modo, cada instrução digitada pelo usuário deverá ser:
+
+1. interpretada sintaticamente;
+2. armazenada na memória de programa na posição indicada pelo ponteiro de carga;
+3. seguida do incremento automático desse ponteiro.
+
+As instruções não devem ser executadas durante essa etapa.
 
 #### Requisitos:
 
@@ -84,6 +98,9 @@ Neste modo, o sistema deverá permitir que o usuário insira instruções no for
 
 #### Exemplo de entrada de programa:
 
+- Usuário pressiona`#`e inicia o modo de entrada de programa.
+- Em seguida, insere o código:
+
 ```assembly
 LOADK 5
 ADDK 3
@@ -91,13 +108,16 @@ DISP
 HALT
 ```
 
+- Por último, finaliza o modo de entrada, pressionando `#`.
+
 ### 2.2.2 Modo de execução (RUN)
 
-A execução do programa deverá ocorrer exclusivamente mediante comando explícito do usuário.
+A execução do programa deverá ocorrer exclusivamente mediante comando explícito do usuário e será realizada de forma incremental, com avanço de uma instrução por vez.
 
-#### Comando obrigatório:
+#### Comandos obrigatórios:
 
-`RUN`
+`RUN` → inicializa o modo de execução  
+`*` → executa a próxima instrução do programa  
 
 #### Comportamento esperado:
 
@@ -106,37 +126,69 @@ Ao receber o comando `RUN`, o sistema deverá:
 1. Inicializar o contador de programa:
    - `PC = 0`
 
-2. Iniciar o ciclo de instrução:
+2. Permanecer em modo de execução, aguardando comandos do usuário.
 
-   - Buscar a instrução na memória de programa:
-     - `instrucao ← programa[PC]`
+A execução efetiva das instruções deverá ocorrer somente quando o usuário enviar o comando `*`.
 
-   - Converter o mnemônico para opcode binário;
+A cada acionamento de `*`, o sistema deverá executar exatamente um ciclo de instrução, composto pelas seguintes etapas:
 
-   - Carregar o opcode no registrador de instrução:
-     - `IR`
+- Buscar a instrução na memória de programa:
+  - `instrucao ← programa[PC]`
 
-   - Decodificar a instrução;
+- Converter o mnemônico para opcode binário;
 
-   - Executar a instrução;
+- Carregar o opcode no registrador de instrução:
+  - `IR`
 
-   - Atualizar o estado do sistema:
-     - `ACC`, `MEM`, `FLAG_Z`, dispositivos de saída, etc.;
+- Decodificar a instrução;
 
-   - Atualizar o contador de programa:
-     - `PC = PC + 1`
+- Executar a instrução;
 
-3. Repetir o ciclo até encontrar a instrução `HALT`.
+- Atualizar o estado do sistema:
+  - `ACC`, `MEM`, `FLAG_Z`, dispositivos de saída, etc.;
+
+- Atualizar o contador de programa:
+  - `PC = PC + 1`
+
+Após a execução de cada instrução, o sistema deverá permanecer aguardando um novo comando `*` para prosseguir.
 
 ### 2.2.3 Condição de parada
 
 A execução do programa deverá ser encerrada exclusivamente quando a instrução `HALT` for processada.
 
-### 2.2.4 Representação do fluxo
+Após a execução de `HALT`, o sistema deverá interromper a execução e ignorar novos comandos `*` até que um novo comando `RUN` seja emitido.
 
-Modo LOAD → Armazenamento → RUN → Execução sequencial → HALT → Encerramento
+### 2.2.4 Apresentação dos estados internos
 
-### 2.2.5 Interpretação arquitetural obrigatória
+Durante o modo de execução, o sistema deverá apresentar, no monitor serial, os principais elementos internos da máquina a cada instrução executada.
+
+A exibição deverá ocorrer imediatamente após a execução de cada instrução acionada pelo comando `*`.
+
+Os seguintes elementos deverão ser apresentados:
+
+- Contador de programa (`PC`);
+- Registrador de instrução (`IR`);
+- Acumulador (`ACC`);
+- Flag de zero (`FLAG_Z`);
+- Conteúdo relevante da memória (quando aplicável);
+- Identificação da instrução executada.
+
+A apresentação deverá ser organizada de forma clara e legível, permitindo ao usuário acompanhar a evolução do sistema passo a passo.
+
+Exemplo de saída esperada:
+
+```assmebly
+PC: 0 | IR: LOADK 5 | ACC: 5 | FLAG_Z: 0
+PC: 1 | IR: ADDK 3 | ACC: 8 | FLAG_Z: 0
+PC: 2 | IR: DISP | ACC: 8 | FLAG_Z: 0
+PC: 3 | IR: HALT | ACC: 8 | FLAG_Z: 0
+```
+
+### 2.2.5 Representação do fluxo
+
+Modo LOAD → Armazenamento → RUN → Espera por `*` → Execução de 1 instrução → Espera por `*` → ... → HALT → Encerramento
+
+### 2.2.6 Interpretação arquitetural obrigatória
 
 Durante a apresentação, o grupo deverá demonstrar que:
 
@@ -148,7 +200,7 @@ Durante a apresentação, o grupo deverá demonstrar que:
 - O comando `RUN` representa o início da execução do programa;
 - A instrução `HALT` representa o término da execução.
 
-### 2.2.6 Regra de avaliação
+### 2.2.7 Regra de avaliação
 
 Implementações que executem instruções imediatamente após a entrada (sem armazenamento prévio e sem uso do comando `RUN`) não caracterizam corretamente o modelo de programa armazenado e sofrerão penalização na avaliação.
 
