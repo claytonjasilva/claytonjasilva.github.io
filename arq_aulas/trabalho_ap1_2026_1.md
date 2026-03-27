@@ -69,8 +69,6 @@ A ausência desses elementos, ou sua presença apenas nominal sem uso coerente, 
 
 O sistema deverá operar obrigatoriamente em **dois modos distintos de funcionamento**, caracterizando o conceito de **programa armazenado**.
 
----
-
 ### 2.2.1 Modo de entrada de programa (LOAD)
 
 Neste modo, o sistema deverá permitir que o usuário insira instruções no formato mnemônico por meio do teclado matricial.
