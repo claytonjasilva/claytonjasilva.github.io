@@ -86,12 +86,12 @@ Neste modo, o sistema deverá permitir que o usuário insira instruções no for
 
 #### Exemplo de entrada de programa:
 
+```assembly
 LOADK 5
 ADDK 3
 DISP
 HALT
-
----
+```
 
 ### 2.2.2 Modo de execução (RUN)
 
@@ -130,19 +130,13 @@ Ao receber o comando `RUN`, o sistema deverá:
 
 3. Repetir o ciclo até encontrar a instrução `HALT`.
 
----
-
 ### 2.2.3 Condição de parada
 
 A execução do programa deverá ser encerrada exclusivamente quando a instrução `HALT` for processada.
 
----
-
 ### 2.2.4 Representação do fluxo
 
 Modo LOAD → Armazenamento → RUN → Execução sequencial → HALT → Encerramento
-
----
 
 ### 2.2.5 Interpretação arquitetural obrigatória
 
@@ -155,8 +149,6 @@ Durante a apresentação, o grupo deverá demonstrar que:
   - busca → decodificação → execução;
 - O comando `RUN` representa o início da execução do programa;
 - A instrução `HALT` representa o término da execução.
-
----
 
 ### 2.2.6 Regra de avaliação
 
