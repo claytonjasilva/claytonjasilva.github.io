@@ -20,7 +20,7 @@ O projeto deverá contemplar, explicitamente, os seguintes elementos arquitetura
 - **Saída**: LEDs, buzzer, display de 7 segmentos e Serial Monitor.
 - **Sensor de distância**: fonte de dados para processamento.
 
-O sistema deverá operar segundo a ideia de **programa armazenado**, do **ciclo de instrução** e da **ISA (Instruction Set Architecture)**, em coerência com os conteúdos de arquitetura de computadores discutidos na disciplina. :contentReference[oaicite:0]{index=0} :contentReference[oaicite:1]{index=1}
+O sistema deverá operar segundo a ideia de **programa armazenado**, do **ciclo de instrução** e da **ISA (Instruction Set Architecture)**, em coerência com os conteúdos de arquitetura de computadores discutidos na disciplina.
 
 ### 1.2 Não escopo
 
@@ -36,7 +36,7 @@ Não fazem parte do escopo do projeto:
 
 O projeto tem por objetivos:
 
-- consolidar os conceitos de **programa armazenado**, **ciclo de instrução**, **memória**, **registradores**, **ISA**, **representação binária** e **entrada/saída**; :contentReference[oaicite:2]{index=2} :contentReference[oaicite:3]{index=3}
+- consolidar os conceitos de **programa armazenado**, **ciclo de instrução**, **memória**, **registradores**, **ISA**, **representação binária** e **entrada/saída**;
 - relacionar abstrações arquiteturais estudadas em sala com uma implementação prática em Arduino;
 - exercitar a organização estruturada de código, com clareza, modularidade e documentação;
 - permitir avaliação objetiva de conceitos da disciplina sem exigir conhecimento aprofundado de eletrônica.
@@ -65,50 +65,102 @@ Requisitos obrigatórios:
 
 A ausência desses elementos, ou sua presença apenas nominal sem uso coerente, caracterizará falha conceitual.
 
-### 2.2 Modelo de operação do sistema
+## 2.2 Modelo de operação do sistema
 
-O sistema deverá funcionar segundo um fluxo que represente, de forma simplificada, o **ciclo de instrução**.
+O sistema deverá operar obrigatoriamente em **dois modos distintos de funcionamento**, caracterizando o conceito de **programa armazenado**.
 
-#### 2.2.1 Princípio geral de operação
+---
 
-O usuário **não** digita o opcode binário. O usuário deverá digitar **exclusivamente o mnemônico** da instrução, e, quando necessário, seu operando. Exemplo:
+### 2.2.1 Modo de entrada de programa (LOAD)
 
-- `READ`
-- `LOADK 5`
-- `ADDK 3`
-- `CMPK 7`
-- `LEDON 1`
-- `STORE 2`
-- `HALT`
+Neste modo, o sistema deverá permitir que o usuário insira instruções no formato mnemônico por meio do teclado matricial.
 
-O sistema deverá então:
+#### Requisitos:
 
-1. receber a instrução digitada no teclado;
-2. identificar o mnemônico;
-3. convertê-lo internamente em seu opcode binário correspondente;
-4. carregar o opcode no registrador `IR`;
-5. decodificar a instrução;
-6. executar a operação correspondente;
-7. atualizar os registradores, memória, flags e saídas;
-8. encerrar a execução quando a instrução `HALT` for encontrada.
+- Cada instrução digitada deverá ser **armazenada em uma estrutura de memória de instruções** (ex.: vetor de strings);
+- As instruções **não devem ser executadas imediatamente após a entrada**;
+- O sistema deverá permitir a inserção sequencial de múltiplas instruções;
+- O grupo deverá definir e documentar:
+  - o mecanismo de confirmação da instrução (ex.: tecla ENTER);
+  - a forma de indicar ao usuário que a instrução foi armazenada corretamente.
 
-#### 2.2.2 Sequência funcional obrigatória
+#### Exemplo de entrada de programa:
 
-O fluxo obrigatório do sistema é o seguinte:
+LOADK 5
+ADDK 3
+DISP
+HALT
 
-`Mnemônico digitado → Codificação para opcode → Carga em IR → Decodificação → Execução → Atualização de estado`
+---
 
-#### 2.2.3 Interpretação arquitetural
+### 2.2.2 Modo de execução (RUN)
 
-Esse fluxo deverá ser explicado pelo grupo na documentação e na apresentação da seguinte forma:
+A execução do programa deverá ocorrer exclusivamente mediante comando explícito do usuário.
 
-- o **teclado** representa o dispositivo de entrada;
-- a **função de codificação** representa a tradução de mnemônicos para códigos binários, em analogia à linguagem de montagem e ao assembler; :contentReference[oaicite:4]{index=4}
-- o **IR** representa o registrador de instrução atual;
-- a **UC** representa o controle do ciclo de busca, decodificação e execução;
-- a **ULA** representa a lógica de operações aritméticas e de comparação;
-- `MEM`, `ACC`, `PC` e `FLAG_Z` representam memória, registrador acumulador, contador de programa e sinalização de condição, respectivamente;
-- LEDs, buzzer e display representam dispositivos de saída.
+#### Comando obrigatório:
+
+`RUN`
+
+#### Comportamento esperado:
+
+Ao receber o comando `RUN`, o sistema deverá:
+
+1. Inicializar o contador de programa:
+   - `PC = 0`
+
+2. Iniciar o ciclo de instrução:
+
+   - Buscar a instrução na memória de programa:
+     - `instrucao ← programa[PC]`
+
+   - Converter o mnemônico para opcode binário;
+
+   - Carregar o opcode no registrador de instrução:
+     - `IR`
+
+   - Decodificar a instrução;
+
+   - Executar a instrução;
+
+   - Atualizar o estado do sistema:
+     - `ACC`, `MEM`, `FLAG_Z`, dispositivos de saída, etc.;
+
+   - Atualizar o contador de programa:
+     - `PC = PC + 1`
+
+3. Repetir o ciclo até encontrar a instrução `HALT`.
+
+---
+
+### 2.2.3 Condição de parada
+
+A execução do programa deverá ser encerrada exclusivamente quando a instrução `HALT` for processada.
+
+---
+
+### 2.2.4 Representação do fluxo
+
+Modo LOAD → Armazenamento → RUN → Execução sequencial → HALT → Encerramento
+
+---
+
+### 2.2.5 Interpretação arquitetural obrigatória
+
+Durante a apresentação, o grupo deverá demonstrar que:
+
+- A estrutura que armazena as instruções representa a **memória de programa**;
+- O `PC` controla a sequência de execução;
+- O `IR` armazena a instrução corrente;
+- A Unidade de Controle implementa o ciclo:
+  - busca → decodificação → execução;
+- O comando `RUN` representa o início da execução do programa;
+- A instrução `HALT` representa o término da execução.
+
+---
+
+### 2.2.6 Regra de avaliação
+
+Implementações que executem instruções imediatamente após a entrada (sem armazenamento prévio e sem uso do comando `RUN`) não caracterizam corretamente o modelo de programa armazenado e sofrerão penalização na avaliação.
 
 ### 2.3 Conjunto de instruções
 
