@@ -99,7 +99,7 @@ As instruções não devem ser executadas durante essa etapa.
 #### Exemplo de entrada de programa:
 
 - Usuário pressiona`#`e inicia o modo de entrada de programa.
-- Em seguida, insere o código:
+- Em seguida, insere o código com as instruções na sua representação decimal:
 
 ```assembly
 LOADK 5
@@ -107,6 +107,17 @@ ADDK 3
 DISP
 HALT
 ```
+
+deve ser inserido como
+
+```assembly
+2 5
+3 3
+10
+15
+```
+
+O Monitor Serial do Arduíno deve apresentar o código na sua forma de mnemônicos.
 
 - Por último, finaliza o modo de entrada, pressionando `#`.
 
@@ -208,24 +219,24 @@ Implementações que executem instruções imediatamente após a entrada (sem ar
 
 Cada instrução deverá possuir um **mnemônico**, um **opcode binário de 4 bits** e uma **descrição funcional**.
 
-| Opcode | Mnemônico | Descrição |
-| --- | --- | --- |
-| 0000 | NOP | Não realiza operação |
-| 0001 | READ | Lê o sensor de distância e armazena o resultado em `ACC` |
-| 0010 | LOADK | Carrega uma constante em `ACC` |
-| 0011 | ADDK | Soma uma constante ao conteúdo de `ACC` |
-| 0100 | SUBK | Subtrai uma constante do conteúdo de `ACC` |
-| 0101 | CMPK | Compara `ACC` com uma constante e atualiza `FLAG_Z` |
-| 0110 | LEDON | Liga um LED especificado por operando |
-| 0111 | LEDOFF | Desliga um LED especificado por operando |
-| 1000 | BUZON | Liga o buzzer |
-| 1001 | BUZOFF | Desliga o buzzer |
-| 1010 | DISP | Exibe valor no display de 7 segmentos |
-| 1011 | ALERT | Executa resposta automática com base na distância lida |
-| 1100 | BINC | Exibe no Serial Monitor o opcode binário da instrução atual |
-| 1101 | STORE | Armazena `ACC` em uma posição `MEM[X]` |
-| 1110 | LOADM | Carrega em `ACC` o conteúdo de `MEM[X]` |
-| 1111 | HALT | Encerra a execução do programa |
+| Decimal | Opcode | Mnemônico | Descrição |
+| --- | --- | --- | --- |
+| 0 | 0000 | NOP | Não realiza operação |
+| 1 | 0001 | READ | Lê o sensor de distância e armazena o resultado em `ACC` |
+| 2 | 0010 | LOADK | Carrega uma constante em `ACC` |
+| 3 | 0011 | ADDK | Soma uma constante ao conteúdo de `ACC` |
+| 4 | 0100 | SUBK | Subtrai uma constante do conteúdo de `ACC` |
+| 5 | 0101 | CMPK | Compara `ACC` com uma constante e atualiza `FLAG_Z` |
+| 6 | 0110 | LEDON | Liga um LED especificado por operando |
+| 7 | 0111 | LEDOFF | Desliga um LED especificado por operando |
+| 8 | 1000 | BUZON | Liga o buzzer |
+| 9 | 1001 | BUZOFF | Desliga o buzzer |
+| 10 | 1010 | DISP | Exibe valor no display de 7 segmentos |
+| 11 | 1011 | ALERT | Executa resposta automática com base na distância lida |
+| 12 | 1100 | BINC | Exibe no Serial Monitor o opcode binário da instrução atual |
+| 13 | 1101 | STORE | Armazena `ACC` em uma posição `MEM[X]` |
+| 14 | 1110 | LOADM | Carrega em `ACC` o conteúdo de `MEM[X]` |
+| 15 | 1111 | HALT | Encerra a execução do programa |
 
 ### 2.4 Código e descrição de cada funcionalidade
 
