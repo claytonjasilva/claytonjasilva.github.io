@@ -61,7 +61,7 @@ Serão disponibilizados oportunamente.
 ### Avaliações Bimestrais
 
 1. [Trabalho AP1](arq_aulas/trabalho_ap1_2026_1.md)
-2. **Trabalho AP2**
+2. [Trabalho AP2](arq_aulas/trabalho_ap2_2026_1.md)
 
 ### Avaliação Continuada
 
