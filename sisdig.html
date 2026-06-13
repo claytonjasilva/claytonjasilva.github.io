@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Sistemas Digitais — Prof. Clayton J A Silva</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,600;1,300&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg:        #0a0e17;
+      --surface:   #111827;
+      --border:    #1e2d40;
+      --accent:    #00c2ff;
+      --accent2:   #7c3aed;
+      --text:      #e2e8f0;
+      --muted:     #64748b;
+      --tag-bg:    #0f172a;
+      --font-mono: 'IBM Plex Mono', monospace;
+      --font-sans: 'IBM Plex Sans', sans-serif;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--font-sans);
+      font-size: 16px;
+      line-height: 1.6;
+      min-height: 100vh;
+    }
+
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    .container { max-width: 1000px; margin: 0 auto; padding: 0 2rem; }
+
+    /* ── NAV ── */
+    nav {
+      position: sticky; top: 0; z-index: 100;
+      background: rgba(10,14,23,0.88);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      padding: 1rem 0;
+    }
+    nav .container { display: flex; align-items: center; justify-content: space-between; gap: 1rem; flex-wrap: wrap; }
+    .nav-brand { font-family: var(--font-mono); font-size: 0.82rem; color: var(--accent); }
+    .nav-links { display: flex; gap: 1.5rem; list-style: none; flex-wrap: wrap; }
+    .nav-links a { font-family: var(--font-mono); font-size: 0.78rem; color: var(--muted); transition: color 0.2s; }
+    .nav-links a:hover { color: var(--text); text-decoration: none; }
+
+    /* ── HERO ── */
+    .hero { padding: 5rem 0 3.5rem; position: relative; overflow: hidden; }
+    .hero::before {
+      content: ''; position: absolute; inset: 0;
+      background-image:
+        linear-gradient(var(--border) 1px, transparent 1px),
+        linear-gradient(90deg, var(--border) 1px, transparent 1px);
+      background-size: 40px 40px; opacity: 0.3;
+      mask-image: radial-gradient(ellipse 80% 60% at 50% 0%, black 40%, transparent 100%);
+    }
+    .hero-eyebrow {
+      font-family: var(--font-mono); font-size: 0.75rem; color: var(--accent);
+      letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 1rem;
+      display: flex; align-items: center; gap: 0.75rem;
+    }
+    .hero-eyebrow::before { content: ''; display: inline-block; width: 2rem; height: 1px; background: var(--accent); }
+    h1 { font-size: clamp(1.8rem, 4vw, 3rem); font-weight: 300; line-height: 1.1; letter-spacing: -0.02em; margin-bottom: 0.75rem; }
+    h1 strong { font-weight: 600; color: var(--accent); }
+    .hero-sub { font-size: 0.88rem; color: var(--muted); font-family: var(--font-mono); margin-bottom: 2rem; }
+
+    .hero-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+    .tag {
+      font-family: var(--font-mono); font-size: 0.72rem; color: var(--accent2);
+      background: rgba(124,58,237,0.1); border: 1px solid rgba(124,58,237,0.25);
+      border-radius: 4px; padding: 0.25rem 0.6rem;
+    }
+
+    /* ── SECTION ── */
+    .section { padding: 3rem 0; border-top: 1px solid var(--border); }
+    .section-title {
+      font-family: var(--font-mono); font-size: 0.72rem; color: var(--accent);
+      letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 1.5rem;
+      display: flex; align-items: center; gap: 0.75rem;
+    }
+    .section-title::after { content: ''; flex: 1; height: 1px; background: var(--border); }
+    h2 { font-size: 1.25rem; font-weight: 600; margin-bottom: 1.25rem; }
+
+    /* ── AGENDA TABLE ── */
+    .agenda-wrap { overflow-x: auto; border: 1px solid var(--border); border-radius: 8px; }
+    table { width: 100%; border-collapse: collapse; font-size: 0.875rem; }
+    thead tr { background: var(--tag-bg); border-bottom: 1px solid var(--border); }
+    thead th { padding: 0.75rem 1rem; text-align: left; font-family: var(--font-mono); font-size: 0.72rem; color: var(--muted); letter-spacing: 0.1em; text-transform: uppercase; font-weight: 400; }
+    tbody tr { border-bottom: 1px solid var(--border); transition: background 0.15s; }
+    tbody tr:last-child { border-bottom: none; }
+    tbody tr:hover { background: rgba(255,255,255,0.02); }
+    tbody td { padding: 0.75rem 1rem; color: var(--muted); }
+    tbody td:first-child { font-family: var(--font-mono); font-size: 0.78rem; color: var(--muted); white-space: nowrap; }
+    tbody td:last-child { color: var(--text); }
+    .row-ap { background: rgba(0,194,255,0.04); }
+    .row-ap td { color: var(--accent) !important; font-weight: 600; }
+    .row-as { background: rgba(124,58,237,0.06); }
+    .row-as td { color: var(--accent2) !important; font-weight: 600; }
+    .row-feriado td { color: var(--muted) !important; font-style: italic; }
+
+    /* ── CONTEÚDO GRID ── */
+    .content-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 1px;
+      background: var(--border);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      overflow: hidden;
+    }
+    .content-card {
+      background: var(--surface);
+      padding: 1.25rem 1.5rem;
+      display: flex; gap: 1rem; align-items: flex-start;
+      transition: background 0.2s;
+    }
+    .content-card:hover { background: #161f2e; }
+    .content-num {
+      font-family: var(--font-mono); font-size: 0.7rem; color: var(--accent);
+      background: rgba(0,194,255,0.08); border: 1px solid rgba(0,194,255,0.2);
+      border-radius: 3px; padding: 0.2rem 0.5rem; white-space: nowrap; flex-shrink: 0; margin-top: 0.1rem;
+    }
+    .content-card a { font-size: 0.875rem; color: var(--text); font-weight: 500; line-height: 1.4; }
+    .content-card a:hover { color: var(--accent); text-decoration: none; }
+
+    /* ── PRÁTICAS ── */
+    .praticas-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 0.6rem;
+    }
+    .pratica-item {
+      background: var(--tag-bg); border: 1px solid var(--border); border-radius: 6px;
+      padding: 0.9rem 1.1rem; display: flex; gap: 0.75rem; align-items: center;
+      transition: border-color 0.2s;
+    }
+    .pratica-item:hover { border-color: var(--accent2); }
+    .pratica-num {
+      font-family: var(--font-mono); font-size: 0.68rem; color: var(--accent2);
+      background: rgba(124,58,237,0.1); border: 1px solid rgba(124,58,237,0.25);
+      border-radius: 3px; padding: 0.15rem 0.45rem; white-space: nowrap; flex-shrink: 0;
+    }
+    .pratica-item a { font-size: 0.85rem; color: var(--text); }
+    .pratica-item a:hover { color: var(--accent2); text-decoration: none; }
+
+    /* ── AVALIAÇÕES ── */
+    .aval-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 1rem; }
+    .aval-card {
+      border: 1px solid var(--border); border-radius: 8px; padding: 1.5rem;
+      background: var(--surface); display: flex; flex-direction: column; gap: 0.75rem;
+      position: relative; overflow: hidden;
+    }
+    .aval-card::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
+    }
+    .aval-card.ap::before { background: linear-gradient(90deg, var(--accent), rgba(0,194,255,0.3)); }
+    .aval-card.ac::before { background: linear-gradient(90deg, var(--accent2), rgba(124,58,237,0.3)); }
+    .aval-badge {
+      font-family: var(--font-mono); font-size: 0.7rem; font-weight: 600;
+      padding: 0.25rem 0.6rem; border-radius: 4px; display: inline-block; width: fit-content;
+    }
+    .badge-ap { background: rgba(0,194,255,0.1); border: 1px solid rgba(0,194,255,0.25); color: var(--accent); }
+    .badge-ac { background: rgba(124,58,237,0.1); border: 1px solid rgba(124,58,237,0.25); color: var(--accent2); }
+    .aval-card h3 { font-size: 0.95rem; font-weight: 600; }
+    .aval-list { list-style: none; display: flex; flex-direction: column; gap: 0.4rem; }
+    .aval-list li { font-size: 0.85rem; color: var(--muted); display: flex; gap: 0.5rem; }
+    .aval-list li::before { content: '·'; color: var(--accent); flex-shrink: 0; }
+
+    /* ── DATASHEETS ── */
+    .ds-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 0.6rem; }
+    .ds-item {
+      background: var(--tag-bg); border: 1px solid var(--border); border-radius: 6px;
+      padding: 0.85rem 1rem; display: flex; gap: 0.75rem; align-items: center;
+      transition: border-color 0.2s;
+    }
+    .ds-item:hover { border-color: var(--accent); }
+    .ds-icon { flex-shrink: 0; }
+    .ds-item a { font-size: 0.82rem; color: var(--text); font-family: var(--font-mono); }
+    .ds-item a:hover { color: var(--accent); text-decoration: none; }
+
+    /* ── FOOTER ── */
+    footer { border-top: 1px solid var(--border); padding: 2rem 0; margin-top: 2rem; }
+    footer .container { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; }
+    footer p { font-size: 0.82rem; color: var(--muted); font-family: var(--font-mono); }
+
+    @media (max-width: 600px) {
+      .hero { padding: 3.5rem 0 2.5rem; }
+      h1 { font-size: 1.8rem; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="container">
+    <span class="nav-brand">claytonjasilva.github.io</span>
+    <ul class="nav-links">
+      <li><a href="#agenda">agenda</a></li>
+      <li><a href="#conteudo">conteúdo</a></li>
+      <li><a href="#praticas">práticas</a></li>
+      <li><a href="#avaliacoes">avaliações</a></li>
+      <li><a href="#datasheets">datasheets</a></li>
+      <li><a href="https://claytonjasilva.github.io">← home</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="container">
+    <p class="hero-eyebrow">Ibmec RJ — Engenharia da Computação</p>
+    <h1>Sistemas<br><strong>Digitais</strong></h1>
+    <p class="hero-sub">Prof. Clayton J A Silva · Rev 2026.1</p>
+    <div class="hero-tags">
+      <span class="tag">Álgebra Booleana</span>
+      <span class="tag">Circuitos Combinacionais</span>
+      <span class="tag">Flip-Flops</span>
+      <span class="tag">Máquinas de Estado</span>
+      <span class="tag">Registradores</span>
+      <span class="tag">Contadores</span>
+    </div>
+  </div>
+</section>
+
+<div class="container">
+
+  <!-- AGENDA -->
+  <section class="section" id="agenda">
+    <p class="section-title">01 / agenda</p>
+    <div class="agenda-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Data</th>
+            <th>Conteúdo</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>27/02/2026</td><td>Introdução ao curso</td></tr>
+          <tr><td>06/03/2026</td><td>Cap. 1 — Sinais digitais e analógicos</td></tr>
+          <tr><td>13/03/2026</td><td>Cap. 2 — Álgebra Booleana</td></tr>
+          <tr><td>20/03/2026</td><td>Cap. 2 — Álgebra Booleana (cont.)</td></tr>
+          <tr><td>27/03/2026</td><td>Cap. 3 — Projeto de circuitos combinacionais</td></tr>
+          <tr class="row-feriado"><td>03/04/2026</td><td>Recesso — Semana Santa</td></tr>
+          <tr><td>10/04/2026</td><td>Cap. 3 — Projeto de circuitos combinacionais · Revisão AP1</td></tr>
+          <tr class="row-ap"><td>17/04/2026</td><td>▶ Aplicação da AP1</td></tr>
+          <tr><td>24/04/2026</td><td>Cap. 3 — Somadores · Comparadores · Decodificadores · Mostra AP1</td></tr>
+          <tr class="row-feriado"><td>01/05/2026</td><td>Feriado — Dia do Trabalho</td></tr>
+          <tr><td>08/05/2026</td><td>Cap. 3 — Multiplexadores</td></tr>
+          <tr><td>15/05/2026</td><td>Cap. 3 — Multiplexadores (cont.)</td></tr>
+          <tr><td>22/05/2026</td><td>Cap. 4 — Memória · Flip-Flops</td></tr>
+          <tr><td>29/05/2026</td><td>Cap. 5 — Máquina de estados · Cap. 6 — Aplicações com FF · Revisão AP2</td></tr>
+          <tr class="row-feriado"><td>05/06/2026</td><td>Feriado — Corpus Christi</td></tr>
+          <tr class="row-ap"><td>12/06/2026</td><td>▶ Aplicação da AP2</td></tr>
+          <tr class="row-as"><td>19/06/2026</td><td>▶ Aplicação da AS — fora do dia de aula</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- CONTEÚDO -->
+  <section class="section" id="conteudo">
+    <p class="section-title">02 / conteúdo das aulas</p>
+    <div class="content-grid">
+      <div class="content-card"><span class="content-num">Cap 1</span><a href="https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/sisdig_aulas/sistemas_digitais_cap1.md" target="_blank">Sinais Analógicos e Digitais</a></div>
+      <div class="content-card"><span class="content-num">Cap 2</span><a href="https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/sisdig_aulas/sistemas_digitais_cap2.md" target="_blank">Álgebra Booleana e Portas Lógicas</a></div>
+      <div class="content-card"><span class="content-num">Cap 3</span><a href="https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/sisdig_aulas/sistemas_digitais_cap3.md" target="_blank">Projeto de Circuitos Combinacionais</a></div>
+      <div class="content-card"><span class="content-num">Cap 4</span><a href="https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/sisdig_aulas/sistemas_digitais_cap4.md" target="_blank">Circuitos Aritméticos — Somadores e Subtratores</a></div>
+      <div class="content-card"><span class="content-num">Cap 5</span><a href="https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/sisdig_aulas/sistemas_digitais_cap5.md" target="_blank">Circuitos Lógicos — Comparadores</a></div>
+      <div class="content-card"><span class="content-num">Cap 6</span><a href="https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/sisdig_aulas/sistemas_digitais_cap6.md" target="_blank">Circuitos Codificadores e Decodificadores</a></div>
+      <div class="content-card"><span class="content-num">Cap 7</span><a href="https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/sisdig_aulas/sistemas_digitais_cap7.md" target="_blank">Circuitos Multiplexadores</a></div>
+      <div class="content-card"><span class="content-num">Cap 8</span><a href="https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/sisdig_aulas/sistemas_digitais_cap8.md" target="_blank">Fundamentos de Máquinas Sequenciais</a></div>
+      <div class="content-card"><span class="content-num">Cap 9</span><a href="https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/sisdig_aulas/sistemas_digitais_cap9.md" target="_blank">Memória — Células de Memória e Flip-Flops</a></div>
+      <div class="content-card"><span class="content-num">Cap 10</span><a href="https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/sisdig_aulas/sistemas_digitais_cap10.md" target="_blank">Aplicações com FF — Registradores</a></div>
+      <div class="content-card"><span class="content-num">Cap 11</span><a href="https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/sisdig_aulas/sistemas_digitais_cap11.md" target="_blank">Aplicações com FF — Divisores de Frequência e Contadores</a></div>
+    </div>
+  </section>
+
+  <!-- PRÁTICAS -->
+  <section class="section" id="praticas">
+    <p class="section-title">03 / práticas de laboratório</p>
+    <div class="praticas-grid">
+      <div class="pratica-item"><span class="pratica-num">P01</span><a href="https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/sisdig_aulas/sistemas_digitais_pratica1.md" target="_blank">Portas lógicas AND</a></div>
+      <div class="pratica-item"><span class="pratica-num">P02</span><a href="https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/sisdig_aulas/sistemas_digitais_pratica2.md" target="_blank">Portas lógicas OR</a></div>
+      <div class="pratica-item"><span class="pratica-num">P03</span><a href="https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/sisdig_aulas/sistemas_digitais_pratica3.md" target="_blank">Inversor NOT</a></div>
+      <div class="pratica-item"><span class="pratica-num">P04</span><a href="https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/sisdig_aulas/sistemas_digitais_pratica4.md" target="_blank">Portas lógicas NAND</a></div>
+      <div class="pratica-item"><span class="pratica-num">P05</span><a href="https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/sisdig_aulas/sistemas_digitais_pratica5.md" target="_blank">Portas lógicas NOR</a></div>
+      <div class="pratica-item"><span class="pratica-num">P06</span><a href="https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/sisdig_aulas/sistemas_digitais_pratica6.md" target="_blank">Portas XOR</a></div>
+      <div class="pratica-item"><span class="pratica-num">P07</span><a href="https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/sisdig_aulas/sistemas_digitais_pratica7.md" target="_blank">Circuitos combinacionais com portas lógicas</a></div>
+      <div class="pratica-item"><span class="pratica-num">P08</span><a href="https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/sisdig_aulas/sistemas_digitais_pratica8.md" target="_blank">Projeto de circuitos combinacionais</a></div>
+      <div class="pratica-item"><span class="pratica-num">P09</span><a href="https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/sisdig_aulas/sistemas_digitais_pratica9.md" target="_blank">Circuitos MSI — Somador e Decodificador</a></div>
+      <div class="pratica-item"><span class="pratica-num">P10</span><a href="https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/sisdig_aulas/sistemas_digitais_pratica10.md" target="_blank">Circuitos MSI — Multiplexador</a></div>
+      <div class="pratica-item"><span class="pratica-num">P11</span><a href="https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/sisdig_aulas/sistemas_digitais_pratica11.md" target="_blank">Circuitos sequenciais</a></div>
+      <div class="pratica-item"><span class="pratica-num">P12</span><a href="https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/sisdig_aulas/sistemas_digitais_pratica12.md" target="_blank">Circuitos sequenciais — Registradores</a></div>
+    </div>
+  </section>
+
+  <!-- AVALIAÇÕES -->
+  <section class="section" id="avaliacoes">
+    <p class="section-title">04 / avaliações</p>
+    <div class="aval-grid">
+
+      <div class="aval-card ap">
+        <span class="aval-badge badge-ap">AP · 40% cada</span>
+        <h3>Avaliações Bimestrais</h3>
+        <ul class="aval-list">
+          <li><a href="https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/sisdig_aulas/sistemas_digitais_trabalhoap1_26_1.md" target="_blank">Trabalho AP1</a></li>
+          <li>Trabalho AP2 — a divulgar</li>
+        </ul>
+      </div>
+
+      <div class="aval-card ac">
+        <span class="aval-badge badge-ac">AC · 20%</span>
+        <h3>Avaliação Continuada</h3>
+        <ul class="aval-list">
+          <li>Form 1</li>
+          <li>Form 2</li>
+          <li>Form 3</li>
+          <li>Form 4</li>
+        </ul>
+      </div>
+
+      <div class="aval-card ap" style="border-color: rgba(0,194,255,0.15);">
+        <span class="aval-badge badge-ap">Sistema de Avaliações</span>
+        <h3>Regras e Pesos</h3>
+        <ul class="aval-list">
+          <li>AC — peso 20% da nota final</li>
+          <li>AP1 — peso 40% da nota final</li>
+          <li>AP2 — peso 40% da nota final</li>
+        </ul>
+        <a href="https://claytonjasilva.github.io/avaliacoes.html" style="font-family:var(--font-mono); font-size:0.78rem; margin-top:0.5rem;">Ver sistema completo →</a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- DATASHEETS -->
+  <section class="section" id="datasheets">
+    <p class="section-title">05 / datasheets de referência</p>
+    <div class="ds-grid">
+
+      <div class="ds-item">
+        <svg class="ds-icon" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 2h7l3 3v9H3V2z" stroke="#7c3aed" stroke-width="1.2" fill="none"/><line x1="5" y1="7" x2="11" y2="7" stroke="#7c3aed" stroke-width="1"/><line x1="5" y1="9.5" x2="9" y2="9.5" stroke="#7c3aed" stroke-width="1"/></svg>
+        <a href="https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/sisdig_aulas/sistemas_digitais_datasheet_CD14082BCP_Motorola.pdf" target="_blank">Porta AND — CD14082BCP</a>
+      </div>
+      <div class="ds-item">
+        <svg class="ds-icon" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 2h7l3 3v9H3V2z" stroke="#7c3aed" stroke-width="1.2" fill="none"/><line x1="5" y1="7" x2="11" y2="7" stroke="#7c3aed" stroke-width="1"/><line x1="5" y1="9.5" x2="9" y2="9.5" stroke="#7c3aed" stroke-width="1"/></svg>
+        <a href="https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/sisdig_aulas/sistemas_digitais_datasheet_74HC08N_Philips.pdf" target="_blank">Porta AND — 74HC08N</a>
+      </div>
+      <div class="ds-item">
+        <svg class="ds-icon" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 2h7l3 3v9H3V2z" stroke="#7c3aed" stroke-width="1.2" fill="none"/><line x1="5" y1="7" x2="11" y2="7" stroke="#7c3aed" stroke-width="1"/><line x1="5" y1="9.5" x2="9" y2="9.5" stroke="#7c3aed" stroke-width="1"/></svg>
+        <a href="https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/sisdig_aulas/sistemas_digitais_datasheet_SN74HC32N_Texas.pdf" target="_blank">Porta OR — SN74HC32N</a>
+      </div>
+      <div class="ds-item">
+        <svg class="ds-icon" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 2h7l3 3v9H3V2z" stroke="#7c3aed" stroke-width="1.2" fill="none"/><line x1="5" y1="7" x2="11" y2="7" stroke="#7c3aed" stroke-width="1"/><line x1="5" y1="9.5" x2="9" y2="9.5" stroke="#7c3aed" stroke-width="1"/></svg>
+        <a href="https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/sisdig_aulas/sistemas_digitais_datasheet_CD4011BE_Texas.pdf" target="_blank">Porta NAND — CD4011BE</a>
+      </div>
+      <div class="ds-item">
+        <svg class="ds-icon" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 2h7l3 3v9H3V2z" stroke="#7c3aed" stroke-width="1.2" fill="none"/><line x1="5" y1="7" x2="11" y2="7" stroke="#7c3aed" stroke-width="1"/><line x1="5" y1="9.5" x2="9" y2="9.5" stroke="#7c3aed" stroke-width="1"/></svg>
+        <a href="https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/sisdig_aulas/sistemas_digitais_datasheet_74HC00N_Philips.pdf" target="_blank">Porta NAND — 74HC00N</a>
+      </div>
+      <div class="ds-item">
+        <svg class="ds-icon" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 2h7l3 3v9H3V2z" stroke="#7c3aed" stroke-width="1.2" fill="none"/><line x1="5" y1="7" x2="11" y2="7" stroke="#7c3aed" stroke-width="1"/><line x1="5" y1="9.5" x2="9" y2="9.5" stroke="#7c3aed" stroke-width="1"/></svg>
+        <a href="https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/sisdig_aulas/sistemas_digitais_datasheet_SN74HC02N_Texas.pdf" target="_blank">Porta NOR — SN74HC02N</a>
+      </div>
+      <div class="ds-item">
+        <svg class="ds-icon" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 2h7l3 3v9H3V2z" stroke="#7c3aed" stroke-width="1.2" fill="none"/><line x1="5" y1="7" x2="11" y2="7" stroke="#7c3aed" stroke-width="1"/><line x1="5" y1="9.5" x2="9" y2="9.5" stroke="#7c3aed" stroke-width="1"/></svg>
+        <a href="https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/sisdig_aulas/sistemas_digitais_datasheet_SN74HC04_Philips.pdf" target="_blank">Inversor — SN74HC04</a>
+      </div>
+      <div class="ds-item">
+        <svg class="ds-icon" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 2h7l3 3v9H3V2z" stroke="#7c3aed" stroke-width="1.2" fill="none"/><line x1="5" y1="7" x2="11" y2="7" stroke="#7c3aed" stroke-width="1"/><line x1="5" y1="9.5" x2="9" y2="9.5" stroke="#7c3aed" stroke-width="1"/></svg>
+        <a href="https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/sisdig_aulas/sistemas_digitais_datasheet_SN74HC151N_Texas.pdf" target="_blank">MUX — SN74HC151N</a>
+      </div>
+      <div class="ds-item">
+        <svg class="ds-icon" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 2h7l3 3v9H3V2z" stroke="#7c3aed" stroke-width="1.2" fill="none"/><line x1="5" y1="7" x2="11" y2="7" stroke="#7c3aed" stroke-width="1"/><line x1="5" y1="9.5" x2="9" y2="9.5" stroke="#7c3aed" stroke-width="1"/></svg>
+        <a href="https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/sisdig_aulas/sistemas_digitais_datasheet_CD4511_Texas.pdf" target="_blank">Coder BCD — CD4511</a>
+      </div>
+      <div class="ds-item">
+        <svg class="ds-icon" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 2h7l3 3v9H3V2z" stroke="#7c3aed" stroke-width="1.2" fill="none"/><line x1="5" y1="7" x2="11" y2="7" stroke="#7c3aed" stroke-width="1"/><line x1="5" y1="9.5" x2="9" y2="9.5" stroke="#7c3aed" stroke-width="1"/></svg>
+        <a href="https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/sisdig_aulas/sistemas_digitais_datasheet_CD4028_Texas.pdf" target="_blank">Decoder BCD-Decimal — CD4018</a>
+      </div>
+      <div class="ds-item">
+        <svg class="ds-icon" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 2h7l3 3v9H3V2z" stroke="#7c3aed" stroke-width="1.2" fill="none"/><line x1="5" y1="7" x2="11" y2="7" stroke="#7c3aed" stroke-width="1"/><line x1="5" y1="9.5" x2="9" y2="9.5" stroke="#7c3aed" stroke-width="1"/></svg>
+        <a href="https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/sisdig_aulas/sistemas_digitais_datasheet_74HC161_Philips.pdf" target="_blank">Counter — 74HC161</a>
+      </div>
+      <div class="ds-item">
+        <svg class="ds-icon" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 2h7l3 3v9H3V2z" stroke="#7c3aed" stroke-width="1.2" fill="none"/><line x1="5" y1="7" x2="11" y2="7" stroke="#7c3aed" stroke-width="1"/><line x1="5" y1="9.5" x2="9" y2="9.5" stroke="#7c3aed" stroke-width="1"/></svg>
+        <a href="https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/sisdig_aulas/sistemas_digitais_datasheet_74LS283_National.pdf" target="_blank">Adder — 74LS283</a>
+      </div>
+
+    </div>
+  </section>
+
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <p>© 2026 · Prof. Clayton J A Silva · Ibmec RJ</p>
+    <p><a href="https://claytonjasilva.github.io">← voltar para home</a></p>
+  </div>
+</footer>
+
+</body>
+</html>
