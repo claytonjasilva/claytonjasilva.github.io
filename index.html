@@ -8,7 +8,6 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,600;1,300&display=swap" rel="stylesheet">
   <style>
-    /* ── TOKENS ─────────────────────────────────────────── */
     :root {
       --bg:        #0a0e17;
       --surface:   #111827;
@@ -18,12 +17,10 @@
       --text:      #e2e8f0;
       --muted:     #64748b;
       --tag-bg:    #0f172a;
-
       --font-mono: 'IBM Plex Mono', monospace;
       --font-sans: 'IBM Plex Sans', sans-serif;
     }
 
-    /* ── RESET ──────────────────────────────────────────── */
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; }
 
@@ -39,358 +36,166 @@
     a { color: var(--accent); text-decoration: none; }
     a:hover { text-decoration: underline; }
 
-    /* ── LAYOUT ─────────────────────────────────────────── */
-    .container {
-      max-width: 1100px;
-      margin: 0 auto;
-      padding: 0 2rem;
-    }
+    .container { max-width: 1100px; margin: 0 auto; padding: 0 2rem; }
 
-    /* ── NAV ────────────────────────────────────────────── */
     nav {
-      position: sticky;
-      top: 0;
-      z-index: 100;
+      position: sticky; top: 0; z-index: 100;
       background: rgba(10, 14, 23, 0.85);
       backdrop-filter: blur(12px);
       border-bottom: 1px solid var(--border);
       padding: 1rem 0;
     }
 
-    nav .container {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 1rem;
-    }
+    nav .container { display: flex; align-items: center; justify-content: space-between; gap: 1rem; }
 
     .nav-brand {
-      font-family: var(--font-mono);
-      font-size: 0.85rem;
-      color: var(--accent);
-      letter-spacing: 0.02em;
-      white-space: nowrap;
+      font-family: var(--font-mono); font-size: 0.85rem;
+      color: var(--accent); letter-spacing: 0.02em; white-space: nowrap;
     }
 
-    .nav-links {
-      display: flex;
-      gap: 2rem;
-      list-style: none;
-      flex-wrap: wrap;
-    }
+    .nav-links { display: flex; gap: 2rem; list-style: none; flex-wrap: wrap; }
 
     .nav-links a {
-      font-size: 0.85rem;
-      color: var(--muted);
-      font-family: var(--font-mono);
-      transition: color 0.2s;
+      font-size: 0.85rem; color: var(--muted);
+      font-family: var(--font-mono); transition: color 0.2s;
     }
+    .nav-links a:hover { color: var(--text); text-decoration: none; }
 
-    .nav-links a:hover {
-      color: var(--text);
-      text-decoration: none;
-    }
-
-    /* ── HERO ────────────────────────────────────────────── */
-    .hero {
-      padding: 7rem 0 5rem;
-      position: relative;
-      overflow: hidden;
-    }
+    .hero { padding: 7rem 0 5rem; position: relative; overflow: hidden; }
 
     .hero::before {
-      content: '';
-      position: absolute;
-      inset: 0;
+      content: ''; position: absolute; inset: 0;
       background-image:
         linear-gradient(var(--border) 1px, transparent 1px),
         linear-gradient(90deg, var(--border) 1px, transparent 1px);
-      background-size: 40px 40px;
-      opacity: 0.35;
+      background-size: 40px 40px; opacity: 0.35;
       mask-image: radial-gradient(ellipse 80% 60% at 50% 0%, black 40%, transparent 100%);
     }
 
     .hero-eyebrow {
-      font-family: var(--font-mono);
-      font-size: 0.78rem;
-      color: var(--accent);
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      margin-bottom: 1.5rem;
-      display: flex;
-      align-items: center;
-      gap: 0.75rem;
+      font-family: var(--font-mono); font-size: 0.78rem; color: var(--accent);
+      letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 1.5rem;
+      display: flex; align-items: center; gap: 0.75rem;
     }
-
     .hero-eyebrow::before {
-      content: '';
-      display: inline-block;
-      width: 2rem;
-      height: 1px;
-      background: var(--accent);
+      content: ''; display: inline-block; width: 2rem; height: 1px; background: var(--accent);
     }
 
     h1 {
-      font-family: var(--font-sans);
-      font-size: clamp(2.4rem, 5vw, 4rem);
-      font-weight: 300;
-      line-height: 1.1;
-      letter-spacing: -0.02em;
-      max-width: 700px;
-      margin-bottom: 1.5rem;
+      font-family: var(--font-sans); font-size: clamp(2.4rem, 5vw, 4rem);
+      font-weight: 300; line-height: 1.1; letter-spacing: -0.02em;
+      max-width: 700px; margin-bottom: 1.5rem;
     }
+    h1 strong { font-weight: 600; color: var(--accent); }
 
-    h1 strong {
-      font-weight: 600;
-      color: var(--accent);
-    }
+    .hero-bio { max-width: 600px; margin-bottom: 2rem; }
+    .hero-bio p { font-size: 0.95rem; color: var(--muted); line-height: 1.75; margin-bottom: 1rem; }
 
-    .hero-bio {
-      max-width: 600px;
-      margin-bottom: 2rem;
-    }
-
-    .hero-bio p {
-      font-size: 0.95rem;
-      color: var(--muted);
-      line-height: 1.75;
-      margin-bottom: 1rem;
-    }
-
-    .hero-links {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 1rem;
-    }
+    .hero-links { display: flex; flex-wrap: wrap; gap: 1rem; }
 
     .bio-link {
-      font-family: var(--font-mono);
-      font-size: 0.78rem;
-      color: var(--accent);
-      display: inline-flex;
-      align-items: center;
-      gap: 0.4rem;
-      border: 1px solid rgba(0, 194, 255, 0.25);
-      padding: 0.35rem 0.75rem;
-      border-radius: 4px;
-      transition: background 0.2s, border-color 0.2s;
+      font-family: var(--font-mono); font-size: 0.78rem; color: var(--accent);
+      display: inline-flex; align-items: center; gap: 0.4rem;
+      border: 1px solid rgba(0, 194, 255, 0.25); padding: 0.35rem 0.75rem;
+      border-radius: 4px; transition: background 0.2s, border-color 0.2s;
     }
+    .bio-link:hover { background: rgba(0, 194, 255, 0.08); border-color: var(--accent); text-decoration: none; }
 
-    .bio-link:hover {
-      background: rgba(0, 194, 255, 0.08);
-      border-color: var(--accent);
-      text-decoration: none;
-    }
-
-    .hero-tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.6rem;
-    }
+    .hero-tags { display: flex; flex-wrap: wrap; gap: 0.6rem; }
 
     .tag {
-      font-family: var(--font-mono);
-      font-size: 0.75rem;
-      color: var(--accent2);
-      background: rgba(124, 58, 237, 0.1);
-      border: 1px solid rgba(124, 58, 237, 0.25);
-      border-radius: 4px;
-      padding: 0.3rem 0.7rem;
+      font-family: var(--font-mono); font-size: 0.75rem; color: var(--accent2);
+      background: rgba(124, 58, 237, 0.1); border: 1px solid rgba(124, 58, 237, 0.25);
+      border-radius: 4px; padding: 0.3rem 0.7rem;
     }
 
-    /* ── SECTION TITLES ─────────────────────────────────── */
-    .section {
-      padding: 4rem 0;
-      border-top: 1px solid var(--border);
-    }
+    .section { padding: 4rem 0; border-top: 1px solid var(--border); }
 
-    .section-header {
-      display: flex;
-      align-items: baseline;
-      gap: 1rem;
-      margin-bottom: 2.5rem;
-    }
+    .section-header { display: flex; align-items: baseline; gap: 1rem; margin-bottom: 2.5rem; }
 
     .section-label {
-      font-family: var(--font-mono);
-      font-size: 0.72rem;
-      color: var(--accent);
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
+      font-family: var(--font-mono); font-size: 0.72rem; color: var(--accent);
+      letter-spacing: 0.15em; text-transform: uppercase;
     }
 
-    h2 {
-      font-size: 1.6rem;
-      font-weight: 600;
-      letter-spacing: -0.01em;
-    }
+    h2 { font-size: 1.6rem; font-weight: 600; letter-spacing: -0.01em; }
 
-    /* ── DISCIPLINAS GRID ───────────────────────────────── */
     .disciplinas-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-      gap: 1px;
-      background: var(--border);
-      border: 1px solid var(--border);
-      border-radius: 8px;
-      overflow: hidden;
+      display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 1px; background: var(--border);
+      border: 1px solid var(--border); border-radius: 8px; overflow: hidden;
     }
 
     .card {
-      background: var(--surface);
-      padding: 1.75rem;
-      display: flex;
-      flex-direction: column;
-      gap: 0.75rem;
-      transition: background 0.2s;
-      position: relative;
+      background: var(--surface); padding: 1.75rem;
+      display: flex; flex-direction: column; gap: 0.75rem;
+      transition: background 0.2s; position: relative;
     }
-
     .card:hover { background: #161f2e; }
 
     .card-icon { width: 36px; height: 36px; flex-shrink: 0; }
 
     .card-rev {
-      font-family: var(--font-mono);
-      font-size: 0.7rem;
-      color: var(--muted);
-      position: absolute;
-      top: 1.75rem;
-      right: 1.75rem;
+      font-family: var(--font-mono); font-size: 0.7rem; color: var(--muted);
+      position: absolute; top: 1.75rem; right: 1.75rem;
     }
 
     .card h3 { font-size: 1rem; font-weight: 600; line-height: 1.3; }
-
-    .card p {
-      font-size: 0.875rem;
-      color: var(--muted);
-      line-height: 1.5;
-      flex: 1;
-    }
+    .card p { font-size: 0.875rem; color: var(--muted); line-height: 1.5; flex: 1; }
 
     .card-link {
-      font-family: var(--font-mono);
-      font-size: 0.78rem;
-      color: var(--accent);
-      display: inline-flex;
-      align-items: center;
-      gap: 0.4rem;
-      margin-top: 0.5rem;
-      transition: gap 0.2s;
+      font-family: var(--font-mono); font-size: 0.78rem; color: var(--accent);
+      display: inline-flex; align-items: center; gap: 0.4rem;
+      margin-top: 0.5rem; transition: gap 0.2s;
     }
-
     .card:hover .card-link { gap: 0.7rem; }
 
-    /* ── PROGRAMAÇÃO ────────────────────────────────────── */
-    .prog-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-      gap: 1rem;
-    }
+    .prog-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 1rem; }
 
     .prog-card {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 8px;
-      padding: 1.5rem;
-      display: flex;
-      flex-direction: column;
-      gap: 0.5rem;
-      transition: border-color 0.2s;
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: 8px; padding: 1.5rem;
+      display: flex; flex-direction: column; gap: 0.5rem; transition: border-color 0.2s;
     }
-
     .prog-card:hover { border-color: var(--accent); }
-
-    .prog-card .lang-badge {
-      font-family: var(--font-mono);
-      font-size: 1.4rem;
-      font-weight: 600;
-      color: var(--accent);
-    }
-
+    .prog-card .lang-badge { font-family: var(--font-mono); font-size: 1.4rem; font-weight: 600; color: var(--accent); }
     .prog-card h3 { font-size: 0.95rem; font-weight: 600; }
     .prog-card p  { font-size: 0.82rem; color: var(--muted); }
 
-    /* ── IDES ───────────────────────────────────────────── */
-    .ides-list {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-      gap: 0.75rem;
-    }
+    .ides-list { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 0.75rem; }
 
     .ide-item {
-      background: var(--tag-bg);
-      border: 1px solid var(--border);
-      border-radius: 6px;
-      padding: 1rem 1.25rem;
-      display: flex;
-      align-items: flex-start;
-      gap: 0.75rem;
+      background: var(--tag-bg); border: 1px solid var(--border);
+      border-radius: 6px; padding: 1rem 1.25rem;
+      display: flex; align-items: flex-start; gap: 0.75rem;
     }
-
-    .ide-dot {
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
-      background: var(--accent);
-      margin-top: 0.45rem;
-      flex-shrink: 0;
-    }
-
+    .ide-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--accent); margin-top: 0.45rem; flex-shrink: 0; }
     .ide-item h4 { font-size: 0.9rem; font-weight: 600; margin-bottom: 0.2rem; }
     .ide-item p  { font-size: 0.8rem; color: var(--muted); }
 
-    /* ── MATERIAL DE APOIO ──────────────────────────────── */
-    .apoio-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-      gap: 0.75rem;
-    }
+    .apoio-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 0.75rem; }
 
     .apoio-item {
-      border: 1px solid var(--border);
-      border-radius: 6px;
-      padding: 1rem 1.25rem;
-      display: flex;
-      gap: 1rem;
-      align-items: flex-start;
-      background: var(--surface);
-      transition: border-color 0.2s;
+      border: 1px solid var(--border); border-radius: 6px; padding: 1rem 1.25rem;
+      display: flex; gap: 1rem; align-items: flex-start;
+      background: var(--surface); transition: border-color 0.2s;
     }
-
     .apoio-item:hover { border-color: var(--accent2); }
-    .apoio-item svg  { flex-shrink: 0; margin-top: 2px; }
-    .apoio-item h4   { font-size: 0.9rem; font-weight: 600; }
-    .apoio-item p    { font-size: 0.8rem; color: var(--muted); margin-top: 0.2rem; }
+    .apoio-item svg { flex-shrink: 0; margin-top: 2px; }
+    .apoio-item h4 { font-size: 0.9rem; font-weight: 600; }
+    .apoio-item p  { font-size: 0.8rem; color: var(--muted); margin-top: 0.2rem; }
 
-    /* ── PROJETOS ───────────────────────────────────────── */
-    .projetos-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-      gap: 1rem;
-    }
+    .projetos-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 1rem; }
 
     .projeto-card {
-      border: 1px solid var(--border);
-      border-radius: 8px;
-      padding: 1.75rem;
-      background: var(--surface);
-      display: flex;
-      flex-direction: column;
-      gap: 0.75rem;
-      position: relative;
-      overflow: hidden;
-      transition: border-color 0.2s;
+      border: 1px solid var(--border); border-radius: 8px; padding: 1.75rem;
+      background: var(--surface); display: flex; flex-direction: column; gap: 0.75rem;
+      position: relative; overflow: hidden; transition: border-color 0.2s;
     }
-
     .projeto-card::before {
-      content: '';
-      position: absolute;
-      top: 0; left: 0; right: 0;
-      height: 2px;
+      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
       background: linear-gradient(90deg, var(--accent), var(--accent2));
     }
-
     .projeto-card:hover { border-color: rgba(0, 194, 255, 0.4); }
     .projeto-card h3 { font-size: 1rem; font-weight: 600; }
     .projeto-card p  { font-size: 0.875rem; color: var(--muted); flex: 1; }
@@ -398,37 +203,15 @@
     .projeto-tech { display: flex; gap: 0.5rem; flex-wrap: wrap; }
 
     .tech-badge {
-      font-family: var(--font-mono);
-      font-size: 0.7rem;
-      padding: 0.2rem 0.55rem;
-      border-radius: 3px;
-      background: rgba(0, 194, 255, 0.08);
-      border: 1px solid rgba(0, 194, 255, 0.2);
-      color: var(--accent);
+      font-family: var(--font-mono); font-size: 0.7rem; padding: 0.2rem 0.55rem;
+      border-radius: 3px; background: rgba(0, 194, 255, 0.08);
+      border: 1px solid rgba(0, 194, 255, 0.2); color: var(--accent);
     }
 
-    /* ── FOOTER ─────────────────────────────────────────── */
-    footer {
-      border-top: 1px solid var(--border);
-      padding: 2rem 0;
-      margin-top: 2rem;
-    }
+    footer { border-top: 1px solid var(--border); padding: 2rem 0; margin-top: 2rem; }
+    footer .container { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; }
+    footer p { font-size: 0.82rem; color: var(--muted); font-family: var(--font-mono); }
 
-    footer .container {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-wrap: wrap;
-      gap: 1rem;
-    }
-
-    footer p {
-      font-size: 0.82rem;
-      color: var(--muted);
-      font-family: var(--font-mono);
-    }
-
-    /* ── RESPONSIVE ──────────────────────────────────────── */
     @media (max-width: 640px) {
       .nav-links { display: none; }
       .hero { padding: 4rem 0 3rem; }
@@ -438,7 +221,6 @@
 </head>
 <body>
 
-<!-- NAV -->
 <nav>
   <div class="container">
     <span class="nav-brand">claytonjasilva.github.io</span>
@@ -451,12 +233,10 @@
   </div>
 </nav>
 
-<!-- HERO -->
 <section class="hero">
   <div class="container">
     <p class="hero-eyebrow">Ibmec RJ — Engenharia da Computação</p>
     <h1>Prof. Clayton<br><strong>J A Silva</strong></h1>
-
     <div class="hero-bio">
       <p>
         Engenheiro Eletrônico pelo Instituto Militar de Engenharia (1992), com mestrado em
@@ -481,7 +261,6 @@
         </a>
       </div>
     </div>
-
     <div class="hero-tags">
       <span class="tag">Arquitetura de Computadores</span>
       <span class="tag">Sistemas Digitais</span>
@@ -493,7 +272,6 @@
   </div>
 </section>
 
-<!-- DISCIPLINAS -->
 <section class="section" id="disciplinas">
   <div class="container">
     <div class="section-header">
@@ -516,7 +294,7 @@
         </svg>
         <h3>Arquitetura de Computadores</h3>
         <p>Organização interna de processadores, memória, barramentos e sistemas embarcados com ATmega2560.</p>
-        <a class="card-link" href="arq.md">Ver disciplina →</a>
+        <a class="card-link" href="https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/arq.md" target="_blank">Ver disciplina →</a>
       </div>
 
       <div class="card">
@@ -526,7 +304,7 @@
         </svg>
         <h3>Sistemas Digitais</h3>
         <p>Lógica combinacional e sequencial, circuitos integrados, flip-flops, máquinas de estado e FPGA.</p>
-        <a class="card-link" href="sisdig.md">Ver disciplina →</a>
+        <a class="card-link" href="https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/sisdig.md" target="_blank">Ver disciplina →</a>
       </div>
 
       <div class="card">
@@ -541,7 +319,7 @@
         </svg>
         <h3>Eletrônica e Design de Circuitos</h3>
         <p>Componentes passivos e ativos, amplificadores operacionais, filtros e projetos de circuitos analógicos.</p>
-        <a class="card-link" href="eletronica.md">Ver disciplina →</a>
+        <a class="card-link" href="https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/eletronica.md" target="_blank">Ver disciplina →</a>
       </div>
 
       <div class="card">
@@ -552,7 +330,7 @@
         </svg>
         <h3>Linguagens Formais e Compiladores</h3>
         <p>Gramáticas, autômatos, análise léxica e sintática, e construção de compiladores em C/C++.</p>
-        <a class="card-link" href="compiladores.md">Ver disciplina →</a>
+        <a class="card-link" href="https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/compiladores.md" target="_blank">Ver disciplina →</a>
       </div>
 
       <div class="card">
@@ -566,7 +344,7 @@
         </svg>
         <h3>Sistemas de Comunicações Móveis</h3>
         <p>Propagação de sinais, modulação, redes celulares e simulação com Python.</p>
-        <a class="card-link" href="siscom.md">Ver disciplina →</a>
+        <a class="card-link" href="https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/siscom.md" target="_blank">Ver disciplina →</a>
       </div>
 
       <div class="card">
@@ -582,7 +360,7 @@
         </svg>
         <h3>Gestão de Processos</h3>
         <p>Modelagem e análise de processos de negócio com BPMN e ferramentas como Bizagi.</p>
-        <a class="card-link" href="gestao_processos.md">Ver disciplina →</a>
+        <a class="card-link" href="https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/gestao_processos.md" target="_blank">Ver disciplina →</a>
       </div>
 
       <div class="card">
@@ -591,39 +369,37 @@
         </svg>
         <h3>Aspectos Regulatórios de Telecomunicações</h3>
         <p>Marco regulatório, Anatel, espectro de radiofrequência e legislação do setor.</p>
-        <a class="card-link" href="regulatelecom.md">Ver disciplina →</a>
+        <a class="card-link" href="https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/regulatelecom.md" target="_blank">Ver disciplina →</a>
       </div>
 
     </div>
   </div>
 </section>
 
-<!-- PROGRAMAÇÃO -->
 <section class="section" id="programacao">
   <div class="container">
     <div class="section-header">
       <span class="section-label">02 / programação</span>
       <h2>Notas sobre Linguagens</h2>
     </div>
-
     <div class="prog-grid">
       <div class="prog-card">
         <span class="lang-badge">Py</span>
         <h3>Python</h3>
         <p>Sintaxe, estruturas de dados, funções e aplicações em simulação e automação.</p>
-        <a class="card-link" href="progPython.md" style="margin-top:0.75rem;">Ver notas →</a>
+        <a class="card-link" href="https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/progPython.md" target="_blank" style="margin-top:0.75rem;">Ver notas →</a>
       </div>
       <div class="prog-card">
         <span class="lang-badge">C</span>
         <h3>Linguagem C</h3>
         <p>Ponteiros, alocação de memória, structs e programação de baixo nível.</p>
-        <a class="card-link" href="progC_aulas.md" style="margin-top:0.75rem;">Ver notas →</a>
+        <a class="card-link" href="https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/progC_aulas.md" target="_blank" style="margin-top:0.75rem;">Ver notas →</a>
       </div>
       <div class="prog-card">
         <span class="lang-badge" style="color:var(--accent2)">Ard</span>
         <h3>Arduino</h3>
         <p>Linguagem do Arduino, sketch, bibliotecas e integração com sensores e atuadores.</p>
-        <a class="card-link" href="progArduino_aulas.md" style="margin-top:0.75rem;">Ver notas →</a>
+        <a class="card-link" href="https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/progArduino_aulas.md" target="_blank" style="margin-top:0.75rem;">Ver notas →</a>
       </div>
     </div>
 
@@ -661,7 +437,6 @@
   </div>
 </section>
 
-<!-- MATERIAL DE APOIO -->
 <section class="section" id="apoio">
   <div class="container">
     <div class="section-header">
@@ -670,7 +445,7 @@
     </div>
     <div class="apoio-grid">
 
-      <a class="apoio-item" href="arduino.md" style="color:inherit;">
+      <a class="apoio-item" href="https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/arduino.md" target="_blank" style="color:inherit;">
         <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><rect x="2" y="2" width="16" height="16" rx="3" stroke="#00c2ff" stroke-width="1.4"/><line x1="6" y1="10" x2="14" y2="10" stroke="#00c2ff" stroke-width="1.4"/><line x1="10" y1="6" x2="10" y2="14" stroke="#7c3aed" stroke-width="1.4"/></svg>
         <div>
           <h4>Notas Arduino MEGA 2560</h4>
@@ -679,4 +454,106 @@
       </a>
 
       <a class="apoio-item" href="https://ww1.microchip.com/downloads/en/devicedoc/atmel-2549-8-bit-avr-microcontroller-atmega640-1280-1281-2560-2561_datasheet.pdf" target="_blank" style="color:inherit;">
-        <svg width="20" height=
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M4 3h8l4 4v10H4V3z" stroke="#7c3aed" stroke-width="1.4" fill="none"/><line x1="7" y1="9" x2="13" y2="9" stroke="#7c3aed" stroke-width="1.2"/><line x1="7" y1="12" x2="11" y2="12" stroke="#7c3aed" stroke-width="1.2"/></svg>
+        <div>
+          <h4>Datasheet ATmega2560</h4>
+          <p>Manual completo do microcontrolador — Microchip/Atmel.</p>
+        </div>
+      </a>
+
+      <a class="apoio-item" href="https://ww1.microchip.com/downloads/en/DeviceDoc/AVR-Instruction-Set-Manual-DS40002198A.pdf" target="_blank" style="color:inherit;">
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M4 3h8l4 4v10H4V3z" stroke="#7c3aed" stroke-width="1.4" fill="none"/><line x1="7" y1="9" x2="13" y2="9" stroke="#7c3aed" stroke-width="1.2"/><line x1="7" y1="12" x2="11" y2="12" stroke="#7c3aed" stroke-width="1.2"/></svg>
+        <div>
+          <h4>AVR Instruction Set Manual</h4>
+          <p>Referência completa do conjunto de instruções AVR.</p>
+        </div>
+      </a>
+
+      <a class="apoio-item" href="https://www.arduino.cc/" target="_blank" style="color:inherit;">
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="7" stroke="#00c2ff" stroke-width="1.4" fill="none"/><line x1="7" y1="10" x2="9" y2="10" stroke="#00c2ff" stroke-width="1.8" stroke-linecap="round"/><line x1="11" y1="10" x2="13" y2="10" stroke="#00c2ff" stroke-width="1.8" stroke-linecap="round"/><line x1="12" y1="8" x2="12" y2="12" stroke="#00c2ff" stroke-width="1.8" stroke-linecap="round"/></svg>
+        <div>
+          <h4>Arduino.cc</h4>
+          <p>Hardware, software, referência da linguagem e comunidade.</p>
+        </div>
+      </a>
+
+      <a class="apoio-item" href="https://www.tinkercad.com/" target="_blank" style="color:inherit;">
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><polygon points="10,3 17,7 17,13 10,17 3,13 3,7" stroke="#7c3aed" stroke-width="1.4" fill="none"/></svg>
+        <div>
+          <h4>Tinkercad</h4>
+          <p>Simulação de circuitos e projetos 3D online e gratuito.</p>
+        </div>
+      </a>
+
+      <a class="apoio-item" href="https://help.bizagi.com/process-modeler/en/" target="_blank" style="color:inherit;">
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><rect x="2" y="7" width="5" height="5" rx="1" stroke="#00c2ff" stroke-width="1.4" fill="none"/><rect x="13" y="7" width="5" height="5" rx="1" stroke="#00c2ff" stroke-width="1.4" fill="none"/><rect x="7.5" y="13" width="5" height="5" rx="1" stroke="#7c3aed" stroke-width="1.4" fill="none"/><line x1="7" y1="9.5" x2="13" y2="9.5" stroke="#00c2ff" stroke-width="1.2"/><line x1="10" y1="12" x2="10" y2="13" stroke="#7c3aed" stroke-width="1.2"/></svg>
+        <div>
+          <h4>Bizagi Modeler</h4>
+          <p>Modelagem de processos com BPMN para Gestão de Processos.</p>
+        </div>
+      </a>
+
+      <a class="apoio-item" href="https://github.com/" target="_blank" style="color:inherit;">
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="7" stroke="#00c2ff" stroke-width="1.4" fill="none"/><path d="M7.5 13.5 C7.5 11.5 8.5 10.5 10 10.5 C11.5 10.5 12.5 11.5 12.5 13.5" stroke="#00c2ff" stroke-width="1.2" fill="none"/><circle cx="10" cy="8" r="1.5" fill="#00c2ff"/></svg>
+        <div>
+          <h4>GitHub</h4>
+          <p>Gestão e compartilhamento de projetos de software.</p>
+        </div>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+<section class="section" id="projetos">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-label">04 / projetos</span>
+      <h2>Projetos</h2>
+    </div>
+    <div class="projetos-grid">
+
+      <div class="projeto-card">
+        <h3>Sistemas Embarcados</h3>
+        <p>Soluções de engenharia baseadas em microcontroladores. Versão atual: <strong>Projeto de Casa Inteligente</strong> com ATmega2560.</p>
+        <div class="projeto-tech">
+          <span class="tech-badge">C/C++</span>
+          <span class="tech-badge">ATmega2560</span>
+          <span class="tech-badge">Arduino</span>
+        </div>
+        <a class="card-link" href="https://github.com/claytonjasilva/sistemas-embarcados" target="_blank">Ver no GitHub →</a>
+      </div>
+
+      <div class="projeto-card">
+        <h3>Simulador SisCom</h3>
+        <p>Simulador em Python de sinais e conceitos aplicados em Sistemas de Comunicações Móveis.</p>
+        <div class="projeto-tech">
+          <span class="tech-badge">Python</span>
+          <span class="tech-badge">Simulação</span>
+        </div>
+        <a class="card-link" href="https://github.com/claytonjasilva/simuladorSisCom" target="_blank">Ver no GitHub →</a>
+      </div>
+
+      <div class="projeto-card">
+        <h3>Compilador TINY</h3>
+        <p>Compilador para a linguagem TINY, adaptada das referências da disciplina de Linguagens Formais e Compiladores.</p>
+        <div class="projeto-tech">
+          <span class="tech-badge">C++</span>
+          <span class="tech-badge">Compiladores</span>
+        </div>
+        <a class="card-link" href="https://github.com/claytonjasilva/compiladorTINY" target="_blank">Ver no GitHub →</a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <p>© 2026 · Prof. Clayton J A Silva · Ibmec RJ</p>
+    <p><a href="https://github.com/claytonjasilva/claytonjasilva.github.io" target="_blank">github.com/claytonjasilva</a></p>
+  </div>
+</footer>
+
+</body>
+</html>
