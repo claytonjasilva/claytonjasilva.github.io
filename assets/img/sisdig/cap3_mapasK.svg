@@ -43,14 +43,6 @@
   <text x="244" y="108" fill="#64748b" font-size="8">m6</text>
 
   <!-- valores (centro célula) — exemplo genérico com 0/1 -->
-  <text x="130" y="82"  fill="#e2e8f0" font-size="13" text-anchor="middle">0</text>
-  <text x="174" y="82"  fill="#e2e8f0" font-size="13" text-anchor="middle">0</text>
-  <text x="218" y="82"  fill="#e2e8f0" font-size="13" text-anchor="middle">0</text>
-  <text x="262" y="82"  fill="#e2e8f0" font-size="13" text-anchor="middle">0</text>
-  <text x="130" y="120" fill="#e2e8f0" font-size="13" text-anchor="middle">0</text>
-  <text x="174" y="120" fill="#e2e8f0" font-size="13" text-anchor="middle">0</text>
-  <text x="218" y="120" fill="#e2e8f0" font-size="13" text-anchor="middle">0</text>
-  <text x="262" y="120" fill="#e2e8f0" font-size="13" text-anchor="middle">0</text>
 
   <!-- nota adjacência extremidades -->
   <text x="155" y="152" fill="#64748b" font-size="9" text-anchor="middle">* colunas 00 e 10 são adjacentes</text>
@@ -121,25 +113,9 @@
 
   <!-- valores -->
   <!-- linha 00 -->
-  <text x="397" y="82"  fill="#e2e8f0" font-size="13" text-anchor="middle">0</text>
-  <text x="435" y="82"  fill="#e2e8f0" font-size="13" text-anchor="middle">0</text>
-  <text x="473" y="82"  fill="#e2e8f0" font-size="13" text-anchor="middle">0</text>
-  <text x="511" y="82"  fill="#e2e8f0" font-size="13" text-anchor="middle">0</text>
   <!-- linha 01 -->
-  <text x="397" y="120" fill="#e2e8f0" font-size="13" text-anchor="middle">0</text>
-  <text x="435" y="120" fill="#e2e8f0" font-size="13" text-anchor="middle">0</text>
-  <text x="473" y="120" fill="#e2e8f0" font-size="13" text-anchor="middle">0</text>
-  <text x="511" y="120" fill="#e2e8f0" font-size="13" text-anchor="middle">0</text>
   <!-- linha 11 -->
-  <text x="397" y="158" fill="#e2e8f0" font-size="13" text-anchor="middle">0</text>
-  <text x="435" y="158" fill="#e2e8f0" font-size="13" text-anchor="middle">0</text>
-  <text x="473" y="158" fill="#e2e8f0" font-size="13" text-anchor="middle">0</text>
-  <text x="511" y="158" fill="#e2e8f0" font-size="13" text-anchor="middle">0</text>
   <!-- linha 10 -->
-  <text x="397" y="196" fill="#e2e8f0" font-size="13" text-anchor="middle">0</text>
-  <text x="435" y="196" fill="#e2e8f0" font-size="13" text-anchor="middle">0</text>
-  <text x="473" y="196" fill="#e2e8f0" font-size="13" text-anchor="middle">0</text>
-  <text x="511" y="196" fill="#e2e8f0" font-size="13" text-anchor="middle">0</text>
 
   <!-- nota adjacência -->
   <text x="435" y="225" fill="#64748b" font-size="9" text-anchor="middle">* linhas 00↔10 e colunas 00↔10 são adjacentes</text>
