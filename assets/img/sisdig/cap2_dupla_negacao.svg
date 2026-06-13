@@ -1,0 +1,28 @@
+<svg viewBox="0 0 360 110" xmlns="http://www.w3.org/2000/svg" font-family="IBM Plex Mono, monospace" font-size="11">
+  <rect width="360" height="110" fill="#0a0e17" rx="8"/>
+  <text x="180" y="18" fill="#64748b" font-size="10" text-anchor="middle">Dupla negação: Ā̄ = A</text>
+
+  <!-- entrada A -->
+  <line x1="20" y1="58" x2="70" y2="58" stroke="#00c2ff" stroke-width="1.5"/>
+  <text x="8" y="62" fill="#e2e8f0" font-size="13" font-style="italic">A</text>
+
+  <!-- NOT 1 -->
+  <polygon points="70,46 110,58 70,70" fill="none" stroke="#00c2ff" stroke-width="1.8"/>
+  <circle cx="114" cy="58" r="5" fill="none" stroke="#00c2ff" stroke-width="1.8"/>
+  <text x="90" y="85" fill="#64748b" font-size="9" text-anchor="middle">NOT</text>
+  <!-- fio -->
+  <line x1="119" y1="58" x2="155" y2="58" stroke="#00c2ff" stroke-width="1.5"/>
+  <!-- label intermediário -->
+  <text x="137" y="50" fill="#64748b" font-size="9">Ā</text>
+
+  <!-- NOT 2 -->
+  <polygon points="155,46 195,58 155,70" fill="none" stroke="#00c2ff" stroke-width="1.8"/>
+  <circle cx="199" cy="58" r="5" fill="none" stroke="#00c2ff" stroke-width="1.8"/>
+  <text x="175" y="85" fill="#64748b" font-size="9" text-anchor="middle">NOT</text>
+
+  <!-- saída -->
+  <line x1="204" y1="58" x2="260" y2="58" stroke="#00c2ff" stroke-width="1.5"/>
+  <text x="263" y="62" fill="#00c2ff" font-size="13" font-weight="600" font-style="italic">= A</text>
+
+  <text x="180" y="100" fill="#64748b" font-size="10" text-anchor="middle">Ā̄ = A</text>
+</svg>
