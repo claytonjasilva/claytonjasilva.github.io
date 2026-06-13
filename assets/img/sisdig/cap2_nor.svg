@@ -6,10 +6,8 @@
   <line x1="40" y1="100" x2="100" y2="100" stroke="#7c3aed" stroke-width="1.8"/>
   <text x="28" y="64" fill="#e2e8f0" font-size="13" font-style="italic">A</text>
   <text x="28" y="104" fill="#e2e8f0" font-size="13" font-style="italic">B</text>
-  <!-- corpo OR -->
-  <path d="M100,45 Q117,80 100,115 Q133,115 153,80 Q133,45 100,45 Z" fill="none" stroke="#7c3aed" stroke-width="2"/>
-  <path d="M100,45 Q113,80 100,115" fill="none" stroke="#0a0e17" stroke-width="4"/>
-  <path d="M100,45 Q112,80 100,115" fill="none" stroke="#7c3aed" stroke-width="2"/>
+  <!-- corpo OR correto -->
+  <path d="M100,45 Q150,45 153,80 Q150,115 100,115 Q118,80 100,45 Z" fill="#0a0e17" stroke="#7c3aed" stroke-width="2"/>
   <!-- bolinha NOR -->
   <circle cx="158" cy="80" r="5" fill="none" stroke="#7c3aed" stroke-width="2"/>
   <!-- saída -->
