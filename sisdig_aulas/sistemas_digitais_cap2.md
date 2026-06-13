@@ -154,7 +154,7 @@ As portas lógicas básicas são: ***AND***, ***OR*** e ***NOT***.
 
 Implementa a operação de disjunção. A figura apresenta a representação simbólica e a respectiva tabela-verdade.
 
-![Símbolo e tabela-verdade da porta OR](/assets/img/sisdig/cap2_or.svg)
+![Símbolo e tabela-verdade da porta OR](/assets/img/sisdig/or.gif)
 
 As portas lógicas são encapsuladas em chips (discutiremos com mais detalhes posteriormente).
 
