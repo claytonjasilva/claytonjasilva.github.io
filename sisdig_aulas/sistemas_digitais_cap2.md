@@ -197,14 +197,6 @@ Os circuitos lógicos são classificados em dois tipos:
 - **Circuitos combinacionais**: a saída depende unicamente da combinação das entradas em um dado instante.
 - **Circuitos sequenciais**: possuem **memória**, ou seja, a saída em um instante depende das entradas naquele instante e da saída em instante anterior.
 
-Para descrever algebricamente um circuito lógico:
-
-1. Todo circuito lógico pode ser descrito algebricamente.
-2. Numerar todas as portas lógicas e inversores.
-3. Identificar todas as variáveis de entrada por sua representação simbólica.
-4. Definir na saída de cada porta e inversor a expressão lógica em função das respectivas entradas — usar `()`, `[]` ou `{}` quando necessário.
-5. Proceder da entrada do circuito até a saída.
-
 ![Exemplos de circuitos combinacionais](/assets/img/sisdig/cap2_exemplo_circuitos.svg)
 
 A descrição algébrica dos circuitos do exemplo está indicada na saída de cada circuito. Cada saída pode ser definida como **uma função das entradas** e a ela corresponde **uma** tabela-verdade.
