@@ -1,47 +1,43 @@
-<svg viewBox="0 0 480 160" xmlns="http://www.w3.org/2000/svg" font-family="IBM Plex Mono, monospace" font-size="12">
+<svg viewBox="0 0 480 160" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" font-family="IBM Plex Mono, monospace" font-size="12">
   <rect width="480" height="160" fill="#0a0e17" rx="8"/>
 
-  <!-- SÍMBOLO PORTA NOR -->
-  <line x1="40" y1="60" x2="100" y2="60" stroke="#7c3aed" stroke-width="1.8"/>
-  <line x1="40" y1="100" x2="100" y2="100" stroke="#7c3aed" stroke-width="1.8"/>
-  <text x="28" y="64" fill="#e2e8f0" font-size="13" font-style="italic">A</text>
-  <text x="28" y="104" fill="#e2e8f0" font-size="13" font-style="italic">B</text>
-  <!-- corpo OR correto -->
-  <path d="M100,45 Q150,45 153,80 Q150,115 100,115 Q118,80 100,45 Z" fill="#0a0e17" stroke="#7c3aed" stroke-width="2"/>
-  <!-- bolinha NOR -->
-  <circle cx="158" cy="80" r="5" fill="none" stroke="#7c3aed" stroke-width="2"/>
-  <!-- saída -->
-  <line x1="163" y1="80" x2="220" y2="80" stroke="#7c3aed" stroke-width="1.8"/>
-  <text x="225" y="84" fill="#e2e8f0" font-size="13" font-style="italic">S</text>
-  <text x="130" y="145" fill="#64748b" font-size="11" text-anchor="middle">S = A + B (com negação)</text>
+  <!-- título -->
+  <text x="120" y="20" fill="#7c3aed" font-size="11" text-anchor="middle" font-weight="600">Porta NOR</text>
+  <text x="120" y="36" fill="#64748b" font-size="10" text-anchor="middle">S = (A + B)̄</text>
+
+  <!-- GIF -->
+  <image x="10" y="42" width="210" height="110" href="data:image/gif;base64,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"/>
+
+  <!-- legenda -->
+  <text x="120" y="158" fill="#64748b" font-size="11" text-anchor="middle">S = (A + B)̄</text>
 
   <!-- TABELA VERDADE -->
-  <rect x="270" y="30" width="190" height="110" rx="6" fill="#111827" stroke="#1e2d40" stroke-width="1"/>
-  <rect x="270" y="30" width="190" height="28" rx="6" fill="#0f172a"/>
-  <rect x="270" y="50" width="190" height="8" fill="#0f172a"/>
-  <text x="305" y="49" fill="#7c3aed" font-size="11" text-anchor="middle" font-weight="600">A</text>
-  <text x="365" y="49" fill="#7c3aed" font-size="11" text-anchor="middle" font-weight="600">B</text>
+  <rect x="250" y="30" width="220" height="115" rx="6" fill="#111827" stroke="#1e2d40" stroke-width="1"/>
+  <rect x="250" y="30" width="220" height="28"  rx="6" fill="#0f172a"/>
+  <rect x="250" y="50" width="220" height="8"        fill="#0f172a"/>
+  <text x="290" y="49" fill="#7c3aed" font-size="11" text-anchor="middle" font-weight="600">A</text>
+  <text x="350" y="49" fill="#7c3aed" font-size="11" text-anchor="middle" font-weight="600">B</text>
   <text x="430" y="49" fill="#7c3aed" font-size="11" text-anchor="middle" font-weight="600">S = (A+B)̄</text>
-  <line x1="270" y1="58" x2="460" y2="58" stroke="#1e2d40" stroke-width="1"/>
-  <line x1="270" y1="78" x2="460" y2="78" stroke="#1e2d40" stroke-width="1"/>
-  <line x1="270" y1="98" x2="460" y2="98" stroke="#1e2d40" stroke-width="1"/>
-  <line x1="270" y1="118" x2="460" y2="118" stroke="#1e2d40" stroke-width="1"/>
-  <line x1="335" y1="30" x2="335" y2="140" stroke="#1e2d40" stroke-width="1"/>
-  <line x1="395" y1="30" x2="395" y2="140" stroke="#1e2d40" stroke-width="1"/>
+  <line x1="250" y1="58"  x2="470" y2="58"  stroke="#1e2d40" stroke-width="1"/>
+  <line x1="250" y1="78"  x2="470" y2="78"  stroke="#1e2d40" stroke-width="1"/>
+  <line x1="250" y1="98"  x2="470" y2="98"  stroke="#1e2d40" stroke-width="1"/>
+  <line x1="250" y1="118" x2="470" y2="118" stroke="#1e2d40" stroke-width="1"/>
+  <line x1="320" y1="30"  x2="320" y2="145" stroke="#1e2d40" stroke-width="1"/>
+  <line x1="385" y1="30"  x2="385" y2="145" stroke="#1e2d40" stroke-width="1"/>
 
-  <text x="305" y="73" fill="#64748b" font-size="12" text-anchor="middle">0</text>
-  <text x="365" y="73" fill="#64748b" font-size="12" text-anchor="middle">0</text>
-  <text x="430" y="73" fill="#7c3aed" font-size="12" text-anchor="middle">1</text>
+  <text x="285" y="73"  fill="#64748b" font-size="12" text-anchor="middle">0</text>
+  <text x="350" y="73"  fill="#64748b" font-size="12" text-anchor="middle">0</text>
+  <text x="430" y="73"  fill="#7c3aed" font-size="12" text-anchor="middle">1</text>
 
-  <text x="305" y="93" fill="#64748b" font-size="12" text-anchor="middle">0</text>
-  <text x="365" y="93" fill="#64748b" font-size="12" text-anchor="middle">1</text>
-  <text x="430" y="93" fill="#64748b" font-size="12" text-anchor="middle">0</text>
+  <text x="285" y="93"  fill="#64748b" font-size="12" text-anchor="middle">0</text>
+  <text x="350" y="93"  fill="#64748b" font-size="12" text-anchor="middle">1</text>
+  <text x="430" y="93"  fill="#64748b" font-size="12" text-anchor="middle">0</text>
 
-  <text x="305" y="113" fill="#64748b" font-size="12" text-anchor="middle">1</text>
-  <text x="365" y="113" fill="#64748b" font-size="12" text-anchor="middle">0</text>
+  <text x="285" y="113" fill="#64748b" font-size="12" text-anchor="middle">1</text>
+  <text x="350" y="113" fill="#64748b" font-size="12" text-anchor="middle">0</text>
   <text x="430" y="113" fill="#64748b" font-size="12" text-anchor="middle">0</text>
 
-  <text x="305" y="133" fill="#64748b" font-size="12" text-anchor="middle">1</text>
-  <text x="365" y="133" fill="#64748b" font-size="12" text-anchor="middle">1</text>
+  <text x="285" y="133" fill="#64748b" font-size="12" text-anchor="middle">1</text>
+  <text x="350" y="133" fill="#64748b" font-size="12" text-anchor="middle">1</text>
   <text x="430" y="133" fill="#64748b" font-size="12" text-anchor="middle">0</text>
 </svg>
