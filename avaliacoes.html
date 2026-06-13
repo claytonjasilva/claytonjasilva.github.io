@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Sistema de Avaliações — Prof. Clayton J A Silva</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,600;1,300&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg:        #0a0e17;
+      --surface:   #111827;
+      --border:    #1e2d40;
+      --accent:    #00c2ff;
+      --accent2:   #7c3aed;
+      --text:      #e2e8f0;
+      --muted:     #64748b;
+      --tag-bg:    #0f172a;
+      --font-mono: 'IBM Plex Mono', monospace;
+      --font-sans: 'IBM Plex Sans', sans-serif;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--font-sans);
+      font-size: 16px;
+      line-height: 1.6;
+      min-height: 100vh;
+    }
+
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    .container { max-width: 860px; margin: 0 auto; padding: 0 2rem; }
+
+    /* ── NAV ── */
+    nav {
+      position: sticky; top: 0; z-index: 100;
+      background: rgba(10, 14, 23, 0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      padding: 1rem 0;
+    }
+    nav .container { display: flex; align-items: center; justify-content: space-between; gap: 1rem; }
+    .nav-brand { font-family: var(--font-mono); font-size: 0.85rem; color: var(--accent); letter-spacing: 0.02em; }
+    .nav-back {
+      font-family: var(--font-mono); font-size: 0.82rem; color: var(--muted);
+      display: flex; align-items: center; gap: 0.5rem; transition: color 0.2s;
+    }
+    .nav-back:hover { color: var(--text); text-decoration: none; }
+
+    /* ── HERO ── */
+    .hero {
+      padding: 5rem 0 3.5rem;
+      position: relative; overflow: hidden;
+    }
+    .hero::before {
+      content: ''; position: absolute; inset: 0;
+      background-image:
+        linear-gradient(var(--border) 1px, transparent 1px),
+        linear-gradient(90deg, var(--border) 1px, transparent 1px);
+      background-size: 40px 40px; opacity: 0.3;
+      mask-image: radial-gradient(ellipse 80% 60% at 50% 0%, black 40%, transparent 100%);
+    }
+    .hero-eyebrow {
+      font-family: var(--font-mono); font-size: 0.75rem; color: var(--accent);
+      letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 1rem;
+      display: flex; align-items: center; gap: 0.75rem;
+    }
+    .hero-eyebrow::before { content: ''; display: inline-block; width: 2rem; height: 1px; background: var(--accent); }
+    h1 {
+      font-size: clamp(1.8rem, 4vw, 2.8rem); font-weight: 300;
+      line-height: 1.15; letter-spacing: -0.02em; margin-bottom: 0.75rem;
+    }
+    h1 strong { font-weight: 600; color: var(--accent); }
+    .hero-sub { font-size: 0.9rem; color: var(--muted); font-family: var(--font-mono); }
+
+    /* ── PESO VISUAL ── */
+    .pesos {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      background: var(--border);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      overflow: hidden;
+      margin: 3rem 0;
+    }
+
+    .peso-card {
+      background: var(--surface);
+      padding: 2rem 1.5rem;
+      text-align: center;
+      display: flex; flex-direction: column; gap: 0.5rem;
+    }
+
+    .peso-valor {
+      font-family: var(--font-mono);
+      font-size: 2.8rem;
+      font-weight: 600;
+      line-height: 1;
+    }
+
+    .peso-card:nth-child(1) .peso-valor { color: var(--accent2); }
+    .peso-card:nth-child(2) .peso-valor,
+    .peso-card:nth-child(3) .peso-valor { color: var(--accent); }
+
+    .peso-label {
+      font-size: 0.85rem;
+      font-weight: 600;
+      letter-spacing: 0.03em;
+    }
+
+    .peso-desc {
+      font-size: 0.78rem;
+      color: var(--muted);
+      font-family: var(--font-mono);
+    }
+
+    /* ── BARRA DE COMPOSIÇÃO ── */
+    .barra-wrap { margin-bottom: 3rem; }
+    .barra-label { font-family: var(--font-mono); font-size: 0.75rem; color: var(--muted); margin-bottom: 0.5rem; letter-spacing: 0.1em; text-transform: uppercase; }
+    .barra {
+      display: flex; height: 10px; border-radius: 6px; overflow: hidden; gap: 2px;
+    }
+    .barra-ac  { width: 20%; background: var(--accent2); border-radius: 6px 0 0 6px; }
+    .barra-ap1 { width: 40%; background: var(--accent); }
+    .barra-ap2 { width: 40%; background: rgba(0,194,255,0.5); border-radius: 0 6px 6px 0; }
+    .barra-legend {
+      display: flex; gap: 1.5rem; margin-top: 0.75rem; flex-wrap: wrap;
+    }
+    .legend-item { display: flex; align-items: center; gap: 0.4rem; font-size: 0.78rem; color: var(--muted); font-family: var(--font-mono); }
+    .legend-dot { width: 8px; height: 8px; border-radius: 2px; flex-shrink: 0; }
+
+    /* ── SEÇÕES ── */
+    .section { margin-bottom: 2.5rem; }
+
+    .section-title {
+      font-family: var(--font-mono); font-size: 0.72rem; color: var(--accent);
+      letter-spacing: 0.15em; text-transform: uppercase;
+      margin-bottom: 1.25rem;
+      display: flex; align-items: center; gap: 0.75rem;
+    }
+    .section-title::after { content: ''; flex: 1; height: 1px; background: var(--border); }
+
+    h2 { font-size: 1.2rem; font-weight: 600; margin-bottom: 1rem; }
+
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 1.5rem;
+    }
+
+    .card-header {
+      display: flex; align-items: center; gap: 1rem; margin-bottom: 1.25rem;
+    }
+
+    .card-badge {
+      font-family: var(--font-mono); font-size: 0.72rem; font-weight: 600;
+      padding: 0.3rem 0.7rem; border-radius: 4px; white-space: nowrap;
+    }
+    .badge-ac  { background: rgba(124,58,237,0.15); border: 1px solid rgba(124,58,237,0.3); color: var(--accent2); }
+    .badge-ap  { background: rgba(0,194,255,0.1);  border: 1px solid rgba(0,194,255,0.25); color: var(--accent); }
+
+    .card h3 { font-size: 1rem; font-weight: 600; }
+
+    .items-list { list-style: none; display: flex; flex-direction: column; gap: 0.6rem; }
+
+    .items-list li {
+      display: flex; align-items: flex-start; gap: 0.75rem;
+      font-size: 0.9rem; color: var(--muted); line-height: 1.5;
+    }
+
+    .items-list li::before {
+      content: '—'; color: var(--border); flex-shrink: 0; margin-top: 0.05rem;
+    }
+
+    .items-list li strong { color: var(--text); }
+
+    .peso-inline {
+      display: inline-block;
+      font-family: var(--font-mono); font-size: 0.72rem; font-weight: 600;
+      padding: 0.15rem 0.5rem; border-radius: 3px; margin-left: 0.4rem;
+    }
+    .peso-30 { background: rgba(124,58,237,0.15); color: var(--accent2); }
+    .peso-70 { background: rgba(0,194,255,0.1);  color: var(--accent); }
+
+    /* ── OBS ── */
+    .obs-list { list-style: none; display: flex; flex-direction: column; gap: 0.75rem; }
+    .obs-list li {
+      display: flex; gap: 0.75rem; font-size: 0.88rem; color: var(--muted);
+      line-height: 1.6; padding: 0.9rem 1.1rem;
+      background: var(--tag-bg); border: 1px solid var(--border); border-radius: 6px;
+    }
+    .obs-list li::before { content: 'ℹ'; color: var(--accent); flex-shrink: 0; font-size: 0.85rem; margin-top: 0.05rem; }
+
+    /* ── FOOTER ── */
+    footer { border-top: 1px solid var(--border); padding: 2rem 0; margin-top: 4rem; }
+    footer .container { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; }
+    footer p { font-size: 0.82rem; color: var(--muted); font-family: var(--font-mono); }
+
+    @media (max-width: 600px) {
+      .pesos { grid-template-columns: 1fr; }
+      .hero { padding: 3.5rem 0 2.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="container">
+    <span class="nav-brand">claytonjasilva.github.io</span>
+    <a class="nav-back" href="https://claytonjasilva.github.io">← home</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="container">
+    <p class="hero-eyebrow">Ibmec RJ — Engenharia da Computação</p>
+    <h1>Sistema de<br><strong>Avaliações</strong></h1>
+    <p class="hero-sub">Prof. Clayton J A Silva · todas as disciplinas</p>
+  </div>
+</section>
+
+<div class="container">
+
+  <!-- PESOS -->
+  <div class="pesos">
+    <div class="peso-card">
+      <span class="peso-valor">20%</span>
+      <span class="peso-label">AC</span>
+      <span class="peso-desc">Avaliação Continuada</span>
+    </div>
+    <div class="peso-card">
+      <span class="peso-valor">40%</span>
+      <span class="peso-label">AP1</span>
+      <span class="peso-desc">1ª Avaliação Bimestral</span>
+    </div>
+    <div class="peso-card">
+      <span class="peso-valor">40%</span>
+      <span class="peso-label">AP2</span>
+      <span class="peso-desc">2ª Avaliação Bimestral</span>
+    </div>
+  </div>
+
+  <!-- BARRA -->
+  <div class="barra-wrap">
+    <p class="barra-label">Composição da nota final</p>
+    <div class="barra">
+      <div class="barra-ac"></div>
+      <div class="barra-ap1"></div>
+      <div class="barra-ap2"></div>
+    </div>
+    <div class="barra-legend">
+      <span class="legend-item"><span class="legend-dot" style="background:var(--accent2)"></span>AC — 20%</span>
+      <span class="legend-item"><span class="legend-dot" style="background:var(--accent)"></span>AP1 — 40%</span>
+      <span class="legend-item"><span class="legend-dot" style="background:rgba(0,194,255,0.5)"></span>AP2 — 40%</span>
+    </div>
+  </div>
+
+  <!-- AC -->
+  <div class="section">
+    <p class="section-title">avaliação continuada</p>
+    <div class="card">
+      <div class="card-header">
+        <span class="card-badge badge-ac">AC · 20%</span>
+        <h3>Instrumentos de Avaliação Continuada</h3>
+      </div>
+      <ul class="items-list">
+        <li>Formulários individuais <strong>(Forms online)</strong></li>
+        <li>Listas de exercícios individuais e em grupo</li>
+        <li>Trabalhos em grupo</li>
+        <li><strong>A nota final da AC será a média ponderada de todos os instrumentos aplicados.</strong></li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- AP -->
+  <div class="section">
+    <p class="section-title">avaliações bimestrais</p>
+    <div class="card">
+      <div class="card-header">
+        <span class="card-badge badge-ap">AP1 e AP2 · 40% cada</span>
+        <h3>Composição das Avaliações Bimestrais</h3>
+      </div>
+      <ul class="items-list">
+        <li>Serão aplicadas <strong>duas avaliações bimestrais</strong> (AP1 e AP2).</li>
+        <li>
+          Cada avaliação bimestral é composta por <strong>duas partes:</strong>
+        </li>
+        <li style="padding-left: 1rem;">
+          Trabalho em grupo, regulado por regras específicas
+          <span class="peso-inline peso-30">peso 30%</span>
+        </li>
+        <li style="padding-left: 1rem;">
+          Prova individual
+          <span class="peso-inline peso-70">peso 70%</span>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- OBS -->
+  <div class="section">
+    <p class="section-title">observações gerais</p>
+    <ul class="obs-list">
+      <li>Formulários, listas e trabalhos de AC não entregues na data marcada receberão nota <strong>0,0 (zero)</strong>.</li>
+      <li>O meio para entrega de formulários, listas e trabalhos de AC será <strong>definido caso a caso</strong>.</li>
+      <li>A AC possui peso de <strong>20%</strong> da nota final; cada avaliação bimestral possui peso de <strong>40%</strong>.</li>
+    </ul>
+  </div>
+
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <p>© 2026 · Prof. Clayton J A Silva · Ibmec RJ</p>
+    <p><a href="https://claytonjasilva.github.io">← voltar para home</a></p>
+  </div>
+</footer>
+
+</body>
+</html>
