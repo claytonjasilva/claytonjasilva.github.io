@@ -4,18 +4,15 @@
   <!-- Inverso conjunção: A.~A = 0 -->
   <text x="20" y="18" fill="#64748b" font-size="10">Elemento inverso da conjunção: A · Ā = 0</text>
   <line x1="20" y1="48" x2="75" y2="48" stroke="#00c2ff" stroke-width="1.5"/>
-  <!-- bifurcação para NOT -->
   <line x1="45" y1="48" x2="45" y2="72" stroke="#00c2ff" stroke-width="1.5"/>
   <line x1="45" y1="72" x2="60" y2="72" stroke="#00c2ff" stroke-width="1.5"/>
-  <!-- NOT -->
   <polygon points="60,65 85,72 60,79" fill="none" stroke="#00c2ff" stroke-width="1.5"/>
   <circle cx="89" cy="72" r="3.5" fill="none" stroke="#00c2ff" stroke-width="1.5"/>
   <line x1="92" y1="72" x2="102" y2="72" stroke="#00c2ff" stroke-width="1.5"/>
   <line x1="102" y1="72" x2="102" y2="60" stroke="#00c2ff" stroke-width="1.5"/>
   <line x1="102" y1="60" x2="110" y2="60" stroke="#00c2ff" stroke-width="1.5"/>
-  <text x="8" y="52" fill="#e2e8f0" font-size="11" font-style="italic">A</text>
+  <text x="8"  y="52" fill="#e2e8f0" font-size="11" font-style="italic">A</text>
   <text x="22" y="70" fill="#64748b" font-size="9">Ā</text>
-  <!-- AND -->
   <rect x="110" y="38" width="32" height="34" fill="none" stroke="#00c2ff" stroke-width="1.8"/>
   <path d="M142,38 A17,17 0 0,1 142,72" fill="none" stroke="#00c2ff" stroke-width="1.8"/>
   <line x1="159" y1="55" x2="195" y2="55" stroke="#00c2ff" stroke-width="1.5"/>
@@ -34,11 +31,9 @@
   <line x1="342" y1="60" x2="350" y2="60" stroke="#00c2ff" stroke-width="1.5"/>
   <text x="253" y="52" fill="#e2e8f0" font-size="11" font-style="italic">A</text>
   <text x="262" y="70" fill="#64748b" font-size="9">Ā</text>
-  <!-- OR -->
-  <path d="M350,37 Q367,55 350,73 Q383,73 403,55 Q383,37 350,37 Z" fill="none" stroke="#00c2ff" stroke-width="1.8"/>
-  <path d="M350,37 Q362,55 350,73" fill="none" stroke="#0a0e17" stroke-width="3.5"/>
-  <path d="M350,37 Q361,55 350,73" fill="none" stroke="#00c2ff" stroke-width="1.8"/>
-  <line x1="403" y1="55" x2="435" y2="55" stroke="#00c2ff" stroke-width="1.5"/>
-  <text x="438" y="59" fill="#7c3aed" font-size="13" font-weight="600">= 1</text>
-  <text x="375" y="100" fill="#64748b" font-size="10" text-anchor="middle">A + Ā = 1</text>
+  <!-- porta OR correta -->
+  <path d="M350,37 Q400,37 423,55 Q400,73 350,73 Q368,55 350,37 Z" fill="#0a0e17" stroke="#00c2ff" stroke-width="1.8"/>
+  <line x1="423" y1="55" x2="448" y2="55" stroke="#00c2ff" stroke-width="1.5"/>
+  <text x="451" y="59" fill="#7c3aed" font-size="13" font-weight="600">= 1</text>
+  <text x="385" y="100" fill="#64748b" font-size="10" text-anchor="middle">A + Ā = 1</text>
 </svg>

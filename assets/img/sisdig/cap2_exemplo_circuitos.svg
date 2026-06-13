@@ -4,20 +4,16 @@
   <!-- ── CIRCUITO 1: S = (A+B).C ── -->
   <text x="10" y="20" fill="#64748b" font-size="10">Circuito 1: S₁ = (A + B) · C</text>
 
-  <!-- entradas A, B -->
   <line x1="20" y1="50" x2="75" y2="50" stroke="#00c2ff" stroke-width="1.5"/>
   <line x1="20" y1="75" x2="75" y2="75" stroke="#00c2ff" stroke-width="1.5"/>
   <text x="8"  y="54" fill="#e2e8f0" font-size="11" font-style="italic">A</text>
   <text x="8"  y="79" fill="#e2e8f0" font-size="11" font-style="italic">B</text>
 
-  <!-- Porta OR -->
-  <path d="M75,38 Q92,63 75,88 Q108,88 128,63 Q108,38 75,38 Z" fill="none" stroke="#00c2ff" stroke-width="1.8"/>
-  <path d="M75,38 Q88,63 75,88" fill="none" stroke="#0a0e17" stroke-width="3.5"/>
-  <path d="M75,38 Q87,63 75,88" fill="none" stroke="#00c2ff" stroke-width="1.8"/>
-  <text x="82" y="100" fill="#64748b" font-size="9" text-anchor="middle">OR</text>
+  <!-- Porta OR correta -->
+  <path d="M75,38 Q125,38 148,63 Q125,88 75,88 Q93,63 75,38 Z" fill="#0a0e17" stroke="#00c2ff" stroke-width="1.8"/>
+  <text x="82" y="102" fill="#64748b" font-size="9" text-anchor="middle">OR</text>
 
-  <!-- fio OR → AND -->
-  <line x1="128" y1="63" x2="165" y2="63" stroke="#00c2ff" stroke-width="1.5"/>
+  <line x1="148" y1="63" x2="165" y2="63" stroke="#00c2ff" stroke-width="1.5"/>
 
   <!-- entrada C -->
   <line x1="20" y1="85" x2="165" y2="85" stroke="#00c2ff" stroke-width="1.5"/>
@@ -26,54 +22,46 @@
   <!-- Porta AND -->
   <rect x="165" y="52" width="38" height="42" fill="none" stroke="#00c2ff" stroke-width="1.8"/>
   <path d="M203,52 A21,21 0 0,1 203,94" fill="none" stroke="#00c2ff" stroke-width="1.8"/>
-  <text x="184" y="100" fill="#64748b" font-size="9" text-anchor="middle">AND</text>
+  <text x="184" y="102" fill="#64748b" font-size="9" text-anchor="middle">AND</text>
 
-  <!-- saída S1 -->
   <line x1="224" y1="73" x2="260" y2="73" stroke="#00c2ff" stroke-width="1.5"/>
   <text x="263" y="77" fill="#7c3aed" font-size="11" font-style="italic">S₁</text>
 
   <!-- ── CIRCUITO 2: S = A.B + ~C ── -->
   <text x="10" y="130" fill="#64748b" font-size="10">Circuito 2: S₂ = A · B + C̄</text>
 
-  <!-- entradas A2, B2 -->
   <line x1="20" y1="155" x2="75" y2="155" stroke="#00c2ff" stroke-width="1.5"/>
   <line x1="20" y1="175" x2="75" y2="175" stroke="#00c2ff" stroke-width="1.5"/>
   <text x="8" y="159" fill="#e2e8f0" font-size="11" font-style="italic">A</text>
   <text x="8" y="179" fill="#e2e8f0" font-size="11" font-style="italic">B</text>
 
-  <!-- Porta AND2 -->
+  <!-- Porta AND -->
   <rect x="75" y="145" width="38" height="40" fill="none" stroke="#00c2ff" stroke-width="1.8"/>
   <path d="M113,145 A20,20 0 0,1 113,185" fill="none" stroke="#00c2ff" stroke-width="1.8"/>
   <text x="94" y="196" fill="#64748b" font-size="9" text-anchor="middle">AND</text>
 
-  <!-- fio AND → OR2 -->
   <line x1="133" y1="165" x2="165" y2="165" stroke="#00c2ff" stroke-width="1.5"/>
 
-  <!-- entrada C2 → NOT -->
+  <!-- entrada C → NOT -->
   <line x1="20" y1="190" x2="75" y2="190" stroke="#00c2ff" stroke-width="1.5"/>
   <text x="8" y="194" fill="#e2e8f0" font-size="11" font-style="italic">C</text>
-  <!-- NOT -->
   <polygon points="75,182 105,190 75,198" fill="none" stroke="#00c2ff" stroke-width="1.8"/>
   <circle cx="109" cy="190" r="4" fill="none" stroke="#00c2ff" stroke-width="1.8"/>
-  <!-- fio NOT → OR2 -->
   <line x1="113" y1="190" x2="165" y2="190" stroke="#00c2ff" stroke-width="1.5"/>
   <text x="90" y="208" fill="#64748b" font-size="9" text-anchor="middle">NOT</text>
 
-  <!-- Porta OR2 -->
-  <path d="M165,153 Q182,178 165,203 Q198,203 218,178 Q198,153 165,153 Z" fill="none" stroke="#00c2ff" stroke-width="1.8"/>
-  <path d="M165,153 Q178,178 165,203" fill="none" stroke="#0a0e17" stroke-width="3.5"/>
-  <path d="M165,153 Q177,178 165,203" fill="none" stroke="#00c2ff" stroke-width="1.8"/>
-  <text x="192" y="210" fill="#64748b" font-size="9" text-anchor="middle">OR</text>
+  <!-- Porta OR correta -->
+  <path d="M165,153 Q215,153 238,178 Q215,203 165,203 Q183,178 165,153 Z" fill="#0a0e17" stroke="#00c2ff" stroke-width="1.8"/>
+  <text x="192" y="212" fill="#64748b" font-size="9" text-anchor="middle">OR</text>
 
-  <!-- saída S2 -->
-  <line x1="218" y1="178" x2="260" y2="178" stroke="#00c2ff" stroke-width="1.5"/>
+  <line x1="238" y1="178" x2="260" y2="178" stroke="#00c2ff" stroke-width="1.5"/>
   <text x="263" y="182" fill="#7c3aed" font-size="11" font-style="italic">S₂</text>
 
   <!-- legenda -->
-  <text x="280" y="110" fill="#64748b" font-size="10">Regras de descrição algébrica:</text>
-  <text x="280" y="128" fill="#64748b" font-size="9">1. Numerar as portas</text>
-  <text x="280" y="144" fill="#64748b" font-size="9">2. Identificar variáveis de entrada</text>
-  <text x="280" y="160" fill="#64748b" font-size="9">3. Escrever expressão em cada saída</text>
-  <text x="280" y="176" fill="#64748b" font-size="9">4. Proceder da entrada à saída</text>
   <rect x="275" y="98" width="270" height="90" rx="5" fill="none" stroke="#1e2d40" stroke-width="1"/>
+  <text x="280" y="114" fill="#64748b" font-size="10">Regras de descrição algébrica:</text>
+  <text x="280" y="130" fill="#64748b" font-size="9">1. Numerar as portas</text>
+  <text x="280" y="146" fill="#64748b" font-size="9">2. Identificar variáveis de entrada</text>
+  <text x="280" y="162" fill="#64748b" font-size="9">3. Escrever expressão em cada saída</text>
+  <text x="280" y="178" fill="#64748b" font-size="9">4. Proceder da entrada à saída</text>
 </svg>
