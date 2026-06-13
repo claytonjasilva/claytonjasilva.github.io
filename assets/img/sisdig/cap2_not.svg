@@ -1,0 +1,32 @@
+<svg viewBox="0 0 420 140" xmlns="http://www.w3.org/2000/svg" font-family="IBM Plex Mono, monospace" font-size="12">
+  <rect width="420" height="140" fill="#0a0e17" rx="8"/>
+
+  <!-- SÍMBOLO NOT -->
+  <line x1="40" y1="70" x2="100" y2="70" stroke="#00c2ff" stroke-width="1.8"/>
+  <!-- triângulo -->
+  <polygon points="100,45 160,70 100,95" fill="none" stroke="#00c2ff" stroke-width="2"/>
+  <!-- bolinha de negação -->
+  <circle cx="165" cy="70" r="5" fill="none" stroke="#00c2ff" stroke-width="2"/>
+  <!-- saída -->
+  <line x1="170" y1="70" x2="220" y2="70" stroke="#00c2ff" stroke-width="1.8"/>
+  <!-- labels -->
+  <text x="28" y="74" fill="#e2e8f0" font-size="13" font-style="italic">A</text>
+  <text x="225" y="74" fill="#e2e8f0" font-size="13" font-style="italic">S</text>
+  <text x="130" y="120" fill="#64748b" font-size="11" text-anchor="middle">S = Ā (NOT A)</text>
+
+  <!-- TABELA VERDADE -->
+  <rect x="270" y="30" width="130" height="80" rx="6" fill="#111827" stroke="#1e2d40" stroke-width="1"/>
+  <rect x="270" y="30" width="130" height="28" rx="6" fill="#0f172a"/>
+  <rect x="270" y="50" width="130" height="8" fill="#0f172a"/>
+  <text x="315" y="49" fill="#00c2ff" font-size="11" text-anchor="middle" font-weight="600">A</text>
+  <text x="375" y="49" fill="#00c2ff" font-size="11" text-anchor="middle" font-weight="600">S = Ā</text>
+  <line x1="270" y1="58" x2="400" y2="58" stroke="#1e2d40" stroke-width="1"/>
+  <line x1="270" y1="78" x2="400" y2="78" stroke="#1e2d40" stroke-width="1"/>
+  <line x1="340" y1="30" x2="340" y2="110" stroke="#1e2d40" stroke-width="1"/>
+
+  <text x="305" y="73" fill="#64748b" font-size="12" text-anchor="middle">0</text>
+  <text x="375" y="73" fill="#00c2ff" font-size="12" text-anchor="middle">1</text>
+
+  <text x="305" y="95" fill="#64748b" font-size="12" text-anchor="middle">1</text>
+  <text x="375" y="95" fill="#64748b" font-size="12" text-anchor="middle">0</text>
+</svg>

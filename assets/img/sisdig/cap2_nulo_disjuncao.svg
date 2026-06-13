@@ -1,0 +1,29 @@
+<svg viewBox="0 0 480 130" xmlns="http://www.w3.org/2000/svg" font-family="IBM Plex Mono, monospace" font-size="11">
+  <rect width="480" height="130" fill="#0a0e17" rx="8"/>
+
+  <!-- Elemento NULO: A+1 = 1 -->
+  <text x="30" y="20" fill="#64748b" font-size="10">Elemento nulo: A + 1 = 1</text>
+  <line x1="20" y1="55" x2="75" y2="55" stroke="#00c2ff" stroke-width="1.5"/>
+  <line x1="20" y1="75" x2="75" y2="75" stroke="#00c2ff" stroke-width="1.5"/>
+  <text x="8"  y="59" fill="#e2e8f0" font-size="12" font-style="italic">A</text>
+  <text x="8"  y="79" fill="#64748b" font-size="12">1</text>
+  <path d="M75,43 Q92,65 75,87 Q108,87 128,65 Q108,43 75,43 Z" fill="none" stroke="#00c2ff" stroke-width="1.8"/>
+  <path d="M75,43 Q87,65 75,87" fill="none" stroke="#0a0e17" stroke-width="3.5"/>
+  <path d="M75,43 Q86,65 75,87" fill="none" stroke="#00c2ff" stroke-width="1.8"/>
+  <line x1="128" y1="65" x2="165" y2="65" stroke="#00c2ff" stroke-width="1.5"/>
+  <text x="168" y="69" fill="#7c3aed" font-size="13" font-weight="600">= 1</text>
+  <text x="93" y="108" fill="#64748b" font-size="10" text-anchor="middle">A + 1 = 1</text>
+
+  <!-- Elemento NEUTRO: A+0 = A -->
+  <text x="270" y="20" fill="#64748b" font-size="10">Elemento neutro: A + 0 = A</text>
+  <line x1="260" y1="55" x2="315" y2="55" stroke="#00c2ff" stroke-width="1.5"/>
+  <line x1="260" y1="75" x2="315" y2="75" stroke="#00c2ff" stroke-width="1.5"/>
+  <text x="248" y="59" fill="#e2e8f0" font-size="12" font-style="italic">A</text>
+  <text x="248" y="79" fill="#64748b" font-size="12">0</text>
+  <path d="M315,43 Q332,65 315,87 Q348,87 368,65 Q348,43 315,43 Z" fill="none" stroke="#00c2ff" stroke-width="1.8"/>
+  <path d="M315,43 Q327,65 315,87" fill="none" stroke="#0a0e17" stroke-width="3.5"/>
+  <path d="M315,43 Q326,65 315,87" fill="none" stroke="#00c2ff" stroke-width="1.8"/>
+  <line x1="368" y1="65" x2="405" y2="65" stroke="#00c2ff" stroke-width="1.5"/>
+  <text x="408" y="69" fill="#00c2ff" font-size="13" font-weight="600" font-style="italic">= A</text>
+  <text x="333" y="108" fill="#64748b" font-size="10" text-anchor="middle">A + 0 = A</text>
+</svg>
