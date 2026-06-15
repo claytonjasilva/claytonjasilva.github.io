@@ -1,0 +1,66 @@
+<svg viewBox="0 0 660 180" xmlns="http://www.w3.org/2000/svg" font-family="IBM Plex Mono, monospace" font-size="10">
+  <rect width="660" height="180" fill="#0a0e17" rx="8"/>
+  <text x="330" y="18" fill="#00c2ff" font-size="11" text-anchor="middle" font-weight="600">Somador modular de n bits</text>
+
+  <!-- MEIO SOMADOR -->
+  <rect x="20" y="40" width="100" height="80" rx="5" fill="#111827" stroke="#00c2ff" stroke-width="1.5"/>
+  <text x="70" y="76" fill="#00c2ff" font-size="9" text-anchor="middle" font-weight="600">MEIO</text>
+  <text x="70" y="89" fill="#00c2ff" font-size="9" text-anchor="middle" font-weight="600">SOMADOR</text>
+  <!-- entradas MS -->
+  <line x1="0"  y1="60" x2="20"  y2="60" stroke="#00c2ff" stroke-width="1.2"/>
+  <line x1="0"  y1="90" x2="20"  y2="90" stroke="#00c2ff" stroke-width="1.2"/>
+  <text x="2"  y="57" fill="#64748b" font-size="9">A0</text>
+  <text x="2"  y="87" fill="#64748b" font-size="9">B0</text>
+  <!-- saída S0 -->
+  <line x1="120" y1="60" x2="155" y2="60" stroke="#00c2ff" stroke-width="1.2"/>
+  <text x="125" y="57" fill="#64748b" font-size="9">S0</text>
+  <!-- carry MS → SC1 -->
+  <line x1="120" y1="90" x2="185" y2="90" stroke="#7c3aed" stroke-width="1.2" stroke-dasharray="4,2"/>
+  <text x="130" y="87" fill="#7c3aed" font-size="8">C0</text>
+
+  <!-- SOMADOR COMPLETO 1 -->
+  <rect x="185" y="30" width="110" height="100" rx="5" fill="#111827" stroke="#00c2ff" stroke-width="1.5"/>
+  <text x="240" y="73" fill="#00c2ff" font-size="9" text-anchor="middle" font-weight="600">SOMADOR</text>
+  <text x="240" y="85" fill="#00c2ff" font-size="9" text-anchor="middle" font-weight="600">COMPLETO</text>
+  <text x="240" y="97" fill="#64748b" font-size="8" text-anchor="middle">(bit 1)</text>
+  <!-- entradas SC1 -->
+  <line x1="155" y1="50" x2="185" y2="50" stroke="#00c2ff" stroke-width="1.2"/>
+  <line x1="155" y1="70" x2="185" y2="70" stroke="#00c2ff" stroke-width="1.2"/>
+  <line x1="155" y1="90" x2="185" y2="90" stroke="#7c3aed" stroke-width="1.2" stroke-dasharray="4,2"/>
+  <text x="157" y="47" fill="#64748b" font-size="9">A1</text>
+  <text x="157" y="67" fill="#64748b" font-size="9">B1</text>
+  <!-- saída S1 -->
+  <line x1="295" y1="55" x2="330" y2="55" stroke="#00c2ff" stroke-width="1.2"/>
+  <text x="298" y="52" fill="#64748b" font-size="9">S1</text>
+  <!-- carry SC1 → SC2 -->
+  <line x1="295" y1="90" x2="355" y2="90" stroke="#7c3aed" stroke-width="1.2" stroke-dasharray="4,2"/>
+  <text x="305" y="87" fill="#7c3aed" font-size="8">C1</text>
+
+  <!-- SOMADOR COMPLETO 2 -->
+  <rect x="355" y="30" width="110" height="100" rx="5" fill="#111827" stroke="#00c2ff" stroke-width="1.5"/>
+  <text x="410" y="73" fill="#00c2ff" font-size="9" text-anchor="middle" font-weight="600">SOMADOR</text>
+  <text x="410" y="85" fill="#00c2ff" font-size="9" text-anchor="middle" font-weight="600">COMPLETO</text>
+  <text x="410" y="97" fill="#64748b" font-size="8" text-anchor="middle">(bit 2)</text>
+  <!-- entradas SC2 -->
+  <line x1="325" y1="50" x2="355" y2="50" stroke="#00c2ff" stroke-width="1.2"/>
+  <line x1="325" y1="70" x2="355" y2="70" stroke="#00c2ff" stroke-width="1.2"/>
+  <line x1="325" y1="90" x2="355" y2="90" stroke="#7c3aed" stroke-width="1.2" stroke-dasharray="4,2"/>
+  <text x="327" y="47" fill="#64748b" font-size="9">A2</text>
+  <text x="327" y="67" fill="#64748b" font-size="9">B2</text>
+  <!-- saída S2 -->
+  <line x1="465" y1="55" x2="495" y2="55" stroke="#00c2ff" stroke-width="1.2"/>
+  <text x="468" y="52" fill="#64748b" font-size="9">S2</text>
+  <!-- carry SC2 → ... -->
+  <line x1="465" y1="90" x2="510" y2="90" stroke="#7c3aed" stroke-width="1.2" stroke-dasharray="4,2"/>
+  <text x="468" y="87" fill="#7c3aed" font-size="8">C2</text>
+
+  <!-- reticências -->
+  <text x="520" y="85" fill="#64748b" font-size="16">···</text>
+
+  <!-- carry final = MSB -->
+  <line x1="555" y1="90" x2="640" y2="90" stroke="#7c3aed" stroke-width="1.2" stroke-dasharray="4,2"/>
+  <text x="558" y="87" fill="#7c3aed" font-size="8">Cn-1</text>
+  <text x="604" y="104" fill="#7c3aed" font-size="9">MSB da soma</text>
+
+  <text x="330" y="160" fill="#64748b" font-size="9" text-anchor="middle">O carry do último módulo é o bit mais significativo da soma resultante</text>
+</svg>
