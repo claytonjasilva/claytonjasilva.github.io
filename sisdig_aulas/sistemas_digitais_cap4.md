@@ -103,7 +103,7 @@ A quantidade de elementos integrados define o **grau de integração** do chip:
 
 As figuras abaixo ilustram a organização do chip:
 
-![Encapsulamento e pinagem do chip](/assets/img/sisdig/cap4_circuito_integrado.svg)
+![Encapsulamento e pinagem do chip](/assets/img/sisdig/cap4_circuito_integrado.jpg)
 
 A figura (a) evidencia a **pinagem** do chip, através da qual são estabelecidas as conexões. A figura (b) indica o **chanfro** (entalhe) que os chips possuem a fim de indicar a numeração da pinagem.
 
@@ -177,7 +177,7 @@ O somador BCD implementa a soma de cada dígito decimal, transportando o *carry*
 
 A figura ilustra a operação:
 
-![Somador BCD](/assets/img/sisdig/cap4_somador_bcd.svg)
+![Somador BCD](/assets/img/sisdig/cap4_somador_bcd.jpg)
 
 A e B representam os dois dígitos decimais a serem somados em cada módulo. A saída decimal é dada por $\Sigma$. O *carry* é transportado ao módulo seguinte, caracterizando a dezena, centena, ...
 
