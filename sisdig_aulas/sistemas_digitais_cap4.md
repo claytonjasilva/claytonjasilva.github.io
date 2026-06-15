@@ -1,52 +1,53 @@
-# Cap 4. Circuitos aritméticos - somadores e subtratores binários 
+# Cap. 4 — Circuitos Aritméticos: Somadores e Subtratores Binários
 
-Sistemas digitais são projetados para realizar uma variedade de operações aritméticas com bits.  
+Sistemas digitais são projetados para realizar uma variedade de operações aritméticas com bits. Uma das operações mais comuns é a **adição binária**.
 
-Uma das operações mais comuns é a **adição binária**.
+---
 
 ## 4.1 Meio-somador
 
-Conforme já discutido anteriormente, a operação de adição de dois bits é dada por  
+A operação de adição de dois bits é dada por:
 
 | + | 0 | 1 |
-| - | - | - |
+| :---: | :---: | :---: |
 | **0** | 0 | 1 |
 | **1** | 1 | **1**0 |
 
-Uma abordagem para projetar um circuito somador é modular o circuito.  
+Uma abordagem para projetar um circuito somador é modularizar o circuito.
 
-O módulo relativo à soma dos bits menos significativos de dois números A e B de *n* bits é chamado de **meio-somador**.  
+O módulo relativo à soma dos bits menos significativos de dois números A e B de *n* bits é chamado de **meio-somador**.
 
-O circuito meio-somador utiliza que
-BIT<sub>0</sub>=1 + BIT<sub>1</sub>=1 resulta CARRY=1, SOMA=0  
+O circuito meio-somador considera que:
 
-A tabela verdade da soma de dois bits BIT<sub>0</sub> e BIT<sub>1</sub> é dada por
+$$\text{BIT}_0 = 1 + \text{BIT}_1 = 1 \Rightarrow CARRY = 1, \; SOMA = 0$$
+
+A tabela-verdade da soma de dois bits A e B é:
 
 | A | B | SOMA | CARRY |
-| - | - | ---- | ----- |
+| :---: | :---: | :---: | :---: |
 | 0 | 0 | 0 | 0 |
 | 0 | 1 | 1 | 0 |
 | 1 | 0 | 1 | 0 |
 | 1 | 1 | 0 | 1 |
 
-Obtendo a expressão booleana e minimizando não é difícil obter que  
+Obtendo a expressão booleana e minimizando, chega-se a:
 
-$$ SOMA=(\bar A \.B+A.\bar B \)= A \oplus B $$  
-e  
-$$ CARRY = A.B $$  
+$$SOMA = \bar{A}.B + A.\bar{B} = A \oplus B \qquad CARRY = A.B$$
 
-Logicamente o meio-somador será representado simplesmente pela figura abaixo  
-![Meio-somador](/sisdig_aulas/images_sisdig/meio-somador.jpg)
+O meio-somador é representado logicamente pela figura abaixo:
 
-Observando o meio-somador verifica-se que não possui uma entrada de *carry*. Possui somente dois bits de entrada.
-Portanto, para implementação modular de um somador é necessário um outro módulo, chamado de **somador-completo**.
+![Meio-somador — representação lógica](/assets/img/sisdig/cap4_meio_somador.svg)
+
+Observando o meio-somador, verifica-se que ele **não possui entrada de carry** — possui somente dois bits de entrada. Portanto, para a implementação modular de um somador completo é necessário outro módulo: o **somador completo**.
+
+---
 
 ## 4.2 Somador completo
 
-O somador completo apresenta o comportamento descrito pela tabela verdade apresentada abaixo  
+O somador completo apresenta o comportamento descrito pela tabela-verdade abaixo:
 
-| A | B | C<sub>in</sub> | SOMA | C<sub>out</sub> |
-| - | - | -------------- |---- | ----- |
+| A | B | C$_{in}$ | SOMA | C$_{out}$ |
+| :---: | :---: | :---: | :---: | :---: |
 | 0 | 0 | 0 | 0 | 0 |
 | 0 | 0 | 1 | 1 | 0 |
 | 0 | 1 | 0 | 1 | 0 |
@@ -56,115 +57,98 @@ O somador completo apresenta o comportamento descrito pela tabela verdade aprese
 | 1 | 1 | 0 | 0 | 1 |
 | 1 | 1 | 1 | 1 | 1 |
 
-, onde C<sub>in</sub> e C<sub>out</sub> representam respectivamente *carry* de entrada e *carry* de saída.  
+onde $C_{in}$ e $C_{out}$ representam respectivamente o *carry* de entrada e o *carry* de saída.
 
-Logicamente o somador completo será representado pela figura abaixo.  
-![Somador completo](/sisdig_aulas/images_sisdig/somadorcompleto.jpg)
+O somador completo é representado logicamente pela figura abaixo:
 
-Similarmente ao caso do meio-somador, pode-se obter a expressão booleana relativa a cada uma das saídaso somador completo.  
-Dela pode-se obter os respectivos circuitos digitais, implementados por portas lógicas.  
+![Somador completo — representação lógica](/assets/img/sisdig/cap4_somador_completo.svg)
+
+De modo similar ao meio-somador, pode-se obter a expressão booleana relativa a cada saída do somador completo e, a partir dela, os respectivos circuitos digitais implementados com portas lógicas.
+
+---
 
 ## 4.3 Somador de *n* bits
 
-Um somador de dois números binários A e B de *n* bits pode ser implementado modularmente,
-utilizando-se o **cascateamento** de **1 meio-somador** e ***n-1* somadores completos**.    
+Um somador de dois números binários A e B de *n* bits pode ser implementado modularmente, utilizando o **cascateamento** de **1 meio-somador** e ***n-1* somadores completos**.
 
-O meio-somador realiza a operação de adição dos dígitos binários menos significativos de A e B, A<sub>0</sub> e B<sub>0</sub>.  
+- O meio-somador realiza a adição dos dígitos binários menos significativos $A_0$ e $B_0$.
+- O *carry* do meio-somador é **transportado** para o módulo seguinte.
+- A soma do meio-somador é o dígito menos significativo do resultado, $S_0$.
+- No somador completo seguinte, as entradas A e B recebem $A_1$ e $B_1$, e a entrada $C_{in}$ recebe o *carry* do meio-somador.
+- A saída do primeiro somador completo é $S_1$.
+- Nos módulos seguintes a arquitetura se repete.
 
-O *carry* do meio-somador será **transportado** para o módulo seguinte.  
+A figura ilustra o modelo lógico:
 
-A soma do meio-somador é o dígito menos significativo da soma resultante, S<sub>0</sub>.  
+![Somador modular de n bits](/assets/img/sisdig/cap4_somador_modular.svg)
 
-O meio-somador é cascateado com um somador commpleto.
+Observe que o dígito mais significativo da soma é o *carry* do último módulo.
 
-As entradas A e B do somador completo recebem os respectivos dígitos do número binário a ser somado, A<sub>1</sub> e B<sub>1</sub>.
+---
 
-No módulo do somador completo, a entrada de *carry in* recebe o bit transportado do módulo do meio-somador.  
-
-A saída do primeiro somador completo é S<sub>1</sub>.  
-
-Nos próximos módulos a arquitetura se repete como no primeior somador completo.  
-
-A figura ilustra o modelo lógico.  
-![Somador modular](/sisdig_aulas/images_sisdig/somadormodular.jpg)
-Observe que o dígito mais significativo da soma é *carry* do último módulo do somador.
-
-## 4.4 CI somador
+## 4.4 CI Somador
 
 ### 4.4.1 Circuitos integrados digitais (CIs)
 
-O **chip** é um conjunto de elementos eletrônicos integrados em um substrato de semicondutor.  
+O **chip** é um conjunto de elementos eletrônicos integrados em um substrato semicondutor, **encapsulados** em uma embalagem protetora (por exemplo, DIP).
 
-Os elementos integrados são **encapsulados** em uma embalagem protetora de um determinado tipo (por exemplo, DIP).  
+A quantidade de elementos integrados define o **grau de integração** do chip:
 
-Dependendo da quantidade de elementos integrados em um único substrado define-se o **grau de integração** do chip.  
+- SSI, de *small scale integration*
+- MSI, de *medium scale integration*
+- LSI, de *large scale integration*
+- VLSI, de *very large scale integration*
+- ULSI, de *ultra large scale integration*
+- GSI, de *giga scale integration*
 
-Os graus de integração são:  
+As figuras abaixo ilustram a organização do chip:
 
-- SSI, de *small scale integration*,
-- MSI, de *medium scale integration*,
-- LSI, de *large scale integration*,
-- VLSI, de *very large scale integration*,
-- ULSI, de *ultra large scale integration*,
-- GSI, de *giga scale integration*.  
+![Encapsulamento e pinagem do chip](/assets/img/sisdig/cap4_circuito_integrado.svg)
 
-As figuras abaixo ilustram a orgnização do chip.  
-![Encapsulamento chip](/sisdig_aulas/images_sisdig/circuitointegrado.jpg)  
+A figura (a) evidencia a **pinagem** do chip, através da qual são estabelecidas as conexões. A figura (b) indica o **chanfro** (entalhe) que os chips possuem a fim de indicar a numeração da pinagem.
 
-A figura (a) evidencia a pinagem do chip, através da qual são estabelecidas as conexões.
-
-Observe que a figura (b) indica um *chanfro* (entalhe) que os chips possuem a fim de indicar a numeração da **pinagem**.  
-
-A complexidade pode ser definida pelo número de portas que são integradas no substrato.  
-
-A tabela apresenta o grau de complexidade e o respectivo número de portas.
+A complexidade pode ser definida pelo número de portas integradas no substrato:
 
 | Complexidade | Número de portas |
-| ------------ | ---------------- |
-| SSI | menor do que 12 |
+| :---: | :--- |
+| SSI | Menos de 12 |
 | MSI | 12 a 99 |
 | LSI | 100 a 9.999 |
 | VLSI | 10.000 a 99.999 |
 | ULSI | 100.000 a 999.999 |
-| GSI | maior do que 1.000.000 |
+| GSI | Mais de 1.000.000 |
+
+---
 
 ### 4.4.2 Somadores integrados
 
-Existem diversos tipos de chips cuja função é produzir a soma de dígitos binários.  
+Existem diversos tipos de chips cuja função é produzir a soma de dígitos binários. Pela demanda existente, fabricantes como a *National Semiconductor* integram e encapsulam esses circuitos em chips identificados por um código — por exemplo, **54LS283**.
 
-Pela demanda existente, os circuitos constituídos de portas para realizar a soma são integrados e 
-encapsulados em chips por diversos fabricantes de componentes digitais, como a *National Semiconductor*.  
+Ver o datasheet: [*Datasheet* do 74LS283](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/sisdig_aulas/sistemas_digitais_datasheet_74LS283_National.pdf).
 
-São identificados por um código. Por exemplo, 54LS283.
+O 54LS283 é um **somador de 4 bits** com as seguintes características básicas:
 
-Ver o *datasheet* em [*Datasheet* do 54LS283](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/sisdig_aulas/sistemas_digitais_datasheet_74LS283_National.pdf).  
-
-O 54LS283 é um somador de 4 bits, cujas características básicas são as seguintes (conforme especificado no *datasheet*):  
-
-| Característica | Descição |
-| -------------- | -------- |
+| Característica | Descrição |
+| :--- | :--- |
 | Pinagem | 16 pinos |
-| Entradas lógicas | A (4 bits), B (4 bits) e C<sub>0</sub> |
-| Saídas lógicas | $\sum$ (4 bits) e C<sub>4</sub> |
-| Alimentação (V<sub>cc</sub> | 5 volts (nominal) |
+| Entradas lógicas | A (4 bits), B (4 bits) e C0 |
+| Saídas lógicas | $\Sigma$ (4 bits) e C4 |
+| Alimentação ($V_{CC}$) | 5 volts (nominal) |
 
-O 54LS283 pode ser cascateado utilizando-se covenientemente os pinos de *carry* de entrada e saída,
-da mesma maneira que a indicada logicamente na construção modular dos somadores com meio=somador e somador completo.  
+O 54LS283 pode ser cascateado utilizando convenientemente os pinos de *carry* de entrada e saída, da mesma maneira que na construção modular com meio-somador e somadores completos.
 
-A figura ilustra como realizar o cascateamento de somadores de 4 bits.  
-![Cascateamento de CIs somadores](/sisdig_aulas/images_sisdig/somadorcascata.jpg)  
+A figura ilustra o cascateamento de somadores de 4 bits:
 
-### 4.4.3 Somador BCD (*Binary Code Decimal*)
+![Cascateamento de CIs somadores](/assets/img/sisdig/cap4_somador_cascata.svg)
 
-Estudaremos mais à fente diversos tipos de códigos.  
+---
 
-Uma das formas de implementar eletronicamente números decimais é utilizar módulos que permitem
-representar somente os dígitos decimais na sua representação binária.  
+### 4.4.3 Somador BCD (*Binary-Coded Decimal*)
 
-Dessa forma as **palavras** do código contemplam somente  
+Uma das formas de implementar eletronicamente números decimais é utilizar módulos que representam somente os dígitos decimais em sua forma binária. As **palavras** do código BCD são:
 
 | Palavra | Decimal |
-| ------- | ------- |
+| :---: | :---: |
 | 0000 | 0 |
 | 0001 | 1 |
 | 0010 | 2 |
@@ -176,72 +160,67 @@ Dessa forma as **palavras** do código contemplam somente
 | 1000 | 8 |
 | 1001 | 9 |
 
-A soma BCD é realizada em grupos de 4 bits. Quando a soma dos bits é inferior a 9 (maior dígito decimal) a soma é de binário puro.  
+A soma BCD é realizada em grupos de 4 bits. Quando a soma é inferior a 9, a operação é de binário puro. Por exemplo:
 
-Por exemplo,  
-5 + 4 = 9, em binário 0101 + 0100 = 1001.   
-45 + 33 = 78. A parcela 5 + 3, em binário 0101 + 0011 = 1000. A parcela 4 + 5, em binário 0100 + 0101 = 1001.  
+- $5 + 4 = 9$: em binário $0101 + 0100 = 1001$ ✓
+- $45 + 33 = 78$: parcela $5+3 \Rightarrow 0101+0011=1000$; parcela $4+3 \Rightarrow 0100+0011=0111$ ✓
 
-No entanto, quando a soma resulta maior do o dígito 9, em binário 1001, é necessário somar o resultado ao complemento, C(1001)=0110.
+Quando a soma resulta maior que 9 ($1001_2$), é necessário somar o resultado ao complemento $C(1001) = 0110$. Por exemplo:
 
-Por exemplo,   
-6 + 7 resulta 13. Em binário, 0110 + 0111 = 1101 (palavra inválida). Daí é necessário realizar 1101 + 0110 = 1 0011  
+- $6 + 7 = 13$: $0110 + 0111 = 1101$ (palavra inválida) → $1101 + 0110 = 1\,0011$
 
 | *Carry* | Soma |
-| ------- | ---- |
+| :---: | :---: |
 | 0001 | 0011 |
 
-O somador BCD implementa a soma de cada dígito decimal, transportando o *carry*, reproduzindo exatamente a soma decimal.  
+O somador BCD implementa a soma de cada dígito decimal, transportando o *carry*, reproduzindo exatamente a soma decimal.
 
-A figura ilustra a operação.  
-![Somador BCD](/sisdig_aulas/images_sisdig/somadorbcd.jpg)  
-A e B representam os dois dígitos decimais a serem somados em cada módulo somador.  
+A figura ilustra a operação:
 
-A saída decimal é dada por $\sum$.  
+![Somador BCD](/assets/img/sisdig/cap4_somador_bcd.svg)
 
-O *carry* é transportado ao módulo seguinte, caracterizando a dezena, centena, ...  
+A e B representam os dois dígitos decimais a serem somados em cada módulo. A saída decimal é dada por $\Sigma$. O *carry* é transportado ao módulo seguinte, caracterizando a dezena, centena, ...
+
+---
 
 ## 4.5 Subtratores
 
-Embora não sejam comumente usados, os circuitos subtratores são interessantes. Recordando, a tabela abaixo apresenta a subtração binária.  
+A subtração binária é dada por:
 
-| - | 0 | 1 |
-| - | - | - |
+| − | 0 | 1 |
+| :---: | :---: | :---: |
 | **0** | 0 | 1 |
 | **1** | **1**1 | 0 |
 
-**A subtração binária normalmente é realizada pela adição do minuendo ao complemento de 1 ou complemento de 2 do subtraendo.**    
-Normalmente não se implementa computacionalmente a operação de subtração, no entanto caso seja necessário implementar o circuito 
-pode-se adotar o mesmo método da adição e utilizar o **meio-subtrator** e **subtrator completo**.  
+**A subtração binária normalmente é realizada pela adição do minuendo ao complemento de 1 ou complemento de 2 do subtraendo.**
 
-A tabela verdade do meio-subtrator será
+Normalmente não se implementa computacionalmente a operação de subtração. No entanto, caso seja necessário implementar o circuito, pode-se adotar o mesmo método da adição, utilizando o **meio-subtrator** e o **subtrator completo**.
 
-| A | B | A-B | BORROW |
-| - | - | - | - |
+A tabela-verdade do meio-subtrator é:
+
+| A | B | A−B | BORROW |
+| :---: | :---: | :---: | :---: |
 | 0 | 0 | 0 | 0 |
 | 0 | 1 | 1 | 1 |
 | 1 | 0 | 1 | 0 |
 | 1 | 1 | 0 | 0 |
 
-Obtendo a expressão booleana e minimizando não é difícil obter que  
+Obtendo a expressão booleana e minimizando:
 
-$$ A-B=(\bar A \.B+A.\bar B \)= A \oplus B $$  
+$$A - B = \bar{A}.B + A.\bar{B} = A \oplus B \qquad BORROW = \bar{A}.B$$
 
-e
+O meio-subtrator é representado logicamente pela figura abaixo:
 
-$$ BORROW = \bar A \.B $$  
+![Meio-subtrator — representação lógica](/assets/img/sisdig/cap4_meio_subtrator.svg)
 
-Logicamente o meio-somador será representado simplesmente pela figura abaixo  
-![Meio-subtrator](/sisdig_aulas/images_sisdig/meio-subtrator.jpg)
+O circuito com portas lógicas é apresentado abaixo:
 
-O circuito com portas lógicas está apresentado abaixo.  
-![Circuito meio-subtrator](/sisdig_aulas/images_sisdig/circuitomeiosubtrator.jpg)
+![Circuito do meio-subtrator com portas lógicas](/assets/img/sisdig/cap4_circuito_meio_subtrator.svg)
 
-De modo similar à construção do somador completo, pode-se desenvolver o subtrator completo, como 
-descrito pela tabela verdade apresentada abaixo  
+De modo similar ao somador completo, pode-se desenvolver o **subtrator completo**, descrito pela tabela-verdade:
 
-| A | B | B<sub>in</sub> | DIF | B<sub>out</sub> |
-| - | - | -------------- |---- | ----- |
+| A | B | B$_{in}$ | DIF | B$_{out}$ |
+| :---: | :---: | :---: | :---: | :---: |
 | 0 | 0 | 0 | 0 | 0 |
 | 0 | 0 | 1 | 1 | 1 |
 | 0 | 1 | 0 | 1 | 1 |
@@ -251,12 +230,12 @@ descrito pela tabela verdade apresentada abaixo
 | 1 | 1 | 0 | 0 | 0 |
 | 1 | 1 | 1 | 1 | 1 |
 
-, onde B<sub>in</sub> e B<sub>out</sub> representam respectivamente *borrow* de entrada e *borrow* de saída.  
+onde $B_{in}$ e $B_{out}$ representam respectivamente o *borrow* de entrada e o *borrow* de saída.
 
-Logicamente o somador completo será representado por uma figura similar à do somador-completo, com as devidas substituições.  
+O subtrator completo é representado por uma figura similar à do somador completo, com as devidas substituições.
 
-Um subtrator de dois números binários A e B de *n* bits pode ser implementado modularmente,
-utilizando-se o **cascateamento** de **1 meio-subtrator** e ***n-1* subtratores completos**.    
+Um subtrator de dois números binários A e B de *n* bits pode ser implementado modularmente, utilizando o **cascateamento** de **1 meio-subtrator** e ***n-1* subtratores completos**.
 
-___
-**[Home Conteúdo Sistemas Digitais](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/sisdig_aulas.md)**  
+---
+
+**[Home — Sistemas Digitais](https://claytonjasilva.github.io/sisdig.html)**
