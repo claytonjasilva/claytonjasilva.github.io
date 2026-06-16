@@ -139,7 +139,7 @@ O 54LS283 pode ser cascateado utilizando convenientemente os pinos de *carry* de
 
 A figura ilustra o cascateamento de somadores de 4 bits:
 
-![Cascateamento de CIs somadores](/assets/img/sisdig/cap4_somador_cascata.svg)
+![Cascateamento de CIs somadores](/assets/img/sisdig/cap4_somador_cascata.jpg)
 
 ---
 
