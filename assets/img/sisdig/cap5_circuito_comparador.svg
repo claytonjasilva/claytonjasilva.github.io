@@ -1,0 +1,67 @@
+<svg viewBox="0 0 560 200" xmlns="http://www.w3.org/2000/svg" font-family="IBM Plex Mono, monospace" font-size="11">
+  <rect width="560" height="200" fill="#0a0e17" rx="8"/>
+  <text x="280" y="18" fill="#00c2ff" font-size="11" text-anchor="middle" font-weight="600">Circuito comparador de 2 bits — saída A &gt; B</text>
+
+  <!-- entradas -->
+  <line x1="20" y1="50" x2="100" y2="50" stroke="#00c2ff" stroke-width="1.5"/>
+  <line x1="20" y1="80" x2="100" y2="80" stroke="#00c2ff" stroke-width="1.5"/>
+  <line x1="20" y1="110" x2="100" y2="110" stroke="#00c2ff" stroke-width="1.5"/>
+  <line x1="20" y1="140" x2="100" y2="140" stroke="#00c2ff" stroke-width="1.5"/>
+  <text x="6"  y="54"  fill="#e2e8f0" font-size="11">A1</text>
+  <text x="6"  y="84"  fill="#e2e8f0" font-size="11">A0</text>
+  <text x="6"  y="114" fill="#e2e8f0" font-size="11">B1</text>
+  <text x="6"  y="144" fill="#e2e8f0" font-size="11">B0</text>
+
+  <!-- NOT B1 -->
+  <polygon points="100,103 130,110 100,117" fill="none" stroke="#00c2ff" stroke-width="1.5"/>
+  <circle cx="134" cy="110" r="4" fill="none" stroke="#00c2ff" stroke-width="1.5"/>
+  <line x1="138" y1="110" x2="165" y2="110" stroke="#00c2ff" stroke-width="1.5"/>
+  <text x="142" y="105" fill="#64748b" font-size="9">B̄1</text>
+
+  <!-- NOT B0 -->
+  <polygon points="100,133 130,140 100,147" fill="none" stroke="#00c2ff" stroke-width="1.5"/>
+  <circle cx="134" cy="140" r="4" fill="none" stroke="#00c2ff" stroke-width="1.5"/>
+  <line x1="138" y1="140" x2="165" y2="140" stroke="#00c2ff" stroke-width="1.5"/>
+  <text x="142" y="135" fill="#64748b" font-size="9">B̄0</text>
+
+  <!-- AND 1: A1.B̄1 -->
+  <rect x="165" y="42" width="60" height="28" rx="3" fill="#111827" stroke="#00c2ff" stroke-width="1.3"/>
+  <path d="M225,42 A14,14 0 0,1 225,70" fill="none" stroke="#00c2ff" stroke-width="1.3"/>
+  <text x="192" y="60" fill="#64748b" font-size="8" text-anchor="middle">AND</text>
+  <line x1="165" y1="52" x2="155" y2="52" stroke="#00c2ff" stroke-width="1.2"/>
+  <line x1="155" y1="52" x2="155" y2="50" stroke="#00c2ff" stroke-width="1.2"/>
+  <line x1="165" y1="62" x2="155" y2="62" stroke="#00c2ff" stroke-width="1.2"/>
+  <line x1="155" y1="62" x2="155" y2="110" stroke="#00c2ff" stroke-width="1.2"/>
+  <line x1="239" y1="56" x2="310" y2="56" stroke="#00c2ff" stroke-width="1.2"/>
+
+  <!-- AND 2: A0.B̄0 -->
+  <rect x="165" y="102" width="60" height="28" rx="3" fill="#111827" stroke="#00c2ff" stroke-width="1.3"/>
+  <path d="M225,102 A14,14 0 0,1 225,130" fill="none" stroke="#00c2ff" stroke-width="1.3"/>
+  <text x="192" y="120" fill="#64748b" font-size="8" text-anchor="middle">AND</text>
+  <line x1="165" y1="112" x2="160" y2="112" stroke="#00c2ff" stroke-width="1.2"/>
+  <line x1="160" y1="112" x2="160" y2="80" stroke="#00c2ff" stroke-width="1.2"/>
+  <line x1="160" y1="80" x2="60" y2="80" stroke="#00c2ff" stroke-width="1.2"/>
+  <line x1="165" y1="122" x2="160" y2="122" stroke="#00c2ff" stroke-width="1.2"/>
+  <line x1="160" y1="122" x2="155" y2="122" stroke="#00c2ff" stroke-width="1.2"/>
+  <line x1="155" y1="122" x2="155" y2="140" stroke="#00c2ff" stroke-width="1.2"/>
+  <line x1="239" y1="116" x2="310" y2="116" stroke="#00c2ff" stroke-width="1.2"/>
+
+  <!-- AND 3: A1.Ā0 (para o caso A1B1=10) placeholder -->
+  <rect x="165" y="152" width="60" height="28" rx="3" fill="#111827" stroke="#00c2ff" stroke-width="1.3"/>
+  <path d="M225,152 A14,14 0 0,1 225,180" fill="none" stroke="#00c2ff" stroke-width="1.3"/>
+  <text x="192" y="170" fill="#64748b" font-size="8" text-anchor="middle">AND</text>
+  <line x1="239" y1="166" x2="310" y2="166" stroke="#00c2ff" stroke-width="1.2"/>
+
+  <!-- OR final -->
+  <path d="M310,44 Q360,44 383,95 Q360,146 310,146 Q328,95 310,44 Z" fill="#111827" stroke="#7c3aed" stroke-width="1.8"/>
+  <line x1="383" y1="95" x2="450" y2="95" stroke="#7c3aed" stroke-width="1.5"/>
+  <!-- fio AND3 → OR -->
+  <line x1="310" y1="166" x2="305" y2="166" stroke="#00c2ff" stroke-width="1.2"/>
+  <line x1="305" y1="166" x2="305" y2="140" stroke="#00c2ff" stroke-width="1.2"/>
+  <line x1="305" y1="140" x2="310" y2="140" stroke="#00c2ff" stroke-width="1.2"/>
+
+  <!-- saída -->
+  <text x="454" y="99" fill="#7c3aed" font-size="12" font-weight="600">A &gt; B</text>
+
+  <text x="280" y="195" fill="#64748b" font-size="9" text-anchor="middle">Expressão mínima obtida pelo Mapa K</text>
+</svg>
