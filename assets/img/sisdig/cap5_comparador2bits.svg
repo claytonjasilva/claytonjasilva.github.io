@@ -1,0 +1,30 @@
+<svg viewBox="0 0 500 170" xmlns="http://www.w3.org/2000/svg" font-family="IBM Plex Mono, monospace" font-size="11">
+  <rect width="500" height="170" fill="#0a0e17" rx="8"/>
+  <text x="250" y="18" fill="#00c2ff" font-size="11" text-anchor="middle" font-weight="600">Comparador de 2 bits — diagrama funcional</text>
+
+  <!-- entradas à esquerda -->
+  <line x1="20" y1="55" x2="155" y2="55" stroke="#00c2ff" stroke-width="1.5"/>
+  <line x1="20" y1="75" x2="155" y2="75" stroke="#00c2ff" stroke-width="1.5"/>
+  <line x1="20" y1="95" x2="155" y2="95" stroke="#00c2ff" stroke-width="1.5"/>
+  <line x1="20" y1="115" x2="155" y2="115" stroke="#00c2ff" stroke-width="1.5"/>
+  <text x="8" y="59"  fill="#e2e8f0" font-size="11">A1</text>
+  <text x="8" y="79"  fill="#e2e8f0" font-size="11">A0</text>
+  <text x="8" y="99"  fill="#e2e8f0" font-size="11">B1</text>
+  <text x="8" y="119" fill="#e2e8f0" font-size="11">B0</text>
+
+  <!-- bloco comparador -->
+  <rect x="155" y="35" width="160" height="105" rx="6" fill="#111827" stroke="#00c2ff" stroke-width="1.8"/>
+  <text x="235" y="82"  fill="#00c2ff" font-size="11" text-anchor="middle" font-weight="600">COMPARADOR</text>
+  <text x="235" y="97"  fill="#00c2ff" font-size="11" text-anchor="middle" font-weight="600">DE 2 BITS</text>
+  <text x="235" y="114" fill="#64748b" font-size="9"  text-anchor="middle">(A1A0 vs B1B0)</text>
+
+  <!-- saídas à direita -->
+  <line x1="315" y1="60"  x2="440" y2="60"  stroke="#00c2ff" stroke-width="1.5"/>
+  <line x1="315" y1="88"  x2="440" y2="88"  stroke="#00c2ff" stroke-width="1.5"/>
+  <line x1="315" y1="115" x2="440" y2="115" stroke="#00c2ff" stroke-width="1.5"/>
+  <text x="444" y="64"  fill="#7c3aed" font-size="12" font-weight="600">A &gt; B</text>
+  <text x="444" y="92"  fill="#7c3aed" font-size="12" font-weight="600">A = B</text>
+  <text x="444" y="119" fill="#7c3aed" font-size="12" font-weight="600">A &lt; B</text>
+
+  <text x="250" y="158" fill="#64748b" font-size="9" text-anchor="middle">Circuito combinacional com 4 entradas e 3 saídas</text>
+</svg>

@@ -1,0 +1,98 @@
+<svg viewBox="0 0 520 260" xmlns="http://www.w3.org/2000/svg" font-family="IBM Plex Mono, monospace" font-size="11">
+  <rect width="520" height="260" fill="#0a0e17" rx="8"/>
+  <text x="260" y="18" fill="#00c2ff" font-size="11" text-anchor="middle" font-weight="600">Mapa K — saída A &gt; B (4 variáveis: A1 A0 B1 B0)</text>
+
+  <!-- cabeçalho -->
+  <text x="80"  y="42" fill="#64748b" font-size="10" text-anchor="middle">B1B0</text>
+  <text x="80"  y="55" fill="#64748b" font-size="9"  text-anchor="middle">A1A0 ↓</text>
+
+  <!-- labels colunas B1B0 (Gray: 00 01 11 10) -->
+  <text x="145" y="52" fill="#7c3aed" font-size="10" text-anchor="middle">00</text>
+  <text x="205" y="52" fill="#7c3aed" font-size="10" text-anchor="middle">01</text>
+  <text x="265" y="52" fill="#7c3aed" font-size="10" text-anchor="middle">11</text>
+  <text x="325" y="52" fill="#7c3aed" font-size="10" text-anchor="middle">10</text>
+
+  <!-- labels linhas A1A0 (Gray: 00 01 11 10) -->
+  <text x="80" y="88"  fill="#7c3aed" font-size="10" text-anchor="middle">00</text>
+  <text x="80" y="128" fill="#7c3aed" font-size="10" text-anchor="middle">01</text>
+  <text x="80" y="168" fill="#7c3aed" font-size="10" text-anchor="middle">11</text>
+  <text x="80" y="208" fill="#7c3aed" font-size="10" text-anchor="middle">10</text>
+
+  <!-- grade 4x4 -->
+  <!-- linha 00 -->
+  <rect x="110" y="60" width="60" height="50" fill="#111827" stroke="#1e2d40" stroke-width="1"/>
+  <rect x="170" y="60" width="60" height="50" fill="#111827" stroke="#1e2d40" stroke-width="1"/>
+  <rect x="230" y="60" width="60" height="50" fill="#111827" stroke="#1e2d40" stroke-width="1"/>
+  <rect x="290" y="60" width="60" height="50" fill="#111827" stroke="#1e2d40" stroke-width="1"/>
+  <!-- linha 01 -->
+  <rect x="110" y="110" width="60" height="50" fill="#111827" stroke="#1e2d40" stroke-width="1"/>
+  <rect x="170" y="110" width="60" height="50" fill="#111827" stroke="#1e2d40" stroke-width="1"/>
+  <rect x="230" y="110" width="60" height="50" fill="#111827" stroke="#1e2d40" stroke-width="1"/>
+  <rect x="290" y="110" width="60" height="50" fill="#111827" stroke="#1e2d40" stroke-width="1"/>
+  <!-- linha 11 -->
+  <rect x="110" y="160" width="60" height="50" fill="#111827" stroke="#1e2d40" stroke-width="1"/>
+  <rect x="170" y="160" width="60" height="50" fill="#111827" stroke="#1e2d40" stroke-width="1"/>
+  <rect x="230" y="160" width="60" height="50" fill="#111827" stroke="#1e2d40" stroke-width="1"/>
+  <rect x="290" y="160" width="60" height="50" fill="#111827" stroke="#1e2d40" stroke-width="1"/>
+  <!-- linha 10 -->
+  <rect x="110" y="210" width="60" height="40" fill="#111827" stroke="#1e2d40" stroke-width="1"/>
+  <rect x="170" y="210" width="60" height="40" fill="#111827" stroke="#1e2d40" stroke-width="1"/>
+  <rect x="230" y="210" width="60" height="40" fill="#111827" stroke="#1e2d40" stroke-width="1"/>
+  <rect x="290" y="210" width="60" height="40" fill="#111827" stroke="#1e2d40" stroke-width="1"/>
+
+  <!-- índices mintermos (canto sup esq) -->
+  <!-- linha 00: m0 m1 m3 m2 -->
+  <text x="113" y="70" fill="#64748b" font-size="7">m0</text>
+  <text x="173" y="70" fill="#64748b" font-size="7">m1</text>
+  <text x="233" y="70" fill="#64748b" font-size="7">m3</text>
+  <text x="293" y="70" fill="#64748b" font-size="7">m2</text>
+  <!-- linha 01: m4 m5 m7 m6 -->
+  <text x="113" y="120" fill="#64748b" font-size="7">m4</text>
+  <text x="173" y="120" fill="#64748b" font-size="7">m5</text>
+  <text x="233" y="120" fill="#64748b" font-size="7">m7</text>
+  <text x="293" y="120" fill="#64748b" font-size="7">m6</text>
+  <!-- linha 11: m12 m13 m15 m14 -->
+  <text x="113" y="170" fill="#64748b" font-size="7">m12</text>
+  <text x="173" y="170" fill="#64748b" font-size="7">m13</text>
+  <text x="233" y="170" fill="#64748b" font-size="7">m15</text>
+  <text x="293" y="170" fill="#64748b" font-size="7">m14</text>
+  <!-- linha 10: m8 m9 m11 m10 -->
+  <text x="113" y="220" fill="#64748b" font-size="7">m8</text>
+  <text x="173" y="220" fill="#64748b" font-size="7">m9</text>
+  <text x="233" y="220" fill="#64748b" font-size="7">m11</text>
+  <text x="293" y="220" fill="#64748b" font-size="7">m10</text>
+
+  <!-- valores A>B -->
+  <!-- linha 00: 0 0 0 0 -->
+  <text x="140" y="90"  fill="#e2e8f0" font-size="13" text-anchor="middle">0</text>
+  <text x="200" y="90"  fill="#e2e8f0" font-size="13" text-anchor="middle">0</text>
+  <text x="260" y="90"  fill="#e2e8f0" font-size="13" text-anchor="middle">0</text>
+  <text x="320" y="90"  fill="#e2e8f0" font-size="13" text-anchor="middle">0</text>
+  <!-- linha 01: 1 0 0 0 -->
+  <text x="140" y="140" fill="#00c2ff" font-size="13" text-anchor="middle">1</text>
+  <text x="200" y="140" fill="#e2e8f0" font-size="13" text-anchor="middle">0</text>
+  <text x="260" y="140" fill="#e2e8f0" font-size="13" text-anchor="middle">0</text>
+  <text x="320" y="140" fill="#e2e8f0" font-size="13" text-anchor="middle">0</text>
+  <!-- linha 11: 1 1 0 1 -->
+  <text x="140" y="190" fill="#00c2ff" font-size="13" text-anchor="middle">1</text>
+  <text x="200" y="190" fill="#00c2ff" font-size="13" text-anchor="middle">1</text>
+  <text x="260" y="190" fill="#e2e8f0" font-size="13" text-anchor="middle">0</text>
+  <text x="320" y="190" fill="#00c2ff" font-size="13" text-anchor="middle">1</text>
+  <!-- linha 10: 1 1 0 0 -->
+  <text x="140" y="235" fill="#00c2ff" font-size="13" text-anchor="middle">1</text>
+  <text x="200" y="235" fill="#00c2ff" font-size="13" text-anchor="middle">1</text>
+  <text x="260" y="235" fill="#e2e8f0" font-size="13" text-anchor="middle">0</text>
+  <text x="320" y="235" fill="#e2e8f0" font-size="13" text-anchor="middle">0</text>
+
+  <!-- agrupamento 1s em destaque (quarteto linhas 10-11, col 00) -->
+  <rect x="112" y="112" width="56" height="136" rx="4" fill="none" stroke="#7c3aed" stroke-width="1.5" stroke-dasharray="5,3" opacity="0.7"/>
+  <!-- agrupamento par linhas 11, cols 00-01 -->
+  <rect x="112" y="162" width="116" height="46" rx="4" fill="none" stroke="#00c2ff" stroke-width="1.5" stroke-dasharray="5,3" opacity="0.7"/>
+  <!-- agrupamento par linhas 11, col 10 -->
+  <rect x="292" y="162" width="56" height="46" rx="4" fill="none" stroke="#7c3aed" stroke-width="1.5" stroke-dasharray="5,3" opacity="0.5"/>
+
+  <text x="390" y="110" fill="#00c2ff" font-size="9">grupos de 1s</text>
+  <text x="390" y="124" fill="#64748b" font-size="8">— — — violeta</text>
+  <text x="390" y="138" fill="#64748b" font-size="8">— — — ciano</text>
+  <text x="260" y="255" fill="#64748b" font-size="9" text-anchor="middle">* colunas 00↔10 e linhas 00↔10 são adjacentes</text>
+</svg>
