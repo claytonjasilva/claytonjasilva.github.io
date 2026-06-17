@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Prática 3 — MS Project | Gestão de Projetos</title>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,600;1,300&display=swap" rel="stylesheet">
+  <style>
+    :root{--bg:#0a0e17;--surface:#111827;--border:#1e2d40;--accent:#00c2ff;--accent2:#7c3aed;--green:#10b981;--yellow:#f59e0b;--red:#ef4444;--text:#e2e8f0;--muted:#64748b;--tag-bg:#0f172a;--font-mono:'IBM Plex Mono',monospace;--font-sans:'IBM Plex Sans',sans-serif;}
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}html{scroll-behavior:smooth;}
+    body{background:var(--bg);color:var(--text);font-family:var(--font-sans);font-size:16px;line-height:1.7;min-height:100vh;}
+    a{color:var(--accent);text-decoration:none;}a:hover{text-decoration:underline;}
+    .container{max-width:900px;margin:0 auto;padding:0 2rem;}
+    nav{position:sticky;top:0;z-index:100;background:rgba(10,14,23,.92);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);padding:.85rem 0;}
+    nav .container{display:flex;align-items:center;justify-content:space-between;gap:1rem;}
+    .nav-brand{font-family:var(--font-mono);font-size:.8rem;color:var(--accent);}
+    .nav-back{font-family:var(--font-mono);font-size:.78rem;color:var(--muted);}.nav-back:hover{color:var(--text);text-decoration:none;}
+    .hero{padding:4rem 0 2.5rem;position:relative;overflow:hidden;}
+    .hero::before{content:'';position:absolute;inset:0;background-image:linear-gradient(var(--border) 1px,transparent 1px),linear-gradient(90deg,var(--border) 1px,transparent 1px);background-size:40px 40px;opacity:.25;mask-image:radial-gradient(ellipse 80% 60% at 50% 0%,black 40%,transparent 100%);}
+    .hero-eyebrow{font-family:var(--font-mono);font-size:.72rem;color:var(--yellow);letter-spacing:.15em;text-transform:uppercase;margin-bottom:.75rem;display:flex;align-items:center;gap:.6rem;}
+    .hero-eyebrow::before{content:'';display:inline-block;width:1.5rem;height:1px;background:var(--yellow);}
+    h1{font-size:clamp(1.6rem,3.5vw,2.6rem);font-weight:300;line-height:1.1;letter-spacing:-.02em;margin-bottom:.6rem;}h1 strong{font-weight:600;color:var(--yellow);}
+    .hero-desc{font-size:.9rem;color:var(--muted);max-width:620px;margin-bottom:1.5rem;}
+    .hero-tags{display:flex;flex-wrap:wrap;gap:.4rem;}
+    .tag{font-family:var(--font-mono);font-size:.7rem;color:var(--yellow);background:rgba(245,158,11,.1);border:1px solid rgba(245,158,11,.25);border-radius:4px;padding:.2rem .55rem;}
+    .section{padding:2.5rem 0;border-top:1px solid var(--border);}
+    .section-label{font-family:var(--font-mono);font-size:.7rem;color:var(--yellow);letter-spacing:.15em;text-transform:uppercase;margin-bottom:1.25rem;display:flex;align-items:center;gap:.6rem;}
+    .section-label::after{content:'';flex:1;height:1px;background:var(--border);}
+    h2{font-size:1.1rem;font-weight:600;margin-bottom:1rem;}h3{font-size:.93rem;font-weight:600;margin-bottom:.6rem;color:var(--yellow);}
+    .step-list{display:flex;flex-direction:column;gap:.75rem;margin:1rem 0;counter-reset:steps;}
+    .step{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:1.1rem 1.25rem;display:flex;gap:1rem;align-items:flex-start;counter-increment:steps;}
+    .step::before{content:counter(steps,'decimal-leading-zero');font-family:var(--font-mono);font-size:.75rem;color:var(--yellow);min-width:28px;padding-top:.05rem;}
+    .step-body{flex:1;}.step-name{font-size:.9rem;font-weight:600;margin-bottom:.2rem;}.step-desc{font-size:.82rem;color:var(--muted);}
+    .note-box{background:var(--tag-bg);border:1px solid var(--yellow);border-radius:8px;padding:1rem 1.25rem;margin:1rem 0;}
+    .note-label{font-family:var(--font-mono);font-size:.65rem;color:var(--yellow);letter-spacing:.1em;text-transform:uppercase;margin-bottom:.3rem;}
+    .note-text{font-size:.85rem;}
+    .resource-table{width:100%;border-collapse:collapse;font-size:.82rem;margin:1rem 0;}
+    .resource-table th{background:var(--tag-bg);padding:.55rem .75rem;text-align:left;font-family:var(--font-mono);font-size:.67rem;color:var(--muted);border-bottom:1px solid var(--border);}
+    .resource-table td{padding:.55rem .75rem;border-bottom:1px solid var(--border);color:var(--muted);}
+    .resource-table td:first-child{color:var(--text);font-weight:600;}
+    .assign-table{width:100%;border-collapse:collapse;font-size:.82rem;margin:1rem 0;}
+    .assign-table th{background:var(--tag-bg);padding:.55rem .75rem;text-align:left;font-family:var(--font-mono);font-size:.67rem;color:var(--muted);border-bottom:1px solid var(--border);}
+    .assign-table td{padding:.55rem .75rem;border-bottom:1px solid var(--border);color:var(--muted);}
+    .assign-table td:first-child{color:var(--text);}
+    .superalloc{color:var(--red);font-weight:600;}
+    .alloc-ok{color:var(--green);}
+    .concept-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:.65rem;margin:1rem 0;}
+    .concept-card{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:1rem;}
+    .concept-title{font-size:.85rem;font-weight:600;margin-bottom:.25rem;}.concept-desc{font-size:.78rem;color:var(--muted);}
+    footer{border-top:1px solid var(--border);padding:1.75rem 0;margin-top:2rem;}
+    footer .container{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;}
+    footer p{font-size:.8rem;color:var(--muted);font-family:var(--font-mono);}
+    .nav-bottom{display:flex;justify-content:space-between;align-items:center;padding:1.5rem 0;border-top:1px solid var(--border);}
+    .nav-pg{font-family:var(--font-mono);font-size:.78rem;color:var(--yellow);}
+  </style>
+</head>
+<body>
+<nav>
+  <div class="container">
+    <span class="nav-brand"><a href="../gestao_projetos.html" style="color:inherit;text-decoration:none;">Gestão de Projetos</a></span>
+    <div style="display:flex;align-items:center;gap:1.5rem;"><a class="nav-back" href="../gestao_projetos.html">← índice</a></div>
+  </div>
+</nav>
+<section class="hero">
+  <div class="container">
+    <p class="hero-eyebrow">Prática 3 / MS Project</p>
+    <h1>Alocação de Recursos<br><strong>e Nivelamento</strong></h1>
+    <p class="hero-desc">Cadastrar recursos humanos e materiais, atribuí-los às tarefas, identificar superalocação e aplicar nivelamento de recursos no MS Project.</p>
+    <div class="hero-tags"><span class="tag">MS Project</span><span class="tag">Recursos</span><span class="tag">Superalocação</span><span class="tag">Nivelamento</span><span class="tag">Gráfico de Recursos</span></div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <p class="section-label">Recursos do projeto</p>
+    <h2>Cadastro de Recursos</h2>
+    <p style="font-size:.88rem;color:var(--muted);margin-bottom:1rem;">No MS Project, recursos são cadastrados na <strong>Planilha de Recursos</strong> (Exibição → Planilha de Recursos). Tipos: Trabalho (pessoas), Material (consumíveis) e Custo (valores fixos).</p>
+    <div style="overflow-x:auto;border:1px solid var(--border);border-radius:8px;">
+      <table class="resource-table">
+        <thead><tr><th>Nome</th><th>Tipo</th><th>Unidade Máxima</th><th>Taxa Padrão</th><th>Observação</th></tr></thead>
+        <tbody>
+          <tr><td>Ana Martins</td><td>Trabalho</td><td>100%</td><td>R$ 120/h</td><td>Gerente de Projeto</td></tr>
+          <tr><td>Carlos Lima</td><td>Trabalho</td><td>100%</td><td>R$ 100/h</td><td>Desenvolvedor Back-end</td></tr>
+          <tr><td>Diana Cruz</td><td>Trabalho</td><td>100%</td><td>R$ 95/h</td><td>Desenvolvedora Front-end</td></tr>
+          <tr><td>Eduardo Faria</td><td>Trabalho</td><td>50%</td><td>R$ 80/h</td><td>Analista de Testes (meio período)</td></tr>
+          <tr><td>Servidor Cloud</td><td>Material</td><td>–</td><td>R$ 500/mês</td><td>Infraestrutura de hospedagem</td></tr>
+          <tr><td>Licença Software</td><td>Custo</td><td>–</td><td>R$ 2.000 fixo</td><td>Custo único na fase de implantação</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="note-box">
+      <div class="note-label">Unidade Máxima</div>
+      <div class="note-text">100% = recurso disponível em tempo integral. 50% = meio período. Se um recurso de 100% for atribuído a duas tarefas simultâneas em 100% cada, ocorre <strong>superalocação</strong> (célula fica vermelha no MS Project).</div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <p class="section-label">Atribuição e verificação</p>
+    <h2>Atribuição de Recursos às Tarefas</h2>
+    <p style="font-size:.88rem;color:var(--muted);margin-bottom:1rem;">Use a Prática 1 (sistema de estoque) como projeto base. Atribua os recursos conforme a tabela abaixo:</p>
+    <div style="overflow-x:auto;border:1px solid var(--border);border-radius:8px;">
+      <table class="assign-table">
+        <thead><tr><th>Tarefa</th><th>Recurso(s) Atribuídos</th><th>Unidades</th><th>Situação</th></tr></thead>
+        <tbody>
+          <tr><td>1.1 Entrevistas com usuários</td><td>Ana Martins</td><td>100%</td><td class="alloc-ok">✓ OK</td></tr>
+          <tr><td>1.2 Análise de processos</td><td>Ana Martins</td><td>100%</td><td class="alloc-ok">✓ OK</td></tr>
+          <tr><td>1.3 Documentar requisitos</td><td>Ana Martins</td><td>100%</td><td class="alloc-ok">✓ OK</td></tr>
+          <tr><td>2.1 Modelagem de dados</td><td>Carlos Lima</td><td>100%</td><td class="alloc-ok">✓ OK</td></tr>
+          <tr><td>2.2 Desenvolvimento back-end</td><td>Carlos Lima</td><td>100%</td><td class="alloc-ok">✓ OK</td></tr>
+          <tr><td>2.3 Desenvolvimento front-end</td><td>Diana Cruz + Carlos Lima</td><td>100% + 50%</td><td class="superalloc">⚠️ Carlos superalocado</td></tr>
+          <tr><td>3.1 Testes unitários</td><td>Eduardo Faria</td><td>50%</td><td class="alloc-ok">✓ OK</td></tr>
+          <tr><td>3.2 Testes de integração</td><td>Eduardo Faria + Diana Cruz</td><td>50% + 100%</td><td class="alloc-ok">✓ OK</td></tr>
+          <tr><td>3.3 Treinamento</td><td>Ana Martins</td><td>100%</td><td class="alloc-ok">✓ OK</td></tr>
+          <tr><td>3.4 Implantação</td><td>Carlos Lima + Licença Software</td><td>100%</td><td class="alloc-ok">✓ OK</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="note-box" style="border-color:var(--red);">
+      <div class="note-label" style="color:var(--red);">⚠️ Superalocação detectada</div>
+      <div class="note-text">Carlos Lima está atribuído a 2.2 (100%) e 2.3 (50%) simultaneamente, totalizando 150% — acima da capacidade máxima de 100%. O MS Project marca em vermelho no Gráfico de Recursos. Esta situação precisa ser resolvida.</div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <p class="section-label">Passo a passo no MS Project</p>
+    <h2>Como Executar no MS Project</h2>
+    <div class="step-list">
+      <div class="step"><div class="step-body"><div class="step-name">Acessar a Planilha de Recursos</div><div class="step-desc">Exibição → Planilha de Recursos. Insira cada recurso com nome, tipo (Trabalho/Material/Custo), unidade máxima e taxa padrão. Para Eduardo Faria, coloque Máx. Unidades = 50%.</div></div></div>
+      <div class="step"><div class="step-body"><div class="step-name">Atribuir recursos às tarefas</div><div class="step-desc">Volte ao Gráfico de Gantt. Selecione a tarefa → Tarefa → Atribuir Recursos (ou Shift+F2). Na janela, selecione o recurso e defina as unidades (%). Repita para cada tarefa conforme a tabela acima.</div></div></div>
+      <div class="step"><div class="step-body"><div class="step-name">Identificar superalocações</div><div class="step-desc">Exibição → Gráfico de Recursos. Recurso superalocado aparece em VERMELHO. O indicador de superalocação (ícone de raio) também aparece na Planilha de Recursos ao lado do nome.</div></div></div>
+      <div class="step"><div class="step-body"><div class="step-name">Resolver a superalocação manualmente</div><div class="step-desc">Opções: (a) Reduzir unidades de Carlos em 2.3 para 0% e atribuir somente Diana; (b) Adicionar atraso na tarefa 2.3; (c) Substituir Carlos por outro recurso disponível no período.</div></div></div>
+      <div class="step"><div class="step-body"><div class="step-name">Usar o Nivelamento Automático de Recursos</div><div class="step-desc">Recurso → Nivelar Recurso → Nivelar Tudo (ou nivelar apenas Carlos). O MS Project redistribuirá as tarefas automaticamente — mas atenção: pode aumentar a duração do projeto. Verifique o impacto no caminho crítico.</div></div></div>
+      <div class="step"><div class="step-body"><div class="step-name">Verificar o custo total do projeto</div><div class="step-desc">Projeto → Informações do Projeto → Estatísticas. Veja o custo total acumulado. Compare com o orçamento disponível. Se necessário, reduza horas ou substitua recursos por opções mais econômicas.</div></div></div>
+      <div class="step"><div class="step-body"><div class="step-name">Exibir o Gráfico de Uso de Recursos</div><div class="step-desc">Exibição → Uso de Recursos: mostra horas por recurso por período. Identifique picos e vale de utilização. Ferramenta essencial para apresentação ao patrocinador.</div></div></div>
+    </div>
+
+    <h2 style="margin-top:1.5rem;">Conceitos de Recursos no PMBOK</h2>
+    <div class="concept-grid">
+      <div class="concept-card" style="border-color:var(--red);">
+        <div class="concept-title">⚠️ Superalocação</div>
+        <div class="concept-desc">Recurso atribuído acima de sua capacidade máxima. Gera riscos de qualidade, atrasos e burnout.</div>
+      </div>
+      <div class="concept-card" style="border-color:var(--yellow);">
+        <div class="concept-title">⚖️ Nivelamento</div>
+        <div class="concept-desc">Ajuste de datas ou cargas para eliminar superalocação. Pode aumentar a duração do projeto (schedule delay).</div>
+      </div>
+      <div class="concept-card" style="border-color:var(--green);">
+        <div class="concept-title">📉 Suavização</div>
+        <div class="concept-desc">Redistribuir tarefas sem alterar a data final — usa folgas disponíveis. Menos agressivo que o nivelamento.</div>
+      </div>
+      <div class="concept-card" style="border-color:var(--accent);">
+        <div class="concept-title">💰 Custo do Projeto</div>
+        <div class="concept-desc">Custo = Σ (horas trabalhadas × taxa/hora) + custos fixos. O MS Project calcula automaticamente.</div>
+      </div>
+    </div>
+
+    <div class="note-box" style="margin-top:1.5rem;border-color:var(--accent);">
+      <div class="note-label" style="color:var(--accent);">Entregável desta prática</div>
+      <div class="note-text">Ao final, exporte o relatório de uso de recursos (Relatórios → Recursos → Visão Geral de Recursos) e salve o arquivo .mpp com todos os recursos alocados e sem superalocações.</div>
+    </div>
+  </div>
+</section>
+
+<div class="container"><div class="nav-bottom"><a class="nav-pg" href="pratica2.html">← Prática 2</a><a class="nav-pg" href="../gestao_projetos.html">↑ Índice da Disciplina</a></div></div>
+<footer><div class="container"><p>© 2026 · Prof. Clayton J A Silva · Ibmec RJ</p><p><a href="../gestao_projetos.html">← Gestão de Projetos</a></p></div></footer>
+</body>
+</html>

@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Gestão de Projetos — Prof. Clayton J A Silva</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,600;1,300&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg:        #0a0e17;
+      --surface:   #111827;
+      --border:    #1e2d40;
+      --accent:    #00c2ff;
+      --accent2:   #7c3aed;
+      --green:     #10b981;
+      --text:      #e2e8f0;
+      --muted:     #64748b;
+      --tag-bg:    #0f172a;
+      --font-mono: 'IBM Plex Mono', monospace;
+      --font-sans: 'IBM Plex Sans', sans-serif;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { background: var(--bg); color: var(--text); font-family: var(--font-sans); font-size: 16px; line-height: 1.6; min-height: 100vh; }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .container { max-width: 1060px; margin: 0 auto; padding: 0 2rem; }
+
+    /* NAV */
+    nav { position: sticky; top: 0; z-index: 100; background: rgba(10,14,23,0.90); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); padding: 1rem 0; }
+    nav .container { display: flex; align-items: center; justify-content: space-between; gap: 1rem; flex-wrap: wrap; }
+    .nav-brand { font-family: var(--font-mono); font-size: 0.82rem; color: var(--accent); }
+    .nav-links { display: flex; gap: 1.5rem; list-style: none; flex-wrap: wrap; }
+    .nav-links a { font-family: var(--font-mono); font-size: 0.78rem; color: var(--muted); transition: color 0.2s; }
+    .nav-links a:hover { color: var(--text); text-decoration: none; }
+
+    /* HERO */
+    .hero { padding: 5rem 0 3.5rem; position: relative; overflow: hidden; }
+    .hero::before {
+      content: ''; position: absolute; inset: 0;
+      background-image: linear-gradient(var(--border) 1px, transparent 1px), linear-gradient(90deg, var(--border) 1px, transparent 1px);
+      background-size: 40px 40px; opacity: 0.3;
+      mask-image: radial-gradient(ellipse 80% 60% at 50% 0%, black 40%, transparent 100%);
+    }
+    .hero-eyebrow { font-family: var(--font-mono); font-size: 0.75rem; color: var(--accent); letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 1rem; display: flex; align-items: center; gap: 0.75rem; }
+    .hero-eyebrow::before { content: ''; display: inline-block; width: 2rem; height: 1px; background: var(--accent); }
+    h1 { font-size: clamp(1.8rem, 4vw, 3rem); font-weight: 300; line-height: 1.1; letter-spacing: -0.02em; margin-bottom: 0.75rem; }
+    h1 strong { font-weight: 600; color: var(--accent); }
+    .hero-sub { font-size: 0.88rem; color: var(--muted); font-family: var(--font-mono); margin-bottom: 2rem; }
+    .hero-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 2rem; }
+    .tag { font-family: var(--font-mono); font-size: 0.72rem; color: var(--accent2); background: rgba(124,58,237,0.1); border: 1px solid rgba(124,58,237,0.25); border-radius: 4px; padding: 0.25rem 0.6rem; }
+    .tag-green { color: var(--green); background: rgba(16,185,129,0.08); border-color: rgba(16,185,129,0.25); }
+
+    /* STATS ROW */
+    .stats-row { display: flex; gap: 1.5rem; flex-wrap: wrap; margin-bottom: 1rem; }
+    .stat-box { background: var(--surface); border: 1px solid var(--border); border-radius: 8px; padding: 1rem 1.5rem; text-align: center; min-width: 110px; }
+    .stat-box .num { font-family: var(--font-mono); font-size: 1.6rem; font-weight: 600; color: var(--accent); }
+    .stat-box .lbl { font-size: 0.75rem; color: var(--muted); font-family: var(--font-mono); }
+
+    /* SECTION */
+    .section { padding: 3rem 0; border-top: 1px solid var(--border); }
+    .section-title { font-family: var(--font-mono); font-size: 0.72rem; color: var(--accent); letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 1.5rem; display: flex; align-items: center; gap: 0.75rem; }
+    .section-title::after { content: ''; flex: 1; height: 1px; background: var(--border); }
+    h2 { font-size: 1.25rem; font-weight: 600; margin-bottom: 1.25rem; }
+
+    /* UNIDADES GRID */
+    .unidades-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(290px, 1fr)); gap: 1rem; }
+    .unidade-card { background: var(--surface); border: 1px solid var(--border); border-radius: 8px; padding: 1.5rem; display: flex; flex-direction: column; gap: 0.6rem; position: relative; overflow: hidden; transition: border-color 0.2s, transform 0.2s; }
+    .unidade-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: linear-gradient(90deg, var(--accent), var(--accent2)); }
+    .unidade-card:hover { border-color: rgba(0,194,255,0.4); transform: translateY(-2px); }
+    .u-num { font-family: var(--font-mono); font-size: 0.68rem; color: var(--accent); letter-spacing: 0.1em; }
+    .u-title { font-size: 0.95rem; font-weight: 600; line-height: 1.3; }
+    .u-topics { font-size: 0.8rem; color: var(--muted); line-height: 1.5; }
+    .u-footer { display: flex; align-items: center; justify-content: space-between; margin-top: 0.5rem; }
+    .u-badge { font-family: var(--font-mono); font-size: 0.68rem; padding: 0.2rem 0.5rem; border-radius: 3px; }
+    .badge-quiz { background: rgba(16,185,129,0.1); border: 1px solid rgba(16,185,129,0.25); color: var(--green); }
+    .badge-slides { background: rgba(124,58,237,0.1); border: 1px solid rgba(124,58,237,0.25); color: var(--accent2); }
+    .u-link { font-family: var(--font-mono); font-size: 0.78rem; color: var(--accent); display: inline-flex; align-items: center; gap: 0.3rem; transition: gap 0.15s; }
+    .unidade-card:hover .u-link { gap: 0.5rem; }
+
+    /* EXERCICIOS */
+    .ex-list { display: flex; flex-direction: column; gap: 0.6rem; }
+    .ex-item { background: var(--surface); border: 1px solid var(--border); border-radius: 6px; padding: 0.9rem 1.25rem; display: flex; align-items: center; justify-content: space-between; gap: 1rem; transition: border-color 0.2s; flex-wrap: wrap; }
+    .ex-item:hover { border-color: var(--accent2); }
+    .ex-left { display: flex; align-items: center; gap: 0.75rem; }
+    .ex-num { font-family: var(--font-mono); font-size: 0.7rem; color: var(--muted); min-width: 28px; }
+    .ex-name { font-size: 0.88rem; font-weight: 600; }
+    .ex-desc { font-size: 0.8rem; color: var(--muted); }
+    .ex-links { display: flex; gap: 0.5rem; flex-wrap: wrap; }
+    .btn { font-family: var(--font-mono); font-size: 0.72rem; padding: 0.3rem 0.7rem; border-radius: 4px; border: 1px solid; transition: background 0.15s; white-space: nowrap; }
+    .btn-form { color: var(--accent); border-color: rgba(0,194,255,0.3); }
+    .btn-form:hover { background: rgba(0,194,255,0.08); text-decoration: none; }
+    .btn-sol { color: var(--accent2); border-color: rgba(124,58,237,0.3); }
+    .btn-sol:hover { background: rgba(124,58,237,0.08); text-decoration: none; }
+    .btn-prat { color: var(--green); border-color: rgba(16,185,129,0.3); }
+    .btn-prat:hover { background: rgba(16,185,129,0.08); text-decoration: none; }
+
+    /* TRABALHOS */
+    .trab-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 1rem; }
+    .trab-card { background: var(--surface); border: 1px solid var(--border); border-radius: 8px; padding: 1.5rem; transition: border-color 0.2s; }
+    .trab-card:hover { border-color: rgba(124,58,237,0.4); }
+    .trab-num { font-family: var(--font-mono); font-size: 0.68rem; color: var(--accent2); margin-bottom: 0.5rem; }
+    .trab-title { font-size: 0.95rem; font-weight: 600; margin-bottom: 0.4rem; }
+    .trab-desc { font-size: 0.82rem; color: var(--muted); margin-bottom: 1rem; }
+
+    /* PROJETO FINAL */
+    .projeto-final { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 2rem; position: relative; overflow: hidden; }
+    .projeto-final::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, var(--accent), var(--accent2), var(--green)); }
+    .pf-label { font-family: var(--font-mono); font-size: 0.7rem; color: var(--green); letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 0.75rem; }
+    .pf-title { font-size: 1.2rem; font-weight: 600; margin-bottom: 0.5rem; }
+    .pf-desc { font-size: 0.88rem; color: var(--muted); max-width: 600px; }
+
+    /* TIMELINE */
+    .timeline { display: flex; flex-direction: column; gap: 0; }
+    .tl-item { display: flex; gap: 1.25rem; }
+    .tl-left { display: flex; flex-direction: column; align-items: center; }
+    .tl-dot { width: 10px; height: 10px; border-radius: 50%; background: var(--accent); flex-shrink: 0; margin-top: 0.35rem; }
+    .tl-line { width: 1px; flex: 1; background: var(--border); margin: 4px 0; min-height: 28px; }
+    .tl-item:last-child .tl-line { display: none; }
+    .tl-content { padding-bottom: 1.25rem; }
+    .tl-label { font-family: var(--font-mono); font-size: 0.7rem; color: var(--muted); }
+    .tl-text { font-size: 0.88rem; }
+
+    /* AVALIACAO */
+    .aval-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 1rem; }
+    .aval-card { background: var(--surface); border: 1px solid var(--border); border-radius: 8px; padding: 1.25rem; text-align: center; }
+    .aval-pct { font-family: var(--font-mono); font-size: 2rem; font-weight: 600; color: var(--accent); }
+    .aval-name { font-size: 0.85rem; margin-top: 0.3rem; }
+    .aval-desc { font-size: 0.78rem; color: var(--muted); margin-top: 0.25rem; }
+
+    /* PMBOK VISUAL */
+    .pmbok-areas { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 0.6rem; margin-top: 1rem; }
+    .area-pill { background: var(--tag-bg); border: 1px solid var(--border); border-radius: 6px; padding: 0.6rem 0.9rem; font-size: 0.8rem; display: flex; align-items: center; gap: 0.5rem; }
+    .area-dot { width: 7px; height: 7px; border-radius: 50%; flex-shrink: 0; }
+
+    footer { border-top: 1px solid var(--border); padding: 2rem 0; margin-top: 2rem; }
+    footer .container { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; }
+    footer p { font-size: 0.82rem; color: var(--muted); font-family: var(--font-mono); }
+
+    @media (max-width: 640px) {
+      .nav-links { display: none; }
+      .hero { padding: 3rem 0 2rem; }
+      .stats-row { gap: 0.75rem; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="container">
+    <span class="nav-brand"><a href="index.html" style="color:inherit;text-decoration:none;">claytonjasilva.github.io</a></span>
+    <ul class="nav-links">
+      <li><a href="#unidades">unidades</a></li>
+      <li><a href="#exercicios">exercícios</a></li>
+      <li><a href="#trabalhos">trabalhos</a></li>
+      <li><a href="#avaliacao">avaliação</a></li>
+      <li><a href="index.html">← home</a></li>
+    </ul>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="container">
+    <p class="hero-eyebrow">Ibmec RJ — Engenharia da Computação</p>
+    <h1>Gestão de<br><strong>Projetos</strong></h1>
+    <p class="hero-sub">// Rev 2026.1 · Prof. Clayton J A Silva · baseado no PMBOK 6ª ed.</p>
+    <div class="hero-tags">
+      <span class="tag">PMBoK</span>
+      <span class="tag">Ciclo de Vida</span>
+      <span class="tag">Escopo</span>
+      <span class="tag">Cronograma</span>
+      <span class="tag">Custos</span>
+      <span class="tag">Riscos</span>
+      <span class="tag">Scrum</span>
+      <span class="tag tag-green">MS Project</span>
+    </div>
+    <div class="stats-row">
+      <div class="stat-box"><div class="num">9</div><div class="lbl">unidades</div></div>
+      <div class="stat-box"><div class="num">3</div><div class="lbl">práticas</div></div>
+      <div class="stat-box"><div class="num">8+</div><div class="lbl">exercícios</div></div>
+      <div class="stat-box"><div class="num">3</div><div class="lbl">trabalhos</div></div>
+      <div class="stat-box"><div class="num">10</div><div class="lbl">áreas PMBOK</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- VISÃO GERAL PMBOK -->
+<section class="section" id="pmbok">
+  <div class="container">
+    <p class="section-title">00 / visão geral</p>
+    <h2>Áreas de Conhecimento do PMBOK</h2>
+    <p style="font-size:0.88rem;color:var(--muted);margin-bottom:1rem;">A disciplina cobre as 10 áreas de conhecimento do Guia PMBOK, com ênfase nos domínios de planejamento e controle.</p>
+    <div class="pmbok-areas">
+      <div class="area-pill"><div class="area-dot" style="background:#00c2ff"></div>Integração</div>
+      <div class="area-pill"><div class="area-dot" style="background:#00c2ff"></div>Escopo</div>
+      <div class="area-pill"><div class="area-dot" style="background:#7c3aed"></div>Cronograma</div>
+      <div class="area-pill"><div class="area-dot" style="background:#7c3aed"></div>Custos</div>
+      <div class="area-pill"><div class="area-dot" style="background:#10b981"></div>Qualidade</div>
+      <div class="area-pill"><div class="area-dot" style="background:#10b981"></div>Recursos</div>
+      <div class="area-pill"><div class="area-dot" style="background:#f59e0b"></div>Comunicações</div>
+      <div class="area-pill"><div class="area-dot" style="background:#f59e0b"></div>Riscos</div>
+      <div class="area-pill"><div class="area-dot" style="background:#ef4444"></div>Aquisições</div>
+      <div class="area-pill"><div class="area-dot" style="background:#ef4444"></div>Partes Interessadas</div>
+    </div>
+  </div>
+</section>
+
+<!-- UNIDADES -->
+<section class="section" id="unidades">
+  <div class="container">
+    <p class="section-title">01 / conteúdo</p>
+    <h2>Unidades Didáticas</h2>
+    <div class="unidades-grid">
+
+      <div class="unidade-card">
+        <span class="u-num">UNIDADE 01</span>
+        <div class="u-title">Conceitos Fundamentais</div>
+        <div class="u-topics">O que é um projeto · Projeto vs. Operações · Gerente de Projetos · Organizações e Projetos · Introdução ao PMBoK</div>
+        <div class="u-footer">
+          <div style="display:flex;gap:0.4rem;">
+            <span class="u-badge badge-slides">slides</span>
+            <span class="u-badge badge-quiz">quiz</span>
+          </div>
+          <a class="u-link" href="gestao_projetos_aulas/unidade1.html">Acessar →</a>
+        </div>
+      </div>
+
+      <div class="unidade-card">
+        <span class="u-num">UNIDADE 02</span>
+        <div class="u-title">Ciclo de Vida de Projetos</div>
+        <div class="u-topics">Fases do projeto · Grupos de processos · Iniciação, Planejamento, Execução, M&amp;C, Encerramento · Interações</div>
+        <div class="u-footer">
+          <div style="display:flex;gap:0.4rem;">
+            <span class="u-badge badge-slides">slides</span>
+            <span class="u-badge badge-quiz">quiz</span>
+          </div>
+          <a class="u-link" href="gestao_projetos_aulas/unidade2.html">Acessar →</a>
+        </div>
+      </div>
+
+      <div class="unidade-card">
+        <span class="u-num">UNIDADE 03</span>
+        <div class="u-title">Artefatos Básicos de Gestão</div>
+        <div class="u-topics">TAP · EAP · Plano de Gerenciamento · Cronograma · Gráfico de Gantt · MS Project (introdução)</div>
+        <div class="u-footer">
+          <div style="display:flex;gap:0.4rem;">
+            <span class="u-badge badge-slides">slides</span>
+            <span class="u-badge badge-quiz">quiz</span>
+          </div>
+          <a class="u-link" href="gestao_projetos_aulas/unidade3.html">Acessar →</a>
+        </div>
+      </div>
+
+      <div class="unidade-card">
+        <span class="u-num">UNIDADE 04</span>
+        <div class="u-title">Gestão Integrada e do Escopo</div>
+        <div class="u-topics">TAP detalhado · Plano de GP · Controle integrado de mudanças · Coletar requisitos · Criar EAP · Dicionário da EAP</div>
+        <div class="u-footer">
+          <div style="display:flex;gap:0.4rem;">
+            <span class="u-badge badge-slides">slides</span>
+            <span class="u-badge badge-quiz">quiz</span>
+          </div>
+          <a class="u-link" href="gestao_projetos_aulas/unidade4.html">Acessar →</a>
+        </div>
+      </div>
+
+      <div class="unidade-card">
+        <span class="u-num">UNIDADE 05</span>
+        <div class="u-title">Gestão do Cronograma</div>
+        <div class="u-topics">Definir atividades · Sequenciar · Estimar duração · Desenvolver cronograma · Caminho crítico (CPM) · EAP + MS Project</div>
+        <div class="u-footer">
+          <div style="display:flex;gap:0.4rem;">
+            <span class="u-badge badge-slides">slides</span>
+            <span class="u-badge badge-quiz">quiz</span>
+          </div>
+          <a class="u-link" href="gestao_projetos_aulas/unidade5.html">Acessar →</a>
+        </div>
+      </div>
+
+      <div class="unidade-card">
+        <span class="u-num">UNIDADE 06</span>
+        <div class="u-title">Gestão dos Custos</div>
+        <div class="u-topics">Estimar custos · Determinar orçamento · Controlar custos · EVM (Earned Value Management) · Índices CPI e SPI</div>
+        <div class="u-footer">
+          <div style="display:flex;gap:0.4rem;">
+            <span class="u-badge badge-slides">slides</span>
+            <span class="u-badge badge-quiz">quiz</span>
+          </div>
+          <a class="u-link" href="gestao_projetos_aulas/unidade6.html">Acessar →</a>
+        </div>
+      </div>
+
+      <div class="unidade-card">
+        <span class="u-num">UNIDADE 07</span>
+        <div class="u-title">Gestão de Pessoas e Riscos</div>
+        <div class="u-topics">Mobilizar equipe · Desenvolver equipe · Liderança em projetos · Identificar riscos · Análise quali/quantitativa · Respostas aos riscos</div>
+        <div class="u-footer">
+          <div style="display:flex;gap:0.4rem;">
+            <span class="u-badge badge-slides">slides</span>
+            <span class="u-badge badge-quiz">quiz</span>
+          </div>
+          <a class="u-link" href="gestao_projetos_aulas/unidade7.html">Acessar →</a>
+        </div>
+      </div>
+
+      <div class="unidade-card">
+        <span class="u-num">UNIDADE 08</span>
+        <div class="u-title">Qualidade, Aquisições, Comunicações e Partes Interessadas</div>
+        <div class="u-topics">Planejar qualidade · Gerenciar comunicações · Conduzir aquisições · Identificar partes interessadas · Registro de stakeholders</div>
+        <div class="u-footer">
+          <div style="display:flex;gap:0.4rem;">
+            <span class="u-badge badge-slides">slides</span>
+            <span class="u-badge badge-quiz">quiz</span>
+          </div>
+          <a class="u-link" href="gestao_projetos_aulas/unidade8.html">Acessar →</a>
+        </div>
+      </div>
+
+      <div class="unidade-card" style="border-color:rgba(124,58,237,0.4);">
+        <span class="u-num">UNIDADE 09</span>
+        <div class="u-title">Métodos Ágeis: Scrum</div>
+        <div class="u-topics">Manifesto Ágil · Framework Scrum · Papéis · Eventos (Sprint, Planning, Daily, Review, Retro) · Artefatos · Ágil vs. Cascata</div>
+        <div class="u-footer">
+          <div style="display:flex;gap:0.4rem;">
+            <span class="u-badge badge-slides">slides</span>
+            <span class="u-badge badge-quiz">quiz</span>
+          </div>
+          <a class="u-link" href="gestao_projetos_aulas/unidade9.html">Acessar →</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- EXERCICIOS -->
+<section class="section" id="exercicios">
+  <div class="container">
+    <p class="section-title">02 / exercícios</p>
+    <h2>Exercícios e Práticas</h2>
+    <div class="ex-list">
+
+      <div class="ex-item">
+        <div class="ex-left">
+          <span class="ex-num">01</span>
+          <div>
+            <div class="ex-name">Prática MS Project — Protótipo I</div>
+            <div class="ex-desc">Criar cronograma sequencial com EAP, predecessoras e duração</div>
+          </div>
+        </div>
+        <div class="ex-links">
+          <a class="btn btn-prat" href="gestao_projetos_aulas/pratica1.html">Enunciado</a>
+          <a class="btn btn-form" href="https://forms.gle/LyVMtqtJekTX6CJw7" target="_blank">Formulário</a>
+        </div>
+      </div>
+
+      <div class="ex-item">
+        <div class="ex-left">
+          <span class="ex-num">02</span>
+          <div>
+            <div class="ex-name">Form — Conceitos Fundamentais</div>
+            <div class="ex-desc">Avaliação dos conceitos iniciais de gestão de projetos</div>
+          </div>
+        </div>
+        <div class="ex-links">
+          <a class="btn btn-form" href="https://forms.gle/o837NnA29qcVmz796" target="_blank">Formulário</a>
+          <a class="btn btn-sol" href="gestao_projetos_aulas/Form_conceitos_iniciais.pdf" target="_blank">Solução</a>
+        </div>
+      </div>
+
+      <div class="ex-item">
+        <div class="ex-left">
+          <span class="ex-num">03</span>
+          <div>
+            <div class="ex-name">Form — Ciclo de Vida e Processos</div>
+            <div class="ex-desc">Fases do projeto e grupos de processos do PMBOK</div>
+          </div>
+        </div>
+        <div class="ex-links">
+          <a class="btn btn-form" href="https://forms.gle/xryaYDTNHqzEX9a47" target="_blank">Formulário</a>
+          <a class="btn btn-sol" href="gestao_projetos_aulas/Form_ciclo_de_vida.pdf" target="_blank">Solução</a>
+        </div>
+      </div>
+
+      <div class="ex-item">
+        <div class="ex-left">
+          <span class="ex-num">04</span>
+          <div>
+            <div class="ex-name">Prática MS Project — Protótipo II</div>
+            <div class="ex-desc">Tarefas simultâneas, marco, kickoff e gráfico de Gantt</div>
+          </div>
+        </div>
+        <div class="ex-links">
+          <a class="btn btn-prat" href="gestao_projetos_aulas/pratica2.html">Enunciado</a>
+        </div>
+      </div>
+
+      <div class="ex-item">
+        <div class="ex-left">
+          <span class="ex-num">05</span>
+          <div>
+            <div class="ex-name">Prática MS Project — Protótipo III</div>
+            <div class="ex-desc">Alocação de recursos e planilha de recursos</div>
+          </div>
+        </div>
+        <div class="ex-links">
+          <a class="btn btn-prat" href="gestao_projetos_aulas/pratica3.html">Enunciado</a>
+        </div>
+      </div>
+
+      <div class="ex-item">
+        <div class="ex-left">
+          <span class="ex-num">06</span>
+          <div>
+            <div class="ex-name">Form — Gestão da Integração</div>
+            <div class="ex-desc">TAP, plano de gerenciamento e controle integrado de mudanças</div>
+          </div>
+        </div>
+        <div class="ex-links">
+          <a class="btn btn-form" href="https://forms.gle/HUC4BxwVMno2wAhp8" target="_blank">Formulário</a>
+          <a class="btn btn-sol" href="gestao_projetos_aulas/Form_integracao.pdf" target="_blank">Solução</a>
+        </div>
+      </div>
+
+      <div class="ex-item">
+        <div class="ex-left">
+          <span class="ex-num">07</span>
+          <div>
+            <div class="ex-name">Form — Gestão do Escopo</div>
+            <div class="ex-desc">EAP, coleta de requisitos e dicionário</div>
+          </div>
+        </div>
+        <div class="ex-links">
+          <a class="btn btn-form" href="https://forms.gle/KoYKn6p4CHtsnPZU9" target="_blank">Formulário</a>
+          <a class="btn btn-sol" href="gestao_projetos_aulas/Form_escopo.pdf" target="_blank">Solução</a>
+        </div>
+      </div>
+
+      <div class="ex-item">
+        <div class="ex-left">
+          <span class="ex-num">08</span>
+          <div>
+            <div class="ex-name">Form — Gestão do Tempo</div>
+            <div class="ex-desc">Cronograma, caminho crítico e sequenciamento</div>
+          </div>
+        </div>
+        <div class="ex-links">
+          <a class="btn btn-form" href="https://forms.gle/QqtNozQphBGkPzK48" target="_blank">Formulário</a>
+          <a class="btn btn-sol" href="gestao_projetos_aulas/form_gestao_tempo.pdf" target="_blank">Solução</a>
+        </div>
+      </div>
+
+      <div class="ex-item">
+        <div class="ex-left">
+          <span class="ex-num">09</span>
+          <div>
+            <div class="ex-name">Form — Gestão de Custos</div>
+            <div class="ex-desc">Orçamento, EVM e controle de custos</div>
+          </div>
+        </div>
+        <div class="ex-links">
+          <a class="btn btn-sol" href="gestao_projetos_aulas/pjto_gestao_custos.pdf" target="_blank">Solução</a>
+        </div>
+      </div>
+
+      <div class="ex-item">
+        <div class="ex-left">
+          <span class="ex-num">10</span>
+          <div>
+            <div class="ex-name">Form — Gestão de Pessoas</div>
+            <div class="ex-desc">Equipe do projeto, mobilização e desenvolvimento</div>
+          </div>
+        </div>
+        <div class="ex-links">
+          <a class="btn btn-sol" href="gestao_projetos_aulas/pjto_gestao_rh.pdf" target="_blank">Solução</a>
+        </div>
+      </div>
+
+      <div class="ex-item">
+        <div class="ex-left">
+          <span class="ex-num">11</span>
+          <div>
+            <div class="ex-name">Form — Gestão de Riscos</div>
+            <div class="ex-desc">Identificação, análise qualitativa e resposta a riscos</div>
+          </div>
+        </div>
+        <div class="ex-links">
+          <a class="btn btn-sol" href="gestao_projetos_aulas/pjto_gestao_riscos.pdf" target="_blank">Solução</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- TRABALHOS -->
+<section class="section" id="trabalhos">
+  <div class="container">
+    <p class="section-title">03 / trabalhos</p>
+    <h2>Trabalhos Avaliativos</h2>
+    <div class="trab-grid">
+      <div class="trab-card">
+        <div class="trab-num">TRABALHO 01</div>
+        <div class="trab-title">Artefatos Básicos</div>
+        <div class="trab-desc">Elaboração do TAP, EAP e plano de gerenciamento para um projeto escolhido pelo grupo.</div>
+        <a class="btn btn-sol" href="gestao_projetos_aulas/pjto_trabalho_1.pdf" target="_blank">Ver enunciado</a>
+      </div>
+      <div class="trab-card">
+        <div class="trab-num">TRABALHO 02 — AP1</div>
+        <div class="trab-title">Gestão do Escopo</div>
+        <div class="trab-desc">Detalhamento do escopo do projeto com WBS completa, dicionário da EAP e declaração de escopo.</div>
+        <a class="btn btn-sol" href="gestao_projetos_aulas/pjto_trabalho_2_AP1.pdf" target="_blank">Ver enunciado</a>
+      </div>
+      <div class="trab-card">
+        <div class="trab-num">TRABALHO 03</div>
+        <div class="trab-title">Gestão do Tempo e Custos</div>
+        <div class="trab-desc">Cronograma no MS Project com caminho crítico, gráfico de Gantt e estimativa de custos com orçamento base.</div>
+        <a class="btn btn-sol" href="gestao_projetos_aulas/pjto_trabalho_3.pdf" target="_blank">Ver enunciado</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJETO FINAL -->
+<section class="section" id="projeto-final">
+  <div class="container">
+    <p class="section-title">04 / projeto final</p>
+    <div class="projeto-final">
+      <div class="pf-label">🏗️ Projeto Final da Disciplina</div>
+      <div class="pf-title">Ponte de Palitos</div>
+      <div class="pf-desc">Projeto integrador: os alunos gerenciam um projeto real de construção de uma ponte de palitos de madeira, aplicando todos os conceitos da disciplina — planejamento, cronograma, orçamento, riscos e controle. O desempenho da ponte (carga suportada, peso próprio) é avaliado.</div>
+    </div>
+  </div>
+</section>
+
+<!-- AVALIAÇÃO -->
+<section class="section" id="avaliacao">
+  <div class="container">
+    <p class="section-title">05 / avaliação</p>
+    <h2>Sistema de Avaliação</h2>
+    <div class="aval-grid">
+      <div class="aval-card">
+        <div class="aval-pct">AP1</div>
+        <div class="aval-name">Avaliação Parcial 1</div>
+        <div class="aval-desc">Prova + Trabalho 2 (escopo)</div>
+      </div>
+      <div class="aval-card">
+        <div class="aval-pct">AP2</div>
+        <div class="aval-name">Avaliação Parcial 2</div>
+        <div class="aval-desc">Prova + Trabalho 3 (tempo e custos)</div>
+      </div>
+      <div class="aval-card">
+        <div class="aval-pct">PF</div>
+        <div class="aval-name">Projeto Final</div>
+        <div class="aval-desc">Ponte de Palitos — Avaliação prática e relatório</div>
+      </div>
+    </div>
+    <p style="font-size:0.82rem;color:var(--muted);margin-top:1.25rem;">
+      Veja o <a href="gestao_projetos_aulas/pjto_grid.pdf" target="_blank">grid completo da disciplina</a> para datas, pesos e critérios detalhados.
+    </p>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <p>© 2026 · Prof. Clayton J A Silva · Ibmec RJ · Gestão de Projetos</p>
+    <p><a href="https://github.com/claytonjasilva/claytonjasilva.github.io" target="_blank">github.com/claytonjasilva</a></p>
+  </div>
+</footer>
+
+</body>
+</html>
