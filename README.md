@@ -27,6 +27,7 @@ Material de apoio às disciplinas de Engenharia da Computação do Ibmec RJ, inc
 - `siscom.md` — Sistemas de Comunicações Móveis
 - `gestao_processos.md` — Gestão de Processos
 - `regulatelecom.md` — Aspectos Regulatórios de Telecom
+- `gestao_projetos.html` — **Gestão de Projetos** *(novo — Rev 2026.1)*
 
 **Conteúdo das aulas — subpastas**
 - `arq_aulas/` — Aulas de Arquitetura de Computadores
@@ -35,6 +36,9 @@ Material de apoio às disciplinas de Engenharia da Computação do Ibmec RJ, inc
 - `compiladores/` — Aulas de Compiladores
 - `siscom_aulas/` — Aulas de Sistemas de Comunicações Móveis
 - `gestao_processos_aulas/` — Aulas de Gestão de Processos
+- `gestao_projetos_aulas/` — **Aulas de Gestão de Projetos** *(novo)*
+  - `unidade1.html` … `unidade9.html` — 9 unidades didáticas com quizzes
+  - `pratica1.html` … `pratica3.html` — 3 práticas MS Project
 - `progArduino_aulas/` — Aulas de programação Arduino
 - `progC_aulas/` — Aulas de programação em C
 - `prog_aulas/` — Aulas gerais de programação
@@ -64,6 +68,7 @@ Material de apoio às disciplinas de Engenharia da Computação do Ibmec RJ, inc
 | Sistemas de Comunicações Móveis | Rev 2024.2 | [siscom.md](siscom.md) |
 | Gestão de Processos | Rev 2025.1 | [gestao_processos.md](gestao_processos.md) |
 | Aspectos Regulatórios de Telecom | — | [regulatelecom.md](regulatelecom.md) |
+| **Gestão de Projetos** | **Rev 2026.1** | [**gestao_projetos.html**](gestao_projetos.html) |
 
 ---
 

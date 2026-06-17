@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Unidade 3 — Artefatos Básicos | Gestão de Projetos</title>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,600;1,300&display=swap" rel="stylesheet">
+  <style>
+    :root{--bg:#0a0e17;--surface:#111827;--border:#1e2d40;--accent:#00c2ff;--accent2:#7c3aed;--green:#10b981;--yellow:#f59e0b;--red:#ef4444;--text:#e2e8f0;--muted:#64748b;--tag-bg:#0f172a;--font-mono:'IBM Plex Mono',monospace;--font-sans:'IBM Plex Sans',sans-serif;}
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}html{scroll-behavior:smooth;}
+    body{background:var(--bg);color:var(--text);font-family:var(--font-sans);font-size:16px;line-height:1.7;min-height:100vh;}
+    a{color:var(--accent);text-decoration:none;}a:hover{text-decoration:underline;}
+    .container{max-width:900px;margin:0 auto;padding:0 2rem;}
+    nav{position:sticky;top:0;z-index:100;background:rgba(10,14,23,.92);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);padding:.85rem 0;}
+    nav .container{display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap;}
+    .nav-brand{font-family:var(--font-mono);font-size:.8rem;color:var(--accent);}
+    .nav-back{font-family:var(--font-mono);font-size:.78rem;color:var(--muted);transition:color .2s;}.nav-back:hover{color:var(--text);text-decoration:none;}
+    .nav-unit{font-family:var(--font-mono);font-size:.72rem;color:var(--muted);}
+    .hero{padding:4rem 0 2.5rem;position:relative;overflow:hidden;}
+    .hero::before{content:'';position:absolute;inset:0;background-image:linear-gradient(var(--border) 1px,transparent 1px),linear-gradient(90deg,var(--border) 1px,transparent 1px);background-size:40px 40px;opacity:.25;mask-image:radial-gradient(ellipse 80% 60% at 50% 0%,black 40%,transparent 100%);}
+    .hero-eyebrow{font-family:var(--font-mono);font-size:.72rem;color:var(--accent);letter-spacing:.15em;text-transform:uppercase;margin-bottom:.75rem;display:flex;align-items:center;gap:.6rem;}
+    .hero-eyebrow::before{content:'';display:inline-block;width:1.5rem;height:1px;background:var(--accent);}
+    h1{font-size:clamp(1.6rem,3.5vw,2.6rem);font-weight:300;line-height:1.1;letter-spacing:-.02em;margin-bottom:.6rem;}
+    h1 strong{font-weight:600;color:var(--accent);}
+    .hero-desc{font-size:.9rem;color:var(--muted);max-width:620px;margin-bottom:1.5rem;}
+    .hero-tags{display:flex;flex-wrap:wrap;gap:.4rem;}
+    .tag{font-family:var(--font-mono);font-size:.7rem;color:var(--accent2);background:rgba(124,58,237,.1);border:1px solid rgba(124,58,237,.25);border-radius:4px;padding:.2rem .55rem;}
+    .section{padding:2.5rem 0;border-top:1px solid var(--border);}
+    .section-label{font-family:var(--font-mono);font-size:.7rem;color:var(--accent);letter-spacing:.15em;text-transform:uppercase;margin-bottom:1.25rem;display:flex;align-items:center;gap:.6rem;}
+    .section-label::after{content:'';flex:1;height:1px;background:var(--border);}
+    h2{font-size:1.15rem;font-weight:600;margin-bottom:1rem;}h3{font-size:.95rem;font-weight:600;margin-bottom:.6rem;color:var(--accent);}
+    .content-card{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:1.5rem;margin-bottom:1rem;}
+    .content-card p{font-size:.88rem;color:var(--muted);line-height:1.7;}.content-card p+p{margin-top:.7rem;}
+    .highlight{border-left:3px solid var(--accent);padding-left:1rem;margin:1rem 0;}.highlight p{color:var(--text)!important;}
+    .def-box{background:var(--tag-bg);border:1px solid var(--accent);border-radius:8px;padding:1.25rem 1.5rem;margin:1rem 0;}
+    .def-label{font-family:var(--font-mono);font-size:.68rem;color:var(--accent);letter-spacing:.1em;text-transform:uppercase;margin-bottom:.4rem;}
+    .def-text{font-size:.95rem;font-weight:400;line-height:1.6;}
+    .diagram-wrap{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:1.25rem;margin:1rem 0;overflow-x:auto;}
+    .diagram-wrap svg{display:block;margin:0 auto;}
+    .feat-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:.75rem;margin:1rem 0;}
+    .feat-card{background:var(--surface);border:1px solid var(--border);border-radius:7px;padding:1.1rem 1.25rem;}
+    .feat-icon{font-size:1.3rem;margin-bottom:.4rem;}
+    .feat-title{font-size:.9rem;font-weight:600;margin-bottom:.3rem;}.feat-desc{font-size:.8rem;color:var(--muted);line-height:1.5;}
+    /* TAP fields */
+    .tap-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:.5rem;margin:1rem 0;}
+    .tap-field{background:var(--tag-bg);border:1px solid var(--border);border-radius:5px;padding:.65rem .9rem;font-size:.8rem;}
+    .tap-label{font-family:var(--font-mono);font-size:.65rem;color:var(--accent);display:block;margin-bottom:.2rem;}
+    /* EAP tree */
+    .eap-tree{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:1.5rem;margin:1rem 0;}
+    /* Gantt miniature */
+    .gantt-mini{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:1.25rem;margin:1rem 0;overflow-x:auto;}
+    /* QUIZ */
+    .quiz-wrap{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:1.75rem;margin-top:1rem;}
+    .quiz-title{font-family:var(--font-mono);font-size:.8rem;color:var(--green);letter-spacing:.1em;text-transform:uppercase;margin-bottom:1.25rem;}
+    .quiz-q{margin-bottom:1.5rem;}.q-text{font-size:.9rem;font-weight:600;margin-bottom:.75rem;}.q-num{font-family:var(--font-mono);font-size:.7rem;color:var(--muted);margin-bottom:.25rem;}
+    .options{display:flex;flex-direction:column;gap:.4rem;}
+    .opt{display:flex;align-items:flex-start;gap:.6rem;cursor:pointer;padding:.55rem .8rem;border-radius:6px;border:1px solid var(--border);transition:border-color .15s,background .15s;font-size:.85rem;}
+    .opt:hover{border-color:var(--accent);background:rgba(0,194,255,.05);}
+    .opt input{margin-top:.15rem;accent-color:var(--accent);cursor:pointer;flex-shrink:0;}
+    .opt.correct{border-color:var(--green)!important;background:rgba(16,185,129,.08);}
+    .opt.wrong{border-color:var(--red)!important;background:rgba(239,68,68,.08);}
+    .quiz-btn{font-family:var(--font-mono);font-size:.78rem;padding:.55rem 1.25rem;background:transparent;border:1px solid var(--accent);color:var(--accent);border-radius:5px;cursor:pointer;transition:background .15s;}
+    .quiz-btn:hover{background:rgba(0,194,255,.08);}.quiz-btn:disabled{opacity:.5;cursor:not-allowed;}
+    .quiz-result{margin-top:1.25rem;padding:1rem 1.25rem;border-radius:8px;font-size:.88rem;display:none;}.quiz-result.show{display:block;}
+    .quiz-result.pass{background:rgba(16,185,129,.1);border:1px solid rgba(16,185,129,.3);color:var(--green);}
+    .quiz-result.fail{background:rgba(239,68,68,.08);border:1px solid rgba(239,68,68,.25);color:#fca5a5;}
+    footer{border-top:1px solid var(--border);padding:1.75rem 0;margin-top:2rem;}
+    footer .container{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;}
+    footer p{font-size:.8rem;color:var(--muted);font-family:var(--font-mono);}
+    .nav-bottom{display:flex;justify-content:space-between;align-items:center;padding:1.5rem 0;border-top:1px solid var(--border);}
+    .nav-pg{font-family:var(--font-mono);font-size:.78rem;color:var(--accent);}
+  </style>
+</head>
+<body>
+<nav>
+  <div class="container">
+    <span class="nav-brand"><a href="../gestao_projetos.html" style="color:inherit;text-decoration:none;">Gestão de Projetos</a></span>
+    <div style="display:flex;align-items:center;gap:1.5rem;"><span class="nav-unit">UNIDADE 03 / 09</span><a class="nav-back" href="../gestao_projetos.html">← índice</a></div>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="container">
+    <p class="hero-eyebrow">Unidade 03</p>
+    <h1>Artefatos Básicos<br><strong>de Gestão</strong></h1>
+    <p class="hero-desc">TAP, EAP, Plano de Gerenciamento, Cronograma e Gráfico de Gantt — os documentos fundamentais de qualquer projeto.</p>
+    <div class="hero-tags">
+      <span class="tag">TAP</span><span class="tag">EAP / WBS</span><span class="tag">Gráfico de Gantt</span><span class="tag">Plano de GP</span><span class="tag">MS Project</span>
+    </div>
+  </div>
+</section>
+
+<!-- TAP -->
+<section class="section" id="tap">
+  <div class="container">
+    <p class="section-label">3.1 / tap</p>
+    <h2>TAP — Termo de Abertura do Projeto</h2>
+    <div class="def-box">
+      <div class="def-label">Definição</div>
+      <div class="def-text">Documento emitido pelo <strong>Sponsor</strong> que <strong>autoriza formalmente o projeto</strong> e concede ao GP a autoridade para aplicar os recursos organizacionais.</div>
+    </div>
+    <div class="content-card"><p>O TAP é o <em>certidão de nascimento</em> do projeto. Sem ele, o projeto não existe oficialmente na organização.</p></div>
+    <h3>Componentes típicos do TAP</h3>
+    <div class="tap-grid">
+      <div class="tap-field"><span class="tap-label">Propósito / Justificativa</span>Por que o projeto existe?</div>
+      <div class="tap-field"><span class="tap-label">Objetivos mensuráveis</span>O que será alcançado?</div>
+      <div class="tap-field"><span class="tap-label">Requisitos alto nível</span>O que deve ser entregue?</div>
+      <div class="tap-field"><span class="tap-label">Premissas e restrições</span>O que assumimos? Quais limites?</div>
+      <div class="tap-field"><span class="tap-label">Riscos iniciais</span>Principais ameaças identificadas</div>
+      <div class="tap-field"><span class="tap-label">Cronograma macro</span>Datas de marcos importantes</div>
+      <div class="tap-field"><span class="tap-label">Orçamento inicial</span>Estimativa preliminar de custos</div>
+      <div class="tap-field"><span class="tap-label">GP designado</span>Nome e nível de autoridade</div>
+      <div class="tap-field"><span class="tap-label">Sponsor</span>Patrocinador e assinatura</div>
+    </div>
+  </div>
+</section>
+
+<!-- EAP -->
+<section class="section" id="eap">
+  <div class="container">
+    <p class="section-label">3.2 / eap</p>
+    <h2>EAP — Estrutura Analítica do Projeto</h2>
+    <div class="def-box">
+      <div class="def-label">Definição</div>
+      <div class="def-text">A EAP (ou WBS — Work Breakdown Structure) é uma <strong>decomposição hierárquica do escopo total</strong> do projeto em pacotes de trabalho menores e gerenciáveis.</div>
+    </div>
+    <div class="content-card">
+      <p>A EAP decompõe o <em>produto</em>, não o processo. Cada nível inferior representa uma definição crescentemente detalhada do trabalho. O nível mais baixo é o <strong>Pacote de Trabalho</strong>.</p>
+    </div>
+
+    <!-- EAP visual -->
+    <div class="diagram-wrap">
+      <svg viewBox="0 0 700 250" width="100%" xmlns="http://www.w3.org/2000/svg" style="max-width:700px;">
+        <!-- Raiz -->
+        <rect x="260" y="10" width="180" height="36" rx="5" fill="#0f172a" stroke="#00c2ff" stroke-width="1.5"/>
+        <text x="350" y="28" fill="#00c2ff" font-size="10" text-anchor="middle" font-family="sans-serif" font-weight="600">PROJETO</text>
+        <text x="350" y="40" fill="#64748b" font-size="8" text-anchor="middle" font-family="monospace">Nível 1</text>
+        <!-- Linha raiz → nível 2 -->
+        <line x1="350" y1="46" x2="350" y2="60" stroke="#1e2d40"/>
+        <line x1="130" y1="60" x2="570" y2="60" stroke="#1e2d40"/>
+        <!-- Nível 2 -->
+        <line x1="130" y1="60" x2="130" y2="75"/><rect x="60" y="75" width="140" height="34" rx="4" fill="#0f172a" stroke="#7c3aed"/><text x="130" y="92" fill="#7c3aed" font-size="9" text-anchor="middle" font-family="sans-serif">Entregas 1</text><text x="130" y="104" fill="#64748b" font-size="7" text-anchor="middle" font-family="monospace">Nível 2</text>
+        <line x1="350" y1="60" x2="350" y2="75"/><rect x="280" y="75" width="140" height="34" rx="4" fill="#0f172a" stroke="#7c3aed"/><text x="350" y="92" fill="#7c3aed" font-size="9" text-anchor="middle" font-family="sans-serif">Entregas 2</text><text x="350" y="104" fill="#64748b" font-size="7" text-anchor="middle" font-family="monospace">Nível 2</text>
+        <line x1="570" y1="60" x2="570" y2="75"/><rect x="500" y="75" width="140" height="34" rx="4" fill="#0f172a" stroke="#7c3aed"/><text x="570" y="92" fill="#7c3aed" font-size="9" text-anchor="middle" font-family="sans-serif">Entregas 3</text><text x="570" y="104" fill="#64748b" font-size="7" text-anchor="middle" font-family="monospace">Nível 2</text>
+        <!-- Nível 3 — pacotes de trabalho -->
+        <line x1="130" y1="109" x2="130" y2="123"/><line x1="75" y1="123" x2="185" y2="123"/>
+        <line x1="75" y1="123" x2="75" y2="138"/><rect x="25" y="138" width="100" height="28" rx="3" fill="#0f172a" stroke="#10b981"/>
+        <text x="75" y="150" fill="#10b981" font-size="8" text-anchor="middle" font-family="sans-serif">Pacote 1.1</text>
+        <text x="75" y="162" fill="#64748b" font-size="7" text-anchor="middle" font-family="monospace">Nível 3</text>
+        <line x1="185" y1="123" x2="185" y2="138"/><rect x="135" y="138" width="100" height="28" rx="3" fill="#0f172a" stroke="#10b981"/>
+        <text x="185" y="150" fill="#10b981" font-size="8" text-anchor="middle" font-family="sans-serif">Pacote 1.2</text>
+        <text x="185" y="162" fill="#64748b" font-size="7" text-anchor="middle" font-family="monospace">Nível 3</text>
+        <line x1="350" y1="109" x2="350" y2="138"/><rect x="300" y="138" width="100" height="28" rx="3" fill="#0f172a" stroke="#10b981"/>
+        <text x="350" y="150" fill="#10b981" font-size="8" text-anchor="middle" font-family="sans-serif">Pacote 2.1</text>
+        <text x="350" y="162" fill="#64748b" font-size="7" text-anchor="middle" font-family="monospace">Nível 3</text>
+        <line x1="570" y1="109" x2="570" y2="123"/><line x1="520" y1="123" x2="620" y2="123"/>
+        <line x1="520" y1="123" x2="520" y2="138"/><rect x="470" y="138" width="100" height="28" rx="3" fill="#0f172a" stroke="#10b981"/>
+        <text x="520" y="150" fill="#10b981" font-size="8" text-anchor="middle" font-family="sans-serif">Pacote 3.1</text>
+        <text x="520" y="162" fill="#64748b" font-size="7" text-anchor="middle" font-family="monospace">Nível 3</text>
+        <line x1="620" y1="123" x2="620" y2="138"/><rect x="570" y="138" width="100" height="28" rx="3" fill="#0f172a" stroke="#10b981"/>
+        <text x="620" y="150" fill="#10b981" font-size="8" text-anchor="middle" font-family="sans-serif">Pacote 3.2</text>
+        <text x="620" y="162" fill="#64748b" font-size="7" text-anchor="middle" font-family="monospace">Nível 3</text>
+        <!-- Legenda -->
+        <rect x="25" y="200" width="12" height="12" rx="2" fill="none" stroke="#00c2ff"/><text x="42" y="211" fill="#64748b" font-size="8" font-family="sans-serif">Projeto (Nível 1)</text>
+        <rect x="155" y="200" width="12" height="12" rx="2" fill="none" stroke="#7c3aed"/><text x="172" y="211" fill="#64748b" font-size="8" font-family="sans-serif">Entregas (Nível 2)</text>
+        <rect x="290" y="200" width="12" height="12" rx="2" fill="none" stroke="#10b981"/><text x="307" y="211" fill="#64748b" font-size="8" font-family="sans-serif">Pacotes de Trabalho (Nível 3+)</text>
+        <text x="25" y="235" fill="#64748b" font-size="8" font-family="monospace">⚡ Regra 100%: a EAP deve capturar 100% do escopo, sem mais, sem menos.</text>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<!-- GANTT -->
+<section class="section" id="gantt">
+  <div class="container">
+    <p class="section-label">3.3 / gráfico de gantt</p>
+    <h2>Gráfico de Gantt</h2>
+    <div class="content-card">
+      <p>O gráfico de Gantt representa visualmente o cronograma do projeto: as tarefas nas linhas, o tempo nas colunas e barras horizontais indicando duração. Criado por Henry Gantt no início do século XX, é a representação de cronograma mais usada em gestão de projetos.</p>
+    </div>
+    <!-- Gantt mini -->
+    <div class="gantt-mini">
+      <svg viewBox="0 0 680 200" width="100%" xmlns="http://www.w3.org/2000/svg" style="max-width:680px;">
+        <!-- Cabeçalho -->
+        <rect x="0" y="0" width="680" height="25" fill="#0f172a"/>
+        <text x="8" y="16" fill="#64748b" font-size="9" font-family="monospace">TAREFA</text>
+        <text x="160" y="16" fill="#64748b" font-size="9" font-family="monospace">Sem 1</text>
+        <text x="260" y="16" fill="#64748b" font-size="9" font-family="monospace">Sem 2</text>
+        <text x="360" y="16" fill="#64748b" font-size="9" font-family="monospace">Sem 3</text>
+        <text x="460" y="16" fill="#64748b" font-size="9" font-family="monospace">Sem 4</text>
+        <text x="560" y="16" fill="#64748b" font-size="9" font-family="monospace">Sem 5</text>
+        <!-- Grade vertical -->
+        <line x1="150" y1="0" x2="150" y2="200" stroke="#1e2d40"/><line x1="250" y1="0" x2="250" y2="200" stroke="#1e2d40"/><line x1="350" y1="0" x2="350" y2="200" stroke="#1e2d40"/><line x1="450" y1="0" x2="450" y2="200" stroke="#1e2d40"/><line x1="550" y1="0" x2="550" y2="200" stroke="#1e2d40"/><line x1="650" y1="0" x2="650" y2="200" stroke="#1e2d40"/>
+        <!-- Tarefas -->
+        <text x="8" y="47" fill="#e2e8f0" font-size="9" font-family="sans-serif">1. Est. Técnicos</text>
+        <rect x="150" y="33" width="200" height="16" rx="3" fill="#00c2ff" opacity=".8"/>
+        <text x="8" y="77" fill="#e2e8f0" font-size="9" font-family="sans-serif">1.1 Formular prob.</text>
+        <rect x="150" y="63" width="70" height="14" rx="2" fill="#00c2ff" opacity=".5"/>
+        <text x="8" y="107" fill="#e2e8f0" font-size="9" font-family="sans-serif">1.2 Analisar alts.</text>
+        <rect x="220" y="93" width="70" height="14" rx="2" fill="#00c2ff" opacity=".5"/>
+        <text x="8" y="137" fill="#e2e8f0" font-size="9" font-family="sans-serif">1.3 Decidir solução</text>
+        <rect x="290" y="123" width="60" height="14" rx="2" fill="#00c2ff" opacity=".5"/>
+        <text x="8" y="167" fill="#e2e8f0" font-size="9" font-family="sans-serif">2. Especif. Técnica</text>
+        <rect x="350" y="153" width="200" height="16" rx="3" fill="#7c3aed" opacity=".8"/>
+        <!-- Marco -->
+        <polygon points="550,153 558,165 542,165" fill="#f59e0b"/>
+        <text x="560" y="164" fill="#f59e0b" font-size="8" font-family="monospace">Marco</text>
+        <!-- Caminho crítico indicação -->
+        <text x="8" y="195" fill="#64748b" font-size="8" font-family="monospace">Barras com borda dupla = caminho crítico</text>
+      </svg>
+    </div>
+
+    <div class="feat-grid">
+      <div class="feat-card">
+        <div class="feat-icon">📊</div>
+        <div class="feat-title">Visualização temporal</div>
+        <div class="feat-desc">Mostra quando cada tarefa começa, termina e quanto dura. Facilita a comunicação com stakeholders.</div>
+      </div>
+      <div class="feat-card">
+        <div class="feat-icon">🔗</div>
+        <div class="feat-title">Dependências</div>
+        <div class="feat-desc">Permite visualizar o sequenciamento: FF (Fim-Início), II (Início-Início), FI (Fim-Fim).</div>
+      </div>
+      <div class="feat-card">
+        <div class="feat-icon">🏁</div>
+        <div class="feat-title">Marcos (Milestones)</div>
+        <div class="feat-desc">Eventos de duração zero que marcam pontos de controle importantes no projeto.</div>
+      </div>
+      <div class="feat-card">
+        <div class="feat-icon">🗺️</div>
+        <div class="feat-title">MS Project</div>
+        <div class="feat-desc">Ferramenta profissional que gera automaticamente o Gantt a partir das tarefas, durações e dependências cadastradas.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PLANO DE GERENCIAMENTO -->
+<section class="section" id="plano">
+  <div class="container">
+    <p class="section-label">3.4 / plano de gerenciamento</p>
+    <h2>Plano de Gerenciamento do Projeto</h2>
+    <div class="content-card">
+      <p>O Plano de GP é o documento que descreve <strong>como o projeto será executado, monitorado, controlado e encerrado</strong>. É composto pelos planos subsidiários de cada área de conhecimento.</p>
+    </div>
+    <div class="tap-grid">
+      <div class="tap-field"><span class="tap-label">Escopo</span>Como definir e controlar o escopo</div>
+      <div class="tap-field"><span class="tap-label">Cronograma</span>Metodologia e ferramentas de agendamento</div>
+      <div class="tap-field"><span class="tap-label">Custos</span>Como estimar, orçar e controlar custos</div>
+      <div class="tap-field"><span class="tap-label">Qualidade</span>Padrões e métricas de qualidade</div>
+      <div class="tap-field"><span class="tap-label">Recursos</span>Como adquirir e gerenciar a equipe</div>
+      <div class="tap-field"><span class="tap-label">Comunicações</span>Quem recebe o quê, quando e como</div>
+      <div class="tap-field"><span class="tap-label">Riscos</span>Como identificar, analisar e responder</div>
+      <div class="tap-field"><span class="tap-label">Aquisições</span>O que comprar e como contratar</div>
+    </div>
+  </div>
+</section>
+
+<!-- QUIZ -->
+<section class="section" id="quiz">
+  <div class="container">
+    <p class="section-label">3.5 / quiz</p>
+    <h2>Quiz Rápido — Unidade 3</h2>
+    <div class="quiz-wrap">
+      <div class="quiz-title">⚡ Teste seus conhecimentos — 5 questões</div>
+      <div class="quiz-q" id="q1"><div class="q-num">QUESTÃO 01</div><div class="q-text">O TAP (Termo de Abertura do Projeto) é emitido por quem?</div><div class="options"><label class="opt"><input type="radio" name="q1" value="a"> Pelo Gerente de Projetos.</label><label class="opt"><input type="radio" name="q1" value="b"> Pelo Sponsor (Patrocinador).</label><label class="opt"><input type="radio" name="q1" value="c"> Pela equipe técnica do projeto.</label><label class="opt"><input type="radio" name="q1" value="d"> Pelo cliente principal.</label></div></div>
+      <div class="quiz-q" id="q2"><div class="q-num">QUESTÃO 02</div><div class="q-text">A sigla WBS significa:</div><div class="options"><label class="opt"><input type="radio" name="q2" value="a"> Work Balance Sheet.</label><label class="opt"><input type="radio" name="q2" value="b"> Work Breakdown Structure — mesma coisa que EAP.</label><label class="opt"><input type="radio" name="q2" value="c"> Weekly Budget Summary.</label><label class="opt"><input type="radio" name="q2" value="d"> Workflow and Budget System.</label></div></div>
+      <div class="quiz-q" id="q3"><div class="q-num">QUESTÃO 03</div><div class="q-text">O nível mais baixo da EAP é chamado de:</div><div class="options"><label class="opt"><input type="radio" name="q3" value="a"> Atividade.</label><label class="opt"><input type="radio" name="q3" value="b"> Entregável.</label><label class="opt"><input type="radio" name="q3" value="c"> Pacote de Trabalho.</label><label class="opt"><input type="radio" name="q3" value="d"> Projeto.</label></div></div>
+      <div class="quiz-q" id="q4"><div class="q-num">QUESTÃO 04</div><div class="q-text">No Gráfico de Gantt, um <strong>marco (milestone)</strong> é representado por:</div><div class="options"><label class="opt"><input type="radio" name="q4" value="a"> Uma barra muito longa indicando tarefa complexa.</label><label class="opt"><input type="radio" name="q4" value="b"> Um evento com duração zero, indicando ponto de controle.</label><label class="opt"><input type="radio" name="q4" value="c"> Uma tarefa paralela a todas as outras.</label><label class="opt"><input type="radio" name="q4" value="d"> O fim de cada fase do ciclo de vida.</label></div></div>
+      <div class="quiz-q" id="q5"><div class="q-num">QUESTÃO 05</div><div class="q-text">O Plano de Gerenciamento do Projeto é composto por:</div><div class="options"><label class="opt"><input type="radio" name="q5" value="a"> Apenas o cronograma e o orçamento.</label><label class="opt"><input type="radio" name="q5" value="b"> Os planos subsidiários de cada área de conhecimento.</label><label class="opt"><input type="radio" name="q5" value="c"> O TAP e o registro de stakeholders.</label><label class="opt"><input type="radio" name="q5" value="d"> Somente a EAP e o dicionário da EAP.</label></div></div>
+      <button class="quiz-btn" onclick="checkQuiz()">Verificar respostas</button>
+      <div class="quiz-result" id="quiz-result"></div>
+    </div>
+  </div>
+</section>
+
+<div class="container"><div class="nav-bottom"><a class="nav-pg" href="unidade2.html">← Unidade 2</a><a class="nav-pg" href="unidade4.html">Unidade 4 — Integração e Escopo →</a></div></div>
+<footer><div class="container"><p>© 2026 · Prof. Clayton J A Silva · Ibmec RJ</p><p><a href="../gestao_projetos.html">← Gestão de Projetos</a></p></div></footer>
+<script>
+  const answers={q1:'b',q2:'b',q3:'c',q4:'b',q5:'b'};
+  function checkQuiz(){let score=0;Object.entries(answers).forEach(([q,c])=>{const s=document.querySelector(`input[name="${q}"]:checked`);const opts=document.querySelectorAll(`#${q} .opt`);opts.forEach(o=>o.classList.remove('correct','wrong'));if(s){const p=s.closest('.opt');if(s.value===c){p.classList.add('correct');score++;}else{p.classList.add('wrong');opts.forEach(o=>{if(o.querySelector('input').value===c)o.classList.add('correct');});}}else{opts.forEach(o=>{if(o.querySelector('input').value===c)o.classList.add('correct');});}});const res=document.getElementById('quiz-result');res.className='quiz-result show '+(score>=4?'pass':'fail');res.innerHTML=score>=4?`✅ Ótimo! Você acertou <strong>${score}/5</strong>.`:`❌ Você acertou <strong>${score}/5</strong>. Revise os artefatos.`;document.querySelector('.quiz-btn').disabled=true;}
+</script>
+</body>
+</html>

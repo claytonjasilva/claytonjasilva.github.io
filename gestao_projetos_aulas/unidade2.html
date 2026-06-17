@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Unidade 2 — Ciclo de Vida | Gestão de Projetos</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,600;1,300&display=swap" rel="stylesheet">
+  <style>
+    :root{--bg:#0a0e17;--surface:#111827;--border:#1e2d40;--accent:#00c2ff;--accent2:#7c3aed;--green:#10b981;--yellow:#f59e0b;--red:#ef4444;--text:#e2e8f0;--muted:#64748b;--tag-bg:#0f172a;--font-mono:'IBM Plex Mono',monospace;--font-sans:'IBM Plex Sans',sans-serif;}
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+    html{scroll-behavior:smooth;}
+    body{background:var(--bg);color:var(--text);font-family:var(--font-sans);font-size:16px;line-height:1.7;min-height:100vh;}
+    a{color:var(--accent);text-decoration:none;} a:hover{text-decoration:underline;}
+    .container{max-width:900px;margin:0 auto;padding:0 2rem;}
+    nav{position:sticky;top:0;z-index:100;background:rgba(10,14,23,0.92);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);padding:.85rem 0;}
+    nav .container{display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap;}
+    .nav-brand{font-family:var(--font-mono);font-size:.8rem;color:var(--accent);}
+    .nav-back{font-family:var(--font-mono);font-size:.78rem;color:var(--muted);transition:color .2s;}
+    .nav-back:hover{color:var(--text);text-decoration:none;}
+    .nav-unit{font-family:var(--font-mono);font-size:.72rem;color:var(--muted);}
+    .hero{padding:4rem 0 2.5rem;position:relative;overflow:hidden;}
+    .hero::before{content:'';position:absolute;inset:0;background-image:linear-gradient(var(--border) 1px,transparent 1px),linear-gradient(90deg,var(--border) 1px,transparent 1px);background-size:40px 40px;opacity:.25;mask-image:radial-gradient(ellipse 80% 60% at 50% 0%,black 40%,transparent 100%);}
+    .hero-eyebrow{font-family:var(--font-mono);font-size:.72rem;color:var(--accent);letter-spacing:.15em;text-transform:uppercase;margin-bottom:.75rem;display:flex;align-items:center;gap:.6rem;}
+    .hero-eyebrow::before{content:'';display:inline-block;width:1.5rem;height:1px;background:var(--accent);}
+    h1{font-size:clamp(1.6rem,3.5vw,2.6rem);font-weight:300;line-height:1.1;letter-spacing:-.02em;margin-bottom:.6rem;}
+    h1 strong{font-weight:600;color:var(--accent);}
+    .hero-desc{font-size:.9rem;color:var(--muted);max-width:620px;margin-bottom:1.5rem;}
+    .hero-tags{display:flex;flex-wrap:wrap;gap:.4rem;}
+    .tag{font-family:var(--font-mono);font-size:.7rem;color:var(--accent2);background:rgba(124,58,237,.1);border:1px solid rgba(124,58,237,.25);border-radius:4px;padding:.2rem .55rem;}
+    .section{padding:2.5rem 0;border-top:1px solid var(--border);}
+    .section-label{font-family:var(--font-mono);font-size:.7rem;color:var(--accent);letter-spacing:.15em;text-transform:uppercase;margin-bottom:1.25rem;display:flex;align-items:center;gap:.6rem;}
+    .section-label::after{content:'';flex:1;height:1px;background:var(--border);}
+    h2{font-size:1.15rem;font-weight:600;margin-bottom:1rem;}
+    h3{font-size:.95rem;font-weight:600;margin-bottom:.6rem;color:var(--accent);}
+    .content-card{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:1.5rem;margin-bottom:1rem;}
+    .content-card p{font-size:.88rem;color:var(--muted);line-height:1.7;}
+    .content-card p+p{margin-top:.7rem;}
+    .highlight{border-left:3px solid var(--accent);padding-left:1rem;margin:1rem 0;}
+    .highlight p{color:var(--text) !important;}
+    .def-box{background:var(--tag-bg);border:1px solid var(--accent);border-radius:8px;padding:1.25rem 1.5rem;margin:1rem 0;}
+    .def-label{font-family:var(--font-mono);font-size:.68rem;color:var(--accent);letter-spacing:.1em;text-transform:uppercase;margin-bottom:.4rem;}
+    .def-text{font-size:.95rem;font-weight:400;line-height:1.6;}
+    .diagram-wrap{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:1.25rem;margin:1rem 0;overflow-x:auto;}
+    .diagram-wrap svg{display:block;margin:0 auto;}
+    .feat-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:.75rem;margin:1rem 0;}
+    .feat-card{background:var(--surface);border:1px solid var(--border);border-radius:7px;padding:1.1rem 1.25rem;}
+    .feat-title{font-size:.9rem;font-weight:600;margin-bottom:.3rem;}
+    .feat-desc{font-size:.8rem;color:var(--muted);line-height:1.5;}
+    .feat-count{font-family:var(--font-mono);font-size:1.4rem;font-weight:600;margin-bottom:.4rem;}
+
+    /* PROCESSOS TABLE */
+    .proc-table{width:100%;border-collapse:collapse;font-size:.82rem;margin:1rem 0;}
+    .proc-table thead th{background:var(--tag-bg);padding:.6rem .9rem;text-align:left;font-family:var(--font-mono);font-size:.67rem;color:var(--muted);letter-spacing:.08em;text-transform:uppercase;border-bottom:1px solid var(--border);}
+    .proc-table td{padding:.6rem .9rem;border-bottom:1px solid var(--border);color:var(--muted);vertical-align:top;}
+    .proc-table td:first-child{color:var(--text);font-weight:600;white-space:nowrap;}
+    .proc-table tr:last-child td{border-bottom:none;}
+    .proc-table tr:hover td{background:rgba(255,255,255,.02);}
+
+    /* QUIZ */
+    .quiz-wrap{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:1.75rem;margin-top:1rem;}
+    .quiz-title{font-family:var(--font-mono);font-size:.8rem;color:var(--green);letter-spacing:.1em;text-transform:uppercase;margin-bottom:1.25rem;}
+    .quiz-q{margin-bottom:1.5rem;}
+    .q-text{font-size:.9rem;font-weight:600;margin-bottom:.75rem;}
+    .q-num{font-family:var(--font-mono);font-size:.7rem;color:var(--muted);margin-bottom:.25rem;}
+    .options{display:flex;flex-direction:column;gap:.4rem;}
+    .opt{display:flex;align-items:flex-start;gap:.6rem;cursor:pointer;padding:.55rem .8rem;border-radius:6px;border:1px solid var(--border);transition:border-color .15s,background .15s;font-size:.85rem;}
+    .opt:hover{border-color:var(--accent);background:rgba(0,194,255,.05);}
+    .opt input{margin-top:.15rem;accent-color:var(--accent);cursor:pointer;flex-shrink:0;}
+    .opt.correct{border-color:var(--green)!important;background:rgba(16,185,129,.08);}
+    .opt.wrong{border-color:var(--red)!important;background:rgba(239,68,68,.08);}
+    .quiz-btn{font-family:var(--font-mono);font-size:.78rem;padding:.55rem 1.25rem;background:transparent;border:1px solid var(--accent);color:var(--accent);border-radius:5px;cursor:pointer;transition:background .15s;}
+    .quiz-btn:hover{background:rgba(0,194,255,.08);}
+    .quiz-btn:disabled{opacity:.5;cursor:not-allowed;}
+    .quiz-result{margin-top:1.25rem;padding:1rem 1.25rem;border-radius:8px;font-size:.88rem;display:none;}
+    .quiz-result.show{display:block;}
+    .quiz-result.pass{background:rgba(16,185,129,.1);border:1px solid rgba(16,185,129,.3);color:var(--green);}
+    .quiz-result.fail{background:rgba(239,68,68,.08);border:1px solid rgba(239,68,68,.25);color:#fca5a5;}
+    footer{border-top:1px solid var(--border);padding:1.75rem 0;margin-top:2rem;}
+    footer .container{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;}
+    footer p{font-size:.8rem;color:var(--muted);font-family:var(--font-mono);}
+    .nav-bottom{display:flex;justify-content:space-between;align-items:center;padding:1.5rem 0;border-top:1px solid var(--border);}
+    .nav-pg{font-family:var(--font-mono);font-size:.78rem;color:var(--accent);display:inline-flex;align-items:center;gap:.3rem;}
+  </style>
+</head>
+<body>
+<nav>
+  <div class="container">
+    <span class="nav-brand"><a href="../gestao_projetos.html" style="color:inherit;text-decoration:none;">Gestão de Projetos</a></span>
+    <div style="display:flex;align-items:center;gap:1.5rem;">
+      <span class="nav-unit">UNIDADE 02 / 09</span>
+      <a class="nav-back" href="../gestao_projetos.html">← índice</a>
+    </div>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="container">
+    <p class="hero-eyebrow">Unidade 02</p>
+    <h1>Ciclo de Vida<br><strong>de Projetos</strong></h1>
+    <p class="hero-desc">Fases do ciclo de vida, grupos de processos do PMBOK e como eles interagem ao longo da vida de um projeto.</p>
+    <div class="hero-tags">
+      <span class="tag">Ciclo de Vida</span><span class="tag">Grupos de Processos</span><span class="tag">Iniciação</span>
+      <span class="tag">Planejamento</span><span class="tag">Encerramento</span>
+    </div>
+  </div>
+</section>
+
+<!-- CICLO DE VIDA -->
+<section class="section" id="ciclo">
+  <div class="container">
+    <p class="section-label">2.1 / ciclo de vida</p>
+    <h2>Ciclo de Vida do Projeto</h2>
+    <div class="content-card">
+      <p>O ciclo de vida é a série de fases pelas quais um projeto passa, do início ao término. As fases são geralmente sequenciais, mas podem se sobrepor. A estrutura do ciclo de vida oferece uma estrutura básica para gerenciar o projeto.</p>
+    </div>
+    <div class="diagram-wrap">
+      <svg viewBox="0 0 700 170" width="100%" xmlns="http://www.w3.org/2000/svg" style="max-width:700px;">
+        <!-- Curva de esforço típica -->
+        <defs>
+          <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" style="stop-color:#00c2ff;stop-opacity:.3"/>
+            <stop offset="50%" style="stop-color:#7c3aed;stop-opacity:.4"/>
+            <stop offset="100%" style="stop-color:#10b981;stop-opacity:.3"/>
+          </linearGradient>
+        </defs>
+        <path d="M 50,130 C 100,120 150,60 250,45 C 350,30 400,35 500,55 C 580,70 620,110 650,130" fill="none" stroke="url(#grad1)" stroke-width="3"/>
+        <path d="M 50,130 C 100,120 150,60 250,45 C 350,30 400,35 500,55 C 580,70 620,110 650,130 L 650,150 L 50,150 Z" fill="url(#grad1)" opacity="0.4"/>
+        <!-- Fases -->
+        <line x1="175" y1="20" x2="175" y2="140" stroke="#1e2d40" stroke-dasharray="3,3"/>
+        <line x1="350" y1="20" x2="350" y2="140" stroke="#1e2d40" stroke-dasharray="3,3"/>
+        <line x1="525" y1="20" x2="525" y2="140" stroke="#1e2d40" stroke-dasharray="3,3"/>
+        <!-- Labels fases -->
+        <text x="112" y="15" fill="#64748b" font-size="10" text-anchor="middle" font-family="monospace">INÍCIO</text>
+        <text x="262" y="15" fill="#00c2ff" font-size="10" text-anchor="middle" font-family="monospace">ORGANIZAÇÃO</text>
+        <text x="437" y="15" fill="#7c3aed" font-size="10" text-anchor="middle" font-family="monospace">EXECUÇÃO</text>
+        <text x="587" y="15" fill="#10b981" font-size="10" text-anchor="middle" font-family="monospace">ENCERRAMENTO</text>
+        <!-- Eixos -->
+        <line x1="40" y1="150" x2="660" y2="150" stroke="#1e2d40" stroke-width="1"/>
+        <text x="350" y="168" fill="#64748b" font-size="9" text-anchor="middle" font-family="monospace">TEMPO DO PROJETO →</text>
+        <text x="20" y="90" fill="#64748b" font-size="9" text-anchor="middle" font-family="monospace" transform="rotate(-90,20,90)">ESFORÇO</text>
+      </svg>
+    </div>
+
+    <div class="highlight">
+      <p>📌 O <strong>nível de esforço</strong> não é constante: é baixo no início, aumenta na execução e decresce no encerramento. Riscos e incertezas são maiores no início e diminuem conforme o projeto avança.</p>
+    </div>
+  </div>
+</section>
+
+<!-- GRUPOS DE PROCESSOS -->
+<section class="section" id="grupos">
+  <div class="container">
+    <p class="section-label">2.2 / grupos de processos</p>
+    <h2>5 Grupos de Processos do PMBOK</h2>
+    <div class="feat-grid">
+      <div class="feat-card">
+        <div class="feat-count" style="color:var(--accent)">I</div>
+        <div class="feat-title">Iniciação</div>
+        <div class="feat-desc">Define e autoriza o projeto ou fase. Produz o TAP (Termo de Abertura do Projeto) e identifica as partes interessadas. <strong>2 processos.</strong></div>
+      </div>
+      <div class="feat-card">
+        <div class="feat-count" style="color:var(--accent2)">P</div>
+        <div class="feat-title">Planejamento</div>
+        <div class="feat-desc">Desenvolve o plano de gerenciamento, define escopo, cronograma, orçamento, riscos e comunicações. <strong>24 processos</strong> — o maior grupo.</div>
+      </div>
+      <div class="feat-card">
+        <div class="feat-count" style="color:var(--yellow)">E</div>
+        <div class="feat-title">Execução</div>
+        <div class="feat-desc">Realiza o trabalho definido no plano. Coordena recursos, gerencia a equipe e as comunicações. <strong>10 processos.</strong></div>
+      </div>
+      <div class="feat-card">
+        <div class="feat-count" style="color:var(--green)">M&amp;C</div>
+        <div class="feat-title">Monitoramento e Controle</div>
+        <div class="feat-desc">Rastreia, revisa e regula o progresso. Identifica desvios e implementa ações corretivas. <strong>12 processos.</strong></div>
+      </div>
+      <div class="feat-card">
+        <div class="feat-count" style="color:var(--red)">F</div>
+        <div class="feat-title">Encerramento</div>
+        <div class="feat-desc">Finaliza todas as atividades, obtém aceitação formal, libera recursos e documenta lições aprendidas. <strong>1 processo.</strong></div>
+      </div>
+    </div>
+
+    <div class="diagram-wrap" style="margin-top:1.5rem;">
+      <svg viewBox="0 0 700 120" width="100%" xmlns="http://www.w3.org/2000/svg" style="max-width:700px;">
+        <!-- 5 processos em fluxo com setas bidirecionais -->
+        <!-- Iniciação -->
+        <rect x="10" y="40" width="90" height="40" rx="6" fill="#0f172a" stroke="#00c2ff" stroke-width="1.5"/>
+        <text x="55" y="57" fill="#00c2ff" font-size="9" text-anchor="middle" font-family="monospace">INICIAÇÃO</text>
+        <text x="55" y="70" fill="#64748b" font-size="8" text-anchor="middle" font-family="sans-serif">2 proc.</text>
+        <!-- Planejamento -->
+        <rect x="130" y="30" width="110" height="60" rx="6" fill="#0f172a" stroke="#7c3aed" stroke-width="1.5"/>
+        <text x="185" y="57" fill="#7c3aed" font-size="9" text-anchor="middle" font-family="monospace">PLANEJAMENTO</text>
+        <text x="185" y="70" fill="#64748b" font-size="8" text-anchor="middle" font-family="sans-serif">24 proc.</text>
+        <!-- Execução -->
+        <rect x="270" y="35" width="100" height="50" rx="6" fill="#0f172a" stroke="#f59e0b" stroke-width="1.5"/>
+        <text x="320" y="57" fill="#f59e0b" font-size="9" text-anchor="middle" font-family="monospace">EXECUÇÃO</text>
+        <text x="320" y="70" fill="#64748b" font-size="8" text-anchor="middle" font-family="sans-serif">10 proc.</text>
+        <!-- M&C -->
+        <rect x="395" y="30" width="110" height="60" rx="6" fill="#0f172a" stroke="#10b981" stroke-width="1.5"/>
+        <text x="450" y="53" fill="#10b981" font-size="9" text-anchor="middle" font-family="monospace">MONITOR.</text>
+        <text x="450" y="65" fill="#10b981" font-size="9" text-anchor="middle" font-family="monospace">&amp; CONTROLE</text>
+        <text x="450" y="79" fill="#64748b" font-size="8" text-anchor="middle" font-family="sans-serif">12 proc.</text>
+        <!-- Encerramento -->
+        <rect x="530" y="40" width="100" height="40" rx="6" fill="#0f172a" stroke="#ef4444" stroke-width="1.5"/>
+        <text x="580" y="57" fill="#ef4444" font-size="9" text-anchor="middle" font-family="monospace">ENCER.</text>
+        <text x="580" y="70" fill="#64748b" font-size="8" text-anchor="middle" font-family="sans-serif">1 proc.</text>
+        <!-- Setas principais -->
+        <line x1="100" y1="60" x2="128" y2="60" stroke="#1e2d40" stroke-width="1.5" marker-end="url(#arr)"/>
+        <line x1="240" y1="60" x2="268" y2="60" stroke="#1e2d40" stroke-width="1.5" marker-end="url(#arr)"/>
+        <line x1="370" y1="60" x2="393" y2="60" stroke="#1e2d40" stroke-width="1.5" marker-end="url(#arr)"/>
+        <line x1="505" y1="60" x2="528" y2="60" stroke="#1e2d40" stroke-width="1.5" marker-end="url(#arr)"/>
+        <!-- Seta de retorno M&C -->
+        <path d="M 450,30 Q 450,10 320,10 Q 190,10 185,28" fill="none" stroke="#10b981" stroke-width="1" stroke-dasharray="3,2" opacity=".6"/>
+        <defs><marker id="arr" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6Z" fill="#1e2d40"/></marker></defs>
+        <text x="310" y="8" fill="#10b981" font-size="8" text-anchor="middle" font-family="monospace" opacity=".7">retroalimentação</text>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<!-- TABELA DE PROCESSOS POR FASE -->
+<section class="section" id="processos">
+  <div class="container">
+    <p class="section-label">2.3 / processos-chave</p>
+    <h2>Principais Entradas e Saídas por Grupo</h2>
+    <div style="overflow-x:auto;border:1px solid var(--border);border-radius:8px;">
+      <table class="proc-table">
+        <thead><tr><th>Grupo</th><th>Entradas principais</th><th>Saídas principais</th></tr></thead>
+        <tbody>
+          <tr><td>Iniciação</td><td>Business case, contrato, fatores ambientais</td><td>Termo de Abertura do Projeto (TAP), Registro de Stakeholders</td></tr>
+          <tr><td>Planejamento</td><td>TAP, lições aprendidas, ativos da organização</td><td>Plano de GP, EAP, Cronograma, Orçamento, Plano de riscos</td></tr>
+          <tr><td>Execução</td><td>Plano de GP, relatórios de desempenho</td><td>Entregas, dados de desempenho, solicitações de mudança</td></tr>
+          <tr><td>M &amp; C</td><td>Plano de GP, dados de desempenho, entregas</td><td>Relatórios de desempenho, previsões, ações corretivas/preventivas</td></tr>
+          <tr><td>Encerramento</td><td>Plano de GP, entregas aceitas, documentação</td><td>Transferência do produto, registro de lições aprendidas, arquivos do projeto</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- CICLO DE VIDA vs GRUPOS DE PROCESSOS -->
+<section class="section" id="diferencas">
+  <div class="container">
+    <p class="section-label">2.4 / importante</p>
+    <h2>Ciclo de Vida ≠ Grupos de Processos</h2>
+    <div class="content-card">
+      <p><strong>Ciclo de Vida</strong> descreve as <em>fases</em> pelas quais o produto do projeto passa (ex: concepção → desenvolvimento → teste → implantação). Varia de setor para setor.</p>
+      <p><strong>Grupos de Processos</strong> descrevem o <em>trabalho de gerenciamento</em> aplicado pelo GP em qualquer fase do ciclo de vida. São os 5 grupos do PMBOK: Iniciação, Planejamento, Execução, M&amp;C e Encerramento.</p>
+    </div>
+    <div class="highlight">
+      <p>⚡ Em um projeto com 3 fases, os 5 grupos de processos podem se repetir em cada fase — ou seja, você pode ter iniciação, planejamento, execução, M&amp;C e encerramento dentro de cada fase.</p>
+    </div>
+  </div>
+</section>
+
+<!-- QUIZ -->
+<section class="section" id="quiz">
+  <div class="container">
+    <p class="section-label">2.5 / quiz</p>
+    <h2>Quiz Rápido — Unidade 2</h2>
+    <div class="quiz-wrap">
+      <div class="quiz-title">⚡ Teste seus conhecimentos — 5 questões</div>
+
+      <div class="quiz-q" id="q1">
+        <div class="q-num">QUESTÃO 01</div>
+        <div class="q-text">Qual grupo de processos do PMBOK é responsável por produzir o <strong>Termo de Abertura do Projeto (TAP)</strong>?</div>
+        <div class="options">
+          <label class="opt"><input type="radio" name="q1" value="a"> Planejamento.</label>
+          <label class="opt"><input type="radio" name="q1" value="b"> Iniciação.</label>
+          <label class="opt"><input type="radio" name="q1" value="c"> Execução.</label>
+          <label class="opt"><input type="radio" name="q1" value="d"> Encerramento.</label>
+        </div>
+      </div>
+
+      <div class="quiz-q" id="q2">
+        <div class="q-num">QUESTÃO 02</div>
+        <div class="q-text">O grupo de processos com o <strong>maior número de processos</strong> no PMBOK 6ª ed. é:</div>
+        <div class="options">
+          <label class="opt"><input type="radio" name="q2" value="a"> Execução (10 processos).</label>
+          <label class="opt"><input type="radio" name="q2" value="b"> Monitoramento e Controle (12 processos).</label>
+          <label class="opt"><input type="radio" name="q2" value="c"> Planejamento (24 processos).</label>
+          <label class="opt"><input type="radio" name="q2" value="d"> Iniciação (2 processos).</label>
+        </div>
+      </div>
+
+      <div class="quiz-q" id="q3">
+        <div class="q-num">QUESTÃO 03</div>
+        <div class="q-text">O grupo de <strong>Monitoramento e Controle</strong> tem função de:</div>
+        <div class="options">
+          <label class="opt"><input type="radio" name="q3" value="a"> Criar o plano de gerenciamento do projeto.</label>
+          <label class="opt"><input type="radio" name="q3" value="b"> Rastrear, revisar e regular o progresso e desempenho do projeto.</label>
+          <label class="opt"><input type="radio" name="q3" value="c"> Liberar os recursos ao final do projeto.</label>
+          <label class="opt"><input type="radio" name="q3" value="d"> Identificar formalmente os stakeholders.</label>
+        </div>
+      </div>
+
+      <div class="quiz-q" id="q4">
+        <div class="q-num">QUESTÃO 04</div>
+        <div class="q-text">Qual a principal saída do grupo de <strong>Encerramento</strong>?</div>
+        <div class="options">
+          <label class="opt"><input type="radio" name="q4" value="a"> Plano de gerenciamento de riscos.</label>
+          <label class="opt"><input type="radio" name="q4" value="b"> Cronograma do projeto.</label>
+          <label class="opt"><input type="radio" name="q4" value="c"> Transferência do produto e registro de lições aprendidas.</label>
+          <label class="opt"><input type="radio" name="q4" value="d"> Solicitações de mudança aprovadas.</label>
+        </div>
+      </div>
+
+      <div class="quiz-q" id="q5">
+        <div class="q-num">QUESTÃO 05</div>
+        <div class="q-text">A afirmação "ciclo de vida e grupos de processos são a mesma coisa" é:</div>
+        <div class="options">
+          <label class="opt"><input type="radio" name="q5" value="a"> Verdadeira — ambos descrevem as fases do produto.</label>
+          <label class="opt"><input type="radio" name="q5" value="b"> Falsa — o ciclo de vida descreve fases do produto; os grupos de processos descrevem o trabalho de gerenciamento.</label>
+          <label class="opt"><input type="radio" name="q5" value="c"> Verdadeira — o PMBOK usa os termos de forma intercambiável.</label>
+          <label class="opt"><input type="radio" name="q5" value="d"> Falsa — o ciclo de vida tem 5 fases e os grupos têm 10.</label>
+        </div>
+      </div>
+
+      <button class="quiz-btn" onclick="checkQuiz()">Verificar respostas</button>
+      <div class="quiz-result" id="quiz-result"></div>
+    </div>
+  </div>
+</section>
+
+<div class="container">
+  <div class="nav-bottom">
+    <a class="nav-pg" href="unidade1.html">← Unidade 1 — Conceitos Fundamentais</a>
+    <a class="nav-pg" href="unidade3.html">Unidade 3 — Artefatos Básicos →</a>
+  </div>
+</div>
+
+<footer>
+  <div class="container">
+    <p>© 2026 · Prof. Clayton J A Silva · Ibmec RJ</p>
+    <p><a href="../gestao_projetos.html">← Gestão de Projetos</a></p>
+  </div>
+</footer>
+
+<script>
+  const answers={q1:'b',q2:'c',q3:'b',q4:'c',q5:'b'};
+  function checkQuiz(){
+    let score=0;
+    Object.entries(answers).forEach(([q,correct])=>{
+      const sel=document.querySelector(`input[name="${q}"]:checked`);
+      const opts=document.querySelectorAll(`#${q} .opt`);
+      opts.forEach(o=>o.classList.remove('correct','wrong'));
+      if(sel){
+        const p=sel.closest('.opt');
+        if(sel.value===correct){p.classList.add('correct');score++;}
+        else{p.classList.add('wrong');opts.forEach(o=>{if(o.querySelector('input').value===correct)o.classList.add('correct');});}
+      } else {opts.forEach(o=>{if(o.querySelector('input').value===correct)o.classList.add('correct');});}
+    });
+    const res=document.getElementById('quiz-result');
+    res.className='quiz-result show '+(score>=4?'pass':'fail');
+    res.innerHTML=score>=4?`✅ Excelente! Você acertou <strong>${score}/5</strong>. Os grupos de processos estão claros!`:`❌ Você acertou <strong>${score}/5</strong>. Revise os grupos de processos e tente novamente.`;
+    document.querySelector('.quiz-btn').disabled=true;
+  }
+</script>
+</body>
+</html>
