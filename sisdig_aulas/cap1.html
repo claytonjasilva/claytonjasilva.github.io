@@ -7,6 +7,9 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/contrib/auto-render.min.js"></script>
 <style>
 :root {
   --bg:        #0a0e17;
@@ -143,6 +146,12 @@ footer .container{display:flex;justify-content:space-between;align-items:center;
 footer p{font-size:.8rem;color:var(--muted);font-family:var(--font-mono);}
 
 @media(max-width:640px){.nav-links{display:none;}.hero{padding:2.5rem 0 2rem;}}
+
+/* KaTeX dark theme adjustments */
+.katex{color:var(--accent);font-size:1.05em;}
+.definition .katex, p .katex{color:var(--accent);}
+.formula .katex{color:var(--accent);font-size:1.15em;}
+.katex .mathnormal,.katex .mord{color:inherit;}
 </style>
 </head>
 <body>
@@ -230,7 +239,7 @@ footer p{font-size:.8rem;color:var(--muted);font-family:var(--font-mono);}
     <div class="concept-grid">
       <div class="concept-text">
         <p>Sinais analógicos apresentam uma variação <strong>contínua</strong> de valores, definida em qualquer instante de tempo durante uma janela de observação.</p>
-        <div class="formula">x(t) = f(t)</div>
+        <div class="formula">$$x(t) = f(t)$$</div>
         <p style="font-size:.85rem">onde <em>x(t)</em> assume qualquer valor entre dois limites — <strong>continuidade em amplitude</strong> — e <em>t</em> assume qualquer instante — <strong>continuidade no tempo</strong>.</p>
       </div>
       <div class="concept-fig">
@@ -256,7 +265,7 @@ footer p{font-size:.8rem;color:var(--muted);font-family:var(--font-mono);}
       </div>
       <div class="concept-text">
         <p>A <strong>amostragem</strong> registra o sinal apenas em instantes periódicos, de período $T_A$ — a <strong>frequência de amostragem</strong> é seu inverso:</p>
-        <div class="formula">f_A = 1 / T_A</div>
+        <div class="formula">$$f_A = \frac{1}{T_A}$$</div>
       </div>
     </div>
 
@@ -275,7 +284,7 @@ footer p{font-size:.8rem;color:var(--muted);font-family:var(--font-mono);}
     <div class="concept-grid">
       <div class="concept-text">
         <p>A <strong>quantização</strong> aproxima os valores a um conjunto discreto e finito de <em>L</em> níveis. O intervalo entre níveis é o <strong>degrau de quantização</strong>:</p>
-        <div class="formula">Δ = (x_MAX − x_MIN) / (L − 1)</div>
+        <div class="formula">$$\Delta = \frac{x_{MAX} - x_{MIN}}{L - 1}$$</div>
         <p style="font-size:.85rem">O degrau determina o <strong>erro de quantização</strong> — a perda de informação inerente à aproximação.</p>
       </div>
       <div class="concept-fig">
@@ -470,7 +479,16 @@ function checkAnswer(btn, isCorrect, fbId) {
     buttons.forEach(b => { if (b.getAttribute('onclick').includes(', true,')) b.classList.add('correct'); });
     fb.textContent = '✗ Não foi essa. Revise a seção correspondente acima.';
   }
-}
+</script>
+
+<script>
+renderMathInElement(document.body, {
+  delimiters: [
+    {left: "$$", right: "$$", display: true},
+    {left: "$", right: "$", display: false}
+  ],
+  throwOnError: false
+});
 </script>
 
 </body>
