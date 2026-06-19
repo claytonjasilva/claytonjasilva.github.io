@@ -1,0 +1,43 @@
+<svg viewBox="0 0 560 280" xmlns="http://www.w3.org/2000/svg" font-family="IBM Plex Mono, monospace" font-size="11">
+  <rect width="560" height="280" fill="#0a0e17" rx="8"/>
+  <text x="280" y="20" fill="#00c2ff" font-size="11" text-anchor="middle" font-weight="600">Diagrama de estados — elementos básicos</text>
+
+  <!-- ESTADO ORIGEM -->
+  <circle cx="120" cy="120" r="42" fill="#111827" stroke="#00c2ff" stroke-width="2"/>
+  <text x="120" y="115" fill="#00c2ff" font-size="14" text-anchor="middle" font-weight="600">a</text>
+  <text x="120" y="132" fill="#64748b" font-size="10" text-anchor="middle">00</text>
+  <text x="120" y="178" fill="#64748b" font-size="9" text-anchor="middle">estado de origem</text>
+
+  <!-- ESTADO DESTINO -->
+  <circle cx="380" cy="120" r="42" fill="#111827" stroke="#00c2ff" stroke-width="2"/>
+  <text x="380" y="115" fill="#00c2ff" font-size="14" text-anchor="middle" font-weight="600">b</text>
+  <text x="380" y="132" fill="#64748b" font-size="10" text-anchor="middle">01</text>
+  <text x="380" y="178" fill="#64748b" font-size="9" text-anchor="middle">estado de destino</text>
+
+  <!-- TRANSIÇÃO (seta) -->
+  <path d="M 162,108 Q 270,70 338,108" fill="none" stroke="#7c3aed" stroke-width="2"/>
+  <polygon points="338,108 326,103 328,113" fill="#7c3aed"/>
+
+  <!-- evento na transição -->
+  <rect x="218" y="75" width="64" height="24" rx="4" fill="#0f172a" stroke="#7c3aed" stroke-width="1"/>
+  <text x="250" y="91" fill="#7c3aed" font-size="11" text-anchor="middle" font-weight="600">X = 1</text>
+  <text x="250" y="62" fill="#64748b" font-size="9" text-anchor="middle">evento (condição de entrada)</text>
+
+  <!-- self-loop (permanência) -->
+  <path d="M 95,90 Q 75,55 105,50 Q 130,48 130,78" fill="none" stroke="#00c2ff" stroke-width="1.5" stroke-dasharray="4,3"/>
+  <polygon points="130,78 124,69 134,72" fill="#00c2ff"/>
+  <text x="60" y="48" fill="#64748b" font-size="9">X = 0</text>
+  <text x="40" y="35" fill="#64748b" font-size="8">(permanência)</text>
+
+  <!-- saída Moore (associada ao estado) -->
+  <rect x="20" y="220" width="240" height="50" rx="6" fill="#111827" stroke="#00c2ff" stroke-width="1.3"/>
+  <text x="140" y="238" fill="#00c2ff" font-size="10" text-anchor="middle" font-weight="600">Máquina de Moore</text>
+  <text x="140" y="253" fill="#64748b" font-size="9" text-anchor="middle">saída é função do ESTADO</text>
+  <text x="140" y="265" fill="#64748b" font-size="9" text-anchor="middle">Y = f(estado) — rotulada dentro do círculo</text>
+
+  <!-- saída Mealy (associada à transição) -->
+  <rect x="300" y="220" width="240" height="50" rx="6" fill="#111827" stroke="#7c3aed" stroke-width="1.3"/>
+  <text x="420" y="238" fill="#7c3aed" font-size="10" text-anchor="middle" font-weight="600">Máquina de Mealy</text>
+  <text x="420" y="253" fill="#64748b" font-size="9" text-anchor="middle">saída é função do ESTADO e da ENTRADA</text>
+  <text x="420" y="265" fill="#64748b" font-size="9" text-anchor="middle">Y = f(estado, entrada) — rotulada na seta</text>
+</svg>
