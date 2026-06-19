@@ -168,5 +168,6 @@ Os demultiplexadores realizam a operação inversa do mux. A figura ilustra.
 Algumas operações propiciadas pelos demux são as inversas do multiplexador, como **conversor série-paralelo**.  
 ![Demultiplexador](/sisdig_aulas/images_sisdig/conversorserieparalelo.jpg)  
 
-___
-**[Home Conteúdo Sistemas Digitais](https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/sisdig_aulas.md)**  
+---
+
+**[Home — Sistemas Digitais](https://claytonjasilva.github.io/sisdig.html)**

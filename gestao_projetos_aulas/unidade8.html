@@ -26,9 +26,8 @@
     .section{padding:2.5rem 0;border-top:1px solid var(--border);}
     .section-label{font-family:var(--font-mono);font-size:.7rem;color:var(--accent);letter-spacing:.15em;text-transform:uppercase;margin-bottom:1.25rem;display:flex;align-items:center;gap:.6rem;}
     .section-label::after{content:'';flex:1;height:1px;background:var(--border);}
-    h2{font-size:1.15rem;font-weight:600;margin-bottom:1rem;}h3{font-size:.95rem;font-weight:600;margin-bottom:.6rem;color:var(--accent);}
-    .content-card{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:1.5rem;margin-bottom:1rem;}
-    .content-card p{font-size:.88rem;color:var(--muted);line-height:1.7;}.content-card p+p{margin-top:.7rem;}
+    h2{font-size:1.15rem;font-weight:600;margin-bottom:1rem;}
+    h3{font-size:.95rem;font-weight:600;margin-bottom:.6rem;color:var(--accent);}
     .def-box{background:var(--tag-bg);border:1px solid var(--accent);border-radius:8px;padding:1.25rem 1.5rem;margin:1rem 0;}
     .def-label{font-family:var(--font-mono);font-size:.68rem;color:var(--accent);letter-spacing:.1em;text-transform:uppercase;margin-bottom:.4rem;}
     .def-text{font-size:.95rem;font-weight:400;line-height:1.6;}
@@ -46,8 +45,39 @@
     .col-list{list-style:none;display:flex;flex-direction:column;gap:.4rem;}
     .col-list li{font-size:.83rem;color:var(--muted);padding-left:.75rem;position:relative;}
     .col-list li::before{content:'›';position:absolute;left:0;color:var(--accent);}
-    /* stakeholder grid */
-    .stake-wrap{display:grid;grid-template-columns:repeat(4,1fr);grid-template-rows:repeat(4,40px);gap:2px;border-radius:8px;overflow:hidden;margin:1rem 0;position:relative;}
+    /* princípios ISO */
+    .iso-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:.6rem;margin:1rem 0;}
+    .iso-card{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:.9rem 1rem;display:flex;gap:.7rem;align-items:flex-start;}
+    .iso-num{font-family:var(--font-mono);font-size:.7rem;color:var(--accent2);min-width:20px;}
+    .iso-text{font-size:.82rem;font-weight:600;}
+    /* KPI */
+    .kpi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:.65rem;margin:1rem 0;}
+    @media(max-width:580px){.kpi-grid{grid-template-columns:1fr;}}
+    .kpi-card{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:1rem;}
+    .kpi-label{font-family:var(--font-mono);font-size:.65rem;letter-spacing:.1em;text-transform:uppercase;margin-bottom:.35rem;}
+    .kpi-name{font-size:.9rem;font-weight:600;margin-bottom:.3rem;}
+    .kpi-desc{font-size:.78rem;color:var(--muted);}
+    /* Ishikawa SVG wrap */
+    .diagram-wrap{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:1.25rem;margin:1rem 0;overflow-x:auto;}
+    /* Pareto table */
+    .pareto-table{width:100%;border-collapse:collapse;font-size:.82rem;margin:1rem 0;}
+    .pareto-table th{background:var(--tag-bg);padding:.55rem .75rem;text-align:left;font-family:var(--font-mono);font-size:.67rem;color:var(--muted);border-bottom:1px solid var(--border);}
+    .pareto-table td{padding:.55rem .75rem;border-bottom:1px solid var(--border);color:var(--muted);}
+    .pareto-table td:first-child{color:var(--text);font-weight:600;}
+    .pareto-table tr.vital td{background:rgba(239,68,68,.06);}.pareto-table tr.vital td:first-child{color:var(--red);}
+    /* CDQ */
+    .cdq-grid{display:grid;grid-template-columns:1fr 1fr;gap:.65rem;margin:1rem 0;}
+    @media(max-width:580px){.cdq-grid{grid-template-columns:1fr;}}
+    .cdq-card{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:1.1rem;}
+    .cdq-title{font-size:.88rem;font-weight:600;margin-bottom:.5rem;}
+    .cdq-list{list-style:none;display:flex;flex-direction:column;gap:.35rem;}
+    .cdq-list li{font-size:.78rem;color:var(--muted);padding-left:.7rem;position:relative;}
+    .cdq-list li::before{content:'·';position:absolute;left:0;color:var(--accent);}
+    /* contract table */
+    .contract-table{width:100%;border-collapse:collapse;font-size:.8rem;margin:1rem 0;}
+    .contract-table th{background:var(--tag-bg);padding:.55rem .75rem;text-align:left;font-family:var(--font-mono);font-size:.65rem;color:var(--muted);border-bottom:1px solid var(--border);}
+    .contract-table td{padding:.6rem .75rem;border-bottom:1px solid var(--border);color:var(--muted);vertical-align:top;}
+    .contract-table td:first-child{color:var(--accent);font-weight:600;white-space:nowrap;}
     /* quiz */
     .quiz-wrap{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:1.75rem;margin-top:1rem;}
     .quiz-title{font-family:var(--font-mono);font-size:.8rem;color:var(--green);letter-spacing:.1em;text-transform:uppercase;margin-bottom:1.25rem;}
@@ -67,6 +97,10 @@
     footer p{font-size:.8rem;color:var(--muted);font-family:var(--font-mono);}
     .nav-bottom{display:flex;justify-content:space-between;align-items:center;padding:1.5rem 0;border-top:1px solid var(--border);}
     .nav-pg{font-family:var(--font-mono);font-size:.78rem;color:var(--accent);}
+    /* toc */
+    .toc{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:1rem 1.25rem;margin-bottom:1.5rem;display:flex;flex-wrap:wrap;gap:.5rem .75rem;}
+    .toc a{font-family:var(--font-mono);font-size:.72rem;color:var(--muted);}
+    .toc a:hover{color:var(--accent);}
   </style>
 </head>
 <body>
@@ -76,154 +110,480 @@
     <div style="display:flex;align-items:center;gap:1.5rem;"><span class="nav-unit">UNIDADE 08 / 09</span><a class="nav-back" href="../gestao_projetos.html">← índice</a></div>
   </div>
 </nav>
+
 <section class="hero">
   <div class="container">
     <p class="hero-eyebrow">Unidade 08</p>
     <h1>Qualidade, Aquisições,<br><strong>Comunicações e Partes Interessadas</strong></h1>
-    <p class="hero-desc">As quatro áreas de conhecimento complementares para entregar projetos com excelência: garantir qualidade, gerenciar contratos, comunicar efetivamente e engajar stakeholders.</p>
-    <div class="hero-tags"><span class="tag">Qualidade</span><span class="tag">Aquisições</span><span class="tag">Comunicações</span><span class="tag">Stakeholders</span></div>
+    <p class="hero-desc">ISO 9001, ferramentas da qualidade (Ishikawa, Pareto, CDQ), tipos de contrato, comunicação eficaz e engajamento de stakeholders.</p>
+    <div class="hero-tags">
+      <span class="tag">ISO 9001</span><span class="tag">Ishikawa 6M+E</span><span class="tag">Pareto</span><span class="tag">CDQ</span><span class="tag">Aquisições</span><span class="tag">Stakeholders</span>
+    </div>
   </div>
 </section>
 
-<!-- QUALIDADE -->
+<!-- TOC -->
+<div class="container" style="padding-top:1rem;">
+  <div class="toc">
+    <span style="font-family:var(--font-mono);font-size:.68rem;color:var(--muted);">seções →</span>
+    <a href="#qualidade">8.1 Qualidade</a>
+    <a href="#iso">8.2 ISO 9001</a>
+    <a href="#kpi">8.3 KPIs</a>
+    <a href="#ishikawa">8.4 Ishikawa</a>
+    <a href="#pareto">8.5 Pareto</a>
+    <a href="#cdq">8.6 CDQ</a>
+    <a href="#aquisicoes">8.7 Aquisições</a>
+    <a href="#comunicacoes">8.8 Comunicações</a>
+    <a href="#stakeholders">8.9 Stakeholders</a>
+    <a href="#quiz">Quiz</a>
+  </div>
+</div>
+
+<!-- 8.1 QUALIDADE -->
 <section class="section" id="qualidade">
   <div class="container">
-    <p class="section-label">8.1 / gestão da qualidade</p>
+    <p class="section-label">8.1 / gestão da qualidade — processos PMBOK</p>
     <h2>Gestão da Qualidade</h2>
     <div class="def-box">
-      <div class="def-label">Conceito-chave</div>
-      <div class="def-text"><strong>Qualidade</strong> é o grau em que um conjunto de características inerentes satisfaz os requisitos. <em>Qualidade ≠ Grau</em> — um entregável pode ter grau alto e qualidade baixa.</div>
+      <div class="def-label">Definição — NBR ISO 9000</div>
+      <div class="def-text"><strong>Qualidade</strong> é o grau em que um conjunto de características inerentes satisfaz os requisitos. <br><br>
+        <span style="color:var(--muted);font-size:.88rem;">Qualidade percebida = relação entre expectativa na aquisição e a percepção no momento do consumo. <em>Qualidade ≠ Grau</em> — um produto de grau alto pode ter qualidade baixa.</span>
+      </div>
     </div>
     <div class="proc-list">
-      <div class="proc-item"><div class="proc-num">8.1</div><div><div class="proc-name">Planejar o Gerenciamento da Qualidade</div><div class="proc-desc">Identifica requisitos e/ou padrões de qualidade relevantes, documenta como demonstrar conformidade.</div></div></div>
-      <div class="proc-item"><div class="proc-num">8.2</div><div><div class="proc-name">Gerenciar a Qualidade</div><div class="proc-desc">Traduz o Plano de Qualidade em atividades executáveis. Anteriormente chamado de "Realizar a Garantia da Qualidade".</div></div></div>
-      <div class="proc-item"><div class="proc-num">8.3</div><div><div class="proc-name">Controlar a Qualidade</div><div class="proc-desc">Monitora e registra os resultados das atividades de qualidade para avaliar desempenho e recomendar mudanças.</div></div></div>
+      <div class="proc-item"><div class="proc-num">8.1</div><div><div class="proc-name">Planejar o Gerenciamento da Qualidade</div><div class="proc-desc">Identifica requisitos e/ou padrões de qualidade relevantes. Documenta como o projeto demonstrará conformidade.</div></div></div>
+      <div class="proc-item"><div class="proc-num">8.2</div><div><div class="proc-name">Gerenciar a Qualidade <em style="color:var(--muted);font-size:.75rem;">(antiga: Garantia da Qualidade)</em></div><div class="proc-desc">Auditoria dos requisitos e do resultado das medições do controle de qualidade. Foco em processos.</div></div></div>
+      <div class="proc-item"><div class="proc-num">8.3</div><div><div class="proc-name">Controlar a Qualidade</div><div class="proc-desc">Monitoramento e registro dos resultados das atividades de qualidade para avaliar desempenho e recomendar mudanças.</div></div></div>
     </div>
-    <h3 style="margin-top:1.25rem;">Ferramentas de Qualidade (7 Básicas)</h3>
-    <div class="feat-grid">
-      <div class="feat-card"><div class="feat-icon">📊</div><div class="feat-title">Histograma</div><div class="feat-desc">Distribuição de frequência de variáveis.</div></div>
-      <div class="feat-card"><div class="feat-icon">📉</div><div class="feat-title">Diagrama de Pareto</div><div class="feat-desc">80% dos problemas têm 20% das causas — priorização.</div></div>
-      <div class="feat-card"><div class="feat-icon">🔍</div><div class="feat-title">Diagrama de Ishikawa</div><div class="feat-desc">Causa-e-efeito (espinha de peixe). Identifica causas-raiz.</div></div>
-      <div class="feat-card"><div class="feat-icon">📈</div><div class="feat-title">Gráfico de Controle</div><div class="feat-desc">Limites de controle (±3σ). Detecta variação especial vs. comum.</div></div>
-      <div class="feat-card"><div class="feat-icon">📋</div><div class="feat-title">Folha de Verificação</div><div class="feat-desc">Formulário estruturado para coletar dados sistematicamente.</div></div>
-      <div class="feat-card"><div class="feat-icon">🔗</div><div class="feat-title">Diagrama de Dispersão</div><div class="feat-desc">Correlação entre duas variáveis. Positiva, negativa ou nula.</div></div>
-      <div class="feat-card"><div class="feat-icon">🌳</div><div class="feat-title">Estratificação</div><div class="feat-desc">Separa dados por categorias para análise mais precisa.</div></div>
-    </div>
-    <div class="def-box" style="border-color:var(--green);margin-top:1rem;">
-      <div class="def-label" style="color:var(--green);">Regra de Ouro</div>
-      <div class="def-text"><strong>Prevenir > Corrigir.</strong> O custo de prevenção de defeitos é sempre menor que o custo de correção.</div>
+    <div class="two-col" style="margin-top:1rem;">
+      <div class="col-card" style="border-color:var(--accent);">
+        <div class="col-title">Perspectiva do Cliente</div>
+        <p style="font-size:.83rem;color:var(--muted);">De <strong>fora para dentro</strong>. Foco na forma como o processo atende os clientes. Mede o que o cliente efetivamente percebe.</p>
+      </div>
+      <div class="col-card" style="border-color:var(--accent2);">
+        <div class="col-title">Perspectiva da Organização</div>
+        <p style="font-size:.83rem;color:var(--muted);">De <strong>dentro para fora</strong>. Foco na execução interna em conformidade com o modelo, sem erros. Mede conformidade com padrões.</p>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- AQUISIÇÕES -->
+<!-- 8.2 ISO 9001 -->
+<section class="section" id="iso">
+  <div class="container">
+    <p class="section-label">8.2 / normas iso e princípios</p>
+    <h2>ISO 9001/2015 e os 7 Princípios da Qualidade</h2>
+    <div class="def-box" style="border-color:var(--accent2);">
+      <div class="def-label" style="color:var(--accent2);">NBR ISO 9001/2015</div>
+      <div class="def-text">Define <strong>"o que"</strong> as empresas devem colocar em prática, mas não detalha "como". A edição 2015 trouxe: visão de processos, adoção do conceito de risco, definição clara de papéis e responsabilidades sobre o sistema de qualidade.</div>
+    </div>
+
+    <h3 style="margin-top:1.25rem;">7 Princípios de Gestão da Qualidade</h3>
+    <div class="iso-grid">
+      <div class="iso-card"><div class="iso-num">P1</div><div class="iso-text">Foco no cliente</div></div>
+      <div class="iso-card"><div class="iso-num">P2</div><div class="iso-text">Liderança</div></div>
+      <div class="iso-card"><div class="iso-num">P3</div><div class="iso-text">Engajamento de pessoas</div></div>
+      <div class="iso-card"><div class="iso-num">P4</div><div class="iso-num" style="min-width:0;"></div><div class="iso-text">Visão de processos</div></div>
+      <div class="iso-card"><div class="iso-num">P5</div><div class="iso-text">Melhoria contínua</div></div>
+      <div class="iso-card"><div class="iso-num">P6</div><div class="iso-text">Decisão baseada em evidência</div></div>
+      <div class="iso-card"><div class="iso-num">P7</div><div class="iso-text">Relacionamento com partes interessadas</div></div>
+    </div>
+
+    <div class="def-box" style="border-color:var(--green);margin-top:.5rem;">
+      <div class="def-label" style="color:var(--green);">Melhoria Contínua nos Projetos</div>
+      <div class="def-text">Aos processos de gestão de projetos cabe aplicar a <strong>melhoria contínua</strong> — ciclo PDCA — revisando constantemente processos, medindo resultados e ajustando o plano.</div>
+    </div>
+  </div>
+</section>
+
+<!-- 8.3 KPIs -->
+<section class="section" id="kpi">
+  <div class="container">
+    <p class="section-label">8.3 / indicadores de desempenho</p>
+    <h2>KPIs — Indicadores de Desempenho</h2>
+    <p style="font-size:.88rem;color:var(--muted);margin-bottom:1rem;">Os indicadores medem o desempenho dos processos de gestão de projetos em três dimensões distintas:</p>
+    <div class="kpi-grid">
+      <div class="kpi-card" style="border-color:var(--accent);">
+        <div class="kpi-label" style="color:var(--accent);">Eficácia</div>
+        <div class="kpi-name">Atender os Requisitos</div>
+        <div class="kpi-desc">Retrata o atendimento aos requisitos do processo de gestão. <strong>"Fez o que devia ser feito?"</strong></div>
+      </div>
+      <div class="kpi-card" style="border-color:var(--yellow);">
+        <div class="kpi-label" style="color:var(--yellow);">Eficiência</div>
+        <div class="kpi-name">Produtividade do Processo</div>
+        <div class="kpi-desc">Retrata a produtividade do processo — custo, tempo e quantidade. <strong>"Fez com o mínimo de recursos?"</strong></div>
+      </div>
+      <div class="kpi-card" style="border-color:var(--green);">
+        <div class="kpi-label" style="color:var(--green);">Efetividade</div>
+        <div class="kpi-name">Entrega Certa + Produtiva</div>
+        <div class="kpi-desc">Eficácia + Eficiência combinadas. <strong>"Entregou o produto certo, da forma certa?"</strong> Nível mais elevado de desempenho.</div>
+      </div>
+    </div>
+
+    <h3 style="margin-top:1.25rem;">Estrutura de um KPI</h3>
+    <div style="overflow-x:auto;border:1px solid var(--border);border-radius:8px;">
+      <table style="width:100%;border-collapse:collapse;font-size:.82rem;">
+        <thead>
+          <tr style="background:var(--tag-bg);">
+            <th style="padding:.6rem .8rem;text-align:left;font-family:var(--font-mono);font-size:.65rem;color:var(--muted);border-bottom:1px solid var(--border);">Nome</th>
+            <th style="padding:.6rem .8rem;text-align:left;font-family:var(--font-mono);font-size:.65rem;color:var(--muted);border-bottom:1px solid var(--border);">Descrição</th>
+            <th style="padding:.6rem .8rem;text-align:left;font-family:var(--font-mono);font-size:.65rem;color:var(--muted);border-bottom:1px solid var(--border);">Unidade de medida</th>
+            <th style="padding:.6rem .8rem;text-align:left;font-family:var(--font-mono);font-size:.65rem;color:var(--muted);border-bottom:1px solid var(--border);">Critério/Fórmula</th>
+            <th style="padding:.6rem .8rem;text-align:left;font-family:var(--font-mono);font-size:.65rem;color:var(--muted);border-bottom:1px solid var(--border);">Frequência</th>
+            <th style="padding:.6rem .8rem;text-align:left;font-family:var(--font-mono);font-size:.65rem;color:var(--muted);border-bottom:1px solid var(--border);">Responsável</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td style="padding:.6rem .8rem;border-bottom:1px solid var(--border);color:var(--accent);font-weight:600;">% Entregas no Prazo</td>
+            <td style="padding:.6rem .8rem;border-bottom:1px solid var(--border);color:var(--muted);">Entregas realizadas dentro do prazo planejado</td>
+            <td style="padding:.6rem .8rem;border-bottom:1px solid var(--border);color:var(--muted);">%</td>
+            <td style="padding:.6rem .8rem;border-bottom:1px solid var(--border);color:var(--muted);">(Entregas no prazo / Total) × 100</td>
+            <td style="padding:.6rem .8rem;border-bottom:1px solid var(--border);color:var(--muted);">Mensal</td>
+            <td style="padding:.6rem .8rem;border-bottom:1px solid var(--border);color:var(--muted);">GP</td>
+          </tr>
+          <tr>
+            <td style="padding:.6rem .8rem;border-bottom:1px solid var(--border);color:var(--accent);font-weight:600;">CPI (Custo)</td>
+            <td style="padding:.6rem .8rem;border-bottom:1px solid var(--border);color:var(--muted);">Desempenho de custo do projeto (EVM)</td>
+            <td style="padding:.6rem .8rem;border-bottom:1px solid var(--border);color:var(--muted);">Índice</td>
+            <td style="padding:.6rem .8rem;border-bottom:1px solid var(--border);color:var(--muted);">EV / AC</td>
+            <td style="padding:.6rem .8rem;border-bottom:1px solid var(--border);color:var(--muted);">Semanal</td>
+            <td style="padding:.6rem .8rem;border-bottom:1px solid var(--border);color:var(--muted);">GP</td>
+          </tr>
+          <tr>
+            <td style="padding:.6rem .8rem;color:var(--accent);font-weight:600;">Defeitos por Entrega</td>
+            <td style="padding:.6rem .8rem;color:var(--muted);">Quantidade de não conformidades por entrega</td>
+            <td style="padding:.6rem .8rem;color:var(--muted);">Qtd</td>
+            <td style="padding:.6rem .8rem;color:var(--muted);">Contagem direta</td>
+            <td style="padding:.6rem .8rem;color:var(--muted);">Por entrega</td>
+            <td style="padding:.6rem .8rem;color:var(--muted);">Equipe QA</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- 8.4 ISHIKAWA -->
+<section class="section" id="ishikawa">
+  <div class="container">
+    <p class="section-label">8.4 / ferramentas da qualidade — ishikawa</p>
+    <h2>Diagrama de Ishikawa (Causa-Efeito)</h2>
+    <p style="font-size:.88rem;color:var(--muted);margin-bottom:1rem;">Ferramenta visual que identifica as <strong>causas-raiz</strong> de um problema (efeito). Também chamado de Diagrama Espinha de Peixe.</p>
+
+    <h3>Método 6M+E</h3>
+    <p style="font-size:.85rem;color:var(--muted);margin-bottom:.75rem;">A forma mais usada categoriza as causas em 6 dimensões + Ambiente:</p>
+    <div class="feat-grid" style="grid-template-columns:repeat(auto-fill,minmax(160px,1fr));">
+      <div class="feat-card"><div class="feat-title">👤 Man (Homem)</div><div class="feat-desc">Erros humanos, capacitação, turnover, comportamento.</div></div>
+      <div class="feat-card"><div class="feat-title">⚙️ Machine (Máquina)</div><div class="feat-desc">Equipamentos, software, manutenção, calibração.</div></div>
+      <div class="feat-card"><div class="feat-title">📦 Material</div><div class="feat-desc">Insumos, matéria-prima, especificações, fornecedores.</div></div>
+      <div class="feat-card"><div class="feat-title">📋 Method (Método)</div><div class="feat-desc">Processos, procedimentos, instrução de trabalho.</div></div>
+      <div class="feat-card"><div class="feat-title">📊 Management</div><div class="feat-desc">Gerenciamento, planejamento, metas, liderança.</div></div>
+      <div class="feat-card"><div class="feat-title">📏 Measurement</div><div class="feat-desc">Medição, indicadores, instrumentos, coleta de dados.</div></div>
+      <div class="feat-card"><div class="feat-title">🌿 Environment</div><div class="feat-desc">Ambiente físico, temperatura, ruído, condições externas.</div></div>
+    </div>
+
+    <!-- Diagrama Ishikawa SVG -->
+    <h3 style="margin-top:1.5rem;">Diagrama Espinha de Peixe — Estrutura</h3>
+    <div class="diagram-wrap">
+      <svg viewBox="0 0 700 280" width="100%" xmlns="http://www.w3.org/2000/svg" style="max-width:700px;">
+        <!-- Espinha dorsal -->
+        <line x1="60" y1="140" x2="600" y2="140" stroke="#00c2ff" stroke-width="2.5"/>
+        <!-- Cabeça do peixe (efeito) -->
+        <rect x="600" y="115" width="90" height="50" rx="6" fill="rgba(239,68,68,0.15)" stroke="#ef4444" stroke-width="1.5"/>
+        <text x="645" y="138" fill="#ef4444" font-size="9" text-anchor="middle" font-family="monospace" font-weight="600">EFEITO</text>
+        <text x="645" y="152" fill="#ef4444" font-size="8" text-anchor="middle" font-family="sans-serif">(Problema)</text>
+        <!-- Espinhas superiores -->
+        <line x1="160" y1="140" x2="120" y2="70" stroke="#7c3aed" stroke-width="1.8"/>
+        <text x="100" y="65" fill="#7c3aed" font-size="9" font-family="sans-serif" font-weight="600">Homem</text>
+        <line x1="120" y1="70" x2="85" y2="55" stroke="#7c3aed" stroke-width="1" stroke-dasharray="3,2"/><text x="58" y="52" fill="#64748b" font-size="7.5" font-family="sans-serif">causa 1</text>
+        <line x1="120" y1="70" x2="88" y2="80" stroke="#7c3aed" stroke-width="1" stroke-dasharray="3,2"/><text x="58" y="83" fill="#64748b" font-size="7.5" font-family="sans-serif">causa 2</text>
+
+        <line x1="310" y1="140" x2="270" y2="70" stroke="#7c3aed" stroke-width="1.8"/>
+        <text x="248" y="65" fill="#7c3aed" font-size="9" font-family="sans-serif" font-weight="600">Método</text>
+        <line x1="270" y1="70" x2="235" y2="55" stroke="#7c3aed" stroke-width="1" stroke-dasharray="3,2"/><text x="205" y="52" fill="#64748b" font-size="7.5" font-family="sans-serif">causa 3</text>
+        <line x1="270" y1="70" x2="238" y2="82" stroke="#7c3aed" stroke-width="1" stroke-dasharray="3,2"/><text x="205" y="85" fill="#64748b" font-size="7.5" font-family="sans-serif">causa 4</text>
+
+        <line x1="460" y1="140" x2="420" y2="70" stroke="#7c3aed" stroke-width="1.8"/>
+        <text x="398" y="65" fill="#7c3aed" font-size="9" font-family="sans-serif" font-weight="600">Máquina</text>
+        <line x1="420" y1="70" x2="385" y2="55" stroke="#7c3aed" stroke-width="1" stroke-dasharray="3,2"/><text x="352" y="52" fill="#64748b" font-size="7.5" font-family="sans-serif">causa 5</text>
+
+        <!-- Espinhas inferiores -->
+        <line x1="210" y1="140" x2="175" y2="210" stroke="#10b981" stroke-width="1.8"/>
+        <text x="150" y="225" fill="#10b981" font-size="9" font-family="sans-serif" font-weight="600">Material</text>
+        <line x1="175" y1="210" x2="140" y2="226" stroke="#10b981" stroke-width="1" stroke-dasharray="3,2"/><text x="108" y="229" fill="#64748b" font-size="7.5" font-family="sans-serif">causa 6</text>
+
+        <line x1="380" y1="140" x2="345" y2="210" stroke="#10b981" stroke-width="1.8"/>
+        <text x="315" y="225" fill="#10b981" font-size="9" font-family="sans-serif" font-weight="600">Medição</text>
+        <line x1="345" y1="210" x2="310" y2="226" stroke="#10b981" stroke-width="1" stroke-dasharray="3,2"/><text x="278" y="229" fill="#64748b" font-size="7.5" font-family="sans-serif">causa 7</text>
+
+        <line x1="520" y1="140" x2="485" y2="210" stroke="#10b981" stroke-width="1.8"/>
+        <text x="455" y="225" fill="#10b981" font-size="9" font-family="sans-serif" font-weight="600">Ambiente</text>
+        <line x1="485" y1="210" x2="450" y2="226" stroke="#10b981" stroke-width="1" stroke-dasharray="3,2"/><text x="418" y="229" fill="#64748b" font-size="7.5" font-family="sans-serif">causa 8</text>
+      </svg>
+    </div>
+
+    <h3 style="margin-top:1rem;">Método de Construção</h3>
+    <div class="proc-list" style="counter-reset:steps;">
+      <div class="proc-item"><div class="proc-num">1</div><div><div class="proc-name">Determinar o conjunto de causas</div><div class="proc-desc">Brainstorming com a equipe para identificar todas as causas possíveis do problema.</div></div></div>
+      <div class="proc-item"><div class="proc-num">2</div><div><div class="proc-name">Determinar as subcausas principais</div><div class="proc-desc">Agrupar causas nos 6M+E e identificar relações hierárquicas.</div></div></div>
+      <div class="proc-item"><div class="proc-num">3</div><div><div class="proc-name">Determinar os pesos das subcausas</div><div class="proc-desc">No <strong>Ishikawa Ponderado</strong>, atribuir pesos percentuais a cada subcausa com base em dados ou consenso da equipe.</div></div></div>
+      <div class="proc-item"><div class="proc-num">4</div><div><div class="proc-name">Análise e priorização</div><div class="proc-desc">Identificar as causas de maior peso e conectar com o Diagrama de Pareto para priorização das ações.</div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- 8.5 PARETO -->
+<section class="section" id="pareto">
+  <div class="container">
+    <p class="section-label">8.5 / ferramentas da qualidade — pareto</p>
+    <h2>Diagrama de Pareto</h2>
+    <div class="def-box">
+      <div class="def-label">Princípio de Pareto</div>
+      <div class="def-text"><strong>80% das consequências</strong> de um problema são decorrentes de <strong>20% das causas</strong>. Útil para estabelecer prioridades no tratamento das causas, considerando as consequências prováveis.</div>
+    </div>
+
+    <h3 style="margin-top:1.25rem;">Método Pareto</h3>
+    <div class="proc-list">
+      <div class="proc-item"><div class="proc-num">1</div><div><div class="proc-name">Caracterizar o problema</div><div class="proc-desc">Definir claramente o evento ou problema a ser analisado.</div></div></div>
+      <div class="proc-item"><div class="proc-num">2</div><div><div class="proc-name">Identificar as causas potenciais</div><div class="proc-desc">Listar todas as causas possíveis (pode usar Ishikawa como entrada).</div></div></div>
+      <div class="proc-item"><div class="proc-num">3</div><div><div class="proc-name">Definir amostra e observar frequências</div><div class="proc-desc">Coletar dados reais e registrar a frequência de ocorrência de cada causa.</div></div></div>
+      <div class="proc-item"><div class="proc-num">4</div><div><div class="proc-name">Ordenar e calcular probabilidade cumulativa</div><div class="proc-desc">Ordenar causas em frequência decrescente. Calcular % cumulativa para identificar o "vital few".</div></div></div>
+    </div>
+
+    <h3 style="margin-top:1.25rem;">Exemplo Numérico — Riscos de Projeto</h3>
+    <p style="font-size:.85rem;color:var(--muted);margin-bottom:.75rem;">Observação de 91 ocorrências de risco em um projeto:</p>
+    <div style="overflow-x:auto;border:1px solid var(--border);border-radius:8px;">
+      <table class="pareto-table">
+        <thead><tr><th>Risco</th><th>Frequência</th><th>% Individual</th><th>% Cumulativa</th><th>Classificação</th></tr></thead>
+        <tbody>
+          <tr class="vital"><td>Risco 1</td><td>34</td><td>37,4%</td><td>37,4%</td><td style="color:var(--red);">⚠️ Vital</td></tr>
+          <tr class="vital"><td>Risco 2</td><td>22</td><td>24,2%</td><td>61,5%</td><td style="color:var(--red);">⚠️ Vital</td></tr>
+          <tr class="vital"><td>Risco 3</td><td>12</td><td>13,2%</td><td>74,7%</td><td style="color:var(--yellow);">⚡ Importante</td></tr>
+          <tr><td>Risco 4</td><td>9</td><td>9,9%</td><td>84,6%</td><td style="color:var(--muted);">Trivial</td></tr>
+          <tr><td>Risco 5</td><td>7</td><td>7,7%</td><td>92,3%</td><td style="color:var(--muted);">Trivial</td></tr>
+          <tr><td>Risco 6</td><td>6</td><td>6,6%</td><td>98,9%</td><td style="color:var(--muted);">Trivial</td></tr>
+          <tr><td>Outros</td><td>1</td><td>1,1%</td><td>100,0%</td><td style="color:var(--muted);">Trivial</td></tr>
+          <tr style="background:var(--tag-bg);"><td><strong>Total</strong></td><td><strong>91</strong></td><td><strong>100%</strong></td><td>—</td><td>—</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Pareto chart SVG -->
+    <div class="diagram-wrap">
+      <svg viewBox="0 0 560 240" width="100%" xmlns="http://www.w3.org/2000/svg" style="max-width:560px;">
+        <!-- Eixo Y esquerdo (frequência) -->
+        <line x1="55" y1="20" x2="55" y2="190" stroke="#1e2d40" stroke-width="1.5"/>
+        <text x="8" y="190" fill="#64748b" font-size="7.5" font-family="monospace">0</text>
+        <text x="8" y="145" fill="#64748b" font-size="7.5" font-family="monospace">10</text>
+        <text x="8" y="100" fill="#64748b" font-size="7.5" font-family="monospace">20</text>
+        <text x="8" y="55" fill="#64748b" font-size="7.5" font-family="monospace">34</text>
+        <!-- Eixo X -->
+        <line x1="55" y1="190" x2="500" y2="190" stroke="#1e2d40" stroke-width="1.5"/>
+        <!-- Eixo Y direito (%) -->
+        <line x1="500" y1="20" x2="500" y2="190" stroke="#1e2d40" stroke-width="1" stroke-dasharray="3,3"/>
+        <text x="504" y="190" fill="#64748b" font-size="7.5" font-family="monospace">0%</text>
+        <text x="504" y="140" fill="#64748b" font-size="7.5" font-family="monospace">50%</text>
+        <text x="504" y="25" fill="#64748b" font-size="7.5" font-family="monospace">100%</text>
+
+        <!-- Barras (escala: 34 → altura 155px; 0 → 0px) -->
+        <!-- Risco 1: 34 freq → 155px alto -->
+        <rect x="65" y="35" width="55" height="155" fill="#ef4444" opacity=".75"/>
+        <text x="92" y="210" fill="#64748b" font-size="7.5" text-anchor="middle" font-family="sans-serif">Risco 1</text>
+        <text x="92" y="30" fill="#ef4444" font-size="8" text-anchor="middle" font-family="monospace">34</text>
+        <!-- Risco 2: 22 → 100px -->
+        <rect x="128" y="90" width="55" height="100" fill="#f59e0b" opacity=".75"/>
+        <text x="155" y="210" fill="#64748b" font-size="7.5" text-anchor="middle" font-family="sans-serif">Risco 2</text>
+        <text x="155" y="85" fill="#f59e0b" font-size="8" text-anchor="middle" font-family="monospace">22</text>
+        <!-- Risco 3: 12 → 55px -->
+        <rect x="191" y="135" width="55" height="55" fill="#f59e0b" opacity=".5"/>
+        <text x="218" y="210" fill="#64748b" font-size="7.5" text-anchor="middle" font-family="sans-serif">Risco 3</text>
+        <!-- Risco 4: 9 → 41px -->
+        <rect x="254" y="149" width="55" height="41" fill="#64748b" opacity=".4"/>
+        <text x="281" y="210" fill="#64748b" font-size="7.5" text-anchor="middle" font-family="sans-serif">Risco 4</text>
+        <!-- Risco 5: 7 → 32px -->
+        <rect x="317" y="158" width="55" height="32" fill="#64748b" opacity=".3"/>
+        <text x="344" y="210" fill="#64748b" font-size="7.5" text-anchor="middle" font-family="sans-serif">Risco 5</text>
+        <!-- Risco 6: 6 → 27px -->
+        <rect x="380" y="163" width="55" height="27" fill="#64748b" opacity=".2"/>
+        <text x="407" y="210" fill="#64748b" font-size="7.5" text-anchor="middle" font-family="sans-serif">Risco 6</text>
+
+        <!-- Curva cumulativa -->
+        <!-- pontos: (92,155→35%), (155,61.5%→107), (218,74.7%→131), (281,84.6%→152), (344,92.3%→167), (407,98.9%→178) -->
+        <polyline points="92,120 155,143 218,155 281,163 344,169 407,174 462,175" fill="none" stroke="#00c2ff" stroke-width="2"/>
+        <circle cx="92" cy="120" r="3" fill="#00c2ff"/>
+        <circle cx="155" cy="143" r="3" fill="#00c2ff"/>
+        <circle cx="218" cy="155" r="3" fill="#00c2ff"/>
+        <!-- Linha 80% -->
+        <line x1="55" y1="151" x2="500" y2="151" stroke="#10b981" stroke-width="1" stroke-dasharray="5,3"/>
+        <text x="502" y="154" fill="#10b981" font-size="7.5" font-family="monospace">80%</text>
+        <!-- Label curva -->
+        <text x="420" y="168" fill="#00c2ff" font-size="7.5" font-family="monospace">% acum.</text>
+        <text x="20" y="115" fill="#64748b" font-size="7.5" font-family="monospace" transform="rotate(-90,20,115)">Frequência</text>
+      </svg>
+    </div>
+    <p style="font-size:.8rem;color:var(--muted);margin-top:.5rem;">→ Riscos 1 e 2 (apenas 29% das categorias) respondem por <strong>61,5% das ocorrências</strong> — são os "vitais poucos" que devem ser priorizados.</p>
+  </div>
+</section>
+
+<!-- 8.6 CDQ -->
+<section class="section" id="cdq">
+  <div class="container">
+    <p class="section-label">8.6 / custos da qualidade — CDQ</p>
+    <h2>CDQ — Custos da Qualidade</h2>
+    <p style="font-size:.88rem;color:var(--muted);margin-bottom:1rem;">Os custos da qualidade (CDQ) são todos os custos incorridos para garantir qualidade <strong>ou</strong> para corrigir a falta dela. Dividem-se em <strong>Inevitáveis</strong> (custos de conformidade) e <strong>Evitáveis</strong> (custos de não conformidade).</p>
+    <div class="cdq-grid">
+      <div class="cdq-card" style="border-color:var(--green);">
+        <div class="cdq-title" style="color:var(--green);">✅ Inevitáveis — Conformidade</div>
+        <p style="font-size:.78rem;color:var(--muted);margin-bottom:.6rem;">Investimentos para <em>prevenir</em> defeitos ou <em>avaliar</em> a qualidade. Necessários e justificáveis.</p>
+        <ul class="cdq-list">
+          <li><strong>Prevenção:</strong> Treinamento, planejamento da qualidade, revisão de projeto, melhoria de processos.</li>
+          <li><strong>Avaliação/Inspeção:</strong> Testes, auditorias, inspeções, homologação de fornecedores.</li>
+        </ul>
+      </div>
+      <div class="cdq-card" style="border-color:var(--red);">
+        <div class="cdq-title" style="color:var(--red);">❌ Evitáveis — Não Conformidade</div>
+        <p style="font-size:.78rem;color:var(--muted);margin-bottom:.6rem;">Custos decorrentes de <em>falhas</em>. Podem e devem ser eliminados com prevenção.</p>
+        <ul class="cdq-list">
+          <li><strong>Falhas internas:</strong> Retrabalho, refugo, re-testes, atrasos por defeitos internos.</li>
+          <li><strong>Falhas externas:</strong> Garantia, devoluções, reclamações de clientes, perda de reputação.</li>
+        </ul>
+      </div>
+    </div>
+    <div class="def-box" style="border-color:var(--green);margin-top:.5rem;">
+      <div class="def-label" style="color:var(--green);">Princípio do CDQ</div>
+      <div class="def-text">O custo de <strong>prevenção</strong> é sempre menor que o custo de <strong>correção</strong>. Investir em qualidade preventiva reduz exponencialmente os custos de falha ao longo do projeto.</div>
+    </div>
+  </div>
+</section>
+
+<!-- 8.7 AQUISIÇÕES -->
 <section class="section" id="aquisicoes">
   <div class="container">
-    <p class="section-label">8.2 / gestão das aquisições</p>
+    <p class="section-label">8.7 / gestão das aquisições</p>
     <h2>Gestão das Aquisições</h2>
     <div class="proc-list">
-      <div class="proc-item"><div class="proc-num">12.1</div><div><div class="proc-name">Planejar o Gerenciamento das Aquisições</div><div class="proc-desc">Documenta as decisões de aquisições, especificando a abordagem e identificando fornecedores potenciais.</div></div></div>
-      <div class="proc-item"><div class="proc-num">12.2</div><div><div class="proc-name">Conduzir as Aquisições</div><div class="proc-desc">Obtém respostas de fornecedores, seleciona um fornecedor e concede um contrato.</div></div></div>
-      <div class="proc-item"><div class="proc-num">12.3</div><div><div class="proc-name">Controlar as Aquisições</div><div class="proc-desc">Gerencia relacionamentos com fornecedores, monitora desempenho contratual e faz mudanças/correções conforme necessário.</div></div></div>
+      <div class="proc-item"><div class="proc-num">12.1</div><div><div class="proc-name">Planejar o Gerenciamento das Aquisições</div><div class="proc-desc">Documenta as decisões de aquisição, especificando a abordagem e identificando potenciais fornecedores.</div></div></div>
+      <div class="proc-item"><div class="proc-num">12.2</div><div><div class="proc-name">Conduzir as Aquisições</div><div class="proc-desc">Obtém respostas de fornecedores, seleciona um fornecedor e concede um contrato (adjudicação).</div></div></div>
+      <div class="proc-item"><div class="proc-num">12.3</div><div><div class="proc-name">Controlar as Aquisições</div><div class="proc-desc">Gestão e fiscalização dos contratos celebrados. Monitora desempenho e gerencia mudanças contratuais.</div></div></div>
     </div>
+
     <h3 style="margin-top:1.25rem;">Tipos de Contrato</h3>
     <div class="two-col">
       <div class="col-card" style="border-color:var(--green);">
         <div class="col-title" style="color:var(--green);">Preço Fixo (FP)</div>
         <ul class="col-list">
-          <li><strong>FFP</strong> — Preço Fixo Firme: escopo bem definido, menor risco para o comprador.</li>
-          <li><strong>FPIF</strong> — Preço Fixo com Incentivo: metas com participação nos ganhos.</li>
-          <li><strong>FP-EPA</strong> — Ajuste Econômico: indexado à inflação.</li>
+          <li><strong>FFP</strong> — Preço Fixo Firme: escopo bem definido; risco do fornecedor.</li>
+          <li><strong>FPIF</strong> — Com Incentivo: metas com participação nos ganhos/perdas.</li>
+          <li><strong>FP-EPA</strong> — Ajuste econômico: indexado à inflação.</li>
         </ul>
       </div>
       <div class="col-card" style="border-color:var(--yellow);">
         <div class="col-title" style="color:var(--yellow);">Custos Reembolsáveis (CR)</div>
         <ul class="col-list">
-          <li><strong>CR</strong> — Cost Reimbursable: fornecedor recebe custos + honorários.</li>
-          <li><strong>CPIF</strong> — Com Incentivo: bônus por superar metas.</li>
-          <li><strong>CPFF</strong> — Com Honorários Fixos: custos variáveis + honorário fixo.</li>
+          <li><strong>CPFF</strong> — Honorários Fixos: custos variáveis + honorário fixo.</li>
+          <li><strong>CPIF</strong> — Com Incentivo: bônus por atingir metas de custo.</li>
+          <li><strong>CPAF</strong> — Com honorário por desempenho avaliado subjetivamente.</li>
         </ul>
       </div>
     </div>
-    <div class="col-card" style="margin-top:.65rem;border-color:var(--accent2);">
+    <div class="col-card" style="border-color:var(--accent2);margin-top:.65rem;">
       <div class="col-title" style="color:var(--accent2);">Tempo e Material (T&M)</div>
-      <p style="font-size:.83rem;color:var(--muted);">Híbrido entre FP e CR. Taxa fixa por hora de trabalho + material a custo real. Risco compartilhado. Indicado para staff augmentation e escopo indefinido.</p>
+      <p style="font-size:.83rem;color:var(--muted);">Híbrido: taxa fixa por hora + material a custo real. Indicado para staff augmentation e escopo indefinido. Risco compartilhado entre comprador e fornecedor.</p>
+    </div>
+
+    <h3 style="margin-top:1.5rem;">Responsabilidades na Gestão de Contratos</h3>
+    <div style="overflow-x:auto;border:1px solid var(--border);border-radius:8px;">
+      <table class="contract-table">
+        <thead><tr><th>Papel</th><th>Responsabilidades principais</th></tr></thead>
+        <tbody>
+          <tr><td>Gestor do Contrato</td><td>Concentra-se nos aspectos técnicos e comerciais; justifica contratações; relaciona-se com o cliente; aferir se o que foi contratado está sendo realizado adequadamente.</td></tr>
+          <tr><td>Consultor Jurídico</td><td>Evita risco legal e demandas judiciais; responsável por processos de litígio e penalizações; área consultiva e deliberativa — não operacional.</td></tr>
+          <tr><td>Consultor Financeiro</td><td>Garante que operações financeiras dos contratos sejam realizadas conforme o pactuado.</td></tr>
+          <tr><td>Gestor de Informações</td><td>Responsável pela política de segurança da informação dos contratos do projeto.</td></tr>
+          <tr><td>Gestor Técnico</td><td>Responsável pelas diversas áreas técnicas e operacionais do projeto.</td></tr>
+          <tr><td>Gestor de Auditoria</td><td>Responsável pela investigação e aferição sistêmica dos contratos.</td></tr>
+        </tbody>
+      </table>
     </div>
   </div>
 </section>
 
-<!-- COMUNICAÇÕES -->
+<!-- 8.8 COMUNICAÇÕES -->
 <section class="section" id="comunicacoes">
   <div class="container">
-    <p class="section-label">8.3 / gestão das comunicações</p>
+    <p class="section-label">8.8 / gestão das comunicações</p>
     <h2>Gestão das Comunicações</h2>
     <div class="proc-list">
-      <div class="proc-item"><div class="proc-num">10.1</div><div><div class="proc-name">Planejar o Gerenciamento das Comunicações</div><div class="proc-desc">Desenvolve uma abordagem e um plano para as atividades de comunicação do projeto baseados nas necessidades de informação.</div></div></div>
-      <div class="proc-item"><div class="proc-num">10.2</div><div><div class="proc-name">Gerenciar as Comunicações</div><div class="proc-desc">Garante a coleta, criação, distribuição, armazenamento, recuperação e disposição final oportuna e apropriada das informações.</div></div></div>
+      <div class="proc-item"><div class="proc-num">10.1</div><div><div class="proc-name">Planejar o Gerenciamento das Comunicações</div><div class="proc-desc">Desenvolve a abordagem e o plano para as atividades de comunicação com base nas necessidades de informação de cada parte interessada.</div></div></div>
+      <div class="proc-item"><div class="proc-num">10.2</div><div><div class="proc-name">Gerenciar as Comunicações</div><div class="proc-desc">Garante a coleta, criação, distribuição, armazenamento, recuperação e disposição final oportuna das informações.</div></div></div>
       <div class="proc-item"><div class="proc-num">10.3</div><div><div class="proc-name">Monitorar as Comunicações</div><div class="proc-desc">Garante que as necessidades de informação do projeto e das partes interessadas sejam atendidas.</div></div></div>
     </div>
     <div class="def-box" style="margin-top:1rem;">
       <div class="def-label">Fórmula dos Canais de Comunicação</div>
-      <div class="def-text" style="font-size:1.1rem;text-align:center;letter-spacing:.05em;"><strong>N × (N − 1) / 2</strong></div>
-      <p style="font-size:.83rem;color:var(--muted);margin-top:.5rem;">Onde N = número de partes interessadas. Com 10 stakeholders → <strong>45 canais</strong>. Com 20 → <strong>190 canais</strong>. Quanto maior a equipe, exponencialmente mais complexa a comunicação.</p>
+      <div class="def-text" style="font-size:1.1rem;text-align:center;"><strong>N × (N − 1) / 2</strong></div>
+      <p style="font-size:.83rem;color:var(--muted);margin-top:.5rem;">Com 10 stakeholders → <strong>45 canais</strong>. Com 20 → <strong>190 canais</strong>. A comunicação cresce exponencialmente com a equipe.</p>
     </div>
-    <h3 style="margin-top:1.25rem;">Dimensões da Comunicação</h3>
+    <h3 style="margin-top:1.25rem;">Tipos de Comunicação</h3>
     <div class="feat-grid" style="grid-template-columns:repeat(auto-fill,minmax(160px,1fr));">
-      <div class="feat-card"><div class="feat-icon">📢</div><div class="feat-title">Push</div><div class="feat-desc">Enviada diretamente: e-mail, relatórios, atas. Receptor não precisa pedir.</div></div>
-      <div class="feat-card"><div class="feat-icon">📥</div><div class="feat-title">Pull</div><div class="feat-desc">Disponível para acesso: portais, intranets. Receptor busca quando necessário.</div></div>
-      <div class="feat-card"><div class="feat-icon">🤝</div><div class="feat-title">Interativa</div><div class="feat-desc">Troca bidirecional: reuniões, calls. Mais rica em feedback.</div></div>
-      <div class="feat-card"><div class="feat-icon">📝</div><div class="feat-title">Formal</div><div class="feat-desc">Documentos oficiais: contratos, relatórios, atas de reunião.</div></div>
-      <div class="feat-card"><div class="feat-icon">💬</div><div class="feat-title">Informal</div><div class="feat-desc">Conversas, e-mails casuais. Ágil mas sem controle formal.</div></div>
-      <div class="feat-card"><div class="feat-icon">🗣️</div><div class="feat-title">Verbal vs. Escrita</div><div class="feat-desc">Escrita para acordos formais; verbal para alinhamentos rápidos.</div></div>
+      <div class="feat-card"><div class="feat-icon">📢</div><div class="feat-title">Push</div><div class="feat-desc">Enviada ativamente: e-mail, relatórios, atas. Receptor não precisa solicitar.</div></div>
+      <div class="feat-card"><div class="feat-icon">📥</div><div class="feat-title">Pull</div><div class="feat-desc">Disponível em portais/intranets. Receptor busca quando necessário.</div></div>
+      <div class="feat-card"><div class="feat-icon">🤝</div><div class="feat-title">Interativa</div><div class="feat-desc">Bidirecional em tempo real: reuniões, calls. Mais rica em feedback.</div></div>
+    </div>
+    <div class="def-box" style="border-color:var(--yellow);margin-top:.5rem;">
+      <div class="def-label" style="color:var(--yellow);">Framework de Comunicação Eficaz</div>
+      <div class="def-text" style="font-size:.88rem;">
+        <strong>Transparência</strong> — informações acessíveis a quem precisa &nbsp;·&nbsp;
+        <strong>A equipe entendeu suas responsabilidades?</strong> — testar a compreensão &nbsp;·&nbsp;
+        <strong>Liderança</strong> — comunicação como ferramenta de alinhamento
+      </div>
     </div>
   </div>
 </section>
 
-<!-- PARTES INTERESSADAS -->
+<!-- 8.9 STAKEHOLDERS -->
 <section class="section" id="stakeholders">
   <div class="container">
-    <p class="section-label">8.4 / gestão das partes interessadas</p>
+    <p class="section-label">8.9 / gestão das partes interessadas</p>
     <h2>Gestão das Partes Interessadas</h2>
     <div class="proc-list">
-      <div class="proc-item"><div class="proc-num">13.1</div><div><div class="proc-name">Identificar as Partes Interessadas</div><div class="proc-desc">Identifica as partes interessadas e analisa e documenta informações relevantes sobre seus interesses, envolvimento e impacto.</div></div></div>
-      <div class="proc-item"><div class="proc-num">13.2</div><div><div class="proc-name">Planejar o Engajamento das Partes Interessadas</div><div class="proc-desc">Desenvolve abordagens para engajar as partes interessadas com base em suas necessidades, interesses e impacto potencial.</div></div></div>
-      <div class="proc-item"><div class="proc-num">13.3</div><div><div class="proc-name">Gerenciar o Engajamento das Partes Interessadas</div><div class="proc-desc">Trabalha com as partes interessadas para atender às suas necessidades, aborda problemas e promove engajamento adequado.</div></div></div>
-      <div class="proc-item"><div class="proc-num">13.4</div><div><div class="proc-name">Monitorar o Engajamento das Partes Interessadas</div><div class="proc-desc">Monitora o engajamento das partes interessadas e ajusta estratégias conforme necessário.</div></div></div>
+      <div class="proc-item"><div class="proc-num">13.1</div><div><div class="proc-name">Identificar as Partes Interessadas</div><div class="proc-desc">Identifica e documenta informações sobre interesses, envolvimento e impacto potencial de cada stakeholder.</div></div></div>
+      <div class="proc-item"><div class="proc-num">13.2</div><div><div class="proc-name">Planejar o Engajamento</div><div class="proc-desc">Desenvolve abordagens com base nas necessidades, interesses e impacto potencial de cada stakeholder.</div></div></div>
+      <div class="proc-item"><div class="proc-num">13.3</div><div><div class="proc-name">Gerenciar o Engajamento</div><div class="proc-desc">Trabalha com stakeholders para atender necessidades, abordar problemas e promover engajamento adequado.</div></div></div>
+      <div class="proc-item"><div class="proc-num">13.4</div><div><div class="proc-name">Monitorar o Engajamento</div><div class="proc-desc">Monitora o engajamento e ajusta estratégias conforme necessário ao longo do projeto.</div></div></div>
     </div>
-    <h3 style="margin-top:1.25rem;">Matriz Poder × Interesse</h3>
-    <div style="background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:1.25rem;margin:1rem 0;">
-      <svg viewBox="0 0 460 300" width="100%" xmlns="http://www.w3.org/2000/svg" style="max-width:460px;display:block;margin:0 auto;">
-        <!-- Quadrantes -->
-        <rect x="40" y="20" width="190" height="125" fill="rgba(16,185,129,0.08)" stroke="#1e2d40"/>
-        <rect x="230" y="20" width="190" height="125" fill="rgba(0,194,255,0.1)" stroke="#1e2d40"/>
-        <rect x="40" y="145" width="190" height="125" fill="rgba(245,158,11,0.08)" stroke="#1e2d40"/>
-        <rect x="230" y="145" width="190" height="125" fill="rgba(239,68,68,0.1)" stroke="#1e2d40"/>
-        <!-- Labels quadrantes -->
-        <text x="135" y="52" fill="#10b981" font-size="9.5" text-anchor="middle" font-family="sans-serif" font-weight="600">MANTER SATISFEITO</text>
-        <text x="135" y="67" fill="#64748b" font-size="8" text-anchor="middle" font-family="sans-serif">Alto Poder / Baixo Interesse</text>
-        <text x="325" y="52" fill="#00c2ff" font-size="9.5" text-anchor="middle" font-family="sans-serif" font-weight="600">GERENCIAR DE PERTO</text>
-        <text x="325" y="67" fill="#64748b" font-size="8" text-anchor="middle" font-family="sans-serif">Alto Poder / Alto Interesse</text>
-        <text x="135" y="175" fill="#f59e0b" font-size="9.5" text-anchor="middle" font-family="sans-serif" font-weight="600">MONITORAR</text>
-        <text x="135" y="190" fill="#64748b" font-size="8" text-anchor="middle" font-family="sans-serif">Baixo Poder / Baixo Interesse</text>
-        <text x="325" y="175" fill="#ef4444" font-size="9.5" text-anchor="middle" font-family="sans-serif" font-weight="600">MANTER INFORMADO</text>
-        <text x="325" y="190" fill="#64748b" font-size="8" text-anchor="middle" font-family="sans-serif">Baixo Poder / Alto Interesse</text>
-        <!-- Exemplos -->
-        <text x="135" y="95" fill="#64748b" font-size="8" text-anchor="middle" font-family="sans-serif">Ex: Diretor de área sem envolvimento direto</text>
-        <text x="325" y="95" fill="#64748b" font-size="8" text-anchor="middle" font-family="sans-serif">Ex: Patrocinador, cliente-chave</text>
-        <text x="135" y="220" fill="#64748b" font-size="8" text-anchor="middle" font-family="sans-serif">Ex: Público externo, usuário final periférico</text>
-        <text x="325" y="220" fill="#64748b" font-size="8" text-anchor="middle" font-family="sans-serif">Ex: Usuário final, equipe operacional</text>
-        <!-- Eixos -->
-        <text x="230" y="290" fill="#64748b" font-size="9" text-anchor="middle" font-family="monospace">INTERESSE →</text>
-        <text x="18" y="155" fill="#64748b" font-size="9" text-anchor="middle" font-family="monospace" transform="rotate(-90,18,155)">PODER ↑</text>
-      </svg>
-    </div>
+
     <h3 style="margin-top:1.25rem;">Níveis de Engajamento</h3>
     <div class="proc-list">
-      <div class="proc-item"><div class="proc-num" style="color:var(--red);">🔴</div><div><div class="proc-name">Desinformado (Unaware)</div><div class="proc-desc">Não tem conhecimento do projeto e de seus impactos potenciais.</div></div></div>
-      <div class="proc-item"><div class="proc-num" style="color:var(--red);">🟠</div><div><div class="proc-name">Resistente (Resistant)</div><div class="proc-desc">Tem ciência, mas resiste à mudança. Pode ser obstáculo ao projeto.</div></div></div>
-      <div class="proc-item"><div class="proc-num" style="color:var(--yellow);">🟡</div><div><div class="proc-name">Neutro (Neutral)</div><div class="proc-desc">Tem ciência, mas não apoia nem resiste.</div></div></div>
-      <div class="proc-item"><div class="proc-num" style="color:var(--green);">🟢</div><div><div class="proc-name">Apoiador (Supportive)</div><div class="proc-desc">Tem ciência e apoia o projeto e suas mudanças.</div></div></div>
-      <div class="proc-item"><div class="proc-num" style="color:var(--accent);">🔵</div><div><div class="proc-name">Líder (Leading)</div><div class="proc-desc">Engajado ativamente para garantir o sucesso do projeto. Nível desejável.</div></div></div>
+      <div class="proc-item"><div class="proc-num" style="color:var(--muted);">🔴</div><div><div class="proc-name">Desinformado</div><div class="proc-desc">Sem conhecimento do projeto e de seus impactos potenciais.</div></div></div>
+      <div class="proc-item"><div class="proc-num" style="color:var(--red);">🟠</div><div><div class="proc-name">Resistente</div><div class="proc-desc">Ciente do projeto e dos impactos potenciais. Resistente a mudanças — pode ser obstáculo.</div></div></div>
+      <div class="proc-item"><div class="proc-num" style="color:var(--yellow);">🟡</div><div><div class="proc-name">Neutro</div><div class="proc-desc">Ciente, mas não apoia nem resiste. Comportamento passivo.</div></div></div>
+      <div class="proc-item"><div class="proc-num" style="color:var(--green);">🟢</div><div><div class="proc-name">Apoiador (Dá apoio)</div><div class="proc-desc">Ciente e apoia o projeto e suas mudanças. Aliado importante.</div></div></div>
+      <div class="proc-item"><div class="proc-num" style="color:var(--accent);">🔵</div><div><div class="proc-name">Líder (Leading)</div><div class="proc-desc">Ativamente engajado para garantir o êxito das mudanças. Nível desejável nos stakeholders-chave.</div></div></div>
+    </div>
+
+    <h3 style="margin-top:1.25rem;">Matriz Poder × Interesse</h3>
+    <div style="background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:1.25rem;overflow-x:auto;">
+      <svg viewBox="0 0 460 280" width="100%" xmlns="http://www.w3.org/2000/svg" style="max-width:460px;display:block;margin:0 auto;">
+        <rect x="40" y="20" width="190" height="115" fill="rgba(16,185,129,0.08)" stroke="#1e2d40"/>
+        <rect x="230" y="20" width="190" height="115" fill="rgba(0,194,255,0.1)" stroke="#1e2d40"/>
+        <rect x="40" y="135" width="190" height="115" fill="rgba(245,158,11,0.08)" stroke="#1e2d40"/>
+        <rect x="230" y="135" width="190" height="115" fill="rgba(239,68,68,0.1)" stroke="#1e2d40"/>
+        <text x="135" y="48" fill="#10b981" font-size="9.5" text-anchor="middle" font-family="sans-serif" font-weight="600">MANTER SATISFEITO</text>
+        <text x="135" y="62" fill="#64748b" font-size="8" text-anchor="middle" font-family="sans-serif">Alto Poder / Baixo Interesse</text>
+        <text x="325" y="48" fill="#00c2ff" font-size="9.5" text-anchor="middle" font-family="sans-serif" font-weight="600">GERENCIAR DE PERTO</text>
+        <text x="325" y="62" fill="#64748b" font-size="8" text-anchor="middle" font-family="sans-serif">Alto Poder / Alto Interesse</text>
+        <text x="135" y="165" fill="#f59e0b" font-size="9.5" text-anchor="middle" font-family="sans-serif" font-weight="600">MONITORAR</text>
+        <text x="135" y="179" fill="#64748b" font-size="8" text-anchor="middle" font-family="sans-serif">Baixo Poder / Baixo Interesse</text>
+        <text x="325" y="165" fill="#ef4444" font-size="9.5" text-anchor="middle" font-family="sans-serif" font-weight="600">MANTER INFORMADO</text>
+        <text x="325" y="179" fill="#64748b" font-size="8" text-anchor="middle" font-family="sans-serif">Baixo Poder / Alto Interesse</text>
+        <text x="135" y="88" fill="#64748b" font-size="7.5" text-anchor="middle" font-family="sans-serif">Ex: Diretor sem envolvimento direto</text>
+        <text x="325" y="88" fill="#64748b" font-size="7.5" text-anchor="middle" font-family="sans-serif">Ex: Patrocinador, cliente-chave</text>
+        <text x="135" y="210" fill="#64748b" font-size="7.5" text-anchor="middle" font-family="sans-serif">Ex: Público externo periférico</text>
+        <text x="325" y="210" fill="#64748b" font-size="7.5" text-anchor="middle" font-family="sans-serif">Ex: Usuário final, equipe operacional</text>
+        <text x="230" y="265" fill="#64748b" font-size="9" text-anchor="middle" font-family="monospace">INTERESSE →</text>
+        <text x="18" y="145" fill="#64748b" font-size="9" text-anchor="middle" font-family="monospace" transform="rotate(-90,18,145)">PODER ↑</text>
+      </svg>
     </div>
   </div>
 </section>
@@ -231,27 +591,120 @@
 <!-- QUIZ -->
 <section class="section" id="quiz">
   <div class="container">
-    <p class="section-label">8.5 / quiz</p>
+    <p class="section-label">quiz</p>
     <h2>Quiz Rápido — Unidade 8</h2>
     <div class="quiz-wrap">
-      <div class="quiz-title">⚡ Teste seus conhecimentos — 5 questões</div>
-      <div class="quiz-q" id="q1"><div class="q-num">QUESTÃO 01</div><div class="q-text">O Diagrama de Pareto é baseado na regra:</div><div class="options"><label class="opt"><input type="radio" name="q1" value="a"> 50/50: metade dos problemas têm metade das causas.</label><label class="opt"><input type="radio" name="q1" value="b"> 80/20: 80% dos defeitos provêm de 20% das causas.</label><label class="opt"><input type="radio" name="q1" value="c"> 70/30: 70% dos defeitos são evitáveis com prevenção.</label><label class="opt"><input type="radio" name="q1" value="d"> 90/10: 10% dos processos causam 90% dos erros.</label></div></div>
-      <div class="quiz-q" id="q2"><div class="q-num">QUESTÃO 02</div><div class="q-text">Em contratos de <strong>Preço Fixo Firme (FFP)</strong>, o risco financeiro é maior para:</div><div class="options"><label class="opt"><input type="radio" name="q2" value="a"> O comprador, pois paga preço acima do mercado.</label><label class="opt"><input type="radio" name="q2" value="b"> O fornecedor, pois absorve custos acima do estimado.</label><label class="opt"><input type="radio" name="q2" value="c"> O gerente de projetos, pois gerencia ambas as partes.</label><label class="opt"><input type="radio" name="q2" value="d"> Os dois igualmente: risco compartilhado.</label></div></div>
-      <div class="quiz-q" id="q3"><div class="q-num">QUESTÃO 03</div><div class="q-text">Um projeto com 8 membros na equipe tem quantos canais de comunicação?</div><div class="options"><label class="opt"><input type="radio" name="q3" value="a"> 16 canais.</label><label class="opt"><input type="radio" name="q3" value="b"> 24 canais.</label><label class="opt"><input type="radio" name="q3" value="c"> 28 canais.</label><label class="opt"><input type="radio" name="q3" value="d"> 56 canais.</label></div></div>
-      <div class="quiz-q" id="q4"><div class="q-num">QUESTÃO 04</div><div class="q-text">Um stakeholder classificado como <strong>"Gerenciar de Perto"</strong> na Matriz Poder × Interesse tem:</div><div class="options"><label class="opt"><input type="radio" name="q4" value="a"> Baixo poder e alto interesse.</label><label class="opt"><input type="radio" name="q4" value="b"> Baixo poder e baixo interesse.</label><label class="opt"><input type="radio" name="q4" value="c"> Alto poder e baixo interesse.</label><label class="opt"><input type="radio" name="q4" value="d"> Alto poder e alto interesse.</label></div></div>
-      <div class="quiz-q" id="q5"><div class="q-num">QUESTÃO 05</div><div class="q-text">No PMBOK, a comunicação do tipo <strong>"Pull"</strong> caracteriza-se por:</div><div class="options"><label class="opt"><input type="radio" name="q5" value="a"> Enviar ativamente e-mails para os stakeholders.</label><label class="opt"><input type="radio" name="q5" value="b"> Disponibilizar informações em portais para acesso conforme necessário.</label><label class="opt"><input type="radio" name="q5" value="c"> Comunicação bidirecional em reuniões.</label><label class="opt"><input type="radio" name="q5" value="d"> Notificação automática quando há mudanças no projeto.</label></div></div>
+      <div class="quiz-title">⚡ Teste seus conhecimentos — 6 questões</div>
+
+      <div class="quiz-q" id="q1">
+        <div class="q-num">QUESTÃO 01</div>
+        <div class="q-text">O princípio P6 dos 7 Princípios da ISO 9001/2015 estabelece que decisões devem ser baseadas em:</div>
+        <div class="options">
+          <label class="opt"><input type="radio" name="q1" value="a"> Intuição e experiência dos gestores.</label>
+          <label class="opt"><input type="radio" name="q1" value="b"> Evidências — dados concretos coletados e analisados.</label>
+          <label class="opt"><input type="radio" name="q1" value="c"> Normas regulatórias internacionais.</label>
+          <label class="opt"><input type="radio" name="q1" value="d"> Consenso da equipe de qualidade.</label>
+        </div>
+      </div>
+
+      <div class="quiz-q" id="q2">
+        <div class="q-num">QUESTÃO 02</div>
+        <div class="q-text">No indicador de desempenho, <strong>Efetividade</strong> significa:</div>
+        <div class="options">
+          <label class="opt"><input type="radio" name="q2" value="a"> Atender os requisitos definidos no planejamento.</label>
+          <label class="opt"><input type="radio" name="q2" value="b"> Executar com o menor custo possível.</label>
+          <label class="opt"><input type="radio" name="q2" value="c"> Combinação de eficácia e eficiência — entregar o produto certo, da forma mais produtiva.</label>
+          <label class="opt"><input type="radio" name="q2" value="d"> Atingir 100% das metas estabelecidas no escopo.</label>
+        </div>
+      </div>
+
+      <div class="quiz-q" id="q3">
+        <div class="q-num">QUESTÃO 03</div>
+        <div class="q-text">O método <strong>6M+E</strong> do Diagrama de Ishikawa inclui como categoria:</div>
+        <div class="options">
+          <label class="opt"><input type="radio" name="q3" value="a"> Marketing (M) — influência de mercado nas causas.</label>
+          <label class="opt"><input type="radio" name="q3" value="b"> Management (Gerenciamento) — causas relacionadas a planejamento e liderança.</label>
+          <label class="opt"><input type="radio" name="q3" value="c"> Money (Dinheiro) — impacto do orçamento nos defeitos.</label>
+          <label class="opt"><input type="radio" name="q3" value="d"> Monitoring (Monitoramento) — falhas no rastreamento.</label>
+        </div>
+      </div>
+
+      <div class="quiz-q" id="q4">
+        <div class="q-num">QUESTÃO 04</div>
+        <div class="q-text">No exemplo de Pareto da unidade, Riscos 1 e 2 juntos representam 61,5% das ocorrências. Isso demonstra que:</div>
+        <div class="options">
+          <label class="opt"><input type="radio" name="q4" value="a"> Todos os riscos têm impacto similar e devem ser tratados igualmente.</label>
+          <label class="opt"><input type="radio" name="q4" value="b"> A maioria dos problemas concentra-se em poucas causas — priorizar Riscos 1 e 2 é a ação mais eficaz.</label>
+          <label class="opt"><input type="radio" name="q4" value="c"> O projeto tem excesso de riscos e deve ser cancelado.</label>
+          <label class="opt"><input type="radio" name="q4" value="d"> A amostra de 91 ocorrências é insuficiente para análise.</label>
+        </div>
+      </div>
+
+      <div class="quiz-q" id="q5">
+        <div class="q-num">QUESTÃO 05</div>
+        <div class="q-text">Os <strong>Custos de Falhas Externas</strong> no CDQ incluem:</div>
+        <div class="options">
+          <label class="opt"><input type="radio" name="q5" value="a"> Treinamento da equipe de qualidade e auditorias internas.</label>
+          <label class="opt"><input type="radio" name="q5" value="b"> Retrabalho detectado antes da entrega ao cliente.</label>
+          <label class="opt"><input type="radio" name="q5" value="c"> Reclamações de clientes, devoluções e perda de reputação.</label>
+          <label class="opt"><input type="radio" name="q5" value="d"> Inspeções e testes realizados durante o desenvolvimento.</label>
+        </div>
+      </div>
+
+      <div class="quiz-q" id="q6">
+        <div class="q-num">QUESTÃO 06</div>
+        <div class="q-text">No contrato tipo <strong>FFP (Preço Fixo Firme)</strong>, o risco financeiro é maior para:</div>
+        <div class="options">
+          <label class="opt"><input type="radio" name="q6" value="a"> O comprador, pois paga valor fixo mesmo com escopo reduzido.</label>
+          <label class="opt"><input type="radio" name="q6" value="b"> O fornecedor, que absorve todo custo acima do estimado.</label>
+          <label class="opt"><input type="radio" name="q6" value="c"> O gestor de contrato, responsável por equilibrar as partes.</label>
+          <label class="opt"><input type="radio" name="q6" value="d"> Ambos igualmente — o risco é sempre compartilhado.</label>
+        </div>
+      </div>
+
       <button class="quiz-btn" onclick="checkQuiz()">Verificar respostas</button>
       <div class="quiz-result" id="quiz-result"></div>
     </div>
   </div>
 </section>
 
-<div class="container"><div class="nav-bottom"><a class="nav-pg" href="unidade7.html">← Unidade 7</a><a class="nav-pg" href="unidade9.html">Unidade 9 — Métodos Ágeis →</a></div></div>
-<footer><div class="container"><p>© 2026 · Prof. Clayton J A Silva · Ibmec RJ</p><p><a href="../gestao_projetos.html">← Gestão de Projetos</a></p></div></footer>
+<div class="container">
+  <div class="nav-bottom">
+    <a class="nav-pg" href="unidade7.html">← Unidade 7</a>
+    <a class="nav-pg" href="unidade9.html">Unidade 9 — Métodos Ágeis →</a>
+  </div>
+</div>
+
+<footer>
+  <div class="container">
+    <p>© 2026 · Prof. Clayton J A Silva · Ibmec RJ</p>
+    <p><a href="../gestao_projetos.html">← Gestão de Projetos</a></p>
+  </div>
+</footer>
+
 <script>
-  /* q3: N=8 → 8×7/2 = 28 */
-  const answers={q1:'b',q2:'b',q3:'c',q4:'d',q5:'b'};
-  function checkQuiz(){let score=0;Object.entries(answers).forEach(([q,c])=>{const s=document.querySelector(`input[name="${q}"]:checked`);const opts=document.querySelectorAll(`#${q} .opt`);opts.forEach(o=>o.classList.remove('correct','wrong'));if(s){const p=s.closest('.opt');if(s.value===c){p.classList.add('correct');score++;}else{p.classList.add('wrong');opts.forEach(o=>{if(o.querySelector('input').value===c)o.classList.add('correct');});}}else{opts.forEach(o=>{if(o.querySelector('input').value===c)o.classList.add('correct');});}});const res=document.getElementById('quiz-result');res.className='quiz-result show '+(score>=4?'pass':'fail');res.innerHTML=score>=4?`✅ Muito bem! <strong>${score}/5</strong> acertos!`:`❌ <strong>${score}/5</strong>. Revise qualidade, aquisições, comunicações e stakeholders.`;document.querySelector('.quiz-btn').disabled=true;}
+  const answers = {q1:'b', q2:'c', q3:'b', q4:'b', q5:'c', q6:'b'};
+  function checkQuiz(){
+    let score=0;
+    Object.entries(answers).forEach(([q,c])=>{
+      const s=document.querySelector(`input[name="${q}"]:checked`);
+      const opts=document.querySelectorAll(`#${q} .opt`);
+      opts.forEach(o=>o.classList.remove('correct','wrong'));
+      if(s){
+        const p=s.closest('.opt');
+        if(s.value===c){p.classList.add('correct');score++;}
+        else{p.classList.add('wrong');opts.forEach(o=>{if(o.querySelector('input').value===c)o.classList.add('correct');});}
+      } else {
+        opts.forEach(o=>{if(o.querySelector('input').value===c)o.classList.add('correct');});
+      }
+    });
+    const res=document.getElementById('quiz-result');
+    res.className='quiz-result show '+(score>=5?'pass':'fail');
+    res.innerHTML=score>=5
+      ? `✅ Excelente! <strong>${score}/6</strong> acertos!`
+      : `❌ <strong>${score}/6</strong>. Revise ISO 9001, Ishikawa, Pareto e CDQ.`;
+    document.querySelector('.quiz-btn').disabled=true;
+  }
 </script>
 </body>
 </html>
