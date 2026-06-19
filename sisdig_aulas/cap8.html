@@ -1,0 +1,654 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Cap. 8 — Fundamentos de Máquinas Sequenciais | Sistemas Digitais</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/contrib/auto-render.min.js"></script>
+<style>
+:root {
+  --bg:        #0a0e17;
+  --surface:   #111827;
+  --surface2:  #161f2e;
+  --border:    #1e2d40;
+  --accent:    #00c2ff;
+  --accent2:   #7c3aed;
+  --text:      #e2e8f0;
+  --muted:     #64748b;
+  --tag-bg:    #0f172a;
+  --font-mono: 'IBM Plex Mono', monospace;
+  --font-sans: 'IBM Plex Sans', sans-serif;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{background:var(--bg);color:var(--text);font-family:var(--font-sans);font-size:16px;line-height:1.65;}
+a{color:var(--accent);text-decoration:none;}
+a:hover{text-decoration:underline;}
+.container{max-width:980px;margin:0 auto;padding:0 2rem;}
+
+nav{position:sticky;top:0;z-index:100;background:rgba(10,14,23,.9);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);padding:.9rem 0;}
+nav .container{display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap;}
+.nav-brand{font-family:var(--font-mono);font-size:.78rem;color:var(--accent);}
+.nav-links{display:flex;gap:1rem;list-style:none;flex-wrap:wrap;}
+.nav-links a{font-family:var(--font-mono);font-size:.7rem;color:var(--muted);}
+.nav-links a:hover{color:var(--text);text-decoration:none;}
+
+.progress-track{height:3px;background:var(--border);position:sticky;top:53px;z-index:99;}
+.progress-fill{height:100%;width:0%;background:linear-gradient(90deg,var(--accent),var(--accent2));transition:width .1s;}
+
+.hero{padding:4rem 0 2.5rem;position:relative;overflow:hidden;}
+.hero::before{content:'';position:absolute;inset:0;background-image:linear-gradient(var(--border) 1px,transparent 1px),linear-gradient(90deg,var(--border) 1px,transparent 1px);background-size:40px 40px;opacity:.3;mask-image:radial-gradient(ellipse 80% 60% at 50% 0%,black 40%,transparent 100%);}
+.hero-eyebrow{font-family:var(--font-mono);font-size:.74rem;color:var(--accent);letter-spacing:.14em;text-transform:uppercase;margin-bottom:1rem;display:flex;align-items:center;gap:.7rem;}
+.hero-eyebrow::before{content:'';width:2rem;height:1px;background:var(--accent);}
+h1{font-size:clamp(2rem,4.5vw,3.2rem);font-weight:300;line-height:1.12;letter-spacing:-.02em;margin-bottom:.6rem;}
+h1 strong{font-weight:600;color:var(--accent);}
+.hero-meta{display:flex;gap:1.5rem;flex-wrap:wrap;margin-top:1.2rem;}
+.meta-item{font-family:var(--font-mono);font-size:.74rem;color:var(--muted);display:flex;align-items:center;gap:.4rem;}
+.meta-item svg{flex-shrink:0;}
+
+.objectives{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:1.4rem 1.6rem;margin-top:1.6rem;}
+.objectives p.label{font-family:var(--font-mono);font-size:.7rem;color:var(--accent);letter-spacing:.1em;text-transform:uppercase;margin-bottom:.7rem;}
+.objectives ul{list-style:none;display:grid;gap:.5rem;}
+.objectives li{font-size:.88rem;color:var(--muted);display:flex;gap:.6rem;}
+.objectives li::before{content:'→';color:var(--accent);flex-shrink:0;}
+
+.toc{display:flex;gap:.5rem;flex-wrap:wrap;margin-top:1.5rem;}
+.toc a{font-family:var(--font-mono);font-size:.7rem;color:var(--muted);border:1px solid var(--border);padding:.35rem .75rem;border-radius:20px;transition:.2s;}
+.toc a:hover{border-color:var(--accent);color:var(--accent);text-decoration:none;}
+
+.section{padding:3rem 0;border-top:1px solid var(--border);}
+.section-label{font-family:var(--font-mono);font-size:.7rem;color:var(--accent);letter-spacing:.14em;text-transform:uppercase;display:flex;align-items:center;gap:.7rem;margin-bottom:1.4rem;}
+.section-label::after{content:'';flex:1;height:1px;background:var(--border);}
+h2{font-size:1.5rem;font-weight:600;letter-spacing:-.01em;margin-bottom:1rem;}
+h3{font-size:1.1rem;font-weight:600;margin:1.6rem 0 .8rem;color:var(--text);}
+h4{font-size:.95rem;font-weight:600;margin:1.2rem 0 .6rem;color:var(--accent);}
+p{margin-bottom:1rem;color:#cbd5e1;}
+strong{color:var(--text);font-weight:600;}
+em{color:var(--accent);font-style:normal;}
+ul.plain{margin:0 0 1rem 1.2rem;color:#cbd5e1;}
+ul.plain li{margin-bottom:.4rem;}
+ol.plain{margin:0 0 1rem 1.2rem;color:#cbd5e1;}
+ol.plain li{margin-bottom:.5rem;}
+
+.codeline{background:var(--tag-bg);border:1px solid var(--border);border-radius:6px;padding:.7rem 1rem;font-family:var(--font-mono);font-size:1rem;color:var(--accent);text-align:center;margin:1rem 0;}
+
+.concept-grid{display:grid;grid-template-columns:1fr 1fr;gap:2rem;align-items:start;margin:1.5rem 0;}
+.concept-text{display:flex;flex-direction:column;justify-content:center;}
+.concept-fig{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:1rem;}
+.concept-fig img,.concept-fig svg{width:100%;display:block;}
+.fig-caption{font-family:var(--font-mono);font-size:.72rem;color:var(--muted);text-align:center;margin-top:.6rem;}
+@media (max-width:760px){.concept-grid{grid-template-columns:1fr;}}
+
+.fig-full{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:1.2rem;margin:1.5rem 0;}
+.fig-full img,.fig-full svg{width:100%;display:block;}
+
+.definition{background:var(--surface);border:1px solid var(--accent2);border-left:3px solid var(--accent2);border-radius:0 8px 8px 0;padding:1.2rem 1.5rem;margin:1.2rem 0;}
+.definition .dtitle{font-family:var(--font-mono);font-size:.7rem;color:var(--accent2);letter-spacing:.1em;text-transform:uppercase;margin-bottom:.5rem;}
+
+.note{background:var(--tag-bg);border:1px solid var(--border);border-radius:6px;padding:.9rem 1.1rem;margin:1rem 0;font-size:.85rem;color:var(--muted);}
+.note strong{color:var(--accent);}
+
+table{width:100%;border-collapse:collapse;font-size:.85rem;margin:1.2rem 0;}
+thead tr{background:var(--tag-bg);}
+thead th{padding:.5rem .8rem;text-align:center;font-family:var(--font-mono);font-size:.68rem;color:var(--muted);letter-spacing:.06em;text-transform:uppercase;font-weight:400;border-bottom:1px solid var(--border);}
+tbody td{padding:.5rem .8rem;border-bottom:1px solid var(--border);color:var(--muted);text-align:center;}
+tbody tr:hover{background:rgba(255,255,255,.02);}
+
+/* MEALY MOORE COMPARISON */
+.mm-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1rem;margin:1.3rem 0;}
+.mm-card{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:1.2rem 1.4rem;position:relative;overflow:hidden;}
+.mm-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;}
+.mm-card.moore::before{background:var(--accent);}
+.mm-card.mealy::before{background:var(--accent2);}
+.mm-card h4{margin:0 0 .5rem;}
+.mm-card.moore h4{color:var(--accent);}
+.mm-card.mealy h4{color:var(--accent2);}
+.mm-card p{font-size:.85rem;margin-bottom:.5rem;}
+@media (max-width:700px){.mm-grid{grid-template-columns:1fr;}}
+
+/* EXAMPLE CARDS (accordion-like, always open but visually separated) */
+.example-card{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:1.5rem 1.7rem;margin:1.3rem 0;position:relative;overflow:hidden;}
+.example-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--accent),var(--accent2));}
+.example-letter{font-family:var(--font-mono);font-size:.7rem;color:var(--accent);background:rgba(0,194,255,.08);border:1px solid rgba(0,194,255,.25);border-radius:4px;padding:.2rem .6rem;display:inline-block;margin-bottom:.6rem;}
+.example-card h4{margin:0 0 1rem;font-size:1.05rem;color:var(--text);}
+.spec-list{list-style:none;margin:0 0 1rem;}
+.spec-list li{font-size:.85rem;color:#cbd5e1;padding:.4rem 0;border-bottom:1px solid var(--border);display:flex;gap:.6rem;}
+.spec-list li:last-child{border-bottom:none;}
+.spec-list li strong{color:var(--accent);min-width:90px;flex-shrink:0;}
+
+.refs-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:.8rem;}
+.ref-card{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:1rem 1.2rem;display:flex;gap:.8rem;align-items:flex-start;transition:.2s;}
+.ref-card:hover{border-color:var(--accent);}
+.ref-card svg{flex-shrink:0;margin-top:.15rem;}
+.ref-card h4{font-size:.88rem;font-weight:600;margin:0 0 .2rem;color:var(--text);}
+.ref-card p{font-size:.76rem;color:var(--muted);margin:0;}
+.ref-type{font-family:var(--font-mono);font-size:.62rem;color:var(--accent);text-transform:uppercase;letter-spacing:.06em;}
+
+.quiz{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:1.6rem;margin:1.5rem 0;}
+.quiz-header{display:flex;align-items:center;gap:.6rem;margin-bottom:1.2rem;}
+.quiz-header svg{flex-shrink:0;}
+.quiz-title{font-family:var(--font-mono);font-size:.8rem;color:var(--accent2);letter-spacing:.05em;}
+.quiz-q{font-size:.95rem;margin-bottom:.9rem;color:var(--text);}
+.quiz-options{display:flex;flex-direction:column;gap:.55rem;}
+.quiz-opt{background:var(--tag-bg);border:1px solid var(--border);border-radius:6px;padding:.7rem 1rem;font-size:.85rem;color:var(--muted);cursor:pointer;transition:.15s;text-align:left;width:100%;font-family:var(--font-sans);}
+.quiz-opt:hover{border-color:var(--accent);color:var(--text);}
+.quiz-opt.correct{border-color:#22c55e;background:rgba(34,197,94,.08);color:#86efac;}
+.quiz-opt.wrong{border-color:#ef4444;background:rgba(239,68,68,.08);color:#fca5a5;}
+.quiz-feedback{margin-top:.9rem;font-size:.85rem;padding:.8rem 1rem;border-radius:6px;display:none;}
+.quiz-feedback.show{display:block;}
+.quiz-feedback.correct-fb{background:rgba(34,197,94,.08);border:1px solid #22c55e;color:#86efac;}
+.quiz-feedback.wrong-fb{background:rgba(239,68,68,.08);border:1px solid #ef4444;color:#fca5a5;}
+
+.chapter-nav{display:flex;justify-content:space-between;gap:1rem;margin-top:2rem;}
+.chapter-nav a{flex:1;background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:1rem 1.3rem;font-size:.85rem;transition:.2s;}
+.chapter-nav a:hover{border-color:var(--accent);text-decoration:none;}
+.chapter-nav .dir{font-family:var(--font-mono);font-size:.65rem;color:var(--muted);text-transform:uppercase;letter-spacing:.08em;display:block;margin-bottom:.3rem;}
+.chapter-nav .next{text-align:right;}
+
+footer{border-top:1px solid var(--border);padding:2rem 0;margin-top:2rem;}
+footer .container{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;}
+footer p{font-size:.8rem;color:var(--muted);font-family:var(--font-mono);}
+
+@media(max-width:640px){.nav-links{display:none;}.hero{padding:2.5rem 0 2rem;}table{font-size:.74rem;}}
+
+.katex{color:var(--accent);font-size:1.05em;}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="container">
+    <span class="nav-brand">sisdig · cap. 8</span>
+    <ul class="nav-links">
+      <li><a href="#s1">8.1 Conceito</a></li>
+      <li><a href="#s2">8.2 Síncrono</a></li>
+      <li><a href="#s3">8.3 Estados</a></li>
+      <li><a href="#exemplos">Exemplos</a></li>
+      <li><a href="#quiz">Quiz</a></li>
+      <li><a href="https://claytonjasilva.github.io/sisdig.html">← disciplina</a></li>
+    </ul>
+  </div>
+</nav>
+<div class="progress-track"><div class="progress-fill" id="progressFill"></div></div>
+
+<section class="hero">
+  <div class="container">
+    <p class="hero-eyebrow">Sistemas Digitais · Ibmec RJ</p>
+    <h1>Cap. 8 — Fundamentos de<br><strong>Máquinas Sequenciais</strong></h1>
+
+    <div class="hero-meta">
+      <span class="meta-item">
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><circle cx="7" cy="7" r="6" stroke="currentColor" stroke-width="1.2"/><path d="M7 4v3l2 1.5" stroke="currentColor" stroke-width="1.2"/></svg>
+        leitura ~40 min
+      </span>
+      <span class="meta-item">
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><rect x="2" y="3" width="10" height="9" rx="1" stroke="currentColor" stroke-width="1.2"/><line x1="2" y1="6" x2="12" y2="6" stroke="currentColor" stroke-width="1.2"/></svg>
+        Prof. Clayton J A Silva
+      </span>
+      <span class="meta-item">
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 7l4 4 6-7" stroke="currentColor" stroke-width="1.4" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        Rev 2026.1
+      </span>
+    </div>
+
+    <div class="objectives">
+      <p class="label">Objetivos de aprendizagem</p>
+      <ul>
+        <li>Diferenciar circuitos sequenciais de combinacionais e identificar a necessidade de memória/realimentação</li>
+        <li>Distinguir circuitos síncronos de assíncronos pela relação com o sinal de clock</li>
+        <li>Interpretar diagramas de estados e diferenciar os modelos de Moore e Mealy</li>
+        <li>Analisar circuitos sequenciais síncronos usando mapas de próximo estado</li>
+        <li>Projetar máquinas de estados para problemas práticos de controle</li>
+      </ul>
+    </div>
+
+    <div class="toc">
+      <a href="#s1">8.1 Sistemas sequenciais</a>
+      <a href="#s2">8.2 Síncronos e assíncronos</a>
+      <a href="#s3a">8.3.1 Diagrama de estados</a>
+      <a href="#s3b">8.3.2 Análise síncrona</a>
+      <a href="#exemplos">8.3.3 Exemplos</a>
+    </div>
+  </div>
+</section>
+
+<div class="container">
+
+  <!-- 8.1 -->
+  <section class="section" id="s1">
+    <p class="section-label">8.1 / conceito de sistemas sequenciais</p>
+    <h2>Conceito de sistemas sequenciais</h2>
+
+    <p>Nosso estudo tem sido dedicado até o momento aos <strong>circuitos combinacionais</strong>. Existe um segmento muito importante dos sistemas digitais, cujos circuitos são categorizados como <strong>circuitos sequenciais</strong>.</p>
+
+    <p>Uma aplicação importante é o controle de sistemas, em que sinais digitais são recebidos e interpretados, gerando saídas de controle de acordo com <strong>uma sequência</strong> em que os sinais são recebidos. Essas aplicações exigem que as saídas sejam uma <strong>função das entradas presentes e dos valores passados das entradas</strong>.</p>
+
+    <div class="fig-full">
+      <img src="https://github.com/claytonjasilva/claytonjasilva.github.io/raw/main/sisdig_aulas/images_sisdig/sistemafeedback.jpg" alt="Sistema controlado por realimentação">
+      <p class="fig-caption">Fig. 8.1 — Sistema controlado por realimentação (feedback)</p>
+    </div>
+
+    <p>Na figura, <strong>circuito comparador</strong> recebe a saída do sistema no instante anterior; <strong>circuito controlado</strong> deve ser ajustado para obter as saídas desejadas. As entradas $x(t)$ vêm de outro módulo; $y(t)$ é obtido do <em>feedback</em> das saídas anteriores; $u(t)$ representa o comportamento desejado.</p>
+
+    <h3>Distinção entre máquinas sequenciais e combinacionais</h3>
+    <table>
+      <thead><tr><th>Sequenciais</th><th>Combinacionais</th></tr></thead>
+      <tbody>
+        <tr><td>Deve possuir capacidade de memória</td><td>A saída é estritamente função da entrada — não tem memória</td></tr>
+        <tr><td>Deve possuir realimentação</td><td>Não possui realimentação</td></tr>
+      </tbody>
+    </table>
+
+    <div class="note">As duas propriedades são <strong>necessárias, mas não suficientes</strong>. Os circuitos sequenciais possuem uma propriedade adicional: <strong>são cíclicos</strong> sob determinadas condições de controle.</div>
+
+    <p>O <strong>modelo geral</strong> de máquinas sequenciais (ou máquinas de estados finitos) está na figura:</p>
+    <div class="fig-full">
+      <img src="https://github.com/claytonjasilva/claytonjasilva.github.io/raw/main/sisdig_aulas/images_sisdig/sistemasequencial.jpg" alt="Modelo geral de sistemas sequenciais">
+      <p class="fig-caption">Fig. 8.2 — Modelo geral de sistemas sequenciais</p>
+    </div>
+
+    <ol class="plain">
+      <li>O primeiro bloco recebe entradas e saídas em <em>feedback</em>, produzindo entradas controladas;</li>
+      <li>No segundo bloco, as saídas são armazenadas no <strong>elemento de memória</strong> para realimentar a entrada;</li>
+      <li>No terceiro bloco, aplica-se a lógica necessária para produzir a saída desejada.</li>
+    </ol>
+  </section>
+
+  <!-- 8.2 -->
+  <section class="section" id="s2">
+    <p class="section-label">8.2 / circuitos síncronos e assíncronos</p>
+    <h2>Circuitos síncronos e assíncronos</h2>
+
+    <p>A classificação correta não se baseia apenas na <em>presença</em> do sinal de clock, mas em <strong>como as transições de estado se relacionam com ele</strong>:</p>
+
+    <div class="mm-grid">
+      <div class="mm-card moore">
+        <h4>Circuitos síncronos</h4>
+        <p>Todas as mudanças de estado ocorrem <strong>sincronizadas pelas transições (bordas) do clock</strong> — o circuito só avança no instante em que o clock transiciona.</p>
+      </div>
+      <div class="mm-card mealy">
+        <h4>Circuitos assíncronos</h4>
+        <p>As mudanças ocorrem <strong>a qualquer momento</strong>, assim que há mudança nas entradas, <strong>sem referência</strong> a um clock comum.</p>
+      </div>
+    </div>
+
+    <div class="fig-full">
+      <img src="../assets/img/sisdig/cap8_clock.svg" alt="Sinal de clock">
+      <p class="fig-caption">Fig. 8.3 — Sinal de clock: bordas de subida e descida, T_Ck e T_on</p>
+    </div>
+
+    <p>O clock é um <strong>trem de ondas quadradas</strong>, variando entre dois níveis. Para circuitos sequenciais, o evento relevante é a <strong>transição</strong> — não o nível em si. A transição possui uma <strong>borda de subida</strong> (baixo→alto) e uma <strong>borda de descida</strong> (alto→baixo).</p>
+
+    <p>Todo clock é <strong>periódico</strong>, com período $T_{Ck}$ e frequência:</p>
+    <div class="codeline">$$f_{Ck} = \frac{1}{T_{Ck}}$$</div>
+
+    <p>A relação entre o tempo em nível alto e o período total é o <em>duty cycle</em>:</p>
+    <div class="codeline">$$Duty\;Cycle = \frac{T_{on}}{T_{Ck}}$$</div>
+  </section>
+
+  <!-- 8.3 -->
+  <section class="section" id="s3">
+    <p class="section-label">8.3 / máquina de estados</p>
+    <h2>Máquina de estados</h2>
+
+    <h3 id="s3a">8.3.1 O diagrama de estados</h3>
+    <p>Os circuitos sequenciais são classificados em: detectores de sequência, contadores e registradores, geradores de códigos, e sistemas controladores.</p>
+
+    <div class="definition">
+      <p class="dtitle">conceitos fundamentais</p>
+      <p style="margin:0"><strong>Estado</strong>: conjunto de informações sobre o sistema em um dado momento. <strong>Evento</strong>: o que provoca a mudança de estado. <strong>Transição</strong>: a mudança de um estado para outro.</p>
+    </div>
+
+    <p>O diagrama de estados representa o comportamento dinâmico de uma máquina sequencial: <strong>estados</strong> (rótulo), <strong>transições</strong> (seta origem→destino), <strong>eventos</strong> (variáveis de entrada) e <strong>saídas</strong>.</p>
+
+    <div class="note"><strong>O diagrama de estados é, para máquinas sequenciais, o equivalente à tabela-verdade das máquinas combinacionais.</strong></div>
+
+    <h4>Modelos de Moore e Mealy</h4>
+    <div class="mm-grid">
+      <div class="mm-card moore">
+        <h4>Máquina de Moore</h4>
+        <p>A saída é função <strong>somente do estado atual</strong>: $Y = f(\text{estado})$.</p>
+        <p style="margin:0;font-size:.8rem;color:var(--muted)">Saída rotulada dentro do círculo do estado.</p>
+      </div>
+      <div class="mm-card mealy">
+        <h4>Máquina de Mealy</h4>
+        <p>A saída é função do <strong>estado e da entrada</strong>: $Y = f(\text{estado}, \text{entrada})$.</p>
+        <p style="margin:0;font-size:.8rem;color:var(--muted)">Saída rotulada sobre a seta de transição.</p>
+      </div>
+    </div>
+
+    <div class="fig-full">
+      <img src="../assets/img/sisdig/cap8_diagramaestados.svg" alt="Diagrama de estados — elementos básicos">
+      <p class="fig-caption">Fig. 8.4 — Elementos do diagrama de estados e distinção Moore/Mealy</p>
+    </div>
+
+    <h4>Exemplo 1 — máquina de Moore</h4>
+    <div class="fig-full">
+      <img src="https://github.com/claytonjasilva/claytonjasilva.github.io/raw/main/sisdig_aulas/images_sisdig/exdiagramaestados.jpg" alt="Exemplo diagrama de estados">
+      <p class="fig-caption">Fig. 8.5 — Exemplo 1: saída (A,B) associada a cada estado</p>
+    </div>
+
+    <ol class="plain">
+      <li>O estado <strong>a</strong> produz saída <em>00</em> (A=0, B=0).</li>
+      <li>Quando X=0, o sistema permanece no estado atual.</li>
+      <li>Quando X passa a 1, transição <strong>a→b</strong>: B passa de 0 a 1, A não se altera.</li>
+      <li>De <strong>b</strong>, X=1 leva a <strong>c</strong>: B volta a 0, A passa a 1; senão permanece.</li>
+      <li>De <strong>c</strong>, X=1 leva a <strong>d</strong>: B passa a 1, A permanece 1; senão permanece.</li>
+      <li>De <strong>d</strong>, X=1 retorna ao estado inicial (A=0,B=0), renovando o ciclo.</li>
+    </ol>
+
+    <p>No caso <strong>síncrono</strong>, a transição depende também do clock: a mudança de LOW para HIGH é chamada de <strong>disparo pela borda</strong> (<em>edge-triggered</em>). Mantido X=1, as transições <em>00-01-10-11</em> ocorrem a cada borda de subida do clock.</p>
+
+    <div class="fig-full">
+      <img src="https://github.com/claytonjasilva/claytonjasilva.github.io/raw/main/sisdig_aulas/images_sisdig/maquinasequencial.jpg" alt="Máquina sequencial — diagrama de blocos">
+      <p class="fig-caption">Fig. 8.6 — Diagrama de blocos da máquina sequencial</p>
+    </div>
+
+    <h4>Exemplo 2 — máquina de Mealy</h4>
+    <div class="fig-full">
+      <img src="https://github.com/claytonjasilva/claytonjasilva.github.io/raw/main/sisdig_aulas/images_sisdig/ex2diagramaestados.jpg" alt="Exemplo diagrama de estados Mealy">
+      <p class="fig-caption">Fig. 8.7 — Exemplo 2: variável Z associada à transição (Mealy)</p>
+    </div>
+
+    <p>Usa-se o próprio código dos estados, em vez de símbolos. A variável <em>Z</em> tem valor associado a <strong>cada transição</strong> — não é variável de estado, característica do modelo Mealy.</p>
+
+    <div class="fig-full">
+      <img src="https://github.com/claytonjasilva/claytonjasilva.github.io/raw/main/sisdig_aulas/images_sisdig/maquinasequencial2.jpg" alt="Máquina sequencial — esquema em blocos">
+      <p class="fig-caption">Fig. 8.8 — Esquema em blocos do exemplo 2</p>
+    </div>
+
+    <!-- 8.3.2 -->
+    <h3 id="s3b">8.3.2 Análise de circuitos sequenciais síncronos</h3>
+    <p>Na análise é necessário determinar: a classe do circuito (combinacional/sequencial), se síncrono/assíncrono, e o que se deseja obter.</p>
+
+    <ol class="plain">
+      <li>Identificar os <strong>estados</strong>;</li>
+      <li>Identificar as <strong>entradas</strong> relacionadas com as mudanças de estado;</li>
+      <li>Identificar as <strong>sequências de transições</strong>.</li>
+    </ol>
+
+    <p>Ferramenta importante: o <strong>mapa de próximo estado</strong> para cada saída. Para o <strong>exemplo 1</strong>, o comportamento da saída <em>A</em>:</p>
+
+    <table>
+      <thead><tr><th>AB</th><th>00</th><th>01</th><th>11</th><th>10</th></tr></thead>
+      <tbody>
+        <tr><td><strong>X=0</strong></td><td>0</td><td>0</td><td>1</td><td>1</td></tr>
+        <tr><td><strong>X=1</strong></td><td>0</td><td>1</td><td>0</td><td>1</td></tr>
+      </tbody>
+    </table>
+
+    <p>Quando X=0, o estado permanece — A não muda na borda de clock. Quando X=1, a saída é 1 nas transições <em>01→10</em> e <em>10→11</em>.</p>
+
+    <p>Comportamento da saída <em>B</em>:</p>
+    <table>
+      <thead><tr><th>AB</th><th>00</th><th>01</th><th>11</th><th>10</th></tr></thead>
+      <tbody>
+        <tr><td><strong>X=0</strong></td><td>0</td><td>1</td><td>1</td><td>0</td></tr>
+        <tr><td><strong>X=1</strong></td><td>1</td><td>0</td><td>1</td><td>0</td></tr>
+      </tbody>
+    </table>
+
+    <p>Para o <strong>exemplo 2</strong>, saída <em>A</em>:</p>
+    <table>
+      <thead><tr><th>AB</th><th>00</th><th>01</th><th>11</th><th>10</th></tr></thead>
+      <tbody>
+        <tr><td><strong>X=0</strong></td><td>0</td><td>1</td><td>0</td><td>0</td></tr>
+        <tr><td><strong>X=1</strong></td><td>0</td><td>1</td><td>0</td><td>0</td></tr>
+      </tbody>
+    </table>
+
+    <p>Saída <em>B</em>:</p>
+    <table>
+      <thead><tr><th>AB</th><th>00</th><th>01</th><th>11</th><th>10</th></tr></thead>
+      <tbody>
+        <tr><td><strong>X=0</strong></td><td>0</td><td>1</td><td>1</td><td>0</td></tr>
+        <tr><td><strong>X=1</strong></td><td>1</td><td>0</td><td>0</td><td>1</td></tr>
+      </tbody>
+    </table>
+
+    <p>Saída <em>Z</em> (variável de Mealy, associada à transição):</p>
+    <table>
+      <thead><tr><th>AB</th><th>00</th><th>01</th><th>11</th><th>10</th></tr></thead>
+      <tbody>
+        <tr><td><strong>X=0</strong></td><td>0</td><td>1</td><td>1</td><td>1</td></tr>
+        <tr><td><strong>X=1</strong></td><td>0</td><td>0</td><td>1</td><td>0</td></tr>
+      </tbody>
+    </table>
+
+    <p>A partir dos mapas, escreve-se a expressão booleana de cada saída de próximo estado — similar ao Mapa K:</p>
+
+    <div class="fig-full">
+      <img src="https://github.com/claytonjasilva/claytonjasilva.github.io/raw/main/sisdig_aulas/images_sisdig/mapakexemplo1diagrama.jpg" alt="Mapa K exemplo 1">
+      <p class="fig-caption">Fig. 8.9 — Mapa K para as saídas A e B do exemplo 1</p>
+    </div>
+
+    <div class="codeline">$$A = A.\bar{X} + \bar{A}.B.X + A.\bar{B}.X$$</div>
+    <div class="codeline">$$B = B.\bar{X} + \bar{A}.\bar{B}.X + A.B.X$$</div>
+
+    <div class="note">A variável à <strong>esquerda</strong> da equação é o <strong>valor atual</strong>; a mesma variável à <strong>direita</strong> é o <strong>valor anterior</strong> (antes da transição de clock).</div>
+  </section>
+
+  <!-- EXEMPLOS -->
+  <section class="section" id="exemplos">
+    <p class="section-label">8.3.3 / exemplos práticos</p>
+    <h2>Exemplos de projeto</h2>
+
+    <!-- A. ELEVADOR -->
+    <div class="example-card">
+      <span class="example-letter">exemplo a</span>
+      <h4>Sistema de controle de elevador</h4>
+      <p>Circuito sequencial que controla um elevador operando em quatro andares: S₀, S₁, S₂, S₃.</p>
+      <ul class="spec-list">
+        <li><strong>X₁</strong> Botão de subir pressionado</li>
+        <li><strong>X₂</strong> Botão de descer pressionado</li>
+        <li><strong>Y</strong> 1 = em movimento · 0 = parado</li>
+      </ul>
+      <p style="font-size:.85rem">O elevador começa no térreo (S₀); X₁=1 sobe até S₃; X₂=1 desce até S₀.</p>
+      <table>
+        <thead><tr><th>Estado</th><th>X₁=0,X₂=0</th><th>X₁=1,X₂=0</th><th>X₁=0,X₂=1</th><th>X₁=1,X₂=1</th></tr></thead>
+        <tbody>
+          <tr><td>S₀</td><td>S₀ (Parado)</td><td>S₁ (Sobe)</td><td>S₀ (Parado)</td><td>S₁ (Sobe)</td></tr>
+          <tr><td>S₁</td><td>S₁ (Parado)</td><td>S₂ (Sobe)</td><td>S₀ (Desce)</td><td>S₁ (Parado)</td></tr>
+          <tr><td>S₂</td><td>S₂ (Parado)</td><td>S₃ (Sobe)</td><td>S₁ (Desce)</td><td>S₂ (Parado)</td></tr>
+          <tr><td>S₃</td><td>S₃ (Parado)</td><td>S₃ (Parado)</td><td>S₂ (Desce)</td><td>S₃ (Parado)</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- B. PORTÃO -->
+    <div class="example-card">
+      <span class="example-letter">exemplo b</span>
+      <h4>Circuito de controle digital de portão</h4>
+      <p>Controla a abertura/fechamento de um portão automático com quatro estados.</p>
+      <ul class="spec-list">
+        <li><strong>S₀</strong> Totalmente fechado</li>
+        <li><strong>S₁</strong> Abrindo</li>
+        <li><strong>S₂</strong> Totalmente aberto</li>
+        <li><strong>S₃</strong> Fechando</li>
+        <li><strong>X₁</strong> Sensor de abertura</li>
+        <li><strong>X₂</strong> Sensor de fechamento</li>
+        <li><strong>Y</strong> 1 = em movimento · 0 = parado</li>
+      </ul>
+      <table>
+        <thead><tr><th>Estado</th><th>X₁=0,X₂=0</th><th>X₁=1,X₂=0</th><th>X₁=0,X₂=1</th><th>X₁=1,X₂=1</th></tr></thead>
+        <tbody>
+          <tr><td>S₀</td><td>S₀ (Parado)</td><td>S₁ (Abrindo)</td><td>S₀ (Parado)</td><td>S₁ (Abrindo)</td></tr>
+          <tr><td>S₁</td><td>S₁ (Abrindo)</td><td>S₂ (Aberto)</td><td>S₃ (Fechando)</td><td>S₁ (Abrindo)</td></tr>
+          <tr><td>S₂</td><td>S₂ (Aberto)</td><td>S₂ (Aberto)</td><td>S₃ (Fechando)</td><td>S₃ (Fechando)</td></tr>
+          <tr><td>S₃</td><td>S₃ (Fechando)</td><td>S₁ (Abrindo)</td><td>S₀ (Fechado)</td><td>S₃ (Fechando)</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- C. CONTADOR -->
+    <div class="example-card">
+      <span class="example-letter">exemplo c</span>
+      <h4>Contador crescente de 3 bits — saída para números ímpares</h4>
+      <p>Contador de 0 a 7 cuja saída é 1 quando o valor contado é ímpar.</p>
+      <ul class="spec-list">
+        <li><strong>Estados</strong> 8 estados (S₀ a S₇), valores binários de 3 bits</li>
+        <li><strong>Entradas</strong> Apenas o clock — sem entradas de controle</li>
+        <li><strong>Y</strong> 1 = ímpar (S₁,S₃,S₅,S₇) · 0 = par (S₀,S₂,S₄,S₆)</li>
+      </ul>
+      <table>
+        <thead><tr><th>Estado Atual</th><th>Próximo Estado</th><th>Saída Y</th></tr></thead>
+        <tbody>
+          <tr><td>S₀ (000)</td><td>S₁ (001)</td><td>0</td></tr>
+          <tr><td>S₁ (001)</td><td>S₂ (010)</td><td>1</td></tr>
+          <tr><td>S₂ (010)</td><td>S₃ (011)</td><td>0</td></tr>
+          <tr><td>S₃ (011)</td><td>S₄ (100)</td><td>1</td></tr>
+          <tr><td>S₄ (100)</td><td>S₅ (101)</td><td>0</td></tr>
+          <tr><td>S₅ (101)</td><td>S₆ (110)</td><td>1</td></tr>
+          <tr><td>S₆ (110)</td><td>S₇ (111)</td><td>0</td></tr>
+          <tr><td>S₇ (111)</td><td>S₀ (000)</td><td>1</td></tr>
+        </tbody>
+      </table>
+      <div class="note">Neste exemplo, a saída é função apenas do <strong>estado</strong> — caracterizando uma máquina de <strong>Moore</strong>.</div>
+    </div>
+
+    <p style="margin-top:1rem">Esse exercício permite estudar o comportamento de contadores sequenciais e a lógica associada a saídas que dependem de condições específicas nos estados, como identificar números ímpares.</p>
+  </section>
+
+  <!-- QUIZ -->
+  <section class="section" id="quiz">
+    <p class="section-label">checkpoint</p>
+    <h2>Teste seus conhecimentos</h2>
+
+    <div class="quiz">
+      <div class="quiz-header">
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="8" stroke="#7c3aed" stroke-width="1.4"/><text x="10" y="14" font-size="10" fill="#7c3aed" text-anchor="middle" font-weight="600">?</text></svg>
+        <span class="quiz-title">Pergunta 1 de 4</span>
+      </div>
+      <p class="quiz-q">O que diferencia um circuito sequencial de um combinacional?</p>
+      <div class="quiz-options">
+        <button class="quiz-opt" onclick="checkAnswer(this, false, 'q1fb')">Sequenciais usam mais portas lógicas</button>
+        <button class="quiz-opt" onclick="checkAnswer(this, true, 'q1fb')">Sequenciais possuem memória e realimentação</button>
+        <button class="quiz-opt" onclick="checkAnswer(this, false, 'q1fb')">Sequenciais não usam tabela-verdade</button>
+      </div>
+      <div class="quiz-feedback" id="q1fb"></div>
+    </div>
+
+    <div class="quiz">
+      <div class="quiz-header">
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="8" stroke="#7c3aed" stroke-width="1.4"/><text x="10" y="14" font-size="10" fill="#7c3aed" text-anchor="middle" font-weight="600">?</text></svg>
+        <span class="quiz-title">Pergunta 2 de 4</span>
+      </div>
+      <p class="quiz-q">Em uma máquina de Mealy, a saída é função de:</p>
+      <div class="quiz-options">
+        <button class="quiz-opt" onclick="checkAnswer(this, false, 'q2fb')">Somente do estado atual</button>
+        <button class="quiz-opt" onclick="checkAnswer(this, true, 'q2fb')">Do estado atual e da entrada presente</button>
+        <button class="quiz-opt" onclick="checkAnswer(this, false, 'q2fb')">Somente da entrada presente</button>
+      </div>
+      <div class="quiz-feedback" id="q2fb"></div>
+    </div>
+
+    <div class="quiz">
+      <div class="quiz-header">
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="8" stroke="#7c3aed" stroke-width="1.4"/><text x="10" y="14" font-size="10" fill="#7c3aed" text-anchor="middle" font-weight="600">?</text></svg>
+        <span class="quiz-title">Pergunta 3 de 4</span>
+      </div>
+      <p class="quiz-q">Um circuito síncrono muda de estado:</p>
+      <div class="quiz-options">
+        <button class="quiz-opt" onclick="checkAnswer(this, true, 'q3fb')">Apenas nas bordas do sinal de clock</button>
+        <button class="quiz-opt" onclick="checkAnswer(this, false, 'q3fb')">A qualquer momento que a entrada mude</button>
+        <button class="quiz-opt" onclick="checkAnswer(this, false, 'q3fb')">Somente quando alimentado a 5V</button>
+      </div>
+      <div class="quiz-feedback" id="q3fb"></div>
+    </div>
+
+    <div class="quiz">
+      <div class="quiz-header">
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="8" stroke="#7c3aed" stroke-width="1.4"/><text x="10" y="14" font-size="10" fill="#7c3aed" text-anchor="middle" font-weight="600">?</text></svg>
+        <span class="quiz-title">Pergunta 4 de 4</span>
+      </div>
+      <p class="quiz-q">No contador de 3 bits do exemplo C, a saída Y depende de:</p>
+      <div class="quiz-options">
+        <button class="quiz-opt" onclick="checkAnswer(this, true, 'q4fb')">Somente do estado atual (máquina de Moore)</button>
+        <button class="quiz-opt" onclick="checkAnswer(this, false, 'q4fb')">Do estado e de uma entrada externa (máquina de Mealy)</button>
+        <button class="quiz-opt" onclick="checkAnswer(this, false, 'q4fb')">Apenas do clock</button>
+      </div>
+      <div class="quiz-feedback" id="q4fb"></div>
+    </div>
+  </section>
+
+  <!-- REFERÊNCIAS -->
+  <section class="section" id="refs">
+    <p class="section-label">referências e aprofundamento</p>
+    <h2>Para ir além</h2>
+
+    <div class="refs-grid">
+      <a class="ref-card" href="https://www.youtube.com/results?search_query=maquinas+de+estado+mealy+moore" target="_blank" style="color:inherit;">
+        <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><rect x="2" y="4" width="14" height="10" rx="2" stroke="#7c3aed" stroke-width="1.3"/><polygon points="8,7 8,11 12,9" fill="#7c3aed"/></svg>
+        <div><span class="ref-type">vídeo</span><h4>Máquinas de Mealy e Moore</h4><p>Busca curada de vídeos explicativos</p></div>
+      </a>
+      <a class="ref-card" href="https://claytonjasilva.github.io/sisdig_aulas/cap5.html" style="color:inherit;">
+        <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><rect x="2" y="2" width="14" height="14" rx="2" stroke="#00c2ff" stroke-width="1.3"/><line x1="2" y1="7" x2="16" y2="7" stroke="#00c2ff" stroke-width="1.1"/></svg>
+        <div><span class="ref-type">capítulo anterior</span><h4>Cap. 5 — Circuitos Comparadores</h4><p>Último capítulo combinacional</p></div>
+      </a>
+      <a class="ref-card" href="https://claytonjasilva.github.io/sisdig.html" target="_blank" style="color:inherit;">
+        <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><rect x="2" y="2" width="14" height="14" rx="2" stroke="#00c2ff" stroke-width="1.3"/><line x1="2" y1="7" x2="16" y2="7" stroke="#00c2ff" stroke-width="1.1"/></svg>
+        <div><span class="ref-type">disciplina</span><h4>Página de Sistemas Digitais</h4><p>Agenda, práticas e demais capítulos</p></div>
+      </a>
+      <a class="ref-card" href="https://claytonjasilva.github.io/avaliacoes.html" target="_blank" style="color:inherit;">
+        <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><rect x="3" y="2" width="12" height="14" rx="1.5" stroke="#7c3aed" stroke-width="1.3"/><line x1="6" y1="6" x2="12" y2="6" stroke="#7c3aed" stroke-width="1.1"/><line x1="6" y1="9" x2="12" y2="9" stroke="#7c3aed" stroke-width="1.1"/></svg>
+        <div><span class="ref-type">avaliação</span><h4>Sistema de Avaliações</h4><p>Pesos AC/AP1/AP2 da disciplina</p></div>
+      </a>
+    </div>
+  </section>
+
+  <!-- CHAPTER NAV -->
+  <div class="chapter-nav">
+    <a href="cap5.html"><span class="dir">← anterior</span>Cap. 5 — Circuitos Comparadores</a>
+    <a class="next" href="#" style="opacity:.5;cursor:default;"><span class="dir">próximo →</span>Cap. 9 — Memória e Flip-Flops</a>
+  </div>
+
+</div>
+
+<footer>
+  <div class="container">
+    <p>© 2026 · Prof. Clayton J A Silva · Ibmec RJ</p>
+    <p><a href="https://claytonjasilva.github.io">claytonjasilva.github.io</a></p>
+  </div>
+</footer>
+
+<script>
+window.addEventListener('scroll', () => {
+  const h = document.documentElement;
+  const scrolled = (h.scrollTop) / (h.scrollHeight - h.clientHeight) * 100;
+  document.getElementById('progressFill').style.width = scrolled + '%';
+});
+
+function checkAnswer(btn, isCorrect, fbId) {
+  const group = btn.parentElement;
+  const buttons = group.querySelectorAll('.quiz-opt');
+  buttons.forEach(b => b.disabled = true);
+  btn.classList.add(isCorrect ? 'correct' : 'wrong');
+  const fb = document.getElementById(fbId);
+  fb.classList.add('show');
+  const msgs = {
+    q1fb: isCorrect ? '✓ Correto! Memória e realimentação são as propriedades-chave dos sequenciais.' : '✗ Revise a seção 8.1.',
+    q2fb: isCorrect ? '✓ Correto! Y = f(estado, entrada) é a definição de Mealy.' : '✗ Revise a comparação Moore vs. Mealy.',
+    q3fb: isCorrect ? '✓ Correto! Síncrono = disparo pela borda do clock.' : '✗ Revise a seção 8.2.',
+    q4fb: isCorrect ? '✓ Correto! Y depende só do estado (par/ímpar) — não há entrada de controle além do clock.' : '✗ Revise o exemplo C — note que não há entradas X.'
+  };
+  if (!isCorrect) buttons.forEach(b => { if (b.getAttribute('onclick').includes(', true,')) b.classList.add('correct'); });
+  fb.classList.add(isCorrect ? 'correct-fb' : 'wrong-fb');
+  fb.textContent = msgs[fbId];
+}
+
+renderMathInElement(document.body, {
+  delimiters: [
+    {left: "$$", right: "$$", display: true},
+    {left: "$", right: "$", display: false}
+  ],
+  throwOnError: false
+});
+</script>
+
+</body>
+</html>
