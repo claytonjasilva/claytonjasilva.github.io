@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Grid da Disciplina — Sistemas Digitais | Ibmec RJ</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg:        #0a0e17;
+  --surface:   #111827;
+  --border:    #1e2d40;
+  --accent:    #00c2ff;
+  --accent2:   #7c3aed;
+  --text:      #e2e8f0;
+  --muted:     #64748b;
+  --tag-bg:    #0f172a;
+  --font-mono: 'IBM Plex Mono', monospace;
+  --font-sans: 'IBM Plex Sans', sans-serif;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{background:var(--bg);color:var(--text);font-family:var(--font-sans);font-size:16px;line-height:1.65;}
+a{color:var(--accent);text-decoration:none;}
+a:hover{text-decoration:underline;}
+.container{max-width:980px;margin:0 auto;padding:0 2rem;}
+
+nav{position:sticky;top:0;z-index:100;background:rgba(10,14,23,.9);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);padding:.9rem 0;}
+nav .container{display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap;}
+.nav-brand{font-family:var(--font-mono);font-size:.78rem;color:var(--accent);}
+.nav-links{display:flex;gap:1.2rem;list-style:none;flex-wrap:wrap;}
+.nav-links a{font-family:var(--font-mono);font-size:.74rem;color:var(--muted);}
+.nav-links a:hover{color:var(--text);text-decoration:none;}
+
+.hero{padding:4rem 0 2.5rem;position:relative;overflow:hidden;}
+.hero::before{content:'';position:absolute;inset:0;background-image:linear-gradient(var(--border) 1px,transparent 1px),linear-gradient(90deg,var(--border) 1px,transparent 1px);background-size:40px 40px;opacity:.3;mask-image:radial-gradient(ellipse 80% 60% at 50% 0%,black 40%,transparent 100%);}
+.hero-eyebrow{font-family:var(--font-mono);font-size:.74rem;color:var(--accent);letter-spacing:.14em;text-transform:uppercase;margin-bottom:1rem;display:flex;align-items:center;gap:.7rem;}
+.hero-eyebrow::before{content:'';width:2rem;height:1px;background:var(--accent);}
+h1{font-size:clamp(2rem,4.5vw,3rem);font-weight:300;line-height:1.12;letter-spacing:-.02em;margin-bottom:.6rem;}
+h1 strong{font-weight:600;color:var(--accent);}
+.hero-meta{display:flex;gap:1.5rem;flex-wrap:wrap;margin-top:1.2rem;}
+.meta-item{font-family:var(--font-mono);font-size:.78rem;color:var(--muted);}
+.meta-item strong{color:var(--text);}
+
+.section{padding:2.5rem 0;border-top:1px solid var(--border);}
+.section-label{font-family:var(--font-mono);font-size:.7rem;color:var(--accent);letter-spacing:.14em;text-transform:uppercase;display:flex;align-items:center;gap:.7rem;margin-bottom:1.4rem;}
+.section-label::after{content:'';flex:1;height:1px;background:var(--border);}
+h2{font-size:1.4rem;font-weight:600;letter-spacing:-.01em;margin-bottom:1rem;}
+p{margin-bottom:1rem;color:#cbd5e1;}
+strong{color:var(--text);font-weight:600;}
+
+.obj-list{list-style:none;display:flex;flex-direction:column;gap:.8rem;}
+.obj-item{background:var(--surface);border:1px solid var(--border);border-left:3px solid var(--accent);border-radius:0 8px 8px 0;padding:1rem 1.3rem;}
+.obj-num{font-family:var(--font-mono);font-size:.7rem;color:var(--accent);text-transform:uppercase;letter-spacing:.06em;margin-bottom:.3rem;display:block;}
+.obj-item p{margin:0;font-size:.9rem;color:#cbd5e1;}
+
+.content-list{list-style:none;display:flex;flex-direction:column;gap:.5rem;}
+.content-item{background:var(--surface);border:1px solid var(--border);border-radius:6px;padding:.8rem 1.1rem;display:flex;gap:.8rem;align-items:flex-start;}
+.content-num{font-family:var(--font-mono);font-size:.72rem;color:var(--accent2);background:rgba(124,58,237,.08);border:1px solid rgba(124,58,237,.25);border-radius:4px;padding:.15rem .5rem;flex-shrink:0;min-width:24px;text-align:center;}
+.content-item p{margin:0;font-size:.85rem;color:#cbd5e1;}
+
+.ref-card{background:var(--surface);border:1px solid var(--accent);border-radius:8px;padding:1.2rem 1.4rem;margin-bottom:.8rem;}
+.ref-card .ref-tag{font-family:var(--font-mono);font-size:.68rem;color:var(--accent);text-transform:uppercase;letter-spacing:.08em;margin-bottom:.5rem;display:block;}
+.ref-card p{margin:0;font-size:.88rem;}
+
+.ref-list{list-style:none;display:flex;flex-direction:column;gap:.5rem;}
+.ref-item{background:var(--tag-bg);border:1px solid var(--border);border-radius:6px;padding:.7rem 1rem;font-size:.85rem;color:var(--muted);}
+.ref-item strong{color:var(--text);}
+
+.note{background:var(--tag-bg);border:1px solid var(--border);border-radius:6px;padding:.9rem 1.1rem;margin-bottom:1.2rem;font-size:.82rem;color:var(--muted);}
+
+.chapter-nav{display:flex;justify-content:space-between;gap:1rem;margin-top:2rem;}
+.chapter-nav a{flex:1;background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:1rem 1.3rem;font-size:.85rem;transition:.2s;}
+.chapter-nav a:hover{border-color:var(--accent);text-decoration:none;}
+.chapter-nav .dir{font-family:var(--font-mono);font-size:.65rem;color:var(--muted);text-transform:uppercase;letter-spacing:.08em;display:block;margin-bottom:.3rem;}
+
+footer{border-top:1px solid var(--border);padding:2rem 0;margin-top:2rem;}
+footer .container{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;}
+footer p{font-size:.8rem;color:var(--muted);font-family:var(--font-mono);}
+
+@media(max-width:640px){.nav-links{display:none;}.hero{padding:2.5rem 0 2rem;}}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="container">
+    <span class="nav-brand">sisdig · grid</span>
+    <ul class="nav-links">
+      <li><a href="#objetivos">Objetivos</a></li>
+      <li><a href="#conteudo">Conteúdo</a></li>
+      <li><a href="#referencias">Referências</a></li>
+      <li><a href="https://claytonjasilva.github.io/sisdig.html">← disciplina</a></li>
+    </ul>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="container">
+    <p class="hero-eyebrow">Engenharia de Computação · Ibmec RJ</p>
+    <h1>Grid da disciplina<br><strong>Sistemas Digitais</strong></h1>
+    <div class="hero-meta">
+      <span class="meta-item"><strong>Curso:</strong> Engenharia de Computação</span>
+      <span class="meta-item"><strong>Período:</strong> 2026.2</span>
+      <span class="meta-item"><strong>Professor:</strong> Clayton Jones Alves da Silva, MSc</span>
+    </div>
+  </div>
+</section>
+
+<div class="container">
+
+  <!-- OBJETIVOS -->
+  <section class="section" id="objetivos">
+    <p class="section-label">I / objetivos</p>
+    <h2>Objetivos da disciplina</h2>
+    <ul class="obj-list">
+      <li class="obj-item">
+        <span class="obj-num">Objetivo 1</span>
+        <p>Analisar expressões booleanas de circuitos digitais e minimizá-las aplicando teoremas e axiomas da álgebra booleana e mapas de Karnaugh.</p>
+      </li>
+      <li class="obj-item">
+        <span class="obj-num">Objetivo 2</span>
+        <p>Analisar e projetar circuitos digitais combinacionais lógicos e aritméticos, codificadores/decodificadores, multiplexadores/demultiplexadores, utilizando portas AND, OR, NAND, NOR e inversores.</p>
+      </li>
+      <li class="obj-item">
+        <span class="obj-num">Objetivo 3</span>
+        <p>Analisar e projetar circuitos digitais sequenciais, registradores, contadores e registradores de deslocamento (<em>shift registers</em>), utilizando flip-flops de vários tipos.</p>
+      </li>
+      <li class="obj-item">
+        <span class="obj-num">Objetivo 4</span>
+        <p>Analisar e projetar circuitos digitais combinacionais e sequenciais, utilizando componentes com integração média escala (MSI).</p>
+      </li>
+      <li class="obj-item">
+        <span class="obj-num">Objetivo 5</span>
+        <p>Analisar, projetar e aplicar circuitos conversores analógico-digital (A/D) e digital-analógico (D/A).</p>
+      </li>
+    </ul>
+  </section>
+
+  <!-- CONTEÚDO -->
+  <section class="section" id="conteudo">
+    <p class="section-label">II / conteúdo programático</p>
+    <h2>Conteúdo</h2>
+    <ul class="content-list">
+      <li class="content-item"><span class="content-num">1</span><p>Grandezas numéricas nos sistemas digitais: sistemas de numeração de base 2 (binários) e de base 16 (hexadecimais); aritmética binária; representação de números negativos e de números de ponto flutuante; codificação.</p></li>
+      <li class="content-item"><span class="content-num">2</span><p>Álgebra Booleana: proposições lógicas; variáveis e constantes booleanas; expressões e funções booleanas; teoremas e axiomas da Álgebra Booleana; minimização de expressões booleanas; Mapas de Karnaugh.</p></li>
+      <li class="content-item"><span class="content-num">3</span><p>Famílias lógicas: sinais elétricos; famílias lógicas TTL e CMOS.</p></li>
+      <li class="content-item"><span class="content-num">4</span><p>Elementos básicos de sistemas digitais: portas lógicas AND, OR e inversores; análise e projeto de circuitos digitais elementares.</p></li>
+      <li class="content-item"><span class="content-num">5</span><p>Elementos básicos de sistemas digitais: portas lógicas universais NAND, NOR e portas EXOR; análise e projeto de circuitos digitais elementares.</p></li>
+      <li class="content-item"><span class="content-num">6</span><p>Circuitos digitais combinacionais lógicos e aritméticos: comparadores; somadores, subtratores, multiplicadores e divisores; circuitos combinacionais lógicos e aritméticos com integração em média escala (MSI).</p></li>
+      <li class="content-item"><span class="content-num">7</span><p>Circuitos digitais combinacionais codificadores e decodificadores: teoria da informação; codificação e decodificação; codificação de caracteres; codificação para correção e detecção de erros; decodificação de endereços; circuitos elementares e com integração MSI.</p></li>
+      <li class="content-item"><span class="content-num">8</span><p>Circuitos digitais combinacionais multiplexadores e demultiplexadores: multiplexação; técnicas de multiplexação; circuitos elementares e com integração MSI.</p></li>
+      <li class="content-item"><span class="content-num">9</span><p>Flip-flops e registradores: flip-flops tipo S-R, tipo D, tipo T e tipo J-K; temporização e multiestabilidade; aplicações com flip-flops.</p></li>
+      <li class="content-item"><span class="content-num">10</span><p>Circuitos contadores: máquinas de estados finitos; contadores síncronos e assíncronos.</p></li>
+      <li class="content-item"><span class="content-num">11</span><p>Circuitos registradores de deslocamento (<em>shift registers</em>): conceitos básicos; conversão serial-paralela; conversão paralela-serial.</p></li>
+      <li class="content-item"><span class="content-num">12</span><p>Circuitos conversores A/D e D/A: amostragem, quantização e codificação do sinal analógico; tipos de conversores Analógico Digital; aplicações de conversão A/D e D/A.</p></li>
+      <li class="content-item"><span class="content-num">13</span><p>Microprocessadores e microcontroladores: arquitetura interna; <em>set</em> de instruções de microprocessadores; <em>assembly</em> versus <em>assembler</em>; IDE para desenvolvimento de aplicações em plataformas como Arduino e Raspberry Pi.</p></li>
+      <li class="content-item"><span class="content-num">14</span><p>Sistemas embarcados: sensores e atuadores; aplicações de sistemas embarcados.</p></li>
+    </ul>
+  </section>
+
+  <!-- REFERÊNCIAS -->
+  <section class="section" id="referencias">
+    <p class="section-label">III / referências</p>
+    <h2>Referências</h2>
+
+    <div class="note">O acesso aos livros requer conta na Biblioteca Virtual do Ibmec.</div>
+
+    <h3 style="font-size:1rem;margin-bottom:.8rem;color:var(--accent)">Referência básica</h3>
+    <div class="ref-card">
+      <span class="ref-tag">livro-texto</span>
+      <p><a href="https://plataforma.bvirtual.com.br/Leitor/Publicacao/168497/pdf/0" target="_blank"><strong>TOCCI</strong>, Ronald J.; <strong>WIDMER</strong>, Neal S.; <strong>MOSS</strong>, Gregory L. — <em>Sistemas Digitais: princípios e aplicações</em> — Pearson Prentice Hall, 2007</a></p>
+    </div>
+
+    <h3 style="font-size:1rem;margin:1.5rem 0 .8rem;color:var(--accent)">Referências complementares</h3>
+    <ul class="ref-list">
+      <li class="ref-item"><a href="https://plataforma.bvirtual.com.br/Leitor/Publicacao/158767/pdf/0" target="_blank"><strong>HAUPT</strong>, Alexandre G.; <strong>DACHI</strong>, Édison P. — <em>Eletrônica Digital</em> — Edgard Blücher, 2018</a></li>
+      <li class="ref-item"><strong>FLETCHER</strong>, William I. — <em>Engineering Approach to Digital Design</em> — Prentice-Hall International, 1980</li>
+      <li class="ref-item"><strong>CAPUANO</strong>, Francisco Gabriel C. — <em>Sistemas Digitais: Circuitos Combinacionais e Sequenciais</em> — Editora Érica, 2018</li>
+      <li class="ref-item"><strong>KLEITZ</strong>, William — <em>Digital Electronic: a Practical Approach with VHDL</em> — Pearson, 2012</li>
+      <li class="ref-item"><strong>FLOYD</strong>, Thomas — <em>Sistemas Digitais: Fundamentos e Aplicações</em>, 9ª ed. — Bookman, 2011</li>
+      <li class="ref-item"><strong>VAHID</strong>, Frank; <strong>LASCHUK</strong>, Anatólio — <em>Sistemas Digitais: Projeto, Otimização e HDLs</em> — Bookman, 2008</li>
+      <li class="ref-item"><strong>FLOYD</strong>, Thomas — <em>Sistemas Digitais: Fundamentos e Aplicações</em> — Bookman, 2007</li>
+      <li class="ref-item"><strong>PIMENTA</strong>, Tales — <em>Circuitos Digitais: Análise e Síntese Lógica — Aplicações em FPGA</em> — LTC, 2016</li>
+    </ul>
+  </section>
+
+  <!-- CHAPTER NAV -->
+  <div class="chapter-nav">
+    <a href="sisdig.html"><span class="dir">← voltar</span>Página da disciplina — Sistemas Digitais</a>
+  </div>
+
+</div>
+
+<footer>
+  <div class="container">
+    <p>© 2026 · Prof. Clayton J A Silva · Ibmec RJ</p>
+    <p><a href="https://claytonjasilva.github.io">claytonjasilva.github.io</a></p>
+  </div>
+</footer>
+
+</body>
+</html>
