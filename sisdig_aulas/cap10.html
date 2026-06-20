@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Cap. 10 — Aplicações com Flip-Flops: Registradores | Sistemas Digitais</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/contrib/auto-render.min.js"></script>
+<style>
+:root {
+  --bg:        #0a0e17;
+  --surface:   #111827;
+  --surface2:  #161f2e;
+  --border:    #1e2d40;
+  --accent:    #00c2ff;
+  --accent2:   #7c3aed;
+  --text:      #e2e8f0;
+  --muted:     #64748b;
+  --tag-bg:    #0f172a;
+  --font-mono: 'IBM Plex Mono', monospace;
+  --font-sans: 'IBM Plex Sans', sans-serif;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{background:var(--bg);color:var(--text);font-family:var(--font-sans);font-size:16px;line-height:1.65;}
+a{color:var(--accent);text-decoration:none;}
+a:hover{text-decoration:underline;}
+.container{max-width:980px;margin:0 auto;padding:0 2rem;}
+
+nav{position:sticky;top:0;z-index:100;background:rgba(10,14,23,.9);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);padding:.9rem 0;}
+nav .container{display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap;}
+.nav-brand{font-family:var(--font-mono);font-size:.78rem;color:var(--accent);}
+.nav-links{display:flex;gap:1rem;list-style:none;flex-wrap:wrap;}
+.nav-links a{font-family:var(--font-mono);font-size:.7rem;color:var(--muted);}
+.nav-links a:hover{color:var(--text);text-decoration:none;}
+
+.progress-track{height:3px;background:var(--border);position:sticky;top:53px;z-index:99;}
+.progress-fill{height:100%;width:0%;background:linear-gradient(90deg,var(--accent),var(--accent2));transition:width .1s;}
+
+.hero{padding:4rem 0 2.5rem;position:relative;overflow:hidden;}
+.hero::before{content:'';position:absolute;inset:0;background-image:linear-gradient(var(--border) 1px,transparent 1px),linear-gradient(90deg,var(--border) 1px,transparent 1px);background-size:40px 40px;opacity:.3;mask-image:radial-gradient(ellipse 80% 60% at 50% 0%,black 40%,transparent 100%);}
+.hero-eyebrow{font-family:var(--font-mono);font-size:.74rem;color:var(--accent);letter-spacing:.14em;text-transform:uppercase;margin-bottom:1rem;display:flex;align-items:center;gap:.7rem;}
+.hero-eyebrow::before{content:'';width:2rem;height:1px;background:var(--accent);}
+h1{font-size:clamp(2rem,4.5vw,3.2rem);font-weight:300;line-height:1.12;letter-spacing:-.02em;margin-bottom:.6rem;}
+h1 strong{font-weight:600;color:var(--accent);}
+.hero-meta{display:flex;gap:1.5rem;flex-wrap:wrap;margin-top:1.2rem;}
+.meta-item{font-family:var(--font-mono);font-size:.74rem;color:var(--muted);display:flex;align-items:center;gap:.4rem;}
+.meta-item svg{flex-shrink:0;}
+
+.objectives{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:1.4rem 1.6rem;margin-top:1.6rem;}
+.objectives p.label{font-family:var(--font-mono);font-size:.7rem;color:var(--accent);letter-spacing:.1em;text-transform:uppercase;margin-bottom:.7rem;}
+.objectives ul{list-style:none;display:grid;gap:.5rem;}
+.objectives li{font-size:.88rem;color:var(--muted);display:flex;gap:.6rem;}
+.objectives li::before{content:'→';color:var(--accent);flex-shrink:0;}
+
+.toc{display:flex;gap:.5rem;flex-wrap:wrap;margin-top:1.5rem;}
+.toc a{font-family:var(--font-mono);font-size:.7rem;color:var(--muted);border:1px solid var(--border);padding:.35rem .75rem;border-radius:20px;transition:.2s;}
+.toc a:hover{border-color:var(--accent);color:var(--accent);text-decoration:none;}
+
+.section{padding:3rem 0;border-top:1px solid var(--border);}
+.section-label{font-family:var(--font-mono);font-size:.7rem;color:var(--accent);letter-spacing:.14em;text-transform:uppercase;display:flex;align-items:center;gap:.7rem;margin-bottom:1.4rem;}
+.section-label::after{content:'';flex:1;height:1px;background:var(--border);}
+h2{font-size:1.5rem;font-weight:600;letter-spacing:-.01em;margin-bottom:1rem;}
+h3{font-size:1.1rem;font-weight:600;margin:1.6rem 0 .8rem;color:var(--text);}
+h4{font-size:.95rem;font-weight:600;margin:1.2rem 0 .6rem;color:var(--accent);}
+p{margin-bottom:1rem;color:#cbd5e1;}
+strong{color:var(--text);font-weight:600;}
+em{color:var(--accent);font-style:normal;}
+
+.codeline{background:var(--tag-bg);border:1px solid var(--border);border-radius:6px;padding:.7rem 1rem;font-family:var(--font-mono);font-size:1rem;color:var(--accent);text-align:center;margin:1rem 0;}
+
+.fig-full{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:1.2rem;margin:1.5rem 0;}
+.fig-full img,.fig-full svg{width:100%;display:block;}
+.fig-caption{font-family:var(--font-mono);font-size:.72rem;color:var(--muted);text-align:center;margin-top:.6rem;}
+
+.definition{background:var(--surface);border:1px solid var(--accent2);border-left:3px solid var(--accent2);border-radius:0 8px 8px 0;padding:1.2rem 1.5rem;margin:1.2rem 0;}
+.definition .dtitle{font-family:var(--font-mono);font-size:.7rem;color:var(--accent2);letter-spacing:.1em;text-transform:uppercase;margin-bottom:.5rem;}
+
+.note{background:var(--tag-bg);border:1px solid var(--border);border-radius:6px;padding:.9rem 1.1rem;margin:1rem 0;font-size:.85rem;color:var(--muted);}
+.note strong{color:var(--accent);}
+
+/* CONVERSION CARD */
+.conv-card{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:1.5rem 1.7rem;margin:1.3rem 0;position:relative;overflow:hidden;}
+.conv-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--accent),var(--accent2));}
+.conv-tag{font-family:var(--font-mono);font-size:.7rem;color:var(--accent);background:rgba(0,194,255,.08);border:1px solid rgba(0,194,255,.25);border-radius:4px;padding:.2rem .6rem;display:inline-block;margin-bottom:.8rem;}
+.conv-card h4{margin:0 0 1rem;font-size:1.05rem;color:var(--text);}
+.conv-arrow{display:flex;align-items:center;justify-content:center;gap:1rem;margin:1rem 0;font-family:var(--font-mono);}
+.conv-box{background:var(--tag-bg);border:1px solid var(--border);border-radius:6px;padding:.7rem 1.2rem;font-weight:600;color:var(--accent2);}
+.conv-eq{color:var(--accent);font-size:1.5rem;}
+
+.refs-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:.8rem;}
+.ref-card{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:1rem 1.2rem;display:flex;gap:.8rem;align-items:flex-start;transition:.2s;}
+.ref-card:hover{border-color:var(--accent);}
+.ref-card svg{flex-shrink:0;margin-top:.15rem;}
+.ref-card h4{font-size:.88rem;font-weight:600;margin:0 0 .2rem;color:var(--text);}
+.ref-card p{font-size:.76rem;color:var(--muted);margin:0;}
+.ref-type{font-family:var(--font-mono);font-size:.62rem;color:var(--accent);text-transform:uppercase;letter-spacing:.06em;}
+
+.quiz{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:1.6rem;margin:1.5rem 0;}
+.quiz-header{display:flex;align-items:center;gap:.6rem;margin-bottom:1.2rem;}
+.quiz-header svg{flex-shrink:0;}
+.quiz-title{font-family:var(--font-mono);font-size:.8rem;color:var(--accent2);letter-spacing:.05em;}
+.quiz-q{font-size:.95rem;margin-bottom:.9rem;color:var(--text);}
+.quiz-options{display:flex;flex-direction:column;gap:.55rem;}
+.quiz-opt{background:var(--tag-bg);border:1px solid var(--border);border-radius:6px;padding:.7rem 1rem;font-size:.85rem;color:var(--muted);cursor:pointer;transition:.15s;text-align:left;width:100%;font-family:var(--font-sans);}
+.quiz-opt:hover{border-color:var(--accent);color:var(--text);}
+.quiz-opt.correct{border-color:#22c55e;background:rgba(34,197,94,.08);color:#86efac;}
+.quiz-opt.wrong{border-color:#ef4444;background:rgba(239,68,68,.08);color:#fca5a5;}
+.quiz-feedback{margin-top:.9rem;font-size:.85rem;padding:.8rem 1rem;border-radius:6px;display:none;}
+.quiz-feedback.show{display:block;}
+.quiz-feedback.correct-fb{background:rgba(34,197,94,.08);border:1px solid #22c55e;color:#86efac;}
+.quiz-feedback.wrong-fb{background:rgba(239,68,68,.08);border:1px solid #ef4444;color:#fca5a5;}
+
+.chapter-nav{display:flex;justify-content:space-between;gap:1rem;margin-top:2rem;}
+.chapter-nav a{flex:1;background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:1rem 1.3rem;font-size:.85rem;transition:.2s;}
+.chapter-nav a:hover{border-color:var(--accent);text-decoration:none;}
+.chapter-nav .dir{font-family:var(--font-mono);font-size:.65rem;color:var(--muted);text-transform:uppercase;letter-spacing:.08em;display:block;margin-bottom:.3rem;}
+.chapter-nav .next{text-align:right;}
+
+footer{border-top:1px solid var(--border);padding:2rem 0;margin-top:2rem;}
+footer .container{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;}
+footer p{font-size:.8rem;color:var(--muted);font-family:var(--font-mono);}
+
+@media(max-width:640px){.nav-links{display:none;}.hero{padding:2.5rem 0 2rem;}.conv-arrow{flex-direction:column;}}
+
+.katex{color:var(--accent);font-size:1.05em;}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="container">
+    <span class="nav-brand">sisdig · cap. 10</span>
+    <ul class="nav-links">
+      <li><a href="#s1">10.1 Conversões</a></li>
+      <li><a href="#s2">10.2 Deslocamento</a></li>
+      <li><a href="#s3">10.3 Paralelos</a></li>
+      <li><a href="#quiz">Quiz</a></li>
+      <li><a href="https://claytonjasilva.github.io/sisdig.html">← disciplina</a></li>
+    </ul>
+  </div>
+</nav>
+<div class="progress-track"><div class="progress-fill" id="progressFill"></div></div>
+
+<section class="hero">
+  <div class="container">
+    <p class="hero-eyebrow">Sistemas Digitais · Ibmec RJ</p>
+    <h1>Cap. 10 — Aplicações com<br><strong>Flip-Flops: Registradores</strong></h1>
+
+    <div class="hero-meta">
+      <span class="meta-item">
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><circle cx="7" cy="7" r="6" stroke="currentColor" stroke-width="1.2"/><path d="M7 4v3l2 1.5" stroke="currentColor" stroke-width="1.2"/></svg>
+        leitura ~25 min
+      </span>
+      <span class="meta-item">
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><rect x="2" y="3" width="10" height="9" rx="1" stroke="currentColor" stroke-width="1.2"/><line x1="2" y1="6" x2="12" y2="6" stroke="currentColor" stroke-width="1.2"/></svg>
+        Prof. Clayton J A Silva
+      </span>
+      <span class="meta-item">
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 7l4 4 6-7" stroke="currentColor" stroke-width="1.4" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        Rev 2026.1
+      </span>
+    </div>
+
+    <div class="objectives">
+      <p class="label">Objetivos de aprendizagem</p>
+      <ul>
+        <li>Converter um Flip-Flop JK em FF D e em FF T por meio das entradas J e K</li>
+        <li>Projetar registradores de deslocamento (shift registers) com FF D e FF JK</li>
+        <li>Controlar assincronamente um shift register com sinal de enable</li>
+        <li>Projetar registradores paralelos e interpretar seu diagrama de temporização</li>
+      </ul>
+    </div>
+
+    <div class="toc">
+      <a href="#s1a">10.1.1 JK → D</a>
+      <a href="#s1b">10.1.2 JK → T</a>
+      <a href="#s2">10.2 Shift Registers</a>
+      <a href="#s3">10.3 Registradores paralelos</a>
+    </div>
+  </div>
+</section>
+
+<div class="container">
+
+  <!-- 10.1 -->
+  <section class="section" id="s1">
+    <p class="section-label">10.1 / convertendo diferentes ff</p>
+    <h2>Convertendo diferentes Flip-Flops</h2>
+
+    <p>O Flip-Flop JK é o mais versátil dentre os tipos estudados — a partir dele, é possível obter o comportamento de outros tipos de Flip-Flop simplesmente conectando suas entradas <em>J</em> e <em>K</em> de forma adequada.</p>
+
+    <!-- 10.1.1 -->
+    <h3 id="s1a">10.1.1 Convertendo Flip-Flop JK em Flip-Flop D</h3>
+    <p>Analisando o comportamento dos Flip-Flops:</p>
+    <div class="fig-full">
+      <img src="https://github.com/claytonjasilva/claytonjasilva.github.io/raw/main/sisdig_aulas/images_sisdig/ffjkd.jpg" alt="Conversão FF JK para D">
+      <p class="fig-caption">Fig. 10.1 — Comparação de comportamento: FF D desejado vs. FF JK disponível</p>
+    </div>
+
+    <div class="conv-card">
+      <span class="conv-tag">conversão JK → D</span>
+      <h4>Para que o FF JK se comporte como um FF D</h4>
+      <p>Basta conectar a entrada <em>E</em> (equivalente à entrada D) diretamente a J, e seu complemento a K:</p>
+      <div class="conv-arrow">
+        <span class="conv-box">J = E</span>
+        <span class="conv-eq">·</span>
+        <span class="conv-box">K = Ē</span>
+      </div>
+      <p style="margin:0;font-size:.85rem">Quando E=1: J=1, K=0 → seta a saída em 1 (igual ao FF D com D=1). Quando E=0: J=0, K=1 → reseta a saída em 0 (igual ao FF D com D=0).</p>
+    </div>
+
+    <div class="fig-full">
+      <img src="https://github.com/claytonjasilva/claytonjasilva.github.io/raw/main/sisdig_aulas/images_sisdig/ffjkd2.jpg" alt="Circuito resultante FF JK para D">
+      <p class="fig-caption">Fig. 10.2 — Circuito resultante: FF JK operando como FF D</p>
+    </div>
+
+    <!-- 10.1.2 -->
+    <h3 id="s1b">10.1.2 Convertendo Flip-Flop JK em Flip-Flop T</h3>
+    <p>Analisando o comportamento dos Flip-Flops:</p>
+    <div class="fig-full">
+      <img src="https://github.com/claytonjasilva/claytonjasilva.github.io/raw/main/sisdig_aulas/images_sisdig/ffjkt.jpg" alt="Conversão FF JK para T">
+      <p class="fig-caption">Fig. 10.3 — Comparação de comportamento: FF T desejado vs. FF JK disponível</p>
+    </div>
+
+    <div class="conv-card">
+      <span class="conv-tag">conversão JK → T</span>
+      <h4>Para que o FF JK se comporte como um FF T</h4>
+      <p>Diferente da conversão para D, aqui é necessário que J e K recebam o <strong>mesmo valor</strong> — a entrada T é conectada simultaneamente a ambas:</p>
+      <div class="conv-arrow">
+        <span class="conv-box">J = T</span>
+        <span class="conv-eq">=</span>
+        <span class="conv-box">K = T</span>
+      </div>
+      <p style="margin:0;font-size:.85rem">Quando T=0: J=K=0 → o JK mantém a saída (igual ao FF T com T=0). Quando T=1: J=K=1 → o JK inverte a saída (igual ao FF T com T=1, <em>toggle</em>).</p>
+    </div>
+
+    <div class="fig-full">
+      <img src="https://github.com/claytonjasilva/claytonjasilva.github.io/raw/main/sisdig_aulas/images_sisdig/ffjkt2.jpg" alt="Circuito resultante FF JK para T">
+      <p class="fig-caption">Fig. 10.4 — Circuito resultante: FF JK operando como FF T</p>
+    </div>
+
+    <div class="note">A conversão JK→T é a base de construção de <strong>contadores</strong>: basta conectar J=K=1 permanentemente para que o FF alterne de estado a cada pulso de clock.</div>
+  </section>
+
+  <!-- 10.2 -->
+  <section class="section" id="s2">
+    <p class="section-label">10.2 / registradores de deslocamento</p>
+    <h2>Registradores de deslocamento (<em>Shift Registers</em>)</h2>
+
+    <p>Os registradores de deslocamento armazenam bits em células que são <strong>transferidos a cada transição de clock</strong>. Um registrador de <em>n</em> bits armazena $b_{n-1}b_{n-2}\ldots b_0$. Utiliza-se um banco de <em>n</em> Flip-Flops cascateados, cada um armazenando um bit.</p>
+
+    <div class="fig-full">
+      <img src="https://github.com/claytonjasilva/claytonjasilva.github.io/raw/main/sisdig_aulas/images_sisdig/shiftregister.jpg" alt="Shift Register com FF D">
+      <p class="fig-caption">Fig. 10.5 — Shift register de 4 bits com FF D</p>
+    </div>
+
+    <p>Utilizando um banco de FF JK, também é possível construir um registrador de 4 bits:</p>
+    <div class="fig-full">
+      <img src="https://github.com/claytonjasilva/claytonjasilva.github.io/raw/main/sisdig_aulas/images_sisdig/shiftregister1.jpg" alt="Shift Register com FF JK">
+      <p class="fig-caption">Fig. 10.6 — Shift register de 4 bits com FF JK</p>
+    </div>
+
+    <div class="note">Observe que a entrada de clock utiliza gatilhamento pela <strong>transição negativa</strong> do sinal de clock.</div>
+
+    <p>Em um diagrama de temporização, observa-se o seguinte comportamento:</p>
+    <div class="fig-full">
+      <img src="https://github.com/claytonjasilva/claytonjasilva.github.io/raw/main/sisdig_aulas/images_sisdig/shiftregister3.jpg" alt="Diagrama de temporização do Shift Register">
+      <p class="fig-caption">Fig. 10.7 — Diagrama de temporização do shift register</p>
+    </div>
+
+    <h3>Controle assíncrono com enable</h3>
+    <p>Para controlar assincronamente a operação do <em>shift register</em>, conecta-se uma <strong>porta AND</strong> a um sinal de <em>ENABLE</em> em cada célula de memória:</p>
+    <div class="fig-full">
+      <img src="https://github.com/claytonjasilva/claytonjasilva.github.io/raw/main/sisdig_aulas/images_sisdig/shiftregister2.jpg" alt="Shift Register com FF JK e enable">
+      <p class="fig-caption">Fig. 10.8 — Célula de memória do shift register com controle enable</p>
+    </div>
+
+    <div class="definition">
+      <p class="dtitle">características operacionais</p>
+      <p style="margin:0">Os <em>shift registers</em> operam para a transferência <strong>serial</strong> de dados de um barramento de entrada para um de saída. O número de Flip-Flops representa a <strong>memória</strong> do registrador — quantos bits podem ser armazenados. O <strong>primeiro bit carregado será perdido</strong> conforme novos bits são deslocados.</p>
+    </div>
+  </section>
+
+  <!-- 10.3 -->
+  <section class="section" id="s3">
+    <p class="section-label">10.3 / registradores paralelos</p>
+    <h2>Registradores paralelos</h2>
+
+    <p>Os registradores paralelos armazenam bits em células que são <strong>transferidos a cada transição de clock</strong> — assim como os shift registers. Um registrador de <em>n</em> bits armazena $b_{n-1}b_{n-2}\ldots b_0$, utilizando um banco de <em>n</em> Flip-Flops <strong>paralelos</strong>, cada um armazenando um bit.</p>
+
+    <div class="fig-full">
+      <img src="https://github.com/claytonjasilva/claytonjasilva.github.io/raw/main/sisdig_aulas/images_sisdig/shiftregister4.jpg" alt="Registrador paralelo com FF D">
+      <p class="fig-caption">Fig. 10.9 — Registrador paralelo de 4 bits com FF D</p>
+    </div>
+
+    <p>Um diagrama de temporização pode ser dado por:</p>
+    <div class="fig-full">
+      <img src="https://github.com/claytonjasilva/claytonjasilva.github.io/raw/main/sisdig_aulas/images_sisdig/shiftregister5.jpg" alt="Diagrama de temporização do registrador paralelo">
+      <p class="fig-caption">Fig. 10.10 — Diagrama de temporização do registrador paralelo</p>
+    </div>
+
+    <div class="note"><strong>Diferença-chave:</strong> no registrador paralelo, todos os bits são <strong>carregados e lidos simultaneamente</strong> (entrada e saída paralelas); no shift register, os bits são transferidos <strong>serialmente</strong>, um por vez, a cada clock.</div>
+  </section>
+
+  <!-- QUIZ -->
+  <section class="section" id="quiz">
+    <p class="section-label">checkpoint</p>
+    <h2>Teste seus conhecimentos</h2>
+
+    <div class="quiz">
+      <div class="quiz-header">
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="8" stroke="#7c3aed" stroke-width="1.4"/><text x="10" y="14" font-size="10" fill="#7c3aed" text-anchor="middle" font-weight="600">?</text></svg>
+        <span class="quiz-title">Pergunta 1 de 3</span>
+      </div>
+      <p class="quiz-q">Para converter um FF JK em FF D, qual conexão é necessária?</p>
+      <div class="quiz-options">
+        <button class="quiz-opt" onclick="checkAnswer(this, false, 'q1fb')">J = K = D</button>
+        <button class="quiz-opt" onclick="checkAnswer(this, true, 'q1fb')">J = D e K = D̄ (complemento)</button>
+        <button class="quiz-opt" onclick="checkAnswer(this, false, 'q1fb')">J = D̄ e K = D</button>
+      </div>
+      <div class="quiz-feedback" id="q1fb"></div>
+    </div>
+
+    <div class="quiz">
+      <div class="quiz-header">
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="8" stroke="#7c3aed" stroke-width="1.4"/><text x="10" y="14" font-size="10" fill="#7c3aed" text-anchor="middle" font-weight="600">?</text></svg>
+        <span class="quiz-title">Pergunta 2 de 3</span>
+      </div>
+      <p class="quiz-q">Para converter um FF JK em FF T, qual conexão é necessária?</p>
+      <div class="quiz-options">
+        <button class="quiz-opt" onclick="checkAnswer(this, true, 'q2fb')">J = K = T (mesmo valor em ambas)</button>
+        <button class="quiz-opt" onclick="checkAnswer(this, false, 'q2fb')">J = T e K = T̄</button>
+        <button class="quiz-opt" onclick="checkAnswer(this, false, 'q2fb')">Apenas J = T, deixando K desconectado</button>
+      </div>
+      <div class="quiz-feedback" id="q2fb"></div>
+    </div>
+
+    <div class="quiz">
+      <div class="quiz-header">
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="8" stroke="#7c3aed" stroke-width="1.4"/><text x="10" y="14" font-size="10" fill="#7c3aed" text-anchor="middle" font-weight="600">?</text></svg>
+        <span class="quiz-title">Pergunta 3 de 3</span>
+      </div>
+      <p class="quiz-q">Qual é a principal diferença entre um shift register e um registrador paralelo?</p>
+      <div class="quiz-options">
+        <button class="quiz-opt" onclick="checkAnswer(this, false, 'q3fb')">O shift register usa apenas FF D, e o paralelo apenas FF JK</button>
+        <button class="quiz-opt" onclick="checkAnswer(this, true, 'q3fb')">O shift register transfere bits serialmente; o paralelo, simultaneamente</button>
+        <button class="quiz-opt" onclick="checkAnswer(this, false, 'q3fb')">O registrador paralelo não usa sinal de clock</button>
+      </div>
+      <div class="quiz-feedback" id="q3fb"></div>
+    </div>
+  </section>
+
+  <!-- REFERÊNCIAS -->
+  <section class="section" id="refs">
+    <p class="section-label">referências e aprofundamento</p>
+    <h2>Para ir além</h2>
+
+    <div class="refs-grid">
+      <a class="ref-card" href="https://www.youtube.com/results?search_query=shift+register+registrador+deslocamento+flip+flop" target="_blank" style="color:inherit;">
+        <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><rect x="2" y="4" width="14" height="10" rx="2" stroke="#7c3aed" stroke-width="1.3"/><polygon points="8,7 8,11 12,9" fill="#7c3aed"/></svg>
+        <div><span class="ref-type">vídeo</span><h4>Shift Registers</h4><p>Busca curada de vídeos explicativos</p></div>
+      </a>
+      <a class="ref-card" href="https://claytonjasilva.github.io/sisdig_aulas/cap9.html" style="color:inherit;">
+        <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><rect x="2" y="2" width="14" height="14" rx="2" stroke="#00c2ff" stroke-width="1.3"/><line x1="2" y1="7" x2="16" y2="7" stroke="#00c2ff" stroke-width="1.1"/></svg>
+        <div><span class="ref-type">capítulo anterior</span><h4>Cap. 9 — Memória e Flip-Flops</h4><p>Latch, SR, JK, D, T</p></div>
+      </a>
+      <a class="ref-card" href="https://claytonjasilva.github.io/sisdig.html" target="_blank" style="color:inherit;">
+        <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><rect x="2" y="2" width="14" height="14" rx="2" stroke="#00c2ff" stroke-width="1.3"/><line x1="2" y1="7" x2="16" y2="7" stroke="#00c2ff" stroke-width="1.1"/></svg>
+        <div><span class="ref-type">disciplina</span><h4>Página de Sistemas Digitais</h4><p>Agenda, práticas e demais capítulos</p></div>
+      </a>
+      <a class="ref-card" href="https://claytonjasilva.github.io/avaliacoes.html" target="_blank" style="color:inherit;">
+        <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><rect x="3" y="2" width="12" height="14" rx="1.5" stroke="#7c3aed" stroke-width="1.3"/><line x1="6" y1="6" x2="12" y2="6" stroke="#7c3aed" stroke-width="1.1"/><line x1="6" y1="9" x2="12" y2="9" stroke="#7c3aed" stroke-width="1.1"/></svg>
+        <div><span class="ref-type">avaliação</span><h4>Sistema de Avaliações</h4><p>Pesos AC/AP1/AP2 da disciplina</p></div>
+      </a>
+    </div>
+  </section>
+
+  <!-- CHAPTER NAV -->
+  <div class="chapter-nav">
+    <a href="cap9.html"><span class="dir">← anterior</span>Cap. 9 — Memória, Células Binárias e Flip-Flops</a>
+    <a class="next" href="#" style="opacity:.5;cursor:default;"><span class="dir">próximo →</span>Cap. 11 — Divisores de Frequência e Contadores</a>
+  </div>
+
+</div>
+
+<footer>
+  <div class="container">
+    <p>© 2026 · Prof. Clayton J A Silva · Ibmec RJ</p>
+    <p><a href="https://claytonjasilva.github.io">claytonjasilva.github.io</a></p>
+  </div>
+</footer>
+
+<script>
+window.addEventListener('scroll', () => {
+  const h = document.documentElement;
+  const scrolled = (h.scrollTop) / (h.scrollHeight - h.clientHeight) * 100;
+  document.getElementById('progressFill').style.width = scrolled + '%';
+});
+
+function checkAnswer(btn, isCorrect, fbId) {
+  const group = btn.parentElement;
+  const buttons = group.querySelectorAll('.quiz-opt');
+  buttons.forEach(b => b.disabled = true);
+  btn.classList.add(isCorrect ? 'correct' : 'wrong');
+  const fb = document.getElementById(fbId);
+  fb.classList.add('show');
+  const msgs = {
+    q1fb: isCorrect ? '✓ Correto! J=D, K=D̄ faz o JK replicar o comportamento do FF D.' : '✗ Revise a seção 10.1.1.',
+    q2fb: isCorrect ? '✓ Correto! J=K=T faz o JK alternar (toggle) quando T=1, como o FF T.' : '✗ Revise a seção 10.1.2.',
+    q3fb: isCorrect ? '✓ Correto! Serial vs. paralelo é a diferença fundamental entre os dois registradores.' : '✗ Revise a comparação entre as seções 10.2 e 10.3.'
+  };
+  if (!isCorrect) buttons.forEach(b => { if (b.getAttribute('onclick').includes(', true,')) b.classList.add('correct'); });
+  fb.classList.add(isCorrect ? 'correct-fb' : 'wrong-fb');
+  fb.textContent = msgs[fbId];
+}
+
+renderMathInElement(document.body, {
+  delimiters: [
+    {left: "$$", right: "$$", display: true},
+    {left: "$", right: "$", display: false}
+  ],
+  throwOnError: false
+});
+</script>
+
+</body>
+</html>
