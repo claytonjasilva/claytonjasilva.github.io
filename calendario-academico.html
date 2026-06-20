@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Calendário Acadêmico 2026.2 | Ibmec RJ</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg:        #0a0e17;
+  --surface:   #111827;
+  --border:    #1e2d40;
+  --accent:    #00c2ff;
+  --accent2:   #7c3aed;
+  --text:      #e2e8f0;
+  --muted:     #64748b;
+  --tag-bg:    #0f172a;
+  --font-mono: 'IBM Plex Mono', monospace;
+  --font-sans: 'IBM Plex Sans', sans-serif;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{background:var(--bg);color:var(--text);font-family:var(--font-sans);font-size:16px;line-height:1.65;}
+a{color:var(--accent);text-decoration:none;}
+a:hover{text-decoration:underline;}
+.container{max-width:1080px;margin:0 auto;padding:0 2rem;}
+
+nav{position:sticky;top:0;z-index:100;background:rgba(10,14,23,.9);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);padding:.9rem 0;}
+nav .container{display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap;}
+.nav-brand{font-family:var(--font-mono);font-size:.78rem;color:var(--accent);}
+.nav-links{display:flex;gap:1.2rem;list-style:none;flex-wrap:wrap;}
+.nav-links a{font-family:var(--font-mono);font-size:.74rem;color:var(--muted);}
+.nav-links a:hover{color:var(--text);text-decoration:none;}
+
+.hero{padding:4rem 0 2.5rem;position:relative;overflow:hidden;}
+.hero::before{content:'';position:absolute;inset:0;background-image:linear-gradient(var(--border) 1px,transparent 1px),linear-gradient(90deg,var(--border) 1px,transparent 1px);background-size:40px 40px;opacity:.3;mask-image:radial-gradient(ellipse 80% 60% at 50% 0%,black 40%,transparent 100%);}
+.hero-eyebrow{font-family:var(--font-mono);font-size:.74rem;color:var(--accent);letter-spacing:.14em;text-transform:uppercase;margin-bottom:1rem;display:flex;align-items:center;gap:.7rem;}
+.hero-eyebrow::before{content:'';width:2rem;height:1px;background:var(--accent);}
+h1{font-size:clamp(2rem,4.5vw,3rem);font-weight:300;line-height:1.12;letter-spacing:-.02em;margin-bottom:.6rem;}
+h1 strong{font-weight:600;color:var(--accent);}
+
+.section{padding:2.5rem 0;border-top:1px solid var(--border);}
+.section-label{font-family:var(--font-mono);font-size:.7rem;color:var(--accent);letter-spacing:.14em;text-transform:uppercase;display:flex;align-items:center;gap:.7rem;margin-bottom:1.4rem;}
+.section-label::after{content:'';flex:1;height:1px;background:var(--border);}
+h2{font-size:1.4rem;font-weight:600;letter-spacing:-.01em;margin-bottom:1rem;}
+h3{font-size:1.05rem;font-weight:600;margin:1.5rem 0 .8rem;}
+p{margin-bottom:1rem;color:#cbd5e1;}
+strong{color:var(--text);font-weight:600;}
+
+/* MONTH GRID */
+.months-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1rem;margin:1.3rem 0;}
+.month-card{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:1.2rem 1.4rem;}
+.month-name{font-family:var(--font-mono);font-size:.78rem;color:var(--accent);text-transform:uppercase;letter-spacing:.08em;margin-bottom:.8rem;}
+.event-list{list-style:none;display:flex;flex-direction:column;gap:.5rem;}
+.event-item{font-size:.82rem;color:var(--muted);display:flex;gap:.6rem;}
+.event-date{font-family:var(--font-mono);font-weight:600;color:var(--text);min-width:60px;flex-shrink:0;}
+.event-item.highlight .event-date{color:var(--accent2);}
+.event-item.holiday .event-date{color:#ef4444;}
+
+/* KEY DATES TIMELINE */
+.timeline{display:flex;flex-direction:column;gap:0;margin:1.3rem 0;}
+.timeline-item{display:flex;gap:1.2rem;padding:.9rem 0;border-bottom:1px solid var(--border);}
+.timeline-item:last-child{border-bottom:none;}
+.timeline-date{font-family:var(--font-mono);font-size:.85rem;color:var(--accent);min-width:120px;flex-shrink:0;font-weight:600;}
+.timeline-desc{font-size:.88rem;color:#cbd5e1;}
+.timeline-tag{font-family:var(--font-mono);font-size:.62rem;background:rgba(124,58,237,.1);border:1px solid rgba(124,58,237,.25);color:var(--accent2);border-radius:4px;padding:.1rem .5rem;margin-left:.5rem;}
+
+/* CLASS SCHEDULE TABLE */
+table{width:100%;border-collapse:collapse;font-size:.85rem;margin:1.2rem 0;}
+thead tr{background:var(--tag-bg);}
+thead th{padding:.6rem .9rem;text-align:left;font-family:var(--font-mono);font-size:.7rem;color:var(--muted);letter-spacing:.06em;text-transform:uppercase;font-weight:400;border-bottom:1px solid var(--border);}
+tbody td{padding:.55rem .9rem;border-bottom:1px solid var(--border);color:var(--muted);}
+tbody tr:hover{background:rgba(255,255,255,.02);}
+tbody td:first-child{font-family:var(--font-mono);color:var(--accent);white-space:nowrap;}
+tr.ap td{color:var(--accent) !important;font-weight:600;}
+tr.as td{color:var(--accent2) !important;font-weight:600;}
+tr.feriado td{color:var(--muted) !important;font-style:italic;}
+
+.note{background:var(--tag-bg);border:1px solid var(--border);border-radius:6px;padding:.9rem 1.1rem;margin:1rem 0;font-size:.85rem;color:var(--muted);}
+.note strong{color:var(--accent);}
+
+.legend-row{display:flex;gap:1.5rem;flex-wrap:wrap;margin:1rem 0;}
+.legend-item{display:flex;align-items:center;gap:.5rem;font-family:var(--font-mono);font-size:.78rem;color:var(--muted);}
+.legend-dot{width:10px;height:10px;border-radius:3px;flex-shrink:0;}
+
+.chapter-nav{display:flex;justify-content:space-between;gap:1rem;margin-top:2rem;}
+.chapter-nav a{flex:1;background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:1rem 1.3rem;font-size:.85rem;transition:.2s;}
+.chapter-nav a:hover{border-color:var(--accent);text-decoration:none;}
+.chapter-nav .dir{font-family:var(--font-mono);font-size:.65rem;color:var(--muted);text-transform:uppercase;letter-spacing:.08em;display:block;margin-bottom:.3rem;}
+
+footer{border-top:1px solid var(--border);padding:2rem 0;margin-top:2rem;}
+footer .container{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;}
+footer p{font-size:.8rem;color:var(--muted);font-family:var(--font-mono);}
+
+@media(max-width:640px){.nav-links{display:none;}.hero{padding:2.5rem 0 2rem;}}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="container">
+    <span class="nav-brand">claytonjasilva.github.io</span>
+    <ul class="nav-links">
+      <li><a href="#datas-chave">Datas-chave</a></li>
+      <li><a href="#meses">Meses</a></li>
+      <li><a href="https://claytonjasilva.github.io">← home</a></li>
+    </ul>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="container">
+    <p class="hero-eyebrow">Ibmec RJ — Calendário institucional</p>
+    <h1>Calendário Acadêmico<br><strong>2026.2</strong></h1>
+    <p style="margin-top:1rem">Período letivo: <strong>03/08/2026</strong> (veteranos) a <strong>07/12/2026</strong>. Fonte: Calendário Acadêmico Ibmec RJ.</p>
+  </div>
+</section>
+
+<div class="container">
+
+  <!-- DATAS-CHAVE -->
+  <section class="section" id="datas-chave">
+    <p class="section-label">datas-chave do semestre</p>
+    <h2>Linha do tempo</h2>
+
+    <div class="timeline">
+      <div class="timeline-item">
+        <span class="timeline-date">03/08</span>
+        <span class="timeline-desc">Início do período letivo 2026.2 para veteranos</span>
+      </div>
+      <div class="timeline-item">
+        <span class="timeline-date">10/08</span>
+        <span class="timeline-desc">Início do período letivo 2026.2 para calouros</span>
+      </div>
+      <div class="timeline-item">
+        <span class="timeline-date">07/09</span>
+        <span class="timeline-desc">Feriado — Independência do Brasil</span>
+      </div>
+      <div class="timeline-item">
+        <span class="timeline-date">24/09 a 30/09</span>
+        <span class="timeline-desc">Período de aplicação das Avaliações Parciais <strong>AP1</strong><span class="timeline-tag">AP1</span></span>
+      </div>
+      <div class="timeline-item">
+        <span class="timeline-date">12/10</span>
+        <span class="timeline-desc">Feriado — Nossa Senhora Aparecida</span>
+      </div>
+      <div class="timeline-item">
+        <span class="timeline-date">13/10</span>
+        <span class="timeline-desc">Prazo final para lançamento e revisão de notas das AP1</span>
+      </div>
+      <div class="timeline-item">
+        <span class="timeline-date">02/11</span>
+        <span class="timeline-desc">Feriado — Dia de Finados</span>
+      </div>
+      <div class="timeline-item">
+        <span class="timeline-date">12/11 a 18/11</span>
+        <span class="timeline-desc">Período de aplicação das Avaliações Parciais <strong>AP2</strong><span class="timeline-tag">AP2</span></span>
+      </div>
+      <div class="timeline-item">
+        <span class="timeline-date">15/11</span>
+        <span class="timeline-desc">Feriado — Proclamação da República</span>
+      </div>
+      <div class="timeline-item">
+        <span class="timeline-date">20/11</span>
+        <span class="timeline-desc">Feriado e Recesso Nacional — Consciência Negra</span>
+      </div>
+      <div class="timeline-item">
+        <span class="timeline-date">23/11</span>
+        <span class="timeline-desc">Prazo final para lançamento e revisão de notas das AP2</span>
+      </div>
+      <div class="timeline-item">
+        <span class="timeline-date">25/11 a 03/12</span>
+        <span class="timeline-desc">Período de aplicação das Avaliações Substitutivas <strong>AS</strong><span class="timeline-tag">AS</span></span>
+      </div>
+      <div class="timeline-item">
+        <span class="timeline-date">03/12</span>
+        <span class="timeline-desc">Prazo final para lançamento de notas das AS · Reuniões de encerramento</span>
+      </div>
+      <div class="timeline-item">
+        <span class="timeline-date">07/12</span>
+        <span class="timeline-desc">Conclusão do período letivo 2026.2 às 10h</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- MESES -->
+  <section class="section" id="meses">
+    <p class="section-label">calendário por mês</p>
+    <h2>Eventos institucionais</h2>
+
+    <div class="months-grid">
+
+      <div class="month-card">
+        <p class="month-name">Agosto</p>
+        <ul class="event-list">
+          <li class="event-item highlight"><span class="event-date">03</span> Início período letivo veteranos</li>
+          <li class="event-item"><span class="event-date">09</span> Fim trancamento sem cobrança (veterano)</li>
+          <li class="event-item highlight"><span class="event-date">10</span> Início período letivo calouros</li>
+          <li class="event-item"><span class="event-date">12</span> Início solicitação AAC</li>
+          <li class="event-item"><span class="event-date">17</span> Início trancamento com cobrança (calouro)</li>
+        </ul>
+      </div>
+
+      <div class="month-card">
+        <p class="month-name">Setembro</p>
+        <ul class="event-list">
+          <li class="event-item holiday"><span class="event-date">07</span> Feriado — Independência do Brasil</li>
+          <li class="event-item"><span class="event-date">10</span> Aplicação Teste de Progresso</li>
+          <li class="event-item"><span class="event-date">11</span> Fim de diversos prazos de matrícula 2026.2</li>
+          <li class="event-item highlight"><span class="event-date">24-30</span> Período de aplicação AP1</li>
+        </ul>
+      </div>
+
+      <div class="month-card">
+        <p class="month-name">Outubro</p>
+        <ul class="event-list">
+          <li class="event-item"><span class="event-date">05-09</span> Mostra de Iniciação Científica e Pesquisa</li>
+          <li class="event-item holiday"><span class="event-date">12</span> Feriado — Nossa Senhora Aparecida</li>
+          <li class="event-item"><span class="event-date">13</span> Prazo final notas AP1</li>
+          <li class="event-item"><span class="event-date">15</span> Dia do Professor</li>
+        </ul>
+      </div>
+
+      <div class="month-card">
+        <p class="month-name">Novembro</p>
+        <ul class="event-list">
+          <li class="event-item holiday"><span class="event-date">02</span> Feriado — Dia de Finados</li>
+          <li class="event-item highlight"><span class="event-date">12-18</span> Período de aplicação AP2</li>
+          <li class="event-item holiday"><span class="event-date">15</span> Feriado — Proclamação da República</li>
+          <li class="event-item holiday"><span class="event-date">20</span> Feriado — Consciência Negra</li>
+          <li class="event-item"><span class="event-date">23</span> Prazo final notas AP2</li>
+          <li class="event-item"><span class="event-date">23-28</span> Apresentação de TCCs e Monografias</li>
+          <li class="event-item highlight"><span class="event-date">25/11-03/12</span> Período de aplicação AS</li>
+        </ul>
+      </div>
+
+      <div class="month-card">
+        <p class="month-name">Dezembro</p>
+        <ul class="event-list">
+          <li class="event-item"><span class="event-date">03</span> Prazo final notas AS · Reuniões de encerramento</li>
+          <li class="event-item"><span class="event-date">04</span> Prazo final revisão de notas e fechamento de diários</li>
+          <li class="event-item"><span class="event-date">05</span> Sábado letivo</li>
+          <li class="event-item highlight"><span class="event-date">07</span> Conclusão do período letivo 2026.2</li>
+        </ul>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- AGENDA SISDIG -->
+  <section class="section" id="agenda-sisdig">
+    <p class="section-label">aplicação — sistemas digitais (sextas, 7h30–11h40)</p>
+    <h2>Datas de aula da disciplina</h2>
+    <p>A disciplina de Sistemas Digitais é ministrada às <strong>sextas-feiras, das 7h30 às 11h40</strong>. Considerando os feriados do calendário institucional, a disciplina contará com <strong>16 encontros</strong> no semestre 2026.2.</p>
+
+    <div class="legend-row">
+      <span class="legend-item"><span class="legend-dot" style="background:#00c2ff"></span>AP1 / AP2</span>
+      <span class="legend-item"><span class="legend-dot" style="background:#7c3aed"></span>AS</span>
+      <span class="legend-item"><span class="legend-dot" style="background:#64748b"></span>Feriado (sem aula)</span>
+    </div>
+
+    <table>
+      <thead><tr><th>Data</th><th>Observação</th></tr></thead>
+      <tbody>
+        <tr><td>07/08/2026</td><td>Aula 1</td></tr>
+        <tr><td>14/08/2026</td><td>Aula 2</td></tr>
+        <tr><td>21/08/2026</td><td>Aula 3</td></tr>
+        <tr><td>28/08/2026</td><td>Aula 4</td></tr>
+        <tr><td>04/09/2026</td><td>Aula 5</td></tr>
+        <tr><td>11/09/2026</td><td>Aula 6</td></tr>
+        <tr><td>18/09/2026</td><td>Aula 7 — Revisão para AP1</td></tr>
+        <tr class="ap"><td>25/09/2026</td><td>▶ Aplicação da AP1 (dentro do período 24–30/09)</td></tr>
+        <tr><td>02/10/2026</td><td>Aula 8 — Mostra dos resultados da AP1</td></tr>
+        <tr><td>09/10/2026</td><td>Aula 9</td></tr>
+        <tr><td>16/10/2026</td><td>Aula 10</td></tr>
+        <tr><td>23/10/2026</td><td>Aula 11</td></tr>
+        <tr><td>30/10/2026</td><td>Aula 12</td></tr>
+        <tr><td>06/11/2026</td><td>Aula 13 — Revisão para AP2</td></tr>
+        <tr class="ap"><td>13/11/2026</td><td>▶ Aplicação da AP2 (dentro do período 12–18/11)</td></tr>
+        <tr class="feriado"><td>20/11/2026</td><td>Feriado — Consciência Negra (sem aula)</td></tr>
+        <tr><td>27/11/2026</td><td>Aula 14</td></tr>
+        <tr class="as"><td>04/12/2026</td><td>▶ Aplicação da AS (dentro do período 25/11–03/12)</td></tr>
+      </tbody>
+    </table>
+
+    <div class="note">
+      <strong>Observação:</strong> as datas exatas de AP1, AP2 e AS dentro dos respectivos períodos institucionais podem ser ajustadas pela coordenação do curso. Consulte sempre a <a href="https://claytonjasilva.github.io/avaliacoes.html">página de avaliações</a> para confirmação.
+    </div>
+  </section>
+
+  <!-- CHAPTER NAV -->
+  <div class="chapter-nav">
+    <a href="index.html"><span class="dir">← voltar</span>Home — Prof. Clayton J A Silva</a>
+    <a href="sisdig_aulas/agenda_sisdig.html" style="text-align:right;"><span class="dir">ver também →</span>Agenda detalhada de Sistemas Digitais</a>
+  </div>
+
+</div>
+
+<footer>
+  <div class="container">
+    <p>© 2026 · Ibmec RJ</p>
+    <p><a href="https://claytonjasilva.github.io">claytonjasilva.github.io</a></p>
+  </div>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Práticas de Laboratório | Sistemas Digitais</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg:        #0a0e17;
+  --surface:   #111827;
+  --border:    #1e2d40;
+  --accent:    #00c2ff;
+  --accent2:   #7c3aed;
+  --text:      #e2e8f0;
+  --muted:     #64748b;
+  --tag-bg:    #0f172a;
+  --font-mono: 'IBM Plex Mono', monospace;
+  --font-sans: 'IBM Plex Sans', sans-serif;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{background:var(--bg);color:var(--text);font-family:var(--font-sans);font-size:16px;line-height:1.65;}
+a{color:var(--accent);text-decoration:none;}
+a:hover{text-decoration:underline;}
+.container{max-width:980px;margin:0 auto;padding:0 2rem;}
+
+nav{position:sticky;top:0;z-index:100;background:rgba(10,14,23,.9);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);padding:.9rem 0;}
+nav .container{display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap;}
+.nav-brand{font-family:var(--font-mono);font-size:.78rem;color:var(--accent);}
+.nav-links{display:flex;gap:1.2rem;list-style:none;flex-wrap:wrap;}
+.nav-links a{font-family:var(--font-mono);font-size:.74rem;color:var(--muted);}
+.nav-links a:hover{color:var(--text);text-decoration:none;}
+
+.hero{padding:4rem 0 2.5rem;position:relative;overflow:hidden;}
+.hero::before{content:'';position:absolute;inset:0;background-image:linear-gradient(var(--border) 1px,transparent 1px),linear-gradient(90deg,var(--border) 1px,transparent 1px);background-size:40px 40px;opacity:.3;mask-image:radial-gradient(ellipse 80% 60% at 50% 0%,black 40%,transparent 100%);}
+.hero-eyebrow{font-family:var(--font-mono);font-size:.74rem;color:var(--accent);letter-spacing:.14em;text-transform:uppercase;margin-bottom:1rem;display:flex;align-items:center;gap:.7rem;}
+.hero-eyebrow::before{content:'';width:2rem;height:1px;background:var(--accent);}
+h1{font-size:clamp(2rem,4.5vw,3rem);font-weight:300;line-height:1.12;letter-spacing:-.02em;margin-bottom:.6rem;}
+h1 strong{font-weight:600;color:var(--accent);}
+
+.section{padding:2.5rem 0;border-top:1px solid var(--border);}
+.section-label{font-family:var(--font-mono);font-size:.7rem;color:var(--accent);letter-spacing:.14em;text-transform:uppercase;display:flex;align-items:center;gap:.7rem;margin-bottom:1.4rem;}
+.section-label::after{content:'';flex:1;height:1px;background:var(--border);}
+h2{font-size:1.4rem;font-weight:600;letter-spacing:-.01em;margin-bottom:1rem;}
+p{margin-bottom:1rem;color:#cbd5e1;}
+strong{color:var(--text);font-weight:600;}
+
+/* PRACTICE GRID */
+.practice-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:1rem;}
+.practice-card{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:1.2rem 1.4rem;display:flex;flex-direction:column;gap:.6rem;transition:.2s;position:relative;overflow:hidden;}
+.practice-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--accent),var(--accent2));}
+.practice-card:hover{border-color:var(--accent);}
+.practice-num{font-family:var(--font-mono);font-size:.7rem;color:var(--accent);background:rgba(0,194,255,.08);border:1px solid rgba(0,194,255,.25);border-radius:4px;padding:.15rem .55rem;display:inline-block;width:fit-content;}
+.practice-card h3{font-size:.95rem;font-weight:600;margin:0;color:var(--text);}
+.practice-card p{font-size:.82rem;color:var(--muted);margin:0;flex:1;}
+.practice-card a.link{font-family:var(--font-mono);font-size:.76rem;color:var(--accent);display:inline-flex;align-items:center;gap:.4rem;margin-top:.2rem;}
+
+/* GROUPING HEADERS */
+.group-title{font-family:var(--font-mono);font-size:.78rem;color:var(--accent2);text-transform:uppercase;letter-spacing:.06em;margin:1.8rem 0 .9rem;display:flex;align-items:center;gap:.6rem;}
+.group-title:first-child{margin-top:0;}
+.group-title::after{content:'';flex:1;height:1px;background:var(--border);}
+
+.note{background:var(--tag-bg);border:1px solid var(--border);border-radius:6px;padding:.9rem 1.1rem;margin:1rem 0;font-size:.85rem;color:var(--muted);}
+.note strong{color:var(--accent);}
+
+.chapter-nav{display:flex;justify-content:space-between;gap:1rem;margin-top:2rem;}
+.chapter-nav a{flex:1;background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:1rem 1.3rem;font-size:.85rem;transition:.2s;}
+.chapter-nav a:hover{border-color:var(--accent);text-decoration:none;}
+.chapter-nav .dir{font-family:var(--font-mono);font-size:.65rem;color:var(--muted);text-transform:uppercase;letter-spacing:.08em;display:block;margin-bottom:.3rem;}
+
+footer{border-top:1px solid var(--border);padding:2rem 0;margin-top:2rem;}
+footer .container{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;}
+footer p{font-size:.8rem;color:var(--muted);font-family:var(--font-mono);}
+
+@media(max-width:640px){.nav-links{display:none;}.hero{padding:2.5rem 0 2rem;}}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="container">
+    <span class="nav-brand">sisdig · práticas</span>
+    <ul class="nav-links">
+      <li><a href="#combinacionais">Combinacionais</a></li>
+      <li><a href="#sequenciais">Sequenciais</a></li>
+      <li><a href="https://claytonjasilva.github.io/sisdig.html">← disciplina</a></li>
+    </ul>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="container">
+    <p class="hero-eyebrow">Sistemas Digitais · Ibmec RJ</p>
+    <h1>Práticas de<br><strong>Laboratório</strong></h1>
+    <p style="margin-top:1rem">12 práticas de laboratório, organizadas em ordem crescente de complexidade — das portas lógicas básicas aos circuitos sequenciais com registradores.</p>
+  </div>
+</section>
+
+<div class="container">
+
+  <section class="section">
+
+    <p class="group-title" id="combinacionais">Portas lógicas básicas</p>
+    <div class="practice-grid">
+      <div class="practice-card">
+        <span class="practice-num">P01</span>
+        <h3>Portas lógicas AND</h3>
+        <p>Montagem e verificação da tabela-verdade da porta AND com CI 74HC08N.</p>
+        <a class="link" href="https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/sisdig_aulas/sistemas_digitais_pratica1.md" target="_blank">Ver prática →</a>
+      </div>
+      <div class="practice-card">
+        <span class="practice-num">P02</span>
+        <h3>Portas lógicas OR</h3>
+        <p>Montagem e verificação da tabela-verdade da porta OR com CI SN74HC32N.</p>
+        <a class="link" href="https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/sisdig_aulas/sistemas_digitais_pratica2.md" target="_blank">Ver prática →</a>
+      </div>
+      <div class="practice-card">
+        <span class="practice-num">P03</span>
+        <h3>Inversor NOT</h3>
+        <p>Montagem e verificação da tabela-verdade do inversor com CI SN74HC04.</p>
+        <a class="link" href="https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/sisdig_aulas/sistemas_digitais_pratica3.md" target="_blank">Ver prática →</a>
+      </div>
+      <div class="practice-card">
+        <span class="practice-num">P04</span>
+        <h3>Portas lógicas NAND</h3>
+        <p>Montagem e verificação da tabela-verdade da porta NAND com CI CD4011BE.</p>
+        <a class="link" href="https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/sisdig_aulas/sistemas_digitais_pratica4.md" target="_blank">Ver prática →</a>
+      </div>
+      <div class="practice-card">
+        <span class="practice-num">P05</span>
+        <h3>Portas lógicas NOR</h3>
+        <p>Montagem e verificação da tabela-verdade da porta NOR com CI SN74HC02N.</p>
+        <a class="link" href="https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/sisdig_aulas/sistemas_digitais_pratica5.md" target="_blank">Ver prática →</a>
+      </div>
+      <div class="practice-card">
+        <span class="practice-num">P06</span>
+        <h3>Portas XOR</h3>
+        <p>Montagem e verificação da tabela-verdade da porta XOR (ou-exclusivo).</p>
+        <a class="link" href="https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/sisdig_aulas/sistemas_digitais_pratica6.md" target="_blank">Ver prática →</a>
+      </div>
+    </div>
+
+    <p class="group-title">Circuitos combinacionais</p>
+    <div class="practice-grid">
+      <div class="practice-card">
+        <span class="practice-num">P07</span>
+        <h3>Circuitos combinacionais com portas lógicas</h3>
+        <p>Implementação de expressões booleanas combinando múltiplas portas lógicas.</p>
+        <a class="link" href="https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/sisdig_aulas/sistemas_digitais_pratica7.md" target="_blank">Ver prática →</a>
+      </div>
+      <div class="practice-card">
+        <span class="practice-num">P08</span>
+        <h3>Projeto de circuitos combinacionais</h3>
+        <p>Aplicação dos métodos de projeto (Cap. 3) a um problema de especificação.</p>
+        <a class="link" href="https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/sisdig_aulas/sistemas_digitais_pratica8.md" target="_blank">Ver prática →</a>
+      </div>
+      <div class="practice-card">
+        <span class="practice-num">P09</span>
+        <h3>Circuitos MSI — somador e decodificador</h3>
+        <p>Montagem do somador 74LS283 e decodificador CD4028 em escala MSI.</p>
+        <a class="link" href="https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/sisdig_aulas/sistemas_digitais_pratica9.md" target="_blank">Ver prática →</a>
+      </div>
+      <div class="practice-card">
+        <span class="practice-num">P10</span>
+        <h3>Circuitos MSI — multiplexador</h3>
+        <p>Montagem e teste do multiplexador 74HC151N de 8 entradas.</p>
+        <a class="link" href="https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/sisdig_aulas/sistemas_digitais_pratica10.md" target="_blank">Ver prática →</a>
+      </div>
+    </div>
+
+    <p class="group-title" id="sequenciais">Circuitos sequenciais</p>
+    <div class="practice-grid">
+      <div class="practice-card">
+        <span class="practice-num">P11</span>
+        <h3>Circuitos sequenciais</h3>
+        <p>Montagem de latches e Flip-Flops (SR, JK, D, T) e observação de temporização.</p>
+        <a class="link" href="https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/sisdig_aulas/sistemas_digitais_pratica11.md" target="_blank">Ver prática →</a>
+      </div>
+      <div class="practice-card">
+        <span class="practice-num">P12</span>
+        <h3>Circuitos sequenciais — registradores</h3>
+        <p>Montagem de shift registers e registradores paralelos com Flip-Flops cascateados.</p>
+        <a class="link" href="https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/sisdig_aulas/sistemas_digitais_pratica12.md" target="_blank">Ver prática →</a>
+      </div>
+    </div>
+
+    <div class="note">
+      <strong>Material de apoio:</strong> consulte a seção de <a href="https://claytonjasilva.github.io/sisdig.html#datasheets">datasheets de referência</a> na página da disciplina para os CIs utilizados em cada prática.
+    </div>
+  </section>
+
+  <!-- CHAPTER NAV -->
+  <div class="chapter-nav">
+    <a href="../sisdig.html"><span class="dir">← voltar</span>Página da disciplina — Sistemas Digitais</a>
+  </div>
+
+</div>
+
+<footer>
+  <div class="container">
+    <p>© 2026 · Prof. Clayton J A Silva · Ibmec RJ</p>
+    <p><a href="https://claytonjasilva.github.io">claytonjasilva.github.io</a></p>
+  </div>
+</footer>
+
+</body>
+</html>
