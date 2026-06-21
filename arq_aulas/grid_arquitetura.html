@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Grid da Disciplina — Arquitetura de Computadores | Ibmec RJ</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg:        #0a0e17;
+  --surface:   #111827;
+  --border:    #1e2d40;
+  --accent:    #00c2ff;
+  --accent2:   #7c3aed;
+  --text:      #e2e8f0;
+  --muted:     #64748b;
+  --tag-bg:    #0f172a;
+  --font-mono: 'IBM Plex Mono', monospace;
+  --font-sans: 'IBM Plex Sans', sans-serif;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{background:var(--bg);color:var(--text);font-family:var(--font-sans);font-size:16px;line-height:1.65;}
+a{color:var(--accent);text-decoration:none;}
+a:hover{text-decoration:underline;}
+.container{max-width:980px;margin:0 auto;padding:0 2rem;}
+
+nav{position:sticky;top:0;z-index:100;background:rgba(10,14,23,.9);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);padding:.9rem 0;}
+nav .container{display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap;}
+.nav-brand{font-family:var(--font-mono);font-size:.78rem;color:var(--accent);}
+.nav-links{display:flex;gap:1.2rem;list-style:none;flex-wrap:wrap;}
+.nav-links a{font-family:var(--font-mono);font-size:.74rem;color:var(--muted);}
+.nav-links a:hover{color:var(--text);text-decoration:none;}
+
+.hero{padding:4rem 0 2.5rem;position:relative;overflow:hidden;}
+.hero::before{content:'';position:absolute;inset:0;background-image:linear-gradient(var(--border) 1px,transparent 1px),linear-gradient(90deg,var(--border) 1px,transparent 1px);background-size:40px 40px;opacity:.3;mask-image:radial-gradient(ellipse 80% 60% at 50% 0%,black 40%,transparent 100%);}
+.hero-eyebrow{font-family:var(--font-mono);font-size:.74rem;color:var(--accent);letter-spacing:.14em;text-transform:uppercase;margin-bottom:1rem;display:flex;align-items:center;gap:.7rem;}
+.hero-eyebrow::before{content:'';width:2rem;height:1px;background:var(--accent);}
+h1{font-size:clamp(2rem,4.5vw,3rem);font-weight:300;line-height:1.12;letter-spacing:-.02em;margin-bottom:.6rem;}
+h1 strong{font-weight:600;color:var(--accent);}
+.hero-meta{display:flex;gap:1.5rem;flex-wrap:wrap;margin-top:1.2rem;}
+.meta-item{font-family:var(--font-mono);font-size:.78rem;color:var(--muted);}
+.meta-item strong{color:var(--text);}
+
+.section{padding:2.5rem 0;border-top:1px solid var(--border);}
+.section-label{font-family:var(--font-mono);font-size:.7rem;color:var(--accent);letter-spacing:.14em;text-transform:uppercase;display:flex;align-items:center;gap:.7rem;margin-bottom:1.4rem;}
+.section-label::after{content:'';flex:1;height:1px;background:var(--border);}
+h2{font-size:1.4rem;font-weight:600;letter-spacing:-.01em;margin-bottom:1rem;}
+p{margin-bottom:1rem;color:#cbd5e1;}
+strong{color:var(--text);font-weight:600;}
+
+.obj-list{list-style:none;display:flex;flex-direction:column;gap:.8rem;}
+.obj-item{background:var(--surface);border:1px solid var(--border);border-left:3px solid var(--accent);border-radius:0 8px 8px 0;padding:1rem 1.3rem;}
+.obj-num{font-family:var(--font-mono);font-size:.7rem;color:var(--accent);text-transform:uppercase;letter-spacing:.06em;margin-bottom:.3rem;display:block;}
+.obj-item p{margin:0;font-size:.9rem;color:#cbd5e1;}
+
+.content-list{list-style:none;display:flex;flex-direction:column;gap:.5rem;}
+.content-item{background:var(--surface);border:1px solid var(--border);border-radius:6px;padding:.8rem 1.1rem;display:flex;gap:.8rem;align-items:flex-start;}
+.content-num{font-family:var(--font-mono);font-size:.72rem;color:var(--accent2);background:rgba(124,58,237,.08);border:1px solid rgba(124,58,237,.25);border-radius:4px;padding:.15rem .5rem;flex-shrink:0;min-width:24px;text-align:center;}
+.content-item p{margin:0;font-size:.85rem;color:#cbd5e1;}
+
+.ref-card{background:var(--surface);border:1px solid var(--accent);border-radius:8px;padding:1.2rem 1.4rem;margin-bottom:.8rem;}
+.ref-card .ref-tag{font-family:var(--font-mono);font-size:.68rem;color:var(--accent);text-transform:uppercase;letter-spacing:.08em;margin-bottom:.5rem;display:block;}
+.ref-card p{margin:0;font-size:.88rem;}
+
+.ref-list{list-style:none;display:flex;flex-direction:column;gap:.5rem;}
+.ref-item{background:var(--tag-bg);border:1px solid var(--border);border-radius:6px;padding:.7rem 1rem;font-size:.85rem;color:var(--muted);}
+.ref-item strong{color:var(--text);}
+
+.note{background:var(--tag-bg);border:1px solid var(--border);border-radius:6px;padding:.9rem 1.1rem;margin-bottom:1.2rem;font-size:.82rem;color:var(--muted);}
+
+.chapter-nav{display:flex;justify-content:space-between;gap:1rem;margin-top:2rem;}
+.chapter-nav a{flex:1;background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:1rem 1.3rem;font-size:.85rem;transition:.2s;}
+.chapter-nav a:hover{border-color:var(--accent);text-decoration:none;}
+.chapter-nav .dir{font-family:var(--font-mono);font-size:.65rem;color:var(--muted);text-transform:uppercase;letter-spacing:.08em;display:block;margin-bottom:.3rem;}
+
+footer{border-top:1px solid var(--border);padding:2rem 0;margin-top:2rem;}
+footer .container{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;}
+footer p{font-size:.8rem;color:var(--muted);font-family:var(--font-mono);}
+
+@media(max-width:640px){.nav-links{display:none;}.hero{padding:2.5rem 0 2rem;}}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="container">
+    <span class="nav-brand">arq · grid</span>
+    <ul class="nav-links">
+      <li><a href="#objetivos">Objetivos</a></li>
+      <li><a href="#conteudo">Conteúdo</a></li>
+      <li><a href="#referencias">Referências</a></li>
+      <li><a href="arq.html">← disciplina</a></li>
+    </ul>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="container">
+    <p class="hero-eyebrow">Engenharia da Computação · Ibmec RJ</p>
+    <h1>Grid da disciplina<br><strong>Arquitetura de Computadores</strong></h1>
+    <div class="hero-meta">
+      <span class="meta-item"><strong>Curso:</strong> Engenharia da Computação</span>
+      <span class="meta-item"><strong>Período:</strong> 2024.2</span>
+      <span class="meta-item"><strong>Professor:</strong> Clayton Jones Alves da Silva, MSc</span>
+    </div>
+  </div>
+</section>
+
+<div class="container">
+
+  <!-- OBJETIVOS -->
+  <section class="section" id="objetivos">
+    <p class="section-label">I / objetivos</p>
+    <h2>Objetivos da disciplina</h2>
+    <ul class="obj-list">
+      <li class="obj-item">
+        <span class="obj-num">Objetivo 1</span>
+        <p>Analisar o desempenho de sistemas de computação, aplicando os parâmetros de desempenho próprios para os elementos de cada camada do modelo da máquina de níveis, para seleção da configuração mais adequada a uma aplicação.</p>
+      </li>
+      <li class="obj-item">
+        <span class="obj-num">Objetivo 2</span>
+        <p>Projetar e implementar circuitos digitais combinacionais básicos, lógicos e aritméticos, aplicando testes com simuladores e de bancada, para produção de sistemas computacionais.</p>
+      </li>
+      <li class="obj-item">
+        <span class="obj-num">Objetivo 3</span>
+        <p>Desenvolver programas no nível (ISA) em linguagem de montagem (<em>assembly</em>), aplicando o <em>set</em> de instruções de processadores e diretivas para <em>assembler</em> de microcontroladores/microprocessadores, gerando o código embarcado em plataformas computacionais.</p>
+      </li>
+      <li class="obj-item">
+        <span class="obj-num">Objetivo 4</span>
+        <p>Desenvolver programas básicos de rotinas de Sistemas Operacionais, utilizando linguagem C, para produção de rotinas típicas de gestão de arquivos, memória, dispositivos de entrada/saída e processos.</p>
+      </li>
+      <li class="obj-item">
+        <span class="obj-num">Objetivo 5</span>
+        <p>Projetar e implementar sistemas embarcados, baseados em microcontroladores, prototipando soluções na plataforma do <em>Arduíno</em>, utilizando dispositivos de entrada/saída disponíveis no mercado.</p>
+      </li>
+    </ul>
+  </section>
+
+  <!-- CONTEÚDO -->
+  <section class="section" id="conteudo">
+    <p class="section-label">II / conteúdo programático</p>
+    <h2>Conteúdo</h2>
+    <ul class="content-list">
+      <li class="content-item"><span class="content-num">1</span><p>Dados e informação: Representação de grandezas numéricas nos sistemas computacionais; Sistemas de numeração de base 2 (binários) e de base 16 (hexadecimais); Aritmética binária e aritmética hexadecimal; Representação de números negativos; Representação de números de ponto flutuante; Codificação.</p></li>
+      <li class="content-item"><span class="content-num">2</span><p>Conceitos básicos: dados, linguagens e programas de computadores; máquinas de níveis; máquina de seis níveis; evolução histórica dos computadores; tradutores e interpretadores; compiladores.</p></li>
+      <li class="content-item"><span class="content-num">3</span><p>Modelo da Máquina IAS (máquina de von Neumman): conceito de programa armazenado; elementos da máquina IAS - processador, memória, dispositivos de entrada/saída (I/O) e barramento; microarquitetura; ciclo de execução de instruções.</p></li>
+      <li class="content-item"><span class="content-num">4</span><p>Nível de lógica digital: lógica booleana; portas lógicas; circuitos combinacionais; circuitos sequenciais.</p></li>
+      <li class="content-item"><span class="content-num">5</span><p>Visão detalhada e tecnologia dos elementos computacionais - sistema de memória: hierarquia da memória dos sistemas de computação; características e tecnologias de memórias; tipos de memória; memória cache.</p></li>
+      <li class="content-item"><span class="content-num">6</span><p>Visão detalhada e tecnologia dos elementos computacionais - dispositivos de entrada/saída (I/O): características e tecnologias de dispositivos de I/O.</p></li>
+      <li class="content-item"><span class="content-num">7</span><p>Visão detalhada e tecnologia dos elementos computacionais - barramento: sinais; temporização; características e tecnologias de barramento.</p></li>
+      <li class="content-item"><span class="content-num">8</span><p>Visão detalhada e tecnologia dos elementos computacionais - processadores: nível de microarquitetura do microcontrolador Atmel ATmega V-2560; caminho dos dados; microprogramas e microinstruções.</p></li>
+      <li class="content-item"><span class="content-num">9</span><p>Visão detalhada e tecnologia dos elementos computacionais - processadores: nível do Conjunto de Instruções do processador; tipos de dados; formatos de instrução - opcode e operando; endereçamento - modos de endereçamento; tipos de instrução; fluxo de controle; set de instruções do Atmel ATmega V-2560.</p></li>
+      <li class="content-item"><span class="content-num">10</span><p>Nível de Linguagem de Montagem: <em>assembly</em> versus <em>assembler</em>; <em>set</em> de instruções e diretivas do <em>assembler</em> Microchip Studio AVR.</p></li>
+      <li class="content-item"><span class="content-num">11</span><p>Nível de Sistema Operacional: conceitos; atividades típicas; tipos; elementos do SO.</p></li>
+      <li class="content-item"><span class="content-num">12</span><p>Processamento paralelo.</p></li>
+      <li class="content-item"><span class="content-num">13</span><p>Projeto de sistemas embarcados.</p></li>
+      <li class="content-item"><span class="content-num">14</span><p>Fundamentos de eletrônica: corrente e tensão elétrica; corrente contínua e alternada; fontes de tensão; instrumentos de medida.</p></li>
+    </ul>
+  </section>
+
+  <!-- REFERÊNCIAS -->
+  <section class="section" id="referencias">
+    <p class="section-label">III / referências</p>
+    <h2>Referências</h2>
+
+    <div class="note">O acesso aos livros requer conta na Biblioteca Virtual do Ibmec.</div>
+
+    <h3 style="font-size:1rem;margin-bottom:.8rem;color:var(--accent)">Referência básica</h3>
+    <div class="ref-card">
+      <span class="ref-tag">livro-texto</span>
+      <p><a href="https://plataforma.bvirtual.com.br/Leitor/Publicacao/355/pdf/0" target="_blank">Tanenbaum, Andrew S.; Organização estruturada de computadores; 5a ed; Prenticce-Hall, 2007</a></p>
+    </div>
+
+    <h3 style="font-size:1rem;margin:1.5rem 0 .8rem;color:var(--accent)">Referências complementares</h3>
+    <ul class="ref-list">
+      <li class="ref-item"><a href="https://plataforma.bvirtual.com.br/Leitor/Publicacao/151479/pdf/0" target="_blank">Stallings, William; Arquitetura e Organização de Computadores; 10a ed; Pearson, 2018</a></li>
+      <li class="ref-item"><a href="https://plataforma.bvirtual.com.br/Leitor/Publicacao/124147/pdf/0" target="_blank">Corrêa, Ana G. D.; Organização e Arquitetura de Computadores; Pearson, 2017</a></li>
+      <li class="ref-item"><a href="https://plataforma.bvirtual.com.br/Leitor/Publicacao/1233/pdf/0" target="_blank">Tanenbaum, Andrew S.; Sistemas Operacionais Modernos; 3a ed; Pearson, 2007</a></li>
+      <li class="ref-item"><a href="http://wiki.inf.ufpr.br/maziero/doku.php?id=socm:start" target="_blank">Maziero, Carlos; Sistemas Operacionais: Conceitos e Mecanismos; Editora da UFPR; 2019</a></li>
+    </ul>
+  </section>
+
+  <!-- CHAPTER NAV -->
+  <div class="chapter-nav">
+    <a href="arq.html"><span class="dir">← voltar</span>Página da disciplina — Arquitetura de Computadores</a>
+  </div>
+
+</div>
+
+<footer>
+  <div class="container">
+    <p>© 2026 · Prof. Clayton J A Silva · Ibmec RJ</p>
+    <p><a href="https://claytonjasilva.github.io">claytonjasilva.github.io</a></p>
+  </div>
+</footer>
+
+</body>
+</html>
