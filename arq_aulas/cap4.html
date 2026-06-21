@@ -1,0 +1,664 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Cap. 4 — Sistema de Memória | Arquitetura de Computadores</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/contrib/auto-render.min.js"></script>
+<style>
+:root {
+  --bg:        #0a0e17;
+  --surface:   #111827;
+  --surface2:  #161f2e;
+  --border:    #1e2d40;
+  --accent:    #00c2ff;
+  --accent2:   #7c3aed;
+  --text:      #e2e8f0;
+  --muted:     #64748b;
+  --tag-bg:    #0f172a;
+  --font-mono: 'IBM Plex Mono', monospace;
+  --font-sans: 'IBM Plex Sans', sans-serif;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{background:var(--bg);color:var(--text);font-family:var(--font-sans);font-size:16px;line-height:1.65;}
+a{color:var(--accent);text-decoration:none;}
+a:hover{text-decoration:underline;}
+.container{max-width:980px;margin:0 auto;padding:0 2rem;}
+
+nav{position:sticky;top:0;z-index:100;background:rgba(10,14,23,.9);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);padding:.9rem 0;}
+nav .container{display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap;}
+.nav-brand{font-family:var(--font-mono);font-size:.78rem;color:var(--accent);}
+.nav-links{display:flex;gap:1rem;list-style:none;flex-wrap:wrap;}
+.nav-links a{font-family:var(--font-mono);font-size:.7rem;color:var(--muted);}
+.nav-links a:hover{color:var(--text);text-decoration:none;}
+
+.progress-track{height:3px;background:var(--border);position:sticky;top:53px;z-index:99;}
+.progress-fill{height:100%;width:0%;background:linear-gradient(90deg,var(--accent),var(--accent2));transition:width .1s;}
+
+.hero{padding:4rem 0 2.5rem;position:relative;overflow:hidden;}
+.hero::before{content:'';position:absolute;inset:0;background-image:linear-gradient(var(--border) 1px,transparent 1px),linear-gradient(90deg,var(--border) 1px,transparent 1px);background-size:40px 40px;opacity:.3;mask-image:radial-gradient(ellipse 80% 60% at 50% 0%,black 40%,transparent 100%);}
+.hero-eyebrow{font-family:var(--font-mono);font-size:.74rem;color:var(--accent);letter-spacing:.14em;text-transform:uppercase;margin-bottom:1rem;display:flex;align-items:center;gap:.7rem;}
+.hero-eyebrow::before{content:'';width:2rem;height:1px;background:var(--accent);}
+h1{font-size:clamp(2rem,4.5vw,3.2rem);font-weight:300;line-height:1.12;letter-spacing:-.02em;margin-bottom:.6rem;}
+h1 strong{font-weight:600;color:var(--accent);}
+.hero-meta{display:flex;gap:1.5rem;flex-wrap:wrap;margin-top:1.2rem;}
+.meta-item{font-family:var(--font-mono);font-size:.74rem;color:var(--muted);display:flex;align-items:center;gap:.4rem;}
+.meta-item svg{flex-shrink:0;}
+
+.objectives{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:1.4rem 1.6rem;margin-top:1.6rem;}
+.objectives p.label{font-family:var(--font-mono);font-size:.7rem;color:var(--accent);letter-spacing:.1em;text-transform:uppercase;margin-bottom:.7rem;}
+.objectives ul{list-style:none;display:grid;gap:.5rem;}
+.objectives li{font-size:.88rem;color:var(--muted);display:flex;gap:.6rem;}
+.objectives li::before{content:'→';color:var(--accent);flex-shrink:0;}
+
+.toc{display:flex;gap:.5rem;flex-wrap:wrap;margin-top:1.5rem;}
+.toc a{font-family:var(--font-mono);font-size:.7rem;color:var(--muted);border:1px solid var(--border);padding:.35rem .75rem;border-radius:20px;transition:.2s;}
+.toc a:hover{border-color:var(--accent);color:var(--accent);text-decoration:none;}
+
+.section{padding:3rem 0;border-top:1px solid var(--border);}
+.section-label{font-family:var(--font-mono);font-size:.7rem;color:var(--accent);letter-spacing:.14em;text-transform:uppercase;display:flex;align-items:center;gap:.7rem;margin-bottom:1.4rem;}
+.section-label::after{content:'';flex:1;height:1px;background:var(--border);}
+h2{font-size:1.5rem;font-weight:600;letter-spacing:-.01em;margin-bottom:1rem;}
+h3{font-size:1.1rem;font-weight:600;margin:1.6rem 0 .8rem;color:var(--text);}
+h4{font-size:.95rem;font-weight:600;margin:1.2rem 0 .6rem;color:var(--accent);}
+p{margin-bottom:1rem;color:#cbd5e1;}
+strong{color:var(--text);font-weight:600;}
+em{color:var(--accent);font-style:normal;}
+ul.plain{margin:0 0 1rem 1.2rem;color:#cbd5e1;}
+ul.plain li{margin-bottom:.4rem;}
+ol.plain{margin:0 0 1rem 1.2rem;color:#cbd5e1;}
+ol.plain li{margin-bottom:.5rem;}
+
+.codeline{background:var(--tag-bg);border:1px solid var(--border);border-radius:6px;padding:.7rem 1rem;font-family:var(--font-mono);font-size:1rem;color:var(--accent);text-align:center;margin:1rem 0;}
+
+.concept-grid{display:grid;grid-template-columns:1fr 1fr;gap:2rem;align-items:start;margin:1.5rem 0;}
+.concept-text{display:flex;flex-direction:column;justify-content:center;}
+.concept-fig{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:1rem;}
+.concept-fig img,.concept-fig svg{width:100%;display:block;}
+.fig-caption{font-family:var(--font-mono);font-size:.72rem;color:var(--muted);text-align:center;margin-top:.6rem;}
+@media (max-width:760px){.concept-grid{grid-template-columns:1fr;}}
+
+.fig-full{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:1.2rem;margin:1.5rem 0;}
+.fig-full img,.fig-full svg{width:100%;display:block;}
+
+.definition{background:var(--surface);border:1px solid var(--accent2);border-left:3px solid var(--accent2);border-radius:0 8px 8px 0;padding:1.2rem 1.5rem;margin:1.2rem 0;}
+.definition .dtitle{font-family:var(--font-mono);font-size:.7rem;color:var(--accent2);letter-spacing:.1em;text-transform:uppercase;margin-bottom:.5rem;}
+
+.note{background:var(--tag-bg);border:1px solid var(--border);border-radius:6px;padding:.9rem 1.1rem;margin:1rem 0;font-size:.85rem;color:var(--muted);}
+.note strong{color:var(--accent);}
+
+table{width:100%;border-collapse:collapse;font-size:.85rem;margin:1.2rem 0;}
+thead tr{background:var(--tag-bg);}
+thead th{padding:.5rem .7rem;text-align:center;font-family:var(--font-mono);font-size:.68rem;color:var(--muted);letter-spacing:.06em;text-transform:uppercase;font-weight:400;border-bottom:1px solid var(--border);}
+tbody td{padding:.45rem .7rem;border-bottom:1px solid var(--border);color:var(--muted);text-align:center;}
+tbody tr:hover{background:rgba(255,255,255,.02);}
+td.tleft, th.tleft{text-align:left;}
+
+.method-card{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:1.4rem 1.6rem;margin:1.2rem 0;position:relative;overflow:hidden;}
+.method-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--accent),var(--accent2));}
+.method-num{font-family:var(--font-mono);font-size:.7rem;color:var(--accent);background:rgba(0,194,255,.08);border:1px solid rgba(0,194,255,.25);border-radius:4px;padding:.2rem .6rem;display:inline-block;margin-bottom:.7rem;}
+.method-card h4{margin:0 0 .8rem;color:var(--text);font-size:1rem;}
+.steps{list-style:none;counter-reset:step;}
+.steps li{counter-increment:step;display:flex;gap:.7rem;margin-bottom:.6rem;font-size:.88rem;color:#cbd5e1;}
+.steps li::before{content:counter(step);font-family:var(--font-mono);font-size:.72rem;color:var(--accent);background:var(--tag-bg);border:1px solid var(--border);border-radius:50%;width:22px;height:22px;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+
+.ds-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:.6rem;margin:1rem 0;}
+.ds-item{background:var(--tag-bg);border:1px solid var(--border);border-radius:6px;padding:.7rem 1rem;display:flex;gap:.6rem;align-items:center;transition:.2s;}
+.ds-item:hover{border-color:var(--accent);}
+.ds-item a{font-size:.8rem;color:var(--text);font-family:var(--font-mono);}
+.ds-item a:hover{color:var(--accent);text-decoration:none;}
+
+.quiz{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:1.6rem;margin:1.5rem 0;}
+.quiz-header{display:flex;align-items:center;gap:.6rem;margin-bottom:1.2rem;}
+.quiz-header svg{flex-shrink:0;}
+.quiz-title{font-family:var(--font-mono);font-size:.8rem;color:var(--accent2);letter-spacing:.05em;}
+.quiz-q{font-size:.95rem;margin-bottom:.9rem;color:var(--text);}
+.quiz-options{display:flex;flex-direction:column;gap:.55rem;}
+.quiz-opt{background:var(--tag-bg);border:1px solid var(--border);border-radius:6px;padding:.7rem 1rem;font-size:.85rem;color:var(--muted);cursor:pointer;transition:.15s;text-align:left;width:100%;font-family:var(--font-sans);}
+.quiz-opt:hover{border-color:var(--accent);color:var(--text);}
+.quiz-opt.correct{border-color:#22c55e;background:rgba(34,197,94,.08);color:#86efac;}
+.quiz-opt.wrong{border-color:#ef4444;background:rgba(239,68,68,.08);color:#fca5a5;}
+.quiz-feedback{margin-top:.9rem;font-size:.85rem;padding:.8rem 1rem;border-radius:6px;display:none;}
+.quiz-feedback.show{display:block;}
+.quiz-feedback.correct-fb{background:rgba(34,197,94,.08);border:1px solid #22c55e;color:#86efac;}
+.quiz-feedback.wrong-fb{background:rgba(239,68,68,.08);border:1px solid #ef4444;color:#fca5a5;}
+
+.refs-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:.8rem;}
+.ref-card{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:1rem 1.2rem;display:flex;gap:.8rem;align-items:flex-start;transition:.2s;}
+.ref-card:hover{border-color:var(--accent);}
+.ref-card svg{flex-shrink:0;margin-top:.15rem;}
+.ref-card h4{font-size:.88rem;font-weight:600;margin:0 0 .2rem;color:var(--text);}
+.ref-card p{font-size:.76rem;color:var(--muted);margin:0;}
+.ref-type{font-family:var(--font-mono);font-size:.62rem;color:var(--accent);text-transform:uppercase;letter-spacing:.06em;}
+
+.chapter-nav{display:flex;justify-content:space-between;gap:1rem;margin-top:2rem;}
+.chapter-nav a{flex:1;background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:1rem 1.3rem;font-size:.85rem;transition:.2s;}
+.chapter-nav a:hover{border-color:var(--accent);text-decoration:none;}
+.chapter-nav .dir{font-family:var(--font-mono);font-size:.65rem;color:var(--muted);text-transform:uppercase;letter-spacing:.08em;display:block;margin-bottom:.3rem;}
+.chapter-nav .next{text-align:right;}
+
+footer{border-top:1px solid var(--border);padding:2rem 0;margin-top:2rem;}
+footer .container{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;}
+footer p{font-size:.8rem;color:var(--muted);font-family:var(--font-mono);}
+
+@media(max-width:640px){.nav-links{display:none;}.hero{padding:2.5rem 0 2rem;}}
+
+.katex{color:var(--accent);font-size:1.05em;}
+
+.dwire{stroke:#3b4a5e;stroke-width:1.6;fill:none;}
+.dbox{stroke:#00c2ff;stroke-width:1.6;fill:none;}
+.dbox2{stroke:#7c3aed;stroke-width:1.6;fill:none;}
+.dlbl{font-family:'IBM Plex Mono',monospace;font-size:13px;fill:#cbd5e1;}
+.dlbl2{font-family:'IBM Plex Mono',monospace;font-size:11px;fill:#64748b;}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="container">
+    <span class="nav-brand">arq · cap. 4</span>
+    <ul class="nav-links">
+      <li><a href="#s1">4.1 Hierarquia</a></li>
+      <li><a href="#s2">4.2 Tecnologias</a></li>
+      <li><a href="#s3">4.3 Memória Principal</a></li>
+      <li><a href="#s4">4.4 Cache</a></li>
+      <li><a href="#quiz">Quiz</a></li>
+      <li><a href="https://claytonjasilva.github.io/arq.html">← disciplina</a></li>
+    </ul>
+  </div>
+</nav>
+<div class="progress-track"><div class="progress-fill" id="progressFill"></div></div>
+
+<section class="hero">
+  <div class="container">
+    <p class="hero-eyebrow">Arquitetura de Computadores · Ibmec RJ</p>
+    <h1>Cap. 4 — Sistema<br>de <strong>Memória</strong></h1>
+
+    <div class="hero-meta">
+      <span class="meta-item">
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><circle cx="7" cy="7" r="6" stroke="currentColor" stroke-width="1.2"/><path d="M7 4v3l2 1.5" stroke="currentColor" stroke-width="1.2"/></svg>
+        leitura ~35 min
+      </span>
+      <span class="meta-item">
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><rect x="2" y="3" width="10" height="9" rx="1" stroke="currentColor" stroke-width="1.2"/><line x1="2" y1="6" x2="12" y2="6" stroke="currentColor" stroke-width="1.2"/></svg>
+        Prof. Clayton J A Silva
+      </span>
+      <span class="meta-item">
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 7l4 4 6-7" stroke="currentColor" stroke-width="1.4" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        Rev 2026.2
+      </span>
+    </div>
+
+    <div class="objectives">
+      <p class="label">Objetivos de aprendizagem</p>
+      <ul>
+        <li>Descrever a hierarquia do sistema de memória e seus parâmetros (capacidade, tempo de acesso, ciclo)</li>
+        <li>Classificar as tecnologias de memória: ROM x RAM, estática x dinâmica, síncrona x assíncrona</li>
+        <li>Compreender a organização endereçável da memória principal</li>
+        <li>Aplicar o princípio da localidade e a organização MP-cache</li>
+        <li>Calcular o tempo médio de acesso e analisar técnicas de mapeamento e substituição de cache</li>
+      </ul>
+    </div>
+
+    <div class="toc">
+      <a href="#s1">4.1 Hierarquia do sistema de memória</a>
+      <a href="#s2">4.2 Tecnologias de construção</a>
+      <a href="#s3">4.3 Memória Principal</a>
+      <a href="#s4a">4.4.1 Organização MP e cache</a>
+      <a href="#s4b">4.4.2 Requisição de dados</a>
+      <a href="#s4c">4.4.3 Mapeamento MP-cache</a>
+      <a href="#s4d">4.4.4 Substituição de dados</a>
+    </div>
+  </div>
+</section>
+
+<div class="container">
+
+  <!-- 4.1 -->
+  <section class="section" id="s1">
+    <p class="section-label">4.1 / hierarquia do sistema de memória</p>
+    <h2>Hierarquia do sistema de memória</h2>
+
+    <p>As características de performance de cada tipo de memória usado no sistema de computação podem ser representadas por uma pirâmide, que relaciona <strong>capacidade de armazenamento</strong>, <strong>velocidade</strong> e <strong>custo</strong>.</p>
+
+    <div class="fig-full">
+      <svg viewBox="0 0 560 280" xmlns="http://www.w3.org/2000/svg">
+        <path d="M280 20 L340 90 H220 Z" class="dbox" fill="rgba(0,194,255,.10)"/>
+        <text x="280" y="65" text-anchor="middle" class="dlbl2">Registradores</text>
+        <path d="M220 90 H340 L380 150 H180 Z" class="dbox" fill="rgba(0,194,255,.08)"/>
+        <text x="280" y="128" text-anchor="middle" class="dlbl2">Cache</text>
+        <path d="M180 150 H380 L420 210 H140 Z" class="dbox" fill="rgba(0,194,255,.06)"/>
+        <text x="280" y="188" text-anchor="middle" class="dlbl2">Memória Principal</text>
+        <path d="M140 210 H420 L460 270 H100 Z" class="dbox" fill="rgba(0,194,255,.04)"/>
+        <text x="280" y="248" text-anchor="middle" class="dlbl2">Memória Secundária</text>
+        <text x="470" y="50" class="dlbl2" fill="#7c3aed">↑ velocidade, custo/bit</text>
+        <text x="470" y="262" class="dlbl2" fill="#7c3aed">↑ capacidade, tempo de uso</text>
+      </svg>
+      <p class="fig-caption">Fig. 4.1 — Pirâmide de hierarquia do sistema de memória: registradores, cache, memória principal e memória secundária</p>
+    </div>
+
+    <p>Quanto mais próximo da <strong>base</strong>, maior a capacidade de armazenamento e o tempo de uso, e menor o custo por bit armazenado. Os quatro tipos de memória usados são: <strong>memória secundária</strong>, <strong>memória principal</strong>, <strong>memória cache</strong> e <strong>registradores</strong>.</p>
+
+    <table>
+      <thead><tr><th class="tleft">Tipo</th><th>Capacidade</th><th>Velocidade</th><th>Custo/bit</th></tr></thead>
+      <tbody>
+        <tr><td class="tleft">Registradores</td><td>menor</td><td>maior</td><td>maior</td></tr>
+        <tr><td class="tleft">Cache</td><td>baixa/média</td><td>alta</td><td>alto</td></tr>
+        <tr><td class="tleft">Memória Principal</td><td>média</td><td>média</td><td>médio</td></tr>
+        <tr><td class="tleft">Memória Secundária</td><td>maior</td><td>menor</td><td>menor</td></tr>
+      </tbody>
+    </table>
+
+    <div class="definition">
+      <p class="dtitle">parâmetros de memória</p>
+      <p style="margin:0"><strong>Capacidade</strong>: número de bits que a memória pode armazenar — em bytes (B), com múltiplos 2<sup>10</sup>=1K, 2<sup>20</sup>=1M, 2<sup>30</sup>=1G.<br><strong>Tempo de acesso</strong>: tempo entre a disponibilização do endereço e a disponibilização do dado.<br><strong>Ciclo de memória</strong>: tempo entre duas operações sucessivas de acesso (leitura ou escrita).</p>
+    </div>
+    <div class="codeline">$$t_C = t_A + t_S$$</div>
+    <p style="text-align:center; font-size:.82rem; color:var(--muted); margin-top:-.6rem;"><em>t<sub>C</sub></em>: ciclo de memória · <em>t<sub>A</sub></em>: tempo de acesso · <em>t<sub>S</sub></em>: tempo de outras operações do sistema</p>
+  </section>
+
+  <!-- 4.2 -->
+  <section class="section" id="s2">
+    <p class="section-label">4.2 / tecnologias de construção</p>
+    <h2>Tecnologias de construção</h2>
+
+    <div class="fig-full">
+      <svg viewBox="0 0 560 220" xmlns="http://www.w3.org/2000/svg">
+        <rect x="240" y="10" width="100" height="40" rx="6" class="dbox" fill="rgba(0,194,255,.07)"/>
+        <text x="290" y="34" text-anchor="middle" class="dlbl2">Memória</text>
+        <path d="M260 50 V80 H120 V100" class="dwire"/>
+        <path d="M320 50 V80 H440 V100" class="dwire"/>
+        <rect x="60" y="100" width="120" height="40" rx="6" class="dbox" fill="rgba(0,194,255,.07)"/>
+        <text x="120" y="124" text-anchor="middle" class="dlbl2">ROM</text>
+        <rect x="380" y="100" width="120" height="40" rx="6" class="dbox2" fill="rgba(124,58,237,.07)"/>
+        <text x="440" y="124" text-anchor="middle" class="dlbl2">RAM</text>
+        <path d="M90 140 V165 H30 V185 M150 140 V165 H210 V185" class="dwire"/>
+        <text x="30" y="200" class="dlbl2" style="font-size:9px">PROM</text>
+        <text x="210" y="200" class="dlbl2" style="font-size:9px">EPROM/EEPROM/Flash</text>
+        <path d="M410 140 V165 H350 V185 M470 140 V165 H530 V185" class="dwire"/>
+        <text x="350" y="200" class="dlbl2" style="font-size:9px">estática</text>
+        <text x="530" y="200" class="dlbl2" style="font-size:9px">dinâmica</text>
+      </svg>
+      <p class="fig-caption">Fig. 4.2 — Árvore de classificação das tecnologias de memória: ROM e RAM</p>
+    </div>
+
+    <table>
+      <thead><tr><th class="tleft">Atributo</th><th class="tleft">ROM (<em>Read Only Memory</em>)</th><th class="tleft">RAM (<em>Random Access Memory</em>)</th></tr></thead>
+      <tbody>
+        <tr><td class="tleft">Leitura/escrita</td><td class="tleft">Não admite livremente — escrita controlada</td><td class="tleft">Admite leitura e escrita livremente</td></tr>
+        <tr><td class="tleft">Volatilidade</td><td class="tleft">Não volátil — mantém dados sem alimentação</td><td class="tleft">Volátil — perde dados sem alimentação</td></tr>
+        <tr><td class="tleft">Forma de acesso</td><td class="tleft">Aleatório</td><td class="tleft">Aleatório</td></tr>
+      </tbody>
+    </table>
+
+    <div class="note">No <strong>acesso aleatório</strong>, o tempo de acesso é curto e igual para todas as células, sem necessidade de ler outras posições antes. No <strong>acesso sequencial</strong>, é necessária uma sucessão preliminar de posições antes de acessar a célula de interesse.</div>
+
+    <p>A evolução das ROMs venceu o inconveniente de não admitir reprogramação:</p>
+    <table>
+      <thead><tr><th class="tleft">Tecnologia</th><th class="tleft">Característica</th></tr></thead>
+      <tbody>
+        <tr><td class="tleft">PROM (<em>Programmable ROM</em>)</td><td class="tleft">Programável uma única vez</td></tr>
+        <tr><td class="tleft">EPROM (<em>Erasable PROM</em>)</td><td class="tleft">Apagada e programada novamente</td></tr>
+        <tr><td class="tleft">EEPROM (<em>Electrically-Erasable PROM</em>)</td><td class="tleft">Apagada e gravada eletricamente</td></tr>
+        <tr><td class="tleft">Flash</td><td class="tleft">Tipo de EEPROM reprogramável no próprio circuito — cada vez mais usada</td></tr>
+      </tbody>
+    </table>
+
+    <p>Aplicações típicas das ROMs:</p>
+    <ul class="plain">
+      <li><strong>Firmware</strong> — inicialização das máquinas, integra hardware + software</li>
+      <li><strong>Bootstrap</strong> — código de inicialização que chama o sistema operacional</li>
+      <li>Tabela de dados não voláteis</li>
+      <li>Conversor de códigos</li>
+      <li>Gerador de funções</li>
+      <li>Armazenamento auxiliar</li>
+    </ul>
+
+    <table>
+      <thead><tr><th class="tleft">Classificação</th><th class="tleft">Tipo A</th><th class="tleft">Tipo B</th></tr></thead>
+      <tbody>
+        <tr><td class="tleft">Quanto à retenção do dado</td><td class="tleft"><strong>Estática</strong> — dado permanece armazenado</td><td class="tleft"><strong>Dinâmica</strong> — requer <em>refresh</em> periódico</td></tr>
+        <tr><td class="tleft">Quanto à temporização</td><td class="tleft"><strong>Assíncrona</strong> — libera dados só após sinal de controle</td><td class="tleft"><strong>Síncrona (SDRAM)</strong> — acompanha o clock do sistema</td></tr>
+      </tbody>
+    </table>
+
+    <div class="note">A evolução mais recente é a <strong>SDRAM DDR</strong> (<em>Double Data Rate</em>), que transfere dados tanto na transição positiva quanto na negativa do ciclo de clock.</div>
+
+    <p>Os dispositivos de memória são construídos com semicondutores — destacam-se as tecnologias <strong>MOS</strong> (óxido metálico) e <strong>CMOS</strong> (óxido complementar) — além de meios magnéticos e ópticos.</p>
+
+    <table>
+      <thead><tr><th class="tleft">Nível da hierarquia</th><th class="tleft">Tecnologia</th><th class="tleft">Função principal</th></tr></thead>
+      <tbody>
+        <tr><td class="tleft">Memória secundária</td><td class="tleft">Meios ópticos e magnéticos</td><td class="tleft">Armazenar grandes volumes, tempo de acesso/ciclo lentos, custo baixo</td></tr>
+        <tr><td class="tleft">Memória principal</td><td class="tleft">Semicondutor (RAM estática/dinâmica)</td><td class="tleft">Armazenar programa e dados acessados pelo processador</td></tr>
+        <tr><td class="tleft">Memória cache</td><td class="tleft">Semicondutor (ROM), interna ou não ao processador</td><td class="tleft">Armazenar dados localmente/temporalmente mais prováveis de acesso (localidade)</td></tr>
+        <tr><td class="tleft">Registradores</td><td class="tleft">Semicondutor</td><td class="tleft">Dezenas de bits, internos ao processador</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- 4.3 -->
+  <section class="section" id="s3">
+    <p class="section-label">4.3 / memória principal</p>
+    <h2>Memória Principal ou Primária</h2>
+
+    <p>A <strong>MP</strong> armazena programas e dados. As instruções compreendem um campo de código (<em>opcode</em>) e um campo de operandos — ambos ocupam endereços bem definidos na MP.</p>
+
+    <p>O endereço de memória pode ser entendido como uma matriz de células, cada uma armazenando 0 ou 1. A MP contém <em>M</em> linhas de endereço de palavra de <em>N</em> bits, endereçáveis em forma binária por 2<sup>L</sup>, tal que 2<sup>L</sup>=M.</p>
+
+    <div class="fig-full">
+      <svg viewBox="0 0 560 220" xmlns="http://www.w3.org/2000/svg">
+        <rect x="170" y="40" width="220" height="140" rx="6" class="dbox" fill="rgba(0,194,255,.05)"/>
+        <text x="280" y="115" text-anchor="middle" class="dlbl" fill="#00c2ff">RAM 4Kbit</text>
+        <text x="280" y="132" text-anchor="middle" class="dlbl2">(Motorola)</text>
+
+        <text x="100" y="58" class="dlbl2">A0–A9</text><path d="M125 54 H170" class="dwire"/>
+        <text x="100" y="160" class="dlbl2">VCC, VSS</text><path d="M140 156 H170" class="dwire"/>
+        <text x="80" y="95" class="dlbl2">W̄ (R/W)</text><path d="M130 91 H170" class="dwire"/>
+        <text x="90" y="125" class="dlbl2">S̄ (enable)</text><path d="M140 121 H170" class="dwire"/>
+
+        <path d="M390 90 H450" class="dwire"/>
+        <text x="458" y="95" class="dlbl2">I/O1–I/O4</text>
+      </svg>
+      <p class="fig-caption">Fig. 4.3 — Exemplo de memória RAM Motorola, 4096 bits (4 Kbits)</p>
+    </div>
+
+    <table>
+      <thead><tr><th class="tleft">Pino</th><th class="tleft">Função</th></tr></thead>
+      <tbody>
+        <tr><td class="tleft">A0–A9</td><td class="tleft">Barramento de endereço (10 bits → 2<sup>10</sup>=1024 posições, faixa 000H–3FFH)</td></tr>
+        <tr><td class="tleft">I/O1–I/O4</td><td class="tleft">Barramento de dados — cada posição armazena uma palavra de 4 bits</td></tr>
+        <tr><td class="tleft">W̄</td><td class="tleft">Habilita leitura ou escrita: $\bar{W}=0$ → escrita; $\bar{W}=1$ → leitura</td></tr>
+        <tr><td class="tleft">S̄</td><td class="tleft">Habilita/desabilita o chip: $\bar{S}=0$ → memória habilitada</td></tr>
+        <tr><td class="tleft">VCC, VSS</td><td class="tleft">Alimentação do chip</td></tr>
+      </tbody>
+    </table>
+
+    <div class="note">Células adjacentes em memória têm endereços consecutivos. O tamanho típico de cada célula é de <strong>8 bits (1 byte)</strong>; bytes são agrupados em palavras de 4 ou 8 bytes. Exemplo: a memória Motorola MCM2114 possui tempo de ciclo de leitura fixo de <strong>200 ns</strong>.</div>
+  </section>
+
+  <!-- 4.4 -->
+  <section class="section" id="s4">
+    <p class="section-label">4.4 / memória cache</p>
+    <h2>Memória cache</h2>
+
+    <h3 id="s4a">4.4.1 Organização MP e cache</h3>
+    <p>A cache ocupa o terceiro nível a partir da base da pirâmide: média/baixa capacidade, custo alto, velocidade elevada — equilíbrio custo-benefício no desempenho.</p>
+
+    <div class="definition">
+      <p class="dtitle">princípio da localidade</p>
+      <p style="margin:0">Os programas armazenados se situam, na execução, localmente próximos no <strong>tempo</strong> ou no <strong>espaço</strong>.<br><strong>Localidade espacial</strong>: instruções subsequentes tendem a estar em endereços próximos (o PC normalmente incrementa em 1 unidade).<br><strong>Localidade temporal</strong>: uma instrução tem alta probabilidade de ser executada novamente em curto espaço de tempo.</p>
+    </div>
+
+    <div class="fig-full">
+      <svg viewBox="0 0 560 220" xmlns="http://www.w3.org/2000/svg">
+        <rect x="20" y="80" width="70" height="60" rx="6" class="dbox" fill="rgba(0,194,255,.1)"/>
+        <text x="55" y="100" text-anchor="middle" class="dlbl2">CPU</text>
+        <text x="55" y="116" text-anchor="middle" class="dlbl2" style="font-size:9px">+ L1</text>
+        <path d="M90 110 H140" class="dwire"/>
+        <rect x="140" y="80" width="90" height="60" rx="6" class="dbox" fill="rgba(0,194,255,.07)"/>
+        <text x="185" y="113" text-anchor="middle" class="dlbl2">Cache L2</text>
+        <path d="M230 110 H280" class="dwire"/>
+        <rect x="280" y="70" width="100" height="80" rx="6" class="dbox" fill="rgba(0,194,255,.05)"/>
+        <text x="330" y="113" text-anchor="middle" class="dlbl2">Cache L3</text>
+        <path d="M380 110 H430" class="dwire"/>
+        <rect x="430" y="60" width="110" height="100" rx="6" class="dbox2" fill="rgba(124,58,237,.05)"/>
+        <text x="485" y="113" text-anchor="middle" class="dlbl2" fill="#7c3aed">Memória<tspan x="485" dy="14">Principal</tspan></text>
+        <text x="280" y="30" class="dlbl2" style="font-size:9px">controlador de cache coordena leitura/escrita entre níveis</text>
+      </svg>
+      <p class="fig-caption">Fig. 4.4 — Níveis de cache (L1 interno ao processador, L2 no pacote da CPU, L3 externa) e Memória Principal</p>
+    </div>
+
+    <p>No <strong>L1</strong>, instruções e dados são separados. No <strong>L2</strong>, dados do L3 ficam prontamente disponíveis via barramento local, desonerando o barramento externo. No <strong>L3</strong>, dados são armazenados para desonerar o tempo de resposta da MP (mais lenta).</p>
+
+    <p>Para explorar o princípio da localidade, a MP e a cache são organizadas em blocos:</p>
+
+    <div class="fig-full">
+      <svg viewBox="0 0 560 230" xmlns="http://www.w3.org/2000/svg">
+        <text x="20" y="20" class="dlbl2">Memória Principal — N linhas de cache, K posições cada</text>
+        <g class="dbox" fill="rgba(124,58,237,.05)">
+          <rect x="20" y="30" width="50" height="30"/><rect x="70" y="30" width="50" height="30"/>
+          <rect x="120" y="30" width="50" height="30"/><rect x="170" y="30" width="50" height="30"/>
+          <rect x="220" y="30" width="50" height="30"/><rect x="270" y="30" width="50" height="30"/>
+        </g>
+        <text x="45" y="50" text-anchor="middle" class="dlbl2" style="font-size:9px">L0</text>
+        <text x="95" y="50" text-anchor="middle" class="dlbl2" style="font-size:9px">L1</text>
+        <text x="145" y="50" text-anchor="middle" class="dlbl2" style="font-size:9px">L2</text>
+        <text x="195" y="50" text-anchor="middle" class="dlbl2" style="font-size:9px">L3</text>
+        <text x="245" y="50" text-anchor="middle" class="dlbl2" style="font-size:9px">L4</text>
+        <text x="295" y="50" text-anchor="middle" class="dlbl2" style="font-size:9px">...N-1</text>
+
+        <text x="20" y="100" class="dlbl2">Cache — M blocos, K posições cada (M &lt; N)</text>
+        <g class="dbox" fill="rgba(0,194,255,.08)">
+          <rect x="20" y="110" width="60" height="34"/><rect x="90" y="110" width="60" height="34"/><rect x="160" y="110" width="60" height="34"/>
+        </g>
+        <text x="50" y="131" text-anchor="middle" class="dlbl2" style="font-size:9px">Bloco 0</text>
+        <text x="120" y="131" text-anchor="middle" class="dlbl2" style="font-size:9px">Bloco 1</text>
+        <text x="190" y="131" text-anchor="middle" class="dlbl2" style="font-size:9px">Bloco 2</text>
+
+        <path d="M45 60 V90 M95 60 V90 M145 60 V90 M195 60 V90 M245 60 V90 M295 60 V90" class="dwire" stroke-dasharray="2,2"/>
+        <path d="M45 90 H50 V110 M95 90 H120 V110 M145 90 H190 V110" class="dwire" stroke-dasharray="2,2"/>
+        <text x="350" y="125" class="dlbl2">B = L mod M</text>
+      </svg>
+      <p class="fig-caption">Fig. 4.5 — Organização MP-cache: a MP possui N×K posições, a cache possui M×K posições (M &lt; N)</p>
+    </div>
+
+    <div class="note">A cache armazena, em cada bloco: o <strong>campo de dados</strong> (tamanho da linha de cache), um <strong>flag de validade</strong>, e um campo <strong>tag</strong> que identifica qual linha de cache da MP está ali armazenada.</div>
+
+    <h3 id="s4b">4.4.2 Processo de requisição de dados à cache</h3>
+    <p>Como <em>N &gt; M</em>, nem todos os dados da MP podem ser mapeados na cache simultaneamente.</p>
+
+    <div class="method-card">
+      <span class="method-num">processo</span>
+      <h4>Requisição de dado pelo processador</h4>
+      <ol class="steps">
+        <li>O processador requisita um dado/instrução ao <strong>controlador da cache</strong></li>
+        <li>O controlador verifica se o dado está presente na cache (e em qual bloco/endereço)</li>
+        <li><strong>Acerto (hit)</strong>: o dado está presente — disponibilizado no tempo de resposta da cache</li>
+        <li><strong>Falta (miss)</strong>: o dado não está presente — buscado na MP (tempo de resposta da MP), a cache é <strong>atualizada</strong>, e o dado é disponibilizado ao processador</li>
+      </ol>
+    </div>
+
+    <p>O tempo médio de acesso ao sistema de memória, considerando o uso de cache, é dado por:</p>
+    <div class="codeline">$$t_{medio} = c + (1-h).m$$</div>
+    <p style="text-align:center; font-size:.82rem; color:var(--muted); margin-top:-.6rem;"><em>c</em>: tempo de acesso à cache · <em>m</em>: tempo de acesso à MP · <em>h</em>: taxa de acertos</p>
+    <div class="note">A taxa de acertos <em>h</em> é calculada considerando que, em <em>k</em> acessos, ocorreram <em>k-1</em> acertos e 1 falta: <strong>h = (k-1)/k</strong>.</div>
+
+    <h3 id="s4c">4.4.3 Mapeamento MP-cache</h3>
+    <p>É necessário definir uma política de mapeamento que relacione os blocos da MP aos blocos da cache. Existem três técnicas:</p>
+
+    <table>
+      <thead><tr><th class="tleft">Técnica</th><th class="tleft">Característica</th></tr></thead>
+      <tbody>
+        <tr><td class="tleft" id="s4c1"><strong>Mapeamento direto</strong></td><td class="tleft">Relacionamento <strong>predefinido</strong> entre linhas de cache da MP e blocos da cache — aumenta eficiência, mas mantém dados pouco usados por causa do relacionamento fixo</td></tr>
+        <tr><td class="tleft" id="s4c2"><strong>Totalmente associativo</strong></td><td class="tleft">Sem relação predeterminada — maior eficiência, porém maior complexidade de circuito para o espelhamento de dados</td></tr>
+        <tr><td class="tleft" id="s4c3"><strong>Associativo por conjunto</strong></td><td class="tleft">Concilia a simplicidade do mapeamento direto com a eficiência do totalmente associativo</td></tr>
+      </tbody>
+    </table>
+
+    <div class="fig-full">
+      <svg viewBox="0 0 560 200" xmlns="http://www.w3.org/2000/svg">
+        <text x="20" y="20" class="dlbl2">MP: N=12 linhas de cache, K=4 palavras cada (48 posições)</text>
+        <g class="dbox" fill="rgba(124,58,237,.05)">
+          <rect x="20" y="30" width="40" height="26"/><rect x="60" y="30" width="40" height="26"/><rect x="100" y="30" width="40" height="26"/>
+          <rect x="140" y="30" width="40" height="26"/><rect x="180" y="30" width="40" height="26"/><rect x="220" y="30" width="40" height="26"/>
+          <rect x="260" y="30" width="40" height="26"/><rect x="300" y="30" width="40" height="26"/><rect x="340" y="30" width="40" height="26"/>
+          <rect x="380" y="30" width="40" height="26"/><rect x="420" y="30" width="40" height="26"/><rect x="460" y="30" width="40" height="26"/>
+        </g>
+        <text x="40" y="48" text-anchor="middle" class="dlbl2" style="font-size:8px">L0</text><text x="80" y="48" text-anchor="middle" class="dlbl2" style="font-size:8px">L1</text>
+        <text x="120" y="48" text-anchor="middle" class="dlbl2" style="font-size:8px">L2</text><text x="160" y="48" text-anchor="middle" class="dlbl2" style="font-size:8px">L3</text>
+        <text x="200" y="48" text-anchor="middle" class="dlbl2" style="font-size:8px">L4</text><text x="240" y="48" text-anchor="middle" class="dlbl2" style="font-size:8px">L5</text>
+        <text x="280" y="48" text-anchor="middle" class="dlbl2" style="font-size:8px">L6</text><text x="320" y="48" text-anchor="middle" class="dlbl2" style="font-size:8px">L7</text>
+        <text x="360" y="48" text-anchor="middle" class="dlbl2" style="font-size:8px">L8</text><text x="400" y="48" text-anchor="middle" class="dlbl2" style="font-size:8px">L9</text>
+        <text x="440" y="48" text-anchor="middle" class="dlbl2" style="font-size:8px">L10</text><text x="480" y="48" text-anchor="middle" class="dlbl2" style="font-size:8px">L11</text>
+
+        <text x="20" y="100" class="dlbl2">Cache: M=3 blocos, K=4 palavras cada (12 posições)</text>
+        <g class="dbox" fill="rgba(0,194,255,.08)">
+          <rect x="20" y="110" width="150" height="34"/><rect x="180" y="110" width="150" height="34"/><rect x="340" y="110" width="150" height="34"/>
+        </g>
+        <text x="95" y="131" text-anchor="middle" class="dlbl2">Bloco 0 — L0,L3,L6,L9</text>
+        <text x="255" y="131" text-anchor="middle" class="dlbl2">Bloco 1 — L1,L4,L7,L10</text>
+        <text x="415" y="131" text-anchor="middle" class="dlbl2">Bloco 2 — L2,L5,L8,L11</text>
+        <text x="20" y="180" class="dlbl2" fill="#00c2ff">B = L mod M  ·  exemplo: linha 7 → bloco (7 mod 3) = 1</text>
+      </svg>
+      <p class="fig-caption">Fig. 4.6 — Exemplo de mapeamento direto: linhas de cache da MP (3n, 3n+1, 3n+2) mapeadas nos blocos 0, 1 e 2</p>
+    </div>
+
+    <p>As relações de endereçamento do sistema MP-cache:</p>
+    <table>
+      <thead><tr><th class="tleft">Relação</th><th class="tleft">Fórmula</th></tr></thead>
+      <tbody>
+        <tr><td class="tleft">Bloco a partir da linha</td><td class="tleft">$$B = L \bmod M$$</td></tr>
+        <tr><td class="tleft">Linha a partir do endereço MP</td><td class="tleft">$$L = EndMP \;div\; K$$</td></tr>
+        <tr><td class="tleft">Bloco a partir do endereço cache</td><td class="tleft">$$B = EndCache \;div\; K$$</td></tr>
+        <tr><td class="tleft">Posição na linha/bloco</td><td class="tleft">$$P = End \bmod K$$</td></tr>
+      </tbody>
+    </table>
+    <div class="note">Exemplo: o endereço 25 da MP está na posição 1 da linha 6 (K=4). O endereço 11 da cache está na posição 3 do seu bloco.</div>
+
+    <h3 id="s4d">4.4.4 Substituição de dados da cache</h3>
+    <p>Quando ocorre uma <strong>falta</strong>, é necessário buscar o dado na MP e <strong>substituir</strong> os dados de algum bloco da cache:</p>
+    <table>
+      <thead><tr><th class="tleft">Técnica</th><th class="tleft">Critério de substituição</th></tr></thead>
+      <tbody>
+        <tr><td class="tleft"><strong>FIFO</strong> (<em>First-In-First-Out</em>)</td><td class="tleft">Substitui o bloco cujos dados foram os <strong>primeiros</strong> a ser inseridos</td></tr>
+        <tr><td class="tleft"><strong>LRU</strong> (<em>Least Recently Used</em>)</td><td class="tleft">Substitui o bloco que há <strong>mais tempo não é acessado</strong></td></tr>
+      </tbody>
+    </table>
+
+    <p><strong>Política de escrita de dados</strong> — o controlador também atualiza os dados escritos na cache de volta para a MP:</p>
+
+    <div class="fig-full">
+      <svg viewBox="0 0 560 180" xmlns="http://www.w3.org/2000/svg">
+        <text x="100" y="20" text-anchor="middle" class="dlbl" fill="#00c2ff">Escrita direta (write through)</text>
+        <rect x="30" y="40" width="70" height="40" rx="6" class="dbox" fill="rgba(0,194,255,.08)"/>
+        <text x="65" y="64" text-anchor="middle" class="dlbl2">CPU</text>
+        <path d="M100 60 H140" class="dwire"/>
+        <rect x="140" y="40" width="70" height="40" rx="6" class="dbox" fill="rgba(0,194,255,.08)"/>
+        <text x="175" y="64" text-anchor="middle" class="dlbl2">Cache</text>
+        <path d="M210 60 H250" class="dwire"/>
+        <rect x="250" y="40" width="70" height="40" rx="6" class="dbox2" fill="rgba(124,58,237,.06)"/>
+        <text x="285" y="64" text-anchor="middle" class="dlbl2">MP</text>
+        <text x="160" y="105" class="dlbl2" style="font-size:9px">escreve simultaneamente</text>
+        <text x="160" y="118" class="dlbl2" style="font-size:9px">na cache e na MP</text>
+
+        <text x="460" y="20" text-anchor="middle" class="dlbl" fill="#7c3aed">Escrita retardada (write back)</text>
+        <rect x="380" y="40" width="70" height="40" rx="6" class="dbox" fill="rgba(0,194,255,.08)"/>
+        <text x="415" y="64" text-anchor="middle" class="dlbl2">CPU</text>
+        <path d="M450 60 H490" class="dwire"/>
+        <rect x="490" y="40" width="70" height="40" rx="6" class="dbox" fill="rgba(0,194,255,.08)"/>
+        <text x="525" y="64" text-anchor="middle" class="dlbl2">Cache</text>
+        <path d="M525 80 V100" class="dwire" stroke-dasharray="3,3"/>
+        <text x="430" y="118" class="dlbl2" style="font-size:9px">MP só é atualizada quando</text>
+        <text x="430" y="131" class="dlbl2" style="font-size:9px">o bloco precisa ser substituído</text>
+      </svg>
+      <p class="fig-caption">Fig. 4.7 — Políticas de escrita: escrita direta (atualiza MP a cada escrita) vs. escrita retardada (atualiza MP apenas na substituição)</p>
+    </div>
+
+    <div class="note">A <strong>escrita direta</strong> mantém os dados de uma linha de cache da MP sempre iguais aos do bloco da cache, com perda de eficiência pelo tempo de escrita na MP. A <strong>escrita retardada</strong> é mais eficiente, adiando a atualização até a substituição do bloco.</div>
+  </section>
+
+  <!-- QUIZ -->
+  <section class="section" id="quiz">
+    <p class="section-label">checkpoint</p>
+    <h2>Teste seus conhecimentos</h2>
+
+    <div class="quiz">
+      <div class="quiz-header">
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="8" stroke="#7c3aed" stroke-width="1.4"/><text x="10" y="14" font-size="10" fill="#7c3aed" text-anchor="middle" font-weight="600">?</text></svg>
+        <span class="quiz-title">Pergunta 1 de 3</span>
+      </div>
+      <p class="quiz-q">Na pirâmide de hierarquia de memória, ao se aproximar da base, o que ocorre?</p>
+      <div class="quiz-options">
+        <button class="quiz-opt" onclick="checkAnswer(this, false, 'q1fb')">Aumenta a velocidade e o custo por bit</button>
+        <button class="quiz-opt" onclick="checkAnswer(this, true, 'q1fb')">Aumenta a capacidade de armazenamento e diminui o custo por bit</button>
+        <button class="quiz-opt" onclick="checkAnswer(this, false, 'q1fb')">A memória torna-se volátil</button>
+      </div>
+      <div class="quiz-feedback" id="q1fb"></div>
+    </div>
+
+    <div class="quiz">
+      <div class="quiz-header">
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="8" stroke="#7c3aed" stroke-width="1.4"/><text x="10" y="14" font-size="10" fill="#7c3aed" text-anchor="middle" font-weight="600">?</text></svg>
+        <span class="quiz-title">Pergunta 2 de 3</span>
+      </div>
+      <p class="quiz-q">No mapeamento direto MP-cache, o bloco de destino de uma linha L é calculado por:</p>
+      <div class="quiz-options">
+        <button class="quiz-opt" onclick="checkAnswer(this, false, 'q2fb')">B = L × M</button>
+        <button class="quiz-opt" onclick="checkAnswer(this, true, 'q2fb')">B = L mod M</button>
+        <button class="quiz-opt" onclick="checkAnswer(this, false, 'q2fb')">B = L + M</button>
+      </div>
+      <div class="quiz-feedback" id="q2fb"></div>
+    </div>
+
+    <div class="quiz">
+      <div class="quiz-header">
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="8" stroke="#7c3aed" stroke-width="1.4"/><text x="10" y="14" font-size="10" fill="#7c3aed" text-anchor="middle" font-weight="600">?</text></svg>
+        <span class="quiz-title">Pergunta 3 de 3</span>
+      </div>
+      <p class="quiz-q">Qual a diferença essencial entre escrita direta (write through) e escrita retardada (write back)?</p>
+      <div class="quiz-options">
+        <button class="quiz-opt" onclick="checkAnswer(this, true, 'q3fb')">Na escrita direta a MP é atualizada a cada escrita; na retardada, só quando o bloco é substituído</button>
+        <button class="quiz-opt" onclick="checkAnswer(this, false, 'q3fb')">A escrita retardada nunca atualiza a MP</button>
+        <button class="quiz-opt" onclick="checkAnswer(this, false, 'q3fb')">A escrita direta só funciona com mapeamento associativo</button>
+      </div>
+      <div class="quiz-feedback" id="q3fb"></div>
+    </div>
+  </section>
+
+  <!-- CHAPTER NAV -->
+  <div class="chapter-nav">
+    <a href="cap3.html"><span class="dir">← anterior</span>Cap. 3 — Nível de Lógica Digital</a>
+    <a class="next" href="cap5.html"><span class="dir">próximo →</span>Cap. 5 — Barramento</a>
+  </div>
+
+</div>
+
+<footer>
+  <div class="container">
+    <p>© 2026 · Prof. Clayton J A Silva · Ibmec RJ</p>
+    <p><a href="https://claytonjasilva.github.io">claytonjasilva.github.io</a></p>
+  </div>
+</footer>
+
+<script>
+window.addEventListener('scroll', () => {
+  const h = document.documentElement;
+  const scrolled = (h.scrollTop) / (h.scrollHeight - h.clientHeight) * 100;
+  document.getElementById('progressFill').style.width = scrolled + '%';
+});
+
+function checkAnswer(btn, isCorrect, fbId) {
+  const group = btn.parentElement;
+  const buttons = group.querySelectorAll('.quiz-opt');
+  buttons.forEach(b => b.disabled = true);
+  btn.classList.add(isCorrect ? 'correct' : 'wrong');
+  const fb = document.getElementById(fbId);
+  fb.classList.add('show');
+  const msgs = {
+    q1fb: isCorrect ? '✓ Correto! Mais capacidade, menos custo por bit — mas também menor velocidade.' : '✗ Revise a Fig. 4.1.',
+    q2fb: isCorrect ? '✓ Correto! B = L mod M relaciona a linha da MP ao bloco da cache.' : '✗ Revise a seção 4.4.3.',
+    q3fb: isCorrect ? '✓ Correto! Esse é o critério que diferencia as duas políticas de escrita.' : '✗ Revise a Fig. 4.7.'
+  };
+  if (!isCorrect) buttons.forEach(b => { if (b.getAttribute('onclick').includes(', true,')) b.classList.add('correct'); });
+  fb.classList.add(isCorrect ? 'correct-fb' : 'wrong-fb');
+  fb.textContent = msgs[fbId];
+}
+
+renderMathInElement(document.body, {
+  delimiters: [
+    {left: "$$", right: "$$", display: true},
+    {left: "$", right: "$", display: false}
+  ],
+  throwOnError: false
+});
+</script>
+
+</body>
+</html>

@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Prática 4 — Conhecendo o Arduino 2560 | Arquitetura de Computadores</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg:#0a0e17; --surface:#111827; --surface2:#161f2e; --border:#1e2d40;
+  --accent:#00c2ff; --accent2:#7c3aed; --text:#e2e8f0; --muted:#64748b;
+  --tag-bg:#0f172a; --font-mono:'IBM Plex Mono', monospace; --font-sans:'IBM Plex Sans', sans-serif;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{background:var(--bg);color:var(--text);font-family:var(--font-sans);font-size:16px;line-height:1.65;}
+a{color:var(--accent);text-decoration:none;} a:hover{text-decoration:underline;}
+.container{max-width:980px;margin:0 auto;padding:0 2rem;}
+nav{position:sticky;top:0;z-index:100;background:rgba(10,14,23,.9);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);padding:.9rem 0;}
+nav .container{display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap;}
+.nav-brand{font-family:var(--font-mono);font-size:.78rem;color:var(--accent);}
+.nav-links{display:flex;gap:1rem;list-style:none;flex-wrap:wrap;}
+.nav-links a{font-family:var(--font-mono);font-size:.7rem;color:var(--muted);}
+.nav-links a:hover{color:var(--text);text-decoration:none;}
+.progress-track{height:3px;background:var(--border);position:sticky;top:53px;z-index:99;}
+.progress-fill{height:100%;width:0%;background:linear-gradient(90deg,var(--accent),var(--accent2));transition:width .1s;}
+.hero{padding:4rem 0 2.5rem;position:relative;overflow:hidden;}
+.hero::before{content:'';position:absolute;inset:0;background-image:linear-gradient(var(--border) 1px,transparent 1px),linear-gradient(90deg,var(--border) 1px,transparent 1px);background-size:40px 40px;opacity:.3;mask-image:radial-gradient(ellipse 80% 60% at 50% 0%,black 40%,transparent 100%);}
+.hero-eyebrow{font-family:var(--font-mono);font-size:.74rem;color:var(--accent);letter-spacing:.14em;text-transform:uppercase;margin-bottom:1rem;display:flex;align-items:center;gap:.7rem;}
+.hero-eyebrow::before{content:'';width:2rem;height:1px;background:var(--accent);}
+h1{font-size:clamp(2rem,4.5vw,3.2rem);font-weight:300;line-height:1.12;letter-spacing:-.02em;margin-bottom:.6rem;}
+h1 strong{font-weight:600;color:var(--accent);}
+.hero-meta{display:flex;gap:1.5rem;flex-wrap:wrap;margin-top:1.2rem;}
+.meta-item{font-family:var(--font-mono);font-size:.74rem;color:var(--muted);display:flex;align-items:center;gap:.4rem;}
+.objectives{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:1.4rem 1.6rem;margin-top:1.6rem;}
+.objectives p.label{font-family:var(--font-mono);font-size:.7rem;color:var(--accent);letter-spacing:.1em;text-transform:uppercase;margin-bottom:.7rem;}
+.objectives ul{list-style:none;display:grid;gap:.5rem;}
+.objectives li{font-size:.88rem;color:var(--muted);display:flex;gap:.6rem;}
+.objectives li::before{content:'→';color:var(--accent);flex-shrink:0;}
+.toc{display:flex;gap:.5rem;flex-wrap:wrap;margin-top:1.5rem;}
+.toc a{font-family:var(--font-mono);font-size:.7rem;color:var(--muted);border:1px solid var(--border);padding:.35rem .75rem;border-radius:20px;transition:.2s;}
+.toc a:hover{border-color:var(--accent);color:var(--accent);text-decoration:none;}
+.section{padding:3rem 0;border-top:1px solid var(--border);}
+.section-label{font-family:var(--font-mono);font-size:.7rem;color:var(--accent);letter-spacing:.14em;text-transform:uppercase;display:flex;align-items:center;gap:.7rem;margin-bottom:1.4rem;}
+.section-label::after{content:'';flex:1;height:1px;background:var(--border);}
+h2{font-size:1.5rem;font-weight:600;letter-spacing:-.01em;margin-bottom:1rem;}
+h3{font-size:1.1rem;font-weight:600;margin:1.6rem 0 .8rem;color:var(--text);}
+h4{font-size:.95rem;font-weight:600;margin:1.2rem 0 .6rem;color:var(--accent);}
+p{margin-bottom:1rem;color:#cbd5e1;} strong{color:var(--text);font-weight:600;} em{color:var(--accent);font-style:normal;}
+ul.plain,ol.plain{margin:0 0 1rem 1.2rem;color:#cbd5e1;} ul.plain li,ol.plain li{margin-bottom:.45rem;}
+.fig-full{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:1.2rem;margin:1.5rem 0;overflow-x:auto;}
+.fig-full svg{width:100%;min-width:640px;display:block;}
+.fig-caption{font-family:var(--font-mono);font-size:.72rem;color:var(--muted);text-align:center;margin-top:.6rem;}
+.note{background:var(--tag-bg);border:1px solid var(--border);border-radius:6px;padding:.9rem 1.1rem;margin:1rem 0;font-size:.85rem;color:var(--muted);}
+.note strong{color:var(--accent);}
+.codeblock{background:var(--tag-bg);border:1px solid var(--border);border-radius:6px;padding:.9rem 1.1rem;font-family:var(--font-mono);font-size:.78rem;color:#a8d8ef;margin:1rem 0;overflow-x:auto;white-space:pre;line-height:1.6;}
+table{width:100%;border-collapse:collapse;font-size:.85rem;margin:1.2rem 0;}
+thead tr{background:var(--tag-bg);}
+thead th{padding:.5rem .7rem;text-align:center;font-family:var(--font-mono);font-size:.68rem;color:var(--muted);letter-spacing:.06em;text-transform:uppercase;font-weight:400;border-bottom:1px solid var(--border);}
+tbody td{padding:.45rem .7rem;border-bottom:1px solid var(--border);color:var(--muted);text-align:center;}
+tbody tr:hover{background:rgba(255,255,255,.02);} td.tleft, th.tleft{text-align:left;}
+.ds-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:.6rem;margin:1rem 0;}
+.ds-item{background:var(--tag-bg);border:1px solid var(--border);border-radius:6px;padding:.8rem 1rem;display:flex;gap:.6rem;align-items:center;transition:.2s;}
+.ds-item:hover{border-color:var(--accent);} .ds-item a{font-size:.8rem;color:var(--text);font-family:var(--font-mono);}
+.ds-item a:hover{color:var(--accent);text-decoration:none;}
+.chapter-nav{display:flex;justify-content:space-between;gap:1rem;margin-top:2rem;}
+.chapter-nav a{flex:1;background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:1rem 1.3rem;font-size:.85rem;transition:.2s;}
+.chapter-nav a:hover{border-color:var(--accent);text-decoration:none;}
+.chapter-nav .dir{font-family:var(--font-mono);font-size:.65rem;color:var(--muted);text-transform:uppercase;letter-spacing:.08em;display:block;margin-bottom:.3rem;}
+.chapter-nav .next{text-align:right;}
+footer{border-top:1px solid var(--border);padding:2rem 0;margin-top:2rem;}
+footer .container{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;}
+footer p{font-size:.8rem;color:var(--muted);font-family:var(--font-mono);}
+@media(max-width:640px){.nav-links{display:none;}.hero{padding:2.5rem 0 2rem;}.chapter-nav{flex-direction:column;}}
+.dwire{stroke:#3b4a5e;stroke-width:2;fill:none}.dbox{stroke:#00c2ff;stroke-width:2;fill:rgba(0,194,255,.06)}.dbox2{stroke:#7c3aed;stroke-width:2;fill:rgba(124,58,237,.06)}
+.dlbl{font-family:'IBM Plex Mono',monospace;font-size:13px;fill:#cbd5e1}.dlbl2{font-family:'IBM Plex Mono',monospace;font-size:11px;fill:#64748b}.led-red{fill:#ef4444}.led-green{fill:#22c55e}.pin{fill:#00c2ff}
+</style>
+</head>
+<body>
+<nav>
+  <div class="container">
+    <span class="nav-brand">arq · prática 4</span>
+    <ul class="nav-links">
+      <li><a href="#materiais">Materiais</a></li>
+      <li><a href="#montagem">Montagem</a></li>
+      <li><a href="#atividades">Atividades</a></li>
+      <li><a href="https://claytonjasilva.github.io/arq.html">← disciplina</a></li>
+    </ul>
+  </div>
+</nav>
+<div class="progress-track"><div class="progress-fill" id="progressFill"></div></div>
+<section class="hero">
+  <div class="container">
+    <p class="hero-eyebrow">Arquitetura de Computadores · Laboratório</p>
+    <h1>Prática 4<br><strong>Entrada binária de 3 bits</strong></h1>
+    <div class="hero-meta">
+      <span class="meta-item">Prof. Clayton J A Silva</span>
+      <span class="meta-item">Arduino Mega 2560</span>
+      <span class="meta-item">Rev 2026.2</span>
+    </div>
+    <div class="objectives">
+      <p class="label">Objetivo</p>
+      <ul><li>Ler três chaves como uma palavra binária de 3 bits e converter o valor de entrada para decimal no Monitor Serial.</li></ul>
+    </div>
+    <div class="toc"><a href="#materiais">Materiais</a>
+<a href="#montagem">Montagem</a>
+<a href="#atividades">Sketchs propostos</a>
+<a href="#shield">Novo shield</a></div>
+  </div>
+</section>
+<div class="container">
+
+  <section class="section" id="materiais">
+    <p class="section-label">I / instrumental e ferramental</p>
+    
+<h2>Materiais utilizados</h2>
+<ul class="plain">
+  <li><em>Protoboard</em></li>
+  <li>LED — Diodo Emissor de Luz</li>
+  <li>Resistor de 300 Ω</li>
+  <li>Arduino Mega 2560</li>
+  <li>Switch / chave</li>
+</ul>
+<div class="note"><strong>Atenção:</strong> mantenha os pinos de menor numeração associados aos bits menos significativos, para facilitar a leitura da palavra binária no circuito.</div>
+
+  </section>
+
+  <section class="section" id="montagem">
+    <p class="section-label">II / montagem</p>
+    
+<h2>Entrada binária de três bits</h2>
+<p>O circuito utiliza três chaves como entradas binárias. As saídas das chaves devem ser conectadas aos pinos digitais 2, 3 e 4 do Arduino.</p>
+<div class="fig-full">
+<svg viewBox="0 0 900 390" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Três chaves como entrada binária de 3 bits no Arduino Mega 2560">
+  <rect x="55" y="70" width="250" height="230" rx="14" class="dbox2"/>
+  <text x="180" y="105" text-anchor="middle" class="dlbl">Entrada binária</text>
+  <rect x="105" y="135" width="110" height="34" rx="6" fill="#0f172a" stroke="#7c3aed"/><text x="160" y="157" text-anchor="middle" class="dlbl2">Chave bit 0</text>
+  <rect x="105" y="185" width="110" height="34" rx="6" fill="#0f172a" stroke="#7c3aed"/><text x="160" y="207" text-anchor="middle" class="dlbl2">Chave bit 1</text>
+  <rect x="105" y="235" width="110" height="34" rx="6" fill="#0f172a" stroke="#7c3aed"/><text x="160" y="257" text-anchor="middle" class="dlbl2">Chave bit 2</text>
+
+  <rect x="360" y="70" width="250" height="230" rx="16" class="dbox"/>
+  <text x="485" y="105" text-anchor="middle" class="dlbl">Arduino Mega 2560</text>
+  <circle cx="380" cy="152" r="5" class="pin"/><text x="398" y="156" class="dlbl2">pino 2</text>
+  <circle cx="380" cy="202" r="5" class="pin"/><text x="398" y="206" class="dlbl2">pino 3</text>
+  <circle cx="380" cy="252" r="5" class="pin"/><text x="398" y="256" class="dlbl2">pino 4</text>
+  <path d="M215 152 H380" class="dwire"/>
+  <path d="M215 202 H380" class="dwire"/>
+  <path d="M215 252 H380" class="dwire"/>
+  <text x="485" y="285" text-anchor="middle" class="dlbl2">palavra lida: b2 b1 b0 = 000 ... 111</text>
+  
+</svg><p class="fig-caption">Figura 1 — Representação em SVG do circuito com três chaves conectadas ao Arduino como palavra binária de 3 bits.</p></div>
+<ol class="plain">
+  <li>Monte o circuito com três chaves ligadas às entradas digitais do Arduino.</li>
+  <li>Escreva um código para converter a entrada binária de 3 bits em decimal.</li>
+  <li>Observe o resultado pelo Monitor Serial da IDE do Arduino.</li>
+</ol>
+<div class="ds-grid">
+  <div class="ds-item"><a href="https://www.arduino.cc/reference/en/" target="_blank">Referência da linguagem Arduino</a></div>
+  <div class="ds-item"><a href="https://github.com/claytonjasilva/prog_exemplos/blob/main/linguagem_arduino_ino/pratica4_II.ino" target="_blank">Código: prática 4 — item II</a></div>
+  <div class="ds-item"><a href="https://www.youtube.com/watch?v=c_S7Vv2eOwY" target="_blank">Vídeo explicativo</a></div>
+</div>
+
+  </section>
+
+  <section class="section" id="atividades">
+    <p class="section-label">III / novos sketchs</p>
+    
+<h2>Elaborar novos <em>sketchs</em> para o mesmo <em>shield</em></h2>
+<h3>1. Soma dos pares não negativos inferiores ao número lido</h3>
+<p>O sistema deve ler a palavra código de entrada. Caso ela corresponda a um número par, o sistema deverá ler via Monitor Serial um número inteiro, calcular a soma dos números pares não negativos inferiores ao número lido e escrever o resultado no Monitor Serial.</p>
+<div class="ds-grid">
+  <div class="ds-item"><a href="https://github.com/claytonjasilva/prog_exemplos/blob/main/linguagem_arduino_ino/pratica4_III1.ino" target="_blank">Sugestão de solução — III.1</a></div>
+</div>
+<h3>2. Contagem binária crescente cíclica</h3>
+<p>O sistema deve apresentar no Monitor Serial uma contagem binária crescente e cíclica a partir do código lido até 111.</p>
+<div class="codeblock">Exemplo:
+entrada = 011
+
+saída:
+011 → 100 → 101 → 110 → 111 → 011 → 100 → ...</div>
+<div class="ds-grid">
+  <div class="ds-item"><a href="https://github.com/claytonjasilva/prog_exemplos/blob/main/linguagem_arduino_ino/pratica4_III2.ino" target="_blank">Sugestão de solução — III.2</a></div>
+</div>
+
+  </section>
+
+  <section class="section" id="shield">
+    <p class="section-label">IV / novo shield</p>
+    
+<h2>Elaborar um novo <em>shield</em></h2>
+<p>O projeto deverá ativar saídas específicas conforme o código binário de entrada.</p>
+<div class="fig-full">
+<svg viewBox="0 0 900 390" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Três chaves como entrada binária de 3 bits no Arduino Mega 2560">
+  <rect x="55" y="70" width="250" height="230" rx="14" class="dbox2"/>
+  <text x="180" y="105" text-anchor="middle" class="dlbl">Entrada binária</text>
+  <rect x="105" y="135" width="110" height="34" rx="6" fill="#0f172a" stroke="#7c3aed"/><text x="160" y="157" text-anchor="middle" class="dlbl2">Chave bit 0</text>
+  <rect x="105" y="185" width="110" height="34" rx="6" fill="#0f172a" stroke="#7c3aed"/><text x="160" y="207" text-anchor="middle" class="dlbl2">Chave bit 1</text>
+  <rect x="105" y="235" width="110" height="34" rx="6" fill="#0f172a" stroke="#7c3aed"/><text x="160" y="257" text-anchor="middle" class="dlbl2">Chave bit 2</text>
+
+  <rect x="360" y="70" width="250" height="230" rx="16" class="dbox"/>
+  <text x="485" y="105" text-anchor="middle" class="dlbl">Arduino Mega 2560</text>
+  <circle cx="380" cy="152" r="5" class="pin"/><text x="398" y="156" class="dlbl2">pino 2</text>
+  <circle cx="380" cy="202" r="5" class="pin"/><text x="398" y="206" class="dlbl2">pino 3</text>
+  <circle cx="380" cy="252" r="5" class="pin"/><text x="398" y="256" class="dlbl2">pino 4</text>
+  <path d="M215 152 H380" class="dwire"/>
+  <path d="M215 202 H380" class="dwire"/>
+  <path d="M215 252 H380" class="dwire"/>
+  <text x="485" y="285" text-anchor="middle" class="dlbl2">palavra lida: b2 b1 b0 = 000 ... 111</text>
+  
+  <rect x="645" y="80" width="180" height="220" rx="14" class="dbox2"/>
+  <text x="735" y="112" text-anchor="middle" class="dlbl">Saídas</text>
+  <circle cx="700" cy="155" r="16" class="led-red"/><text x="735" y="160" class="dlbl2">LED vermelho</text>
+  <circle cx="700" cy="205" r="16" fill="#f59e0b"/><text x="735" y="210" class="dlbl2">LED amarelo</text>
+  <circle cx="700" cy="255" r="16" class="led-green"/><text x="735" y="260" class="dlbl2">LED verde</text>
+  <path d="M520 170 H645" class="dwire"/><path d="M520 190 H645" class="dwire"/><path d="M520 210 H645" class="dwire"/>
+  <path d="M520 240 H645" class="dwire"/><text x="575" y="235" text-anchor="middle" class="dlbl2">buzzer</text>
+
+</svg><p class="fig-caption">Figura 2 — Proposta em SVG: três chaves de entrada e saídas para LEDs, buzzer e Monitor Serial.</p></div>
+<table>
+  <thead><tr><th>Entrada</th><th class="tleft">Ação</th></tr></thead>
+  <tbody>
+    <tr><td>000</td><td class="tleft">Ativa um LED vermelho</td></tr>
+    <tr><td>001</td><td class="tleft">Ativa um LED amarelo</td></tr>
+    <tr><td>010</td><td class="tleft">Ativa um buzzer com frequência de 100 Hz durante 2 s, intermitente, em intervalos de 5 s</td></tr>
+    <tr><td>011</td><td class="tleft">Ativa um buzzer com frequência de 50 Hz durante 3 s, intermitente, em intervalos de 2 s, e ativa um LED verde</td></tr>
+    <tr><td>Demais casos</td><td class="tleft">Escreve no Monitor Serial o número decimal equivalente</td></tr>
+  </tbody>
+</table>
+<div class="ds-grid">
+  <div class="ds-item"><a href="https://github.com/claytonjasilva/prog_exemplos/blob/main/linguagem_arduino_ino/pratica4_IV.ino" target="_blank">Sugestão de solução — IV</a></div>
+</div>
+
+  </section>
+
+  <div class="chapter-nav">
+    <a href="arq_pratica3_entradas_digitais.html"><span class="dir">← anterior</span>Prática 3 — Entradas digitais</a>
+    <a class="next" href="arq_pratica5_funcoes_por_codigo.html"><span class="dir">próximo →</span>Prática 5 — Funções por código</a>
+  </div>
+</div>
+<footer>
+  <div class="container">
+    <p>© 2026 · Prof. Clayton J A Silva · Ibmec RJ</p>
+    <p><a href="https://claytonjasilva.github.io">claytonjasilva.github.io</a></p>
+  </div>
+</footer>
+
+<script>
+window.addEventListener('scroll', () => {
+  const h = document.documentElement;
+  const pct = (h.scrollTop) / (h.scrollHeight - h.clientHeight) * 100;
+  document.getElementById('progressFill').style.width = pct + '%';
+});
+</script>
+
+</body>
+</html>

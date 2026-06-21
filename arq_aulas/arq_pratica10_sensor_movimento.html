@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Prática 10 — Sensor de Movimento PIR | Arquitetura de Computadores</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0a0e17;--surface:#111827;--border:#1e2d40;--accent:#00c2ff;--accent2:#7c3aed;--text:#e2e8f0;--muted:#64748b;--tag-bg:#0f172a;--font-mono:'IBM Plex Mono',monospace;--font-sans:'IBM Plex Sans',sans-serif}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth} body{background:var(--bg);color:var(--text);font-family:var(--font-sans);font-size:16px;line-height:1.65}
+a{color:var(--accent);text-decoration:none} a:hover{text-decoration:underline}
+.container{max-width:980px;margin:0 auto;padding:0 2rem}
+nav{position:sticky;top:0;z-index:100;background:rgba(10,14,23,.9);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);padding:.9rem 0}
+nav .container{display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap}
+.nav-brand{font-family:var(--font-mono);font-size:.78rem;color:var(--accent)}
+.nav-links{display:flex;gap:1rem;list-style:none;flex-wrap:wrap}.nav-links a{font-family:var(--font-mono);font-size:.7rem;color:var(--muted)}.nav-links a:hover{color:var(--text);text-decoration:none}
+.progress-track{height:3px;background:var(--border);position:sticky;top:53px;z-index:99}.progress-fill{height:100%;width:0%;background:linear-gradient(90deg,var(--accent),var(--accent2))}
+.hero{padding:4rem 0 2.5rem;position:relative;overflow:hidden}.hero::before{content:'';position:absolute;inset:0;background-image:linear-gradient(var(--border) 1px,transparent 1px),linear-gradient(90deg,var(--border) 1px,transparent 1px);background-size:40px 40px;opacity:.3;mask-image:radial-gradient(ellipse 80% 60% at 50% 0%,black 40%,transparent 100%)}
+.hero-eyebrow{font-family:var(--font-mono);font-size:.74rem;color:var(--accent);letter-spacing:.14em;text-transform:uppercase;margin-bottom:1rem;display:flex;align-items:center;gap:.7rem}.hero-eyebrow::before{content:'';width:2rem;height:1px;background:var(--accent)}
+h1{font-size:clamp(2rem,4.5vw,3.2rem);font-weight:300;line-height:1.12;letter-spacing:-.02em;margin-bottom:.6rem} h1 strong{font-weight:600;color:var(--accent)}
+.hero-meta{display:flex;gap:1.5rem;flex-wrap:wrap;margin-top:1.2rem}.meta-item{font-family:var(--font-mono);font-size:.74rem;color:var(--muted)}
+.objectives{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:1.4rem 1.6rem;margin-top:1.6rem}.objectives p.label{font-family:var(--font-mono);font-size:.7rem;color:var(--accent);letter-spacing:.1em;text-transform:uppercase;margin-bottom:.7rem}.objectives ul{list-style:none;display:grid;gap:.5rem}.objectives li{font-size:.88rem;color:var(--muted);display:flex;gap:.6rem}.objectives li::before{content:'→';color:var(--accent)}
+.toc{display:flex;gap:.5rem;flex-wrap:wrap;margin-top:1.5rem}.toc a{font-family:var(--font-mono);font-size:.7rem;color:var(--muted);border:1px solid var(--border);padding:.35rem .75rem;border-radius:20px}.toc a:hover{border-color:var(--accent);color:var(--accent);text-decoration:none}
+.section{padding:3rem 0;border-top:1px solid var(--border)}.section-label{font-family:var(--font-mono);font-size:.7rem;color:var(--accent);letter-spacing:.14em;text-transform:uppercase;display:flex;align-items:center;gap:.7rem;margin-bottom:1.4rem}.section-label::after{content:'';flex:1;height:1px;background:var(--border)}
+h2{font-size:1.5rem;font-weight:600;margin-bottom:1rem} h3{font-size:1.1rem;margin:1.6rem 0 .8rem} p{margin-bottom:1rem;color:#cbd5e1} strong{color:var(--text)} em{color:var(--accent);font-style:normal}
+ul.plain,ol.plain{margin:0 0 1rem 1.2rem;color:#cbd5e1}li{margin-bottom:.45rem}
+.fig-full{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:1.2rem;margin:1.5rem 0;overflow-x:auto}.fig-full svg{width:100%;min-width:640px;display:block}.fig-caption{font-family:var(--font-mono);font-size:.72rem;color:var(--muted);text-align:center;margin-top:.6rem}
+.note{background:var(--tag-bg);border:1px solid var(--border);border-radius:6px;padding:.9rem 1.1rem;margin:1rem 0;font-size:.85rem;color:var(--muted)}.note strong{color:var(--accent)}
+.ds-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:.6rem;margin:1rem 0}.ds-item{background:var(--tag-bg);border:1px solid var(--border);border-radius:6px;padding:.8rem 1rem;transition:.2s}.ds-item:hover{border-color:var(--accent)}.ds-item a{font-size:.8rem;color:var(--text);font-family:var(--font-mono)}.ds-item a:hover{color:var(--accent);text-decoration:none}
+.chapter-nav{display:flex;justify-content:space-between;gap:1rem;margin-top:2rem}.chapter-nav a{flex:1;background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:1rem 1.3rem;font-size:.85rem}.chapter-nav a:hover{border-color:var(--accent);text-decoration:none}.chapter-nav .dir{font-family:var(--font-mono);font-size:.65rem;color:var(--muted);text-transform:uppercase;letter-spacing:.08em;display:block}.chapter-nav .next{text-align:right}
+footer{border-top:1px solid var(--border);padding:2rem 0;margin-top:2rem}footer .container{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem}footer p{font-size:.8rem;color:var(--muted);font-family:var(--font-mono)}
+.dwire{stroke:#3b4a5e;stroke-width:2;fill:none}.dbox{stroke:#00c2ff;stroke-width:2;fill:rgba(0,194,255,.06)}.dbox2{stroke:#7c3aed;stroke-width:2;fill:rgba(124,58,237,.06)}.dlbl{font-family:'IBM Plex Mono',monospace;font-size:13px;fill:#cbd5e1}.dlbl2{font-family:'IBM Plex Mono',monospace;font-size:11px;fill:#64748b}.pin{fill:#00c2ff}.led{fill:#ef4444}
+@media(max-width:640px){.nav-links{display:none}.hero{padding:2.5rem 0 2rem}.chapter-nav{flex-direction:column}}
+</style>
+</head>
+<body>
+<nav><div class="container"><span class="nav-brand">arq · prática 10</span><ul class="nav-links"><li><a href="#materiais">Materiais</a></li><li><a href="#montagem">Montagem</a></li><li><a href="#codigo">Código</a></li><li><a href="arq_integrado.html">← disciplina</a></li></ul></div></nav>
+<div class="progress-track"><div class="progress-fill" id="progressFill"></div></div>
+<section class="hero"><div class="container">
+<p class="hero-eyebrow">Arquitetura de Computadores · Laboratório</p>
+<h1>Prática 10<br><strong>Sensor de Movimento PIR</strong></h1>
+<div class="hero-meta"><span class="meta-item">Prof. Clayton J A Silva</span><span class="meta-item">Arduino Mega 2560</span><span class="meta-item">Rev 2026.2</span></div>
+<div class="objectives"><p class="label">Objetivo</p><ul><li>Utilizar um sensor de movimento PIR como entrada digital e acender um LED quando houver detecção de movimento.</li></ul></div>
+<div class="toc"><a href="#materiais">Materiais</a><a href="#montagem">Montagem</a><a href="#codigo">Código e referências</a></div>
+</div></section>
+<div class="container">
+<section class="section" id="materiais"><p class="section-label">I / instrumental e ferramental</p>
+<h2>Materiais utilizados</h2>
+<ul class="plain"><li><em>Protoboard</em></li><li>Sensor de movimento PIR</li><li>Arduino Mega 2560</li><li>LED e resistor limitador para indicação visual</li></ul>
+<div class="note"><strong>Observação:</strong> o enunciado original descreve o acionamento de LED quando o objeto é detectado pelo sensor. Mantive essa interpretação na página HTML.</div>
+</section>
+<section class="section" id="montagem"><p class="section-label">II / montagem</p>
+<h2>Sensor PIR acionando LED</h2>
+<p>Monte o circuito com o sensor PIR conectado a uma entrada digital do Arduino. Quando houver detecção de movimento, o programa deverá acionar um LED conectado a uma saída digital.</p>
+<div class="fig-full">
+<svg viewBox="0 0 900 390" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Sensor de movimento PIR conectado ao Arduino Mega acionando LED">
+  <rect x="70" y="75" width="250" height="220" rx="16" class="dbox"/>
+  <text x="195" y="110" text-anchor="middle" class="dlbl">Arduino Mega 2560</text>
+  <circle cx="285" cy="155" r="5" class="pin"/><text x="215" y="159" class="dlbl2">Entrada PIR</text>
+  <circle cx="285" cy="225" r="5" class="pin"/><text x="215" y="229" class="dlbl2">Saída LED</text>
+  <circle cx="105" cy="260" r="5" class="pin"/><text x="123" y="264" class="dlbl2">GND</text>
+  <circle cx="105" cy="135" r="5" class="pin"/><text x="123" y="139" class="dlbl2">5V</text>
+  <rect x="430" y="90" width="160" height="120" rx="14" class="dbox2"/>
+  <text x="510" y="128" text-anchor="middle" class="dlbl">Sensor PIR</text>
+  <circle cx="510" cy="165" r="28" fill="rgba(124,58,237,.18)" stroke="#7c3aed" stroke-width="2"/>
+  <path d="M510 165 q70 -50 140 0 q-70 50 -140 0" stroke="#7c3aed" stroke-width="2" fill="none"/>
+  <path d="M430 135 H105" stroke="#00c2ff" stroke-width="2" fill="none"/>
+  <path d="M430 165 H285" class="dwire"/>
+  <path d="M430 195 H105 V260" class="dwire"/>
+  <path d="M285 225 H690" class="dwire"/>
+  <circle cx="720" cy="225" r="22" class="led"/>
+  <text x="760" y="230" class="dlbl2">LED acende ao detectar movimento</text>
+</svg>
+<p class="fig-caption">Figura 1 — Representação em SVG do sensor PIR conectado ao Arduino Mega 2560 com saída para LED.</p></div>
+<ol class="plain"><li>Conecte VCC e GND do sensor aos pinos de alimentação adequados.</li><li>Conecte a saída do sensor PIR a uma entrada digital.</li><li>Conecte o LED a uma saída digital usando resistor limitador.</li><li>Teste a leitura do sensor e observe o acionamento do LED.</li></ol>
+</section>
+<section class="section" id="codigo"><p class="section-label">III / código e referências</p>
+<h2>Referências da prática</h2>
+<div class="ds-grid">
+<div class="ds-item"><a href="https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/arduino/datasheet_sensormovimento.md" target="_blank">Datasheet — sensor de movimento</a></div>
+<div class="ds-item"><a href="https://www.arduino.cc/reference/en/" target="_blank">Referência da linguagem Arduino</a></div>
+<div class="ds-item"><a href="https://github.com/claytonjasilva/prog_exemplos/blob/main/pratica_sensormovimento.ino" target="_blank">Código — prática 10</a></div>
+<div class="ds-item"><a href="https://www.youtube.com/watch?v=YXfd0fxR8PE&t=18s" target="_blank">Vídeo da prática</a></div>
+</div></section>
+<div class="chapter-nav"><a href="arq_pratica9_sensor_ultrassonico.html"><span class="dir">← anterior</span>Prática 9 — Sensor ultrassônico</a><a class="next" href="arq_integrado.html#indice-lab"><span class="dir">voltar →</span>Índice de práticas</a></div>
+</div>
+<footer><div class="container"><p>© 2026 · Prof. Clayton J A Silva · Ibmec RJ</p><p><a href="arq_integrado.html">Arquitetura de Computadores</a></p></div></footer>
+<script>
+window.addEventListener('scroll',()=>{const h=document.documentElement;document.getElementById('progressFill').style.width=(h.scrollTop/(h.scrollHeight-h.clientHeight)*100)+'%'});
+</script>
+</body></html>

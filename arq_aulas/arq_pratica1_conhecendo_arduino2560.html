@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Prática 1 — Conhecendo o Arduino Mega 2560 | Arquitetura de Computadores</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg:#0a0e17; --surface:#111827; --surface2:#161f2e; --border:#1e2d40;
+  --accent:#00c2ff; --accent2:#7c3aed; --text:#e2e8f0; --muted:#64748b;
+  --tag-bg:#0f172a; --font-mono:'IBM Plex Mono', monospace; --font-sans:'IBM Plex Sans', sans-serif;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{background:var(--bg);color:var(--text);font-family:var(--font-sans);font-size:16px;line-height:1.65;}
+a{color:var(--accent);text-decoration:none;} a:hover{text-decoration:underline;}
+.container{max-width:980px;margin:0 auto;padding:0 2rem;}
+nav{position:sticky;top:0;z-index:100;background:rgba(10,14,23,.9);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);padding:.9rem 0;}
+nav .container{display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap;}
+.nav-brand{font-family:var(--font-mono);font-size:.78rem;color:var(--accent);}
+.nav-links{display:flex;gap:1rem;list-style:none;flex-wrap:wrap;}
+.nav-links a{font-family:var(--font-mono);font-size:.7rem;color:var(--muted);}
+.nav-links a:hover{color:var(--text);text-decoration:none;}
+.progress-track{height:3px;background:var(--border);position:sticky;top:53px;z-index:99;}
+.progress-fill{height:100%;width:0%;background:linear-gradient(90deg,var(--accent),var(--accent2));transition:width .1s;}
+.hero{padding:4rem 0 2.5rem;position:relative;overflow:hidden;}
+.hero::before{content:'';position:absolute;inset:0;background-image:linear-gradient(var(--border) 1px,transparent 1px),linear-gradient(90deg,var(--border) 1px,transparent 1px);background-size:40px 40px;opacity:.3;mask-image:radial-gradient(ellipse 80% 60% at 50% 0%,black 40%,transparent 100%);}
+.hero-eyebrow{font-family:var(--font-mono);font-size:.74rem;color:var(--accent);letter-spacing:.14em;text-transform:uppercase;margin-bottom:1rem;display:flex;align-items:center;gap:.7rem;}
+.hero-eyebrow::before{content:'';width:2rem;height:1px;background:var(--accent);}
+h1{font-size:clamp(2rem,4.5vw,3.2rem);font-weight:300;line-height:1.12;letter-spacing:-.02em;margin-bottom:.6rem;}
+h1 strong{font-weight:600;color:var(--accent);}
+.hero-meta{display:flex;gap:1.5rem;flex-wrap:wrap;margin-top:1.2rem;}
+.meta-item{font-family:var(--font-mono);font-size:.74rem;color:var(--muted);display:flex;align-items:center;gap:.4rem;}
+.objectives{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:1.4rem 1.6rem;margin-top:1.6rem;}
+.objectives p.label{font-family:var(--font-mono);font-size:.7rem;color:var(--accent);letter-spacing:.1em;text-transform:uppercase;margin-bottom:.7rem;}
+.objectives ul{list-style:none;display:grid;gap:.5rem;}
+.objectives li{font-size:.88rem;color:var(--muted);display:flex;gap:.6rem;}
+.objectives li::before{content:'→';color:var(--accent);flex-shrink:0;}
+.toc{display:flex;gap:.5rem;flex-wrap:wrap;margin-top:1.5rem;}
+.toc a{font-family:var(--font-mono);font-size:.7rem;color:var(--muted);border:1px solid var(--border);padding:.35rem .75rem;border-radius:20px;transition:.2s;}
+.toc a:hover{border-color:var(--accent);color:var(--accent);text-decoration:none;}
+.section{padding:3rem 0;border-top:1px solid var(--border);}
+.section-label{font-family:var(--font-mono);font-size:.7rem;color:var(--accent);letter-spacing:.14em;text-transform:uppercase;display:flex;align-items:center;gap:.7rem;margin-bottom:1.4rem;}
+.section-label::after{content:'';flex:1;height:1px;background:var(--border);}
+h2{font-size:1.5rem;font-weight:600;letter-spacing:-.01em;margin-bottom:1rem;}
+h3{font-size:1.1rem;font-weight:600;margin:1.6rem 0 .8rem;color:var(--text);}
+h4{font-size:.95rem;font-weight:600;margin:1.2rem 0 .6rem;color:var(--accent);}
+p{margin-bottom:1rem;color:#cbd5e1;} strong{color:var(--text);font-weight:600;} em{color:var(--accent);font-style:normal;}
+ul.plain,ol.plain{margin:0 0 1rem 1.2rem;color:#cbd5e1;} ul.plain li,ol.plain li{margin-bottom:.45rem;}
+.fig-full{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:1.2rem;margin:1.5rem 0;overflow-x:auto;}
+.fig-full svg{width:100%;min-width:640px;display:block;}
+.fig-caption{font-family:var(--font-mono);font-size:.72rem;color:var(--muted);text-align:center;margin-top:.6rem;}
+.note{background:var(--tag-bg);border:1px solid var(--border);border-radius:6px;padding:.9rem 1.1rem;margin:1rem 0;font-size:.85rem;color:var(--muted);}
+.note strong{color:var(--accent);}
+table{width:100%;border-collapse:collapse;font-size:.85rem;margin:1.2rem 0;}
+thead tr{background:var(--tag-bg);}
+thead th{padding:.5rem .7rem;text-align:center;font-family:var(--font-mono);font-size:.68rem;color:var(--muted);letter-spacing:.06em;text-transform:uppercase;font-weight:400;border-bottom:1px solid var(--border);}
+tbody td{padding:.45rem .7rem;border-bottom:1px solid var(--border);color:var(--muted);text-align:center;}
+tbody tr:hover{background:rgba(255,255,255,.02);} td.tleft, th.tleft{text-align:left;}
+.ds-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:.6rem;margin:1rem 0;}
+.ds-item{background:var(--tag-bg);border:1px solid var(--border);border-radius:6px;padding:.8rem 1rem;display:flex;gap:.6rem;align-items:center;transition:.2s;}
+.ds-item:hover{border-color:var(--accent);} .ds-item a{font-size:.8rem;color:var(--text);font-family:var(--font-mono);}
+.ds-item a:hover{color:var(--accent);text-decoration:none;}
+.chapter-nav{display:flex;justify-content:space-between;gap:1rem;margin-top:2rem;}
+.chapter-nav a{flex:1;background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:1rem 1.3rem;font-size:.85rem;transition:.2s;}
+.chapter-nav a:hover{border-color:var(--accent);text-decoration:none;}
+.chapter-nav .dir{font-family:var(--font-mono);font-size:.65rem;color:var(--muted);text-transform:uppercase;letter-spacing:.08em;display:block;margin-bottom:.3rem;}
+.chapter-nav .next{text-align:right;}
+footer{border-top:1px solid var(--border);padding:2rem 0;margin-top:2rem;}
+footer .container{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;}
+footer p{font-size:.8rem;color:var(--muted);font-family:var(--font-mono);}
+@media(max-width:640px){.nav-links{display:none;}.hero{padding:2.5rem 0 2rem;}.chapter-nav{flex-direction:column;}}
+.dwire{stroke:#3b4a5e;stroke-width:2;fill:none}.dbox{stroke:#00c2ff;stroke-width:2;fill:rgba(0,194,255,.06)}.dbox2{stroke:#7c3aed;stroke-width:2;fill:rgba(124,58,237,.06)}
+.dlbl{font-family:'IBM Plex Mono',monospace;font-size:13px;fill:#cbd5e1}.dlbl2{font-family:'IBM Plex Mono',monospace;font-size:11px;fill:#64748b}.led-red{fill:#ef4444}.led-green{fill:#22c55e}.pin{fill:#00c2ff}
+</style>
+</head>
+<body>
+<nav>
+  <div class="container">
+    <span class="nav-brand">arq · prática 1</span>
+    <ul class="nav-links">
+      <li><a href="#materiais">Materiais</a></li>
+      <li><a href="#montagem">Montagem</a></li>
+      <li><a href="#atividades">Atividades</a></li>
+      <li><a href="https://claytonjasilva.github.io/arq.html">← disciplina</a></li>
+    </ul>
+  </div>
+</nav>
+<div class="progress-track"><div class="progress-fill" id="progressFill"></div></div>
+<section class="hero">
+  <div class="container">
+    <p class="hero-eyebrow">Arquitetura de Computadores · Prática de Laboratório</p>
+    <h1>Prática 1<br><strong>Conhecendo o Arduino 2560</strong></h1>
+    <div class="hero-meta">
+      <span class="meta-item">Prof. Clayton J A Silva</span>
+      <span class="meta-item">Arduino Mega 2560</span>
+      <span class="meta-item">Rev 2026.2</span>
+    </div>
+    <div class="objectives">
+      <p class="label">Objetivo da prática</p>
+      <ul><li>Utilizar a placa Arduino Mega 2560 como fonte de alimentação para acender LEDs montados em paralelo.</li></ul>
+    </div>
+    <div class="toc">
+      <a href="#montagem">II / montagem</a>
+<a href="#atividades">III / atividades</a>
+    </div>
+  </div>
+</section>
+<div class="container">
+  <section class="section" id="materiais">
+    <p class="section-label">I / instrumental e ferramental</p>
+    <h2>Materiais utilizados</h2>
+    <ul class="plain"><li><em>Protoboard</em></li>
+<li>LED — Diodo Emissor de Luz</li>
+<li>Resistor de 300 Ω</li>
+<li>Arduino Mega 2560</li></ul>
+    <div class="note"><strong>Atenção:</strong> confira a polarização dos LEDs, os resistores limitadores de corrente e a conexão correta entre GND e os pontos de referência do circuito.</div>
+  </section>
+
+  <section class="section" id="montagem">
+    <p class="section-label">II / montagem</p>
+    
+<h2>Montagem inicial</h2>
+<p>Monte o circuito com a placa Arduino Mega 2560 funcionando como fonte de alimentação para três LEDs conectados em paralelo.</p>
+<div class="fig-full">
+<svg viewBox="0 0 900 420" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Arduino Mega como fonte para três LEDs em paralelo">
+  <rect x="45" y="70" width="250" height="250" rx="16" class="dbox"/>
+  <text x="170" y="105" text-anchor="middle" class="dlbl">Arduino Mega 2560</text>
+  <circle cx="86" cy="150" r="5" class="pin"/><text x="105" y="154" class="dlbl2">5V</text>
+  <circle cx="86" cy="250" r="5" class="pin"/><text x="105" y="254" class="dlbl2">GND</text>
+  <rect x="370" y="70" width="460" height="250" rx="12" class="dbox2"/>
+  <text x="600" y="105" text-anchor="middle" class="dlbl">Protoboard — LEDs em paralelo</text>
+  <path d="M86 150 H360" class="dwire"/><path d="M86 250 H360" class="dwire"/>
+  <path d="M360 150 H790" stroke="#00c2ff" stroke-width="3" fill="none"/><path d="M360 250 H790" stroke="#64748b" stroke-width="3" fill="none"/>
+  <text x="805" y="154" class="dlbl2">trilha +5V</text><text x="805" y="254" class="dlbl2">trilha GND</text>
+  <g transform="translate(430,135)">
+    <rect x="-22" y="0" width="44" height="14" rx="5" fill="#0f172a" stroke="#00c2ff"/><text x="0" y="-8" text-anchor="middle" class="dlbl2">300Ω</text>
+    <path d="M0 14 V45" class="dwire"/><circle cx="0" cy="68" r="17" class="led-red" opacity=".9"/><path d="M0 85 V115" class="dwire"/>
+  </g>
+  <g transform="translate(570,135)">
+    <rect x="-22" y="0" width="44" height="14" rx="5" fill="#0f172a" stroke="#00c2ff"/><text x="0" y="-8" text-anchor="middle" class="dlbl2">300Ω</text>
+    <path d="M0 14 V45" class="dwire"/><circle cx="0" cy="68" r="17" class="led-green" opacity=".9"/><path d="M0 85 V115" class="dwire"/>
+  </g>
+  <g transform="translate(710,135)">
+    <rect x="-22" y="0" width="44" height="14" rx="5" fill="#0f172a" stroke="#00c2ff"/><text x="0" y="-8" text-anchor="middle" class="dlbl2">300Ω</text>
+    <path d="M0 14 V45" class="dwire"/><circle cx="0" cy="68" r="17" fill="#f59e0b" opacity=".9"/><path d="M0 85 V115" class="dwire"/>
+  </g>
+</svg><p class="fig-caption">Figura 1 — Representação em SVG do circuito da prática: Arduino como fonte de alimentação e três ramos LED + resistor em paralelo.</p></div>
+<ol class="plain">
+  <li>Conecte o Arduino ao computador através da porta USB.</li>
+  <li>Use os pinos de alimentação <strong>5V</strong> e <strong>GND</strong> para alimentar as trilhas da protoboard.</li>
+  <li>Em cada ramo, conecte um resistor de 300 Ω em série com o LED.</li>
+  <li>Observe a polarização do LED: anodo no lado positivo e catodo no lado de retorno ao GND.</li>
+</ol>
+<div class="note">Nesta primeira prática, o Arduino é usado apenas como fonte de alimentação. Ainda não há programação de portas digitais.</div>
+
+  </section>
+
+  <section class="section" id="atividades">
+    <p class="section-label">III / atividades</p>
+    
+<h2>Atividades sugeridas</h2>
+<ol class="plain">
+  <li>Identifique visualmente as trilhas de alimentação da protoboard.</li>
+  <li>Verifique o comportamento do circuito ao inverter a polaridade de um LED.</li>
+  <li>Compare o brilho dos LEDs quando os resistores são corretamente usados em série.</li>
+</ol>
+<div class="ds-grid">
+  <div class="ds-item"><a href="https://www.youtube.com/watch?v=O9RfIBl4RHw&t=104s" target="_blank">Vídeo explicativo da prática</a></div>
+  <div class="ds-item"><a href="https://claytonjasilva.github.io/arq.html">Home — Arquitetura de Computadores</a></div>
+  <div class="ds-item"><a href="https://claytonjasilva.github.io/sisdig.html">Home — Sistemas Digitais</a></div>
+</div>
+
+  </section>
+
+  <div class="chapter-nav">
+    <a href="cap1_com_anexos.html"><span class="dir">← anterior</span>Cap. 1 — Máquina de von Neumann</a>
+    <a class="next" href="arq_pratica2_assembly_atmega2560.html"><span class="dir">próximo →</span>Prática 2 — Assembly Atmega2560</a>
+  </div>
+</div>
+<footer>
+  <div class="container">
+    <p>© 2026 · Prof. Clayton J A Silva · Ibmec RJ</p>
+    <p><a href="https://claytonjasilva.github.io">claytonjasilva.github.io</a></p>
+  </div>
+</footer>
+
+<script>
+window.addEventListener('scroll', () => {
+  const h = document.documentElement;
+  const pct = (h.scrollTop) / (h.scrollHeight - h.clientHeight) * 100;
+  document.getElementById('progressFill').style.width = pct + '%';
+});
+</script>
+
+</body>
+</html>
