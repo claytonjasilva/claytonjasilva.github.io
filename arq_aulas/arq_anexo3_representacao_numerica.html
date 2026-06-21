@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Anexo 3 — Representação Numérica | Arquitetura de Computadores</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.js"></script>
+<style>
+:root {
+  --bg:        #0a0e17;
+  --surface:   #111827;
+  --surface2:  #161f2e;
+  --border:    #1e2d40;
+  --accent:    #00c2ff;
+  --accent2:   #7c3aed;
+  --text:      #e2e8f0;
+  --muted:     #64748b;
+  --tag-bg:    #0f172a;
+  --font-mono: 'IBM Plex Mono', monospace;
+  --font-sans: 'IBM Plex Sans', sans-serif;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{background:var(--bg);color:var(--text);font-family:var(--font-sans);font-size:16px;line-height:1.65;}
+a{color:var(--accent);text-decoration:none;}
+a:hover{text-decoration:underline;}
+.container{max-width:980px;margin:0 auto;padding:0 2rem;}
+
+nav{position:sticky;top:0;z-index:100;background:rgba(10,14,23,.9);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);padding:.9rem 0;}
+nav .container{display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap;}
+.nav-brand{font-family:var(--font-mono);font-size:.78rem;color:var(--accent);}
+.nav-links{display:flex;gap:1rem;list-style:none;flex-wrap:wrap;}
+.nav-links a{font-family:var(--font-mono);font-size:.7rem;color:var(--muted);}
+.nav-links a:hover{color:var(--text);text-decoration:none;}
+
+.progress-track{height:3px;background:var(--border);position:sticky;top:53px;z-index:99;}
+.progress-fill{height:100%;width:0%;background:linear-gradient(90deg,var(--accent),var(--accent2));transition:width .1s;}
+
+.hero{padding:4rem 0 2.5rem;position:relative;overflow:hidden;}
+.hero::before{content:'';position:absolute;inset:0;background-image:linear-gradient(var(--border) 1px,transparent 1px),linear-gradient(90deg,var(--border) 1px,transparent 1px);background-size:40px 40px;opacity:.3;mask-image:radial-gradient(ellipse 80% 60% at 50% 0%,black 40%,transparent 100%);}
+.hero-eyebrow{font-family:var(--font-mono);font-size:.74rem;color:var(--accent);letter-spacing:.14em;text-transform:uppercase;margin-bottom:1rem;display:flex;align-items:center;gap:.7rem;}
+.hero-eyebrow::before{content:'';width:2rem;height:1px;background:var(--accent);}
+h1{font-size:clamp(2rem,4.5vw,3.2rem);font-weight:300;line-height:1.12;letter-spacing:-.02em;margin-bottom:.6rem;}
+h1 strong{font-weight:600;color:var(--accent);}
+.hero-meta{display:flex;gap:1.5rem;flex-wrap:wrap;margin-top:1.2rem;}
+.meta-item{font-family:var(--font-mono);font-size:.74rem;color:var(--muted);display:flex;align-items:center;gap:.4rem;}
+.meta-item svg{flex-shrink:0;}
+
+.objectives{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:1.4rem 1.6rem;margin-top:1.6rem;}
+.objectives p.label{font-family:var(--font-mono);font-size:.7rem;color:var(--accent);letter-spacing:.1em;text-transform:uppercase;margin-bottom:.7rem;}
+.objectives ul{list-style:none;display:grid;gap:.5rem;}
+.objectives li{font-size:.88rem;color:var(--muted);display:flex;gap:.6rem;}
+.objectives li::before{content:'→';color:var(--accent);flex-shrink:0;}
+
+.toc{display:flex;gap:.5rem;flex-wrap:wrap;margin-top:1.5rem;}
+.toc a{font-family:var(--font-mono);font-size:.7rem;color:var(--muted);border:1px solid var(--border);padding:.35rem .75rem;border-radius:20px;transition:.2s;}
+.toc a:hover{border-color:var(--accent);color:var(--accent);text-decoration:none;}
+
+.section{padding:3rem 0;border-top:1px solid var(--border);}
+.section-label{font-family:var(--font-mono);font-size:.7rem;color:var(--accent);letter-spacing:.14em;text-transform:uppercase;display:flex;align-items:center;gap:.7rem;margin-bottom:1.4rem;}
+.section-label::after{content:'';flex:1;height:1px;background:var(--border);}
+h2{font-size:1.5rem;font-weight:600;letter-spacing:-.01em;margin-bottom:1rem;}
+h3{font-size:1.1rem;font-weight:600;margin:1.6rem 0 .8rem;color:var(--text);}
+h4{font-size:.95rem;font-weight:600;margin:1.2rem 0 .6rem;color:var(--accent);}
+p{margin-bottom:1rem;color:#cbd5e1;}
+strong{color:var(--text);font-weight:600;}
+em{color:var(--accent);font-style:normal;}
+ul.plain{margin:0 0 1rem 1.2rem;color:#cbd5e1;}
+ul.plain li{margin-bottom:.4rem;}
+ol.plain{margin:0 0 1rem 1.2rem;color:#cbd5e1;}
+ol.plain li{margin-bottom:.5rem;}
+
+.codeline{background:var(--tag-bg);border:1px solid var(--border);border-radius:6px;padding:.7rem 1rem;font-family:var(--font-mono);font-size:1rem;color:var(--accent);text-align:center;margin:1rem 0;}
+.codeblock{background:var(--tag-bg);border:1px solid var(--border);border-radius:6px;padding:.9rem 1.1rem;font-family:var(--font-mono);font-size:.78rem;color:#a8d8ef;margin:1rem 0;overflow-x:auto;white-space:pre;line-height:1.6;}
+.codeblock .cmt{color:var(--muted);}
+
+.concept-grid{display:grid;grid-template-columns:1fr 1fr;gap:2rem;align-items:start;margin:1.5rem 0;}
+.concept-text{display:flex;flex-direction:column;justify-content:center;}
+.concept-fig{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:1rem;}
+.concept-fig img,.concept-fig svg{width:100%;display:block;}
+.fig-caption{font-family:var(--font-mono);font-size:.72rem;color:var(--muted);text-align:center;margin-top:.6rem;}
+@media (max-width:760px){.concept-grid{grid-template-columns:1fr;}}
+
+.fig-full{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:1.2rem;margin:1.5rem 0;}
+.fig-full img,.fig-full svg{width:100%;display:block;}
+
+.definition{background:var(--surface);border:1px solid var(--accent2);border-left:3px solid var(--accent2);border-radius:0 8px 8px 0;padding:1.2rem 1.5rem;margin:1.2rem 0;}
+.definition .dtitle{font-family:var(--font-mono);font-size:.7rem;color:var(--accent2);letter-spacing:.1em;text-transform:uppercase;margin-bottom:.5rem;}
+
+.note{background:var(--tag-bg);border:1px solid var(--border);border-radius:6px;padding:.9rem 1.1rem;margin:1rem 0;font-size:.85rem;color:var(--muted);}
+.note strong{color:var(--accent);}
+
+table{width:100%;border-collapse:collapse;font-size:.85rem;margin:1.2rem 0;}
+thead tr{background:var(--tag-bg);}
+thead th{padding:.5rem .7rem;text-align:center;font-family:var(--font-mono);font-size:.68rem;color:var(--muted);letter-spacing:.06em;text-transform:uppercase;font-weight:400;border-bottom:1px solid var(--border);}
+tbody td{padding:.45rem .7rem;border-bottom:1px solid var(--border);color:var(--muted);text-align:center;}
+tbody tr:hover{background:rgba(255,255,255,.02);}
+td.tleft, th.tleft{text-align:left;}
+
+.method-card{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:1.4rem 1.6rem;margin:1.2rem 0;position:relative;overflow:hidden;}
+.method-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--accent),var(--accent2));}
+.method-num{font-family:var(--font-mono);font-size:.7rem;color:var(--accent);background:rgba(0,194,255,.08);border:1px solid rgba(0,194,255,.25);border-radius:4px;padding:.2rem .6rem;display:inline-block;margin-bottom:.7rem;}
+.method-card h4{margin:0 0 .8rem;color:var(--text);font-size:1rem;}
+.steps{list-style:none;counter-reset:step;}
+.steps li{counter-increment:step;display:flex;gap:.7rem;margin-bottom:.6rem;font-size:.88rem;color:#cbd5e1;}
+.steps li::before{content:counter(step);font-family:var(--font-mono);font-size:.72rem;color:var(--accent);background:var(--tag-bg);border:1px solid var(--border);border-radius:50%;width:22px;height:22px;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+
+.ds-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:.6rem;margin:1rem 0;}
+.ds-item{background:var(--tag-bg);border:1px solid var(--border);border-radius:6px;padding:.7rem 1rem;display:flex;gap:.6rem;align-items:center;transition:.2s;}
+.ds-item:hover{border-color:var(--accent);}
+.ds-item a{font-size:.8rem;color:var(--text);font-family:var(--font-mono);}
+.ds-item a:hover{color:var(--accent);text-decoration:none;}
+
+.quiz{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:1.6rem;margin:1.5rem 0;}
+.quiz-header{display:flex;align-items:center;gap:.6rem;margin-bottom:1.2rem;}
+.quiz-header svg{flex-shrink:0;}
+.quiz-title{font-family:var(--font-mono);font-size:.8rem;color:var(--accent2);letter-spacing:.05em;}
+.quiz-q{font-size:.95rem;margin-bottom:.9rem;color:var(--text);}
+.quiz-options{display:flex;flex-direction:column;gap:.55rem;}
+.quiz-opt{background:var(--tag-bg);border:1px solid var(--border);border-radius:6px;padding:.7rem 1rem;font-size:.85rem;color:var(--muted);cursor:pointer;transition:.15s;text-align:left;width:100%;font-family:var(--font-sans);}
+.quiz-opt:hover{border-color:var(--accent);color:var(--text);}
+.quiz-opt.correct{border-color:#22c55e;background:rgba(34,197,94,.08);color:#86efac;}
+.quiz-opt.wrong{border-color:#ef4444;background:rgba(239,68,68,.08);color:#fca5a5;}
+.quiz-feedback{margin-top:.9rem;font-size:.85rem;padding:.8rem 1rem;border-radius:6px;display:none;}
+.quiz-feedback.show{display:block;}
+.quiz-feedback.correct-fb{background:rgba(34,197,94,.08);border:1px solid #22c55e;color:#86efac;}
+.quiz-feedback.wrong-fb{background:rgba(239,68,68,.08);border:1px solid #ef4444;color:#fca5a5;}
+
+.refs-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:.8rem;}
+.ref-card{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:1rem 1.2rem;display:flex;gap:.8rem;align-items:flex-start;transition:.2s;}
+.ref-card:hover{border-color:var(--accent);}
+.ref-card svg{flex-shrink:0;margin-top:.15rem;}
+.ref-card h4{font-size:.88rem;font-weight:600;margin:0 0 .2rem;color:var(--text);}
+.ref-card p{font-size:.76rem;color:var(--muted);margin:0;}
+.ref-type{font-family:var(--font-mono);font-size:.62rem;color:var(--accent);text-transform:uppercase;letter-spacing:.06em;}
+
+.chapter-nav{display:flex;justify-content:space-between;gap:1rem;margin-top:2rem;}
+.chapter-nav a{flex:1;background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:1rem 1.3rem;font-size:.85rem;transition:.2s;}
+.chapter-nav a:hover{border-color:var(--accent);text-decoration:none;}
+.chapter-nav .dir{font-family:var(--font-mono);font-size:.65rem;color:var(--muted);text-transform:uppercase;letter-spacing:.08em;display:block;margin-bottom:.3rem;}
+.chapter-nav .next{text-align:right;}
+
+footer{border-top:1px solid var(--border);padding:2rem 0;margin-top:2rem;}
+footer .container{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;}
+footer p{font-size:.8rem;color:var(--muted);font-family:var(--font-mono);}
+
+@media(max-width:640px){.nav-links{display:none;}.hero{padding:2.5rem 0 2rem;}}
+
+.katex{color:var(--accent);font-size:1.05em;}
+
+/* SVG diagram helpers */
+.dwire{stroke:#3b4a5e;stroke-width:1.6;fill:none;}
+.dbox{stroke:#00c2ff;stroke-width:1.6;fill:none;}
+.dbox2{stroke:#7c3aed;stroke-width:1.6;fill:none;}
+.dlbl{font-family:'IBM Plex Mono',monospace;font-size:13px;fill:#cbd5e1;}
+.dlbl2{font-family:'IBM Plex Mono',monospace;font-size:11px;fill:#64748b;}
+.dfill{fill:#111827;}
+
+.markdown-body h1{display:none;}
+.table-wrap{overflow-x:auto;margin:1rem 0;border:1px solid var(--border);border-radius:8px;}
+.table-wrap table{margin:0;min-width:520px;}
+.svg-panel{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:1.2rem;margin:1.4rem 0;}
+.svg-panel svg{width:100%;height:auto;display:block;}
+.badge-row{display:flex;gap:.5rem;flex-wrap:wrap;margin:1rem 0 1.5rem;}
+.badge{font-family:var(--font-mono);font-size:.68rem;color:var(--accent);border:1px solid rgba(0,194,255,.25);background:rgba(0,194,255,.07);border-radius:999px;padding:.25rem .6rem;}
+.callout{background:var(--surface);border:1px solid var(--accent);border-left:3px solid var(--accent);border-radius:0 8px 8px 0;padding:1rem 1.25rem;margin:1rem 0;color:#cbd5e1;}
+.math.display{display:block;text-align:center;margin:1rem 0;color:var(--accent);font-family:var(--font-mono);}
+.math.inline{color:var(--accent);}
+.markdown-body p + ul, .markdown-body p + ol{margin-top:-.4rem;}
+</style>
+</head>
+<body>
+<nav><div class="container"><span class="nav-brand">arq · anexo 3</span><ul class="nav-links"><li><a href="cap1.html">cap. 1</a></li><li><a href="arq.html">disciplina</a></li></ul></div></nav>
+<div class="progress-track"><div class="progress-fill" id="progressFill"></div></div>
+<section class="hero"><div class="container"><p class="hero-eyebrow">Arquitetura de Computadores · material complementar</p><h1>Representação Numérica<br><strong>em Computadores</strong></h1><div class="hero-meta"><span class="meta-item">Prof. Clayton J A Silva</span><span class="meta-item">Rev 2026.2</span></div><div class="objectives"><p class="label">Síntese</p><ul><li>Binário puro, inteiros negativos e ponto flutuante</li><li>Layout e padrão visual compatíveis com o capítulo 1</li><li>Figuras didáticas substituídas por diagramas SVG incorporados ao HTML</li></ul></div><div class="toc"><a href="#31-representação-de-números-em-binário-puro">3.1 Representação
+de números em binário puro</a>
+<a href="#32-a-palavra-de-máquina">3.2 A palavra de
+máquina</a>
+<a href="#33-representação-de-números-inteiros-negativos">3.3
+Representação de números inteiros negativos</a>
+<a href="#331-representação-em-sinal-e-magnitude-bit-sinal">3.3.1
+Representação em sinal e magnitude (bit sinal)</a>
+<a href="#332-representação-em-complemento-de-1">3.3.2 Representação em
+complemento de 1</a>
+<a href="#333-representação-em-complemento-de-2">3.3.3 Representação em
+complemento de 2</a>
+<a href="#334-representação-em-excesso-de-2m-1">3.3.4 Representação em
+excesso de 2 m-1</a>
+<a href="#34-visão-geral">3.4 Visão geral</a>
+<a href="#35-representação-em-ponto-flutuante">3.5 Representação em ponto
+flutuante</a></div></div></section>
+<div class="container markdown-body"><h1 id="anexo-3---representação-numérica-binário-puro-inteiros-negativos-ponto-flutuante">ANEXO
+3 - Representação numérica: binário puro, inteiros negativos, ponto
+flutuante</h1>
+<div class="svg-panel"><svg viewBox="0 0 900 390" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Representações numéricas em sistemas computacionais">
+<rect x="330" y="30" width="240" height="60" rx="14" fill="rgba(0,194,255,.06)" stroke="#00c2ff" stroke-width="2"/><text x="450" y="64" text-anchor="middle" class="dlbl">Representação numérica</text><text x="450" y="82" text-anchor="middle" class="dlbl2">palavra de máquina com m bits</text>
+<path d="M450 90 V130" class="dwire"/><path d="M150 130 H750" class="dwire"/><path d="M150 130 V170 M350 130 V170 M550 130 V170 M750 130 V170" class="dwire"/>
+<rect x="60" y="170" width="180" height="78" rx="14" fill="rgba(124,58,237,.06)" stroke="#7c3aed" stroke-width="2"/><text x="150" y="202" text-anchor="middle" class="dlbl">binário puro</text><text x="150" y="224" text-anchor="middle" class="dlbl2">inteiros sem sinal</text>
+<rect x="260" y="170" width="180" height="78" rx="14" fill="rgba(0,194,255,.06)" stroke="#00c2ff" stroke-width="2"/><text x="350" y="202" text-anchor="middle" class="dlbl">inteiros negativos</text><text x="350" y="224" text-anchor="middle" class="dlbl2">sinal · C1 · C2 · excesso</text>
+<rect x="460" y="170" width="180" height="78" rx="14" fill="rgba(124,58,237,.06)" stroke="#7c3aed" stroke-width="2"/><text x="550" y="202" text-anchor="middle" class="dlbl">ponto flutuante</text><text x="550" y="224" text-anchor="middle" class="dlbl2">mantissa + expoente</text>
+<rect x="660" y="170" width="180" height="78" rx="14" fill="rgba(0,194,255,.06)" stroke="#00c2ff" stroke-width="2"/><text x="750" y="202" text-anchor="middle" class="dlbl">códigos</text><text x="750" y="224" text-anchor="middle" class="dlbl2">símbolos discretos</text>
+<rect x="120" y="305" width="660" height="52" rx="10" fill="#0f172a" stroke="#1e2d40"/><text x="450" y="328" text-anchor="middle" class="dlbl">Formato conceitual de ponto flutuante</text><text x="450" y="348" text-anchor="middle" class="dlbl2">N = f × 10ᵉ · faixa depende do expoente · precisão depende da mantissa</text>
+</svg><p class="fig-caption">Mapa conceitual das principais representações numéricas discutidas no anexo.</p></div>
+<h2 id="31-representação-de-números-em-binário-puro">3.1 Representação
+de números em binário puro</h2>
+<p>As grandezas numéricas representadas nos sistemas computacionais
+utilizam o sistema binário de numeração.</p>
+<p>Os conjuntos dos números discutidos na matemática do "sistema
+decimal" também merecem um tratamento próprio nos sistemas
+computacionais.</p>
+<p>Nos sistemas computacionais, em certas circunstâncias, é necessário
+tratar somente o <strong>valor absoluto</strong>, isto é, sem sinal, do
+<strong>número inteiro</strong>.</p>
+<p>Designaremos essa representação dos números dos sistemas
+computacionais como <strong>representação em binário puro.</strong></p>
+<h2 id="32-a-palavra-de-máquina">3.2 A <strong>palavra de
+máquina</strong></h2>
+<p>"Em ciência da computação, palavra (em inglês: word) é a unidade
+natural de informação usada por cada tipo de computador em
+particular.</p>
+<p>É uma sequência de bits de tamanho fixo que é processado em conjunto
+numa máquina." <a href="https://pt.wikipedia.org/wiki/Palavra_(ci%C3%AAncia_da_computa%C3%A7%C3%A3o)#:~:text=Em%20ci%C3%AAncia%20da%20computa%C3%A7%C3%A3o%2C%20palavra,processado%20em%20conjunto%20numa%20m%C3%A1quina.">Wikipédia</a></p>
+<p>Para não haver equívoco, sempre que nos referirmos a uma grandeza
+numérica tratada pelos sistemas computacionais, definiremos o tamanho da
+<strong>palavra</strong>, conforme o sentido descrito acima, da
+arquitetura.</p>
+<h2 id="33-representação-de-números-inteiros-negativos">3.3
+Representação de <strong>números inteiros negativos</strong></h2>
+<p>Seja um número binário negativo com <em>m</em> bits, ele pode ser
+representado das seguintes notações:</p>
+<ul>
+<li>Representação em <strong>bit sinal (sinal e magnitude)</strong></li>
+<li>Representação em <strong>complemento de 1</strong></li>
+<li>Representação em <strong>complemento de 2</strong></li>
+<li>Representação em <strong>excesso 2<sup>m-1</sup></strong></li>
+</ul>
+<h3 id="331-representação-em-sinal-e-magnitude-bit-sinal">3.3.1
+Representação em sinal e magnitude (bit sinal)</h3>
+<h4 id="a-representação">a. Representação</h4>
+<p>Seja um número de <em>m</em> bits, <em><strong>N = b<sub>m-1</sub>
+... b<sub>1</sub> b<sub>0</sub></strong></em>, usando a notação em bit
+sinal,</p>
+<ol type="1">
+<li>Na posição <strong>mais significativa</strong>, utiliza-se o bit
+sinal para os números positivos e negativos</li>
+<li>Os demais bits representam o valor representado em binário puro</li>
+<li>Utilizaremos como notação que o bit sinal igual a 0 define
+<strong>números positivos</strong> e que o bit sinal igual a 1 define
+números <strong>negativos</strong></li>
+</ol>
+<div class="table-wrap"><table>
+<thead>
+<tr class="header">
+<th>bit sinal</th>
+<th>representação em binário puro</th>
+<th>Positivo/Negativo</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>0</td>
+<td>b<sub>m-2</sub> ... b<sub>1</sub> b<sub>0</sub></td>
+<td><strong>Positivos</strong></td>
+</tr>
+<tr class="even">
+<td>1</td>
+<td>b<sub>m-2</sub> ... b<sub>1</sub> b<sub>0</sub></td>
+<td><strong>Negativos</strong></td>
+</tr>
+</tbody>
+</table></div>
+<h4 id="b-características">b. Características</h4>
+<ol type="1">
+<li>Dos <em>m</em> bits, 1 bit fica reservado ao sinal</li>
+<li><strong>Faixa de representação</strong>: -(2<sup>m-1</sup>-1) a
++(2<sup>m-1</sup>-1). A faixa de representação representa os limites dos
+números contemplados, desde o inteiro mais negativo até o inteiro mais
+positivos.</li>
+<li><strong>Dupla representação do 0</strong> – todos os bits iguais a
+0, com bit sinal 0 ou 1.</li>
+</ol>
+<h3 id="332-representação-em-complemento-de-1">3.3.2 Representação em
+complemento de 1</h3>
+<h4 id="a-complemento-de-números">a. Complemento de números</h4>
+<p>O complemento de um número de <em>m</em> dígitos é a diferença entre
+o maior número de <em>m</em> dígitos naquela base e o número
+considerado.<br/>
+Por exemplo, na base 10, o complemento de 12 é 87, pois 99 (maior número
+com 2 dígitos) menos 12 é igual a 87.</p>
+<p><strong>Na base 2, para obter o complemento basta inverter os bits do
+número binário</strong>.</p>
+<p>Por exemplo <em>C<sub>1</sub></em>(1011) = 1111-1011 = 0100 (inversão
+dos bits de 1011), onde <em>C<sub>1</sub></em> representa a operação
+complemento, chamado na base 2 de <strong>complemento de 1.</strong></p>
+<h4 id="b-representação-em-complemento-de-1">b. Representação em
+complemento de 1</h4>
+<p>Considerando o que foi tratado acima, seja um número de <em>m</em>
+bits, <em><strong>N = b<sub>m-1</sub> ... b<sub>1</sub>
+b<sub>0</sub></strong></em>, usando a notação em complemento de 1,</p>
+<ol type="1">
+<li>Na posição <strong>mais significativa</strong>, utiliza-se o bit
+sinal para os números positivos e negativos</li>
+<li>Na faixa <strong>dos números positivos</strong>, o bit sinal é 0,
+seguido pelos demais bits representando o valor em binário puro</li>
+<li>Na faixa <strong>dos números negativos</strong>, o bit sinal é 1,
+seguido pelo complemento de 1 do respectivo <strong>simétrico</strong>
+positivo</li>
+</ol>
+<div class="table-wrap"><table>
+<thead>
+<tr class="header">
+<th>bit sinal</th>
+<th>representação em binário puro</th>
+<th>Positivo/Negativo</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>0</td>
+<td>b<sub>m-2</sub> ... b<sub>1</sub> b<sub>0</sub></td>
+<td><strong>Positivos</strong></td>
+</tr>
+<tr class="even">
+<td>1</td>
+<td>Complemento de 1 de b<sub>m-2</sub> ... b<sub>1</sub>
+b<sub>0</sub></td>
+<td><strong>Negativos</strong></td>
+</tr>
+</tbody>
+</table></div>
+<h4 id="c-características">c. Características</h4>
+<ol type="1">
+<li>Dos <em>m</em> bits, 1 bit fica reservado ao sinal</li>
+<li><strong>Faixa de representação</strong>: -(2<sup>m-1</sup>-1) a
++(2<sup>m-1</sup>-1).</li>
+<li><strong>Dupla representação do 0</strong> – todos os bits iguais a 0
+todos os bits iguais a 1.</li>
+</ol>
+<h3 id="333-representação-em-complemento-de-2">3.3.3 Representação em
+complemento de 2</h3>
+<h4 id="a-representação-1">a. Representação</h4>
+<p>O complemento 2 de números binários obtém-se pela soma do complemento
+de 1 com o bit 1.</p>
+<p>Ou seja, C<sub>2</sub>(N) = C<sub>1</sub>(N) + 1.</p>
+<p>Considerando o que foi tratado acima, seja um número de <em>m</em>
+bits, <em><strong>N = b<sub>m-1</sub> ... b<sub>1</sub>
+b<sub>0</sub></strong></em>, usando a notação em complemento de 1,</p>
+<ol type="1">
+<li>Na posição <strong>mais significativa</strong>, utiliza-se o bit
+sinal para os números positivos e negativos</li>
+<li>Na faixa <strong>dos números positivos</strong>, o bit sinal é 0,
+seguido pelos demais bits representando o valor em binário puro</li>
+<li>Na faixa <strong>dos números negativos</strong>, o bit sinal é 1,
+seguido pelo complemento de 2 do respectivo <strong>simétrico</strong>
+positivo</li>
+<li>A faixa dos negativos possui uma palavra <em>10...0</em>, que não
+possui simétrico positivo - esse é o valor mais negativo</li>
+</ol>
+<div class="table-wrap"><table>
+<thead>
+<tr class="header">
+<th>bit sinal</th>
+<th>representação em binário puro</th>
+<th>Positivo/Negativo</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>0</td>
+<td>b<sub>m-2</sub> ... b<sub>1</sub> b<sub>0</sub></td>
+<td><strong>Positivos</strong></td>
+</tr>
+<tr class="even">
+<td>1</td>
+<td>Complemento de 2 de b<sub>m-2</sub> ... b<sub>1</sub>
+b<sub>0</sub></td>
+<td><strong>Negativos</strong></td>
+</tr>
+</tbody>
+</table></div>
+<h4 id="b-características-1">b. Características</h4>
+<ol type="1">
+<li>Dos <em>m</em> bits, 1 bit fica reservado ao sinal</li>
+<li><strong>Faixa de representação</strong>: -(2<sup>m-1</sup>) a
++(2<sup>m-1</sup>-1).</li>
+<li><strong>Não</strong> possui dupla representação do 0.</li>
+</ol>
+<h3 id="334-representação-em-excesso-de-2m-1">3.3.4 Representação em
+excesso de 2<sup>m-1</sup></h3>
+<h4 id="a-representação-2">a. Representação</h4>
+<p>Seja um número de <em>m</em> bits, <em><strong>N = b<sub>m-1</sub>
+... b<sub>1</sub> b<sub>0</sub></strong></em>, usando a notação em
+excesso <strong>m-1</strong>, a representação binária é a mesma da
+representação em binário puro deslocada de até a faixa dos negativos em
+<em>2<sup>m-1</sup></em>.</p>
+<ol type="1">
+<li>O número mais negativo é o decimal -2<sup>m-1</sup>, representado
+por todos <em>m</em> bits iguais a 0.</li>
+<li>Incrementa-se 1 a cada número seguinte até o número mais
+positivo.</li>
+</ol>
+<p>Cada número em representação de excesso <em>m-1</em> equivale ao
+binário puro de <em>m</em> bits decrementado de -2<sup>m-1</sup>. Por
+exemplo, em palavras de 4 bits, o excesso é 2<sup>3</sup>=8. A
+representação de 0d (em decimal) em binário puro é 0000, que corresponde
+a 0-8=-8 em excesso 8. A representação de 12d em binário puro é 1100,
+que corresponde a (12-8)=+4 em excesso 8.</p>
+<h4 id="b-características-2">b. Características</h4>
+<ol type="1">
+<li><strong>Não utiliza</strong> bit sinal.</li>
+<li><strong>Faixa de representação</strong>: -(2<sup>m-1</sup>) a
++(2<sup>m-1</sup>-1).</li>
+<li><strong>Não</strong> possui dupla representação do 0.</li>
+</ol>
+<h2 id="34-visão-geral">3.4 Visão geral</h2>
+<p>A tabela apresenta uma comparação entre representações de inteiros
+negativos e positivos em um sistema cuja palavra possui 4 bits.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr class="header">
+<th>base 10</th>
+<th>Sinal e magnitude</th>
+<th>Complemento de 1</th>
+<th>Complemento de 2</th>
+<th>excesso 8</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>+7</td>
+<td>0111</td>
+<td>0111</td>
+<td>0111</td>
+<td>1111</td>
+</tr>
+<tr class="even">
+<td>+6</td>
+<td>0110</td>
+<td>0110</td>
+<td>0110</td>
+<td>1110</td>
+</tr>
+<tr class="odd">
+<td>+5</td>
+<td>0101</td>
+<td>0101</td>
+<td>0101</td>
+<td>1101</td>
+</tr>
+<tr class="even">
+<td>+4</td>
+<td>0100</td>
+<td>0100</td>
+<td>0100</td>
+<td>1100</td>
+</tr>
+<tr class="odd">
+<td>+3</td>
+<td>0011</td>
+<td>0011</td>
+<td>0011</td>
+<td>1011</td>
+</tr>
+<tr class="even">
+<td>+2</td>
+<td>0010</td>
+<td>0010</td>
+<td>0010</td>
+<td>1010</td>
+</tr>
+<tr class="odd">
+<td>+1</td>
+<td>0001</td>
+<td>0001</td>
+<td>0001</td>
+<td>1001</td>
+</tr>
+<tr class="even">
+<td>0</td>
+<td>0000</td>
+<td>0000</td>
+<td>0110</td>
+<td>1000</td>
+</tr>
+<tr class="odd">
+<td>0</td>
+<td>1000</td>
+<td>1111</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr class="even">
+<td>-1</td>
+<td>1001</td>
+<td>1110</td>
+<td>1111</td>
+<td>0111</td>
+</tr>
+<tr class="odd">
+<td>-2</td>
+<td>1010</td>
+<td>1101</td>
+<td>1110</td>
+<td>0110</td>
+</tr>
+<tr class="even">
+<td>-3</td>
+<td>1011</td>
+<td>1100</td>
+<td>1101</td>
+<td>0101</td>
+</tr>
+<tr class="odd">
+<td>-4</td>
+<td>1100</td>
+<td>1011</td>
+<td>1100</td>
+<td>0100</td>
+</tr>
+<tr class="even">
+<td>-5</td>
+<td>1101</td>
+<td>1010</td>
+<td>1011</td>
+<td>0011</td>
+</tr>
+<tr class="odd">
+<td>-6</td>
+<td>1110</td>
+<td>1001</td>
+<td>1010</td>
+<td>0010</td>
+</tr>
+<tr class="even">
+<td>-7</td>
+<td>1111</td>
+<td>1000</td>
+<td>1001</td>
+<td>0001</td>
+</tr>
+<tr class="odd">
+<td>-8</td>
+<td>-</td>
+<td>-</td>
+<td>1000</td>
+<td>0000</td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="35-representação-em-ponto-flutuante">3.5 Representação em ponto
+flutuante</h2>
+<p>Os números reais, particularmente os números fracionários, podem ser
+representados usando-se <strong>notação científica</strong>, na
+forma</p>
+<p><span class="math display"><em>N</em> = <em>f</em> × 10<sup><em>e</em></sup></span></p>
+<p>, onde <em>f</em> é a <strong>fração ou mantissa</strong> e
+<em>e</em> é o <strong>expoente</strong>.</p>
+<p>Computacionalmente, o equivalemente aos números fracionários
+representados em notação científica, são os números com representação em
+<strong>ponto flutuante</strong>.</p>
+<p>Pela representação em ponto flutuante <strong>convenciona-se o número
+de dígitos</strong> para representar mantissa e expoente.</p>
+<p>Nesse sentido, um sistema com palavras de <em>m</em> bits utiliza,
+<em>n</em> bits para representar a mantissa (ou fração) e <em>k=m-n</em>
+bits para representar o expoente.</p>
+<p>Tanto mantissa quanto expoente podem utilizar uma das representações
+de números negativos discutidas anteriormente.</p>
+<p>Admitindo que a faixa de representação da notação usada para a
+mantissa seja <em>-N</em> a <em>+M</em> e para o expoente seja
+<em>-P</em> a <em>+Q</em>,a faixa de representação dos números de ponto
+flutuante será</p>
+<ul>
+<li>no semi eixo dos números negativos, <em>-N.10<sup>+Q</sup></em> a
+<em>-10<sup>-P</sup></em></li>
+<li>0 (mantissa igual a 0)</li>
+<li>no semi eixo dos números positivos, *+10<sup>-P</sup> a
+<em>+M.10<sup>+Q</sup></em></li>
+</ul>
+<p>A representação pode ser caracterizada pela <strong>faixa de
+representação</strong> (limites da representação numerica) e pela
+<strong>precisão</strong>:</p>
+<ul>
+<li>a faixa de representação é determinada pelo <strong>número de
+dígitos do expoente</strong>; e</li>
+<li>a precisão é determinada pelo <strong>número de dígitos da
+mantissa</strong>.</li>
+</ul>
+</div>
+<div class="container"><div class="chapter-nav"><a href="arq_anexo2_conversao_bases.html"><span class="dir">anterior</span>Anexo 2</a><a class="next" href="cap1.html"><span class="dir">próximo</span>Capítulo 1</a></div></div>
+<footer><div class="container"><p>© 2026 · Prof. Clayton J A Silva · Ibmec RJ</p><p><a href="cap1.html">Capítulo 1</a></p></div></footer>
+<script>
+window.addEventListener('scroll',()=>{const h=document.documentElement;const p=h.scrollTop/(h.scrollHeight-h.clientHeight)*100;document.getElementById('progressFill').style.width=p+'%';});
+document.querySelectorAll('.math').forEach(el=>{try{katex.render(el.textContent,el,{throwOnError:false,displayMode:el.classList.contains('display')});}catch(e){}});
+</script>
+</body></html>

@@ -1,0 +1,707 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Cap. 1 — Máquina de von Neumann | Arquitetura de Computadores</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/contrib/auto-render.min.js"></script>
+<style>
+:root {
+  --bg:        #0a0e17;
+  --surface:   #111827;
+  --surface2:  #161f2e;
+  --border:    #1e2d40;
+  --accent:    #00c2ff;
+  --accent2:   #7c3aed;
+  --text:      #e2e8f0;
+  --muted:     #64748b;
+  --tag-bg:    #0f172a;
+  --font-mono: 'IBM Plex Mono', monospace;
+  --font-sans: 'IBM Plex Sans', sans-serif;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{background:var(--bg);color:var(--text);font-family:var(--font-sans);font-size:16px;line-height:1.65;}
+a{color:var(--accent);text-decoration:none;}
+a:hover{text-decoration:underline;}
+.container{max-width:980px;margin:0 auto;padding:0 2rem;}
+
+nav{position:sticky;top:0;z-index:100;background:rgba(10,14,23,.9);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);padding:.9rem 0;}
+nav .container{display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap;}
+.nav-brand{font-family:var(--font-mono);font-size:.78rem;color:var(--accent);}
+.nav-links{display:flex;gap:1rem;list-style:none;flex-wrap:wrap;}
+.nav-links a{font-family:var(--font-mono);font-size:.7rem;color:var(--muted);}
+.nav-links a:hover{color:var(--text);text-decoration:none;}
+
+.progress-track{height:3px;background:var(--border);position:sticky;top:53px;z-index:99;}
+.progress-fill{height:100%;width:0%;background:linear-gradient(90deg,var(--accent),var(--accent2));transition:width .1s;}
+
+.hero{padding:4rem 0 2.5rem;position:relative;overflow:hidden;}
+.hero::before{content:'';position:absolute;inset:0;background-image:linear-gradient(var(--border) 1px,transparent 1px),linear-gradient(90deg,var(--border) 1px,transparent 1px);background-size:40px 40px;opacity:.3;mask-image:radial-gradient(ellipse 80% 60% at 50% 0%,black 40%,transparent 100%);}
+.hero-eyebrow{font-family:var(--font-mono);font-size:.74rem;color:var(--accent);letter-spacing:.14em;text-transform:uppercase;margin-bottom:1rem;display:flex;align-items:center;gap:.7rem;}
+.hero-eyebrow::before{content:'';width:2rem;height:1px;background:var(--accent);}
+h1{font-size:clamp(2rem,4.5vw,3.2rem);font-weight:300;line-height:1.12;letter-spacing:-.02em;margin-bottom:.6rem;}
+h1 strong{font-weight:600;color:var(--accent);}
+.hero-meta{display:flex;gap:1.5rem;flex-wrap:wrap;margin-top:1.2rem;}
+.meta-item{font-family:var(--font-mono);font-size:.74rem;color:var(--muted);display:flex;align-items:center;gap:.4rem;}
+.meta-item svg{flex-shrink:0;}
+
+.objectives{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:1.4rem 1.6rem;margin-top:1.6rem;}
+.objectives p.label{font-family:var(--font-mono);font-size:.7rem;color:var(--accent);letter-spacing:.1em;text-transform:uppercase;margin-bottom:.7rem;}
+.objectives ul{list-style:none;display:grid;gap:.5rem;}
+.objectives li{font-size:.88rem;color:var(--muted);display:flex;gap:.6rem;}
+.objectives li::before{content:'→';color:var(--accent);flex-shrink:0;}
+
+.toc{display:flex;gap:.5rem;flex-wrap:wrap;margin-top:1.5rem;}
+.toc a{font-family:var(--font-mono);font-size:.7rem;color:var(--muted);border:1px solid var(--border);padding:.35rem .75rem;border-radius:20px;transition:.2s;}
+.toc a:hover{border-color:var(--accent);color:var(--accent);text-decoration:none;}
+
+.section{padding:3rem 0;border-top:1px solid var(--border);}
+.section-label{font-family:var(--font-mono);font-size:.7rem;color:var(--accent);letter-spacing:.14em;text-transform:uppercase;display:flex;align-items:center;gap:.7rem;margin-bottom:1.4rem;}
+.section-label::after{content:'';flex:1;height:1px;background:var(--border);}
+h2{font-size:1.5rem;font-weight:600;letter-spacing:-.01em;margin-bottom:1rem;}
+h3{font-size:1.1rem;font-weight:600;margin:1.6rem 0 .8rem;color:var(--text);}
+h4{font-size:.95rem;font-weight:600;margin:1.2rem 0 .6rem;color:var(--accent);}
+p{margin-bottom:1rem;color:#cbd5e1;}
+strong{color:var(--text);font-weight:600;}
+em{color:var(--accent);font-style:normal;}
+ul.plain{margin:0 0 1rem 1.2rem;color:#cbd5e1;}
+ul.plain li{margin-bottom:.4rem;}
+ol.plain{margin:0 0 1rem 1.2rem;color:#cbd5e1;}
+ol.plain li{margin-bottom:.5rem;}
+
+.codeline{background:var(--tag-bg);border:1px solid var(--border);border-radius:6px;padding:.7rem 1rem;font-family:var(--font-mono);font-size:1rem;color:var(--accent);text-align:center;margin:1rem 0;}
+.codeblock{background:var(--tag-bg);border:1px solid var(--border);border-radius:6px;padding:.9rem 1.1rem;font-family:var(--font-mono);font-size:.78rem;color:#a8d8ef;margin:1rem 0;overflow-x:auto;white-space:pre;line-height:1.6;}
+.codeblock .cmt{color:var(--muted);}
+
+.concept-grid{display:grid;grid-template-columns:1fr 1fr;gap:2rem;align-items:start;margin:1.5rem 0;}
+.concept-text{display:flex;flex-direction:column;justify-content:center;}
+.concept-fig{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:1rem;}
+.concept-fig img,.concept-fig svg{width:100%;display:block;}
+.fig-caption{font-family:var(--font-mono);font-size:.72rem;color:var(--muted);text-align:center;margin-top:.6rem;}
+@media (max-width:760px){.concept-grid{grid-template-columns:1fr;}}
+
+.fig-full{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:1.2rem;margin:1.5rem 0;}
+.fig-full img,.fig-full svg{width:100%;display:block;}
+
+.definition{background:var(--surface);border:1px solid var(--accent2);border-left:3px solid var(--accent2);border-radius:0 8px 8px 0;padding:1.2rem 1.5rem;margin:1.2rem 0;}
+.definition .dtitle{font-family:var(--font-mono);font-size:.7rem;color:var(--accent2);letter-spacing:.1em;text-transform:uppercase;margin-bottom:.5rem;}
+
+.note{background:var(--tag-bg);border:1px solid var(--border);border-radius:6px;padding:.9rem 1.1rem;margin:1rem 0;font-size:.85rem;color:var(--muted);}
+.note strong{color:var(--accent);}
+
+table{width:100%;border-collapse:collapse;font-size:.85rem;margin:1.2rem 0;}
+thead tr{background:var(--tag-bg);}
+thead th{padding:.5rem .7rem;text-align:center;font-family:var(--font-mono);font-size:.68rem;color:var(--muted);letter-spacing:.06em;text-transform:uppercase;font-weight:400;border-bottom:1px solid var(--border);}
+tbody td{padding:.45rem .7rem;border-bottom:1px solid var(--border);color:var(--muted);text-align:center;}
+tbody tr:hover{background:rgba(255,255,255,.02);}
+td.tleft, th.tleft{text-align:left;}
+
+.method-card{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:1.4rem 1.6rem;margin:1.2rem 0;position:relative;overflow:hidden;}
+.method-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--accent),var(--accent2));}
+.method-num{font-family:var(--font-mono);font-size:.7rem;color:var(--accent);background:rgba(0,194,255,.08);border:1px solid rgba(0,194,255,.25);border-radius:4px;padding:.2rem .6rem;display:inline-block;margin-bottom:.7rem;}
+.method-card h4{margin:0 0 .8rem;color:var(--text);font-size:1rem;}
+.steps{list-style:none;counter-reset:step;}
+.steps li{counter-increment:step;display:flex;gap:.7rem;margin-bottom:.6rem;font-size:.88rem;color:#cbd5e1;}
+.steps li::before{content:counter(step);font-family:var(--font-mono);font-size:.72rem;color:var(--accent);background:var(--tag-bg);border:1px solid var(--border);border-radius:50%;width:22px;height:22px;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+
+.ds-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:.6rem;margin:1rem 0;}
+.ds-item{background:var(--tag-bg);border:1px solid var(--border);border-radius:6px;padding:.7rem 1rem;display:flex;gap:.6rem;align-items:center;transition:.2s;}
+.ds-item:hover{border-color:var(--accent);}
+.ds-item a{font-size:.8rem;color:var(--text);font-family:var(--font-mono);}
+.ds-item a:hover{color:var(--accent);text-decoration:none;}
+
+.quiz{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:1.6rem;margin:1.5rem 0;}
+.quiz-header{display:flex;align-items:center;gap:.6rem;margin-bottom:1.2rem;}
+.quiz-header svg{flex-shrink:0;}
+.quiz-title{font-family:var(--font-mono);font-size:.8rem;color:var(--accent2);letter-spacing:.05em;}
+.quiz-q{font-size:.95rem;margin-bottom:.9rem;color:var(--text);}
+.quiz-options{display:flex;flex-direction:column;gap:.55rem;}
+.quiz-opt{background:var(--tag-bg);border:1px solid var(--border);border-radius:6px;padding:.7rem 1rem;font-size:.85rem;color:var(--muted);cursor:pointer;transition:.15s;text-align:left;width:100%;font-family:var(--font-sans);}
+.quiz-opt:hover{border-color:var(--accent);color:var(--text);}
+.quiz-opt.correct{border-color:#22c55e;background:rgba(34,197,94,.08);color:#86efac;}
+.quiz-opt.wrong{border-color:#ef4444;background:rgba(239,68,68,.08);color:#fca5a5;}
+.quiz-feedback{margin-top:.9rem;font-size:.85rem;padding:.8rem 1rem;border-radius:6px;display:none;}
+.quiz-feedback.show{display:block;}
+.quiz-feedback.correct-fb{background:rgba(34,197,94,.08);border:1px solid #22c55e;color:#86efac;}
+.quiz-feedback.wrong-fb{background:rgba(239,68,68,.08);border:1px solid #ef4444;color:#fca5a5;}
+
+.refs-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:.8rem;}
+.ref-card{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:1rem 1.2rem;display:flex;gap:.8rem;align-items:flex-start;transition:.2s;}
+.ref-card:hover{border-color:var(--accent);}
+.ref-card svg{flex-shrink:0;margin-top:.15rem;}
+.ref-card h4{font-size:.88rem;font-weight:600;margin:0 0 .2rem;color:var(--text);}
+.ref-card p{font-size:.76rem;color:var(--muted);margin:0;}
+.ref-type{font-family:var(--font-mono);font-size:.62rem;color:var(--accent);text-transform:uppercase;letter-spacing:.06em;}
+
+.chapter-nav{display:flex;justify-content:space-between;gap:1rem;margin-top:2rem;}
+.chapter-nav a{flex:1;background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:1rem 1.3rem;font-size:.85rem;transition:.2s;}
+.chapter-nav a:hover{border-color:var(--accent);text-decoration:none;}
+.chapter-nav .dir{font-family:var(--font-mono);font-size:.65rem;color:var(--muted);text-transform:uppercase;letter-spacing:.08em;display:block;margin-bottom:.3rem;}
+.chapter-nav .next{text-align:right;}
+
+footer{border-top:1px solid var(--border);padding:2rem 0;margin-top:2rem;}
+footer .container{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;}
+footer p{font-size:.8rem;color:var(--muted);font-family:var(--font-mono);}
+
+@media(max-width:640px){.nav-links{display:none;}.hero{padding:2.5rem 0 2rem;}}
+
+.katex{color:var(--accent);font-size:1.05em;}
+
+/* SVG diagram helpers */
+.dwire{stroke:#3b4a5e;stroke-width:1.6;fill:none;}
+.dbox{stroke:#00c2ff;stroke-width:1.6;fill:none;}
+.dbox2{stroke:#7c3aed;stroke-width:1.6;fill:none;}
+.dlbl{font-family:'IBM Plex Mono',monospace;font-size:13px;fill:#cbd5e1;}
+.dlbl2{font-family:'IBM Plex Mono',monospace;font-size:11px;fill:#64748b;}
+.dfill{fill:#111827;}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="container">
+    <span class="nav-brand">arq · cap. 1</span>
+    <ul class="nav-links">
+      <li><a href="#s1">1.1 Histórico</a></li>
+      <li><a href="#s2">1.2 IAS detalhado</a></li>
+      <li><a href="#s3">1.3 Memória e instruções</a></li>
+      <li><a href="#quiz">Quiz</a></li>
+      <li><a href="#anexos">Anexos</a></li>
+      <li><a href="https://claytonjasilva.github.io/arq.html">← disciplina</a></li>
+    </ul>
+  </div>
+</nav>
+<div class="progress-track"><div class="progress-fill" id="progressFill"></div></div>
+
+<section class="hero">
+  <div class="container">
+    <p class="hero-eyebrow">Arquitetura de Computadores · Ibmec RJ</p>
+    <h1>Cap. 1 — Máquina<br><strong>de von Neumann</strong></h1>
+
+    <div class="hero-meta">
+      <span class="meta-item">
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><circle cx="7" cy="7" r="6" stroke="currentColor" stroke-width="1.2"/><path d="M7 4v3l2 1.5" stroke="currentColor" stroke-width="1.2"/></svg>
+        leitura ~40 min
+      </span>
+      <span class="meta-item">
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><rect x="2" y="3" width="10" height="9" rx="1" stroke="currentColor" stroke-width="1.2"/><line x1="2" y1="6" x2="12" y2="6" stroke="currentColor" stroke-width="1.2"/></svg>
+        Prof. Clayton J A Silva
+      </span>
+      <span class="meta-item">
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 7l4 4 6-7" stroke="currentColor" stroke-width="1.4" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        Rev 2026.2
+      </span>
+    </div>
+
+    <div class="objectives">
+      <p class="label">Objetivos de aprendizagem</p>
+      <ul>
+        <li>Compreender o conceito de programa armazenado e a arquitetura da máquina IAS</li>
+        <li>Identificar os elementos funcionais do computador: memória, CPU, E/S e barramento</li>
+        <li>Detalhar os registradores internos do IAS e o ciclo de busca-execução de instruções</li>
+        <li>Classificar o conjunto de instruções do processador IAS</li>
+        <li>Interpretar e escrever pequenos trechos de código em linguagem de montagem (<em>assembly</em>)</li>
+      </ul>
+    </div>
+
+    <div class="toc">
+      <a href="#s1">1.1 Breve histórico</a>
+      <a href="#s1a">1.1.1 Memória</a>
+      <a href="#s1b">1.1.2 CPU</a>
+      <a href="#s1c">1.1.3 E/S</a>
+      <a href="#s1d">1.1.4 Barramento</a>
+      <a href="#s2">1.2 Estrutura detalhada do IAS</a>
+      <a href="#s3a">1.3.1 Armazenamento de instruções</a>
+      <a href="#s3b">1.3.2 Ciclo de instrução</a>
+      <a href="#s3c">1.3.3 Instruções do processador</a>
+      <a href="#s3d">1.3.4 Linguagem de montagem</a>
+    </div>
+  </div>
+</section>
+
+<div class="container">
+
+  <!-- 1.1 -->
+  <section class="section" id="s1">
+    <p class="section-label">1.1 / breve histórico</p>
+    <h2>Breve histórico</h2>
+
+    <p>A tarefa de carregar e modificar programas nas máquinas historicamente precedentes à máquina <strong>IAS</strong> era extremamente tediosa. A ideia principal da máquina IAS, atribuída a von Neumann, é a do conceito de <strong>programa armazenado</strong>.</p>
+
+    <div class="definition">
+      <p class="dtitle">conceito de programa armazenado</p>
+      <p style="margin:0">O programa a ser executado pela UCP é armazenado em <strong>memória</strong>, juntamente com os dados. O processador busca instruções e dados diretamente da memória. Instruções e dados ocupam posições específicas inequívocas, cada uma definida por um <strong>endereço de memória</strong>.</p>
+    </div>
+
+    <div class="fig-full">
+      <img src="../assets/img/arqcomp/figura1_1.png" alt="Máquina original de von Neumann">
+      <p class="fig-caption">Fig. 1.1 — Máquina original de von Neumann (fonte: Tanenbaum, Organização Estruturada de Computadores)</p>
+    </div>
+
+    <p>A estrutura geral da máquina IAS consiste em:</p>
+    <ul class="plain">
+      <li>Uma <strong>memória principal</strong>, que armazena dados e instruções</li>
+      <li>Uma <strong>Unidade Lógica e Aritmética (ULA)</strong>, capaz de realizar operações matemáticas binárias e operações lógicas</li>
+      <li>Uma <strong>Unidade de Controle (UC)</strong>, que interpreta e executa as instruções armazenadas na memória</li>
+      <li><strong>Dispositivos de entrada e saída (E/S)</strong> operados pela Unidade de Controle</li>
+    </ul>
+
+    <h3 id="s1a">1.1.1 Memória</h3>
+    <p>A memória é o elemento responsável pelo armazenamento das informações, na forma binária. Uma metáfora útil: imagine um armário com várias gavetas, organizadas em linhas e colunas — em cada gaveta armazena-se uma unidade de dado, o <strong>bit</strong> (1 ou 0).</p>
+    <p>Todas as tarefas dos sistemas computacionais decorrem da execução de uma sucessão de instruções binárias armazenadas — os <strong>programas</strong> (software), que comandam os elementos eletromecânicos (<strong>hardware</strong>).</p>
+    <div class="note">As tecnologias de memória evoluem buscando duas frentes simultâneas: maior <strong>capacidade</strong> de armazenamento e maior <strong>velocidade</strong> de resposta às solicitações da CPU.</div>
+
+    <h3 id="s1b">1.1.2 Unidade Central de Processamento</h3>
+    <p>A <strong>CPU</strong> (<em>Central Processing Unit</em>) realiza duas funções básicas: (i) interpretar instruções e controlar o funcionamento do sistema, na <strong>Unidade de Controle</strong>; e (ii) executar as instruções, na <strong>Unidade Lógica e Aritmética</strong>.</p>
+    <p>O controle utiliza como referência temporal um sinal elétrico chamado <strong>clock</strong> — pense em um engenho mecânico sincronizado por engrenagens. O sinal de clock é periódico: repete-se em intervalos regulares chamados <strong>período</strong> (ou ciclo); o número de ciclos por unidade de tempo é a <strong>frequência</strong>.</p>
+    <div class="note">A evolução dos sistemas computacionais busca CPUs com clock cada vez mais veloz — programas executados em tempos cada vez mais curtos.</div>
+    <p>Instruções definidas em fábrica são <strong>decodificadas</strong> pela UC, mas <strong>executadas</strong> pelos circuitos da ULA — tanto operações lógicas (verdadeiro/falso) quanto aritméticas (sobre dados binários).</p>
+
+    <h3 id="s1c">1.1.3 Dispositivos de entrada e saída</h3>
+    <p>Os computadores precisam de uma ligação com os usuários: dispositivos de <strong>entrada</strong> (ex.: teclado) permitem inserir dados; dispositivos de <strong>saída</strong> (ex.: monitor) apresentam os resultados ao ambiente externo. Os dispositivos de E/S também propiciam a comunicação entre máquinas diferentes — do ambiente interno com o ambiente externo.</p>
+
+    <h3 id="s1d">1.1.4 Barramento</h3>
+    <p>Os programas armazenados em memória possuem instruções interpretadas e executadas pela CPU. Os dados resultantes precisam ser armazenados em memória ou enviados a outra máquina via E/S. Para que o tráfego ocorra entre os elementos do computador, são necessárias vias de comunicação — os <strong>barramentos</strong>.</p>
+
+    <table>
+      <thead><tr><th class="tleft">Barramento</th><th class="tleft">Função</th></tr></thead>
+      <tbody>
+        <tr><td class="tleft">Barramento de dados</td><td class="tleft">Trafega os sinais elétricos (0s e 1s) resultantes de operações e relativos a instruções</td></tr>
+        <tr><td class="tleft">Barramento de endereços</td><td class="tleft">Trafega o endereço do componente destinatário do dado — cada componente é endereçável</td></tr>
+        <tr><td class="tleft">Barramento de controle</td><td class="tleft">Veicula os sinais de controle da UC: leitura/escrita em memória, habilitação/desabilitação etc.</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- 1.2 -->
+  <section class="section" id="s2">
+    <p class="section-label">1.2 / estrutura detalhada do ias</p>
+    <h2>Visão detalhada do computador IAS</h2>
+
+    <div class="fig-full">
+      <img src="../assets/img/arqcomp/figura1_2.png" alt="Estrutura do IAS">
+      <p class="fig-caption">Fig. 1.2 — Estrutura do IAS (fonte: Stallings, Arquitetura e Organização de Computadores)</p>
+    </div>
+
+    <p>Os principais elementos internos do IAS:</p>
+
+    <table>
+      <thead><tr><th class="tleft">Registrador</th><th>Capacidade</th><th class="tleft">Função</th></tr></thead>
+      <tbody>
+        <tr><td class="tleft"><strong>MBR</strong> — Memory Buffer Register</td><td>40 bits</td><td class="tleft">Contém uma palavra (par de instruções) a ser lida ou escrita na memória</td></tr>
+        <tr><td class="tleft"><strong>Acc</strong> — Acumulador</td><td>40 bits</td><td class="tleft">Armazena temporariamente operandos e resultados das operações da ULA</td></tr>
+        <tr><td class="tleft"><strong>MQ</strong> — Multiplier Quotient</td><td>40 bits</td><td class="tleft">Em operações &gt;40 bits, armazena os bits menos significativos (Acc guarda os mais significativos)</td></tr>
+        <tr><td class="tleft"><strong>PC</strong> — Program Counter</td><td>10 bits</td><td class="tleft">Contém o endereço do próximo par de instruções; incrementa 1 a cada instrução executada</td></tr>
+        <tr><td class="tleft"><strong>MAR</strong> — Memory Address Register</td><td>12 bits</td><td class="tleft">Contém o endereço da palavra a ser acessada</td></tr>
+        <tr><td class="tleft"><strong>IBR</strong> — Instruction Buffer Register</td><td>20 bits</td><td class="tleft">Contém a instrução à direita da palavra</td></tr>
+        <tr><td class="tleft"><strong>IR</strong> — Instruction Register</td><td>8 bits</td><td class="tleft">Contém o código (<em>opcode</em>) da instrução em execução</td></tr>
+        <tr><td class="tleft">Memória (<em>Memory</em>)</td><td>1024 linhas</td><td class="tleft">Cada linha de endereço armazena uma palavra de 40 bits (duas instruções, ou um dado)</td></tr>
+        <tr><td class="tleft">E/S (<em>I/O</em>)</td><td>—</td><td class="tleft">Leitura e escrita de dados dos dispositivos externos da/para memória</td></tr>
+        <tr><td class="tleft">Barramento (<em>Bus</em>)</td><td>—</td><td class="tleft">Meio de comunicação para tráfego de dados, endereços e sinais de controle</td></tr>
+      </tbody>
+    </table>
+
+    <div class="note">As instruções são armazenadas em <strong>endereços adjacentes</strong> de memória. Cada endereço é <strong>inequívoco</strong> — não existem dois endereços iguais.</div>
+
+    <div class="fig-full">
+      <img src="../assets/img/arqcomp/figura1_3.jpg" alt="Decodificação de endereço de memória IAS">
+      <p class="fig-caption">Fig. 1.3 — Decodificação de endereço de memória IAS: a relação entre a memória e os barramentos de dados e de endereços</p>
+    </div>
+  </section>
+
+  <!-- 1.3 -->
+  <section class="section" id="s3">
+    <p class="section-label">1.3 / memória e instruções</p>
+    <h2>Visão detalhada das células de memória do computador IAS</h2>
+
+    <h3 id="s3a">1.3.1 Armazenamento de instruções</h3>
+    <p>Um par de instruções ocupa cada linha de endereço (palavra de 40 bits).</p>
+
+    <div class="fig-full">
+      <svg viewBox="0 0 640 170" xmlns="http://www.w3.org/2000/svg">
+        <rect x="20" y="30" width="280" height="60" class="dbox" fill="rgba(0,194,255,.06)"/>
+        <rect x="300" y="30" width="280" height="60" class="dbox2" fill="rgba(124,58,237,.06)"/>
+        <text x="160" y="55" text-anchor="middle" class="dlbl" fill="#00c2ff">Instrução à esquerda</text>
+        <text x="160" y="74" text-anchor="middle" class="dlbl2">opcode (8b) + operando (12b)</text>
+        <text x="440" y="55" text-anchor="middle" class="dlbl" fill="#7c3aed">Instrução à direita</text>
+        <text x="440" y="74" text-anchor="middle" class="dlbl2">opcode (8b) + operando (12b)</text>
+        <text x="20" y="20" class="dlbl2">b0</text>
+        <text x="290" y="20" text-anchor="end" class="dlbl2">b19</text>
+        <text x="300" y="20" class="dlbl2">b20</text>
+        <text x="578" y="20" text-anchor="end" class="dlbl2">b39</text>
+        <path d="M20 100 H300" class="dwire"/><path d="M20 95 v10 M300 95 v10" class="dwire"/>
+        <text x="160" y="118" text-anchor="middle" class="dlbl2">20 bits</text>
+        <path d="M300 100 H580" class="dwire"/><path d="M300 95 v10 M580 95 v10" class="dwire"/>
+        <text x="440" y="118" text-anchor="middle" class="dlbl2">20 bits</text>
+        <path d="M20 140 H580" class="dwire"/><path d="M20 135 v10 M580 135 v10" class="dwire"/>
+        <text x="300" y="158" text-anchor="middle" class="dlbl2">40 bits — uma palavra (uma linha de endereço)</text>
+      </svg>
+      <p class="fig-caption">Fig. 1.4 — Par de instruções na memória IAS: instrução à esquerda (b0–b19) e instrução à direita (b20–b39)</p>
+    </div>
+
+    <p>Cada instrução possui um grupo de bits chamado <strong>opcode</strong> (código que define a instrução do processador) e outro grupo chamado <strong>operando</strong>, que contém o endereço do dado a ser buscado em memória. Nem toda instrução requer operando — nesse caso, o processador desconsidera esses bits ao buscar a instrução.</p>
+
+    <div class="fig-full">
+      <img src="../assets/img/arqcomp/figura1_5.jpg" alt="Formato da linha de memória IAS">
+      <p class="fig-caption">Fig. 1.5 — Formato da linha de memória IAS: acima, número; abaixo, par de instruções (fonte: Stallings)</p>
+    </div>
+
+    <div class="definition">
+      <p class="dtitle">ISA — Instruction Set Architecture</p>
+      <p style="margin:0">Define os formatos de instrução, opcodes, registradores, memória de dados e instrução, o efeito das instruções nos registradores/memória, e o algoritmo de controle da execução. Inclui também o número de bits para representar tipos de dados, mecanismos de E/S e técnicas de endereçamento de memória.</p>
+    </div>
+
+    <h3 id="s3b">1.3.2 Ciclo de instrução</h3>
+    <p>A execução das tarefas consiste na execução sucessiva das instruções armazenadas, que constituem os <strong>programas armazenados</strong>. As instruções ficam em posições adjacentes e são executadas <strong>sequencialmente</strong> e <strong>sincronizadamente</strong>, sob controle dos circuitos de controle.</p>
+
+    <p>Após cada instrução, os registradores armazenam um valor — o conjunto desses valores define o <strong>estado</strong> da máquina. O conjunto de microinstruções executadas define o <strong>ciclo de instrução</strong>, composto por duas partes:</p>
+
+    <div class="fig-full">
+      <svg viewBox="0 0 640 160" xmlns="http://www.w3.org/2000/svg">
+        <rect x="40" y="50" width="180" height="60" rx="8" class="dbox" fill="rgba(0,194,255,.06)"/>
+        <text x="130" y="85" text-anchor="middle" class="dlbl" fill="#00c2ff">BUSCA</text>
+        <text x="130" y="103" text-anchor="middle" class="dlbl2">do par de instruções</text>
+        <path d="M220 80 H400" class="dwire"/><path d="M392 73 L400 80 L392 87" class="dwire"/>
+        <rect x="400" y="50" width="180" height="60" rx="8" class="dbox2" fill="rgba(124,58,237,.06)"/>
+        <text x="490" y="85" text-anchor="middle" class="dlbl" fill="#7c3aed">EXECUÇÃO</text>
+        <text x="490" y="103" text-anchor="middle" class="dlbl2">das instruções</text>
+        <path d="M490 110 V135 H130 V110" class="dwire" fill="none"/>
+        <path d="M137 117 L130 110 L123 117" class="dwire"/>
+        <text x="310" y="150" text-anchor="middle" class="dlbl2">repete para o par de instruções seguinte</text>
+      </svg>
+      <p class="fig-caption">Fig. 1.6 — Ciclo de instruções da máquina IAS: busca e execução (fonte: adaptado de Stallings)</p>
+    </div>
+
+    <div class="method-card">
+      <span class="method-num">detalhamento</span>
+      <h4>Fluxo de execução (busca)</h4>
+      <ol class="steps">
+        <li>Programa e dados armazenados em memória: conceito de programa armazenado</li>
+        <li>PC contém o endereço da próxima palavra (par de instruções)</li>
+        <li>O endereço do par de instruções é carregado no MAR</li>
+        <li>O endereço é disponibilizado no barramento de endereços</li>
+        <li>O endereço é decodificado e a posição do par é selecionada</li>
+        <li>O par de instruções é disponibilizado no barramento de dados</li>
+        <li>O par de instruções é armazenado no MBR</li>
+        <li>O opcode da instrução à esquerda vai para o IR; o operando, para o MAR; a instrução à direita, para o IBR</li>
+        <li>A primeira instrução é decodificada</li>
+      </ol>
+    </div>
+
+    <p>A partir daí, o fluxo depende do <strong>modo de endereçamento</strong> do operando. Considerando que o operando referencie o endereço do dado:</p>
+
+    <div class="method-card">
+      <span class="method-num">detalhamento</span>
+      <h4>Fluxo de execução (continuação)</h4>
+      <ol class="steps" start="10">
+        <li>O MAR é ativado para disponibilizar o endereço do dado</li>
+        <li>O endereço do dado é disponibilizado no barramento de endereços</li>
+        <li>O endereço é decodificado e a posição do dado é selecionada</li>
+        <li>O dado é disponibilizado no barramento de dados</li>
+        <li>O dado é armazenado no MBR</li>
+        <li>A ULA realiza a operação</li>
+        <li>O par de instruções seguinte é armazenado no MBR</li>
+        <li>O resultado da operação é armazenado no ACC ou MQ</li>
+        <li>O opcode da segunda instrução é transferido do IBR para o IR, e o operando para o MAR</li>
+        <li>O processo prossegue para decodificação da segunda instrução e busca do dado</li>
+        <li>O par de instruções seguinte é buscado…</li>
+      </ol>
+    </div>
+
+    <div class="fig-full">
+      <img src="../assets/img/arqcomp/figura1_7.png" alt="Fluxograma da operação do IAS">
+      <p class="fig-caption">Fig. 1.7 — Fluxograma da operação do IAS (fonte: adaptado de Stallings)</p>
+    </div>
+
+    <p>Detalhando a operação na ULA: ela efetua adição, subtração e outras operações simples sobre suas entradas, produzindo um resultado no registrador de saída, que pode ser posteriormente escrito em memória.</p>
+
+    <div class="fig-full">
+      <svg viewBox="0 0 640 220" xmlns="http://www.w3.org/2000/svg">
+        <rect x="40" y="20" width="120" height="50" rx="6" class="dbox" fill="rgba(0,194,255,.06)"/>
+        <text x="100" y="50" text-anchor="middle" class="dlbl">Reg. A</text>
+        <rect x="40" y="100" width="120" height="50" rx="6" class="dbox" fill="rgba(0,194,255,.06)"/>
+        <text x="100" y="130" text-anchor="middle" class="dlbl">Reg. B</text>
+        <path d="M160 45 H230 V90" class="dwire"/>
+        <path d="M160 125 H230 V100" class="dwire"/>
+        <path d="M230 60 L300 90 L230 120 Z" class="dbox2" fill="rgba(124,58,237,.06)"/>
+        <text x="248" y="93" class="dlbl2" fill="#7c3aed">ULA</text>
+        <path d="M300 90 H380" class="dwire"/>
+        <rect x="380" y="65" width="120" height="50" rx="6" class="dbox" fill="rgba(0,194,255,.06)"/>
+        <text x="440" y="95" text-anchor="middle" class="dlbl">Reg. Saída</text>
+        <path d="M500 90 H560" class="dwire"/>
+        <path d="M552 83 L560 90 L552 97" class="dwire"/>
+        <text x="568" y="95" class="dlbl2">memória /<tspan x="568" dy="13">barramento</tspan></text>
+      </svg>
+      <p class="fig-caption">Fig. 1.8 — Caminho de dados de uma máquina de von Neumann típica (fonte: Tanenbaum)</p>
+    </div>
+
+    <h3 id="s3c">1.3.3 Instruções do processador IAS</h3>
+    <p>Todo processador possui um <em>set</em> (conjunto) de instruções. As instruções do IAS classificam-se em:</p>
+
+    <ul class="plain">
+      <li><strong>Transferência de dados</strong> — entre memória e registradores, ou entre registradores</li>
+      <li><strong>Desvio incondicional</strong> — altera a sequência normal de execução, independentemente de condição</li>
+      <li><strong>Desvio condicional</strong> — o desvio depende de um teste de condição estabelecido pela instrução</li>
+      <li><strong>Lógicas e aritméticas</strong> — adição, subtração, multiplicação e divisão binárias</li>
+      <li><strong>Alteração de endereços</strong> — calculam endereços a inserir em instruções armazenadas, dando flexibilidade de endereçamento</li>
+    </ul>
+
+    <p>Os programas em linguagem de máquina (sequência binária de instruções) podem ser escritos por representação simbólica (<em>assembly</em>), usando mnemônicos.</p>
+
+    <h4>Instruções de transferência de dados</h4>
+    <table>
+      <thead><tr><th>Código de operação</th><th>Representação simbólica</th><th class="tleft">Descrição</th></tr></thead>
+      <tbody>
+        <tr><td>0000 1010</td><td>LOAD MQ</td><td class="tleft">Transfere o conteúdo de MQ para o acumulador ACC</td></tr>
+        <tr><td>0000 1001</td><td>LOAD MQ,M(X)</td><td class="tleft">Transfere o conteúdo da posição de memória X para MQ</td></tr>
+        <tr><td>0010 0001</td><td>STOR M(X)</td><td class="tleft">Transfere o conteúdo do acumulador para a posição de memória X</td></tr>
+        <tr><td>0000 0001</td><td>LOAD M(X)</td><td class="tleft">Transfere o conteúdo da posição de memória X para o acumulador</td></tr>
+        <tr><td>0000 0010</td><td>LOAD −M(X)</td><td class="tleft">Transfere o negativo do conteúdo de X para o acumulador</td></tr>
+        <tr><td>0000 0011</td><td>LOAD |M(X)|</td><td class="tleft">Transfere o valor absoluto do conteúdo de X para o acumulador</td></tr>
+        <tr><td>0000 0100</td><td>LOAD −|M(X)|</td><td class="tleft">Transfere o negativo do valor absoluto de X para o acumulador</td></tr>
+      </tbody>
+    </table>
+
+    <h4>Instruções de desvio incondicional</h4>
+    <table>
+      <thead><tr><th>Código de operação</th><th>Representação simbólica</th><th class="tleft">Descrição</th></tr></thead>
+      <tbody>
+        <tr><td>0000 1101</td><td>JUMP M(X,0:19)</td><td class="tleft">Próxima instrução buscada nos bits 0–19 da posição X</td></tr>
+        <tr><td>0000 1110</td><td>JUMP M(X,20:39)</td><td class="tleft">Próxima instrução buscada nos bits 20–39 da posição X</td></tr>
+      </tbody>
+    </table>
+
+    <h4>Instruções de desvio condicional</h4>
+    <table>
+      <thead><tr><th>Código de operação</th><th>Representação simbólica</th><th class="tleft">Descrição</th></tr></thead>
+      <tbody>
+        <tr><td>0000 1111</td><td>JUMP +M(X,0:19)</td><td class="tleft">Se ACC ≥ 0, próxima instrução buscada nos bits 0–19 de X</td></tr>
+        <tr><td>0000 1110</td><td>JUMP +M(X,20:39)</td><td class="tleft">Se ACC ≥ 0, próxima instrução buscada nos bits 20–39 de X</td></tr>
+      </tbody>
+    </table>
+
+    <h4>Instruções aritméticas</h4>
+    <table>
+      <thead><tr><th>Código de operação</th><th>Representação simbólica</th><th class="tleft">Descrição</th></tr></thead>
+      <tbody>
+        <tr><td>0000 0101</td><td>ADD M(X)</td><td class="tleft">Soma o conteúdo de X com o acumulador; armazena no acumulador</td></tr>
+        <tr><td>0000 0111</td><td>ADD |M(X)|</td><td class="tleft">Soma o módulo do conteúdo de X com o acumulador</td></tr>
+        <tr><td>0010 0110</td><td>SUB M(X)</td><td class="tleft">Subtrai o conteúdo de X do acumulador</td></tr>
+        <tr><td>0000 1000</td><td>SUB |M(X)|</td><td class="tleft">Subtrai o módulo do conteúdo de X do acumulador</td></tr>
+        <tr><td>0000 1011</td><td>MUL M(X)</td><td class="tleft">Multiplica o conteúdo de X por MQ; bits mais significativos em ACC, menos significativos em MQ</td></tr>
+        <tr><td>0000 1100</td><td>DIV M(X)</td><td class="tleft">Divide ACC pelo conteúdo de X; quociente em MQ, resto em ACC</td></tr>
+        <tr><td>0001 0100</td><td>LSH</td><td class="tleft">Multiplica o conteúdo do acumulador por 2</td></tr>
+        <tr><td>0001 0101</td><td>RSH</td><td class="tleft">Divide o conteúdo do acumulador por 2</td></tr>
+      </tbody>
+    </table>
+
+    <h4>Instruções de alteração de endereço</h4>
+    <table>
+      <thead><tr><th>Código de operação</th><th>Representação simbólica</th><th class="tleft">Descrição</th></tr></thead>
+      <tbody>
+        <tr><td>0001 0010</td><td>STOR M(X,8:19)</td><td class="tleft">Substitui o campo de endereço à esquerda de X pelos 12 bits mais à direita do acumulador</td></tr>
+        <tr><td>0000 1110</td><td>JUMP M(X,28:39)</td><td class="tleft">Substitui o campo de endereço à direita de X pelos 12 bits mais à direita do acumulador</td></tr>
+      </tbody>
+    </table>
+
+    <h3 id="s3d">1.3.4 Linguagem de montagem (<em>assembly</em>)</h3>
+    <p>Uma linguagem de montagem pura tem correspondência <strong>um-para-um</strong> entre declarações e instruções de máquina: um programa de <em>n</em> linhas em <em>assembly</em> produz um programa de <em>n</em> instruções em linguagem de máquina.</p>
+
+    <div class="note">A razão de se usar <em>assembly</em> em vez de binário/hexadecimal: é muito mais fácil lembrar mnemônicos como <strong>ADD</strong>, <strong>SUB</strong>, <strong>MUL</strong>, <strong>DIV</strong> do que os respectivos códigos numéricos. O <strong>assembler</strong> traduz os nomes simbólicos para instruções de máquina.</div>
+
+    <p>Convenção adotada: a representação simbólica é seguida do operando da instrução, em <strong>hexadecimal</strong>.</p>
+
+    <p><strong>Exemplo 1</strong></p>
+    <table>
+      <thead><tr><th class="tleft">Opcode</th><th>Operando</th><th class="tleft">Comentários</th></tr></thead>
+      <tbody>
+        <tr><td class="tleft">LOAD M(X)</td><td>0x00F</td><td class="tleft">Transfere o conteúdo de 0x00F para o ACC</td></tr>
+        <tr><td class="tleft">ADD M(X)</td><td>0x010</td><td class="tleft">Soma o conteúdo de 0x010 com o ACC</td></tr>
+        <tr><td class="tleft">STOR M(X)</td><td>0x011</td><td class="tleft">Transfere o conteúdo do ACC para 0x011</td></tr>
+      </tbody>
+    </table>
+
+    <p>O código acima equivale, em linguagem de máquina, a:</p>
+    <div class="codeblock">0000 0001 0000 0000 1111 0000 0101 0000 0001 0000
+0010 0001 0000 0001 0001</div>
+    <p>A primeira linha (40 bits) corresponde às instruções <strong>LOAD</strong> e <strong>ADD</strong>; a linha seguinte (20 bits) é a instrução <strong>STOR</strong>.</p>
+
+    <p>Cada linha ocupa uma linha de endereços, que pode ser indicada por um <strong>rótulo</strong> (<em>label</em>):</p>
+    <table>
+      <thead><tr><th class="tleft">Rótulo</th><th class="tleft">Opcode</th><th>Operando</th><th class="tleft">Comentários</th></tr></thead>
+      <tbody>
+        <tr><td class="tleft">Início:</td><td class="tleft">LOAD M(X)</td><td>0x00F</td><td class="tleft">Transfere o conteúdo de 0x00F para o ACC</td></tr>
+        <tr><td class="tleft">—</td><td class="tleft">ADD M(X)</td><td>0x010</td><td class="tleft">Soma o conteúdo de 0x010 com o ACC</td></tr>
+        <tr><td class="tleft">—</td><td class="tleft">STOR M(X)</td><td>0x011</td><td class="tleft">Transfere o conteúdo do ACC para 0x011</td></tr>
+      </tbody>
+    </table>
+    <div class="note">O código armazenado ocupa uma posição entre os endereços <strong>0x000</strong> e <strong>0x3FF</strong> (0 a 1023, em hexadecimal) da memória IAS.</div>
+
+    <p><strong>Exemplo 2</strong> — soma de 10 (0x00A) números binários a partir da posição 0x100, com rótulos e comentários (delimitados por <code>;</code>):</p>
+    <div class="codeblock">inicialização da memória
+M[0x000] &lt;- 0x109
+M[0x001] &lt;- 0x101
+M[0x002] &lt;- 0x001
+
+INICIO:
+LOAD_M(X) 0x100 <span class="cmt">; carregar o valor de 0x100</span>
+LOOP:
+ADD_M(X) 0x101 <span class="cmt">; soma o próximo valor</span>
+LOAD_M(X) 0x000 <span class="cmt">; 0x000 armazena o endereço limite 0x109</span>
+SUB_M(X) 0x001 <span class="cmt">; 0x001 armazena o próximo endereço</span>
+JUMP_+M(X,0:19) NOVO_END
+JUMP_M(X,20:39) FIM <span class="cmt">; desvia para o final do programa</span>
+
+NOVO_END: <span class="cmt">; atualiza endereço do próximo valor</span>
+LOAD_M(X) 0x001 <span class="cmt">; carrega o próximo endereço</span>
+ADD_M(X) 0x002 <span class="cmt">; 0x002 armazena 1, logo incrementa o endereço</span>
+JUMP_M(X,28:39) LOOP <span class="cmt">; altera operando da instrução em LOOP</span>
+JUMP_M(X,20:39) LOOP <span class="cmt">; desvia para instrução em LOOP</span></div>
+  </section>
+
+  <!-- QUIZ -->
+  <section class="section" id="quiz">
+    <p class="section-label">checkpoint</p>
+    <h2>Teste seus conhecimentos</h2>
+
+    <div class="quiz">
+      <div class="quiz-header">
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="8" stroke="#7c3aed" stroke-width="1.4"/><text x="10" y="14" font-size="10" fill="#7c3aed" text-anchor="middle" font-weight="600">?</text></svg>
+        <span class="quiz-title">Pergunta 1 de 3</span>
+      </div>
+      <p class="quiz-q">O conceito de "programa armazenado" da máquina IAS consiste em:</p>
+      <div class="quiz-options">
+        <button class="quiz-opt" onclick="checkAnswer(this, false, 'q1fb')">Armazenar apenas os dados em memória, mantendo o programa em um dispositivo separado</button>
+        <button class="quiz-opt" onclick="checkAnswer(this, true, 'q1fb')">Armazenar o programa na mesma memória que os dados, permitindo que a CPU busque ambos diretamente da memória</button>
+        <button class="quiz-opt" onclick="checkAnswer(this, false, 'q1fb')">Executar instruções diretamente dos dispositivos de entrada, sem uso de memória</button>
+      </div>
+      <div class="quiz-feedback" id="q1fb"></div>
+    </div>
+
+    <div class="quiz">
+      <div class="quiz-header">
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="8" stroke="#7c3aed" stroke-width="1.4"/><text x="10" y="14" font-size="10" fill="#7c3aed" text-anchor="middle" font-weight="600">?</text></svg>
+        <span class="quiz-title">Pergunta 2 de 3</span>
+      </div>
+      <p class="quiz-q">Qual registrador do IAS contém o endereço do próximo par de instruções a ser buscado?</p>
+      <div class="quiz-options">
+        <button class="quiz-opt" onclick="checkAnswer(this, false, 'q2fb')">IR (Instruction Register)</button>
+        <button class="quiz-opt" onclick="checkAnswer(this, true, 'q2fb')">PC (Program Counter)</button>
+        <button class="quiz-opt" onclick="checkAnswer(this, false, 'q2fb')">MBR (Memory Buffer Register)</button>
+      </div>
+      <div class="quiz-feedback" id="q2fb"></div>
+    </div>
+
+    <div class="quiz">
+      <div class="quiz-header">
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="8" stroke="#7c3aed" stroke-width="1.4"/><text x="10" y="14" font-size="10" fill="#7c3aed" text-anchor="middle" font-weight="600">?</text></svg>
+        <span class="quiz-title">Pergunta 3 de 3</span>
+      </div>
+      <p class="quiz-q">Por que a programação em linguagem de montagem (<em>assembly</em>) é preferida à programação direta em linguagem de máquina?</p>
+      <div class="quiz-options">
+        <button class="quiz-opt" onclick="checkAnswer(this, false, 'q3fb')">Porque o assembly é executado mais rapidamente pela CPU</button>
+        <button class="quiz-opt" onclick="checkAnswer(this, true, 'q3fb')">Porque é mais fácil memorizar mnemônicos simbólicos do que códigos binários/hexadecimais equivalentes</button>
+        <button class="quiz-opt" onclick="checkAnswer(this, false, 'q3fb')">Porque o assembly dispensa o uso de um assembler</button>
+      </div>
+      <div class="quiz-feedback" id="q3fb"></div>
+    </div>
+  </section>
+
+
+  <!-- ANEXOS -->
+  <section class="section" id="anexos">
+    <p class="section-label">material complementar</p>
+    <h2>Anexos do Capítulo 1</h2>
+
+    <p>
+      Os anexos complementam os conceitos apresentados neste capítulo,
+      especialmente os tópicos relacionados à representação de informações,
+      sistemas de numeração e unidades utilizadas em sistemas computacionais.
+    </p>
+
+    <div class="ds-grid">
+
+      <div class="ds-item">
+        <a href="arq_anexo1_grandezas_unidades.html">
+          Anexo 1 — Grandezas Numéricas e Unidades de Medida
+        </a>
+      </div>
+
+      <div class="ds-item">
+        <a href="arq_anexo2_conversao_bases.html">
+          Anexo 2 — Conversão entre Bases Numéricas
+        </a>
+      </div>
+
+      <div class="ds-item">
+        <a href="arq_anexo3_representacao_numerica.html">
+          Anexo 3 — Representação Numérica em Computadores
+        </a>
+      </div>
+
+    </div>
+
+    <div class="note">
+      Recomenda-se a leitura dos anexos antes do estudo do Capítulo 2,
+      pois os conceitos de representação binária, hexadecimal e unidades
+      de armazenamento serão utilizados continuamente ao longo da disciplina.
+    </div>
+  </section>
+
+
+  <!-- CHAPTER NAV -->
+  <div class="chapter-nav">
+    <a href="https://claytonjasilva.github.io/arq.html"><span class="dir">← disciplina</span>Arquitetura de Computadores — início</a>
+    <a class="next" href="arq_anexo1_grandezas_unidades.html"><span class="dir">próximo →</span>Anexo 1 — Grandezas Numéricas e Unidades de Medida</a>
+  </div>
+
+</div>
+
+<footer>
+  <div class="container">
+    <p>© 2026 · Prof. Clayton J A Silva · Ibmec RJ</p>
+    <p><a href="https://claytonjasilva.github.io">claytonjasilva.github.io</a></p>
+  </div>
+</footer>
+
+<script>
+window.addEventListener('scroll', () => {
+  const h = document.documentElement;
+  const scrolled = (h.scrollTop) / (h.scrollHeight - h.clientHeight) * 100;
+  document.getElementById('progressFill').style.width = scrolled + '%';
+});
+
+function checkAnswer(btn, isCorrect, fbId) {
+  const group = btn.parentElement;
+  const buttons = group.querySelectorAll('.quiz-opt');
+  buttons.forEach(b => b.disabled = true);
+  btn.classList.add(isCorrect ? 'correct' : 'wrong');
+  const fb = document.getElementById(fbId);
+  fb.classList.add('show');
+  const msgs = {
+    q1fb: isCorrect ? '✓ Correto! Instruções e dados ficam na mesma memória, em endereços específicos.' : '✗ Revise o conceito de programa armazenado na seção 1.1.',
+    q2fb: isCorrect ? '✓ Correto! O PC aponta para a próxima palavra e incrementa a cada instrução.' : '✗ Revise a tabela de registradores na seção 1.2.',
+    q3fb: isCorrect ? '✓ Correto! Mnemônicos como ADD/SUB/MUL/DIV são muito mais fáceis de lembrar.' : '✗ Revise a seção 1.3.4.'
+  };
+  if (!isCorrect) buttons.forEach(b => { if (b.getAttribute('onclick').includes(', true,')) b.classList.add('correct'); });
+  fb.classList.add(isCorrect ? 'correct-fb' : 'wrong-fb');
+  fb.textContent = msgs[fbId];
+}
+
+renderMathInElement(document.body, {
+  delimiters: [
+    {left: "$$", right: "$$", display: true},
+    {left: "$", right: "$", display: false}
+  ],
+  throwOnError: false
+});
+</script>
+
+</body>
+</html>

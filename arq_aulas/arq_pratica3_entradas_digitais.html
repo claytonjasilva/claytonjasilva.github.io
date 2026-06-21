@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Prática 3 — Entradas Digitais com Arduino Mega 2560 | Arquitetura de Computadores</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg:#0a0e17; --surface:#111827; --surface2:#161f2e; --border:#1e2d40;
+  --accent:#00c2ff; --accent2:#7c3aed; --text:#e2e8f0; --muted:#64748b;
+  --tag-bg:#0f172a; --font-mono:'IBM Plex Mono', monospace; --font-sans:'IBM Plex Sans', sans-serif;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{background:var(--bg);color:var(--text);font-family:var(--font-sans);font-size:16px;line-height:1.65;}
+a{color:var(--accent);text-decoration:none;} a:hover{text-decoration:underline;}
+.container{max-width:980px;margin:0 auto;padding:0 2rem;}
+nav{position:sticky;top:0;z-index:100;background:rgba(10,14,23,.9);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);padding:.9rem 0;}
+nav .container{display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap;}
+.nav-brand{font-family:var(--font-mono);font-size:.78rem;color:var(--accent);}
+.nav-links{display:flex;gap:1rem;list-style:none;flex-wrap:wrap;}
+.nav-links a{font-family:var(--font-mono);font-size:.7rem;color:var(--muted);}
+.nav-links a:hover{color:var(--text);text-decoration:none;}
+.progress-track{height:3px;background:var(--border);position:sticky;top:53px;z-index:99;}
+.progress-fill{height:100%;width:0%;background:linear-gradient(90deg,var(--accent),var(--accent2));transition:width .1s;}
+.hero{padding:4rem 0 2.5rem;position:relative;overflow:hidden;}
+.hero::before{content:'';position:absolute;inset:0;background-image:linear-gradient(var(--border) 1px,transparent 1px),linear-gradient(90deg,var(--border) 1px,transparent 1px);background-size:40px 40px;opacity:.3;mask-image:radial-gradient(ellipse 80% 60% at 50% 0%,black 40%,transparent 100%);}
+.hero-eyebrow{font-family:var(--font-mono);font-size:.74rem;color:var(--accent);letter-spacing:.14em;text-transform:uppercase;margin-bottom:1rem;display:flex;align-items:center;gap:.7rem;}
+.hero-eyebrow::before{content:'';width:2rem;height:1px;background:var(--accent);}
+h1{font-size:clamp(2rem,4.5vw,3.2rem);font-weight:300;line-height:1.12;letter-spacing:-.02em;margin-bottom:.6rem;}
+h1 strong{font-weight:600;color:var(--accent);}
+.hero-meta{display:flex;gap:1.5rem;flex-wrap:wrap;margin-top:1.2rem;}
+.meta-item{font-family:var(--font-mono);font-size:.74rem;color:var(--muted);display:flex;align-items:center;gap:.4rem;}
+.objectives{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:1.4rem 1.6rem;margin-top:1.6rem;}
+.objectives p.label{font-family:var(--font-mono);font-size:.7rem;color:var(--accent);letter-spacing:.1em;text-transform:uppercase;margin-bottom:.7rem;}
+.objectives ul{list-style:none;display:grid;gap:.5rem;}
+.objectives li{font-size:.88rem;color:var(--muted);display:flex;gap:.6rem;}
+.objectives li::before{content:'→';color:var(--accent);flex-shrink:0;}
+.toc{display:flex;gap:.5rem;flex-wrap:wrap;margin-top:1.5rem;}
+.toc a{font-family:var(--font-mono);font-size:.7rem;color:var(--muted);border:1px solid var(--border);padding:.35rem .75rem;border-radius:20px;transition:.2s;}
+.toc a:hover{border-color:var(--accent);color:var(--accent);text-decoration:none;}
+.section{padding:3rem 0;border-top:1px solid var(--border);}
+.section-label{font-family:var(--font-mono);font-size:.7rem;color:var(--accent);letter-spacing:.14em;text-transform:uppercase;display:flex;align-items:center;gap:.7rem;margin-bottom:1.4rem;}
+.section-label::after{content:'';flex:1;height:1px;background:var(--border);}
+h2{font-size:1.5rem;font-weight:600;letter-spacing:-.01em;margin-bottom:1rem;}
+h3{font-size:1.1rem;font-weight:600;margin:1.6rem 0 .8rem;color:var(--text);}
+h4{font-size:.95rem;font-weight:600;margin:1.2rem 0 .6rem;color:var(--accent);}
+p{margin-bottom:1rem;color:#cbd5e1;} strong{color:var(--text);font-weight:600;} em{color:var(--accent);font-style:normal;}
+ul.plain,ol.plain{margin:0 0 1rem 1.2rem;color:#cbd5e1;} ul.plain li,ol.plain li{margin-bottom:.45rem;}
+.fig-full{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:1.2rem;margin:1.5rem 0;overflow-x:auto;}
+.fig-full svg{width:100%;min-width:640px;display:block;}
+.fig-caption{font-family:var(--font-mono);font-size:.72rem;color:var(--muted);text-align:center;margin-top:.6rem;}
+.note{background:var(--tag-bg);border:1px solid var(--border);border-radius:6px;padding:.9rem 1.1rem;margin:1rem 0;font-size:.85rem;color:var(--muted);}
+.note strong{color:var(--accent);}
+table{width:100%;border-collapse:collapse;font-size:.85rem;margin:1.2rem 0;}
+thead tr{background:var(--tag-bg);}
+thead th{padding:.5rem .7rem;text-align:center;font-family:var(--font-mono);font-size:.68rem;color:var(--muted);letter-spacing:.06em;text-transform:uppercase;font-weight:400;border-bottom:1px solid var(--border);}
+tbody td{padding:.45rem .7rem;border-bottom:1px solid var(--border);color:var(--muted);text-align:center;}
+tbody tr:hover{background:rgba(255,255,255,.02);} td.tleft, th.tleft{text-align:left;}
+.ds-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:.6rem;margin:1rem 0;}
+.ds-item{background:var(--tag-bg);border:1px solid var(--border);border-radius:6px;padding:.8rem 1rem;display:flex;gap:.6rem;align-items:center;transition:.2s;}
+.ds-item:hover{border-color:var(--accent);} .ds-item a{font-size:.8rem;color:var(--text);font-family:var(--font-mono);}
+.ds-item a:hover{color:var(--accent);text-decoration:none;}
+.chapter-nav{display:flex;justify-content:space-between;gap:1rem;margin-top:2rem;}
+.chapter-nav a{flex:1;background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:1rem 1.3rem;font-size:.85rem;transition:.2s;}
+.chapter-nav a:hover{border-color:var(--accent);text-decoration:none;}
+.chapter-nav .dir{font-family:var(--font-mono);font-size:.65rem;color:var(--muted);text-transform:uppercase;letter-spacing:.08em;display:block;margin-bottom:.3rem;}
+.chapter-nav .next{text-align:right;}
+footer{border-top:1px solid var(--border);padding:2rem 0;margin-top:2rem;}
+footer .container{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;}
+footer p{font-size:.8rem;color:var(--muted);font-family:var(--font-mono);}
+@media(max-width:640px){.nav-links{display:none;}.hero{padding:2.5rem 0 2rem;}.chapter-nav{flex-direction:column;}}
+.dwire{stroke:#3b4a5e;stroke-width:2;fill:none}.dbox{stroke:#00c2ff;stroke-width:2;fill:rgba(0,194,255,.06)}.dbox2{stroke:#7c3aed;stroke-width:2;fill:rgba(124,58,237,.06)}
+.dlbl{font-family:'IBM Plex Mono',monospace;font-size:13px;fill:#cbd5e1}.dlbl2{font-family:'IBM Plex Mono',monospace;font-size:11px;fill:#64748b}.led-red{fill:#ef4444}.led-green{fill:#22c55e}.pin{fill:#00c2ff}
+</style>
+</head>
+<body>
+<nav>
+  <div class="container">
+    <span class="nav-brand">arq · prática 3</span>
+    <ul class="nav-links">
+      <li><a href="#materiais">Materiais</a></li>
+      <li><a href="#montagem">Montagem</a></li>
+      <li><a href="#atividades">Atividades</a></li>
+      <li><a href="https://claytonjasilva.github.io/arq.html">← disciplina</a></li>
+    </ul>
+  </div>
+</nav>
+<div class="progress-track"><div class="progress-fill" id="progressFill"></div></div>
+<section class="hero">
+  <div class="container">
+    <p class="hero-eyebrow">Arquitetura de Computadores · Prática de Laboratório</p>
+    <h1>Prática 3<br><strong>Entrada digital comandando LED</strong></h1>
+    <div class="hero-meta">
+      <span class="meta-item">Prof. Clayton J A Silva</span>
+      <span class="meta-item">Arduino Mega 2560</span>
+      <span class="meta-item">Rev 2026.2</span>
+    </div>
+    <div class="objectives">
+      <p class="label">Objetivo da prática</p>
+      <ul><li>Ler uma chave conectada a uma entrada digital do Arduino Mega 2560 e controlar o acionamento de LEDs nas saídas digitais.</li></ul>
+    </div>
+    <div class="toc">
+      <a href="#montagem">II / montagem</a>
+<a href="#atividades">III / duplicando o shield</a>
+<a href="#decodificador">IV / shield decodificador</a>
+    </div>
+  </div>
+</section>
+<div class="container">
+  <section class="section" id="materiais">
+    <p class="section-label">I / instrumental e ferramental</p>
+    <h2>Materiais utilizados</h2>
+    <ul class="plain"><li><em>Protoboard</em></li>
+<li>LED — Diodo Emissor de Luz</li>
+<li>Resistor de 300 Ω</li>
+<li>Arduino Mega 2560</li>
+<li>Switch / chave</li></ul>
+    <div class="note"><strong>Atenção:</strong> confira a polarização dos LEDs, os resistores limitadores de corrente e a conexão correta entre GND e os pontos de referência do circuito.</div>
+  </section>
+
+  <section class="section" id="montagem">
+    <p class="section-label">II / montagem</p>
+    
+<h2>Montagem do circuito com entrada digital</h2>
+<p>Monte o circuito com uma chave ligada a uma entrada digital do Arduino e um LED conectado a uma saída digital.</p>
+<div class="fig-full">
+<svg viewBox="0 0 900 430" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Entrada digital por chave comandando LED em saída digital">
+  <rect x="45" y="65" width="285" height="285" rx="16" class="dbox"/>
+  <text x="188" y="100" text-anchor="middle" class="dlbl">Arduino Mega 2560</text>
+  <circle cx="285" cy="160" r="5" class="pin"/><text x="220" y="164" class="dlbl2">D22 saída</text>
+  <circle cx="285" cy="250" r="5" class="pin"/><text x="220" y="254" class="dlbl2">D30 entrada</text>
+  <circle cx="95" cy="320" r="5" class="pin"/><text x="112" y="324" class="dlbl2">GND</text>
+  <circle cx="95" cy="130" r="5" class="pin"/><text x="112" y="134" class="dlbl2">5V</text>
+  <rect x="430" y="65" width="380" height="285" rx="12" class="dbox2"/>
+  <text x="620" y="100" text-anchor="middle" class="dlbl">Entrada digital + LED</text>
+  <path d="M285 160 H465" class="dwire"/>
+  <rect x="465" y="152" width="54" height="16" rx="5" fill="#0f172a" stroke="#00c2ff"/><text x="492" y="142" text-anchor="middle" class="dlbl2">300Ω</text>
+  <path d="M519 160 H575" class="dwire"/><circle cx="600" cy="160" r="18" class="led-red"/>
+  <path d="M618 160 H690 V320 H95" class="dwire"/>
+  <path d="M95 130 H455 V250" stroke="#00c2ff" stroke-width="2.2" fill="none"/>
+  <g transform="translate(455,230)">
+    <rect x="0" y="0" width="85" height="40" rx="6" fill="#0f172a" stroke="#7c3aed"/>
+    <path d="M15 20 H35 L62 8" stroke="#cbd5e1" stroke-width="2" fill="none"/>
+    <text x="42" y="58" text-anchor="middle" class="dlbl2">chave</text>
+  </g>
+  <path d="M540 250 H285" class="dwire"/>
+  <text x="615" y="285" text-anchor="middle" class="dlbl2">A leitura da entrada decide o estado do LED</text>
+</svg><p class="fig-caption">Figura 1 — Representação em SVG da prática: chave em entrada digital controlando um LED na saída.</p></div>
+<ol class="plain">
+  <li>Conecte a chave a uma entrada digital do Arduino.</li>
+  <li>Conecte o LED a uma saída digital, usando resistor de 300 Ω em série.</li>
+  <li>Elabore o código para acender ou apagar o LED conforme o estado da chave.</li>
+</ol>
+<div class="ds-grid">
+  <div class="ds-item"><a href="https://www.arduino.cc/reference/en/" target="_blank">Referência da linguagem Arduino</a></div>
+  <div class="ds-item"><a href="https://github.com/claytonjasilva/prog_exemplos/blob/main/linguagem_arduino_ino/pratica3_I.ino" target="_blank">Código: entrada digital</a></div>
+  <div class="ds-item"><a href="https://www.youtube.com/watch?v=zeFvPgiRE4U" target="_blank">Vídeo explicativo da prática</a></div>
+</div>
+
+  </section>
+
+  <section class="section" id="atividades">
+    <p class="section-label">III / duplicando o shield</p>
+    
+<h2>Duplicando o <em>shield</em></h2>
+<p>Proponha um novo <em>shield</em> com duas chaves e dois LEDs:</p>
+<ul class="plain">
+  <li>Chave 1 em HIGH acende LED1; em LOW apaga LED1.</li>
+  <li>Chave 2 em HIGH acende LED2; em LOW apaga LED2.</li>
+</ul>
+<div class="fig-full">
+<svg viewBox="0 0 900 330" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Duas chaves comandando dois LEDs">
+  <rect x="60" y="75" width="220" height="170" rx="14" class="dbox"/><text x="170" y="105" text-anchor="middle" class="dlbl">Arduino</text>
+  <circle cx="260" cy="145" r="5" class="pin"/><text x="185" y="149" class="dlbl2">Entrada Ch1</text>
+  <circle cx="260" cy="195" r="5" class="pin"/><text x="185" y="199" class="dlbl2">Entrada Ch2</text>
+  <circle cx="80" cy="145" r="5" class="pin"/><text x="98" y="149" class="dlbl2">Saída LED1</text>
+  <circle cx="80" cy="195" r="5" class="pin"/><text x="98" y="199" class="dlbl2">Saída LED2</text>
+  <rect x="390" y="55" width="360" height="220" rx="14" class="dbox2"/><text x="570" y="88" text-anchor="middle" class="dlbl">Shield duplicado</text>
+  <path d="M260 145 H470" class="dwire"/><rect x="470" y="128" width="80" height="34" rx="6" fill="#0f172a" stroke="#7c3aed"/><text x="510" y="150" text-anchor="middle" class="dlbl2">Ch1</text>
+  <path d="M260 195 H470" class="dwire"/><rect x="470" y="178" width="80" height="34" rx="6" fill="#0f172a" stroke="#7c3aed"/><text x="510" y="200" text-anchor="middle" class="dlbl2">Ch2</text>
+  <path d="M80 145 H400" class="dwire"/><circle cx="640" cy="145" r="17" class="led-red"/><path d="M400 145 H623" class="dwire"/>
+  <path d="M80 195 H400" class="dwire"/><circle cx="640" cy="195" r="17" class="led-green"/><path d="M400 195 H623" class="dwire"/>
+</svg><p class="fig-caption">Figura 2 — Representação em SVG do shield duplicado: duas entradas digitais e duas saídas digitais.</p></div>
+<table>
+  <thead><tr><th>Chave</th><th>LED</th></tr></thead>
+  <tbody>
+    <tr><td>Ch1 = 0</td><td>LED1 = 0</td></tr>
+    <tr><td>Ch1 = 1</td><td>LED1 = 1</td></tr>
+    <tr><td>Ch2 = 0</td><td>LED2 = 0</td></tr>
+    <tr><td>Ch2 = 1</td><td>LED2 = 1</td></tr>
+  </tbody>
+</table>
+
+  </section>
+
+  <section class="section" id="decodificador">
+    <p class="section-label">IV / shield decodificador</p>
+    
+<h2>O <em>shield</em> decodificador</h2>
+<p>Proponha um <em>shield</em> com duas chaves e quatro LEDs, funcionando como um decodificador de duas entradas.</p>
+<div class="fig-full">
+<svg viewBox="0 0 900 360" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Duas chaves formando decodificador para quatro LEDs">
+  <rect x="70" y="80" width="200" height="180" rx="14" class="dbox"/><text x="170" y="110" text-anchor="middle" class="dlbl">Entradas</text>
+  <rect x="115" y="140" width="95" height="34" rx="6" fill="#0f172a" stroke="#7c3aed"/><text x="162" y="162" text-anchor="middle" class="dlbl2">Ch1</text>
+  <rect x="115" y="190" width="95" height="34" rx="6" fill="#0f172a" stroke="#7c3aed"/><text x="162" y="212" text-anchor="middle" class="dlbl2">Ch2</text>
+  <path d="M210 157 H360" class="dwire"/><path d="M210 207 H360" class="dwire"/>
+  <rect x="360" y="95" width="180" height="150" rx="16" class="dbox2"/><text x="450" y="145" text-anchor="middle" class="dlbl">Decodificador</text><text x="450" y="170" text-anchor="middle" class="dlbl2">2 entradas → 4 saídas</text>
+  <path d="M540 125 H650" class="dwire"/><circle cx="685" cy="125" r="17" class="led-red"/><text x="725" y="130" class="dlbl2">LED1</text>
+  <path d="M540 160 H650" class="dwire"/><circle cx="685" cy="160" r="17" class="led-green"/><text x="725" y="165" class="dlbl2">LED2</text>
+  <path d="M540 195 H650" class="dwire"/><circle cx="685" cy="195" r="17" fill="#f59e0b"/><text x="725" y="200" class="dlbl2">LED3</text>
+  <path d="M540 230 H650" class="dwire"/><circle cx="685" cy="230" r="17" fill="#38bdf8"/><text x="725" y="235" class="dlbl2">LED4</text>
+</svg><p class="fig-caption">Figura 3 — Representação em SVG do shield decodificador: duas entradas selecionam combinações de quatro LEDs.</p></div>
+<table>
+  <thead><tr><th>Chaves</th><th>Saídas</th></tr></thead>
+  <tbody>
+    <tr><td>Ch1 = 0, Ch2 = 0</td><td>LED1 = 1, LED2 = 0, LED3 = 0, LED4 = 0</td></tr>
+    <tr><td>Ch1 = 0, Ch2 = 1</td><td>LED1 = 0, LED2 = 1, LED3 = 0, LED4 = 0</td></tr>
+    <tr><td>Ch1 = 1, Ch2 = 0</td><td>LED1 = 0, LED2 = 0, LED3 = 1, LED4 = 0</td></tr>
+    <tr><td>Ch1 = 1, Ch2 = 1</td><td>LED1 = 1, LED2 = 0, LED3 = 0, LED4 = 1</td></tr>
+  </tbody>
+</table>
+<div class="ds-grid">
+  <div class="ds-item"><a href="https://github.com/claytonjasilva/prog_exemplos/blob/main/linguagem_arduino_ino/pratica3_IV.ino" target="_blank">Código: Decoder</a></div>
+</div>
+
+  </section>
+
+  <div class="chapter-nav">
+    <a href="arq_pratica2_assembly_atmega2560.html"><span class="dir">← anterior</span>Prática 2 — Assembly Atmega2560</a>
+    <a class="next" href="arq.html"><span class="dir">próximo →</span>Página principal da disciplina</a>
+  </div>
+</div>
+<footer>
+  <div class="container">
+    <p>© 2026 · Prof. Clayton J A Silva · Ibmec RJ</p>
+    <p><a href="https://claytonjasilva.github.io">claytonjasilva.github.io</a></p>
+  </div>
+</footer>
+
+<script>
+window.addEventListener('scroll', () => {
+  const h = document.documentElement;
+  const pct = (h.scrollTop) / (h.scrollHeight - h.clientHeight) * 100;
+  document.getElementById('progressFill').style.width = pct + '%';
+});
+</script>
+
+</body>
+</html>

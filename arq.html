@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Arquitetura de Computadores — Prof. Clayton J A Silva</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,600;1,300&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg:        #0a0e17;
+      --surface:   #111827;
+      --border:    #1e2d40;
+      --accent:    #00c2ff;
+      --accent2:   #7c3aed;
+      --text:      #e2e8f0;
+      --muted:     #64748b;
+      --tag-bg:    #0f172a;
+      --font-mono: 'IBM Plex Mono', monospace;
+      --font-sans: 'IBM Plex Sans', sans-serif;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--font-sans);
+      font-size: 16px;
+      line-height: 1.6;
+      min-height: 100vh;
+    }
+
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    .container { max-width: 1000px; margin: 0 auto; padding: 0 2rem; }
+
+    /* ── NAV ── */
+    nav {
+      position: sticky; top: 0; z-index: 100;
+      background: rgba(10,14,23,0.88);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      padding: 1rem 0;
+    }
+    nav .container { display: flex; align-items: center; justify-content: space-between; gap: 1rem; flex-wrap: wrap; }
+    .nav-brand { font-family: var(--font-mono); font-size: 0.82rem; color: var(--accent); }
+    .nav-links { display: flex; gap: 1.5rem; list-style: none; flex-wrap: wrap; }
+    .nav-links a { font-family: var(--font-mono); font-size: 0.78rem; color: var(--muted); transition: color 0.2s; }
+    .nav-links a:hover { color: var(--text); text-decoration: none; }
+
+    /* ── HERO ── */
+    .hero { padding: 5rem 0 3.5rem; position: relative; overflow: hidden; }
+    .hero::before {
+      content: ''; position: absolute; inset: 0;
+      background-image:
+        linear-gradient(var(--border) 1px, transparent 1px),
+        linear-gradient(90deg, var(--border) 1px, transparent 1px);
+      background-size: 40px 40px; opacity: 0.3;
+      mask-image: radial-gradient(ellipse 80% 60% at 50% 0%, black 40%, transparent 100%);
+    }
+    .hero-eyebrow {
+      font-family: var(--font-mono); font-size: 0.75rem; color: var(--accent);
+      letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 1rem;
+      display: flex; align-items: center; gap: 0.75rem;
+    }
+    .hero-eyebrow::before { content: ''; display: inline-block; width: 2rem; height: 1px; background: var(--accent); }
+    h1 { font-size: clamp(1.8rem, 4vw, 3rem); font-weight: 300; line-height: 1.1; letter-spacing: -0.02em; margin-bottom: 0.75rem; }
+    h1 strong { font-weight: 600; color: var(--accent); }
+    .hero-sub { font-size: 0.88rem; color: var(--muted); font-family: var(--font-mono); margin-bottom: 2rem; }
+
+    .hero-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+    .tag {
+      font-family: var(--font-mono); font-size: 0.72rem; color: var(--accent2);
+      background: rgba(124,58,237,0.1); border: 1px solid rgba(124,58,237,0.25);
+      border-radius: 4px; padding: 0.25rem 0.6rem;
+    }
+
+    /* ── SECTION ── */
+    .section { padding: 3rem 0; border-top: 1px solid var(--border); }
+    .section-title {
+      font-family: var(--font-mono); font-size: 0.72rem; color: var(--accent);
+      letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 1.5rem;
+      display: flex; align-items: center; gap: 0.75rem;
+    }
+    .section-title::after { content: ''; flex: 1; height: 1px; background: var(--border); }
+    h2 { font-size: 1.25rem; font-weight: 600; margin-bottom: 1.25rem; }
+    h3 { font-size: 1rem; font-weight: 600; margin: 1.75rem 0 0.9rem; color: var(--text); }
+    h3:first-child { margin-top: 0; }
+    .turma-badge {
+      font-family: var(--font-mono); font-size: 0.7rem; color: var(--accent);
+      background: rgba(0,194,255,0.08); border: 1px solid rgba(0,194,255,0.2);
+      border-radius: 4px; padding: 0.2rem 0.55rem; margin-left: 0.6rem; vertical-align: middle;
+    }
+
+    /* ── AGENDA TABLE ── */
+    .agenda-wrap { overflow-x: auto; border: 1px solid var(--border); border-radius: 8px; margin-bottom: 0.5rem; }
+    table { width: 100%; border-collapse: collapse; font-size: 0.875rem; }
+    thead tr { background: var(--tag-bg); border-bottom: 1px solid var(--border); }
+    thead th { padding: 0.75rem 1rem; text-align: left; font-family: var(--font-mono); font-size: 0.72rem; color: var(--muted); letter-spacing: 0.1em; text-transform: uppercase; font-weight: 400; }
+    tbody tr { border-bottom: 1px solid var(--border); transition: background 0.15s; }
+    tbody tr:last-child { border-bottom: none; }
+    tbody tr:hover { background: rgba(255,255,255,0.02); }
+    tbody td { padding: 0.75rem 1rem; color: var(--muted); }
+    tbody td:first-child { font-family: var(--font-mono); font-size: 0.78rem; color: var(--muted); white-space: nowrap; }
+    tbody td:last-child { color: var(--text); }
+    .row-ap { background: rgba(0,194,255,0.04); }
+    .row-ap td { color: var(--accent) !important; font-weight: 600; }
+    .row-as { background: rgba(124,58,237,0.06); }
+    .row-as td { color: var(--accent2) !important; font-weight: 600; }
+    .row-feriado td { color: var(--muted) !important; font-style: italic; }
+
+    /* ── CARD ── */
+    .card {
+      border: 1px solid var(--border); border-radius: 8px; padding: 1.5rem;
+      background: var(--surface);
+    }
+    .card-link { font-family: var(--font-mono); font-size: 0.78rem; }
+
+    /* ── CONTEÚDO GRID ── */
+    .content-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 1px;
+      background: var(--border);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      overflow: hidden;
+    }
+    .content-card {
+      background: var(--surface);
+      padding: 1.25rem 1.5rem;
+      display: flex; gap: 1rem; align-items: flex-start;
+      transition: background 0.2s;
+    }
+    .content-card:hover { background: #161f2e; }
+    .content-num {
+      font-family: var(--font-mono); font-size: 0.7rem; color: var(--accent);
+      background: rgba(0,194,255,0.08); border: 1px solid rgba(0,194,255,0.2);
+      border-radius: 3px; padding: 0.2rem 0.5rem; white-space: nowrap; flex-shrink: 0; margin-top: 0.1rem;
+    }
+    .content-num.anexo {
+      color: var(--accent2); background: rgba(124,58,237,0.08); border-color: rgba(124,58,237,0.2);
+    }
+    .content-card a { font-size: 0.875rem; color: var(--text); font-weight: 500; line-height: 1.4; }
+    .content-card a:hover { color: var(--accent); text-decoration: none; }
+
+    /* ── PRÁTICAS ── */
+    .praticas-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 0.6rem;
+    }
+    .pratica-item {
+      background: var(--tag-bg); border: 1px solid var(--border); border-radius: 6px;
+      padding: 0.9rem 1.1rem; display: flex; gap: 0.75rem; align-items: center;
+      transition: border-color 0.2s;
+    }
+    .pratica-item:hover { border-color: var(--accent2); }
+    .pratica-num {
+      font-family: var(--font-mono); font-size: 0.68rem; color: var(--accent2);
+      background: rgba(124,58,237,0.1); border: 1px solid rgba(124,58,237,0.25);
+      border-radius: 3px; padding: 0.15rem 0.45rem; white-space: nowrap; flex-shrink: 0;
+    }
+    .pratica-item a { font-size: 0.85rem; color: var(--text); }
+    .pratica-item a:hover { color: var(--accent2); text-decoration: none; }
+
+    /* ── AVALIAÇÕES ── */
+    .aval-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 1rem; }
+    .aval-card {
+      border: 1px solid var(--border); border-radius: 8px; padding: 1.5rem;
+      background: var(--surface); display: flex; flex-direction: column; gap: 0.75rem;
+      position: relative; overflow: hidden;
+    }
+    .aval-card::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
+    }
+    .aval-card.ap::before { background: linear-gradient(90deg, var(--accent), rgba(0,194,255,0.3)); }
+    .aval-card.ac::before { background: linear-gradient(90deg, var(--accent2), rgba(124,58,237,0.3)); }
+    .aval-badge {
+      font-family: var(--font-mono); font-size: 0.7rem; font-weight: 600;
+      padding: 0.25rem 0.6rem; border-radius: 4px; display: inline-block; width: fit-content;
+    }
+    .badge-ap { background: rgba(0,194,255,0.1); border: 1px solid rgba(0,194,255,0.25); color: var(--accent); }
+    .badge-ac { background: rgba(124,58,237,0.1); border: 1px solid rgba(124,58,237,0.25); color: var(--accent2); }
+    .aval-card h3 { font-size: 0.95rem; font-weight: 600; margin: 0; }
+    .aval-list { list-style: none; display: flex; flex-direction: column; gap: 0.4rem; }
+    .aval-list li { font-size: 0.85rem; color: var(--muted); display: flex; gap: 0.5rem; }
+    .aval-list li::before { content: '·'; color: var(--accent); flex-shrink: 0; }
+    .aval-list li.indisponivel { color: #475569; font-style: italic; }
+
+    /* ── REFERÊNCIAS / DATASHEETS ── */
+    .ds-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 0.6rem; }
+    .ds-item {
+      background: var(--tag-bg); border: 1px solid var(--border); border-radius: 6px;
+      padding: 0.85rem 1rem; display: flex; gap: 0.75rem; align-items: center;
+      transition: border-color 0.2s;
+    }
+    .ds-item:hover { border-color: var(--accent); }
+    .ds-icon { flex-shrink: 0; }
+    .ds-item a { font-size: 0.82rem; color: var(--text); font-family: var(--font-mono); }
+    .ds-item a:hover { color: var(--accent); text-decoration: none; }
+
+    /* ── FOOTER ── */
+    footer { border-top: 1px solid var(--border); padding: 2rem 0; margin-top: 2rem; }
+    footer .container { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; }
+    footer p { font-size: 0.82rem; color: var(--muted); font-family: var(--font-mono); }
+
+
+    .lab-index-grid {
+      display:grid; grid-template-columns:repeat(auto-fill,minmax(230px,1fr)); gap:.8rem;
+    }
+    .lab-index-card {
+      background:var(--surface); border:1px solid var(--border); border-radius:8px;
+      padding:1.1rem 1.2rem; position:relative; overflow:hidden; transition:border-color .2s, background .2s;
+    }
+    .lab-index-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--accent),var(--accent2));}
+    .lab-index-card:hover{border-color:var(--accent);background:#161f2e;}
+    .lab-index-card .lab-num{font-family:var(--font-mono);font-size:.68rem;color:var(--accent2);display:block;margin-bottom:.45rem;}
+    .lab-index-card a{font-size:.9rem;color:var(--text);font-weight:600;}
+    .lab-index-card a:hover{color:var(--accent);text-decoration:none;}
+    .lab-index-card p{font-size:.76rem;color:var(--muted);margin:.35rem 0 0;}
+
+    @media (max-width: 600px) {
+      .hero { padding: 3.5rem 0 2.5rem; }
+      h1 { font-size: 1.8rem; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="container">
+    <span class="nav-brand">claytonjasilva.github.io</span>
+    <ul class="nav-links">
+      <li><a href="#agenda">agenda</a></li>
+      <li><a href="#grid">grid</a></li>
+      <li><a href="#conteudo">conteúdo</a></li>
+      <li><a href="#praticas">práticas</a></li>
+      <li><a href="#indice-lab">índice lab</a></li>
+      <li><a href="#avaliacoes">avaliações</a></li>
+      <li><a href="#referencias">referências</a></li>
+      <li><a href="#ferramentas">ferramentas</a></li>
+      <li><a href="https://claytonjasilva.github.io">← home</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="container">
+    <p class="hero-eyebrow">Ibmec RJ — Engenharia da Computação</p>
+    <h1>Arquitetura de<br><strong>Computadores</strong></h1>
+    <p class="hero-sub">Prof. Clayton J A Silva · Rev 2026.2 · turmas de terça, quarta e quinta-feira</p>
+    <div class="hero-tags">
+      <span class="tag">Máquina de von Neumann</span>
+      <span class="tag">Lógica Digital</span>
+      <span class="tag">Sistema de Memória</span>
+      <span class="tag">Barramento</span>
+      <span class="tag">Processadores</span>
+      <span class="tag">Assembly</span>
+      <span class="tag">Sistemas Operacionais</span>
+      <span class="tag">Arduíno</span>
+    </div>
+  </div>
+</section>
+
+<div class="container">
+
+  <!-- AGENDA -->
+  <section class="section" id="agenda">
+    <p class="section-title">01 / agenda — 2026.2</p>
+
+    <h3>Turma de terça-feira <span class="turma-badge">3ª feira</span></h3>
+    <div class="agenda-wrap">
+      <table>
+        <thead><tr><th>Data</th><th>Conteúdo</th></tr></thead>
+        <tbody>
+          <tr><td>04/08/2026</td><td>Introdução ao curso · Sobre o Arduíno · Programação em C/C++</td></tr>
+          <tr><td>11/08/2026</td><td>Cap. 1 — Máquina de von Neumann · Unidades e grandezas numéricas, bit, Byte · Prática de Laboratório</td></tr>
+          <tr><td>18/08/2026</td><td>Cap. 1 — Máquina de von Neumann · Conversão de base · Prática de Laboratório</td></tr>
+          <tr><td>25/08/2026</td><td>Cap. 1 — Máquina de von Neumann · Nível de microarquitetura, linguagem de máquina e de montagem · Prática de Laboratório</td></tr>
+          <tr><td>01/09/2026</td><td>Cap. 2 — Organização e modelos de máquina de níveis · Tradução, interpretação e compilação · Prática de Laboratório</td></tr>
+          <tr><td>08/09/2026</td><td>Cap. 3 — Nível de lógica digital · Prática de Laboratório</td></tr>
+          <tr><td>15/09/2026</td><td>Apresentação do trabalho de AP1 · Revisão da AP1</td></tr>
+          <tr class="row-ap"><td>22/09/2026</td><td>▶ Aplicação da AP1</td></tr>
+          <tr><td>29/09/2026</td><td>Mostra da AP1 · Apresentação do trabalho AP1 · Cap. 4 — Sistema de memória</td></tr>
+          <tr><td>06/10/2026</td><td>Cap. 4 — Sistema de memória · Prática de Laboratório</td></tr>
+          <tr><td>13/10/2026</td><td>Cap. 4 — Sistema de memória · Prática de Laboratório</td></tr>
+          <tr><td>20/10/2026</td><td>Cap. 5 — Barramento · Prática de Laboratório</td></tr>
+          <tr><td>27/10/2026</td><td>Cap. 6 — Processadores · Prática de Laboratório</td></tr>
+          <tr><td>03/11/2026</td><td>Cap. 7 — Sistemas Operacionais</td></tr>
+          <tr><td>10/11/2026</td><td>Cap. 8 — Microcontroladores: MC Atmel ATmega 2560</td></tr>
+          <tr><td>17/11/2026</td><td>Teste · Revisão da AP2</td></tr>
+          <tr class="row-ap"><td>24/11/2026</td><td>▶ Aplicação da AP2</td></tr>
+          <tr class="row-as"><td>01/12/2026</td><td>▶ Aplicação da AS</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3>Turma de quarta-feira <span class="turma-badge">4ª feira</span></h3>
+    <div class="agenda-wrap">
+      <table>
+        <thead><tr><th>Data</th><th>Conteúdo</th></tr></thead>
+        <tbody>
+          <tr><td>05/08/2026</td><td>Introdução ao curso · Sobre o Arduíno · Programação em C/C++</td></tr>
+          <tr><td>12/08/2026</td><td>Cap. 1 — Máquina de von Neumann · Unidades e grandezas numéricas, bit, Byte · Prática de Laboratório</td></tr>
+          <tr><td>19/08/2026</td><td>Cap. 1 — Máquina de von Neumann · Conversão de base · Prática de Laboratório</td></tr>
+          <tr><td>26/08/2026</td><td>Cap. 1 — Máquina de von Neumann · Nível de microarquitetura, linguagem de máquina e de montagem · Prática de Laboratório</td></tr>
+          <tr><td>02/09/2026</td><td>Cap. 2 — Organização e modelos de máquina de níveis · Tradução, interpretação e compilação · Prática de Laboratório</td></tr>
+          <tr><td>09/09/2026</td><td>Cap. 3 — Nível de lógica digital · Prática de Laboratório</td></tr>
+          <tr><td>16/09/2026</td><td>Apresentação do trabalho de AP1 · Revisão da AP1</td></tr>
+          <tr class="row-ap"><td>23/09/2026</td><td>▶ Aplicação da AP1</td></tr>
+          <tr><td>30/09/2026</td><td>Mostra da AP1 · Apresentação do trabalho AP1 · Cap. 4 — Sistema de memória</td></tr>
+          <tr><td>07/10/2026</td><td>Cap. 4 — Sistema de memória · Prática de Laboratório</td></tr>
+          <tr><td>14/10/2026</td><td>Cap. 4 — Sistema de memória · Prática de Laboratório</td></tr>
+          <tr><td>21/10/2026</td><td>Cap. 5 — Barramento · Prática de Laboratório</td></tr>
+          <tr><td>28/10/2026</td><td>Cap. 6 — Processadores · Prática de Laboratório</td></tr>
+          <tr><td>04/11/2026</td><td>Cap. 7 — Sistemas Operacionais</td></tr>
+          <tr><td>11/11/2026</td><td>Cap. 8 — Microcontroladores: MC Atmel ATmega 2560</td></tr>
+          <tr><td>18/11/2026</td><td>Teste · Revisão da AP2</td></tr>
+          <tr class="row-ap"><td>25/11/2026</td><td>▶ Aplicação da AP2</td></tr>
+          <tr class="row-as"><td>02/12/2026</td><td>▶ Aplicação da AS</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3>Turma de quinta-feira <span class="turma-badge">5ª feira</span></h3>
+    <div class="agenda-wrap">
+      <table>
+        <thead><tr><th>Data</th><th>Conteúdo</th></tr></thead>
+        <tbody>
+          <tr><td>06/08/2026</td><td>Introdução ao curso · Sobre o Arduíno · Programação em C/C++</td></tr>
+          <tr><td>13/08/2026</td><td>Cap. 1 — Máquina de von Neumann · Unidades e grandezas numéricas, bit, Byte · Prática de Laboratório</td></tr>
+          <tr><td>20/08/2026</td><td>Cap. 1 — Máquina de von Neumann · Conversão de base · Prática de Laboratório</td></tr>
+          <tr><td>27/08/2026</td><td>Cap. 1 — Máquina de von Neumann · Nível de microarquitetura, linguagem de máquina e de montagem · Prática de Laboratório</td></tr>
+          <tr><td>03/09/2026</td><td>Cap. 2 — Organização e modelos de máquina de níveis · Tradução, interpretação e compilação · Prática de Laboratório</td></tr>
+          <tr><td>10/09/2026</td><td>Cap. 3 — Nível de lógica digital · Prática de Laboratório</td></tr>
+          <tr><td>17/09/2026</td><td>Apresentação do trabalho de AP1 · Revisão da AP1</td></tr>
+          <tr class="row-ap"><td>24/09/2026</td><td>▶ Aplicação da AP1</td></tr>
+          <tr><td>01/10/2026</td><td>Mostra da AP1 · Apresentação do trabalho AP1 · Cap. 4 — Sistema de memória</td></tr>
+          <tr><td>08/10/2026</td><td>Cap. 4 — Sistema de memória · Prática de Laboratório</td></tr>
+          <tr><td>15/10/2026</td><td>Cap. 4 — Sistema de memória · Prática de Laboratório</td></tr>
+          <tr><td>22/10/2026</td><td>Cap. 5 — Barramento · Prática de Laboratório</td></tr>
+          <tr><td>29/10/2026</td><td>Cap. 6 — Processadores · Prática de Laboratório</td></tr>
+          <tr><td>05/11/2026</td><td>Cap. 7 — Sistemas Operacionais</td></tr>
+          <tr><td>12/11/2026</td><td>Cap. 8 — Microcontroladores: MC Atmel ATmega 2560</td></tr>
+          <tr><td>19/11/2026</td><td>Teste · Revisão da AP2</td></tr>
+          <tr class="row-ap"><td>26/11/2026</td><td>▶ Aplicação da AP2</td></tr>
+          <tr class="row-as"><td>03/12/2026</td><td>▶ Aplicação da AS</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p style="margin-top:1rem; font-family: var(--font-mono); font-size: 0.78rem;"><a href="https://claytonjasilva.github.io/calendario-academico.html">Ver calendário acadêmico institucional completo →</a></p>
+  </section>
+
+  <!-- GRID -->
+  <section class="section" id="grid">
+    <p class="section-title">grid da disciplina</p>
+    <div class="card" style="max-width:500px;">
+      <h3 style="margin-top:0;">Objetivos, conteúdo programático e referências</h3>
+      <p style="margin-bottom:1rem;">Consulte o grid completo da disciplina, com os 5 objetivos de aprendizagem, os 14 tópicos do conteúdo programático e a bibliografia básica e complementar.</p>
+      <a class="card-link" href="https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/arq_aulas/Grid_Arquitetura.md" target="_blank">Ver grid da disciplina →</a>
+    </div>
+  </section>
+
+  <!-- CONTEÚDO -->
+  <section class="section" id="conteudo">
+    <p class="section-title">02 / conteúdo das aulas</p>
+    <div class="content-grid">
+      <div class="content-card"><span class="content-num">Cap 1</span><a href="cap1_com_anexos.html">Máquina de von Neumann</a></div>
+      <div class="content-card"><span class="content-num">Cap 2</span><a href="https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/arq_aulas/arquitetura_computadores_cap2.md" target="_blank">Organização e Modelos de Máquina de Níveis</a></div>
+      <div class="content-card"><span class="content-num">Cap 3</span><a href="https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/arq_aulas/arquitetura_computadores_cap3.md" target="_blank">Nível de Lógica Digital — Combinacionais e Sequenciais</a></div>
+      <div class="content-card"><span class="content-num">Cap 4</span><a href="https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/arq_aulas/arquitetura_computadores_cap4.md" target="_blank">Sistema de Memória</a></div>
+      <div class="content-card"><span class="content-num">Cap 5</span><a href="https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/arq_aulas/arquitetura_computadores_cap5.md" target="_blank">Barramento</a></div>
+      <div class="content-card"><span class="content-num">Cap 6</span><a href="https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/arq_aulas/arquitetura_computadores_cap6.md" target="_blank">Processadores</a></div>
+      <div class="content-card"><span class="content-num">Cap 7</span><a href="https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/arq_aulas/arquitetura_computadores_cap8.md" target="_blank">Sistemas Operacionais</a></div>
+      <div class="content-card"><span class="content-num">Cap 8</span><a href="https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/arq_aulas/arquitetura_computadores_cap7.md" target="_blank">Microcontroladores — MC Atmel ATmega 2560</a></div>
+      <div class="content-card"><span class="content-num anexo">Anexo I</span><a href="arq_anexo1_grandezas_unidades.html">Unidades e Grandezas Numéricas</a></div>
+      <div class="content-card"><span class="content-num anexo">Anexo II</span><a href="arq_anexo2_conversao_bases.html">Conversão de Base e Informações Binárias</a></div>
+      <div class="content-card"><span class="content-num anexo">Anexo III</span><a href="arq_anexo3_representacao_numerica.html">Representação Numérica</a></div>
+      <div class="content-card"><span class="content-num anexo">Anexo IV</span><a href="https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/arq_aulas/arquitetura_computadores_anexo4.md" target="_blank">Aritmética Binária</a></div>
+    </div>
+
+    <h3>Textos e exemplos de apoio</h3>
+    <div class="ds-grid">
+      <div class="ds-item">
+        <svg class="ds-icon" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 2h7l3 3v9H3V2z" stroke="#7c3aed" stroke-width="1.2" fill="none"/><line x1="5" y1="7" x2="11" y2="7" stroke="#7c3aed" stroke-width="1"/><line x1="5" y1="9.5" x2="9" y2="9.5" stroke="#7c3aed" stroke-width="1"/></svg>
+        <a href="https://1drv.ms/b/c/29ef9a7b83f2ddc4/IQAMR0i3D21_TY7HfiLhHPRlAasgpGj16RSzAItFRxim-Rg?e=KfjRsW" target="_blank">Introdução a Arquitetura e Organização de Computadores</a>
+      </div>
+      <div class="ds-item">
+        <svg class="ds-icon" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M5 3l8 5-8 5V3z" fill="#00c2ff"/></svg>
+        <a href="https://claytonjasilva.github.io/arq_aulas/notebookLM/Como_um_Computador_Pensa.mp4" target="_blank">Vídeo — Como um Computador Pensa</a>
+      </div>
+      <div class="ds-item">
+        <svg class="ds-icon" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 2h7l3 3v9H3V2z" stroke="#7c3aed" stroke-width="1.2" fill="none"/><line x1="5" y1="7" x2="11" y2="7" stroke="#7c3aed" stroke-width="1"/><line x1="5" y1="9.5" x2="9" y2="9.5" stroke="#7c3aed" stroke-width="1"/></svg>
+        <a href="https://1drv.ms/b/c/29ef9a7b83f2ddc4/IQAZyFryj2FoTZkmvispLyW2ATHN_CSlBXKiSNS5cCwFlr0?e=w0YAqa" target="_blank">Representação de Informações Computacionais</a>
+      </div>
+      <div class="ds-item">
+        <svg class="ds-icon" width="16" height="16" viewBox="0 0 16 16" fill="none"><rect x="2" y="2" width="12" height="12" rx="2" stroke="#00c2ff" stroke-width="1.2"/><path d="M5 8h6M8 5v6" stroke="#00c2ff" stroke-width="1.2"/></svg>
+        <a href="https://claytonjasilva.github.io/arq_aulas/notebookLM/flashcard_1.html" target="_blank">Flashcard 1 — Introdução e Representação Numérica</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRÁTICAS -->
+  <section class="section" id="praticas">
+    <p class="section-title">03 / práticas de laboratório</p>
+
+    <h3>Programação com Arduíno — conceitos</h3>
+    <div class="praticas-grid">
+      <div class="pratica-item"><span class="pratica-num">01</span><a href="https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/progArduino_aulas/progArduino_cap1.md" target="_blank">Conceitos iniciais</a></div>
+      <div class="pratica-item"><span class="pratica-num">02</span><a href="https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/progArduino_aulas/progArduino_cap2.md" target="_blank">Condicionais simples e compostas</a></div>
+      <div class="pratica-item"><span class="pratica-num">03</span><a href="https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/progArduino_aulas/progArduino_cap3.md" target="_blank">Funções e controle de fluxo de repetição</a></div>
+      <div class="pratica-item"><span class="pratica-num">04</span><a href="https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/progArduino_aulas/progArduino_cap4.md" target="_blank">Estruturas homogêneas e ponteiros</a></div>
+    </div>
+
+    <h3>Práticas Arduíno — laboratório</h3>
+    <div class="praticas-grid">
+      <div class="pratica-item"><span class="pratica-num">01</span><a href="arq_pratica1_conhecendo_arduino2560.html">Alimentação de LEDs</a></div>
+      <div class="pratica-item"><span class="pratica-num">02</span><a href="arq_pratica2_assembly_atmega2560.html">Código, pinos e função de saída</a></div>
+      <div class="pratica-item"><span class="pratica-num">03</span><a href="arq_pratica3_entradas_digitais.html">Código, pinos e função de entrada</a></div>
+      <div class="pratica-item"><span class="pratica-num">04</span><a href="arq_pratica4_entrada_3bits.html">Funções no Arduíno</a></div>
+      <div class="pratica-item"><span class="pratica-num">05</span><a href="arq_pratica5_funcoes_por_codigo.html">Estrutura de repetição while</a></div>
+      <div class="pratica-item"><span class="pratica-num">06</span><a href="arq_aulas/arquitetura_computadores_pratica6.md">Inversão — complemento de 1</a></div>
+      <div class="pratica-item"><span class="pratica-num">07</span><a href="arq_pratica7_buzzer.html">Dispositivos de saída — buzzer</a></div>
+      <div class="pratica-item"><span class="pratica-num">08</span><a href="arq_pratica8_lcd1602.html">Dispositivos de saída — LCD 1602</a></div>
+      <div class="pratica-item"><span class="pratica-num">09</span><a href="arq_pratica9_sensor_ultrassonico.html">Dispositivos de entrada — sensor ultrassônico</a></div>
+      <div class="pratica-item"><span class="pratica-num">10</span><a href="arq_pratica10_sensor_movimento.html">Dispositivos de entrada — sensor de movimento</a></div>
+    </div>
+
+    <h3>Práticas de Linguagem de Montagem (<em>assembly</em>)</h3>
+    <div class="praticas-grid">
+      <div class="pratica-item"><span class="pratica-num">01</span><a href="arq_aulas/arquitetura_computadores_pratica_assembly1.md">Registradores, memória RAM e instruções aritméticas básicas</a></div>
+      <div class="pratica-item"><span class="pratica-num">02</span><a href="arq_aulas/arquitetura_computadores_pratica_assembly2.md">Registradores, memória RAM e instruções de desvio</a></div>
+      <div class="pratica-item"><span class="pratica-num">03</span><a href="arq_aulas/arquitetura_computadores_pratica_assembly3.md">Registradores, memória RAM e instruções de comparação</a></div>
+      <div class="pratica-item"><span class="pratica-num">04</span><a href="arq_aulas/arquitetura_computadores_pratica_assembly4.md">Registradores, memória RAM e instruções de comparação (cont.)</a></div>
+      <div class="pratica-item"><span class="pratica-num">05</span><a href="arq_aulas/arquitetura_computadores_pratica_assembly5.md">Diretivas do assembler</a></div>
+    </div>
+  </section>
+
+
+  <!-- ÍNDICE GERAL DE LABORATÓRIO -->
+  <section class="section" id="indice-lab">
+    <p class="section-title">índice geral de laboratório</p>
+    <h2>Práticas convertidas para HTML</h2>
+    <p style="color: var(--muted); margin-bottom: 1.5rem; max-width: 720px;">
+      Esta seção reúne as páginas HTML das práticas de laboratório já convertidas, com navegação integrada entre elas.
+    </p>
+
+    <div class="lab-index-grid">
+      <div class="lab-index-card"><span class="lab-num">Prática 01</span><a href="arq_pratica1_conhecendo_arduino2560.html">Alimentação de LEDs</a><p>Arduino como fonte de alimentação.</p></div>
+      <div class="lab-index-card"><span class="lab-num">Prática 02</span><a href="arq_pratica2_assembly_atmega2560.html">Saídas digitais com LEDs</a><p>Pinos digitais controlando LEDs.</p></div>
+      <div class="lab-index-card"><span class="lab-num">Prática 03</span><a href="arq_pratica3_entradas_digitais.html">Entradas digitais</a><p>Chave digital comandando LED.</p></div>
+      <div class="lab-index-card"><span class="lab-num">Prática 04</span><a href="arq_pratica4_entrada_3bits.html">Entrada binária de 3 bits</a><p>Conversão binário-decimal no Monitor Serial.</p></div>
+      <div class="lab-index-card"><span class="lab-num">Prática 05</span><a href="arq_pratica5_funcoes_por_codigo.html">Funções por código</a><p>Combinações binárias acionando funções.</p></div>
+      <div class="lab-index-card"><span class="lab-num">Trabalho AP1</span><a href="arq_trabalho_ap1_sistema_embarcado.html">Sistema embarcado</a><p>Entrada e saída binária de 6 bits.</p></div>
+      <div class="lab-index-card"><span class="lab-num">Prática 07</span><a href="arq_pratica7_buzzer.html">Buzzer</a><p>Dispositivo de saída com tons.</p></div>
+      <div class="lab-index-card"><span class="lab-num">Prática 08</span><a href="arq_pratica8_lcd1602.html">LCD 1602</a><p>Texto e tempo no display.</p></div>
+      <div class="lab-index-card"><span class="lab-num">Prática 09</span><a href="arq_pratica9_sensor_ultrassonico.html">Sensor ultrassônico</a><p>Medição de distância.</p></div>
+      <div class="lab-index-card"><span class="lab-num">Prática 10</span><a href="arq_pratica10_sensor_movimento.html">Sensor de movimento PIR</a><p>Detecção de movimento e acionamento de LED.</p></div>
+    </div>
+
+    <div class="card" style="margin-top:1.2rem;">
+      <h3 style="margin-top:0;">Pendência identificada</h3>
+      <p style="color:var(--muted); margin-bottom:0;">
+        A Prática 6 ainda não foi convertida porque o respectivo arquivo não foi enviado neste conjunto.
+        Mantive o link original em Markdown na lista de práticas para preservar a referência.
+      </p>
+    </div>
+  </section>
+
+
+  <!-- AVALIAÇÕES -->
+  <section class="section" id="avaliacoes">
+    <p class="section-title">04 / avaliações</p>
+    <div class="aval-grid">
+
+      <div class="aval-card ap">
+        <span class="aval-badge badge-ap">AP · 40% cada</span>
+        <h3>Avaliações Bimestrais</h3>
+        <ul class="aval-list">
+          <li>Composta por trabalho em grupo (peso 30%) e prova individual (peso 70%)</li>
+          <li><a href="arq_aulas/trabalho_ap1_2026_1.md">Trabalho AP1</a></li>
+          <li><a href="arq_aulas/trabalho_ap2_2026_1.md">Trabalho AP2</a></li>
+        </ul>
+      </div>
+
+      <div class="aval-card ac">
+        <span class="aval-badge badge-ac">AC · 20%</span>
+        <h3>Avaliação Continuada</h3>
+        <ul class="aval-list">
+          <li><a href="https://forms.gle/snZF6smaf51xZhN87" target="_blank">Form 1 — Arquitetura de von Neumann</a></li>
+          <li><a href="https://forms.gle/PEzcQngfWYvmysxW6" target="_blank">Form 2 — Representação de informações e conversão de base</a></li>
+          <li class="indisponivel">Form 3 — Aritmética binária</li>
+          <li class="indisponivel">Form 4 — Modelo de máquina de níveis</li>
+          <li class="indisponivel">Form 5 — Memória</li>
+          <li class="indisponivel">Form 6 — Cache</li>
+          <li class="indisponivel">Form 7 — Barramento</li>
+          <li class="indisponivel">Form 8 — Processadores</li>
+        </ul>
+      </div>
+
+      <div class="aval-card ap" style="border-color: rgba(0,194,255,0.15);">
+        <span class="aval-badge badge-ap">Sistema de Avaliações</span>
+        <h3>Regras e Pesos</h3>
+        <ul class="aval-list">
+          <li>AC — peso 20% da nota final</li>
+          <li>AP1 — peso 40% da nota final</li>
+          <li>AP2 — peso 40% da nota final</li>
+          <li>Cada AP: trabalho em grupo (30%) + prova individual (70%)</li>
+        </ul>
+        <a href="https://claytonjasilva.github.io/avaliacoes.html" style="font-family:var(--font-mono); font-size:0.78rem; margin-top:0.5rem;">Ver sistema completo →</a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- REFERÊNCIAS -->
+  <section class="section" id="referencias">
+    <p class="section-title">05 / referências bibliográficas</p>
+    <p style="color: var(--muted); margin-bottom: 1.5rem; max-width: 600px; font-family: var(--font-mono); font-size: 0.82rem;">Obs. É necessário o acesso pela Biblioteca Virtual do Ibmec.</p>
+    <div class="ds-grid">
+
+      <div class="ds-item">
+        <svg class="ds-icon" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 2h7l3 3v9H3V2z" stroke="#00c2ff" stroke-width="1.2" fill="none"/><line x1="5" y1="7" x2="11" y2="7" stroke="#00c2ff" stroke-width="1"/><line x1="5" y1="9.5" x2="9" y2="9.5" stroke="#00c2ff" stroke-width="1"/></svg>
+        <a href="https://plataforma.bvirtual.com.br/Leitor/Publicacao/355/pdf/0" target="_blank">Tanenbaum — Organização Estruturada de Computadores (básica)</a>
+      </div>
+      <div class="ds-item">
+        <svg class="ds-icon" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 2h7l3 3v9H3V2z" stroke="#7c3aed" stroke-width="1.2" fill="none"/><line x1="5" y1="7" x2="11" y2="7" stroke="#7c3aed" stroke-width="1"/><line x1="5" y1="9.5" x2="9" y2="9.5" stroke="#7c3aed" stroke-width="1"/></svg>
+        <a href="https://plataforma.bvirtual.com.br/Leitor/Publicacao/151479/pdf/0" target="_blank">Stallings — Arquitetura e Organização de Computadores</a>
+      </div>
+      <div class="ds-item">
+        <svg class="ds-icon" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 2h7l3 3v9H3V2z" stroke="#7c3aed" stroke-width="1.2" fill="none"/><line x1="5" y1="7" x2="11" y2="7" stroke="#7c3aed" stroke-width="1"/><line x1="5" y1="9.5" x2="9" y2="9.5" stroke="#7c3aed" stroke-width="1"/></svg>
+        <a href="https://plataforma.bvirtual.com.br/Leitor/Publicacao/124147/pdf/0" target="_blank">Corrêa — Organização e Arquitetura de Computadores</a>
+      </div>
+      <div class="ds-item">
+        <svg class="ds-icon" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 2h7l3 3v9H3V2z" stroke="#7c3aed" stroke-width="1.2" fill="none"/><line x1="5" y1="7" x2="11" y2="7" stroke="#7c3aed" stroke-width="1"/><line x1="5" y1="9.5" x2="9" y2="9.5" stroke="#7c3aed" stroke-width="1"/></svg>
+        <a href="https://plataforma.bvirtual.com.br/Leitor/Publicacao/1233/pdf/0" target="_blank">Tanenbaum — Sistemas Operacionais Modernos</a>
+      </div>
+      <div class="ds-item">
+        <svg class="ds-icon" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 2h7l3 3v9H3V2z" stroke="#7c3aed" stroke-width="1.2" fill="none"/><line x1="5" y1="7" x2="11" y2="7" stroke="#7c3aed" stroke-width="1"/><line x1="5" y1="9.5" x2="9" y2="9.5" stroke="#7c3aed" stroke-width="1"/></svg>
+        <a href="http://wiki.inf.ufpr.br/maziero/doku.php?id=socm:start" target="_blank">Maziero — Sistemas Operacionais: Conceitos e Mecanismos</a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- FERRAMENTAS -->
+  <section class="section" id="ferramentas">
+    <p class="section-title">06 / ferramentas do curso</p>
+    <p style="color: var(--muted); margin-bottom: 1.5rem; max-width: 600px;">Softwares utilizados para programação de microcontroladores, montagem de protótipos e desenvolvimento em linguagem de montagem ao longo da disciplina.</p>
+    <div class="ds-grid">
+
+      <div class="ds-item">
+        <svg class="ds-icon" width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="6" stroke="#00c2ff" stroke-width="1.2"/><path d="M8 2v3M8 11v3" stroke="#00c2ff" stroke-width="1.2"/><circle cx="8" cy="8" r="1.5" fill="#00c2ff"/></svg>
+        <a href="https://www.arduino.cc/en/software" target="_blank">Arduino IDE — programação em C/C++</a>
+      </div>
+      <div class="ds-item">
+        <svg class="ds-icon" width="16" height="16" viewBox="0 0 16 16" fill="none"><rect x="2" y="3" width="12" height="10" rx="1.5" stroke="#00c2ff" stroke-width="1.2"/><path d="M5 7l2 2-2 2M9 11h2" stroke="#00c2ff" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <a href="https://www.microchip.com/en-us/development-tools-tools-and-software/microchip-studio-for-avr-and-sam-devices" target="_blank">Microchip (Atmel) Studio — IDE para AVR/ATmega, assembly</a>
+      </div>
+      <div class="ds-item">
+        <svg class="ds-icon" width="16" height="16" viewBox="0 0 16 16" fill="none"><rect x="2" y="2" width="12" height="12" rx="2" stroke="#7c3aed" stroke-width="1.2"/><path d="M5 5h6M5 8h6M5 11h3" stroke="#7c3aed" stroke-width="1"/></svg>
+        <a href="https://easyeda.com/page/download" target="_blank">EasyEDA — projeto de circuitos e PCB</a>
+      </div>
+      <div class="ds-item">
+        <svg class="ds-icon" width="16" height="16" viewBox="0 0 16 16" fill="none"><rect x="2" y="3" width="12" height="9" rx="1.5" stroke="#7c3aed" stroke-width="1.2"/><line x1="2" y1="6" x2="14" y2="6" stroke="#7c3aed" stroke-width="1"/><circle cx="5" cy="9" r="1" fill="#7c3aed"/><circle cx="9" cy="9" r="1" fill="#7c3aed"/></svg>
+        <a href="https://sourceforge.net/projects/circuit/" target="_blank">Logisim — simulador de circuitos lógicos (Cap. 3)</a>
+      </div>
+
+    </div>
+  </section>
+
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <p>© 2026 · Prof. Clayton J A Silva · Ibmec RJ</p>
+    <p><a href="https://claytonjasilva.github.io">← voltar para home</a></p>
+  </div>
+</footer>
+
+</body>
+</html>
