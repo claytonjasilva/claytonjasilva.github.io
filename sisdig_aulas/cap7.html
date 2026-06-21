@@ -203,6 +203,7 @@ footer p{font-size:.8rem;color:var(--muted);font-family:var(--font-mono);}
       <a href="#s2">7.2 CI de multiplexação</a>
       <a href="#s3a">7.3.1 Conversor paralelo-série</a>
       <a href="#s3b">7.3.2 Gerador de funções</a>
+      <a href="#s3c">7.3.3 Implementação com 74HC151</a>
       <a href="#s4">7.4 Demultiplexador</a>
     </div>
   </div>
@@ -215,6 +216,46 @@ footer p{font-size:.8rem;color:var(--muted);font-family:var(--font-mono);}
     <p class="section-label">7.1 / conceito</p>
     <h2>Conceito</h2>
 
+    <p>Antes da definição formal, vale observar o comportamento do circuito abaixo, composto por duas portas AND, uma porta OR e um inversor:</p>
+
+    <div class="fig-full">
+      <svg viewBox="0 0 640 280" xmlns="http://www.w3.org/2000/svg">
+        <style>.wire{stroke:#3b4a5e;stroke-width:1.6;fill:none;}.gate{stroke:#00c2ff;stroke-width:1.6;fill:none;}.lbl{font-family:'IBM Plex Mono',monospace;font-size:13px;fill:#cbd5e1;}.lbl2{font-family:'IBM Plex Mono',monospace;font-size:12px;fill:#64748b;}.dot{fill:#cbd5e1;}</style>
+        <!-- inputs -->
+        <text x="10" y="58" class="lbl">I1</text><circle cx="34" cy="54" r="3" class="dot"/>
+        <path d="M37 54 H120" class="wire"/>
+        <text x="10" y="178" class="lbl">I0</text><circle cx="34" cy="174" r="3" class="dot"/>
+        <path d="M37 174 H120" class="wire"/>
+        <text x="6" y="240" class="lbl">S</text><circle cx="34" cy="236" r="3" class="dot"/>
+        <path d="M37 236 H80 V60 H120" class="wire"/>
+        <!-- inverter for AND2 -->
+        <path d="M80 236 V150 H105" class="wire"/>
+        <path d="M105 142 L130 150 L105 158 Z" class="gate"/>
+        <circle cx="134" cy="150" r="3" class="gate"/>
+        <path d="M137 150 H160" class="wire"/>
+        <!-- AND1 gate -->
+        <path d="M120 40 H150 A22 22 0 0 1 150 70 H120 Z" class="gate"/>
+        <text x="128" y="59" class="lbl2">1</text>
+        <path d="M172 55 H230" class="wire"/>
+        <!-- AND2 gate -->
+        <path d="M160 160 H190 A22 22 0 0 1 190 190 H160 Z" class="gate"/>
+        <text x="168" y="179" class="lbl2">2</text>
+        <path d="M212 175 H230" class="wire"/>
+        <path d="M160 174 V160" class="wire"/>
+        <!-- feed I0 into AND2 top -->
+        <path d="M120 174 H160" class="wire"/>
+        <!-- OR gate -->
+        <path d="M230 40 Q260 40 270 65 Q280 90 270 115 Q260 140 230 140 Q245 90 230 40 Z" class="gate" transform="translate(0,40)"/>
+        <path d="M242 55 H260" class="wire" style="display:none"/>
+        <path d="M270 145 H310" class="wire"/>
+        <circle cx="314" cy="145" r="3" class="dot"/>
+        <text x="322" y="150" class="lbl">Z</text>
+      </svg>
+      <p class="fig-caption">Fig. 7.0 — Circuito de motivação: qual é o comportamento da saída Z?</p>
+    </div>
+
+    <div class="note">Analisando: quando <strong>S = 0</strong>, a porta 2 está habilitada (entrada invertida de S em H) e <strong>Z = I0</strong>. Quando <strong>S = 1</strong>, a porta 1 está habilitada e <strong>Z = I1</strong>. A entrada S <strong>seleciona</strong> qual dado passa para a saída — esse é exatamente o comportamento de um <em>multiplexador</em>.</div>
+
     <p>Os circuitos multiplexadores são também chamados de <strong>seletores de dados</strong>. São circuitos lógicos que aceitam vários dados de entrada e selecionam um deles em um determinado instante. Atuam como uma <strong>chave digital</strong>.</p>
 
     <div class="definition">
@@ -224,7 +265,7 @@ footer p{font-size:.8rem;color:var(--muted);font-family:var(--font-mono);}
 
     <div class="fig-full">
       <img src="https://github.com/claytonjasilva/claytonjasilva.github.io/raw/main/sisdig_aulas/images_sisdig/multiplexador.jpg" alt="Circuito multiplexador">
-      <p class="fig-caption">Fig. 7.1 — Circuito multiplexador</p>
+      <p class="fig-caption">Fig. 7.1 — Circuito multiplexador (visão em chave digital: o código das entradas de seleção determina qual entrada é transmitida para a saída Z)</p>
     </div>
 
     <div class="note">Para selecionar <em>N</em> entradas de dados, são necessárias pelo menos <em>M</em> entradas seletoras, tal que $2^M = N$.</div>
@@ -261,14 +302,26 @@ footer p{font-size:.8rem;color:var(--muted);font-family:var(--font-mono);}
     <p>Similarmente, pode-se projetar um multiplexador de 4 entradas. Utilizando portas lógicas, obtém-se o circuito da figura:</p>
     <div class="fig-full">
       <img src="https://github.com/claytonjasilva/claytonjasilva.github.io/raw/main/sisdig_aulas/images_sisdig/multiplexador4entradas.jpg" alt="Circuito multiplexador de 4 entradas">
-      <p class="fig-caption">Fig. 7.2 — Multiplexador de 4 entradas</p>
+      <p class="fig-caption">Fig. 7.2 — Multiplexador de 4 entradas, selecionado por S1S0</p>
     </div>
+
+    <p>Generalizando para um multiplexador de 4 entradas, a tabela-verdade simplificada é:</p>
+    <table style="max-width:300px">
+      <thead><tr><th>S1</th><th>S0</th><th>Saída</th></tr></thead>
+      <tbody>
+        <tr><td>0</td><td>0</td><td>Z = I0</td></tr>
+        <tr><td>0</td><td>1</td><td>Z = I1</td></tr>
+        <tr><td>1</td><td>0</td><td>Z = I2</td></tr>
+        <tr><td>1</td><td>1</td><td>Z = I3</td></tr>
+      </tbody>
+    </table>
   </section>
 
   <!-- 7.2 -->
   <section class="section" id="s2">
     <p class="section-label">7.2 / ci de multiplexação</p>
     <h2>Circuito integrado de multiplexação</h2>
+
 
     <div class="fig-full">
       <img src="https://github.com/claytonjasilva/claytonjasilva.github.io/raw/main/sisdig_aulas/images_sisdig/multiplexador8entradas.jpg" alt="Circuito multiplexador de 8 entradas">
@@ -395,6 +448,44 @@ footer p{font-size:.8rem;color:var(--muted);font-family:var(--font-mono);}
         <tr><td>1</td><td>1</td><td>1</td><td>1</td></tr>
       </tbody>
     </table>
+
+    <!-- 7.3.3 -->
+    <h3 id="s3c">7.3.3 Implementação prática com o 74HC151</h3>
+    <p>Na prática, o mux de 8 entradas (ex.: 74HC151) implementa diretamente qualquer função de <strong>3 variáveis</strong>: basta conectar cada entrada de dados ($I_0$ a $I_7$) a <strong>0</strong> (terra) ou <strong>1</strong> (Vcc, via resistor de pull-up) de acordo com a linha correspondente da tabela-verdade, e ligar as variáveis booleanas <strong>A, B, C</strong> às entradas seletoras $S_0, S_1, S_2$.</p>
+
+    <div class="fig-full">
+      <svg viewBox="0 0 640 260" xmlns="http://www.w3.org/2000/svg">
+        <style>.wr{stroke:#3b4a5e;stroke-width:1.4;fill:none;}.ic{stroke:#00c2ff;stroke-width:1.6;fill:none;}.lb{font-family:'IBM Plex Mono',monospace;font-size:11px;fill:#cbd5e1;}.lb2{font-family:'IBM Plex Mono',monospace;font-size:11px;fill:#64748b;}</style>
+        <rect x="170" y="40" width="260" height="150" rx="4" class="ic"/>
+        <text x="220" y="120" class="lb" fill="#7c3aed">74HC151</text>
+        <!-- selector inputs -->
+        <text x="100" y="64" class="lb">A</text><path d="M115 60 H170" class="wr"/><text x="178" y="58" class="lb2">S0</text>
+        <text x="100" y="84" class="lb">B</text><path d="M115 80 H170" class="wr"/><text x="178" y="78" class="lb2">S1</text>
+        <text x="100" y="104" class="lb">C</text><path d="M115 100 H170" class="wr"/><text x="178" y="98" class="lb2">S2</text>
+        <!-- enable to GND -->
+        <text x="92" y="124" class="lb2">E̅→GND</text><path d="M150 120 H170" class="wr"/>
+        <!-- data inputs across top, alternating GND/Vcc -->
+        <g class="lb2">
+          <text x="180" y="36">I0</text><text x="210" y="36">I1</text><text x="240" y="36">I2</text><text x="270" y="36">I3</text>
+          <text x="300" y="36">I4</text><text x="330" y="36">I5</text><text x="360" y="36">I6</text><text x="390" y="36">I7</text>
+        </g>
+        <path d="M183 40 V20 M213 40 V20 M243 40 V20 M273 40 V20 M303 40 V20 M333 40 V20 M363 40 V20 M393 40 V20" class="wr"/>
+        <text x="178" y="14" class="lb2" style="fill:#475569">0</text>
+        <text x="208" y="14" class="lb2" style="fill:#475569">0</text>
+        <text x="238" y="14" class="lb2" style="fill:#475569">0</text>
+        <text x="268" y="14" class="lb2" style="fill:#475569">1</text>
+        <text x="298" y="14" class="lb2" style="fill:#475569">0</text>
+        <text x="328" y="14" class="lb2" style="fill:#475569">0</text>
+        <text x="358" y="14" class="lb2" style="fill:#475569">0</text>
+        <text x="388" y="14" class="lb2" style="fill:#475569">1</text>
+        <!-- output -->
+        <path d="M300 190 V215" class="wr"/>
+        <text x="294" y="232" class="lb">Z</text>
+      </svg>
+      <p class="fig-caption">Fig. 7.7b — 74HC151 fiação fixa implementando uma função de 3 variáveis (exemplo: linhas 011 e 111 em nível alto)</p>
+    </div>
+
+    <div class="note">Essa técnica permite implementar <strong>qualquer</strong> função booleana de até 3 variáveis sem necessidade de simplificação (Mapa de Karnaugh ou Soma de Produtos) — basta "cabear" a tabela-verdade diretamente nas entradas de dados do CI.</div>
   </section>
 
   <!-- 7.4 -->
@@ -415,6 +506,24 @@ footer p{font-size:.8rem;color:var(--muted);font-family:var(--font-mono);}
       <img src="https://github.com/claytonjasilva/claytonjasilva.github.io/raw/main/sisdig_aulas/images_sisdig/conversorserieparalelo.jpg" alt="Conversor série-paralelo com demultiplexador">
       <p class="fig-caption">Fig. 7.9 — Conversor série-paralelo com demultiplexador</p>
     </div>
+
+    <p>Assim como no mux, a conversão pode ser <strong>assíncrona</strong> (sinais de seleção variando manualmente, controlados por um circuito controlador) ou <strong>síncrona</strong>, com os bits seletores $S_2S_1S_0$ alimentados por um <strong>contador paralelo síncrono</strong>, referenciado pelo sinal de <em>clock</em>:</p>
+
+    <table style="max-width:420px">
+      <thead><tr><th>Contagem</th><th>C</th><th>B</th><th>A</th></tr></thead>
+      <tbody>
+        <tr><td>0</td><td>0</td><td>0</td><td>0</td></tr>
+        <tr><td>1</td><td>0</td><td>0</td><td>1</td></tr>
+        <tr><td>2</td><td>0</td><td>1</td><td>0</td></tr>
+        <tr><td>3</td><td>0</td><td>1</td><td>1</td></tr>
+        <tr><td>4</td><td>1</td><td>0</td><td>0</td></tr>
+        <tr><td>5</td><td>1</td><td>0</td><td>1</td></tr>
+        <tr><td>6</td><td>1</td><td>1</td><td>0</td></tr>
+        <tr><td>7</td><td>1</td><td>1</td><td>1</td></tr>
+      </tbody>
+    </table>
+
+    <div class="note">No conversor paralelo-série síncrono com demux, o sinal de <em>enable</em> ($\bar{E}$) costuma ser controlado por um circuito controlador que habilita a transferência apenas durante a janela de contagem completa (000 a 111), evitando leituras espúrias entre ciclos.</div>
 
     <h3>Datasheets de referência</h3>
     <div class="ds-grid">
