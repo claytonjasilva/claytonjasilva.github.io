@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Cap. 8 — Microcontroladores: Atmel ATmega 2560 | Arquitetura de Computadores</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0a0e17;--surface:#111827;--border:#1e2d40;--accent:#00c2ff;--accent2:#7c3aed;--text:#e2e8f0;--muted:#64748b;--tag-bg:#0f172a;--font-mono:'IBM Plex Mono',monospace;--font-sans:'IBM Plex Sans',sans-serif}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:var(--font-sans);font-size:16px;line-height:1.65}
+a{color:var(--accent);text-decoration:none}a:hover{text-decoration:underline}.container{max-width:980px;margin:0 auto;padding:0 2rem}
+nav{position:sticky;top:0;z-index:100;background:rgba(10,14,23,.9);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);padding:.9rem 0}
+nav .container{display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap}.nav-brand{font-family:var(--font-mono);font-size:.78rem;color:var(--accent)}
+.nav-links{display:flex;gap:1rem;list-style:none;flex-wrap:wrap}.nav-links a{font-family:var(--font-mono);font-size:.7rem;color:var(--muted)}.nav-links a:hover{color:var(--text);text-decoration:none}
+.progress-track{height:3px;background:var(--border);position:sticky;top:53px;z-index:99}.progress-fill{height:100%;width:0%;background:linear-gradient(90deg,var(--accent),var(--accent2));transition:width .1s}
+.hero{padding:4rem 0 2.5rem;position:relative;overflow:hidden}.hero::before{content:'';position:absolute;inset:0;background-image:linear-gradient(var(--border) 1px,transparent 1px),linear-gradient(90deg,var(--border) 1px,transparent 1px);background-size:40px 40px;opacity:.3;mask-image:radial-gradient(ellipse 80% 60% at 50% 0%,black 40%,transparent 100%)}
+.hero-eyebrow{font-family:var(--font-mono);font-size:.74rem;color:var(--accent);letter-spacing:.14em;text-transform:uppercase;margin-bottom:1rem;display:flex;align-items:center;gap:.7rem}.hero-eyebrow::before{content:'';width:2rem;height:1px;background:var(--accent)}
+h1{font-size:clamp(2rem,4.5vw,3.2rem);font-weight:300;line-height:1.12;letter-spacing:-.02em;margin-bottom:.6rem}h1 strong{font-weight:600;color:var(--accent)}
+.hero-meta{display:flex;gap:1.5rem;flex-wrap:wrap;margin-top:1.2rem}.meta-item{font-family:var(--font-mono);font-size:.74rem;color:var(--muted)}
+.objectives{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:1.4rem 1.6rem;margin-top:1.6rem}.objectives p.label{font-family:var(--font-mono);font-size:.7rem;color:var(--accent);letter-spacing:.1em;text-transform:uppercase;margin-bottom:.7rem}.objectives ul{list-style:none;display:grid;gap:.5rem}.objectives li{font-size:.88rem;color:var(--muted);display:flex;gap:.6rem}.objectives li::before{content:'→';color:var(--accent);flex-shrink:0}
+.toc{display:flex;gap:.5rem;flex-wrap:wrap;margin-top:1.5rem}.toc a{font-family:var(--font-mono);font-size:.7rem;color:var(--muted);border:1px solid var(--border);padding:.35rem .75rem;border-radius:20px;transition:.2s}.toc a:hover{border-color:var(--accent);color:var(--accent);text-decoration:none}
+.section{padding:3rem 0;border-top:1px solid var(--border)}.section-label{font-family:var(--font-mono);font-size:.7rem;color:var(--accent);letter-spacing:.14em;text-transform:uppercase;display:flex;align-items:center;gap:.7rem;margin-bottom:1.4rem}.section-label::after{content:'';flex:1;height:1px;background:var(--border)}
+h2{font-size:1.5rem;font-weight:600;letter-spacing:-.01em;margin-bottom:1rem}h3{font-size:1.1rem;font-weight:600;margin:1.6rem 0 .8rem;color:var(--text)}h4{font-size:.95rem;font-weight:600;margin:1.2rem 0 .6rem;color:var(--accent)}
+p{margin-bottom:1rem;color:#cbd5e1}strong{color:var(--text);font-weight:600}em{color:var(--accent);font-style:normal}
+ul.plain,ol.plain{margin:0 0 1rem 1.2rem;color:#cbd5e1}ul.plain li,ol.plain li{margin-bottom:.45rem}
+.fig-full{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:1.2rem;margin:1.5rem 0;overflow-x:auto}.fig-full img{max-width:100%;display:block;margin:0 auto;border-radius:6px}.fig-caption{font-family:var(--font-mono);font-size:.72rem;color:var(--muted);text-align:center;margin-top:.6rem}
+.note{background:var(--tag-bg);border:1px solid var(--border);border-radius:6px;padding:.9rem 1.1rem;margin:1rem 0;font-size:.85rem;color:var(--muted)}.note strong{color:var(--accent)}
+.ds-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:.6rem;margin:1rem 0}.ds-item{background:var(--tag-bg);border:1px solid var(--border);border-radius:6px;padding:.8rem 1rem;transition:.2s}.ds-item:hover{border-color:var(--accent)}.ds-item a{font-size:.8rem;color:var(--text);font-family:var(--font-mono)}.ds-item a:hover{color:var(--accent);text-decoration:none}
+.kv-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:.7rem;margin:1.2rem 0}.kv{background:var(--tag-bg);border:1px solid var(--border);border-radius:6px;padding:.85rem 1rem}.kv strong{display:block;color:var(--accent);font-family:var(--font-mono);font-size:.78rem;margin-bottom:.25rem}.kv span{font-size:.9rem;color:#cbd5e1}
+.chapter-nav{display:flex;justify-content:space-between;gap:1rem;margin-top:2rem}.chapter-nav a{flex:1;background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:1rem 1.3rem;font-size:.85rem;transition:.2s}.chapter-nav a:hover{border-color:var(--accent);text-decoration:none}.chapter-nav .dir{font-family:var(--font-mono);font-size:.65rem;color:var(--muted);text-transform:uppercase;letter-spacing:.08em;display:block;margin-bottom:.3rem}.chapter-nav .next{text-align:right}
+footer{border-top:1px solid var(--border);padding:2rem 0;margin-top:2rem}footer .container{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem}footer p{font-size:.8rem;color:var(--muted);font-family:var(--font-mono)}
+@media(max-width:640px){.nav-links{display:none}.hero{padding:2.5rem 0 2rem}.chapter-nav{flex-direction:column}}
+</style>
+</head>
+<body>
+<nav><div class="container"><span class="nav-brand">arq · cap. 8</span><ul class="nav-links"><li><a href="#definicao">Definição</a></li><li><a href="#sobre">ATmega 2560</a></li><li><a href="#cpu">CPU</a></li><li><a href="#memoria">Memória</a></li><li><a href="#instrucoes">Instruções</a></li><li><a href="../arq.html">← disciplina</a></li></ul></div></nav>
+<div class="progress-track"><div class="progress-fill" id="progressFill"></div></div>
+<section class="hero"><div class="container"><p class="hero-eyebrow">Arquitetura de Computadores · Capítulo 8</p><h1>Microcontroladores<br><strong>Atmel ATmega 2560</strong></h1><div class="hero-meta"><span class="meta-item">Prof. Clayton J A Silva</span><span class="meta-item">Arduino Mega 2560</span><span class="meta-item">Rev 2026.2</span></div><div class="objectives"><p class="label">Objetivos do capítulo</p><ul><li>Compreender o conceito de microcontrolador como computador de um único chip.</li><li>Identificar os principais recursos do ATmega2560.</li><li>Relacionar CPU, registradores, memória, periféricos e conjunto de instruções.</li></ul></div><div class="toc"><a href="#definicao">Definição</a><a href="#sobre">Sobre o 2560</a><a href="#cpu">Núcleo da CPU</a><a href="#memoria">Sistema de memória</a><a href="#instrucoes">Set de instruções</a><a href="#assembly">Assembly</a></div></div></section>
+<div class="container">
+<section class="section" id="definicao">
+  <p class="section-label">8.1 / definição</p>
+  <h2>Definição de microcontroladores</h2>
+  <p>Microcontroladores são circuitos integrados que possuem internamente os componentes necessários ao seu funcionamento, exceto a fonte de alimentação.</p>
+  <p>De forma sintética, <strong>microcontroladores são computadores de um único chip</strong>.</p>
+  <div class="fig-full"><img src="/arq_aulas/images/microcontrolador.jpg" alt="Figura 1 — Microcontroladores: visão geral."><p class="fig-caption">Figura 1 — Microcontroladores: visão geral.</p></div>
+</section>
+
+<section class="section" id="sobre">
+  <p class="section-label">8.2 / sobre o ATmega 2560</p>
+  <h2>Sobre o ATmega 2560</h2>
+  <h3>Características gerais</h3>
+  <div class="kv-grid">
+    <div class="kv"><strong>Arquitetura</strong><span>RISC</span></div>
+    <div class="kv"><strong>Instruções</strong><span>135 instruções</span></div>
+    <div class="kv"><strong>Desempenho</strong><span>Até 16 MIPS em 16 MHz</span></div>
+    <div class="kv"><strong>Flash</strong><span>256 kB</span></div>
+    <div class="kv"><strong>Registradores</strong><span>32 registradores de 8 bits</span></div>
+    <div class="kv"><strong>EEPROM</strong><span>4 kB</span></div>
+    <div class="kv"><strong>SRAM</strong><span>8 kB</span></div>
+    <div class="kv"><strong>ADC</strong><span>16 canais</span></div>
+  </div>
+  <p>Ao combinar uma <strong>CPU RISC de 8 bits</strong> com memória Flash autoprogramável em um único chip, o ATmega2560 fornece uma solução flexível e econômica para aplicações de controle embarcadas.</p>
+  <div class="ds-grid"><div class="ds-item"><a href="https://ww1.microchip.com/downloads/en/devicedoc/atmel-2549-8-bit-avr-microcontroller-atmega640-1280-1281-2560-2561_datasheet.pdf" target="_blank">Datasheet ATmega 2560</a></div></div>
+  <h3>Pinagem</h3>
+  <p>A figura apresenta a pinagem do ATmega 2560.</p>
+  <div class="fig-full"><img src="/arq_aulas/images/atmegapinagem.jpg" alt="Figura 2 — Pinagem do ATmega 2560."><p class="fig-caption">Figura 2 — Pinagem do ATmega 2560.</p></div>
+  <ol class="plain"><li>Portas A, B, C, D, E, F, G, H, J, K e L, cada uma com 8 bits, bidirecionais.</li><li>Pinos de alimentação, VDD e GND.</li><li>Pino de RESET.</li></ol>
+  <h3>Diagrama em blocos</h3>
+  <div class="fig-full"><img src="/arq_aulas/images/atmegablocos.jpg" alt="Figura 3 — Diagrama em blocos do ATmega 2560."><p class="fig-caption">Figura 3 — Diagrama em blocos do ATmega 2560.</p></div>
+  <p>O ATmega2560 fornece, entre outros recursos, memória Flash de 256 KB, EEPROM de 4 KB, SRAM de 8 KB, 32 registradores de uso geral, quatro USARTs, ADC de 16 canais e 10 bits e interface SPI.</p>
+</section>
+
+<section class="section" id="cpu">
+  <p class="section-label">8.2.4 / núcleo da CPU</p>
+  <h2>Núcleo da CPU</h2>
+  <h3>Visão geral</h3>
+  <div class="fig-full"><img src="/arq_aulas/images/atmegacpu.jpg" alt="Figura 4 — Núcleo da CPU do ATmega 2560."><p class="fig-caption">Figura 4 — Núcleo da CPU do ATmega 2560.</p></div>
+  <p>Para maximizar desempenho e paralelismo, o AVR usa uma <strong>arquitetura Harvard</strong>, com memórias e barramentos separados para programa e dados.</p>
+  <p>As instruções são executadas com <em>pipelining</em> de nível único: enquanto uma instrução é executada, a próxima é pré-buscada na memória de programa.</p>
+  <p>O conjunto de registradores de acesso rápido contém <strong>32 registradores de uso geral de 8 bits</strong>. Seis deles podem formar três ponteiros de endereço indireto de 16 bits: <strong>X, Y e Z</strong>.</p>
+  <h3>ULA</h3>
+  <p>A Unidade Lógica Aritmética opera em conexão direta com os 32 registradores de uso geral. Em um único ciclo de clock, executa operações aritméticas e lógicas.</p>
+  <ul class="plain"><li>Operações aritméticas;</li><li>Operações lógicas;</li><li>Funções de bit.</li></ul>
+  <h3>Registrador de Status</h3>
+  <div class="fig-full"><img src="/arq_aulas/images/atmegaregistradorstatus.jpg" alt="Figura 5 — Registrador de status do ATmega 2560."><p class="fig-caption">Figura 5 — Registrador de status do ATmega 2560.</p></div>
+  <ul class="plain"><li>Bit 7: habilita interrupção quando vale 1;</li><li>Bit 6: copia bit das instruções BLD e BST;</li><li>Bit 5: indica carry em operação de 4 bits;</li><li>Bit 4: indica o sinal da operação;</li><li>Bit 3: indica overflow em complemento de 2;</li><li>Bit 2: indica resultado negativo;</li><li>Bit 1: indica resultado igual a zero;</li><li>Bit 0: indica carry na operação.</li></ul>
+  <h3>Registradores de uso geral</h3>
+  <div class="fig-full"><img src="/arq_aulas/images/atmegaregistradorgeral.jpg" alt="Figura 6 — Registradores de uso geral do ATmega 2560."><p class="fig-caption">Figura 6 — Registradores de uso geral do ATmega 2560.</p></div>
+  <p>Os registradores R26 a R31 possuem funções adicionais como ponteiros de endereço de 16 bits para endereçamento indireto do espaço de dados: <strong>X, Y e Z</strong>.</p>
+  <div class="fig-full"><img src="/arq_aulas/images/atmegaregistradorendereco.jpg" alt="Figura 7 — Registradores de endereço X, Y e Z do ATmega 2560."><p class="fig-caption">Figura 7 — Registradores de endereço X, Y e Z do ATmega 2560.</p></div>
+</section>
+
+<section class="section" id="memoria">
+  <p class="section-label">8.2.5 / sistema de memória</p>
+  <h2>Sistema de memória</h2>
+  <p>A arquitetura AVR possui dois espaços principais: <strong>memória de dados</strong> e <strong>memória de programa</strong>. Além disso, possui memória EEPROM para armazenamento de dados.</p>
+  <h3>Memória de programa Flash</h3>
+  <p>O ATmega contém 256 KB de Flash reprogramável no sistema para armazenamento de programas. Como as instruções AVR têm 16 ou 32 bits, a Flash é organizada como 128K × 16 bits.</p>
+  <div class="fig-full"><img src="/arq_aulas/images/atmegaflash.jpg" alt="Figura 8 — Organização da memória Flash do ATmega 2560."><p class="fig-caption">Figura 8 — Organização da memória Flash do ATmega 2560.</p></div>
+  <h3>SRAM</h3>
+  <div class="fig-full"><img src="/arq_aulas/images/atmegasram.jpg" alt="Figura 9 — Organização da memória SRAM do ATmega 2560."><p class="fig-caption">Figura 9 — Organização da memória SRAM do ATmega 2560.</p></div>
+  <p>Os modos de endereçamento da memória de dados incluem: direto, indireto com deslocamento, indireto, indireto com pré-decremento e indireto com pós-incremento.</p>
+  <ol class="plain"><li>O endereçamento direto alcança todo o espaço de dados.</li><li>O modo indireto com deslocamento alcança 63 posições a partir do endereço-base nos registradores Y ou Z.</li><li>Os registradores R26 a R31 atuam como ponteiros de endereçamento indireto.</li><li>Nos modos com pré-decremento e pós-incremento, X, Y e Z são automaticamente ajustados.</li></ol>
+  <h3>EEPROM</h3>
+  <p>O ATmega contém 4 KB de EEPROM de dados, organizada separadamente do espaço de dados, permitindo leitura e escrita de bytes individuais.</p>
+  <h3>Memória de I/O</h3>
+  <p>Todos os periféricos e E/S do ATmega são colocados no espaço de E/S. Esses locais podem ser acessados pelas instruções LD, LDS, LDD, ST, STS e STD.</p>
+</section>
+
+<section class="section" id="instrucoes">
+  <p class="section-label">8.2.6 / set de instruções</p>
+  <h2><em>Set</em> de instruções</h2>
+  <p>O manual do conjunto de instruções apresenta a sintaxe, o formato binário, o <em>opcode</em>, os operandos e a semântica de cada instrução.</p>
+  <div class="fig-full"><img src="/arq_aulas/images/atmegamanualsetinstrucoes.jpg" alt="Figura 10 — Exemplo de consulta ao manual do set de instruções AVR."><p class="fig-caption">Figura 10 — Exemplo de consulta ao manual do set de instruções AVR.</p></div>
+  <div class="ds-grid"><div class="ds-item"><a href="https://ww1.microchip.com/downloads/en/DeviceDoc/AVR-Instruction-Set-Manual-DS40002198A.pdf" target="_blank">Manual do set de instruções AVR</a></div><div class="ds-item"><a href="https://ww1.microchip.com/downloads/en/DeviceDoc/40001917A.pdf" target="_blank">Manual do assembler AVR</a></div></div>
+</section>
+
+<section class="section" id="assembly">
+  <p class="section-label">8.2.7 / assembly e assembler</p>
+  <h2><em>Assembly</em> e <em>Assembler</em></h2>
+  <p>O manual do <em>set</em> de instruções apresenta a sintaxe, o formato binário, o <em>opcode</em>, os operandos e a semântica das instruções. O manual do <em>assembler</em> apresenta a sintaxe, as diretivas, as diretivas de pré-processamento e as expressões aceitas.</p>
+</section>
+<div class="chapter-nav"><a href="Cap7.html"><span class="dir">← anterior</span>Cap. 7 — Sistemas Operacionais</a><a class="next" href="../arq.html"><span class="dir">voltar →</span>Página da disciplina</a></div></div>
+<footer><div class="container"><p>© 2026 · Prof. Clayton J A Silva · Ibmec RJ</p><p><a href="../arq.html">Arquitetura de Computadores</a></p></div></footer>
+<script>window.addEventListener('scroll',()=>{const h=document.documentElement;const pct=(h.scrollTop)/(h.scrollHeight-h.clientHeight)*100;document.getElementById('progressFill').style.width=pct+'%';});</script>
+</body></html>
