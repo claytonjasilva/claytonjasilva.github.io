@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Programação Linear Aplicada — Prof. Clayton J A Silva</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,600;1,300&display=swap" rel="stylesheet">
+  <style>
+
+:root {
+  --bg:        #0a0e17;
+  --surface:   #111827;
+  --border:    #1e2d40;
+  --accent:    #00c2ff;
+  --accent2:   #7c3aed;
+  --text:      #e2e8f0;
+  --muted:     #64748b;
+  --tag-bg:    #0f172a;
+  --font-mono: 'IBM Plex Mono', monospace;
+  --font-sans: 'IBM Plex Sans', sans-serif;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-sans);
+  font-size: 16px;
+  line-height: 1.6;
+  min-height: 100vh;
+}
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; }
+.container { max-width: 1000px; margin: 0 auto; padding: 0 2rem; }
+
+nav {
+  position: sticky; top: 0; z-index: 100;
+  background: rgba(10,14,23,0.88);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border);
+  padding: 1rem 0;
+}
+nav .container { display: flex; align-items: center; justify-content: space-between; gap: 1rem; flex-wrap: wrap; }
+.nav-brand { font-family: var(--font-mono); font-size: 0.82rem; color: var(--accent); }
+.nav-links { display: flex; gap: 1.5rem; list-style: none; flex-wrap: wrap; }
+.nav-links a { font-family: var(--font-mono); font-size: 0.78rem; color: var(--muted); transition: color 0.2s; }
+.nav-links a:hover { color: var(--text); text-decoration: none; }
+
+.hero { padding: 5rem 0 3.5rem; position: relative; overflow: hidden; }
+.hero::before {
+  content: ''; position: absolute; inset: 0;
+  background-image:
+    linear-gradient(var(--border) 1px, transparent 1px),
+    linear-gradient(90deg, var(--border) 1px, transparent 1px);
+  background-size: 40px 40px; opacity: 0.3;
+  mask-image: radial-gradient(ellipse 80% 60% at 50% 0%, black 40%, transparent 100%);
+}
+.hero-eyebrow {
+  font-family: var(--font-mono); font-size: 0.75rem; color: var(--accent);
+  letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 1rem;
+  display: flex; align-items: center; gap: 0.75rem;
+}
+.hero-eyebrow::before { content: ''; display: inline-block; width: 2rem; height: 1px; background: var(--accent); }
+h1 { font-size: clamp(1.8rem, 4vw, 3rem); font-weight: 300; line-height: 1.1; letter-spacing: -0.02em; margin-bottom: 0.75rem; }
+h1 strong { font-weight: 600; color: var(--accent); }
+.hero-sub { font-size: 0.88rem; color: var(--muted); font-family: var(--font-mono); margin-bottom: 2rem; }
+.hero-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+.tag {
+  font-family: var(--font-mono); font-size: 0.72rem; color: var(--accent2);
+  background: rgba(124,58,237,0.1); border: 1px solid rgba(124,58,237,0.25);
+  border-radius: 4px; padding: 0.25rem 0.6rem;
+}
+
+.section { padding: 3rem 0; border-top: 1px solid var(--border); }
+.section-title {
+  font-family: var(--font-mono); font-size: 0.72rem; color: var(--accent);
+  letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 1.5rem;
+  display: flex; align-items: center; gap: 0.75rem;
+}
+.section-title::after { content: ''; flex: 1; height: 1px; background: var(--border); }
+h2 { font-size: 1.25rem; font-weight: 600; margin-bottom: 1.25rem; }
+h3 { font-size: 1rem; font-weight: 600; margin: 1.75rem 0 0.9rem; color: var(--text); }
+
+.card {
+  border: 1px solid var(--border); border-radius: 8px; padding: 1.5rem;
+  background: var(--surface);
+}
+.card-link { font-family: var(--font-mono); font-size: 0.78rem; }
+
+.content-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1px;
+  background: var(--border);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  overflow: hidden;
+}
+.content-card {
+  background: var(--surface);
+  padding: 1.25rem 1.5rem;
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+  transition: background 0.2s;
+  min-height: 120px;
+}
+.content-card:hover { background: #161f2e; }
+.content-num {
+  font-family: var(--font-mono); font-size: 0.7rem; color: var(--accent);
+  background: rgba(0,194,255,0.08); border: 1px solid rgba(0,194,255,0.2);
+  border-radius: 3px; padding: 0.2rem 0.5rem; white-space: nowrap; flex-shrink: 0; margin-top: 0.1rem;
+}
+.content-card a { font-size: 0.9rem; color: var(--text); font-weight: 600; line-height: 1.35; }
+.content-card a:hover { color: var(--accent); text-decoration: none; }
+.content-card p { color: var(--muted); font-size: 0.78rem; margin-top: 0.35rem; line-height: 1.45; }
+
+.lab-index-grid {
+  display:grid; grid-template-columns:repeat(auto-fill,minmax(230px,1fr)); gap:.8rem;
+}
+.lab-index-card {
+  background:var(--surface); border:1px solid var(--border); border-radius:8px;
+  padding:1.1rem 1.2rem; position:relative; overflow:hidden; transition:border-color .2s, background .2s;
+}
+.lab-index-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--accent),var(--accent2));}
+.lab-index-card:hover{border-color:var(--accent);background:#161f2e;}
+.lab-index-card .lab-num{font-family:var(--font-mono);font-size:.68rem;color:var(--accent2);display:block;margin-bottom:.45rem;}
+.lab-index-card a{font-size:.9rem;color:var(--text);font-weight:600;}
+.lab-index-card a:hover{color:var(--accent);text-decoration:none;}
+.lab-index-card p{font-size:.76rem;color:var(--muted);margin:.35rem 0 0;}
+
+.aval-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 1rem; }
+.aval-card {
+  border: 1px solid var(--border); border-radius: 8px; padding: 1.5rem;
+  background: var(--surface); display: flex; flex-direction: column; gap: 0.75rem;
+  position: relative; overflow: hidden;
+}
+.aval-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; }
+.aval-card.ap::before { background: linear-gradient(90deg, var(--accent), rgba(0,194,255,0.3)); }
+.aval-card.ac::before { background: linear-gradient(90deg, var(--accent2), rgba(124,58,237,0.3)); }
+.aval-badge {
+  font-family: var(--font-mono); font-size: 0.7rem; font-weight: 600;
+  padding: 0.25rem 0.6rem; border-radius: 4px; display: inline-block; width: fit-content;
+}
+.badge-ap { background: rgba(0,194,255,0.1); border: 1px solid rgba(0,194,255,0.25); color: var(--accent); }
+.badge-ac { background: rgba(124,58,237,0.1); border: 1px solid rgba(124,58,237,0.25); color: var(--accent2); }
+.aval-card h3 { font-size: 0.95rem; font-weight: 600; margin: 0; }
+.aval-list { list-style: none; display: flex; flex-direction: column; gap: 0.4rem; }
+.aval-list li { font-size: 0.85rem; color: var(--muted); display: flex; gap: 0.5rem; }
+.aval-list li::before { content: '·'; color: var(--accent); flex-shrink: 0; }
+.aval-list li.indisponivel { color: #475569; font-style: italic; }
+
+.ds-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 0.6rem; }
+.ds-item {
+  background: var(--tag-bg); border: 1px solid var(--border); border-radius: 6px;
+  padding: 0.85rem 1rem; display: flex; gap: 0.75rem; align-items: center;
+  transition: border-color 0.2s;
+}
+.ds-item:hover { border-color: var(--accent); }
+.ds-icon { flex-shrink: 0; }
+.ds-item a { font-size: 0.82rem; color: var(--text); font-family: var(--font-mono); }
+.ds-item a:hover { color: var(--accent); text-decoration: none; }
+
+.note {
+  background: var(--tag-bg); border: 1px solid var(--border); border-radius: 6px;
+  padding: .9rem 1.1rem; margin-top: 1rem; font-size: .82rem; color: var(--muted);
+}
+
+footer { border-top: 1px solid var(--border); padding: 2rem 0; margin-top: 2rem; }
+footer .container { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; }
+footer p { font-size: 0.82rem; color: var(--muted); font-family: var(--font-mono); }
+
+@media (max-width: 600px) {
+  .hero { padding: 3.5rem 0 2.5rem; }
+  h1 { font-size: 1.8rem; }
+}
+
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="container">
+    <span class="nav-brand">claytonjasilva.github.io</span>
+    <ul class="nav-links">
+      <li><a href="#grid">grid</a></li>
+      <li><a href="#conteudo">conteúdo</a></li>
+      <li><a href="#praticas">práticas</a></li>
+      <li><a href="#avaliacoes">avaliações</a></li>
+      <li><a href="#referencias">referências</a></li>
+      <li><a href="#ferramentas">ferramentas</a></li>
+      <li><a href="index.html">← home</a></li>
+    </ul>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="container">
+    <p class="hero-eyebrow">Pesquisa Operacional · Engenharia</p>
+    <h1>Programação Linear<br><strong>Aplicada</strong></h1>
+    <p class="hero-sub">Prof. Clayton J A Silva · IBM0803 · organização por 14 capítulos</p>
+    <div class="hero-tags">
+      <span class="tag">Pesquisa Operacional</span>
+      <span class="tag">Programação Linear</span>
+      <span class="tag">Simplex</span>
+      <span class="tag">Método Gráfico</span>
+      <span class="tag">Transporte</span>
+      <span class="tag">Designação</span>
+      <span class="tag">Programação Inteira</span>
+      <span class="tag">Python</span>
+    </div>
+  </div>
+</section>
+
+<div class="container">
+
+  <section class="section" id="grid">
+    <p class="section-title">01 / grid da disciplina</p>
+    <div class="card" style="max-width:560px;">
+      <h3 style="margin-top:0;">Objetivos, conteúdo programático e referências</h3>
+      <p style="margin-bottom:1rem;color:var(--muted);">
+        Consulte o grid completo da disciplina, com ementa, objetivos gerais, objetivos específicos,
+        conteúdos, procedimentos de ensino, avaliação e bibliografia.
+      </p>
+      <a class="card-link" href="proglinear_aulas/grid_programacao_linear.html">Ver grid da disciplina →</a>
+    </div>
+  </section>
+
+  <section class="section" id="conteudo">
+    <p class="section-title">02 / conteúdo das aulas</p>
+    <h2>Capítulos</h2>
+    <div class="content-grid">
+      <div class="content-card">
+        <span class="content-num">Cap 1</span>
+        <div>
+          <a href="proglinear_aulas/cap1.html">Modelagem de Problemas e Método Gráfico</a>
+          <p>Variáveis, restrições, função objetivo e solução gráfica de problemas com duas variáveis.</p>
+        </div>
+      </div>
+      <div class="content-card">
+        <span class="content-num">Cap 2</span>
+        <div>
+          <a href="proglinear_aulas/cap2.html">Modelo Matemático para Programação Linear</a>
+          <p>Estrutura geral de modelos de PL: decisão, parâmetros, função objetivo e restrições.</p>
+        </div>
+      </div>
+      <div class="content-card">
+        <span class="content-num">Cap 3</span>
+        <div>
+          <a href="proglinear_aulas/cap3.html">Formulação de Problemas de PL</a>
+          <p>Modelagem de problemas clássicos e tradução de situações reais para modelos matemáticos.</p>
+        </div>
+      </div>
+      <div class="content-card">
+        <span class="content-num">Cap 4</span>
+        <div>
+          <a href="proglinear_aulas/cap4.html">Método Simplex</a>
+          <p>Forma tabular, variáveis de folga, solução básica viável e iterações do Simplex.</p>
+        </div>
+      </div>
+      <div class="content-card">
+        <span class="content-num">Cap 5</span>
+        <div>
+          <a href="proglinear_aulas/cap5.html">Preço-Sombra</a>
+          <p>Interpretação econômica dos recursos e análise do valor marginal das restrições.</p>
+        </div>
+      </div>
+      <div class="content-card">
+        <span class="content-num">Cap 6</span>
+        <div>
+          <a href="proglinear_aulas/cap6.html">Análise de Sensibilidade</a>
+          <p>Variação de recursos e coeficientes da função objetivo sem refazer todo o modelo.</p>
+        </div>
+      </div>
+      <div class="content-card">
+        <span class="content-num">Cap 7</span>
+        <div>
+          <a href="proglinear_aulas/cap7.html">Problema de Transporte</a>
+          <p>Caracterização, formulação clássica e interpretação dos modelos de transporte.</p>
+        </div>
+      </div>
+      <div class="content-card">
+        <span class="content-num">Cap 8</span>
+        <div>
+          <a href="proglinear_aulas/cap8.html">Variações do Problema de Transporte</a>
+          <p>Formulações alternativas, exercícios e ajustes de oferta, demanda e custos.</p>
+        </div>
+      </div>
+      <div class="content-card">
+        <span class="content-num">Cap 9</span>
+        <div>
+          <a href="proglinear_aulas/cap9.html">Transporte com Transbordo</a>
+          <p>Modelos com nós intermediários e fluxos entre origem, transbordo e destino.</p>
+        </div>
+      </div>
+      <div class="content-card">
+        <span class="content-num">Cap 10</span>
+        <div>
+          <a href="proglinear_aulas/cap10.html">Problema da Designação</a>
+          <p>Atribuição ótima de tarefas, pessoas, máquinas ou recursos.</p>
+        </div>
+      </div>
+      <div class="content-card">
+        <span class="content-num">Cap 11</span>
+        <div>
+          <a href="proglinear_aulas/cap11.html">Introdução à Programação Linear Inteira</a>
+          <p>Variáveis inteiras e binárias, decisões discretas e formulações básicas.</p>
+        </div>
+      </div>
+      <div class="content-card">
+        <span class="content-num">Cap 12</span>
+        <div>
+          <a href="proglinear_aulas/cap12.html">PLI — Escala de Trabalho</a>
+          <p>Aplicação de programação inteira em alocação de pessoas e turnos.</p>
+        </div>
+      </div>
+      <div class="content-card">
+        <span class="content-num">Cap 13</span>
+        <div>
+          <a href="proglinear_aulas/cap13.html">PLI — Custos Fixos e Descontos</a>
+          <p>Modelos com custo fixo, encomenda mínima, descontos por quantidade e variáveis binárias.</p>
+        </div>
+      </div>
+      <div class="content-card">
+        <span class="content-num">Cap 14</span>
+        <div>
+          <a href="proglinear_aulas/cap14.html">PLI — Concessão de Contratos</a>
+          <p>Modelagem de decisões de seleção, contratação e concessão por programação inteira.</p>
+        </div>
+      </div>
+    </div>
+    <div class="note">
+      Os links já apontam para os futuros arquivos em <strong>proglinear_aulas/cap1.html</strong> até
+      <strong>proglinear_aulas/cap14.html</strong>. Os arquivos poderão ser criados progressivamente.
+    </div>
+  </section>
+
+  <section class="section" id="apoio">
+    <p class="section-title">03 / textos e exemplos de apoio</p>
+    <div class="ds-grid">
+      <div class="ds-item"><a href="proglinear_aulas/introducao_pesquisa_operacional.html">Introdução à Pesquisa Operacional</a></div>
+      <div class="ds-item"><a href="proglinear_aulas/modelagem_matematica.html">Modelagem Matemática</a></div>
+      <div class="ds-item"><a href="proglinear_aulas/exercicios_resolvidos.html">Exercícios Resolvidos</a></div>
+      <div class="ds-item"><a href="proglinear_aulas/casos_aplicados.html">Casos Aplicados</a></div>
+      <div class="ds-item"><a href="proglinear_aulas/flashcards.html">Flashcards</a></div>
+      <div class="ds-item"><a href="proglinear_aulas/listas_exercicios.html">Listas de Exercícios</a></div>
+    </div>
+  </section>
+
+  <section class="section" id="praticas">
+    <p class="section-title">04 / práticas computacionais</p>
+    <h2>Excel como ponto de partida; Python como ferramenta principal</h2>
+    <p style="color:var(--muted); margin-bottom:1.5rem; max-width:760px;">
+      As primeiras práticas usam o Excel Solver para introduzir a lógica da modelagem e da solução computacional.
+      Na sequência, o curso passa a privilegiar Python, com SciPy, PuLP, Pandas e bibliotecas de otimização.
+    </p>
+    <div class="lab-index-grid">
+      <div class="lab-index-card">
+        <span class="lab-num">Prática 01</span>
+        <a href="proglinear_aulas/pratica1.html">Excel Solver — Primeiro Modelo</a>
+        <p>Modelagem de um problema simples no Excel e resolução com Solver.</p>
+      </div>
+      <div class="lab-index-card">
+        <span class="lab-num">Prática 02</span>
+        <a href="proglinear_aulas/pratica2.html">Excel Solver — Método Gráfico</a>
+        <p>Comparação entre solução gráfica e solução computacional.</p>
+      </div>
+      <div class="lab-index-card">
+        <span class="lab-num">Prática 03</span>
+        <a href="proglinear_aulas/pratica3.html">Python — Ambiente e Bibliotecas</a>
+        <p>Instalação ou uso em Colab, NumPy, Pandas, Matplotlib e SciPy.</p>
+      </div>
+      <div class="lab-index-card">
+        <span class="lab-num">Prática 04</span>
+        <a href="proglinear_aulas/pratica4.html">Python + SciPy — PL Básica</a>
+        <p>Resolução de modelos lineares com scipy.optimize.linprog.</p>
+      </div>
+      <div class="lab-index-card">
+        <span class="lab-num">Prática 05</span>
+        <a href="proglinear_aulas/pratica5.html">Python + PuLP — Modelagem Declarativa</a>
+        <p>Formulação de problemas com variáveis, função objetivo e restrições.</p>
+      </div>
+      <div class="lab-index-card">
+        <span class="lab-num">Prática 06</span>
+        <a href="proglinear_aulas/pratica6.html">Python — Simplex e Interpretação</a>
+        <p>Resolução e leitura dos resultados, variáveis ativas e folgas.</p>
+      </div>
+      <div class="lab-index-card">
+        <span class="lab-num">Prática 07</span>
+        <a href="proglinear_aulas/pratica7.html">Python — Análise de Sensibilidade</a>
+        <p>Variação de parâmetros, recursos e coeficientes da função objetivo.</p>
+      </div>
+      <div class="lab-index-card">
+        <span class="lab-num">Prática 08</span>
+        <a href="proglinear_aulas/pratica8.html">Python — Problema de Transporte</a>
+        <p>Formulação matricial e resolução de modelos de transporte.</p>
+      </div>
+      <div class="lab-index-card">
+        <span class="lab-num">Prática 09</span>
+        <a href="proglinear_aulas/pratica9.html">Python — Problema da Designação</a>
+        <p>Modelagem com variáveis binárias e matriz de custos.</p>
+      </div>
+      <div class="lab-index-card">
+        <span class="lab-num">Prática 10</span>
+        <a href="proglinear_aulas/pratica10.html">Python — Programação Inteira</a>
+        <p>Modelos com variáveis inteiras e binárias usando PuLP ou OR-Tools.</p>
+      </div>
+      <div class="lab-index-card">
+        <span class="lab-num">Prática 11</span>
+        <a href="proglinear_aulas/pratica11.html">Python — Escala de Trabalho</a>
+        <p>Aplicação de PLI para alocação de pessoas e turnos.</p>
+      </div>
+      <div class="lab-index-card">
+        <span class="lab-num">Prática 12</span>
+        <a href="proglinear_aulas/pratica12.html">Python — Custos Fixos e Descontos</a>
+        <p>Uso de variáveis binárias para representar decisões condicionais.</p>
+      </div>
+      <div class="lab-index-card">
+        <span class="lab-num">Prática 13</span>
+        <a href="proglinear_aulas/pratica13.html">Python — Concessão de Contratos</a>
+        <p>Seleção ótima de propostas, limites e critérios de decisão.</p>
+      </div>
+      <div class="lab-index-card">
+        <span class="lab-num">Prática 14</span>
+        <a href="proglinear_aulas/pratica14.html">Projeto Final Computacional</a>
+        <p>Estudo de caso com modelagem, implementação, resultados e análise crítica.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="avaliacoes">
+    <p class="section-title">05 / avaliações</p>
+    <div class="aval-grid">
+
+      <div class="aval-card ap">
+        <span class="aval-badge badge-ap">AP · avaliação bimestral</span>
+        <h3>AP1 e AP2</h3>
+        <ul class="aval-list">
+          <li>Prova individual com modelagem e resolução de problemas.</li>
+          <li>Trabalho computacional com aplicação em Excel e Python.</li>
+          <li>Interpretação econômica e análise crítica das soluções.</li>
+        </ul>
+      </div>
+
+      <div class="aval-card ac">
+        <span class="aval-badge badge-ac">AC · avaliação continuada</span>
+        <h3>Exercícios e práticas</h3>
+        <ul class="aval-list">
+          <li>Listas de exercícios de modelagem.</li>
+          <li>Práticas computacionais orientadas.</li>
+          <li>Questionários de acompanhamento.</li>
+        </ul>
+      </div>
+
+      <div class="aval-card ap">
+        <span class="aval-badge badge-ap">Projeto</span>
+        <h3>Estudo de caso</h3>
+        <ul class="aval-list">
+          <li>Formulação de problema real ou semirreal.</li>
+          <li>Implementação em Python.</li>
+          <li>Relatório com resultados, limitações e análise de sensibilidade.</li>
+        </ul>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="section" id="referencias">
+    <p class="section-title">06 / referências bibliográficas</p>
+    <div class="ds-grid">
+      <div class="ds-item"><a href="proglinear_aulas/grid_programacao_linear.html#referencias">Bibliografia básica e complementar</a></div>
+      <div class="ds-item"><a href="https://docs.scipy.org/doc/scipy/reference/optimize.linprog.html" target="_blank">SciPy — linprog</a></div>
+      <div class="ds-item"><a href="https://coin-or.github.io/pulp/" target="_blank">PuLP — documentação</a></div>
+      <div class="ds-item"><a href="https://developers.google.com/optimization" target="_blank">Google OR-Tools</a></div>
+    </div>
+  </section>
+
+  <section class="section" id="ferramentas">
+    <p class="section-title">07 / ferramentas do curso</p>
+    <p style="color: var(--muted); margin-bottom: 1.5rem; max-width: 720px;">
+      Ferramentas sugeridas para modelagem, resolução computacional e apresentação dos resultados.
+    </p>
+    <div class="ds-grid">
+      <div class="ds-item"><a href="https://www.microsoft.com/pt-br/microsoft-365/excel" target="_blank">Microsoft Excel</a></div>
+      <div class="ds-item"><a href="https://support.microsoft.com/office/definir-e-resolver-um-problema-usando-o-solver-5d1a388f-079d-43ac-a7eb-f63e45925040" target="_blank">Excel Solver</a></div>
+      <div class="ds-item"><a href="https://www.python.org/" target="_blank">Python.org</a></div>
+      <div class="ds-item"><a href="https://colab.research.google.com/" target="_blank">Google Colab</a></div>
+      <div class="ds-item"><a href="https://jupyter.org/" target="_blank">Jupyter Notebook</a></div>
+      <div class="ds-item"><a href="https://numpy.org/" target="_blank">NumPy</a></div>
+      <div class="ds-item"><a href="https://pandas.pydata.org/" target="_blank">Pandas</a></div>
+      <div class="ds-item"><a href="https://scipy.org/" target="_blank">SciPy</a></div>
+      <div class="ds-item"><a href="https://coin-or.github.io/pulp/" target="_blank">PuLP</a></div>
+      <div class="ds-item"><a href="https://developers.google.com/optimization" target="_blank">OR-Tools</a></div>
+      <div class="ds-item"><a href="https://www.libreoffice.org/" target="_blank">LibreOffice Calc</a></div>
+      <div class="ds-item"><a href="https://www.anaconda.com/" target="_blank">Anaconda</a></div>
+    </div>
+  </section>
+
+</div>
+
+<footer>
+  <div class="container">
+    <p>© 2026 · Prof. Clayton J A Silva</p>
+    <p><a href="https://claytonjasilva.github.io">← voltar para home</a></p>
+  </div>
+</footer>
+
+</body>
+</html>
