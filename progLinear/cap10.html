@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Cap. 10 — Problema da Designação | Programação Linear Aplicada</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg:        #0a0e17;
+  --surface:   #111827;
+  --surface2:  #161f2e;
+  --border:    #1e2d40;
+  --accent:    #00c2ff;
+  --accent2:   #7c3aed;
+  --text:      #e2e8f0;
+  --muted:     #64748b;
+  --tag-bg:    #0f172a;
+  --font-mono: 'IBM Plex Mono', monospace;
+  --font-sans: 'IBM Plex Sans', sans-serif;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{background:var(--bg);color:var(--text);font-family:var(--font-sans);font-size:16px;line-height:1.65;}
+a{color:var(--accent);text-decoration:none;}
+a:hover{text-decoration:underline;}
+.container{max-width:980px;margin:0 auto;padding:0 2rem;}
+
+nav{position:sticky;top:0;z-index:100;background:rgba(10,14,23,.9);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);padding:.9rem 0;}
+nav .container{display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap;}
+.nav-brand{font-family:var(--font-mono);font-size:.78rem;color:var(--accent);}
+.nav-links{display:flex;gap:1rem;list-style:none;flex-wrap:wrap;}
+.nav-links a{font-family:var(--font-mono);font-size:.7rem;color:var(--muted);}
+.nav-links a:hover{color:var(--text);text-decoration:none;}
+
+.progress-track{height:3px;background:var(--border);position:sticky;top:53px;z-index:99;}
+.progress-fill{height:100%;width:0%;background:linear-gradient(90deg,var(--accent),var(--accent2));transition:width .1s;}
+
+.hero{padding:4rem 0 2.5rem;position:relative;overflow:hidden;}
+.hero::before{content:'';position:absolute;inset:0;background-image:linear-gradient(var(--border) 1px,transparent 1px),linear-gradient(90deg,var(--border) 1px,transparent 1px);background-size:40px 40px;opacity:.3;mask-image:radial-gradient(ellipse 80% 60% at 50% 0%,black 40%,transparent 100%);}
+.hero-eyebrow{font-family:var(--font-mono);font-size:.74rem;color:var(--accent);letter-spacing:.14em;text-transform:uppercase;margin-bottom:1rem;display:flex;align-items:center;gap:.7rem;}
+.hero-eyebrow::before{content:'';width:2rem;height:1px;background:var(--accent);}
+h1{font-size:clamp(2rem,4.5vw,3.2rem);font-weight:300;line-height:1.12;letter-spacing:-.02em;margin-bottom:.6rem;}
+h1 strong{font-weight:600;color:var(--accent);}
+.hero-meta{display:flex;gap:1.5rem;flex-wrap:wrap;margin-top:1.2rem;}
+.meta-item{font-family:var(--font-mono);font-size:.74rem;color:var(--muted);display:flex;align-items:center;gap:.4rem;}
+.meta-item svg{flex-shrink:0;}
+
+.objectives{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:1.4rem 1.6rem;margin-top:1.6rem;}
+.objectives p.label{font-family:var(--font-mono);font-size:.7rem;color:var(--accent);letter-spacing:.1em;text-transform:uppercase;margin-bottom:.7rem;}
+.objectives ul{list-style:none;display:grid;gap:.5rem;}
+.objectives li{font-size:.88rem;color:var(--muted);display:flex;gap:.6rem;}
+.objectives li::before{content:'→';color:var(--accent);flex-shrink:0;}
+
+.toc{display:flex;gap:.5rem;flex-wrap:wrap;margin-top:1.5rem;}
+.toc a{font-family:var(--font-mono);font-size:.7rem;color:var(--muted);border:1px solid var(--border);padding:.35rem .75rem;border-radius:20px;transition:.2s;}
+.toc a:hover{border-color:var(--accent);color:var(--accent);text-decoration:none;}
+
+.section{padding:3rem 0;border-top:1px solid var(--border);}
+.section-label{font-family:var(--font-mono);font-size:.7rem;color:var(--accent);letter-spacing:.14em;text-transform:uppercase;display:flex;align-items:center;gap:.7rem;margin-bottom:1.4rem;}
+.section-label::after{content:'';flex:1;height:1px;background:var(--border);}
+h2{font-size:1.5rem;font-weight:600;letter-spacing:-.01em;margin-bottom:1rem;}
+h3{font-size:1.1rem;font-weight:600;margin:1.6rem 0 .8rem;color:var(--text);}
+h4{font-size:.95rem;font-weight:600;margin:1.2rem 0 .6rem;color:var(--accent);}
+p{margin-bottom:1rem;color:#cbd5e1;}
+strong{color:var(--text);font-weight:600;}
+em{color:var(--accent);font-style:normal;}
+ul.plain{margin:0 0 1rem 1.2rem;color:#cbd5e1;}
+ul.plain li{margin-bottom:.4rem;}
+ol.plain{margin:0 0 1rem 1.2rem;color:#cbd5e1;}
+ol.plain li{margin-bottom:.5rem;}
+
+.codeline{background:var(--tag-bg);border:1px solid var(--border);border-radius:6px;padding:.7rem 1rem;font-family:var(--font-mono);font-size:1rem;color:var(--accent);text-align:center;margin:1rem 0;}
+.codeblock{background:var(--tag-bg);border:1px solid var(--border);border-radius:6px;padding:.9rem 1.1rem;font-family:var(--font-mono);font-size:.78rem;color:#a8d8ef;margin:1rem 0;overflow-x:auto;white-space:pre;line-height:1.6;}
+.codeblock .cmt{color:var(--muted);}
+
+.concept-grid{display:grid;grid-template-columns:1fr 1fr;gap:2rem;align-items:start;margin:1.5rem 0;}
+.concept-text{display:flex;flex-direction:column;justify-content:center;}
+.concept-fig{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:1rem;}
+.concept-fig img,.concept-fig svg{width:100%;display:block;}
+.fig-caption{font-family:var(--font-mono);font-size:.72rem;color:var(--muted);text-align:center;margin-top:.6rem;}
+@media (max-width:760px){.concept-grid{grid-template-columns:1fr;}}
+
+.fig-full{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:1.2rem;margin:1.5rem 0;}
+.fig-full img,.fig-full svg{width:100%;display:block;}
+
+.definition{background:var(--surface);border:1px solid var(--accent2);border-left:3px solid var(--accent2);border-radius:0 8px 8px 0;padding:1.2rem 1.5rem;margin:1.2rem 0;}
+.definition .dtitle{font-family:var(--font-mono);font-size:.7rem;color:var(--accent2);letter-spacing:.1em;text-transform:uppercase;margin-bottom:.5rem;}
+
+.note{background:var(--tag-bg);border:1px solid var(--border);border-radius:6px;padding:.9rem 1.1rem;margin:1rem 0;font-size:.85rem;color:var(--muted);}
+.note strong{color:var(--accent);}
+
+table{width:100%;border-collapse:collapse;font-size:.85rem;margin:1.2rem 0;}
+thead tr{background:var(--tag-bg);}
+thead th{padding:.5rem .7rem;text-align:center;font-family:var(--font-mono);font-size:.68rem;color:var(--muted);letter-spacing:.06em;text-transform:uppercase;font-weight:400;border-bottom:1px solid var(--border);}
+tbody td{padding:.45rem .7rem;border-bottom:1px solid var(--border);color:var(--muted);text-align:center;}
+tbody tr:hover{background:rgba(255,255,255,.02);}
+td.tleft, th.tleft{text-align:left;}
+
+.method-card{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:1.4rem 1.6rem;margin:1.2rem 0;position:relative;overflow:hidden;}
+.method-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--accent),var(--accent2));}
+.method-num{font-family:var(--font-mono);font-size:.7rem;color:var(--accent);background:rgba(0,194,255,.08);border:1px solid rgba(0,194,255,.25);border-radius:4px;padding:.2rem .6rem;display:inline-block;margin-bottom:.7rem;}
+.method-card h4{margin:0 0 .8rem;color:var(--text);font-size:1rem;}
+.steps{list-style:none;counter-reset:step;}
+.steps li{counter-increment:step;display:flex;gap:.7rem;margin-bottom:.6rem;font-size:.88rem;color:#cbd5e1;}
+.steps li::before{content:counter(step);font-family:var(--font-mono);font-size:.72rem;color:var(--accent);background:var(--tag-bg);border:1px solid var(--border);border-radius:50%;width:22px;height:22px;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+
+.ds-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:.6rem;margin:1rem 0;}
+.ds-item{background:var(--tag-bg);border:1px solid var(--border);border-radius:6px;padding:.7rem 1rem;display:flex;gap:.6rem;align-items:center;transition:.2s;}
+.ds-item:hover{border-color:var(--accent);}
+.ds-item a{font-size:.8rem;color:var(--text);font-family:var(--font-mono);}
+.ds-item a:hover{color:var(--accent);text-decoration:none;}
+
+.quiz{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:1.6rem;margin:1.5rem 0;}
+.quiz-header{display:flex;align-items:center;gap:.6rem;margin-bottom:1.2rem;}
+.quiz-header svg{flex-shrink:0;}
+.quiz-title{font-family:var(--font-mono);font-size:.8rem;color:var(--accent2);letter-spacing:.05em;}
+.quiz-q{font-size:.95rem;margin-bottom:.9rem;color:var(--text);}
+.quiz-options{display:flex;flex-direction:column;gap:.55rem;}
+.quiz-opt{background:var(--tag-bg);border:1px solid var(--border);border-radius:6px;padding:.7rem 1rem;font-size:.85rem;color:var(--muted);cursor:pointer;transition:.15s;text-align:left;width:100%;font-family:var(--font-sans);}
+.quiz-opt:hover{border-color:var(--accent);color:var(--text);}
+.quiz-opt.correct{border-color:#22c55e;background:rgba(34,197,94,.08);color:#86efac;}
+.quiz-opt.wrong{border-color:#ef4444;background:rgba(239,68,68,.08);color:#fca5a5;}
+.quiz-feedback{margin-top:.9rem;font-size:.85rem;padding:.8rem 1rem;border-radius:6px;display:none;}
+.quiz-feedback.show{display:block;}
+.quiz-feedback.correct-fb{background:rgba(34,197,94,.08);border:1px solid #22c55e;color:#86efac;}
+.quiz-feedback.wrong-fb{background:rgba(239,68,68,.08);border:1px solid #ef4444;color:#fca5a5;}
+
+.refs-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:.8rem;}
+.ref-card{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:1rem 1.2rem;display:flex;gap:.8rem;align-items:flex-start;transition:.2s;}
+.ref-card:hover{border-color:var(--accent);}
+.ref-card svg{flex-shrink:0;margin-top:.15rem;}
+.ref-card h4{font-size:.88rem;font-weight:600;margin:0 0 .2rem;color:var(--text);}
+.ref-card p{font-size:.76rem;color:var(--muted);margin:0;}
+.ref-type{font-family:var(--font-mono);font-size:.62rem;color:var(--accent);text-transform:uppercase;letter-spacing:.06em;}
+
+.chapter-nav{display:flex;justify-content:space-between;gap:1rem;margin-top:2rem;}
+.chapter-nav a{flex:1;background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:1rem 1.3rem;font-size:.85rem;transition:.2s;}
+.chapter-nav a:hover{border-color:var(--accent);text-decoration:none;}
+.chapter-nav .dir{font-family:var(--font-mono);font-size:.65rem;color:var(--muted);text-transform:uppercase;letter-spacing:.08em;display:block;margin-bottom:.3rem;}
+.chapter-nav .next{text-align:right;}
+
+footer{border-top:1px solid var(--border);padding:2rem 0;margin-top:2rem;}
+footer .container{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;}
+footer p{font-size:.8rem;color:var(--muted);font-family:var(--font-mono);}
+
+@media(max-width:640px){.nav-links{display:none;}.hero{padding:2.5rem 0 2rem;}}
+
+.katex{color:var(--accent);font-size:1.05em;}
+
+/* SVG diagram helpers */
+.dwire{stroke:#3b4a5e;stroke-width:1.6;fill:none;}
+.dbox{stroke:#00c2ff;stroke-width:1.6;fill:none;}
+.dbox2{stroke:#7c3aed;stroke-width:1.6;fill:none;}
+.dlbl{font-family:'IBM Plex Mono',monospace;font-size:13px;fill:#cbd5e1;}
+.dlbl2{font-family:'IBM Plex Mono',monospace;font-size:11px;fill:#64748b;}
+.dfill{fill:#111827;}
+
+.formula-card{background:var(--tag-bg);border:1px solid var(--border);border-radius:8px;padding:1rem 1.2rem;margin:1rem 0;font-family:var(--font-mono);color:#a8d8ef;overflow-x:auto;white-space:pre-wrap}
+.exercise-card{background:var(--surface);border:1px solid var(--accent);border-radius:8px;padding:1.2rem 1.4rem;margin:1.2rem 0}
+.key-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:.8rem;margin:1.2rem 0}
+.key-card{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:1rem 1.2rem}
+.key-card strong{display:block;color:var(--accent);font-family:var(--font-mono);font-size:.78rem;margin-bottom:.3rem}
+.key-card p{font-size:.86rem;color:var(--muted);margin:0}
+</style>
+</head>
+<body>
+<nav>
+  <div class="container">
+    <span class="nav-brand">proglinear · cap. 10</span>
+    <ul class="nav-links">
+      <li><a href="#s1">conceitos</a></li>
+      <li><a href="#s2">formulação</a></li>
+      <li><a href="#s3">aplicação</a></li>
+      <li><a href="#exemplo">exemplo</a></li>
+      <li><a href="#quiz">quiz</a></li>
+      <li><a href="../programacao_linear.html">← disciplina</a></li>
+    </ul>
+  </div>
+</nav>
+<div class="progress-track"><div class="progress-fill" id="progressFill"></div></div>
+<section class="hero">
+  <div class="container">
+    <p class="hero-eyebrow">Programação Linear Aplicada · Capítulo 10</p>
+    <h1>Cap. 10<br><strong>Problema da Designação</strong></h1>
+    <div class="hero-meta">
+      <span class="meta-item">leitura ~50 min</span>
+      <span class="meta-item">Prof. Clayton J A Silva</span>
+      <span class="meta-item">IBM0803</span>
+    </div>
+    <div class="objectives">
+      <p class="label">Objetivos de aprendizagem</p>
+      <ul><li>Reconhecer problemas de atribuição.</li><li>Formular variáveis binárias.</li><li>Montar restrições de designação.</li><li>Resolver alocações ótimas.</li></ul>
+    </div>
+    <div class="toc">
+      <a href="#s1">Conceitos</a>
+      <a href="#s2">Formulação</a>
+      <a href="#s3">Aplicação</a>
+      <a href="#exemplo">Exemplo orientado</a>
+      <a href="#pratica">Prática sugerida</a>
+      <a href="#quiz">Quiz</a>
+    </div>
+  </div>
+</section>
+<div class="container">
+
+  <section class="section" id="s1">
+    <p class="section-label">10.1 / desenvolvimento</p>
+    <h2>Conceitos fundamentais</h2>
+    <p>O problema da designação atribui agentes a tarefas minimizando custo ou maximizando desempenho.</p>
+    <div class="key-grid">
+      <div class="key-card"><strong>Para lembrar</strong><p>Explique sempre o significado operacional das variáveis e restrições.</p></div>
+      <div class="key-card"><strong>Em aula</strong><p>Discuta um exemplo numérico e peça aos alunos que interpretem a solução.</p></div>
+      <div class="key-card"><strong>Erro comum</strong><p>Resolver mecanicamente sem validar se o modelo representa o problema real.</p></div>
+    </div>
+  </section>
+  <section class="section" id="s2">
+    <p class="section-label">10.2 / desenvolvimento</p>
+    <h2>Formulação e interpretação</h2>
+    <p>A variável xij vale 1 se o agente i for designado à tarefa j; caso contrário, vale 0.</p>
+    <div class="key-grid">
+      <div class="key-card"><strong>Para lembrar</strong><p>Explique sempre o significado operacional das variáveis e restrições.</p></div>
+      <div class="key-card"><strong>Em aula</strong><p>Discuta um exemplo numérico e peça aos alunos que interpretem a solução.</p></div>
+      <div class="key-card"><strong>Erro comum</strong><p>Resolver mecanicamente sem validar se o modelo representa o problema real.</p></div>
+    </div>
+  </section>
+  <section class="section" id="s3">
+    <p class="section-label">10.3 / desenvolvimento</p>
+    <h2>Aplicação em aula</h2>
+    <p>O modelo clássico exige que cada agente receba uma tarefa e cada tarefa receba um agente.</p>
+    <div class="key-grid">
+      <div class="key-card"><strong>Para lembrar</strong><p>Explique sempre o significado operacional das variáveis e restrições.</p></div>
+      <div class="key-card"><strong>Em aula</strong><p>Discuta um exemplo numérico e peça aos alunos que interpretem a solução.</p></div>
+      <div class="key-card"><strong>Erro comum</strong><p>Resolver mecanicamente sem validar se o modelo representa o problema real.</p></div>
+    </div>
+  </section>
+  <section class="section" id="formula">
+    <p class="section-label">síntese matemática</p>
+    <h2>Representação matemática essencial</h2>
+    <div class="formula-card">Min Z = soma_i soma_j cij*xij
+soma_j xij = 1
+soma_i xij = 1
+xij em {0,1}</div>
+    <div class="note"><strong>Observação:</strong> esta síntese deve ser associada a um problema concreto durante a aula.</div>
+  </section>
+  <section class="section" id="exemplo">
+    <p class="section-label">exemplo orientado</p>
+    <h2>Exemplo para discussão em aula</h2>
+    <div class="exercise-card"><h4>Problema-base</h4><p>Quatro técnicos devem ser alocados a quatro serviços minimizando o tempo total.</p></div>
+    <div class="method-card">
+      <span class="method-num">roteiro</span>
+      <h4>Como conduzir a solução</h4>
+      <ol class="steps">
+        <li>Definir variáveis de decisão.</li>
+        <li>Escrever função objetivo.</li>
+        <li>Traduzir limites em restrições.</li>
+        <li>Resolver manualmente ou em ferramenta computacional.</li>
+        <li>Interpretar solução, folgas, restrições ativas e limitações.</li>
+      </ol>
+    </div>
+  </section>
+  <section class="section" id="pratica">
+    <p class="section-label">prática sugerida</p>
+    <h2>Atividade computacional ou de modelagem</h2>
+    <p>Resolver matriz 4x4 de designação com PuLP.</p>
+    <div class="ds-grid">
+      <div class="ds-item"><a href="https://www.python.org/" target="_blank">Python.org</a></div>
+      <div class="ds-item"><a href="https://colab.research.google.com/" target="_blank">Google Colab</a></div>
+      <div class="ds-item"><a href="https://docs.scipy.org/doc/scipy/reference/optimize.linprog.html" target="_blank">SciPy linprog</a></div>
+      <div class="ds-item"><a href="https://coin-or.github.io/pulp/" target="_blank">PuLP</a></div>
+    </div>
+  </section>
+  <section class="section" id="quiz">
+    <p class="section-label">checkpoint</p>
+    <h2>Teste rápido</h2>
+    <div class="quiz">
+      <div class="quiz-header"><span class="quiz-title">Pergunta do capítulo</span></div>
+      <p class="quiz-q">Qual atitude é mais adequada ao trabalhar com este tema?</p>
+      <div class="quiz-options">
+        <button class="quiz-opt" onclick="checkAnswer(this, true, 'qfb')">Construir, resolver e interpretar o modelo, verificando se ele representa o problema real.</button>
+        <button class="quiz-opt" onclick="checkAnswer(this, false, 'qfb')">Resolver por tentativa e erro, sem explicitar variáveis e restrições.</button>
+        <button class="quiz-opt" onclick="checkAnswer(this, false, 'qfb')">Ignorar restrições para maximizar apenas a função objetivo.</button>
+      </div>
+      <div class="quiz-feedback" id="qfb"></div>
+    </div>
+  </section>
+  <div class="chapter-nav">
+    <a href="cap9.html"><span class="dir">← anterior</span>Cap. 9</a>
+    <a class="next" href="cap11.html"><span class="dir">próximo →</span>Cap. 11</a>
+  </div>
+</div>
+<footer>
+  <div class="container">
+    <p>© 2026 · Prof. Clayton J A Silva</p>
+    <p><a href="../programacao_linear.html">Programação Linear Aplicada</a></p>
+  </div>
+</footer>
+<script>
+window.addEventListener('scroll',()=>{const h=document.documentElement;document.getElementById('progressFill').style.width=(h.scrollTop/(h.scrollHeight-h.clientHeight)*100)+'%';});
+function checkAnswer(btn,isCorrect,fbId){const group=btn.parentElement;const buttons=group.querySelectorAll('.quiz-opt');buttons.forEach(b=>b.disabled=true);btn.classList.add(isCorrect?'correct':'wrong');const fb=document.getElementById(fbId);fb.classList.add('show');if(!isCorrect) buttons.forEach(b=>{if(b.getAttribute('onclick').includes(', true,')) b.classList.add('correct');});fb.classList.add(isCorrect?'correct-fb':'wrong-fb');fb.textContent=isCorrect?'✓ Correto. Modelar, resolver e interpretar são etapas inseparáveis.':'✗ Revise os objetivos e a síntese do capítulo.';}
+</script>
+</body>
+</html>
