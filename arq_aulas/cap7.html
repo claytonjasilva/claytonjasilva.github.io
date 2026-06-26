@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Cap. 7 — Nível do Sistema Operacional | Arquitetura de Computadores</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0a0e17;--surface:#111827;--border:#1e2d40;--accent:#00c2ff;--accent2:#7c3aed;--text:#e2e8f0;--muted:#64748b;--tag-bg:#0f172a;--font-mono:'IBM Plex Mono',monospace;--font-sans:'IBM Plex Sans',sans-serif}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:var(--font-sans);font-size:16px;line-height:1.65}
+a{color:var(--accent);text-decoration:none}a:hover{text-decoration:underline}.container{max-width:980px;margin:0 auto;padding:0 2rem}
+nav{position:sticky;top:0;z-index:100;background:rgba(10,14,23,.9);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);padding:.9rem 0}
+nav .container{display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap}.nav-brand{font-family:var(--font-mono);font-size:.78rem;color:var(--accent)}
+.nav-links{display:flex;gap:1rem;list-style:none;flex-wrap:wrap}.nav-links a{font-family:var(--font-mono);font-size:.7rem;color:var(--muted)}.nav-links a:hover{color:var(--text);text-decoration:none}
+.progress-track{height:3px;background:var(--border);position:sticky;top:53px;z-index:99}.progress-fill{height:100%;width:0%;background:linear-gradient(90deg,var(--accent),var(--accent2));transition:width .1s}
+.hero{padding:4rem 0 2.5rem;position:relative;overflow:hidden}.hero::before{content:'';position:absolute;inset:0;background-image:linear-gradient(var(--border) 1px,transparent 1px),linear-gradient(90deg,var(--border) 1px,transparent 1px);background-size:40px 40px;opacity:.3;mask-image:radial-gradient(ellipse 80% 60% at 50% 0%,black 40%,transparent 100%)}
+.hero-eyebrow{font-family:var(--font-mono);font-size:.74rem;color:var(--accent);letter-spacing:.14em;text-transform:uppercase;margin-bottom:1rem;display:flex;align-items:center;gap:.7rem}.hero-eyebrow::before{content:'';width:2rem;height:1px;background:var(--accent)}
+h1{font-size:clamp(2rem,4.5vw,3.2rem);font-weight:300;line-height:1.12;letter-spacing:-.02em;margin-bottom:.6rem}h1 strong{font-weight:600;color:var(--accent)}
+.hero-meta{display:flex;gap:1.5rem;flex-wrap:wrap;margin-top:1.2rem}.meta-item{font-family:var(--font-mono);font-size:.74rem;color:var(--muted)}
+.objectives{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:1.4rem 1.6rem;margin-top:1.6rem}.objectives p.label{font-family:var(--font-mono);font-size:.7rem;color:var(--accent);letter-spacing:.1em;text-transform:uppercase;margin-bottom:.7rem}.objectives ul{list-style:none;display:grid;gap:.5rem}.objectives li{font-size:.88rem;color:var(--muted);display:flex;gap:.6rem}.objectives li::before{content:'→';color:var(--accent);flex-shrink:0}
+.toc{display:flex;gap:.5rem;flex-wrap:wrap;margin-top:1.5rem}.toc a{font-family:var(--font-mono);font-size:.7rem;color:var(--muted);border:1px solid var(--border);padding:.35rem .75rem;border-radius:20px;transition:.2s}.toc a:hover{border-color:var(--accent);color:var(--accent);text-decoration:none}
+.section{padding:3rem 0;border-top:1px solid var(--border)}.section-label{font-family:var(--font-mono);font-size:.7rem;color:var(--accent);letter-spacing:.14em;text-transform:uppercase;display:flex;align-items:center;gap:.7rem;margin-bottom:1.4rem}.section-label::after{content:'';flex:1;height:1px;background:var(--border)}
+h2{font-size:1.5rem;font-weight:600;margin-bottom:1rem}h3{font-size:1.1rem;font-weight:600;margin:1.6rem 0 .8rem;color:var(--text)}h4{font-size:.95rem;font-weight:600;margin:1.2rem 0 .6rem;color:var(--accent)}
+p{margin-bottom:1rem;color:#cbd5e1}strong{color:var(--text);font-weight:600}em{color:var(--accent);font-style:normal}
+ul.plain,ol.plain{margin:0 0 1rem 1.2rem;color:#cbd5e1}li{margin-bottom:.45rem}
+.note{background:var(--tag-bg);border:1px solid var(--border);border-radius:6px;padding:.9rem 1.1rem;margin:1rem 0;font-size:.85rem;color:var(--muted)}.note strong{color:var(--accent)}
+.kv-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:.7rem;margin:1.2rem 0}.kv{background:var(--tag-bg);border:1px solid var(--border);border-radius:6px;padding:.85rem 1rem}.kv strong{display:block;color:var(--accent);font-family:var(--font-mono);font-size:.78rem;margin-bottom:.25rem}.kv span{font-size:.9rem;color:#cbd5e1}
+table{width:100%;border-collapse:collapse;font-size:.85rem;margin:1.2rem 0}thead tr{background:var(--tag-bg)}thead th{padding:.5rem .7rem;text-align:left;font-family:var(--font-mono);font-size:.68rem;color:var(--muted);letter-spacing:.06em;text-transform:uppercase;font-weight:400;border-bottom:1px solid var(--border)}tbody td{padding:.55rem .7rem;border-bottom:1px solid var(--border);color:#cbd5e1}tbody tr:hover{background:rgba(255,255,255,.02)}
+.chapter-nav{display:flex;justify-content:space-between;gap:1rem;margin-top:2rem}.chapter-nav a{flex:1;background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:1rem 1.3rem;font-size:.85rem;transition:.2s}.chapter-nav a:hover{border-color:var(--accent);text-decoration:none}.chapter-nav .dir{font-family:var(--font-mono);font-size:.65rem;color:var(--muted);text-transform:uppercase;letter-spacing:.08em;display:block;margin-bottom:.3rem}.chapter-nav .next{text-align:right}
+footer{border-top:1px solid var(--border);padding:2rem 0;margin-top:2rem}footer .container{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem}footer p{font-size:.8rem;color:var(--muted);font-family:var(--font-mono)}
+@media(max-width:640px){.nav-links{display:none}.hero{padding:2.5rem 0 2rem}.chapter-nav{flex-direction:column}}
+</style>
+</head>
+<body>
+<nav><div class="container"><span class="nav-brand">arq · cap. 7</span><ul class="nav-links"><li><a href="#visao">Visão geral</a></li><li><a href="#elementos">Elementos</a></li><li><a href="#post">POST</a></li><li><a href="#chamadas">Chamadas</a></li><li><a href="#areas">Áreas</a></li><li><a href="../arq.html">← disciplina</a></li></ul></div></nav>
+<div class="progress-track"><div class="progress-fill" id="progressFill"></div></div>
+<section class="hero"><div class="container"><p class="hero-eyebrow">Arquitetura de Computadores · Capítulo 7</p><h1>Nível do<br><strong>Sistema Operacional</strong></h1><div class="hero-meta"><span class="meta-item">Prof. Clayton J A Silva</span><span class="meta-item">Arquitetura de Computadores</span><span class="meta-item">Rev 2026.2</span></div><div class="objectives"><p class="label">Objetivos do capítulo</p><ul><li>Compreender o papel do sistema operacional como camada interpretada acima da ISA.</li><li>Identificar kernel, bootloader, drivers e utilitários.</li><li>Relacionar chamadas de sistema, processos, memória, dispositivos e arquivos.</li></ul></div><div class="toc"><a href="#visao">Visão geral</a><a href="#elementos">Elementos do SO</a><a href="#post">POST</a><a href="#chamadas">Chamadas de sistema</a><a href="#areas">Áreas do SO</a></div></div></section>
+<div class="container">
+<section class="section" id="visao">
+  <p class="section-label">7.1 / visão geral</p>
+  <h2>Visão geral</h2>
+  <p>O nível do Sistema Operacional contém as instruções de nível ISA e adiciona um conjunto de serviços disponíveis aos programas de aplicação, especialmente por meio das <strong>chamadas de sistema</strong>.</p>
+  <p>O nível do sistema operacional é sempre interpretado. Seus principais objetivos são:</p>
+  <div class="kv-grid">
+    <div class="kv"><strong>Conveniência</strong><span>Tornar o uso do computador mais conveniente.</span></div>
+    <div class="kv"><strong>Eficiência</strong><span>Permitir a utilização eficiente dos recursos do sistema.</span></div>
+  </div>
+  <p>Os principais elementos do Sistema Operacional são:</p>
+  <ul class="plain">
+    <li>Núcleo ou <em>kernel</em>;</li>
+    <li>Código de inicialização ou <em>boot code</em>;</li>
+    <li><em>Drivers</em>;</li>
+    <li>Programas utilitários.</li>
+  </ul>
+</section>
+
+<section class="section" id="elementos">
+  <p class="section-label">7.2 / elementos do SO</p>
+  <h2>Elementos do Sistema Operacional</h2>
+  <h3>Núcleo do Sistema Operacional</h3>
+  <p>O <strong>kernel</strong> é o componente central do sistema operacional. Ele gerencia recursos do sistema e facilita a interação entre hardware e software.</p>
+  <div class="kv-grid">
+    <div class="kv"><strong>Processos</strong><span>Criação, escalonamento e término de processos.</span></div>
+    <div class="kv"><strong>Memória</strong><span>Alocação, desalocação, paginação, segmentação e memória virtual.</span></div>
+    <div class="kv"><strong>Dispositivos</strong><span>Comunicação com hardware por meio de drivers.</span></div>
+    <div class="kv"><strong>Arquivos</strong><span>Organização, leitura, escrita e exclusão de arquivos.</span></div>
+    <div class="kv"><strong>Segurança</strong><span>Controle de acesso a arquivos, memória e dispositivos.</span></div>
+  </div>
+  <h3>Tipos de kernel</h3>
+  <ul class="plain">
+    <li><strong>Monolítico:</strong> componentes integrados em um grande bloco de código executável.</li>
+    <li><strong>Micronúcleo:</strong> reduz o código executado em modo kernel, deslocando serviços para o espaço do usuário.</li>
+    <li><strong>Híbrido:</strong> combina características dos modelos monolítico e micronúcleo.</li>
+  </ul>
+
+  <h3>Código de inicialização</h3>
+  <p>O código de inicialização prepara o ambiente para que o sistema operacional seja carregado. O <strong>bootloader</strong> localiza o kernel, carrega-o na memória e transfere o controle para ele.</p>
+  <ul class="plain">
+    <li>Carregar o kernel;</li>
+    <li>Configurar o ambiente inicial;</li>
+    <li>Transferir o controle ao sistema operacional.</li>
+  </ul>
+
+  <h3>UEFI e BIOS</h3>
+  <p>A UEFI substitui gradualmente o BIOS tradicional, oferecendo suporte a interface gráfica, discos maiores, inicialização mais rápida e recursos como <em>Secure Boot</em>.</p>
+  <table>
+    <thead><tr><th>Característica</th><th>UEFI</th><th>BIOS</th></tr></thead>
+    <tbody>
+      <tr><td>Interface</td><td>Gráfica, com suporte a mouse</td><td>Texto, teclado apenas</td></tr>
+      <tr><td>Discos</td><td>GPT, discos maiores que 2 TB</td><td>MBR, até 2 TB</td></tr>
+      <tr><td>Partições</td><td>Mais de quatro</td><td>Até quatro</td></tr>
+      <tr><td>Boot</td><td>Mais rápido</td><td>Mais lento</td></tr>
+      <tr><td>Segurança</td><td>Secure Boot</td><td>Sem Secure Boot</td></tr>
+    </tbody>
+  </table>
+
+  <h3>Drivers</h3>
+  <p><em>Drivers</em> são programas que permitem ao sistema operacional comunicar-se com hardware específico. Eles atuam como intermediários, abstraem detalhes de hardware e gerenciam a transferência de dados.</p>
+  <ul class="plain">
+    <li>Drivers de dispositivo;</li>
+    <li>Drivers de kernel;</li>
+    <li>Drivers de usuário.</li>
+  </ul>
+
+  <h3>Programas utilitários</h3>
+  <p>Programas utilitários complementam o sistema operacional, apoiando manutenção, diagnóstico, segurança, gerenciamento de arquivos, backup e recuperação.</p>
+</section>
+
+<section class="section" id="post">
+  <p class="section-label">7.3 / self-test</p>
+  <h2>Self-Test — POST</h2>
+  <p>O <strong>Power-On Self-Test</strong> é um conjunto de testes executados pelo firmware, BIOS ou UEFI, durante a inicialização do computador.</p>
+  <ol class="plain">
+    <li>Verifica componentes de hardware, como memória RAM, processador, armazenamento e periféricos.</li>
+    <li>Indica falhas por mensagens, códigos de erro ou sinais sonoros.</li>
+    <li>Prepara o sistema para o carregamento do bootloader.</li>
+  </ol>
+</section>
+
+<section class="section" id="chamadas">
+  <p class="section-label">7.4 / chamadas de sistema</p>
+  <h2>Chamadas de Sistema</h2>
+  <p>Chamadas de sistema são interfaces programadas no kernel. Elas permitem que programas de usuário solicitem serviços ao sistema operacional com segurança e controle.</p>
+  <p>Em uma chamada de sistema, a execução passa do <strong>modo usuário</strong> para o <strong>modo kernel</strong>, permitindo o acesso privilegiado a recursos de hardware e estruturas internas do sistema.</p>
+  <div class="kv-grid">
+    <div class="kv"><strong>Processos</strong><span>fork(), exit(), wait(), exec()</span></div>
+    <div class="kv"><strong>Arquivos</strong><span>open(), close(), read(), write()</span></div>
+    <div class="kv"><strong>Dispositivos</strong><span>ioctl(), read(), write()</span></div>
+    <div class="kv"><strong>Comunicação</strong><span>pipe(), shmget(), signal(), kill()</span></div>
+    <div class="kv"><strong>Sistema</strong><span>getpid(), alarm(), sleep()</span></div>
+  </div>
+  <p>Exemplo típico: uma aplicação executa <code>read()</code>; o controle passa ao kernel; o kernel lê os dados do sistema de arquivos; o resultado retorna ao modo usuário.</p>
+</section>
+
+<section class="section" id="areas">
+  <p class="section-label">7.5 / áreas do SO</p>
+  <h2>Áreas do Sistema Operacional</h2>
+  <p>As áreas típicas do sistema operacional incluem gestão de processos, memória, arquivos, comunicação, dispositivos e gestão do sistema.</p>
+
+  <h3>Gestão de processos</h3>
+  <p>Um processo é uma unidade de contexto e um contêiner de recursos usados por uma ou mais tarefas. Uma forma clássica de modelá-lo é o <strong>modelo de cinco estados</strong>.</p>
+  <div class="kv-grid">
+    <div class="kv"><strong>Novo</strong><span>Processo criado e ainda não pronto.</span></div>
+    <div class="kv"><strong>Pronto</strong><span>Aguardando seleção pelo escalonador.</span></div>
+    <div class="kv"><strong>Executando</strong><span>Usando o processador.</span></div>
+    <div class="kv"><strong>Esperando</strong><span>Aguardando evento ou E/S.</span></div>
+    <div class="kv"><strong>Terminado</strong><span>Execução concluída ou finalizada.</span></div>
+  </div>
+
+  <h3>Bloco de Controle de Processo — PCB</h3>
+  <p>O PCB reúne informações essenciais do processo.</p>
+  <ul class="plain">
+    <li>Identificador;</li>
+    <li>Estado;</li>
+    <li>Contexto dos registradores e contador de programa;</li>
+    <li>Estado de E/S;</li>
+    <li>Informações de contabilidade.</li>
+  </ul>
+
+  <h3>Escalonamento</h3>
+  <ul class="plain">
+    <li><strong>Longo prazo:</strong> decide acrescentar novo processo ao conjunto de processos.</li>
+    <li><strong>Médio prazo:</strong> decide manter processos parcial ou totalmente carregados na memória.</li>
+    <li><strong>Curto prazo:</strong> decide qual processo disponível será executado pelo processador.</li>
+  </ul>
+
+  <h3>Gerência de memória</h3>
+  <ul class="plain">
+    <li><strong>Memória virtual:</strong> uso de disco como memória lógica.</li>
+    <li><strong>Paginação:</strong> divisão em páginas de tamanho fixo.</li>
+    <li><strong>Segmentação:</strong> múltiplos espaços de endereçamento independentes.</li>
+  </ul>
+
+  <h3>Gerência de dispositivos</h3>
+  <ul class="plain">
+    <li><strong>Interrupções:</strong> comunicação controlador-processador por requisições de interrupção.</li>
+    <li><strong>Drivers:</strong> módulos de código para acessar dispositivos físicos.</li>
+  </ul>
+
+  <h3>Gerência de arquivos</h3>
+  <p>Um arquivo é uma sequência de bytes armazenada em dispositivo físico não volátil.</p>
+  <ul class="plain">
+    <li>Criar, abrir, ler, escrever, fechar, remover e alterar atributos;</li>
+    <li>Metadados: nome, tipo, tamanho, datas, proprietário, permissões e localização.</li>
+  </ul>
+</section>
+<div class="chapter-nav"><a href="Cap6.html"><span class="dir">← anterior</span>Cap. 6 — Processadores</a><a class="next" href="Cap8.html"><span class="dir">próximo →</span>Cap. 8 — Microcontroladores</a></div></div>
+<footer><div class="container"><p>© 2026 · Prof. Clayton J A Silva · Ibmec RJ</p><p><a href="../arq.html">Arquitetura de Computadores</a></p></div></footer>
+<script>window.addEventListener('scroll',()=>{const h=document.documentElement;const pct=(h.scrollTop)/(h.scrollHeight-h.clientHeight)*100;document.getElementById('progressFill').style.width=pct+'%';});</script>
+</body></html>
