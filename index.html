@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Prof. Clayton J A Silva — Ibmec RJ</title>
+  <title>Prof. Clayton J A Silva</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,600;1,300&display=swap" rel="stylesheet">
@@ -150,6 +150,75 @@
     }
     .card:hover .card-link { gap: 0.7rem; }
 
+
+    .subsection-title {
+      font-family: var(--font-mono);
+      font-size: 0.85rem;
+      color: var(--muted);
+      margin: 2rem 0 1rem;
+      font-weight: 400;
+    }
+
+    .card.disabled .card-link {
+      color: var(--muted);
+      cursor: pointer;
+    }
+
+    .card.historico {
+      opacity: 0.82;
+    }
+
+    .status-badge {
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
+      color: var(--muted);
+      border: 1px solid var(--border);
+      border-radius: 3px;
+      padding: 0.15rem 0.45rem;
+      display: inline-block;
+      width: fit-content;
+    }
+
+    .modal {
+      position: fixed;
+      inset: 0;
+      background: rgba(2, 6, 23, 0.78);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+      z-index: 999;
+    }
+
+    .modal:target {
+      display: flex;
+    }
+
+    .modal-box {
+      max-width: 520px;
+      width: 100%;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 1.75rem;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.45);
+    }
+
+    .modal-box h3 {
+      margin-bottom: 0.75rem;
+    }
+
+    .modal-box p {
+      color: var(--muted);
+      font-size: 0.92rem;
+      margin-bottom: 1.25rem;
+    }
+
+    .modal-actions {
+      display: flex;
+      justify-content: flex-end;
+    }
+
     .prog-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 1rem; }
 
     .prog-card {
@@ -228,23 +297,20 @@
       <li><a href="#disciplinas">disciplinas</a></li>
       <li><a href="#programacao">programação</a></li>
       <li><a href="#apoio">material de apoio</a></li>
-      <li><a href="#projetos">projetos</a></li>
     </ul>
   </div>
 </nav>
 
 <section class="hero">
   <div class="container">
-    <p class="hero-eyebrow">Ibmec RJ — Engenharia da Computação</p>
+    <p class="hero-eyebrow">Professor MS · Engenheiro Eletrônico</p>
     <h1>Prof. Clayton<br><strong>J A Silva</strong></h1>
     <div class="hero-bio">
       <p>
-        Engenheiro Eletrônico pelo Instituto Militar de Engenharia (1992), com mestrado em
-        Engenharia Elétrica pelo IME (1998) e em Ciências Militares pela ECEME (2006).
-        Professor e Coordenador Adjunto de Engenharias no Ibmec RJ desde 2016, com longa
-        atuação no setor de telecomunicações e defesa — incluindo cargos de liderança no
-        Exército Brasileiro e direção na Progeto Engenharia. Pesquisador com publicações em
-        comunicações móveis, IoT e sistemas embarcados.
+        Professor MS e Engenheiro Eletrônico, com atuação em arquitetura de computadores,
+        sistemas digitais, gestão de projetos, programação, telecomunicações e sistemas embarcados.
+        Este espaço reúne materiais didáticos, notas de aula, referências e ferramentas de apoio
+        às disciplinas atualmente ministradas e a conteúdos já utilizados em semestres anteriores.
       </p>
       <div class="hero-links">
         <a href="http://lattes.cnpq.br/1076393689198701" target="_blank" class="bio-link">
@@ -264,10 +330,10 @@
     <div class="hero-tags">
       <span class="tag">Arquitetura de Computadores</span>
       <span class="tag">Sistemas Digitais</span>
-      <span class="tag">Eletrônica</span>
-      <span class="tag">Compiladores</span>
-      <span class="tag">Telecom</span>
-      <span class="tag">Gestão de Processos</span>
+      <span class="tag">Gestão de Projetos</span>
+      <span class="tag">Programação Linear</span>
+      <span class="tag">Sistemas Embarcados</span>
+      <span class="tag">Programação</span>
     </div>
   </div>
 </section>
@@ -278,10 +344,12 @@
       <span class="section-label">01 / disciplinas</span>
       <h2>Disciplinas</h2>
     </div>
+
+    <h3 class="subsection-title">// ministradas atualmente</h3>
     <div class="disciplinas-grid">
 
       <div class="card">
-        <span class="card-rev">Rev 2026.1</span>
+        <span class="card-rev">Rev 2026.2</span>
         <svg class="card-icon" viewBox="0 0 36 36" fill="none">
           <rect x="4" y="4" width="12" height="12" rx="2" stroke="#00c2ff" stroke-width="1.5"/>
           <rect x="20" y="4" width="12" height="12" rx="2" stroke="#00c2ff" stroke-width="1.5"/>
@@ -289,8 +357,6 @@
           <rect x="20" y="20" width="12" height="12" rx="2" stroke="#7c3aed" stroke-width="1.5"/>
           <line x1="16" y1="10" x2="20" y2="10" stroke="#00c2ff" stroke-width="1.5"/>
           <line x1="10" y1="16" x2="10" y2="20" stroke="#00c2ff" stroke-width="1.5"/>
-          <line x1="26" y1="16" x2="26" y2="20" stroke="#7c3aed" stroke-width="1.5"/>
-          <line x1="16" y1="26" x2="20" y2="26" stroke="#7c3aed" stroke-width="1.5"/>
         </svg>
         <h3>Arquitetura de Computadores</h3>
         <p>Organização interna de processadores, memória, barramentos e sistemas embarcados com ATmega2560.</p>
@@ -298,31 +364,59 @@
       </div>
 
       <div class="card">
-        <span class="card-rev">Rev 2026.1</span>
+        <span class="card-rev">Rev 2026.2</span>
         <svg class="card-icon" viewBox="0 0 36 36" fill="none">
           <polyline points="2,22 8,22 8,14 14,14 14,26 20,26 20,10 26,10 26,22 34,22" stroke="#00c2ff" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
         </svg>
         <h3>Sistemas Digitais</h3>
         <p>Lógica combinacional e sequencial, circuitos integrados, flip-flops, máquinas de estado e FPGA.</p>
-        <a class="card-link" href="sisdig.html" target="_blank">Ver disciplina →</a>
+        <a class="card-link" href="sisdig.html">Ver disciplina →</a>
       </div>
 
       <div class="card">
-        <span class="card-rev">Rev 2023.2</span>
+        <span class="card-rev">Rev 2026.2</span>
         <svg class="card-icon" viewBox="0 0 36 36" fill="none">
-          <circle cx="18" cy="18" r="7" stroke="#00c2ff" stroke-width="1.5"/>
-          <line x1="18" y1="4" x2="18" y2="11" stroke="#00c2ff" stroke-width="1.5"/>
-          <line x1="18" y1="25" x2="18" y2="32" stroke="#00c2ff" stroke-width="1.5"/>
-          <line x1="4" y1="18" x2="11" y2="18" stroke="#7c3aed" stroke-width="1.5"/>
-          <line x1="25" y1="18" x2="32" y2="18" stroke="#7c3aed" stroke-width="1.5"/>
-          <circle cx="18" cy="18" r="2.5" fill="#00c2ff"/>
+          <polygon points="18,4 33,30 3,30" stroke="#00c2ff" stroke-width="1.5" fill="none"/>
+          <rect x="10" y="14" width="7" height="2.5" rx="1" fill="#00c2ff" opacity=".6"/>
+          <rect x="14" y="18" width="10" height="2.5" rx="1" fill="#7c3aed" opacity=".6"/>
+          <rect x="19" y="22" width="6" height="2.5" rx="1" fill="#10b981" opacity=".6"/>
+        </svg>
+        <h3>Gestão de Projetos</h3>
+        <p>Escopo, tempo, custos, riscos, EAP, cronogramas, indicadores, liderança e métodos ágeis.</p>
+        <a class="card-link" href="gestao_projetos.html">Ver disciplina →</a>
+      </div>
+
+      <div class="card disabled">
+        <span class="card-rev">Em construção</span>
+        <svg class="card-icon" viewBox="0 0 36 36" fill="none">
+          <line x1="6" y1="30" x2="30" y2="6" stroke="#00c2ff" stroke-width="1.5"/>
+          <line x1="6" y1="24" x2="30" y2="24" stroke="#7c3aed" stroke-width="1.5"/>
+          <line x1="12" y1="30" x2="12" y2="6" stroke="#7c3aed" stroke-width="1.5"/>
+          <polygon points="12,24 24,12 30,24" fill="rgba(0,194,255,.08)" stroke="#00c2ff" stroke-width="1.2"/>
+        </svg>
+        <h3>Programação Linear</h3>
+        <p>Modelagem matemática, função objetivo, restrições, método gráfico, simplex e aplicações em engenharia.</p>
+        <a class="card-link" href="#programacao-linear-modal">Ver disciplina →</a>
+      </div>
+
+    </div>
+
+    <h3 class="subsection-title">// disciplinas já ministradas</h3>
+    <div class="disciplinas-grid">
+
+      <div class="card historico">
+        <span class="status-badge">sem link ativo</span>
+        <svg class="card-icon" viewBox="0 0 36 36" fill="none">
+          <rect x="4" y="8" width="28" height="20" rx="3" stroke="#00c2ff" stroke-width="1.5"/>
+          <polyline points="10,14 14,18 10,22" stroke="#00c2ff" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+          <line x1="17" y1="22" x2="26" y2="22" stroke="#7c3aed" stroke-width="1.5" stroke-linecap="round"/>
         </svg>
         <h3>Eletrônica e Design de Circuitos</h3>
         <p>Componentes passivos e ativos, amplificadores operacionais, filtros e projetos de circuitos analógicos.</p>
-        <a class="card-link" href="https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/eletronica.md" target="_blank">Ver disciplina →</a>
       </div>
 
-      <div class="card">
+      <div class="card historico">
+        <span class="status-badge">sem link ativo</span>
         <svg class="card-icon" viewBox="0 0 36 36" fill="none">
           <rect x="4" y="8" width="28" height="20" rx="3" stroke="#00c2ff" stroke-width="1.5"/>
           <polyline points="10,14 14,18 10,22" stroke="#00c2ff" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
@@ -330,64 +424,39 @@
         </svg>
         <h3>Linguagens Formais e Compiladores</h3>
         <p>Gramáticas, autômatos, análise léxica e sintática, e construção de compiladores em C/C++.</p>
-        <a class="card-link" href="https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/compiladores.md" target="_blank">Ver disciplina →</a>
       </div>
 
-      <div class="card">
-        <span class="card-rev">Rev 2024.2</span>
+      <div class="card historico">
+        <span class="status-badge">sem link ativo</span>
         <svg class="card-icon" viewBox="0 0 36 36" fill="none">
-          <path d="M18 28 Q18 18 28 18" stroke="#7c3aed" stroke-width="1.5" fill="none" stroke-linecap="round"/>
-          <path d="M18 28 Q18 12 32 10" stroke="#7c3aed" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-dasharray="3,2"/>
-          <path d="M18 28 Q18 22 8 18" stroke="#00c2ff" stroke-width="1.5" fill="none" stroke-linecap="round"/>
-          <path d="M18 28 Q18 16 4 10" stroke="#00c2ff" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-dasharray="3,2"/>
-          <circle cx="18" cy="28" r="2.5" fill="#00c2ff"/>
+          <rect x="4" y="8" width="28" height="20" rx="3" stroke="#00c2ff" stroke-width="1.5"/>
+          <polyline points="10,14 14,18 10,22" stroke="#00c2ff" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+          <line x1="17" y1="22" x2="26" y2="22" stroke="#7c3aed" stroke-width="1.5" stroke-linecap="round"/>
         </svg>
         <h3>Sistemas de Comunicações Móveis</h3>
         <p>Propagação de sinais, modulação, redes celulares e simulação com Python.</p>
-        <a class="card-link" href="https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/siscom.md" target="_blank">Ver disciplina →</a>
       </div>
 
-      <div class="card">
-        <span class="card-rev">Rev 2025.1</span>
+      <div class="card historico">
+        <span class="status-badge">sem link ativo</span>
         <svg class="card-icon" viewBox="0 0 36 36" fill="none">
-          <rect x="4" y="14" width="8" height="8" rx="1.5" stroke="#00c2ff" stroke-width="1.5"/>
-          <rect x="14" y="8" width="8" height="8" rx="1.5" stroke="#7c3aed" stroke-width="1.5"/>
-          <rect x="24" y="14" width="8" height="8" rx="1.5" stroke="#00c2ff" stroke-width="1.5"/>
-          <line x1="12" y1="18" x2="14" y2="14" stroke="#00c2ff" stroke-width="1.2"/>
-          <line x1="22" y1="14" x2="24" y2="18" stroke="#7c3aed" stroke-width="1.2"/>
-          <line x1="18" y1="16" x2="18" y2="26" stroke="#7c3aed" stroke-width="1.2"/>
-          <rect x="14" y="26" width="8" height="6" rx="1.5" stroke="#7c3aed" stroke-width="1.5"/>
+          <rect x="4" y="8" width="28" height="20" rx="3" stroke="#00c2ff" stroke-width="1.5"/>
+          <polyline points="10,14 14,18 10,22" stroke="#00c2ff" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+          <line x1="17" y1="22" x2="26" y2="22" stroke="#7c3aed" stroke-width="1.5" stroke-linecap="round"/>
         </svg>
         <h3>Gestão de Processos</h3>
         <p>Modelagem e análise de processos de negócio com BPMN e ferramentas como Bizagi.</p>
-        <a class="card-link" href="https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/gestao_processos.md" target="_blank">Ver disciplina →</a>
       </div>
 
-      <div class="card">
+      <div class="card historico">
+        <span class="status-badge">sem link ativo</span>
         <svg class="card-icon" viewBox="0 0 36 36" fill="none">
-          <path d="M18 6 L22 14 L31 15.5 L24.5 21.5 L26 31 L18 27 L10 31 L11.5 21.5 L5 15.5 L14 14 Z" stroke="#7c3aed" stroke-width="1.5" fill="none" stroke-linejoin="round"/>
+          <rect x="4" y="8" width="28" height="20" rx="3" stroke="#00c2ff" stroke-width="1.5"/>
+          <polyline points="10,14 14,18 10,22" stroke="#00c2ff" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+          <line x1="17" y1="22" x2="26" y2="22" stroke="#7c3aed" stroke-width="1.5" stroke-linecap="round"/>
         </svg>
         <h3>Aspectos Regulatórios de Telecomunicações</h3>
         <p>Marco regulatório, Anatel, espectro de radiofrequência e legislação do setor.</p>
-        <a class="card-link" href="https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/regulatelecom.md" target="_blank">Ver disciplina →</a>
-      </div>
-
-      <div class="card">
-        <span class="card-rev">Rev 2026.1</span>
-        <svg class="card-icon" viewBox="0 0 36 36" fill="none">
-          <!-- Triângulo de restrições -->
-          <polygon points="18,4 33,30 3,30" stroke="#00c2ff" stroke-width="1.5" fill="none" stroke-linejoin="round"/>
-          <circle cx="18" cy="4" r="2" fill="#00c2ff"/>
-          <circle cx="33" cy="30" r="2" fill="#7c3aed"/>
-          <circle cx="3" cy="30" r="2" fill="#10b981"/>
-          <!-- Gantt mini -->
-          <rect x="10" y="14" width="7" height="2.5" rx="1" fill="#00c2ff" opacity=".6"/>
-          <rect x="14" y="18" width="10" height="2.5" rx="1" fill="#7c3aed" opacity=".6"/>
-          <rect x="19" y="22" width="6" height="2.5" rx="1" fill="#10b981" opacity=".6"/>
-        </svg>
-        <h3>Gestão de Projetos</h3>
-        <p>PMBOK 6ª ed., EAP, Gantt, EVM, CPM, riscos, métodos ágeis e Scrum. 9 unidades + MS Project.</p>
-        <a class="card-link" href="gestao_projetos.html">Ver disciplina →</a>
       </div>
 
     </div>
@@ -421,34 +490,90 @@
       </div>
     </div>
 
-    <h3 style="margin:2.5rem 0 1rem; font-size:1rem; color:var(--muted); font-weight:400; font-family:var(--font-mono);">// ferramentas & IDEs</h3>
+    <h3 style="margin:2.5rem 0 1rem; font-size:1rem; color:var(--muted); font-weight:400; font-family:var(--font-mono);">// ferramentas, linguagens & plataformas</h3>
     <div class="ides-list">
       <div class="ide-item">
         <div class="ide-dot"></div>
         <div>
-          <h4><a href="https://replit.com/" target="_blank">Replit</a></h4>
-          <p>IDE online para Python, C e C++. Sem instalação.</p>
-        </div>
-      </div>
-      <div class="ide-item">
-        <div class="ide-dot"></div>
-        <div>
-          <h4><a href="https://code.visualstudio.com/" target="_blank">Visual Studio Code</a></h4>
-          <p>Editor com plugins para C, C++ e Python.</p>
+          <h4><a href="https://easyeda.com/" target="_blank">EasyEDA</a></h4>
+          <p>Projeto de circuitos eletrônicos, esquemáticos e PCB.</p>
         </div>
       </div>
       <div class="ide-item">
         <div class="ide-dot" style="background:var(--accent2)"></div>
         <div>
-          <h4><a href="https://www.arduino.cc/en/software" target="_blank">Arduino IDE 2.x</a></h4>
-          <p>IDE oficial para gerar sketches em microcontroladores Arduino.</p>
+          <h4><a href="https://www.tinkercad.com/" target="_blank">Tinkercad</a></h4>
+          <p>Simulação de circuitos, prototipagem 3D e Arduino online.</p>
+        </div>
+      </div>
+      <div class="ide-item">
+        <div class="ide-dot"></div>
+        <div>
+          <h4><a href="https://www.notion.com/" target="_blank">Notion</a></h4>
+          <p>Organização de notas, bases de conhecimento e planejamento.</p>
+        </div>
+      </div>
+      <div class="ide-item">
+        <div class="ide-dot"></div>
+        <div>
+          <h4><a href="https://trello.com/" target="_blank">Trello</a></h4>
+          <p>Gestão visual de tarefas com quadros Kanban.</p>
+        </div>
+      </div>
+      <div class="ide-item">
+        <div class="ide-dot" style="background:var(--accent2)"></div>
+        <div>
+          <h4><a href="https://www.microsoft.com/pt-br/microsoft-365/project/project-management-software" target="_blank">Microsoft Project</a></h4>
+          <p>Planejamento, cronogramas e gestão de projetos.</p>
+        </div>
+      </div>
+      <div class="ide-item">
+        <div class="ide-dot"></div>
+        <div>
+          <h4><a href="https://www.projectlibre.com/" target="_blank">ProjectLibre</a></h4>
+          <p>Alternativa aberta para cronogramas e gestão de projetos.</p>
+        </div>
+      </div>
+      <div class="ide-item">
+        <div class="ide-dot"></div>
+        <div>
+          <h4><a href="https://www.python.org/" target="_blank">Python.org</a></h4>
+          <p>Página oficial da linguagem Python.</p>
+        </div>
+      </div>
+      <div class="ide-item">
+        <div class="ide-dot" style="background:var(--accent2)"></div>
+        <div>
+          <h4><a href="https://www.open-std.org/jtc1/sc22/wg14/" target="_blank">ISO C / WG14</a></h4>
+          <p>Grupo oficial de padronização da linguagem C.</p>
+        </div>
+      </div>
+      <div class="ide-item">
+        <div class="ide-dot"></div>
+        <div>
+          <h4><a href="https://www.bizagi.com/en/platform/modeler" target="_blank">Bizagi Modeler</a></h4>
+          <p>Modelagem de processos de negócio em BPMN.</p>
+        </div>
+      </div>
+      <div class="ide-item">
+        <div class="ide-dot"></div>
+        <div>
+          <h4><a href="https://www.arduino.cc/en/software" target="_blank">Arduino IDE</a></h4>
+          <p>IDE oficial para sketches Arduino.</p>
         </div>
       </div>
       <div class="ide-item">
         <div class="ide-dot" style="background:var(--accent2)"></div>
         <div>
           <h4><a href="https://www.microchip.com/en-us/tools-resources/develop/microchip-studio" target="_blank">Microchip Studio</a></h4>
-          <p>Debug de aplicações AVR, incluindo ATmega2560.</p>
+          <p>Ambiente para desenvolvimento AVR/ATmega.</p>
+        </div>
+      </div>
+      <div class="ide-item">
+        <div class="ide-dot"></div>
+        <div>
+          <h4><a href="https://code.visualstudio.com/" target="_blank">Visual Studio Code</a></h4>
+          <p>Editor para C, C++, Python e desenvolvimento web.</p>
         </div>
       </div>
     </div>
@@ -523,52 +648,19 @@
   </div>
 </section>
 
-<section class="section" id="projetos">
-  <div class="container">
-    <div class="section-header">
-      <span class="section-label">04 / projetos</span>
-      <h2>Projetos</h2>
-    </div>
-    <div class="projetos-grid">
-
-      <div class="projeto-card">
-        <h3>Sistemas Embarcados</h3>
-        <p>Soluções de engenharia baseadas em microcontroladores. Versão atual: <strong>Projeto de Casa Inteligente</strong> com ATmega2560.</p>
-        <div class="projeto-tech">
-          <span class="tech-badge">C/C++</span>
-          <span class="tech-badge">ATmega2560</span>
-          <span class="tech-badge">Arduino</span>
-        </div>
-        <a class="card-link" href="https://github.com/claytonjasilva/sistemas-embarcados" target="_blank">Ver no GitHub →</a>
-      </div>
-
-      <div class="projeto-card">
-        <h3>Simulador SisCom</h3>
-        <p>Simulador em Python de sinais e conceitos aplicados em Sistemas de Comunicações Móveis.</p>
-        <div class="projeto-tech">
-          <span class="tech-badge">Python</span>
-          <span class="tech-badge">Simulação</span>
-        </div>
-        <a class="card-link" href="https://github.com/claytonjasilva/simuladorSisCom" target="_blank">Ver no GitHub →</a>
-      </div>
-
-      <div class="projeto-card">
-        <h3>Compilador TINY</h3>
-        <p>Compilador para a linguagem TINY, adaptada das referências da disciplina de Linguagens Formais e Compiladores.</p>
-        <div class="projeto-tech">
-          <span class="tech-badge">C++</span>
-          <span class="tech-badge">Compiladores</span>
-        </div>
-        <a class="card-link" href="https://github.com/claytonjasilva/compiladorTINY" target="_blank">Ver no GitHub →</a>
-      </div>
-
+<div class="modal" id="programacao-linear-modal">
+  <div class="modal-box">
+    <h3>Programação Linear</h3>
+    <p>A página da disciplina Programação Linear está em construção. Em breve este espaço reunirá o plano da disciplina, referências, listas, exemplos e materiais de apoio.</p>
+    <div class="modal-actions">
+      <a class="bio-link" href="#disciplinas">Fechar</a>
     </div>
   </div>
-</section>
+</div>
 
 <footer>
   <div class="container">
-    <p>© 2026 · Prof. Clayton J A Silva · Ibmec RJ</p>
+    <p>© 2026 · Prof. Clayton J A Silva</p>
     <p><a href="https://github.com/claytonjasilva/claytonjasilva.github.io" target="_blank">github.com/claytonjasilva</a></p>
   </div>
 </footer>
