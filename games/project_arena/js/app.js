@@ -1,25 +1,48 @@
 // ============================================================
-// Descrição geral: lógica principal do Project Arena V1.0
+// Descrição geral: lógica principal do Project Arena V1.1
 // Data de criação: 29/06/2026
-// Versão: 1.0
+// Versão: 1.1
 // Copyright: Clayton Silva
 // ============================================================
 
-let desafioAtual = 0;
-let pontos = 0;
-let xp = 0;
+let rodadaAtual = Number(localStorage.getItem("rodadaAtual")) || 0;
 
-// Carrega o desafio atual na tela
-function carregarDesafio() {
-    const areaDesafio = document.getElementById("desafio");
-
-    if (!areaDesafio || typeof desafios === "undefined") {
-        return;
+function iniciarSessaoSeNecessario() {
+    if (!localStorage.getItem("estadoEquipes")) {
+        localStorage.setItem("estadoEquipes", JSON.stringify(equipes));
     }
 
-    const desafio = desafios[desafioAtual];
+    if (!localStorage.getItem("desafioLiberado")) {
+        localStorage.setItem("desafioLiberado", "nao");
+    }
 
-    areaDesafio.innerHTML = `
+    if (!localStorage.getItem("rodadaAtual")) {
+        localStorage.setItem("rodadaAtual", "0");
+    }
+}
+
+function obterEquipes() {
+    return JSON.parse(localStorage.getItem("estadoEquipes")) || equipes;
+}
+
+function salvarEquipes(lista) {
+    localStorage.setItem("estadoEquipes", JSON.stringify(lista));
+}
+
+function calcularNivel(xp) {
+    if (xp >= 400) return "Gerente de Projetos";
+    if (xp >= 250) return "Coordenador";
+    if (xp >= 100) return "Analista";
+    return "Estagiário";
+}
+
+function obterDesafioAtual() {
+    rodadaAtual = Number(localStorage.getItem("rodadaAtual")) || 0;
+    return desafios[rodadaAtual];
+}
+
+function montarHtmlDesafio(desafio) {
+    return `
         <h3>${desafio.titulo}</h3>
         <p>${desafio.enunciado}</p>
         <p><strong>A)</strong> ${desafio.alternativas.A}</p>
@@ -29,189 +52,169 @@ function carregarDesafio() {
     `;
 }
 
-// Libera desafio no painel do árbitro
-function liberarDesafio() {
-    localStorage.setItem("desafioLiberado", "sim");
-    localStorage.setItem("desafioAtual", desafioAtual);
+function atualizarBarraProgresso() {
+    const barra = document.getElementById("barraProgresso");
+    const rodada = document.getElementById("rodadaAtual");
 
-    carregarDesafio();
+    const percentual = ((rodadaAtual + 1) / desafios.length) * 100;
 
-    const status = document.getElementById("statusEquipe");
-    if (status) {
-        status.textContent = "Desafio liberado";
-    }
+    if (barra) barra.style.width = percentual + "%";
+    if (rodada) rodada.textContent = rodadaAtual + 1;
 }
 
-// Encerrar rodada
+function atualizarRanking() {
+    const ranking = document.getElementById("ranking");
+
+    if (!ranking) return;
+
+    const lista = obterEquipes().sort((a, b) => b.pontos - a.pontos);
+
+    let html = "<table>";
+    html += "<tr><td>Equipe</td><td>Pontos</td><td>XP</td><td>Nível</td></tr>";
+
+    lista.forEach(eq => {
+        html += `
+            <tr>
+                <td>${eq.nome}</td>
+                <td>${eq.pontos}</td>
+                <td>${eq.xp}</td>
+                <td>${eq.nivel}</td>
+            </tr>
+        `;
+    });
+
+    html += "</table>";
+    ranking.innerHTML = html;
+}
+
+function liberarDesafio() {
+    const desafio = obterDesafioAtual();
+
+    localStorage.setItem("desafioLiberado", "sim");
+
+    const area = document.getElementById("desafio");
+    if (area) area.innerHTML = montarHtmlDesafio(desafio);
+
+    atualizarBarraProgresso();
+    atualizarRanking();
+}
+
 function encerrarRodada() {
     localStorage.setItem("desafioLiberado", "nao");
 
-    desafioAtual++;
+    rodadaAtual++;
 
-    if (desafioAtual >= desafios.length) {
-        desafioAtual = 0;
+    if (rodadaAtual >= desafios.length) {
+        rodadaAtual = desafios.length - 1;
+        alert("Todas as rodadas foram concluídas.");
     }
 
-    localStorage.setItem("desafioAtual", desafioAtual);
+    localStorage.setItem("rodadaAtual", String(rodadaAtual));
 
-    const areaDesafio = document.getElementById("desafio");
-    if (areaDesafio) {
-        areaDesafio.innerHTML = "Rodada encerrada. Libere o próximo desafio.";
-    }
+    const area = document.getElementById("desafio");
+    if (area) area.innerHTML = "Rodada encerrada. Libere o próximo desafio.";
+
+    atualizarBarraProgresso();
+    atualizarRanking();
 }
 
-// Reinicia sessão
 function reiniciarSessao() {
-    desafioAtual = 0;
-    pontos = 0;
-    xp = 0;
-
     localStorage.clear();
+    rodadaAtual = 0;
+    iniciarSessaoSeNecessario();
 
-    atualizarPontuacao();
+    const area = document.getElementById("desafio");
+    if (area) area.innerHTML = "Sessão reiniciada. Nenhum desafio liberado.";
 
-    const areaDesafio = document.getElementById("desafio");
-    if (areaDesafio) {
-        areaDesafio.innerHTML = "Sessão reiniciada. Nenhum desafio liberado.";
-    }
+    atualizarBarraProgresso();
+    atualizarRanking();
 }
 
-// Envia resposta da equipe
 function enviarResposta() {
     const liberado = localStorage.getItem("desafioLiberado");
 
     if (liberado !== "sim") {
-        alert("O desafio ainda não foi liberado pelo árbitro.");
+        alert("O árbitro ainda não liberou o desafio.");
         return;
     }
 
-    const desafioIndex = Number(localStorage.getItem("desafioAtual")) || 0;
-    const desafio = desafios[desafioIndex];
+    const equipeId = document.getElementById("equipeSelecionada").value;
+    const respostaMarcada = document.querySelector('input[name="resp"]:checked');
 
-    const respostaSelecionada = document.querySelector('input[name="resp"]:checked');
-
-    if (!respostaSelecionada) {
+    if (!respostaMarcada) {
         alert("Selecione uma alternativa.");
         return;
     }
 
-    const resposta = respostaSelecionada.value;
+    const desafio = obterDesafioAtual();
+    const resposta = respostaMarcada.value;
     const resultado = document.getElementById("resultado");
 
+    const lista = obterEquipes();
+    const equipe = lista.find(eq => eq.id === equipeId);
+
     if (resposta === desafio.correta) {
-        pontos += desafio.pontos;
-        xp += desafio.xp;
-
-        resultado.innerHTML = `
-            <strong>Resposta correta.</strong><br>
-            ${desafio.feedbackCorreto}
-        `;
+        equipe.pontos += desafio.pontos;
+        equipe.xp += desafio.xp;
+        resultado.innerHTML = `<strong>Resposta correta.</strong><br>${desafio.feedbackCorreto}`;
     } else {
-        resultado.innerHTML = `
-            <strong>Resposta incorreta.</strong><br>
-            Resposta correta: <strong>${desafio.correta}</strong>.<br>
-            ${desafio.feedbackErro}
-        `;
+        resultado.innerHTML = `<strong>Resposta incorreta.</strong><br>Resposta correta: <strong>${desafio.correta}</strong>.<br>${desafio.feedbackErro}`;
     }
 
-    localStorage.setItem("pontosEquipe", pontos);
-    localStorage.setItem("xpEquipe", xp);
-    localStorage.setItem("statusEquipe", "Respondido");
+    equipe.nivel = calcularNivel(equipe.xp);
+    salvarEquipes(lista);
 
-    atualizarPontuacao();
+    atualizarPainelEquipe();
 }
 
-// Atualiza pontuação na tela
-function atualizarPontuacao() {
-    const pontosTela = document.getElementById("pontos");
-    const pontuacaoTela = document.getElementById("pontuacao");
-    const xpTela = document.getElementById("xp");
-    const nivelTela = document.getElementById("nivel");
+function atualizarPainelEquipe() {
+    const equipeSelect = document.getElementById("equipeSelecionada");
+    if (!equipeSelect) return;
 
-    pontos = Number(localStorage.getItem("pontosEquipe")) || pontos;
-    xp = Number(localStorage.getItem("xpEquipe")) || xp;
+    const equipeId = equipeSelect.value;
+    const lista = obterEquipes();
+    const equipe = lista.find(eq => eq.id === equipeId);
 
-    if (pontosTela) {
-        pontosTela.textContent = pontos;
-    }
-
-    if (pontuacaoTela) {
-        pontuacaoTela.textContent = pontos;
-    }
-
-    if (xpTela) {
-        xpTela.textContent = xp;
-    }
-
-    if (nivelTela) {
-        nivelTela.textContent = calcularNivel(xp);
-    }
-}
-
-// Calcula o nível da equipe
-function calcularNivel(xpAtual) {
-    if (xpAtual >= 400) {
-        return "Gerente de Projetos";
-    }
-
-    if (xpAtual >= 250) {
-        return "Coordenador";
-    }
-
-    if (xpAtual >= 100) {
-        return "Analista";
-    }
-
-    return "Estagiário";
-}
-
-// Atualiza tela da equipe conforme estado salvo
-function atualizarTelaEquipe() {
-    const areaDesafio = document.getElementById("desafio");
+    const pontos = document.getElementById("pontos");
+    const xp = document.getElementById("xp");
+    const nivel = document.getElementById("nivel");
     const status = document.getElementById("statusEquipe");
+    const area = document.getElementById("desafio");
 
-    if (!areaDesafio || !status) {
-        return;
-    }
+    if (pontos) pontos.textContent = equipe.pontos;
+    if (xp) xp.textContent = equipe.xp;
+    if (nivel) nivel.textContent = equipe.nivel;
 
-    const liberado = localStorage.getItem("desafioLiberado");
-
-    if (liberado === "sim") {
-        desafioAtual = Number(localStorage.getItem("desafioAtual")) || 0;
-        carregarDesafio();
-        status.textContent = "Desafio liberado pelo árbitro.";
+    if (localStorage.getItem("desafioLiberado") === "sim") {
+        if (status) status.textContent = "Desafio liberado.";
+        if (area) area.innerHTML = montarHtmlDesafio(obterDesafioAtual());
     } else {
-        areaDesafio.innerHTML = "O desafio ainda não foi liberado pelo árbitro.";
-        status.textContent = "Aguardando liberação do desafio...";
+        if (status) status.textContent = "Aguardando desafio...";
+        if (area) area.innerHTML = "O desafio ainda não foi liberado pelo árbitro.";
     }
-
-    atualizarPontuacao();
 }
 
-// Inicialização
 document.addEventListener("DOMContentLoaded", function () {
+    iniciarSessaoSeNecessario();
+
     const btnLiberar = document.getElementById("btnLiberar");
     const btnEncerrar = document.getElementById("btnEncerrar");
     const btnReiniciar = document.getElementById("btnReiniciar");
     const btnEnviar = document.getElementById("btnEnviar");
+    const equipeSelect = document.getElementById("equipeSelecionada");
 
-    if (btnLiberar) {
-        btnLiberar.addEventListener("click", liberarDesafio);
-    }
+    if (btnLiberar) btnLiberar.addEventListener("click", liberarDesafio);
+    if (btnEncerrar) btnEncerrar.addEventListener("click", encerrarRodada);
+    if (btnReiniciar) btnReiniciar.addEventListener("click", reiniciarSessao);
+    if (btnEnviar) btnEnviar.addEventListener("click", enviarResposta);
+    if (equipeSelect) equipeSelect.addEventListener("change", atualizarPainelEquipe);
 
-    if (btnEncerrar) {
-        btnEncerrar.addEventListener("click", encerrarRodada);
-    }
+    atualizarBarraProgresso();
+    atualizarRanking();
+    atualizarPainelEquipe();
 
-    if (btnReiniciar) {
-        btnReiniciar.addEventListener("click", reiniciarSessao);
-    }
-
-    if (btnEnviar) {
-        btnEnviar.addEventListener("click", enviarResposta);
-        atualizarTelaEquipe();
-        setInterval(atualizarTelaEquipe, 1000);
-    }
-
-    atualizarPontuacao();
+    setInterval(function () {
+        atualizarRanking();
+        atualizarPainelEquipe();
+    }, 1000);
 });
