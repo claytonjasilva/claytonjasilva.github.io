@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Project Arena - Equipe</title>
+
+    <link rel="stylesheet" href="css/style.css">
+
+</head>
+
+<body>
+
+<header>
+
+    <h1>👥 Project Arena</h1>
+
+    <p>Painel da Equipe</p>
+
+</header>
+
+<main>
+
+<section class="card">
+
+<h2>Identificação</h2>
+
+<table>
+
+<tr>
+
+<td><strong>Sessão</strong></td>
+
+<td>GP-TESTE</td>
+
+</tr>
+
+<tr>
+
+<td><strong>Equipe</strong></td>
+
+<td>Alpha</td>
+
+</tr>
+
+<tr>
+
+<td><strong>Status</strong></td>
+
+<td id="statusEquipe">
+
+Aguardando liberação do desafio...
+
+</td>
+
+</tr>
+
+</table>
+
+</section>
+
+<section class="card">
+
+<h2>Desafio Atual</h2>
+
+<div id="desafio">
+
+O desafio ainda não foi liberado pelo árbitro.
+
+</div>
+
+</section>
+
+<section class="card">
+
+<h2>Resposta da Equipe</h2>
+
+<form>
+
+<label>
+
+Escolha uma alternativa
+
+</label>
+
+<br><br>
+
+<input
+type="radio"
+name="resp"
+value="A">
+
+A
+
+<br>
+
+<input
+type="radio"
+name="resp"
+value="B">
+
+B
+
+<br>
+
+<input
+type="radio"
+name="resp"
+value="C">
+
+C
+
+<br>
+
+<input
+type="radio"
+name="resp"
+value="D">
+
+D
+
+<br><br>
+
+<button
+type="button"
+id="btnEnviar">
+
+Enviar Resposta
+
+</button>
+
+</form>
+
+</section>
+
+<section class="card">
+
+<h2>Resultado</h2>
+
+<div id="resultado">
+
+Aguardando resposta...
+
+</div>
+
+</section>
+
+<section class="card">
+
+<h2>Pontuação</h2>
+
+<table>
+
+<tr>
+
+<td>XP</td>
+
+<td id="xp">
+
+0
+
+</td>
+
+</tr>
+
+<tr>
+
+<td>Pontos</td>
+
+<td id="pontos">
+
+0
+
+</td>
+
+</tr>
+
+<tr>
+
+<td>Nível</td>
+
+<td id="nivel">
+
+Estagiário
+
+</td>
+
+</tr>
+
+</table>
+
+</section>
+
+</main>
+
+<footer>
+
+Project Arena © 2026
+
+</footer>
+
+<script src="js/desafios.js"></script>
+
+<script src="js/app.js"></script>
+
+</body>
+
+</html>
