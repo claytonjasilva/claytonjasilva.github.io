@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,7 +12,7 @@
 
 <header>
     <h1>👨‍🏫 Painel do Árbitro</h1>
-    <p>Controle da sessão local</p>
+    <p>Project Arena - Missões de Gestão de Projetos</p>
 </header>
 
 <main>
@@ -19,7 +20,8 @@
     <section class="card">
         <h2>Sessão</h2>
         <p><strong>Código:</strong> GP-TESTE</p>
-        <p><strong>Rodada atual:</strong> <span id="rodadaAtual">1</span></p>
+        <p><strong>Missão atual:</strong> <span id="missaoAtual">1</span> de <span id="totalMissoes">10</span></p>
+        <p><strong>Status:</strong> <span id="statusSessao">Aguardando início</span></p>
 
         <div class="barra">
             <div id="barraProgresso"></div>
@@ -27,36 +29,65 @@
     </section>
 
     <section class="card">
-        <h2>Controle</h2>
-        <button id="btnLiberar">🚀 Liberar Desafio</button>
-        <button id="btnEncerrar">🏁 Encerrar Rodada</button>
-        <button id="btnReiniciar">🔄 Reiniciar Sessão</button>
+        <h2>Controle da Sessão</h2>
+
+        <button id="btnIniciar">▶️ Iniciar Sessão</button>
+        <button id="btnLiberar">🚀 Liberar Missão</button>
+        <button id="btnEncerrar">🏁 Encerrar Missão</button>
+        <button id="btnFinalizar">📊 Finalizar Sessão</button>
+        <button id="btnReiniciar">🔄 Reiniciar Tudo</button>
     </section>
 
     <section class="card">
-        <h2>Desafio Atual</h2>
-        <div id="desafio">Nenhum desafio liberado.</div>
+        <h2>Tempo da Missão</h2>
+        <div id="cronometro">--</div>
     </section>
 
     <section class="card">
-        <h2>Ranking</h2>
+        <h2>Missão Atual</h2>
+        <div id="desafio">Nenhuma missão liberada.</div>
+    </section>
+
+    <section class="card">
+        <h2>Ranking Parcial</h2>
         <div id="ranking"></div>
     </section>
 
     <section class="card">
+        <h2>Histórico da Sessão</h2>
+        <div id="historico">Nenhuma resposta registrada.</div>
+    </section>
+
+    <section class="card">
+        <h2>Relatório Final</h2>
+        <div id="relatorioFinal">A sessão ainda não foi finalizada.</div>
+    </section>
+
+    <section class="card">
         <h2>Observações do Árbitro</h2>
-        <textarea rows="6" placeholder="Anotações da rodada..."></textarea>
+        <textarea rows="6" placeholder="Anotações da rodada, dúvidas das equipes ou observações pedagógicas..."></textarea>
     </section>
 
 </main>
 
 <footer>
-    Project Arena - Árbitro
+    Project Arena - Árbitro - Versão 1.2
 </footer>
 
+<!-- Base de dados -->
 <script src="js/equipes.js"></script>
 <script src="js/desafios.js"></script>
+
+<!-- Módulos -->
+<script src="js/ranking.js"></script>
+<script src="js/cronometro.js"></script>
+<script src="js/relatorio.js"></script>
+<script src="js/missoes.js"></script>
+<script src="js/sessao.js"></script>
+
+<!-- Inicialização -->
 <script src="js/app.js"></script>
 
 </body>
+
 </html>

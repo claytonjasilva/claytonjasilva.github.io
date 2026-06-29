@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,73 +11,121 @@
 <body>
 
 <header>
-    <h1>👥 Painel da Equipe</h1>
-    <p>Project Arena - Gestão de Projetos</p>
+    <h1>🎯 Project Arena</h1>
+    <p>Missões de Gestão de Projetos</p>
 </header>
 
 <main>
 
     <section class="card">
-        <h2>Identificação</h2>
+        <h2>Equipe</h2>
 
-        <label for="equipeSelecionada">Equipe</label>
+        <label for="equipeSelecionada">Selecionar Equipe</label>
         <select id="equipeSelecionada">
             <option value="alpha">Equipe Alpha</option>
             <option value="beta">Equipe Beta</option>
             <option value="gama">Equipe Gama</option>
         </select>
 
-        <p><strong>Status:</strong> <span id="statusEquipe">Aguardando desafio...</span></p>
+        <p>
+            <strong>Status:</strong>
+            <span id="statusEquipe">Aguardando liberação da missão</span>
+        </p>
     </section>
 
     <section class="card">
-        <h2>Desafio Atual</h2>
-        <div id="desafio">O desafio ainda não foi liberado pelo árbitro.</div>
-    </section>
+        <h2>🏆 Evolução</h2>
 
-    <section class="card">
-        <h2>Resposta</h2>
-
-        <label><input type="radio" name="resp" value="A"> A</label><br>
-        <label><input type="radio" name="resp" value="B"> B</label><br>
-        <label><input type="radio" name="resp" value="C"> C</label><br>
-        <label><input type="radio" name="resp" value="D"> D</label><br><br>
-
-        <button id="btnEnviar">Enviar Resposta</button>
-    </section>
-
-    <section class="card">
-        <h2>Resultado</h2>
-        <div id="resultado">Aguardando resposta...</div>
-    </section>
-
-    <section class="card">
-        <h2>Desempenho da Equipe</h2>
         <table>
             <tr>
-                <td>Pontos</td>
-                <td id="pontos">0</td>
+                <td>Nível</td>
+                <td id="nivel">Estagiário</td>
             </tr>
             <tr>
                 <td>XP</td>
                 <td id="xp">0</td>
             </tr>
             <tr>
-                <td>Nível</td>
-                <td id="nivel">Estagiário</td>
+                <td>Pontos</td>
+                <td id="pontos">0</td>
             </tr>
         </table>
+    </section>
+
+    <section class="card">
+        <h2>📜 Missão Atual</h2>
+        <div id="desafio">Aguardando missão...</div>
+    </section>
+
+    <section class="card">
+        <h2>Responder Missão</h2>
+
+        <form>
+            <label>
+                <input type="radio" name="resp" value="A">
+                Alternativa A
+            </label>
+            <br>
+
+            <label>
+                <input type="radio" name="resp" value="B">
+                Alternativa B
+            </label>
+            <br>
+
+            <label>
+                <input type="radio" name="resp" value="C">
+                Alternativa C
+            </label>
+            <br>
+
+            <label>
+                <input type="radio" name="resp" value="D">
+                Alternativa D
+            </label>
+            <br><br>
+
+            <button type="button" id="btnEnviar">
+                Responder Missão
+            </button>
+        </form>
+    </section>
+
+    <section class="card">
+        <h2>Resultado</h2>
+        <div id="resultado">Nenhuma resposta enviada.</div>
+    </section>
+
+    <section class="card">
+        <h2>🏅 Conquistas</h2>
+        <div id="conquistas">Nenhuma conquista obtida.</div>
+    </section>
+
+    <section class="card">
+        <h2>Histórico</h2>
+        <div id="historicoEquipe">Nenhuma missão realizada.</div>
     </section>
 
 </main>
 
 <footer>
-    Project Arena © 2026
+    Project Arena - Versão 1.2
 </footer>
 
+<!-- Base de dados -->
 <script src="js/equipes.js"></script>
 <script src="js/desafios.js"></script>
+
+<!-- Módulos -->
+<script src="js/ranking.js"></script>
+<script src="js/cronometro.js"></script>
+<script src="js/relatorio.js"></script>
+<script src="js/missoes.js"></script>
+<script src="js/sessao.js"></script>
+
+<!-- Inicialização -->
 <script src="js/app.js"></script>
 
 </body>
+
 </html>

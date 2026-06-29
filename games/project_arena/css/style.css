@@ -13,30 +13,24 @@ header {
     background: #102a43;
     color: white;
     text-align: center;
-    padding: 32px 16px;
+    padding: 30px 16px;
 }
 
 header h1 {
     margin: 0;
-    font-size: 2rem;
-}
-
-header p {
-    margin: 8px 0 0;
-    opacity: 0.9;
 }
 
 main {
-    max-width: 960px;
+    max-width: 1000px;
     margin: 24px auto;
     padding: 0 16px;
 }
 
 .card {
     background: white;
-    border-radius: 12px;
-    padding: 24px;
-    margin-bottom: 20px;
+    border-radius: 14px;
+    padding: 22px;
+    margin-bottom: 18px;
     box-shadow: 0 4px 14px rgba(0, 0, 0, 0.10);
 }
 
@@ -49,7 +43,6 @@ main {
     display: flex;
     gap: 16px;
     flex-wrap: wrap;
-    margin-bottom: 20px;
 }
 
 .botao,
@@ -76,7 +69,7 @@ button:disabled {
     cursor: not-allowed;
 }
 
-input[type="text"],
+select,
 textarea {
     width: 100%;
     max-width: 420px;
@@ -107,7 +100,12 @@ td:first-child {
 }
 
 #desafio,
-#resultado {
+#resultado,
+#ranking,
+#historico,
+#historicoEquipe,
+#relatorioFinal,
+#conquistas {
     background: #f8fafc;
     border-left: 5px solid #0b63ce;
     padding: 16px;
@@ -115,16 +113,59 @@ td:first-child {
     line-height: 1.5;
 }
 
+.barra {
+    width: 100%;
+    background: #e5e7eb;
+    border-radius: 20px;
+    overflow: hidden;
+    height: 18px;
+    margin-top: 12px;
+}
+
+#barraProgresso {
+    width: 0%;
+    height: 100%;
+    background: #0b63ce;
+    transition: width 0.4s ease;
+}
+
+#cronometro {
+    font-size: 2.4rem;
+    font-weight: bold;
+    text-align: center;
+    color: #102a43;
+    padding: 18px;
+}
+
 input[type="radio"] {
-    margin-right: 8px;
-    margin-bottom: 12px;
+    margin-right: 10px;
+    margin-bottom: 14px;
+}
+
+.resposta-correta {
+    background: #e6f7ed;
+    border-left: 5px solid #1f8f4d;
+}
+
+.resposta-erro {
+    background: #fdecec;
+    border-left: 5px solid #c0392b;
+}
+
+.medalha {
+    display: inline-block;
+    background: #fff3cd;
+    border: 1px solid #facc15;
+    border-radius: 20px;
+    padding: 8px 14px;
+    margin: 4px;
+    font-weight: bold;
 }
 
 footer {
     text-align: center;
     padding: 20px;
     color: #666;
-    font-size: 0.9rem;
 }
 
 @media (max-width: 600px) {
