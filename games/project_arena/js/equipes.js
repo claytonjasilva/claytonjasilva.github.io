@@ -1,7 +1,7 @@
 // ============================================================
 // Descrição geral: cadastro inicial de equipes simuladas
 // Data de criação: 29/06/2026
-// Versão: 1.1
+// Versão: 1.2
 // Copyright: Clayton Silva
 // ============================================================
 
