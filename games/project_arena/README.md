@@ -2,7 +2,7 @@
 
 Protótipo de plataforma gamificada para apoio ao ensino de Engenharia.
 
-Versão atual: **1.1**
+Versão atual: **1.2**
 
 ---
 
