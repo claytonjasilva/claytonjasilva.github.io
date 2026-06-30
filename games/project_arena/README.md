@@ -6,13 +6,11 @@ Versão atual: **1.2**
 
 ---
 
-# Objetivo
+## Objetivo
 
-O Project Arena foi concebido para estimular a aprendizagem baseada em desafios.
+O Project Arena foi concebido para estimular a aprendizagem baseada em missões.
 
-Nesta primeira fase o sistema funciona localmente, permitindo que um árbitro conduza uma sessão enquanto equipes resolvem desafios relacionados ao conteúdo da disciplina.
-
-Inicialmente o projeto será utilizado na disciplina **Gestão de Projetos**, podendo posteriormente ser adaptado para outras disciplinas.
+Nesta versão, o sistema funciona localmente, permitindo que um árbitro conduza uma sessão enquanto equipes simuladas resolvem missões relacionadas à disciplina de Gestão de Projetos.
 
 ---
 
@@ -41,22 +39,22 @@ project_arena/
 
 ---
 
-# Recursos disponíveis
+## Recursos da versão 1.2
 
-Versão 1.1
-
-- Página inicial
+- Arquitetura modular em JavaScript
+- Banco com 30 missões
+- Sorteio de 10 missões por sessão
 - Painel do árbitro
 - Painel da equipe
 - Três equipes simuladas
-- Cinco rodadas
 - Pontuação
-- XP
+- XP / experiência
 - Evolução de nível
 - Ranking
-- Barra de progresso
-- Feedback pedagógico
-- Armazenamento utilizando Local Storage
+- Cronômetro
+- Histórico de respostas
+- Relatório final
+- Testes automáticos em `dev/validar.html`
 
 ---
 
@@ -154,12 +152,12 @@ Repetir até a quinta rodada.
 
 ---
 
-# Publicação
+## Publicação
 
-Após copiar os arquivos para o repositório
+Link previsto:
 
 ```text
-claytonjasilva.github.io
+https://claytonjasilva.github.io/games/project_arena/
 ```
 
 executar
