@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <title>Project Arena - Teste Firebase</title>
+
+    <style>
+
+        body{
+            font-family: Arial, Helvetica, sans-serif;
+            margin:40px;
+        }
+
+        button{
+            padding:10px 20px;
+            font-size:16px;
+            cursor:pointer;
+        }
+
+        #resultado{
+            margin-top:20px;
+            padding:15px;
+            border:1px solid #CCCCCC;
+            background:#F7F7F7;
+            white-space:pre-wrap;
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+<h1>Project Arena</h1>
+
+<h2>Teste de Conectividade com Firebase</h2>
+
+<button id="btnTestar">
+
+    Testar conexão
+
+</button>
+
+<div id="resultado">
+
+Aguardando teste...
+
+</div>
+
+<script type="module">
+
+import {
+
+    salvarDados,
+    carregarDados
+
+} from "../js/firebase-service.js";
+
+
+const resultado = document.getElementById("resultado");
+
+const btnTestar = document.getElementById("btnTestar");
+
+
+btnTestar.addEventListener("click", testarFirebase);
+
+
+async function testarFirebase(){
+
+    resultado.textContent="Inicializando teste...";
+
+    try{
+
+        resultado.textContent+="\n\n1. Gravando registro de teste...";
+
+        const dadosTeste={
+
+            sistema:"Project Arena",
+
+            versao:"2.0",
+
+            dataHora:new Date().toISOString(),
+
+            teste:true
+
+        };
+
+        await salvarDados(
+
+            "testes/conexao",
+
+            dadosTeste
+
+        );
+
+        resultado.textContent+="\nOK";
+
+
+
+        resultado.textContent+="\n\n2. Lendo registro gravado...";
+
+        const dados=await carregarDados(
+
+            "testes/conexao"
+
+        );
+
+        resultado.textContent+="\nOK";
+
+
+        resultado.textContent+="\n\n3. Dados recebidos:\n";
+
+        resultado.textContent+=JSON.stringify(
+
+            dados,
+
+            null,
+
+            4
+
+        );
+
+
+        resultado.textContent+="\n\n================================";
+
+        resultado.textContent+="\nCONEXÃO COM FIREBASE OK";
+
+        resultado.textContent+="\n================================";
+
+        console.log(dados);
+
+    }
+
+    catch(erro){
+
+        resultado.textContent+="\n\nERRO ENCONTRADO\n\n";
+
+        resultado.textContent+=erro.message;
+
+        console.error(erro);
+
+    }
+
+}
+
+</script>
+
+</body>
+
+</html>

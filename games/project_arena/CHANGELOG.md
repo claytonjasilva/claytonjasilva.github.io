@@ -1,35 +1,24 @@
-
-## 3. Criar CHANGELOG.md
-
-Na raiz de `project_arena`, crie:
-
-```markdown
 # CHANGELOG
 
-## Versão 1.2 - 29/06/2026
+## [2.0.0] - 2026-06-30
 
 ### Adicionado
 
-- Arquitetura modular em JavaScript.
-- Banco com 30 missões.
-- Sorteio de 10 missões por sessão.
-- Painel do árbitro.
-- Painel da equipe.
-- Ranking parcial.
-- Cronômetro.
-- Histórico de respostas.
-- Relatório final.
-- Testes automáticos em `dev/validar.html`.
+- Integração com Firebase Realtime Database.
+- Arquivo `firebase-config.js`.
+- Arquivo `firebase-service.js`.
+- Arquivo `arena-cloud.js`.
+- Teste `teste-firebase-direto.html`.
+- Teste `teste-arena-cloud.html`.
 
-### Alterado
+### Validação
 
-- Substituição da ideia de “desafio” por “missão”.
-- Organização do código em módulos separados.
-- Evolução da interface para uma dinâmica mais próxima de jogo.
+- Comunicação com Firebase validada.
+- Criação de sessões validada.
+- Criação de equipes validada.
+- Atualização do ranking validada.
+- Leitura dos dados persistidos validada.
 
-### Limitações conhecidas
+### Estado do Projeto
 
-- A sincronização funciona apenas em abas do mesmo navegador.
-- Não há backend.
-- Não há autenticação.
-- Não há persistência em banco de dados externo.
+Esta versão representa o primeiro marco funcional da arquitetura em nuvem do Project Arena (V2.0). Todos os testes de integração com o Firebase Realtime Database foram executados com sucesso e servirão como base para a modularização da camada Arena Cloud.
