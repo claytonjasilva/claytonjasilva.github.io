@@ -1,133 +1,56 @@
 /******************************************************************************
  * Projeto.......: Project Arena
  * Arquivo.......: arena-cloud.js
- * Descrição.....: Camada de domínio para integração do Project Arena com
- *                 o Firebase Realtime Database.
+ * Descrição.....: Fachada da camada Arena Cloud. Centraliza o acesso aos
+ *                 módulos especializados de nuvem do Project Arena.
  *
  * Data..........: 30/06/2026
- * Versão........: 2.0.0
+ * Versão........: 2.0.1
  * Copyright.....: Clayton J. A. Silva
  ******************************************************************************/
 
 import {
-    salvarDados,
-    carregarDados,
-    atualizarDados,
-    removerDados,
-    criarRegistro
-} from "./firebase-service.js";
+    criarSessao,
+    obterSessao,
+    atualizarSessao,
+    encerrarSessao
+} from "./cloud/cloud-sessoes.js";
+
+import {
+    criarEquipe,
+    obterEquipe,
+    listarEquipes,
+    atualizarEquipe,
+    removerEquipe
+} from "./cloud/cloud-equipes.js";
+
+import {
+    salvarMissao,
+    obterMissao,
+    listarMissoes,
+    atualizarMissao,
+    removerMissao
+} from "./cloud/cloud-missoes.js";
+
+import {
+    criarDesafio,
+    obterDesafio,
+    listarDesafios,
+    atualizarDesafio,
+    registrarResposta,
+    encerrarDesafio,
+    removerDesafio
+} from "./cloud/cloud-desafios.js";
+
+import {
+    atualizarPontuacao,
+    obterRanking,
+    removerRankingEquipe,
+    limparRankingSessao
+} from "./cloud/cloud-ranking.js";
 
 /* ============================================================================
-   Sessões
-   ========================================================================== */
-
-async function criarSessao(dadosSessao) {
-
-    const dados = {
-        nome: dadosSessao.nome || "Sessão sem nome",
-        status: "ativa",
-        dataCriacao: new Date().toISOString(),
-        dataEncerramento: null
-    };
-
-    const idSessao = await criarRegistro("sessoes", dados);
-
-    return idSessao;
-}
-
-async function obterSessao(idSessao) {
-
-    return await carregarDados(`sessoes/${idSessao}`);
-}
-
-async function atualizarSessao(idSessao, dadosAtualizados) {
-
-    await atualizarDados(`sessoes/${idSessao}`, dadosAtualizados);
-}
-
-async function encerrarSessao(idSessao) {
-
-    await atualizarDados(`sessoes/${idSessao}`, {
-        status: "encerrada",
-        dataEncerramento: new Date().toISOString()
-    });
-}
-
-/* ============================================================================
-   Equipes
-   ========================================================================== */
-
-async function criarEquipe(idSessao, dadosEquipe) {
-
-    const dados = {
-        nome: dadosEquipe.nome || "Equipe sem nome",
-        pontuacao: 0,
-        sessaoId: idSessao,
-        dataCriacao: new Date().toISOString()
-    };
-
-    const idEquipe = await criarRegistro(`equipes/${idSessao}`, dados);
-
-    return idEquipe;
-}
-
-async function obterEquipe(idSessao, idEquipe) {
-
-    return await carregarDados(`equipes/${idSessao}/${idEquipe}`);
-}
-
-async function listarEquipes(idSessao) {
-
-    return await carregarDados(`equipes/${idSessao}`);
-}
-
-async function atualizarEquipe(idSessao, idEquipe, dadosAtualizados) {
-
-    await atualizarDados(`equipes/${idSessao}/${idEquipe}`, dadosAtualizados);
-}
-
-/* ============================================================================
-   Missões
-   ========================================================================== */
-
-async function salvarMissao(idMissao, dadosMissao) {
-
-    await salvarDados(`missoes/${idMissao}`, {
-        ...dadosMissao,
-        dataAtualizacao: new Date().toISOString()
-    });
-}
-
-async function obterMissao(idMissao) {
-
-    return await carregarDados(`missoes/${idMissao}`);
-}
-
-async function listarMissoes() {
-
-    return await carregarDados("missoes");
-}
-
-/* ============================================================================
-   Ranking
-   ========================================================================== */
-
-async function atualizarPontuacao(idSessao, idEquipe, nomeEquipe, pontuacao) {
-
-    await salvarDados(`ranking/${idSessao}/${idEquipe}`, {
-        nome: nomeEquipe,
-        pontuacao: pontuacao,
-        dataAtualizacao: new Date().toISOString()
-    });
-}
-
-async function obterRanking(idSessao) {
-
-    return await carregarDados(`ranking/${idSessao}`);
-}
-
-/* ============================================================================
-   Teste da camada Arena Cloud
+   Teste integrado da camada Arena Cloud
    ========================================================================== */
 
 async function testarArenaCloud() {
@@ -161,7 +84,7 @@ async function testarArenaCloud() {
 }
 
 /* ============================================================================
-   Exportação
+   Exportação pública da Arena Cloud
    ========================================================================== */
 
 export {
@@ -174,13 +97,26 @@ export {
     obterEquipe,
     listarEquipes,
     atualizarEquipe,
+    removerEquipe,
 
     salvarMissao,
     obterMissao,
     listarMissoes,
+    atualizarMissao,
+    removerMissao,
+
+    criarDesafio,
+    obterDesafio,
+    listarDesafios,
+    atualizarDesafio,
+    registrarResposta,
+    encerrarDesafio,
+    removerDesafio,
 
     atualizarPontuacao,
     obterRanking,
+    removerRankingEquipe,
+    limparRankingSessao,
 
     testarArenaCloud
 };
