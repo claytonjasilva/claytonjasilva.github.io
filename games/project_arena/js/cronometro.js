@@ -1,5 +1,5 @@
 // ============================================================
-// Descrição geral: funções de cronômetro das missões
+// Descrição geral: <descrição específica do arquivo>
 // Data de criação: 29/06/2026
 // Versão: 1.2
 // Copyright: Clayton Silva
