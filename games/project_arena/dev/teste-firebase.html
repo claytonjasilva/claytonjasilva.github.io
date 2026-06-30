@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Teste Firebase - Project Arena</title>
+</head>
+<body>
+
+    <h1>Teste Firebase - Project Arena</h1>
+
+    <button id="btnTestar">Testar conexão</button>
+
+    <p id="resultado">Aguardando teste...</p>
+
+    <script type="module">
+        import {
+            salvarDados,
+            carregarDados
+        } from "../js/firebase-service.js";
+
+        const btnTestar = document.getElementById("btnTestar");
+        const resultado = document.getElementById("resultado");
+
+        btnTestar.addEventListener("click", async () => {
+            resultado.textContent = "Testando conexão com o Firebase...";
+
+            const dadosTeste = {
+                mensagem: "Conexão com Firebase funcionando",
+                dataHora: new Date().toISOString()
+            };
+
+            const salvou = await salvarDados("testes/conexao", dadosTeste);
+
+            if (!salvou) {
+                resultado.textContent = "Erro ao salvar dados no Firebase.";
+                return;
+            }
+
+            const dadosLidos = await carregarDados("testes/conexao");
+
+            if (dadosLidos) {
+                resultado.textContent =
+                    "Conexão OK. Dados gravados e lidos com sucesso.";
+            } else {
+                resultado.textContent =
+                    "Dados salvos, mas não foi possível fazer a leitura.";
+            }
+        });
+    </script>
+
+</body>
+</html>

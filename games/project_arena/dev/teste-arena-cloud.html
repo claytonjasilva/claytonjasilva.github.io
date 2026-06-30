@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+
+<html lang="pt-BR">
+
+<head>
+
+<meta charset="UTF-8">
+
+<title>Project Arena - Teste Arena Cloud</title>
+
+<style>
+
+body{
+
+    font-family:Arial, Helvetica, sans-serif;
+    margin:40px;
+
+}
+
+button{
+
+    padding:12px 20px;
+    font-size:16px;
+
+}
+
+#saida{
+
+    margin-top:25px;
+    border:1px solid #CCCCCC;
+    padding:20px;
+    background:#F8F8F8;
+    white-space:pre-wrap;
+
+}
+
+.ok{
+
+    color:green;
+    font-weight:bold;
+
+}
+
+.erro{
+
+    color:red;
+    font-weight:bold;
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<h1>Project Arena</h1>
+
+<h2>Teste da Camada Arena Cloud</h2>
+
+<button id="btnExecutar">
+
+Executar Teste
+
+</button>
+
+<div id="saida">
+
+Aguardando execução...
+
+</div>
+
+<script type="module">
+
+import {
+
+    testarArenaCloud
+
+} from "../js/arena-cloud.js";
+
+const saida=document.getElementById("saida");
+
+const botao=document.getElementById("btnExecutar");
+
+botao.addEventListener(
+
+    "click",
+
+    executarTeste
+
+);
+
+async function executarTeste(){
+
+    saida.textContent="";
+
+    try{
+
+        saida.textContent+="Criando sessão...\n";
+
+        const resultado=await testarArenaCloud();
+
+        saida.textContent+="OK\n\n";
+
+        saida.textContent+="ID da Sessão:\n";
+
+        saida.textContent+=resultado.idSessao+"\n\n";
+
+        saida.textContent+="ID da Equipe:\n";
+
+        saida.textContent+=resultado.idEquipe+"\n\n";
+
+        saida.textContent+="Sessão criada:\n";
+
+        saida.textContent+=JSON.stringify(
+
+            resultado.sessao,
+
+            null,
+
+            4
+
+        );
+
+        saida.textContent+="\n\nEquipes:\n";
+
+        saida.textContent+=JSON.stringify(
+
+            resultado.equipes,
+
+            null,
+
+            4
+
+        );
+
+        saida.textContent+="\n\nRanking:\n";
+
+        saida.textContent+=JSON.stringify(
+
+            resultado.ranking,
+
+            null,
+
+            4
+
+        );
+
+        saida.textContent+="\n\n";
+
+        saida.textContent+="=====================================\n";
+
+        saida.textContent+="ARENA CLOUD FUNCIONANDO\n";
+
+        saida.textContent+="=====================================\n";
+
+    }
+
+    catch(erro){
+
+        saida.textContent+="ERRO\n\n";
+
+        saida.textContent+=erro.message;
+
+        console.error(erro);
+
+    }
+
+}
+
+</script>
+
+</body>
+
+</html>
