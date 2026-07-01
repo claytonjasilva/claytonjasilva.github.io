@@ -1,22 +1,69 @@
 // ============================================================
-// Descrição geral: funções de controle da sessão
+// Descrição geral: funções de controle da sessão, mantendo a
+// lógica local da V1.2 e acrescentando integração inicial com
+// a Arena Cloud / Firebase.
 // Data de criação: 29/06/2026
-// Versão: 1.2
+// Versão: 2.0
 // Copyright: Clayton Silva
 // ============================================================
 
-function iniciarSessao() {
+async function criarSessaoCloudSePossivel() {
+    try {
+        const arenaCloud = await import("./arena-cloud.js");
+
+        const idSessao = await arenaCloud.criarSessao({
+            nome: "Sessão Project Arena - Gestão de Projetos"
+        });
+
+        localStorage.setItem("idSessaoCloud", idSessao);
+        localStorage.setItem("modoCloud", "sim");
+
+        return idSessao;
+
+    } catch (erro) {
+        console.warn("Modo cloud indisponível. Sessão mantida localmente.", erro);
+        localStorage.setItem("modoCloud", "nao");
+        return null;
+    }
+}
+
+async function encerrarSessaoCloudSePossivel() {
+    try {
+        const idSessao = localStorage.getItem("idSessaoCloud");
+
+        if (!idSessao) {
+            return;
+        }
+
+        const arenaCloud = await import("./arena-cloud.js");
+
+        await arenaCloud.encerrarSessao(idSessao);
+
+    } catch (erro) {
+        console.warn("Não foi possível encerrar a sessão na nuvem.", erro);
+    }
+}
+
+async function iniciarSessao() {
     localStorage.clear();
 
     localStorage.setItem("estadoEquipes", JSON.stringify(equipes));
     localStorage.setItem("missaoLiberada", "nao");
     localStorage.setItem("historicoRespostas", JSON.stringify([]));
 
+    await criarSessaoCloudSePossivel();
+
     sortearMissoes(10);
 
     const status = document.getElementById("statusSessao");
     if (status) {
-        status.textContent = "Sessão iniciada";
+        const modoCloud = localStorage.getItem("modoCloud");
+
+        if (modoCloud === "sim") {
+            status.textContent = "Sessão iniciada em nuvem";
+        } else {
+            status.textContent = "Sessão iniciada em modo local";
+        }
     }
 
     atualizarProgressoMissao();
@@ -36,9 +83,11 @@ function iniciarSessao() {
     zerarCronometro();
 }
 
-function finalizarSessao() {
+async function finalizarSessao() {
     localStorage.setItem("missaoLiberada", "nao");
     pararCronometro();
+
+    await encerrarSessaoCloudSePossivel();
 
     const status = document.getElementById("statusSessao");
     if (status) {

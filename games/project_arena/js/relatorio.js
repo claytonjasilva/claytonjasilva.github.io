@@ -1,9 +1,13 @@
 // ============================================================
-// Descrição geral: funções de relatório do Project Arena V1.2
-// Data de criação: 29/06/2026
-// Versão: 1.2
+// Descrição geral: funções de histórico e relatórios do Project Arena V2.0
+// Data de criação: 30/06/2026
+// Versão: 2.0
 // Copyright: Clayton Silva
 // ============================================================
+
+// ------------------------------------------------------------
+// HISTÓRICO
+// ------------------------------------------------------------
 
 function obterHistorico() {
     return JSON.parse(localStorage.getItem("historicoRespostas")) || [];
@@ -15,28 +19,47 @@ function salvarHistorico(historico) {
 
 function registrarHistorico(registro) {
     const historico = obterHistorico();
-    historico.push(registro);
+
+    historico.push({
+        ...registro,
+        dataHora: new Date().toLocaleString("pt-BR")
+    });
+
     salvarHistorico(historico);
 }
+
+// ------------------------------------------------------------
+// TABELA DE HISTÓRICO
+// ------------------------------------------------------------
 
 function gerarTabelaHistorico() {
     const historico = obterHistorico();
 
     if (historico.length === 0) {
-        return "Nenhuma resposta registrada.";
+        return "<p>Nenhuma resposta registrada.</p>";
     }
 
-    let html = "<table>";
-    html += "<tr><td>Missão</td><td>Equipe</td><td>Resposta</td><td>Resultado</td><td>Pontos</td></tr>";
+    let html = `
+        <table>
+            <tr>
+                <td>Missão</td>
+                <td>Equipe</td>
+                <td>Resposta</td>
+                <td>Resultado</td>
+                <td>Pontos</td>
+                <td>Data/Hora</td>
+            </tr>
+    `;
 
     historico.forEach(item => {
         html += `
             <tr>
-                <td>${item.missao}</td>
-                <td>${item.equipe}</td>
+                <td>${item.missao || item.missaoId}</td>
+                <td>${item.equipe || item.equipeId}</td>
                 <td>${item.resposta}</td>
                 <td>${item.acertou ? "Acertou" : "Errou"}</td>
-                <td>${item.pontos}</td>
+                <td>${item.pontos || 0}</td>
+                <td>${item.dataHora || "-"}</td>
             </tr>
         `;
     });
@@ -45,24 +68,35 @@ function gerarTabelaHistorico() {
     return html;
 }
 
-function calcularResumoFinal() {
-    const lista = JSON.parse(localStorage.getItem("estadoEquipes")) || [];
+// ------------------------------------------------------------
+// RESUMO FINAL
+// ------------------------------------------------------------
 
-    if (lista.length === 0) {
+function calcularResumoFinal() {
+    const equipes = JSON.parse(localStorage.getItem("estadoEquipes")) || [];
+    const historico = obterHistorico();
+
+    if (equipes.length === 0) {
         return [];
     }
 
-    return lista
-        .map(eq => {
-            const historico = obterHistorico().filter(item => item.equipeId === eq.id);
-            const respostas = historico.length;
-            const acertos = historico.filter(item => item.acertou).length;
-            const percentual = respostas > 0 ? Math.round((acertos / respostas) * 100) : 0;
+    return equipes
+        .map(equipe => {
+            const respostasEquipe = historico.filter(item => item.equipeId === equipe.id);
+
+            const respostas = respostasEquipe.length;
+            const acertos = respostasEquipe.filter(item => item.acertou === true).length;
+            const erros = respostasEquipe.filter(item => item.acertou === false).length;
+
+            const percentual = respostas > 0
+                ? Math.round((acertos / respostas) * 100)
+                : 0;
 
             return {
-                ...eq,
+                ...equipe,
                 respostas,
                 acertos,
+                erros,
                 percentual
             };
         })
@@ -79,7 +113,7 @@ function gerarRelatorioFinal() {
     const resumo = calcularResumoFinal();
 
     if (resumo.length === 0) {
-        relatorio.innerHTML = "Nenhum dado disponível.";
+        relatorio.innerHTML = "<p>Nenhum dado disponível.</p>";
         return;
     }
 
@@ -87,31 +121,39 @@ function gerarRelatorioFinal() {
 
     let html = `
         <h3>🏆 Equipe vencedora: ${vencedora.nome}</h3>
-        <p><strong>Pontos:</strong> ${vencedora.pontos}</p>
-        <p><strong>XP:</strong> ${vencedora.xp}</p>
-        <p><strong>Nível:</strong> ${vencedora.nivel}</p>
+
+        <p><strong>Pontos:</strong> ${vencedora.pontos || 0}</p>
+        <p><strong>XP:</strong> ${vencedora.xp || 0}</p>
+        <p><strong>Nível:</strong> ${vencedora.nivel || 1}</p>
+
         <hr>
+
         <h3>Resumo das equipes</h3>
+
         <table>
             <tr>
                 <td>Equipe</td>
                 <td>Pontos</td>
                 <td>XP</td>
+                <td>Respostas</td>
                 <td>Acertos</td>
+                <td>Erros</td>
                 <td>Aproveitamento</td>
                 <td>Nível</td>
             </tr>
     `;
 
-    resumo.forEach(eq => {
+    resumo.forEach(equipe => {
         html += `
             <tr>
-                <td>${eq.nome}</td>
-                <td>${eq.pontos}</td>
-                <td>${eq.xp}</td>
-                <td>${eq.acertos}/${eq.respostas}</td>
-                <td>${eq.percentual}%</td>
-                <td>${eq.nivel}</td>
+                <td>${equipe.nome}</td>
+                <td>${equipe.pontos || 0}</td>
+                <td>${equipe.xp || 0}</td>
+                <td>${equipe.respostas}</td>
+                <td>${equipe.acertos}</td>
+                <td>${equipe.erros}</td>
+                <td>${equipe.percentual}%</td>
+                <td>${equipe.nivel || 1}</td>
             </tr>
         `;
     });
@@ -120,6 +162,10 @@ function gerarRelatorioFinal() {
 
     relatorio.innerHTML = html;
 }
+
+// ------------------------------------------------------------
+// ATUALIZAÇÃO DA TELA
+// ------------------------------------------------------------
 
 function atualizarHistoricoNaTela() {
     const historicoArbitro = document.getElementById("historico");
@@ -134,4 +180,33 @@ function atualizarHistoricoNaTela() {
     if (historicoEquipe) {
         historicoEquipe.innerHTML = tabela;
     }
+}
+
+// ------------------------------------------------------------
+// EXPORTAÇÃO DO RELATÓRIO
+// ------------------------------------------------------------
+
+function gerarObjetoRelatorioFinal() {
+    return {
+        projeto: "Project Arena",
+        versao: "2.0",
+        dataGeracao: new Date().toLocaleString("pt-BR"),
+        resumoEquipes: calcularResumoFinal(),
+        historico: obterHistorico()
+    };
+}
+
+function exportarRelatorioJSON() {
+    const relatorio = gerarObjetoRelatorioFinal();
+
+    const conteudo = JSON.stringify(relatorio, null, 4);
+    const blob = new Blob([conteudo], { type: "application/json" });
+
+    const link = document.createElement("a");
+    link.href = URL.createObjectURL(blob);
+    link.download = "relatorio_project_arena.json";
+
+    link.click();
+
+    URL.revokeObjectURL(link.href);
 }

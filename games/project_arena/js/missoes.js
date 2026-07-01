@@ -1,12 +1,82 @@
 // ============================================================
-// Descrição geral: funções de controle das missões
-// Data de criação: 29/06/2026
-// Versão: 1.2
+// Descrição geral: funções de controle das missões, mantendo a
+// lógica local da V1.2 e acrescentando sincronização com
+// Arena Cloud / Firebase.
+// Data de criação: 30/06/2026
+// Versão: 2.0
 // Copyright: Clayton Silva
 // ============================================================
 
+// ------------------------------------------------------------
+// CARREGAMENTO DA ARENA CLOUD
+// ------------------------------------------------------------
+
+async function carregarArenaCloudMissoes() {
+    try {
+        return await import("./arena-cloud.js");
+    } catch (erro) {
+        console.warn("Arena Cloud não disponível para missões.", erro);
+        return null;
+    }
+}
+
+// ------------------------------------------------------------
+// BANCO DE DESAFIOS
+// ------------------------------------------------------------
+
+function obterBancoDeDesafios() {
+    if (typeof bancoDesafios !== "undefined" && bancoDesafios.desafios) {
+        return bancoDesafios.desafios;
+    }
+
+    if (typeof desafios !== "undefined") {
+        return desafios;
+    }
+
+    return [];
+}
+
+// ------------------------------------------------------------
+// SINCRONIZAÇÃO COM A NUVEM
+// ------------------------------------------------------------
+
+async function sincronizarMissoesCloudSePossivel(missoes, indice = 0, liberada = "nao") {
+    try {
+        const idSessao = localStorage.getItem("idSessaoCloud");
+
+        if (!idSessao) {
+            return;
+        }
+
+        const arenaCloud = await carregarArenaCloudMissoes();
+
+        if (!arenaCloud) {
+            return;
+        }
+
+        for (const missao of missoes) {
+            await arenaCloud.salvarMissao(missao.id, missao);
+        }
+
+        await arenaCloud.atualizarSessao(idSessao, {
+            indiceMissaoAtual: indice,
+            missaoLiberada: liberada,
+            missaoAtual: missoes[indice] ? missoes[indice].id : null,
+            totalMissoes: missoes.length
+        });
+
+    } catch (erro) {
+        console.warn("Não foi possível sincronizar missões na nuvem.", erro);
+    }
+}
+
+// ------------------------------------------------------------
+// SORTEIO E CONTROLE DAS MISSÕES
+// ------------------------------------------------------------
+
 function sortearMissoes(quantidade) {
-    const copia = [...desafios];
+    const banco = obterBancoDeDesafios();
+    const copia = [...banco];
 
     copia.sort(() => Math.random() - 0.5);
 
@@ -14,6 +84,9 @@ function sortearMissoes(quantidade) {
 
     localStorage.setItem("missoesSessao", JSON.stringify(selecionadas));
     localStorage.setItem("indiceMissaoAtual", "0");
+    localStorage.setItem("missaoLiberada", "nao");
+
+    sincronizarMissoesCloudSePossivel(selecionadas, 0, "nao");
 
     return selecionadas;
 }
@@ -38,6 +111,10 @@ function equipeJaRespondeu(equipeId, missaoId) {
     );
 }
 
+// ------------------------------------------------------------
+// HTML DA MISSÃO
+// ------------------------------------------------------------
+
 function montarHtmlMissao(missao) {
     if (!missao) {
         return "Nenhuma missão disponível.";
@@ -45,12 +122,15 @@ function montarHtmlMissao(missao) {
 
     return `
         <h3>${missao.titulo}</h3>
+
         <p>
             <strong>Tema:</strong> ${missao.tema} |
             <strong>Dificuldade:</strong> ${missao.dificuldade} |
             <strong>Tempo:</strong> ${missao.tempo}s
         </p>
+
         <p>${missao.enunciado}</p>
+
         <p><strong>A)</strong> ${missao.alternativas.A}</p>
         <p><strong>B)</strong> ${missao.alternativas.B}</p>
         <p><strong>C)</strong> ${missao.alternativas.C}</p>
@@ -67,7 +147,11 @@ function mostrarMissaoAtual() {
     }
 }
 
-function liberarMissao() {
+// ------------------------------------------------------------
+// LIBERAÇÃO E ENCERRAMENTO DA MISSÃO
+// ------------------------------------------------------------
+
+async function liberarMissao() {
     const missao = obterMissaoAtual();
 
     if (!missao) {
@@ -77,16 +161,35 @@ function liberarMissao() {
 
     localStorage.setItem("missaoLiberada", "sim");
 
+    const missoes = obterMissoesSessao();
+    const indice = Number(localStorage.getItem("indiceMissaoAtual")) || 0;
+
+    await sincronizarMissoesCloudSePossivel(missoes, indice, "sim");
+
     const status = document.getElementById("statusSessao");
+
     if (status) {
         status.textContent = "Missão liberada";
+    }
+
+    const resultado = document.getElementById("resultado");
+
+    if (resultado) {
+        resultado.className = "";
+        resultado.innerHTML = "";
+    }
+
+    const botaoResponder = document.getElementById("btnResponder");
+
+    if (botaoResponder) {
+        botaoResponder.disabled = false;
     }
 
     mostrarMissaoAtual();
     iniciarCronometro(missao.tempo);
 }
 
-function encerrarMissao() {
+async function encerrarMissao() {
     localStorage.setItem("missaoLiberada", "nao");
     pararCronometro();
 
@@ -100,15 +203,28 @@ function encerrarMissao() {
         alert("Última missão concluída. Finalize a sessão para gerar o relatório.");
     }
 
+    await sincronizarMissoesCloudSePossivel(missoes, indice, "nao");
+
     atualizarProgressoMissao();
 
     const area = document.getElementById("desafio");
+
     if (area) {
         area.innerHTML = "Missão encerrada. Libere a próxima missão.";
     }
+
+    const botaoResponder = document.getElementById("btnResponder");
+
+    if (botaoResponder) {
+        botaoResponder.disabled = true;
+    }
 }
 
-function responderMissao() {
+// ------------------------------------------------------------
+// RESPOSTA DA MISSÃO
+// ------------------------------------------------------------
+
+async function responderMissao() {
     const liberada = localStorage.getItem("missaoLiberada");
 
     if (liberada !== "sim") {
@@ -159,8 +275,7 @@ function responderMissao() {
         correta: missao.correta,
         acertou: acertou,
         pontos: pontosGanhos,
-        xp: xpGanho,
-        dataHora: new Date().toLocaleString()
+        xp: xpGanho
     });
 
     const resultado = document.getElementById("resultado");
@@ -192,6 +307,12 @@ function responderMissao() {
         input.checked = false;
     });
 
+    const botaoResponder = document.getElementById("btnResponder");
+
+    if (botaoResponder) {
+        botaoResponder.disabled = true;
+    }
+
     const status = document.getElementById("statusEquipe");
 
     if (status) {
@@ -199,11 +320,17 @@ function responderMissao() {
     }
 }
 
+// ------------------------------------------------------------
+// TELA DA EQUIPE
+// ------------------------------------------------------------
+
 function atualizarTelaMissaoEquipe() {
     const area = document.getElementById("desafio");
     const status = document.getElementById("statusEquipe");
 
-    if (!area || !status) return;
+    if (!area || !status) {
+        return;
+    }
 
     if (localStorage.getItem("missaoLiberada") === "sim") {
         area.innerHTML = montarHtmlMissao(obterMissaoAtual());
@@ -213,6 +340,10 @@ function atualizarTelaMissaoEquipe() {
         status.textContent = "Aguardando liberação da missão.";
     }
 }
+
+// ------------------------------------------------------------
+// PROGRESSO DA MISSÃO
+// ------------------------------------------------------------
 
 function atualizarProgressoMissao() {
     const missoes = obterMissoesSessao();
