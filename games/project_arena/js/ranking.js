@@ -1,56 +1,84 @@
 // ============================================================
-// Descrição geral: funções de ranking e evolução das equipes
-// Data de criação: 29/06/2026
-// Versão: 1.2
+// Descrição geral: funções de ranking, conquistas e sincronização
+// da pontuação das equipes do Project Arena V2.0.
+// Data de criação: 30/06/2026
+// Versão: 2.0
 // Copyright: Clayton Silva
 // ============================================================
 
-function obterEquipes() {
-    return JSON.parse(localStorage.getItem("estadoEquipes")) || equipes;
+// ------------------------------------------------------------
+// SINCRONIZAÇÃO DO RANKING COM A NUVEM
+// ------------------------------------------------------------
+
+async function sincronizarRankingCloudSePossivel(listaEquipes) {
+    try {
+        const idSessao = localStorage.getItem("idSessaoCloud");
+        const mapaEquipesCloud = JSON.parse(localStorage.getItem("mapaEquipesCloud")) || {};
+
+        if (!idSessao) {
+            return;
+        }
+
+        const arenaCloud = await import("./arena-cloud.js");
+
+        for (const equipe of listaEquipes) {
+            const idEquipeCloud = mapaEquipesCloud[equipe.id];
+
+            if (!idEquipeCloud) {
+                continue;
+            }
+
+            await arenaCloud.atualizarPontuacao(
+                idSessao,
+                idEquipeCloud,
+                equipe.nome,
+                equipe.pontos || 0
+            );
+        }
+
+    } catch (erro) {
+        console.warn("Não foi possível sincronizar o ranking na nuvem.", erro);
+    }
 }
 
-function salvarEquipes(lista) {
-    localStorage.setItem("estadoEquipes", JSON.stringify(lista));
-}
+// ------------------------------------------------------------
+// RANKING
+// ------------------------------------------------------------
 
-function calcularNivel(xp) {
-    if (xp >= 600) return "Diretor de Projetos";
-    if (xp >= 400) return "Gerente de Projetos";
-    if (xp >= 250) return "Coordenador";
-    if (xp >= 100) return "Analista";
-    return "Estagiário";
-}
-
-function atualizarEquipe(equipeId, pontosGanhos, xpGanho) {
-    const lista = obterEquipes();
-    const equipe = lista.find(eq => eq.id === equipeId);
-
-    if (!equipe) return;
-
-    equipe.pontos += pontosGanhos;
-    equipe.xp += xpGanho;
-    equipe.nivel = calcularNivel(equipe.xp);
-
-    salvarEquipes(lista);
+function obterRanking() {
+    return obterEquipes()
+        .slice()
+        .sort((a, b) => (b.pontos || 0) - (a.pontos || 0));
 }
 
 function atualizarRanking() {
     const ranking = document.getElementById("ranking");
 
-    if (!ranking) return;
+    if (!ranking) {
+        return;
+    }
 
-    const lista = obterEquipes().sort((a, b) => b.pontos - a.pontos);
+    const lista = obterRanking();
 
-    let html = "<table>";
-    html += "<tr><td>Equipe</td><td>Pontos</td><td>XP</td><td>Nível</td></tr>";
+    let html = `
+        <table>
+            <tr>
+                <td>Posição</td>
+                <td>Equipe</td>
+                <td>Pontos</td>
+                <td>XP</td>
+                <td>Nível</td>
+            </tr>
+    `;
 
-    lista.forEach(eq => {
+    lista.forEach((equipe, indice) => {
         html += `
             <tr>
-                <td>${eq.nome}</td>
-                <td>${eq.pontos}</td>
-                <td>${eq.xp}</td>
-                <td>${eq.nivel}</td>
+                <td>${indice + 1}º</td>
+                <td>${equipe.nome}</td>
+                <td>${equipe.pontos || 0}</td>
+                <td>${equipe.xp || 0}</td>
+                <td>${equipe.nivel || "Estagiário"}</td>
             </tr>
         `;
     });
@@ -58,54 +86,47 @@ function atualizarRanking() {
     html += "</table>";
 
     ranking.innerHTML = html;
+
+    sincronizarRankingCloudSePossivel(lista);
 }
 
-function obterEquipeSelecionada() {
-    const select = document.getElementById("equipeSelecionada");
-
-    if (!select) return null;
-
-    const lista = obterEquipes();
-    return lista.find(eq => eq.id === select.value);
-}
-
-function atualizarPainelEquipe() {
-    const equipe = obterEquipeSelecionada();
-
-    if (!equipe) return;
-
-    const pontos = document.getElementById("pontos");
-    const xp = document.getElementById("xp");
-    const nivel = document.getElementById("nivel");
-    const conquistas = document.getElementById("conquistas");
-
-    if (pontos) pontos.textContent = equipe.pontos;
-    if (xp) xp.textContent = equipe.xp;
-    if (nivel) nivel.textContent = equipe.nivel;
-
-    if (conquistas) {
-        conquistas.innerHTML = gerarConquistas(equipe);
-    }
-}
+// ------------------------------------------------------------
+// CONQUISTAS
+// ------------------------------------------------------------
 
 function gerarConquistas(equipe) {
+    if (!equipe) {
+        return "Nenhuma equipe selecionada.";
+    }
+
     let medalhas = "";
 
-    if (equipe.xp >= 100) {
+    if ((equipe.xp || 0) >= 100) {
         medalhas += `<span class="medalha">🥉 Primeira evolução</span>`;
     }
 
-    if (equipe.xp >= 250) {
+    if ((equipe.xp || 0) >= 250) {
         medalhas += `<span class="medalha">🥈 Coordenador em formação</span>`;
     }
 
-    if (equipe.xp >= 400) {
+    if ((equipe.xp || 0) >= 400) {
         medalhas += `<span class="medalha">🥇 Gerente de Projetos</span>`;
     }
 
-    if (equipe.xp >= 600) {
+    if ((equipe.xp || 0) >= 600) {
         medalhas += `<span class="medalha">🏆 Diretor de Projetos</span>`;
     }
 
     return medalhas || "Nenhuma conquista obtida.";
+}
+
+function atualizarConquistasEquipe() {
+    const equipe = obterEquipeSelecionada();
+    const conquistas = document.getElementById("conquistas");
+
+    if (!conquistas) {
+        return;
+    }
+
+    conquistas.innerHTML = gerarConquistas(equipe);
 }
