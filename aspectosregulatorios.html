@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Aspectos Regulatórios de Telecomunicações — Prof. Clayton J A Silva</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,600;1,300&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg:        #0a0e17;
+      --surface:   #111827;
+      --border:    #1e2d40;
+      --accent:    #00c2ff;
+      --accent2:   #7c3aed;
+      --text:      #e2e8f0;
+      --muted:     #64748b;
+      --tag-bg:    #0f172a;
+      --font-mono: 'IBM Plex Mono', monospace;
+      --font-sans: 'IBM Plex Sans', sans-serif;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--font-sans);
+      font-size: 16px;
+      line-height: 1.6;
+      min-height: 100vh;
+    }
+
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    .container { max-width: 1000px; margin: 0 auto; padding: 0 2rem; }
+
+    /* ── NAV ── */
+    nav {
+      position: sticky; top: 0; z-index: 100;
+      background: rgba(10,14,23,0.88);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      padding: 1rem 0;
+    }
+    nav .container { display: flex; align-items: center; justify-content: space-between; gap: 1rem; flex-wrap: wrap; }
+    .nav-brand { font-family: var(--font-mono); font-size: 0.82rem; color: var(--accent); }
+    .nav-links { display: flex; gap: 1.5rem; list-style: none; flex-wrap: wrap; }
+    .nav-links a { font-family: var(--font-mono); font-size: 0.78rem; color: var(--muted); transition: color 0.2s; }
+    .nav-links a:hover { color: var(--text); text-decoration: none; }
+
+    /* ── HERO ── */
+    .hero { padding: 5rem 0 3.5rem; position: relative; overflow: hidden; }
+    .hero::before {
+      content: ''; position: absolute; inset: 0;
+      background-image:
+        linear-gradient(var(--border) 1px, transparent 1px),
+        linear-gradient(90deg, var(--border) 1px, transparent 1px);
+      background-size: 40px 40px; opacity: 0.3;
+      mask-image: radial-gradient(ellipse 80% 60% at 50% 0%, black 40%, transparent 100%);
+    }
+    .hero-eyebrow {
+      font-family: var(--font-mono); font-size: 0.75rem; color: var(--accent);
+      letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 1rem;
+      display: flex; align-items: center; gap: 0.75rem;
+    }
+    .hero-eyebrow::before { content: ''; display: inline-block; width: 2rem; height: 1px; background: var(--accent); }
+    h1 { font-size: clamp(1.8rem, 4vw, 3rem); font-weight: 300; line-height: 1.1; letter-spacing: -0.02em; margin-bottom: 0.75rem; }
+    h1 strong { font-weight: 600; color: var(--accent); }
+    .hero-sub { font-size: 0.88rem; color: var(--muted); font-family: var(--font-mono); margin-bottom: 2rem; }
+
+    .hero-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+    .tag {
+      font-family: var(--font-mono); font-size: 0.72rem; color: var(--accent2);
+      background: rgba(124,58,237,0.1); border: 1px solid rgba(124,58,237,0.25);
+      border-radius: 4px; padding: 0.25rem 0.6rem;
+    }
+
+    /* ── SECTION ── */
+    .section { padding: 3rem 0; border-top: 1px solid var(--border); }
+    .section-title {
+      font-family: var(--font-mono); font-size: 0.72rem; color: var(--accent);
+      letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 1.5rem;
+      display: flex; align-items: center; gap: 0.75rem;
+    }
+    .section-title::after { content: ''; flex: 1; height: 1px; background: var(--border); }
+    h2 { font-size: 1.25rem; font-weight: 600; margin-bottom: 1.25rem; }
+
+    .lead { color: var(--muted); max-width: 720px; margin-bottom: 1rem; font-size: 0.95rem; }
+    .lead strong { color: var(--text); font-weight: 600; }
+
+    /* ── SESSÕES GRID ── */
+    .sessoes-grid {
+      display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 1px; background: var(--border);
+      border: 1px solid var(--border); border-radius: 8px; overflow: hidden;
+    }
+    .sessao-card {
+      background: var(--surface); padding: 1.75rem;
+      display: flex; flex-direction: column; gap: 0.75rem;
+      transition: background 0.2s; position: relative;
+    }
+    .sessao-card:hover { background: #161f2e; }
+    .sessao-num {
+      font-family: var(--font-mono); font-size: 0.7rem; color: var(--accent);
+      background: rgba(0,194,255,0.08); border: 1px solid rgba(0,194,255,0.2);
+      border-radius: 3px; padding: 0.2rem 0.5rem; white-space: nowrap; width: fit-content;
+    }
+    .sessao-badge {
+      font-family: var(--font-mono); font-size: 0.68rem; color: var(--muted);
+      border: 1px solid var(--border); border-radius: 3px;
+      padding: 0.15rem 0.45rem; display: inline-block; width: fit-content;
+    }
+    .sessao-card h3 { font-size: 1rem; font-weight: 600; line-height: 1.3; }
+    .sessao-card p { font-size: 0.875rem; color: var(--muted); line-height: 1.5; flex: 1; }
+    .sessao-link {
+      font-family: var(--font-mono); font-size: 0.78rem; color: var(--accent);
+      display: inline-flex; align-items: center; gap: 0.4rem;
+      margin-top: 0.5rem; transition: gap 0.2s;
+    }
+    .sessao-card:hover .sessao-link { gap: 0.7rem; }
+    .sessao-card.disabled .sessao-link { color: var(--muted); cursor: pointer; }
+
+    /* ── MODAL ── */
+    .modal {
+      position: fixed; inset: 0; background: rgba(2, 6, 23, 0.78);
+      display: none; align-items: center; justify-content: center;
+      padding: 2rem; z-index: 999;
+    }
+    .modal:target { display: flex; }
+    .modal-box {
+      max-width: 520px; width: 100%; background: var(--surface);
+      border: 1px solid var(--border); border-radius: 10px; padding: 1.75rem;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.45);
+    }
+    .modal-box h3 { margin-bottom: 0.75rem; }
+    .modal-box p { color: var(--muted); font-size: 0.92rem; margin-bottom: 1.25rem; }
+    .modal-actions { display: flex; justify-content: flex-end; }
+    .bio-link {
+      font-family: var(--font-mono); font-size: 0.78rem; color: var(--accent);
+      display: inline-flex; align-items: center; gap: 0.4rem;
+      border: 1px solid rgba(0, 194, 255, 0.25); padding: 0.35rem 0.75rem;
+      border-radius: 4px; transition: background 0.2s, border-color 0.2s;
+    }
+    .bio-link:hover { background: rgba(0, 194, 255, 0.08); border-color: var(--accent); text-decoration: none; }
+
+    /* ── LEGISLAÇÃO / REFERÊNCIAS ── */
+    .ds-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 0.6rem; }
+    .ds-item {
+      background: var(--tag-bg); border: 1px solid var(--border); border-radius: 6px;
+      padding: 0.9rem 1.1rem; display: flex; gap: 0.75rem; align-items: flex-start;
+      transition: border-color 0.2s;
+    }
+    .ds-item:hover { border-color: var(--accent); }
+    .ds-icon { flex-shrink: 0; margin-top: 2px; }
+    .ds-item div { display: flex; flex-direction: column; gap: 0.15rem; }
+    .ds-item a { font-size: 0.85rem; color: var(--text); font-weight: 500; }
+    .ds-item a:hover { color: var(--accent); text-decoration: none; }
+    .ds-item span { font-size: 0.78rem; color: var(--muted); }
+
+    /* ── ÓRGÃO REGULADOR / TRIBUTOS ── */
+    .apoio-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 0.75rem; }
+    .apoio-item {
+      border: 1px solid var(--border); border-radius: 6px; padding: 1rem 1.25rem;
+      display: flex; gap: 1rem; align-items: flex-start;
+      background: var(--surface); transition: border-color 0.2s;
+    }
+    .apoio-item:hover { border-color: var(--accent2); }
+    .apoio-item svg { flex-shrink: 0; margin-top: 2px; }
+    .apoio-item h4 { font-size: 0.9rem; font-weight: 600; }
+    .apoio-item p  { font-size: 0.8rem; color: var(--muted); margin-top: 0.2rem; }
+
+    /* ── FOOTER ── */
+    footer { border-top: 1px solid var(--border); padding: 2rem 0; margin-top: 2rem; }
+    footer .container { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; }
+    footer p { font-size: 0.82rem; color: var(--muted); font-family: var(--font-mono); }
+
+    @media (max-width: 600px) {
+      .hero { padding: 3.5rem 0 2.5rem; }
+      h1 { font-size: 1.8rem; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="container">
+    <span class="nav-brand">claytonjasilva.github.io</span>
+    <ul class="nav-links">
+      <li><a href="#sobre">sobre a inserção</a></li>
+      <li><a href="#sessoes">sessões</a></li>
+      <li><a href="#legislacao">legislação</a></li>
+      <li><a href="#orgao-regulador">órgão regulador</a></li>
+      <li><a href="https://claytonjasilva.github.io">← home</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="container">
+    <p class="hero-eyebrow">IME — Instituto Militar de Engenharia · Curso de Engenharia de Telecomunicações</p>
+    <h1>Aspectos<br><strong>Regulatórios</strong> de Telecomunicações</h1>
+    <p class="hero-sub">Prof. Clayton J A Silva · Inserção especial · Rev 25 · 3 sessões</p>
+    <div class="hero-tags">
+      <span class="tag">Anatel</span>
+      <span class="tag">LGT — Lei 9.472/1997</span>
+      <span class="tag">Espectro de Radiofrequências</span>
+      <span class="tag">Concessão · Permissão · Autorização</span>
+      <span class="tag">Exército Brasileiro</span>
+      <span class="tag">Marco Regulatório</span>
+    </div>
+  </div>
+</section>
+
+<div class="container">
+
+  <!-- SOBRE A INSERÇÃO -->
+  <section class="section" id="sobre">
+    <p class="section-title">01 / sobre a inserção</p>
+    <p class="lead">
+      Esta inserção é ministrada dentro de uma disciplina do curso de <strong>Engenharia de Telecomunicações do
+      Instituto Militar de Engenharia (IME)</strong>, reunindo tópicos de Aspectos Regulatórios de Telecomunicações
+      sob responsabilidade do Prof. Clayton J A Silva.
+    </p>
+    <p class="lead">
+      O objetivo é proporcionar uma visão geral sobre a evolução da regulamentação de telecomunicações no Brasil e
+      apresentar a legislação nos diferentes níveis — Constituição Federal, leis ordinárias, decretos e resoluções
+      da Anatel — que influenciam a atuação de engenheiros na análise e no projeto de sistemas de telecomunicações,
+      particularmente aqueles de interesse do <strong>Exército Brasileiro</strong>.
+    </p>
+    <p class="lead">
+      O conteúdo está organizado em três sessões, detalhadas a seguir.
+    </p>
+  </section>
+
+  <!-- SESSÕES -->
+  <section class="section" id="sessoes">
+    <p class="section-title">02 / as três sessões</p>
+    <div class="sessoes-grid">
+
+      <div class="sessao-card disabled">
+        <span class="sessao-num">Sessão 1</span>
+        <span class="sessao-badge">Em construção</span>
+        <h3>Evolução Histórica e a Lei Geral de Telecomunicações</h3>
+        <p>Do monopólio estatal ao Código Brasileiro de Telecomunicações (1962), a privatização do Sistema Telebrás
+        (1998) e a promulgação da Lei Geral de Telecomunicações (LGT — Lei 9.472/1997): sua estrutura em 4 livros e
+        os princípios fundamentais do setor.</p>
+        <a class="sessao-link" href="#sessao1-modal">Ver sessão →</a>
+      </div>
+
+      <div class="sessao-card disabled">
+        <span class="sessao-num">Sessão 2</span>
+        <span class="sessao-badge">Em construção</span>
+        <h3>Estrutura da LGT, o Órgão Regulador e o Espectro</h3>
+        <p>Aprofundamento da organização da LGT — a criação da Anatel, o FISTEL, as modalidades de concessão,
+        permissão e autorização, a classificação dos serviços de telecomunicações e o Regulamento de Uso do
+        Espectro de Radiofrequências (Resolução Anatel nº 671/2016).</p>
+        <a class="sessao-link" href="#sessao2-modal">Ver sessão →</a>
+      </div>
+
+      <div class="sessao-card disabled">
+        <span class="sessao-num">Sessão 3</span>
+        <span class="sessao-badge">Em construção</span>
+        <h3>Regulamentos de Serviços e Tributos Setoriais</h3>
+        <p>Regulamentos específicos dos serviços de telecomunicações (SLP, SMP, SME, SeAC, SCM, STFC), aplicações de
+        interesse do Exército Brasileiro (RITEx, EBNet, redes LTE/P25/TETRA), o novo marco regulatório de 2019 e os
+        tributos setoriais — FISTEL, FUST e FUNTTEL.</p>
+        <a class="sessao-link" href="#sessao3-modal">Ver sessão →</a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- LEGISLAÇÃO DE REFERÊNCIA -->
+  <section class="section" id="legislacao">
+    <p class="section-title">03 / legislação de referência</p>
+    <div class="ds-grid">
+
+      <div class="ds-item">
+        <svg class="ds-icon" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 2h7l3 3v9H3V2z" stroke="#7c3aed" stroke-width="1.2" fill="none"/><line x1="5" y1="7" x2="11" y2="7" stroke="#7c3aed" stroke-width="1"/><line x1="5" y1="9.5" x2="9" y2="9.5" stroke="#7c3aed" stroke-width="1"/></svg>
+        <div>
+          <a href="https://www.planalto.gov.br/ccivil_03/constituicao/constituicao.htm" target="_blank">Constituição Federal de 1988</a>
+          <span>Art. 21, XI — competência da União para telecomunicações</span>
+        </div>
+      </div>
+
+      <div class="ds-item">
+        <svg class="ds-icon" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 2h7l3 3v9H3V2z" stroke="#7c3aed" stroke-width="1.2" fill="none"/><line x1="5" y1="7" x2="11" y2="7" stroke="#7c3aed" stroke-width="1"/><line x1="5" y1="9.5" x2="9" y2="9.5" stroke="#7c3aed" stroke-width="1"/></svg>
+        <div>
+          <a href="https://www.planalto.gov.br/ccivil_03/leis/l4117compilada.htm" target="_blank">Código Brasileiro de Telecomunicações</a>
+          <span>Lei nº 4.117, de 27 de agosto de 1962</span>
+        </div>
+      </div>
+
+      <div class="ds-item">
+        <svg class="ds-icon" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 2h7l3 3v9H3V2z" stroke="#7c3aed" stroke-width="1.2" fill="none"/><line x1="5" y1="7" x2="11" y2="7" stroke="#7c3aed" stroke-width="1"/><line x1="5" y1="9.5" x2="9" y2="9.5" stroke="#7c3aed" stroke-width="1"/></svg>
+        <div>
+          <a href="https://www.planalto.gov.br/ccivil_03/leis/l8987cons.htm" target="_blank">Lei das Concessões</a>
+          <span>Lei nº 8.987, de 13 de fevereiro de 1995</span>
+        </div>
+      </div>
+
+      <div class="ds-item">
+        <svg class="ds-icon" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 2h7l3 3v9H3V2z" stroke="#7c3aed" stroke-width="1.2" fill="none"/><line x1="5" y1="7" x2="11" y2="7" stroke="#7c3aed" stroke-width="1"/><line x1="5" y1="9.5" x2="9" y2="9.5" stroke="#7c3aed" stroke-width="1"/></svg>
+        <div>
+          <a href="https://www.planalto.gov.br/ccivil_03/leis/l9472.htm" target="_blank">Lei Geral de Telecomunicações (LGT)</a>
+          <span>Lei nº 9.472, de 16 de julho de 1997</span>
+        </div>
+      </div>
+
+      <div class="ds-item">
+        <svg class="ds-icon" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 2h7l3 3v9H3V2z" stroke="#7c3aed" stroke-width="1.2" fill="none"/><line x1="5" y1="7" x2="11" y2="7" stroke="#7c3aed" stroke-width="1"/><line x1="5" y1="9.5" x2="9" y2="9.5" stroke="#7c3aed" stroke-width="1"/></svg>
+        <div>
+          <a href="https://www.planalto.gov.br/ccivil_03/_ato2011-2014/2014/lei/l12965.htm" target="_blank">Marco Civil da Internet</a>
+          <span>Lei nº 12.965, de 23 de abril de 2014</span>
+        </div>
+      </div>
+
+      <div class="ds-item">
+        <svg class="ds-icon" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 2h7l3 3v9H3V2z" stroke="#7c3aed" stroke-width="1.2" fill="none"/><line x1="5" y1="7" x2="11" y2="7" stroke="#7c3aed" stroke-width="1"/><line x1="5" y1="9.5" x2="9" y2="9.5" stroke="#7c3aed" stroke-width="1"/></svg>
+        <div>
+          <a href="https://www.planalto.gov.br/ccivil_03/_ato2019-2022/2019/lei/l13879.htm" target="_blank">Novo Marco Legal das Telecomunicações</a>
+          <span>Lei nº 13.879, de 3 de outubro de 2019</span>
+        </div>
+      </div>
+
+      <div class="ds-item">
+        <svg class="ds-icon" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 2h7l3 3v9H3V2z" stroke="#7c3aed" stroke-width="1.2" fill="none"/><line x1="5" y1="7" x2="11" y2="7" stroke="#7c3aed" stroke-width="1"/><line x1="5" y1="9.5" x2="9" y2="9.5" stroke="#7c3aed" stroke-width="1"/></svg>
+        <div>
+          <a href="https://www.anatel.gov.br/legislacao/resolucoes/2016/911-resolucao-671" target="_blank">Regulamento de Uso do Espectro de Radiofrequências</a>
+          <span>Resolução Anatel nº 671, de 3 de novembro de 2016</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ÓRGÃO REGULADOR E TRIBUTOS -->
+  <section class="section" id="orgao-regulador">
+    <p class="section-title">04 / órgão regulador e tributos setoriais</p>
+    <div class="apoio-grid">
+
+      <a class="apoio-item" href="https://www.gov.br/anatel/pt-br" target="_blank" style="color:inherit;">
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="7" stroke="#00c2ff" stroke-width="1.4" fill="none"/><line x1="3" y1="10" x2="17" y2="10" stroke="#00c2ff" stroke-width="1.2"/><path d="M10 3c2.5 2 2.5 12 0 14M10 3c-2.5 2-2.5 12 0 14" stroke="#00c2ff" stroke-width="1"/></svg>
+        <div>
+          <h4>Anatel — Agência Nacional de Telecomunicações</h4>
+          <p>Órgão regulador criado pela LGT, responsável pela outorga, fiscalização e administração do espectro de radiofrequências.</p>
+        </div>
+      </a>
+
+      <div class="apoio-item">
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><rect x="2" y="4" width="16" height="12" rx="2" stroke="#7c3aed" stroke-width="1.4" fill="none"/><line x1="2" y1="8" x2="18" y2="8" stroke="#7c3aed" stroke-width="1.2"/></svg>
+        <div>
+          <h4>FISTEL</h4>
+          <p>Fundo de Fiscalização das Telecomunicações — custeia a fiscalização exercida pela Anatel sobre as estações de telecomunicações.</p>
+        </div>
+      </div>
+
+      <div class="apoio-item">
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><rect x="2" y="4" width="16" height="12" rx="2" stroke="#7c3aed" stroke-width="1.4" fill="none"/><line x1="2" y1="8" x2="18" y2="8" stroke="#7c3aed" stroke-width="1.2"/></svg>
+        <div>
+          <h4>FUST</h4>
+          <p>Fundo de Universalização dos Serviços de Telecomunicações — financia a expansão do acesso a serviços de telecomunicações e banda larga.</p>
+        </div>
+      </div>
+
+      <div class="apoio-item">
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><rect x="2" y="4" width="16" height="12" rx="2" stroke="#7c3aed" stroke-width="1.4" fill="none"/><line x1="2" y1="8" x2="18" y2="8" stroke="#7c3aed" stroke-width="1.2"/></svg>
+        <div>
+          <h4>FUNTTEL</h4>
+          <p>Fundo para o Desenvolvimento Tecnológico das Telecomunicações — estimula inovação, capacitação e competitividade no setor.</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+</div>
+
+<!-- MODAIS DAS SESSÕES (conteúdo em construção) -->
+<div class="modal" id="sessao1-modal">
+  <div class="modal-box">
+    <h3>Sessão 1 — Evolução Histórica e a Lei Geral de Telecomunicações</h3>
+    <p>A página desta sessão está em construção. Em breve reunirá o conteúdo completo apresentado em aula, com a
+    linha do tempo da regulamentação e a organização da LGT.</p>
+    <div class="modal-actions">
+      <a class="bio-link" href="#sessoes">Fechar</a>
+    </div>
+  </div>
+</div>
+
+<div class="modal" id="sessao2-modal">
+  <div class="modal-box">
+    <h3>Sessão 2 — Estrutura da LGT, o Órgão Regulador e o Espectro</h3>
+    <p>A página desta sessão está em construção. Em breve reunirá o conteúdo completo apresentado em aula, com o
+    detalhamento da Anatel, das outorgas e do espectro de radiofrequências.</p>
+    <div class="modal-actions">
+      <a class="bio-link" href="#sessoes">Fechar</a>
+    </div>
+  </div>
+</div>
+
+<div class="modal" id="sessao3-modal">
+  <div class="modal-box">
+    <h3>Sessão 3 — Regulamentos de Serviços e Tributos Setoriais</h3>
+    <p>A página desta sessão está em construção. Em breve reunirá o conteúdo completo apresentado em aula, com os
+    regulamentos de serviços, as aplicações de interesse do Exército Brasileiro e os tributos setoriais.</p>
+    <div class="modal-actions">
+      <a class="bio-link" href="#sessoes">Fechar</a>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <p>© 2026 · Prof. Clayton J A Silva · IME — Instituto Militar de Engenharia</p>
+    <p><a href="https://claytonjasilva.github.io">← voltar para home</a></p>
+  </div>
+</footer>
+
+</body>
+</html>
