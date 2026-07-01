@@ -1,0 +1,813 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Sessão 3 — Regulamentos de Serviços e Tributos Setoriais — Aspectos Regulatórios de Telecomunicações</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,600;1,300&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg:        #0a0e17;
+    --surface:   #111827;
+    --border:    #1e2d40;
+    --accent:    #00c2ff;
+    --accent2:   #7c3aed;
+    --text:      #e2e8f0;
+    --muted:     #64748b;
+    --tag-bg:    #0f172a;
+    --font-mono: 'IBM Plex Mono', monospace;
+    --font-sans: 'IBM Plex Sans', sans-serif;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { height: 100%; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--font-sans);
+    font-size: 17px;
+    line-height: 1.55;
+    overflow: hidden;
+  }
+  a { color: var(--accent); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  strong { color: var(--text); font-weight: 600; }
+  .accent { color: var(--accent); }
+  .accent2 { color: var(--accent2); }
+
+  /* ── TOP BAR ── */
+  .topbar {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0.9rem 1.75rem;
+    background: linear-gradient(rgba(10,14,23,0.92), rgba(10,14,23,0));
+    pointer-events: none;
+  }
+  .topbar a, .topbar span { pointer-events: auto; }
+  .topbar-left { display: flex; align-items: center; gap: 1rem; }
+  .back-link {
+    font-family: var(--font-mono); font-size: 0.72rem; color: var(--muted);
+    border: 1px solid var(--border); border-radius: 4px; padding: 0.3rem 0.65rem;
+    transition: color 0.2s, border-color 0.2s;
+  }
+  .back-link:hover { color: var(--accent); border-color: var(--accent); text-decoration: none; }
+  .session-pill {
+    font-family: var(--font-mono); font-size: 0.72rem; color: var(--accent2);
+    background: rgba(124,58,237,0.12); border: 1px solid rgba(124,58,237,0.3);
+    border-radius: 4px; padding: 0.3rem 0.65rem;
+  }
+  .counter {
+    font-family: var(--font-mono); font-size: 0.75rem; color: var(--muted);
+    letter-spacing: 0.05em;
+  }
+
+  /* ── PROGRESS BAR ── */
+  .progress {
+    position: fixed; top: 0; left: 0; height: 2px; background: var(--accent);
+    z-index: 250; transition: width 0.25s ease;
+  }
+
+  /* ── DECK / SLIDES ── */
+  .deck {
+    height: 100%; overflow-y: scroll; scroll-snap-type: y mandatory; scroll-behavior: smooth;
+  }
+  .slide {
+    height: 100vh; scroll-snap-align: start; scroll-snap-stop: always;
+    display: flex; flex-direction: column; justify-content: center;
+    padding: 6.5rem 7vw 5rem; position: relative; overflow: hidden;
+    border-bottom: 1px solid var(--border);
+  }
+  .slide-inner { max-width: 1180px; width: 100%; margin: 0 auto; }
+  .slide-grid { display: grid; grid-template-columns: 1fr; gap: 2.5rem; }
+  .slide-grid.cols-2 { grid-template-columns: 1fr 1fr; align-items: center; }
+  .slide-grid.cols-3 { grid-template-columns: repeat(3, 1fr); gap: 1.25rem; }
+  .slide::after {
+    content: ''; position: absolute; inset: 0; pointer-events: none;
+    background-image:
+      linear-gradient(var(--border) 1px, transparent 1px),
+      linear-gradient(90deg, var(--border) 1px, transparent 1px);
+    background-size: 44px 44px; opacity: 0.16;
+    mask-image: radial-gradient(ellipse 70% 55% at 85% 15%, black 0%, transparent 70%);
+  }
+
+  .eyebrow {
+    font-family: var(--font-mono); font-size: 0.78rem; color: var(--accent);
+    letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 1rem;
+    display: flex; align-items: center; gap: 0.75rem;
+  }
+  .eyebrow::before { content: ''; display: inline-block; width: 2rem; height: 1px; background: var(--accent); }
+  .slide-title { font-size: clamp(1.65rem, 3.1vw, 2.45rem); font-weight: 600; line-height: 1.15; margin-bottom: 1rem; letter-spacing: -0.01em; }
+  .slide-title strong { color: var(--accent); font-weight: 600; }
+  .slide-sub { font-size: 1.05rem; color: var(--muted); max-width: 760px; margin-bottom: 1.5rem; }
+  .lead { font-size: 1.0rem; color: var(--text); max-width: 780px; margin-bottom: 1rem; }
+  .lead.muted { color: var(--muted); }
+  .small-note { font-size: 0.82rem; color: var(--muted); margin-top: 0.75rem; }
+
+  /* ── CAPA (slide 0) ── */
+  .capa { justify-content: center; align-items: flex-start; }
+  .capa h1 { font-size: clamp(2.2rem, 5.6vw, 4rem); font-weight: 300; line-height: 1.08; letter-spacing: -0.02em; margin-bottom: 1.25rem; }
+  .capa h1 strong { font-weight: 600; color: var(--accent); }
+  .capa .subtitle { font-family: var(--font-mono); font-size: 1.05rem; color: var(--accent2); margin-bottom: 2.5rem; }
+  .capa .meta { font-family: var(--font-mono); font-size: 0.85rem; color: var(--muted); display: flex; flex-direction: column; gap: 0.4rem; }
+  .scroll-cue {
+    position: absolute; bottom: 3rem; left: 7vw; font-family: var(--font-mono); font-size: 0.72rem;
+    color: var(--muted); display: flex; align-items: center; gap: 0.6rem; letter-spacing: 0.08em;
+  }
+  .scroll-cue svg { animation: bounce 1.8s infinite; }
+  @keyframes bounce { 0%,100%{transform:translateY(0);} 50%{transform:translateY(5px);} }
+
+  /* ── DIVIDER SLIDES ── */
+  .divider { align-items: center; text-align: center; }
+  .divider .slide-inner { display: flex; flex-direction: column; align-items: center; }
+  .divider .num { font-family: var(--font-mono); font-size: 4.6rem; color: var(--border); font-weight: 600; line-height: 1; margin-bottom: 1rem; }
+  .divider h2 { font-size: clamp(1.9rem, 4.4vw, 3.1rem); font-weight: 300; letter-spacing: -0.02em; }
+  .divider h2 strong { color: var(--accent); font-weight: 600; }
+  .divider p { color: var(--muted); margin-top: 1.25rem; max-width: 620px; }
+
+  /* ── CARDS / GRIDS ── */
+  .card-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px,1fr)); gap: 1rem; margin-top: 1rem; }
+  .info-card {
+    background: var(--surface); border: 1px solid var(--border); border-radius: 8px;
+    padding: 1.2rem 1.35rem; display: flex; flex-direction: column; gap: 0.5rem;
+  }
+  .info-card .k { font-family: var(--font-mono); font-size: 0.7rem; color: var(--accent); text-transform: uppercase; letter-spacing: 0.08em; }
+  .info-card h4 { font-size: 0.98rem; font-weight: 600; }
+  .info-card p { font-size: 0.86rem; color: var(--muted); }
+
+  .stat-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px,1fr)); gap: 1.1rem; margin-top: 1rem; }
+  .stat-card {
+    background: var(--surface); border: 1px solid var(--border); border-radius: 8px;
+    padding: 1.3rem; text-align: center;
+  }
+  .stat-num { font-family: var(--font-mono); font-size: 1.75rem; font-weight: 600; color: var(--accent); line-height: 1; }
+  .stat-label { font-size: 0.8rem; color: var(--muted); margin-top: 0.5rem; }
+
+  .article-block { border-left: 2px solid var(--accent2); padding-left: 1.1rem; margin-bottom: 1rem; }
+  .article-block .art-num { font-family: var(--font-mono); font-size: 0.72rem; color: var(--accent2); text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 0.3rem; }
+  .article-block p { font-size: 0.92rem; color: var(--text); }
+  .article-block p.small { font-size: 0.85rem; color: var(--muted); margin-top: 0.3rem; }
+
+  .ref-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px,1fr)); gap: 0.75rem; margin-top: 1.25rem; }
+  .ref-item {
+    background: var(--tag-bg); border: 1px solid var(--border); border-radius: 6px;
+    padding: 0.85rem 1.05rem; display: flex; gap: 0.7rem; align-items: flex-start;
+  }
+  .ref-item a { font-size: 0.85rem; font-weight: 500; }
+  .ref-item span { display: block; font-size: 0.76rem; color: var(--muted); margin-top: 0.1rem; }
+
+  /* ── TABLE ── */
+  .table-wrap { overflow-x: auto; border: 1px solid var(--border); border-radius: 8px; margin-top: 1.1rem; }
+  table { width: 100%; border-collapse: collapse; font-size: 0.82rem; }
+  thead tr { background: var(--tag-bg); border-bottom: 1px solid var(--border); }
+  thead th { padding: 0.6rem 0.85rem; text-align: left; font-family: var(--font-mono); font-size: 0.68rem; color: var(--muted); letter-spacing: 0.07em; text-transform: uppercase; font-weight: 400; }
+  tbody tr { border-bottom: 1px solid var(--border); }
+  tbody tr:last-child { border-bottom: none; }
+  tbody td { padding: 0.6rem 0.85rem; color: var(--muted); }
+  tbody td:first-child { color: var(--text); font-weight: 600; }
+
+  .mini-pyramid { display: flex; flex-direction: column; gap: 3px; max-width: 380px; }
+  .mini-pyramid .band { border-radius: 5px; padding: 0.4rem 0.8rem; font-family: var(--font-mono); font-size: 0.72rem; }
+  .mini-pyramid .l1 { background: rgba(0,194,255,0.85); color: #0a0e17; font-weight: 700; }
+  .mini-pyramid .l3 { background: rgba(0,194,255,0.55); color: #0a0e17; font-weight: 600; }
+  .mini-pyramid .lrest { background: rgba(124,58,237,0.14); color: var(--muted); }
+
+  svg text { font-family: var(--font-sans); }
+  .svg-wrap { display: flex; align-items: center; justify-content: center; }
+  .svg-wrap svg { width: 100%; height: auto; max-height: 58vh; }
+
+  .dots {
+    position: fixed; right: 1.5rem; top: 50%; transform: translateY(-50%); z-index: 200;
+    display: flex; flex-direction: column; gap: 0.42rem;
+  }
+  .dot {
+    width: 6.5px; height: 6.5px; border-radius: 50%; background: var(--border);
+    border: none; cursor: pointer; transition: background 0.2s, transform 0.2s; padding: 0;
+  }
+  .dot:hover { background: var(--muted); }
+  .dot.active { background: var(--accent); transform: scale(1.5); }
+
+  .end-links { display: flex; gap: 1rem; flex-wrap: wrap; margin-top: 1.5rem; }
+  .end-link {
+    font-family: var(--font-mono); font-size: 0.8rem; color: var(--accent);
+    border: 1px solid rgba(0,194,255,0.25); border-radius: 4px; padding: 0.5rem 1rem;
+    transition: background 0.2s;
+  }
+  .end-link:hover { background: rgba(0,194,255,0.08); text-decoration: none; }
+
+  .case-tag {
+    display: inline-block; font-family: var(--font-mono); font-size: 0.68rem;
+    background: rgba(245,158,11,0.12); border: 1px solid rgba(245,158,11,0.35); color: #f59e0b;
+    border-radius: 4px; padding: 0.2rem 0.6rem; margin-bottom: 0.9rem; letter-spacing: 0.05em;
+  }
+  .new-tag {
+    display: inline-block; font-family: var(--font-mono); font-size: 0.68rem;
+    background: rgba(0,194,255,0.12); border: 1px solid rgba(0,194,255,0.35); color: var(--accent);
+    border-radius: 4px; padding: 0.2rem 0.6rem; margin-bottom: 0.9rem; letter-spacing: 0.05em;
+  }
+  .mil-tag {
+    display: inline-block; font-family: var(--font-mono); font-size: 0.68rem;
+    background: rgba(34,197,94,0.12); border: 1px solid rgba(34,197,94,0.35); color: #22c55e;
+    border-radius: 4px; padding: 0.2rem 0.6rem; margin-bottom: 0.9rem; letter-spacing: 0.05em;
+  }
+
+  @media (max-width: 900px) {
+    body { font-size: 15px; overflow-y: auto; }
+    .deck { overflow-y: visible; height: auto; scroll-snap-type: none; }
+    .slide { height: auto; min-height: 100vh; padding: 5.5rem 6vw 3.5rem; }
+    .slide-grid.cols-2, .slide-grid.cols-3 { grid-template-columns: 1fr; }
+    .dots { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<div class="progress" id="progress" style="width:0%"></div>
+<div class="topbar">
+  <div class="topbar-left">
+    <a class="back-link" href="../aspectosregulatorios.html">← voltar</a>
+    <span class="session-pill">Sessão 3 / 3</span>
+  </div>
+  <span class="counter" id="counter">01 / 31</span>
+</div>
+<div class="dots" id="dots"></div>
+
+<main class="deck" id="deck">
+
+  <!-- 0 · CAPA -->
+  <section class="slide capa" id="slide-0">
+    <div class="slide-inner">
+      <p class="eyebrow">IME — Instituto Militar de Engenharia · Engenharia de Telecomunicações</p>
+      <h1>Aspectos<br><strong>Regulatórios</strong> de Telecomunicações</h1>
+      <p class="subtitle">Sessão 3 — Regulamentos de Serviços e Tributos Setoriais</p>
+      <div class="meta">
+        <span>Prof. Clayton Jones Alves da Silva</span>
+        <span>clayton.j.a.silva@gmail.com</span>
+      </div>
+    </div>
+    <div class="scroll-cue">
+      <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 2v9M3 8l4 4 4-4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      role para navegar · setas do teclado
+    </div>
+  </section>
+
+  <!-- 1 · RECAP SESSÃO 2 -->
+  <section class="slide" id="slide-1">
+    <div class="slide-inner slide-grid cols-2">
+      <div>
+        <p class="eyebrow">Recapitulando</p>
+        <h2 class="slide-title">O que vimos na <strong>Sessão 2</strong></h2>
+        <p class="lead muted">A Anatel se organiza em Conselho Diretor e Conselho Consultivo; outorgas se dão por concessão, permissão ou autorização, sempre onerosas; e o espectro é bem público, gerido via PDFF e RUE.</p>
+        <p class="lead muted">Hoje descemos ao nível mais específico do arcabouço: os <strong class="accent">regulamentos de cada serviço</strong> editados pela Anatel — e como tudo isso se aplica às redes de interesse do Exército Brasileiro.</p>
+      </div>
+      <div class="mini-pyramid">
+        <div class="band l1">1 · Constituição Federal</div>
+        <div class="band lrest">2 · Leis Federais — LGT</div>
+        <div class="band lrest">Decretos Presidenciais</div>
+        <div class="band l3">3 · Regulamentos da Anatel ★ hoje</div>
+        <div class="band lrest">Outorgas e Licenças</div>
+        <div class="band lrest">Fundos e Incentivos ★ hoje</div>
+        <div class="band lrest">Decisões e Pareceres</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 2 · ROTEIRO -->
+  <section class="slide" id="slide-2">
+    <div class="slide-inner">
+      <p class="eyebrow">Roteiro — 3 horas-aula</p>
+      <h2 class="slide-title">O que vamos ver <strong>hoje</strong></h2>
+      <div class="card-grid">
+        <div class="info-card"><span class="k">Bloco 1</span><h4>Segmentos do Mercado</h4><p>Como o mercado de telecom se divide — serviços, fornecedores e valor agregado.</p></div>
+        <div class="info-card"><span class="k">Bloco 2</span><h4>Outorgas, na prática</h4><p>Comparativo completo de concessão, permissão e autorização — com exemplos reais.</p></div>
+        <div class="info-card"><span class="k">Bloco 3</span><h4>Novo Marco 2019</h4><p>Lei 13.879/2019, bens reversíveis e a migração das concessões de telefonia fixa.</p></div>
+        <div class="info-card"><span class="k">Bloco 4</span><h4>SLP e o Exército</h4><p>O Serviço Limitado Privado, a EBNet, a RITEx e as redes táticas do EB.</p></div>
+        <div class="info-card"><span class="k">Bloco 5</span><h4>Demais Serviços</h4><p>SMP, SME, SeAC, SCM e STFC — o que cada um regula, na prática.</p></div>
+        <div class="info-card"><span class="k">Bloco 6</span><h4>Tributos Setoriais</h4><p>FISTEL (recap), FUST e FUNTTEL — para onde vai o dinheiro arrecadado.</p></div>
+      </div>
+      <p class="small-note">Destaques em <span style="color:#f59e0b;">âmbar</span> = casos para debate; em <span class="accent">azul</span> = novidades regulatórias; em <span style="color:#22c55e;">verde</span> = aplicações de interesse militar.</p>
+    </div>
+  </section>
+
+  <!-- 3 · DIVIDER: Segmentos do mercado -->
+  <section class="slide divider" id="slide-3">
+    <div class="slide-inner">
+      <p class="num">01</p>
+      <h2>Segmentos do <strong>Mercado</strong></h2>
+      <p>Como o setor de telecomunicações se organiza, do ponto de vista econômico e regulatório.</p>
+    </div>
+  </section>
+
+  <!-- 4 · SEGMENTOS DO MERCADO -->
+  <section class="slide" id="slide-4">
+    <div class="slide-inner">
+      <p class="eyebrow">Visão geral do mercado</p>
+      <h2 class="slide-title">Os três <strong>segmentos</strong> do mercado de telecom</h2>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Segmento</th><th>Agentes privados</th></tr></thead>
+          <tbody>
+            <tr><td>Serviços de Telecomunicações</td><td>Empresas que detêm concessão ou autorização para prestação de serviços — Telefonia Fixa, Comunicações Móveis, Comunicação Multimídia, TV por Assinatura, Radiodifusão e outros.</td></tr>
+            <tr><td>Produtos e serviços para Prestadoras</td><td>Fornecedores de equipamentos e prestadores de serviço que dão suporte à prestação de serviços de telecomunicações, inclusive fornecedores de capacidade espacial.</td></tr>
+            <tr><td>Serviços de Valor Agregado</td><td>Empresas prestadoras de serviços que têm como suporte principal serviços de telecomunicações — mas não são, em si, serviços de telecom (recorde o Art. 61 da LGT).</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5 · SUB-SEGMENTOS -->
+  <section class="slide" id="slide-5">
+    <div class="slide-inner">
+      <p class="eyebrow">Detalhamento</p>
+      <h2 class="slide-title">Sub-segmentos: quem detém <strong>o quê</strong></h2>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Sub-segmento</th><th>Outorga típica</th></tr></thead>
+          <tbody>
+            <tr><td>Telefonia Fixa</td><td>Concessão ou autorização para o STFC</td></tr>
+            <tr><td>Comunicação Móvel</td><td>Autorização de SMP, SME, Rádiochamada, SMGS, SMA ou SMM</td></tr>
+            <tr><td>Comunicação Multimídia</td><td>Autorização de SCM ou redes/circuitos especializados</td></tr>
+            <tr><td>TV por Assinatura</td><td>Concessão de TV a Cabo ou autorização para MMDS, DTH e TV por assinatura</td></tr>
+            <tr><td>Radiodifusão</td><td>Concessão de Rádio e TV ou autorização para transmissão/repetição</td></tr>
+            <tr><td>Outros serviços</td><td>Autorização para SLP, Rádio Cidadão e Radioamador, entre outros</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="small-note">Fonte: Tabela 7 — Sub-Segmentos dos serviços de telecomunicações (material de aula).</p>
+    </div>
+  </section>
+
+  <!-- 6 · DIVIDER: Outorgas aprofundado -->
+  <section class="slide divider" id="slide-6">
+    <div class="slide-inner">
+      <p class="num">02</p>
+      <h2>Outorgas na <strong>Prática</strong></h2>
+      <p>Retomando concessão, permissão e autorização — agora com prazo, exemplos reais e forma de extinção.</p>
+    </div>
+  </section>
+
+  <!-- 7 · TABELA EXPANDIDA -->
+  <section class="slide" id="slide-7">
+    <div class="slide-inner">
+      <p class="eyebrow">Comparativo completo</p>
+      <h2 class="slide-title">Concessão, Permissão e <strong>Autorização</strong></h2>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Aspecto</th><th>Concessão</th><th>Permissão</th><th>Autorização</th></tr></thead>
+          <tbody>
+            <tr><td>Natureza</td><td>Contrato administrativo</td><td>Ato precário</td><td>Ato administrativo</td></tr>
+            <tr><td>Outorga</td><td>Licitação obrigatória</td><td>Licitação obrigatória</td><td>Ato da Anatel</td></tr>
+            <tr><td>Prazo</td><td>Determinado e prorrogável</td><td>Indeterminado e precário</td><td>Indeterminado ou definido</td></tr>
+            <tr><td>Exemplos</td><td>STFC</td><td>Serviços locais</td><td>SMP, SCM</td></tr>
+            <tr><td>Extinção</td><td>Prazo, caducidade, encampação</td><td>Revogável a qualquer tempo</td><td>Revogação ou interesse público</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="small-note">Complementa o quadro visto na Sessão 2 (Art. 48 da LGT), agora com o critério de extinção de cada modalidade.</p>
+    </div>
+  </section>
+
+  <!-- 8 · MODALIDADE x INTERESSE x NATUREZA -->
+  <section class="slide" id="slide-8">
+    <div class="slide-inner">
+      <p class="eyebrow">Cruzando critérios</p>
+      <h2 class="slide-title">Modalidade × Interesse × Natureza <strong>Jurídica</strong></h2>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Modalidade</th><th>Interesse</th><th>Natureza jurídica</th></tr></thead>
+          <tbody>
+            <tr><td>Concessão</td><td>Coletivo</td><td>Pública</td></tr>
+            <tr><td>Permissão</td><td>Coletivo</td><td>Pública</td></tr>
+            <tr><td>Autorização</td><td>Restrito ou coletivo</td><td>Privada</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="lead muted" style="margin-top:1.25rem;">Este cruzamento explica por que a autorização é o instrumento mais flexível: serve tanto a interesses restritos (como o SLP do Exército) quanto a interesses coletivos (como o SMP e o SCM).</p>
+    </div>
+  </section>
+
+  <!-- 9 · RESOLUÇÃO 73/1998 + REDES DE SUPORTE -->
+  <section class="slide" id="slide-9">
+    <div class="slide-inner slide-grid cols-2">
+      <div>
+        <p class="eyebrow">Resolução Anatel nº 73/1998</p>
+        <h2 class="slide-title">O Regulamento dos <strong>Serviços de Telecomunicações</strong></h2>
+        <div class="article-block">
+          <div class="art-num">Art. 21</div>
+          <p>A Agência exercerá seu poder normativo em relação aos serviços de telecomunicações mediante Resoluções do Conselho Diretor, que aprovarão Regulamentos, Planos e Normas.</p>
+        </div>
+        <div class="article-block">
+          <div class="art-num">Art. 38</div>
+          <p>Caberá à prestadora, quando da instalação de estação de telecomunicações, dispor de projeto técnico, manter documentação atualizada e obter a consignação de radiofrequência necessária.</p>
+        </div>
+      </div>
+      <div class="info-card">
+        <span class="k">Capítulo III</span>
+        <h4>Das Redes de Suporte — Art. 59</h4>
+        <p>As redes de suporte a serviço prestado no interesse coletivo serão organizadas como vias integradas de livre circulação: é obrigatória a interconexão entre as redes, devendo ser assegurada a operação integrada em âmbito nacional e internacional.</p>
+        <p class="small-note" style="margin-top:0.5rem;">Este é o mesmo princípio do Art. 146 da LGT — retomado aqui em nível de regulamento específico.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 10 · DIVIDER: Novo Marco 2019 -->
+  <section class="slide divider" id="slide-10">
+    <div class="slide-inner">
+      <p class="num">03</p>
+      <h2>Novo Marco <strong>Regulatório 2019</strong></h2>
+      <p>A Lei 13.879/2019 e a transição de um modelo de concessões rígidas para um regime de autorizações flexíveis.</p>
+    </div>
+  </section>
+
+  <!-- 11 · LEI 13.879/2019 -->
+  <section class="slide" id="slide-11">
+    <div class="slide-inner">
+      <p class="eyebrow">Lei nº 13.879, de 3 de outubro de 2019</p>
+      <h2 class="slide-title">Os três eixos do <strong>novo marco</strong></h2>
+      <div class="card-grid">
+        <div class="info-card"><h4>Migração de concessão para autorização</h4><p>Operadoras do STFC podem migrar do regime de concessão para autorização, com mais flexibilidade e menos exigências burocráticas.</p></div>
+        <div class="info-card"><h4>Atualização do regime de outorga</h4><p>Privilegia a autorização em vez da concessão, reduzindo a necessidade de garantias de continuidade de serviço.</p></div>
+        <div class="info-card"><h4>Ampliação do uso de radiofrequências</h4><p>Facilita o uso do espectro e prevê novas licitações para atribuição de frequências.</p></div>
+      </div>
+      <p class="lead muted" style="margin-top:1.25rem;">Como contrapartida, as concessionárias que migram ficam dispensadas de obrigações como os Postos de Serviço de Telecomunicações (PST) — e assumem compromissos de investimento em infraestrutura.</p>
+      <p class="small-note">A própria substituição de metas de PST por metas de backhaul já havia sido iniciada em 2007-2008, no âmbito do <em>Estudo Técnico para Atualização da Regulamentação das Telecomunicações no Brasil</em> (Anatel, abril de 2008) e do PGMU então revisado. O plano regulatório que nasceu desse estudo — a <a href="https://www.anatel.gov.br/legislacao/resolucoes/2008/11-resolucao-516" target="_blank">Resolução Anatel nº 516/2008 (PGR)</a> — foi formalmente revogado em 2019, mesmo ano da Lei 13.879, marcando a passagem para este novo ciclo regulatório.</p>
+    </div>
+  </section>
+
+  <!-- 12 · BENS REVERSÍVEIS -->
+  <section class="slide" id="slide-12">
+    <div class="slide-inner">
+      <p class="eyebrow">Um conceito-chave da concessão</p>
+      <h2 class="slide-title">O que são <strong>bens reversíveis</strong></h2>
+      <p class="lead">Na privatização do Sistema Telebrás (1998), os contratos de concessão incluíram cláusulas de reversibilidade: ao final da concessão, a infraestrutura essencial do STFC (postes, cabos, centrais) deveria retornar ao poder concedente.</p>
+      <p class="lead muted">Com a perda de relevância da telefonia fixa frente à telefonia móvel e à banda larga, esses bens tornaram-se fonte de disputas: como identificar, controlar e valorar o que era, de fato, "reversível"?</p>
+      <p class="lead muted">A Lei nº 13.879/2019 abriu caminho para resolver essa disputa: ao permitir a migração de concessão para autorização mediante compromissos de investimento, reduziu a importância prática dos bens reversíveis — no regime de autorização, não há reversão ao fim do contrato.</p>
+    </div>
+  </section>
+
+  <!-- 13 · CASO: FIM DOS BENS REVERSÍVEIS -->
+  <section class="slide" id="slide-13">
+    <div class="slide-inner">
+      <span class="new-tag">NOVIDADE REGULATÓRIA — 2024-2025</span>
+      <h2 class="slide-title">O desfecho: como <strong>Oi, Telefônica, Claro e Algar</strong> resolveram a questão</h2>
+      <p class="lead">Entre 2024 e 2025, o TCU homologou acordos de conciliação entre a Anatel e as grandes concessionárias, encerrando décadas de litígio sobre os bens reversíveis, ao mesmo tempo em que essas empresas migraram do regime de concessão para o de autorização.</p>
+      <div class="stat-grid">
+        <div class="stat-card"><div class="stat-num">R$ 240 mi</div><div class="stat-label">em investimentos comprometidos pela Algar (acordo TCU, set/2025)</div></div>
+        <div class="stat-card"><div class="stat-num">4</div><div class="stat-label">grandes operadoras com acordo homologado: Oi, Telefônica, Claro e Algar</div></div>
+        <div class="stat-card"><div class="stat-num">100 ERBs</div><div class="stat-label">de SMP 4G+ prometidas pela Algar em áreas rurais e de baixa renda</div></div>
+      </div>
+      <p class="small-note">Os acordos "transformam litígios incertos em investimentos" (voto do relator no TCU) — encerrando o regime de bens reversíveis e as metas do PGMU para as empresas que migraram. Fonte: <a href="https://telesintese.com.br/tcu-aprova-acordo-de-r-240-milhoes-entre-anatel-e-algar-para-migracao-do-stfc/" target="_blank">TeleSíntese</a>.</p>
+    </div>
+  </section>
+
+  <!-- 14 · NOVIDADE: REAVALIAÇÃO STFC -->
+  <section class="slide" id="slide-14">
+    <div class="slide-inner">
+      <span class="new-tag">NOVIDADE REGULATÓRIA — EM ANDAMENTO</span>
+      <h2 class="slide-title">O futuro do STFC em <strong>regime público</strong></h2>
+      <p class="lead">Os contratos de concessão do STFC em vigor tinham termo final em 31/12/2025. A Anatel elaborou um novo Edital de Licitação para outorgar a concessão do STFC em regime público a partir de 2026 — mas agora restrito às localidades onde o serviço de voz ainda não tem alternativa competitiva.</p>
+      <div class="card-grid">
+        <div class="info-card"><h4>Escopo reduzido</h4><p>O novo edital cobre apenas municípios classificados como pouco ou não competitivos (categorias 1 a 4 do PGMC) — mais de 14.800 localidades.</p></div>
+        <div class="info-card"><h4>Fora do escopo</h4><p>Longa distância nacional (LDN) e internacional (LDI) foram excluídas — sinal de que esses serviços já não dependem de regime público.</p></div>
+        <div class="info-card"><h4>Reorganização das Áreas Locais</h4><p>Resolução nº 768/2024: a partir de jan/2026, as Áreas Locais do STFC passam a coincidir com as 67 Áreas de Numeração (DDDs) do país.</p></div>
+      </div>
+      <p class="small-note">Para debate: em um país cada vez mais móvel, ainda faz sentido manter telefonia fixa em regime público? Fonte: <a href="https://www.gov.br/anatel/pt-br/assuntos/noticias/anatel-realizou-audiencia-publica-sobre-reavaliacao-de-regras-relacionadas-a-exploracao-do-stfc" target="_blank">Anatel</a>.</p>
+    </div>
+  </section>
+
+  <!-- 15 · DIVIDER: SLP e Exército -->
+  <section class="slide divider" id="slide-15">
+    <div class="slide-inner">
+      <p class="num">04</p>
+      <h2>SLP e o <strong>Exército Brasileiro</strong></h2>
+      <p>O serviço que sustenta as redes de comunicação privativas — da segurança pública às Forças Armadas.</p>
+    </div>
+  </section>
+
+  <!-- 16 · SLP DEFINIÇÃO -->
+  <section class="slide" id="slide-16">
+    <div class="slide-inner">
+      <p class="eyebrow">Resolução Anatel nº 617, de 19 de junho de 2013</p>
+      <h2 class="slide-title">O Serviço Limitado Privado <strong>(SLP)</strong></h2>
+      <div class="article-block">
+        <div class="art-num">Definição</div>
+        <p>O SLP é um serviço de telecomunicações de <strong>interesse restrito</strong>, explorado em âmbito nacional e internacional, no <strong>regime privado</strong>, destinado ao uso do próprio executante ou prestado a determinados grupos de usuários selecionados pela prestadora — abrangendo múltiplas aplicações.</p>
+      </div>
+      <div class="article-block">
+        <div class="art-num">Art. 5º e 5-A</div>
+        <p>A exploração do SLP depende de prévia autorização da Anatel — exceto quando a rede de suporte utilizar exclusivamente meios confinados e/ou equipamentos de radiocomunicação de radiação restrita.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 17 · SLP PRAZO E VEDAÇÕES -->
+  <section class="slide" id="slide-17">
+    <div class="slide-inner">
+      <p class="eyebrow">Regulamento do SLP</p>
+      <h2 class="slide-title">Prazo, prorrogação e <strong>vedações</strong></h2>
+      <div class="article-block">
+        <div class="art-num">Art. 7º</div>
+        <p>A autorização de uso de radiofrequências associada ao SLP é expedida por até 20 anos, a título oneroso, prorrogável por igual período, por uma única vez — requerimento de prorrogação até 3 anos antes do vencimento.</p>
+      </div>
+      <div class="article-block">
+        <div class="art-num">Art. 19</div>
+        <p>É vedada: (I) a interconexão entre redes de suporte ao SLP; e (II) a interconexão entre redes de suporte ao SLP e redes de suporte a serviço de interesse coletivo.</p>
+      </div>
+      <p class="lead muted">Essa vedação é o que garante o caráter <strong>privativo e isolado</strong> das redes SLP — exatamente o que torna esse serviço adequado a redes de comando e controle militares.</p>
+    </div>
+  </section>
+
+  <!-- 18 · SICOMEX -->
+  <section class="slide" id="slide-18">
+    <div class="slide-inner slide-grid cols-2">
+      <div>
+        <span class="mil-tag">APLICAÇÃO MILITAR</span>
+        <p class="eyebrow">Doutrina do Exército Brasileiro</p>
+        <h2 class="slide-title">O Sistema de Comunicações do Exército <strong>(SiCOMEx)</strong></h2>
+        <p class="lead">O Exército estrutura suas comunicações em dois grandes sistemas: o <strong>Sistema Estratégico de Comunicações (SEC)</strong>, para ligações de longa distância em tempo de paz, e o <strong>Sistema Tático de Comunicações (SISTAC)</strong>, para o preparo e emprego de tropas em operações.</p>
+      </div>
+      <div class="info-card">
+        <span class="k">SEC</span>
+        <h4>Sistema Estratégico de Comunicações</h4>
+        <p>Assegura as ligações do Alto Comando do Exército, dos Grandes Comandos e das Guarnições Militares — podendo, excepcionalmente, apoiar tropas brasileiras no exterior.</p>
+        <p style="margin-top:0.5rem;">Composto pela EBNet, pelas Redes Rádio Fixas e pela RITEx.</p>
+        <p class="small-note">Fonte: Revista Militar de Ciência e Tecnologia (RMCT) — publicação do próprio IME.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 19 · EBNET / RITEX / RRSEC -->
+  <section class="slide" id="slide-19">
+    <div class="slide-inner">
+      <span class="mil-tag">APLICAÇÃO MILITAR</span>
+      <h2 class="slide-title"><strong>EBNet</strong>, <strong>RITEx</strong> e RRSEC</h2>
+      <div class="svg-wrap" style="margin-top:1rem;">
+        <svg viewBox="0 0 600 260" xmlns="http://www.w3.org/2000/svg" font-family="IBM Plex Sans, sans-serif">
+          <rect x="200" y="10" width="200" height="46" rx="8" fill="#22c55e" opacity="0.85"/>
+          <text x="300" y="30" text-anchor="middle" font-size="12" fill="#0a0e17" font-weight="700">SEC</text>
+          <text x="300" y="45" text-anchor="middle" font-size="9" fill="#0a0e17">Sistema Estratégico de Comunicações</text>
+          <line x1="300" y1="56" x2="300" y2="76" stroke="#334155" stroke-width="1.3"/>
+          <line x1="90" y1="76" x2="510" y2="76" stroke="#334155" stroke-width="1.3"/>
+          <line x1="90" y1="76" x2="90" y2="96" stroke="#334155" stroke-width="1.3"/>
+          <line x1="300" y1="76" x2="300" y2="96" stroke="#334155" stroke-width="1.3"/>
+          <line x1="510" y1="76" x2="510" y2="96" stroke="#334155" stroke-width="1.3"/>
+
+          <rect x="10" y="96" width="160" height="150" rx="8" fill="#111827" stroke="#22c55e" stroke-width="1.4"/>
+          <text x="90" y="122" text-anchor="middle" font-size="13" fill="#e2e8f0" font-weight="700">EBNet</text>
+          <text x="20" y="146" font-size="9" fill="#94a3b8">Rede IP multisserviços:</text>
+          <text x="20" y="160" font-size="9" fill="#94a3b8">videoconferência, voz,</text>
+          <text x="20" y="174" font-size="9" fill="#94a3b8">TV corporativa, dados —</text>
+          <text x="20" y="188" font-size="9" fill="#94a3b8">tráfego isolado da internet</text>
+          <text x="20" y="210" font-size="8.5" fill="#64748b">Backbone: Embratel</text>
+          <text x="20" y="222" font-size="8.5" fill="#64748b">Tecnologia: IP/MPLS</text>
+
+          <rect x="220" y="96" width="160" height="150" rx="8" fill="#111827" stroke="#22c55e" stroke-width="1.4"/>
+          <text x="300" y="122" text-anchor="middle" font-size="13" fill="#e2e8f0" font-weight="700">RITEx</text>
+          <text x="230" y="146" font-size="9" fill="#94a3b8">Rede Integrada de</text>
+          <text x="230" y="160" font-size="9" fill="#94a3b8">Telecomunicações do</text>
+          <text x="230" y="174" font-size="9" fill="#94a3b8">Exército — telefonia</text>
+          <text x="230" y="188" font-size="9" fill="#94a3b8">corporativa (voz)</text>
+          <text x="230" y="210" font-size="8.5" fill="#64748b">Hoje trafega sobre a</text>
+          <text x="230" y="222" font-size="8.5" fill="#64748b">EBNet, via VoIP</text>
+
+          <rect x="430" y="96" width="160" height="150" rx="8" fill="#111827" stroke="#22c55e" stroke-width="1.4"/>
+          <text x="510" y="122" text-anchor="middle" font-size="13" fill="#e2e8f0" font-weight="700">RRSEC</text>
+          <text x="440" y="146" font-size="9" fill="#94a3b8">Redes Rádio do</text>
+          <text x="440" y="160" font-size="9" fill="#94a3b8">Sistema Estratégico de</text>
+          <text x="440" y="174" font-size="9" fill="#94a3b8">Comunicações —</text>
+          <text x="440" y="188" font-size="9" fill="#94a3b8">redundância e cobertura</text>
+          <text x="440" y="210" font-size="8.5" fill="#64748b">Redes rádio fixas</text>
+        </svg>
+      </div>
+      <p class="small-note">A EBNet conecta o CITEx aos Centros de Telemática (CT/CTA) regionais, formando redes metropolitanas que chegam a mais de 545 Organizações Militares em todo o país.</p>
+    </div>
+  </section>
+
+  <!-- 20 · EXEMPLOS DO EB -->
+  <section class="slide" id="slide-20">
+    <div class="slide-inner">
+      <span class="mil-tag">APLICAÇÃO MILITAR</span>
+      <h2 class="slide-title">SISTAC: tecnologias do <strong>Sistema Tático</strong></h2>
+      <p class="lead muted">No campo de batalha, o SISTAC integra múltiplas tecnologias de rádio, escolhidas conforme critérios de usabilidade, desempenho, escalabilidade e segurança.</p>
+      <div class="card-grid">
+        <div class="info-card"><h4>Redes convencionais VHF/UHF</h4><p>Rádio de combate tradicional, de curto alcance e fácil instalação.</p></div>
+        <div class="info-card"><h4>Redes LTE</h4><p>Dados de alta capacidade para comando e controle digitalizado.</p></div>
+        <div class="info-card"><h4>P25 (Project 25)</h4><p>Padrão digital norte-americano de rádio troncalizado para segurança pública e forças armadas.</p></div>
+        <div class="info-card"><h4>TETRA</h4><p>Padrão digital europeu de rádio troncalizado, equivalente ao P25.</p></div>
+        <div class="info-card"><h4>Redes Rádio Fixas</h4><p>Enlaces ponto a ponto de longo alcance para interligação de Postos de Comando.</p></div>
+        <div class="info-card"><h4>Rádios cognitivos</h4><p>Linha de pesquisa do próprio IME para lidar com cenários de espectro sobrecarregado.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 21 · DIVIDER: Demais serviços -->
+  <section class="slide divider" id="slide-21">
+    <div class="slide-inner">
+      <p class="num">05</p>
+      <h2>Demais <strong>Serviços</strong></h2>
+      <p>SMP, SME, SeAC, SCM e STFC — os regulamentos que moldam o dia a dia do usuário de telecomunicações.</p>
+    </div>
+  </section>
+
+  <!-- 22 · SMP e SME -->
+  <section class="slide" id="slide-22">
+    <div class="slide-inner">
+      <p class="eyebrow">Serviços móveis</p>
+      <h2 class="slide-title"><strong>SMP</strong> e <strong>SME</strong></h2>
+      <div class="slide-grid cols-2" style="margin-top:1rem;">
+        <div class="info-card">
+          <span class="k">Resolução nº 477/2007</span>
+          <h4>Serviço Móvel Pessoal (SMP)</h4>
+          <p>Permite a comunicação entre celulares ou entre celular e telefone fixo — serviço móvel terrestre de interesse coletivo.</p>
+          <p style="margin-top:0.5rem;">Prestado em regime privado, mediante prévia autorização, com direito ao uso das radiofrequências necessárias.</p>
+        </div>
+        <div class="info-card">
+          <span class="k">Resolução nº 404/2005</span>
+          <h4>Serviço Móvel Especializado (SME)</h4>
+          <p>Possibilita comunicação por despacho via radiocomunicação — semelhante ao celular, mas voltado à comunicação entre uma pessoa e grupos.</p>
+          <p style="margin-top:0.5rem;">Também de interesse coletivo, regime privado, mediante prévia autorização.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 23 · SeAC -->
+  <section class="slide" id="slide-23">
+    <div class="slide-inner">
+      <p class="eyebrow">Resolução Anatel nº 581, de 26 de março de 2012</p>
+      <h2 class="slide-title">Serviço de Acesso Condicionado <strong>(SeAC)</strong></h2>
+      <p class="lead">Serviço de interesse coletivo, prestado no regime privado, destinado à distribuição de conteúdos audiovisuais em pacotes de canais — mediante prévia autorização.</p>
+      <p class="lead muted">O SeAC é o sucedâneo (substituto regulatório) de quatro tecnologias antigas de TV paga:</p>
+      <div class="card-grid">
+        <div class="info-card"><h4>TVC</h4><p>Serviço de TV a Cabo — meios físicos confinados</p></div>
+        <div class="info-card"><h4>MMDS</h4><p>Distribuição de Sinais Multiponto Multicanal — micro-ondas</p></div>
+        <div class="info-card"><h4>TVA</h4><p>TV por Assinatura — faixa de UHF</p></div>
+        <div class="info-card"><h4>DTH</h4><p>Distribuição de Sinais via Satélite</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 24 · SCM -->
+  <section class="slide" id="slide-24">
+    <div class="slide-inner">
+      <p class="eyebrow">Resolução Anatel nº 614, de 28 de maio de 2013</p>
+      <h2 class="slide-title">Serviço de Comunicação Multimídia <strong>(SCM)</strong></h2>
+      <div class="article-block">
+        <div class="art-num">O que é</div>
+        <p>Serviço fixo de telecomunicações de interesse coletivo, prestado em âmbito nacional e internacional, no regime privado. Possibilita a oferta de capacidade de transmissão, emissão e recepção de informações multimídia — incluindo o provimento de conexão à internet.</p>
+      </div>
+      <div class="article-block">
+        <div class="art-num">O que NÃO pode fazer</div>
+        <p>Não admite a prestação de serviços de radiodifusão ou de televisão por assinatura, nem características do STFC — em especial, o encaminhamento de tráfego telefônico simultaneamente originado e terminado nas redes de SCM.</p>
+      </div>
+      <p class="small-note">O SCM é a base regulatória do provimento de internet fixa (banda larga) no Brasil.</p>
+    </div>
+  </section>
+
+  <!-- 25 · STFC -->
+  <section class="slide" id="slide-25">
+    <div class="slide-inner">
+      <p class="eyebrow">Resolução Anatel nº 426, de 9 de dezembro de 2005</p>
+      <h2 class="slide-title">Serviço Telefônico Fixo Comutado <strong>(STFC)</strong></h2>
+      <p class="lead">Serviço de telecomunicação realizado por transmissão de voz, destinado à comunicação entre pontos fixos determinados, utilizando processos de telefonia.</p>
+      <div class="card-grid">
+        <div class="info-card"><h4>Regime</h4><p>Público (concessão ou permissão) ou privado (autorização) — de interesse coletivo.</p></div>
+        <div class="info-card"><h4>Modalidades</h4><p>Local, Longa Distância Nacional (LDN) e Longa Distância Internacional (LDI).</p></div>
+        <div class="info-card"><h4>Situação atual</h4><p>Regime público em transição — ver "reavaliação do STFC", tratada anteriormente nesta sessão.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 26 · DIVIDER: Tributos -->
+  <section class="slide divider" id="slide-26">
+    <div class="slide-inner">
+      <p class="num">06</p>
+      <h2>Tributos <strong>Setoriais</strong></h2>
+      <p>FISTEL, FUST e FUNTTEL — como o setor financia sua própria fiscalização, universalização e inovação.</p>
+    </div>
+  </section>
+
+  <!-- 27 · FISTEL RECAP + FUST -->
+  <section class="slide" id="slide-27">
+    <div class="slide-inner slide-grid cols-2">
+      <div>
+        <p class="eyebrow">Recap — Sessão 2</p>
+        <h2 class="slide-title"><strong>FISTEL</strong>: TFI + TFF</h2>
+        <p class="lead muted">Financia a fiscalização da Anatel sobre as estações de telecomunicações — Taxa de Fiscalização de Instalação (pagamento único) e Taxa de Fiscalização de Funcionamento (anual). Tema hoje em disputa no STF (ADI 7787).</p>
+      </div>
+      <div>
+        <p class="eyebrow">Lei nº 9.998/2000</p>
+        <h2 class="slide-title"><strong>FUST</strong> em ação</h2>
+        <p class="lead">Financia a universalização dos serviços de telecomunicações — hoje focado em conectividade escolar, após a Lei 14.109/2020 ampliar seu uso para além da telefonia fixa.</p>
+        <div class="stat-grid" style="grid-template-columns: repeat(2, 1fr);">
+          <div class="stat-card"><div class="stat-num">73,1 mil</div><div class="stat-label">escolas já conectadas pelo programa Escolas Conectadas</div></div>
+          <div class="stat-card"><div class="stat-num">R$ 400 mi</div><div class="stat-label">no edital FUST de 2025 para mais 5 mil escolas</div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 28 · FUNTTEL -->
+  <section class="slide" id="slide-28">
+    <div class="slide-inner">
+      <p class="eyebrow">Lei nº 10.052/2000</p>
+      <h2 class="slide-title"><strong>FUNTTEL</strong> — Fundo para o Desenvolvimento Tecnológico das Telecomunicações</h2>
+      <p class="lead">Destina-se a estimular a inovação tecnológica, incentivar a capacitação de recursos humanos, fomentar a geração de empregos e promover o acesso de pequenas e médias empresas a capital — ampliando a competitividade da indústria brasileira de telecomunicações.</p>
+      <div class="article-block">
+        <div class="art-num">Alíquota</div>
+        <p>0,5% sobre a receita das prestadoras, excluindo vendas canceladas, descontos, ICMS, PIS e COFINS — assim como no FUST, deve constar em separado na conta do usuário.</p>
+      </div>
+      <p class="small-note">O FUNTTEL é gerido pelo BNDES e financiou, historicamente, projetos como o desenvolvimento do padrão brasileiro de TV digital e de tecnologia 5G nacional.</p>
+    </div>
+  </section>
+
+  <!-- 29 · SÍNTESE DA DISCIPLINA -->
+  <section class="slide" id="slide-29">
+    <div class="slide-inner">
+      <p class="eyebrow">Síntese — as 3 sessões</p>
+      <h2 class="slide-title">O percurso <strong>completo</strong></h2>
+      <div class="card-grid" style="margin-bottom:1rem;">
+        <div class="info-card"><span class="k">Sessão 1</span><p>Do monopólio estatal à privatização — a LGT (Lei 9.472/1997) nasce e organiza o setor em 4 livros.</p></div>
+        <div class="info-card"><span class="k">Sessão 2</span><p>A Anatel se estrutura; outorgas se dividem em concessão, permissão e autorização; o espectro é gerido via PDFF e RUE.</p></div>
+        <div class="info-card"><span class="k">Sessão 3</span><p>Os regulamentos específicos (SMP, SCM, STFC, SeAC, SME, SLP) aplicam essa base — inclusive às redes do Exército Brasileiro.</p></div>
+      </div>
+      <p class="lead muted">O fio condutor: da norma mais geral (Constituição) à mais específica (regulamento de um serviço), toda regulação de telecomunicações no Brasil deriva sua validade da LGT — e é, hoje, um campo em constante atualização, como mostram o RGST, a reavaliação do STFC e a disputa sobre o FISTEL.</p>
+    </div>
+  </section>
+
+  <!-- 30 · ENCERRAMENTO -->
+  <section class="slide" id="slide-30">
+    <div class="slide-inner">
+      <p class="eyebrow">Referências desta sessão</p>
+      <h2 class="slide-title">Para <strong>aprofundar</strong></h2>
+      <div class="ref-grid">
+        <div class="ref-item"><div><a href="https://www.planalto.gov.br/ccivil_03/_ato2019-2022/2019/lei/l13879.htm" target="_blank">Lei nº 13.879/2019</a><span>Novo Marco Legal das Telecomunicações</span></div></div>
+        <div class="ref-item"><div><a href="https://www.anatel.gov.br/setorregulado/tributos" target="_blank">Guia de tributos setoriais</a><span>FISTEL, FUST, FUNTTEL — Anatel</span></div></div>
+        <div class="ref-item"><div><a href="https://rmct.ime.eb.br/" target="_blank">Revista Militar de Ciência e Tecnologia</a><span>Publicação do IME sobre comunicações militares</span></div></div>
+        <div class="ref-item"><div><a href="https://www.gov.br/mcom/pt-br/noticias/2025/Julho/ministerio-das-comunicacoes-divulga-resultado-de-edital-para-levar-internet-banda-larga-e-wi-fi-a-mais-de-2-mil-escolas-publicas" target="_blank">Programa Escolas Conectadas</a><span>Ministério das Comunicações, 2025</span></div></div>
+        <div class="ref-item"><div><a href="https://www.anatel.gov.br/legislacao/resolucoes/2008/11-resolucao-516" target="_blank">Estudo Técnico / PGR — Resolução nº 516/2008</a><span>Anatel, abril de 2008</span></div></div>
+      </div>
+      <p class="lead muted" style="margin-top:1.5rem;">Isso encerra as três sessões de Aspectos Regulatórios de Telecomunicações. Obrigado pela atenção — fico à disposição para dúvidas, debates e sugestões de aprofundamento.</p>
+      <div class="end-links">
+        <a class="end-link" href="../aspectosregulatorios.html">← Voltar para a página da disciplina</a>
+        <a class="end-link" href="mailto:clayton.j.a.silva@gmail.com">Contato do professor</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<script>
+  const deck = document.getElementById('deck');
+  const slides = Array.from(document.querySelectorAll('.slide'));
+  const dotsWrap = document.getElementById('dots');
+  const counter = document.getElementById('counter');
+  const progress = document.getElementById('progress');
+  const total = slides.length;
+
+  slides.forEach((s, i) => {
+    const b = document.createElement('button');
+    b.className = 'dot';
+    b.setAttribute('aria-label', 'Ir para slide ' + (i+1));
+    b.addEventListener('click', () => s.scrollIntoView({behavior:'smooth'}));
+    dotsWrap.appendChild(b);
+  });
+  const dots = Array.from(dotsWrap.children);
+
+  function pad(n) { return n < 10 ? '0' + n : '' + n; }
+
+  function setActive(i) {
+    dots.forEach((d, idx) => d.classList.toggle('active', idx === i));
+    counter.textContent = pad(i + 1) + ' / ' + pad(total);
+    progress.style.width = ((i + 1) / total * 100) + '%';
+  }
+
+  let currentIndex = 0;
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting && entry.intersectionRatio > 0.55) {
+        const idx = slides.indexOf(entry.target);
+        if (idx !== -1) { currentIndex = idx; setActive(idx); }
+      }
+    });
+  }, { root: deck, threshold: [0.55] });
+  slides.forEach(s => observer.observe(s));
+
+  function goTo(i) {
+    i = Math.max(0, Math.min(total - 1, i));
+    slides[i].scrollIntoView({behavior:'smooth'});
+  }
+
+  window.addEventListener('keydown', (e) => {
+    if (['ArrowDown','ArrowRight','PageDown',' '].includes(e.key)) { e.preventDefault(); goTo(currentIndex + 1); }
+    else if (['ArrowUp','ArrowLeft','PageUp'].includes(e.key)) { e.preventDefault(); goTo(currentIndex - 1); }
+    else if (e.key === 'Home') { e.preventDefault(); goTo(0); }
+    else if (e.key === 'End') { e.preventDefault(); goTo(total - 1); }
+  });
+
+  setActive(0);
+</script>
+
+</body>
+</html>
