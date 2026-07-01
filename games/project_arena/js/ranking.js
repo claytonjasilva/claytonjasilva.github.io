@@ -42,7 +42,7 @@ async function sincronizarRankingCloudSePossivel(listaEquipes) {
 }
 
 // ------------------------------------------------------------
-// RANKING
+// RANKING LOCAL
 // ------------------------------------------------------------
 
 function obterRanking() {
@@ -51,14 +51,10 @@ function obterRanking() {
         .sort((a, b) => (b.pontos || 0) - (a.pontos || 0));
 }
 
-function atualizarRanking() {
-    const ranking = document.getElementById("ranking");
-
-    if (!ranking) {
-        return;
+function montarHtmlRanking(listaEquipes) {
+    if (!listaEquipes || listaEquipes.length === 0) {
+        return "<p>Nenhuma equipe cadastrada.</p>";
     }
-
-    const lista = obterRanking();
 
     let html = `
         <table>
@@ -71,7 +67,7 @@ function atualizarRanking() {
             </tr>
     `;
 
-    lista.forEach((equipe, indice) => {
+    listaEquipes.forEach((equipe, indice) => {
         html += `
             <tr>
                 <td>${indice + 1}º</td>
@@ -85,9 +81,72 @@ function atualizarRanking() {
 
     html += "</table>";
 
-    ranking.innerHTML = html;
+    return html;
+}
+
+function atualizarRanking() {
+    const ranking = document.getElementById("ranking");
+
+    if (!ranking) {
+        return;
+    }
+
+    const lista = obterRanking();
+
+    ranking.innerHTML = montarHtmlRanking(lista);
 
     sincronizarRankingCloudSePossivel(lista);
+}
+
+// ------------------------------------------------------------
+// RANKING CLOUD
+// ------------------------------------------------------------
+
+async function carregarRankingCloudSePossivel() {
+    try {
+        const idSessao = localStorage.getItem("idSessaoCloud");
+
+        if (!idSessao) {
+            return null;
+        }
+
+        const arenaCloud = await import("./arena-cloud.js");
+
+        if (!arenaCloud.obterRanking) {
+            return null;
+        }
+
+        const rankingCloud = await arenaCloud.obterRanking(idSessao);
+
+        if (!rankingCloud) {
+            return null;
+        }
+
+        const lista = Object.values(rankingCloud)
+            .sort((a, b) => (b.pontos || 0) - (a.pontos || 0));
+
+        return lista;
+
+    } catch (erro) {
+        console.warn("Não foi possível carregar o ranking da nuvem.", erro);
+        return null;
+    }
+}
+
+async function atualizarRankingCloudNaTelaSePossivel() {
+    const ranking = document.getElementById("ranking");
+
+    if (!ranking) {
+        return;
+    }
+
+    const listaCloud = await carregarRankingCloudSePossivel();
+
+    if (!listaCloud) {
+        return;
+    }
+
+    ranking.innerHTML = montarHtmlRanking(listaCloud);
 }
 
 // ------------------------------------------------------------
