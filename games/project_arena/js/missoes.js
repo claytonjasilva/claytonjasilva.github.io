@@ -44,15 +44,11 @@ async function sincronizarMissoesCloudSePossivel(missoes, indice = 0, liberada =
     try {
         const idSessao = localStorage.getItem("idSessaoCloud");
 
-        if (!idSessao) {
-            return;
-        }
+        if (!idSessao) return;
 
         const arenaCloud = await carregarArenaCloudMissoes();
 
-        if (!arenaCloud) {
-            return;
-        }
+        if (!arenaCloud) return;
 
         for (const missao of missoes) {
             await arenaCloud.salvarMissao(missao.id, missao);
@@ -68,6 +64,26 @@ async function sincronizarMissoesCloudSePossivel(missoes, indice = 0, liberada =
 
     } catch (erro) {
         console.warn("Não foi possível sincronizar missões na nuvem.", erro);
+    }
+}
+
+async function sincronizarEstadoSessaoCloudSePossivel() {
+    try {
+        const idSessao = localStorage.getItem("idSessaoCloud");
+
+        if (!idSessao) return;
+
+        const arenaCloud = await carregarArenaCloudMissoes();
+
+        if (!arenaCloud) return;
+
+        await arenaCloud.atualizarSessao(idSessao, {
+            estadoEquipes: obterEquipes(),
+            historicoRespostas: obterHistorico()
+        });
+
+    } catch (erro) {
+        console.warn("Não foi possível sincronizar estado da sessão.", erro);
     }
 }
 
@@ -267,7 +283,7 @@ async function responderMissao() {
 
     atualizarEquipe(equipe.id, pontosGanhos, xpGanho);
 
-    registrarHistorico({
+    await registrarHistorico({
         missao: missao.titulo,
         missaoId: missao.id,
         equipe: equipe.nome,
@@ -278,6 +294,8 @@ async function responderMissao() {
         pontos: pontosGanhos,
         xp: xpGanho
     });
+
+    await sincronizarEstadoSessaoCloudSePossivel();
 
     const resultado = document.getElementById("resultado");
 
