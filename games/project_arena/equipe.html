@@ -21,7 +21,8 @@
         <h2>Equipe</h2>
 
         <label for="equipeSelecionada">Selecionar Equipe</label>
-        <select id="equipeSelecionada">
+
+        <select id="equipeSelecionada" onchange="selecionarEquipe(this.value)">
             <option value="alpha">Equipe Alpha</option>
             <option value="beta">Equipe Beta</option>
             <option value="gama">Equipe Gama</option>
@@ -38,16 +39,20 @@
 
         <table>
             <tr>
+                <td>Equipe</td>
+                <td id="nomeEquipe">Equipe Alpha</td>
+            </tr>
+            <tr>
                 <td>Nível</td>
-                <td id="nivel">Estagiário</td>
+                <td id="nivelEquipe">Estagiário</td>
             </tr>
             <tr>
                 <td>XP</td>
-                <td id="xp">0</td>
+                <td id="xpEquipe">0</td>
             </tr>
             <tr>
                 <td>Pontos</td>
-                <td id="pontos">0</td>
+                <td id="pontosEquipe">0</td>
             </tr>
         </table>
     </section>
@@ -85,7 +90,11 @@
             </label>
             <br><br>
 
-            <button type="button" id="btnEnviar">
+            <button
+                type="button"
+                id="btnResponder"
+                onclick="responderMissao()"
+                disabled>
                 Responder Missão
             </button>
         </form>
@@ -109,7 +118,7 @@
 </main>
 
 <footer>
-    Project Arena - Versão 1.2
+    Project Arena - Versão 2.0
 </footer>
 
 <!-- Base de dados -->
@@ -117,8 +126,8 @@
 <script src="js/desafios.js"></script>
 
 <!-- Módulos -->
-<script src="js/ranking.js"></script>
 <script src="js/cronometro.js"></script>
+<script src="js/ranking.js"></script>
 <script src="js/relatorio.js"></script>
 <script src="js/missoes.js"></script>
 <script src="js/sessao.js"></script>

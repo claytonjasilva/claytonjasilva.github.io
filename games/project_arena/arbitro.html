@@ -31,11 +31,12 @@
     <section class="card">
         <h2>Controle da Sessão</h2>
 
-        <button id="btnIniciar">▶️ Iniciar Sessão</button>
-        <button id="btnLiberar">🚀 Liberar Missão</button>
-        <button id="btnEncerrar">🏁 Encerrar Missão</button>
-        <button id="btnFinalizar">📊 Finalizar Sessão</button>
-        <button id="btnReiniciar">🔄 Reiniciar Tudo</button>
+        <button id="btnIniciar" onclick="iniciarSessao()">▶️ Iniciar Sessão</button>
+        <button id="btnLiberar" onclick="liberarMissao()">🚀 Liberar Missão</button>
+        <button id="btnEncerrar" onclick="encerrarMissao()">🏁 Encerrar Missão</button>
+        <button id="btnFinalizar" onclick="finalizarSessao()">📊 Finalizar Sessão</button>
+        <button id="btnReiniciar" onclick="reiniciarTudo()">🔄 Reiniciar Tudo</button>
+        <button onclick="exportarRelatorioJSON()">💾 Exportar Relatório</button>
     </section>
 
     <section class="card">
@@ -71,7 +72,7 @@
 </main>
 
 <footer>
-    Project Arena - Árbitro - Versão 1.2
+    Project Arena - Árbitro - Versão 2.0
 </footer>
 
 <!-- Base de dados -->
@@ -79,8 +80,8 @@
 <script src="js/desafios.js"></script>
 
 <!-- Módulos -->
-<script src="js/ranking.js"></script>
 <script src="js/cronometro.js"></script>
+<script src="js/ranking.js"></script>
 <script src="js/relatorio.js"></script>
 <script src="js/missoes.js"></script>
 <script src="js/sessao.js"></script>
