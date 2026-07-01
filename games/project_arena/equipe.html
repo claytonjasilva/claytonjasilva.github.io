@@ -2,137 +2,281 @@
 <html lang="pt-BR">
 
 <head>
+
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
     <title>Project Arena - Equipe</title>
+
     <link rel="stylesheet" href="css/style.css">
+
 </head>
 
 <body>
 
 <header>
+
     <h1>🎯 Project Arena</h1>
     <p>Missões de Gestão de Projetos</p>
+
 </header>
 
 <main>
 
-    <section class="card">
-        <h2>Equipe</h2>
+<!-- ======================================================= -->
+<!-- ENTRADA NA SESSÃO                                       -->
+<!-- ======================================================= -->
 
-        <label for="equipeSelecionada">Selecionar Equipe</label>
+<section class="card">
 
-        <select id="equipeSelecionada" onchange="selecionarEquipe(this.value)">
-            <option value="alpha">Equipe Alpha</option>
-            <option value="beta">Equipe Beta</option>
-            <option value="gama">Equipe Gama</option>
-        </select>
+    <h2>Conectar à Sessão</h2>
 
-        <p>
-            <strong>Status:</strong>
-            <span id="statusEquipe">Aguardando liberação da missão</span>
-        </p>
-    </section>
+    <label>Código da Sessão</label>
 
-    <section class="card">
-        <h2>🏆 Evolução</h2>
+    <input
+        type="text"
+        id="codigoSessao"
+        placeholder="Digite o código informado pelo árbitro">
 
-        <table>
-            <tr>
-                <td>Equipe</td>
-                <td id="nomeEquipe">Equipe Alpha</td>
-            </tr>
-            <tr>
-                <td>Nível</td>
-                <td id="nivelEquipe">Estagiário</td>
-            </tr>
-            <tr>
-                <td>XP</td>
-                <td id="xpEquipe">0</td>
-            </tr>
-            <tr>
-                <td>Pontos</td>
-                <td id="pontosEquipe">0</td>
-            </tr>
-        </table>
-    </section>
+    <br><br>
 
-    <section class="card">
-        <h2>📜 Missão Atual</h2>
-        <div id="desafio">Aguardando missão...</div>
-    </section>
+    <button
+        type="button"
+        id="btnEntrarSessao">
 
-    <section class="card">
-        <h2>Responder Missão</h2>
+        🔗 Entrar na Sessão
 
-        <form>
-            <label>
-                <input type="radio" name="resp" value="A">
-                Alternativa A
-            </label>
-            <br>
+    </button>
 
-            <label>
-                <input type="radio" name="resp" value="B">
-                Alternativa B
-            </label>
-            <br>
+</section>
 
-            <label>
-                <input type="radio" name="resp" value="C">
-                Alternativa C
-            </label>
-            <br>
+<!-- ======================================================= -->
+<!-- EQUIPE                                                  -->
+<!-- ======================================================= -->
 
-            <label>
-                <input type="radio" name="resp" value="D">
-                Alternativa D
-            </label>
-            <br><br>
+<section class="card">
 
-            <button
-                type="button"
-                id="btnResponder"
-                onclick="responderMissao()"
-                disabled>
-                Responder Missão
-            </button>
-        </form>
-    </section>
+    <h2>Equipe</h2>
 
-    <section class="card">
-        <h2>Resultado</h2>
-        <div id="resultado">Nenhuma resposta enviada.</div>
-    </section>
+    <label for="equipeSelecionada">
+        Selecionar Equipe
+    </label>
 
-    <section class="card">
-        <h2>🏅 Conquistas</h2>
-        <div id="conquistas">Nenhuma conquista obtida.</div>
-    </section>
+    <select
+        id="equipeSelecionada"
+        onchange="selecionarEquipe(this.value)">
 
-    <section class="card">
-        <h2>Histórico</h2>
-        <div id="historicoEquipe">Nenhuma missão realizada.</div>
-    </section>
+        <option value="alpha">Equipe Alpha</option>
+        <option value="beta">Equipe Beta</option>
+        <option value="gama">Equipe Gama</option>
+
+    </select>
+
+    <p>
+
+        <strong>Status:</strong>
+
+        <span id="statusEquipe">
+
+            Aguardando conexão.
+
+        </span>
+
+    </p>
+
+</section>
+
+<!-- ======================================================= -->
+<!-- EVOLUÇÃO                                                -->
+<!-- ======================================================= -->
+
+<section class="card">
+
+    <h2>🏆 Evolução</h2>
+
+    <table>
+
+        <tr>
+            <td>Equipe</td>
+            <td id="nomeEquipe">-</td>
+        </tr>
+
+        <tr>
+            <td>Nível</td>
+            <td id="nivelEquipe">-</td>
+        </tr>
+
+        <tr>
+            <td>XP</td>
+            <td id="xpEquipe">0</td>
+        </tr>
+
+        <tr>
+            <td>Pontos</td>
+            <td id="pontosEquipe">0</td>
+        </tr>
+
+    </table>
+
+</section>
+
+<!-- ======================================================= -->
+<!-- MISSÃO                                                  -->
+<!-- ======================================================= -->
+
+<section class="card">
+
+    <h2>📜 Missão Atual</h2>
+
+    <div id="desafio">
+
+        Aguardando missão...
+
+    </div>
+
+</section>
+
+<!-- ======================================================= -->
+<!-- RESPOSTA                                                -->
+<!-- ======================================================= -->
+
+<section class="card">
+
+    <h2>Responder Missão</h2>
+
+    <form>
+
+        <label>
+
+            <input type="radio"
+                   name="resp"
+                   value="A">
+
+            Alternativa A
+
+        </label>
+
+        <br>
+
+        <label>
+
+            <input type="radio"
+                   name="resp"
+                   value="B">
+
+            Alternativa B
+
+        </label>
+
+        <br>
+
+        <label>
+
+            <input type="radio"
+                   name="resp"
+                   value="C">
+
+            Alternativa C
+
+        </label>
+
+        <br>
+
+        <label>
+
+            <input type="radio"
+                   name="resp"
+                   value="D">
+
+            Alternativa D
+
+        </label>
+
+        <br><br>
+
+        <button
+            type="button"
+            id="btnResponder"
+            disabled>
+
+            Responder Missão
+
+        </button>
+
+    </form>
+
+</section>
+
+<!-- ======================================================= -->
+<!-- RESULTADO                                               -->
+<!-- ======================================================= -->
+
+<section class="card">
+
+    <h2>Resultado</h2>
+
+    <div id="resultado">
+
+        Nenhuma resposta enviada.
+
+    </div>
+
+</section>
+
+<!-- ======================================================= -->
+<!-- CONQUISTAS                                              -->
+<!-- ======================================================= -->
+
+<section class="card">
+
+    <h2>🏅 Conquistas</h2>
+
+    <div id="conquistas">
+
+        Nenhuma conquista obtida.
+
+    </div>
+
+</section>
+
+<!-- ======================================================= -->
+<!-- HISTÓRICO                                               -->
+<!-- ======================================================= -->
+
+<section class="card">
+
+    <h2>Histórico</h2>
+
+    <div id="historicoEquipe">
+
+        Nenhuma missão realizada.
+
+    </div>
+
+</section>
 
 </main>
 
 <footer>
-    Project Arena - Versão 2.0
+
+    Project Arena - Equipe - Versão 2.0
+
 </footer>
 
-<!-- Base de dados -->
+<!-- ======================================================= -->
+<!-- SCRIPTS                                                 -->
+<!-- ======================================================= -->
+
 <script src="js/equipes.js"></script>
 <script src="js/desafios.js"></script>
 
-<!-- Módulos -->
 <script src="js/cronometro.js"></script>
 <script src="js/ranking.js"></script>
 <script src="js/relatorio.js"></script>
 <script src="js/missoes.js"></script>
 <script src="js/sessao.js"></script>
 
-<!-- Inicialização -->
 <script src="js/app.js"></script>
 
 </body>

@@ -83,12 +83,7 @@ async function iniciarSessao() {
         }
     }
 
-    const codigoSessao = document.getElementById("codigoSessao");
-
-    if (codigoSessao) {
-        codigoSessao.textContent =
-            localStorage.getItem("idSessaoCloud") || "Modo local";
-    }
+    atualizarCodigoSessaoNaTela();
 
     atualizarProgressoMissao();
     atualizarRanking();
@@ -198,7 +193,28 @@ function prepararSessaoSeNecessario() {
         sortearMissoes(10);
     }
 
+    atualizarCodigoSessaoNaTela();
     atualizarProgressoMissao();
     atualizarRanking();
     atualizarHistoricoNaTela();
+}
+
+// ------------------------------------------------------------
+// CÓDIGO DA SESSÃO
+// ------------------------------------------------------------
+
+function atualizarCodigoSessaoNaTela() {
+    const elemento = document.getElementById("codigoSessao");
+
+    if (!elemento) {
+        return;
+    }
+
+    const idSessao = localStorage.getItem("idSessaoCloud");
+
+    if (idSessao) {
+        elemento.textContent = idSessao;
+    } else {
+        elemento.textContent = "GP-TESTE";
+    }
 }
