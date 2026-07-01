@@ -5,14 +5,15 @@
  *                 Project Arena.
  *
  * Data..........: 30/06/2026
- * Versão........: 2.0.0
+ * Versão........: 2.0
  * Copyright.....: Clayton J. A. Silva
  ******************************************************************************/
 
 import {
     carregarDados,
     atualizarDados,
-    criarRegistro
+    criarRegistro,
+    escutarDados
 } from "../firebase-service.js";
 
 /* ============================================================================
@@ -55,6 +56,15 @@ async function atualizarSessao(idSessao, dadosAtualizados) {
 }
 
 /* ============================================================================
+   Escuta em tempo real da sessão
+   ========================================================================== */
+
+function escutarSessao(idSessao, callback) {
+
+    return escutarDados(`sessoes/${idSessao}`, callback);
+}
+
+/* ============================================================================
    Encerramento de sessão
    ========================================================================== */
 
@@ -74,5 +84,6 @@ export {
     criarSessao,
     obterSessao,
     atualizarSessao,
+    escutarSessao,
     encerrarSessao
 };

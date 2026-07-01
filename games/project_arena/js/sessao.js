@@ -1,11 +1,15 @@
 // ============================================================
 // Descrição geral: funções de controle da sessão, mantendo a
-// lógica local da V1.2 e acrescentando integração inicial com
+// lógica local da V1.2 e acrescentando integração com
 // a Arena Cloud / Firebase.
-// Data de criação: 29/06/2026
+// Data de criação: 30/06/2026
 // Versão: 2.0
 // Copyright: Clayton Silva
 // ============================================================
+
+// ------------------------------------------------------------
+// CRIAÇÃO DA SESSÃO NA NUVEM
+// ------------------------------------------------------------
 
 async function criarSessaoCloudSePossivel() {
     try {
@@ -27,6 +31,10 @@ async function criarSessaoCloudSePossivel() {
     }
 }
 
+// ------------------------------------------------------------
+// ENCERRAMENTO DA SESSÃO NA NUVEM
+// ------------------------------------------------------------
+
 async function encerrarSessaoCloudSePossivel() {
     try {
         const idSessao = localStorage.getItem("idSessaoCloud");
@@ -44,6 +52,10 @@ async function encerrarSessaoCloudSePossivel() {
     }
 }
 
+// ------------------------------------------------------------
+// INÍCIO DA SESSÃO
+// ------------------------------------------------------------
+
 async function iniciarSessao() {
     localStorage.clear();
 
@@ -53,9 +65,14 @@ async function iniciarSessao() {
 
     await criarSessaoCloudSePossivel();
 
+    if (localStorage.getItem("modoCloud") === "sim") {
+        await registrarEquipesCloudSePossivel();
+    }
+
     sortearMissoes(10);
 
     const status = document.getElementById("statusSessao");
+
     if (status) {
         const modoCloud = localStorage.getItem("modoCloud");
 
@@ -66,22 +83,35 @@ async function iniciarSessao() {
         }
     }
 
+    const codigoSessao = document.getElementById("codigoSessao");
+
+    if (codigoSessao) {
+        codigoSessao.textContent =
+            localStorage.getItem("idSessaoCloud") || "Modo local";
+    }
+
     atualizarProgressoMissao();
     atualizarRanking();
     atualizarHistoricoNaTela();
 
     const relatorio = document.getElementById("relatorioFinal");
+
     if (relatorio) {
         relatorio.innerHTML = "A sessão ainda não foi finalizada.";
     }
 
     const area = document.getElementById("desafio");
+
     if (area) {
         area.innerHTML = "Sessão iniciada. Libere a primeira missão.";
     }
 
     zerarCronometro();
 }
+
+// ------------------------------------------------------------
+// FINALIZAÇÃO DA SESSÃO
+// ------------------------------------------------------------
 
 async function finalizarSessao() {
     localStorage.setItem("missaoLiberada", "nao");
@@ -90,6 +120,7 @@ async function finalizarSessao() {
     await encerrarSessaoCloudSePossivel();
 
     const status = document.getElementById("statusSessao");
+
     if (status) {
         status.textContent = "Sessão finalizada";
     }
@@ -99,30 +130,45 @@ async function finalizarSessao() {
     atualizarHistoricoNaTela();
 }
 
+// ------------------------------------------------------------
+// REINÍCIO GERAL
+// ------------------------------------------------------------
+
 function reiniciarTudo() {
     localStorage.clear();
 
     const status = document.getElementById("statusSessao");
+
     if (status) {
         status.textContent = "Aguardando início";
     }
 
+    const codigoSessao = document.getElementById("codigoSessao");
+
+    if (codigoSessao) {
+        codigoSessao.textContent = "GP-TESTE";
+    }
+
     const area = document.getElementById("desafio");
+
     if (area) {
         area.innerHTML = "Nenhuma missão liberada.";
     }
 
     const ranking = document.getElementById("ranking");
+
     if (ranking) {
         ranking.innerHTML = "";
     }
 
     const historico = document.getElementById("historico");
+
     if (historico) {
         historico.innerHTML = "Nenhuma resposta registrada.";
     }
 
     const relatorio = document.getElementById("relatorioFinal");
+
     if (relatorio) {
         relatorio.innerHTML = "A sessão ainda não foi finalizada.";
     }
@@ -130,6 +176,10 @@ function reiniciarTudo() {
     zerarCronometro();
     atualizarProgressoMissao();
 }
+
+// ------------------------------------------------------------
+// PREPARAÇÃO DA SESSÃO
+// ------------------------------------------------------------
 
 function prepararSessaoSeNecessario() {
     if (!localStorage.getItem("estadoEquipes")) {

@@ -1,12 +1,13 @@
 // ============================================================
-// Descrição geral: funções de histórico e relatórios do Project Arena V2.0
+// Descrição geral: funções de histórico e relatórios do Project Arena V2.0,
+// com persistência local e sincronização de respostas na Arena Cloud.
 // Data de criação: 30/06/2026
 // Versão: 2.0
 // Copyright: Clayton Silva
 // ============================================================
 
 // ------------------------------------------------------------
-// HISTÓRICO
+// HISTÓRICO LOCAL
 // ------------------------------------------------------------
 
 function obterHistorico() {
@@ -17,15 +18,53 @@ function salvarHistorico(historico) {
     localStorage.setItem("historicoRespostas", JSON.stringify(historico));
 }
 
-function registrarHistorico(registro) {
-    const historico = obterHistorico();
-
-    historico.push({
+async function registrarHistorico(registro) {
+    const registroCompleto = {
         ...registro,
         dataHora: new Date().toLocaleString("pt-BR")
-    });
+    };
 
+    const historico = obterHistorico();
+    historico.push(registroCompleto);
     salvarHistorico(historico);
+
+    await registrarHistoricoCloudSePossivel(registroCompleto);
+}
+
+// ------------------------------------------------------------
+// HISTÓRICO NA NUVEM
+// ------------------------------------------------------------
+
+async function registrarHistoricoCloudSePossivel(registro) {
+    try {
+        const idSessao = localStorage.getItem("idSessaoCloud");
+
+        if (!idSessao) {
+            return;
+        }
+
+        const arenaCloud = await import("./arena-cloud.js");
+
+        if (!arenaCloud.registrarResposta) {
+            return;
+        }
+
+        await arenaCloud.registrarResposta(idSessao, {
+            missao: registro.missao,
+            missaoId: registro.missaoId,
+            equipe: registro.equipe,
+            equipeId: registro.equipeId,
+            resposta: registro.resposta,
+            correta: registro.correta,
+            acertou: registro.acertou,
+            pontos: registro.pontos || 0,
+            xp: registro.xp || 0,
+            dataHora: registro.dataHora
+        });
+
+    } catch (erro) {
+        console.warn("Não foi possível registrar histórico na nuvem.", erro);
+    }
 }
 
 // ------------------------------------------------------------
@@ -100,7 +139,7 @@ function calcularResumoFinal() {
                 percentual
             };
         })
-        .sort((a, b) => b.pontos - a.pontos);
+        .sort((a, b) => (b.pontos || 0) - (a.pontos || 0));
 }
 
 function gerarRelatorioFinal() {
@@ -124,7 +163,7 @@ function gerarRelatorioFinal() {
 
         <p><strong>Pontos:</strong> ${vencedora.pontos || 0}</p>
         <p><strong>XP:</strong> ${vencedora.xp || 0}</p>
-        <p><strong>Nível:</strong> ${vencedora.nivel || 1}</p>
+        <p><strong>Nível:</strong> ${vencedora.nivel || "Estagiário"}</p>
 
         <hr>
 
@@ -153,7 +192,7 @@ function gerarRelatorioFinal() {
                 <td>${equipe.acertos}</td>
                 <td>${equipe.erros}</td>
                 <td>${equipe.percentual}%</td>
-                <td>${equipe.nivel || 1}</td>
+                <td>${equipe.nivel || "Estagiário"}</td>
             </tr>
         `;
     });
@@ -190,6 +229,8 @@ function gerarObjetoRelatorioFinal() {
     return {
         projeto: "Project Arena",
         versao: "2.0",
+        modoCloud: localStorage.getItem("modoCloud") || "nao",
+        idSessaoCloud: localStorage.getItem("idSessaoCloud") || null,
         dataGeracao: new Date().toLocaleString("pt-BR"),
         resumoEquipes: calcularResumoFinal(),
         historico: obterHistorico()

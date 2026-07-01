@@ -4,7 +4,7 @@
  * Descrição.....: Serviços de acesso ao Firebase.
  *
  * Data..........: 30/06/2026
- * Versão........: 2.0.1
+ * Versão........: 2.0
  ******************************************************************************/
 
 import { database } from "./firebase-config.js";
@@ -15,7 +15,8 @@ import {
     get,
     update,
     remove,
-    push
+    push,
+    onValue
 } from "https://www.gstatic.com/firebasejs/12.15.0/firebase-database.js";
 
 const BASE_PATH = "project_arena";
@@ -29,11 +30,11 @@ async function salvarDados(caminho, dados) {
 }
 
 async function carregarDados(caminho) {
-
     const snapshot = await get(caminhoFirebase(caminho));
 
-    if (snapshot.exists())
+    if (snapshot.exists()) {
         return snapshot.val();
+    }
 
     return null;
 }
@@ -47,7 +48,6 @@ async function removerDados(caminho) {
 }
 
 async function criarRegistro(caminho, dados) {
-
     const novoRegistro = push(caminhoFirebase(caminho));
 
     await set(novoRegistro, {
@@ -58,12 +58,24 @@ async function criarRegistro(caminho, dados) {
     return novoRegistro.key;
 }
 
-export {
+function escutarDados(caminho, callback) {
+    const referencia = caminhoFirebase(caminho);
 
+    return onValue(referencia, snapshot => {
+        if (!snapshot.exists()) {
+            callback(null);
+            return;
+        }
+
+        callback(snapshot.val());
+    });
+}
+
+export {
     salvarDados,
     carregarDados,
     atualizarDados,
     removerDados,
-    criarRegistro
-
+    criarRegistro,
+    escutarDados
 };
