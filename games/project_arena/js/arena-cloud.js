@@ -5,7 +5,7 @@
  *                 módulos especializados de nuvem do Project Arena.
  *
  * Data..........: 30/06/2026
- * Versão........: 2.0.1
+ * Versão........: 2.0
  * Copyright.....: Clayton J. A. Silva
  ******************************************************************************/
 
@@ -13,7 +13,8 @@ import {
     criarSessao,
     obterSessao,
     atualizarSessao,
-    encerrarSessao
+    encerrarSessao,
+    escutarSessao
 } from "./cloud/cloud-sessoes.js";
 
 import {
@@ -50,11 +51,10 @@ import {
 } from "./cloud/cloud-ranking.js";
 
 /* ============================================================================
-   Teste integrado da camada Arena Cloud
+   TESTE INTEGRADO DA CAMADA ARENA CLOUD
    ========================================================================== */
 
 async function testarArenaCloud() {
-
     const idSessao = await criarSessao({
         nome: "Sessão de teste Arena Cloud"
     });
@@ -84,7 +84,7 @@ async function testarArenaCloud() {
 }
 
 /* ============================================================================
-   Exportação pública da Arena Cloud
+   EXPORTAÇÃO PÚBLICA DA ARENA CLOUD
    ========================================================================== */
 
 export {
@@ -92,6 +92,7 @@ export {
     obterSessao,
     atualizarSessao,
     encerrarSessao,
+    escutarSessao,
 
     criarEquipe,
     obterEquipe,

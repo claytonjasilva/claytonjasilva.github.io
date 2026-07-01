@@ -62,7 +62,8 @@ async function sincronizarMissoesCloudSePossivel(missoes, indice = 0, liberada =
             indiceMissaoAtual: indice,
             missaoLiberada: liberada,
             missaoAtual: missoes[indice] ? missoes[indice].id : null,
-            totalMissoes: missoes.length
+            totalMissoes: missoes.length,
+            missoesSessao: missoes
         });
 
     } catch (erro) {
@@ -335,9 +336,22 @@ function atualizarTelaMissaoEquipe() {
     if (localStorage.getItem("missaoLiberada") === "sim") {
         area.innerHTML = montarHtmlMissao(obterMissaoAtual());
         status.textContent = "Missão liberada pelo árbitro.";
+
+        const botaoResponder = document.getElementById("btnResponder");
+
+        if (botaoResponder) {
+            botaoResponder.disabled = false;
+        }
+
     } else {
         area.innerHTML = "Aguardando missão...";
         status.textContent = "Aguardando liberação da missão.";
+
+        const botaoResponder = document.getElementById("btnResponder");
+
+        if (botaoResponder) {
+            botaoResponder.disabled = true;
+        }
     }
 }
 
