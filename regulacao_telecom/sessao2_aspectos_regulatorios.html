@@ -1,0 +1,806 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Sessão 2 — Estrutura da LGT, Órgão Regulador e Espectro — Aspectos Regulatórios de Telecomunicações</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,600;1,300&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg:        #0a0e17;
+    --surface:   #111827;
+    --border:    #1e2d40;
+    --accent:    #00c2ff;
+    --accent2:   #7c3aed;
+    --text:      #e2e8f0;
+    --muted:     #64748b;
+    --tag-bg:    #0f172a;
+    --font-mono: 'IBM Plex Mono', monospace;
+    --font-sans: 'IBM Plex Sans', sans-serif;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { height: 100%; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--font-sans);
+    font-size: 17px;
+    line-height: 1.55;
+    overflow: hidden;
+  }
+  a { color: var(--accent); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  strong { color: var(--text); font-weight: 600; }
+  .accent { color: var(--accent); }
+  .accent2 { color: var(--accent2); }
+
+  /* ── TOP BAR ── */
+  .topbar {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0.9rem 1.75rem;
+    background: linear-gradient(rgba(10,14,23,0.92), rgba(10,14,23,0));
+    pointer-events: none;
+  }
+  .topbar a, .topbar span { pointer-events: auto; }
+  .topbar-left { display: flex; align-items: center; gap: 1rem; }
+  .back-link {
+    font-family: var(--font-mono); font-size: 0.72rem; color: var(--muted);
+    border: 1px solid var(--border); border-radius: 4px; padding: 0.3rem 0.65rem;
+    transition: color 0.2s, border-color 0.2s;
+  }
+  .back-link:hover { color: var(--accent); border-color: var(--accent); text-decoration: none; }
+  .session-pill {
+    font-family: var(--font-mono); font-size: 0.72rem; color: var(--accent2);
+    background: rgba(124,58,237,0.12); border: 1px solid rgba(124,58,237,0.3);
+    border-radius: 4px; padding: 0.3rem 0.65rem;
+  }
+  .counter {
+    font-family: var(--font-mono); font-size: 0.75rem; color: var(--muted);
+    letter-spacing: 0.05em;
+  }
+
+  /* ── PROGRESS BAR ── */
+  .progress {
+    position: fixed; top: 0; left: 0; height: 2px; background: var(--accent);
+    z-index: 250; transition: width 0.25s ease;
+  }
+
+  /* ── DECK / SLIDES ── */
+  .deck {
+    height: 100%; overflow-y: scroll; scroll-snap-type: y mandatory; scroll-behavior: smooth;
+  }
+  .slide {
+    height: 100vh; scroll-snap-align: start; scroll-snap-stop: always;
+    display: flex; flex-direction: column; justify-content: center;
+    padding: 6.5rem 7vw 5rem; position: relative; overflow: hidden;
+    border-bottom: 1px solid var(--border);
+  }
+  .slide-inner { max-width: 1180px; width: 100%; margin: 0 auto; }
+  .slide-grid { display: grid; grid-template-columns: 1fr; gap: 2.5rem; }
+  .slide-grid.cols-2 { grid-template-columns: 1fr 1fr; align-items: center; }
+  .slide-grid.cols-3 { grid-template-columns: repeat(3, 1fr); gap: 1.25rem; }
+  .slide::after {
+    content: ''; position: absolute; inset: 0; pointer-events: none;
+    background-image:
+      linear-gradient(var(--border) 1px, transparent 1px),
+      linear-gradient(90deg, var(--border) 1px, transparent 1px);
+    background-size: 44px 44px; opacity: 0.16;
+    mask-image: radial-gradient(ellipse 70% 55% at 85% 15%, black 0%, transparent 70%);
+  }
+
+  .eyebrow {
+    font-family: var(--font-mono); font-size: 0.78rem; color: var(--accent);
+    letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 1rem;
+    display: flex; align-items: center; gap: 0.75rem;
+  }
+  .eyebrow::before { content: ''; display: inline-block; width: 2rem; height: 1px; background: var(--accent); }
+  .slide-title { font-size: clamp(1.7rem, 3.2vw, 2.55rem); font-weight: 600; line-height: 1.15; margin-bottom: 1rem; letter-spacing: -0.01em; }
+  .slide-title strong { color: var(--accent); font-weight: 600; }
+  .slide-sub { font-size: 1.05rem; color: var(--muted); max-width: 760px; margin-bottom: 1.5rem; }
+  .lead { font-size: 1.02rem; color: var(--text); max-width: 780px; margin-bottom: 1rem; }
+  .lead.muted { color: var(--muted); }
+  .small-note { font-size: 0.82rem; color: var(--muted); margin-top: 0.75rem; }
+
+  /* ── CAPA (slide 0) ── */
+  .capa { justify-content: center; align-items: flex-start; }
+  .capa h1 { font-size: clamp(2.2rem, 5.6vw, 4rem); font-weight: 300; line-height: 1.08; letter-spacing: -0.02em; margin-bottom: 1.25rem; }
+  .capa h1 strong { font-weight: 600; color: var(--accent); }
+  .capa .subtitle { font-family: var(--font-mono); font-size: 1.05rem; color: var(--accent2); margin-bottom: 2.5rem; }
+  .capa .meta { font-family: var(--font-mono); font-size: 0.85rem; color: var(--muted); display: flex; flex-direction: column; gap: 0.4rem; }
+  .scroll-cue {
+    position: absolute; bottom: 3rem; left: 7vw; font-family: var(--font-mono); font-size: 0.72rem;
+    color: var(--muted); display: flex; align-items: center; gap: 0.6rem; letter-spacing: 0.08em;
+  }
+  .scroll-cue svg { animation: bounce 1.8s infinite; }
+  @keyframes bounce { 0%,100%{transform:translateY(0);} 50%{transform:translateY(5px);} }
+
+  /* ── DIVIDER SLIDES ── */
+  .divider { align-items: center; text-align: center; }
+  .divider .slide-inner { display: flex; flex-direction: column; align-items: center; }
+  .divider .num { font-family: var(--font-mono); font-size: 5rem; color: var(--border); font-weight: 600; line-height: 1; margin-bottom: 1rem; }
+  .divider h2 { font-size: clamp(2rem, 4.6vw, 3.3rem); font-weight: 300; letter-spacing: -0.02em; }
+  .divider h2 strong { color: var(--accent); font-weight: 600; }
+  .divider p { color: var(--muted); margin-top: 1.25rem; max-width: 620px; }
+
+  /* ── CARDS / GRIDS ── */
+  .card-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px,1fr)); gap: 1rem; margin-top: 1rem; }
+  .info-card {
+    background: var(--surface); border: 1px solid var(--border); border-radius: 8px;
+    padding: 1.25rem 1.4rem; display: flex; flex-direction: column; gap: 0.5rem;
+  }
+  .info-card .k { font-family: var(--font-mono); font-size: 0.7rem; color: var(--accent); text-transform: uppercase; letter-spacing: 0.08em; }
+  .info-card h4 { font-size: 1rem; font-weight: 600; }
+  .info-card p { font-size: 0.88rem; color: var(--muted); }
+
+  .stat-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px,1fr)); gap: 1.1rem; margin-top: 1rem; }
+  .stat-card {
+    background: var(--surface); border: 1px solid var(--border); border-radius: 8px;
+    padding: 1.4rem; text-align: center;
+  }
+  .stat-num { font-family: var(--font-mono); font-size: 1.9rem; font-weight: 600; color: var(--accent); line-height: 1; }
+  .stat-label { font-size: 0.82rem; color: var(--muted); margin-top: 0.5rem; }
+  .stat-card.warn .stat-num { color: #f59e0b; }
+
+  .article-block { border-left: 2px solid var(--accent2); padding-left: 1.1rem; margin-bottom: 1.1rem; }
+  .article-block .art-num { font-family: var(--font-mono); font-size: 0.72rem; color: var(--accent2); text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 0.3rem; }
+  .article-block p { font-size: 0.95rem; color: var(--text); }
+  .article-block p.small { font-size: 0.85rem; color: var(--muted); margin-top: 0.3rem; }
+
+  .ref-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px,1fr)); gap: 0.75rem; margin-top: 1.25rem; }
+  .ref-item {
+    background: var(--tag-bg); border: 1px solid var(--border); border-radius: 6px;
+    padding: 0.85rem 1.05rem; display: flex; gap: 0.7rem; align-items: flex-start;
+  }
+  .ref-item a { font-size: 0.85rem; font-weight: 500; }
+  .ref-item span { display: block; font-size: 0.76rem; color: var(--muted); margin-top: 0.1rem; }
+
+  .def-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px,1fr)); gap: 0.9rem; margin-top: 1.25rem; }
+  .def-card { background: var(--tag-bg); border: 1px solid var(--border); border-radius: 8px; padding: 1rem 1.2rem; }
+  .def-card .term { font-family: var(--font-mono); font-size: 0.78rem; color: var(--accent); margin-bottom: 0.35rem; text-transform: uppercase; letter-spacing: 0.04em; }
+  .def-card p { font-size: 0.85rem; color: var(--muted); }
+
+  /* ── TABLE ── */
+  .table-wrap { overflow-x: auto; border: 1px solid var(--border); border-radius: 8px; margin-top: 1.25rem; }
+  table { width: 100%; border-collapse: collapse; font-size: 0.85rem; }
+  thead tr { background: var(--tag-bg); border-bottom: 1px solid var(--border); }
+  thead th { padding: 0.65rem 0.9rem; text-align: left; font-family: var(--font-mono); font-size: 0.7rem; color: var(--muted); letter-spacing: 0.08em; text-transform: uppercase; font-weight: 400; }
+  tbody tr { border-bottom: 1px solid var(--border); }
+  tbody tr:last-child { border-bottom: none; }
+  tbody td { padding: 0.65rem 0.9rem; color: var(--muted); }
+  tbody td:first-child { color: var(--text); font-weight: 600; }
+
+  /* ── PYRAMID RECAP MINI ── */
+  .mini-pyramid { display: flex; flex-direction: column; gap: 3px; max-width: 380px; }
+  .mini-pyramid .band { border-radius: 5px; padding: 0.4rem 0.8rem; font-family: var(--font-mono); font-size: 0.72rem; }
+  .mini-pyramid .l1 { background: rgba(0,194,255,0.85); color: #0a0e17; font-weight: 700; }
+  .mini-pyramid .l2 { background: rgba(124,58,237,0.55); color: #fff; font-weight: 600; }
+  .mini-pyramid .l3 { background: rgba(124,58,237,0.28); color: var(--text); }
+  .mini-pyramid .lrest { background: rgba(124,58,237,0.12); color: var(--muted); }
+
+  svg text { font-family: var(--font-sans); }
+  .svg-wrap { display: flex; align-items: center; justify-content: center; }
+  .svg-wrap svg { width: 100%; height: auto; max-height: 60vh; }
+
+  /* ── NAV DOTS ── */
+  .dots {
+    position: fixed; right: 1.5rem; top: 50%; transform: translateY(-50%); z-index: 200;
+    display: flex; flex-direction: column; gap: 0.5rem;
+  }
+  .dot {
+    width: 7px; height: 7px; border-radius: 50%; background: var(--border);
+    border: none; cursor: pointer; transition: background 0.2s, transform 0.2s; padding: 0;
+  }
+  .dot:hover { background: var(--muted); }
+  .dot.active { background: var(--accent); transform: scale(1.4); }
+
+  /* ── FOOTER SLIDE ── */
+  .end-links { display: flex; gap: 1rem; flex-wrap: wrap; margin-top: 1.5rem; }
+  .end-link {
+    font-family: var(--font-mono); font-size: 0.8rem; color: var(--accent);
+    border: 1px solid rgba(0,194,255,0.25); border-radius: 4px; padding: 0.5rem 1rem;
+    transition: background 0.2s;
+  }
+  .end-link:hover { background: rgba(0,194,255,0.08); text-decoration: none; }
+
+  .case-tag {
+    display: inline-block; font-family: var(--font-mono); font-size: 0.68rem;
+    background: rgba(245,158,11,0.12); border: 1px solid rgba(245,158,11,0.35); color: #f59e0b;
+    border-radius: 4px; padding: 0.2rem 0.6rem; margin-bottom: 0.9rem; letter-spacing: 0.05em;
+  }
+  .new-tag {
+    display: inline-block; font-family: var(--font-mono); font-size: 0.68rem;
+    background: rgba(0,194,255,0.12); border: 1px solid rgba(0,194,255,0.35); color: var(--accent);
+    border-radius: 4px; padding: 0.2rem 0.6rem; margin-bottom: 0.9rem; letter-spacing: 0.05em;
+  }
+
+  @media (max-width: 900px) {
+    body { font-size: 15px; overflow-y: auto; }
+    .deck { overflow-y: visible; height: auto; scroll-snap-type: none; }
+    .slide { height: auto; min-height: 100vh; padding: 5.5rem 6vw 3.5rem; }
+    .slide-grid.cols-2, .slide-grid.cols-3 { grid-template-columns: 1fr; }
+    .dots { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<div class="progress" id="progress" style="width:0%"></div>
+<div class="topbar">
+  <div class="topbar-left">
+    <a class="back-link" href="../aspectosregulatorios.html">← voltar</a>
+    <span class="session-pill">Sessão 2 / 3</span>
+  </div>
+  <span class="counter" id="counter">01 / 26</span>
+</div>
+<div class="dots" id="dots"></div>
+
+<main class="deck" id="deck">
+
+  <!-- 0 · CAPA -->
+  <section class="slide capa" id="slide-0">
+    <div class="slide-inner">
+      <p class="eyebrow">IME — Instituto Militar de Engenharia · Engenharia de Telecomunicações</p>
+      <h1>Aspectos<br><strong>Regulatórios</strong> de Telecomunicações</h1>
+      <p class="subtitle">Sessão 2 — Estrutura da LGT, o Órgão Regulador e o Espectro</p>
+      <div class="meta">
+        <span>Prof. Clayton Jones Alves da Silva</span>
+        <span>clayton.j.a.silva@gmail.com</span>
+      </div>
+    </div>
+    <div class="scroll-cue">
+      <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 2v9M3 8l4 4 4-4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      role para navegar · setas do teclado
+    </div>
+  </section>
+
+  <!-- 1 · RECAP SESSÃO 1 -->
+  <section class="slide" id="slide-1">
+    <div class="slide-inner slide-grid cols-2">
+      <div>
+        <p class="eyebrow">Recapitulando</p>
+        <h2 class="slide-title">O que vimos na <strong>Sessão 1</strong></h2>
+        <p class="lead muted">Do monopólio estatal (Telebrás) à privatização de 1998, chegamos à Lei Geral de Telecomunicações (LGT — Lei 9.472/1997), que organiza o setor em 4 livros e cria a Anatel como órgão regulador.</p>
+        <p class="lead muted">Hoje aprofundamos os dois primeiros níveis do arcabouço regulatório: como a Anatel se estrutura, como ela cobra pela fiscalização (FISTEL) e como funciona a gestão do espectro de radiofrequências.</p>
+      </div>
+      <div class="mini-pyramid">
+        <div class="band l1">1 · Constituição Federal</div>
+        <div class="band l2">2 · Leis Federais — LGT ★ hoje</div>
+        <div class="band lrest">Decretos Presidenciais</div>
+        <div class="band l3">3 · Regulamentos da Anatel ★ hoje</div>
+        <div class="band lrest">Outorgas e Licenças</div>
+        <div class="band lrest">Fundos e Incentivos ★ hoje</div>
+        <div class="band lrest">Decisões e Pareceres</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 2 · ROTEIRO -->
+  <section class="slide" id="slide-2">
+    <div class="slide-inner">
+      <p class="eyebrow">Roteiro — 3 horas-aula</p>
+      <h2 class="slide-title">O que vamos ver <strong>hoje</strong></h2>
+      <div class="card-grid" style="grid-template-columns: repeat(auto-fit, minmax(210px,1fr));">
+        <div class="info-card"><span class="k">Bloco 1</span><h4>O Órgão Regulador</h4><p>Natureza jurídica da Anatel, Conselho Diretor, Conselho Consultivo e competências.</p></div>
+        <div class="info-card"><span class="k">Bloco 2</span><h4>Outorgas e FISTEL</h4><p>Concessão × Permissão × Autorização, isenções e o Fundo de Fiscalização.</p></div>
+        <div class="info-card"><span class="k">Bloco 3</span><h4>Classificação de Serviços</h4><p>Coletivo × Restrito, Público × Privado — a base para a Sessão 3.</p></div>
+        <div class="info-card"><span class="k">Bloco 4</span><h4>Espectro de Radiofrequências</h4><p>Regiões da UIT, o RUE (Res. 671/2016) e as definições técnicas essenciais.</p></div>
+      </div>
+      <p class="small-note">Ao longo da sessão, destaques em <span style="color:#f59e0b;">âmbar</span> marcam casos reais para debate em aula, e em <span class="accent">azul</span>, novidades regulatórias recentes.</p>
+    </div>
+  </section>
+
+  <!-- 3 · DIVIDER: Órgão Regulador -->
+  <section class="slide divider" id="slide-3">
+    <div class="slide-inner">
+      <p class="num">02</p>
+      <h2>O Órgão <strong>Regulador</strong></h2>
+      <p>Como a Anatel foi criada, como se organiza e quais são seus poderes normativos.</p>
+    </div>
+  </section>
+
+  <!-- 4 · CRIAÇÃO DA ANATEL -->
+  <section class="slide" id="slide-4">
+    <div class="slide-inner slide-grid cols-2">
+      <div>
+        <p class="eyebrow">Livro II — Art. 8º</p>
+        <h2 class="slide-title">A natureza jurídica da <strong>Anatel</strong></h2>
+        <div class="article-block">
+          <div class="art-num">Art. 8º</div>
+          <p>Fica criada a Agência Nacional de Telecomunicações, entidade integrante da Administração Pública Federal indireta, submetida a regime autárquico especial e vinculada ao Ministério das Comunicações, com a função de órgão regulador das telecomunicações.</p>
+        </div>
+        <p class="lead muted">A "autarquia especial" se caracteriza por: independência administrativa, autonomia financeira, ausência de subordinação hierárquica, e mandato fixo e estabilidade de seus dirigentes (Decreto nº 2.338/1997, art. 1º).</p>
+      </div>
+      <div class="info-card">
+        <span class="k">Instalação</span>
+        <h4>5 de novembro de 1997</h4>
+        <p>A Anatel foi instalada poucos meses após a sanção da LGT (16/07/1997), tornando-se a primeira agência reguladora federal do setor de infraestrutura no Brasil.</p>
+        <p style="margin-top:0.5rem;">Sede em Brasília (DF), com atuação em todo o território nacional.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5 · ESTRUTURA: CONSELHO DIRETOR E CONSULTIVO -->
+  <section class="slide" id="slide-5">
+    <div class="slide-inner">
+      <p class="eyebrow">Órgãos superiores</p>
+      <h2 class="slide-title">Conselho Diretor e Conselho <strong>Consultivo</strong></h2>
+      <div class="slide-grid cols-2" style="margin-top:1rem;">
+        <div class="info-card">
+          <span class="k">Órgão máximo</span>
+          <h4>Conselho Diretor</h4>
+          <p>5 conselheiros, escolhidos e nomeados pelo Presidente da República após aprovação do Senado Federal. Mandato fixo de 5 anos, com vencimento escalonado (um por ano), para preservar a memória institucional.</p>
+          <p style="margin-top:0.5rem;">Decisões tomadas por maioria absoluta (mínimo de 3 votos), em reuniões, sessões ou circuitos deliberativos. O presidente do Conselho acumula a função de presidente-executivo da Agência.</p>
+        </div>
+        <div class="info-card">
+          <span class="k">Participação social</span>
+          <h4>Conselho Consultivo</h4>
+          <p>12 membros designados por decreto presidencial, representando Senado, Câmara dos Deputados, Poder Executivo, prestadoras de serviço, usuários e entidades da sociedade civil.</p>
+          <p style="margin-top:0.5rem;">Acompanha as ações da Anatel, emite pareceres não vinculantes e funciona como canal entre a sociedade, o setor regulado e o poder público.</p>
+        </div>
+      </div>
+      <p class="small-note">Fonte: <a href="https://www.gov.br/anatel/pt-br/composicao/conselho-diretor" target="_blank">Anatel — Composição do Conselho Diretor</a>. Presidente do Conselho Diretor desde abril de 2022: Carlos Manuel Baigorri.</p>
+    </div>
+  </section>
+
+  <!-- 6 · COMPETÊNCIAS -->
+  <section class="slide" id="slide-6">
+    <div class="slide-inner">
+      <p class="eyebrow">Livro II — Art. 19</p>
+      <h2 class="slide-title">Principais <strong>competências</strong> da Anatel</h2>
+      <div class="card-grid">
+        <div class="info-card"><h4>Política setorial</h4><p>Implementar, em sua esfera de atribuições, a política nacional de telecomunicações.</p></div>
+        <div class="info-card"><h4>Outorgas</h4><p>Expedir normas quanto à outorga, prestação e fruição dos serviços no regime público.</p></div>
+        <div class="info-card"><h4>Espectro e órbita</h4><p>Administrar o espectro de radiofrequências e o uso de órbitas, expedindo as respectivas normas.</p></div>
+        <div class="info-card"><h4>Certificação</h4><p>Expedir ou reconhecer a certificação de produtos, conforme padrões e normas estabelecidos.</p></div>
+        <div class="info-card"><h4>Defesa do usuário</h4><p>Reprimir infrações dos direitos dos usuários dos serviços de telecomunicações.</p></div>
+        <div class="info-card"><h4>Ordem econômica</h4><p>Exercer competências de controle, prevenção e repressão de infrações à ordem econômica no setor, ressalvadas as competências do Cade.</p></div>
+      </div>
+      <p class="small-note">Complementarmente, o <strong>Art. 18</strong> reserva ao Poder Executivo, por decreto, competências como aprovar o plano geral de outorgas e o plano geral de metas de universalização.</p>
+    </div>
+  </section>
+
+  <!-- 7 · DIVIDER: Outorgas -->
+  <section class="slide divider" id="slide-7">
+    <div class="slide-inner">
+      <p class="num">03</p>
+      <h2>Outorgas e <strong>FISTEL</strong></h2>
+      <p>Como o Estado autoriza a exploração dos serviços — e como financia a fiscalização desse mercado.</p>
+    </div>
+  </section>
+
+  <!-- 8 · TABELA CONCESSÃO/PERMISSÃO/AUTORIZAÇÃO -->
+  <section class="slide" id="slide-8">
+    <div class="slide-inner">
+      <p class="eyebrow">Livro III — Art. 48</p>
+      <h2 class="slide-title">Concessão, Permissão e <strong>Autorização</strong></h2>
+      <div class="article-block">
+        <div class="art-num">Art. 48</div>
+        <p>A concessão, permissão ou autorização para a exploração de serviços de telecomunicações e de uso de radiofrequência, para qualquer serviço, será sempre feita a título oneroso.</p>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Modalidade</th><th>Natureza</th><th>Requer licitação</th><th>Revogabilidade</th></tr></thead>
+          <tbody>
+            <tr><td>Concessão</td><td>Contrato público</td><td>Sim (concorrência)</td><td>Não (exceto por inadimplência contratual)</td></tr>
+            <tr><td>Permissão</td><td>Ato unilateral</td><td>Sim</td><td>Sim (ato precário)</td></tr>
+            <tr><td>Autorização</td><td>Ato administrativo</td><td>Não necessariamente</td><td>Sim (ato precário)</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- 9 · ISENÇÕES FISTEL -->
+  <section class="slide" id="slide-9">
+    <div class="slide-inner slide-grid cols-2">
+      <div>
+        <p class="eyebrow">Livro II — Art. 51</p>
+        <h2 class="slide-title">Quem é <strong>isento</strong> das taxas do FISTEL</h2>
+        <div class="article-block">
+          <div class="art-num">Art. 51</div>
+          <p>São isentos do pagamento das taxas do FISTEL a Agência Nacional de Telecomunicações, <strong>as Forças Armadas</strong>, a Polícia Federal, as Polícias Militares, a Polícia Rodoviária Federal, as Polícias Civis e os Corpos de Bombeiros Militares.</p>
+        </div>
+        <p class="lead muted">A isenção reconhece que essas instituições operam redes de telecomunicações de interesse público e de segurança nacional — tema especialmente relevante para engenheiros que atuam em sistemas de uso militar.</p>
+      </div>
+      <div class="icon-grid" style="display:grid; grid-template-columns:1fr; gap:0.75rem;">
+        <div class="info-card"><h4>Anatel</h4></div>
+        <div class="info-card"><h4>Forças Armadas</h4></div>
+        <div class="info-card"><h4>Polícia Federal · Polícias Militares · PRF</h4></div>
+        <div class="info-card"><h4>Polícias Civis · Corpos de Bombeiros Militares</h4></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 10 · FISTEL ESTRUTURA -->
+  <section class="slide" id="slide-10">
+    <div class="slide-inner slide-grid cols-2">
+      <div>
+        <p class="eyebrow">Livro II — Art. 47</p>
+        <h2 class="slide-title">A estrutura do <strong>FISTEL</strong></h2>
+        <div class="article-block">
+          <div class="art-num">Art. 47</div>
+          <p>O produto da arrecadação das taxas de fiscalização e de funcionamento será destinado ao Fundo de Fiscalização das Telecomunicações — FISTEL.</p>
+        </div>
+        <p class="lead muted">O FISTEL se divide em duas taxas complementares, cobradas em momentos distintos do ciclo de vida de uma estação de telecomunicações.</p>
+      </div>
+      <div class="svg-wrap">
+        <svg viewBox="0 0 420 320" xmlns="http://www.w3.org/2000/svg" font-family="IBM Plex Sans, sans-serif">
+          <rect x="110" y="10" width="200" height="60" rx="10" fill="#00c2ff" opacity="0.85"/>
+          <text x="210" y="35" text-anchor="middle" font-size="14" fill="#0a0e17" font-weight="700">FISTEL</text>
+          <text x="210" y="53" text-anchor="middle" font-size="9.5" fill="#0a0e17">Fundo de Fiscalização das Telecom.</text>
+          <line x1="210" y1="70" x2="210" y2="90" stroke="#334155" stroke-width="1.3"/>
+          <line x1="90" y1="90" x2="330" y2="90" stroke="#334155" stroke-width="1.3"/>
+          <line x1="90" y1="90" x2="90" y2="110" stroke="#334155" stroke-width="1.3"/>
+          <line x1="330" y1="90" x2="330" y2="110" stroke="#334155" stroke-width="1.3"/>
+
+          <rect x="10" y="110" width="160" height="130" rx="8" fill="#111827" stroke="#00c2ff" stroke-width="1.4"/>
+          <text x="90" y="136" text-anchor="middle" font-size="13" fill="#e2e8f0" font-weight="700">TFF</text>
+          <text x="90" y="154" text-anchor="middle" font-size="9" fill="#94a3b8">Taxa de Fiscalização</text>
+          <text x="90" y="166" text-anchor="middle" font-size="9" fill="#94a3b8">de Funcionamento</text>
+          <text x="20" y="188" font-size="8.5" fill="#64748b">Finalidade:</text>
+          <text x="20" y="200" font-size="8.5" fill="#cbd5e1">Custeio da fiscalização</text>
+          <text x="20" y="211" font-size="8.5" fill="#cbd5e1">anual do serviço</text>
+          <text x="20" y="226" font-size="8.5" fill="#64748b">Periodicidade: Anual</text>
+
+          <rect x="250" y="110" width="160" height="130" rx="8" fill="#111827" stroke="#7c3aed" stroke-width="1.4"/>
+          <text x="330" y="136" text-anchor="middle" font-size="13" fill="#e2e8f0" font-weight="700">TFI</text>
+          <text x="330" y="154" text-anchor="middle" font-size="9" fill="#94a3b8">Taxa de Fiscalização</text>
+          <text x="330" y="166" text-anchor="middle" font-size="9" fill="#94a3b8">de Instalação</text>
+          <text x="260" y="188" font-size="8.5" fill="#64748b">Finalidade:</text>
+          <text x="260" y="200" font-size="8.5" fill="#cbd5e1">Custeio da fiscalização</text>
+          <text x="260" y="211" font-size="8.5" fill="#cbd5e1">inicial da instalação</text>
+          <text x="260" y="226" font-size="8.5" fill="#64748b">Periodicidade: Pagamento único</text>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <!-- 11 · CASO STF -->
+  <section class="slide" id="slide-11">
+    <div class="slide-inner">
+      <span class="case-tag">CASO PARA DEBATE — EM JULGAMENTO NO STF</span>
+      <h2 class="slide-title">TFI e TFF são <strong>proporcionais</strong> ao custo da fiscalização?</h2>
+      <p class="lead">Desde fevereiro de 2025, a Acel e a Abrafix questionam no STF (ADI 7787, rel. min. Alexandre de Moraes) os valores cobrados de TFI e TFF, alegando desproporção entre arrecadação e gasto efetivo com fiscalização.</p>
+      <div class="stat-grid">
+        <div class="stat-card warn"><div class="stat-num">R$ 891,5 mi</div><div class="stat-label">arrecadação projetada de TFI + TFF (PLOA 2025)</div></div>
+        <div class="stat-card warn"><div class="stat-num">R$ 37,5 mi</div><div class="stat-label">orçamento da Anatel para fiscalização (mesmo ano, segundo as teles)</div></div>
+        <div class="stat-card"><div class="stat-num">25+ anos</div><div class="stat-label">sem reajuste das alíquotas de TFI/TFF</div></div>
+      </div>
+      <p class="lead muted" style="margin-top:1.25rem;">A AGU, a PGR e o Senado defendem a constitucionalidade das taxas, argumentando que a "razoável equivalência" exigida pelo STF não impõe correspondência absoluta entre custo e arrecadação. O julgamento no plenário virtual já foi adiado mais de uma vez.</p>
+      <p class="small-note">Para debate: quem deveria arcar com o custo da fiscalização regulatória — só as prestadoras fiscalizadas, ou a sociedade em geral, via Tesouro Nacional? Fonte: <a href="https://teletime.com.br/07/05/2026/stf-adia-julgamento-das-taxas-do-fistel-teles-rebatem-agu-e-pgr/" target="_blank">TELETIME News</a>.</p>
+    </div>
+  </section>
+
+  <!-- 12 · RGST -->
+  <section class="slide" id="slide-12">
+    <div class="slide-inner">
+      <span class="new-tag">NOVIDADE REGULATÓRIA — 2025</span>
+      <h2 class="slide-title">O <strong>RGST</strong>: a maior simplificação regulatória da Anatel</h2>
+      <p class="lead">A Resolução Anatel nº 777/2025 aprovou o <strong>Regulamento Geral dos Serviços de Telecomunicações (RGST)</strong>, consolidando 34 resoluções esparsas (e substituindo 7 normativos anteriores à própria Anatel) em um único texto — em vigor desde 30/10/2025.</p>
+      <div class="stat-grid">
+        <div class="stat-card"><div class="stat-num">−60%</div><div class="stat-label">dispositivos regulamentares, em relação às normas consolidadas</div></div>
+        <div class="stat-card"><div class="stat-num">−40%</div><div class="stat-label">no total de páginas da regulação consolidada</div></div>
+        <div class="stat-card"><div class="stat-num">94</div><div class="stat-label">resoluções remanescentes (de mais de 700 editadas desde 1997)</div></div>
+      </div>
+      <p class="lead muted" style="margin-top:1.25rem;">Junto ao RGST, a Anatel aprovou um <strong>Glossário</strong> único (Resolução nº 779/2025) com 528 definições, antes espalhadas — e por vezes conflitantes — em 45 normativos diferentes.</p>
+      <p class="small-note">Isso significa que regulamentos específicos citados nesta disciplina (SMP, SCM, STFC, SeAC, SME, SLP) estão sendo gradualmente absorvidos pelo RGST. Fonte: <a href="https://www.gov.br/anatel/pt-br/assuntos/noticias/anatel-conclui-etapa-de-simplificacao-e-consolidacao-regulatoria" target="_blank">Anatel — Notícias</a>.</p>
+    </div>
+  </section>
+
+  <!-- 13 · DIVIDER: Classificação -->
+  <section class="slide divider" id="slide-13">
+    <div class="slide-inner">
+      <p class="num">04</p>
+      <h2>Classificação dos <strong>Serviços</strong></h2>
+      <p>As duas grandes chaves de leitura da LGT para organizar os serviços de telecomunicações — a base da Sessão 3.</p>
+    </div>
+  </section>
+
+  <!-- 14 · SVA + COLETIVO/RESTRITO -->
+  <section class="slide" id="slide-14">
+    <div class="slide-inner slide-grid cols-2">
+      <div>
+        <p class="eyebrow">Livro III — Art. 61 e 62</p>
+        <h2 class="slide-title">Valor Adicionado e o critério da <strong>abrangência</strong></h2>
+        <div class="article-block">
+          <div class="art-num">Art. 61</div>
+          <p>Serviço de valor adicionado acrescenta, a um serviço de telecomunicações que lhe dá suporte, novas utilidades — não constituindo, por si, serviço de telecomunicações; seu provedor é classificado como usuário.</p>
+        </div>
+        <div class="article-block">
+          <div class="art-num">Art. 62</div>
+          <p>Quanto à abrangência dos interesses a que atendem, os serviços classificam-se em serviços de <strong>interesse coletivo</strong> e serviços de <strong>interesse restrito</strong>.</p>
+        </div>
+      </div>
+      <div class="svg-wrap">
+        <svg viewBox="0 0 420 260" xmlns="http://www.w3.org/2000/svg" font-family="IBM Plex Sans, sans-serif">
+          <rect x="110" y="10" width="200" height="46" rx="8" fill="#00c2ff" opacity="0.85"/>
+          <text x="210" y="30" text-anchor="middle" font-size="12" fill="#0a0e17" font-weight="700">Lei nº 9.472/1997</text>
+          <text x="210" y="45" text-anchor="middle" font-size="9" fill="#0a0e17">Art. 62</text>
+          <line x1="210" y1="56" x2="210" y2="76" stroke="#334155" stroke-width="1.3"/>
+          <line x1="90" y1="76" x2="330" y2="76" stroke="#334155" stroke-width="1.3"/>
+          <line x1="90" y1="76" x2="90" y2="96" stroke="#334155" stroke-width="1.3"/>
+          <line x1="330" y1="76" x2="330" y2="96" stroke="#334155" stroke-width="1.3"/>
+          <rect x="10" y="96" width="160" height="140" rx="8" fill="#111827" stroke="#00c2ff" stroke-width="1.4"/>
+          <text x="90" y="122" text-anchor="middle" font-size="12" fill="#e2e8f0" font-weight="700">Interesse Coletivo</text>
+          <text x="20" y="150" font-size="9.5" fill="#94a3b8">Destinado ao público</text>
+          <text x="20" y="163" font-size="9.5" fill="#94a3b8">em geral, com diferentes</text>
+          <text x="20" y="176" font-size="9.5" fill="#94a3b8">condições de fruição</text>
+          <rect x="250" y="96" width="160" height="140" rx="8" fill="#111827" stroke="#7c3aed" stroke-width="1.4"/>
+          <text x="330" y="122" text-anchor="middle" font-size="12" fill="#e2e8f0" font-weight="700">Interesse Restrito</text>
+          <text x="260" y="150" font-size="9.5" fill="#94a3b8">Destinado ao uso</text>
+          <text x="260" y="163" font-size="9.5" fill="#94a3b8">próprio ou de grupo</text>
+          <text x="260" y="176" font-size="9.5" fill="#94a3b8">restrito de pessoas</text>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <!-- 15 · PÚBLICO/PRIVADO -->
+  <section class="slide" id="slide-15">
+    <div class="slide-inner">
+      <p class="eyebrow">Livro III — Art. 63 e 64</p>
+      <h2 class="slide-title">Regime <strong>Público</strong> × Regime <strong>Privado</strong></h2>
+      <div class="slide-grid cols-2" style="margin-top:1rem;">
+        <div class="info-card">
+          <span class="k">Art. 63</span>
+          <h4>Regime Público</h4>
+          <p>Prestado mediante concessão ou permissão, com atribuição à prestadora de obrigações de <strong>universalização</strong> e de <strong>continuidade</strong>.</p>
+        </div>
+        <div class="info-card">
+          <span class="k">Art. 63</span>
+          <h4>Regime Privado</h4>
+          <p>Baseado nos princípios constitucionais da atividade econômica — livre iniciativa, livre concorrência — sem as obrigações típicas do regime público.</p>
+        </div>
+      </div>
+      <div class="article-block" style="margin-top:1.5rem;">
+        <div class="art-num">Art. 64</div>
+        <p>Comportarão prestação no regime público as modalidades de serviço de interesse coletivo cuja existência, universalização e continuidade a própria União comprometa-se a assegurar.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 16 · MODALIDADES E ISENÇÃO DE OUTORGA -->
+  <section class="slide" id="slide-16">
+    <div class="slide-inner">
+      <p class="eyebrow">Livro III — Art. 69 e 75</p>
+      <h2 class="slide-title">Quem define as <strong>modalidades</strong> — e quando elas não precisam de outorga</h2>
+      <div class="article-block">
+        <div class="art-num">Art. 69</div>
+        <p>As modalidades de serviço serão definidas pela Agência em função de sua finalidade, âmbito de prestação, forma, meio de transmissão, tecnologia empregada ou de outros atributos.</p>
+      </div>
+      <div class="article-block">
+        <div class="art-num">Art. 75</div>
+        <p>Independe de concessão, permissão ou autorização a atividade de telecomunicações restrita aos limites de uma mesma edificação ou propriedade móvel ou imóvel, conforme dispuser a Agência.</p>
+      </div>
+      <p class="lead muted">É com base no Art. 69 que a Anatel edita os regulamentos específicos de cada serviço — SMP, SCM, STFC, SeAC, SME, SLP — detalhados na Sessão 3.</p>
+    </div>
+  </section>
+
+  <!-- 17 · TABELA DE SERVIÇOS (preview sessão 3) -->
+  <section class="slide" id="slide-17">
+    <div class="slide-inner">
+      <p class="eyebrow">Prévia — Sessão 3</p>
+      <h2 class="slide-title">Os <strong>seis</strong> principais serviços regulados</h2>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Sigla</th><th>Serviço</th><th>Regula</th></tr></thead>
+          <tbody>
+            <tr><td>SMP</td><td>Serviço Móvel Pessoal</td><td>Telefonia móvel</td></tr>
+            <tr><td>SCM</td><td>Serviço de Comunicação Multimídia</td><td>Internet fixa</td></tr>
+            <tr><td>STFC</td><td>Serviço Telefônico Fixo Comutado</td><td>Telefonia fixa</td></tr>
+            <tr><td>SeAC</td><td>Serviço de Acesso Condicionado</td><td>TV por assinatura</td></tr>
+            <tr><td>SME</td><td>Serviço Móvel Especializado</td><td>Rádio troncalizado</td></tr>
+            <tr><td>SLP</td><td>Serviço Limitado Privado</td><td>Comunicação privativa</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="small-note">O SLP é especialmente relevante para o Exército Brasileiro — engloba redes como RITEx, EBNet e sistemas rádio táticos, tema central da Sessão 3.</p>
+    </div>
+  </section>
+
+  <!-- 18 · DIVIDER: Espectro -->
+  <section class="slide divider" id="slide-18">
+    <div class="slide-inner">
+      <p class="num">05</p>
+      <h2>Espectro de <strong>Radiofrequências</strong></h2>
+      <p>Um recurso natural limitado, administrado pela Anatel em articulação com padrões internacionais — e com as Forças Armadas.</p>
+    </div>
+  </section>
+
+  <!-- 19 · ESPECTRO COMO BEM PÚBLICO -->
+  <section class="slide" id="slide-19">
+    <div class="slide-inner slide-grid cols-2">
+      <div>
+        <p class="eyebrow">Livro III — Título V — Art. 157 e 158</p>
+        <h2 class="slide-title">O espectro como <strong>bem público</strong></h2>
+        <div class="article-block">
+          <div class="art-num">Art. 157</div>
+          <p>O espectro de radiofrequências é um recurso limitado, constituindo-se em bem público, administrado pela Agência.</p>
+        </div>
+        <div class="article-block">
+          <div class="art-num">Art. 158</div>
+          <p>A Agência manterá plano com a atribuição, distribuição e destinação de radiofrequências. § 1º e 2º: o plano destina faixas para fins exclusivamente militares, em articulação com as Forças Armadas.</p>
+        </div>
+      </div>
+      <div class="info-card">
+        <span class="k">Instrumento normativo</span>
+        <h4>PDFF — Plano de Atribuição, Destinação e Distribuição de Faixas de Frequências</h4>
+        <p>Documento técnico com cerca de 4 mil linhas que organiza, faixa a faixa, os serviços autorizados a operar em cada frequência no Brasil — atualizado periodicamente pela Anatel (edição vigente: 2025).</p>
+        <p style="margin-top:0.5rem;"><a href="https://www.gov.br/anatel/pt-br/regulado/radiofrequencia/atribuicao-destinacao-e-distribuicao-de-faixas" target="_blank">Consultar o PDFF no site da Anatel →</a></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 20 · REGIÕES UIT -->
+  <section class="slide" id="slide-20">
+    <div class="slide-inner">
+      <p class="eyebrow">Padrão internacional</p>
+      <h2 class="slide-title">As três <strong>Regiões</strong> da UIT</h2>
+      <p class="lead muted">A União Internacional de Telecomunicações (UIT) divide o globo em três regiões para fins de administração do espectro. O Brasil integra a <strong class="accent">Região 2</strong>, junto com os demais países das Américas.</p>
+      <div class="svg-wrap" style="margin-top:1rem;">
+        <svg viewBox="0 0 900 320" xmlns="http://www.w3.org/2000/svg" font-family="IBM Plex Sans, sans-serif">
+          <rect x="20" y="40" width="260" height="220" rx="10" fill="#7c3aed" opacity="0.16" stroke="#7c3aed" stroke-opacity="0.5"/>
+          <text x="150" y="70" text-anchor="middle" font-size="14" fill="#e2e8f0" font-weight="700">Região 2</text>
+          <text x="150" y="90" text-anchor="middle" font-size="10" fill="#cbd5e1">Américas</text>
+          <circle cx="150" cy="150" r="26" fill="#00c2ff" opacity="0.85"/>
+          <text x="150" y="155" text-anchor="middle" font-size="10.5" fill="#0a0e17" font-weight="700">BRASIL</text>
+          <text x="150" y="220" text-anchor="middle" font-size="9.5" fill="#94a3b8">América do Norte, Central,</text>
+          <text x="150" y="234" text-anchor="middle" font-size="9.5" fill="#94a3b8">do Sul e Caribe</text>
+
+          <rect x="320" y="40" width="260" height="220" rx="10" fill="#334155" opacity="0.25" stroke="#334155"/>
+          <text x="450" y="70" text-anchor="middle" font-size="14" fill="#e2e8f0" font-weight="700">Região 1</text>
+          <text x="450" y="220" text-anchor="middle" font-size="9.5" fill="#94a3b8">Europa, África, Oriente</text>
+          <text x="450" y="234" text-anchor="middle" font-size="9.5" fill="#94a3b8">Médio e ex-URSS</text>
+
+          <rect x="620" y="40" width="260" height="220" rx="10" fill="#334155" opacity="0.25" stroke="#334155"/>
+          <text x="750" y="70" text-anchor="middle" font-size="14" fill="#e2e8f0" font-weight="700">Região 3</text>
+          <text x="750" y="220" text-anchor="middle" font-size="9.5" fill="#94a3b8">Ásia, Oceania e</text>
+          <text x="750" y="234" text-anchor="middle" font-size="9.5" fill="#94a3b8">parte do Pacífico</text>
+        </svg>
+      </div>
+      <p class="small-note">A atribuição de faixas no Brasil combina duas colunas: a atribuição definida pela UIT para a Região 2, e a atribuição específica em vigor no país, definida pela Anatel — ambas presentes lado a lado no PDFF.</p>
+    </div>
+  </section>
+
+  <!-- 21 · RUE PRINCÍPIOS -->
+  <section class="slide" id="slide-21">
+    <div class="slide-inner">
+      <p class="eyebrow">Resolução Anatel nº 671/2016</p>
+      <h2 class="slide-title">O Regulamento de Uso do Espectro <strong>(RUE)</strong></h2>
+      <div class="article-block">
+        <div class="art-num">Art. 1º, § 1º</div>
+        <p>Os princípios que norteiam o Regulamento: o espectro é recurso limitado e bem público; deve ser usado de forma eficiente, adequada, racional e econômica; deve-se ampliar o uso de redes e serviços; e o uso de radiofrequências é, em regra, autorizado a título oneroso.</p>
+      </div>
+      <div class="article-block">
+        <div class="art-num">Art. 1º, § 2º</div>
+        <p>O Regulamento não se aplica a: (I) aplicações industriais, científicas e médicas (ISM); e (II) aplicações das Forças Armadas brasileiras, em faixas destinadas exclusivamente a fins militares.</p>
+      </div>
+      <span class="new-tag" style="margin-top:0.5rem;">STATUS EM 2026</span>
+      <p class="lead muted">O núcleo do RUE (Anexo I) segue em vigor e foi atualizado por resoluções recentes (ex.: Resolução nº 777/2025). Apenas dispositivos acessórios de cobrança e sanções foram revogados pela "guilhotina regulatória" da Resolução nº 769/2024.</p>
+    </div>
+  </section>
+
+  <!-- 22 · DEFINIÇÕES -->
+  <section class="slide" id="slide-22">
+    <div class="slide-inner">
+      <p class="eyebrow">RUE — Glossário técnico</p>
+      <h2 class="slide-title">Definições que todo engenheiro de telecom deve <strong>conhecer</strong></h2>
+      <div class="def-grid">
+        <div class="def-card"><div class="term">Atribuição</div><p>Inscrição de uma faixa na tabela internacional, para uso por um ou mais serviços de radiocomunicação, conforme convenção da UIT.</p></div>
+        <div class="def-card"><div class="term">Destinação</div><p>Inscrição de sistemas ou serviços no plano brasileiro (PDFF), vinculando sua exploração a determinadas faixas, sem contrariar a atribuição.</p></div>
+        <div class="def-card"><div class="term">Distribuição</div><p>Inscrição de uma faixa para uma área geográfica específica, sem contrariar a atribuição e a destinação já estabelecidas.</p></div>
+        <div class="def-card"><div class="term">Consignação</div><p>Procedimento que vincula o uso de uma faixa, sob condições específicas, a uma estação de radiocomunicação no momento do licenciamento.</p></div>
+        <div class="def-card"><div class="term">Compartilhamento</div><p>Uso de uma mesma faixa por mais de um explorador na mesma área geográfica, sem interferência prejudicial entre eles.</p></div>
+        <div class="def-card"><div class="term">Uso primário × secundário</div><p>O uso primário tem direito à proteção contra interferência prejudicial; o secundário tem essa proteção apenas frente a outros usos secundários.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 23 · CASO EXÉRCITO x ANATEL -->
+  <section class="slide" id="slide-23">
+    <div class="slide-inner">
+      <span class="case-tag">CASO PARA DEBATE — CONSULTA PÚBLICA</span>
+      <h2 class="slide-title">Quando o <strong>Exército</strong> discorda da Anatel</h2>
+      <p class="lead">Em consulta pública sobre a atualização do PDFF, a Anatel propôs revogar 50 resoluções antigas de destinação de faixas. O Exército Brasileiro se manifestou contra a extinção de normas específicas, pedindo a manutenção das Resoluções 455/2006 e 633/2014.</p>
+      <div class="card-grid">
+        <div class="info-card"><h4>Posição do Exército</h4><p>Que qualquer revogação de resoluções sobre frequências de uso exclusivo das Forças Armadas ou de Órgãos de Segurança Pública fosse retirada da proposta de simplificação.</p></div>
+        <div class="info-card"><h4>Posição dos radioamadores</h4><p>Alertaram que a extinção pura e simples de normas antigas poderia desorganizar a ocupação do espectro, por conter definições técnicas ainda não replicadas nas novas normas.</p></div>
+        <div class="info-card"><h4>O que está em jogo</h4><p>O equilíbrio entre modernizar e simplificar a regulação (menos normas, mais clareza) e preservar a segurança jurídica de quem já opera sob regras específicas — como o uso militar do espectro.</p></div>
+      </div>
+      <p class="small-note">Para debate: como equilibrar simplificação regulatória com a proteção de interesses especializados, como o uso militar e de segurança pública do espectro? Fonte: <a href="https://www.telesintese.com.br/exercito-nao-quer-o-fim-de-regras-de-frequencias-proposto-pela-anatel/" target="_blank">TeleSíntese</a>.</p>
+    </div>
+  </section>
+
+  <!-- 24 · SÍNTESE -->
+  <section class="slide" id="slide-24">
+    <div class="slide-inner">
+      <p class="eyebrow">Síntese</p>
+      <h2 class="slide-title">O que fica desta <strong>sessão</strong></h2>
+      <div class="card-grid" style="margin-bottom:1rem;">
+        <div class="info-card"><span class="k">01</span><p>A Anatel é uma autarquia especial, dirigida por um Conselho Diretor de 5 membros e acompanhada por um Conselho Consultivo de 12.</p></div>
+        <div class="info-card"><span class="k">02</span><p>Outorgas se dividem em concessão, permissão e autorização — todas onerosas, com o FISTEL (TFI + TFF) financiando a fiscalização.</p></div>
+        <div class="info-card"><span class="k">03</span><p>Serviços se classificam por abrangência (coletivo × restrito) e regime (público × privado) — a chave de leitura da Sessão 3.</p></div>
+        <div class="info-card"><span class="k">04</span><p>O espectro é bem público limitado, gerido via PDFF e RUE, com destinação específica — e sensível — para uso militar.</p></div>
+      </div>
+      <p class="lead muted">Na <strong>Sessão 3</strong>, aplicamos essa base aos regulamentos específicos de cada serviço (SMP, SCM, STFC, SeAC, SME, SLP), às aplicações de interesse do Exército Brasileiro e aos tributos setoriais — FUST e FUNTTEL.</p>
+    </div>
+  </section>
+
+  <!-- 25 · REFERÊNCIAS E ENCERRAMENTO -->
+  <section class="slide" id="slide-25">
+    <div class="slide-inner">
+      <p class="eyebrow">Referências desta sessão</p>
+      <h2 class="slide-title">Para <strong>aprofundar</strong></h2>
+      <div class="ref-grid">
+        <div class="ref-item"><div><a href="https://www.planalto.gov.br/ccivil_03/leis/l9472.htm" target="_blank">Lei nº 9.472/1997 (LGT)</a><span>Texto integral no Planalto</span></div></div>
+        <div class="ref-item"><div><a href="https://www.gov.br/anatel/pt-br/composicao/conselho-diretor" target="_blank">Composição do Conselho Diretor</a><span>Anatel</span></div></div>
+        <div class="ref-item"><div><a href="https://www.anatel.gov.br/legislacao/resolucoes/2016/911-resolucao-671" target="_blank">Resolução nº 671/2016 (RUE)</a><span>Anatel</span></div></div>
+        <div class="ref-item"><div><a href="https://www.gov.br/anatel/pt-br/regulado/radiofrequencia/atribuicao-destinacao-e-distribuicao-de-faixas" target="_blank">PDFF — edição vigente</a><span>Anatel</span></div></div>
+        <div class="ref-item"><div><a href="https://www.gov.br/anatel/pt-br/assuntos/noticias/anatel-conclui-etapa-de-simplificacao-e-consolidacao-regulatoria" target="_blank">RGST — simplificação regulatória</a><span>Anatel, 2025</span></div></div>
+        <div class="ref-item"><div><a href="https://www.anatel.gov.br/setorregulado/tributos" target="_blank">Guia de tributos setoriais</a><span>FISTEL, FUST, FUNTTEL — Anatel</span></div></div>
+      </div>
+      <div class="end-links">
+        <a class="end-link" href="../aspectosregulatorios.html">← Voltar para a página da disciplina</a>
+        <a class="end-link" href="mailto:clayton.j.a.silva@gmail.com">Contato do professor</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<script>
+  const deck = document.getElementById('deck');
+  const slides = Array.from(document.querySelectorAll('.slide'));
+  const dotsWrap = document.getElementById('dots');
+  const counter = document.getElementById('counter');
+  const progress = document.getElementById('progress');
+  const total = slides.length;
+
+  slides.forEach((s, i) => {
+    const b = document.createElement('button');
+    b.className = 'dot';
+    b.setAttribute('aria-label', 'Ir para slide ' + (i+1));
+    b.addEventListener('click', () => s.scrollIntoView({behavior:'smooth'}));
+    dotsWrap.appendChild(b);
+  });
+  const dots = Array.from(dotsWrap.children);
+
+  function pad(n) { return n < 10 ? '0' + n : '' + n; }
+
+  function setActive(i) {
+    dots.forEach((d, idx) => d.classList.toggle('active', idx === i));
+    counter.textContent = pad(i + 1) + ' / ' + pad(total);
+    progress.style.width = ((i + 1) / total * 100) + '%';
+  }
+
+  let currentIndex = 0;
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting && entry.intersectionRatio > 0.55) {
+        const idx = slides.indexOf(entry.target);
+        if (idx !== -1) { currentIndex = idx; setActive(idx); }
+      }
+    });
+  }, { root: deck, threshold: [0.55] });
+  slides.forEach(s => observer.observe(s));
+
+  function goTo(i) {
+    i = Math.max(0, Math.min(total - 1, i));
+    slides[i].scrollIntoView({behavior:'smooth'});
+  }
+
+  window.addEventListener('keydown', (e) => {
+    if (['ArrowDown','ArrowRight','PageDown',' '].includes(e.key)) { e.preventDefault(); goTo(currentIndex + 1); }
+    else if (['ArrowUp','ArrowLeft','PageUp'].includes(e.key)) { e.preventDefault(); goTo(currentIndex - 1); }
+    else if (e.key === 'Home') { e.preventDefault(); goTo(0); }
+    else if (e.key === 'End') { e.preventDefault(); goTo(total - 1); }
+  });
+
+  setActive(0);
+</script>
+
+</body>
+</html>
