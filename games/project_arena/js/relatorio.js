@@ -1,9 +1,9 @@
 // ============================================================
 // Descrição geral: funções de histórico e relatórios do Project Arena V2.0,
-// com persistência local, sincronização em nuvem e consolidação
-// correta do relatório final do árbitro.
+// com persistência local, sincronização em nuvem e prevenção de duplicidades
+// no histórico da equipe, no histórico da sessão e no relatório final.
 // Data de criação: 02/07/2026
-// Versão: 2.0.5
+// Versão: 2.0.6
 // Copyright: Clayton Silva
 // ============================================================
 
@@ -11,7 +11,7 @@ let canceladorEscutaHistoricoCloud = null;
 let idSessaoHistoricoEscutado = null;
 
 // ------------------------------------------------------------
-// UTILITÁRIOS
+// UTILITÁRIOS DE NORMALIZAÇÃO
 // ------------------------------------------------------------
 
 function converterObjetoFirebaseParaLista(dados) {
@@ -77,26 +77,30 @@ function obterAcertoDoRegistro(registro) {
     return false;
 }
 
+function obterChaveResposta(registro) {
+    const equipeId = obterIdEquipeDoRegistro(registro);
+    const missaoId = textoNormalizado(registro.missaoId || registro.idMissao || registro.missao);
+
+    return `${equipeId || "equipe"}_${missaoId || "missao"}`
+        .replace(/[^a-z0-9_\-]/g, "_")
+        .replace(/_+/g, "_");
+}
+
 function normalizarRegistroHistorico(registro) {
+    const equipeId = obterIdEquipeDoRegistro(registro);
     const acertou = obterAcertoDoRegistro(registro);
+    const chaveResposta = registro.chaveResposta || obterChaveResposta(registro);
 
     return {
         ...registro,
-        equipeId: obterIdEquipeDoRegistro(registro),
+        idRegistro: registro.idRegistro || chaveResposta,
+        chaveResposta,
+        equipeId,
         acertou,
+        correta: registro.correta ?? acertou,
         pontos: Number(registro.pontos || 0),
         xp: Number(registro.xp || 0)
     };
-}
-
-function chaveRegistroHistorico(registro) {
-    return [
-        registro.idRegistro || "",
-        registro.missaoId || registro.missao || "",
-        registro.equipeId || registro.equipe || "",
-        registro.resposta || "",
-        registro.dataHora || ""
-    ].join("|");
 }
 
 function removerDuplicidadesHistorico(historico) {
@@ -104,14 +108,30 @@ function removerDuplicidadesHistorico(historico) {
 
     historico.forEach(item => {
         const registro = normalizarRegistroHistorico(item);
-        const chave = chaveRegistroHistorico(registro);
+        const chave = registro.chaveResposta || obterChaveResposta(registro);
 
+        // Regra funcional: uma equipe só pode ter um registro por missão.
+        // Se houver duplicidade local/nuvem, preserva o registro mais completo.
         if (!mapa.has(chave)) {
+            mapa.set(chave, registro);
+            return;
+        }
+
+        const existente = mapa.get(chave);
+        const existenteTemId = Boolean(existente.idRegistro);
+        const novoTemId = Boolean(registro.idRegistro);
+
+        if (!existenteTemId && novoTemId) {
             mapa.set(chave, registro);
         }
     });
 
     return Array.from(mapa.values());
+}
+
+function obterModoCloudAtivo() {
+    return localStorage.getItem("modoCloud") === "sim" &&
+        Boolean(localStorage.getItem("idSessaoCloud"));
 }
 
 // ------------------------------------------------------------
@@ -130,17 +150,40 @@ function salvarHistorico(historico) {
     );
 }
 
+function salvarRegistroHistoricoLocal(registro) {
+    const historico = obterHistorico();
+    const registroNormalizado = normalizarRegistroHistorico(registro);
+    const chave = registroNormalizado.chaveResposta;
+
+    const indiceExistente = historico.findIndex(item => {
+        const itemNormalizado = normalizarRegistroHistorico(item);
+        return itemNormalizado.chaveResposta === chave;
+    });
+
+    if (indiceExistente >= 0) {
+        historico[indiceExistente] = registroNormalizado;
+    } else {
+        historico.push(registroNormalizado);
+    }
+
+    salvarHistorico(historico);
+}
+
 async function registrarHistorico(registro) {
     const registroCompleto = normalizarRegistroHistorico({
         ...registro,
         dataHora: registro.dataHora || new Date().toLocaleString("pt-BR")
     });
 
-    const historico = obterHistorico();
-    historico.push(registroCompleto);
-    salvarHistorico(historico);
+    // Em modo cloud, a nuvem é a fonte oficial do histórico.
+    // Isso evita duplicar: 1 registro local + 1 registro vindo do Firebase.
+    if (obterModoCloudAtivo()) {
+        await registrarHistoricoCloudSePossivel(registroCompleto);
+        return;
+    }
 
-    await registrarHistoricoCloudSePossivel(registroCompleto);
+    salvarRegistroHistoricoLocal(registroCompleto);
+    atualizarHistoricoNaTela();
 }
 
 // ------------------------------------------------------------
@@ -157,12 +200,17 @@ async function registrarHistoricoCloudSePossivel(registro) {
 
         const firebaseService = await import("./firebase-service.js");
         const registroNormalizado = normalizarRegistroHistorico(registro);
+        const chaveResposta = registroNormalizado.chaveResposta;
 
-        await firebaseService.criarRegistro(
-            `sessoes/${idSessao}/historicoRespostas`,
+        // Usa caminho determinístico, não push().
+        // Assim, clique duplo ou regravação da mesma equipe/missão não cria linhas duplicadas.
+        await firebaseService.salvarDados(
+            `sessoes/${idSessao}/historicoRespostas/${chaveResposta}`,
             {
+                idRegistro: chaveResposta,
+                chaveResposta,
                 missao: registroNormalizado.missao || "",
-                missaoId: registroNormalizado.missaoId || "",
+                missaoId: registroNormalizado.missaoId || registroNormalizado.missao || "",
                 equipe: registroNormalizado.equipe || registroNormalizado.equipeId || "",
                 equipeId: registroNormalizado.equipeId || "",
                 resposta: registroNormalizado.resposta || "",
@@ -203,14 +251,11 @@ async function configurarEscutaHistoricoCloudSePossivel() {
         canceladorEscutaHistoricoCloud = firebaseService.escutarDados(
             `sessoes/${idSessao}/historicoRespostas`,
             historicoCloud => {
-                const historicoLocal = obterHistorico();
                 const historicoNuvem = converterObjetoFirebaseParaLista(historicoCloud);
-                const historicoConsolidado = removerDuplicidadesHistorico([
-                    ...historicoLocal,
-                    ...historicoNuvem
-                ]);
 
-                salvarHistorico(historicoConsolidado);
+                // No modo cloud, substitui o histórico local pelo histórico oficial da nuvem.
+                // Não faz merge com local para não repetir linhas.
+                salvarHistorico(historicoNuvem);
                 atualizarHistoricoNaTela();
             }
         );
@@ -221,11 +266,19 @@ async function configurarEscutaHistoricoCloudSePossivel() {
 }
 
 // ------------------------------------------------------------
-// TABELA DE HISTÓRICO
+// TABELAS DE HISTÓRICO
 // ------------------------------------------------------------
 
-function gerarTabelaHistorico() {
-    const historico = obterHistorico();
+function gerarTabelaHistorico(equipeIdFiltro = null) {
+    let historico = obterHistorico();
+
+    if (equipeIdFiltro) {
+        const filtro = textoNormalizado(equipeIdFiltro);
+        historico = historico.filter(item => {
+            const registro = normalizarRegistroHistorico(item);
+            return registro.equipeId === filtro;
+        });
+    }
 
     if (historico.length === 0) {
         return "<p>Nenhuma resposta registrada.</p>";
@@ -378,14 +431,13 @@ function atualizarHistoricoNaTela() {
     const historicoArbitro = document.getElementById("historico");
     const historicoEquipe = document.getElementById("historicoEquipe");
 
-    const tabela = gerarTabelaHistorico();
-
     if (historicoArbitro) {
-        historicoArbitro.innerHTML = tabela;
+        historicoArbitro.innerHTML = gerarTabelaHistorico();
     }
 
     if (historicoEquipe) {
-        historicoEquipe.innerHTML = tabela;
+        const equipeSelecionada = localStorage.getItem("equipeSelecionada");
+        historicoEquipe.innerHTML = gerarTabelaHistorico(equipeSelecionada);
     }
 }
 
