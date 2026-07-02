@@ -2,7 +2,7 @@
 // Descrição geral: funções de histórico e relatórios do Project Arena V2.0,
 // com persistência local e sincronização de respostas na Arena Cloud.
 // Data de criação: 30/06/2026
-// Versão: 2.0
+// Versão: 2.0.1
 // Copyright: Clayton Silva
 // ============================================================
 
@@ -56,9 +56,9 @@ async function registrarHistoricoCloudSePossivel(registro) {
             equipeId: registro.equipeId,
             resposta: registro.resposta,
             correta: registro.correta,
-            acertou: registro.acertou,
-            pontos: registro.pontos || 0,
-            xp: registro.xp || 0,
+            acertou: normalizarAcerto(registro),
+            pontos: Number(registro.pontos) || 0,
+            xp: Number(registro.xp) || 0,
             dataHora: registro.dataHora
         });
 
@@ -68,11 +68,75 @@ async function registrarHistoricoCloudSePossivel(registro) {
 }
 
 // ------------------------------------------------------------
+// FUNÇÕES AUXILIARES DO RELATÓRIO
+// ------------------------------------------------------------
+
+function normalizarTexto(valor) {
+    return String(valor || "")
+        .trim()
+        .toLowerCase()
+        .normalize("NFD")
+        .replace(/[\u0300-\u036f]/g, "");
+}
+
+function normalizarAcerto(item) {
+    if (item.acertou === true || item.correta === true) {
+        return true;
+    }
+
+    if (item.acertou === false || item.correta === false) {
+        return false;
+    }
+
+    const resultado = normalizarTexto(item.resultado || item.status || "");
+
+    if (resultado === "acertou" || resultado === "correto" || resultado === "certo") {
+        return true;
+    }
+
+    if (resultado === "errou" || resultado === "incorreto" || resultado === "errado") {
+        return false;
+    }
+
+    return false;
+}
+
+function registroPertenceAEquipe(item, equipe) {
+    const idEquipe = normalizarTexto(equipe.id);
+    const nomeEquipe = normalizarTexto(equipe.nome);
+    const idRegistro = normalizarTexto(item.equipeId || item.idEquipe || item.equipe_id);
+    const nomeRegistro = normalizarTexto(item.equipe || item.nomeEquipe || item.nome);
+
+    return idRegistro === idEquipe ||
+           nomeRegistro === nomeEquipe ||
+           nomeRegistro === idEquipe;
+}
+
+function gerarChaveRegistro(item) {
+    const equipe = normalizarTexto(item.equipeId || item.equipe || item.nomeEquipe || "sem-equipe");
+    const missao = normalizarTexto(item.missaoId || item.missao || item.idMissao || "sem-missao");
+
+    return `${equipe}::${missao}`;
+}
+
+function obterHistoricoConsolidado() {
+    const historico = obterHistorico();
+    const mapa = new Map();
+
+    historico.forEach(item => {
+        const chave = gerarChaveRegistro(item);
+        mapa.set(chave, item);
+    });
+
+    return Array.from(mapa.values());
+}
+
+// ------------------------------------------------------------
 // TABELA DE HISTÓRICO
 // ------------------------------------------------------------
 
 function gerarTabelaHistorico() {
-    const historico = obterHistorico();
+    const historico = obterHistoricoConsolidado();
 
     if (historico.length === 0) {
         return "<p>Nenhuma resposta registrada.</p>";
@@ -91,13 +155,15 @@ function gerarTabelaHistorico() {
     `;
 
     historico.forEach(item => {
+        const acertou = normalizarAcerto(item);
+
         html += `
             <tr>
-                <td>${item.missao || item.missaoId}</td>
-                <td>${item.equipe || item.equipeId}</td>
-                <td>${item.resposta}</td>
-                <td>${item.acertou ? "Acertou" : "Errou"}</td>
-                <td>${item.pontos || 0}</td>
+                <td>${item.missao || item.missaoId || "-"}</td>
+                <td>${item.equipe || item.equipeId || "-"}</td>
+                <td>${item.resposta || "-"}</td>
+                <td>${acertou ? "Acertou" : "Errou"}</td>
+                <td>${Number(item.pontos) || 0}</td>
                 <td>${item.dataHora || "-"}</td>
             </tr>
         `;
@@ -113,7 +179,7 @@ function gerarTabelaHistorico() {
 
 function calcularResumoFinal() {
     const equipes = JSON.parse(localStorage.getItem("estadoEquipes")) || [];
-    const historico = obterHistorico();
+    const historico = obterHistoricoConsolidado();
 
     if (equipes.length === 0) {
         return [];
@@ -121,11 +187,11 @@ function calcularResumoFinal() {
 
     return equipes
         .map(equipe => {
-            const respostasEquipe = historico.filter(item => item.equipeId === equipe.id);
+            const respostasEquipe = historico.filter(item => registroPertenceAEquipe(item, equipe));
 
             const respostas = respostasEquipe.length;
-            const acertos = respostasEquipe.filter(item => item.acertou === true).length;
-            const erros = respostasEquipe.filter(item => item.acertou === false).length;
+            const acertos = respostasEquipe.filter(item => normalizarAcerto(item) === true).length;
+            const erros = respostas - acertos;
 
             const percentual = respostas > 0
                 ? Math.round((acertos / respostas) * 100)
@@ -133,6 +199,8 @@ function calcularResumoFinal() {
 
             return {
                 ...equipe,
+                pontos: Number(equipe.pontos) || 0,
+                xp: Number(equipe.xp) || 0,
                 respostas,
                 acertos,
                 erros,
@@ -228,12 +296,12 @@ function atualizarHistoricoNaTela() {
 function gerarObjetoRelatorioFinal() {
     return {
         projeto: "Project Arena",
-        versao: "2.0",
+        versao: "2.0.1",
         modoCloud: localStorage.getItem("modoCloud") || "nao",
         idSessaoCloud: localStorage.getItem("idSessaoCloud") || null,
         dataGeracao: new Date().toLocaleString("pt-BR"),
         resumoEquipes: calcularResumoFinal(),
-        historico: obterHistorico()
+        historico: obterHistoricoConsolidado()
     };
 }
 
