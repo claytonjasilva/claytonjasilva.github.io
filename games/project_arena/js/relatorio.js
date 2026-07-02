@@ -3,7 +3,7 @@
 // com persistência local, sincronização em nuvem e consolidação
 // correta do relatório final do árbitro.
 // Data de criação: 02/07/2026
-// Versão: 2.0.4
+// Versão: 2.0.5
 // Copyright: Clayton Silva
 // ============================================================
 
