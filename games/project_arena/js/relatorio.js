@@ -1,28 +1,140 @@
 // ============================================================
 // Descrição geral: funções de histórico e relatórios do Project Arena V2.0,
-// com persistência local e sincronização de respostas na Arena Cloud.
-// Data de criação: 30/06/2026
-// Versão: 2.0.1
+// com persistência local, sincronização em nuvem e consolidação
+// correta do relatório final do árbitro.
+// Data de criação: 02/07/2026
+// Versão: 2.0.4
 // Copyright: Clayton Silva
 // ============================================================
+
+let canceladorEscutaHistoricoCloud = null;
+let idSessaoHistoricoEscutado = null;
+
+// ------------------------------------------------------------
+// UTILITÁRIOS
+// ------------------------------------------------------------
+
+function converterObjetoFirebaseParaLista(dados) {
+    if (!dados) {
+        return [];
+    }
+
+    if (Array.isArray(dados)) {
+        return dados.filter(Boolean);
+    }
+
+    return Object.keys(dados).map(chave => ({
+        idRegistro: chave,
+        ...dados[chave]
+    }));
+}
+
+function textoNormalizado(valor) {
+    return String(valor || "")
+        .trim()
+        .toLowerCase()
+        .normalize("NFD")
+        .replace(/[\u0300-\u036f]/g, "");
+}
+
+function obterIdEquipeDoRegistro(registro) {
+    const idDireto = textoNormalizado(registro.equipeId || registro.idEquipe);
+
+    if (idDireto) {
+        return idDireto;
+    }
+
+    const equipeTexto = textoNormalizado(registro.equipe || registro.nomeEquipe);
+
+    if (equipeTexto.includes("alpha")) return "alpha";
+    if (equipeTexto.includes("beta")) return "beta";
+    if (equipeTexto.includes("gama") || equipeTexto.includes("gamma")) return "gama";
+
+    return equipeTexto;
+}
+
+function obterAcertoDoRegistro(registro) {
+    if (registro.acertou === true || registro.correta === true || registro.resultado === true) {
+        return true;
+    }
+
+    if (registro.acertou === false || registro.correta === false || registro.resultado === false) {
+        return false;
+    }
+
+    const valor = textoNormalizado(
+        registro.acertou ?? registro.correta ?? registro.resultado ?? registro.status ?? ""
+    );
+
+    if (["true", "sim", "s", "1", "acertou", "acerto", "correta", "correto", "certo"].includes(valor)) {
+        return true;
+    }
+
+    if (["false", "nao", "n", "0", "errou", "erro", "incorreta", "incorreto", "errado"].includes(valor)) {
+        return false;
+    }
+
+    return false;
+}
+
+function normalizarRegistroHistorico(registro) {
+    const acertou = obterAcertoDoRegistro(registro);
+
+    return {
+        ...registro,
+        equipeId: obterIdEquipeDoRegistro(registro),
+        acertou,
+        pontos: Number(registro.pontos || 0),
+        xp: Number(registro.xp || 0)
+    };
+}
+
+function chaveRegistroHistorico(registro) {
+    return [
+        registro.idRegistro || "",
+        registro.missaoId || registro.missao || "",
+        registro.equipeId || registro.equipe || "",
+        registro.resposta || "",
+        registro.dataHora || ""
+    ].join("|");
+}
+
+function removerDuplicidadesHistorico(historico) {
+    const mapa = new Map();
+
+    historico.forEach(item => {
+        const registro = normalizarRegistroHistorico(item);
+        const chave = chaveRegistroHistorico(registro);
+
+        if (!mapa.has(chave)) {
+            mapa.set(chave, registro);
+        }
+    });
+
+    return Array.from(mapa.values());
+}
 
 // ------------------------------------------------------------
 // HISTÓRICO LOCAL
 // ------------------------------------------------------------
 
 function obterHistorico() {
-    return JSON.parse(localStorage.getItem("historicoRespostas")) || [];
+    const historico = JSON.parse(localStorage.getItem("historicoRespostas")) || [];
+    return removerDuplicidadesHistorico(historico);
 }
 
 function salvarHistorico(historico) {
-    localStorage.setItem("historicoRespostas", JSON.stringify(historico));
+    localStorage.setItem(
+        "historicoRespostas",
+        JSON.stringify(removerDuplicidadesHistorico(historico))
+    );
 }
 
 async function registrarHistorico(registro) {
-    const registroCompleto = {
+    const registroCompleto = normalizarRegistroHistorico({
         ...registro,
-        dataHora: new Date().toLocaleString("pt-BR")
-    };
+        dataHora: registro.dataHora || new Date().toLocaleString("pt-BR")
+    });
 
     const historico = obterHistorico();
     historico.push(registroCompleto);
@@ -43,92 +155,69 @@ async function registrarHistoricoCloudSePossivel(registro) {
             return;
         }
 
-        const arenaCloud = await import("./arena-cloud.js");
+        const firebaseService = await import("./firebase-service.js");
+        const registroNormalizado = normalizarRegistroHistorico(registro);
 
-        if (!arenaCloud.registrarResposta) {
-            return;
-        }
-
-        await arenaCloud.registrarResposta(idSessao, {
-            missao: registro.missao,
-            missaoId: registro.missaoId,
-            equipe: registro.equipe,
-            equipeId: registro.equipeId,
-            resposta: registro.resposta,
-            correta: registro.correta,
-            acertou: normalizarAcerto(registro),
-            pontos: Number(registro.pontos) || 0,
-            xp: Number(registro.xp) || 0,
-            dataHora: registro.dataHora
-        });
+        await firebaseService.criarRegistro(
+            `sessoes/${idSessao}/historicoRespostas`,
+            {
+                missao: registroNormalizado.missao || "",
+                missaoId: registroNormalizado.missaoId || "",
+                equipe: registroNormalizado.equipe || registroNormalizado.equipeId || "",
+                equipeId: registroNormalizado.equipeId || "",
+                resposta: registroNormalizado.resposta || "",
+                correta: registroNormalizado.correta ?? registroNormalizado.acertou,
+                acertou: registroNormalizado.acertou,
+                pontos: Number(registroNormalizado.pontos || 0),
+                xp: Number(registroNormalizado.xp || 0),
+                dataHora: registroNormalizado.dataHora || new Date().toLocaleString("pt-BR")
+            }
+        );
 
     } catch (erro) {
         console.warn("Não foi possível registrar histórico na nuvem.", erro);
     }
 }
 
-// ------------------------------------------------------------
-// FUNÇÕES AUXILIARES DO RELATÓRIO
-// ------------------------------------------------------------
+async function configurarEscutaHistoricoCloudSePossivel() {
+    try {
+        const idSessao = localStorage.getItem("idSessaoCloud");
 
-function normalizarTexto(valor) {
-    return String(valor || "")
-        .trim()
-        .toLowerCase()
-        .normalize("NFD")
-        .replace(/[\u0300-\u036f]/g, "");
-}
+        if (!idSessao) {
+            return;
+        }
 
-function normalizarAcerto(item) {
-    if (item.acertou === true || item.correta === true) {
-        return true;
+        if (idSessaoHistoricoEscutado === idSessao && canceladorEscutaHistoricoCloud) {
+            return;
+        }
+
+        if (canceladorEscutaHistoricoCloud) {
+            canceladorEscutaHistoricoCloud();
+            canceladorEscutaHistoricoCloud = null;
+        }
+
+        const firebaseService = await import("./firebase-service.js");
+
+        idSessaoHistoricoEscutado = idSessao;
+
+        canceladorEscutaHistoricoCloud = firebaseService.escutarDados(
+            `sessoes/${idSessao}/historicoRespostas`,
+            historicoCloud => {
+                const historicoLocal = obterHistorico();
+                const historicoNuvem = converterObjetoFirebaseParaLista(historicoCloud);
+                const historicoConsolidado = removerDuplicidadesHistorico([
+                    ...historicoLocal,
+                    ...historicoNuvem
+                ]);
+
+                salvarHistorico(historicoConsolidado);
+                atualizarHistoricoNaTela();
+            }
+        );
+
+    } catch (erro) {
+        console.warn("Não foi possível escutar histórico na nuvem.", erro);
     }
-
-    if (item.acertou === false || item.correta === false) {
-        return false;
-    }
-
-    const resultado = normalizarTexto(item.resultado || item.status || "");
-
-    if (resultado === "acertou" || resultado === "correto" || resultado === "certo") {
-        return true;
-    }
-
-    if (resultado === "errou" || resultado === "incorreto" || resultado === "errado") {
-        return false;
-    }
-
-    return false;
-}
-
-function registroPertenceAEquipe(item, equipe) {
-    const idEquipe = normalizarTexto(equipe.id);
-    const nomeEquipe = normalizarTexto(equipe.nome);
-    const idRegistro = normalizarTexto(item.equipeId || item.idEquipe || item.equipe_id);
-    const nomeRegistro = normalizarTexto(item.equipe || item.nomeEquipe || item.nome);
-
-    return idRegistro === idEquipe ||
-           nomeRegistro === nomeEquipe ||
-           nomeRegistro === idEquipe;
-}
-
-function gerarChaveRegistro(item) {
-    const equipe = normalizarTexto(item.equipeId || item.equipe || item.nomeEquipe || "sem-equipe");
-    const missao = normalizarTexto(item.missaoId || item.missao || item.idMissao || "sem-missao");
-
-    return `${equipe}::${missao}`;
-}
-
-function obterHistoricoConsolidado() {
-    const historico = obterHistorico();
-    const mapa = new Map();
-
-    historico.forEach(item => {
-        const chave = gerarChaveRegistro(item);
-        mapa.set(chave, item);
-    });
-
-    return Array.from(mapa.values());
 }
 
 // ------------------------------------------------------------
@@ -136,7 +225,7 @@ function obterHistoricoConsolidado() {
 // ------------------------------------------------------------
 
 function gerarTabelaHistorico() {
-    const historico = obterHistoricoConsolidado();
+    const historico = obterHistorico();
 
     if (historico.length === 0) {
         return "<p>Nenhuma resposta registrada.</p>";
@@ -155,16 +244,16 @@ function gerarTabelaHistorico() {
     `;
 
     historico.forEach(item => {
-        const acertou = normalizarAcerto(item);
+        const registro = normalizarRegistroHistorico(item);
 
         html += `
             <tr>
-                <td>${item.missao || item.missaoId || "-"}</td>
-                <td>${item.equipe || item.equipeId || "-"}</td>
-                <td>${item.resposta || "-"}</td>
-                <td>${acertou ? "Acertou" : "Errou"}</td>
-                <td>${Number(item.pontos) || 0}</td>
-                <td>${item.dataHora || "-"}</td>
+                <td>${registro.missao || registro.missaoId || "-"}</td>
+                <td>${registro.equipe || registro.equipeId || "-"}</td>
+                <td>${registro.resposta || "-"}</td>
+                <td>${registro.acertou ? "Acertou" : "Errou"}</td>
+                <td>${registro.pontos || 0}</td>
+                <td>${registro.dataHora || "-"}</td>
             </tr>
         `;
     });
@@ -178,19 +267,24 @@ function gerarTabelaHistorico() {
 // ------------------------------------------------------------
 
 function calcularResumoFinal() {
-    const equipes = JSON.parse(localStorage.getItem("estadoEquipes")) || [];
-    const historico = obterHistoricoConsolidado();
+    const listaEquipes = JSON.parse(localStorage.getItem("estadoEquipes")) || [];
+    const historico = obterHistorico();
 
-    if (equipes.length === 0) {
+    if (listaEquipes.length === 0) {
         return [];
     }
 
-    return equipes
+    return listaEquipes
         .map(equipe => {
-            const respostasEquipe = historico.filter(item => registroPertenceAEquipe(item, equipe));
+            const idEquipe = textoNormalizado(equipe.id);
+
+            const respostasEquipe = historico.filter(item => {
+                const registro = normalizarRegistroHistorico(item);
+                return registro.equipeId === idEquipe;
+            });
 
             const respostas = respostasEquipe.length;
-            const acertos = respostasEquipe.filter(item => normalizarAcerto(item) === true).length;
+            const acertos = respostasEquipe.filter(item => normalizarRegistroHistorico(item).acertou === true).length;
             const erros = respostas - acertos;
 
             const percentual = respostas > 0
@@ -199,18 +293,24 @@ function calcularResumoFinal() {
 
             return {
                 ...equipe,
-                pontos: Number(equipe.pontos) || 0,
-                xp: Number(equipe.xp) || 0,
                 respostas,
                 acertos,
                 erros,
                 percentual
             };
         })
-        .sort((a, b) => (b.pontos || 0) - (a.pontos || 0));
+        .sort((a, b) => {
+            if ((b.pontos || 0) !== (a.pontos || 0)) {
+                return (b.pontos || 0) - (a.pontos || 0);
+            }
+
+            return (b.percentual || 0) - (a.percentual || 0);
+        });
 }
 
-function gerarRelatorioFinal() {
+async function gerarRelatorioFinal() {
+    await configurarEscutaHistoricoCloudSePossivel();
+
     const relatorio = document.getElementById("relatorioFinal");
 
     if (!relatorio) {
@@ -296,12 +396,12 @@ function atualizarHistoricoNaTela() {
 function gerarObjetoRelatorioFinal() {
     return {
         projeto: "Project Arena",
-        versao: "2.0.1",
+        versao: "2.0",
         modoCloud: localStorage.getItem("modoCloud") || "nao",
         idSessaoCloud: localStorage.getItem("idSessaoCloud") || null,
         dataGeracao: new Date().toLocaleString("pt-BR"),
         resumoEquipes: calcularResumoFinal(),
-        historico: obterHistoricoConsolidado()
+        historico: obterHistorico()
     };
 }
 

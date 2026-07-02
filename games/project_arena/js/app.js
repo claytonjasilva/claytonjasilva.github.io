@@ -3,7 +3,7 @@
 // incluindo preparação local, conexão da equipe à Arena Cloud
 // e escuta da pontuação pelo painel do árbitro.
 // Data de criação: 02/07/2026
-// Versão: 2.0.2
+// Versão: 2.0.1
 // Copyright: Clayton Silva
 // ============================================================
 
@@ -24,11 +24,19 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     configurarEscutaEquipesCloudSePossivel();
 
+    if (typeof configurarEscutaHistoricoCloudSePossivel === "function") {
+        configurarEscutaHistoricoCloudSePossivel();
+    }
+
     setInterval(() => {
         atualizarPainelEquipe();
         atualizarTelaMissaoEquipe();
         atualizarRanking();
         atualizarHistoricoNaTela();
+
+        if (typeof configurarEscutaHistoricoCloudSePossivel === "function") {
+            configurarEscutaHistoricoCloudSePossivel();
+        }
 
         if (typeof atualizarRankingCloudNaTelaSePossivel === "function") {
             atualizarRankingCloudNaTelaSePossivel();
@@ -153,6 +161,10 @@ async function conectarEquipeNaSessao(idSessao) {
             }
 
             aplicarSessaoCloudNaEquipe(sessao);
+
+            if (typeof configurarEscutaHistoricoCloudSePossivel === "function") {
+                configurarEscutaHistoricoCloudSePossivel();
+            }
         });
 
     } catch (erro) {
@@ -171,8 +183,6 @@ async function conectarEquipeNaSessao(idSessao) {
 // ------------------------------------------------------------
 
 function aplicarSessaoCloudNaEquipe(sessao) {
-    aplicarReinicioCloudNaEquipeSeNecessario(sessao);
-
     if (sessao.missoesSessao) {
         localStorage.setItem(
             "missoesSessao",
@@ -211,42 +221,6 @@ function aplicarSessaoCloudNaEquipe(sessao) {
             status.textContent = "Conectado. Aguardando liberação da missão.";
         }
     }
-}
-
-// ------------------------------------------------------------
-// APLICAÇÃO DO REINÍCIO CLOUD NA EQUIPE
-// ------------------------------------------------------------
-
-function aplicarReinicioCloudNaEquipeSeNecessario(sessao) {
-    if (!sessao || !sessao.reinicioEm) {
-        return;
-    }
-
-    const ultimoReinicioAplicado = localStorage.getItem("ultimoReinicioCloudAplicado");
-
-    if (ultimoReinicioAplicado === String(sessao.reinicioEm)) {
-        return;
-    }
-
-    const idSessao = localStorage.getItem("idSessaoCloud");
-    const equipeSelecionada = localStorage.getItem("equipeSelecionada");
-
-    localStorage.clear();
-
-    if (idSessao) {
-        localStorage.setItem("idSessaoCloud", idSessao);
-        localStorage.setItem("modoCloud", "sim");
-    }
-
-    if (equipeSelecionada) {
-        localStorage.setItem("equipeSelecionada", equipeSelecionada);
-    }
-
-    localStorage.setItem("estadoEquipes", JSON.stringify(equipes));
-    localStorage.setItem("historicoRespostas", JSON.stringify([]));
-    localStorage.setItem("missaoLiberada", "nao");
-    localStorage.setItem("indiceMissaoAtual", "0");
-    localStorage.setItem("ultimoReinicioCloudAplicado", String(sessao.reinicioEm));
 }
 
 // ------------------------------------------------------------
