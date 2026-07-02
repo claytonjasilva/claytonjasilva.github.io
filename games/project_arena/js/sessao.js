@@ -3,7 +3,7 @@
 // lógica local da V2.0 e acrescentando integração com
 // a Arena Cloud / Firebase.
 // Data de criação: 02/07/2026
-// Versão: 2.0.1
+// Versão: 2.0.2
 // Copyright: Clayton Silva
 // ============================================================
 
@@ -165,8 +165,16 @@ async function finalizarSessao() {
 // REINÍCIO GERAL
 // ------------------------------------------------------------
 
-function reiniciarTudo() {
+async function reiniciarTudo() {
+    const idSessao = localStorage.getItem("idSessaoCloud");
+
+    await reiniciarSessaoCloudSePossivel(idSessao);
+
     localStorage.clear();
+    localStorage.setItem("estadoEquipes", JSON.stringify(equipes));
+    localStorage.setItem("historicoRespostas", JSON.stringify([]));
+    localStorage.setItem("missaoLiberada", "nao");
+    localStorage.setItem("indiceMissaoAtual", "0");
 
     const status = document.getElementById("statusSessao");
 
@@ -205,7 +213,57 @@ function reiniciarTudo() {
     }
 
     zerarCronometro();
+    atualizarPainelEquipe();
     atualizarProgressoMissao();
+    atualizarRanking();
+    atualizarHistoricoNaTela();
+}
+
+async function reiniciarSessaoCloudSePossivel(idSessao) {
+    try {
+        if (!idSessao) {
+            return;
+        }
+
+        const firebaseService = await import("./firebase-service.js");
+        const marcadorReinicio = Date.now();
+
+        await firebaseService.salvarDados(
+            `sessoes/${idSessao}/equipes`,
+            montarEquipesZeradasParaCloud()
+        );
+
+        await firebaseService.atualizarDados(
+            `sessoes/${idSessao}`,
+            {
+                status: "reiniciada",
+                missaoLiberada: "nao",
+                indiceMissaoAtual: 0,
+                missoesSessao: [],
+                historicoRespostas: [],
+                reinicioEm: marcadorReinicio
+            }
+        );
+
+    } catch (erro) {
+        console.warn("Não foi possível reiniciar a sessão na nuvem.", erro);
+    }
+}
+
+function montarEquipesZeradasParaCloud() {
+    const equipesZeradas = {};
+
+    for (const equipe of equipes) {
+        equipesZeradas[equipe.id] = {
+            id: equipe.id,
+            nome: equipe.nome,
+            pontos: 0,
+            xp: 0,
+            nivel: "Estagiário"
+        };
+    }
+
+    return equipesZeradas;
 }
 
 // ------------------------------------------------------------
