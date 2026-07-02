@@ -1,9 +1,9 @@
 // ============================================================
 // Descrição geral: funções de controle da sessão, mantendo a
-// lógica local da V1.2 e acrescentando integração com
+// lógica local da V2.0 e acrescentando integração com
 // a Arena Cloud / Firebase.
-// Data de criação: 30/06/2026
-// Versão: 2.0
+// Data de criação: 02/07/2026
+// Versão: 2.0.1
 // Copyright: Clayton Silva
 // ============================================================
 
@@ -16,7 +16,9 @@ async function criarSessaoCloudSePossivel() {
         const arenaCloud = await import("./arena-cloud.js");
 
         const idSessao = await arenaCloud.criarSessao({
-            nome: "Sessão Project Arena - Gestão de Projetos"
+            nome: "Sessão Project Arena - Gestão de Projetos",
+            missaoLiberada: "nao",
+            indiceMissaoAtual: 0
         });
 
         localStorage.setItem("idSessaoCloud", idSessao);
@@ -65,11 +67,16 @@ async function iniciarSessao() {
 
     await criarSessaoCloudSePossivel();
 
-    if (localStorage.getItem("modoCloud") === "sim") {
-        await registrarEquipesCloudSePossivel();
-    }
-
     sortearMissoes(10);
+
+    if (localStorage.getItem("modoCloud") === "sim") {
+        await salvarEstadoSessaoCloudSePossivel();
+        await registrarEquipesCloudSePossivel();
+
+        if (typeof configurarEscutaEquipesCloudSePossivel === "function") {
+            configurarEscutaEquipesCloudSePossivel();
+        }
+    }
 
     const status = document.getElementById("statusSessao");
 
@@ -105,6 +112,34 @@ async function iniciarSessao() {
 }
 
 // ------------------------------------------------------------
+// SINCRONIZAÇÃO BÁSICA DA SESSÃO NA NUVEM
+// ------------------------------------------------------------
+
+async function salvarEstadoSessaoCloudSePossivel() {
+    try {
+        const idSessao = localStorage.getItem("idSessaoCloud");
+
+        if (!idSessao) {
+            return;
+        }
+
+        const firebaseService = await import("./firebase-service.js");
+
+        await firebaseService.atualizarDados(
+            `sessoes/${idSessao}`,
+            {
+                missaoLiberada: localStorage.getItem("missaoLiberada") || "nao",
+                indiceMissaoAtual: Number(localStorage.getItem("indiceMissaoAtual")) || 0,
+                missoesSessao: JSON.parse(localStorage.getItem("missoesSessao")) || []
+            }
+        );
+
+    } catch (erro) {
+        console.warn("Não foi possível salvar o estado da sessão na nuvem.", erro);
+    }
+}
+
+// ------------------------------------------------------------
 // FINALIZAÇÃO DA SESSÃO
 // ------------------------------------------------------------
 
@@ -112,6 +147,7 @@ async function finalizarSessao() {
     localStorage.setItem("missaoLiberada", "nao");
     pararCronometro();
 
+    await salvarEstadoSessaoCloudSePossivel();
     await encerrarSessaoCloudSePossivel();
 
     const status = document.getElementById("statusSessao");
