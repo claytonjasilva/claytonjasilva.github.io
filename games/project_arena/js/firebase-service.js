@@ -1,10 +1,11 @@
 /******************************************************************************
  * Projeto.......: Project Arena
  * Arquivo.......: firebase-service.js
- * Descrição.....: Serviços de acesso ao Firebase.
+ * Descrição.....: Serviços de acesso ao Firebase Realtime Database.
  *
- * Data..........: 30/06/2026
- * Versão........: 2.0
+ * Data..........: 02/07/2026
+ * Versão........: 2.0.1
+ * Copyright.....: Clayton Silva
  ******************************************************************************/
 
 import { database } from "./firebase-config.js";
@@ -21,8 +22,12 @@ import {
 
 const BASE_PATH = "project_arena";
 
+function normalizarCaminho(caminho) {
+    return String(caminho || "").replace(/^\/+|\/+$/g, "");
+}
+
 function caminhoFirebase(caminho) {
-    return ref(database, `${BASE_PATH}/${caminho}`);
+    return ref(database, `${BASE_PATH}/${normalizarCaminho(caminho)}`);
 }
 
 async function salvarDados(caminho, dados) {

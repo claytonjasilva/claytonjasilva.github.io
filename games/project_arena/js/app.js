@@ -1,10 +1,13 @@
 // ============================================================
 // Descrição geral: inicialização geral do Project Arena V2.0,
-// incluindo preparação local e conexão da equipe à Arena Cloud.
-// Data de criação: 30/06/2026
-// Versão: 2.0
+// incluindo preparação local, conexão da equipe à Arena Cloud
+// e escuta da pontuação pelo painel do árbitro.
+// Data de criação: 02/07/2026
+// Versão: 2.0.1
 // Copyright: Clayton Silva
 // ============================================================
+
+let canceladorEscutaEquipesCloud = null;
 
 document.addEventListener("DOMContentLoaded", async () => {
 
@@ -18,6 +21,8 @@ document.addEventListener("DOMContentLoaded", async () => {
     atualizarRanking();
     atualizarHistoricoNaTela();
     atualizarProgressoMissao();
+
+    configurarEscutaEquipesCloudSePossivel();
 
     setInterval(() => {
         atualizarPainelEquipe();
@@ -187,6 +192,11 @@ function aplicarSessaoCloudNaEquipe(sessao) {
         );
     }
 
+    if (sessao.equipes) {
+        aplicarEquipesCloudNoEstadoLocal(sessao.equipes);
+    }
+
+    atualizarPainelEquipe();
     atualizarTelaMissaoEquipe();
     atualizarProgressoMissao();
 
@@ -199,4 +209,63 @@ function aplicarSessaoCloudNaEquipe(sessao) {
             status.textContent = "Conectado. Aguardando liberação da missão.";
         }
     }
+}
+
+// ------------------------------------------------------------
+// ESCUTA DA PONTUAÇÃO NO PAINEL DO ÁRBITRO
+// ------------------------------------------------------------
+
+async function configurarEscutaEquipesCloudSePossivel() {
+    try {
+        const idSessao = localStorage.getItem("idSessaoCloud");
+
+        if (!idSessao) {
+            return;
+        }
+
+        if (canceladorEscutaEquipesCloud) {
+            canceladorEscutaEquipesCloud();
+            canceladorEscutaEquipesCloud = null;
+        }
+
+        const firebaseService = await import("./firebase-service.js");
+
+        canceladorEscutaEquipesCloud = firebaseService.escutarDados(
+            `sessoes/${idSessao}/equipes`,
+            equipesCloud => {
+                if (!equipesCloud) {
+                    return;
+                }
+
+                aplicarEquipesCloudNoEstadoLocal(equipesCloud);
+                atualizarRanking();
+                atualizarPainelEquipe();
+            }
+        );
+
+    } catch (erro) {
+        console.warn("Não foi possível escutar equipes na nuvem.", erro);
+    }
+}
+
+function aplicarEquipesCloudNoEstadoLocal(equipesCloud) {
+    const listaBase = obterEquipes();
+
+    const novaLista = listaBase.map(equipeLocal => {
+        const equipeCloud = equipesCloud[equipeLocal.id];
+
+        if (!equipeCloud) {
+            return equipeLocal;
+        }
+
+        return {
+            ...equipeLocal,
+            nome: equipeCloud.nome || equipeLocal.nome,
+            pontos: equipeCloud.pontos || 0,
+            xp: equipeCloud.xp || 0,
+            nivel: equipeCloud.nivel || "Estagiário"
+        };
+    });
+
+    salvarEquipes(novaLista);
 }

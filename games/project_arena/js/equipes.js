@@ -1,9 +1,9 @@
 // ============================================================
 // Descrição geral: definição, controle e atualização das equipes
-// do Project Arena V2.0, com suporte local e integração inicial
+// do Project Arena V2.0, com suporte local e integração estável
 // com Arena Cloud / Firebase.
-// Data de criação: 30/06/2026
-// Versão: 2.0
+// Data de criação: 02/07/2026
+// Versão: 2.0.1
 // Copyright: Clayton Silva
 // ============================================================
 
@@ -166,23 +166,21 @@ async function registrarEquipesCloudSePossivel() {
             return;
         }
 
-        const arenaCloud = await import("./arena-cloud.js");
-        const mapaEquipesCloud = {};
-
+        const firebaseService = await import("./firebase-service.js");
         const listaEquipes = obterEquipes();
 
         for (const equipe of listaEquipes) {
-            const idEquipeCloud = await arenaCloud.criarEquipe(idSessao, {
-                nome: equipe.nome,
-                pontos: equipe.pontos || 0,
-                xp: equipe.xp || 0,
-                nivel: equipe.nivel || "Estagiário"
-            });
-
-            mapaEquipesCloud[equipe.id] = idEquipeCloud;
+            await firebaseService.salvarDados(
+                `sessoes/${idSessao}/equipes/${equipe.id}`,
+                {
+                    id: equipe.id,
+                    nome: equipe.nome,
+                    pontos: equipe.pontos || 0,
+                    xp: equipe.xp || 0,
+                    nivel: equipe.nivel || "Estagiário"
+                }
+            );
         }
-
-        localStorage.setItem("mapaEquipesCloud", JSON.stringify(mapaEquipesCloud));
 
     } catch (erro) {
         console.warn("Não foi possível registrar equipes na nuvem.", erro);
@@ -191,10 +189,9 @@ async function registrarEquipesCloudSePossivel() {
 
 async function atualizarEquipeCloudSePossivel(equipeId) {
     try {
-        const mapa = JSON.parse(localStorage.getItem("mapaEquipesCloud")) || {};
-        const idEquipeCloud = mapa[equipeId];
+        const idSessao = localStorage.getItem("idSessaoCloud");
 
-        if (!idEquipeCloud) {
+        if (!idSessao) {
             return;
         }
 
@@ -204,16 +201,18 @@ async function atualizarEquipeCloudSePossivel(equipeId) {
             return;
         }
 
-        const arenaCloud = await import("./arena-cloud.js");
+        const firebaseService = await import("./firebase-service.js");
 
-        if (arenaCloud.atualizarEquipe) {
-            await arenaCloud.atualizarEquipe(idEquipeCloud, {
+        await firebaseService.atualizarDados(
+            `sessoes/${idSessao}/equipes/${equipeId}`,
+            {
+                id: equipe.id,
                 nome: equipe.nome,
                 pontos: equipe.pontos || 0,
                 xp: equipe.xp || 0,
                 nivel: equipe.nivel || "Estagiário"
-            });
-        }
+            }
+        );
 
     } catch (erro) {
         console.warn("Não foi possível atualizar equipe na nuvem.", erro);
