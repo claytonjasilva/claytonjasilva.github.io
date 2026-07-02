@@ -174,6 +174,56 @@
     .apoio-item h4 { font-size: 0.9rem; font-weight: 600; }
     .apoio-item p  { font-size: 0.8rem; color: var(--muted); margin-top: 0.2rem; }
 
+    /* ── NOTÍCIAS & BUSCA ── */
+    .search-panel {
+      background: var(--surface); border: 1px solid var(--border); border-radius: 10px;
+      padding: 1.5rem 1.75rem; margin-bottom: 1.75rem;
+    }
+    .search-panel p.hint { font-size: 0.85rem; color: var(--muted); margin-bottom: 1rem; }
+    .search-form { display: flex; gap: 0.6rem; flex-wrap: wrap; }
+    .search-form input[type="text"] {
+      flex: 1; min-width: 220px; background: var(--tag-bg); border: 1px solid var(--border);
+      border-radius: 6px; padding: 0.65rem 0.9rem; color: var(--text); font-family: var(--font-sans);
+      font-size: 0.9rem;
+    }
+    .search-form input[type="text"]:focus { outline: none; border-color: var(--accent); }
+    .search-form input[type="text"]::placeholder { color: var(--muted); }
+    .search-form button {
+      background: var(--accent); color: #0a0e17; border: none; border-radius: 6px;
+      padding: 0.65rem 1.3rem; font-family: var(--font-mono); font-size: 0.82rem; font-weight: 600;
+      cursor: pointer; transition: opacity 0.2s;
+    }
+    .search-form button:hover { opacity: 0.85; }
+    .search-scope { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 0.9rem; }
+    .search-scope label {
+      font-family: var(--font-mono); font-size: 0.7rem; color: var(--muted);
+      border: 1px solid var(--border); border-radius: 4px; padding: 0.25rem 0.55rem;
+      display: flex; align-items: center; gap: 0.35rem; cursor: pointer; transition: color 0.2s, border-color 0.2s;
+    }
+    .search-scope label:has(input:checked) { color: var(--accent); border-color: rgba(0,194,255,0.4); }
+    .search-scope input { accent-color: var(--accent); }
+
+    .news-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1rem; }
+    .news-card {
+      background: var(--surface); border: 1px solid var(--border); border-radius: 8px;
+      padding: 1.2rem 1.3rem; display: flex; flex-direction: column; gap: 0.6rem;
+      transition: border-color 0.2s;
+    }
+    .news-card:hover { border-color: var(--accent2); }
+    .news-tags { display: flex; gap: 0.4rem; flex-wrap: wrap; }
+    .news-tag {
+      font-family: var(--font-mono); font-size: 0.66rem; letter-spacing: 0.04em;
+      border-radius: 4px; padding: 0.18rem 0.5rem;
+    }
+    .news-tag.s1 { color: #00c2ff; background: rgba(0,194,255,0.1); border: 1px solid rgba(0,194,255,0.3); }
+    .news-tag.s2 { color: #7c3aed; background: rgba(124,58,237,0.1); border: 1px solid rgba(124,58,237,0.3); }
+    .news-tag.s3 { color: #22c55e; background: rgba(34,197,94,0.1); border: 1px solid rgba(34,197,94,0.3); }
+    .news-tag.date { color: var(--muted); background: transparent; border: 1px solid var(--border); }
+    .news-card h4 { font-size: 0.95rem; font-weight: 600; line-height: 1.35; }
+    .news-card p { font-size: 0.82rem; color: var(--muted); line-height: 1.5; }
+    .news-links { display: flex; gap: 0.75rem; margin-top: 0.2rem; flex-wrap: wrap; }
+    .news-links a { font-family: var(--font-mono); font-size: 0.74rem; }
+
     /* ── FOOTER ── */
     footer { border-top: 1px solid var(--border); padding: 2rem 0; margin-top: 2rem; }
     footer .container { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; }
@@ -196,6 +246,7 @@
       <li><a href="#sessoes">sessões</a></li>
       <li><a href="#legislacao">legislação</a></li>
       <li><a href="#orgao-regulador">órgão regulador</a></li>
+      <li><a href="#noticias">notícias &amp; busca</a></li>
       <li><a href="https://claytonjasilva.github.io">← home</a></li>
     </ul>
   </div>
@@ -378,6 +429,140 @@
     </div>
   </section>
 
+  <!-- NOTÍCIAS & MOTOR DE BUSCA -->
+  <section class="section" id="noticias">
+    <p class="section-title">05 / notícias &amp; busca regulatória</p>
+
+    <div class="search-panel">
+      <p class="hint">Busque um termo (ex.: "FISTEL", "espectro 5G", "RGST") diretamente nas principais fontes de regulação de telecomunicações. A busca abre em uma nova aba, usando o Google restrito aos sites marcados abaixo.</p>
+      <form class="search-form" action="https://www.google.com/search" method="get" target="_blank" onsubmit="return prepSearch(this)">
+        <input type="text" name="q" id="regsearch" placeholder="Buscar em fontes regulatórias oficiais e especializadas…" autocomplete="off" required>
+        <button type="submit">Buscar →</button>
+        <div class="search-scope">
+          <label><input type="checkbox" value="site:gov.br/anatel" checked> gov.br/anatel</label>
+          <label><input type="checkbox" value="site:anatel.gov.br" checked> anatel.gov.br</label>
+          <label><input type="checkbox" value="site:planalto.gov.br" checked> planalto.gov.br</label>
+          <label><input type="checkbox" value="site:teletime.com.br" checked> TELETIME</label>
+          <label><input type="checkbox" value="site:telesintese.com.br" checked> TeleSíntese</label>
+          <label><input type="checkbox" value="site:mobiletime.com.br" checked> MobileTime</label>
+          <label><input type="checkbox" value="site:jota.info" checked> JOTA</label>
+          <label><input type="checkbox" value="site:itu.int"> ITU/UIT</label>
+        </div>
+      </form>
+    </div>
+
+    <p class="section-title" style="margin-top:2rem;">resumo de notícias recentes</p>
+    <div class="news-grid">
+
+      <div class="news-card">
+        <div class="news-tags"><span class="news-tag s2">Sessão 2</span><span class="news-tag date">out/2025</span></div>
+        <h4>RGST consolida mais de 30 resoluções em um único regulamento</h4>
+        <p>A Anatel aprovou o Regulamento Geral dos Serviços de Telecomunicações, a maior simplificação regulatória de sua história — 25 anos após ser proposta pela primeira vez.</p>
+        <div class="news-links">
+          <a href="https://www.gov.br/anatel/pt-br/assuntos/noticias/anatel-conclui-etapa-de-simplificacao-e-consolidacao-regulatoria" target="_blank">Fonte →</a>
+          <a href="regulacao_telecom/sessao2_aspectos_regulatorios.html#slide-12">Ver na Sessão 2 →</a>
+        </div>
+      </div>
+
+      <div class="news-card">
+        <div class="news-tags"><span class="news-tag s2">Sessão 2</span><span class="news-tag date">2025 · STF</span></div>
+        <h4>ADI 7787 questiona valores de TFI e TFF no STF</h4>
+        <p>Operadoras contestam a proporcionalidade das taxas do FISTEL frente ao custo real de fiscalização da Anatel. Julgamento no plenário virtual já foi adiado mais de uma vez.</p>
+        <div class="news-links">
+          <a href="https://teletime.com.br/07/05/2026/stf-adia-julgamento-das-taxas-do-fistel-teles-rebatem-agu-e-pgr/" target="_blank">Fonte →</a>
+          <a href="regulacao_telecom/sessao2_aspectos_regulatorios.html#slide-11">Ver na Sessão 2 →</a>
+        </div>
+      </div>
+
+      <div class="news-card">
+        <div class="news-tags"><span class="news-tag s3">Sessão 3</span><span class="news-tag date">2024-2025 · TCU</span></div>
+        <h4>Fim dos bens reversíveis: Oi, Telefônica, Claro e Algar migram para autorização</h4>
+        <p>TCU homologa acordos que encerram décadas de litígio sobre bens reversíveis do STFC, convertendo-os em compromissos de investimento.</p>
+        <div class="news-links">
+          <a href="https://telesintese.com.br/tcu-aprova-acordo-de-r-240-milhoes-entre-anatel-e-algar-para-migracao-do-stfc/" target="_blank">Fonte →</a>
+          <a href="regulacao_telecom/sessao3_aspectos_regulatorios.html#slide-13">Ver na Sessão 3 →</a>
+        </div>
+      </div>
+
+      <div class="news-card">
+        <div class="news-tags"><span class="news-tag s3">Sessão 3</span><span class="news-tag date">2026</span></div>
+        <h4>Anatel reavalia regime público do STFC para 2026</h4>
+        <p>Novo edital de concessão restringe o regime público a cerca de 14.800 localidades pouco competitivas — LDN e LDI ficam fora do escopo.</p>
+        <div class="news-links">
+          <a href="https://www.gov.br/anatel/pt-br/assuntos/noticias/anatel-realizou-audiencia-publica-sobre-reavaliacao-de-regras-relacionadas-a-exploracao-do-stfc" target="_blank">Fonte →</a>
+          <a href="regulacao_telecom/sessao3_aspectos_regulatorios.html#slide-14">Ver na Sessão 3 →</a>
+        </div>
+      </div>
+
+      <div class="news-card">
+        <div class="news-tags"><span class="news-tag s3">Sessão 3</span><span class="news-tag date">2025</span></div>
+        <h4>Programa Escolas Conectadas ultrapassa 73 mil escolas via FUST</h4>
+        <p>Novo edital de R$ 400 milhões deve levar banda larga a mais 5 mil escolas públicas, ampliando o uso do fundo para além da telefonia fixa.</p>
+        <div class="news-links">
+          <a href="https://www.gov.br/mcom/pt-br/noticias/2025/Julho/ministerio-das-comunicacoes-divulga-resultado-de-edital-para-levar-internet-banda-larga-e-wi-fi-a-mais-de-2-mil-escolas-publicas" target="_blank">Fonte →</a>
+          <a href="regulacao_telecom/sessao3_aspectos_regulatorios.html#slide-27">Ver na Sessão 3 →</a>
+        </div>
+      </div>
+
+      <div class="news-card">
+        <div class="news-tags"><span class="news-tag s3">Sessão 3</span><span class="news-tag date">Consulta pública</span></div>
+        <h4>Exército se opõe a trechos da atualização do PDFF</h4>
+        <p>Em consulta pública, o Exército Brasileiro pede a manutenção de resoluções específicas sobre faixas de uso militar, diante da simplificação proposta pela Anatel.</p>
+        <div class="news-links">
+          <a href="https://www.telesintese.com.br/exercito-nao-quer-o-fim-de-regras-de-frequencias-proposto-pela-anatel/" target="_blank">Fonte →</a>
+          <a href="regulacao_telecom/sessao3_aspectos_regulatorios.html#slide-23">Ver na Sessão 3 →</a>
+        </div>
+      </div>
+
+      <div class="news-card">
+        <div class="news-tags"><span class="news-tag s1">Sessão 1</span><span class="news-tag date">2008 · histórico</span></div>
+        <h4>O estudo de 2008 que antecipou o RGST</h4>
+        <p>O Estudo Técnico da Anatel de 2008 (PGR) já propunha simplificar e convergir a regulação do setor — meta que só se concretizou plenamente em 2025.</p>
+        <div class="news-links">
+          <a href="https://www.anatel.gov.br/legislacao/resolucoes/2008/11-resolucao-516" target="_blank">Fonte →</a>
+          <a href="regulacao_telecom/sessao1_aspectos_regulatorios.html#slide-12">Ver na Sessão 1 →</a>
+        </div>
+      </div>
+
+    </div>
+
+    <p class="section-title" style="margin-top:2rem;">sites importantes sobre aspectos regulatórios</p>
+    <div class="ds-grid">
+      <div class="ds-item">
+        <svg class="ds-icon" width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="6" stroke="#00c2ff" stroke-width="1.2"/><line x1="2" y1="8" x2="14" y2="8" stroke="#00c2ff" stroke-width="1"/></svg>
+        <div><a href="https://www.gov.br/anatel/pt-br/legislacao" target="_blank">Anatel — Legislação</a><span>Resoluções, leis e atos normativos do setor</span></div>
+      </div>
+      <div class="ds-item">
+        <svg class="ds-icon" width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="6" stroke="#00c2ff" stroke-width="1.2"/><line x1="2" y1="8" x2="14" y2="8" stroke="#00c2ff" stroke-width="1"/></svg>
+        <div><a href="https://www.gov.br/anatel/pt-br/assuntos/noticias" target="_blank">Anatel — Notícias</a><span>Comunicados oficiais e consultas públicas</span></div>
+      </div>
+      <div class="ds-item">
+        <svg class="ds-icon" width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="6" stroke="#00c2ff" stroke-width="1.2"/><line x1="2" y1="8" x2="14" y2="8" stroke="#00c2ff" stroke-width="1"/></svg>
+        <div><a href="https://teletime.com.br" target="_blank">TELETIME</a><span>Cobertura diária do setor de telecom no Brasil</span></div>
+      </div>
+      <div class="ds-item">
+        <svg class="ds-icon" width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="6" stroke="#00c2ff" stroke-width="1.2"/><line x1="2" y1="8" x2="14" y2="8" stroke="#00c2ff" stroke-width="1"/></svg>
+        <div><a href="https://www.telesintese.com.br" target="_blank">TeleSíntese</a><span>Análises e bastidores da regulação de telecom</span></div>
+      </div>
+      <div class="ds-item">
+        <svg class="ds-icon" width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="6" stroke="#00c2ff" stroke-width="1.2"/><line x1="2" y1="8" x2="14" y2="8" stroke="#00c2ff" stroke-width="1"/></svg>
+        <div><a href="https://www.mobiletime.com.br" target="_blank">MobileTime</a><span>Mercado móvel, espectro e novas tecnologias</span></div>
+      </div>
+      <div class="ds-item">
+        <svg class="ds-icon" width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="6" stroke="#00c2ff" stroke-width="1.2"/><line x1="2" y1="8" x2="14" y2="8" stroke="#00c2ff" stroke-width="1"/></svg>
+        <div><a href="https://www.jota.info" target="_blank">JOTA</a><span>Cobertura jurídica e regulatória, incl. STF/Anatel</span></div>
+      </div>
+      <div class="ds-item">
+        <svg class="ds-icon" width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="6" stroke="#00c2ff" stroke-width="1.2"/><line x1="2" y1="8" x2="14" y2="8" stroke="#00c2ff" stroke-width="1"/></svg>
+        <div><a href="https://www.itu.int" target="_blank">ITU / UIT</a><span>Padrões e regiões internacionais de radiofrequência</span></div>
+      </div>
+      <div class="ds-item">
+        <svg class="ds-icon" width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="6" stroke="#00c2ff" stroke-width="1.2"/><line x1="2" y1="8" x2="14" y2="8" stroke="#00c2ff" stroke-width="1"/></svg>
+        <div><a href="https://www.gov.br/anatel/pt-br/regulado/radiofrequencia/atribuicao-destinacao-e-distribuicao-de-faixas" target="_blank">PDFF — Anatel</a><span>Plano de Atribuição, Destinação e Distribuição de Frequências</span></div>
+      </div>
+    </div>
+  </section>
+
 </div>
 
 <!-- MODAIS DAS SESSÕES (conteúdo em construção) -->
@@ -391,6 +576,18 @@
     <p><a href="https://claytonjasilva.github.io">← voltar para home</a></p>
   </div>
 </footer>
+
+<script>
+  function prepSearch(form) {
+    var q = document.getElementById('regsearch');
+    var checked = Array.prototype.slice.call(form.querySelectorAll('.search-scope input:checked'))
+      .map(function (cb) { return cb.value; });
+    if (checked.length) {
+      q.value = q.value.trim() + ' (' + checked.join(' OR ') + ')';
+    }
+    return true;
+  }
+</script>
 
 </body>
 </html>
