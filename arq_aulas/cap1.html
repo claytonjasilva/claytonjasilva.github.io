@@ -1,13 +1,14 @@
 <!DOCTYPE html>
+
 <html lang="pt-BR">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>Cap. 1 — Máquina de von Neumann | Arquitetura de Computadores</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css">
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&amp;family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300&amp;display=swap" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css" rel="stylesheet"/>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/contrib/auto-render.min.js"></script>
 <style>
@@ -160,516 +161,547 @@ footer p{font-size:.8rem;color:var(--muted);font-family:var(--font-mono);}
 .dlbl{font-family:'IBM Plex Mono',monospace;font-size:13px;fill:#cbd5e1;}
 .dlbl2{font-family:'IBM Plex Mono',monospace;font-size:11px;fill:#64748b;}
 .dfill{fill:#111827;}
+
+/* Complementos para o conteúdo integral importado do Markdown */
+.section pre{overflow:auto;padding:16px 18px;border:1px solid var(--line);border-radius:12px;background:rgba(0,0,0,.22);line-height:1.55}
+.section code{font-family:"JetBrains Mono","Courier New",monospace}
+.section p code,.section li code{padding:.12em .35em;border-radius:5px;background:rgba(0,194,255,.09)}
+.section .fig-full img{max-width:100%;height:auto;display:block;margin:0 auto}
+.section blockquote{margin:18px 0;padding:12px 16px;border-left:3px solid var(--accent);background:rgba(0,194,255,.06)}
 </style>
 </head>
 <body>
-
 <nav>
-  <div class="container">
-    <span class="nav-brand">arq · cap. 1</span>
-    <ul class="nav-links">
-      <li><a href="#s1">1.1 Histórico</a></li>
-      <li><a href="#s2">1.2 IAS detalhado</a></li>
-      <li><a href="#s3">1.3 Memória e instruções</a></li>
-      <li><a href="#quiz">Quiz</a></li>
-      <li><a href="#anexos">Anexos</a></li>
-      <li><a href="https://claytonjasilva.github.io/arq.html">← disciplina</a></li>
-    </ul>
-  </div>
+<div class="container">
+<span class="nav-brand">arq · cap. 1</span>
+<ul class="nav-links">
+<li><a href="#s1">1.1 Histórico</a></li>
+<li><a href="#s2">1.2 IAS detalhado</a></li>
+<li><a href="#s3">1.3 Memória e instruções</a></li>
+<li><a href="#quiz">Quiz</a></li>
+<li><a href="#anexos">Anexos</a></li>
+<li><a href="https://claytonjasilva.github.io/arq.html">← disciplina</a></li>
+</ul>
+</div>
 </nav>
 <div class="progress-track"><div class="progress-fill" id="progressFill"></div></div>
-
 <section class="hero">
-  <div class="container">
-    <p class="hero-eyebrow">Arquitetura de Computadores · Ibmec RJ</p>
-    <h1>Cap. 1 — Máquina<br><strong>de von Neumann</strong></h1>
-
-    <div class="hero-meta">
-      <span class="meta-item">
-        <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><circle cx="7" cy="7" r="6" stroke="currentColor" stroke-width="1.2"/><path d="M7 4v3l2 1.5" stroke="currentColor" stroke-width="1.2"/></svg>
+<div class="container">
+<p class="hero-eyebrow">Arquitetura de Computadores · Ibmec RJ</p>
+<h1>Cap. 1 — Máquina<br/><strong>de von Neumann</strong></h1>
+<div class="hero-meta">
+<span class="meta-item">
+<svg fill="none" height="14" viewbox="0 0 14 14" width="14"><circle cx="7" cy="7" r="6" stroke="currentColor" stroke-width="1.2"></circle><path d="M7 4v3l2 1.5" stroke="currentColor" stroke-width="1.2"></path></svg>
         leitura ~40 min
       </span>
-      <span class="meta-item">
-        <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><rect x="2" y="3" width="10" height="9" rx="1" stroke="currentColor" stroke-width="1.2"/><line x1="2" y1="6" x2="12" y2="6" stroke="currentColor" stroke-width="1.2"/></svg>
+<span class="meta-item">
+<svg fill="none" height="14" viewbox="0 0 14 14" width="14"><rect height="9" rx="1" stroke="currentColor" stroke-width="1.2" width="10" x="2" y="3"></rect><line stroke="currentColor" stroke-width="1.2" x1="2" x2="12" y1="6" y2="6"></line></svg>
         Prof. Clayton J A Silva
       </span>
-      <span class="meta-item">
-        <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 7l4 4 6-7" stroke="currentColor" stroke-width="1.4" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+<span class="meta-item">
+<svg fill="none" height="14" viewbox="0 0 14 14" width="14"><path d="M2 7l4 4 6-7" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.4"></path></svg>
         Rev 2026.2
       </span>
-    </div>
-
-    <div class="objectives">
-      <p class="label">Objetivos de aprendizagem</p>
-      <ul>
-        <li>Compreender o conceito de programa armazenado e a arquitetura da máquina IAS</li>
-        <li>Identificar os elementos funcionais do computador: memória, CPU, E/S e barramento</li>
-        <li>Detalhar os registradores internos do IAS e o ciclo de busca-execução de instruções</li>
-        <li>Classificar o conjunto de instruções do processador IAS</li>
-        <li>Interpretar e escrever pequenos trechos de código em linguagem de montagem (<em>assembly</em>)</li>
-      </ul>
-    </div>
-
-    <div class="toc">
-      <a href="#s1">1.1 Breve histórico</a>
-      <a href="#s1a">1.1.1 Memória</a>
-      <a href="#s1b">1.1.2 CPU</a>
-      <a href="#s1c">1.1.3 E/S</a>
-      <a href="#s1d">1.1.4 Barramento</a>
-      <a href="#s2">1.2 Estrutura detalhada do IAS</a>
-      <a href="#s3a">1.3.1 Armazenamento de instruções</a>
-      <a href="#s3b">1.3.2 Ciclo de instrução</a>
-      <a href="#s3c">1.3.3 Instruções do processador</a>
-      <a href="#s3d">1.3.4 Linguagem de montagem</a>
-    </div>
-  </div>
+</div>
+<div class="objectives">
+<p class="label">Objetivos de aprendizagem</p>
+<ul>
+<li>Compreender o conceito de programa armazenado e a arquitetura da máquina IAS</li>
+<li>Identificar os elementos funcionais do computador: memória, CPU, E/S e barramento</li>
+<li>Detalhar os registradores internos do IAS e o ciclo de busca-execução de instruções</li>
+<li>Classificar o conjunto de instruções do processador IAS</li>
+<li>Interpretar e escrever pequenos trechos de código em linguagem de montagem (<em>assembly</em>)</li>
+</ul>
+</div>
+<div class="toc">
+<a href="#s1">1.1 Breve histórico</a>
+<a href="#s1a">1.1.1 Memória</a>
+<a href="#s1b">1.1.2 CPU</a>
+<a href="#s1c">1.1.3 E/S</a>
+<a href="#s1d">1.1.4 Barramento</a>
+<a href="#s2">1.2 Estrutura detalhada do IAS</a>
+<a href="#s3a">1.3.1 Armazenamento de instruções</a>
+<a href="#s3b">1.3.2 Ciclo de instrução</a>
+<a href="#s3c">1.3.3 Instruções do processador</a>
+<a href="#s3d">1.3.4 Linguagem de montagem</a>
+</div>
+</div>
 </section>
-
 <div class="container">
+<!-- 1.1 -->
+<section class="section" id="s1"><p class="section-label">1.1 / breve histórico</p><h2>1.1 <a href="https://pt.wikipedia.org/wiki/Computador_IAS">Breve histórico</a></h2>
+<p>A tarefa de carregar e modificar programas nas máquinas historicamente precedentes à máquina IAS era extremamente tediosa.</p>
+<p>A ideia principal da máquina IAS, atribuída a von Neumann, é a do <strong>conceito de programa armazenado</strong>.</p>
+<p>O conceito de programa armazenado consiste no armazenamento do programa a ser executado pela UCP em memória, juntamente com os dados. O processador busca as instruções e os dados do programa diretamente da memória. Instruções e dados estão armazenados em posições específicas inequívocas da memória, cada uma definida por um <strong>endereço de memória</strong>.</p>
+<div class="fig-full"><img alt="Máquina original de von Neumann" src="/arq_aulas/images/figura1_1.png"/><p class="fig-caption">Figura 1.1 Máquina original de von Neumann (fonte. Tanenbaum, Organização estruturada de computadores)</p></div>
 
-  <!-- 1.1 -->
-  <section class="section" id="s1">
-    <p class="section-label">1.1 / breve histórico</p>
-    <h2>Breve histórico</h2>
+<p>A estrutura geral da máquina IAS consiste em:</p>
+<ul class="plain">
+<li>Uma memória principal, que armazena dados e instruções</li>
+<li>Uma Unidade Lógica e Aritmética (ULA), capaz de realizar as operações matemáticas binárias e as operações lógicas</li>
+<li>Uma Unidade de Controle (UC), que interpreta e executa as instruções armazenadas na memória</li>
+<li>Dispositivos de entrada e saída (E/S) operados pela Unidade de Controle.</li>
+</ul>
+<h3 id="s1a">1.1.1 Memória</h3>
+<p>A memória é o elemento dos sistemas computacionais responsável pelo armazenamento das informações. As informações nos sistemas computacionais atuais são armazenadas na forma binária (Ver <a href="https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/arq_aulas/arquitetura_computadores_anexo1.md">anexo I</a>). Rigorosamente, nos sistemas computacionais distinguem-se dados de informações, conforme discutiremos na seção seguinte. No momento trataremos como dados e informações de modo indistinto.</p>
+<p>Uma das evoluções dos sistemas computacionais tem sido no sentido dos elementos de memória possuírem uma capacidade cada vez maior de armazenar dados. Uma metáfora fácil de estabelecer para compreender como as memórias são organizadas é entendê-las como um armário com várias gavetas, organizadas em linhas e colunas. Em cada gaveta armazena-se uma unidade de dado, chamada bit (1 ou 0).</p>
+<p>Todas as tarefas realizadas pelos sistemas computacionais decorrem da execução de uma sucessão de instruções binárias armazenadas, que podem manipular dados, também armazenados na memória, intitulados programas. Os programas constituem o software e comandam os elementos eletromecânicos, chamados de hardware.</p>
+<p>As características tecnológicas dos dispositivos de memória têm evoluído rapidamente, propiciando uma elevada capacidade de armazenamento, mas também velocidade de resposta às solicitações emanadas pela unidade central de processamento (CPU), a quem cabe executar as instruções.</p>
+<h3 id="s1b">1.1.2 Unidade Central de Processamento</h3>
+<p>A <strong>Unidade Central de Processamento</strong> (CPU, do inglês <em>Central Processing Unit</em>) é o elemento concebido na arquitetura para realizar duas funções básicas principais: (i) interpretar as instruções e controlar o funcionamento das elementos do sistema, na <strong>Unidade de Controle</strong> (UC); e (ii) executar as instruções, na <strong>Unidade Lógica e Aritmética</strong> (ULA).</p>
+<p>Para o controle, o sistema computacional utiliza uma referência temporal dada por um sinal elétrico chamado de clock. Pense no computador como uma máquina similar a um engenho mecânico, cuja operação é sincronizada por engrenagens. O sinal elétrico do clock é que permite o sincronismo de funcionamento de todas as operações dos computadores. O sinal de clock é periódico, ou seja, repete-se em intervalos regulares de tempo, chamados de <strong>período</strong> ou <strong>ciclo</strong>. O número de ciclos por unidade de tempo é chamado de <strong>frequência</strong>.</p>
+<p>A evolução dos sistemas computacionais tem sido no sentido de produzir CPUs com referência de clock cada vez mais velozes. Ou seja, a interpretação das instruções dos programas armazenados na memória tem sido cada vez mais rápida, ou seja, os programas são executados, consequentemente as tarefas são realizadas em tempos cada vez mais curtos.</p>
+<p>Por outro lado, as instruções são resolvidas pela ULA. Instruções definidas em fábrica são decodificadas pela UC, mas são efetivamente executadas pelos circuitos lógicos e aritméticos da ULA. Como o próprio nome define, a ULA possui os circuitos para executar operações cujo resultado pode ser verdadeiro ou falso - operações lógicas. Lembre-se que fisicamente os computadores representam os valores lógicos como sinais elétricos, por exemplo, 5V ou 0V, os quais podem ser abstraídos como 0s e 1s.</p>
+<p>Além das operações lógicas, a ULA também possui os circuitos que podem resolver operações aritméticas, obviamente lidando com dados numéricos representados na forma binária.</p>
+<h3 id="s1c">1.1.3 Dispositivos de entrada e saída</h3>
+<p>Os computadores precisam assegurar uma ligação com os usuários. Para isso são necessários elementos que permitam ao usuário inserir os dados por meio de dispositivos de entrada. Por exemplo, um teclado possibilita que um usuário digite um texto que seja tratado pela máquina. Por outro lado, os resultados produzidos pela máquina precisam ser apresentados ao ambiente externo através dos chamados dispositivos de saída, por exemplo, monitores de vídeo.</p>
+<p>Mas não somente para as pessoas os dispositivos de entrada e saída são produzidos. Máquinas diferentes precisam se comunicar. Os elementos de entrada e saída propiciam a comunicação do ambiente interno com o ambiente externo.</p>
+<h3 id="s1d">1.1.4 Barramento</h3>
+<p>Ficou evidente que os programas armazenados em memória possuem instruções interpretadas e executadas pela CPU. Por sua vez, os dados resultantes das operações lógicas e aritméticas precisam ser armazenados em memória ou precisam ser enviados a outra máquina através de dispositivos de E/S. Para que o tráfego de dados ocorra entre os elementos do computador são necessárias vias de comunicações, chamadas de barramento.</p>
+<p>Através dos barramentos sao trafegados os sinais elétricos abstraídos matematicamente como 0s e 1s resultantes das operações, assim como relativos às instruções a serem executadas. Esses barramentos são funcionalmente classificados como <strong>barramento de dados</strong>. Mas os dados fluem entre elementos bem definidos, portanto a definição da localização do destinatário do dado é crucial para o tráfego de dados. Cada componente do computador é endereçável, de forma que o dado seja enviado ao destino correto. As vias que trafegam os endereços são chamadas de <strong>barramento de endereços</strong>.</p>
+<p>Finalmente, o controle produzido pela UC é veiculado pelo chamado <strong>barramento de controle</strong>. Através dele circulam os sinais elétricos para ativar leitura/escrita em memória, habilitação/desabilitação de elemento etc.</p>
+</section>
+<!-- 1.2 -->
+<section class="section" id="s2"><p class="section-label">1.2 / estrutura detalhada do ias</p><h2>1.2 Visão detalhada do computador IAS</h2>
+<p>A figura abaixo ilustra a organização detalhada do computador IAS.</p>
+<div class="fig-full"><img alt="Estrutura do IAS" src="/arq_aulas/images/figura1_2.png"/><p class="fig-caption">Figura 1.2 Estrutura do IAS (fonte. Stallings, Arquitetura e Organização de Computadores)</p></div>
 
-    <p>A tarefa de carregar e modificar programas nas máquinas historicamente precedentes à máquina <strong>IAS</strong> era extremamente tediosa. A ideia principal da máquina IAS, atribuída a von Neumann, é a do conceito de <strong>programa armazenado</strong>.</p>
+<ol>
+<li><strong>Registrador Temporário da Memória</strong> (MBR, <em>Memory Buffer Register</em>): capacidade de armazenar <strong>40 bits</strong> e contém uma palavra com um par de instruções a ser lida ou escrita na memória. Registradores são dispositivos de armazenamento de dados internos ao processador que possuem tipicamente baixo tempo de acesso (posteriormente discutiremos o conceito), embora baixa capacidade de armazenamento de bits.</li>
+<li><strong>Acumulador</strong> (Acc) e <strong>Quociente de Multiplicação</strong> (MQ, <em>Multiplier Quotient</em>): capacidade de armazenar <strong>40 bits</strong> e <strong>armazenam temporariamente</strong> os operandos e o resultado das operações realizadas pelos circuitos lógicos e aritméticos da ULA. Em operações com mais de 40 bits, o Acc armazena os 40 bits mais significativos e o MQ armazena os 40 bits menos significativos.</li>
+<li><strong>Contador do Programa</strong> (PC, <em>Program Counter</em>): contador de <strong>10 bits</strong> e <strong>contém o endereço do próximo</strong> par de instruções. Incrementa automaticamente <strong>1 bit</strong> em cada instrução executada. <strong>As instruções são armazenadas e **endereços adjacentes</strong> de memória.</li>
+<li><strong>Registrador de Endereçamento à Memória</strong> (MAR, <em>Memory Adress Register</em>): capacidade de armazenar <strong>12 bits</strong> e contém o endereço da palavra.</li>
+<li><strong>Registrador Temporário de Instruções</strong> (IBR, <strong>Instruction Buffer Register</strong>): capacidade de armazenar <strong>20 bits</strong> e contém a instrução à direita da palavra.</li>
+<li><strong>Registrador de Instruções</strong> (IR, <em>Instruction Register</em>): capacidade de armazenar <strong>8 bits</strong> e contém o código da instrução (<em>opcode</em>) que está sendo executada.</li>
+<li>Memória (<em>Memory</em>): capacidade de armazenar, <strong>em cada linha de endereço</strong> palavras de 40 bits, com duas instruções cadas, ou armazenar um dado de 40 bits. <strong>Possui 1024 linhas de endereço</strong>.</li>
+<li>Dispositivos de Entrada/Saída (I/O, <em>Input/Output</em>): leitura e escrita de dados dos dispositivos externos da/para memória.</li>
+<li>Barramento (<em>Bus</em>): meio de comunicação para tráfego dos bits entre os elementos do sistema, para trafegar <strong>dados, endereços ou sinais de controle</strong>.</li>
+</ol>
+<p>A figura abaixo ilustra a relação da memória com os barramentos de dados e de endereços do computador IAS.</p>
+<div class="fig-full"><img alt="Decodificação de endereço de memória IAS" src="/arq_aulas/images/figura1_3.jpg"/><p class="fig-caption">Figura 1.3 Decodificação de endereço de memória IAS</p></div>
 
-    <div class="definition">
-      <p class="dtitle">conceito de programa armazenado</p>
-      <p style="margin:0">O programa a ser executado pela UCP é armazenado em <strong>memória</strong>, juntamente com os dados. O processador busca instruções e dados diretamente da memória. Instruções e dados ocupam posições específicas inequívocas, cada uma definida por um <strong>endereço de memória</strong>.</p>
-    </div>
+<p>Cada linha de dados aponta para uma palavra, que ocupa um endereço de memória.<br/>
+Os endereços são inequívocos, ou seja, não existem dois endereços iguais.</p>
+</section>
+<!-- 1.3 -->
+<section class="section" id="s3"><p class="section-label">1.3 / memória e instruções</p><h2>1.3. Visão detalhada das células de memória do computador IAS</h2>
+<h3 id="s3a">1.3.1 Armazenamento de instruções</h3>
+<p>Um par de instruções ocupa cada linha de endereço. A estrutura da linha é dada por</p>
+<div class="fig-full"><img alt="Par de instruções na memória IAS" src="/arq_aulas/images/figura1_4.jpg"/><p class="fig-caption">Figura 1.4 Par de instruções na memória IAS</p></div>
 
-    <div class="fig-full">
-      <img src="../assets/img/arqcomp/figura1_1.png" alt="Máquina original de von Neumann">
-      <p class="fig-caption">Fig. 1.1 — Máquina original de von Neumann (fonte: Tanenbaum, Organização Estruturada de Computadores)</p>
-    </div>
+<p>A instrução à esquerda ocupa os bits b<sub>0</sub> a b<sub>19</sub>. As instruções à direita ocupam os bits b<sub>20</sub> a b<sub>39</sub>.
+Cada instrução é possui um grupo de bits chamado de <em>opcode</em>, a palavra de um código que define as instruções do processador.<br/>
+E outro grupo de bits, chamado de operando, que contém o endereço do dado a ser buscado pelo processador em memória.<br/>
+Nem toda instrução do processador da máquina IAS requer um operando. Nesse caso, quando busca a instrução o processador desconsidera os bits relativos ao operando.</p>
+<div class="fig-full"><img alt="Formato da linha de memória IAS" src="/arq_aulas/images/figura1_5.jpg"/><p class="fig-caption">Figura 1.5 Formato da linha de memória IAS: acima, número; abaixo, par de instruções (fonte. Stallings, Arquitetura e Organização de Computadores)</p></div>
 
-    <p>A estrutura geral da máquina IAS consiste em:</p>
-    <ul class="plain">
-      <li>Uma <strong>memória principal</strong>, que armazena dados e instruções</li>
-      <li>Uma <strong>Unidade Lógica e Aritmética (ULA)</strong>, capaz de realizar operações matemáticas binárias e operações lógicas</li>
-      <li>Uma <strong>Unidade de Controle (UC)</strong>, que interpreta e executa as instruções armazenadas na memória</li>
-      <li><strong>Dispositivos de entrada e saída (E/S)</strong> operados pela Unidade de Controle</li>
-    </ul>
+<p>O ISA define os formatos de instruções, códigos de operação da instrução (opcodes), registradores, memória de dados e instrução; o efeito das instruções executadas nos registradores e na memória; e um algoritmo para o controle da execução das instruções. ISA é a arquitetura de conjunto de instrução (ISA — do inglês, <em>Instruction Set Architecture</em>).</p>
+<p>Os atributos da camada ISA incluem o conjunto de instrução, o número de bits usados para representar vários tipos de dados (por exemplo, números, caracteres), mecanismos de E/S e técnicas para endereçamento de memória.</p>
+<h3 id="s3b">1.3.2 Ciclo de instrução</h3>
+<p>A execução das tarefas do computador consiste na execução sucessiva das instruções armazenadas em memória, as quais constituem os programas armazenados.</p>
+<p>As instruções são normalmente armazenadas em <strong>posições de memória adjacentes</strong> e <strong>executadas sequencialmente</strong>, a execução das instruções de um endereço é seguida da execução das instruções do endereço seguinte.</p>
+<p>As instruções são executadas sincronizadamente. O <strong>sincronismo</strong> é dado pelos circuitos de controle.</p>
+<p>Após a execução de cada instrução os registradores armazenam um valor. Os valores de cada elemento definem o <strong>estado</strong> da máquina. As etapas (microoperações) de execução de cada operação variam de acordo com cada instrução do programa.  O conjunto de microinstruções executadas define o chamado <strong>ciclo de instrução</strong>, que é composto por duas partes:</p>
+<ul class="plain">
+<li><strong>Busca</strong> do par de instruções</li>
+<li><strong>Execução</strong> das instruções</li>
+</ul>
+<div class="fig-full"><img alt="Ciclo de instruções da máquina IAS" src="/arq_aulas/images/figura1_6.png"/><p class="fig-caption">Figura 1.6 Ciclo de instruções da máquina IAS (fonte. Adaptado de Stallings, Arquitetura e Organização de Computadores)</p></div>
 
-    <h3 id="s1a">1.1.1 Memória</h3>
-    <p>A memória é o elemento responsável pelo armazenamento das informações, na forma binária. Uma metáfora útil: imagine um armário com várias gavetas, organizadas em linhas e colunas — em cada gaveta armazena-se uma unidade de dado, o <strong>bit</strong> (1 ou 0).</p>
-    <p>Todas as tarefas dos sistemas computacionais decorrem da execução de uma sucessão de instruções binárias armazenadas — os <strong>programas</strong> (software), que comandam os elementos eletromecânicos (<strong>hardware</strong>).</p>
-    <div class="note">As tecnologias de memória evoluem buscando duas frentes simultâneas: maior <strong>capacidade</strong> de armazenamento e maior <strong>velocidade</strong> de resposta às solicitações da CPU.</div>
+<p>O fluxograma da execução das instruções pode ser detalhado por:</p>
+<ol>
+<li>Programa e dados armazenados em memória: conceito de programa armazenado</li>
+<li>PC contém o endereço da próxima palavra (par de instruções)</li>
+<li>Evento de controle - o endereço do par de instruções é carregado no MAR</li>
+<li>Evento de controle - o endereço das instruções é disponibilizado no barramento de endereços</li>
+<li>Evento de controle - o endereço das instruções é decodificado e a posição do par de instruções é selecionada</li>
+<li>Evento de controle - o par de instruções é disponibilizado no barramento de dados</li>
+<li>Evento de controle - o par de instruções é armazenado no MBR</li>
+<li>Evento de controle - o opcode da instrução à esquerda é armazenado no IR, o operando da instrução é armazenado no MAR e a instrução à direita é armazenada no IBR</li>
+<li>Evento de controle - a primeira instrução é decodificada</li>
+</ol>
+<p>A partir desse ponto o fluxo dependerá do <strong>modo de endereçamento do dado (operando) pela instrução</strong>. Existem instruções que não requerem operando; o operando é o próprio dado; o operando referencia o endereço do dado; o operando referencia o endereço, no qual está armazenado o endereço do dado. No caso do operando referenciar o endereço do dado, prosseguindo o fluxo...</p>
+<ol start="10">
+<li>Evento de controle - o MAR é ativado para disponibilizar o endereço do dado</li>
+<li>Evento de controle - o endereço do dado é disponibilizado no barramento de endereços</li>
+<li>Evento de controle - o endereço do dado é decodificado e a posição do dado é selecionada</li>
+<li>Evento de controle - o dado é disponibilizado no barramento de dados</li>
+<li>Evento de controle - o dado é armazenado no MBR</li>
+<li>Evento de controle - a ULA realiza a operação</li>
+<li>Evento de controle - o par de instruções é armazenado no MBR</li>
+<li>Evento de controle - o resultado da operação é armazenado no ACC ou MQ</li>
+<li>Evento de controle - o opcode da segunda instrução é transferida do IBR para o IR e o operando é transferido para o MAR</li>
+<li>O processo prossegue para decodificação da segunda instrução e busca do dado</li>
+<li>O par de instruções seguinte é buscado ...</li>
+</ol>
+<div class="fig-full"><img alt="Fluxograma da operação do IAS" src="/arq_aulas/images/figura1_7.png"/><p class="fig-caption">Figura 1.7 Fluxograma da operação do IAS (fonte. Adaptado de Stallings, Arquitetura e Organização de Computadores)</p></div>
 
-    <h3 id="s1b">1.1.2 Unidade Central de Processamento</h3>
-    <p>A <strong>CPU</strong> (<em>Central Processing Unit</em>) realiza duas funções básicas: (i) interpretar instruções e controlar o funcionamento do sistema, na <strong>Unidade de Controle</strong>; e (ii) executar as instruções, na <strong>Unidade Lógica e Aritmética</strong>.</p>
-    <p>O controle utiliza como referência temporal um sinal elétrico chamado <strong>clock</strong> — pense em um engenho mecânico sincronizado por engrenagens. O sinal de clock é periódico: repete-se em intervalos regulares chamados <strong>período</strong> (ou ciclo); o número de ciclos por unidade de tempo é a <strong>frequência</strong>.</p>
-    <div class="note">A evolução dos sistemas computacionais busca CPUs com clock cada vez mais veloz — programas executados em tempos cada vez mais curtos.</div>
-    <p>Instruções definidas em fábrica são <strong>decodificadas</strong> pela UC, mas <strong>executadas</strong> pelos circuitos da ULA — tanto operações lógicas (verdadeiro/falso) quanto aritméticas (sobre dados binários).</p>
+<p>Detalhando mais a operação na ULA.</p>
+<p>A ULA efetua adição, subtração e outras operações simples sobre suas entradas, produzindo assim um resultado no registrador de saída, o qual pode ser armazenado em um registrador. Mais tarde, ele pode ser escrito (isto é, armazenado) na memória, se desejado. Nem todos os projetos têm os registradores A, B e de saída. No exemplo, ilustramos uma adição, mas as ULAs também realizam outras operações.</p>
+<div class="fig-full"><img alt="0 caminho de dados de uma típica máquina de von Neumann" src="/arq_aulas/images/figura1_8.png"/><p class="fig-caption">Figura 1.8 0 caminho de dados de uma típica máquina de von Neumann (fonte. Tanenbaum, Organização estruturada de computadores)</p></div>
 
-    <h3 id="s1c">1.1.3 Dispositivos de entrada e saída</h3>
-    <p>Os computadores precisam de uma ligação com os usuários: dispositivos de <strong>entrada</strong> (ex.: teclado) permitem inserir dados; dispositivos de <strong>saída</strong> (ex.: monitor) apresentam os resultados ao ambiente externo. Os dispositivos de E/S também propiciam a comunicação entre máquinas diferentes — do ambiente interno com o ambiente externo.</p>
+<h3 id="s3c">1.3.3 Instruções do processador IAS</h3>
+<p>Todo processador possui um <em>set</em> (conjunto) de instruções. O processador do computador IAS também possui o seu <em>set</em> de instruções.<br/>
+As instruções podem ser classificadas como segue:</p>
+<ul class="plain">
+<li><strong>Transferência de dados</strong>: os dados são transferidos entre a memória e os registradores da CPU ou entre registradores.</li>
+<li><strong>Desvio incondicional</strong>: normalmente a UC executa as instruções em sequência na memória, que pode ser alterada pelo uso desse desvio independentemente de qualquer condição, quando a instrução é executada.</li>
+<li><strong>Desvio condicional</strong>: o desvio é executado dependendo de um teste de condição estabelecido pela instrução.</li>
+<li><strong>Lógicas e aritméticas</strong>, como adição, subtração, multiplicação e divisão binárias.</li>
+<li><strong>Alteração de endereços</strong>: instruções para calcular endereços para inseri-los em instruções armazenadas na memória, propiciando flexibilidade de endereçamento dos programas.</li>
+</ul>
+<p>Os programas executados pelo processador (na <strong>linguagem de máquina</strong>) podem ser escritos por uma representação simbólica (<em>assembly</em>) utilizando-se mnemônicos.<br/>
+O código em linguagem de máquina, como tratamos, é todo constituído de sequência binária de instruções, ou seja, em sequência de bits.<br/>
+A figura apresenta como a tabela do <em>set</em> de instruções é normalmente apresentada.</p>
+<div class="fig-full"><img alt="Forma da tabela do set de instruções da IAS" src="/arq_aulas/images/figura1_9.jpg"/><p class="fig-caption">Figura 1.9 Forma da tabela do <em>set</em> de instruções da IAS</p></div>
 
-    <h3 id="s1d">1.1.4 Barramento</h3>
-    <p>Os programas armazenados em memória possuem instruções interpretadas e executadas pela CPU. Os dados resultantes precisam ser armazenados em memória ou enviados a outra máquina via E/S. Para que o tráfego ocorra entre os elementos do computador, são necessárias vias de comunicação — os <strong>barramentos</strong>.</p>
-
-    <table>
-      <thead><tr><th class="tleft">Barramento</th><th class="tleft">Função</th></tr></thead>
-      <tbody>
-        <tr><td class="tleft">Barramento de dados</td><td class="tleft">Trafega os sinais elétricos (0s e 1s) resultantes de operações e relativos a instruções</td></tr>
-        <tr><td class="tleft">Barramento de endereços</td><td class="tleft">Trafega o endereço do componente destinatário do dado — cada componente é endereçável</td></tr>
-        <tr><td class="tleft">Barramento de controle</td><td class="tleft">Veicula os sinais de controle da UC: leitura/escrita em memória, habilitação/desabilitação etc.</td></tr>
-      </tbody>
-    </table>
-  </section>
-
-  <!-- 1.2 -->
-  <section class="section" id="s2">
-    <p class="section-label">1.2 / estrutura detalhada do ias</p>
-    <h2>Visão detalhada do computador IAS</h2>
-
-    <div class="fig-full">
-      <img src="../assets/img/arqcomp/figura1_2.png" alt="Estrutura do IAS">
-      <p class="fig-caption">Fig. 1.2 — Estrutura do IAS (fonte: Stallings, Arquitetura e Organização de Computadores)</p>
-    </div>
-
-    <p>Os principais elementos internos do IAS:</p>
-
-    <table>
-      <thead><tr><th class="tleft">Registrador</th><th>Capacidade</th><th class="tleft">Função</th></tr></thead>
-      <tbody>
-        <tr><td class="tleft"><strong>MBR</strong> — Memory Buffer Register</td><td>40 bits</td><td class="tleft">Contém uma palavra (par de instruções) a ser lida ou escrita na memória</td></tr>
-        <tr><td class="tleft"><strong>Acc</strong> — Acumulador</td><td>40 bits</td><td class="tleft">Armazena temporariamente operandos e resultados das operações da ULA</td></tr>
-        <tr><td class="tleft"><strong>MQ</strong> — Multiplier Quotient</td><td>40 bits</td><td class="tleft">Em operações &gt;40 bits, armazena os bits menos significativos (Acc guarda os mais significativos)</td></tr>
-        <tr><td class="tleft"><strong>PC</strong> — Program Counter</td><td>10 bits</td><td class="tleft">Contém o endereço do próximo par de instruções; incrementa 1 a cada instrução executada</td></tr>
-        <tr><td class="tleft"><strong>MAR</strong> — Memory Address Register</td><td>12 bits</td><td class="tleft">Contém o endereço da palavra a ser acessada</td></tr>
-        <tr><td class="tleft"><strong>IBR</strong> — Instruction Buffer Register</td><td>20 bits</td><td class="tleft">Contém a instrução à direita da palavra</td></tr>
-        <tr><td class="tleft"><strong>IR</strong> — Instruction Register</td><td>8 bits</td><td class="tleft">Contém o código (<em>opcode</em>) da instrução em execução</td></tr>
-        <tr><td class="tleft">Memória (<em>Memory</em>)</td><td>1024 linhas</td><td class="tleft">Cada linha de endereço armazena uma palavra de 40 bits (duas instruções, ou um dado)</td></tr>
-        <tr><td class="tleft">E/S (<em>I/O</em>)</td><td>—</td><td class="tleft">Leitura e escrita de dados dos dispositivos externos da/para memória</td></tr>
-        <tr><td class="tleft">Barramento (<em>Bus</em>)</td><td>—</td><td class="tleft">Meio de comunicação para tráfego de dados, endereços e sinais de controle</td></tr>
-      </tbody>
-    </table>
-
-    <div class="note">As instruções são armazenadas em <strong>endereços adjacentes</strong> de memória. Cada endereço é <strong>inequívoco</strong> — não existem dois endereços iguais.</div>
-
-    <div class="fig-full">
-      <img src="../assets/img/arqcomp/figura1_3.jpg" alt="Decodificação de endereço de memória IAS">
-      <p class="fig-caption">Fig. 1.3 — Decodificação de endereço de memória IAS: a relação entre a memória e os barramentos de dados e de endereços</p>
-    </div>
-  </section>
-
-  <!-- 1.3 -->
-  <section class="section" id="s3">
-    <p class="section-label">1.3 / memória e instruções</p>
-    <h2>Visão detalhada das células de memória do computador IAS</h2>
-
-    <h3 id="s3a">1.3.1 Armazenamento de instruções</h3>
-    <p>Um par de instruções ocupa cada linha de endereço (palavra de 40 bits).</p>
-
-    <div class="fig-full">
-      <svg viewBox="0 0 640 170" xmlns="http://www.w3.org/2000/svg">
-        <rect x="20" y="30" width="280" height="60" class="dbox" fill="rgba(0,194,255,.06)"/>
-        <rect x="300" y="30" width="280" height="60" class="dbox2" fill="rgba(124,58,237,.06)"/>
-        <text x="160" y="55" text-anchor="middle" class="dlbl" fill="#00c2ff">Instrução à esquerda</text>
-        <text x="160" y="74" text-anchor="middle" class="dlbl2">opcode (8b) + operando (12b)</text>
-        <text x="440" y="55" text-anchor="middle" class="dlbl" fill="#7c3aed">Instrução à direita</text>
-        <text x="440" y="74" text-anchor="middle" class="dlbl2">opcode (8b) + operando (12b)</text>
-        <text x="20" y="20" class="dlbl2">b0</text>
-        <text x="290" y="20" text-anchor="end" class="dlbl2">b19</text>
-        <text x="300" y="20" class="dlbl2">b20</text>
-        <text x="578" y="20" text-anchor="end" class="dlbl2">b39</text>
-        <path d="M20 100 H300" class="dwire"/><path d="M20 95 v10 M300 95 v10" class="dwire"/>
-        <text x="160" y="118" text-anchor="middle" class="dlbl2">20 bits</text>
-        <path d="M300 100 H580" class="dwire"/><path d="M300 95 v10 M580 95 v10" class="dwire"/>
-        <text x="440" y="118" text-anchor="middle" class="dlbl2">20 bits</text>
-        <path d="M20 140 H580" class="dwire"/><path d="M20 135 v10 M580 135 v10" class="dwire"/>
-        <text x="300" y="158" text-anchor="middle" class="dlbl2">40 bits — uma palavra (uma linha de endereço)</text>
-      </svg>
-      <p class="fig-caption">Fig. 1.4 — Par de instruções na memória IAS: instrução à esquerda (b0–b19) e instrução à direita (b20–b39)</p>
-    </div>
-
-    <p>Cada instrução possui um grupo de bits chamado <strong>opcode</strong> (código que define a instrução do processador) e outro grupo chamado <strong>operando</strong>, que contém o endereço do dado a ser buscado em memória. Nem toda instrução requer operando — nesse caso, o processador desconsidera esses bits ao buscar a instrução.</p>
-
-    <div class="fig-full">
-      <img src="../assets/img/arqcomp/figura1_5.jpg" alt="Formato da linha de memória IAS">
-      <p class="fig-caption">Fig. 1.5 — Formato da linha de memória IAS: acima, número; abaixo, par de instruções (fonte: Stallings)</p>
-    </div>
-
-    <div class="definition">
-      <p class="dtitle">ISA — Instruction Set Architecture</p>
-      <p style="margin:0">Define os formatos de instrução, opcodes, registradores, memória de dados e instrução, o efeito das instruções nos registradores/memória, e o algoritmo de controle da execução. Inclui também o número de bits para representar tipos de dados, mecanismos de E/S e técnicas de endereçamento de memória.</p>
-    </div>
-
-    <h3 id="s3b">1.3.2 Ciclo de instrução</h3>
-    <p>A execução das tarefas consiste na execução sucessiva das instruções armazenadas, que constituem os <strong>programas armazenados</strong>. As instruções ficam em posições adjacentes e são executadas <strong>sequencialmente</strong> e <strong>sincronizadamente</strong>, sob controle dos circuitos de controle.</p>
-
-    <p>Após cada instrução, os registradores armazenam um valor — o conjunto desses valores define o <strong>estado</strong> da máquina. O conjunto de microinstruções executadas define o <strong>ciclo de instrução</strong>, composto por duas partes:</p>
-
-    <div class="fig-full">
-      <svg viewBox="0 0 640 160" xmlns="http://www.w3.org/2000/svg">
-        <rect x="40" y="50" width="180" height="60" rx="8" class="dbox" fill="rgba(0,194,255,.06)"/>
-        <text x="130" y="85" text-anchor="middle" class="dlbl" fill="#00c2ff">BUSCA</text>
-        <text x="130" y="103" text-anchor="middle" class="dlbl2">do par de instruções</text>
-        <path d="M220 80 H400" class="dwire"/><path d="M392 73 L400 80 L392 87" class="dwire"/>
-        <rect x="400" y="50" width="180" height="60" rx="8" class="dbox2" fill="rgba(124,58,237,.06)"/>
-        <text x="490" y="85" text-anchor="middle" class="dlbl" fill="#7c3aed">EXECUÇÃO</text>
-        <text x="490" y="103" text-anchor="middle" class="dlbl2">das instruções</text>
-        <path d="M490 110 V135 H130 V110" class="dwire" fill="none"/>
-        <path d="M137 117 L130 110 L123 117" class="dwire"/>
-        <text x="310" y="150" text-anchor="middle" class="dlbl2">repete para o par de instruções seguinte</text>
-      </svg>
-      <p class="fig-caption">Fig. 1.6 — Ciclo de instruções da máquina IAS: busca e execução (fonte: adaptado de Stallings)</p>
-    </div>
-
-    <div class="method-card">
-      <span class="method-num">detalhamento</span>
-      <h4>Fluxo de execução (busca)</h4>
-      <ol class="steps">
-        <li>Programa e dados armazenados em memória: conceito de programa armazenado</li>
-        <li>PC contém o endereço da próxima palavra (par de instruções)</li>
-        <li>O endereço do par de instruções é carregado no MAR</li>
-        <li>O endereço é disponibilizado no barramento de endereços</li>
-        <li>O endereço é decodificado e a posição do par é selecionada</li>
-        <li>O par de instruções é disponibilizado no barramento de dados</li>
-        <li>O par de instruções é armazenado no MBR</li>
-        <li>O opcode da instrução à esquerda vai para o IR; o operando, para o MAR; a instrução à direita, para o IBR</li>
-        <li>A primeira instrução é decodificada</li>
-      </ol>
-    </div>
-
-    <p>A partir daí, o fluxo depende do <strong>modo de endereçamento</strong> do operando. Considerando que o operando referencie o endereço do dado:</p>
-
-    <div class="method-card">
-      <span class="method-num">detalhamento</span>
-      <h4>Fluxo de execução (continuação)</h4>
-      <ol class="steps" start="10">
-        <li>O MAR é ativado para disponibilizar o endereço do dado</li>
-        <li>O endereço do dado é disponibilizado no barramento de endereços</li>
-        <li>O endereço é decodificado e a posição do dado é selecionada</li>
-        <li>O dado é disponibilizado no barramento de dados</li>
-        <li>O dado é armazenado no MBR</li>
-        <li>A ULA realiza a operação</li>
-        <li>O par de instruções seguinte é armazenado no MBR</li>
-        <li>O resultado da operação é armazenado no ACC ou MQ</li>
-        <li>O opcode da segunda instrução é transferido do IBR para o IR, e o operando para o MAR</li>
-        <li>O processo prossegue para decodificação da segunda instrução e busca do dado</li>
-        <li>O par de instruções seguinte é buscado…</li>
-      </ol>
-    </div>
-
-    <div class="fig-full">
-      <img src="../assets/img/arqcomp/figura1_7.png" alt="Fluxograma da operação do IAS">
-      <p class="fig-caption">Fig. 1.7 — Fluxograma da operação do IAS (fonte: adaptado de Stallings)</p>
-    </div>
-
-    <p>Detalhando a operação na ULA: ela efetua adição, subtração e outras operações simples sobre suas entradas, produzindo um resultado no registrador de saída, que pode ser posteriormente escrito em memória.</p>
-
-    <div class="fig-full">
-      <svg viewBox="0 0 640 220" xmlns="http://www.w3.org/2000/svg">
-        <rect x="40" y="20" width="120" height="50" rx="6" class="dbox" fill="rgba(0,194,255,.06)"/>
-        <text x="100" y="50" text-anchor="middle" class="dlbl">Reg. A</text>
-        <rect x="40" y="100" width="120" height="50" rx="6" class="dbox" fill="rgba(0,194,255,.06)"/>
-        <text x="100" y="130" text-anchor="middle" class="dlbl">Reg. B</text>
-        <path d="M160 45 H230 V90" class="dwire"/>
-        <path d="M160 125 H230 V100" class="dwire"/>
-        <path d="M230 60 L300 90 L230 120 Z" class="dbox2" fill="rgba(124,58,237,.06)"/>
-        <text x="248" y="93" class="dlbl2" fill="#7c3aed">ULA</text>
-        <path d="M300 90 H380" class="dwire"/>
-        <rect x="380" y="65" width="120" height="50" rx="6" class="dbox" fill="rgba(0,194,255,.06)"/>
-        <text x="440" y="95" text-anchor="middle" class="dlbl">Reg. Saída</text>
-        <path d="M500 90 H560" class="dwire"/>
-        <path d="M552 83 L560 90 L552 97" class="dwire"/>
-        <text x="568" y="95" class="dlbl2">memória /<tspan x="568" dy="13">barramento</tspan></text>
-      </svg>
-      <p class="fig-caption">Fig. 1.8 — Caminho de dados de uma máquina de von Neumann típica (fonte: Tanenbaum)</p>
-    </div>
-
-    <h3 id="s3c">1.3.3 Instruções do processador IAS</h3>
-    <p>Todo processador possui um <em>set</em> (conjunto) de instruções. As instruções do IAS classificam-se em:</p>
-
-    <ul class="plain">
-      <li><strong>Transferência de dados</strong> — entre memória e registradores, ou entre registradores</li>
-      <li><strong>Desvio incondicional</strong> — altera a sequência normal de execução, independentemente de condição</li>
-      <li><strong>Desvio condicional</strong> — o desvio depende de um teste de condição estabelecido pela instrução</li>
-      <li><strong>Lógicas e aritméticas</strong> — adição, subtração, multiplicação e divisão binárias</li>
-      <li><strong>Alteração de endereços</strong> — calculam endereços a inserir em instruções armazenadas, dando flexibilidade de endereçamento</li>
-    </ul>
-
-    <p>Os programas em linguagem de máquina (sequência binária de instruções) podem ser escritos por representação simbólica (<em>assembly</em>), usando mnemônicos.</p>
-
-    <h4>Instruções de transferência de dados</h4>
-    <table>
-      <thead><tr><th>Código de operação</th><th>Representação simbólica</th><th class="tleft">Descrição</th></tr></thead>
-      <tbody>
-        <tr><td>0000 1010</td><td>LOAD MQ</td><td class="tleft">Transfere o conteúdo de MQ para o acumulador ACC</td></tr>
-        <tr><td>0000 1001</td><td>LOAD MQ,M(X)</td><td class="tleft">Transfere o conteúdo da posição de memória X para MQ</td></tr>
-        <tr><td>0010 0001</td><td>STOR M(X)</td><td class="tleft">Transfere o conteúdo do acumulador para a posição de memória X</td></tr>
-        <tr><td>0000 0001</td><td>LOAD M(X)</td><td class="tleft">Transfere o conteúdo da posição de memória X para o acumulador</td></tr>
-        <tr><td>0000 0010</td><td>LOAD −M(X)</td><td class="tleft">Transfere o negativo do conteúdo de X para o acumulador</td></tr>
-        <tr><td>0000 0011</td><td>LOAD |M(X)|</td><td class="tleft">Transfere o valor absoluto do conteúdo de X para o acumulador</td></tr>
-        <tr><td>0000 0100</td><td>LOAD −|M(X)|</td><td class="tleft">Transfere o negativo do valor absoluto de X para o acumulador</td></tr>
-      </tbody>
-    </table>
-
-    <h4>Instruções de desvio incondicional</h4>
-    <table>
-      <thead><tr><th>Código de operação</th><th>Representação simbólica</th><th class="tleft">Descrição</th></tr></thead>
-      <tbody>
-        <tr><td>0000 1101</td><td>JUMP M(X,0:19)</td><td class="tleft">Próxima instrução buscada nos bits 0–19 da posição X</td></tr>
-        <tr><td>0000 1110</td><td>JUMP M(X,20:39)</td><td class="tleft">Próxima instrução buscada nos bits 20–39 da posição X</td></tr>
-      </tbody>
-    </table>
-
-    <h4>Instruções de desvio condicional</h4>
-    <table>
-      <thead><tr><th>Código de operação</th><th>Representação simbólica</th><th class="tleft">Descrição</th></tr></thead>
-      <tbody>
-        <tr><td>0000 1111</td><td>JUMP +M(X,0:19)</td><td class="tleft">Se ACC ≥ 0, próxima instrução buscada nos bits 0–19 de X</td></tr>
-        <tr><td>0000 1110</td><td>JUMP +M(X,20:39)</td><td class="tleft">Se ACC ≥ 0, próxima instrução buscada nos bits 20–39 de X</td></tr>
-      </tbody>
-    </table>
-
-    <h4>Instruções aritméticas</h4>
-    <table>
-      <thead><tr><th>Código de operação</th><th>Representação simbólica</th><th class="tleft">Descrição</th></tr></thead>
-      <tbody>
-        <tr><td>0000 0101</td><td>ADD M(X)</td><td class="tleft">Soma o conteúdo de X com o acumulador; armazena no acumulador</td></tr>
-        <tr><td>0000 0111</td><td>ADD |M(X)|</td><td class="tleft">Soma o módulo do conteúdo de X com o acumulador</td></tr>
-        <tr><td>0010 0110</td><td>SUB M(X)</td><td class="tleft">Subtrai o conteúdo de X do acumulador</td></tr>
-        <tr><td>0000 1000</td><td>SUB |M(X)|</td><td class="tleft">Subtrai o módulo do conteúdo de X do acumulador</td></tr>
-        <tr><td>0000 1011</td><td>MUL M(X)</td><td class="tleft">Multiplica o conteúdo de X por MQ; bits mais significativos em ACC, menos significativos em MQ</td></tr>
-        <tr><td>0000 1100</td><td>DIV M(X)</td><td class="tleft">Divide ACC pelo conteúdo de X; quociente em MQ, resto em ACC</td></tr>
-        <tr><td>0001 0100</td><td>LSH</td><td class="tleft">Multiplica o conteúdo do acumulador por 2</td></tr>
-        <tr><td>0001 0101</td><td>RSH</td><td class="tleft">Divide o conteúdo do acumulador por 2</td></tr>
-      </tbody>
-    </table>
-
-    <h4>Instruções de alteração de endereço</h4>
-    <table>
-      <thead><tr><th>Código de operação</th><th>Representação simbólica</th><th class="tleft">Descrição</th></tr></thead>
-      <tbody>
-        <tr><td>0001 0010</td><td>STOR M(X,8:19)</td><td class="tleft">Substitui o campo de endereço à esquerda de X pelos 12 bits mais à direita do acumulador</td></tr>
-        <tr><td>0000 1110</td><td>JUMP M(X,28:39)</td><td class="tleft">Substitui o campo de endereço à direita de X pelos 12 bits mais à direita do acumulador</td></tr>
-      </tbody>
-    </table>
-
-    <h3 id="s3d">1.3.4 Linguagem de montagem (<em>assembly</em>)</h3>
-    <p>Uma linguagem de montagem pura tem correspondência <strong>um-para-um</strong> entre declarações e instruções de máquina: um programa de <em>n</em> linhas em <em>assembly</em> produz um programa de <em>n</em> instruções em linguagem de máquina.</p>
-
-    <div class="note">A razão de se usar <em>assembly</em> em vez de binário/hexadecimal: é muito mais fácil lembrar mnemônicos como <strong>ADD</strong>, <strong>SUB</strong>, <strong>MUL</strong>, <strong>DIV</strong> do que os respectivos códigos numéricos. O <strong>assembler</strong> traduz os nomes simbólicos para instruções de máquina.</div>
-
-    <p>Convenção adotada: a representação simbólica é seguida do operando da instrução, em <strong>hexadecimal</strong>.</p>
-
-    <p><strong>Exemplo 1</strong></p>
-    <table>
-      <thead><tr><th class="tleft">Opcode</th><th>Operando</th><th class="tleft">Comentários</th></tr></thead>
-      <tbody>
-        <tr><td class="tleft">LOAD M(X)</td><td>0x00F</td><td class="tleft">Transfere o conteúdo de 0x00F para o ACC</td></tr>
-        <tr><td class="tleft">ADD M(X)</td><td>0x010</td><td class="tleft">Soma o conteúdo de 0x010 com o ACC</td></tr>
-        <tr><td class="tleft">STOR M(X)</td><td>0x011</td><td class="tleft">Transfere o conteúdo do ACC para 0x011</td></tr>
-      </tbody>
-    </table>
-
-    <p>O código acima equivale, em linguagem de máquina, a:</p>
-    <div class="codeblock">0000 0001 0000 0000 1111 0000 0101 0000 0001 0000
-0010 0001 0000 0001 0001</div>
-    <p>A primeira linha (40 bits) corresponde às instruções <strong>LOAD</strong> e <strong>ADD</strong>; a linha seguinte (20 bits) é a instrução <strong>STOR</strong>.</p>
-
-    <p>Cada linha ocupa uma linha de endereços, que pode ser indicada por um <strong>rótulo</strong> (<em>label</em>):</p>
-    <table>
-      <thead><tr><th class="tleft">Rótulo</th><th class="tleft">Opcode</th><th>Operando</th><th class="tleft">Comentários</th></tr></thead>
-      <tbody>
-        <tr><td class="tleft">Início:</td><td class="tleft">LOAD M(X)</td><td>0x00F</td><td class="tleft">Transfere o conteúdo de 0x00F para o ACC</td></tr>
-        <tr><td class="tleft">—</td><td class="tleft">ADD M(X)</td><td>0x010</td><td class="tleft">Soma o conteúdo de 0x010 com o ACC</td></tr>
-        <tr><td class="tleft">—</td><td class="tleft">STOR M(X)</td><td>0x011</td><td class="tleft">Transfere o conteúdo do ACC para 0x011</td></tr>
-      </tbody>
-    </table>
-    <div class="note">O código armazenado ocupa uma posição entre os endereços <strong>0x000</strong> e <strong>0x3FF</strong> (0 a 1023, em hexadecimal) da memória IAS.</div>
-
-    <p><strong>Exemplo 2</strong> — soma de 10 (0x00A) números binários a partir da posição 0x100, com rótulos e comentários (delimitados por <code>;</code>):</p>
-    <div class="codeblock">inicialização da memória
+<p>***SET* DE INSTRUÇÕES**<br/>
+<strong>Instruções de transferência de dados</strong></p>
+<table>
+<thead>
+<tr>
+<th class="tleft"><strong>Código de operação</strong></th>
+<th class="tleft"><strong>Representação simbólica</strong></th>
+<th class="tleft"><strong>Descrição</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tleft">0000 1010</td>
+<td class="tleft">LOAD MQ</td>
+<td class="tleft">Transfere o conteúdo do registrador MQ para o acumulador ACC</td>
+</tr>
+<tr>
+<td class="tleft">0000 1001</td>
+<td class="tleft">LOAD MQ,M(X)</td>
+<td class="tleft">Transfere o conteúdo da posição de memória X, <strong>definida pelo operando</strong>, para MQ</td>
+</tr>
+<tr>
+<td class="tleft">0010 0001</td>
+<td class="tleft">STOR M(X)</td>
+<td class="tleft">Transfere o conteúdo do acumulador para a posição de memória X, definida pelo operando</td>
+</tr>
+<tr>
+<td class="tleft">0000 0001</td>
+<td class="tleft">LOAD M(X)</td>
+<td class="tleft">Transfere o conteúdo da posição de memória X, definida pelo operando, para o acumulador</td>
+</tr>
+<tr>
+<td class="tleft">0000 0010</td>
+<td class="tleft">LOAD -M(X)</td>
+<td class="tleft">Transfere o negativo do conteúdo da posição de memória X, definida pelo operando, para o acumulador</td>
+</tr>
+<tr>
+<td class="tleft">0000 0011</td>
+<td class="tleft">LOAD |M(X)|</td>
+<td class="tleft">Transfere o <strong>valor absoluto</strong> do conteúdo da posição de memória X, definida pelo operando, para o acumulador</td>
+</tr>
+<tr>
+<td class="tleft">0000 0100</td>
+<td class="tleft">LOAD -|M(X)|</td>
+<td class="tleft">Transfere o negativo do valor absoluto do conteúdo da posição de memória X, definida pelo operando, para o acumulador</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Instruções de desvio incondicional</strong></p>
+<table>
+<thead>
+<tr>
+<th class="tleft"><strong>Código de operação</strong></th>
+<th class="tleft"><strong>Representação simbólica</strong></th>
+<th class="tleft"><strong>Descrição</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tleft">0000 1101</td>
+<td class="tleft">JUMP M(X,0:19)</td>
+<td class="tleft">A próxima instrução a ser executada é buscada <strong>nos bits 0 a 19</strong> da posição de memória X, definida pelo operando</td>
+</tr>
+<tr>
+<td class="tleft">0000 1110</td>
+<td class="tleft">JUMP M(X,20:39)</td>
+<td class="tleft">A próxima instrução a ser executada é buscada <strong>nos bits 20 a 39</strong> da posição de memória X, definida pelo operando</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Instruções de desvio condicional</strong></p>
+<table>
+<thead>
+<tr>
+<th class="tleft"><strong>Código de operação</strong></th>
+<th class="tleft"><strong>Representação simbólica</strong></th>
+<th class="tleft"><strong>Descrição</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tleft">0000 1111</td>
+<td class="tleft">JUMP +M(X,0:19)</td>
+<td class="tleft">Se o número do acumulador for <strong>não negativo</strong>, a próxima instrução a ser executada é buscada <strong>nos bits 0 a 19</strong> da posição de memória X, definida pelo operando</td>
+</tr>
+<tr>
+<td class="tleft">0000 1110</td>
+<td class="tleft">JUMP +M(X,20:39)</td>
+<td class="tleft">Se o número do acumulador for <strong>não negativo</strong>, a próxima instrução a ser executada é buscada <strong>nos bits 20 a 39</strong> da posição de memória X, definida pelo operando</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Instruções aritméticas</strong></p>
+<table>
+<thead>
+<tr>
+<th class="tleft"><strong>Código de operação</strong></th>
+<th class="tleft"><strong>Representação simbólica</strong></th>
+<th class="tleft"><strong>Descrição</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tleft">0000 0101</td>
+<td class="tleft">ADD M(X)</td>
+<td class="tleft">Soma o conteúdo da posição de memória X, definida pelo operando, com o conteúdo do acumulador; armazena o resultado no acumulador</td>
+</tr>
+<tr>
+<td class="tleft">0000 0111</td>
+<td class="tleft">ADD |M(X)|</td>
+<td class="tleft">Soma o <strong>módulo</strong> do conteúdo da posição de memória X, definida pelo operando, com o conteúdo do acumulador; armazena o resultado no acumulador</td>
+</tr>
+<tr>
+<td class="tleft">0010 0110</td>
+<td class="tleft">SUB M(X)</td>
+<td class="tleft">Subtrai o conteúdo da posição de memória X, definida pelo operando, do conteúdo do acumulador; armazena o resultado no acumulador</td>
+</tr>
+<tr>
+<td class="tleft">0000 1000</td>
+<td class="tleft">SUB |M(X)|</td>
+<td class="tleft">Subtrai o <strong>módulo</strong> do conteúdo da posição de memória X, definida pelo operando, do conteúdo do acumulador; armazena o resultado no acumulador</td>
+</tr>
+<tr>
+<td class="tleft">0000 1011</td>
+<td class="tleft">MUL M(X)</td>
+<td class="tleft">Multiplica o conteúdo da posição de memória X, definida pelo operando, por MQ; armazena os bits mais significativos do resultado em ACC e os bits menos significativos em MQ</td>
+</tr>
+<tr>
+<td class="tleft">0000 1100</td>
+<td class="tleft">DIV M(X)</td>
+<td class="tleft">Divide o conteúdo de ACC pelo conteúdo da posição de memória X, definida pelo operando; armazena o quociente em MQ e o resto em ACC</td>
+</tr>
+<tr>
+<td class="tleft">0001 0100</td>
+<td class="tleft">LSH</td>
+<td class="tleft">Multiplica o conteúdo do acumulador por 2</td>
+</tr>
+<tr>
+<td class="tleft">0001 0101</td>
+<td class="tleft">RSH</td>
+<td class="tleft">Divide o conteúdo do acumulador por 2</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Instruções de alteração de endereço</strong></p>
+<table>
+<thead>
+<tr>
+<th class="tleft"><strong>Código de operação</strong></th>
+<th class="tleft"><strong>Representação simbólica</strong></th>
+<th class="tleft"><strong>Descrição</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tleft">0001 0010</td>
+<td class="tleft">STOR M(X,8:19)</td>
+<td class="tleft">Substitui o campo de endereço da instrução à esquerda da posição de memória X (bits 0 a 19), definida pelo operando, pelos 12 bits mais à direita do conteúdo do acumulador</td>
+</tr>
+<tr>
+<td class="tleft">0000 1110</td>
+<td class="tleft">JUMP M(X,28:39)</td>
+<td class="tleft">Substitui o campo de endereço da instrução à direita da posição de memória X (bits 20 a 39), definida pelo operando, pelos 12 bits mais à direita do conteúdo do acumulador</td>
+</tr>
+</tbody>
+</table>
+<h3 id="s3d">1.3.4 Linguagem de montagem (<em>assembly</em>)</h3>
+<p>Uma linguagem de montagem pura é uma linguagem na qual cada declaração produz exatamente uma instrução de máquina. Em outras palavras, <strong>há uma correspondência um-para-um entre instruções de máquina e declarações no programa de montagem (mnemônicos)</strong>. Se cada linha no programa em linguagem de montagem contiver exatamente uma declaração e cada palavra de máquina contiver exatamente uma instrução de máquina, então um programa de montagem de n linhas produzirá um programa em linguagem de máquina de n instruções.</p>
+<p>A razão por que as pessoas usam linguagem de montagem, ao contrário de programação em linguagem de máquina (em binário ou hexadecimal), é que é muito mais fácil programar. A utilização de nomes simbólicos e endereços simbólicos em vez de binários ou hexadecimais faz uma enorme diferença. A maioria das pessoas pode se lembrar de que as abreviaturas para somar, subtrair, multiplicar e dividir são ADD, SUB, MUL e DIV, mas poucas conseguem se recordar dos valores numéricos correspondentes que a máquina usa. O programador de linguagem de montagem só precisa se lembrar dos nomes simbólicos porque o assembler os traduz para instruções de máquina.</p>
+<p>Na tabela do <em>set</em> de instruções da máquina IAS, a coluna <strong>Representação simbólica</strong> define as instruções correspondentes ao código binário da operação. O programa armazenado em memória constituído das instruções binárias é o chamado programa em <strong>linguagem de máquina</strong>. Admitiremos que o programa em linguagem de montagem correspondente será formado pela sua representação simbólica seguida do operando da instrução, <strong>representado em hexadecimal</strong>.</p>
+<p>Exemplo 1:</p>
+<table>
+<thead>
+<tr>
+<th class="tleft">Opcode</th>
+<th class="tleft">Operando</th>
+<th class="tleft">Comentários</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tleft">LOAD M(X)</td>
+<td class="tleft">0x00F</td>
+<td class="tleft">Transfere o conteúdo da posição de memória 0x00F para o ACC</td>
+</tr>
+<tr>
+<td class="tleft">ADD M(X)</td>
+<td class="tleft">0x010</td>
+<td class="tleft">Soma o conteúdo da posição de memória 0x010 com o conteúdo do ACC</td>
+</tr>
+<tr>
+<td class="tleft">STOR M(X)</td>
+<td class="tleft">0x011</td>
+<td class="tleft">Transfere o conteúdo do ACC para a posição de memória 0x011</td>
+</tr>
+</tbody>
+</table>
+<p>Existem programas nos computadores responsáveis pela <strong>tradução</strong> de códigos de uma linguagem para outra. Quando a linguagem-fonte é, basicamente, uma representação simbólica para uma linguagem de máquina numérica, o tradutor é denominado <strong>assembler (montador)</strong> e a linguagem-fonte é denominada linguagem de montagem (linguagem <em>assembly</em>).</p>
+<p>O código do exemplo 1 seria o código na linguagem de montagem do IAS referente ao seguinte código em linguagem de máquina</p>
+<pre><code>0000 0001 0000 0000 1111 0000 0101 0000 0001 0000
+0010 0001 0000 0001 0001
+</code></pre>
+<p>Na primeira linha do código em linguagem de máquina contém 40 bits porque é o número de bits armazenados em uma linha da máquina IAS. Correspondem às instruções <code>LOAD</code> E <code>ADD</code>. Na linha seguinte estão apresentados os 20 bits relativos à última instrução, <code>STOR</code>.</p>
+<p>Lembrando que cada linha está ocupando uma linha de endereços, que poderia ser indicada no código em <em>assembly</em> pela inclusão de um rótulo à tabela.</p>
+<table>
+<thead>
+<tr>
+<th class="tleft">Rótulo</th>
+<th class="tleft">Opcode</th>
+<th class="tleft">Operando</th>
+<th class="tleft">Comentários</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tleft">Início:</td>
+<td class="tleft">LOAD M(X)</td>
+<td class="tleft">0x00F</td>
+<td class="tleft">Transfere o conteúdo da posição de memória 0x00F para o ACC</td>
+</tr>
+<tr>
+<td class="tleft"></td>
+<td class="tleft">ADD M(X)</td>
+<td class="tleft">0x010</td>
+<td class="tleft">Soma o conteúdo da posição de memória 0x010 com o conteúdo do ACC</td>
+</tr>
+<tr>
+<td class="tleft"></td>
+<td class="tleft">STOR M(X)</td>
+<td class="tleft">0x011</td>
+<td class="tleft">Transfere o conteúdo do ACC para a posição de memória 0x011</td>
+</tr>
+</tbody>
+</table>
+<p>O rótulo (<em>label</em>) indica o endereço da primeira linha de instruções de forma simbólica (Início). Obviamente o código armazenado ocupará uma posição na memória IAS, ou seja, entre os endereços 0x000 e 0x3FF (entre 0 e 1023, em hexadecimal).</p>
+<p>Um novo exemplo de código está apresentado abaixo. O código realiza a soma de 10 (0x00A) números binários a partir da posição de memória 0x100. Admite-se que é necessário inicializar algumas posições de memória. Observe que além de rótulo o código admite comentários, delimitado pelo <code>;</code>.</p>
+<pre><code>inicialização da memória
 M[0x000] &lt;- 0x109
 M[0x001] &lt;- 0x101
 M[0x002] &lt;- 0x001
 
 INICIO:
-LOAD_M(X) 0x100 <span class="cmt">; carregar o valor de 0x100</span>
-LOOP:
-ADD_M(X) 0x101 <span class="cmt">; soma o próximo valor</span>
-LOAD_M(X) 0x000 <span class="cmt">; 0x000 armazena o endereço limite 0x109</span>
-SUB_M(X) 0x001 <span class="cmt">; 0x001 armazena o próximo endereço</span>
+LOAD_M(X) 0x100 ; carregar o valor de 0x100
+LOOP: 
+ADD_M(X) 0x101 ; soma o próximo valor
+LOAD_M(X) 0x000 ; 0x000 armazena o endereço limite 0x109
+SUB_M(X) 0x001 ; 0x001 armazena o próximo endereço
 JUMP_+M(X,0:19) NOVO_END
-JUMP_M(X,20:39) FIM <span class="cmt">; desvia para o final do programa</span>
+JUMP_M(X,20:39) FIM ; desvia para O final do programa
 
-NOVO_END: <span class="cmt">; atualiza endereço do próximo valor</span>
-LOAD_M(X) 0x001 <span class="cmt">; carrega o próximo endereço</span>
-ADD_M(X) 0x002 <span class="cmt">; 0x002 armazena 1, logo incrementa o endereço</span>
-JUMP_M(X,28:39) LOOP <span class="cmt">; altera operando da instrução em LOOP</span>
-JUMP_M(X,20:39) LOOP <span class="cmt">; desvia para instrução em LOOP</span></div>
-  </section>
-
-  <!-- QUIZ -->
-  <section class="section" id="quiz">
-    <p class="section-label">checkpoint</p>
-    <h2>Teste seus conhecimentos</h2>
-
-    <div class="quiz">
-      <div class="quiz-header">
-        <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="8" stroke="#7c3aed" stroke-width="1.4"/><text x="10" y="14" font-size="10" fill="#7c3aed" text-anchor="middle" font-weight="600">?</text></svg>
-        <span class="quiz-title">Pergunta 1 de 3</span>
-      </div>
-      <p class="quiz-q">O conceito de "programa armazenado" da máquina IAS consiste em:</p>
-      <div class="quiz-options">
-        <button class="quiz-opt" onclick="checkAnswer(this, false, 'q1fb')">Armazenar apenas os dados em memória, mantendo o programa em um dispositivo separado</button>
-        <button class="quiz-opt" onclick="checkAnswer(this, true, 'q1fb')">Armazenar o programa na mesma memória que os dados, permitindo que a CPU busque ambos diretamente da memória</button>
-        <button class="quiz-opt" onclick="checkAnswer(this, false, 'q1fb')">Executar instruções diretamente dos dispositivos de entrada, sem uso de memória</button>
-      </div>
-      <div class="quiz-feedback" id="q1fb"></div>
-    </div>
-
-    <div class="quiz">
-      <div class="quiz-header">
-        <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="8" stroke="#7c3aed" stroke-width="1.4"/><text x="10" y="14" font-size="10" fill="#7c3aed" text-anchor="middle" font-weight="600">?</text></svg>
-        <span class="quiz-title">Pergunta 2 de 3</span>
-      </div>
-      <p class="quiz-q">Qual registrador do IAS contém o endereço do próximo par de instruções a ser buscado?</p>
-      <div class="quiz-options">
-        <button class="quiz-opt" onclick="checkAnswer(this, false, 'q2fb')">IR (Instruction Register)</button>
-        <button class="quiz-opt" onclick="checkAnswer(this, true, 'q2fb')">PC (Program Counter)</button>
-        <button class="quiz-opt" onclick="checkAnswer(this, false, 'q2fb')">MBR (Memory Buffer Register)</button>
-      </div>
-      <div class="quiz-feedback" id="q2fb"></div>
-    </div>
-
-    <div class="quiz">
-      <div class="quiz-header">
-        <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="8" stroke="#7c3aed" stroke-width="1.4"/><text x="10" y="14" font-size="10" fill="#7c3aed" text-anchor="middle" font-weight="600">?</text></svg>
-        <span class="quiz-title">Pergunta 3 de 3</span>
-      </div>
-      <p class="quiz-q">Por que a programação em linguagem de montagem (<em>assembly</em>) é preferida à programação direta em linguagem de máquina?</p>
-      <div class="quiz-options">
-        <button class="quiz-opt" onclick="checkAnswer(this, false, 'q3fb')">Porque o assembly é executado mais rapidamente pela CPU</button>
-        <button class="quiz-opt" onclick="checkAnswer(this, true, 'q3fb')">Porque é mais fácil memorizar mnemônicos simbólicos do que códigos binários/hexadecimais equivalentes</button>
-        <button class="quiz-opt" onclick="checkAnswer(this, false, 'q3fb')">Porque o assembly dispensa o uso de um assembler</button>
-      </div>
-      <div class="quiz-feedback" id="q3fb"></div>
-    </div>
-  </section>
-
-
-  <!-- ANEXOS -->
-  <section class="section" id="anexos">
-    <p class="section-label">material complementar</p>
-    <h2>Anexos do Capítulo 1</h2>
-
-    <p>
+NOVO_END: ; atualiza endereço do próximo valor
+LOAD_M(X) 0x001 ; carrega o próximo endereço
+ADD_M(X) 0x002 ; 0x002 armazena 1, logo incrementa o endereço
+JUMP_M(X,28:39) LOOP ; altera operando da instrução em LOOP
+JUMP_M(X,20:39) LOOP ; desvia para instrução em LOOP
+</code></pre>
+<hr/>
+<p><strong><a href="https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/arq_aulas.md">Home Conteúdo Arquitetura de Computadores</a></strong></p>
+</section>
+<!-- QUIZ -->
+<section class="section" id="quiz">
+<p class="section-label">checkpoint</p>
+<h2>Teste seus conhecimentos</h2>
+<div class="quiz">
+<div class="quiz-header">
+<svg fill="none" height="20" viewbox="0 0 20 20" width="20"><circle cx="10" cy="10" r="8" stroke="#7c3aed" stroke-width="1.4"></circle><text fill="#7c3aed" font-size="10" font-weight="600" text-anchor="middle" x="10" y="14">?</text></svg>
+<span class="quiz-title">Pergunta 1 de 3</span>
+</div>
+<p class="quiz-q">O conceito de "programa armazenado" da máquina IAS consiste em:</p>
+<div class="quiz-options">
+<button class="quiz-opt" onclick="checkAnswer(this, false, 'q1fb')">Armazenar apenas os dados em memória, mantendo o programa em um dispositivo separado</button>
+<button class="quiz-opt" onclick="checkAnswer(this, true, 'q1fb')">Armazenar o programa na mesma memória que os dados, permitindo que a CPU busque ambos diretamente da memória</button>
+<button class="quiz-opt" onclick="checkAnswer(this, false, 'q1fb')">Executar instruções diretamente dos dispositivos de entrada, sem uso de memória</button>
+</div>
+<div class="quiz-feedback" id="q1fb"></div>
+</div>
+<div class="quiz">
+<div class="quiz-header">
+<svg fill="none" height="20" viewbox="0 0 20 20" width="20"><circle cx="10" cy="10" r="8" stroke="#7c3aed" stroke-width="1.4"></circle><text fill="#7c3aed" font-size="10" font-weight="600" text-anchor="middle" x="10" y="14">?</text></svg>
+<span class="quiz-title">Pergunta 2 de 3</span>
+</div>
+<p class="quiz-q">Qual registrador do IAS contém o endereço do próximo par de instruções a ser buscado?</p>
+<div class="quiz-options">
+<button class="quiz-opt" onclick="checkAnswer(this, false, 'q2fb')">IR (Instruction Register)</button>
+<button class="quiz-opt" onclick="checkAnswer(this, true, 'q2fb')">PC (Program Counter)</button>
+<button class="quiz-opt" onclick="checkAnswer(this, false, 'q2fb')">MBR (Memory Buffer Register)</button>
+</div>
+<div class="quiz-feedback" id="q2fb"></div>
+</div>
+<div class="quiz">
+<div class="quiz-header">
+<svg fill="none" height="20" viewbox="0 0 20 20" width="20"><circle cx="10" cy="10" r="8" stroke="#7c3aed" stroke-width="1.4"></circle><text fill="#7c3aed" font-size="10" font-weight="600" text-anchor="middle" x="10" y="14">?</text></svg>
+<span class="quiz-title">Pergunta 3 de 3</span>
+</div>
+<p class="quiz-q">Por que a programação em linguagem de montagem (<em>assembly</em>) é preferida à programação direta em linguagem de máquina?</p>
+<div class="quiz-options">
+<button class="quiz-opt" onclick="checkAnswer(this, false, 'q3fb')">Porque o assembly é executado mais rapidamente pela CPU</button>
+<button class="quiz-opt" onclick="checkAnswer(this, true, 'q3fb')">Porque é mais fácil memorizar mnemônicos simbólicos do que códigos binários/hexadecimais equivalentes</button>
+<button class="quiz-opt" onclick="checkAnswer(this, false, 'q3fb')">Porque o assembly dispensa o uso de um assembler</button>
+</div>
+<div class="quiz-feedback" id="q3fb"></div>
+</div>
+</section>
+<!-- ANEXOS -->
+<section class="section" id="anexos">
+<p class="section-label">material complementar</p>
+<h2>Anexos do Capítulo 1</h2>
+<p>
       Os anexos complementam os conceitos apresentados neste capítulo,
       especialmente os tópicos relacionados à representação de informações,
       sistemas de numeração e unidades utilizadas em sistemas computacionais.
     </p>
-
-    <div class="ds-grid">
-
-      <div class="ds-item">
-        <a href="arq_anexo1_grandezas_unidades.html">
+<div class="ds-grid">
+<div class="ds-item">
+<a href="arq_anexo1_grandezas_unidades.html">
           Anexo 1 — Grandezas Numéricas e Unidades de Medida
         </a>
-      </div>
-
-      <div class="ds-item">
-        <a href="arq_anexo2_conversao_bases.html">
+</div>
+<div class="ds-item">
+<a href="arq_anexo2_conversao_bases.html">
           Anexo 2 — Conversão entre Bases Numéricas
         </a>
-      </div>
-
-      <div class="ds-item">
-        <a href="arq_anexo3_representacao_numerica.html">
+</div>
+<div class="ds-item">
+<a href="arq_anexo3_representacao_numerica.html">
           Anexo 3 — Representação Numérica em Computadores
         </a>
-      </div>
-
-    </div>
-
-    <div class="note">
+</div>
+</div>
+<div class="note">
       Recomenda-se a leitura dos anexos antes do estudo do Capítulo 2,
       pois os conceitos de representação binária, hexadecimal e unidades
       de armazenamento serão utilizados continuamente ao longo da disciplina.
     </div>
-  </section>
-
-
-  <!-- CHAPTER NAV -->
-  <div class="chapter-nav">
-    <a href="https://claytonjasilva.github.io/arq.html"><span class="dir">← disciplina</span>Arquitetura de Computadores — início</a>
-    <a class="next" href="arq_anexo1_grandezas_unidades.html"><span class="dir">próximo →</span>Anexo 1 — Grandezas Numéricas e Unidades de Medida</a>
-  </div>
-
+</section>
+<!-- CHAPTER NAV -->
+<div class="chapter-nav">
+<a href="https://claytonjasilva.github.io/arq.html"><span class="dir">← disciplina</span>Arquitetura de Computadores — início</a>
+<a class="next" href="arq_anexo1_grandezas_unidades.html"><span class="dir">próximo →</span>Anexo 1 — Grandezas Numéricas e Unidades de Medida</a>
 </div>
-
+</div>
 <footer>
-  <div class="container">
-    <p>© 2026 · Prof. Clayton J A Silva · Ibmec RJ</p>
-    <p><a href="https://claytonjasilva.github.io">claytonjasilva.github.io</a></p>
-  </div>
+<div class="container">
+<p>© 2026 · Prof. Clayton J A Silva · Ibmec RJ</p>
+<p><a href="https://claytonjasilva.github.io">claytonjasilva.github.io</a></p>
+</div>
 </footer>
-
 <script>
 window.addEventListener('scroll', () => {
   const h = document.documentElement;
@@ -702,6 +734,5 @@ renderMathInElement(document.body, {
   throwOnError: false
 });
 </script>
-
 </body>
 </html>
