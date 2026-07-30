@@ -194,44 +194,86 @@ footer p { font-size: 0.82rem; color: var(--muted); font-family: var(--font-mono
 .row-ap td { color:var(--accent)!important; font-weight:600; }
 .row-as { background:rgba(124,58,237,.06); }
 .row-as td { color:var(--accent2)!important; font-weight:600; }
+
+/* ── AJUSTES DE HIERARQUIA VISUAL ── */
+.section-heading {
+  display: flex;
+  align-items: center;
+  gap: .85rem;
+  margin-bottom: 1.35rem;
+  font-size: clamp(1.35rem, 2vw, 1.7rem);
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+.section-heading::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--border);
+}
+.section-number {
+  font-family: var(--font-mono);
+  font-size: .72rem;
+  color: var(--accent);
+  letter-spacing: .12em;
+  white-space: nowrap;
+}
+.section-intro {
+  color: var(--muted);
+  margin: -.45rem 0 1.4rem;
+  max-width: 780px;
+}
+.schedule-time {
+  font-family: var(--font-mono);
+  color: var(--text);
+  font-size: .95rem;
+  margin: -.35rem 0 .55rem;
+}
+.calendar-note {
+  color: var(--muted);
+  font-size: .86rem;
+  margin: 0 0 1.2rem;
+}
+.subsection-heading {
+  font-family: var(--font-mono);
+  font-size: .9rem;
+  color: var(--text);
+  margin: 2rem 0 1rem;
+  font-weight: 600;
+}
+.lab-index-card.disabled {
+  opacity: .68;
+  cursor: default;
+}
+.lab-index-card.disabled:hover {
+  border-color: var(--border);
+  background: var(--surface);
+}
+.lab-index-card.disabled a {
+  color: var(--muted);
+  pointer-events: none;
+}
 </style>
 </head>
 <body>
 <nav>
 <div class="container">
 <span class="nav-brand">claytonjasilva.github.io</span>
-<ul class="nav-links">
-<li><a href="#agenda">agenda</a></li><li><a href="#grid">grid</a></li>
-<li><a href="#conteudo">conteúdo</a></li>
-<li><a href="#praticas">práticas</a></li>
-<li><a href="#avaliacoes">avaliações</a></li>
-<li><a href="#referencias">referências</a></li>
-<li><a href="#ferramentas">ferramentas</a></li>
-<li><a href="index.html">← home</a></li>
-</ul>
+<ul class="nav-links"><li><a href="#agenda">agenda</a></li><li><a href="#grid">grid</a></li><li><a href="#conteudo">conteúdo</a></li><li><a href="#apoio">apoio</a></li><li><a href="#praticas">práticas</a></li><li><a href="#avaliacoes">avaliações</a></li><li><a href="#complementares">ferramentas complementares</a></li><li><a href="index.html">← home</a></li></ul>
 </div>
 </nav>
 <section class="hero">
 <div class="container">
-<p class="hero-eyebrow">Pesquisa Operacional · Engenharia</p>
-<h1>Programação Linear<br/><strong>Aplicada</strong></h1>
-<p class="hero-sub">Prof. Clayton J A Silva · IBM0803 · 2026.2 · turma de terça-feira</p>
-<div class="hero-tags">
-<span class="tag">Pesquisa Operacional</span>
-<span class="tag">Programação Linear</span>
-<span class="tag">Simplex</span>
-<span class="tag">Método Gráfico</span>
-<span class="tag">Transporte</span>
-<span class="tag">Designação</span>
-<span class="tag">Programação Inteira</span>
-<span class="tag">Python</span>
-</div>
+
+<h1>Programação Linear Aplicada</h1>
+<p class="hero-sub">Prof. Clayton J A Silva - Ibmec Rio - 2026.2</p>
+
 </div>
 </section>
 <div class="container">
 <section class="section" id="agenda">
-<p class="section-title">01 / agenda — 2026.2</p>
-<h2>Turma de terça-feira</h2>
+<h2 class="section-heading"><span class="section-number">01</span>Agenda</h2><p class="schedule-time">Terça-feira, 07h30 às 11h40</p><p class="calendar-note">A agenda abaixo se insere na programação do <a href="https://claytonjasilva.github.io/calendario-academico.html" target="_blank">Calendário Acadêmico Ibmec Rio 2026.2</a>.</p>
+
 <div class="agenda-wrap"><table><thead><tr><th>Data</th><th>Conteúdo</th></tr></thead><tbody>
 <tr><td>04/08/2026</td><td>Introdução ao curso · Cap. 1 — Modelagem de Problemas e Método Gráfico · Prática com Excel Solver</td></tr>
 <tr><td>11/08/2026</td><td>Cap. 2 — Modelo Matemático para Programação Linear · Variáveis, parâmetros, função objetivo e restrições</td></tr>
@@ -240,21 +282,21 @@ footer p { font-size: 0.82rem; color: var(--muted); font-family: var(--font-mono
 <tr><td>01/09/2026</td><td>Cap. 5 — Preço-Sombra · Interpretação econômica dos recursos</td></tr>
 <tr><td>08/09/2026</td><td>Cap. 6 — Análise de Sensibilidade · Recursos e coeficientes da função objetivo</td></tr>
 <tr><td>15/09/2026</td><td>Cap. 7 — Problema de Transporte · Caracterização e formulação clássica</td></tr>
-<tr><td>22/09/2026</td><td>Revisão da AP1 · Exercícios integradores dos capítulos 1 a 7</td></tr>
+<tr><td>22/09/2026</td><td>Revisão para a prova</td></tr>
 <tr class="row-ap"><td>29/09/2026</td><td>▶ Aplicação da AP1</td></tr>
 <tr><td>06/10/2026</td><td>Cap. 8 — Variações do Problema de Transporte · Ajustes de oferta, demanda e custos</td></tr>
 <tr><td>13/10/2026</td><td>Cap. 9 — Transporte com Transbordo · Nós intermediários e conservação de fluxo</td></tr>
 <tr><td>20/10/2026</td><td>Cap. 10 — Problema da Designação · Atribuição ótima de tarefas e recursos</td></tr>
 <tr><td>27/10/2026</td><td>Cap. 11 — Introdução à Programação Linear Inteira · Variáveis inteiras e binárias</td></tr>
 <tr><td>03/11/2026</td><td>Cap. 12 — PLI: Escala de Trabalho · Alocação de pessoas e turnos</td></tr>
-<tr><td>10/11/2026</td><td>Cap. 13 — PLI: Custos Fixos e Descontos · Decisões condicionais e variáveis binárias</td></tr>
+<tr><td>10/11/2026</td><td>Cap. 14 — PLI: Concessão de Contratos · Síntese e aplicações integradas · Revisão para a prova · Teste de AC</td></tr>
 <tr class="row-ap"><td>17/11/2026</td><td>▶ Aplicação da AP2</td></tr>
-<tr><td>24/11/2026</td><td>Cap. 14 — PLI: Concessão de Contratos · Síntese e aplicações integradas</td></tr>
+<tr><td>24/11/2026</td><td>Mostra de AP2</td></tr>
 <tr class="row-as"><td>01/12/2026</td><td>▶ Aplicação da AS</td></tr>
 </tbody></table></div>
-<p style="margin-top:1rem;color:var(--muted);font-size:.82rem;">A distribuição considera o início do período letivo em 3 de agosto, a AP1 entre 24 e 30 de setembro, a AP2 entre 12 e 18 de novembro e a AS entre 25 de novembro e 3 de dezembro.</p>
+
 </section><section class="section" id="grid">
-<p class="section-title">02 / grid da disciplina</p>
+<h2 class="section-heading"><span class="section-number">02</span>Grid da Disciplina</h2>
 <div class="card" style="max-width:560px;">
 <h3 style="margin-top:0;">Objetivos, conteúdo programático e referências</h3>
 <p style="margin-bottom:1rem;color:var(--muted);">
@@ -265,20 +307,20 @@ footer p { font-size: 0.82rem; color: var(--muted); font-family: var(--font-mono
 </div>
 </section>
 <section class="section" id="conteudo">
-<p class="section-title">03 / conteúdo das aulas</p>
-<h2>Capítulos</h2>
+<h2 class="section-heading"><span class="section-number">03</span>Conteúdo das Aulas</h2>
+
 <div class="content-grid">
 <div class="content-card">
 <span class="content-num">Cap 1</span>
 <div>
-<a href="progLinear/cap1.html">Modelagem de Problemas e Método Gráfico</a>
+<a href="progLinear/cap1.html">Apoio à Decisão e Modelos</a>
 <p>Variáveis, restrições, função objetivo e solução gráfica de problemas com duas variáveis.</p>
 </div>
 </div>
 <div class="content-card">
 <span class="content-num">Cap 2</span>
 <div>
-<a href="progLinear/cap2.html">Modelo Matemático para Programação Linear</a>
+<a href="progLinear/cap2.html">Problemas de Alocação de Recursos; Programação Linear</a>
 <p>Estrutura geral de modelos de PL: decisão, parâmetros, função objetivo e restrições.</p>
 </div>
 </div>
@@ -373,98 +415,20 @@ footer p { font-size: 0.82rem; color: var(--muted); font-family: var(--font-mono
     </div>
 </section>
 <section class="section" id="apoio">
-<p class="section-title">04 / textos e exemplos de apoio</p>
+<h2 class="section-heading"><span class="section-number">04</span>Textos e Exemplos de Apoio</h2>
 <div class="ds-grid">
-<div class="ds-item"><a href="progLinear/introducao_pesquisa_operacional.html">Introdução à Pesquisa Operacional</a></div>
-<div class="ds-item"><a href="progLinear/modelagem_matematica.html">Modelagem Matemática</a></div>
-<div class="ds-item"><a href="progLinear/exercicios_resolvidos.html">Exercícios Resolvidos</a></div>
+
+
+
 <div class="ds-item"><a href="progLinear/casos_aplicados.html">Casos Aplicados</a></div>
 <div class="ds-item"><a href="progLinear/flashcards.html">Flashcards</a></div>
 <div class="ds-item"><a href="progLinear/listas_exercicios.html">Listas de Exercícios</a></div>
 </div>
 </section>
 <section class="section" id="praticas">
-<p class="section-title">05 / práticas computacionais</p>
-<h2>Excel como ponto de partida; Python como ferramenta principal</h2>
-<p style="color:var(--muted); margin-bottom:1.5rem; max-width:760px;">
-      As primeiras práticas usam o Excel Solver para introduzir a lógica da modelagem e da solução computacional.
-      Na sequência, o curso passa a privilegiar Python, com SciPy, PuLP, Pandas e bibliotecas de otimização.
-    </p>
-<div class="lab-index-grid">
-<div class="lab-index-card">
-<span class="lab-num">Prática 01</span>
-<a href="progLinear/pratica1.html">Excel Solver — Primeiro Modelo</a>
-<p>Modelagem de um problema simples no Excel e resolução com Solver.</p>
-</div>
-<div class="lab-index-card">
-<span class="lab-num">Prática 02</span>
-<a href="progLinear/pratica2.html">Excel Solver — Método Gráfico</a>
-<p>Comparação entre solução gráfica e solução computacional.</p>
-</div>
-<div class="lab-index-card">
-<span class="lab-num">Prática 03</span>
-<a href="progLinear/pratica3.html">Python — Ambiente e Bibliotecas</a>
-<p>Instalação ou uso em Colab, NumPy, Pandas, Matplotlib e SciPy.</p>
-</div>
-<div class="lab-index-card">
-<span class="lab-num">Prática 04</span>
-<a href="progLinear/pratica4.html">Python + SciPy — PL Básica</a>
-<p>Resolução de modelos lineares com scipy.optimize.linprog.</p>
-</div>
-<div class="lab-index-card">
-<span class="lab-num">Prática 05</span>
-<a href="progLinear/pratica5.html">Python + PuLP — Modelagem Declarativa</a>
-<p>Formulação de problemas com variáveis, função objetivo e restrições.</p>
-</div>
-<div class="lab-index-card">
-<span class="lab-num">Prática 06</span>
-<a href="progLinear/pratica6.html">Python — Simplex e Interpretação</a>
-<p>Resolução e leitura dos resultados, variáveis ativas e folgas.</p>
-</div>
-<div class="lab-index-card">
-<span class="lab-num">Prática 07</span>
-<a href="progLinear/pratica7.html">Python — Análise de Sensibilidade</a>
-<p>Variação de parâmetros, recursos e coeficientes da função objetivo.</p>
-</div>
-<div class="lab-index-card">
-<span class="lab-num">Prática 08</span>
-<a href="progLinear/pratica8.html">Python — Problema de Transporte</a>
-<p>Formulação matricial e resolução de modelos de transporte.</p>
-</div>
-<div class="lab-index-card">
-<span class="lab-num">Prática 09</span>
-<a href="progLinear/pratica9.html">Python — Problema da Designação</a>
-<p>Modelagem com variáveis binárias e matriz de custos.</p>
-</div>
-<div class="lab-index-card">
-<span class="lab-num">Prática 10</span>
-<a href="progLinear/pratica10.html">Python — Programação Inteira</a>
-<p>Modelos com variáveis inteiras e binárias usando PuLP ou OR-Tools.</p>
-</div>
-<div class="lab-index-card">
-<span class="lab-num">Prática 11</span>
-<a href="progLinear/pratica11.html">Python — Escala de Trabalho</a>
-<p>Aplicação de PLI para alocação de pessoas e turnos.</p>
-</div>
-<div class="lab-index-card">
-<span class="lab-num">Prática 12</span>
-<a href="progLinear/pratica12.html">Python — Custos Fixos e Descontos</a>
-<p>Uso de variáveis binárias para representar decisões condicionais.</p>
-</div>
-<div class="lab-index-card">
-<span class="lab-num">Prática 13</span>
-<a href="progLinear/pratica13.html">Python — Concessão de Contratos</a>
-<p>Seleção ótima de propostas, limites e critérios de decisão.</p>
-</div>
-<div class="lab-index-card">
-<span class="lab-num">Prática 14</span>
-<a href="progLinear/pratica14.html">Projeto Final Computacional</a>
-<p>Estudo de caso com modelagem, implementação, resultados e análise crítica.</p>
-</div>
-</div>
-</section>
+<h2 class="section-heading"><span class="section-number">05</span>Práticas Computacionais</h2><h3 class="subsection-heading">// ferramentas básicas de apoio</h3><div class="lab-index-grid"><div class="lab-index-card"><span class="lab-num">GeoGebra</span><a href="https://www.geogebra.org/?lang=pt" target="_blank">Utilizando GeoGebra para obter a solução gráfica de modelos simples</a></div><div class="lab-index-card"><span class="lab-num">Google Colab</span><a href="https://colab.research.google.com/" target="_blank">Desenvolvendo a solução gráfica em Python</a></div><div class="lab-index-card"><span class="lab-num">Excel Solver</span><a href="https://support.microsoft.com/pt-pt/office/definir-e-resolver-um-problema-atrav%C3%A9s-da-utiliza%C3%A7%C3%A3o-do-solver-5d1a388f-079d-43ac-a7eb-f63e45925040" target="_blank">Utilizando o Solver para obter a solução ótima</a></div></div><h3 class="subsection-heading">// práticas de laboratório</h3><div class="lab-index-grid"><div aria-disabled="true" class="lab-index-card disabled"><span class="lab-num">Em preparação</span><a href="#" tabindex="-1">Práticas de laboratório</a><p>Conteúdo em desenvolvimento.</p></div></div></section>
 <section class="section" id="avaliacoes">
-<p class="section-title">06 / avaliações</p>
+<h2 class="section-heading"><span class="section-number">06</span>Avaliações</h2>
 <div class="aval-grid">
 <div class="aval-card ap">
 <span class="aval-badge badge-ap">AP · avaliação bimestral</span>
@@ -497,35 +461,16 @@ footer p { font-size: 0.82rem; color: var(--muted); font-family: var(--font-mono
 </div>
 </div>
 </section>
-<section class="section" id="referencias">
-<p class="section-title">07 / referências bibliográficas</p>
+<section class="section" id="complementares">
+<h2 class="section-heading"><span class="section-number">07</span>Ferramentas Complementares</h2>
 <div class="ds-grid">
-<div class="ds-item"><a href="progLinear/grid_programacao_linear.html#referencias">Bibliografia básica e complementar</a></div>
-<div class="ds-item"><a href="https://docs.scipy.org/doc/scipy/reference/optimize.linprog.html" target="_blank">SciPy — linprog</a></div>
+
+<div class="ds-item"><a href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.optimize.linprog.html" target="_blank">SciPy — linprog</a></div>
 <div class="ds-item"><a href="https://coin-or.github.io/pulp/" target="_blank">PuLP — documentação</a></div>
 <div class="ds-item"><a href="https://developers.google.com/optimization" target="_blank">Google OR-Tools</a></div>
 </div>
 </section>
-<section class="section" id="ferramentas">
-<p class="section-title">08 / ferramentas do curso</p>
-<p style="color: var(--muted); margin-bottom: 1.5rem; max-width: 720px;">
-      Ferramentas sugeridas para modelagem, resolução computacional e apresentação dos resultados.
-    </p>
-<div class="ds-grid">
-<div class="ds-item"><a href="https://www.microsoft.com/pt-br/microsoft-365/excel" target="_blank">Microsoft Excel</a></div>
-<div class="ds-item"><a href="https://support.microsoft.com/office/definir-e-resolver-um-problema-usando-o-solver-5d1a388f-079d-43ac-a7eb-f63e45925040" target="_blank">Excel Solver</a></div>
-<div class="ds-item"><a href="https://www.python.org/" target="_blank">Python.org</a></div>
-<div class="ds-item"><a href="https://colab.research.google.com/" target="_blank">Google Colab</a></div>
-<div class="ds-item"><a href="https://jupyter.org/" target="_blank">Jupyter Notebook</a></div>
-<div class="ds-item"><a href="https://numpy.org/" target="_blank">NumPy</a></div>
-<div class="ds-item"><a href="https://pandas.pydata.org/" target="_blank">Pandas</a></div>
-<div class="ds-item"><a href="https://scipy.org/" target="_blank">SciPy</a></div>
-<div class="ds-item"><a href="https://coin-or.github.io/pulp/" target="_blank">PuLP</a></div>
-<div class="ds-item"><a href="https://developers.google.com/optimization" target="_blank">OR-Tools</a></div>
-<div class="ds-item"><a href="https://www.libreoffice.org/" target="_blank">LibreOffice Calc</a></div>
-<div class="ds-item"><a href="https://www.anaconda.com/" target="_blank">Anaconda</a></div>
-</div>
-</section>
+
 </div>
 <footer>
 <div class="container">
