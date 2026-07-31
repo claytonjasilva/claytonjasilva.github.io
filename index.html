@@ -4,7 +4,7 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Arquitetura de Computadores — 2026.2</title>
+<title>Prof. Clayton J A Silva</title>
 <link href="https://fonts.googleapis.com" rel="preconnect"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&amp;family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,600;1,300&amp;display=swap" rel="stylesheet"/>
@@ -37,516 +37,737 @@
     a { color: var(--accent); text-decoration: none; }
     a:hover { text-decoration: underline; }
 
-    .container { max-width: 1000px; margin: 0 auto; padding: 0 2rem; }
+    .container { max-width: 1100px; margin: 0 auto; padding: 0 2rem; }
 
-    /* ── NAV ── */
     nav {
       position: sticky; top: 0; z-index: 100;
-      background: rgba(10,14,23,0.88);
+      background: rgba(10, 14, 23, 0.85);
       backdrop-filter: blur(12px);
       border-bottom: 1px solid var(--border);
       padding: 1rem 0;
     }
-    nav .container { display: flex; align-items: center; justify-content: space-between; gap: 1rem; flex-wrap: wrap; }
-    .nav-brand { font-family: var(--font-mono); font-size: 0.82rem; color: var(--accent); }
-    .nav-links { display: flex; gap: 1.5rem; list-style: none; flex-wrap: wrap; }
-    .nav-links a { font-family: var(--font-mono); font-size: 0.78rem; color: var(--muted); transition: color 0.2s; }
+
+    nav .container { display: flex; align-items: center; justify-content: space-between; gap: 1rem; }
+
+    .nav-brand {
+      font-family: var(--font-mono); font-size: 0.85rem;
+      color: var(--accent); letter-spacing: 0.02em; white-space: nowrap;
+    }
+
+    .nav-links { display: flex; gap: 2rem; list-style: none; flex-wrap: wrap; }
+
+    .nav-links a {
+      font-size: 0.85rem; color: var(--muted);
+      font-family: var(--font-mono); transition: color 0.2s;
+    }
     .nav-links a:hover { color: var(--text); text-decoration: none; }
 
-    /* ── HERO ── */
-    .hero { padding: 5rem 0 3.5rem; position: relative; overflow: hidden; }
+    .hero { padding: 7rem 0 5rem; position: relative; overflow: hidden; }
+
     .hero::before {
       content: ''; position: absolute; inset: 0;
       background-image:
         linear-gradient(var(--border) 1px, transparent 1px),
         linear-gradient(90deg, var(--border) 1px, transparent 1px);
-      background-size: 40px 40px; opacity: 0.3;
+      background-size: 40px 40px; opacity: 0.35;
       mask-image: radial-gradient(ellipse 80% 60% at 50% 0%, black 40%, transparent 100%);
+      pointer-events: none;
     }
+
     .hero-eyebrow {
-      font-family: var(--font-mono); font-size: 0.75rem; color: var(--accent);
-      letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 1rem;
-      display: flex; align-items: center; gap: 0.75rem;
-    }
-    .hero-eyebrow::before { content: ''; display: inline-block; width: 2rem; height: 1px; background: var(--accent); }
-    h1 { font-size: clamp(1.8rem, 4vw, 3rem); font-weight: 300; line-height: 1.1; letter-spacing: -0.02em; margin-bottom: 0.75rem; }
-    h1 strong { font-weight: 600; color: var(--accent); }
-    .hero-sub { font-size: 0.88rem; color: var(--muted); font-family: var(--font-mono); margin-bottom: 2rem; }
-
-    .hero-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; }
-    .tag {
-      font-family: var(--font-mono); font-size: 0.72rem; color: var(--accent2);
-      background: rgba(124,58,237,0.1); border: 1px solid rgba(124,58,237,0.25);
-      border-radius: 4px; padding: 0.25rem 0.6rem;
-    }
-
-    /* ── SECTION ── */
-    .section { padding: 3rem 0; border-top: 1px solid var(--border); }
-    .section-title {
-      font-family: var(--font-mono); font-size: 0.72rem; color: var(--accent);
+      font-family: var(--font-mono); font-size: 0.78rem; color: var(--accent);
       letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 1.5rem;
       display: flex; align-items: center; gap: 0.75rem;
     }
-    .section-title::after { content: ''; flex: 1; height: 1px; background: var(--border); }
-    h2 { font-size: 1.25rem; font-weight: 600; margin-bottom: 1.25rem; }
-    h3 { font-size: 1rem; font-weight: 600; margin: 1.75rem 0 0.9rem; color: var(--text); }
-    h3:first-child { margin-top: 0; }
-    .turma-badge {
-      font-family: var(--font-mono); font-size: 0.7rem; color: var(--accent);
-      background: rgba(0,194,255,0.08); border: 1px solid rgba(0,194,255,0.2);
-      border-radius: 4px; padding: 0.2rem 0.55rem; margin-left: 0.6rem; vertical-align: middle;
+    .hero-eyebrow::before {
+      content: ''; display: inline-block; width: 2rem; height: 1px; background: var(--accent);
     }
 
-    /* ── AGENDA TABLE ── */
-    .agenda-wrap { overflow-x: auto; border: 1px solid var(--border); border-radius: 8px; margin-bottom: 0.5rem; }
-    table { width: 100%; border-collapse: collapse; font-size: 0.875rem; }
-    thead tr { background: var(--tag-bg); border-bottom: 1px solid var(--border); }
-    thead th { padding: 0.75rem 1rem; text-align: left; font-family: var(--font-mono); font-size: 0.72rem; color: var(--muted); letter-spacing: 0.1em; text-transform: uppercase; font-weight: 400; }
-    tbody tr { border-bottom: 1px solid var(--border); transition: background 0.15s; }
-    tbody tr:last-child { border-bottom: none; }
-    tbody tr:hover { background: rgba(255,255,255,0.02); }
-    tbody td { padding: 0.75rem 1rem; color: var(--muted); }
-    tbody td:first-child { font-family: var(--font-mono); font-size: 0.78rem; color: var(--muted); white-space: nowrap; }
-    tbody td:last-child { color: var(--text); }
-    .row-ap { background: rgba(0,194,255,0.04); }
-    .row-ap td { color: var(--accent) !important; font-weight: 600; }
-    .row-as { background: rgba(124,58,237,0.06); }
-    .row-as td { color: var(--accent2) !important; font-weight: 600; }
-    .row-feriado td { color: var(--muted) !important; font-style: italic; }
+    h1 {
+      font-family: var(--font-sans); font-size: clamp(2.4rem, 5vw, 4rem);
+      font-weight: 300; line-height: 1.1; letter-spacing: -0.02em;
+      max-width: 700px; margin-bottom: 1.5rem;
+    }
+    h1 strong { font-weight: 600; color: var(--accent); }
 
-    /* ── CARD ── */
+    .hero-bio { max-width: 600px; margin-bottom: 2rem; }
+    .hero-bio p { font-size: 0.95rem; color: var(--muted); line-height: 1.75; margin-bottom: 1rem; }
+
+    .hero-links { display: flex; flex-wrap: wrap; gap: 1rem; }
+
+    .bio-link {
+      font-family: var(--font-mono); font-size: 0.78rem; color: var(--accent);
+      display: inline-flex; align-items: center; gap: 0.4rem;
+      border: 1px solid rgba(0, 194, 255, 0.25); padding: 0.35rem 0.75rem;
+      border-radius: 4px; transition: background 0.2s, border-color 0.2s;
+    }
+    .bio-link:hover { background: rgba(0, 194, 255, 0.08); border-color: var(--accent); text-decoration: none; }
+
+    .hero-tags { display: flex; flex-wrap: wrap; gap: 0.6rem; }
+
+    .tag {
+      font-family: var(--font-mono); font-size: 0.75rem; color: var(--accent2);
+      background: rgba(124, 58, 237, 0.1); border: 1px solid rgba(124, 58, 237, 0.25);
+      border-radius: 4px; padding: 0.3rem 0.7rem;
+    }
+
+    .section { padding: 4rem 0; border-top: 1px solid var(--border); }
+
+    .section-header { display: flex; align-items: baseline; gap: 1rem; margin-bottom: 2.5rem; }
+
+    .section-label {
+      font-family: var(--font-mono); font-size: 0.72rem; color: var(--accent);
+      letter-spacing: 0.15em; text-transform: uppercase;
+    }
+
+    h2 { font-size: 1.6rem; font-weight: 600; letter-spacing: -0.01em; }
+
+    .disciplinas-grid {
+      display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 1px; background: var(--border);
+      border: 1px solid var(--border); border-radius: 8px; overflow: hidden;
+    }
+
     .card {
-      border: 1px solid var(--border); border-radius: 8px; padding: 1.5rem;
-      background: var(--surface);
+      background: var(--surface); padding: 1.75rem;
+      display: flex; flex-direction: column; gap: 0.75rem;
+      transition: background 0.2s; position: relative;
     }
-    .card-link { font-family: var(--font-mono); font-size: 0.78rem; }
+    .card:hover { background: #161f2e; }
 
-    /* ── CONTEÚDO GRID ── */
-    .content-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-      gap: 1px;
-      background: var(--border);
+    .card-icon { width: 36px; height: 36px; flex-shrink: 0; }
+
+    .card-rev {
+      font-family: var(--font-mono); font-size: 0.7rem; color: var(--muted);
+      position: absolute; top: 1.75rem; right: 1.75rem;
+    }
+
+    .card h3 { font-size: 1rem; font-weight: 600; line-height: 1.3; }
+    .card p { font-size: 0.875rem; color: var(--muted); line-height: 1.5; flex: 1; }
+
+    .card-link {
+      font-family: var(--font-mono); font-size: 0.78rem; color: var(--accent);
+      display: inline-flex; align-items: center; gap: 0.4rem;
+      margin-top: 0.5rem; transition: gap 0.2s;
+    }
+    .card:hover .card-link { gap: 0.7rem; }
+
+
+    .subsection-title {
+      font-family: var(--font-mono);
+      font-size: 0.85rem;
+      color: var(--muted);
+      margin: 2rem 0 1rem;
+      font-weight: 400;
+    }
+
+    .card.disabled .card-link {
+      color: var(--muted);
+      cursor: pointer;
+    }
+
+    .card.historico {
+      opacity: 0.82;
+    }
+
+    .status-badge {
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
+      color: var(--muted);
       border: 1px solid var(--border);
-      border-radius: 8px;
-      overflow: hidden;
+      border-radius: 3px;
+      padding: 0.15rem 0.45rem;
+      display: inline-block;
+      width: fit-content;
     }
-    .content-card {
+
+    .modal {
+      position: fixed;
+      inset: 0;
+      background: rgba(2, 6, 23, 0.78);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+      z-index: 999;
+    }
+
+    .modal:target {
+      display: flex;
+    }
+
+    .modal-box {
+      max-width: 520px;
+      width: 100%;
       background: var(--surface);
-      padding: 1.25rem 1.5rem;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 1.75rem;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.45);
+    }
+
+    .modal-box h3 {
+      margin-bottom: 0.75rem;
+    }
+
+    .modal-box p {
+      color: var(--muted);
+      font-size: 0.92rem;
+      margin-bottom: 1.25rem;
+    }
+
+    .modal-actions {
+      display: flex;
+      justify-content: flex-end;
+    }
+
+    .prog-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 1rem; }
+
+    .prog-card {
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: 8px; padding: 1.5rem;
+      display: flex; flex-direction: column; gap: 0.5rem; transition: border-color 0.2s;
+    }
+    .prog-card:hover { border-color: var(--accent); }
+    .prog-card .lang-badge { font-family: var(--font-mono); font-size: 1.4rem; font-weight: 600; color: var(--accent); }
+    .prog-card h3 { font-size: 0.95rem; font-weight: 600; }
+    .prog-card p  { font-size: 0.82rem; color: var(--muted); }
+
+    .ides-list { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 0.75rem; }
+
+    .ide-item {
+      background: var(--tag-bg); border: 1px solid var(--border);
+      border-radius: 6px; padding: 1rem 1.25rem;
+      display: flex; align-items: flex-start; gap: 0.75rem;
+    }
+    .ide-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--accent); margin-top: 0.45rem; flex-shrink: 0; }
+    .ide-item h4 { font-size: 0.9rem; font-weight: 600; margin-bottom: 0.2rem; }
+    .ide-item p  { font-size: 0.8rem; color: var(--muted); }
+
+    .apoio-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 0.75rem; }
+
+    .apoio-item {
+      border: 1px solid var(--border); border-radius: 6px; padding: 1rem 1.25rem;
       display: flex; gap: 1rem; align-items: flex-start;
-      transition: background 0.2s;
+      background: var(--surface); transition: border-color 0.2s;
     }
-    .content-card:hover { background: #161f2e; }
-    .content-num {
-      font-family: var(--font-mono); font-size: 0.7rem; color: var(--accent);
-      background: rgba(0,194,255,0.08); border: 1px solid rgba(0,194,255,0.2);
-      border-radius: 3px; padding: 0.2rem 0.5rem; white-space: nowrap; flex-shrink: 0; margin-top: 0.1rem;
-    }
-    .content-num.anexo {
-      color: var(--accent2); background: rgba(124,58,237,0.08); border-color: rgba(124,58,237,0.2);
-    }
-    .content-card a { font-size: 0.875rem; color: var(--text); font-weight: 500; line-height: 1.4; }
-    .content-card a:hover { color: var(--accent); text-decoration: none; }
+    .apoio-item:hover { border-color: var(--accent2); }
+    .apoio-item svg { flex-shrink: 0; margin-top: 2px; }
+    .apoio-item h4 { font-size: 0.9rem; font-weight: 600; }
+    .apoio-item p  { font-size: 0.8rem; color: var(--muted); margin-top: 0.2rem; }
 
-    /* ── PRÁTICAS ── */
-    .praticas-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-      gap: 0.6rem;
-    }
-    .pratica-item {
-      background: var(--tag-bg); border: 1px solid var(--border); border-radius: 6px;
-      padding: 0.9rem 1.1rem; display: flex; gap: 0.75rem; align-items: center;
-      transition: border-color 0.2s;
-    }
-    .pratica-item:hover { border-color: var(--accent2); }
-    .pratica-num {
-      font-family: var(--font-mono); font-size: 0.68rem; color: var(--accent2);
-      background: rgba(124,58,237,0.1); border: 1px solid rgba(124,58,237,0.25);
-      border-radius: 3px; padding: 0.15rem 0.45rem; white-space: nowrap; flex-shrink: 0;
-    }
-    .pratica-item a { font-size: 0.85rem; color: var(--text); }
-    .pratica-item a:hover { color: var(--accent2); text-decoration: none; }
+    .projetos-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 1rem; }
 
-    /* ── AVALIAÇÕES ── */
-    .aval-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 1rem; }
-    .aval-card {
-      border: 1px solid var(--border); border-radius: 8px; padding: 1.5rem;
+    .projeto-card {
+      border: 1px solid var(--border); border-radius: 8px; padding: 1.75rem;
       background: var(--surface); display: flex; flex-direction: column; gap: 0.75rem;
-      position: relative; overflow: hidden;
+      position: relative; overflow: hidden; transition: border-color 0.2s;
     }
-    .aval-card::before {
+    .projeto-card::before {
       content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
+      background: linear-gradient(90deg, var(--accent), var(--accent2));
     }
-    .aval-card.ap::before { background: linear-gradient(90deg, var(--accent), rgba(0,194,255,0.3)); }
-    .aval-card.ac::before { background: linear-gradient(90deg, var(--accent2), rgba(124,58,237,0.3)); }
-    .aval-badge {
-      font-family: var(--font-mono); font-size: 0.7rem; font-weight: 600;
-      padding: 0.25rem 0.6rem; border-radius: 4px; display: inline-block; width: fit-content;
-    }
-    .badge-ap { background: rgba(0,194,255,0.1); border: 1px solid rgba(0,194,255,0.25); color: var(--accent); }
-    .badge-ac { background: rgba(124,58,237,0.1); border: 1px solid rgba(124,58,237,0.25); color: var(--accent2); }
-    .aval-card h3 { font-size: 0.95rem; font-weight: 600; margin: 0; }
-    .aval-list { list-style: none; display: flex; flex-direction: column; gap: 0.4rem; }
-    .aval-list li { font-size: 0.85rem; color: var(--muted); display: flex; gap: 0.5rem; }
-    .aval-list li::before { content: '·'; color: var(--accent); flex-shrink: 0; }
-    .aval-list li.indisponivel { color: #475569; font-style: italic; }
+    .projeto-card:hover { border-color: rgba(0, 194, 255, 0.4); }
+    .projeto-card h3 { font-size: 1rem; font-weight: 600; }
+    .projeto-card p  { font-size: 0.875rem; color: var(--muted); flex: 1; }
 
-    /* ── REFERÊNCIAS / DATASHEETS ── */
-    .ds-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 0.6rem; }
-    .ds-item {
-      background: var(--tag-bg); border: 1px solid var(--border); border-radius: 6px;
-      padding: 0.85rem 1rem; display: flex; gap: 0.75rem; align-items: center;
-      transition: border-color 0.2s;
-    }
-    .ds-item:hover { border-color: var(--accent); }
-    .ds-icon { flex-shrink: 0; }
-    .ds-item a { font-size: 0.82rem; color: var(--text); font-family: var(--font-mono); }
-    .ds-item a:hover { color: var(--accent); text-decoration: none; }
+    .projeto-tech { display: flex; gap: 0.5rem; flex-wrap: wrap; }
 
-    /* ── FOOTER ── */
+    .tech-badge {
+      font-family: var(--font-mono); font-size: 0.7rem; padding: 0.2rem 0.55rem;
+      border-radius: 3px; background: rgba(0, 194, 255, 0.08);
+      border: 1px solid rgba(0, 194, 255, 0.2); color: var(--accent);
+    }
+
     footer { border-top: 1px solid var(--border); padding: 2rem 0; margin-top: 2rem; }
     footer .container { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; }
     footer p { font-size: 0.82rem; color: var(--muted); font-family: var(--font-mono); }
 
-
-    .lab-index-grid {
-      display:grid; grid-template-columns:repeat(auto-fill,minmax(230px,1fr)); gap:.8rem;
-    }
-    .lab-index-card {
-      background:var(--surface); border:1px solid var(--border); border-radius:8px;
-      padding:1.1rem 1.2rem; position:relative; overflow:hidden; transition:border-color .2s, background .2s;
-    }
-    .lab-index-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--accent),var(--accent2));}
-    .lab-index-card:hover{border-color:var(--accent);background:#161f2e;}
-    .lab-index-card .lab-num{font-family:var(--font-mono);font-size:.68rem;color:var(--accent2);display:block;margin-bottom:.45rem;}
-    .lab-index-card a{font-size:.9rem;color:var(--text);font-weight:600;}
-    .lab-index-card a:hover{color:var(--accent);text-decoration:none;}
-    .lab-index-card p{font-size:.76rem;color:var(--muted);margin:.35rem 0 0;}
-
-    @media (max-width: 600px) {
-      .hero { padding: 3.5rem 0 2.5rem; }
-      h1 { font-size: 1.8rem; }
+    @media (max-width: 640px) {
+      .nav-links { display: none; }
+      .hero { padding: 4rem 0 3rem; }
+      h1 { font-size: 2rem; }
     }
   
-    /* ── AJUSTES 2026.2 ── */
-    .section-title {
-      font-size: 0.84rem;
-      font-weight: 600;
-      letter-spacing: 0.16em;
-      margin-bottom: 0.9rem;
+
+    .section-header { margin-bottom: 0.9rem; }
+    .section-note { color: var(--muted); max-width: 720px; margin-bottom: 1.75rem; font-size: 0.92rem; }
+    .narrow-container { max-width: 860px; }
+    .search-form, .form-actions { display: flex; flex-wrap: wrap; gap: 0.75rem; }
+    .contact-form { display: grid; gap: 1.25rem; }
+    .form-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; }
+    .field-group { display: grid; gap: 0.45rem; }
+    .field-group label { font-size: 0.86rem; font-weight: 600; }
+    input, textarea {
+      width: 100%; background: var(--surface); color: var(--text); border: 1px solid var(--border);
+      border-radius: 6px; padding: 0.8rem 0.9rem; font: inherit; transition: border-color .2s, box-shadow .2s;
+    }
+    input:focus, textarea:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 0 3px rgba(0,194,255,.12); }
+    textarea { resize: vertical; }
+    .search-form input { flex: 1 1 320px; }
+    button { font: inherit; cursor: pointer; border-radius: 6px; padding: 0.78rem 1rem; }
+    .primary-button { background: var(--accent); color: #04111a; border: 1px solid var(--accent); font-weight: 600; }
+    .primary-button:hover { filter: brightness(1.08); }
+    .secondary-button { background: transparent; color: var(--text); border: 1px solid var(--border); }
+    .secondary-button:hover { border-color: var(--accent); }
+    .form-help, .form-status { color: var(--muted); font-size: 0.8rem; margin-top: 0.65rem; }
+    .search-results { display: grid; gap: 0.75rem; margin-top: 1rem; }
+    .search-result { background: var(--surface); border: 1px solid var(--border); border-radius: 6px; padding: 1rem 1.1rem; }
+    .search-result h3 { font-size: 0.95rem; margin-bottom: 0.25rem; }
+    .search-result p { color: var(--muted); font-size: 0.84rem; }
+    .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
+    code { font-family: var(--font-mono); font-size: .9em; }
+
+    @media (max-width: 640px) {
+      .form-grid { grid-template-columns: 1fr; }
+      .search-form button, .form-actions button { flex: 1 1 auto; }
     }
 
-    .section-lead {
-      color: var(--text);
-      font-size: 0.98rem;
-      font-weight: 500;
-      margin: 0 0 1.4rem;
-      max-width: 820px;
+
+    /* Cabeçalho com busca em destaque */
+    nav { padding: 0.85rem 0; }
+    .nav-layout {
+      display: grid;
+      grid-template-columns: auto minmax(280px, 1fr) auto;
+      align-items: center;
+      gap: 1.5rem;
+    }
+    .header-search { position: relative; width: 100%; max-width: 620px; justify-self: center; }
+    .header-search-form {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 0;
+      background: #f8fafc;
+      border: 2px solid transparent;
+      border-radius: 999px;
+      padding: 0.22rem 0.25rem 0.22rem 1.1rem;
+      box-shadow: 0 8px 28px rgba(0,0,0,.24);
+      transition: border-color .2s, box-shadow .2s;
+    }
+    .header-search-form:focus-within {
+      border-color: var(--accent);
+      box-shadow: 0 0 0 4px rgba(0,194,255,.14), 0 10px 30px rgba(0,0,0,.28);
+    }
+    .header-search-form input {
+      background: transparent;
+      color: #0f172a;
+      border: 0;
+      border-radius: 0;
+      padding: .68rem .3rem;
+      min-width: 0;
+      box-shadow: none;
+    }
+    .header-search-form input:focus { border: 0; box-shadow: none; }
+    .header-search-form input::placeholder { color: #64748b; }
+    .search-icon-button {
+      width: 44px;
+      height: 44px;
+      display: inline-grid;
+      place-items: center;
+      padding: 0;
+      border: 0;
+      border-radius: 50%;
+      background: var(--accent);
+      color: #04111a;
+    }
+    .search-icon-button:hover { filter: brightness(1.08); }
+    .header-search .form-status { margin: .45rem .75rem 0; }
+    .header-search-results {
+      position: absolute;
+      top: calc(100% + .65rem);
+      left: 0;
+      right: 0;
+      z-index: 300;
+      max-height: min(60vh, 520px);
+      overflow-y: auto;
+      margin-top: 0;
+      padding: .6rem;
+      border-radius: 10px;
+      background: rgba(10,14,23,.98);
+      border: 1px solid var(--border);
+      box-shadow: 0 18px 50px rgba(0,0,0,.45);
+    }
+    .header-search-results:empty { display: none; }
+    .header-search-results .search-result { background: var(--surface); }
+
+    /* Cartões de linguagens sem siglas redundantes */
+    .prog-card { padding-top: 1.6rem; }
+    .prog-card h3 { font-size: 1.02rem; }
+
+    /* Contato em destaque no rodapé */
+    .footer-contact {
+      border-top: 1px solid var(--border);
+      padding: 4.5rem 0 3.5rem;
+      background:
+        radial-gradient(circle at 15% 20%, rgba(0,194,255,.10), transparent 35%),
+        radial-gradient(circle at 85% 80%, rgba(124,58,237,.10), transparent 35%),
+        var(--tag-bg);
+    }
+    .contact-panel {
+      max-width: 900px;
+      padding: 2.25rem;
+      border: 1px solid rgba(0,194,255,.28);
+      border-radius: 14px;
+      background: rgba(17,24,39,.92);
+      box-shadow: 0 20px 55px rgba(0,0,0,.30);
+    }
+    .contact-panel .section-header { margin-bottom: .55rem; }
+    .contact-panel h2 { font-size: clamp(1.6rem, 3vw, 2.1rem); }
+    .contact-panel .section-note { font-size: 1rem; margin-bottom: 1.75rem; }
+    .contact-panel input, .contact-panel textarea { background: #0b1220; }
+    footer { margin-top: 0; }
+    .footer-meta { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; }
+
+    @media (max-width: 900px) {
+      .nav-layout { grid-template-columns: 1fr; gap: .8rem; }
+      .nav-brand { justify-self: center; }
+      .header-search { order: 3; max-width: none; }
+      .nav-links { justify-content: center; gap: 1.25rem; }
+    }
+    @media (max-width: 640px) {
+      .nav-links { display: flex; overflow-x: auto; justify-content: flex-start; width: 100%; padding-bottom: .15rem; }
+      .container { padding: 0 1rem; }
+      .contact-panel { padding: 1.4rem; border-radius: 10px; }
+      .header-search-form { padding-left: .85rem; }
     }
 
-    .agenda-note {
-      color: var(--muted);
-      font-size: 0.84rem;
-      margin: 0 0 0.7rem;
-      max-width: 820px;
-    }
+/* Cabeçalho responsivo em três linhas */
+nav { padding: .85rem 0 1rem; }
+.nav-layout {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-areas: "brand" "links" "search";
+  align-items: stretch;
+  gap: .7rem;
+}
+.nav-brand { grid-area: brand; justify-self: start; }
+.nav-links {
+  grid-area: links;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: clamp(.8rem, 2.5vw, 1.8rem);
+  width: 100%;
+  overflow-x: auto;
+  padding: .15rem 0 .35rem;
+  scrollbar-width: thin;
+  scrollbar-color: var(--border) transparent;
+}
+.nav-links li { flex: 0 0 auto; }
+.header-search {
+  grid-area: search;
+  position: relative;
+  width: 100%;
+  max-width: none;
+  justify-self: stretch;
+}
+.header-search-form { width: 100%; }
+.header-search .form-status { margin: .35rem .75rem 0; }
 
-    .agenda-note a {
-      font-weight: 600;
-    }
+@media (max-width: 640px) {
+  nav .container { padding: 0 1rem; }
+  .nav-brand { font-size: .8rem; }
+  .nav-links { gap: 1rem; padding-bottom: .25rem; }
+  .nav-links a { font-size: .78rem; white-space: nowrap; }
+  .header-search-form { padding-left: .8rem; }
+  .header-search-form input { font-size: .95rem; }
+  .search-icon-button { width: 42px; height: 42px; }
+}
 
-    .disabled-link {
-      font-size: 0.82rem;
-      color: var(--muted);
-      font-family: var(--font-mono);
-      cursor: default;
-      line-height: 1.45;
-    }
+/* Comunicação */
+.contact-alert {
+  display: none;
+  margin: 0 0 1.25rem;
+  padding: .9rem 1rem;
+  border: 1px solid rgba(245, 158, 11, .45);
+  border-radius: 8px;
+  background: rgba(245, 158, 11, .08);
+  color: #fcd34d;
+  font-size: .88rem;
+}
+.contact-alert.is-visible { display: block; }
+.contact-submit-status {
+  min-height: 1.3rem;
+  margin-top: .2rem;
+  color: var(--muted);
+  font-size: .84rem;
+}
+.contact-submit-status.is-error { color: #fca5a5; }
+.contact-submit-status.is-success { color: #86efac; }
 
-    .aval-description {
-      color: var(--muted);
-      font-size: 0.85rem;
-      margin: 0;
-    }
+/* Cabeçalho sem campo de busca */
+.nav-layout-no-search {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-areas:
+    "brand"
+    "links";
+  align-items: stretch;
+  gap: .65rem;
+}
+.nav-layout-no-search .nav-brand {
+  grid-area: brand;
+  justify-self: start;
+}
+.nav-layout-no-search .nav-links {
+  grid-area: links;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: clamp(.9rem, 2.5vw, 1.8rem);
+  width: 100%;
+  overflow-x: auto;
+  padding: .1rem 0 .3rem;
+  scrollbar-width: thin;
+  scrollbar-color: var(--border) transparent;
+}
+.nav-layout-no-search .nav-links li { flex: 0 0 auto; }
+.nav-layout-no-search .nav-links a { white-space: nowrap; }
 
-    @media (max-width: 600px) {
-      .section-title {
-        font-size: 0.76rem;
-        letter-spacing: 0.12em;
-      }
+/* Contato provisório via LinkedIn */
+.contact-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .8rem;
+  margin-top: .4rem;
+}
+.contact-linkedin-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 46px;
+  padding: .78rem 1.15rem;
+  border-radius: 7px;
+  text-decoration: none;
+}
+.contact-linkedin-button:hover {
+  text-decoration: none;
+  filter: brightness(1.08);
+}
+.footer-contact .form-help { margin-top: 1rem; }
 
-      .section-lead {
-        font-size: 0.92rem;
-      }
-    }
+@media (max-width: 640px) {
+  .nav-layout-no-search .nav-links { gap: 1rem; }
+  .nav-layout-no-search .nav-links a { font-size: .78rem; }
+  .contact-linkedin-button { width: 100%; }
+}
 
-    /* ── AJUSTE DE MARGEM DO CABEÇALHO ── */
-    nav .container {
-      padding-left: 2rem;
-      padding-right: 2rem;
-    }
+/* ============================================================
+   Ajuste definitivo das margens do cabeçalho
+   ============================================================ */
+nav,
+.site-header,
+header {
+  width: 100%;
+}
 
-    .nav-brand {
-      display: inline-block;
-      margin: 0.15rem 0;
-    }
+nav .container,
+.site-header .container,
+header .container,
+.nav-layout {
+  width: 100%;
+  max-width: 1100px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 2rem;
+  padding-right: 2rem;
+  box-sizing: border-box;
+}
 
-    @media (max-width: 600px) {
-      nav .container {
-        padding-left: 1rem;
-        padding-right: 1rem;
-      }
+.nav-brand {
+  display: inline-block;
+  margin: 0;
+  padding: 0.2rem 0;
+}
 
-      .nav-brand {
-        margin-bottom: 0.35rem;
-      }
-    }
+.nav-layout-no-search {
+  box-sizing: border-box;
+}
+
+@media (max-width: 640px) {
+  nav .container,
+  .site-header .container,
+  header .container,
+  .nav-layout {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  .nav-brand {
+    margin-bottom: 0.35rem;
+  }
+}
 </style>
 </head>
-<body>
-<!-- NAV -->
-<nav>
-<div class="container">
-<span class="nav-brand">claytonjasilva.github.io</span>
-<ul class="nav-links">
-<li><a href="#agenda">agenda</a></li>
-<li><a href="#grid">grid</a></li>
-<li><a href="#conteudo">conteúdo</a></li>
-<li><a href="#praticas">práticas</a></li>
-<li><a href="#avaliacoes">avaliações</a></li>
-<li><a href="#referencias">referências</a></li>
-<li><a href="#ferramentas">ferramentas</a></li>
-<li><a href="https://claytonjasilva.github.io">← home</a></li>
-</ul>
-</div>
-</nav>
-<!-- HERO -->
+<body id="top">
+<nav><div class="nav-layout nav-layout-no-search"><a aria-label="Início" class="nav-brand" href="#top">claytonjasilva.github.io</a><ul class="nav-links"><li><a href="#disciplinas">disciplinas</a></li><li><a href="#programacao">linguagens</a></li><li><a href="#apoio">apoio</a></li><li><a href="#contato">contato</a></li></ul></div></nav>
 <section class="hero">
 <div class="container">
-<h1>Arquitetura de<br/><strong>Computadores</strong></h1>
-<p class="hero-sub">Prof. Clayton J A Silva - Ibmec Rio - 2026.2</p>
+<p class="hero-eyebrow">Professor MS · Engenheiro Eletrônico</p>
+<h1>Prof. Clayton<br/><strong>J A Silva</strong></h1>
+<div class="hero-bio">
+<p>
+        Professor MS e Engenheiro Eletrônico, com atuação em arquitetura de computadores,
+        sistemas digitais, gestão de projetos, programação, telecomunicações e sistemas embarcados.
+        Este espaço reúne materiais didáticos, notas de aula, referências e ferramentas de apoio
+        às disciplinas atualmente ministradas e a conteúdos já utilizados em semestres anteriores.
+      </p>
+<div class="hero-links">
+<a class="bio-link" href="https://lattes.cnpq.br/1076393689198701" target="_blank">
+<svg fill="none" height="14" viewbox="0 0 14 14" width="14"><rect height="12" rx="2" stroke="currentColor" stroke-width="1.3" width="12" x="1" y="1"></rect><line stroke="currentColor" stroke-width="1.2" x1="4" x2="10" y1="5" y2="5"></line><line stroke="currentColor" stroke-width="1.2" x1="4" x2="8" y1="7.5" y2="7.5"></line></svg>
+          Currículo Lattes
+        </a>
+<a class="bio-link" href="https://www.linkedin.com/in/clayton-jones-alves-da-silva-4323b933/" target="_blank">
+<svg fill="none" height="14" viewbox="0 0 14 14" width="14"><rect height="12" rx="2" stroke="currentColor" stroke-width="1.3" width="12" x="1" y="1"></rect><line stroke="currentColor" stroke-width="1.3" x1="4" x2="4" y1="6" y2="10"></line><line stroke="currentColor" stroke-linecap="round" stroke-width="1.8" x1="4" x2="4" y1="4" y2="4.5"></line><path d="M7 10V7.5C7 6.7 7.6 6 8.5 6C9.3 6 10 6.7 10 7.5V10" stroke="currentColor" stroke-width="1.2"></path></svg>
+          LinkedIn
+        </a>
+</div>
+</div>
 </div>
 </section>
+<section class="section" id="disciplinas">
 <div class="container">
-<!-- AGENDA -->
-<section class="section" id="agenda">
-<p class="section-title">01 / Agenda</p><p class="section-lead">Quarta-feira (Turma 1) e Quinta-feira (Turma 2), 07h30 às 11h40</p>
-<h3>Turma 1 — quarta-feira <span class="turma-badge">4ª feira</span></h3>
-<p class="agenda-note">A agenda abaixo se insere na programação do <a href="https://claytonjasilva.github.io/calendario-academico.html" rel="noopener noreferrer" target="_blank">Calendário Acadêmico Ibmec Rio 2026.2</a>.</p><div class="agenda-wrap">
-<table>
-<thead><tr><th>Data</th><th>Conteúdo</th></tr></thead>
-<tbody>
-<tr><td>05/08/2026</td><td>Introdução ao curso · Sobre o Arduíno · Programação em C/C++</td></tr>
-<tr><td>12/08/2026</td><td>Cap. 1 — Máquina de von Neumann · Unidades e grandezas numéricas, bit, Byte · Prática de Laboratório</td></tr>
-<tr><td>19/08/2026</td><td>Cap. 1 — Máquina de von Neumann · Conversão de base · Prática de Laboratório</td></tr>
-<tr><td>26/08/2026</td><td>Cap. 1 — Máquina de von Neumann · Nível de microarquitetura, linguagem de máquina e de montagem · Prática de Laboratório</td></tr>
-<tr><td>02/09/2026</td><td>Cap. 2 — Organização e modelos de máquina de níveis · Tradução, interpretação e compilação · Prática de Laboratório</td></tr>
-<tr><td>09/09/2026</td><td>Cap. 3 — Nível de lógica digital · Prática de Laboratório</td></tr>
-<tr><td>16/09/2026</td><td>Apresentação do trabalho de AP1 · Revisão da AP1</td></tr>
-<tr class="row-ap"><td>23/09/2026</td><td>▶ Aplicação da AP1</td></tr>
-<tr><td>30/09/2026</td><td>Mostra da AP1 · Apresentação do trabalho AP1 · Cap. 4 — Sistema de memória</td></tr>
-<tr><td>07/10/2026</td><td>Cap. 4 — Sistema de memória · Prática de Laboratório</td></tr>
-<tr><td>14/10/2026</td><td>Cap. 4 — Sistema de memória · Prática de Laboratório</td></tr>
-<tr><td>21/10/2026</td><td>Cap. 5 — Barramento · Prática de Laboratório</td></tr>
-<tr><td>28/10/2026</td><td>Cap. 6 — Processadores · Prática de Laboratório</td></tr>
-<tr><td>04/11/2026</td><td>Cap. 7 — Sistemas Operacionais</td></tr>
-<tr><td>11/11/2026</td><td>Cap. 8 — Microcontroladores: MC Atmel ATmega 2560</td></tr>
-<tr><td>18/11/2026</td><td>Teste · Revisão da AP2</td></tr>
-<tr class="row-ap"><td>25/11/2026</td><td>▶ Aplicação da AP2</td></tr>
-<tr class="row-as"><td>02/12/2026</td><td>▶ Aplicação da AS</td></tr>
-</tbody>
-</table>
+<div class="section-header">
+<h2>Disciplinas</h2>
 </div>
-<h3>Turma 2 — quinta-feira <span class="turma-badge">5ª feira</span></h3>
-<p class="agenda-note">A agenda abaixo se insere na programação do <a href="https://claytonjasilva.github.io/calendario-academico.html" rel="noopener noreferrer" target="_blank">Calendário Acadêmico Ibmec Rio 2026.2</a>.</p><div class="agenda-wrap">
-<table>
-<thead><tr><th>Data</th><th>Conteúdo</th></tr></thead>
-<tbody>
-<tr><td>06/08/2026</td><td>Introdução ao curso · Sobre o Arduíno · Programação em C/C++</td></tr>
-<tr><td>13/08/2026</td><td>Cap. 1 — Máquina de von Neumann · Unidades e grandezas numéricas, bit, Byte · Prática de Laboratório</td></tr>
-<tr><td>20/08/2026</td><td>Cap. 1 — Máquina de von Neumann · Conversão de base · Prática de Laboratório</td></tr>
-<tr><td>27/08/2026</td><td>Cap. 1 — Máquina de von Neumann · Nível de microarquitetura, linguagem de máquina e de montagem · Prática de Laboratório</td></tr>
-<tr><td>03/09/2026</td><td>Cap. 2 — Organização e modelos de máquina de níveis · Tradução, interpretação e compilação · Prática de Laboratório</td></tr>
-<tr><td>10/09/2026</td><td>Cap. 3 — Nível de lógica digital · Prática de Laboratório</td></tr>
-<tr><td>17/09/2026</td><td>Apresentação do trabalho de AP1 · Revisão da AP1</td></tr>
-<tr class="row-ap"><td>24/09/2026</td><td>▶ Aplicação da AP1</td></tr>
-<tr><td>01/10/2026</td><td>Mostra da AP1 · Apresentação do trabalho AP1 · Cap. 4 — Sistema de memória</td></tr>
-<tr><td>08/10/2026</td><td>Cap. 4 — Sistema de memória · Prática de Laboratório</td></tr>
-<tr><td>15/10/2026</td><td>Cap. 4 — Sistema de memória · Prática de Laboratório</td></tr>
-<tr><td>22/10/2026</td><td>Cap. 5 — Barramento · Prática de Laboratório</td></tr>
-<tr><td>29/10/2026</td><td>Cap. 6 — Processadores · Prática de Laboratório</td></tr>
-<tr><td>05/11/2026</td><td>Cap. 7 — Sistemas Operacionais</td></tr>
-<tr><td>12/11/2026</td><td>Cap. 8 — Microcontroladores: MC Atmel ATmega 2560</td></tr>
-<tr><td>19/11/2026</td><td>Teste · Revisão da AP2</td></tr>
-<tr class="row-ap"><td>26/11/2026</td><td>▶ Aplicação da AP2</td></tr>
-<tr class="row-as"><td>03/12/2026</td><td>▶ Aplicação da AS</td></tr>
-</tbody>
-</table>
+<h3 class="subsection-title">// ministradas atualmente</h3>
+<div class="disciplinas-grid">
+<div class="card">
+<span class="card-rev">Rev 2026.2</span>
+<svg class="card-icon" fill="none" viewbox="0 0 36 36">
+<rect height="12" rx="2" stroke="#00c2ff" stroke-width="1.5" width="12" x="4" y="4"></rect>
+<rect height="12" rx="2" stroke="#00c2ff" stroke-width="1.5" width="12" x="20" y="4"></rect>
+<rect height="12" rx="2" stroke="#00c2ff" stroke-width="1.5" width="12" x="4" y="20"></rect>
+<rect height="12" rx="2" stroke="#7c3aed" stroke-width="1.5" width="12" x="20" y="20"></rect>
+<line stroke="#00c2ff" stroke-width="1.5" x1="16" x2="20" y1="10" y2="10"></line>
+<line stroke="#00c2ff" stroke-width="1.5" x1="10" x2="10" y1="16" y2="20"></line>
+</svg>
+<h3>Arquitetura de Computadores</h3>
+<p>Organização interna de processadores, memória, barramentos e sistemas embarcados com ATmega2560.</p>
+<a class="card-link" href="arq.html">Ver disciplina →</a>
 </div>
-</section>
-<!-- GRID -->
-<section class="section" id="grid">
-<p class="section-title">02 / Grid da disciplina</p>
-<div class="card" style="max-width:500px;">
-<h3 style="margin-top:0;">Objetivos, conteúdo programático e referências</h3>
-<p style="margin-bottom:1rem;">Consulte o grid completo da disciplina, com os 5 objetivos de aprendizagem, os 14 tópicos do conteúdo programático e a bibliografia básica e complementar.</p>
-<a class="card-link" href="arq_aulas/grid_arquitetura.html">Ver grid da disciplina →</a>
+<div class="card">
+<span class="card-rev">Rev 2026.2</span>
+<svg class="card-icon" fill="none" viewbox="0 0 36 36">
+<polyline fill="none" points="2,22 8,22 8,14 14,14 14,26 20,26 20,10 26,10 26,22 34,22" stroke="#00c2ff" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8"></polyline>
+</svg>
+<h3>Sistemas Digitais</h3>
+<p>Lógica combinacional e sequencial, circuitos integrados, flip-flops, máquinas de estado e FPGA.</p>
+<a class="card-link" href="sisdig.html">Ver disciplina →</a>
 </div>
-</section>
-<!-- CONTEÚDO -->
-<section class="section" id="conteudo">
-<p class="section-title">03 / Conteúdo das aulas</p>
-<div class="content-grid">
-<div class="content-card"><span class="content-num">Cap 1</span><a href="arq_aulas/cap1.html">Máquina de von Neumann</a></div>
-<div class="content-card"><span class="content-num">Cap 2</span><a href="arq_aulas/cap2.html">Organização e Modelos de Máquina de Níveis</a></div>
-<div class="content-card"><span class="content-num">Cap 3</span><a href="arq_aulas/cap3.html">Nível de Lógica Digital — Combinacionais e Sequenciais</a></div>
-<div class="content-card"><span class="content-num">Cap 4</span><a href="arq_aulas/cap4.html">Sistema de Memória</a></div>
-<div class="content-card"><span class="content-num">Cap 5</span><a href="arq_aulas/cap5.html">Barramento</a></div>
-<div class="content-card"><span class="content-num">Cap 6</span><a href="arq_aulas/cap6.html">Processadores</a></div>
-<div class="content-card"><span class="content-num">Cap 7</span><a href="arq_aulas/cap7.html" target="_blank">Sistemas Operacionais</a></div>
-<div class="content-card"><span class="content-num">Cap 8</span><a href="arq_aulas/cap8.html" target="_blank">Microcontroladores — MC Atmel ATmega 2560</a></div>
-<div class="content-card"><span class="content-num anexo">Anexo I</span><a href="arq_aulas/arq_anexo1_grandezas_unidades.html">Unidades e Grandezas Numéricas</a></div>
-<div class="content-card"><span class="content-num anexo">Anexo II</span><a href="arq_aulas/arq_anexo2_conversao_bases.html">Conversão de Base e Informações Binárias</a></div>
-<div class="content-card"><span class="content-num anexo">Anexo III</span><a href="arq_aulas/arq_anexo3_representacao_numerica.html">Representação Numérica</a></div>
-<div class="content-card"><span class="content-num anexo">Anexo IV</span><a href="https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/arq_aulas/arquitetura_computadores_anexo4.md" target="_blank">Aritmética Binária</a></div>
+<div class="card">
+<span class="card-rev">Rev 2026.2</span>
+<svg class="card-icon" fill="none" viewbox="0 0 36 36">
+<polygon fill="none" points="18,4 33,30 3,30" stroke="#00c2ff" stroke-width="1.5"></polygon>
+<rect fill="#00c2ff" height="2.5" opacity=".6" rx="1" width="7" x="10" y="14"></rect>
+<rect fill="#7c3aed" height="2.5" opacity=".6" rx="1" width="10" x="14" y="18"></rect>
+<rect fill="#10b981" height="2.5" opacity=".6" rx="1" width="6" x="19" y="22"></rect>
+</svg>
+<h3>Gestão de Projetos</h3>
+<p>Escopo, tempo, custos, riscos, EAP, cronogramas, indicadores, liderança e métodos ágeis.</p>
+<a class="card-link" href="gestao_projetos.html">Ver disciplina →</a>
 </div>
-<h3>Textos e exemplos de apoio</h3>
-<div class="ds-grid">
-<div class="ds-item">
-<svg class="ds-icon" fill="none" height="16" viewbox="0 0 16 16" width="16"><path d="M3 2h7l3 3v9H3V2z" fill="none" stroke="#7c3aed" stroke-width="1.2"></path><line stroke="#7c3aed" stroke-width="1" x1="5" x2="11" y1="7" y2="7"></line><line stroke="#7c3aed" stroke-width="1" x1="5" x2="9" y1="9.5" y2="9.5"></line></svg>
-<span aria-disabled="true" class="disabled-link">Arquitetura e Organização de Computadores: uma abordagem com práticas de Arduíno</span>
+<div class="card">
+<span class="card-rev">Rev 2026.2</span>
+<svg class="card-icon" fill="none" viewbox="0 0 36 36">
+<line stroke="#00c2ff" stroke-width="1.5" x1="6" x2="30" y1="30" y2="6"></line>
+<line stroke="#7c3aed" stroke-width="1.5" x1="6" x2="30" y1="24" y2="24"></line>
+<line stroke="#7c3aed" stroke-width="1.5" x1="12" x2="12" y1="30" y2="6"></line>
+<polygon fill="rgba(0,194,255,.08)" points="12,24 24,12 30,24" stroke="#00c2ff" stroke-width="1.2"></polygon>
+</svg>
+<h3>Programação Linear</h3>
+<p>Modelagem matemática, função objetivo, restrições, método gráfico, simplex e aplicações em engenharia.</p>
+<a class="card-link" href="progLinear.html">Ver disciplina →</a>
 </div>
-<div class="ds-item">
-<svg class="ds-icon" fill="none" height="16" viewbox="0 0 16 16" width="16"><path d="M5 3l8 5-8 5V3z" fill="#00c2ff"></path></svg>
-<a href="https://claytonjasilva.github.io/arq_aulas/notebookLM/Como_um_Computador_Pensa.mp4" target="_blank">Vídeo — Como um Computador Pensa</a>
-</div>
-<div class="ds-item">
-<svg class="ds-icon" fill="none" height="16" viewbox="0 0 16 16" width="16"><path d="M3 2h7l3 3v9H3V2z" fill="none" stroke="#7c3aed" stroke-width="1.2"></path><line stroke="#7c3aed" stroke-width="1" x1="5" x2="11" y1="7" y2="7"></line><line stroke="#7c3aed" stroke-width="1" x1="5" x2="9" y1="9.5" y2="9.5"></line></svg>
-<a href="https://1drv.ms/b/c/29ef9a7b83f2ddc4/IQAZyFryj2FoTZkmvispLyW2ATHN_CSlBXKiSNS5cCwFlr0?e=w0YAqa" target="_blank">Representação de Informações Computacionais</a>
+<div class="card">
+<span class="card-rev">Rev 2026.2</span>
+<svg class="card-icon" fill="none" viewbox="0 0 36 36">
+<rect height="20" rx="3" stroke="#00c2ff" stroke-width="1.5" width="28" x="4" y="8"></rect>
+<polyline fill="none" points="10,14 14,18 10,22" stroke="#00c2ff" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8"></polyline>
+<line stroke="#7c3aed" stroke-linecap="round" stroke-width="1.5" x1="17" x2="26" y1="22" y2="22"></line>
+</svg>
+<h3>Aspectos Regulatórios de Telecomunicações</h3>
+<p>Marco regulatório, Anatel, espectro de radiofrequência e legislação do setor.</p>
+<a class="card-link" href="aspectosregulatorios.html">Ver disciplina →</a>
 </div>
 </div>
-</section>
-<!-- PRÁTICAS -->
-<section class="section" id="praticas">
-<p class="section-title">04 / Práticas de laboratório</p>
-<h3>Programação com Arduíno — conceitos</h3>
-<div class="praticas-grid">
-<div class="pratica-item"><span class="pratica-num">01</span><a href="https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/progArduino_aulas/progArduino_cap1.md" target="_blank">Conceitos iniciais</a></div>
-<div class="pratica-item"><span class="pratica-num">02</span><a href="https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/progArduino_aulas/progArduino_cap2.md" target="_blank">Condicionais simples e compostas</a></div>
-<div class="pratica-item"><span class="pratica-num">03</span><a href="https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/progArduino_aulas/progArduino_cap3.md" target="_blank">Funções e controle de fluxo de repetição</a></div>
-<div class="pratica-item"><span class="pratica-num">04</span><a href="https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/progArduino_aulas/progArduino_cap4.md" target="_blank">Estruturas homogêneas e ponteiros</a></div>
+<h3 class="subsection-title">// disciplinas já ministradas</h3>
+<div class="disciplinas-grid">
+<div class="card historico">
+<svg class="card-icon" fill="none" viewbox="0 0 36 36">
+<rect height="20" rx="3" stroke="#00c2ff" stroke-width="1.5" width="28" x="4" y="8"></rect>
+<polyline fill="none" points="10,14 14,18 10,22" stroke="#00c2ff" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8"></polyline>
+<line stroke="#7c3aed" stroke-linecap="round" stroke-width="1.5" x1="17" x2="26" y1="22" y2="22"></line>
+</svg>
+<h3>Eletrônica e Design de Circuitos</h3>
+<p>Componentes passivos e ativos, amplificadores operacionais, filtros e projetos de circuitos analógicos.</p>
 </div>
-<h3>Práticas Arduíno — laboratório</h3>
-<div class="praticas-grid">
-<div class="pratica-item"><span class="pratica-num">01</span><a href="arq_aulas/arq_pratica1_conhecendo_arduino2560.html">Alimentação de LEDs</a></div>
-<div class="pratica-item"><span class="pratica-num">02</span><a href="arq_aulas/arq_pratica2_assembly_atmega2560.html">Código, pinos e função de saída</a></div>
-<div class="pratica-item"><span class="pratica-num">03</span><a href="arq_aulas/arq_pratica3_entradas_digitais.html">Código, pinos e função de entrada</a></div>
-<div class="pratica-item"><span class="pratica-num">04</span><a href="arq_aulas/arq_pratica4_entrada_3bits.html">Funções no Arduíno</a></div>
-<div class="pratica-item"><span class="pratica-num">05</span><a href="arq_aulas/arq_pratica5_funcoes_por_codigo.html">Estrutura de repetição while</a></div>
-<div class="pratica-item"><span class="pratica-num">06</span><a href="arq_aulas/arquitetura_computadores_pratica6.md">Inversão — complemento de 1</a></div>
-<div class="pratica-item"><span class="pratica-num">07</span><a href="arq_aulas/arq_pratica7_buzzer.html">Dispositivos de saída — buzzer</a></div>
-<div class="pratica-item"><span class="pratica-num">08</span><a href="arq_aulas/arq_pratica8_lcd1602.html">Dispositivos de saída — LCD 1602</a></div>
-<div class="pratica-item"><span class="pratica-num">09</span><a href="arq_aulas/arq_pratica9_sensor_ultrassonico.html">Dispositivos de entrada — sensor ultrassônico</a></div>
-<div class="pratica-item"><span class="pratica-num">10</span><a href="arq_aulas/arq_pratica10_sensor_movimento.html">Dispositivos de entrada — sensor de movimento</a></div>
+<div class="card historico">
+<svg class="card-icon" fill="none" viewbox="0 0 36 36">
+<rect height="20" rx="3" stroke="#00c2ff" stroke-width="1.5" width="28" x="4" y="8"></rect>
+<polyline fill="none" points="10,14 14,18 10,22" stroke="#00c2ff" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8"></polyline>
+<line stroke="#7c3aed" stroke-linecap="round" stroke-width="1.5" x1="17" x2="26" y1="22" y2="22"></line>
+</svg>
+<h3>Linguagens Formais e Compiladores</h3>
+<p>Gramáticas, autômatos, análise léxica e sintática, e construção de compiladores em C/C++.</p>
 </div>
-<h3>Práticas de Linguagem de Montagem (<em>assembly</em>)</h3>
-<div class="praticas-grid">
-<div class="pratica-item"><span class="pratica-num">01</span><a href="arq_aulas/arquitetura_computadores_pratica_assembly1.md">Registradores, memória RAM e instruções aritméticas básicas</a></div>
-<div class="pratica-item"><span class="pratica-num">02</span><a href="arq_aulas/arquitetura_computadores_pratica_assembly2.md">Registradores, memória RAM e instruções de desvio</a></div>
-<div class="pratica-item"><span class="pratica-num">03</span><a href="arq_aulas/arquitetura_computadores_pratica_assembly3.md">Registradores, memória RAM e instruções de comparação</a></div>
-<div class="pratica-item"><span class="pratica-num">04</span><a href="arq_aulas/arquitetura_computadores_pratica_assembly4.md">Registradores, memória RAM e instruções de comparação (cont.)</a></div>
-<div class="pratica-item"><span class="pratica-num">05</span><a href="arq_aulas/arquitetura_computadores_pratica_assembly5.md">Diretivas do assembler</a></div>
+<div class="card historico">
+<svg class="card-icon" fill="none" viewbox="0 0 36 36">
+<rect height="20" rx="3" stroke="#00c2ff" stroke-width="1.5" width="28" x="4" y="8"></rect>
+<polyline fill="none" points="10,14 14,18 10,22" stroke="#00c2ff" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8"></polyline>
+<line stroke="#7c3aed" stroke-linecap="round" stroke-width="1.5" x1="17" x2="26" y1="22" y2="22"></line>
+</svg>
+<h3>Sistemas de Comunicações Móveis</h3>
+<p>Propagação de sinais, modulação, redes celulares e simulação com Python.</p>
 </div>
-</section>
-<!-- ÍNDICE GERAL DE LABORATÓRIO -->
-<!-- AVALIAÇÕES -->
-<section class="section" id="avaliacoes">
-<p class="section-title">05 / Avaliações</p><p class="section-lead">Os formulários de Avaliação Continuada serão disponibilizados aula a aula, de acordo com o planejamento do semestre.</p>
-<div class="aval-grid">
-<div class="aval-card ap">
-<span class="aval-badge badge-ap">AP · 40% cada</span>
-<h3>Avaliações Bimestrais</h3>
-<ul class="aval-list">
-<li>Composta por trabalho em grupo (peso 30%) e prova individual (peso 70%)</li>
-<li>Trabalho AP1 — será disponibilizado à medida que as aulas ocorrerem.</li>
-<li>Trabalho AP2 — será disponibilizado à medida que as aulas ocorrerem.</li>
-</ul>
+<div class="card historico">
+<svg class="card-icon" fill="none" viewbox="0 0 36 36">
+<rect height="20" rx="3" stroke="#00c2ff" stroke-width="1.5" width="28" x="4" y="8"></rect>
+<polyline fill="none" points="10,14 14,18 10,22" stroke="#00c2ff" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8"></polyline>
+<line stroke="#7c3aed" stroke-linecap="round" stroke-width="1.5" x1="17" x2="26" y1="22" y2="22"></line>
+</svg>
+<h3>Gestão de Processos</h3>
+<p>Modelagem e análise de processos de negócio com BPMN e ferramentas como Bizagi.</p>
 </div>
-<div class="aval-card ac">
-<span class="aval-badge badge-ac">AC · 20%</span>
-<h3>Avaliação Continuada</h3>
-<p class="aval-description">Os formulários correspondentes aos conteúdos trabalhados serão publicados progressivamente ao longo das aulas.</p></div>
-<div class="aval-card ap" style="border-color: rgba(0,194,255,0.15);">
-<span class="aval-badge badge-ap">Sistema de Avaliações</span>
-<h3>Regras e Pesos</h3>
-<ul class="aval-list">
-<li>AC — peso 20% da nota final</li>
-<li>AP1 — peso 40% da nota final</li>
-<li>AP2 — peso 40% da nota final</li>
-<li>Cada AP: trabalho em grupo (30%) + prova individual (70%)</li>
-</ul>
-<a href="https://claytonjasilva.github.io/avaliacoes.html" style="font-family:var(--font-mono); font-size:0.78rem; margin-top:0.5rem;">Ver sistema completo →</a>
 </div>
 </div>
 </section>
-<!-- REFERÊNCIAS -->
-<section class="section" id="referencias">
-<p class="section-title">06 / Referências bibliográficas</p>
-<p style="color: var(--muted); margin-bottom: 1.5rem; max-width: 600px; font-family: var(--font-mono); font-size: 0.82rem;">Obs. É necessário o acesso pela Biblioteca Virtual do Ibmec.</p>
-<div class="ds-grid">
-<div class="ds-item">
-<svg class="ds-icon" fill="none" height="16" viewbox="0 0 16 16" width="16"><path d="M3 2h7l3 3v9H3V2z" fill="none" stroke="#00c2ff" stroke-width="1.2"></path><line stroke="#00c2ff" stroke-width="1" x1="5" x2="11" y1="7" y2="7"></line><line stroke="#00c2ff" stroke-width="1" x1="5" x2="9" y1="9.5" y2="9.5"></line></svg>
-<a href="https://plataforma.bvirtual.com.br/Leitor/Publicacao/355/pdf/0" target="_blank">Tanenbaum — Organização Estruturada de Computadores (básica)</a>
-</div>
-<div class="ds-item">
-<svg class="ds-icon" fill="none" height="16" viewbox="0 0 16 16" width="16"><path d="M3 2h7l3 3v9H3V2z" fill="none" stroke="#7c3aed" stroke-width="1.2"></path><line stroke="#7c3aed" stroke-width="1" x1="5" x2="11" y1="7" y2="7"></line><line stroke="#7c3aed" stroke-width="1" x1="5" x2="9" y1="9.5" y2="9.5"></line></svg>
-<a href="https://plataforma.bvirtual.com.br/Leitor/Publicacao/151479/pdf/0" target="_blank">Stallings — Arquitetura e Organização de Computadores</a>
-</div>
-<div class="ds-item">
-<svg class="ds-icon" fill="none" height="16" viewbox="0 0 16 16" width="16"><path d="M3 2h7l3 3v9H3V2z" fill="none" stroke="#7c3aed" stroke-width="1.2"></path><line stroke="#7c3aed" stroke-width="1" x1="5" x2="11" y1="7" y2="7"></line><line stroke="#7c3aed" stroke-width="1" x1="5" x2="9" y1="9.5" y2="9.5"></line></svg>
-<a href="https://plataforma.bvirtual.com.br/Leitor/Publicacao/124147/pdf/0" target="_blank">Corrêa — Organização e Arquitetura de Computadores</a>
-</div>
-<div class="ds-item">
-<svg class="ds-icon" fill="none" height="16" viewbox="0 0 16 16" width="16"><path d="M3 2h7l3 3v9H3V2z" fill="none" stroke="#7c3aed" stroke-width="1.2"></path><line stroke="#7c3aed" stroke-width="1" x1="5" x2="11" y1="7" y2="7"></line><line stroke="#7c3aed" stroke-width="1" x1="5" x2="9" y1="9.5" y2="9.5"></line></svg>
-<a href="https://plataforma.bvirtual.com.br/Leitor/Publicacao/1233/pdf/0" target="_blank">Tanenbaum — Sistemas Operacionais Modernos</a>
-</div>
-<div class="ds-item">
-<svg class="ds-icon" fill="none" height="16" viewbox="0 0 16 16" width="16"><path d="M3 2h7l3 3v9H3V2z" fill="none" stroke="#7c3aed" stroke-width="1.2"></path><line stroke="#7c3aed" stroke-width="1" x1="5" x2="11" y1="7" y2="7"></line><line stroke="#7c3aed" stroke-width="1" x1="5" x2="9" y1="9.5" y2="9.5"></line></svg>
-<a href="http://wiki.inf.ufpr.br/maziero/doku.php?id=socm:start" target="_blank">Maziero — Sistemas Operacionais: Conceitos e Mecanismos</a>
-</div>
-</div>
-</section>
-<!-- FERRAMENTAS -->
-<section class="section" id="ferramentas">
-<p class="section-title">07 / Ferramentas do curso</p>
-<p style="color: var(--muted); margin-bottom: 1.5rem; max-width: 600px;">Softwares utilizados para programação de microcontroladores, montagem de protótipos e desenvolvimento em linguagem de montagem ao longo da disciplina.</p>
-<div class="ds-grid">
-<div class="ds-item">
-<svg class="ds-icon" fill="none" height="16" viewbox="0 0 16 16" width="16"><circle cx="8" cy="8" r="6" stroke="#00c2ff" stroke-width="1.2"></circle><path d="M8 2v3M8 11v3" stroke="#00c2ff" stroke-width="1.2"></path><circle cx="8" cy="8" fill="#00c2ff" r="1.5"></circle></svg>
-<a href="https://www.arduino.cc/en/software" target="_blank">Arduino IDE — programação em C/C++</a>
-</div>
-<div class="ds-item">
-<svg class="ds-icon" fill="none" height="16" viewbox="0 0 16 16" width="16"><rect height="10" rx="1.5" stroke="#00c2ff" stroke-width="1.2" width="12" x="2" y="3"></rect><path d="M5 7l2 2-2 2M9 11h2" stroke="#00c2ff" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.2"></path></svg>
-<a href="https://www.microchip.com/en-us/development-tools-tools-and-software/microchip-studio-for-avr-and-sam-devices" target="_blank">Microchip (Atmel) Studio — IDE para AVR/ATmega, assembly</a>
-</div>
-<div class="ds-item">
-<svg class="ds-icon" fill="none" height="16" viewbox="0 0 16 16" width="16"><rect height="12" rx="2" stroke="#7c3aed" stroke-width="1.2" width="12" x="2" y="2"></rect><path d="M5 5h6M5 8h6M5 11h3" stroke="#7c3aed" stroke-width="1"></path></svg>
-<a href="https://easyeda.com/page/download" target="_blank">EasyEDA — projeto de circuitos e PCB</a>
-</div>
-<div class="ds-item">
-<svg class="ds-icon" fill="none" height="16" viewbox="0 0 16 16" width="16"><rect height="9" rx="1.5" stroke="#7c3aed" stroke-width="1.2" width="12" x="2" y="3"></rect><line stroke="#7c3aed" stroke-width="1" x1="2" x2="14" y1="6" y2="6"></line><circle cx="5" cy="9" fill="#7c3aed" r="1"></circle><circle cx="9" cy="9" fill="#7c3aed" r="1"></circle></svg>
-<a href="https://sourceforge.net/projects/circuit/" target="_blank">Logisim — simulador de circuitos lógicos (Cap. 3)</a>
-</div>
-</div>
-</section>
-</div>
-<!-- FOOTER -->
-<footer>
+<section class="section" id="programacao">
 <div class="container">
-<p>© 2026 · Prof. Clayton J A Silva · Ibmec RJ</p>
-<p><a href="https://claytonjasilva.github.io">← voltar para home</a></p>
+<div class="section-header">
+<h2>Notas sobre Linguagens</h2>
+</div><p class="section-note">Notas em markdown. Em construção e atualização.</p>
+<div class="prog-grid">
+<div class="prog-card">
+<h3>Linguagem Python</h3>
+<p>Sintaxe, estruturas de dados, funções e aplicações em simulação e automação.</p>
+<a class="card-link" href="https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/progPython_aulas.md" style="margin-top:0.75rem;" target="_blank">Ver notas →</a>
+</div>
+<div class="prog-card">
+<h3>Linguagem C</h3>
+<p>Ponteiros, alocação de memória, structs e programação de baixo nível.</p>
+<a class="card-link" href="https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/progC_aulas.md" style="margin-top:0.75rem;" target="_blank">Ver notas →</a>
+</div>
+<div class="prog-card">
+<h3>Linguagem Arduíno</h3>
+<p>Linguagem do Arduino, sketch, bibliotecas e integração com sensores e atuadores.</p>
+<a class="card-link" href="https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/progArduino_aulas.md" style="margin-top:0.75rem;" target="_blank">Ver notas →</a>
+</div>
+</div>
+</div>
+</section>
+<section class="section" id="apoio">
+<div class="container">
+<div class="section-header">
+<h2>Material de Apoio</h2>
+</div><h3 class="subsection-title">// documentação técnica</h3><div class="apoio-grid"><a class="apoio-item" href="https://ww1.microchip.com/downloads/en/devicedoc/atmel-2549-8-bit-avr-microcontroller-atmega640-1280-1281-2560-2561_datasheet.pdf" style="color:inherit;" target="_blank"><svg aria-hidden="true" fill="none" height="20" viewbox="0 0 20 20" width="20"><rect height="14" rx="3" stroke="#00c2ff" stroke-width="1.4" width="14" x="3" y="3"></rect><path d="M7 10h6M10 7v6" stroke="#7c3aed" stroke-linecap="round" stroke-width="1.3"></path></svg><div><h4>Datasheet ATmega2560</h4><p>Manual completo do microcontrolador — Microchip/Atmel.</p></div></a><a class="apoio-item" href="https://ww1.microchip.com/downloads/en/DeviceDoc/AVR-Instruction-Set-Manual-DS40002198A.pdf" style="color:inherit;" target="_blank"><svg aria-hidden="true" fill="none" height="20" viewbox="0 0 20 20" width="20"><rect height="14" rx="3" stroke="#00c2ff" stroke-width="1.4" width="14" x="3" y="3"></rect><path d="M7 10h6M10 7v6" stroke="#7c3aed" stroke-linecap="round" stroke-width="1.3"></path></svg><div><h4>AVR Instruction Set Manual</h4><p>Referência completa do conjunto de instruções AVR.</p></div></a></div><h3 class="subsection-title">// ferramentas, linguagens &amp; plataformas</h3><div class="apoio-grid"><a class="apoio-item" href="https://easyeda.com/" style="color:inherit;" target="_blank"><svg aria-hidden="true" fill="none" height="20" viewbox="0 0 20 20" width="20"><rect height="14" rx="3" stroke="#00c2ff" stroke-width="1.4" width="14" x="3" y="3"></rect><path d="M7 10h6M10 7v6" stroke="#7c3aed" stroke-linecap="round" stroke-width="1.3"></path></svg><div><h4>EasyEDA</h4><p>Projeto de circuitos eletrônicos, esquemáticos e placas de circuito impresso.</p></div></a><a class="apoio-item" href="https://www.tinkercad.com/" style="color:inherit;" target="_blank"><svg aria-hidden="true" fill="none" height="20" viewbox="0 0 20 20" width="20"><rect height="14" rx="3" stroke="#00c2ff" stroke-width="1.4" width="14" x="3" y="3"></rect><path d="M7 10h6M10 7v6" stroke="#7c3aed" stroke-linecap="round" stroke-width="1.3"></path></svg><div><h4>Tinkercad</h4><p>Simulação de circuitos, prototipagem 3D e Arduino on-line.</p></div></a><a class="apoio-item" href="https://www.notion.com/" style="color:inherit;" target="_blank"><svg aria-hidden="true" fill="none" height="20" viewbox="0 0 20 20" width="20"><rect height="14" rx="3" stroke="#00c2ff" stroke-width="1.4" width="14" x="3" y="3"></rect><path d="M7 10h6M10 7v6" stroke="#7c3aed" stroke-linecap="round" stroke-width="1.3"></path></svg><div><h4>Notion</h4><p>Organização de notas, bases de conhecimento e planejamento.</p></div></a><a class="apoio-item" href="https://trello.com/" style="color:inherit;" target="_blank"><svg aria-hidden="true" fill="none" height="20" viewbox="0 0 20 20" width="20"><rect height="14" rx="3" stroke="#00c2ff" stroke-width="1.4" width="14" x="3" y="3"></rect><path d="M7 10h6M10 7v6" stroke="#7c3aed" stroke-linecap="round" stroke-width="1.3"></path></svg><div><h4>Trello</h4><p>Gestão visual de tarefas com quadros Kanban.</p></div></a><a class="apoio-item" href="https://www.microsoft.com/pt-br/microsoft-365/project/project-management-software" style="color:inherit;" target="_blank"><svg aria-hidden="true" fill="none" height="20" viewbox="0 0 20 20" width="20"><rect height="14" rx="3" stroke="#00c2ff" stroke-width="1.4" width="14" x="3" y="3"></rect><path d="M7 10h6M10 7v6" stroke="#7c3aed" stroke-linecap="round" stroke-width="1.3"></path></svg><div><h4>Microsoft Project</h4><p>Planejamento, cronogramas e gestão de projetos.</p></div></a><a class="apoio-item" href="https://www.projectlibre.com/" style="color:inherit;" target="_blank"><svg aria-hidden="true" fill="none" height="20" viewbox="0 0 20 20" width="20"><rect height="14" rx="3" stroke="#00c2ff" stroke-width="1.4" width="14" x="3" y="3"></rect><path d="M7 10h6M10 7v6" stroke="#7c3aed" stroke-linecap="round" stroke-width="1.3"></path></svg><div><h4>ProjectLibre</h4><p>Alternativa aberta para cronogramas e gestão de projetos.</p></div></a><a class="apoio-item" href="https://www.python.org/" style="color:inherit;" target="_blank"><svg aria-hidden="true" fill="none" height="20" viewbox="0 0 20 20" width="20"><rect height="14" rx="3" stroke="#00c2ff" stroke-width="1.4" width="14" x="3" y="3"></rect><path d="M7 10h6M10 7v6" stroke="#7c3aed" stroke-linecap="round" stroke-width="1.3"></path></svg><div><h4>Python.org</h4><p>Página oficial da linguagem Python.</p></div></a><a class="apoio-item" href="https://www.open-std.org/jtc1/sc22/wg14/" style="color:inherit;" target="_blank"><svg aria-hidden="true" fill="none" height="20" viewbox="0 0 20 20" width="20"><rect height="14" rx="3" stroke="#00c2ff" stroke-width="1.4" width="14" x="3" y="3"></rect><path d="M7 10h6M10 7v6" stroke="#7c3aed" stroke-linecap="round" stroke-width="1.3"></path></svg><div><h4>ISO C / WG14</h4><p>Grupo oficial de padronização da linguagem C.</p></div></a><a class="apoio-item" href="https://www.bizagi.com/en/platform/modeler" style="color:inherit;" target="_blank"><svg aria-hidden="true" fill="none" height="20" viewbox="0 0 20 20" width="20"><rect height="14" rx="3" stroke="#00c2ff" stroke-width="1.4" width="14" x="3" y="3"></rect><path d="M7 10h6M10 7v6" stroke="#7c3aed" stroke-linecap="round" stroke-width="1.3"></path></svg><div><h4>Bizagi Modeler</h4><p>Modelagem de processos de negócio em BPMN.</p></div></a><a class="apoio-item" href="https://www.arduino.cc/en/software" style="color:inherit;" target="_blank"><svg aria-hidden="true" fill="none" height="20" viewbox="0 0 20 20" width="20"><rect height="14" rx="3" stroke="#00c2ff" stroke-width="1.4" width="14" x="3" y="3"></rect><path d="M7 10h6M10 7v6" stroke="#7c3aed" stroke-linecap="round" stroke-width="1.3"></path></svg><div><h4>Arduino IDE</h4><p>Ambiente oficial para desenvolvimento de sketches Arduino.</p></div></a><a class="apoio-item" href="https://www.microchip.com/en-us/tools-resources/develop/microchip-studio" style="color:inherit;" target="_blank"><svg aria-hidden="true" fill="none" height="20" viewbox="0 0 20 20" width="20"><rect height="14" rx="3" stroke="#00c2ff" stroke-width="1.4" width="14" x="3" y="3"></rect><path d="M7 10h6M10 7v6" stroke="#7c3aed" stroke-linecap="round" stroke-width="1.3"></path></svg><div><h4>Microchip Studio</h4><p>Ambiente de desenvolvimento para microcontroladores AVR e ATmega.</p></div></a><a class="apoio-item" href="https://code.visualstudio.com/" style="color:inherit;" target="_blank"><svg aria-hidden="true" fill="none" height="20" viewbox="0 0 20 20" width="20"><rect height="14" rx="3" stroke="#00c2ff" stroke-width="1.4" width="14" x="3" y="3"></rect><path d="M7 10h6M10 7v6" stroke="#7c3aed" stroke-linecap="round" stroke-width="1.3"></path></svg><div><h4>Visual Studio Code</h4><p>Editor para C, C++, Python e desenvolvimento web.</p></div></a><a class="apoio-item" href="https://github.com/" style="color:inherit;" target="_blank"><svg aria-hidden="true" fill="none" height="20" viewbox="0 0 20 20" width="20"><rect height="14" rx="3" stroke="#00c2ff" stroke-width="1.4" width="14" x="3" y="3"></rect><path d="M7 10h6M10 7v6" stroke="#7c3aed" stroke-linecap="round" stroke-width="1.3"></path></svg><div><h4>GitHub</h4><p>Hospedagem, versionamento e compartilhamento de projetos.</p></div></a></div></div>
+</section>
+<section class="footer-contact" id="contato">
+<div class="container contact-panel"><div class="section-header"><h2>Sugestões e contato</h2></div><p class="section-note">Para sugestões, correções ou informações relacionadas aos materiais publicados, utilize o canal de contato disponível no LinkedIn.</p><div class="contact-actions"><a class="primary-button contact-linkedin-button" href="https://www.linkedin.com/in/clayton-jones-alves-da-silva-4323b933/" rel="noopener noreferrer" target="_blank">Entrar em contato pelo LinkedIn</a></div><p class="form-help">O contato será realizado diretamente pela plataforma LinkedIn, sem exposição de endereço de e-mail nesta página.</p></div>
+</section><footer>
+<div class="container footer-meta">
+<p>© 2026 · Prof. Clayton J A Silva</p>
+<p><a href="https://github.com/claytonjasilva/claytonjasilva.github.io" target="_blank">github.com/claytonjasilva</a></p>
 </div>
 </footer>
 </body>
