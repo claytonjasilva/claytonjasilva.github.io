@@ -4,7 +4,7 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Arquitetura de Computadores — Prof. Clayton J A Silva</title>
+<title>Arquitetura de Computadores — 2026.2</title>
 <link href="https://fonts.googleapis.com" rel="preconnect"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&amp;family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,600;1,300&amp;display=swap" rel="stylesheet"/>
@@ -229,7 +229,59 @@
       .hero { padding: 3.5rem 0 2.5rem; }
       h1 { font-size: 1.8rem; }
     }
-  </style>
+  
+    /* ── AJUSTES 2026.2 ── */
+    .section-title {
+      font-size: 0.84rem;
+      font-weight: 600;
+      letter-spacing: 0.16em;
+      margin-bottom: 0.9rem;
+    }
+
+    .section-lead {
+      color: var(--text);
+      font-size: 0.98rem;
+      font-weight: 500;
+      margin: 0 0 1.4rem;
+      max-width: 820px;
+    }
+
+    .agenda-note {
+      color: var(--muted);
+      font-size: 0.84rem;
+      margin: 0 0 0.7rem;
+      max-width: 820px;
+    }
+
+    .agenda-note a {
+      font-weight: 600;
+    }
+
+    .disabled-link {
+      font-size: 0.82rem;
+      color: var(--muted);
+      font-family: var(--font-mono);
+      cursor: default;
+      line-height: 1.45;
+    }
+
+    .aval-description {
+      color: var(--muted);
+      font-size: 0.85rem;
+      margin: 0;
+    }
+
+    @media (max-width: 600px) {
+      .section-title {
+        font-size: 0.76rem;
+        letter-spacing: 0.12em;
+      }
+
+      .section-lead {
+        font-size: 0.92rem;
+      }
+    }
+</style>
 </head>
 <body>
 <!-- NAV -->
@@ -241,7 +293,6 @@
 <li><a href="#grid">grid</a></li>
 <li><a href="#conteudo">conteúdo</a></li>
 <li><a href="#praticas">práticas</a></li>
-<li><a href="#indice-lab">índice lab</a></li>
 <li><a href="#avaliacoes">avaliações</a></li>
 <li><a href="#referencias">referências</a></li>
 <li><a href="#ferramentas">ferramentas</a></li>
@@ -252,27 +303,16 @@
 <!-- HERO -->
 <section class="hero">
 <div class="container">
-<p class="hero-eyebrow">Ibmec RJ — Engenharia da Computação</p>
 <h1>Arquitetura de<br/><strong>Computadores</strong></h1>
-<p class="hero-sub">Prof. Clayton J A Silva · Rev 2026.2 · turmas de quarta e quinta-feira</p>
-<div class="hero-tags">
-<span class="tag">Máquina de von Neumann</span>
-<span class="tag">Lógica Digital</span>
-<span class="tag">Sistema de Memória</span>
-<span class="tag">Barramento</span>
-<span class="tag">Processadores</span>
-<span class="tag">Assembly</span>
-<span class="tag">Sistemas Operacionais</span>
-<span class="tag">Arduíno</span>
-</div>
+<p class="hero-sub">Prof. Clayton J A Silva - Ibmec Rio - 2026.2</p>
 </div>
 </section>
 <div class="container">
 <!-- AGENDA -->
 <section class="section" id="agenda">
-<p class="section-title">01 / agenda — 2026.2</p>
-<h3>Turma de quarta-feira <span class="turma-badge">4ª feira</span></h3>
-<div class="agenda-wrap">
+<p class="section-title">01 / Agenda</p><p class="section-lead">Quarta-feira (Turma 1) e Quinta-feira (Turma 2), 07h30 às 11h40</p>
+<h3>Turma 1 — quarta-feira <span class="turma-badge">4ª feira</span></h3>
+<p class="agenda-note">A agenda abaixo se insere na programação do <a href="https://claytonjasilva.github.io/calendario-academico.html" rel="noopener noreferrer" target="_blank">Calendário Acadêmico Ibmec Rio 2026.2</a>.</p><div class="agenda-wrap">
 <table>
 <thead><tr><th>Data</th><th>Conteúdo</th></tr></thead>
 <tbody>
@@ -297,8 +337,8 @@
 </tbody>
 </table>
 </div>
-<h3>Turma de quinta-feira <span class="turma-badge">5ª feira</span></h3>
-<div class="agenda-wrap">
+<h3>Turma 2 — quinta-feira <span class="turma-badge">5ª feira</span></h3>
+<p class="agenda-note">A agenda abaixo se insere na programação do <a href="https://claytonjasilva.github.io/calendario-academico.html" rel="noopener noreferrer" target="_blank">Calendário Acadêmico Ibmec Rio 2026.2</a>.</p><div class="agenda-wrap">
 <table>
 <thead><tr><th>Data</th><th>Conteúdo</th></tr></thead>
 <tbody>
@@ -323,11 +363,10 @@
 </tbody>
 </table>
 </div>
-<p style="margin-top:1rem; font-family: var(--font-mono); font-size: 0.78rem;"><a href="https://claytonjasilva.github.io/calendario-academico.html">Ver calendário acadêmico institucional completo →</a></p>
 </section>
 <!-- GRID -->
 <section class="section" id="grid">
-<p class="section-title">grid da disciplina</p>
+<p class="section-title">02 / Grid da disciplina</p>
 <div class="card" style="max-width:500px;">
 <h3 style="margin-top:0;">Objetivos, conteúdo programático e referências</h3>
 <p style="margin-bottom:1rem;">Consulte o grid completo da disciplina, com os 5 objetivos de aprendizagem, os 14 tópicos do conteúdo programático e a bibliografia básica e complementar.</p>
@@ -336,7 +375,7 @@
 </section>
 <!-- CONTEÚDO -->
 <section class="section" id="conteudo">
-<p class="section-title">02 / conteúdo das aulas</p>
+<p class="section-title">03 / Conteúdo das aulas</p>
 <div class="content-grid">
 <div class="content-card"><span class="content-num">Cap 1</span><a href="arq_aulas/cap1.html">Máquina de von Neumann</a></div>
 <div class="content-card"><span class="content-num">Cap 2</span><a href="arq_aulas/cap2.html">Organização e Modelos de Máquina de Níveis</a></div>
@@ -355,7 +394,7 @@
 <div class="ds-grid">
 <div class="ds-item">
 <svg class="ds-icon" fill="none" height="16" viewbox="0 0 16 16" width="16"><path d="M3 2h7l3 3v9H3V2z" fill="none" stroke="#7c3aed" stroke-width="1.2"></path><line stroke="#7c3aed" stroke-width="1" x1="5" x2="11" y1="7" y2="7"></line><line stroke="#7c3aed" stroke-width="1" x1="5" x2="9" y1="9.5" y2="9.5"></line></svg>
-<a href="https://1drv.ms/b/c/29ef9a7b83f2ddc4/IQAMR0i3D21_TY7HfiLhHPRlAasgpGj16RSzAItFRxim-Rg?e=KfjRsW" target="_blank">Introdução a Arquitetura e Organização de Computadores</a>
+<span aria-disabled="true" class="disabled-link">Arquitetura e Organização de Computadores: uma abordagem com práticas de Arduíno</span>
 </div>
 <div class="ds-item">
 <svg class="ds-icon" fill="none" height="16" viewbox="0 0 16 16" width="16"><path d="M5 3l8 5-8 5V3z" fill="#00c2ff"></path></svg>
@@ -365,15 +404,11 @@
 <svg class="ds-icon" fill="none" height="16" viewbox="0 0 16 16" width="16"><path d="M3 2h7l3 3v9H3V2z" fill="none" stroke="#7c3aed" stroke-width="1.2"></path><line stroke="#7c3aed" stroke-width="1" x1="5" x2="11" y1="7" y2="7"></line><line stroke="#7c3aed" stroke-width="1" x1="5" x2="9" y1="9.5" y2="9.5"></line></svg>
 <a href="https://1drv.ms/b/c/29ef9a7b83f2ddc4/IQAZyFryj2FoTZkmvispLyW2ATHN_CSlBXKiSNS5cCwFlr0?e=w0YAqa" target="_blank">Representação de Informações Computacionais</a>
 </div>
-<div class="ds-item">
-<svg class="ds-icon" fill="none" height="16" viewbox="0 0 16 16" width="16"><rect height="12" rx="2" stroke="#00c2ff" stroke-width="1.2" width="12" x="2" y="2"></rect><path d="M5 8h6M8 5v6" stroke="#00c2ff" stroke-width="1.2"></path></svg>
-<a href="https://claytonjasilva.github.io/arq_aulas/notebookLM/flashcard_1.html" target="_blank">Flashcard 1 — Introdução e Representação Numérica</a>
-</div>
 </div>
 </section>
 <!-- PRÁTICAS -->
 <section class="section" id="praticas">
-<p class="section-title">03 / práticas de laboratório</p>
+<p class="section-title">04 / Práticas de laboratório</p>
 <h3>Programação com Arduíno — conceitos</h3>
 <div class="praticas-grid">
 <div class="pratica-item"><span class="pratica-num">01</span><a href="https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/progArduino_aulas/progArduino_cap1.md" target="_blank">Conceitos iniciais</a></div>
@@ -404,35 +439,9 @@
 </div>
 </section>
 <!-- ÍNDICE GERAL DE LABORATÓRIO -->
-<section class="section" id="indice-lab">
-<p class="section-title">índice geral de laboratório</p>
-<h2>Práticas convertidas para HTML</h2>
-<p style="color: var(--muted); margin-bottom: 1.5rem; max-width: 720px;">
-      Esta seção reúne as páginas HTML das práticas de laboratório já convertidas, com navegação integrada entre elas.
-    </p>
-<div class="lab-index-grid">
-<div class="lab-index-card"><span class="lab-num">Prática 01</span><a href="arq_aulas/arq_pratica1_conhecendo_arduino2560.html">Alimentação de LEDs</a><p>Arduino como fonte de alimentação.</p></div>
-<div class="lab-index-card"><span class="lab-num">Prática 02</span><a href="arq_aulas/arq_pratica2_assembly_atmega2560.html">Saídas digitais com LEDs</a><p>Pinos digitais controlando LEDs.</p></div>
-<div class="lab-index-card"><span class="lab-num">Prática 03</span><a href="arq_aulas/arq_pratica3_entradas_digitais.html">Entradas digitais</a><p>Chave digital comandando LED.</p></div>
-<div class="lab-index-card"><span class="lab-num">Prática 04</span><a href="arq_aulas/arq_pratica4_entrada_3bits.html">Entrada binária de 3 bits</a><p>Conversão binário-decimal no Monitor Serial.</p></div>
-<div class="lab-index-card"><span class="lab-num">Prática 05</span><a href="arq_aulas/arq_pratica5_funcoes_por_codigo.html">Funções por código</a><p>Combinações binárias acionando funções.</p></div>
-<div class="lab-index-card"><span class="lab-num">Trabalho AP1</span><a href="arq_aulas/arq_trabalho_ap1_sistema_embarcado.html">Sistema embarcado</a><p>Entrada e saída binária de 6 bits.</p></div>
-<div class="lab-index-card"><span class="lab-num">Prática 07</span><a href="arq_aulas/arq_pratica7_buzzer.html">Buzzer</a><p>Dispositivo de saída com tons.</p></div>
-<div class="lab-index-card"><span class="lab-num">Prática 08</span><a href="arq_aulas/arq_pratica8_lcd1602.html">LCD 1602</a><p>Texto e tempo no display.</p></div>
-<div class="lab-index-card"><span class="lab-num">Prática 09</span><a href="arq_aulas/arq_pratica9_sensor_ultrassonico.html">Sensor ultrassônico</a><p>Medição de distância.</p></div>
-<div class="lab-index-card"><span class="lab-num">Prática 10</span><a href="arq_aulas/arq_pratica10_sensor_movimento.html">Sensor de movimento PIR</a><p>Detecção de movimento e acionamento de LED.</p></div>
-</div>
-<div class="card" style="margin-top:1.2rem;">
-<h3 style="margin-top:0;">Pendência identificada</h3>
-<p style="color:var(--muted); margin-bottom:0;">
-        A Prática 6 ainda não foi convertida porque o respectivo arquivo não foi enviado neste conjunto.
-        Mantive o link original em Markdown na lista de práticas para preservar a referência.
-      </p>
-</div>
-</section>
 <!-- AVALIAÇÕES -->
 <section class="section" id="avaliacoes">
-<p class="section-title">04 / avaliações</p>
+<p class="section-title">05 / Avaliações</p><p class="section-lead">Os formulários de Avaliação Continuada serão disponibilizados aula a aula, de acordo com o planejamento do semestre.</p>
 <div class="aval-grid">
 <div class="aval-card ap">
 <span class="aval-badge badge-ap">AP · 40% cada</span>
@@ -446,17 +455,7 @@
 <div class="aval-card ac">
 <span class="aval-badge badge-ac">AC · 20%</span>
 <h3>Avaliação Continuada</h3>
-<ul class="aval-list">
-<li class="indisponivel">Form 1 — Arquitetura de von Neumann — será disponibilizado à medida que as aulas ocorrerem.</li>
-<li class="indisponivel">Form 2 — Representação de informações e conversão de base — será disponibilizado à medida que as aulas ocorrerem.</li>
-<li class="indisponivel indisponivel">Form 3 — Aritmética binária — será disponibilizado à medida que as aulas ocorrerem.</li>
-<li class="indisponivel indisponivel">Form 4 — Modelo de máquina de níveis — será disponibilizado à medida que as aulas ocorrerem.</li>
-<li class="indisponivel indisponivel">Form 5 — Memória — será disponibilizado à medida que as aulas ocorrerem.</li>
-<li class="indisponivel indisponivel">Form 6 — Cache — será disponibilizado à medida que as aulas ocorrerem.</li>
-<li class="indisponivel indisponivel">Form 7 — Barramento — será disponibilizado à medida que as aulas ocorrerem.</li>
-<li class="indisponivel indisponivel">Form 8 — Processadores — será disponibilizado à medida que as aulas ocorrerem.</li>
-</ul>
-</div>
+<p class="aval-description">Os formulários correspondentes aos conteúdos trabalhados serão publicados progressivamente ao longo das aulas.</p></div>
 <div class="aval-card ap" style="border-color: rgba(0,194,255,0.15);">
 <span class="aval-badge badge-ap">Sistema de Avaliações</span>
 <h3>Regras e Pesos</h3>
@@ -472,7 +471,7 @@
 </section>
 <!-- REFERÊNCIAS -->
 <section class="section" id="referencias">
-<p class="section-title">05 / referências bibliográficas</p>
+<p class="section-title">06 / Referências bibliográficas</p>
 <p style="color: var(--muted); margin-bottom: 1.5rem; max-width: 600px; font-family: var(--font-mono); font-size: 0.82rem;">Obs. É necessário o acesso pela Biblioteca Virtual do Ibmec.</p>
 <div class="ds-grid">
 <div class="ds-item">
@@ -499,7 +498,7 @@
 </section>
 <!-- FERRAMENTAS -->
 <section class="section" id="ferramentas">
-<p class="section-title">06 / ferramentas do curso</p>
+<p class="section-title">07 / Ferramentas do curso</p>
 <p style="color: var(--muted); margin-bottom: 1.5rem; max-width: 600px;">Softwares utilizados para programação de microcontroladores, montagem de protótipos e desenvolvimento em linguagem de montagem ao longo da disciplina.</p>
 <div class="ds-grid">
 <div class="ds-item">
