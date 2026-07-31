@@ -494,10 +494,67 @@ nav { padding: .85rem 0 1rem; }
 }
 .contact-submit-status.is-error { color: #fca5a5; }
 .contact-submit-status.is-success { color: #86efac; }
+
+/* Cabeçalho sem campo de busca */
+.nav-layout-no-search {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-areas:
+    "brand"
+    "links";
+  align-items: stretch;
+  gap: .65rem;
+}
+.nav-layout-no-search .nav-brand {
+  grid-area: brand;
+  justify-self: start;
+}
+.nav-layout-no-search .nav-links {
+  grid-area: links;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: clamp(.9rem, 2.5vw, 1.8rem);
+  width: 100%;
+  overflow-x: auto;
+  padding: .1rem 0 .3rem;
+  scrollbar-width: thin;
+  scrollbar-color: var(--border) transparent;
+}
+.nav-layout-no-search .nav-links li { flex: 0 0 auto; }
+.nav-layout-no-search .nav-links a { white-space: nowrap; }
+
+/* Contato provisório via LinkedIn */
+.contact-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .8rem;
+  margin-top: .4rem;
+}
+.contact-linkedin-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 46px;
+  padding: .78rem 1.15rem;
+  border-radius: 7px;
+  text-decoration: none;
+}
+.contact-linkedin-button:hover {
+  text-decoration: none;
+  filter: brightness(1.08);
+}
+.footer-contact .form-help { margin-top: 1rem; }
+
+@media (max-width: 640px) {
+  .nav-layout-no-search .nav-links { gap: 1rem; }
+  .nav-layout-no-search .nav-links a { font-size: .78rem; }
+  .contact-linkedin-button { width: 100%; }
+}
 </style>
 </head>
 <body id="top">
-<nav><div class="container nav-layout"><a aria-label="Início" class="nav-brand" href="#top">claytonjasilva.github.io</a><ul class="nav-links"><li><a href="#disciplinas">disciplinas</a></li><li><a href="#programacao">linguagens</a></li><li><a href="#apoio">apoio</a></li><li><a href="#contato">contato</a></li></ul><div class="header-search"><form class="search-form header-search-form" id="site-search-form" role="search"><label class="sr-only" for="site-search-input">Pesquisar no site</label><input autocomplete="off" id="site-search-input" minlength="2" name="q" placeholder="O que você deseja encontrar?" required="" type="search"/><button aria-label="Buscar" class="search-icon-button" type="submit"><svg aria-hidden="true" fill="none" height="20" viewbox="0 0 24 24" width="20"><circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="2"></circle><line stroke="currentColor" stroke-linecap="round" stroke-width="2" x1="16.5" x2="21" y1="16.5" y2="21"></line></svg></button></form><div aria-live="polite" class="form-status" id="search-status"></div><div class="search-results header-search-results" id="search-results"></div></div></div></nav>
+<nav><div class="nav-layout nav-layout-no-search"><a aria-label="Início" class="nav-brand" href="#top">claytonjasilva.github.io</a><ul class="nav-links"><li><a href="#disciplinas">disciplinas</a></li><li><a href="#programacao">linguagens</a></li><li><a href="#apoio">apoio</a></li><li><a href="#contato">contato</a></li></ul></div></nav>
 <section class="hero">
 <div class="container">
 <p class="hero-eyebrow">Professor MS · Engenheiro Eletrônico</p>
@@ -660,194 +717,12 @@ nav { padding: .85rem 0 1rem; }
 </div><h3 class="subsection-title">// documentação técnica</h3><div class="apoio-grid"><a class="apoio-item" href="https://ww1.microchip.com/downloads/en/devicedoc/atmel-2549-8-bit-avr-microcontroller-atmega640-1280-1281-2560-2561_datasheet.pdf" style="color:inherit;" target="_blank"><svg aria-hidden="true" fill="none" height="20" viewbox="0 0 20 20" width="20"><rect height="14" rx="3" stroke="#00c2ff" stroke-width="1.4" width="14" x="3" y="3"></rect><path d="M7 10h6M10 7v6" stroke="#7c3aed" stroke-linecap="round" stroke-width="1.3"></path></svg><div><h4>Datasheet ATmega2560</h4><p>Manual completo do microcontrolador — Microchip/Atmel.</p></div></a><a class="apoio-item" href="https://ww1.microchip.com/downloads/en/DeviceDoc/AVR-Instruction-Set-Manual-DS40002198A.pdf" style="color:inherit;" target="_blank"><svg aria-hidden="true" fill="none" height="20" viewbox="0 0 20 20" width="20"><rect height="14" rx="3" stroke="#00c2ff" stroke-width="1.4" width="14" x="3" y="3"></rect><path d="M7 10h6M10 7v6" stroke="#7c3aed" stroke-linecap="round" stroke-width="1.3"></path></svg><div><h4>AVR Instruction Set Manual</h4><p>Referência completa do conjunto de instruções AVR.</p></div></a></div><h3 class="subsection-title">// ferramentas, linguagens &amp; plataformas</h3><div class="apoio-grid"><a class="apoio-item" href="https://easyeda.com/" style="color:inherit;" target="_blank"><svg aria-hidden="true" fill="none" height="20" viewbox="0 0 20 20" width="20"><rect height="14" rx="3" stroke="#00c2ff" stroke-width="1.4" width="14" x="3" y="3"></rect><path d="M7 10h6M10 7v6" stroke="#7c3aed" stroke-linecap="round" stroke-width="1.3"></path></svg><div><h4>EasyEDA</h4><p>Projeto de circuitos eletrônicos, esquemáticos e placas de circuito impresso.</p></div></a><a class="apoio-item" href="https://www.tinkercad.com/" style="color:inherit;" target="_blank"><svg aria-hidden="true" fill="none" height="20" viewbox="0 0 20 20" width="20"><rect height="14" rx="3" stroke="#00c2ff" stroke-width="1.4" width="14" x="3" y="3"></rect><path d="M7 10h6M10 7v6" stroke="#7c3aed" stroke-linecap="round" stroke-width="1.3"></path></svg><div><h4>Tinkercad</h4><p>Simulação de circuitos, prototipagem 3D e Arduino on-line.</p></div></a><a class="apoio-item" href="https://www.notion.com/" style="color:inherit;" target="_blank"><svg aria-hidden="true" fill="none" height="20" viewbox="0 0 20 20" width="20"><rect height="14" rx="3" stroke="#00c2ff" stroke-width="1.4" width="14" x="3" y="3"></rect><path d="M7 10h6M10 7v6" stroke="#7c3aed" stroke-linecap="round" stroke-width="1.3"></path></svg><div><h4>Notion</h4><p>Organização de notas, bases de conhecimento e planejamento.</p></div></a><a class="apoio-item" href="https://trello.com/" style="color:inherit;" target="_blank"><svg aria-hidden="true" fill="none" height="20" viewbox="0 0 20 20" width="20"><rect height="14" rx="3" stroke="#00c2ff" stroke-width="1.4" width="14" x="3" y="3"></rect><path d="M7 10h6M10 7v6" stroke="#7c3aed" stroke-linecap="round" stroke-width="1.3"></path></svg><div><h4>Trello</h4><p>Gestão visual de tarefas com quadros Kanban.</p></div></a><a class="apoio-item" href="https://www.microsoft.com/pt-br/microsoft-365/project/project-management-software" style="color:inherit;" target="_blank"><svg aria-hidden="true" fill="none" height="20" viewbox="0 0 20 20" width="20"><rect height="14" rx="3" stroke="#00c2ff" stroke-width="1.4" width="14" x="3" y="3"></rect><path d="M7 10h6M10 7v6" stroke="#7c3aed" stroke-linecap="round" stroke-width="1.3"></path></svg><div><h4>Microsoft Project</h4><p>Planejamento, cronogramas e gestão de projetos.</p></div></a><a class="apoio-item" href="https://www.projectlibre.com/" style="color:inherit;" target="_blank"><svg aria-hidden="true" fill="none" height="20" viewbox="0 0 20 20" width="20"><rect height="14" rx="3" stroke="#00c2ff" stroke-width="1.4" width="14" x="3" y="3"></rect><path d="M7 10h6M10 7v6" stroke="#7c3aed" stroke-linecap="round" stroke-width="1.3"></path></svg><div><h4>ProjectLibre</h4><p>Alternativa aberta para cronogramas e gestão de projetos.</p></div></a><a class="apoio-item" href="https://www.python.org/" style="color:inherit;" target="_blank"><svg aria-hidden="true" fill="none" height="20" viewbox="0 0 20 20" width="20"><rect height="14" rx="3" stroke="#00c2ff" stroke-width="1.4" width="14" x="3" y="3"></rect><path d="M7 10h6M10 7v6" stroke="#7c3aed" stroke-linecap="round" stroke-width="1.3"></path></svg><div><h4>Python.org</h4><p>Página oficial da linguagem Python.</p></div></a><a class="apoio-item" href="https://www.open-std.org/jtc1/sc22/wg14/" style="color:inherit;" target="_blank"><svg aria-hidden="true" fill="none" height="20" viewbox="0 0 20 20" width="20"><rect height="14" rx="3" stroke="#00c2ff" stroke-width="1.4" width="14" x="3" y="3"></rect><path d="M7 10h6M10 7v6" stroke="#7c3aed" stroke-linecap="round" stroke-width="1.3"></path></svg><div><h4>ISO C / WG14</h4><p>Grupo oficial de padronização da linguagem C.</p></div></a><a class="apoio-item" href="https://www.bizagi.com/en/platform/modeler" style="color:inherit;" target="_blank"><svg aria-hidden="true" fill="none" height="20" viewbox="0 0 20 20" width="20"><rect height="14" rx="3" stroke="#00c2ff" stroke-width="1.4" width="14" x="3" y="3"></rect><path d="M7 10h6M10 7v6" stroke="#7c3aed" stroke-linecap="round" stroke-width="1.3"></path></svg><div><h4>Bizagi Modeler</h4><p>Modelagem de processos de negócio em BPMN.</p></div></a><a class="apoio-item" href="https://www.arduino.cc/en/software" style="color:inherit;" target="_blank"><svg aria-hidden="true" fill="none" height="20" viewbox="0 0 20 20" width="20"><rect height="14" rx="3" stroke="#00c2ff" stroke-width="1.4" width="14" x="3" y="3"></rect><path d="M7 10h6M10 7v6" stroke="#7c3aed" stroke-linecap="round" stroke-width="1.3"></path></svg><div><h4>Arduino IDE</h4><p>Ambiente oficial para desenvolvimento de sketches Arduino.</p></div></a><a class="apoio-item" href="https://www.microchip.com/en-us/tools-resources/develop/microchip-studio" style="color:inherit;" target="_blank"><svg aria-hidden="true" fill="none" height="20" viewbox="0 0 20 20" width="20"><rect height="14" rx="3" stroke="#00c2ff" stroke-width="1.4" width="14" x="3" y="3"></rect><path d="M7 10h6M10 7v6" stroke="#7c3aed" stroke-linecap="round" stroke-width="1.3"></path></svg><div><h4>Microchip Studio</h4><p>Ambiente de desenvolvimento para microcontroladores AVR e ATmega.</p></div></a><a class="apoio-item" href="https://code.visualstudio.com/" style="color:inherit;" target="_blank"><svg aria-hidden="true" fill="none" height="20" viewbox="0 0 20 20" width="20"><rect height="14" rx="3" stroke="#00c2ff" stroke-width="1.4" width="14" x="3" y="3"></rect><path d="M7 10h6M10 7v6" stroke="#7c3aed" stroke-linecap="round" stroke-width="1.3"></path></svg><div><h4>Visual Studio Code</h4><p>Editor para C, C++, Python e desenvolvimento web.</p></div></a><a class="apoio-item" href="https://github.com/" style="color:inherit;" target="_blank"><svg aria-hidden="true" fill="none" height="20" viewbox="0 0 20 20" width="20"><rect height="14" rx="3" stroke="#00c2ff" stroke-width="1.4" width="14" x="3" y="3"></rect><path d="M7 10h6M10 7v6" stroke="#7c3aed" stroke-linecap="round" stroke-width="1.3"></path></svg><div><h4>GitHub</h4><p>Hospedagem, versionamento e compartilhamento de projetos.</p></div></a></div></div>
 </section>
 <section class="footer-contact" id="contato">
-<div class="container contact-panel">
-<div class="section-header"><h2>Sugestões e contato</h2></div>
-<p class="section-note">Envie uma sugestão, correção ou mensagem relacionada aos materiais publicados.</p>
-<div class="contact-alert" id="contact-config-alert" role="alert">O formulário ainda precisa receber o identificador real do Formspree. Enquanto isso, nenhuma mensagem será enviada.</div><form action="https://formspree.io/f/SEU_ID_FORMSPREE" class="contact-form" id="contact-form" method="POST">
-<div class="form-grid">
-<div class="field-group">
-<label for="contact-name">Nome</label>
-<input id="contact-name" maxlength="100" name="name" required="" type="text"/>
-</div>
-<div class="field-group">
-<label for="contact-email">E-mail</label>
-<input id="contact-email" maxlength="160" name="email" required="" type="email"/>
-</div>
-</div>
-<div class="field-group">
-<label for="contact-message">Sugestão</label>
-<textarea id="contact-message" maxlength="3000" name="message" required="" rows="6"></textarea>
-</div>
-<input name="_subject" type="hidden" value="Mensagem enviada pelo site claytonjasilva.github.io"/>
-<div class="form-actions">
-<button class="primary-button" id="contact-submit-button" type="submit">Enviar</button>
-<button class="secondary-button" type="reset">Cancelar</button>
-</div><p aria-live="polite" class="contact-submit-status" id="contact-submit-status"></p>
-<p class="form-help">Os dados informados serão usados apenas para responder à mensagem.</p>
-</form>
-</div>
+<div class="container contact-panel"><div class="section-header"><h2>Sugestões e contato</h2></div><p class="section-note">Para sugestões, correções ou informações relacionadas aos materiais publicados, utilize o canal de contato disponível no LinkedIn.</p><div class="contact-actions"><a class="primary-button contact-linkedin-button" href="https://www.linkedin.com/in/clayton-jones-alves-da-silva-4323b933/" rel="noopener noreferrer" target="_blank">Entrar em contato pelo LinkedIn</a></div><p class="form-help">O contato será realizado diretamente pela plataforma LinkedIn, sem exposição de endereço de e-mail nesta página.</p></div>
 </section><footer>
 <div class="container footer-meta">
 <p>© 2026 · Prof. Clayton J A Silva</p>
 <p><a href="https://github.com/claytonjasilva/claytonjasilva.github.io" target="_blank">github.com/claytonjasilva</a></p>
 </div>
 </footer>
-<script>
-(() => {
-  const form = document.getElementById('site-search-form');
-  const input = document.getElementById('site-search-input');
-  const results = document.getElementById('search-results');
-  const status = document.getElementById('search-status');
-  if (!form || !input || !results || !status) return;
-
-  let searchIndex = [];
-
-  const normalize = (value) => value
-    .normalize('NFD')
-    .replace(/[\u0300-\u036f]/g, '')
-    .toLowerCase();
-
-  const buildLocalFallbackIndex = () => {
-    const seen = new Set();
-    return Array.from(document.querySelectorAll('main a[href], section a[href]'))
-      .map(link => {
-        const url = link.getAttribute('href') || '';
-        const title = link.textContent.trim();
-        const container = link.closest('article, .card, .prog-card, .apoio-item, section');
-        const text = container ? container.textContent.replace(/\s+/g, ' ').trim() : title;
-        return { title, url, description: text.slice(0, 220), text };
-      })
-      .filter(item => item.title && item.url && !item.url.startsWith('#'))
-      .filter(item => {
-        const key = `${item.title}|${item.url}`;
-        if (seen.has(key)) return false;
-        seen.add(key);
-        return true;
-      });
-  };
-
-  const loadIndex = async () => {
-    if (searchIndex.length) return searchIndex;
-
-    const candidates = ['./search-index.json', '/search-index.json'];
-    for (const path of candidates) {
-      try {
-        const response = await fetch(`${path}?v=20260731`, { cache: 'no-store' });
-        if (!response.ok) continue;
-        const data = await response.json();
-        if (Array.isArray(data) && data.length) {
-          searchIndex = data;
-          return searchIndex;
-        }
-      } catch (_) {
-        // Tenta o próximo caminho.
-      }
-    }
-
-    searchIndex = buildLocalFallbackIndex();
-    if (searchIndex.length) {
-      status.textContent = 'Busca limitada aos links desta página. Publique search-index.json para pesquisar todo o site.';
-      return searchIndex;
-    }
-
-    throw new Error('Índice de busca indisponível.');
-  };
-
-  const escapeHtml = (value) => value.replace(/[&<>"]/g, char => ({
-    '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;'
-  })[char]);
-
-  form.addEventListener('submit', async (event) => {
-    event.preventDefault();
-    const query = input.value.trim();
-    results.innerHTML = '';
-    if (query.length < 2) {
-      status.textContent = 'Digite pelo menos dois caracteres.';
-      return;
-    }
-
-    status.textContent = 'Pesquisando…';
-    try {
-      const index = await loadIndex();
-      const term = normalize(query);
-      const matches = index.filter(item => normalize(`${item.title} ${item.text || ''} ${item.url}`).includes(term)).slice(0, 30);
-      status.textContent = matches.length ? `${matches.length} resultado(s) encontrado(s).` : 'Nenhum resultado encontrado.';
-      results.innerHTML = matches.map(item => `
-        <article class="search-result">
-          <h3><a href="${escapeHtml(item.url)}">${escapeHtml(item.title)}</a></h3>
-          <p>${escapeHtml(item.description || item.url)}</p>
-        </article>`).join('');
-    } catch (error) {
-      status.textContent = 'A busca geral está indisponível. Confirme se search-index.json foi publicado na raiz do repositório.';
-    }
-  });
-
-  form.addEventListener('reset', () => {
-    results.innerHTML = '';
-    status.textContent = '';
-  });
-})();
-</script><script>
-(() => {
-  const contactForm = document.getElementById('contact-form');
-  if (!contactForm) return;
-
-  const endpoint = contactForm.getAttribute('action') || '';
-  const alertBox = document.getElementById('contact-config-alert');
-  const statusBox = document.getElementById('contact-submit-status');
-  const submitButton = document.getElementById('contact-submit-button');
-
-  const endpointIsPlaceholder =
-    !endpoint ||
-    endpoint.includes('SEU_ID_FORMSPREE') ||
-    !/^https:\/\/formspree\.io\/f\/[a-zA-Z0-9]+$/.test(endpoint);
-
-  const setStatus = (message, type = '') => {
-    if (!statusBox) return;
-    statusBox.textContent = message;
-    statusBox.className = 'contact-submit-status';
-    if (type) statusBox.classList.add(`is-${type}`);
-  };
-
-  if (endpointIsPlaceholder) {
-    if (alertBox) alertBox.classList.add('is-visible');
-    if (submitButton) {
-      submitButton.disabled = true;
-      submitButton.setAttribute('aria-disabled', 'true');
-      submitButton.title = 'Configure primeiro o identificador do Formspree.';
-    }
-    setStatus('Envio temporariamente indisponível: falta configurar o endpoint do formulário.', 'error');
-    return;
-  }
-
-  contactForm.addEventListener('submit', async (event) => {
-    event.preventDefault();
-    if (!contactForm.reportValidity()) return;
-
-    if (submitButton) {
-      submitButton.disabled = true;
-      submitButton.textContent = 'Enviando…';
-    }
-    setStatus('Enviando mensagem…');
-
-    try {
-      const response = await fetch(endpoint, {
-        method: 'POST',
-        body: new FormData(contactForm),
-        headers: { 'Accept': 'application/json' }
-      });
-      if (!response.ok) throw new Error('Falha no envio.');
-      contactForm.reset();
-      setStatus('Mensagem enviada com sucesso.', 'success');
-    } catch {
-      setStatus('Não foi possível enviar a mensagem. Tente novamente mais tarde.', 'error');
-    } finally {
-      if (submitButton) {
-        submitButton.disabled = false;
-        submitButton.textContent = 'Enviar';
-      }
-    }
-  });
-})();
-</script></body>
+</body>
 </html>
