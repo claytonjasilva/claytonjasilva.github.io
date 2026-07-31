@@ -1,0 +1,50 @@
+[
+  {
+    "title": "Arquitetura de Computadores",
+    "url": "arq.html",
+    "description": "Organização interna de processadores, memória, barramentos e sistemas embarcados com ATmega2560.",
+    "text": "Organização interna de processadores, memória, barramentos e sistemas embarcados com ATmega2560."
+  },
+  {
+    "title": "Sistemas Digitais",
+    "url": "sisdig.html",
+    "description": "Lógica combinacional e sequencial, circuitos integrados, flip-flops, máquinas de estado e FPGA.",
+    "text": "Lógica combinacional e sequencial, circuitos integrados, flip-flops, máquinas de estado e FPGA."
+  },
+  {
+    "title": "Gestão de Projetos",
+    "url": "gestao_projetos.html",
+    "description": "Escopo, tempo, custos, riscos, EAP, cronogramas, indicadores, liderança e métodos ágeis.",
+    "text": "Escopo, tempo, custos, riscos, EAP, cronogramas, indicadores, liderança e métodos ágeis."
+  },
+  {
+    "title": "Programação Linear",
+    "url": "progLinear.html",
+    "description": "Modelagem matemática, função objetivo, restrições, método gráfico, simplex e aplicações em engenharia.",
+    "text": "Modelagem matemática, função objetivo, restrições, método gráfico, simplex e aplicações em engenharia."
+  },
+  {
+    "title": "Aspectos Regulatórios de Telecomunicações",
+    "url": "aspectosregulatorios.html",
+    "description": "Marco regulatório, Anatel, espectro de radiofrequência e legislação do setor.",
+    "text": "Marco regulatório, Anatel, espectro de radiofrequência e legislação do setor."
+  },
+  {
+    "title": "Linguagem Python",
+    "url": "https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/progPython_aulas.md",
+    "description": "Sintaxe, estruturas de dados, funções e aplicações em simulação e automação.",
+    "text": "Sintaxe, estruturas de dados, funções e aplicações em simulação e automação."
+  },
+  {
+    "title": "Linguagem C",
+    "url": "https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/progC_aulas.md",
+    "description": "Ponteiros, alocação de memória, structs e programação de baixo nível.",
+    "text": "Ponteiros, alocação de memória, structs e programação de baixo nível."
+  },
+  {
+    "title": "Linguagem Arduíno",
+    "url": "https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/progArduino_aulas.md",
+    "description": "Linguagem do Arduino, sketch, bibliotecas e integração com sensores e atuadores.",
+    "text": "Linguagem do Arduino, sketch, bibliotecas e integração com sensores e atuadores."
+  }
+]
