@@ -253,6 +253,31 @@ footer p { font-size: 0.82rem; color: var(--muted); font-family: var(--font-mono
   color: var(--muted);
   pointer-events: none;
 }
+
+
+/* ===== Ajuste do cabeçalho GitHub Pages ===== */
+nav .container{
+  max-width:1100px;
+  margin:0 auto;
+  padding-left:2rem;
+  padding-right:2rem;
+  box-sizing:border-box;
+}
+
+.nav-brand{
+  display:inline-block;
+  padding:.2rem 0;
+}
+
+@media (max-width:640px){
+  nav .container{
+    padding-left:1rem;
+    padding-right:1rem;
+  }
+  .nav-brand{
+    margin-bottom:.35rem;
+  }
+}
 </style>
 </head>
 <body>
@@ -264,16 +289,13 @@ footer p { font-size: 0.82rem; color: var(--muted); font-family: var(--font-mono
 </nav>
 <section class="hero">
 <div class="container">
-
 <h1>Programação Linear Aplicada</h1>
 <p class="hero-sub">Prof. Clayton J A Silva - Ibmec Rio - 2026.2</p>
-
 </div>
 </section>
 <div class="container">
 <section class="section" id="agenda">
 <h2 class="section-heading"><span class="section-number">01</span>Agenda</h2><p class="schedule-time">Terça-feira, 07h30 às 11h40</p><p class="calendar-note">A agenda abaixo se insere na programação do <a href="https://claytonjasilva.github.io/calendario-academico.html" target="_blank">Calendário Acadêmico Ibmec Rio 2026.2</a>.</p>
-
 <div class="agenda-wrap"><table><thead><tr><th>Data</th><th>Conteúdo</th></tr></thead><tbody>
 <tr><td>04/08/2026</td><td>Introdução ao curso · Cap. 1 — Modelagem de Problemas e Método Gráfico · Prática com Excel Solver</td></tr>
 <tr><td>11/08/2026</td><td>Cap. 2 — Modelo Matemático para Programação Linear · Variáveis, parâmetros, função objetivo e restrições</td></tr>
@@ -294,7 +316,6 @@ footer p { font-size: 0.82rem; color: var(--muted); font-family: var(--font-mono
 <tr><td>24/11/2026</td><td>Mostra de AP2</td></tr>
 <tr class="row-as"><td>01/12/2026</td><td>▶ Aplicação da AS</td></tr>
 </tbody></table></div>
-
 </section><section class="section" id="grid">
 <h2 class="section-heading"><span class="section-number">02</span>Grid da Disciplina</h2>
 <div class="card" style="max-width:560px;">
@@ -308,7 +329,6 @@ footer p { font-size: 0.82rem; color: var(--muted); font-family: var(--font-mono
 </section>
 <section class="section" id="conteudo">
 <h2 class="section-heading"><span class="section-number">03</span>Conteúdo das Aulas</h2>
-
 <div class="content-grid">
 <div class="content-card">
 <span class="content-num">Cap 1</span>
@@ -417,9 +437,6 @@ footer p { font-size: 0.82rem; color: var(--muted); font-family: var(--font-mono
 <section class="section" id="apoio">
 <h2 class="section-heading"><span class="section-number">04</span>Textos e Exemplos de Apoio</h2>
 <div class="ds-grid">
-
-
-
 <div class="ds-item"><a href="progLinear/casos_aplicados.html">Casos Aplicados</a></div>
 <div class="ds-item"><a href="progLinear/flashcards.html">Flashcards</a></div>
 <div class="ds-item"><a href="progLinear/listas_exercicios.html">Listas de Exercícios</a></div>
@@ -464,13 +481,11 @@ footer p { font-size: 0.82rem; color: var(--muted); font-family: var(--font-mono
 <section class="section" id="complementares">
 <h2 class="section-heading"><span class="section-number">07</span>Ferramentas Complementares</h2>
 <div class="ds-grid">
-
 <div class="ds-item"><a href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.optimize.linprog.html" target="_blank">SciPy — linprog</a></div>
 <div class="ds-item"><a href="https://coin-or.github.io/pulp/" target="_blank">PuLP — documentação</a></div>
 <div class="ds-item"><a href="https://developers.google.com/optimization" target="_blank">Google OR-Tools</a></div>
 </div>
 </section>
-
 </div>
 <footer>
 <div class="container">
