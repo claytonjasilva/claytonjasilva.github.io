@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Cap. 1 — Modelagem de Problemas e Método Gráfico | Programação Linear Aplicada</title>
+<title>Cap. 1 — Apoio à Decisão e Modelos | Programação Linear Aplicada</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300&display=swap" rel="stylesheet">
@@ -171,134 +171,404 @@ footer p{font-size:.8rem;color:var(--muted);font-family:var(--font-mono);}
   <div class="container">
     <span class="nav-brand">proglinear · cap. 1</span>
     <ul class="nav-links">
-      <li><a href="#s1">conceitos</a></li>
-      <li><a href="#s2">formulação</a></li>
-      <li><a href="#s3">aplicação</a></li>
-      <li><a href="#exemplo">exemplo</a></li>
+      <li><a href="#s1">decisão</a></li>
+      <li><a href="#s2">pesquisa operacional</a></li>
+      <li><a href="#s3">modelos</a></li>
+      <li><a href="#s4">modelagem</a></li>
+      <li><a href="#s5">classificação</a></li>
+      <li><a href="#s6">dados</a></li>
       <li><a href="#quiz">quiz</a></li>
       <li><a href="../programacao_linear.html">← disciplina</a></li>
     </ul>
   </div>
 </nav>
 <div class="progress-track"><div class="progress-fill" id="progressFill"></div></div>
+
 <section class="hero">
   <div class="container">
     <p class="hero-eyebrow">Programação Linear Aplicada · Capítulo 1</p>
-    <h1>Cap. 1<br><strong>Modelagem de Problemas e Método Gráfico</strong></h1>
+    <h1>Cap. 1<br><strong>Apoio à Decisão e Modelos</strong></h1>
     <div class="hero-meta">
-      <span class="meta-item">leitura ~50 min</span>
+      <span class="meta-item">leitura ~55 min</span>
       <span class="meta-item">Prof. Clayton J A Silva</span>
       <span class="meta-item">IBM0803</span>
     </div>
     <div class="objectives">
       <p class="label">Objetivos de aprendizagem</p>
-      <ul><li>Identificar variáveis de decisão, parâmetros, função objetivo e restrições.</li><li>Construir modelos lineares simples.</li><li>Resolver graficamente problemas com duas variáveis.</li><li>Interpretar região viável, solução ótima e restrições ativas.</li></ul>
+      <ul>
+        <li>Compreender a tomada de decisão como um processo organizacional, sequencial e sujeito a incertezas.</li>
+        <li>Explicar a origem, a evolução e a finalidade da Pesquisa Operacional.</li>
+        <li>Distinguir modelos mentais, conceituais, matemáticos, heurísticos, de simulação e de otimização.</li>
+        <li>Identificar variáveis de decisão, parâmetros, variáveis endógenas, variáveis exógenas, função objetivo e restrições.</li>
+        <li>Reconhecer as etapas de definição, formulação, solução, validação, implementação e avaliação de um modelo.</li>
+        <li>Relacionar modelagem, competição analítica, Big Data e ferramentas computacionais de apoio à decisão.</li>
+      </ul>
     </div>
     <div class="toc">
-      <a href="#s1">Conceitos</a>
-      <a href="#s2">Formulação</a>
-      <a href="#s3">Aplicação</a>
-      <a href="#exemplo">Exemplo orientado</a>
-      <a href="#pratica">Prática sugerida</a>
+      <a href="#s1">Apoio à decisão</a>
+      <a href="#s2">Pesquisa Operacional</a>
+      <a href="#s3">Modelos</a>
+      <a href="#s4">Processo de modelagem</a>
+      <a href="#s5">Tipos de modelo</a>
+      <a href="#s6">Dados e tecnologia</a>
+      <a href="#s7">Síntese</a>
       <a href="#quiz">Quiz</a>
     </div>
   </div>
 </section>
-<div class="container">
 
+<div class="container">
   <section class="section" id="s1">
-    <p class="section-label">1.1 / desenvolvimento</p>
-    <h2>Conceitos fundamentais</h2>
-    <p>O modelo de otimização representa matematicamente uma situação real, escolhendo valores de variáveis de decisão que maximizam ou minimizam uma função objetivo sob restrições lineares.</p>
-    <div class="key-grid">
-      <div class="key-card"><strong>Para lembrar</strong><p>Explique sempre o significado operacional das variáveis e restrições.</p></div>
-      <div class="key-card"><strong>Em aula</strong><p>Discuta um exemplo numérico e peça aos alunos que interpretem a solução.</p></div>
-      <div class="key-card"><strong>Erro comum</strong><p>Resolver mecanicamente sem validar se o modelo representa o problema real.</p></div>
+    <p class="section-label">1.1 / contexto gerencial</p>
+    <h2>Apoio à decisão nas organizações</h2>
+
+    <p>As organizações precisam tomar decisões continuamente. Definir preços, programar a produção, selecionar fornecedores, distribuir recursos, organizar estoques, contratar pessoas, escolher tecnologias e estabelecer prioridades são exemplos de decisões que influenciam diretamente os resultados. Em situações simples, uma pessoa pode comparar poucas alternativas com base em experiência, preferências e conhecimento prático. Entretanto, à medida que cresce o número de variáveis, restrições, interesses e consequências possíveis, a decisão deixa de ser uma escolha intuitiva e passa a exigir uma análise estruturada.</p>
+
+    <p>Uma decisão pode ser compreendida como a escolha de um curso de ação entre alternativas disponíveis. Seu ponto de partida costuma ser a percepção de que existe uma diferença entre a situação atual e a situação desejada. Essa diferença pode aparecer na forma de um problema, de uma necessidade ou de uma oportunidade. A partir dessa percepção, o responsável procura identificar o que realmente está acontecendo, delimitar o problema, reunir informações, criar alternativas, avaliar as consequências e selecionar a ação considerada mais adequada.</p>
+
+    <p>O processo decisório é <strong>sequencial</strong> porque se desenvolve por etapas; é <strong>complexo</strong> porque reúne informações, pessoas, responsabilidades, objetivos e restrições; é <strong>subjetivo</strong> porque envolve experiência, valores e julgamento; e é <strong>institucional</strong> porque ocorre dentro de uma organização, cuja cultura, estrutura hierárquica e fluxo de informações influenciam a escolha. Mesmo quando são utilizados métodos quantitativos, a decisão final continua sendo uma responsabilidade gerencial.</p>
+
+    <p>Decisões importantes raramente dependem de um único fator. Uma alteração na quantidade produzida pode afetar custos, estoques, utilização de máquinas, necessidade de mão de obra, prazos de entrega e satisfação dos clientes. Por isso, os problemas empresariais exigem uma visão sistêmica. Em vez de examinar cada área isoladamente, é necessário observar as relações existentes entre os componentes do sistema e os efeitos que uma decisão local pode produzir no conjunto da organização.</p>
+
+    <div class="definition">
+      <p class="dtitle">Ideia central</p>
+      <p>O apoio à decisão não elimina a responsabilidade do gestor. Ele organiza informações, explicita alternativas, antecipa consequências e reduz a incerteza para que a decisão seja mais fundamentada.</p>
     </div>
+
+    <h3>Racionalidade, experiência e limites da decisão</h3>
+
+    <p>Em uma situação ideal, o decisor conheceria todas as alternativas, todas as consequências e todas as probabilidades associadas aos eventos futuros. Na prática, isso raramente acontece. A informação possui custo, o tempo é limitado e o ambiente pode mudar antes que a análise seja concluída. O gestor precisa decidir com dados incompletos, previsões e hipóteses. Essa condição caracteriza a chamada racionalidade limitada: procura-se uma solução coerente e viável, ainda que não seja possível garantir conhecimento completo da realidade.</p>
+
+    <p>Para lidar com essa limitação, as pessoas utilizam regras práticas ou atalhos de julgamento, conhecidos como heurísticas. A heurística da disponibilidade leva a dar maior importância a fatos recentes ou facilmente lembrados. A heurística da representatividade faz com que uma situação seja julgada por semelhança com casos anteriores. A ancoragem ocorre quando uma informação inicial exerce influência excessiva sobre as avaliações seguintes. Esses mecanismos são úteis para decisões rápidas, mas podem introduzir vieses. Um modelo estruturado ajuda a tornar os critérios mais explícitos e a reduzir parte desses efeitos.</p>
+
+    <h3>Qualidade da decisão</h3>
+
+    <p>Uma decisão de qualidade deve contribuir para o alcance dos objetivos, utilizar adequadamente os recursos e produzir um curso de ação coerente com as condições do problema. Entretanto, a qualidade não pode ser avaliada apenas pelo resultado final. Uma decisão pode ter sido bem formulada e ainda assim produzir um resultado desfavorável devido a acontecimentos imprevisíveis. Da mesma forma, uma decisão mal preparada pode ocasionalmente produzir um resultado positivo. Por isso, é necessário avaliar tanto o processo utilizado quanto a consistência da solução proposta.</p>
   </section>
+
   <section class="section" id="s2">
-    <p class="section-label">1.2 / desenvolvimento</p>
-    <h2>Formulação e interpretação</h2>
-    <p>O método gráfico aplica-se a modelos com duas variáveis. Cada restrição define uma reta e um semiplano; a interseção dos semiplanos forma a região viável.</p>
-    <div class="key-grid">
-      <div class="key-card"><strong>Para lembrar</strong><p>Explique sempre o significado operacional das variáveis e restrições.</p></div>
-      <div class="key-card"><strong>Em aula</strong><p>Discuta um exemplo numérico e peça aos alunos que interpretem a solução.</p></div>
-      <div class="key-card"><strong>Erro comum</strong><p>Resolver mecanicamente sem validar se o modelo representa o problema real.</p></div>
+    <p class="section-label">1.2 / origem e finalidade</p>
+    <h2>Pesquisa Operacional e análise de decisões</h2>
+
+    <p>A Pesquisa Operacional surgiu da necessidade de empregar métodos científicos na análise de operações complexas. O termo começou a ser utilizado no final da década de 1930, mas a área ganhou projeção durante a Segunda Guerra Mundial. Equipes formadas por matemáticos, físicos, engenheiros e especialistas de diferentes campos foram reunidas para estudar problemas militares, como emprego de equipamentos, proteção de comboios, distribuição de recursos e organização de operações. Em vez de tratar cada problema apenas pela experiência de uma especialidade, essas equipes utilizavam observação, dados, modelos e análise quantitativa.</p>
+
+    <p>O êxito dessas aplicações estimulou a transferência dos métodos para organizações civis depois da guerra. Empresas, indústrias e órgãos governamentais enfrentavam problemas semelhantes de alocação de recursos escassos, planejamento e coordenação. A expansão econômica do pós-guerra aumentou a complexidade das operações e criou um ambiente favorável à adoção de técnicas quantitativas.</p>
+
+    <p>Dois fatores foram decisivos para o crescimento da área. O primeiro foi o desenvolvimento de métodos matemáticos, entre os quais se destaca o método Simplex, criado por George Dantzig em 1947 para solucionar problemas de Programação Linear. O segundo foi a evolução dos computadores. Cálculos que seriam inviáveis manualmente passaram a ser executados de forma rápida, e modelos cada vez maiores puderam ser aplicados a situações reais. A disseminação dos computadores pessoais e dos softwares especializados ampliou ainda mais o acesso à Pesquisa Operacional.</p>
+
+    <p>A área também se consolidou por meio de sociedades profissionais e publicações científicas. No cenário internacional destacam-se a Operational Research Society e o INFORMS. No Brasil, a SOBRAPO contribui para a difusão e o desenvolvimento da Pesquisa Operacional. Essas instituições reforçam o caráter científico e interdisciplinar do campo.</p>
+
+    <div class="definition">
+      <p class="dtitle">Definição de trabalho</p>
+      <p>A Pesquisa Operacional é a aplicação de métodos científicos, analíticos e quantitativos para compreender problemas, comparar alternativas e apoiar decisões relacionadas à condução e à coordenação de operações em organizações.</p>
     </div>
+
+    <p>A Pesquisa Operacional é utilizada em produção, transportes, telecomunicações, finanças, saúde, serviços públicos, logística, operações militares e diversas outras áreas. Seu foco não está apenas no cálculo, mas na solução de problemas gerenciais. As técnicas matemáticas são meios para alcançar esse fim. Um modelo pode indicar a solução ótima do ponto de vista matemático, mas ainda será necessário verificar sua viabilidade técnica, econômica, humana e institucional.</p>
+
+    <h3>Enfoque clássico e enfoque gerencial</h3>
+
+    <p>No enfoque clássico, a atenção principal concentra-se na representação matemática do problema, no algoritmo de solução e na obtenção de um resultado ótimo. Essa abordagem foi essencial para o desenvolvimento da área. Entretanto, a aplicação gerencial mostrou que a qualidade da decisão depende também da formulação correta do problema, da seleção das informações relevantes e da interpretação dos resultados.</p>
+
+    <p>No enfoque atual, o modelo não é apenas uma máquina para produzir uma resposta. Ele é também um instrumento para compreender o problema. O esforço de formular variáveis, relações, objetivos e restrições obriga a equipe a esclarecer como o sistema funciona. Muitas vezes, o principal ganho do estudo ocorre antes mesmo da solução matemática: o problema é redefinido, dados desnecessários são separados dos dados relevantes e relações antes ocultas tornam-se explícitas.</p>
   </section>
+
   <section class="section" id="s3">
-    <p class="section-label">1.3 / desenvolvimento</p>
-    <h2>Aplicação em aula</h2>
-    <p>A solução ótima, quando existe, ocorre em um vértice da região viável. Por isso, basta avaliar a função objetivo nos vértices.</p>
-    <div class="key-grid">
-      <div class="key-card"><strong>Para lembrar</strong><p>Explique sempre o significado operacional das variáveis e restrições.</p></div>
-      <div class="key-card"><strong>Em aula</strong><p>Discuta um exemplo numérico e peça aos alunos que interpretem a solução.</p></div>
-      <div class="key-card"><strong>Erro comum</strong><p>Resolver mecanicamente sem validar se o modelo representa o problema real.</p></div>
-    </div>
+    <p class="section-label">1.3 / representação da realidade</p>
+    <h2>O papel dos modelos no processo decisório</h2>
+
+    <p>Um modelo é uma representação simplificada de um sistema real. Ele não reproduz todos os elementos da realidade, mas seleciona aqueles que são considerados relevantes para a decisão. Essa simplificação é necessária porque os sistemas reais contêm grande quantidade de variáveis e relações. Sem reduzir a realidade a uma estrutura compreensível, a análise pode se tornar inviável.</p>
+
+    <p>Os modelos permitem visualizar a estrutura do sistema, organizar informações, representar relações de causa e efeito, comparar alternativas e testar hipóteses. Em vez de modificar diretamente uma fábrica, uma rede de transportes ou uma política de estoques, o analista experimenta no modelo. Dessa forma, pode antecipar consequências, reduzir riscos e identificar soluções inadequadas antes de comprometer recursos reais.</p>
+
+    <p>Em problemas simples, as pessoas utilizam modelos mentais. Ao escolher entre dois produtos, por exemplo, uma pessoa pode comparar preço, qualidade, preferência e efeitos esperados. Esse raciocínio não precisa ser escrito formalmente. A experiência e o julgamento podem ser suficientes. Contudo, quando o problema envolve muitos produtos, recursos limitados, demandas diferentes e objetivos conflitantes, torna-se necessário construir um modelo formal.</p>
+
+    <p>Considere uma empresa que produz dois produtos e utiliza, para ambos, mão de obra e matéria-prima. O gestor precisa decidir as quantidades a produzir, respeitando a disponibilidade dos recursos e a demanda do mercado. Para analisar o problema, deve conhecer o consumo de recursos por unidade, os custos, os preços de venda e as limitações tecnológicas. O modelo organiza esses dados e permite estimar lucro, utilização dos recursos e desempenho de diferentes alternativas.</p>
+
+    <div class="note"><strong>Atenção:</strong> um modelo não é a realidade. Ele é uma representação construída para uma finalidade específica. Um modelo útil para planejamento estratégico pode ser inadequado para programação diária da produção.</div>
+
+    <h3>Componentes de um modelo</h3>
+
+    <p>As <strong>variáveis de decisão</strong> representam escolhas que estão sob controle do decisor e cujos valores precisam ser determinados. Quantidade a produzir, preço a estabelecer, número de veículos a utilizar e valor a investir são exemplos. As <strong>variáveis endógenas</strong> são produzidas pelo próprio modelo como consequência das decisões e das relações definidas, como receita, custo total, lucro ou utilização dos recursos.</p>
+
+    <p>As <strong>variáveis exógenas</strong> representam condições externas ou dados fornecidos ao modelo. Demanda prevista, disponibilidade de matéria-prima, taxa de juros, preço de fornecedores e capacidade instalada são exemplos. Em muitos casos, esses valores são conhecidos ou estimados antes da solução. Quando estão associados à incerteza, podem ser representados por probabilidades ou distribuições estatísticas.</p>
+
+    <p>Os <strong>parâmetros</strong> são valores que caracterizam as relações do modelo. Em um problema de produção, podem representar o lucro unitário, o consumo de matéria-prima ou o número de horas de máquina necessário para fabricar cada unidade. A <strong>função objetivo</strong> expressa o critério que se deseja maximizar ou minimizar. As <strong>restrições</strong> representam os limites e as condições que precisam ser respeitados.</p>
+
+    <div class="formula-card">Estrutura geral de um modelo de otimização
+
+Maximizar ou minimizar:  Z = f(x₁, x₂, ..., xₙ)
+
+sujeito a:
+  g₁(x₁, x₂, ..., xₙ) ≤, = ou ≥ b₁
+  g₂(x₁, x₂, ..., xₙ) ≤, = ou ≥ b₂
+  ...
+  x₁, x₂, ..., xₙ sujeitos às condições do problema</div>
+
+    <p>Essa representação será aprofundada nos capítulos seguintes. Neste momento, o importante é compreender que a formulação matemática traduz um problema gerencial para uma linguagem composta por variáveis, relações, objetivos e limitações.</p>
   </section>
-  <section class="section" id="formula">
-    <p class="section-label">síntese matemática</p>
-    <h2>Representação matemática essencial</h2>
-    <div class="formula-card">Maximizar Z = c1*x1 + c2*x2
-sujeito a: a11*x1 + a12*x2 &lt;= b1
-x1, x2 &gt;= 0</div>
-    <div class="note"><strong>Observação:</strong> esta síntese deve ser associada a um problema concreto durante a aula.</div>
-  </section>
-  <section class="section" id="exemplo">
-    <p class="section-label">exemplo orientado</p>
-    <h2>Exemplo para discussão em aula</h2>
-    <div class="exercise-card"><h4>Problema-base</h4><p>Uma fábrica produz dois produtos usando horas de máquina e montagem. Defina x1 e x2 como quantidades produzidas, escreva restrições de recursos e maximize o lucro.</p></div>
+
+  <section class="section" id="s4">
+    <p class="section-label">1.4 / método de trabalho</p>
+    <h2>O processo de modelagem</h2>
+
+    <p>A construção de um modelo não começa com uma equação. Ela começa com a compreensão da situação-problema. Antes de selecionar uma técnica, o analista precisa descobrir qual decisão deve ser apoiada, quais objetivos estão envolvidos, quais partes da organização são afetadas e quais limitações precisam ser respeitadas. Uma formulação incorreta pode produzir uma solução matematicamente perfeita para o problema errado.</p>
+
     <div class="method-card">
-      <span class="method-num">roteiro</span>
-      <h4>Como conduzir a solução</h4>
-      <ol class="steps">
-        <li>Definir variáveis de decisão.</li>
-        <li>Escrever função objetivo.</li>
-        <li>Traduzir limites em restrições.</li>
-        <li>Resolver manualmente ou em ferramenta computacional.</li>
-        <li>Interpretar solução, folgas, restrições ativas e limitações.</li>
-      </ol>
+      <span class="method-num">etapa 1</span>
+      <h4>Definição da situação-problema</h4>
+      <p>O problema deve ser delimitado em termos de objetivos, escopo, horizonte de tempo, alternativas, recursos, restrições e informações necessárias. Nessa fase, informações genéricas são transformadas em uma descrição estruturada. A definição pode ser revisada à medida que o conhecimento do sistema aumenta.</p>
     </div>
+
+    <div class="method-card">
+      <span class="method-num">etapa 2</span>
+      <h4>Identificação dos dados e das variáveis</h4>
+      <p>O analista identifica os fatores que influenciam o problema e separa as variáveis controláveis das condições externas. É necessário selecionar apenas as informações relevantes. A inclusão indiscriminada de dados aumenta a complexidade e pode desviar o modelo de sua finalidade.</p>
+    </div>
+
+    <div class="method-card">
+      <span class="method-num">etapa 3</span>
+      <h4>Formulação do modelo</h4>
+      <p>As relações entre os elementos do problema são representadas de forma lógica ou matemática. Em Programação Linear, por exemplo, utiliza-se uma função objetivo e um conjunto de equações ou inequações. Algumas relações são obtidas diretamente pela lógica do sistema; outras precisam ser estimadas a partir de dados históricos.</p>
+    </div>
+
+    <div class="method-card">
+      <span class="method-num">etapa 4</span>
+      <h4>Solução do modelo</h4>
+      <p>O modelo é manipulado por meio de um método adequado. A solução pode ser obtida manualmente, por planilhas ou por softwares especializados. Em problemas de otimização, procura-se a alternativa que produz o melhor valor para a função objetivo dentro do conjunto de soluções viáveis.</p>
+    </div>
+
+    <div class="method-card">
+      <span class="method-num">etapa 5</span>
+      <h4>Validação e análise</h4>
+      <p>A solução precisa ser examinada para verificar se o modelo representa adequadamente o sistema. Pode-se comparar seu comportamento com dados passados, testar diferentes hipóteses e analisar a sensibilidade dos resultados. Um modelo válido não precisa reproduzir todos os detalhes da realidade, mas deve fornecer previsões e respostas suficientemente confiáveis para a decisão.</p>
+    </div>
+
+    <div class="method-card">
+      <span class="method-num">etapa 6</span>
+      <h4>Consideração dos fatores qualitativos</h4>
+      <p>Alguns fatores relevantes não são facilmente quantificados. Aspectos políticos, legais, culturais, éticos e comportamentais podem alterar a viabilidade da solução. A experiência e o julgamento dos gestores são essenciais para avaliar aquilo que não foi incorporado ao modelo.</p>
+    </div>
+
+    <div class="method-card">
+      <span class="method-num">etapa 7</span>
+      <h4>Implementação e avaliação</h4>
+      <p>A solução escolhida precisa ser convertida em ações, procedimentos e responsabilidades. A implementação pode provocar resistência porque altera rotinas, prioridades e relações de trabalho. Por isso, deve ser planejada e acompanhada. Depois de implantada, a solução precisa ser avaliada, e o modelo pode ser atualizado com novas informações.</p>
+    </div>
+
+    <p>Essas etapas não formam uma sequência rígida. A análise de uma etapa frequentemente revela a necessidade de retornar às anteriores. A validação pode indicar que uma variável importante foi omitida; a avaliação pode mostrar que os objetivos precisam ser redefinidos. A modelagem é, portanto, um processo iterativo de aprendizagem sobre o problema.</p>
   </section>
-  <section class="section" id="pratica">
-    <p class="section-label">prática sugerida</p>
-    <h2>Atividade computacional ou de modelagem</h2>
-    <p>Modelar e resolver graficamente um problema com duas variáveis.</p>
+
+  <section class="section" id="s5">
+    <p class="section-label">1.5 / classificação</p>
+    <h2>Tipos de modelo e sua contribuição para a decisão</h2>
+
+    <h3>Modelos conceituais, matemáticos e heurísticos</h3>
+
+    <p>Os modelos conceituais representam o problema por meio de descrições lógicas, relações e etapas. Eles ajudam a organizar o raciocínio e a mostrar como os componentes do sistema se relacionam. Um fluxograma de um processo decisório é um exemplo de modelo conceitual.</p>
+
+    <p>Os modelos matemáticos utilizam símbolos, equações, inequações e funções para representar quantitativamente o problema. São especialmente úteis quando as variáveis e as relações relevantes podem ser medidas. A Programação Linear é uma das formas mais conhecidas de modelagem matemática.</p>
+
+    <p>Os modelos heurísticos são empregados quando a complexidade torna inviável ou excessivamente dispendiosa a obtenção de uma solução exata. Eles utilizam regras de busca e procedimentos práticos para encontrar soluções satisfatórias. Em geral, não garantem a melhor solução possível, mas podem produzir bons resultados em tempo adequado.</p>
+
+    <h3>Modelos estáticos e dinâmicos</h3>
+
+    <p>Os modelos estáticos representam o sistema em um instante ou período específico. São adequados quando a evolução temporal não é essencial para a decisão. Os modelos dinâmicos acompanham as mudanças do sistema ao longo do tempo e podem representar sequências de decisões, estoques acumulados, fluxos de caixa ou evolução da demanda.</p>
+
+    <h3>Modelos determinísticos e probabilísticos</h3>
+
+    <p>Nos modelos determinísticos, os valores utilizados são tratados como conhecidos. A solução é determinada diretamente pelos dados fornecidos. Nos modelos probabilísticos ou estocásticos, uma ou mais variáveis são incertas e descritas por probabilidades. Simulação, análise de risco e teoria das filas são exemplos de aplicações em que a incerteza possui papel central.</p>
+
+    <h3>Modelos de simulação e de otimização</h3>
+
+    <p>Os modelos de simulação procuram representar o comportamento de um sistema para que diferentes hipóteses possam ser testadas. Eles respondem a perguntas do tipo: <em>o que poderá acontecer se determinado preço for alterado?</em>, <em>como o estoque se comportará se a demanda aumentar?</em> ou <em>qual será o resultado de diferentes cenários?</em> A simulação oferece flexibilidade para comparar alternativas, mas o critério de escolha pode permanecer sob responsabilidade do analista.</p>
+
+    <p>Os modelos de otimização incluem no próprio modelo um critério para selecionar a melhor alternativa. A função objetivo estabelece o que significa “melhor”, e as restrições delimitam as alternativas viáveis. O método de solução procura então a combinação de valores que maximiza ou minimiza o objetivo. Programação Linear, modelos de transporte e problemas de alocação são exemplos.</p>
+
+    <table>
+      <thead><tr><th class="tleft">Tipo</th><th class="tleft">Pergunta principal</th><th class="tleft">Contribuição</th></tr></thead>
+      <tbody>
+        <tr><td class="tleft">Descritivo</td><td class="tleft">O que está acontecendo?</td><td class="tleft">Organiza e interpreta dados sobre a situação atual.</td></tr>
+        <tr><td class="tleft">Preditivo</td><td class="tleft">O que poderá acontecer?</td><td class="tleft">Estima valores e eventos futuros.</td></tr>
+        <tr><td class="tleft">Prescritivo</td><td class="tleft">O que deve ser feito?</td><td class="tleft">Recomenda uma decisão ou solução.</td></tr>
+        <tr><td class="tleft">Simulação</td><td class="tleft">O que acontecerá se...?</td><td class="tleft">Compara hipóteses e cenários.</td></tr>
+        <tr><td class="tleft">Otimização</td><td class="tleft">Qual é a melhor alternativa?</td><td class="tleft">Busca o melhor resultado segundo um critério.</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section class="section" id="s6">
+    <p class="section-label">1.6 / dados e tecnologia</p>
+    <h2>Competição analítica, Big Data e ferramentas computacionais</h2>
+
+    <p>A capacidade de analisar dados tornou-se um elemento importante da competitividade. Produtos e processos podem ser copiados, mas a capacidade de transformar dados em decisões depende de pessoas, cultura, métodos e infraestrutura. A competição analítica ocorre quando uma organização utiliza sistematicamente modelos e informações para selecionar clientes, prever demanda, reduzir estoques, planejar recursos, avaliar riscos e melhorar processos.</p>
+
+    <p>O ambiente denominado Big Data amplia essa possibilidade ao disponibilizar grandes volumes de dados produzidos continuamente por sistemas empresariais, sensores, códigos de barras, dispositivos móveis, redes sociais e outras fontes. Esses dados costumam ser descritos por três características: volume, velocidade e variedade. O volume refere-se à quantidade; a velocidade, à rapidez com que são gerados e precisam ser analisados; e a variedade, aos diferentes formatos, como números, textos, imagens e localizações.</p>
+
+    <p>A disponibilidade de dados, entretanto, não garante decisões de qualidade. O excesso de informação pode ser tão prejudicial quanto a falta dela. O objetivo do modelo é selecionar as informações que realmente alteram a decisão. A organização precisa desenvolver cultura analítica, competência técnica, capacidade de comunicação e infraestrutura para transformar dados em conhecimento útil.</p>
+
+    <p>O ambiente de grandes bases de dados também modificou algumas práticas analíticas. Em determinadas situações, é possível examinar a totalidade dos registros em vez de trabalhar apenas com amostras. Modelos de correlação e previsão ganharam importância porque ajudam a identificar padrões e relações. Ainda assim, correlação não significa necessariamente causalidade. Uma associação entre fenômenos pode ajudar na previsão, mas não explica, por si só, por que eles ocorrem.</p>
+
+    <p>As técnicas probabilísticas permitem atualizar estimativas à medida que surgem novas evidências. O raciocínio bayesiano, por exemplo, parte de uma probabilidade inicial e a revê quando uma informação adicional é observada. Essa atualização contínua é especialmente útil em ambientes em que os dados chegam constantemente e as decisões precisam ser revistas.</p>
+
+    <h3>Ferramentas computacionais</h3>
+
+    <p>Os computadores tiveram papel decisivo na expansão da Pesquisa Operacional. Atualmente, planilhas eletrônicas permitem construir modelos, realizar cálculos, desenvolver cenários e empregar ferramentas de otimização. O Excel e as Planilhas Google são adequados para introduzir relações entre variáveis, testar hipóteses e organizar dados. Em problemas de otimização, extensões ou ferramentas como o Solver podem ser utilizadas.</p>
+
+    <p>O Python oferece um ambiente mais flexível para automação, análise de dados, visualização e solução de modelos. O Google Colab permite executar programas pelo navegador, sem instalação local. Bibliotecas como SciPy e PuLP podem ser utilizadas em problemas de otimização. Ferramentas gráficas, como o GeoGebra, também podem apoiar a visualização de restrições e regiões viáveis em modelos com duas variáveis.</p>
+
     <div class="ds-grid">
-      <div class="ds-item"><a href="https://www.python.org/" target="_blank">Python.org</a></div>
-      <div class="ds-item"><a href="https://colab.research.google.com/" target="_blank">Google Colab</a></div>
-      <div class="ds-item"><a href="https://docs.scipy.org/doc/scipy/reference/optimize.linprog.html" target="_blank">SciPy linprog</a></div>
-      <div class="ds-item"><a href="https://coin-or.github.io/pulp/" target="_blank">PuLP</a></div>
+      <div class="ds-item"><a href="https://www.python.org/" target="_blank" rel="noopener">Python.org</a></div>
+      <div class="ds-item"><a href="https://colab.research.google.com/" target="_blank" rel="noopener">Google Colab</a></div>
+      <div class="ds-item"><a href="https://docs.scipy.org/doc/scipy/reference/optimize.html" target="_blank" rel="noopener">SciPy Optimize</a></div>
+      <div class="ds-item"><a href="https://coin-or.github.io/pulp/" target="_blank" rel="noopener">PuLP</a></div>
+      <div class="ds-item"><a href="https://www.geogebra.org/graphing" target="_blank" rel="noopener">GeoGebra Gráfico</a></div>
+      <div class="ds-item"><a href="https://www.google.com/sheets/about/" target="_blank" rel="noopener">Planilhas Google</a></div>
     </div>
+
+    <p>O software não substitui a modelagem. Uma resposta calculada rapidamente pode estar errada se as variáveis, relações ou restrições não representarem corretamente o problema. O uso responsável das ferramentas exige compreender a estrutura do modelo, verificar os dados, interpretar a saída e avaliar a aplicabilidade da solução.</p>
   </section>
+
+  <section class="section" id="s7">
+    <p class="section-label">1.7 / síntese</p>
+    <h2>Integração dos conceitos</h2>
+
+    <p>A Pesquisa Operacional pode ser compreendida como uma abordagem estruturada de apoio à decisão. Ela parte de uma situação-problema, identifica objetivos e restrições, seleciona informações relevantes, constrói um modelo, produz uma solução e avalia sua aplicação. A matemática possui papel importante, mas está inserida em um processo maior que envolve compreensão gerencial, pensamento sistêmico, dados, tecnologia e julgamento humano.</p>
+
+    <p>O modelo reduz a complexidade da realidade para torná-la analisável. Essa simplificação deve ser orientada pela decisão que se pretende apoiar. Variáveis de decisão representam escolhas; parâmetros e variáveis exógenas descrevem as condições do problema; a função objetivo expressa o critério de desempenho; e as restrições delimitam as alternativas possíveis.</p>
+
+    <p>Modelos de simulação ajudam a explorar cenários e responder ao que pode acontecer sob diferentes hipóteses. Modelos de otimização procuram encontrar a melhor solução segundo um critério. Nos capítulos seguintes, a Programação Linear será apresentada como uma técnica de otimização aplicável a problemas em que as relações podem ser representadas por funções lineares.</p>
+
+    <table>
+      <thead><tr><th class="tleft">Conceito</th><th class="tleft">Significado</th></tr></thead>
+      <tbody>
+        <tr><td class="tleft">Decisão</td><td class="tleft">Escolha de um curso de ação entre alternativas.</td></tr>
+        <tr><td class="tleft">Pesquisa Operacional</td><td class="tleft">Aplicação de métodos científicos e quantitativos para apoiar decisões.</td></tr>
+        <tr><td class="tleft">Modelo</td><td class="tleft">Representação simplificada de um sistema real.</td></tr>
+        <tr><td class="tleft">Variável de decisão</td><td class="tleft">Valor controlável que deve ser determinado.</td></tr>
+        <tr><td class="tleft">Função objetivo</td><td class="tleft">Critério que se deseja maximizar ou minimizar.</td></tr>
+        <tr><td class="tleft">Restrição</td><td class="tleft">Condição ou limite que precisa ser respeitado.</td></tr>
+        <tr><td class="tleft">Solução viável</td><td class="tleft">Alternativa que atende a todas as restrições.</td></tr>
+        <tr><td class="tleft">Solução ótima</td><td class="tleft">Melhor solução viável segundo a função objetivo.</td></tr>
+        <tr><td class="tleft">Validação</td><td class="tleft">Verificação de que o modelo representa adequadamente o sistema.</td></tr>
+      </tbody>
+    </table>
+
+    <div class="note"><strong>Conclusão:</strong> a principal competência a desenvolver não é apenas resolver equações, mas formular corretamente problemas, escolher modelos adequados, interpretar resultados e reconhecer os limites de cada solução.</div>
+  </section>
+
   <section class="section" id="quiz">
     <p class="section-label">checkpoint</p>
     <h2>Teste rápido</h2>
+
     <div class="quiz">
-      <div class="quiz-header"><span class="quiz-title">Pergunta do capítulo</span></div>
-      <p class="quiz-q">Qual atitude é mais adequada ao trabalhar com este tema?</p>
+      <div class="quiz-header"><span class="quiz-title">Questão 1</span></div>
+      <p class="quiz-q">Qual afirmação descreve melhor o papel de um modelo no apoio à decisão?</p>
       <div class="quiz-options">
-        <button class="quiz-opt" onclick="checkAnswer(this, true, 'qfb')">Construir, resolver e interpretar o modelo, verificando se ele representa o problema real.</button>
-        <button class="quiz-opt" onclick="checkAnswer(this, false, 'qfb')">Resolver por tentativa e erro, sem explicitar variáveis e restrições.</button>
-        <button class="quiz-opt" onclick="checkAnswer(this, false, 'qfb')">Ignorar restrições para maximizar apenas a função objetivo.</button>
+        <button class="quiz-opt" onclick="checkAnswer(this, true, 'qfb1')">Representar de forma simplificada os elementos relevantes do sistema para analisar alternativas.</button>
+        <button class="quiz-opt" onclick="checkAnswer(this, false, 'qfb1')">Reproduzir todos os detalhes da realidade, sem qualquer simplificação.</button>
+        <button class="quiz-opt" onclick="checkAnswer(this, false, 'qfb1')">Substituir integralmente o julgamento e a responsabilidade do gestor.</button>
       </div>
-      <div class="quiz-feedback" id="qfb"></div>
+      <div class="quiz-feedback" id="qfb1"></div>
+    </div>
+
+    <div class="quiz">
+      <div class="quiz-header"><span class="quiz-title">Questão 2</span></div>
+      <p class="quiz-q">Em um problema de produção, a quantidade de cada produto que deverá ser fabricada é normalmente:</p>
+      <div class="quiz-options">
+        <button class="quiz-opt" onclick="checkAnswer(this, true, 'qfb2')">Uma variável de decisão.</button>
+        <button class="quiz-opt" onclick="checkAnswer(this, false, 'qfb2')">Uma restrição.</button>
+        <button class="quiz-opt" onclick="checkAnswer(this, false, 'qfb2')">Uma variável necessariamente aleatória.</button>
+      </div>
+      <div class="quiz-feedback" id="qfb2"></div>
+    </div>
+
+    <div class="quiz">
+      <div class="quiz-header"><span class="quiz-title">Questão 3</span></div>
+      <p class="quiz-q">Qual é a diferença essencial entre simulação e otimização?</p>
+      <div class="quiz-options">
+        <button class="quiz-opt" onclick="checkAnswer(this, true, 'qfb3')">A simulação compara comportamentos sob hipóteses; a otimização procura a melhor alternativa segundo um critério.</button>
+        <button class="quiz-opt" onclick="checkAnswer(this, false, 'qfb3')">A simulação sempre produz uma solução ótima; a otimização apenas descreve cenários.</button>
+        <button class="quiz-opt" onclick="checkAnswer(this, false, 'qfb3')">Não existe diferença prática entre as duas abordagens.</button>
+      </div>
+      <div class="quiz-feedback" id="qfb3"></div>
+    </div>
+
+    <div class="quiz">
+      <div class="quiz-header"><span class="quiz-title">Questão 4</span></div>
+      <p class="quiz-q">Por que uma solução matematicamente ótima ainda precisa ser avaliada antes da implementação?</p>
+      <div class="quiz-options">
+        <button class="quiz-opt" onclick="checkAnswer(this, true, 'qfb4')">Porque fatores humanos, institucionais e qualitativos podem não ter sido representados no modelo.</button>
+        <button class="quiz-opt" onclick="checkAnswer(this, false, 'qfb4')">Porque soluções matemáticas nunca podem ser utilizadas em organizações.</button>
+        <button class="quiz-opt" onclick="checkAnswer(this, false, 'qfb4')">Porque a implementação deve ignorar os resultados do modelo.</button>
+      </div>
+      <div class="quiz-feedback" id="qfb4"></div>
+    </div>
+
+    <div class="quiz">
+      <div class="quiz-header"><span class="quiz-title">Questão 5</span></div>
+      <p class="quiz-q">Qual atitude é mais adequada ao usar uma ferramenta computacional?</p>
+      <div class="quiz-options">
+        <button class="quiz-opt" onclick="checkAnswer(this, true, 'qfb5')">Verificar a formulação, os dados, a saída e a aplicabilidade da solução.</button>
+        <button class="quiz-opt" onclick="checkAnswer(this, false, 'qfb5')">Aceitar automaticamente qualquer resultado produzido pelo software.</button>
+        <button class="quiz-opt" onclick="checkAnswer(this, false, 'qfb5')">Inserir o maior número possível de variáveis, mesmo que sejam irrelevantes.</button>
+      </div>
+      <div class="quiz-feedback" id="qfb5"></div>
     </div>
   </section>
+
+  <section class="section" id="referencias">
+    <p class="section-label">fontes de estudo</p>
+    <h2>Referências utilizadas na organização do capítulo</h2>
+    <div class="refs-grid">
+      <div class="ref-card">
+        <div><span class="ref-type">livro</span><h4>Conceitos de decisão e enfoque gerencial</h4><p>Fonte para processo decisório, competição analítica, Big Data, heurísticas e enfoque gerencial da Pesquisa Operacional.</p></div>
+      </div>
+      <div class="ref-card">
+        <div><span class="ref-type">livro</span><h4>Modelagem de problemas gerenciais</h4><p>Fonte para classificação de variáveis e modelos, simulação, otimização, processo de construção e ferramentas computacionais.</p></div>
+      </div>
+      <div class="ref-card">
+        <div><span class="ref-type">livro</span><h4>MOREIRA, Daniel Augusto. Pesquisa Operacional</h4><p>Fonte para origem e evolução da área, definição, etapas da solução de problemas e objetivos do ensino de Pesquisa Operacional.</p></div>
+      </div>
+    </div>
+  </section>
+
   <div class="chapter-nav">
     <a href="../programacao_linear.html"><span class="dir">← anterior</span>Programação Linear — início</a>
     <a class="next" href="cap2.html"><span class="dir">próximo →</span>Cap. 2</a>
   </div>
 </div>
+
 <footer>
   <div class="container">
     <p>© 2026 · Prof. Clayton J A Silva</p>
     <p><a href="../programacao_linear.html">Programação Linear Aplicada</a></p>
   </div>
 </footer>
+
 <script>
-window.addEventListener('scroll',()=>{const h=document.documentElement;document.getElementById('progressFill').style.width=(h.scrollTop/(h.scrollHeight-h.clientHeight)*100)+'%';});
-function checkAnswer(btn,isCorrect,fbId){const group=btn.parentElement;const buttons=group.querySelectorAll('.quiz-opt');buttons.forEach(b=>b.disabled=true);btn.classList.add(isCorrect?'correct':'wrong');const fb=document.getElementById(fbId);fb.classList.add('show');if(!isCorrect) buttons.forEach(b=>{if(b.getAttribute('onclick').includes(', true,')) b.classList.add('correct');});fb.classList.add(isCorrect?'correct-fb':'wrong-fb');fb.textContent=isCorrect?'✓ Correto. Modelar, resolver e interpretar são etapas inseparáveis.':'✗ Revise os objetivos e a síntese do capítulo.';}
+window.addEventListener('scroll',()=>{
+  const h=document.documentElement;
+  const total=h.scrollHeight-h.clientHeight;
+  document.getElementById('progressFill').style.width=(total>0?h.scrollTop/total*100:0)+'%';
+});
+
+function checkAnswer(btn,isCorrect,fbId){
+  const group=btn.parentElement;
+  const buttons=group.querySelectorAll('.quiz-opt');
+  buttons.forEach(b=>b.disabled=true);
+  btn.classList.add(isCorrect?'correct':'wrong');
+  const fb=document.getElementById(fbId);
+  fb.classList.add('show');
+  if(!isCorrect){
+    buttons.forEach(b=>{
+      if(b.getAttribute('onclick').includes(', true,')) b.classList.add('correct');
+    });
+  }
+  fb.classList.add(isCorrect?'correct-fb':'wrong-fb');
+  fb.textContent=isCorrect
+    ? '✓ Correto. A resposta está coerente com os conceitos apresentados no capítulo.'
+    : '✗ Revise a seção correspondente e observe a alternativa destacada.';
+}
 </script>
 </body>
 </html>
