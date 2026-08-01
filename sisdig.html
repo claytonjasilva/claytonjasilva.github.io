@@ -1,13 +1,14 @@
 <!DOCTYPE html>
+
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Sistemas Digitais — Prof. Clayton J A Silva</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,600;1,300&display=swap" rel="stylesheet">
-  <style>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Sistemas Digitais — Prof. Clayton J A Silva</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&amp;family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,600;1,300&amp;display=swap" rel="stylesheet"/>
+<style>
     :root {
       --bg:        #0a0e17;
       --surface:   #111827;
@@ -195,264 +196,239 @@
       .hero { padding: 3.5rem 0 2.5rem; }
       h1 { font-size: 1.8rem; }
     }
-  </style>
+  
+nav .container{width:100%;max-width:1100px;margin:0 auto;padding-left:2rem;padding-right:2rem;box-sizing:border-box}
+.nav-brand{display:inline-block;padding:.2rem 0}
+.section-heading{display:flex;align-items:center;gap:.85rem;margin-bottom:1.35rem;font-size:clamp(1.35rem,2vw,1.7rem);font-weight:600;letter-spacing:-.01em}
+.section-heading::after{content:'';flex:1;height:1px;background:var(--border)}
+.section-number{font-family:var(--font-mono);font-size:.72rem;color:var(--accent);letter-spacing:.12em;white-space:nowrap}
+.schedule-time{font-family:var(--font-mono);color:var(--text);font-size:.95rem;margin:-.35rem 0 1.2rem}
+.disabled-link,.disabled-nav-link{color:var(--muted)!important;cursor:default;pointer-events:none;text-decoration:none!important}
+.disabled-card{opacity:.7}
+.disabled-card:hover{border-color:var(--border)}
+@media(max-width:640px){
+  nav .container{padding-left:1rem;padding-right:1rem}
+  .nav-links{overflow-x:auto;flex-wrap:nowrap;width:100%;padding-bottom:.2rem}
+  .nav-links li{flex:0 0 auto}
+}
+</style>
 </head>
 <body>
-
 <!-- NAV -->
 <nav>
-  <div class="container">
-    <span class="nav-brand">claytonjasilva.github.io</span>
-    <ul class="nav-links">
-      <li><a href="#agenda">agenda</a></li>
-      <li><a href="grid.html">grid</a></li>
-      <li><a href="#conteudo">conteúdo</a></li>
-      <li><a href="praticas.html">práticas</a></li>
-      <li><a href="quiz.html">exercícios</a></li>
-      <li><a href="#avaliacoes">avaliações</a></li>
-      <li><a href="#datasheets">datasheets</a></li>
-      <li><a href="#ferramentas">ferramentas</a></li>
-      <li><a href="https://claytonjasilva.github.io">← home</a></li>
-    </ul>
-  </div>
+<div class="container">
+<a class="nav-brand" href="index.html">claytonjasilva.github.io</a>
+<ul class="nav-links">
+<li><a href="#agenda">agenda</a></li>
+<li><a href="grid.html">grid</a></li>
+<li><a href="#conteudo">conteúdo</a></li>
+<li><a aria-disabled="true" class="disabled-nav-link" href="#" tabindex="-1">práticas</a></li>
+<li><a aria-disabled="true" class="disabled-nav-link" href="#" tabindex="-1">exercícios</a></li>
+<li><a href="#avaliacoes">avaliações</a></li>
+<li><a href="#datasheets">datasheets</a></li>
+<li><a href="#ferramentas">ferramentas</a></li>
+<li><a href="https://claytonjasilva.github.io">← home</a></li>
+</ul>
+</div>
 </nav>
-
 <!-- HERO -->
 <section class="hero">
-  <div class="container">
-    <p class="hero-eyebrow">Ibmec RJ — Engenharia da Computação</p>
-    <h1>Sistemas<br><strong>Digitais</strong></h1>
-    <p class="hero-sub">Prof. Clayton J A Silva · Rev 2026.2 · sextas-feiras, 7h30–11h40</p>
-    <div class="hero-tags">
-      <span class="tag">Álgebra Booleana</span>
-      <span class="tag">Circuitos Combinacionais</span>
-      <span class="tag">Flip-Flops</span>
-      <span class="tag">Máquinas de Estado</span>
-      <span class="tag">Registradores</span>
-      <span class="tag">Contadores</span>
-    </div>
-  </div>
-</section>
-
 <div class="container">
 
-  <!-- AGENDA -->
-  <section class="section" id="agenda">
-    <p class="section-title">01 / agenda — 2026.2 · sextas-feiras, 7h30–11h40</p>
-    <div class="agenda-wrap">
-      <table>
-        <thead>
-          <tr>
-            <th>Data</th>
-            <th>Conteúdo</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr><td>07/08/2026</td><td>Introdução ao curso · Cap. 1 — Sinais digitais e analógicos</td></tr>
-          <tr><td>14/08/2026</td><td>Cap. 2 — Álgebra Booleana e Portas Lógicas</td></tr>
-          <tr><td>21/08/2026</td><td>Cap. 2 — Álgebra Booleana (cont.)</td></tr>
-          <tr><td>28/08/2026</td><td>Cap. 3 — Projeto de circuitos combinacionais</td></tr>
-          <tr><td>04/09/2026</td><td>Cap. 3 — Mapa K · Cap. 4 — Somadores</td></tr>
-          <tr class="row-feriado"><td>07/09/2026</td><td>Feriado — Independência do Brasil (segunda, não afeta a sexta)</td></tr>
-          <tr><td>11/09/2026</td><td>Cap. 4 — Subtratores · Cap. 5 — Comparadores</td></tr>
-          <tr><td>18/09/2026</td><td>Revisão geral — Cap. 1 a 5</td></tr>
-          <tr class="row-ap"><td>25/09/2026</td><td>▶ Aplicação da AP1 (período 24–30/09)</td></tr>
-          <tr><td>02/10/2026</td><td>Mostra dos resultados da AP1 · Cap. 6 — Codificadores/Decodificadores</td></tr>
-          <tr class="row-feriado"><td>12/10/2026</td><td>Feriado — Nossa Senhora Aparecida (segunda, não afeta a sexta)</td></tr>
-          <tr><td>09/10/2026</td><td>Cap. 6 — Codificadores/Decodificadores (cont.)</td></tr>
-          <tr><td>16/10/2026</td><td>Cap. 7 — Multiplexadores</td></tr>
-          <tr><td>23/10/2026</td><td>Cap. 8 — Fundamentos de Máquinas Sequenciais</td></tr>
-          <tr><td>30/10/2026</td><td>Cap. 9 — Memória, Células Binárias e Flip-Flops</td></tr>
-          <tr><td>06/11/2026</td><td>Cap. 10 — Registradores · Revisão para AP2</td></tr>
-          <tr class="row-ap"><td>13/11/2026</td><td>▶ Aplicação da AP2 (período 12–18/11)</td></tr>
-          <tr class="row-feriado"><td>20/11/2026</td><td>Feriado — Consciência Negra (sem aula)</td></tr>
-          <tr><td>27/11/2026</td><td>Cap. 11 — Divisores de Frequência e Contadores · Mostra AP2</td></tr>
-          <tr class="row-as"><td>04/12/2026</td><td>▶ Aplicação da AS (período 25/11–03/12)</td></tr>
-        </tbody>
-      </table>
-    </div>
-    <p style="margin-top:1rem; font-family: var(--font-mono); font-size: 0.78rem;"><a href="https://claytonjasilva.github.io/calendario-academico.html">Ver calendário acadêmico institucional completo →</a></p>
-  </section>
-
-  <!-- GRID -->
-  <section class="section" id="grid">
-    <p class="section-title">grid da disciplina</p>
-    <div class="card" style="max-width:500px;">
-      <h3 style="margin-bottom:0.5rem;">Objetivos, conteúdo programático e referências</h3>
-      <p style="margin-bottom:1rem;">Consulte o grid completo da disciplina, com os 5 objetivos de aprendizagem, os 14 tópicos do conteúdo programático e a bibliografia básica e complementar.</p>
-      <a class="card-link" href="sisdig_aulas/grid.html">Ver grid da disciplina →</a>
-    </div>
-  </section>
-
-  <!-- CONTEÚDO -->
-  <section class="section" id="conteudo">
-    <p class="section-title">02 / conteúdo das aulas</p>
-    <div class="content-grid">
-      <div class="content-card"><span class="content-num">Cap 1</span><a href="sisdig_aulas/cap1.html">Sinais Analógicos e Digitais</a></div>
-      <div class="content-card"><span class="content-num">Cap 2</span><a href="sisdig_aulas/cap2.html">Álgebra Booleana e Portas Lógicas</a></div>
-      <div class="content-card"><span class="content-num">Cap 3</span><a href="sisdig_aulas/cap3.html">Projeto de Circuitos Combinacionais</a></div>
-      <div class="content-card"><span class="content-num">Cap 4</span><a href="sisdig_aulas/cap4.html">Circuitos Aritméticos — Somadores e Subtratores</a></div>
-      <div class="content-card"><span class="content-num">Cap 5</span><a href="sisdig_aulas/cap5.html">Circuitos Lógicos — Comparadores</a></div>
-      <div class="content-card"><span class="content-num">Cap 6</span><a href="sisdig_aulas/cap6.html">Circuitos Codificadores e Decodificadores</a></div>
-      <div class="content-card"><span class="content-num">Cap 7</span><a href="sisdig_aulas/cap7.html">Circuitos Multiplexadores</a></div>
-      <div class="content-card"><span class="content-num">Cap 8</span><a href="sisdig_aulas/cap8.html">Fundamentos de Máquinas Sequenciais</a></div>
-      <div class="content-card"><span class="content-num">Cap 9</span><a href="sisdig_aulas/cap9.html">Memória — Células de Memória e Flip-Flops</a></div>
-      <div class="content-card"><span class="content-num">Cap 10</span><a href="sisdig_aulas/cap10.html">Aplicações com FF — Registradores</a></div>
-      <div class="content-card"><span class="content-num">Cap 11</span><a href="sisdig_aulas/cap11.html">Aplicações com FF — Divisores de Frequência e Contadores</a></div>
-    </div>
-  </section>
-
-  <!-- PRÁTICAS -->
-  <section class="section" id="praticas">
-    <p class="section-title">03 / práticas de laboratório</p>
-    <div class="card" style="max-width:500px;">
-      <h3 style="margin-bottom:0.5rem;">12 práticas de laboratório</h3>
-      <p style="margin-bottom:1rem;">Das portas lógicas básicas aos circuitos sequenciais com registradores — agora reunidas em uma página dedicada.</p>
-      <a class="card-link" href="sisdig_aulas/praticas.html">Ver todas as práticas →</a>
-    </div>
-  </section>
-
-  <!-- EXERCÍCIOS -->
-  <section class="section" id="exercicios">
-    <p class="section-title">banco de exercícios</p>
-    <div class="card" style="max-width:500px;">
-      <h3 style="margin-bottom:0.5rem;">66 exercícios revisados, por área de conhecimento</h3>
-      <p style="margin-bottom:1rem;">Banco filtrável por área, tipo e nível, com roteiro de resolução e marcação de progresso — Conversão A/D, Álgebra Booleana, Portas Lógicas, Combinacionais, Mux, Flip-Flops e mais.</p>
-      <a class="card-link" href="sisdig_aulas/quiz.html">Acessar banco de exercícios →</a>
-    </div>
-  </section>
-
-  <!-- AVALIAÇÕES -->
-  <section class="section" id="avaliacoes">
-    <p class="section-title">04 / avaliações</p>
-    <div class="aval-grid">
-
-      <div class="aval-card ap">
-        <span class="aval-badge badge-ap">AP · 40% cada</span>
-        <h3>Avaliações Bimestrais</h3>
-        <ul class="aval-list">
-          <li><a href="https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/sisdig_aulas/sistemas_digitais_trabalhoap1_26_1.md" target="_blank">Trabalho AP1</a></li>
-          <li>Trabalho AP2 — a divulgar</li>
-        </ul>
-      </div>
-
-      <div class="aval-card ac">
-        <span class="aval-badge badge-ac">AC · 20%</span>
-        <h3>Avaliação Continuada</h3>
-        <ul class="aval-list">
-          <li>Form 1</li>
-          <li>Form 2</li>
-          <li>Form 3</li>
-          <li>Form 4</li>
-        </ul>
-      </div>
-
-      <div class="aval-card ap" style="border-color: rgba(0,194,255,0.15);">
-        <span class="aval-badge badge-ap">Sistema de Avaliações</span>
-        <h3>Regras e Pesos</h3>
-        <ul class="aval-list">
-          <li>AC — peso 20% da nota final</li>
-          <li>AP1 — peso 40% da nota final</li>
-          <li>AP2 — peso 40% da nota final</li>
-        </ul>
-        <a href="https://claytonjasilva.github.io/avaliacoes.html" style="font-family:var(--font-mono); font-size:0.78rem; margin-top:0.5rem;">Ver sistema completo →</a>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- DATASHEETS -->
-  <section class="section" id="datasheets">
-    <p class="section-title">05 / datasheets de referência</p>
-    <div class="ds-grid">
-
-      <div class="ds-item">
-        <svg class="ds-icon" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 2h7l3 3v9H3V2z" stroke="#7c3aed" stroke-width="1.2" fill="none"/><line x1="5" y1="7" x2="11" y2="7" stroke="#7c3aed" stroke-width="1"/><line x1="5" y1="9.5" x2="9" y2="9.5" stroke="#7c3aed" stroke-width="1"/></svg>
-        <a href="https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/sisdig_aulas/sistemas_digitais_datasheet_CD14082BCP_Motorola.pdf" target="_blank">Porta AND — CD14082BCP</a>
-      </div>
-      <div class="ds-item">
-        <svg class="ds-icon" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 2h7l3 3v9H3V2z" stroke="#7c3aed" stroke-width="1.2" fill="none"/><line x1="5" y1="7" x2="11" y2="7" stroke="#7c3aed" stroke-width="1"/><line x1="5" y1="9.5" x2="9" y2="9.5" stroke="#7c3aed" stroke-width="1"/></svg>
-        <a href="https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/sisdig_aulas/sistemas_digitais_datasheet_74HC08N_Philips.pdf" target="_blank">Porta AND — 74HC08N</a>
-      </div>
-      <div class="ds-item">
-        <svg class="ds-icon" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 2h7l3 3v9H3V2z" stroke="#7c3aed" stroke-width="1.2" fill="none"/><line x1="5" y1="7" x2="11" y2="7" stroke="#7c3aed" stroke-width="1"/><line x1="5" y1="9.5" x2="9" y2="9.5" stroke="#7c3aed" stroke-width="1"/></svg>
-        <a href="https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/sisdig_aulas/sistemas_digitais_datasheet_SN74HC32N_Texas.pdf" target="_blank">Porta OR — SN74HC32N</a>
-      </div>
-      <div class="ds-item">
-        <svg class="ds-icon" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 2h7l3 3v9H3V2z" stroke="#7c3aed" stroke-width="1.2" fill="none"/><line x1="5" y1="7" x2="11" y2="7" stroke="#7c3aed" stroke-width="1"/><line x1="5" y1="9.5" x2="9" y2="9.5" stroke="#7c3aed" stroke-width="1"/></svg>
-        <a href="https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/sisdig_aulas/sistemas_digitais_datasheet_CD4011BE_Texas.pdf" target="_blank">Porta NAND — CD4011BE</a>
-      </div>
-      <div class="ds-item">
-        <svg class="ds-icon" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 2h7l3 3v9H3V2z" stroke="#7c3aed" stroke-width="1.2" fill="none"/><line x1="5" y1="7" x2="11" y2="7" stroke="#7c3aed" stroke-width="1"/><line x1="5" y1="9.5" x2="9" y2="9.5" stroke="#7c3aed" stroke-width="1"/></svg>
-        <a href="https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/sisdig_aulas/sistemas_digitais_datasheet_74HC00N_Philips.pdf" target="_blank">Porta NAND — 74HC00N</a>
-      </div>
-      <div class="ds-item">
-        <svg class="ds-icon" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 2h7l3 3v9H3V2z" stroke="#7c3aed" stroke-width="1.2" fill="none"/><line x1="5" y1="7" x2="11" y2="7" stroke="#7c3aed" stroke-width="1"/><line x1="5" y1="9.5" x2="9" y2="9.5" stroke="#7c3aed" stroke-width="1"/></svg>
-        <a href="https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/sisdig_aulas/sistemas_digitais_datasheet_SN74HC02N_Texas.pdf" target="_blank">Porta NOR — SN74HC02N</a>
-      </div>
-      <div class="ds-item">
-        <svg class="ds-icon" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 2h7l3 3v9H3V2z" stroke="#7c3aed" stroke-width="1.2" fill="none"/><line x1="5" y1="7" x2="11" y2="7" stroke="#7c3aed" stroke-width="1"/><line x1="5" y1="9.5" x2="9" y2="9.5" stroke="#7c3aed" stroke-width="1"/></svg>
-        <a href="https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/sisdig_aulas/sistemas_digitais_datasheet_SN74HC04_Philips.pdf" target="_blank">Inversor — SN74HC04</a>
-      </div>
-      <div class="ds-item">
-        <svg class="ds-icon" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 2h7l3 3v9H3V2z" stroke="#7c3aed" stroke-width="1.2" fill="none"/><line x1="5" y1="7" x2="11" y2="7" stroke="#7c3aed" stroke-width="1"/><line x1="5" y1="9.5" x2="9" y2="9.5" stroke="#7c3aed" stroke-width="1"/></svg>
-        <a href="https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/sisdig_aulas/sistemas_digitais_datasheet_SN74HC151N_Texas.pdf" target="_blank">MUX — SN74HC151N</a>
-      </div>
-      <div class="ds-item">
-        <svg class="ds-icon" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 2h7l3 3v9H3V2z" stroke="#7c3aed" stroke-width="1.2" fill="none"/><line x1="5" y1="7" x2="11" y2="7" stroke="#7c3aed" stroke-width="1"/><line x1="5" y1="9.5" x2="9" y2="9.5" stroke="#7c3aed" stroke-width="1"/></svg>
-        <a href="https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/sisdig_aulas/sistemas_digitais_datasheet_CD4511_Texas.pdf" target="_blank">Coder BCD — CD4511</a>
-      </div>
-      <div class="ds-item">
-        <svg class="ds-icon" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 2h7l3 3v9H3V2z" stroke="#7c3aed" stroke-width="1.2" fill="none"/><line x1="5" y1="7" x2="11" y2="7" stroke="#7c3aed" stroke-width="1"/><line x1="5" y1="9.5" x2="9" y2="9.5" stroke="#7c3aed" stroke-width="1"/></svg>
-        <a href="https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/sisdig_aulas/sistemas_digitais_datasheet_CD4028_Texas.pdf" target="_blank">Decoder BCD-Decimal — CD4018</a>
-      </div>
-      <div class="ds-item">
-        <svg class="ds-icon" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 2h7l3 3v9H3V2z" stroke="#7c3aed" stroke-width="1.2" fill="none"/><line x1="5" y1="7" x2="11" y2="7" stroke="#7c3aed" stroke-width="1"/><line x1="5" y1="9.5" x2="9" y2="9.5" stroke="#7c3aed" stroke-width="1"/></svg>
-        <a href="https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/sisdig_aulas/sistemas_digitais_datasheet_74HC161_Philips.pdf" target="_blank">Counter — 74HC161</a>
-      </div>
-      <div class="ds-item">
-        <svg class="ds-icon" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 2h7l3 3v9H3V2z" stroke="#7c3aed" stroke-width="1.2" fill="none"/><line x1="5" y1="7" x2="11" y2="7" stroke="#7c3aed" stroke-width="1"/><line x1="5" y1="9.5" x2="9" y2="9.5" stroke="#7c3aed" stroke-width="1"/></svg>
-        <a href="https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/sisdig_aulas/sistemas_digitais_datasheet_74LS283_National.pdf" target="_blank">Adder — 74LS283</a>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- FERRAMENTAS -->
-  <section class="section" id="ferramentas">
-    <p class="section-title">06 / ferramentas do curso</p>
-    <p style="color: var(--muted); margin-bottom: 1.5rem; max-width: 600px;">Softwares utilizados para simulação de circuitos digitais, projeto de PCB e programação de microcontroladores ao longo da disciplina.</p>
-    <div class="ds-grid">
-
-      <div class="ds-item">
-        <svg class="ds-icon" width="16" height="16" viewBox="0 0 16 16" fill="none"><rect x="2" y="3" width="12" height="9" rx="1.5" stroke="#00c2ff" stroke-width="1.2"/><line x1="2" y1="6" x2="14" y2="6" stroke="#00c2ff" stroke-width="1"/><circle cx="5" cy="9" r="1" fill="#00c2ff"/><circle cx="9" cy="9" r="1" fill="#00c2ff"/></svg>
-        <a href="https://sourceforge.net/projects/circuit/" target="_blank">Logisim — simulador de circuitos lógicos</a>
-      </div>
-      <div class="ds-item">
-        <svg class="ds-icon" width="16" height="16" viewBox="0 0 16 16" fill="none"><rect x="2" y="2" width="12" height="12" rx="2" stroke="#00c2ff" stroke-width="1.2"/><path d="M5 5h6M5 8h6M5 11h3" stroke="#00c2ff" stroke-width="1"/></svg>
-        <a href="https://easyeda.com/page/download" target="_blank">EasyEDA — projeto de circuitos e PCB</a>
-      </div>
-      <div class="ds-item">
-        <svg class="ds-icon" width="16" height="16" viewBox="0 0 16 16" fill="none"><rect x="2" y="3" width="12" height="10" rx="1.5" stroke="#00c2ff" stroke-width="1.2"/><path d="M5 7l2 2-2 2M9 11h2" stroke="#00c2ff" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        <a href="https://www.informer.com/download-atmel-studio/" target="_blank">Atmel Studio 7.0 — IDE para AVR/ATmega</a>
-      </div>
-      <div class="ds-item">
-        <svg class="ds-icon" width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="6" stroke="#00c2ff" stroke-width="1.2"/><path d="M8 2v3M8 11v3" stroke="#00c2ff" stroke-width="1.2"/><circle cx="8" cy="8" r="1.5" fill="#00c2ff"/></svg>
-        <a href="https://www.arduino.cc/en/software" target="_blank">Arduino IDE 1.8.15 — programação de microcontroladores</a>
-      </div>
-
-    </div>
-  </section>
+<h1>Sistemas<br/><strong>Digitais</strong></h1>
+<p class="hero-sub">Prof. Clayton J A Silva - Ibmec Rio - 2026.2</p>
 
 </div>
+</section>
+<div class="container">
+<!-- AGENDA -->
+<section class="section" id="agenda">
+<h2 class="section-heading"><span class="section-number">01</span>Agenda</h2><p class="schedule-time">Sexta-feira, 07h30 às 11h40</p>
+<div class="agenda-wrap">
+<table>
+<thead>
+<tr>
+<th>Data</th>
+<th>Conteúdo</th>
+</tr>
+</thead>
+<tbody>
+<tr><td>07/08/2026</td><td>Introdução ao curso · Cap. 1 — Sinais digitais e analógicos</td></tr>
+<tr><td>14/08/2026</td><td>Cap. 2 — Álgebra Booleana e Portas Lógicas</td></tr>
+<tr><td>21/08/2026</td><td>Cap. 2 — Álgebra Booleana (cont.)</td></tr>
+<tr><td>28/08/2026</td><td>Cap. 3 — Projeto de circuitos combinacionais</td></tr>
+<tr><td>04/09/2026</td><td>Cap. 3 — Mapa K · Cap. 4 — Somadores</td></tr>
+<tr class="row-feriado"><td>07/09/2026</td><td>Feriado — Independência do Brasil (segunda, não afeta a sexta)</td></tr>
+<tr><td>11/09/2026</td><td>Cap. 4 — Subtratores · Cap. 5 — Comparadores</td></tr>
+<tr><td>18/09/2026</td><td>Revisão geral — Cap. 1 a 5</td></tr>
+<tr class="row-ap"><td>25/09/2026</td><td>▶ Aplicação da AP1 (período 24–30/09)</td></tr>
+<tr><td>02/10/2026</td><td>Mostra dos resultados da AP1 · Cap. 6 — Codificadores/Decodificadores</td></tr>
+<tr class="row-feriado"><td>12/10/2026</td><td>Feriado — Nossa Senhora Aparecida (segunda, não afeta a sexta)</td></tr>
+<tr><td>09/10/2026</td><td>Cap. 6 — Codificadores/Decodificadores (cont.)</td></tr>
+<tr><td>16/10/2026</td><td>Cap. 7 — Multiplexadores</td></tr>
+<tr><td>23/10/2026</td><td>Cap. 8 — Fundamentos de Máquinas Sequenciais</td></tr>
+<tr><td>30/10/2026</td><td>Cap. 9 — Memória, Células Binárias e Flip-Flops</td></tr>
+<tr><td>06/11/2026</td><td>Cap. 10 — Registradores · Cap. 11 — Divisores de Frequência e Contadores · Revisão para AP2</td></tr>
+<tr class="row-ap"><td>13/11/2026</td><td>▶ Aplicação da AP2</td></tr>
+<tr class="row-feriado"><td>20/11/2026</td><td>Feriado — Consciência Negra (sem aula)</td></tr>
+<tr class="row-as"><td>27/11/2026</td><td>▶ Aplicação da AS</td></tr>
 
+</tbody>
+</table>
+</div>
+<p style="margin-top:1rem; font-family: var(--font-mono); font-size: 0.78rem;"><a href="https://claytonjasilva.github.io/calendario-academico.html">Ver calendário acadêmico institucional completo →</a></p>
+</section>
+<!-- GRID -->
+<section class="section" id="grid">
+<h2 class="section-heading"><span class="section-number">02</span>Grid da Disciplina</h2>
+<div class="card" style="max-width:500px;">
+<h3 style="margin-bottom:0.5rem;">Objetivos, conteúdo programático e referências</h3>
+<p style="margin-bottom:1rem;">Consulte o grid completo da disciplina, com os 5 objetivos de aprendizagem, os 14 tópicos do conteúdo programático e a bibliografia básica e complementar.</p>
+<a class="card-link" href="sisdig_aulas/grid.html">Ver grid da disciplina →</a>
+</div>
+</section>
+<!-- CONTEÚDO -->
+<section class="section" id="conteudo">
+<h2 class="section-heading"><span class="section-number">03</span>Conteúdo das Aulas</h2>
+<div class="content-grid">
+<div class="content-card"><span class="content-num">Cap 1</span><a href="sisdig_aulas/cap1.html">Sinais Analógicos e Digitais</a></div>
+<div class="content-card"><span class="content-num">Cap 2</span><a href="sisdig_aulas/cap2.html">Álgebra Booleana e Portas Lógicas</a></div>
+<div class="content-card"><span class="content-num">Cap 3</span><a href="sisdig_aulas/cap3.html">Projeto de Circuitos Combinacionais</a></div>
+<div class="content-card"><span class="content-num">Cap 4</span><a href="sisdig_aulas/cap4.html">Circuitos Aritméticos — Somadores e Subtratores</a></div>
+<div class="content-card"><span class="content-num">Cap 5</span><a href="sisdig_aulas/cap5.html">Circuitos Lógicos — Comparadores</a></div>
+<div class="content-card"><span class="content-num">Cap 6</span><a href="sisdig_aulas/cap6.html">Circuitos Codificadores e Decodificadores</a></div>
+<div class="content-card"><span class="content-num">Cap 7</span><a href="sisdig_aulas/cap7.html">Circuitos Multiplexadores</a></div>
+<div class="content-card"><span class="content-num">Cap 8</span><a href="sisdig_aulas/cap8.html">Fundamentos de Máquinas Sequenciais</a></div>
+<div class="content-card"><span class="content-num">Cap 9</span><a href="sisdig_aulas/cap9.html">Memória — Células de Memória e Flip-Flops</a></div>
+<div class="content-card"><span class="content-num">Cap 10</span><a href="sisdig_aulas/cap10.html">Aplicações com FF — Registradores</a></div>
+<div class="content-card"><span class="content-num">Cap 11</span><a href="sisdig_aulas/cap11.html">Aplicações com FF — Divisores de Frequência e Contadores</a></div>
+</div>
+</section>
+<!-- PRÁTICAS -->
+<section class="section" id="praticas">
+<h2 class="section-heading"><span class="section-number">04</span>Práticas de Laboratório</h2>
+<div class="card disabled-card" style="max-width:500px;">
+<h3 style="margin-bottom:0.5rem;">12 práticas de laboratório</h3>
+<p style="margin-bottom:1rem;">Das portas lógicas básicas aos circuitos sequenciais com registradores — agora reunidas em uma página dedicada.</p>
+<a aria-disabled="true" class="card-link disabled-link" href="#" tabindex="-1">Ver todas as práticas →</a>
+</div>
+</section>
+<!-- EXERCÍCIOS -->
+<section class="section" id="exercicios">
+<h2 class="section-heading"><span class="section-number">05</span>Exercícios</h2>
+<div class="card disabled-card" style="max-width:500px;">
+<h3 style="margin-bottom:0.5rem;">66 exercícios revisados, por área de conhecimento</h3>
+<p style="margin-bottom:1rem;">Banco filtrável por área, tipo e nível, com roteiro de resolução e marcação de progresso — Conversão A/D, Álgebra Booleana, Portas Lógicas, Combinacionais, Mux, Flip-Flops e mais.</p>
+<a aria-disabled="true" class="card-link disabled-link" href="#" tabindex="-1">Acessar banco de exercícios →</a>
+</div>
+</section>
+<!-- AVALIAÇÕES -->
+<section class="section" id="avaliacoes">
+<h2 class="section-heading"><span class="section-number">06</span>Avaliações</h2>
+<div class="aval-grid">
+<div class="aval-card ap">
+<span class="aval-badge badge-ap">AP · 40% cada</span>
+<h3>Avaliações Bimestrais</h3>
+<ul class="aval-list"><li><span class="disabled-link">Trabalho AP1</span></li><li><span class="disabled-link">Trabalho AP2</span></li><li>Os links serão disponibilizados à medida que a disciplina for ministrada.</li></ul>
+</div>
+<div class="aval-card ac">
+<span class="aval-badge badge-ac">AC · 20%</span>
+<h3>Avaliação Continuada</h3>
+<ul class="aval-list"><li>Os formulários serão disponibilizados à medida que a disciplina for ministrada.</li></ul>
+</div>
+<div class="aval-card ap" style="border-color: rgba(0,194,255,0.15);">
+<span class="aval-badge badge-ap">Sistema de Avaliações</span>
+<h3>Regras e Pesos</h3>
+<ul class="aval-list">
+<li>AC — peso 20% da nota final</li>
+<li>AP1 — peso 40% da nota final</li>
+<li>AP2 — peso 40% da nota final</li>
+</ul>
+<a href="https://claytonjasilva.github.io/avaliacoes.html" style="font-family:var(--font-mono); font-size:0.78rem; margin-top:0.5rem;">Ver sistema completo →</a>
+</div>
+</div>
+</section>
+<!-- DATASHEETS -->
+<section class="section" id="datasheets">
+<h2 class="section-heading"><span class="section-number">07</span>Datasheets de Referência</h2>
+<div class="ds-grid">
+<div class="ds-item">
+<svg class="ds-icon" fill="none" height="16" viewbox="0 0 16 16" width="16"><path d="M3 2h7l3 3v9H3V2z" fill="none" stroke="#7c3aed" stroke-width="1.2"></path><line stroke="#7c3aed" stroke-width="1" x1="5" x2="11" y1="7" y2="7"></line><line stroke="#7c3aed" stroke-width="1" x1="5" x2="9" y1="9.5" y2="9.5"></line></svg>
+<a href="https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/sisdig_aulas/sistemas_digitais_datasheet_CD14082BCP_Motorola.pdf" target="_blank">Porta AND — CD14082BCP</a>
+</div>
+<div class="ds-item">
+<svg class="ds-icon" fill="none" height="16" viewbox="0 0 16 16" width="16"><path d="M3 2h7l3 3v9H3V2z" fill="none" stroke="#7c3aed" stroke-width="1.2"></path><line stroke="#7c3aed" stroke-width="1" x1="5" x2="11" y1="7" y2="7"></line><line stroke="#7c3aed" stroke-width="1" x1="5" x2="9" y1="9.5" y2="9.5"></line></svg>
+<a href="https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/sisdig_aulas/sistemas_digitais_datasheet_74HC08N_Philips.pdf" target="_blank">Porta AND — 74HC08N</a>
+</div>
+<div class="ds-item">
+<svg class="ds-icon" fill="none" height="16" viewbox="0 0 16 16" width="16"><path d="M3 2h7l3 3v9H3V2z" fill="none" stroke="#7c3aed" stroke-width="1.2"></path><line stroke="#7c3aed" stroke-width="1" x1="5" x2="11" y1="7" y2="7"></line><line stroke="#7c3aed" stroke-width="1" x1="5" x2="9" y1="9.5" y2="9.5"></line></svg>
+<a href="https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/sisdig_aulas/sistemas_digitais_datasheet_SN74HC32N_Texas.pdf" target="_blank">Porta OR — SN74HC32N</a>
+</div>
+<div class="ds-item">
+<svg class="ds-icon" fill="none" height="16" viewbox="0 0 16 16" width="16"><path d="M3 2h7l3 3v9H3V2z" fill="none" stroke="#7c3aed" stroke-width="1.2"></path><line stroke="#7c3aed" stroke-width="1" x1="5" x2="11" y1="7" y2="7"></line><line stroke="#7c3aed" stroke-width="1" x1="5" x2="9" y1="9.5" y2="9.5"></line></svg>
+<a href="https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/sisdig_aulas/sistemas_digitais_datasheet_CD4011BE_Texas.pdf" target="_blank">Porta NAND — CD4011BE</a>
+</div>
+<div class="ds-item">
+<svg class="ds-icon" fill="none" height="16" viewbox="0 0 16 16" width="16"><path d="M3 2h7l3 3v9H3V2z" fill="none" stroke="#7c3aed" stroke-width="1.2"></path><line stroke="#7c3aed" stroke-width="1" x1="5" x2="11" y1="7" y2="7"></line><line stroke="#7c3aed" stroke-width="1" x1="5" x2="9" y1="9.5" y2="9.5"></line></svg>
+<a href="https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/sisdig_aulas/sistemas_digitais_datasheet_74HC00N_Philips.pdf" target="_blank">Porta NAND — 74HC00N</a>
+</div>
+<div class="ds-item">
+<svg class="ds-icon" fill="none" height="16" viewbox="0 0 16 16" width="16"><path d="M3 2h7l3 3v9H3V2z" fill="none" stroke="#7c3aed" stroke-width="1.2"></path><line stroke="#7c3aed" stroke-width="1" x1="5" x2="11" y1="7" y2="7"></line><line stroke="#7c3aed" stroke-width="1" x1="5" x2="9" y1="9.5" y2="9.5"></line></svg>
+<a href="https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/sisdig_aulas/sistemas_digitais_datasheet_SN74HC02N_Texas.pdf" target="_blank">Porta NOR — SN74HC02N</a>
+</div>
+<div class="ds-item">
+<svg class="ds-icon" fill="none" height="16" viewbox="0 0 16 16" width="16"><path d="M3 2h7l3 3v9H3V2z" fill="none" stroke="#7c3aed" stroke-width="1.2"></path><line stroke="#7c3aed" stroke-width="1" x1="5" x2="11" y1="7" y2="7"></line><line stroke="#7c3aed" stroke-width="1" x1="5" x2="9" y1="9.5" y2="9.5"></line></svg>
+<a href="https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/sisdig_aulas/sistemas_digitais_datasheet_SN74HC04_Philips.pdf" target="_blank">Inversor — SN74HC04</a>
+</div>
+<div class="ds-item">
+<svg class="ds-icon" fill="none" height="16" viewbox="0 0 16 16" width="16"><path d="M3 2h7l3 3v9H3V2z" fill="none" stroke="#7c3aed" stroke-width="1.2"></path><line stroke="#7c3aed" stroke-width="1" x1="5" x2="11" y1="7" y2="7"></line><line stroke="#7c3aed" stroke-width="1" x1="5" x2="9" y1="9.5" y2="9.5"></line></svg>
+<a href="https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/sisdig_aulas/sistemas_digitais_datasheet_SN74HC151N_Texas.pdf" target="_blank">MUX — SN74HC151N</a>
+</div>
+<div class="ds-item">
+<svg class="ds-icon" fill="none" height="16" viewbox="0 0 16 16" width="16"><path d="M3 2h7l3 3v9H3V2z" fill="none" stroke="#7c3aed" stroke-width="1.2"></path><line stroke="#7c3aed" stroke-width="1" x1="5" x2="11" y1="7" y2="7"></line><line stroke="#7c3aed" stroke-width="1" x1="5" x2="9" y1="9.5" y2="9.5"></line></svg>
+<a href="https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/sisdig_aulas/sistemas_digitais_datasheet_CD4511_Texas.pdf" target="_blank">Coder BCD — CD4511</a>
+</div>
+<div class="ds-item">
+<svg class="ds-icon" fill="none" height="16" viewbox="0 0 16 16" width="16"><path d="M3 2h7l3 3v9H3V2z" fill="none" stroke="#7c3aed" stroke-width="1.2"></path><line stroke="#7c3aed" stroke-width="1" x1="5" x2="11" y1="7" y2="7"></line><line stroke="#7c3aed" stroke-width="1" x1="5" x2="9" y1="9.5" y2="9.5"></line></svg>
+<a href="https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/sisdig_aulas/sistemas_digitais_datasheet_CD4028_Texas.pdf" target="_blank">Decoder BCD-Decimal — CD4018</a>
+</div>
+<div class="ds-item">
+<svg class="ds-icon" fill="none" height="16" viewbox="0 0 16 16" width="16"><path d="M3 2h7l3 3v9H3V2z" fill="none" stroke="#7c3aed" stroke-width="1.2"></path><line stroke="#7c3aed" stroke-width="1" x1="5" x2="11" y1="7" y2="7"></line><line stroke="#7c3aed" stroke-width="1" x1="5" x2="9" y1="9.5" y2="9.5"></line></svg>
+<a href="https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/sisdig_aulas/sistemas_digitais_datasheet_74HC161_Philips.pdf" target="_blank">Counter — 74HC161</a>
+</div>
+<div class="ds-item">
+<svg class="ds-icon" fill="none" height="16" viewbox="0 0 16 16" width="16"><path d="M3 2h7l3 3v9H3V2z" fill="none" stroke="#7c3aed" stroke-width="1.2"></path><line stroke="#7c3aed" stroke-width="1" x1="5" x2="11" y1="7" y2="7"></line><line stroke="#7c3aed" stroke-width="1" x1="5" x2="9" y1="9.5" y2="9.5"></line></svg>
+<a href="https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/sisdig_aulas/sistemas_digitais_datasheet_74LS283_National.pdf" target="_blank">Adder — 74LS283</a>
+</div>
+</div>
+</section>
+<!-- FERRAMENTAS -->
+<section class="section" id="ferramentas">
+<h2 class="section-heading"><span class="section-number">08</span>Ferramentas do Curso</h2>
+<p style="color: var(--muted); margin-bottom: 1.5rem; max-width: 600px;">Softwares utilizados para simulação de circuitos digitais, projeto de PCB e programação de microcontroladores ao longo da disciplina.</p>
+<div class="ds-grid">
+<div class="ds-item">
+<svg class="ds-icon" fill="none" height="16" viewbox="0 0 16 16" width="16"><rect height="9" rx="1.5" stroke="#00c2ff" stroke-width="1.2" width="12" x="2" y="3"></rect><line stroke="#00c2ff" stroke-width="1" x1="2" x2="14" y1="6" y2="6"></line><circle cx="5" cy="9" fill="#00c2ff" r="1"></circle><circle cx="9" cy="9" fill="#00c2ff" r="1"></circle></svg>
+<a href="https://sourceforge.net/projects/circuit/" target="_blank">Logisim — simulador de circuitos lógicos</a>
+</div>
+<div class="ds-item">
+<svg class="ds-icon" fill="none" height="16" viewbox="0 0 16 16" width="16"><rect height="12" rx="2" stroke="#00c2ff" stroke-width="1.2" width="12" x="2" y="2"></rect><path d="M5 5h6M5 8h6M5 11h3" stroke="#00c2ff" stroke-width="1"></path></svg>
+<a href="https://easyeda.com/page/download" target="_blank">EasyEDA — projeto de circuitos e PCB</a>
+</div>
+
+<div class="ds-item">
+<svg class="ds-icon" fill="none" height="16" viewbox="0 0 16 16" width="16"><circle cx="8" cy="8" r="6" stroke="#00c2ff" stroke-width="1.2"></circle><path d="M8 2v3M8 11v3" stroke="#00c2ff" stroke-width="1.2"></path><circle cx="8" cy="8" fill="#00c2ff" r="1.5"></circle></svg>
+<a href="https://www.arduino.cc/en/software" target="_blank">Arduino IDE 1.8.15 — programação de microcontroladores</a>
+</div>
+</div>
+</section>
+</div>
 <!-- FOOTER -->
 <footer>
-  <div class="container">
-    <p>© 2026 · Prof. Clayton J A Silva · Ibmec RJ</p>
-    <p><a href="https://claytonjasilva.github.io">← voltar para home</a></p>
-  </div>
+<div class="container">
+<p>© 2026 · Prof. Clayton J A Silva · Ibmec RJ</p>
+<p><a href="https://claytonjasilva.github.io">← voltar para home</a></p>
+</div>
 </footer>
-
 </body>
 </html>
