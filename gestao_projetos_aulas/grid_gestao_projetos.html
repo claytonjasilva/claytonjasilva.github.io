@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Grid da Disciplina — Gestão de Projetos</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&amp;family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300&amp;display=swap" rel="stylesheet"/>
+<style>
+
+:root {
+  --bg:        #0a0e17;
+  --surface:   #111827;
+  --border:    #1e2d40;
+  --accent:    #00c2ff;
+  --accent2:   #7c3aed;
+  --text:      #e2e8f0;
+  --muted:     #64748b;
+  --tag-bg:    #0f172a;
+  --font-mono: 'IBM Plex Mono', monospace;
+  --font-sans: 'IBM Plex Sans', sans-serif;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{background:var(--bg);color:var(--text);font-family:var(--font-sans);font-size:16px;line-height:1.65;}
+a{color:var(--accent);text-decoration:none;}
+a:hover{text-decoration:underline;}
+.container{max-width:980px;margin:0 auto;padding:0 2rem;}
+
+nav{position:sticky;top:0;z-index:100;background:rgba(10,14,23,.9);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);padding:.9rem 0;}
+nav .container{display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap;}
+.nav-brand{font-family:var(--font-mono);font-size:.78rem;color:var(--accent);}
+.nav-links{display:flex;gap:1.2rem;list-style:none;flex-wrap:wrap;}
+.nav-links a{font-family:var(--font-mono);font-size:.74rem;color:var(--muted);}
+.nav-links a:hover{color:var(--text);text-decoration:none;}
+
+.hero{padding:4rem 0 2.5rem;position:relative;overflow:hidden;}
+.hero::before{content:'';position:absolute;inset:0;background-image:linear-gradient(var(--border) 1px,transparent 1px),linear-gradient(90deg,var(--border) 1px,transparent 1px);background-size:40px 40px;opacity:.3;mask-image:radial-gradient(ellipse 80% 60% at 50% 0%,black 40%,transparent 100%);}
+.hero-eyebrow{font-family:var(--font-mono);font-size:.74rem;color:var(--accent);letter-spacing:.14em;text-transform:uppercase;margin-bottom:1rem;display:flex;align-items:center;gap:.7rem;}
+.hero-eyebrow::before{content:'';width:2rem;height:1px;background:var(--accent);}
+h1{font-size:clamp(2rem,4.5vw,3rem);font-weight:300;line-height:1.12;letter-spacing:-.02em;margin-bottom:.6rem;}
+h1 strong{font-weight:600;color:var(--accent);}
+.hero-meta{display:flex;gap:1.5rem;flex-wrap:wrap;margin-top:1.2rem;}
+.meta-item{font-family:var(--font-mono);font-size:.78rem;color:var(--muted);}
+.meta-item strong{color:var(--text);}
+
+.section{padding:2.5rem 0;border-top:1px solid var(--border);}
+.section-label{font-family:var(--font-mono);font-size:.7rem;color:var(--accent);letter-spacing:.14em;text-transform:uppercase;display:flex;align-items:center;gap:.7rem;margin-bottom:1.4rem;}
+.section-label::after{content:'';flex:1;height:1px;background:var(--border);}
+h2{font-size:1.4rem;font-weight:600;letter-spacing:-.01em;margin-bottom:1rem;}
+p{margin-bottom:1rem;color:#cbd5e1;}
+strong{color:var(--text);font-weight:600;}
+
+.obj-list{list-style:none;display:flex;flex-direction:column;gap:.8rem;}
+.obj-item{background:var(--surface);border:1px solid var(--border);border-left:3px solid var(--accent);border-radius:0 8px 8px 0;padding:1rem 1.3rem;}
+.obj-num{font-family:var(--font-mono);font-size:.7rem;color:var(--accent);text-transform:uppercase;letter-spacing:.06em;margin-bottom:.3rem;display:block;}
+.obj-item p{margin:0;font-size:.9rem;color:#cbd5e1;}
+
+.content-list{list-style:none;display:flex;flex-direction:column;gap:.5rem;}
+.content-item{background:var(--surface);border:1px solid var(--border);border-radius:6px;padding:.8rem 1.1rem;display:flex;gap:.8rem;align-items:flex-start;}
+.content-num{font-family:var(--font-mono);font-size:.72rem;color:var(--accent2);background:rgba(124,58,237,.08);border:1px solid rgba(124,58,237,.25);border-radius:4px;padding:.15rem .5rem;flex-shrink:0;min-width:24px;text-align:center;}
+.content-item p{margin:0;font-size:.85rem;color:#cbd5e1;}
+
+.ref-card{background:var(--surface);border:1px solid var(--accent);border-radius:8px;padding:1.2rem 1.4rem;margin-bottom:.8rem;}
+.ref-card .ref-tag{font-family:var(--font-mono);font-size:.68rem;color:var(--accent);text-transform:uppercase;letter-spacing:.08em;margin-bottom:.5rem;display:block;}
+.ref-card p{margin:0;font-size:.88rem;}
+
+.ref-list{list-style:none;display:flex;flex-direction:column;gap:.5rem;}
+.ref-item{background:var(--tag-bg);border:1px solid var(--border);border-radius:6px;padding:.7rem 1rem;font-size:.85rem;color:var(--muted);}
+.ref-item strong{color:var(--text);}
+
+.note{background:var(--tag-bg);border:1px solid var(--border);border-radius:6px;padding:.9rem 1.1rem;margin-bottom:1.2rem;font-size:.82rem;color:var(--muted);}
+
+.chapter-nav{display:flex;justify-content:space-between;gap:1rem;margin-top:2rem;}
+.chapter-nav a{flex:1;background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:1rem 1.3rem;font-size:.85rem;transition:.2s;}
+.chapter-nav a:hover{border-color:var(--accent);text-decoration:none;}
+.chapter-nav .dir{font-family:var(--font-mono);font-size:.65rem;color:var(--muted);text-transform:uppercase;letter-spacing:.08em;display:block;margin-bottom:.3rem;}
+
+footer{border-top:1px solid var(--border);padding:2rem 0;margin-top:2rem;}
+footer .container{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;}
+footer p{font-size:.8rem;color:var(--muted);font-family:var(--font-mono);}
+
+
+.info-card{
+  background:var(--surface);
+  border:1px solid var(--border);
+  border-radius:8px;
+  padding:1.2rem 1.4rem;
+  margin-bottom:1rem;
+}
+.info-card p{margin:0;font-size:.9rem;color:#cbd5e1;}
+.two-col{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:.8rem;}
+.badge-line{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:1rem;}
+.badge{
+  font-family:var(--font-mono);
+  font-size:.7rem;
+  color:var(--accent2);
+  background:rgba(124,58,237,.08);
+  border:1px solid rgba(124,58,237,.25);
+  border-radius:4px;
+  padding:.25rem .6rem;
+}
+
+@media(max-width:640px){.nav-links{display:none;}.hero{padding:2.5rem 0 2rem;}}
+
+</style>
+</head>
+<body>
+<nav>
+<div class="container">
+<span class="nav-brand">gestão de projetos · grid</span>
+<ul class="nav-links"><li><a href="#identificacao">Identificação</a></li><li><a href="#objetivos">Objetivos</a></li><li><a href="#conteudo">Conteúdo</a></li><li><a href="#referencias">Referências</a></li><li><a href="../gestao_projetos.html">← disciplina</a></li></ul>
+</div>
+</nav>
+<section class="hero">
+<div class="container">
+<p class="hero-eyebrow">Disciplina · Gestão de Projetos</p>
+<h1>Grid da disciplina<br/><strong>Gestão de Projetos</strong></h1>
+<div class="hero-meta">
+<span class="meta-item"><strong>Documento-base:</strong> Grid Rev. 2022.1</span>
+<span class="meta-item"><strong>Professor:</strong> Clayton Jones Alves da Silva, MSc</span>
+</div>
+<div class="badge-line"><span class="badge">PMI</span><span class="badge">PMBOK</span><span class="badge">Scrum</span><span class="badge">MS Project</span><span class="badge">Projetos</span><span class="badge">Engenharia</span></div>
+</div>
+</section>
+<div class="container">
+<section class="section" id="identificacao">
+<p class="section-label">I / identificação da disciplina</p>
+<h2>Dados da disciplina</h2>
+<div class="info-card">
+<p></p>
+<p><strong>Disciplina: </strong>Gestão de Projetos</p><p><strong>Professor: </strong>Clayton Jones Alves da Silva, MSc</p><p><strong>Documento-base: </strong>Grid Gestão de Projetos — Rev. 2022.1</p></div>
+</section>
+<section class="section" id="objetivos">
+<p class="section-label">II / objetivos</p>
+<h2>Objetivos gerais</h2>
+<ul class="obj-list"><li class="obj-item"><span class="obj-num">Objetivo 1</span><p>Interpretar o business case da organização, vinculando o negócio à iniciação do projeto.</p></li><li class="obj-item"><span class="obj-num">Objetivo 2</span><p>Planejar empreendimentos utilizando métodos clássicos de gestão, construindo as linhas de base.</p></li><li class="obj-item"><span class="obj-num">Objetivo 3</span><p>Executar, monitorar e controlar projetos interpretando os artefatos de gerenciamento.</p></li><li class="obj-item"><span class="obj-num">Objetivo 4</span><p>Encerrar projetos produzindo diagnóstico dos resultados alcançados.</p></li><li class="obj-item"><span class="obj-num">Objetivo 5</span><p>Aplicar princípios das metodologias ágeis, com destaque para o Scrum.</p></li></ul>
+</section>
+<section class="section" id="conteudo">
+<p class="section-label">III / conteúdos</p>
+<h2>Conteúdo programático</h2>
+<ul class="content-list"><li class="content-item"><span class="content-num">1</span><p>Conceitos fundamentais: modelos de negócios; planejamentos estratégicos, operacionais e táticos; conceito de projetos; níveis de gestão de projetos na organização; objetivos da gestão de projetos; metodologias em cascata e ágeis de gestão de projetos.</p></li><li class="content-item"><span class="content-num">2</span><p>Ciclo de vida de projetos: entregáveis; faseamento das atividades; dependências entre as fases; marcos temporais; análise de esforços, riscos e incertezas.</p></li><li class="content-item"><span class="content-num">3</span><p>Modelo de gestão de projetos do PMI: Guia PMBOK; processos de gestão de projetos; grupos de processos; áreas de conhecimento.</p></li><li class="content-item"><span class="content-num">4</span><p>MS Project: operações básicas; modos de exibição; planejamento; controle; produção de relatórios.</p></li><li class="content-item"><span class="content-num">5</span><p>Gestão da integração: identificação das partes interessadas; abertura de projetos; desenvolvimento do plano de gerenciamento; lições aprendidas; controle integrado de mudanças.</p></li><li class="content-item"><span class="content-num">6</span><p>Gestão do escopo: escopo do produto e do projeto; descrição, delimitação, premissas e restrições; EAP e dicionário da EAP; coleta e rastreabilidade de requisitos; linha de base do escopo.</p></li><li class="content-item"><span class="content-num">7</span><p>Gestão do cronograma: identificação, estruturação e sequenciamento das atividades; estimativa de duração; criação e controle da linha de base; PERT, CPM e gráfico de Gantt.</p></li><li class="content-item"><span class="content-num">8</span><p>Gestão dos custos: estimativas, orçamento, reservas de contingência e gerenciais; despesas indiretas; preço do projeto; linha de base de custos; análise de valor agregado.</p></li><li class="content-item"><span class="content-num">9</span><p>Gestão das pessoas: equipe do projeto; competências; funções, papéis e matriz de responsabilidades; dimensionamento; alocação ao longo do ciclo de vida; mobilização.</p></li><li class="content-item"><span class="content-num">10</span><p>Gestão de riscos: identificação; análises qualitativa e quantitativa; probabilidade, severidade e priorização; estratégias de tratamento; valor monetário esperado.</p></li><li class="content-item"><span class="content-num">11</span><p>Gestão da qualidade: conceito de qualidade; ISO 9001:2015; custos da qualidade; causa e efeito; Pareto; auditoria; testes e avaliação.</p></li><li class="content-item"><span class="content-num">12</span><p>Gestão das aquisições: benchmarking; gestão de contratos; cadeia de suprimentos; sistemas de TIC para apoio às aquisições.</p></li><li class="content-item"><span class="content-num">13</span><p>Gestão das comunicações e das partes interessadas: plano de comunicações; identificação e monitoramento das partes interessadas; ferramentas de TIC.</p></li><li class="content-item"><span class="content-num">14</span><p>Scrum: princípios; produto mínimo viável; usuários, proprietário, facilitador e equipe; priorização por riscos, valor e dependências; time-boxing; eventos.</p></li></ul>
+</section>
+<section class="section" id="referencias">
+<p class="section-label">IV / bibliografia</p>
+<h2>Bibliografia</h2>
+<ul class="ref-list"><li class="ref-item">PMI. A Guide to the Project Management Body of Knowledge (PMBOK Guide), 6. ed. Project Management Institute, 2017.</li><li class="ref-item">MAXIMIANO, Antonio C. A. Administração de Projetos: Como Transformar Ideias em Resultados. 5. ed. Atlas, 2014.</li><li class="ref-item">MENEZES, Luís César M. Gestão de Projetos. 4. ed. Grupo GEN, 2018.</li><li class="ref-item">VALLE, A.; SOARES, C.; FINOCCHIO JR., J.; SILVA, L. Fundamentos do Gerenciamento de Projetos. FGV, 2010.</li><li class="ref-item">BARKER, S.; COLE, R. Gestão de Projetos. HSM, 2015.</li><li class="ref-item">LUECKE, R. Gerenciando Projetos Grandes e Pequenos. Record, 2010.</li><li class="ref-item">XAVIER, Carlos M. S. Gerenciamento de Projetos: Como Definir e Controlar o Escopo do Projeto. Saraiva, 2014.</li><li class="ref-item">MASSARI. Gerenciamento Ágil de Projetos. Brasport, 2014.</li><li class="ref-item">JUNIOR, Luiz F. D. Scrum e Métodos Ágeis: Um Guia Prático, 2019.</li><li class="ref-item">SUTHERLAND, Jeff; SUTHERLAND, J. J. Scrum: A Arte de Fazer o Dobro do Trabalho na Metade do Tempo. Sextante, 2019.</li><li class="ref-item">TEAM, Zapier. The Ultimate Guide to Project Management. Zapier, 2016.</li><li class="ref-item">SCRUMstudy. A Guide to the Scrum Body of Knowledge (SBOK Guide). 3. ed. VMEdu, 2017.</li><li class="ref-item">VARGAS, R. V. Microsoft Project 2013. Brasport, 2013.</li><li class="ref-item">CARPINETTI, Luiz C. R.; GEROLAMO, Matheus C. Gestão da Qualidade ISO 9001:2015: Requisitos e Integração com a ISO 14001:2015. Atlas, 2019.</li><li class="ref-item">VASQUEZ, Carlos Eduardo; SIMÕES, Guilherme Siqueira. Engenharia de Requisitos. Brasport, 2016.</li><li class="ref-item">POHL, Klaus; RUPP, Chris. Fundamentos da Engenharia de Requisitos. IREB.</li><li class="ref-item">CAMPO, Vicente Falconi. TQC — Controle da Qualidade Total. Fundação Christiano Ottoni, 1992.</li><li class="ref-item">DIAS, F. Gerenciamento dos Riscos em Projetos. Campus, 2015.</li><li class="ref-item">DRUCKER, P. Pessoas e Desempenhos. Campus, 2012.</li><li class="ref-item">RIES, Eric. A Startup Enxuta. Leya, 2011.</li><li class="ref-item">RIES, Eric. O Estilo Startup. Leya, 2018.</li><li class="ref-item">WU, B. Manufacturing Systems Design and Analysis. Chapman &amp; Hall, 1992.</li></ul>
+</section>
+<div class="chapter-nav">
+<a href="../gestao_projetos.html"><span class="dir">← voltar</span>Gestão de Projetos</a>
+</div>
+</div>
+<footer>
+<div class="container">
+<p>© 2026 · Prof. Clayton J A Silva</p>
+<p><a href="../gestao_projetos.html">Gestão de Projetos</a></p>
+</div>
+</footer>
+</body>
+</html>
