@@ -51,6 +51,8 @@ h1{font-size:clamp(2rem,4vw,3rem);font-weight:300;line-height:1.1;letter-spacing
 .row-ap{background:rgba(0,194,255,.05)}
 .row-ap td{color:var(--accent)!important;font-weight:600}
 .row-review{background:rgba(124,58,237,.05)}
+.row-holiday{background:rgba(16,185,129,.06)}
+.row-holiday td{color:var(--green)!important;font-weight:600}
 
 .card{border:1px solid var(--border);border-radius:8px;padding:1.5rem;background:var(--surface);max-width:620px}
 .card h3{font-size:1rem;margin-bottom:.6rem}
@@ -155,6 +157,7 @@ footer p{font-size:.82rem;color:var(--muted);font-family:var(--font-mono)}
 <tr><td>02/10/2026</td><td>Sexta-feira</td><td>Gestão de pessoas · Estruturas organizacionais, papéis e responsabilidades</td></tr>
 <tr><td>08/10/2026</td><td>Quinta-feira</td><td>Gestão de pessoas · Competências, liderança e desenvolvimento de equipes</td></tr>
 <tr><td>09/10/2026</td><td>Sexta-feira</td><td>Gestão de pessoas · Comunicação, conflitos e integração da equipe</td></tr>
+<tr class="row-holiday"><td>15/10/2026</td><td>Quinta-feira</td><td>Feriado · Dia do Professor — não haverá aula</td></tr>
 <tr><td>16/10/2026</td><td>Sexta-feira</td><td>Gestão de custos · Estimativas e composição do orçamento</td></tr>
 <tr><td>22/10/2026</td><td>Quinta-feira</td><td>Gestão de custos · Linha de base, reservas e controle</td></tr>
 <tr><td>23/10/2026</td><td>Sexta-feira</td><td>Gestão de custos · Valor agregado e interpretação de desvios</td></tr>
@@ -164,8 +167,8 @@ footer p{font-size:.82rem;color:var(--muted);font-family:var(--font-mono)}
 <tr><td>06/11/2026</td><td>Sexta-feira</td><td>Gestão de riscos · Planejamento e acompanhamento das respostas</td></tr>
 <tr><td>12/11/2026</td><td>Quinta-feira</td><td>Prática de laboratório · Identificar, Classificar e Priorizar Riscos</td></tr>
 <tr><td>13/11/2026</td><td>Sexta-feira</td><td>Gestão da qualidade · Planejamento, garantia e controle</td></tr>
-<tr><td>19/11/2026</td><td>Quinta-feira</td><td>Gestão da qualidade · Requisitos, validação e custos da qualidade</td></tr>
-<tr><td>20/11/2026</td><td>Sexta-feira</td><td>Integração de projetos · Coordenação entre escopo, tempo, pessoas, custos, riscos e qualidade</td></tr>
+<tr class="row-holiday"><td>19/11/2026</td><td>Quinta-feira</td><td>Não haverá aula · Reposição em data a ser definida</td></tr>
+<tr class="row-holiday"><td>20/11/2026</td><td>Sexta-feira</td><td>Feriado · Dia da Consciência Negra — não haverá aula</td></tr>
 <tr><td>26/11/2026</td><td>Quinta-feira</td><td>Integração de projetos · Mudanças, interfaces e tomada de decisão</td></tr>
 <tr><td>27/11/2026</td><td>Sexta-feira</td><td>Integração de projetos · Engenharia de Sistemas aplicada à gestão de projetos</td></tr>
 <tr><td>03/12/2026</td><td>Quinta-feira</td><td>Estudo de caso integrado · Planejamento e análise do projeto</td></tr>
@@ -261,12 +264,21 @@ footer p{font-size:.82rem;color:var(--muted);font-family:var(--font-mono)}
     </article>
     </div>
 
+    <h3 class="subsection-heading">Slides das aulas</h3>
+    <div class="support-grid">
+      <article class="support-card">
+        <h3>Capítulo 1 · Fundamentos de Gestão de Projetos</h3>
+        <p>Slides utilizados nas aulas introdutórias da disciplina.</p>
+        <a class="card-link" href="gestao_projetos_aulas/slides/cap1_gestão_projetos.pdf" target="_blank" rel="noopener">Abrir slides em PDF →</a>
+      </article>
+    </div>
+
     <h3 class="subsection-heading">Textos e exemplos de apoio</h3>
     <div class="support-grid">
-      <article class="support-card disabled" aria-disabled="true">
+      <article class="support-card">
         <h3>Gestão de Projetos com Aplicação de Engenharia de Sistemas</h3>
         <p>Fundamentos, Governança, Escopo, Tempo, Pessoas, Custos, Riscos, Qualidade e Integração a partir da Literatura e da Experiência Profissional.</p>
-        <span class="disabled-link">Texto em preparação</span>
+        <a class="card-link" href="gestao_projetos_aulas/Projetos_Sistemas_Experiencias_rev.0.pdf" target="_blank" rel="noopener">Abrir livro em PDF →</a>
       </article>
       <article class="support-card disabled" aria-disabled="true">
         <h3>Estudos de caso e exemplos aplicados</h3>
