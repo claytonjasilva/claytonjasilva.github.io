@@ -48,8 +48,8 @@ h1{font-size:clamp(2rem,4vw,3rem);font-weight:300;line-height:1.1;letter-spacing
 .agenda-wrap td{padding:.72rem 1rem;border-top:1px solid var(--border);color:var(--muted);vertical-align:top}
 .agenda-wrap td:first-child{font-family:var(--font-mono);white-space:nowrap}
 .agenda-wrap td:last-child{color:var(--text)}
-.row-ap{background:rgba(0,194,255,.05)}
-.row-ap td{color:var(--accent)!important;font-weight:600}
+.row-eval{background:rgba(0,194,255,.05)}
+.row-eval td{color:var(--accent)!important;font-weight:600}
 .row-review{background:rgba(124,58,237,.05)}
 .row-holiday{background:rgba(16,185,129,.06)}
 .row-holiday td{color:var(--green)!important;font-weight:600}
@@ -149,7 +149,7 @@ footer p{font-size:.82rem;color:var(--muted);font-family:var(--font-mono)}
 <tr><td>04/09/2026</td><td>Sexta-feira</td><td>Prática de laboratório · Criar Estrutura Analítica de Projeto (EAP)</td></tr>
 <tr><td>10/09/2026</td><td>Quinta-feira</td><td>Prática de laboratório · Definir o escopo</td></tr>
 <tr class="row-review"><td>11/09/2026</td><td>Sexta-feira</td><td>Revisão integrada · Fundamentos, governança, complexidade, maturidade e escopo</td></tr>
-<tr class="row-ap"><td>17/09/2026</td><td>Quinta-feira</td><td>Avaliação e discussão de casos · Primeira etapa</td></tr>
+<tr class="row-eval"><td>17/09/2026</td><td>Quinta-feira</td><td>1ª Avaliação Bimestral</td></tr>
 <tr><td>18/09/2026</td><td>Sexta-feira</td><td>Gestão do tempo · Definição e sequenciamento de atividades</td></tr>
 <tr><td>24/09/2026</td><td>Quinta-feira</td><td>Gestão do tempo · Estimativas, dependências e restrições</td></tr>
 <tr><td>25/09/2026</td><td>Sexta-feira</td><td>Gestão do tempo · Cronograma, marcos e caminho crítico</td></tr>
@@ -171,11 +171,11 @@ footer p{font-size:.82rem;color:var(--muted);font-family:var(--font-mono)}
 <tr class="row-holiday"><td>20/11/2026</td><td>Sexta-feira</td><td>Feriado · Dia da Consciência Negra — não haverá aula</td></tr>
 <tr><td>26/11/2026</td><td>Quinta-feira</td><td>Integração de projetos · Mudanças, interfaces e tomada de decisão</td></tr>
 <tr><td>27/11/2026</td><td>Sexta-feira</td><td>Integração de projetos · Engenharia de Sistemas aplicada à gestão de projetos</td></tr>
-<tr><td>03/12/2026</td><td>Quinta-feira</td><td>Estudo de caso integrado · Planejamento e análise do projeto</td></tr>
+<tr class="row-eval"><td>03/12/2026</td><td>Quinta-feira</td><td>2ª Avaliação Bimestral</td></tr>
 <tr><td>04/12/2026</td><td>Sexta-feira</td><td>Estudo de caso integrado · Monitoramento, controle e mudanças</td></tr>
 <tr class="row-review"><td>10/12/2026</td><td>Quinta-feira</td><td>Revisão geral da disciplina</td></tr>
-<tr class="row-ap"><td>11/12/2026</td><td>Sexta-feira</td><td>Avaliação final / apresentação de sínteses</td></tr>
-<tr class="row-review"><td>17/12/2026</td><td>Quinta-feira</td><td>Período de provas substitutivas · Atendimento e feedback, conforme o calendário acadêmico</td></tr>
+<tr><td>11/12/2026</td><td>Sexta-feira</td><td>Atividade orientada · Consolidação dos conteúdos e feedback</td></tr>
+<tr class="row-eval"><td>17/12/2026</td><td>Quinta-feira</td><td>Aplicação de Prova Substitutiva</td></tr>
 <tr class="row-review"><td>18/12/2026</td><td>Sexta-feira</td><td>Provas substitutivas / revisão de notas e faltas · Término do período letivo</td></tr>
         </tbody>
       </table>
@@ -333,17 +333,17 @@ footer p{font-size:.82rem;color:var(--muted);font-family:var(--font-mono)}
     <h2 class="section-heading"><span class="section-number">05</span>Avaliações</h2>
     <div class="aval-grid">
       <article class="aval-card">
-        <span class="aval-badge">AP · avaliações parciais</span>
-        <h3>AP1 e AP2</h3>
+        <span class="aval-badge">Avaliações Bimestrais</span>
+        <h3>1ª e 2ª Avaliações Bimestrais</h3>
         <ul class="aval-list">
-          <li>Avaliações individuais dos conteúdos desenvolvidos.</li>
-          <li>Atividades aplicadas de modelagem e planejamento.</li>
-          <li>Análise crítica das decisões e dos artefatos produzidos.</li>
+          <li>Cada Avaliação Bimestral será composta por uma prova individual (60%) e um trabalho em grupo (40%).</li>
+          <li>1ª Avaliação Bimestral: 17/09/2026.</li>
+          <li>2ª Avaliação Bimestral: 03/12/2026.</li>
         </ul>
       </article>
       <article class="aval-card">
-        <span class="aval-badge">AC · avaliação continuada</span>
-        <h3>Exercícios, práticas e participação</h3>
+        <span class="aval-badge">Avaliação Continuada</span>
+        <h3>Atividades ao longo do semestre</h3>
         <ul class="aval-list">
           <li>Exercícios propostos ao longo das aulas.</li>
           <li>Práticas de laboratório e estudos de caso.</li>
@@ -351,12 +351,11 @@ footer p{font-size:.82rem;color:var(--muted);font-family:var(--font-mono)}
         </ul>
       </article>
       <article class="aval-card">
-        <span class="aval-badge">Sistema de avaliações</span>
-        <h3>Regras e critérios</h3>
+        <span class="aval-badge">Sistema de Avaliações</span>
+        <h3>Composição da nota final</h3>
         <ul class="aval-list">
-          <li>Os pesos e critérios serão apresentados no plano da disciplina.</li>
-          <li>As orientações específicas serão divulgadas antes de cada atividade.</li>
-          <li><a href="avaliacoes.html">Consultar o sistema geral de avaliações →</a></li>
+          <li>A nota final será composta da média (1ª Avaliação Bimestral + 2ª Avaliação Bimestral + Avaliação Continuada) / 3.</li>
+          <li>A Avaliação Bimestral será composta por uma prova individual (60%) + um trabalho em grupo (40%).</li>
         </ul>
       </article>
     </div>
