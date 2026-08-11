@@ -243,13 +243,25 @@ footer p{font-size:.8rem;color:var(--muted);font-family:var(--font-mono);}
 <li>Dispositivos de entrada e saída (E/S) operados pela Unidade de Controle.</li>
 </ul>
 <h3 id="s1a">1.1.1 Memória</h3>
-<p>A memória é o elemento dos sistemas computacionais responsável pelo armazenamento das informações. As informações nos sistemas computacionais atuais são armazenadas na forma binária (Ver <a href="https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/arq_aulas/arquitetura_computadores_anexo1.md">anexo I</a>). Rigorosamente, nos sistemas computacionais distinguem-se dados de informações, conforme discutiremos na seção seguinte. No momento trataremos como dados e informações de modo indistinto.</p>
+<p>A memória é o elemento dos sistemas computacionais responsável pelo armazenamento das informações. As informações nos sistemas computacionais atuais são armazenadas na forma binária (Ver <a href="arq_anexo1_grandezas_unidades.html">Anexo 1</a>). Rigorosamente, nos sistemas computacionais distinguem-se dados de informações, conforme discutiremos na seção seguinte. No momento trataremos como dados e informações de modo indistinto.</p>
 <p>Uma das evoluções dos sistemas computacionais tem sido no sentido dos elementos de memória possuírem uma capacidade cada vez maior de armazenar dados. Uma metáfora fácil de estabelecer para compreender como as memórias são organizadas é entendê-las como um armário com várias gavetas, organizadas em linhas e colunas. Em cada gaveta armazena-se uma unidade de dado, chamada bit (1 ou 0).</p>
 <p>Todas as tarefas realizadas pelos sistemas computacionais decorrem da execução de uma sucessão de instruções binárias armazenadas, que podem manipular dados, também armazenados na memória, intitulados programas. Os programas constituem o software e comandam os elementos eletromecânicos, chamados de hardware.</p>
 <p>As características tecnológicas dos dispositivos de memória têm evoluído rapidamente, propiciando uma elevada capacidade de armazenamento, mas também velocidade de resposta às solicitações emanadas pela unidade central de processamento (CPU), a quem cabe executar as instruções.</p>
 <h3 id="s1b">1.1.2 Unidade Central de Processamento</h3>
 <p>A <strong>Unidade Central de Processamento</strong> (CPU, do inglês <em>Central Processing Unit</em>) é o elemento concebido na arquitetura para realizar duas funções básicas principais: (i) interpretar as instruções e controlar o funcionamento das elementos do sistema, na <strong>Unidade de Controle</strong> (UC); e (ii) executar as instruções, na <strong>Unidade Lógica e Aritmética</strong> (ULA).</p>
-<p>Para o controle, o sistema computacional utiliza uma referência temporal dada por um sinal elétrico chamado de clock. Pense no computador como uma máquina similar a um engenho mecânico, cuja operação é sincronizada por engrenagens. O sinal elétrico do clock é que permite o sincronismo de funcionamento de todas as operações dos computadores. O sinal de clock é periódico, ou seja, repete-se em intervalos regulares de tempo, chamados de <strong>período</strong> ou <strong>ciclo</strong>. O número de ciclos por unidade de tempo é chamado de <strong>frequência</strong>.</p>
+<p>Para o controle, o sistema computacional utiliza uma referência temporal dada por um sinal elétrico chamado de <strong>clock</strong>. Esse sinal sincroniza a realização das operações internas do computador e estabelece os instantes em que os circuitos devem responder aos eventos de controle.</p>
+<div class="definition">
+<p class="dtitle">Sinal de clock</p>
+<p>O clock é um sinal periódico que alterna entre dois níveis lógicos. As transições entre esses níveis são denominadas <strong>bordas</strong>: a passagem do nível baixo para o alto corresponde à <strong>borda de subida</strong>, enquanto a passagem do nível alto para o baixo corresponde à <strong>borda de descida</strong>.</p>
+<p>O intervalo necessário para completar um ciclo é o <strong>período</strong>, representado por \(T_{Ck}\). A <strong>frequência</strong> do clock indica quantos ciclos ocorrem por segundo e é dada por:</p>
+<div class="codeline">\(f_{Ck} = \frac{1}{T_{Ck}}\)</div>
+<p>Também pode ser definido o <em>duty cycle</em>, que relaciona o tempo em que o sinal permanece em nível alto, \(T_{on}\), com o período total:</p>
+<div class="codeline">\(Duty\;Cycle = \frac{T_{on}}{T_{Ck}}\)</div>
+</div>
+<div class="fig-full">
+<img alt="Sinal de clock com bordas de subida e descida, período e tempo em nível alto" src="/assets/img/sisdig/cap8_clock.svg"/>
+<p class="fig-caption">Figura 1.2 — Sinal de clock: bordas de subida e descida, período T<sub>Ck</sub> e tempo em nível alto T<sub>on</sub>.</p>
+</div>
 <p>A evolução dos sistemas computacionais tem sido no sentido de produzir CPUs com referência de clock cada vez mais velozes. Ou seja, a interpretação das instruções dos programas armazenados na memória tem sido cada vez mais rápida, ou seja, os programas são executados, consequentemente as tarefas são realizadas em tempos cada vez mais curtos.</p>
 <p>Por outro lado, as instruções são resolvidas pela ULA. Instruções definidas em fábrica são decodificadas pela UC, mas são efetivamente executadas pelos circuitos lógicos e aritméticos da ULA. Como o próprio nome define, a ULA possui os circuitos para executar operações cujo resultado pode ser verdadeiro ou falso - operações lógicas. Lembre-se que fisicamente os computadores representam os valores lógicos como sinais elétricos, por exemplo, 5V ou 0V, os quais podem ser abstraídos como 0s e 1s.</p>
 <p>Além das operações lógicas, a ULA também possui os circuitos que podem resolver operações aritméticas, obviamente lidando com dados numéricos representados na forma binária.</p>
@@ -264,7 +276,7 @@ footer p{font-size:.8rem;color:var(--muted);font-family:var(--font-mono);}
 <!-- 1.2 -->
 <section class="section" id="s2"><p class="section-label">1.2 / estrutura detalhada do ias</p><h2>1.2 Visão detalhada do computador IAS</h2>
 <p>A figura abaixo ilustra a organização detalhada do computador IAS.</p>
-<div class="fig-full"><img alt="Estrutura do IAS" src="/arq_aulas/images/figura1_2.png"/><p class="fig-caption">Figura 1.2 Estrutura do IAS (fonte. Stallings, Arquitetura e Organização de Computadores)</p></div>
+<div class="fig-full"><img alt="Estrutura do IAS" src="/arq_aulas/images/figura1_2.png"/><p class="fig-caption">Figura 1.3 Estrutura do IAS (fonte. Stallings, Arquitetura e Organização de Computadores)</p></div>
 
 <ol>
 <li><strong>Registrador Temporário da Memória</strong> (MBR, <em>Memory Buffer Register</em>): capacidade de armazenar <strong>40 bits</strong> e contém uma palavra com um par de instruções a ser lida ou escrita na memória. Registradores são dispositivos de armazenamento de dados internos ao processador que possuem tipicamente baixo tempo de acesso (posteriormente discutiremos o conceito), embora baixa capacidade de armazenamento de bits.</li>
@@ -278,7 +290,7 @@ footer p{font-size:.8rem;color:var(--muted);font-family:var(--font-mono);}
 <li>Barramento (<em>Bus</em>): meio de comunicação para tráfego dos bits entre os elementos do sistema, para trafegar <strong>dados, endereços ou sinais de controle</strong>.</li>
 </ol>
 <p>A figura abaixo ilustra a relação da memória com os barramentos de dados e de endereços do computador IAS.</p>
-<div class="fig-full"><img alt="Decodificação de endereço de memória IAS" src="/arq_aulas/images/figura1_3.jpg"/><p class="fig-caption">Figura 1.3 Decodificação de endereço de memória IAS</p></div>
+<div class="fig-full"><img alt="Decodificação de endereço de memória IAS" src="/arq_aulas/images/figura1_3.jpg"/><p class="fig-caption">Figura 1.4 Decodificação de endereço de memória IAS</p></div>
 
 <p>Cada linha de dados aponta para uma palavra, que ocupa um endereço de memória.<br/>
 Os endereços são inequívocos, ou seja, não existem dois endereços iguais.</p>
@@ -287,13 +299,13 @@ Os endereços são inequívocos, ou seja, não existem dois endereços iguais.</
 <section class="section" id="s3"><p class="section-label">1.3 / memória e instruções</p><h2>1.3. Visão detalhada das células de memória do computador IAS</h2>
 <h3 id="s3a">1.3.1 Armazenamento de instruções</h3>
 <p>Um par de instruções ocupa cada linha de endereço. A estrutura da linha é dada por</p>
-<div class="fig-full"><img alt="Par de instruções na memória IAS" src="/arq_aulas/images/figura1_4.jpg"/><p class="fig-caption">Figura 1.4 Par de instruções na memória IAS</p></div>
+<div class="fig-full"><img alt="Par de instruções na memória IAS" src="/arq_aulas/images/figura1_4.jpg"/><p class="fig-caption">Figura 1.5 Par de instruções na memória IAS</p></div>
 
 <p>A instrução à esquerda ocupa os bits b<sub>0</sub> a b<sub>19</sub>. As instruções à direita ocupam os bits b<sub>20</sub> a b<sub>39</sub>.
 Cada instrução é possui um grupo de bits chamado de <em>opcode</em>, a palavra de um código que define as instruções do processador.<br/>
 E outro grupo de bits, chamado de operando, que contém o endereço do dado a ser buscado pelo processador em memória.<br/>
 Nem toda instrução do processador da máquina IAS requer um operando. Nesse caso, quando busca a instrução o processador desconsidera os bits relativos ao operando.</p>
-<div class="fig-full"><img alt="Formato da linha de memória IAS" src="/arq_aulas/images/figura1_5.jpg"/><p class="fig-caption">Figura 1.5 Formato da linha de memória IAS: acima, número; abaixo, par de instruções (fonte. Stallings, Arquitetura e Organização de Computadores)</p></div>
+<div class="fig-full"><img alt="Formato da linha de memória IAS" src="/arq_aulas/images/figura1_5.jpg"/><p class="fig-caption">Figura 1.6 Formato da linha de memória IAS: acima, número; abaixo, par de instruções (fonte. Stallings, Arquitetura e Organização de Computadores)</p></div>
 
 <p>O ISA define os formatos de instruções, códigos de operação da instrução (opcodes), registradores, memória de dados e instrução; o efeito das instruções executadas nos registradores e na memória; e um algoritmo para o controle da execução das instruções. ISA é a arquitetura de conjunto de instrução (ISA — do inglês, <em>Instruction Set Architecture</em>).</p>
 <p>Os atributos da camada ISA incluem o conjunto de instrução, o número de bits usados para representar vários tipos de dados (por exemplo, números, caracteres), mecanismos de E/S e técnicas para endereçamento de memória.</p>
@@ -306,7 +318,7 @@ Nem toda instrução do processador da máquina IAS requer um operando. Nesse ca
 <li><strong>Busca</strong> do par de instruções</li>
 <li><strong>Execução</strong> das instruções</li>
 </ul>
-<div class="fig-full"><img alt="Ciclo de instruções da máquina IAS" src="/arq_aulas/images/figura1_6.png"/><p class="fig-caption">Figura 1.6 Ciclo de instruções da máquina IAS (fonte. Adaptado de Stallings, Arquitetura e Organização de Computadores)</p></div>
+<div class="fig-full"><img alt="Ciclo de instruções da máquina IAS" src="/arq_aulas/images/figura1_6.png"/><p class="fig-caption">Figura 1.7 Ciclo de instruções da máquina IAS (fonte. Adaptado de Stallings, Arquitetura e Organização de Computadores)</p></div>
 
 <p>O fluxograma da execução das instruções pode ser detalhado por:</p>
 <ol>
@@ -334,11 +346,11 @@ Nem toda instrução do processador da máquina IAS requer um operando. Nesse ca
 <li>O processo prossegue para decodificação da segunda instrução e busca do dado</li>
 <li>O par de instruções seguinte é buscado ...</li>
 </ol>
-<div class="fig-full"><img alt="Fluxograma da operação do IAS" src="/arq_aulas/images/figura1_7.png"/><p class="fig-caption">Figura 1.7 Fluxograma da operação do IAS (fonte. Adaptado de Stallings, Arquitetura e Organização de Computadores)</p></div>
+<div class="fig-full"><img alt="Fluxograma da operação do IAS" src="/arq_aulas/images/figura1_7.png"/><p class="fig-caption">Figura 1.8 Fluxograma da operação do IAS (fonte. Adaptado de Stallings, Arquitetura e Organização de Computadores)</p></div>
 
 <p>Detalhando mais a operação na ULA.</p>
 <p>A ULA efetua adição, subtração e outras operações simples sobre suas entradas, produzindo assim um resultado no registrador de saída, o qual pode ser armazenado em um registrador. Mais tarde, ele pode ser escrito (isto é, armazenado) na memória, se desejado. Nem todos os projetos têm os registradores A, B e de saída. No exemplo, ilustramos uma adição, mas as ULAs também realizam outras operações.</p>
-<div class="fig-full"><img alt="0 caminho de dados de uma típica máquina de von Neumann" src="/arq_aulas/images/figura1_8.png"/><p class="fig-caption">Figura 1.8 0 caminho de dados de uma típica máquina de von Neumann (fonte. Tanenbaum, Organização estruturada de computadores)</p></div>
+<div class="fig-full"><img alt="0 caminho de dados de uma típica máquina de von Neumann" src="/arq_aulas/images/figura1_8.png"/><p class="fig-caption">Figura 1.9 O caminho de dados de uma típica máquina de von Neumann (fonte. Tanenbaum, Organização estruturada de computadores)</p></div>
 
 <h3 id="s3c">1.3.3 Instruções do processador IAS</h3>
 <p>Todo processador possui um <em>set</em> (conjunto) de instruções. O processador do computador IAS também possui o seu <em>set</em> de instruções.<br/>
@@ -353,7 +365,7 @@ As instruções podem ser classificadas como segue:</p>
 <p>Os programas executados pelo processador (na <strong>linguagem de máquina</strong>) podem ser escritos por uma representação simbólica (<em>assembly</em>) utilizando-se mnemônicos.<br/>
 O código em linguagem de máquina, como tratamos, é todo constituído de sequência binária de instruções, ou seja, em sequência de bits.<br/>
 A figura apresenta como a tabela do <em>set</em> de instruções é normalmente apresentada.</p>
-<div class="fig-full"><img alt="Forma da tabela do set de instruções da IAS" src="/arq_aulas/images/figura1_9.jpg"/><p class="fig-caption">Figura 1.9 Forma da tabela do <em>set</em> de instruções da IAS</p></div>
+<div class="fig-full"><img alt="Forma da tabela do set de instruções da IAS" src="/arq_aulas/images/figura1_9.jpg"/><p class="fig-caption">Figura 1.10 Forma da tabela do <em>set</em> de instruções da IAS</p></div>
 
 <p>***SET* DE INSTRUÇÕES**<br/>
 <strong>Instruções de transferência de dados</strong></p>
