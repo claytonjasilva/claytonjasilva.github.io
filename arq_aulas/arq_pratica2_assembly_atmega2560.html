@@ -51,7 +51,7 @@ h4{font-size:.95rem;font-weight:600;margin:1.2rem 0 .6rem;color:var(--accent);}
 p{margin-bottom:1rem;color:#cbd5e1;} strong{color:var(--text);font-weight:600;} em{color:var(--accent);font-style:normal;}
 ul.plain,ol.plain{margin:0 0 1rem 1.2rem;color:#cbd5e1;} ul.plain li,ol.plain li{margin-bottom:.45rem;}
 .fig-full{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:1.2rem;margin:1.5rem 0;overflow-x:auto;}
-.fig-full svg{width:100%;min-width:640px;display:block;}
+.fig-full img{max-width:100%;height:auto;display:block;margin:0 auto;}
 .fig-caption{font-family:var(--font-mono);font-size:.72rem;color:var(--muted);text-align:center;margin-top:.6rem;}
 .note{background:var(--tag-bg);border:1px solid var(--border);border-radius:6px;padding:.9rem 1.1rem;margin:1rem 0;font-size:.85rem;color:var(--muted);}
 .note strong{color:var(--accent);}
@@ -126,29 +126,9 @@ footer p{font-size:.8rem;color:var(--muted);font-family:var(--font-mono);}
 <h2>Montagem do circuito de saída</h2>
 <p>Monte três LEDs conectados a três pinos digitais do Arduino Mega 2560, cada LED com seu resistor limitador de corrente.</p>
 <div class="fig-full">
-<svg viewBox="0 0 900 430" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Três LEDs conectados a pinos digitais do Arduino Mega 2560">
-  <rect x="45" y="65" width="285" height="285" rx="16" class="dbox"/>
-  <text x="188" y="100" text-anchor="middle" class="dlbl">Arduino Mega 2560</text>
-  <circle cx="285" cy="150" r="5" class="pin"/><text x="225" y="154" class="dlbl2">D22</text>
-  <circle cx="285" cy="210" r="5" class="pin"/><text x="225" y="214" class="dlbl2">D23</text>
-  <circle cx="285" cy="270" r="5" class="pin"/><text x="225" y="274" class="dlbl2">D24</text>
-  <circle cx="95" cy="320" r="5" class="pin"/><text x="112" y="324" class="dlbl2">GND</text>
-  <rect x="430" y="65" width="360" height="285" rx="12" class="dbox2"/>
-  <text x="610" y="100" text-anchor="middle" class="dlbl">Shield simples de saída</text>
-  <g transform="translate(500,135)">
-    <path d="M-215 15 H0" class="dwire"/><rect x="0" y="0" width="54" height="16" rx="5" fill="#0f172a" stroke="#00c2ff"/><text x="27" y="-8" text-anchor="middle" class="dlbl2">300Ω</text>
-    <path d="M54 8 H95" class="dwire"/><circle cx="120" cy="8" r="17" class="led-red"/><path d="M137 8 H185 V185 H-405" class="dwire"/>
-  </g>
-  <g transform="translate(500,195)">
-    <path d="M-215 15 H0" class="dwire"/><rect x="0" y="0" width="54" height="16" rx="5" fill="#0f172a" stroke="#00c2ff"/><text x="27" y="-8" text-anchor="middle" class="dlbl2">300Ω</text>
-    <path d="M54 8 H95" class="dwire"/><circle cx="120" cy="8" r="17" class="led-green"/><path d="M137 8 H185 V125 H-405" class="dwire"/>
-  </g>
-  <g transform="translate(500,255)">
-    <path d="M-215 15 H0" class="dwire"/><rect x="0" y="0" width="54" height="16" rx="5" fill="#0f172a" stroke="#00c2ff"/><text x="27" y="-8" text-anchor="middle" class="dlbl2">300Ω</text>
-    <path d="M54 8 H95" class="dwire"/><circle cx="120" cy="8" r="17" fill="#f59e0b"/><path d="M137 8 H185 V65 H-405" class="dwire"/>
-  </g>
-  <text x="610" y="330" text-anchor="middle" class="dlbl2">Cada pino digital controla um LED via resistor limitador</text>
-</svg><p class="fig-caption">Figura 1 — Representação em SVG do circuito de saída: três pinos digitais controlando três LEDs.</p></div>
+<img src="/arq_aulas/images/saidaArduino.jpg" alt="Saída Arduino com LEDs" style="max-width:100%;height:auto;display:block;margin:0 auto;">
+<p class="fig-caption">Figura 1 — Circuito de saída do Arduino Mega 2560 com LEDs.</p>
+</div>
 <ol class="plain">
   <li>Escolha três pinos digitais de saída, por exemplo D22, D23 e D24.</li>
   <li>Conecte cada pino a um resistor de 300 Ω em série com um LED.</li>
