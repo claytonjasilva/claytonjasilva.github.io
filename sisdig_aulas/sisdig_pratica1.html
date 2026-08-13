@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Prática 1 — Análise, simulação e montagem de circuito lógico | Sistemas Digitais</title>
+  <style>
+    :root{
+      --bg:#0a0e17; --surface:#111827; --surface2:#0f172a; --border:#243044;
+      --text:#e5edf6; --muted:#94a3b8; --accent:#00c2ff; --accent2:#7c3aed;
+      --ok:#22c55e; --warn:#f59e0b;
+      --font-sans:Inter,Segoe UI,Arial,sans-serif;
+      --font-mono:"JetBrains Mono",Consolas,monospace;
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0;background:var(--bg);color:var(--text);font-family:var(--font-sans);line-height:1.65}
+    a{color:var(--accent);text-decoration:none}
+    a:hover{text-decoration:underline}
+    .container{max-width:1000px;margin:0 auto;padding:0 2rem}
+    nav{position:sticky;top:0;z-index:100;background:rgba(10,14,23,.9);backdrop-filter:blur(12px);
+        border-bottom:1px solid var(--border);padding:1rem 0}
+    nav .container{display:flex;justify-content:space-between;align-items:center;gap:1rem;flex-wrap:wrap}
+    .nav-brand{font-family:var(--font-mono);font-size:.82rem;color:var(--accent)}
+    .nav-links{display:flex;gap:1.2rem;list-style:none;margin:0;padding:0;flex-wrap:wrap}
+    .nav-links a{font-size:.82rem;color:var(--muted)}
+    .nav-links a:hover{color:var(--text);text-decoration:none}
+    .hero{padding:4.5rem 0 3rem;background:
+      radial-gradient(circle at 78% 18%,rgba(124,58,237,.14),transparent 32%),
+      radial-gradient(circle at 18% 30%,rgba(0,194,255,.10),transparent 30%)}
+    .eyebrow{font-family:var(--font-mono);text-transform:uppercase;letter-spacing:.12em;font-size:.72rem;color:var(--accent);margin-bottom:.7rem}
+    h1{font-size:clamp(2rem,5vw,3.6rem);line-height:1.08;margin:.2rem 0 1rem;font-weight:700}
+    h1 strong{color:var(--accent);font-weight:700}
+    .lead{max-width:760px;color:var(--muted);font-size:1.02rem}
+    .section{padding:3rem 0;border-top:1px solid var(--border)}
+    .section-title{display:flex;align-items:center;gap:.8rem;font-family:var(--font-mono);
+      text-transform:uppercase;letter-spacing:.1em;font-size:.72rem;color:var(--accent2);margin-bottom:1rem}
+    .section-title::after{content:"";height:1px;background:var(--border);flex:1}
+    h2{font-size:1.55rem;margin:.2rem 0 1rem}
+    h3{font-size:1.05rem;margin:1.4rem 0 .7rem}
+    p{margin:.55rem 0 1rem;color:#cbd5e1}
+    .card{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:1.25rem 1.4rem;margin:1rem 0}
+    .tool-card{border-left:3px solid var(--accent)}
+    .note{background:rgba(245,158,11,.07);border:1px solid rgba(245,158,11,.24);
+      border-left:3px solid var(--warn);border-radius:8px;padding:1rem 1.15rem;color:#cbd5e1;margin:1rem 0}
+    .tip{background:rgba(34,197,94,.06);border:1px solid rgba(34,197,94,.22);
+      border-left:3px solid var(--ok);border-radius:8px;padding:1rem 1.15rem;color:#cbd5e1;margin:1rem 0}
+    .steps{counter-reset:step;display:flex;flex-direction:column;gap:1rem;margin-top:1.2rem}
+    .step{counter-increment:step;background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:1.25rem 1.4rem}
+    .step h3{display:flex;gap:.75rem;align-items:flex-start;margin:0 0 .75rem}
+    .step h3::before{content:counter(step,decimal-leading-zero);font-family:var(--font-mono);font-size:.72rem;
+      color:var(--accent2);background:rgba(124,58,237,.1);border:1px solid rgba(124,58,237,.25);
+      border-radius:4px;padding:.18rem .48rem;flex-shrink:0;margin-top:.14rem}
+    .figure{margin:1.2rem 0 1.4rem;background:var(--surface2);border:1px solid var(--border);border-radius:10px;padding:1rem}
+    .figure img{display:block;max-width:100%;height:auto;margin:0 auto;border-radius:6px}
+    .caption{text-align:center;font-size:.78rem;color:var(--muted);font-family:var(--font-mono);margin:.7rem 0 0}
+    .task{margin:.8rem 0 0;padding-left:1.35rem;color:#cbd5e1}
+    .task li{margin:.45rem 0}
+    code{font-family:var(--font-mono);color:#bae6fd}
+    .btn{display:inline-block;margin-top:.4rem;padding:.65rem .9rem;border:1px solid rgba(0,194,255,.35);
+      border-radius:6px;background:rgba(0,194,255,.07);font-family:var(--font-mono);font-size:.8rem}
+    footer{border-top:1px solid var(--border);padding:2rem 0;margin-top:2rem}
+    footer .container{display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap}
+    footer p{font-family:var(--font-mono);font-size:.78rem;color:var(--muted);margin:0}
+    @media(max-width:640px){.container{padding:0 1.2rem}.nav-links{display:none}.hero{padding:3rem 0 2.2rem}}
+  </style>
+</head>
+<body>
+<nav>
+  <div class="container">
+    <span class="nav-brand">sisdig · prática 1</span>
+    <ul class="nav-links">
+      <li><a href="#easyeda">EasyEDA</a></li>
+      <li><a href="#pratica">Enunciado</a></li>
+      <li><a href="../sisdig.html">← disciplina</a></li>
+    </ul>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="container">
+    <p class="eyebrow">Sistemas Digitais · Práticas de Laboratório</p>
+    <h1>Prática 1 — <strong>circuito lógico</strong></h1>
+    <p class="lead">Análise da expressão lógica, montagem do esquema, simulação da tabela-verdade no EasyEDA e implementação física em protoboard.</p>
+  </div>
+</header>
+
+<main class="container">
+
+  <section class="section" id="easyeda">
+    <p class="section-title">01 / ferramenta</p>
+    <h2>EasyEDA</h2>
+
+    <div class="card tool-card">
+      <p>O <strong>EasyEDA</strong> é uma ferramenta de projeto eletrônico que permite elaborar esquemas elétricos, desenvolver placas de circuito impresso (PCB) e simular circuitos. Nesta prática, ele será utilizado principalmente para <strong>desenhar o circuito lógico e verificar seu comportamento antes da montagem física</strong>.</p>
+      <p>A simulação permite alterar os níveis lógicos das entradas e observar o estado da saída, comparando o comportamento do circuito com a expressão booleana e com a tabela-verdade obtida analiticamente.</p>
+      <a class="btn" href="https://easyeda.com/" target="_blank" rel="noopener noreferrer">Acessar o EasyEDA →</a>
+    </div>
+
+    <div class="note">
+      <strong>Importante para a simulação:</strong> use componentes compatíveis com o simulador e confira as conexões dos terminais. O EasyEDA exige que os fios estejam efetivamente conectados aos pinos dos componentes; uma linha apenas encostada visualmente no símbolo não garante uma conexão elétrica.
+    </div>
+  </section>
+
+  <section class="section" id="pratica">
+    <p class="section-title">02 / enunciado</p>
+    <h2>Atividades da Prática 1</h2>
+    <p>Desenvolva as quatro etapas a seguir e registre os resultados obtidos.</p>
+
+    <div class="steps">
+
+      <article class="step">
+        <h3>Montagem do esquema e obtenção da expressão lógica</h3>
+        <p>Utilizando o EasyEDA, monte o circuito lógico apresentado na figura a seguir, empregando as portas lógicas correspondentes e identificando claramente as entradas e a saída.</p>
+
+        <div class="figure">
+          <img src="images_sisdig/pratica1_circuito1_esquema.png"
+               alt="Esquema do circuito lógico da Prática 1">
+          <p class="caption">Figura 1 — Esquema do circuito lógico da Prática 1.</p>
+        </div>
+
+        <ul class="task">
+          <li>Identifique as entradas e a saída do circuito.</li>
+          <li>Determine, a partir da interligação das portas, a <strong>expressão booleana da saída</strong>.</li>
+          <li>Quando possível, simplifique a expressão utilizando os teoremas da Álgebra Booleana.</li>
+        </ul>
+      </article>
+
+      <article class="step">
+        <h3>Preparação do circuito para simulação</h3>
+        <p>Prepare o esquema para a simulação no EasyEDA, conforme a referência da figura abaixo.</p>
+
+        <div class="figure">
+          <img src="images_sisdig/pratica1_circuito1_simula.png"
+               alt="Circuito da Prática 1 preparado para simulação no EasyEDA">
+          <p class="caption">Figura 2 — Preparação do circuito para simulação no EasyEDA.</p>
+        </div>
+
+        <p>Durante a montagem, verifique a <strong>orientação e a posição das portas lógicas</strong>. Se um terminal não estiver acessível para a ligação, selecione e ajuste a posição ou a orientação do símbolo até que o pino de entrada ou de saída possa ser conectado corretamente. O fio deve terminar no <strong>pino elétrico</strong> do componente.</p>
+
+        <p>Nas entradas, insira o componente <strong>Estado Lógico (<em>Logic State</em>)</strong>. Esse elemento permite alternar manualmente a entrada entre os níveis lógicos <strong>0</strong> e <strong>1</strong> durante a simulação. Na saída, utilize a <strong>Ponta Lógica (<em>Logic Probe</em>)</strong>, que permite observar diretamente o nível lógico produzido pelo circuito.</p>
+
+        <div class="tip">
+          Antes de iniciar a coleta dos resultados, altere cada <strong>Estado Lógico</strong> entre 0 e 1 e confirme que a <strong>Ponta Lógica</strong> responde às mudanças. Isso ajuda a identificar fios ou terminais que tenham ficado sem conexão elétrica.
+        </div>
+      </article>
+
+      <article class="step">
+        <h3>Simulação e construção da tabela-verdade</h3>
+        <p>Execute a simulação do circuito e teste <strong>todas as combinações possíveis das entradas</strong>.</p>
+        <ul class="task">
+          <li>Para cada combinação, ajuste os componentes <strong>Estado Lógico</strong> das entradas para 0 ou 1.</li>
+          <li>Observe o valor indicado pela <strong>Ponta Lógica</strong> na saída.</li>
+          <li>Registre os resultados e construa a <strong>tabela-verdade completa</strong> do circuito.</li>
+          <li>Compare a tabela obtida por simulação com a expressão booleana determinada na etapa 1.</li>
+        </ul>
+      </article>
+
+      <article class="step">
+        <h3>Montagem física em protoboard</h3>
+        <p>Monte fisicamente o circuito em uma <strong>protoboard</strong>, utilizando os circuitos integrados de portas lógicas correspondentes, alimentação adequada e as conexões necessárias.</p>
+        <ul class="task">
+          <li>Implemente as entradas de forma que seja possível selecionar os níveis lógicos 0 e 1.</li>
+          <li>Ligue um <strong>LED à saída</strong> para indicar visualmente o estado lógico do circuito, utilizando resistor limitador de corrente.</li>
+          <li>Teste as combinações de entrada e compare o comportamento observado com a tabela-verdade obtida na simulação.</li>
+          <li>Registre eventuais diferenças entre a análise teórica, a simulação e a montagem física.</li>
+        </ul>
+      </article>
+
+    </div>
+  </section>
+
+  <section class="section">
+    <p class="section-title">03 / resultado esperado</p>
+    <h2>Entrega da prática</h2>
+    <div class="card">
+      <p>Ao final da atividade, o grupo deverá apresentar: <strong>(a)</strong> o esquema montado no EasyEDA; <strong>(b)</strong> a expressão lógica da saída; <strong>(c)</strong> a tabela-verdade obtida por simulação; e <strong>(d)</strong> a montagem física funcionando em protoboard com indicação da saída por LED.</p>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="container">
+    <p>© 2026 · Prof. Clayton J A Silva · Sistemas Digitais</p>
+    <p><a href="../sisdig.html">Voltar à página da disciplina</a></p>
+  </div>
+</footer>
+</body>
+</html>
