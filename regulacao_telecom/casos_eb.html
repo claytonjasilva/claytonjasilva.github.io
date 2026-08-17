@@ -1,0 +1,1247 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Estudos de Caso do Exército — Aspectos Regulatórios de Telecomunicações</title>
+  <style>
+    :root{
+      --bg:#07111f;
+      --bg2:#0b1830;
+      --card:#101c31;
+      --line:#1a3556;
+      --cyan:#19c7ff;
+      --cyan2:#00e5ff;
+      --purple:#9b5cff;
+      --text:#f3f7fb;
+      --muted:#a9b7ca;
+      --green:#31e6a1;
+      --shadow:0 14px 40px rgba(0,0,0,.28);
+    }
+
+    *{box-sizing:border-box}
+
+    html{scroll-behavior:smooth}
+
+    body{
+      margin:0;
+      font-family:Inter,Segoe UI,Arial,sans-serif;
+      color:var(--text);
+      background:
+        radial-gradient(circle at 85% 15%, rgba(25,199,255,.08), transparent 28%),
+        linear-gradient(180deg,#050b14 0%, var(--bg) 45%, #081426 100%);
+      line-height:1.6;
+    }
+
+    .page{
+      width:min(1400px,94vw);
+      margin:0 auto;
+      padding:42px 0 64px;
+    }
+
+    .eyebrow{
+      display:flex;
+      align-items:center;
+      gap:14px;
+      color:var(--cyan);
+      text-transform:uppercase;
+      letter-spacing:.18em;
+      font-size:.92rem;
+      margin-bottom:14px;
+    }
+
+    .eyebrow::before{
+      content:"";
+      width:48px;
+      height:2px;
+      background:var(--cyan);
+      box-shadow:0 0 12px rgba(25,199,255,.5);
+    }
+
+    h1{
+      margin:0 0 18px;
+      font-size:clamp(2.4rem,5vw,5rem);
+      line-height:1.03;
+      letter-spacing:-.035em;
+    }
+
+    h1 span{color:var(--cyan)}
+
+    .lead{
+      max-width:1050px;
+      color:#d9e4ef;
+      font-size:1.16rem;
+      margin:0 0 34px;
+    }
+
+    .hero{
+      position:relative;
+      overflow:hidden;
+      padding:10px 0 8px;
+    }
+
+    .hero::after{
+      content:"";
+      position:absolute;
+      right:-70px;
+      top:8px;
+      width:320px;
+      height:320px;
+      border:1px solid rgba(25,199,255,.14);
+      border-radius:50%;
+      box-shadow:
+        0 0 0 32px rgba(25,199,255,.03),
+        0 0 0 64px rgba(25,199,255,.02);
+      pointer-events:none;
+    }
+
+    .grid{
+      display:grid;
+      grid-template-columns:1.05fr .95fr;
+      gap:22px;
+      margin-top:20px;
+    }
+
+    .card{
+      background:linear-gradient(180deg,rgba(16,28,49,.96),rgba(10,21,38,.96));
+      border:1px solid var(--line);
+      border-radius:18px;
+      padding:26px;
+      box-shadow:var(--shadow);
+    }
+
+    .card h2{
+      margin:0 0 14px;
+      font-size:1.35rem;
+      color:#fff;
+    }
+
+    .card h2 span{color:var(--cyan)}
+
+    .context p{margin:0 0 14px;color:#d8e3ef}
+
+    .law{
+      border-left:4px solid var(--purple);
+      padding-left:22px;
+    }
+
+    .law-badge{
+      display:inline-block;
+      margin-bottom:12px;
+      color:#cbb7ff;
+      border:1px solid rgba(155,92,255,.45);
+      border-radius:999px;
+      padding:6px 11px;
+      font-size:.83rem;
+      letter-spacing:.06em;
+      text-transform:uppercase;
+    }
+
+    .law a{
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      text-decoration:none;
+      color:var(--cyan2);
+      font-weight:700;
+      margin-top:8px;
+    }
+
+    .law a:hover{text-decoration:underline}
+
+    .section{
+      margin-top:26px;
+      padding:30px;
+      border-radius:20px;
+      border:1px solid var(--line);
+      background:rgba(8,18,33,.72);
+      box-shadow:var(--shadow);
+    }
+
+    .section-title{
+      display:flex;
+      align-items:center;
+      gap:14px;
+      margin:0 0 18px;
+      font-size:1.5rem;
+    }
+
+    .number{
+      display:grid;
+      place-items:center;
+      width:38px;
+      height:38px;
+      border-radius:50%;
+      background:linear-gradient(135deg,var(--cyan),#1677ff);
+      color:#00121c;
+      font-weight:900;
+      box-shadow:0 0 24px rgba(25,199,255,.24);
+      flex:none;
+    }
+
+    .prompt{
+      font-size:1.2rem;
+      background:linear-gradient(90deg,rgba(25,199,255,.10),rgba(155,92,255,.06));
+      border:1px solid rgba(25,199,255,.26);
+      border-radius:16px;
+      padding:22px 24px;
+      margin-top:18px;
+    }
+
+    .prompt strong{color:var(--cyan)}
+
+    .questions{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:16px;
+      margin-top:20px;
+    }
+
+    .q{
+      min-height:180px;
+      border:1px solid var(--line);
+      background:var(--card);
+      border-radius:16px;
+      padding:20px;
+    }
+
+    .q b{
+      display:block;
+      color:var(--cyan);
+      margin-bottom:9px;
+      font-size:.92rem;
+      letter-spacing:.08em;
+      text-transform:uppercase;
+    }
+
+    .q p{margin:0;color:#d5e0eb}
+
+    .route{
+      margin-top:22px;
+      border:1px solid rgba(49,230,161,.35);
+      background:rgba(49,230,161,.05);
+      border-radius:16px;
+      padding:20px 22px;
+    }
+
+    .route strong{color:var(--green)}
+
+    .flow{
+      display:flex;
+      flex-wrap:wrap;
+      align-items:center;
+      gap:9px;
+      margin-top:12px;
+      color:#e9f3fb;
+      font-weight:700;
+    }
+
+    .pill{
+      border:1px solid rgba(25,199,255,.30);
+      border-radius:999px;
+      padding:6px 10px;
+      background:rgba(25,199,255,.05);
+    }
+
+    .arrow{color:var(--cyan)}
+
+    .footer{
+      color:#7f93ab;
+      font-size:.9rem;
+      margin-top:28px;
+      padding-top:18px;
+      border-top:1px solid rgba(117,145,178,.16);
+    }
+
+    @media(max-width:900px){
+      .grid,.questions{grid-template-columns:1fr}
+      .page{width:min(92vw,900px)}
+      .hero::after{display:none}
+      h1{font-size:clamp(2.2rem,10vw,4rem)}
+    }
+
+    @media print{
+      body{background:#fff;color:#111}
+      .card,.section{box-shadow:none}
+      a{color:#0645ad}
+    }
+  </style>
+</head>
+
+<body>
+  <main class="page">
+    <section class="hero">
+      <div class="eyebrow">Experiências profissionais · aplicação da regulamentação</div>
+      <h1><span>Estudos de Caso</span> do Exército</h1>
+      <p class="lead">
+        Experiências profissionais utilizadas como ponto de partida para discutir a evolução das redes,
+        o enquadramento regulatório, o uso de infraestrutura própria e a contratação de serviços
+        de telecomunicações.
+      </p>
+    </section>
+
+    <!-- CASO 1 -->
+    <section class="section">
+      <h2 class="section-title"><span class="number">1</span> Caso 1 — Modernização da Rede Rádio Fixa</h2>
+
+      <div class="grid" style="margin-top:0">
+        <article class="card context">
+          <h2><span>Contexto</span> da experiência</h2>
+          <p>
+            O Exército Brasileiro operava uma rede de telecomunicações em
+            <strong>HF (High Frequency)</strong>, denominada <strong>Rede Rádio Fixa</strong>,
+            estruturada em uma <strong>rede principal</strong> e em <strong>redes secundárias</strong>.
+          </p>
+          <p>
+            A experiência envolveu a <strong>modernização dessa infraestrutura</strong>,
+            preservando sua finalidade institucional e a utilização de radiofrequências
+            para comunicações de interesse do próprio Exército.
+          </p>
+        </article>
+
+        <aside class="card law">
+          <div class="law-badge">Ponto regulatório para análise</div>
+          <h2>Rede institucional, <span>SLP</span> e espectro</h2>
+          <p style="color:#d5e0eb;margin:0">
+            O caso permite discutir o enquadramento de uma rede destinada a grupo determinado
+            de usuários, sua relação com o Serviço Limitado Privado e as regras aplicáveis
+            ao uso de radiofrequências.
+          </p>
+          <a href="https://www.gov.br/anatel/pt-br/regulado/outorga/servico-limitado-privado"
+             target="_blank" rel="noopener noreferrer">
+            Consultar informações sobre SLP na Anatel ↗
+          </a>
+        </aside>
+      </div>
+
+      <div class="prompt">
+        <strong>Questão central:</strong><br>
+        Como uma rede de comunicações HF destinada ao uso institucional do Exército deve ser
+        analisada perante a regulamentação dos serviços de telecomunicações e do uso do espectro?
+      </div>
+
+      <div class="questions">
+        <article class="q">
+          <b>01 · Enquadramento</b>
+          <p>
+            A rede atende ao público em geral ou a um grupo determinado de usuários?
+            Como essa característica influencia sua classificação regulatória?
+          </p>
+        </article>
+
+        <article class="q">
+          <b>02 · Serviço × espectro</b>
+          <p>
+            Qual é a diferença entre o enquadramento do serviço de telecomunicações
+            e a autorização para utilização das radiofrequências necessárias à rede?
+          </p>
+        </article>
+
+        <article class="q">
+          <b>03 · Modernização e regulação</b>
+          <p>
+            A modernização de uma rede já existente altera automaticamente seu enquadramento
+            regulatório ou exige principalmente verificar a continuidade de sua finalidade e
+            a regularidade do uso do espectro?
+          </p>
+        </article>
+      </div>
+
+      <div class="route">
+        <strong>Linha de raciocínio para condução da discussão:</strong>
+        <div class="flow">
+          <span class="pill">uso institucional</span><span class="arrow">→</span>
+          <span class="pill">grupo determinado de usuários</span><span class="arrow">→</span>
+          <span class="pill">interesse restrito</span><span class="arrow">→</span>
+          <span class="pill">SLP</span><span class="arrow">→</span>
+          <span class="pill">uso de radiofrequências</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- CASO 2 -->
+    <section class="section">
+      <h2 class="section-title"><span class="number">2</span> Caso 2 — Modernização da Rede de Telefonia / RITEx</h2>
+
+      <div class="grid" style="margin-top:0">
+        <article class="card context">
+          <h2><span>Contexto</span> da experiência</h2>
+          <p>
+            O Exército Brasileiro possuía uma rede própria de telefonia baseada em
+            <strong>centrais eletromecânicas</strong>. O processo de modernização envolveu a
+            substituição dessas centrais por <strong>Centrais de Programa Armazenado (CPA)</strong>.
+          </p>
+          <p>
+            A infraestrutura evoluiu para a <strong>RITEx — Rede Integrada de Telecomunicações
+            do Exército</strong>. Parte do backbone passou a utilizar capacidade contratada
+            de <strong>operadoras de telecomunicações</strong>.
+          </p>
+        </article>
+
+        <aside class="card law">
+          <div class="law-badge">Ponto regulatório para análise</div>
+          <h2>Rede institucional <span>×</span> serviço contratado</h2>
+          <p style="color:#d5e0eb;margin:0">
+            O caso permite distinguir a rede privativa mantida pelo Exército dos serviços
+            de telecomunicações contratados de prestadoras para suportar sua interligação.
+          </p>
+          <a href="https://www.gov.br/anatel/pt-br/regulado/outorga"
+             target="_blank" rel="noopener noreferrer">
+            Consultar informações de outorga na Anatel ↗
+          </a>
+        </aside>
+      </div>
+
+      <div class="prompt">
+        <strong>Questão central:</strong><br>
+        Ao contratar de operadoras os meios utilizados no backbone, o Exército terceirizou
+        sua rede de telecomunicações ou apenas parte da infraestrutura empregada para suportá-la?
+      </div>
+
+      <div class="questions">
+        <article class="q">
+          <b>01 · Rede própria × serviço contratado</b>
+          <p>
+            A utilização de infraestrutura de uma operadora modifica a natureza institucional
+            da RITEx ou apenas introduz um serviço de terceiros como meio de suporte?
+          </p>
+        </article>
+
+        <article class="q">
+          <b>02 · Responsabilidades</b>
+          <p>
+            Quais responsabilidades permanecem com o Exército e quais pertencem à prestadora
+            quando parte da conectividade é contratada?
+          </p>
+        </article>
+
+        <article class="q">
+          <b>03 · Contratação e continuidade</b>
+          <p>
+            Que aspectos regulatórios e contratuais devem ser observados para assegurar
+            continuidade, disponibilidade e responsabilidade pela prestação do serviço?
+          </p>
+        </article>
+      </div>
+
+      <div class="route">
+        <strong>Linha de raciocínio para condução da discussão:</strong>
+        <div class="flow">
+          <span class="pill">rede institucional</span><span class="arrow">→</span>
+          <span class="pill">infraestrutura própria</span><span class="arrow">→</span>
+          <span class="pill">meios contratados</span><span class="arrow">→</span>
+          <span class="pill">prestadora autorizada</span><span class="arrow">→</span>
+          <span class="pill">responsabilidades distintas</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- CASO 3 -->
+    <section class="section">
+      <h2 class="section-title"><span class="number">3</span> Caso 3 — Redes Radiotelefônicas Privativas (RRTP)</h2>
+
+      <div class="grid" style="margin-top:0">
+        <article class="card context">
+          <h2><span>Contexto</span> da experiência</h2>
+          <p>
+            Parte importante da experiência profissional esteve relacionada à
+            <strong>construção e modernização de redes rádio convencionais</strong>,
+            utilizadas principalmente para comunicação de <strong>voz</strong>.
+          </p>
+          <p>
+            Essas redes operavam tipicamente nas faixas de <strong>VHF e UHF</strong> e eram
+            então conhecidas como <strong>Redes Radiotelefônicas Privativas (RRTP)</strong>.
+            O Exército utilizava frequências que, posteriormente, passaram a ser tratadas em
+            normas da Anatel como destinadas a <strong>fins exclusivamente militares</strong>.
+          </p>
+        </article>
+
+        <aside class="card law">
+          <div class="law-badge">Ponto regulatório para análise</div>
+          <h2>Evolução do serviço e <span>destinação do espectro</span></h2>
+          <p style="color:#d5e0eb;margin:0">
+            O caso permite discutir a mudança da nomenclatura e do enquadramento dos serviços,
+            sem confundir essa evolução com a destinação específica de determinadas
+            radiofrequências para aplicações militares.
+          </p>
+          <a href="https://www.gov.br/anatel/pt-br/regulado/radiofrequencia"
+             target="_blank" rel="noopener noreferrer">
+            Consultar informações de radiofrequência na Anatel ↗
+          </a>
+        </aside>
+      </div>
+
+      <div class="prompt">
+        <strong>Questão central:</strong><br>
+        Como a evolução da regulamentação altera a forma de classificar uma rede privativa
+        de radiocomunicação sem necessariamente modificar sua finalidade institucional?
+      </div>
+
+      <div class="questions">
+        <article class="q">
+          <b>01 · Nomenclatura × finalidade</b>
+          <p>
+            Uma mudança na denominação regulamentar do serviço significa que a finalidade
+            operacional da rede também mudou?
+          </p>
+        </article>
+
+        <article class="q">
+          <b>02 · Serviço × frequência</b>
+          <p>
+            Qual é a diferença entre classificar uma rede como serviço de interesse restrito
+            e classificar determinadas frequências como destinadas a fins exclusivamente militares?
+          </p>
+        </article>
+
+        <article class="q">
+          <b>03 · Redes existentes</b>
+          <p>
+            Como novas normas devem ser consideradas quando redes já implantadas continuam
+            utilizando o espectro para a mesma finalidade institucional?
+          </p>
+        </article>
+      </div>
+
+      <div class="route">
+        <strong>Linha de raciocínio para condução da discussão:</strong>
+        <div class="flow">
+          <span class="pill">RRTP</span><span class="arrow">→</span>
+          <span class="pill">rede privativa</span><span class="arrow">→</span>
+          <span class="pill">evolução regulatória</span><span class="arrow">→</span>
+          <span class="pill">interesse restrito</span><span class="arrow">→</span>
+          <span class="pill">frequências de uso militar</span>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- CASO 4 -->
+    <section class="section">
+      <h2 class="section-title"><span class="number">4</span> Caso 4 — Rede Privativa de Distribuição de Sinais de TV</h2>
+
+      <div class="grid" style="margin-top:0">
+        <article class="card context">
+          <h2><span>Contexto</span> da experiência</h2>
+          <p>
+            O Exército implantou, para atendimento de uma área sob sua administração,
+            uma <strong>rede privativa de distribuição de televisão</strong>.
+            A experiência foi acompanhada profissionalmente, embora sem participação direta no projeto.
+          </p>
+          <p>
+            Uma <strong>estação terrena</strong> recebia sinais abertos disponibilizados por
+            transponders de satélite e a infraestrutura local os distribuía para
+            <strong>residências situadas dentro da própria área do Exército</strong>.
+          </p>
+        </article>
+
+        <aside class="card law">
+          <div class="law-badge">Ponto regulatório para análise</div>
+          <h2>Rede privativa <span>×</span> TV por assinatura</h2>
+          <p style="color:#d5e0eb;margin:0">
+            O caso permite comparar uma rede institucional de distribuição de sinais de televisão
+            com o atual <strong>Serviço de Acesso Condicionado (SeAC)</strong>, destinado à
+            distribuição de conteúdos audiovisuais a assinantes.
+          </p>
+          <a href="https://www.gov.br/anatel/pt-br/regulado/outorga/tv-por-assinatura"
+             target="_blank" rel="noopener noreferrer">
+            Consultar TV por assinatura / SeAC na Anatel ↗
+          </a>
+        </aside>
+      </div>
+
+      <div class="prompt">
+        <strong>Questão central:</strong><br>
+        Uma rede que recebe sinais de televisão por satélite e os redistribui a residências
+        de uma comunidade institucional pode ser considerada equivalente a um serviço de
+        TV por assinatura? Quais características distinguem as duas situações?
+      </div>
+
+      <div class="questions">
+        <article class="q">
+          <b>01 · Rede privativa × serviço ao público</b>
+          <p>
+            Que diferença regulatória existe entre distribuir sinais dentro de uma área institucional
+            para um grupo determinado de usuários e oferecer comercialmente televisão a assinantes?
+          </p>
+        </article>
+
+        <article class="q">
+          <b>02 · Recepção × distribuição</b>
+          <p>
+            A simples recepção de sinais abertos de satélite e sua posterior distribuição em uma
+            rede local caracteriza, por si só, a prestação de um serviço de TV por assinatura?
+          </p>
+        </article>
+
+        <article class="q">
+          <b>03 · Evolução regulatória</b>
+          <p>
+            Como essa experiência pode ser comparada ao modelo atual do
+            <strong>Serviço de Acesso Condicionado (SeAC)</strong>, que consolidou diferentes
+            tecnologias de distribuição de conteúdo audiovisual?
+          </p>
+        </article>
+
+        <article class="q">
+          <b>04 · Elementos de diferenciação</b>
+          <p>
+            Na classificação regulatória, qual é a importância de aspectos como finalidade da rede,
+            universo de usuários, existência de relação comercial e natureza do conteúdo distribuído?
+          </p>
+        </article>
+      </div>
+
+      <div class="route">
+        <strong>Linha de raciocínio para condução da discussão:</strong>
+        <div class="flow">
+          <span class="pill">recepção por satélite</span><span class="arrow">→</span>
+          <span class="pill">rede local</span><span class="arrow">→</span>
+          <span class="pill">grupo determinado</span><span class="arrow">→</span>
+          <span class="pill">rede institucional</span><span class="arrow">→</span>
+          <span class="pill">comparação com SeAC</span>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- CASO 7 -->
+
+    <!-- CASO 5 -->
+    <section class="section">
+      <h2 class="section-title"><span class="number">5</span> Caso 5 — Implantação do Primeiro Sistema de Rádio Troncalizado</h2>
+
+      <div class="grid" style="margin-top:0">
+        <article class="card context">
+          <h2><span>Contexto</span> da experiência</h2>
+          <p>
+            A experiência envolveu a participação nas <strong>especificações e no projeto do primeiro
+            sistema de rádio troncalizado do Exército no Rio de Janeiro</strong>.
+          </p>
+          <p>
+            Diferentemente de redes anteriores, o novo sistema demandava radiofrequências em faixas
+            que <strong>não estavam entre aquelas já consignadas ao Exército</strong>. A implantação,
+            portanto, exigiu tratar não apenas o projeto da rede, mas também os procedimentos
+            regulatórios necessários para obtenção do direito de uso das novas frequências e para
+            regularização das estações.
+          </p>
+        </article>
+
+        <aside class="card law">
+          <div class="law-badge">Ponto regulatório para análise</div>
+          <h2>SLP não significa <span>uso livre do espectro</span></h2>
+          <p style="color:#d5e0eb;margin:0">
+            Uma rede de interesse restrito pode estar enquadrada no SLP, mas o uso de radiofrequências
+            continua sujeito à regulamentação da Anatel. Quando a solução necessita de novas frequências,
+            entram em cena a autorização de uso, a consignação, o cadastramento e o licenciamento das estações.
+          </p>
+          <a href="https://www.gov.br/anatel/pt-br/regulado/outorga/servico-limitado-privado/licenciamento-de-estacoes-slp"
+             target="_blank" rel="noopener noreferrer">
+            Consultar licenciamento de estações SLP na Anatel ↗
+          </a>
+        </aside>
+      </div>
+
+      <div class="prompt">
+        <strong>Questão central:</strong><br>
+        Se uma instituição já possui uma rede enquadrada como serviço de interesse restrito,
+        por que a implantação de uma nova tecnologia que utiliza outras faixas de frequências
+        pode exigir um novo processo perante a Anatel?
+      </div>
+
+      <div class="questions">
+        <article class="q">
+          <b>01 · Serviço × radiofrequência</b>
+          <p>
+            A autorização ou o enquadramento de uma rede no SLP concede automaticamente o direito
+            de utilizar qualquer frequência necessária ao sistema? Por quê?
+          </p>
+        </article>
+
+        <article class="q">
+          <b>02 · Novas frequências</b>
+          <p>
+            O que muda quando o projeto necessita de frequências que não estavam previamente
+            consignadas à instituição?
+          </p>
+        </article>
+
+        <article class="q">
+          <b>03 · Autorização de uso</b>
+          <p>
+            Qual é a função da Anatel na análise e autorização do uso das radiofrequências
+            requeridas para uma nova rede privativa?
+          </p>
+        </article>
+
+        <article class="q">
+          <b>04 · Cadastro das estações</b>
+          <p>
+            Por que, depois de obtida a autorização de uso das radiofrequências, as estações
+            da rede precisam ser cadastradas perante a Anatel?
+          </p>
+        </article>
+
+        <article class="q">
+          <b>05 · Licenciamento</b>
+          <p>
+            Qual é a diferença entre obter o direito de uso da radiofrequência e obter a
+            licença para funcionamento das estações que efetivamente utilizarão esse recurso?
+          </p>
+        </article>
+
+        <article class="q">
+          <b>06 · Obrigações regulatórias</b>
+          <p>
+            Por que uma rede destinada exclusivamente ao uso institucional continua submetida
+            a procedimentos de autorização, cadastramento, licenciamento e às obrigações
+            econômicas aplicáveis?
+          </p>
+        </article>
+      </div>
+
+      <div class="route">
+        <strong>Fluxo regulatório para condução da discussão:</strong>
+        <div class="flow">
+          <span class="pill">necessidade da nova rede</span><span class="arrow">→</span>
+          <span class="pill">faixa compatível</span><span class="arrow">→</span>
+          <span class="pill">solicitação de RF</span><span class="arrow">→</span>
+          <span class="pill">autorização / consignação</span><span class="arrow">→</span>
+          <span class="pill">cadastro das estações</span><span class="arrow">→</span>
+          <span class="pill">licenciamento</span>
+        </div>
+      </div>
+
+      <div class="route" style="margin-top:16px;border-color:rgba(155,92,255,.35);background:rgba(155,92,255,.05)">
+        <strong style="color:#cbb7ff">Referências para a discussão:</strong>
+        <div class="flow" style="font-weight:600">
+          <a class="pill" style="color:#e9f3fb;text-decoration:none"
+             href="https://www.gov.br/anatel/pt-br/regulado/radiofrequencia/redes-privativas"
+             target="_blank" rel="noopener noreferrer">Redes Privativas — Anatel ↗</a>
+          <a class="pill" style="color:#e9f3fb;text-decoration:none"
+             href="https://www.gov.br/anatel/pt-br/regulado/espectro"
+             target="_blank" rel="noopener noreferrer">Autorização de Radiofrequência — Anatel ↗</a>
+          <a class="pill" style="color:#e9f3fb;text-decoration:none"
+             href="https://www.gov.br/anatel/pt-br/regulado/outorga/servico-limitado-privado/licenciamento-de-estacoes-slp"
+             target="_blank" rel="noopener noreferrer">Licenciamento de Estações SLP — Anatel ↗</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2 class="section-title"><span class="number">6</span> Caso 6 — Frequências de Interesse do Exército junto à Anatel</h2>
+
+      <div class="grid" style="margin-top:0">
+        <article class="card context">
+          <h2><span>Contexto</span> da experiência</h2>
+          <p>
+            Outra experiência relevante foi a participação em discussões junto à
+            <strong>Anatel</strong> sobre frequências de interesse do Exército.
+            O processo envolvia conciliar as <strong>peculiaridades das necessidades militares</strong>
+            com a legislação de telecomunicações e com o planejamento nacional do espectro.
+          </p>
+          <p>
+            Nessas discussões apareciam temas como <strong>interesses econômicos associados ao espectro</strong>,
+            mecanismos de <strong>consulta pública</strong>, destinação de frequências para
+            <strong>fins exclusivamente militares</strong> e a discussão sobre
+            <strong>FISTEL</strong>, inclusive a isenção legal das Forças Armadas
+            quanto às taxas de fiscalização.
+          </p>
+        </article>
+
+        <aside class="card law">
+          <div class="law-badge">Ponto regulatório para análise</div>
+          <h2>Espectro como <span>recurso público</span></h2>
+          <p style="color:#d5e0eb;margin:0">
+            O espectro de radiofrequências é um recurso limitado e bem público administrado pela Anatel.
+            O caso permite discutir como necessidades de defesa, interesses econômicos e participação
+            pública convivem no processo de planejamento e destinação desse recurso.
+          </p>
+          <a href="https://www.gov.br/anatel/pt-br/regulado/radiofrequencia"
+             target="_blank" rel="noopener noreferrer">
+            Consultar Radiofrequência na Anatel ↗
+          </a>
+        </aside>
+      </div>
+
+      <div class="prompt">
+        <strong>Questão central:</strong><br>
+        Como o Estado deve conciliar necessidades estratégicas de defesa com o uso eficiente
+        de um recurso público escasso e de elevado valor econômico, assegurando transparência
+        e participação no processo regulatório?
+      </div>
+
+      <div class="questions">
+        <article class="q">
+          <b>01 · Interesse público × valor econômico</b>
+          <p>
+            Como devem ser equilibradas as necessidades estratégicas das Forças Armadas e os
+            interesses econômicos associados à utilização de determinadas faixas de radiofrequências?
+          </p>
+        </article>
+
+        <article class="q">
+          <b>02 · Consulta pública</b>
+          <p>
+            Qual é o papel dos mecanismos de consulta pública da Anatel na construção de normas
+            que podem afetar governo, empresas, usuários e outros interessados?
+          </p>
+        </article>
+
+        <article class="q">
+          <b>03 · Frequências militares</b>
+          <p>
+            O que significa destinar frequências para <strong>fins exclusivamente militares</strong>
+            e por que essa classificação pode ser relevante para a defesa e para o planejamento do espectro?
+          </p>
+        </article>
+
+        <article class="q">
+          <b>04 · FISTEL e isenção</b>
+          <p>
+            As Forças Armadas são isentas do pagamento das taxas do FISTEL. Qual é a diferença
+            entre essa isenção tributária e as demais obrigações regulatórias de cadastro,
+            autorização de radiofrequências e licenciamento?
+          </p>
+        </article>
+
+        <article class="q">
+          <b>05 · Regulação e defesa</b>
+          <p>
+            Em que medida a legislação geral de telecomunicações precisa conviver com peculiaridades
+            próprias das comunicações militares sem afastar os princípios de gestão do espectro?
+          </p>
+        </article>
+
+        <article class="q">
+          <b>06 · Participação institucional</b>
+          <p>
+            Por que é importante que instituições públicas acompanhem consultas e processos regulatórios
+            antes da edição de normas que possam afetar suas redes e suas necessidades futuras?
+          </p>
+        </article>
+      </div>
+
+      <div class="route">
+        <strong>Linha de raciocínio para condução da discussão:</strong>
+        <div class="flow">
+          <span class="pill">espectro = bem público</span><span class="arrow">→</span>
+          <span class="pill">necessidades de defesa</span><span class="arrow">→</span>
+          <span class="pill">interesses econômicos</span><span class="arrow">→</span>
+          <span class="pill">consulta pública</span><span class="arrow">→</span>
+          <span class="pill">destinação militar</span><span class="arrow">→</span>
+          <span class="pill">FISTEL: isenção das Forças Armadas</span>
+        </div>
+      </div>
+
+      <div class="route" style="margin-top:16px;border-color:rgba(155,92,255,.35);background:rgba(155,92,255,.05)">
+        <strong style="color:#cbb7ff">Referências para a discussão:</strong>
+        <div class="flow" style="font-weight:600">
+          <a class="pill" style="color:#e9f3fb;text-decoration:none"
+             href="https://www.gov.br/anatel/pt-br/regulado/radiofrequencia"
+             target="_blank" rel="noopener noreferrer">Gestão de radiofrequências — Anatel ↗</a>
+          <a class="pill" style="color:#e9f3fb;text-decoration:none"
+             href="https://informacoes.anatel.gov.br/legislacao/component/search/index.php?limit=10&ordering=newest&searchphrase=all&searchword=Militares"
+             target="_blank" rel="noopener noreferrer">Normas sobre fins exclusivamente militares ↗</a>
+          <a class="pill" style="color:#e9f3fb;text-decoration:none"
+             href="https://www.gov.br/anatel/pt-br/regulado/arrecadacao/fistel"
+             target="_blank" rel="noopener noreferrer">FISTEL — Anatel ↗</a>
+          <a class="pill" style="color:#e9f3fb;text-decoration:none"
+             href="https://www2.camara.leg.br/legin/fed/lei/1997/lei-9472-16-julho-1997-367735-publicacaooriginal-1-pl.html"
+             target="_blank" rel="noopener noreferrer">LGT — isenção das Forças Armadas ↗</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- CASO 6 -->
+    <section class="section">
+      <h2 class="section-title"><span class="number">7</span> Caso 7 — Implantação da EBNet</h2>
+
+      <div class="grid" style="margin-top:0">
+        <article class="card context">
+          <h2><span>Contexto</span> da experiência</h2>
+          <p>
+            A <strong>EBNet</strong> foi implantada como uma <strong>rede corporativa</strong>
+            destinada a dar suporte aos sistemas corporativos do Exército, integrando
+            diferentes tipos de informação, incluindo <strong>voz e imagens</strong>.
+          </p>
+          <p>
+            Em sua evolução, a EBNet <strong>absorveu o backbone de voz da RITEx</strong>.
+            A implantação começou com um <strong>backbone principal</strong>, posteriormente
+            estendido a <strong>redes metropolitanas</strong>, combinando
+            <strong>meios próprios e meios terceirizados</strong>.
+          </p>
+        </article>
+
+        <aside class="card law">
+          <div class="law-badge">Ponto regulatório para análise</div>
+          <h2>Rede corporativa e <span>infraestrutura híbrida</span></h2>
+          <p style="color:#d5e0eb;margin:0">
+            O caso permite discutir uma rede institucional que integra serviços corporativos
+            e utiliza simultaneamente infraestrutura própria e serviços contratados de
+            prestadoras de telecomunicações.
+          </p>
+          <a href="https://www.gov.br/anatel/pt-br/regulado/outorga"
+             target="_blank" rel="noopener noreferrer">
+            Consultar informações de outorga na Anatel ↗
+          </a>
+        </aside>
+      </div>
+
+      <div class="prompt">
+        <strong>Questão central:</strong><br>
+        Quando uma rede corporativa integra voz, imagens e sistemas de informação e utiliza
+        meios próprios e contratados, como devem ser distinguidas a rede institucional,
+        os serviços que ela suporta e os serviços de telecomunicações adquiridos de terceiros?
+      </div>
+
+      <div class="questions">
+        <article class="q">
+          <b>01 · Rede corporativa × serviço</b>
+          <p>
+            A EBNet deve ser entendida como um serviço de telecomunicações específico ou como
+            uma infraestrutura corporativa que suporta diferentes aplicações e serviços?
+          </p>
+        </article>
+
+        <article class="q">
+          <b>02 · Integração de serviços</b>
+          <p>
+            A absorção do backbone de voz da RITEx pela EBNet altera a natureza do serviço de voz
+            ou apenas a infraestrutura utilizada para transportá-lo?
+          </p>
+        </article>
+
+        <article class="q">
+          <b>03 · Meios próprios × terceirizados</b>
+          <p>
+            Como deve ser analisada a responsabilidade regulatória quando uma mesma rede utiliza
+            trechos próprios e trechos contratados de operadoras?
+          </p>
+        </article>
+
+        <article class="q">
+          <b>04 · Rede metropolitana</b>
+          <p>
+            A expansão do backbone para redes metropolitanas altera o enquadramento institucional
+            da EBNet ou apenas amplia sua infraestrutura de suporte?
+          </p>
+        </article>
+      </div>
+
+      <div class="route">
+        <strong>Linha de raciocínio para condução da discussão:</strong>
+        <div class="flow">
+          <span class="pill">rede corporativa</span><span class="arrow">→</span>
+          <span class="pill">sistemas corporativos</span><span class="arrow">→</span>
+          <span class="pill">voz e imagens</span><span class="arrow">→</span>
+          <span class="pill">backbone integrado</span><span class="arrow">→</span>
+          <span class="pill">meios próprios + contratados</span>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- CASO 8 -->
+    <section class="section">
+      <h2 class="section-title"><span class="number">8</span> Caso 8 — Redes LTE para Operações Episódicas</h2>
+
+      <div class="grid" style="margin-top:0">
+        <article class="card context">
+          <h2><span>Contexto</span> da experiência</h2>
+          <p>
+            Após a implantação do backbone da EBNet, aumentou o interesse por
+            <strong>redes privativas baseadas em LTE</strong> para apoio a operações episódicas,
+            nas quais a infraestrutura de comunicações é <strong>desdobrada temporariamente</strong>
+            para atender determinada operação e posteriormente recolhida.
+          </p>
+          <p>
+            A evolução trouxe uma questão importante: manter ou ampliar soluções de
+            <strong>rádio troncalizado</strong>, tradicionalmente orientadas à comunicação de voz,
+            ou migrar progressivamente para redes LTE, capazes de integrar
+            <strong>voz, dados, imagens e aplicações corporativas</strong>.
+          </p>
+        </article>
+
+        <aside class="card law">
+          <div class="law-badge">Ponto regulatório para análise</div>
+          <h2>Tecnologia <span>não define o serviço</span></h2>
+          <p style="color:#d5e0eb;margin:0">
+            SME e SMP são referências úteis para comparar características de redes móveis
+            comerciais. Entretanto, quando uma rede LTE ou troncalizada é implantada pelo
+            Exército para uso próprio ou de grupo determinado de usuários, o enquadramento
+            regulatório é de <strong>interesse restrito — SLP</strong>, observadas as regras
+            aplicáveis ao uso das radiofrequências.
+          </p>
+          <a href="https://www.gov.br/anatel/pt-br/regulado/radiofrequencia/redes-privativas"
+             target="_blank" rel="noopener noreferrer">
+            Consultar Redes Privativas na Anatel ↗
+          </a>
+        </aside>
+      </div>
+
+      <div class="prompt">
+        <strong>Questão central:</strong><br>
+        Diante da evolução das redes móveis, ainda é vantajoso manter sistemas de rádio
+        troncalizado para operações episódicas ou redes privativas LTE oferecem uma plataforma
+        mais adequada? Como separar essa decisão tecnológica do enquadramento regulatório do serviço?
+      </div>
+
+      <div class="questions">
+        <article class="q">
+          <b>01 · Tecnologia × serviço</b>
+          <p>
+            Uma rede que utiliza tecnologia LTE passa automaticamente a ser SMP?
+            Que elemento determina se a rede é de interesse coletivo ou restrito?
+          </p>
+        </article>
+
+        <article class="q">
+          <b>02 · Troncalizado × SME</b>
+          <p>
+            Sistemas de rádio troncalizado podem apresentar características semelhantes às
+            redes associadas historicamente ao SME. Isso significa que uma rede privativa
+            do Exército deve ser enquadrada como SME?
+          </p>
+        </article>
+
+        <article class="q">
+          <b>03 · LTE × SMP</b>
+          <p>
+            O uso da mesma família tecnológica empregada pelas redes celulares comerciais
+            torna uma rede LTE privativa equivalente ao SMP?
+          </p>
+        </article>
+
+        <article class="q">
+          <b>04 · Uso episódico</b>
+          <p>
+            O fato de as estações serem desdobradas apenas durante determinadas operações
+            modifica o enquadramento como SLP ou cria principalmente questões relativas
+            à autorização de radiofrequências e ao cadastramento/licenciamento das estações?
+          </p>
+        </article>
+
+        <article class="q">
+          <b>05 · Migração tecnológica</b>
+          <p>
+            Na comparação entre rádio troncalizado e LTE, quais necessidades institucionais
+            justificariam a migração: somente voz ou integração de voz, dados, imagens e
+            sistemas corporativos?
+          </p>
+        </article>
+
+        <article class="q">
+          <b>06 · Espectro</b>
+          <p>
+            Se a migração para LTE exigir outras faixas de frequências, quais etapas regulatórias
+            estudadas nos casos anteriores voltam a ser relevantes?
+          </p>
+        </article>
+      </div>
+
+      <div class="route">
+        <strong>Paralelo conceitual para condução da discussão:</strong>
+        <div class="flow">
+          <span class="pill">rádio troncalizado</span><span class="arrow">↔</span>
+          <span class="pill">referência: SME</span>
+          <span class="arrow">|</span>
+          <span class="pill">LTE</span><span class="arrow">↔</span>
+          <span class="pill">referência: SMP</span>
+          <span class="arrow">|</span>
+          <span class="pill">uso próprio do Exército</span><span class="arrow">→</span>
+          <span class="pill">SLP</span>
+        </div>
+      </div>
+
+      <div class="route" style="margin-top:16px;border-color:rgba(155,92,255,.35);background:rgba(155,92,255,.05)">
+        <strong style="color:#cbb7ff">Síntese para os alunos:</strong>
+        <p style="margin:8px 0 0;color:#dfe8f3">
+          <strong>LTE não significa SMP</strong> e <strong>rádio troncalizado não significa SME</strong>.
+          SMP e SME ajudam a compreender modelos de redes móveis de interesse coletivo; neste caso,
+          a finalidade institucional, o uso próprio e o grupo determinado de usuários caracterizam
+          as redes militares como <strong>SLP</strong>.
+        </p>
+      </div>
+    </section>
+
+
+    <!-- CASO 9 -->
+    <section class="section">
+      <h2 class="section-title"><span class="number">9</span> Caso 9 — SISCOMIS e o Uso de Recursos de Órbita</h2>
+
+      <div class="grid" style="margin-top:0">
+        <article class="card context">
+          <h2><span>Contexto</span> para discussão</h2>
+          <p>
+            O <strong>SISCOMIS — Sistema de Comunicações Militares por Satélite</strong>
+            constitui infraestrutura de telecomunicações para o Sistema Militar de Comando e Controle,
+            integrando órgãos da Estrutura Militar de Defesa e suportando comunicações de
+            <strong>voz, dados e imagens</strong>.
+          </p>
+          <p>
+            Diferentemente dos casos baseados apenas em redes terrestres, a comunicação via satélite
+            acrescenta uma nova dimensão regulatória: além das radiofrequências e das estações terrenas,
+            entram em discussão os <strong>recursos de órbita</strong>, a coordenação internacional e
+            os procedimentos relacionados às redes de satélites no âmbito da UIT.
+          </p>
+        </article>
+
+        <aside class="card law">
+          <div class="law-badge">Ponto regulatório para análise</div>
+          <h2>Espectro <span>+</span> órbita</h2>
+          <p style="color:#d5e0eb;margin:0">
+            O direito de exploração de satélite envolve recursos de órbita e radiofrequências.
+            Sistemas em operação no território brasileiro também se relacionam com redes de satélites
+            notificadas internacionalmente, o que amplia a regulação para além do território nacional.
+          </p>
+          <a href="https://www.gov.br/anatel/pt-br/regulado/satelite"
+             target="_blank" rel="noopener noreferrer">
+            Consultar regulamentação de satélites na Anatel ↗
+          </a>
+        </aside>
+      </div>
+
+      <div class="prompt">
+        <strong>Questão central:</strong><br>
+        Por que uma rede militar baseada em satélite exige tratar não apenas do serviço de
+        telecomunicações e das radiofrequências, mas também do direito de exploração do satélite,
+        dos recursos de órbita e da coordenação internacional?
+      </div>
+
+      <div class="questions">
+        <article class="q">
+          <b>01 · Órbita × radiofrequência</b>
+          <p>
+            Por que posição orbital e espectro radioelétrico são recursos distintos, embora
+            precisem ser considerados conjuntamente em um sistema de comunicações por satélite?
+          </p>
+        </article>
+
+        <article class="q">
+          <b>02 · Regulação nacional × internacional</b>
+          <p>
+            Por que a implantação de um sistema satelital envolve procedimentos da Anatel e,
+            simultaneamente, coordenação e notificação no âmbito da União Internacional de Telecomunicações?
+          </p>
+        </article>
+
+        <article class="q">
+          <b>03 · Estações terrenas</b>
+          <p>
+            Mesmo existindo capacidade satelital disponível, quais obrigações regulatórias permanecem
+            relacionadas às estações terrenas transmissoras utilizadas pelo sistema?
+          </p>
+        </article>
+
+        <article class="q">
+          <b>04 · Defesa e capacidade satelital</b>
+          <p>
+            Que peculiaridade existe no fato de a regulamentação permitir o provimento de capacidade
+            satelital diretamente às Forças Armadas, além das entidades prestadoras de serviços de telecomunicações?
+          </p>
+        </article>
+      </div>
+
+      <div class="route">
+        <strong>Linha de raciocínio para condução da discussão:</strong>
+        <div class="flow">
+          <span class="pill">necessidade militar</span><span class="arrow">→</span>
+          <span class="pill">comunicação via satélite</span><span class="arrow">→</span>
+          <span class="pill">radiofrequências</span><span class="arrow">+</span>
+          <span class="pill">recursos de órbita</span><span class="arrow">→</span>
+          <span class="pill">Anatel</span><span class="arrow">+</span>
+          <span class="pill">coordenação internacional / UIT</span>
+        </div>
+      </div>
+
+      <div class="route" style="margin-top:16px;border-color:rgba(155,92,255,.35);background:rgba(155,92,255,.05)">
+        <strong style="color:#cbb7ff">Referências para a discussão:</strong>
+        <div class="flow" style="font-weight:600">
+          <a class="pill" style="color:#e9f3fb;text-decoration:none"
+             href="https://www.gov.br/anatel/pt-br/regulado/satelite"
+             target="_blank" rel="noopener noreferrer">Satélites — Anatel ↗</a>
+          <a class="pill" style="color:#e9f3fb;text-decoration:none"
+             href="https://www.gov.br/anatel/pt-br/regulado/satelite/conferencia-de-direito-de-exploracao-de-satelite"
+             target="_blank" rel="noopener noreferrer">Direito de exploração de satélite ↗</a>
+          <a class="pill" style="color:#e9f3fb;text-decoration:none"
+             href="https://www.gov.br/anatel/pt-br/regulado/satelite/licenciamento-de-estacoes-terrenas"
+             target="_blank" rel="noopener noreferrer">Licenciamento de estações terrenas ↗</a>
+        </div>
+      </div>
+    </section>
+
+
+    <section class="section">
+      <h2 class="section-title"><span class="number">✓</span> Revisão Geral — Questões Regulatórias Transversais</h2>
+      <p>
+        Os casos anteriores mostram que tecnologias diferentes podem levar às mesmas perguntas regulatórias.
+        Para encerrar a atividade, retome os casos e discuta os cinco pontos abaixo.
+      </p>
+
+      <div class="questions">
+        <article class="q">
+          <b>01 · FISTEL e Forças Armadas</b>
+          <p>
+            A legislação estabelece <strong>isenção das Forças Armadas quanto às taxas do FISTEL</strong>.
+            Por que essa isenção não deve ser confundida com dispensa das demais obrigações regulatórias?
+          </p>
+        </article>
+
+        <article class="q">
+          <b>02 · Fins exclusivamente militares</b>
+          <p>
+            Qual é o significado regulatório da destinação de determinadas faixas de frequências
+            para <strong>fins exclusivamente militares</strong> e como isso se relaciona com o
+            planejamento geral do espectro?
+          </p>
+        </article>
+
+        <article class="q">
+          <b>03 · Rede em área privada</b>
+          <p>
+            Construir e operar uma rede dentro de uma área pertencente à própria organização
+            elimina a necessidade de analisar qual serviço de telecomunicações está sendo realizado?
+            Retome o caso da distribuição de sinais de TV.
+          </p>
+        </article>
+
+        <article class="q">
+          <b>04 · Obrigações no SLP</b>
+          <p>
+            Por que o caráter privativo ou de interesse restrito de uma rede não significa ausência
+            de regulação? Considere autorização de radiofrequências, cadastro e licenciamento de estações,
+            quando aplicáveis.
+          </p>
+        </article>
+
+        <article class="q">
+          <b>05 · Órbita e SISCOMIS</b>
+          <p>
+            O que muda quando a infraestrutura deixa de utilizar apenas meios terrestres e passa a
+            depender também de satélites, recursos de órbita, estações terrenas e coordenação internacional?
+          </p>
+        </article>
+      </div>
+
+      <div class="route">
+        <strong>Síntese conceitual:</strong>
+        <div class="flow">
+          <span class="pill">finalidade da rede</span><span class="arrow">≠</span>
+          <span class="pill">tecnologia</span>
+          <span class="arrow">|</span>
+          <span class="pill">serviço</span><span class="arrow">≠</span>
+          <span class="pill">direito de uso do espectro</span>
+          <span class="arrow">|</span>
+          <span class="pill">área privada</span><span class="arrow">≠</span>
+          <span class="pill">ausência de regulação</span>
+        </div>
+      </div>
+    </section>
+
+    <div class="footer">
+      Estudos de Caso do Exército — atividade para discussão em sala · Aspectos Regulatórios de Telecomunicações.
+    </div>
+  </main>
+</body>
+</html>
