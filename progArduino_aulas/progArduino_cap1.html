@@ -1,0 +1,642 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Cap. 1 — Programando com Arduino</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300&display=swap" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css" rel="stylesheet"/>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/contrib/auto-render.min.js"></script>
+<style>
+:root {
+  --bg:        #0a0e17;
+  --surface:   #111827;
+  --surface2:  #161f2e;
+  --border:    #1e2d40;
+  --accent:    #00c2ff;
+  --accent2:   #7c3aed;
+  --text:      #e2e8f0;
+  --muted:     #64748b;
+  --tag-bg:    #0f172a;
+  --font-mono: 'IBM Plex Mono', monospace;
+  --font-sans: 'IBM Plex Sans', sans-serif;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{background:var(--bg);color:var(--text);font-family:var(--font-sans);font-size:16px;line-height:1.65;}
+a{color:var(--accent);text-decoration:none;}
+a:hover{text-decoration:underline;}
+.container{max-width:980px;margin:0 auto;padding:0 2rem;}
+
+nav{position:sticky;top:0;z-index:100;background:rgba(10,14,23,.9);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);padding:.9rem 0;}
+nav .container{display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap;}
+.nav-brand{font-family:var(--font-mono);font-size:.78rem;color:var(--accent);}
+.nav-links{display:flex;gap:1rem;list-style:none;flex-wrap:wrap;}
+.nav-links a{font-family:var(--font-mono);font-size:.7rem;color:var(--muted);}
+.nav-links a:hover{color:var(--text);text-decoration:none;}
+
+.progress-track{height:3px;background:var(--border);position:sticky;top:53px;z-index:99;}
+.progress-fill{height:100%;width:0%;background:linear-gradient(90deg,var(--accent),var(--accent2));transition:width .1s;}
+
+.hero{padding:4rem 0 2.5rem;position:relative;overflow:hidden;}
+.hero::before{content:'';position:absolute;inset:0;background-image:linear-gradient(var(--border) 1px,transparent 1px),linear-gradient(90deg,var(--border) 1px,transparent 1px);background-size:40px 40px;opacity:.3;mask-image:radial-gradient(ellipse 80% 60% at 50% 0%,black 40%,transparent 100%);}
+.hero-eyebrow{font-family:var(--font-mono);font-size:.74rem;color:var(--accent);letter-spacing:.14em;text-transform:uppercase;margin-bottom:1rem;display:flex;align-items:center;gap:.7rem;}
+.hero-eyebrow::before{content:'';width:2rem;height:1px;background:var(--accent);}
+h1{font-size:clamp(2rem,4.5vw,3.2rem);font-weight:300;line-height:1.12;letter-spacing:-.02em;margin-bottom:.6rem;}
+h1 strong{font-weight:600;color:var(--accent);}
+.hero-meta{display:flex;gap:1.5rem;flex-wrap:wrap;margin-top:1.2rem;}
+.meta-item{font-family:var(--font-mono);font-size:.74rem;color:var(--muted);display:flex;align-items:center;gap:.4rem;}
+.meta-item svg{flex-shrink:0;}
+
+.objectives{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:1.4rem 1.6rem;margin-top:1.6rem;}
+.objectives p.label{font-family:var(--font-mono);font-size:.7rem;color:var(--accent);letter-spacing:.1em;text-transform:uppercase;margin-bottom:.7rem;}
+.objectives ul{list-style:none;display:grid;gap:.5rem;}
+.objectives li{font-size:.88rem;color:var(--muted);display:flex;gap:.6rem;}
+.objectives li::before{content:'→';color:var(--accent);flex-shrink:0;}
+
+.toc{display:flex;gap:.5rem;flex-wrap:wrap;margin-top:1.5rem;}
+.toc a{font-family:var(--font-mono);font-size:.7rem;color:var(--muted);border:1px solid var(--border);padding:.35rem .75rem;border-radius:20px;transition:.2s;}
+.toc a:hover{border-color:var(--accent);color:var(--accent);text-decoration:none;}
+
+.section{padding:3rem 0;border-top:1px solid var(--border);}
+.section-label{font-family:var(--font-mono);font-size:.7rem;color:var(--accent);letter-spacing:.14em;text-transform:uppercase;display:flex;align-items:center;gap:.7rem;margin-bottom:1.4rem;}
+.section-label::after{content:'';flex:1;height:1px;background:var(--border);}
+h2{font-size:1.5rem;font-weight:600;letter-spacing:-.01em;margin-bottom:1rem;}
+h3{font-size:1.1rem;font-weight:600;margin:1.6rem 0 .8rem;color:var(--text);}
+h4{font-size:.95rem;font-weight:600;margin:1.2rem 0 .6rem;color:var(--accent);}
+p{margin-bottom:1rem;color:#cbd5e1;}
+strong{color:var(--text);font-weight:600;}
+em{color:var(--accent);font-style:normal;}
+ul.plain{margin:0 0 1rem 1.2rem;color:#cbd5e1;}
+ul.plain li{margin-bottom:.4rem;}
+ol.plain{margin:0 0 1rem 1.2rem;color:#cbd5e1;}
+ol.plain li{margin-bottom:.5rem;}
+
+.codeline{background:var(--tag-bg);border:1px solid var(--border);border-radius:6px;padding:.7rem 1rem;font-family:var(--font-mono);font-size:1rem;color:var(--accent);text-align:center;margin:1rem 0;}
+.codeblock{background:var(--tag-bg);border:1px solid var(--border);border-radius:6px;padding:.9rem 1.1rem;font-family:var(--font-mono);font-size:.78rem;color:#a8d8ef;margin:1rem 0;overflow-x:auto;white-space:pre;line-height:1.6;}
+.codeblock .cmt{color:var(--muted);}
+
+.concept-grid{display:grid;grid-template-columns:1fr 1fr;gap:2rem;align-items:start;margin:1.5rem 0;}
+.concept-text{display:flex;flex-direction:column;justify-content:center;}
+.concept-fig{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:1rem;}
+.concept-fig img,.concept-fig svg{width:100%;display:block;}
+.fig-caption{font-family:var(--font-mono);font-size:.72rem;color:var(--muted);text-align:center;margin-top:.6rem;}
+@media (max-width:760px){.concept-grid{grid-template-columns:1fr;}}
+
+.fig-full{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:1.2rem;margin:1.5rem 0;}
+.fig-full img,.fig-full svg{width:100%;display:block;}
+
+.definition{background:var(--surface);border:1px solid var(--accent2);border-left:3px solid var(--accent2);border-radius:0 8px 8px 0;padding:1.2rem 1.5rem;margin:1.2rem 0;}
+.definition .dtitle{font-family:var(--font-mono);font-size:.7rem;color:var(--accent2);letter-spacing:.1em;text-transform:uppercase;margin-bottom:.5rem;}
+
+.note{background:var(--tag-bg);border:1px solid var(--border);border-radius:6px;padding:.9rem 1.1rem;margin:1rem 0;font-size:.85rem;color:var(--muted);}
+.note strong{color:var(--accent);}
+
+table{width:100%;border-collapse:collapse;font-size:.85rem;margin:1.2rem 0;}
+thead tr{background:var(--tag-bg);}
+thead th{padding:.5rem .7rem;text-align:center;font-family:var(--font-mono);font-size:.68rem;color:var(--muted);letter-spacing:.06em;text-transform:uppercase;font-weight:400;border-bottom:1px solid var(--border);}
+tbody td{padding:.45rem .7rem;border-bottom:1px solid var(--border);color:var(--muted);text-align:center;}
+tbody tr:hover{background:rgba(255,255,255,.02);}
+td.tleft, th.tleft{text-align:left;}
+
+.method-card{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:1.4rem 1.6rem;margin:1.2rem 0;position:relative;overflow:hidden;}
+.method-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--accent),var(--accent2));}
+.method-num{font-family:var(--font-mono);font-size:.7rem;color:var(--accent);background:rgba(0,194,255,.08);border:1px solid rgba(0,194,255,.25);border-radius:4px;padding:.2rem .6rem;display:inline-block;margin-bottom:.7rem;}
+.method-card h4{margin:0 0 .8rem;color:var(--text);font-size:1rem;}
+.steps{list-style:none;counter-reset:step;}
+.steps li{counter-increment:step;display:flex;gap:.7rem;margin-bottom:.6rem;font-size:.88rem;color:#cbd5e1;}
+.steps li::before{content:counter(step);font-family:var(--font-mono);font-size:.72rem;color:var(--accent);background:var(--tag-bg);border:1px solid var(--border);border-radius:50%;width:22px;height:22px;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+
+.ds-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:.6rem;margin:1rem 0;}
+.ds-item{background:var(--tag-bg);border:1px solid var(--border);border-radius:6px;padding:.7rem 1rem;display:flex;gap:.6rem;align-items:center;transition:.2s;}
+.ds-item:hover{border-color:var(--accent);}
+.ds-item a{font-size:.8rem;color:var(--text);font-family:var(--font-mono);}
+.ds-item a:hover{color:var(--accent);text-decoration:none;}
+
+.quiz{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:1.6rem;margin:1.5rem 0;}
+.quiz-header{display:flex;align-items:center;gap:.6rem;margin-bottom:1.2rem;}
+.quiz-header svg{flex-shrink:0;}
+.quiz-title{font-family:var(--font-mono);font-size:.8rem;color:var(--accent2);letter-spacing:.05em;}
+.quiz-q{font-size:.95rem;margin-bottom:.9rem;color:var(--text);}
+.quiz-options{display:flex;flex-direction:column;gap:.55rem;}
+.quiz-opt{background:var(--tag-bg);border:1px solid var(--border);border-radius:6px;padding:.7rem 1rem;font-size:.85rem;color:var(--muted);cursor:pointer;transition:.15s;text-align:left;width:100%;font-family:var(--font-sans);}
+.quiz-opt:hover{border-color:var(--accent);color:var(--text);}
+.quiz-opt.correct{border-color:#22c55e;background:rgba(34,197,94,.08);color:#86efac;}
+.quiz-opt.wrong{border-color:#ef4444;background:rgba(239,68,68,.08);color:#fca5a5;}
+.quiz-feedback{margin-top:.9rem;font-size:.85rem;padding:.8rem 1rem;border-radius:6px;display:none;}
+.quiz-feedback.show{display:block;}
+.quiz-feedback.correct-fb{background:rgba(34,197,94,.08);border:1px solid #22c55e;color:#86efac;}
+.quiz-feedback.wrong-fb{background:rgba(239,68,68,.08);border:1px solid #ef4444;color:#fca5a5;}
+
+.refs-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:.8rem;}
+.ref-card{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:1rem 1.2rem;display:flex;gap:.8rem;align-items:flex-start;transition:.2s;}
+.ref-card:hover{border-color:var(--accent);}
+.ref-card svg{flex-shrink:0;margin-top:.15rem;}
+.ref-card h4{font-size:.88rem;font-weight:600;margin:0 0 .2rem;color:var(--text);}
+.ref-card p{font-size:.76rem;color:var(--muted);margin:0;}
+.ref-type{font-family:var(--font-mono);font-size:.62rem;color:var(--accent);text-transform:uppercase;letter-spacing:.06em;}
+
+.chapter-nav{display:flex;justify-content:space-between;gap:1rem;margin-top:2rem;}
+.chapter-nav a{flex:1;background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:1rem 1.3rem;font-size:.85rem;transition:.2s;}
+.chapter-nav a:hover{border-color:var(--accent);text-decoration:none;}
+.chapter-nav .dir{font-family:var(--font-mono);font-size:.65rem;color:var(--muted);text-transform:uppercase;letter-spacing:.08em;display:block;margin-bottom:.3rem;}
+.chapter-nav .next{text-align:right;}
+
+footer{border-top:1px solid var(--border);padding:2rem 0;margin-top:2rem;}
+footer .container{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;}
+footer p{font-size:.8rem;color:var(--muted);font-family:var(--font-mono);}
+
+@media(max-width:640px){.nav-links{display:none;}.hero{padding:2.5rem 0 2rem;}}
+
+.katex{color:var(--accent);font-size:1.05em;}
+
+/* SVG diagram helpers */
+.dwire{stroke:#3b4a5e;stroke-width:1.6;fill:none;}
+.dbox{stroke:#00c2ff;stroke-width:1.6;fill:none;}
+.dbox2{stroke:#7c3aed;stroke-width:1.6;fill:none;}
+.dlbl{font-family:'IBM Plex Mono',monospace;font-size:13px;fill:#cbd5e1;}
+.dlbl2{font-family:'IBM Plex Mono',monospace;font-size:11px;fill:#64748b;}
+.dfill{fill:#111827;}
+
+/* Complementos para o conteúdo integral importado do Markdown */
+.section pre{overflow:auto;padding:16px 18px;border:1px solid var(--line);border-radius:12px;background:rgba(0,0,0,.22);line-height:1.55}
+.section code{font-family:"JetBrains Mono","Courier New",monospace}
+.section p code,.section li code{padding:.12em .35em;border-radius:5px;background:rgba(0,194,255,.09)}
+.section .fig-full img{max-width:100%;height:auto;display:block;margin:0 auto}
+.section blockquote{margin:18px 0;padding:12px 16px;border-left:3px solid var(--accent);background:rgba(0,194,255,.06)}
+
+.markdown-body { padding-bottom: 2rem; }
+.markdown-body h1 { font-size: 2rem; font-weight: 600; margin: 2rem 0 1rem; }
+.markdown-body h2 { margin-top: 2.2rem; }
+.markdown-body h3 { margin-top: 1.8rem; }
+.markdown-body h4 { margin-top: 1.4rem; }
+.markdown-body pre {
+  overflow:auto; padding:16px 18px; border:1px solid var(--border);
+  border-radius:8px; background:var(--tag-bg); line-height:1.55; margin:1rem 0;
+}
+.markdown-body code { font-family:var(--font-mono); }
+.markdown-body p code,.markdown-body li code {
+  padding:.12em .35em; border-radius:5px; background:rgba(0,194,255,.09);
+}
+.markdown-body table { display:table; }
+.markdown-body hr { border:0; border-top:1px solid var(--border); margin:2rem 0; }
+.markdown-body a { overflow-wrap:anywhere; }
+</style>
+</head>
+<body>
+<nav>
+  <div class="container">
+    <span class="nav-brand">arduino · cap. 1</span>
+    <ul class="nav-links">
+      <li><a href="#1.1-o-que-é-arduino">1.1 Arduino</a></li>
+      <li><a href="#1.4-ambiente-de-desenvolvimento-no-arduino">1.4 IDE</a></li>
+      <li><a href="#1.5-estrutura-de-um-programa-arduino">1.5 Estrutura</a></li>
+      <li><a href="#1.6-exemplos">1.6 Exemplos</a></li>
+    </ul>
+  </div>
+</nav>
+<div class="progress-track"><div class="progress-fill" id="progressFill"></div></div>
+
+<section class="hero">
+  <div class="container">
+    <p class="hero-eyebrow">Arduino · material didático</p>
+    <h1>Cap. 1 — <strong>Programando com Arduino</strong></h1>
+    <div class="hero-meta">
+      <span class="meta-item">Prof. Clayton J A Silva</span>
+      <span class="meta-item">Rev 2026.2</span>
+    </div>
+    <div class="toc"><a href="#11-o-que-é-arduino">1.1 O que é Arduino?</a>
+<a href="#12-o-que-é-um-programa-para-arduino">1.2 O que é um programa para Arduino?</a>
+<a href="#13-compilação-no-arduino">1.3 Compilação no Arduino</a>
+<a href="#14-ambiente-de-desenvolvimento-no-arduino">1.4 Ambiente de desenvolvimento no Arduino</a>
+<a href="#15-estrutura-de-um-programa-arduino">1.5 Estrutura de um programa Arduino</a>
+<a href="#16-exemplos">1.6 Exemplos</a></div>
+  </div>
+</section>
+
+<div class="container markdown-body">
+<h1 id="programando-com-arduino">1. Programando com Arduino</h1>
+<h2 id="o-que-é-arduino">1.1 O que é Arduino?</h2>
+<p>O Arduino é uma plataforma de <strong>hardware e software</strong>
+<em>open-source</em> que facilita a criação de projetos eletrônicos.
+Usando a linguagem de programação baseada em C/C++, os usuários podem
+escrever <strong>programas</strong> que controlam o comportamento de
+microcontroladores, permitindo que dispositivos físicos interajam com o
+mundo ao seu redor.</p>
+<h2 id="o-que-é-um-programa-para-arduino">1.2 O que é um programa para
+Arduino?</h2>
+<p>Um programa para Arduino, também chamado de
+<strong><em>sketch</em></strong>, é um conjunto de
+<strong>instruções</strong> que seguem a <strong>sintaxe</strong> e
+<strong>semântica</strong> da linguagem de programação do Arduino
+(baseada em C/C++). O termo <strong><em>shield</em></strong> refere-se a
+placas de expansão que podem ser conectadas à placa Arduino para
+adicionar funcionalidades específicas, como controle de motores,
+comunicação sem fio, ou interfaces de sensores. O conjunto de Arduino
+com sensores, atuadores e demais componentes é considerado um sistema
+Arduino ou projeto Arduino.</p>
+<h2 id="compilação-no-arduino">1.3 Compilação no Arduino</h2>
+<p>Assim como em C, a linguagem Arduino é
+<strong>compilada</strong>.<br />
+O processo de compilação converte o código escrito no ambiente Arduino,
+chamado de <strong>sketch</strong>, em <strong>código em linguagem de
+máquina</strong> que será carregado e executado no
+microcontrolador.<br />
+O programa responsável por essa conversão é o
+<strong>compilador</strong> do Arduino.</p>
+<h2 id="ambiente-de-desenvolvimento-no-arduino">1.4 Ambiente de
+desenvolvimento no Arduino</h2>
+<h3 id="o-que-é-a-ide-do-arduino">1.4.1 O que é a IDE do Arduino?</h3>
+<p>A <strong>IDE do Arduino</strong> é um <strong>ambiente de
+desenvolvimento integrado</strong> (IDE) que fornece uma interface
+simples para escrever, compilar e carregar programas (sketches) para a
+placa Arduino. Ele também permite o acesso ao monitor serial, que pode
+ser usado para depuração e comunicação com o microcontrolador durante a
+execução.</p>
+<p>Exemplos de IDEs para Arduino:</p>
+<ul>
+<li><p><a href="https://www.arduino.cc/en/software">Arduino
+IDE</a></p></li>
+<li><p><a href="https://platformio.org/">PlatformIO</a></p></li>
+<li><p><a href="https://code.visualstudio.com/">VSCode com
+PlatformIO</a></p></li>
+</ul>
+<h3 id="ides-online-para-arduino">1.4.2 IDEs online para Arduino</h3>
+<p>Também é possível usar uma IDE online, como o <a
+href="https://create.arduino.cc/editor">Arduino Web Editor</a>, que
+permite programar e compartilhar projetos Arduino diretamente no
+navegador.</p>
+<p>Funcionalidades do Arduino Web Editor:</p>
+<ul>
+<li>Editor de código</li>
+<li>Compilador online</li>
+<li>Gerenciamento de bibliotecas</li>
+<li>Upload de código diretamente para a placa</li>
+</ul>
+<p>Para usar o Arduino Web Editor:</p>
+<ul>
+<li>Acesse e crie uma conta em https://create.arduino.cc/editor</li>
+<li>Conheça a interface de desenvolvimento</li>
+<li>Crie seus sketches e gerencie seus projetos</li>
+<li>Use o monitor serial integrado para depuração</li>
+</ul>
+<h2 id="estrutura-de-um-programa-arduino">1.5 Estrutura de um programa
+Arduino</h2>
+<h3 id="visão-geral">1.5.1 Visão geral</h3>
+<p>Os programas Arduino (<em>sketches</em>) são organizados de forma
+semelhante aos programas em C, mas têm algumas particularidades:</p>
+<ul>
+<li>Cada sketch tem pelo menos duas funções principais:
+<strong><em>setup()</em></strong> e
+<strong><em>loop()</em></strong>.</li>
+<li>O código pode incluir bibliotecas para expandir suas
+funcionalidades.</li>
+<li>Variáveis podem ser declaradas globalmente ou dentro das
+funções.</li>
+<li>O código principal é executado dentro das funções
+<code>setup()</code> e <code>loop()</code>.</li>
+</ul>
+<hr />
+<ol type="1">
+<li><strong>Instruções de pré-processamento</strong> (como inclusão de
+bibliotecas);</li>
+<li>Declaração de variáveis globais;</li>
+<li>Função <code>setup()</code>, que é executada uma vez no início;</li>
+<li>Função <code>loop()</code>, que é executada repetidamente;</li>
+<li>Definição de funções adicionais conforme necessário.</li>
+</ol>
+<hr />
+<p>As instruções nos <em>sketches</em> do Arduino são sempre separadas
+pelo caractere especial <code>;</code>, delimitando o fim de uma
+instrução e o início da próxima.</p>
+<p>Por exemplo:</p>
+<div class="sourceCode" id="cb1"><pre
+class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="dt">int</span> x <span class="op">=</span> <span class="dv">3</span> <span class="op">*</span> <span class="dv">4</span> <span class="op">+</span> y<span class="op">;</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>x<span class="op">++;</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>Serial<span class="op">.</span>print<span class="op">(</span><span class="st">&quot;O resultado eh &quot;</span><span class="op">);</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>Serial<span class="op">.</span>println<span class="op">(</span>x<span class="op">);</span></span></code></pre></div>
+<h3 id="diretivas-no-arduino">1.5.2 Diretivas no Arduino</h3>
+<p>As diretivas em Arduino são semelhantes às do C e iniciam pelo
+caractere especial <code>#</code>.<br />
+As mais comuns são:</p>
+<ul>
+<li><code>#include</code>: para incluir bibliotecas necessárias no
+sketch.</li>
+<li><code>#define</code>: para criar constantes ou macros.</li>
+</ul>
+<p>Por exemplo:</p>
+<div class="sourceCode" id="cb2"><pre
+class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="pp">#include </span><span class="im">&lt;Wire.h&gt;</span><span class="pp"> </span><span class="co">// Inclui a biblioteca Wire para comunicação I2C</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="pp">#define LED_PIN </span><span class="dv">13</span><span class="pp"> </span><span class="co">// Define o pino do LED</span></span></code></pre></div>
+<h3 id="estrutura-de-um-sketch-arduino">1.5.3 Estrutura de um
+<em>sketch</em> Arduino</h3>
+<p>A estrutura de um <em>sketch</em> básico do Arduino é:</p>
+<div class="sourceCode" id="cb3"><pre
+class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="pp">#include </span><span class="im">&lt;biblioteca.h&gt;</span><span class="pp">  </span><span class="co">// Incluir bibliotecas se necessário</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="pp">#define CONSTANTE </span>valor<span class="pp">  </span><span class="co">// Definir constantes ou macros</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="dt">void</span> setup<span class="op">()</span> <span class="op">{</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>  <span class="co">// Código de configuração, executado uma vez</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="dt">void</span> loop<span class="op">()</span> <span class="op">{</span></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>  <span class="co">// Código principal, executado repetidamente</span></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<h3 id="substituição-de-macro">1.5.4 Substituição de Macro</h3>
+<p>A substituição de macros no Arduino segue o mesmo princípio do C,
+usando <code>#define</code>.</p>
+<p>Por exemplo:</p>
+<div class="sourceCode" id="cb4"><pre
+class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="pp">#define NUM </span><span class="dv">100</span></span></code></pre></div>
+<h3 id="expressões-aritméticas-no-arduino">1.5.5 Expressões aritméticas
+no Arduino</h3>
+<p>As expressões aritméticas no Arduino utilizam os mesmos operadores do
+C:</p>
+<table>
+<thead>
+<tr class="header">
+<th>Operador</th>
+<th>Operação</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>+</code></td>
+<td>Adição</td>
+</tr>
+<tr class="even">
+<td><code>-</code></td>
+<td>Subtração</td>
+</tr>
+<tr class="odd">
+<td><code>*</code></td>
+<td>Multiplicação</td>
+</tr>
+<tr class="even">
+<td><code>/</code></td>
+<td>Divisão</td>
+</tr>
+<tr class="odd">
+<td><code>%</code></td>
+<td>Módulo ou resto da divisão inteira</td>
+</tr>
+<tr class="even">
+<td><code>++</code></td>
+<td>Incremento</td>
+</tr>
+<tr class="odd">
+<td><code>--</code></td>
+<td>Decremento</td>
+</tr>
+</tbody>
+</table>
+<p>Por exemplo:</p>
+<div class="sourceCode" id="cb5"><pre
+class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="dt">int</span> resultado <span class="op">=</span> <span class="dv">3</span> <span class="op">+</span> <span class="dv">4</span> <span class="op">*</span> <span class="dv">5</span> <span class="op">-</span> <span class="dv">2</span> <span class="op">*</span> <span class="op">(</span><span class="dv">4</span> <span class="op">+</span> <span class="dv">6</span><span class="op">);</span></span></code></pre></div>
+<h3 id="variáveis-no-arduino">1.5.6 Variáveis no Arduino</h3>
+<p>As variáveis no Arduino são declaradas da mesma forma que no C. A
+sintaxe para declarar variáveis é:</p>
+<div class="sourceCode" id="cb6"><pre
+class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="dt">int</span> i<span class="op">,</span> cont<span class="op">;</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="dt">float</span> res<span class="op">;</span></span></code></pre></div>
+<p>Quando uma variável é declarada, o microcontrolador reserva espaço na
+memória para armazenar o valor.</p>
+<p>A declaração pressupõe limites de representação. Para as aplicações
+em sistemas para plataformas com processadores mais poderosos, esse
+aspecto quase sempre passa sem ser observado. No caso do Arduíno Mega
+2560, no entanto, merece a apresentação desses limites.</p>
+<table>
+<colgroup>
+<col style="width: 21%" />
+<col style="width: 15%" />
+<col style="width: 64%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Tipo de Dado</th>
+<th>Tamanho</th>
+<th>Intervalo</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>int</code></td>
+<td>2 bytes (16 bits)</td>
+<td>-32.768 a 32.767</td>
+</tr>
+<tr class="even">
+<td><code>unsigned int</code></td>
+<td>2 bytes (16 bits)</td>
+<td>0 a 65.535</td>
+</tr>
+<tr class="odd">
+<td><code>long</code></td>
+<td>4 bytes (32 bits)</td>
+<td>-2.147.483.648 a 2.147.483.647</td>
+</tr>
+<tr class="even">
+<td><code>unsigned long</code></td>
+<td>4 bytes (32 bits)</td>
+<td>0 a 4.294.967.295</td>
+</tr>
+<tr class="odd">
+<td><code>float</code></td>
+<td>4 bytes (32 bits)</td>
+<td>Aproximadamente 6-7 dígitos significativos</td>
+</tr>
+<tr class="even">
+<td></td>
+<td></td>
+<td>-3,4028235E+38 a 3,4028235E+38</td>
+</tr>
+<tr class="odd">
+<td><code>double</code></td>
+<td>4 bytes (32 bits)</td>
+<td>Mesmo que <code>float</code></td>
+</tr>
+<tr class="even">
+<td><code>byte</code></td>
+<td>1 byte (8 bits)</td>
+<td>0 a 255</td>
+</tr>
+<tr class="odd">
+<td><code>char</code></td>
+<td>1 byte (8 bits)</td>
+<td>-128 a 127</td>
+</tr>
+<tr class="even">
+<td><code>unsigned char</code></td>
+<td>1 byte (8 bits)</td>
+<td>0 a 255</td>
+</tr>
+<tr class="odd">
+<td><code>boolean</code></td>
+<td>1 byte (8 bits)</td>
+<td><code>true</code> (1) ou <code>false</code> (0)</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Considerações Importantes</strong>:</p>
+<ul>
+<li>Precisão de <em>float</em> e <em>double</em>: no Arduino Mega 2560,
+ambos têm a mesma precisão limitada (32 bits). Isso pode afetar cálculos
+que envolvem números muito grandes, pequenos ou operações que exigem
+alta precisão.</li>
+<li>Overflow: os tipos de dados inteiros podem sofrer <em>overflow</em>
+se os cálculos excederem o intervalo permitido pelo tipo. Por exemplo,
+somar dois valores int que excedem 32.767 resultará em overflow e o
+valor será “envolvido” (wrap around).</li>
+<li>Uso de memória: Considere o uso de memória, especialmente em
+sistemas embarcados como o Arduino, onde a memória RAM disponível é
+limitada (<strong>8 KB de SRAM no Mega 2560</strong>). O uso excessivo
+de tipos como long ou arrays grandes pode rapidamente consumir a memória
+disponível.</li>
+</ul>
+<h3 id="sentença-de-atribuição-no-arduino">1.5.7 Sentença de atribuição
+no Arduino</h3>
+<p>A sentença de atribuição no Arduino segue a mesma sintaxe do C:</p>
+<div class="sourceCode" id="cb7"><pre
+class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>i <span class="op">=</span> <span class="dv">12</span><span class="op">;</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>cont <span class="op">=</span> <span class="dv">3</span><span class="op">;</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>res <span class="op">=</span> <span class="op">(</span><span class="dv">12</span> <span class="op">+</span> <span class="dv">3</span><span class="op">)</span> <span class="op">*</span> <span class="fl">1.35</span><span class="op">;</span></span></code></pre></div>
+<h3 id="comandos-básicos-de-entrada-e-saída-no-arduino">1.5.8 Comandos
+básicos de entrada e saída no Arduino</h3>
+<p>Os comandos básicos de entrada e saída no Arduino são
+<code>Serial.print</code> e <code>Serial.read</code>. Eles são usados
+para comunicação via porta serial, permitindo interação com o
+computador.</p>
+<h4 id="a.-função-serial.print">a. Função <code>Serial.print</code></h4>
+<p>A função <code>Serial.print</code> envia dados para a porta
+serial.</p>
+<div class="sourceCode" id="cb8"><pre
+class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>Serial<span class="op">.</span>print<span class="op">(</span><span class="st">&quot;A soma de x e y e &quot;</span><span class="op">);</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>Serial<span class="op">.</span>println<span class="op">(</span>soma<span class="op">);</span></span></code></pre></div>
+<h4 id="b.-função-serial.read">b. Função <code>Serial.read</code></h4>
+<p>A função <code>Serial.read</code> lê dados da porta serial.</p>
+<div class="sourceCode" id="cb9"><pre
+class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="dt">char</span> input <span class="op">=</span> Serial<span class="op">.</span>read<span class="op">();</span></span></code></pre></div>
+<h2 id="exemplos">1.6 Exemplos</h2>
+<p><strong>Observação. Na IDE nativa do Arduino, você não pode executar
+um código (sketch) diretamente sem estar conectado a uma placa Arduino
+física. A IDE do Arduino é projetada para compilar e enviar o código
+para o microcontrolador na placa, e sem a placa conectada, não há como
+executar o código.</strong></p>
+<ol type="1">
+<li>Elaborar um programa no Arduino que produza a mensagem
+<code>Meu primeiro programa em Arduino</code>. Incluir
+<strong>comentários</strong>.</li>
+</ol>
+<div class="sourceCode" id="cb10"><pre
+class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="dt">void</span> setup<span class="op">()</span> <span class="op">{</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>  Serial<span class="op">.</span>begin<span class="op">(</span><span class="dv">9600</span><span class="op">);</span></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>  Serial<span class="op">.</span>println<span class="op">(</span><span class="st">&quot;Meu primeiro programa em Arduino&quot;</span><span class="op">);</span></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a><span class="dt">void</span> loop<span class="op">()</span> <span class="op">{</span></span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>  <span class="co">// Não há necessidade de código no loop para este exemplo</span></span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<ol start="2" type="1">
+<li>Elaborar um programa no Arduino que produza a mensagem
+<code>Agora vou iniciar...</code> e escreva <strong>na linha
+seguinte</strong> <code>produzindo um novo código</code>. Incluir
+comentários.</li>
+</ol>
+<div class="sourceCode" id="cb11"><pre
+class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="dt">void</span> setup<span class="op">()</span> <span class="op">{</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>  Serial<span class="op">.</span>begin<span class="op">(</span><span class="dv">9600</span><span class="op">);</span></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>  Serial<span class="op">.</span>println<span class="op">(</span><span class="st">&quot;Agora vou iniciar...&quot;</span><span class="op">);</span></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>  Serial<span class="op">.</span>println<span class="op">(</span><span class="st">&quot;Produzindo um novo código&quot;</span><span class="op">);</span></span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a><span class="dt">void</span> loop<span class="op">()</span> <span class="op">{</span></span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>  <span class="co">// Não há necessidade de código no loop para este exemplo</span></span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<ol start="3" type="1">
+<li>Elaborar um programa no Arduino que produza o resultado das
+expressões abaixo:</li>
+</ol>
+<ul>
+<li><span class="math inline">3 + 4 × 5 − 2 × (4 + 6)</span></li>
+<li><span class="math inline">6 + 4 × 8 × (3 + 7 + 27)</span></li>
+<li><span class="math inline">$\frac{3 + 4 \times 5} {[2 \times (4 + 6)
+]}$</span></li>
+<li><span class="math inline">$\frac{3} {[6 \times (1.25 +
+6.78)]}$</span></li>
+</ul>
+<div class="sourceCode" id="cb12"><pre
+class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="dt">void</span> setup<span class="op">()</span> <span class="op">{</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>  Serial<span class="op">.</span>begin<span class="op">(</span><span class="dv">9600</span><span class="op">);</span></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>  Serial<span class="op">.</span>print<span class="op">(</span><span class="st">&quot;Resultado 1: &quot;</span><span class="op">);</span></span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>  Serial<span class="op">.</span>println<span class="op">(</span><span class="dv">3</span> <span class="op">+</span> <span class="dv">4</span> <span class="op">*</span> <span class="dv">5</span> <span class="op">-</span> <span class="dv">2</span> <span class="op">*</span> <span class="op">(</span><span class="dv">4</span> <span class="op">+</span> <span class="dv">6</span><span class="op">));</span></span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>  Serial<span class="op">.</span>print<span class="op">(</span><span class="st">&quot;Resultado 2: &quot;</span><span class="op">);</span></span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>  Serial<span class="op">.</span>println<span class="op">(</span><span class="dv">6</span> <span class="op">+</span> <span class="dv">4</span> <span class="op">*</span> <span class="dv">8</span> <span class="op">*</span> <span class="op">(</span><span class="dv">3</span> <span class="op">+</span> <span class="dv">7</span> <span class="op">+</span> <span class="dv">27</span><span class="op">));</span></span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>  Serial<span class="op">.</span>print<span class="op">(</span><span class="st">&quot;Resultado 3: &quot;</span><span class="op">);</span></span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a>  Serial<span class="op">.</span>println<span class="op">((</span><span class="dv">3</span> <span class="op">+</span> <span class="dv">4</span> <span class="op">*</span> <span class="dv">5</span><span class="op">)</span> <span class="op">/</span> <span class="op">(</span><span class="dv">2</span> <span class="op">*</span> <span class="op">(</span><span class="dv">4</span> <span class="op">+</span> <span class="dv">6</span><span class="op">)));</span></span>
+<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a>  Serial<span class="op">.</span>print<span class="op">(</span><span class="st">&quot;Resultado 4: &quot;</span><span class="op">);</span></span>
+<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a>  Serial<span class="op">.</span>println<span class="op">(</span><span class="dv">3</span> <span class="op">/</span> <span class="op">(</span><span class="dv">6</span> <span class="op">*</span> <span class="op">(</span><span class="fl">1.25</span> <span class="op">+</span> <span class="fl">6.78</span><span class="op">)));</span></span>
+<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span>
+<span id="cb12-12"><a href="#cb12-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-13"><a href="#cb12-13" aria-hidden="true" tabindex="-1"></a><span class="dt">void</span> loop<span class="op">()</span> <span class="op">{</span></span>
+<span id="cb12-14"><a href="#cb12-14" aria-hidden="true" tabindex="-1"></a>  <span class="co">// Não há necessidade de código no loop para este exemplo</span></span>
+<span id="cb12-15"><a href="#cb12-15" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<ol start="4" type="1">
+<li>Elaborar um programa no Arduino para calcular e exibir o valor das
+expressões abaixo:</li>
+</ol>
+<ul>
+<li><span
+class="math inline">3<sup>4 × 5 × [2 × (4 + 6)]</sup></span></li>
+<li><span class="math inline">$\sqrt{2 \times (5 + 3) ^
+{34}}$</span></li>
+</ul>
+<div class="sourceCode" id="cb13"><pre
+class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="pp">#include </span><span class="im">&lt;math.h&gt;</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="dt">void</span> setup<span class="op">()</span> <span class="op">{</span></span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>  Serial<span class="op">.</span>begin<span class="op">(</span><span class="dv">9600</span><span class="op">);</span></span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>  Serial<span class="op">.</span>print<span class="op">(</span><span class="st">&quot;Resultado 1: &quot;</span><span class="op">);</span></span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>  Serial<span class="op">.</span>println<span class="op">(</span>pow<span class="op">(</span><span class="dv">3</span><span class="op">,</span> <span class="dv">4</span> <span class="op">*</span> <span class="dv">5</span> <span class="op">*</span> <span class="op">(</span><span class="dv">2</span> <span class="op">*</span> <span class="op">(</span><span class="dv">4</span> <span class="op">+</span> <span class="dv">6</span><span class="op">))));</span></span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>  Serial<span class="op">.</span>print<span class="op">(</span><span class="st">&quot;Resultado 2: &quot;</span><span class="op">);</span></span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a>  Serial<span class="op">.</span>println<span class="op">(</span>sqrt<span class="op">(</span><span class="dv">2</span> <span class="op">*</span> pow<span class="op">((</span><span class="dv">5</span> <span class="op">+</span> <span class="dv">3</span><span class="op">),</span> <span class="dv">34</span><span class="op">)));</span></span>
+<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span>
+<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a><span class="dt">void</span> loop<span class="op">()</span> <span class="op">{</span></span>
+<span id="cb13-12"><a href="#cb13-12" aria-hidden="true" tabindex="-1"></a>  <span class="co">// Não há necessidade de código no loop para este exemplo</span></span>
+<span id="cb13-13"><a href="#cb13-13" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<p><strong>O que acontecerá na execução? Explique o resultado
+consultando o texto anterior.</strong></p>
+
+</div>
+
+<footer>
+  <div class="container">
+    <p>© 2026 · Prof. Clayton J A Silva</p>
+  </div>
+</footer>
+
+<script>
+window.addEventListener('scroll',()=>{
+  const h=document.documentElement;
+  const p=h.scrollTop/(h.scrollHeight-h.clientHeight)*100;
+  const el=document.getElementById('progressFill');
+  if(el) el.style.width=p+'%';
+});
+document.addEventListener("DOMContentLoaded", function() {
+  if (window.renderMathInElement) {
+    renderMathInElement(document.body, {
+      delimiters: [
+        {left: "$$", right: "$$", display: true},
+        {left: "$", right: "$", display: false},
+        {left: "\\(", right: "\\)", display: false},
+        {left: "\\[", right: "\\]", display: true}
+      ],
+      throwOnError: false
+    });
+  }
+});
+</script>
+</body>
+</html>
