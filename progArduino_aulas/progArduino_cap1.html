@@ -194,7 +194,6 @@ footer p{font-size:.8rem;color:var(--muted);font-family:var(--font-mono);}
       <li><a href="#1.1-o-que-é-arduino">1.1 Arduino</a></li>
       <li><a href="#1.4-ambiente-de-desenvolvimento-no-arduino">1.4 IDE</a></li>
       <li><a href="#1.5-estrutura-de-um-programa-arduino">1.5 Estrutura</a></li>
-      <li><a href="#1.6-exemplos">1.6 Exemplos</a></li>
     </ul>
   </div>
 </nav>
@@ -213,7 +212,7 @@ footer p{font-size:.8rem;color:var(--muted);font-family:var(--font-mono);}
 <a href="#13-compilação-no-arduino">1.3 Compilação no Arduino</a>
 <a href="#14-ambiente-de-desenvolvimento-no-arduino">1.4 Ambiente de desenvolvimento no Arduino</a>
 <a href="#15-estrutura-de-um-programa-arduino">1.5 Estrutura de um programa Arduino</a>
-<a href="#16-exemplos">1.6 Exemplos</a></div>
+</div>
   </div>
 </section>
 
@@ -518,96 +517,38 @@ class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb8-1"><a href="#c
 <p>A função <code>Serial.read</code> lê dados da porta serial.</p>
 <div class="sourceCode" id="cb9"><pre
 class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="dt">char</span> input <span class="op">=</span> Serial<span class="op">.</span>read<span class="op">();</span></span></code></pre></div>
-<h2 id="exemplos">1.6 Exemplos</h2>
-<p><strong>Observação. Na IDE nativa do Arduino, você não pode executar
-um código (sketch) diretamente sem estar conectado a uma placa Arduino
-física. A IDE do Arduino é projetada para compilar e enviar o código
-para o microcontrolador na placa, e sem a placa conectada, não há como
-executar o código.</strong></p>
-<ol type="1">
-<li>Elaborar um programa no Arduino que produza a mensagem
-<code>Meu primeiro programa em Arduino</code>. Incluir
-<strong>comentários</strong>.</li>
-</ol>
-<div class="sourceCode" id="cb10"><pre
-class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="dt">void</span> setup<span class="op">()</span> <span class="op">{</span></span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>  Serial<span class="op">.</span>begin<span class="op">(</span><span class="dv">9600</span><span class="op">);</span></span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>  Serial<span class="op">.</span>println<span class="op">(</span><span class="st">&quot;Meu primeiro programa em Arduino&quot;</span><span class="op">);</span></span>
-<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span>
-<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a><span class="dt">void</span> loop<span class="op">()</span> <span class="op">{</span></span>
-<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>  <span class="co">// Não há necessidade de código no loop para este exemplo</span></span>
-<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
-<ol start="2" type="1">
-<li>Elaborar um programa no Arduino que produza a mensagem
-<code>Agora vou iniciar...</code> e escreva <strong>na linha
-seguinte</strong> <code>produzindo um novo código</code>. Incluir
-comentários.</li>
-</ol>
-<div class="sourceCode" id="cb11"><pre
-class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="dt">void</span> setup<span class="op">()</span> <span class="op">{</span></span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>  Serial<span class="op">.</span>begin<span class="op">(</span><span class="dv">9600</span><span class="op">);</span></span>
-<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>  Serial<span class="op">.</span>println<span class="op">(</span><span class="st">&quot;Agora vou iniciar...&quot;</span><span class="op">);</span></span>
-<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>  Serial<span class="op">.</span>println<span class="op">(</span><span class="st">&quot;Produzindo um novo código&quot;</span><span class="op">);</span></span>
-<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span>
-<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a><span class="dt">void</span> loop<span class="op">()</span> <span class="op">{</span></span>
-<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>  <span class="co">// Não há necessidade de código no loop para este exemplo</span></span>
-<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
-<ol start="3" type="1">
-<li>Elaborar um programa no Arduino que produza o resultado das
-expressões abaixo:</li>
-</ol>
-<ul>
-<li><span class="math inline">3 + 4 × 5 − 2 × (4 + 6)</span></li>
-<li><span class="math inline">6 + 4 × 8 × (3 + 7 + 27)</span></li>
-<li><span class="math inline">$\frac{3 + 4 \times 5} {[2 \times (4 + 6)
-]}$</span></li>
-<li><span class="math inline">$\frac{3} {[6 \times (1.25 +
-6.78)]}$</span></li>
-</ul>
-<div class="sourceCode" id="cb12"><pre
-class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="dt">void</span> setup<span class="op">()</span> <span class="op">{</span></span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>  Serial<span class="op">.</span>begin<span class="op">(</span><span class="dv">9600</span><span class="op">);</span></span>
-<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>  Serial<span class="op">.</span>print<span class="op">(</span><span class="st">&quot;Resultado 1: &quot;</span><span class="op">);</span></span>
-<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>  Serial<span class="op">.</span>println<span class="op">(</span><span class="dv">3</span> <span class="op">+</span> <span class="dv">4</span> <span class="op">*</span> <span class="dv">5</span> <span class="op">-</span> <span class="dv">2</span> <span class="op">*</span> <span class="op">(</span><span class="dv">4</span> <span class="op">+</span> <span class="dv">6</span><span class="op">));</span></span>
-<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>  Serial<span class="op">.</span>print<span class="op">(</span><span class="st">&quot;Resultado 2: &quot;</span><span class="op">);</span></span>
-<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>  Serial<span class="op">.</span>println<span class="op">(</span><span class="dv">6</span> <span class="op">+</span> <span class="dv">4</span> <span class="op">*</span> <span class="dv">8</span> <span class="op">*</span> <span class="op">(</span><span class="dv">3</span> <span class="op">+</span> <span class="dv">7</span> <span class="op">+</span> <span class="dv">27</span><span class="op">));</span></span>
-<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>  Serial<span class="op">.</span>print<span class="op">(</span><span class="st">&quot;Resultado 3: &quot;</span><span class="op">);</span></span>
-<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a>  Serial<span class="op">.</span>println<span class="op">((</span><span class="dv">3</span> <span class="op">+</span> <span class="dv">4</span> <span class="op">*</span> <span class="dv">5</span><span class="op">)</span> <span class="op">/</span> <span class="op">(</span><span class="dv">2</span> <span class="op">*</span> <span class="op">(</span><span class="dv">4</span> <span class="op">+</span> <span class="dv">6</span><span class="op">)));</span></span>
-<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a>  Serial<span class="op">.</span>print<span class="op">(</span><span class="st">&quot;Resultado 4: &quot;</span><span class="op">);</span></span>
-<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a>  Serial<span class="op">.</span>println<span class="op">(</span><span class="dv">3</span> <span class="op">/</span> <span class="op">(</span><span class="dv">6</span> <span class="op">*</span> <span class="op">(</span><span class="fl">1.25</span> <span class="op">+</span> <span class="fl">6.78</span><span class="op">)));</span></span>
-<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span>
-<span id="cb12-12"><a href="#cb12-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-13"><a href="#cb12-13" aria-hidden="true" tabindex="-1"></a><span class="dt">void</span> loop<span class="op">()</span> <span class="op">{</span></span>
-<span id="cb12-14"><a href="#cb12-14" aria-hidden="true" tabindex="-1"></a>  <span class="co">// Não há necessidade de código no loop para este exemplo</span></span>
-<span id="cb12-15"><a href="#cb12-15" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
-<ol start="4" type="1">
-<li>Elaborar um programa no Arduino para calcular e exibir o valor das
-expressões abaixo:</li>
-</ol>
-<ul>
-<li><span
-class="math inline">3<sup>4 × 5 × [2 × (4 + 6)]</sup></span></li>
-<li><span class="math inline">$\sqrt{2 \times (5 + 3) ^
-{34}}$</span></li>
-</ul>
-<div class="sourceCode" id="cb13"><pre
-class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="pp">#include </span><span class="im">&lt;math.h&gt;</span></span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="dt">void</span> setup<span class="op">()</span> <span class="op">{</span></span>
-<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>  Serial<span class="op">.</span>begin<span class="op">(</span><span class="dv">9600</span><span class="op">);</span></span>
-<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>  Serial<span class="op">.</span>print<span class="op">(</span><span class="st">&quot;Resultado 1: &quot;</span><span class="op">);</span></span>
-<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>  Serial<span class="op">.</span>println<span class="op">(</span>pow<span class="op">(</span><span class="dv">3</span><span class="op">,</span> <span class="dv">4</span> <span class="op">*</span> <span class="dv">5</span> <span class="op">*</span> <span class="op">(</span><span class="dv">2</span> <span class="op">*</span> <span class="op">(</span><span class="dv">4</span> <span class="op">+</span> <span class="dv">6</span><span class="op">))));</span></span>
-<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>  Serial<span class="op">.</span>print<span class="op">(</span><span class="st">&quot;Resultado 2: &quot;</span><span class="op">);</span></span>
-<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a>  Serial<span class="op">.</span>println<span class="op">(</span>sqrt<span class="op">(</span><span class="dv">2</span> <span class="op">*</span> pow<span class="op">((</span><span class="dv">5</span> <span class="op">+</span> <span class="dv">3</span><span class="op">),</span> <span class="dv">34</span><span class="op">)));</span></span>
-<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span>
-<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a><span class="dt">void</span> loop<span class="op">()</span> <span class="op">{</span></span>
-<span id="cb13-12"><a href="#cb13-12" aria-hidden="true" tabindex="-1"></a>  <span class="co">// Não há necessidade de código no loop para este exemplo</span></span>
-<span id="cb13-13"><a href="#cb13-13" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
-<p><strong>O que acontecerá na execução? Explique o resultado
-consultando o texto anterior.</strong></p>
+
+<h4 id="c.-função-digitalread">c. Função <code>digitalRead()</code></h4>
+<p>A função <code>digitalRead()</code> lê o estado lógico de um pino digital do Arduino. O valor retornado é <code>HIGH</code> ou <code>LOW</code>, de acordo com o nível lógico presente no pino.</p>
+<p>A sintaxe é:</p>
+<div class="codeline">digitalRead(pin);</div>
+<p>Por exemplo:</p>
+<div class="sourceCode"><pre class="sourceCode cpp"><code class="sourceCode cpp"><span class="dt">int</span> estado <span class="op">=</span> digitalRead<span class="op">(</span><span class="dv">7</span><span class="op">);</span></code></pre></div>
+
+<h4 id="d.-função-digitalwrite">d. Função <code>digitalWrite()</code></h4>
+<p>A função <code>digitalWrite()</code> escreve um valor lógico em um pino digital configurado como saída. O valor escrito pode ser <code>HIGH</code> ou <code>LOW</code>.</p>
+<p>A sintaxe é:</p>
+<div class="codeline">digitalWrite(pin, value);</div>
+<p>Por exemplo:</p>
+<div class="sourceCode"><pre class="sourceCode cpp"><code class="sourceCode cpp">digitalWrite<span class="op">(</span><span class="dv">13</span><span class="op">,</span> HIGH<span class="op">);</span></code></pre></div>
+
+<h3 id="digital-io-pinmode">1.5.9 Digital I/O — função <code>pinMode()</code></h3>
+<p>Na linguagem de referência do Arduino, <code>pinMode()</code> pertence à categoria <strong>Digital I/O</strong>. A função configura um pino especificado para se comportar como entrada ou saída.</p>
+<p>A sintaxe é:</p>
+<div class="codeline">pinMode(pin, mode);</div>
+<p>O parâmetro <code>pin</code> identifica o pino que será configurado. O parâmetro <code>mode</code> define seu modo de operação, podendo assumir os valores <code>INPUT</code>, <code>OUTPUT</code> ou <code>INPUT_PULLUP</code>.</p>
+<p>Por exemplo:</p>
+<div class="sourceCode"><pre class="sourceCode cpp"><code class="sourceCode cpp">pinMode<span class="op">(</span><span class="dv">13</span><span class="op">,</span> OUTPUT<span class="op">);</span>
+pinMode<span class="op">(</span><span class="dv">7</span><span class="op">,</span> INPUT<span class="op">);</span></code></pre></div>
+<p>Normalmente, a configuração dos pinos com <code>pinMode()</code> é realizada na função <code>setup()</code>, pois precisa ser executada apenas uma vez no início do programa.</p>
+
+<h3 id="time-delay">1.5.10 Time — função <code>delay()</code></h3>
+<p>Na linguagem de referência do Arduino, <code>delay()</code> pertence à categoria <strong>Time</strong>. A função interrompe temporariamente a execução do programa pelo intervalo especificado em milissegundos.</p>
+<p>A sintaxe é:</p>
+<div class="codeline">delay(ms);</div>
+<p>O parâmetro <code>ms</code> representa o tempo de espera em milissegundos. Assim, 1.000 milissegundos correspondem a 1 segundo.</p>
+<p>Por exemplo:</p>
+<div class="sourceCode"><pre class="sourceCode cpp"><code class="sourceCode cpp">delay<span class="op">(</span><span class="dv">1000</span><span class="op">);</span> <span class="co">// Aguarda 1 segundo</span></code></pre></div>
 
 </div>
 
