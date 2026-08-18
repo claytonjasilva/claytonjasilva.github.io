@@ -52,6 +52,7 @@ p{margin-bottom:1rem;color:#cbd5e1;} strong{color:var(--text);font-weight:600;} 
 ul.plain,ol.plain{margin:0 0 1rem 1.2rem;color:#cbd5e1;} ul.plain li,ol.plain li{margin-bottom:.45rem;}
 .fig-full{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:1.2rem;margin:1.5rem 0;overflow-x:auto;}
 .fig-full svg{width:100%;min-width:640px;display:block;}
+.fig-full img{width:100%;height:auto;display:block;}
 .fig-caption{font-family:var(--font-mono);font-size:.72rem;color:var(--muted);text-align:center;margin-top:.6rem;}
 .note{background:var(--tag-bg);border:1px solid var(--border);border-radius:6px;padding:.9rem 1.1rem;margin:1rem 0;font-size:.85rem;color:var(--muted);}
 .note strong{color:var(--accent);}
@@ -118,7 +119,7 @@ footer p{font-size:.8rem;color:var(--muted);font-family:var(--font-mono);}
 <li>LED — Diodo Emissor de Luz</li>
 <li>Resistor de 300 Ω</li>
 <li>Arduino Mega 2560</li>
-<li>Switch / chave</li></ul>
+<li>Switch / chave — pode ser implementada com um <em>jumper</em></li></ul>
     <div class="note"><strong>Atenção:</strong> confira a polarização dos LEDs, os resistores limitadores de corrente e a conexão correta entre GND e os pontos de referência do circuito.</div>
   </section>
 
@@ -126,32 +127,13 @@ footer p{font-size:.8rem;color:var(--muted);font-family:var(--font-mono);}
     <p class="section-label">II / montagem</p>
     
 <h2>Montagem do circuito com entrada digital</h2>
-<p>Monte o circuito com uma chave ligada a uma entrada digital do Arduino e um LED conectado a uma saída digital.</p>
+<p>Monte o circuito com uma chave ligada a uma entrada digital do Arduino e um LED conectado a uma saída digital. Para a realização da prática, a função da chave pode ser feita com um <em>jumper</em>, conectando e desconectando manualmente o ponto de entrada.</p>
 <div class="fig-full">
-<svg viewBox="0 0 900 430" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Entrada digital por chave comandando LED em saída digital">
-  <rect x="45" y="65" width="285" height="285" rx="16" class="dbox"/>
-  <text x="188" y="100" text-anchor="middle" class="dlbl">Arduino Mega 2560</text>
-  <circle cx="285" cy="160" r="5" class="pin"/><text x="220" y="164" class="dlbl2">D22 saída</text>
-  <circle cx="285" cy="250" r="5" class="pin"/><text x="220" y="254" class="dlbl2">D30 entrada</text>
-  <circle cx="95" cy="320" r="5" class="pin"/><text x="112" y="324" class="dlbl2">GND</text>
-  <circle cx="95" cy="130" r="5" class="pin"/><text x="112" y="134" class="dlbl2">5V</text>
-  <rect x="430" y="65" width="380" height="285" rx="12" class="dbox2"/>
-  <text x="620" y="100" text-anchor="middle" class="dlbl">Entrada digital + LED</text>
-  <path d="M285 160 H465" class="dwire"/>
-  <rect x="465" y="152" width="54" height="16" rx="5" fill="#0f172a" stroke="#00c2ff"/><text x="492" y="142" text-anchor="middle" class="dlbl2">300Ω</text>
-  <path d="M519 160 H575" class="dwire"/><circle cx="600" cy="160" r="18" class="led-red"/>
-  <path d="M618 160 H690 V320 H95" class="dwire"/>
-  <path d="M95 130 H455 V250" stroke="#00c2ff" stroke-width="2.2" fill="none"/>
-  <g transform="translate(455,230)">
-    <rect x="0" y="0" width="85" height="40" rx="6" fill="#0f172a" stroke="#7c3aed"/>
-    <path d="M15 20 H35 L62 8" stroke="#cbd5e1" stroke-width="2" fill="none"/>
-    <text x="42" y="58" text-anchor="middle" class="dlbl2">chave</text>
-  </g>
-  <path d="M540 250 H285" class="dwire"/>
-  <text x="615" y="285" text-anchor="middle" class="dlbl2">A leitura da entrada decide o estado do LED</text>
-</svg><p class="fig-caption">Figura 1 — Representação em SVG da prática: chave em entrada digital controlando um LED na saída.</p></div>
+  <img src="/arq_aulas/images/entradaArduino.jpg" alt="Entrada Arduino LEDs">
+  <p class="fig-caption">Figura 1 — Montagem da entrada digital e LEDs com Arduino Mega 2560.</p>
+</div>
 <ol class="plain">
-  <li>Conecte a chave a uma entrada digital do Arduino.</li>
+  <li>Conecte a chave a uma entrada digital do Arduino. A chave pode ser substituída por um <em>jumper</em>, realizando manualmente a conexão e a desconexão da entrada.</li>
   <li>Conecte o LED a uma saída digital, usando resistor de 300 Ω em série.</li>
   <li>Elabore o código para acender ou apagar o LED conforme o estado da chave.</li>
 </ol>
@@ -173,18 +155,9 @@ footer p{font-size:.8rem;color:var(--muted);font-family:var(--font-mono);}
   <li>Chave 2 em HIGH acende LED2; em LOW apaga LED2.</li>
 </ul>
 <div class="fig-full">
-<svg viewBox="0 0 900 330" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Duas chaves comandando dois LEDs">
-  <rect x="60" y="75" width="220" height="170" rx="14" class="dbox"/><text x="170" y="105" text-anchor="middle" class="dlbl">Arduino</text>
-  <circle cx="260" cy="145" r="5" class="pin"/><text x="185" y="149" class="dlbl2">Entrada Ch1</text>
-  <circle cx="260" cy="195" r="5" class="pin"/><text x="185" y="199" class="dlbl2">Entrada Ch2</text>
-  <circle cx="80" cy="145" r="5" class="pin"/><text x="98" y="149" class="dlbl2">Saída LED1</text>
-  <circle cx="80" cy="195" r="5" class="pin"/><text x="98" y="199" class="dlbl2">Saída LED2</text>
-  <rect x="390" y="55" width="360" height="220" rx="14" class="dbox2"/><text x="570" y="88" text-anchor="middle" class="dlbl">Shield duplicado</text>
-  <path d="M260 145 H470" class="dwire"/><rect x="470" y="128" width="80" height="34" rx="6" fill="#0f172a" stroke="#7c3aed"/><text x="510" y="150" text-anchor="middle" class="dlbl2">Ch1</text>
-  <path d="M260 195 H470" class="dwire"/><rect x="470" y="178" width="80" height="34" rx="6" fill="#0f172a" stroke="#7c3aed"/><text x="510" y="200" text-anchor="middle" class="dlbl2">Ch2</text>
-  <path d="M80 145 H400" class="dwire"/><circle cx="640" cy="145" r="17" class="led-red"/><path d="M400 145 H623" class="dwire"/>
-  <path d="M80 195 H400" class="dwire"/><circle cx="640" cy="195" r="17" class="led-green"/><path d="M400 195 H623" class="dwire"/>
-</svg><p class="fig-caption">Figura 2 — Representação em SVG do shield duplicado: duas entradas digitais e duas saídas digitais.</p></div>
+  <img src="/arq_aulas/images/entradaArduino.jpg" alt="Entrada Arduino LEDs">
+  <p class="fig-caption">Figura 2 — Utilize a mesma montagem como referência para duplicar as entradas e saídas.</p>
+</div>
 <table>
   <thead><tr><th>Chave</th><th>LED</th></tr></thead>
   <tbody>
@@ -203,17 +176,9 @@ footer p{font-size:.8rem;color:var(--muted);font-family:var(--font-mono);}
 <h2>O <em>shield</em> decodificador</h2>
 <p>Proponha um <em>shield</em> com duas chaves e quatro LEDs, funcionando como um decodificador de duas entradas.</p>
 <div class="fig-full">
-<svg viewBox="0 0 900 360" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Duas chaves formando decodificador para quatro LEDs">
-  <rect x="70" y="80" width="200" height="180" rx="14" class="dbox"/><text x="170" y="110" text-anchor="middle" class="dlbl">Entradas</text>
-  <rect x="115" y="140" width="95" height="34" rx="6" fill="#0f172a" stroke="#7c3aed"/><text x="162" y="162" text-anchor="middle" class="dlbl2">Ch1</text>
-  <rect x="115" y="190" width="95" height="34" rx="6" fill="#0f172a" stroke="#7c3aed"/><text x="162" y="212" text-anchor="middle" class="dlbl2">Ch2</text>
-  <path d="M210 157 H360" class="dwire"/><path d="M210 207 H360" class="dwire"/>
-  <rect x="360" y="95" width="180" height="150" rx="16" class="dbox2"/><text x="450" y="145" text-anchor="middle" class="dlbl">Decodificador</text><text x="450" y="170" text-anchor="middle" class="dlbl2">2 entradas → 4 saídas</text>
-  <path d="M540 125 H650" class="dwire"/><circle cx="685" cy="125" r="17" class="led-red"/><text x="725" y="130" class="dlbl2">LED1</text>
-  <path d="M540 160 H650" class="dwire"/><circle cx="685" cy="160" r="17" class="led-green"/><text x="725" y="165" class="dlbl2">LED2</text>
-  <path d="M540 195 H650" class="dwire"/><circle cx="685" cy="195" r="17" fill="#f59e0b"/><text x="725" y="200" class="dlbl2">LED3</text>
-  <path d="M540 230 H650" class="dwire"/><circle cx="685" cy="230" r="17" fill="#38bdf8"/><text x="725" y="235" class="dlbl2">LED4</text>
-</svg><p class="fig-caption">Figura 3 — Representação em SVG do shield decodificador: duas entradas selecionam combinações de quatro LEDs.</p></div>
+  <img src="/arq_aulas/images/entradaArduino.jpg" alt="Entrada Arduino LEDs">
+  <p class="fig-caption">Figura 3 — Utilize a mesma montagem como referência para implementar o shield decodificador.</p>
+</div>
 <table>
   <thead><tr><th>Chaves</th><th>Saídas</th></tr></thead>
   <tbody>
