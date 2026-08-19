@@ -162,9 +162,7 @@ footer p{font-size:.8rem;color:var(--muted);font-family:var(--font-mono);}
     <ul class="nav-links">
       <li><a href="#s1">1.1 Dimensões</a></li>
       <li><a href="#s2">1.2 Sinais</a></li>
-      <li><a href="#quiz">Quiz</a></li>
       <li><a href="#refs">Referências</a></li>
-      <li><a href="https://claytonjasilva.github.io/sisdig.html">← disciplina</a></li>
     </ul>
   </div>
 </nav>
@@ -387,57 +385,7 @@ footer p{font-size:.8rem;color:var(--muted);font-family:var(--font-mono);}
     <p><strong>Nível 5 — Aplicações:</strong> programas e linguagens de alto nível utilizados pelo usuário final.</p>
   </section>
 
-  <!-- QUIZ -->
-  <section class="section" id="quiz">
-    <p class="section-label">checkpoint</p>
-    <h2>Teste seus conhecimentos</h2>
-
-    <div class="quiz">
-      <div class="quiz-header">
-        <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="8" stroke="#7c3aed" stroke-width="1.4"/><text x="10" y="14" font-size="10" fill="#7c3aed" text-anchor="middle" font-weight="600">?</text></svg>
-        <span class="quiz-title">Pergunta 1 de 3</span>
-      </div>
-      <p class="quiz-q">Segundo o Teorema de Nyquist, um sinal com banda B = 4 kHz deve ser amostrado com frequência mínima de:</p>
-      <div class="quiz-options">
-        <button class="quiz-opt" onclick="checkAnswer(this, false, 'q1fb')">2 kHz</button>
-        <button class="quiz-opt" onclick="checkAnswer(this, true, 'q1fb')">8 kHz</button>
-        <button class="quiz-opt" onclick="checkAnswer(this, false, 'q1fb')">4 kHz</button>
-        <button class="quiz-opt" onclick="checkAnswer(this, false, 'q1fb')">16 kHz</button>
-      </div>
-      <div class="quiz-feedback" id="q1fb"></div>
-    </div>
-
-    <div class="quiz">
-      <div class="quiz-header">
-        <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="8" stroke="#7c3aed" stroke-width="1.4"/><text x="10" y="14" font-size="10" fill="#7c3aed" text-anchor="middle" font-weight="600">?</text></svg>
-        <span class="quiz-title">Pergunta 2 de 3</span>
-      </div>
-      <p class="quiz-q">Um sinal quantizado em L=16 níveis, entre x_MIN=0V e x_MAX=15V, tem degrau de quantização Δ igual a:</p>
-      <div class="quiz-options">
-        <button class="quiz-opt" onclick="checkAnswer(this, false, 'q2fb')">0,5 V</button>
-        <button class="quiz-opt" onclick="checkAnswer(this, true, 'q2fb')">1,0 V</button>
-        <button class="quiz-opt" onclick="checkAnswer(this, false, 'q2fb')">1,5 V</button>
-        <button class="quiz-opt" onclick="checkAnswer(this, false, 'q2fb')">15 V</button>
-      </div>
-      <div class="quiz-feedback" id="q2fb"></div>
-    </div>
-
-    <div class="quiz">
-      <div class="quiz-header">
-        <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="8" stroke="#7c3aed" stroke-width="1.4"/><text x="10" y="14" font-size="10" fill="#7c3aed" text-anchor="middle" font-weight="600">?</text></svg>
-        <span class="quiz-title">Pergunta 3 de 3</span>
-      </div>
-      <p class="quiz-q">Qual é a ordem correta das três etapas da conversão A/D?</p>
-      <div class="quiz-options">
-        <button class="quiz-opt" onclick="checkAnswer(this, false, 'q3fb')">Codificação → Amostragem → Quantização</button>
-        <button class="quiz-opt" onclick="checkAnswer(this, true, 'q3fb')">Amostragem → Quantização → Codificação</button>
-        <button class="quiz-opt" onclick="checkAnswer(this, false, 'q3fb')">Quantização → Codificação → Amostragem</button>
-      </div>
-      <div class="quiz-feedback" id="q3fb"></div>
-    </div>
-  </section>
-
-  <!-- REFERÊNCIAS -->
+<!-- REFERÊNCIAS -->
   <section class="section" id="refs">
     <p class="section-label">referências e aprofundamento</p>
     <h2>Para ir além</h2>
@@ -451,21 +399,13 @@ footer p{font-size:.8rem;color:var(--muted);font-family:var(--font-mono);}
         <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><rect x="2" y="4" width="14" height="10" rx="2" stroke="#7c3aed" stroke-width="1.3"/><polygon points="8,7 8,11 12,9" fill="#7c3aed"/></svg>
         <div><span class="ref-type">vídeo</span><h4>Teorema de Nyquist — visualizações</h4><p>Busca curada de vídeos explicativos</p></div>
       </a>
-      <a class="ref-card" href="https://claytonjasilva.github.io/sisdig.html" target="_blank" style="color:inherit;">
-        <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><rect x="2" y="2" width="14" height="14" rx="2" stroke="#00c2ff" stroke-width="1.3"/><line x1="2" y1="7" x2="16" y2="7" stroke="#00c2ff" stroke-width="1.1"/></svg>
-        <div><span class="ref-type">disciplina</span><h4>Página de Sistemas Digitais</h4><p>Agenda, práticas e demais capítulos</p></div>
-      </a>
-      <a class="ref-card" href="https://claytonjasilva.github.io/avaliacoes.html" target="_blank" style="color:inherit;">
-        <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><rect x="3" y="2" width="12" height="14" rx="1.5" stroke="#7c3aed" stroke-width="1.3"/><line x1="6" y1="6" x2="12" y2="6" stroke="#7c3aed" stroke-width="1.1"/><line x1="6" y1="9" x2="12" y2="9" stroke="#7c3aed" stroke-width="1.1"/></svg>
-        <div><span class="ref-type">avaliação</span><h4>Sistema de Avaliações</h4><p>Pesos AC/AP1/AP2 da disciplina</p></div>
-      </a>
     </div>
   </section>
 
   <!-- CHAPTER NAV -->
   <div class="chapter-nav">
     <a href="https://claytonjasilva.github.io/sisdig.html"><span class="dir">← voltar</span>Índice da disciplina</a>
-    <a class="next" href="#" style="opacity:.5;cursor:default;"><span class="dir">próximo →</span>Cap. 2 — Álgebra Booleana</a>
+    <a class="next" href="cap2.html"><span class="dir">próximo →</span>Cap. 2 — Álgebra Booleana e Portas Lógicas</a>
   </div>
 
 </div>
