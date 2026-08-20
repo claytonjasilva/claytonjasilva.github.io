@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Prática 2 — Implementação com portas NAND | Sistemas Digitais</title>
+  <style>
+    :root{
+      --bg:#0a0e17; --surface:#111827; --surface2:#0f172a; --border:#243044;
+      --text:#e5edf6; --muted:#94a3b8; --accent:#00c2ff; --accent2:#7c3aed;
+      --ok:#22c55e; --warn:#f59e0b;
+      --font-sans:Inter,Segoe UI,Arial,sans-serif;
+      --font-mono:"JetBrains Mono",Consolas,monospace;
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0;background:var(--bg);color:var(--text);font-family:var(--font-sans);line-height:1.65}
+    a{color:var(--accent);text-decoration:none}
+    a:hover{text-decoration:underline}
+    .container{max-width:1000px;margin:0 auto;padding:0 2rem}
+    nav{position:sticky;top:0;z-index:100;background:rgba(10,14,23,.9);backdrop-filter:blur(12px);
+        border-bottom:1px solid var(--border);padding:1rem 0}
+    nav .container{display:flex;justify-content:space-between;align-items:center;gap:1rem;flex-wrap:wrap}
+    .nav-brand{font-family:var(--font-mono);font-size:.82rem;color:var(--accent)}
+    .nav-links{display:flex;gap:1.2rem;list-style:none;margin:0;padding:0;flex-wrap:wrap}
+    .nav-links a{font-size:.82rem;color:var(--muted)}
+    .nav-links a:hover{color:var(--text);text-decoration:none}
+    .hero{padding:4.5rem 0 3rem;background:
+      radial-gradient(circle at 78% 18%,rgba(124,58,237,.14),transparent 32%),
+      radial-gradient(circle at 18% 30%,rgba(0,194,255,.10),transparent 30%)}
+    .eyebrow{font-family:var(--font-mono);text-transform:uppercase;letter-spacing:.12em;font-size:.72rem;color:var(--accent);margin-bottom:.7rem}
+    h1{font-size:clamp(2rem,5vw,3.6rem);line-height:1.08;margin:.2rem 0 1rem;font-weight:700}
+    h1 strong{color:var(--accent);font-weight:700}
+    .lead{max-width:760px;color:var(--muted);font-size:1.02rem}
+    .section{padding:3rem 0;border-top:1px solid var(--border)}
+    .section-title{display:flex;align-items:center;gap:.8rem;font-family:var(--font-mono);
+      text-transform:uppercase;letter-spacing:.1em;font-size:.72rem;color:var(--accent2);margin-bottom:1rem}
+    .section-title::after{content:"";height:1px;background:var(--border);flex:1}
+    h2{font-size:1.55rem;margin:.2rem 0 1rem}
+    h3{font-size:1.05rem;margin:1.4rem 0 .7rem}
+    p{margin:.55rem 0 1rem;color:#cbd5e1}
+    .card{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:1.25rem 1.4rem;margin:1rem 0}
+    .tool-card{border-left:3px solid var(--accent)}
+    .note{background:rgba(245,158,11,.07);border:1px solid rgba(245,158,11,.24);
+      border-left:3px solid var(--warn);border-radius:8px;padding:1rem 1.15rem;color:#cbd5e1;margin:1rem 0}
+    .tip{background:rgba(34,197,94,.06);border:1px solid rgba(34,197,94,.22);
+      border-left:3px solid var(--ok);border-radius:8px;padding:1rem 1.15rem;color:#cbd5e1;margin:1rem 0}
+    .steps{counter-reset:step;display:flex;flex-direction:column;gap:1rem;margin-top:1.2rem}
+    .step{counter-increment:step;background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:1.25rem 1.4rem}
+    .step h3{display:flex;gap:.75rem;align-items:flex-start;margin:0 0 .75rem}
+    .step h3::before{content:counter(step,decimal-leading-zero);font-family:var(--font-mono);font-size:.72rem;
+      color:var(--accent2);background:rgba(124,58,237,.1);border:1px solid rgba(124,58,237,.25);
+      border-radius:4px;padding:.18rem .48rem;flex-shrink:0;margin-top:.14rem}
+    .figure{margin:1.2rem 0 1.4rem;background:var(--surface2);border:1px solid var(--border);border-radius:10px;padding:1rem}
+    .figure img{display:block;max-width:100%;height:auto;margin:0 auto;border-radius:6px}
+    .caption{text-align:center;font-size:.78rem;color:var(--muted);font-family:var(--font-mono);margin:.7rem 0 0}
+    .task{margin:.8rem 0 0;padding-left:1.35rem;color:#cbd5e1}
+    .task li{margin:.45rem 0}
+    code{font-family:var(--font-mono);color:#bae6fd}
+    .btn{display:inline-block;margin-top:.4rem;padding:.65rem .9rem;border:1px solid rgba(0,194,255,.35);
+      border-radius:6px;background:rgba(0,194,255,.07);font-family:var(--font-mono);font-size:.8rem}
+    footer{border-top:1px solid var(--border);padding:2rem 0;margin-top:2rem}
+    footer .container{display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap}
+    footer p{font-family:var(--font-mono);font-size:.78rem;color:var(--muted);margin:0}
+    @media(max-width:640px){.container{padding:0 1.2rem}.nav-links{display:none}.hero{padding:3rem 0 2.2rem}}
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="container">
+    <span class="nav-brand">sisdig · prática 2</span>
+    <ul class="nav-links">
+      <li><a href="#easyeda">EasyEDA</a></li>
+      <li><a href="#pratica">Enunciado</a></li>
+      <li><a href="../sisdig.html">← disciplina</a></li>
+    </ul>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="container">
+    <p class="eyebrow">Sistemas Digitais · Práticas de Laboratório</p>
+    <h1>Prática 2 — <strong>implementação com portas NAND</strong></h1>
+    <p class="lead">Conversão de uma expressão booleana para uma implementação utilizando exclusivamente portas NAND, simulação do circuito e verificação experimental da tabela-verdade.</p>
+  </div>
+</header>
+
+<main class="container">
+
+  <section class="section" id="easyeda">
+    <p class="section-title">01 / ferramenta</p>
+    <h2>EasyEDA</h2>
+
+    <div class="card tool-card">
+      <p>O <strong>EasyEDA</strong> será utilizado para elaborar o esquema lógico e simular o circuito antes da implementação física. Nesta prática, todas as funções lógicas deverão ser obtidas utilizando <strong>somente portas NAND</strong>.</p>
+      <p>A simulação permitirá testar todas as combinações possíveis das entradas e comparar a saída observada com a tabela-verdade correspondente à expressão booleana proposta.</p>
+      <a class="btn" href="https://easyeda.com/" target="_blank" rel="noopener noreferrer">Acessar o EasyEDA →</a>
+    </div>
+
+    <div class="note">
+      <strong>Atenção:</strong> na elaboração do esquema, não utilize portas AND, OR ou NOT como componentes do circuito final. Quando houver necessidade de inversão ou de composição de outras funções lógicas, essas funções deverão ser implementadas exclusivamente com portas NAND.
+    </div>
+  </section>
+
+  <section class="section" id="pratica">
+    <p class="section-title">02 / enunciado</p>
+    <h2>Atividades da Prática 2</h2>
+    <p>Desenvolva as três etapas a seguir e registre os resultados obtidos.</p>
+
+    <div class="steps">
+
+      <article class="step">
+        <h3>Análise da expressão e implementação utilizando somente portas NAND</h3>
+        <p>Analise a expressão booleana apresentada a seguir e proponha o esquema do circuito utilizando <strong>somente portas NAND</strong>.</p>
+
+        <div class="card" style="text-align:center; margin-top:1.2rem;">
+          <p style="font-size:1.35rem; margin:.4rem 0; color:#e5edf6;"><strong>S = A · B + C · <span style="text-decoration:overline;">D</span></strong></p>
+        </div>
+
+        <ul class="task">
+          <li>Reescreva a expressão de forma adequada à implementação com portas NAND, utilizando os teoremas da Álgebra Booleana e as leis de De Morgan.</li>
+          <li>Identifique como a função NOT pode ser obtida com uma porta NAND.</li>
+          <li>Elabore o esquema lógico utilizando, no máximo, <strong>quatro portas NAND de duas entradas</strong>.</li>
+          <li>Identifique claramente as entradas <strong>A</strong>, <strong>B</strong>, <strong>C</strong> e <strong>D</strong>, os sinais intermediários e a saída <strong>S</strong>.</li>
+        </ul>
+      </article>
+
+      <article class="step">
+        <h3>Simulação e verificação da tabela-verdade</h3>
+        <p>Monte no EasyEDA o circuito obtido na etapa anterior e simule seu funcionamento.</p>
+
+        <ul class="task">
+          <li>Insira componentes <strong>Estado Lógico (<em>Logic State</em>)</strong> nas entradas para permitir a seleção dos níveis lógicos 0 e 1.</li>
+          <li>Utilize uma <strong>Ponta Lógica (<em>Logic Probe</em>)</strong> na saída para observar o valor produzido pelo circuito.</li>
+          <li>Teste <strong>todas as combinações possíveis</strong> das quatro entradas.</li>
+          <li>Construa a tabela-verdade completa a partir dos resultados da simulação.</li>
+          <li>Verifique se a tabela-verdade obtida corresponde aos valores previstos pela expressão booleana <strong>S = A · B + C · <span style="text-decoration:overline;">D</span></strong>.</li>
+        </ul>
+
+        <div class="tip">
+          Antes de registrar os resultados, confirme que cada entrada altera corretamente o estado lógico do circuito e que todos os fios estão efetivamente conectados aos pinos dos componentes.
+        </div>
+      </article>
+
+      <article class="step">
+        <h3>Implementação física do circuito</h3>
+        <p>Implemente fisicamente o circuito em uma <strong>protoboard</strong>, utilizando apenas circuitos integrados com portas NAND e os componentes necessários para representação das entradas e da saída.</p>
+
+        <ul class="task">
+          <li>Utilize chaves, jumpers ou outro recurso adequado para selecionar os níveis lógicos 0 e 1 das entradas.</li>
+          <li>Ligue um <strong>LED à saída</strong> para indicar visualmente o estado lógico do circuito, utilizando resistor limitador de corrente.</li>
+          <li>Teste diferentes combinações das entradas e compare o comportamento observado com a tabela-verdade obtida na simulação.</li>
+          <li>Registre o circuito físico montado e eventuais diferenças observadas entre a análise teórica, a simulação e a implementação.</li>
+        </ul>
+      </article>
+
+    </div>
+  </section>
+
+  <section class="section">
+    <p class="section-title">03 / resultado esperado</p>
+    <h2>Entrega da prática</h2>
+    <div class="card">
+      <p>Ao final da atividade, o grupo deverá apresentar: <strong>(a)</strong> a transformação algébrica da expressão para implementação com portas NAND; <strong>(b)</strong> o esquema do circuito utilizando no máximo quatro portas NAND; <strong>(c)</strong> a tabela-verdade obtida por simulação e sua comparação com a expressão booleana; e <strong>(d)</strong> a implementação física do circuito funcionando em protoboard.</p>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="container">
+    <p>© 2026 · Prof. Clayton J A Silva · Sistemas Digitais</p>
+    <p><a href="../sisdig.html">Voltar à página da disciplina</a></p>
+  </div>
+</footer>
+</body>
+</html>
