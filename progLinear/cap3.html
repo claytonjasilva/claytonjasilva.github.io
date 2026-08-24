@@ -171,132 +171,92 @@ footer p{font-size:.8rem;color:var(--muted);font-family:var(--font-mono);}
   <div class="container">
     <span class="nav-brand">proglinear · cap. 3</span>
     <ul class="nav-links">
-      <li><a href="#s1">conceitos</a></li>
-      <li><a href="#s2">formulação</a></li>
-      <li><a href="#s3">aplicação</a></li>
-      <li><a href="#exemplo">exemplo</a></li>
-      <li><a href="#quiz">quiz</a></li>
-      <li><a href="../programacao_linear.html">← disciplina</a></li>
+      <li><a href="#s1">modelo</a></li><li><a href="#s2">premissas</a></li><li><a href="#s3">geometria</a></li>
+      <li><a href="#s4">simplex</a></li><li><a href="#s5">quadro</a></li><li><a href="#s6">dualidade</a></li>
+      <li><a href="../progLinear.html">← disciplina</a></li>
     </ul>
   </div>
 </nav>
 <div class="progress-track"><div class="progress-fill" id="progressFill"></div></div>
-<section class="hero">
-  <div class="container">
-    <p class="hero-eyebrow">Programação Linear Aplicada · Capítulo 3</p>
-    <h1>Cap. 3<br><strong>Formulação de Problemas de PL</strong></h1>
-    <div class="hero-meta">
-      <span class="meta-item">leitura ~50 min</span>
-      <span class="meta-item">Prof. Clayton J A Silva</span>
-      <span class="meta-item">IBM0803</span>
-    </div>
-    <div class="objectives">
-      <p class="label">Objetivos de aprendizagem</p>
-      <ul><li>Traduzir enunciados em modelos.</li><li>Identificar padrões clássicos.</li><li>Evitar erros comuns.</li><li>Validar coerência dimensional.</li></ul>
-    </div>
-    <div class="toc">
-      <a href="#s1">Conceitos</a>
-      <a href="#s2">Formulação</a>
-      <a href="#s3">Aplicação</a>
-      <a href="#exemplo">Exemplo orientado</a>
-      <a href="#pratica">Prática sugerida</a>
-      <a href="#quiz">Quiz</a>
-    </div>
-  </div>
-</section>
+<section class="hero"><div class="container">
+  <p class="hero-eyebrow">Programação Linear Aplicada · Capítulo 3</p>
+  <h1>Cap. 3<br><strong>Modelo matemático para PL e o método Simplex</strong></h1>
+  <div class="hero-meta"><span class="meta-item">Prof. Clayton J A Silva</span><span class="meta-item">IBM0803</span></div>
+  <div class="objectives"><p class="label">Objetivos de aprendizagem</p><ul>
+    <li>Reconhecer a estrutura geral de um modelo de Programação Linear e suas premissas.</li>
+    <li>Relacionar região viável, convexidade, vértices e soluções básicas viáveis.</li>
+    <li>Transformar restrições em equações e organizar o quadro do método Simplex.</li>
+    <li>Executar e interpretar as etapas de uma iteração do Simplex.</li>
+    <li>Introduzir dualidade e discutir o tratamento de restrições do tipo ≥.</li>
+  </ul></div>
+  <div class="toc"><a href="#s1">Modelo geral</a><a href="#s2">Premissas</a><a href="#s3">Região viável</a><a href="#s4">Método Simplex</a><a href="#s5">Quadro e iterações</a><a href="#s6">Dualidade e excesso</a><a href="#refs">Referências</a></div>
+</div></section>
 <div class="container">
-
-  <section class="section" id="s1">
-    <p class="section-label">3.1 / desenvolvimento</p>
-    <h2>Conceitos fundamentais</h2>
-    <p>A formulação começa pela pergunta: o que deve ser decidido? Em seguida, identificam-se recursos, limites, demandas e critério de desempenho.</p>
-    <div class="key-grid">
-      <div class="key-card"><strong>Para lembrar</strong><p>Explique sempre o significado operacional das variáveis e restrições.</p></div>
-      <div class="key-card"><strong>Em aula</strong><p>Discuta um exemplo numérico e peça aos alunos que interpretem a solução.</p></div>
-      <div class="key-card"><strong>Erro comum</strong><p>Resolver mecanicamente sem validar se o modelo representa o problema real.</p></div>
-    </div>
-  </section>
-  <section class="section" id="s2">
-    <p class="section-label">3.2 / desenvolvimento</p>
-    <h2>Formulação e interpretação</h2>
-    <p>Problemas clássicos incluem mix de produção, dieta, mistura, corte e alocação de recursos.</p>
-    <div class="key-grid">
-      <div class="key-card"><strong>Para lembrar</strong><p>Explique sempre o significado operacional das variáveis e restrições.</p></div>
-      <div class="key-card"><strong>Em aula</strong><p>Discuta um exemplo numérico e peça aos alunos que interpretem a solução.</p></div>
-      <div class="key-card"><strong>Erro comum</strong><p>Resolver mecanicamente sem validar se o modelo representa o problema real.</p></div>
-    </div>
-  </section>
-  <section class="section" id="s3">
-    <p class="section-label">3.3 / desenvolvimento</p>
-    <h2>Aplicação em aula</h2>
-    <p>Erros frequentes: inverter desigualdades, esquecer não negatividade, misturar unidades e confundir variável com parâmetro.</p>
-    <div class="key-grid">
-      <div class="key-card"><strong>Para lembrar</strong><p>Explique sempre o significado operacional das variáveis e restrições.</p></div>
-      <div class="key-card"><strong>Em aula</strong><p>Discuta um exemplo numérico e peça aos alunos que interpretem a solução.</p></div>
-      <div class="key-card"><strong>Erro comum</strong><p>Resolver mecanicamente sem validar se o modelo representa o problema real.</p></div>
-    </div>
-  </section>
-  <section class="section" id="formula">
-    <p class="section-label">síntese matemática</p>
-    <h2>Representação matemática essencial</h2>
-    <div class="formula-card">Passos: definir variáveis -&gt; escrever objetivo -&gt; escrever restrições -&gt; definir domínio -&gt; interpretar solução</div>
-    <div class="note"><strong>Observação:</strong> esta síntese deve ser associada a um problema concreto durante a aula.</div>
-  </section>
-  <section class="section" id="exemplo">
-    <p class="section-label">exemplo orientado</p>
-    <h2>Exemplo para discussão em aula</h2>
-    <div class="exercise-card"><h4>Problema-base</h4><p>Uma dieta deve minimizar custo e atender nutrientes mínimos. As variáveis são quantidades de alimentos e as restrições garantem requisitos nutricionais.</p></div>
-    <div class="method-card">
-      <span class="method-num">roteiro</span>
-      <h4>Como conduzir a solução</h4>
-      <ol class="steps">
-        <li>Definir variáveis de decisão.</li>
-        <li>Escrever função objetivo.</li>
-        <li>Traduzir limites em restrições.</li>
-        <li>Resolver manualmente ou em ferramenta computacional.</li>
-        <li>Interpretar solução, folgas, restrições ativas e limitações.</li>
-      </ol>
-    </div>
-  </section>
-  <section class="section" id="pratica">
-    <p class="section-label">prática sugerida</p>
-    <h2>Atividade computacional ou de modelagem</h2>
-    <p>Formular problemas de mix de produção, dieta e alocação de horas.</p>
-    <div class="ds-grid">
-      <div class="ds-item"><a href="https://www.python.org/" target="_blank">Python.org</a></div>
-      <div class="ds-item"><a href="https://colab.research.google.com/" target="_blank">Google Colab</a></div>
-      <div class="ds-item"><a href="https://docs.scipy.org/doc/scipy/reference/optimize.linprog.html" target="_blank">SciPy linprog</a></div>
-      <div class="ds-item"><a href="https://coin-or.github.io/pulp/" target="_blank">PuLP</a></div>
-    </div>
-  </section>
-  <section class="section" id="quiz">
-    <p class="section-label">checkpoint</p>
-    <h2>Teste rápido</h2>
-    <div class="quiz">
-      <div class="quiz-header"><span class="quiz-title">Pergunta do capítulo</span></div>
-      <p class="quiz-q">Qual atitude é mais adequada ao trabalhar com este tema?</p>
-      <div class="quiz-options">
-        <button class="quiz-opt" onclick="checkAnswer(this, true, 'qfb')">Construir, resolver e interpretar o modelo, verificando se ele representa o problema real.</button>
-        <button class="quiz-opt" onclick="checkAnswer(this, false, 'qfb')">Resolver por tentativa e erro, sem explicitar variáveis e restrições.</button>
-        <button class="quiz-opt" onclick="checkAnswer(this, false, 'qfb')">Ignorar restrições para maximizar apenas a função objetivo.</button>
-      </div>
-      <div class="quiz-feedback" id="qfb"></div>
-    </div>
-  </section>
-  <div class="chapter-nav">
-    <a href="cap2.html"><span class="dir">← anterior</span>Cap. 2</a>
-    <a class="next" href="cap4.html"><span class="dir">próximo →</span>Cap. 4</a>
-  </div>
+<section class="section" id="s1"><p class="section-label">3.1 / modelo matemático</p><h2>Da situação real ao modelo de Programação Linear</h2>
+<p>A Pesquisa Operacional utiliza modelos como representações simplificadas de situações reais de decisão. O propósito não é reproduzir toda a realidade, mas selecionar as relações que são relevantes para a decisão e expressá-las de forma suficientemente clara para que possam ser analisadas. Nessa perspectiva, a modelagem é uma etapa central: antes de escolher um algoritmo, é necessário definir o que se pretende decidir, qual critério será utilizado para avaliar as alternativas e quais limitações precisam ser respeitadas.</p>
+<p>Essa forma de pensar é coerente com a abordagem apresentada por <strong>Eduardo Leopoldino de Andrade</strong>, que associa a Pesquisa Operacional à construção de modelos para apoiar a análise de decisões, e com <strong>Hillier e Lieberman</strong>, que organizam o estudo da Programação Linear a partir da modelagem, da solução e da interpretação do problema. Assim, o modelo matemático deve permanecer ligado ao significado operacional das variáveis e dos parâmetros: uma solução numericamente correta só é útil se representar adequadamente o problema que motivou sua construção.</p>
+<div class="formula-card">Maximizar ou minimizar   Z = Σ cⱼxⱼ\n\nsujeito a               Σ aᵢⱼxⱼ  (≤, = ou ≥)  bᵢ,   i = 1,...,m\n                         xⱼ ≥ 0,                    j = 1,...,n</div>
+<p>Nessa representação, <strong>x<sub>j</sub></strong> são as variáveis de decisão; <strong>c<sub>j</sub></strong> são os coeficientes da função objetivo; <strong>a<sub>ij</sub></strong> representam os coeficientes técnicos das restrições; e <strong>b<sub>i</sub></strong> expressam disponibilidades, limites ou requisitos. A função objetivo traduz o critério de desempenho — lucro, custo, tempo, produção ou outra grandeza — e as restrições descrevem as condições que delimitam as decisões possíveis.</p>
+<div class="note"><strong>Ideia-chave:</strong> modelar significa traduzir uma decisão real para uma estrutura matemática sem perder o significado das grandezas envolvidas.</div>
+</section>
+<section class="section" id="s2"><p class="section-label">3.2 / premissas</p><h2>Quando um problema pode ser tratado como Programação Linear?</h2>
+<p>O modelo de PL pressupõe relações lineares. Essa hipótese aparece de forma mais clara quando observamos seis condições discutidas em aula: <strong>linearidade, proporcionalidade, aditividade, divisibilidade, certeza dos parâmetros e não negatividade</strong>. Elas não são apenas propriedades formais; indicam como o modelo interpreta o sistema real.</p>
+<div class="key-grid">
+<div class="key-card"><strong>Linearidade</strong><p>A função objetivo e as restrições são expressas por combinações lineares das variáveis.</p></div>
+<div class="key-card"><strong>Proporcionalidade</strong><p>A contribuição de cada variável cresce na mesma proporção da quantidade produzida ou utilizada.</p></div>
+<div class="key-card"><strong>Aditividade</strong><p>O efeito total resulta da soma das contribuições individuais, sem termos de interação entre variáveis.</p></div>
+<div class="key-card"><strong>Divisibilidade</strong><p>As variáveis podem assumir valores fracionários quando a natureza do problema permitir.</p></div>
+<div class="key-card"><strong>Certeza</strong><p>Os coeficientes do modelo são tratados como conhecidos e constantes durante a análise.</p></div>
+<div class="key-card"><strong>Não negatividade</strong><p>Nas formulações usuais, as variáveis de decisão e as variáveis auxiliares são não negativas.</p></div>
 </div>
-<footer>
-  <div class="container">
-    <p>© 2026 · Prof. Clayton J A Silva</p>
-    <p><a href="../programacao_linear.html">Programação Linear Aplicada</a></p>
-  </div>
-</footer>
-<script>
-window.addEventListener('scroll',()=>{const h=document.documentElement;document.getElementById('progressFill').style.width=(h.scrollTop/(h.scrollHeight-h.clientHeight)*100)+'%';});
-function checkAnswer(btn,isCorrect,fbId){const group=btn.parentElement;const buttons=group.querySelectorAll('.quiz-opt');buttons.forEach(b=>b.disabled=true);btn.classList.add(isCorrect?'correct':'wrong');const fb=document.getElementById(fbId);fb.classList.add('show');if(!isCorrect) buttons.forEach(b=>{if(b.getAttribute('onclick').includes(', true,')) b.classList.add('correct');});fb.classList.add(isCorrect?'correct-fb':'wrong-fb');fb.textContent=isCorrect?'✓ Correto. Modelar, resolver e interpretar são etapas inseparáveis.':'✗ Revise os objetivos e a síntese do capítulo.';}
-</script>
+<p>Hillier e Lieberman destacam essas hipóteses como parte da estrutura que permite representar um problema por Programação Linear. Na prática, elas também funcionam como um teste de adequação do modelo. Se, por exemplo, o consumo de um recurso variar de forma não proporcional à produção, ou se houver interação entre duas decisões, a representação linear pode deixar de ser apropriada ou exigir uma aproximação.</p>
+</section>
+<section class="section" id="s3"><p class="section-label">3.3 / interpretação geométrica</p><h2>Região viável, convexidade e pontos extremos</h2>
+<p>O conjunto de valores das variáveis que satisfaz simultaneamente todas as restrições e as condições de não negatividade constitui a <strong>região viável</strong>. Em duas variáveis, essa região pode ser visualizada no plano; em dimensões maiores, a interpretação geométrica permanece válida, embora não seja possível desenhá-la diretamente.</p>
+<p>Uma propriedade fundamental é a <strong>convexidade</strong>: se dois pontos pertencem à região viável, todo ponto do segmento de reta que os une também pertence à região. Os limites das restrições formam os vértices, ou pontos extremos, da região. Para problemas lineares com solução ótima finita, existe pelo menos uma solução ótima em um desses vértices. É essa propriedade que fornece a base geométrica para o método Simplex.</p>
+<div class="definition"><p class="dtitle">Solução básica viável</p><p>Ao escrever o modelo como um sistema de equações, escolhe-se um conjunto de variáveis para formar uma base e atribui-se valor zero às demais. Quando os valores obtidos para as variáveis básicas respeitam as condições de viabilidade, tem-se uma solução básica viável. Sob as condições usuais, ela corresponde a um vértice da região viável.</p></div>
+<h3>Relação com sistemas lineares</h3><p>Depois que as desigualdades são convertidas em igualdades, o modelo pode ser escrito de forma matricial como <strong>Ax = b</strong>. A análise de sistemas lineares ajuda a compreender por que a escolha de uma base é importante: dependendo da independência das equações e do número de incógnitas, o sistema pode apresentar solução única, infinitas soluções ou ser incompatível. No Simplex, não se resolve todo o conjunto de soluções de uma só vez; trabalha-se com bases que determinam soluções particulares e permite-se a passagem ordenada de uma solução básica viável para outra.</p>
+</section>
+<section class="section" id="s4"><p class="section-label">3.4 / método simplex</p><h2>O Simplex como procedimento algébrico com interpretação geométrica</h2>
+<p>O método Simplex é um procedimento iterativo para resolver problemas de Programação Linear. Embora sua execução seja algébrica, sua lógica é geométrica: o algoritmo percorre soluções básicas viáveis adjacentes, isto é, vértices que compartilham um limite da região viável, procurando melhorar o valor da função objetivo. Quando não existe uma solução adjacente capaz de produzir melhora, a solução atual é ótima.</p>
+<p>Essa ligação entre álgebra e geometria é importante para compreender o método para além das operações de tabela. Cada quadro representa uma solução básica; cada pivoteamento altera a base; e cada troca de variável corresponde, geometricamente, ao deslocamento para outro ponto extremo. A lógica apresentada nos slides segue a exposição clássica do Simplex encontrada em Hillier e Lieberman: partir de uma solução básica viável, testar a possibilidade de melhoria e avançar para uma solução básica viável adjacente.</p>
+<h3>Preparação do modelo: variáveis de folga</h3><p>Para aplicar o quadro do Simplex às restrições do tipo <strong>≤</strong>, acrescenta-se uma variável de folga não negativa. Ela representa a parcela do recurso disponível que não foi utilizada. Assim, uma restrição como <strong>a₁x₁ + a₂x₂ ≤ b</strong> passa a ser escrita como <strong>a₁x₁ + a₂x₂ + f = b</strong>, com <strong>f ≥ 0</strong>. Essa transformação preserva a região viável e cria uma coluna que pode compor a base inicial.</p>
+<div class="formula-card">Modelo:     Ax ≤ b,  x ≥ 0\nCom folgas: Ax + If = b,  x ≥ 0, f ≥ 0</div>
+<p>Em um modelo com <strong>m</strong> restrições e <strong>n</strong> variáveis de decisão, a inclusão de uma variável de folga para cada restrição do tipo ≤ produz, nesse caso, <strong>n + m</strong> variáveis. Na base inicial mais simples, as variáveis de folga são básicas e as variáveis de decisão são não básicas, inicialmente iguais a zero.</p>
+</section>
+<section class="section" id="s5"><p class="section-label">3.5 / tableau</p><h2>Quadro inicial e etapas de uma iteração</h2>
+<p>O quadro do Simplex organiza, em uma única estrutura, os coeficientes das restrições, as variáveis que pertencem à base, os termos independentes e as informações necessárias para avaliar a função objetivo. Para uma formulação de maximização usando a linha <strong>C<sub>j</sub> − Z<sub>j</sub></strong>, valores positivos nessa linha indicam que ainda existe possibilidade de aumentar o valor de <strong>Z</strong>.</p>
+<div class="method-card"><span class="method-num">iteração</span><h4>Sequência operacional</h4><ol class="steps">
+<li>Calcular, para cada coluna, os valores de <strong>C<sub>j</sub> − Z<sub>j</sub></strong>.</li>
+<li>Verificar se existe algum valor positivo. Se não existir, a solução básica atual é ótima para o caso de maximização considerado.</li>
+<li>Escolher a variável que entra na base, usualmente associada ao maior valor positivo de <strong>C<sub>j</sub> − Z<sub>j</sub></strong>.</li>
+<li>Aplicar o teste da razão mínima <strong>b<sub>i</sub>/a<sub>ip</sub></strong> somente às linhas em que <strong>a<sub>ip</sub> &gt; 0</strong>.</li>
+<li>A menor razão não negativa determina a variável que sai da base; a interseção da linha com a coluna de entrada define o pivô.</li>
+<li>Normalizar a linha pivô e zerar os demais elementos da coluna pivô por operações elementares de linha.</li>
+<li>Recalcular o quadro e repetir o procedimento até que o critério de otimalidade seja satisfeito.</li>
+</ol></div>
+<div class="note"><strong>Por que o teste da razão usa apenas a<sub>ip</sub> &gt; 0?</strong> Ao aumentar a variável que entra na base, apenas coeficientes positivos nessa coluna impõem um limite superior ao crescimento sem tornar negativa uma variável básica. Coeficientes nulos não restringem esse aumento; coeficientes negativos, nesse passo do Simplex primal, não fornecem uma razão que preserve a interpretação do teste de viabilidade.</div>
+<h3>Exemplo: mesas e cadeiras</h3><div class="exercise-card"><p><strong>Maximizar</strong> Z = 50x₁ + 40x₂</p><p><strong>sujeito a</strong> 4x₁ + 2x₂ ≤ 40; &nbsp; 2x₁ + 3x₂ ≤ 30; &nbsp; x₁,x₂ ≥ 0.</p></div>
+<p>Com as folgas <strong>f₁</strong> e <strong>f₂</strong>, a solução básica inicial é (x₁,x₂,f₁,f₂) = (0,0,40,30), com Z = 0. Na primeira iteração, <strong>x₁</strong> entra na base e <strong>f₁</strong> sai; o valor da função objetivo passa a Z = 500. Na iteração seguinte, <strong>x₂</strong> entra e <strong>f₂</strong> sai. O quadro final fornece <strong>x₁ = 5</strong>, <strong>x₂ = 10</strong> e <strong>Z = 650</strong>. O ponto importante não é apenas executar as operações: é interpretar cada troca de base como uma mudança de solução básica viável.</p>
+</section>
+<section class="section" id="s6"><p class="section-label">3.6 / dualidade e restrições ≥</p><h2>Dualidade e variáveis de excesso</h2>
+<p>A dualidade estabelece que a todo problema de Programação Linear, denominado <strong>primal</strong>, pode ser associado outro problema, denominado <strong>dual</strong>. Na forma padrão discutida em aula, um problema primal de maximização com restrições do tipo ≤ relaciona-se a um dual de minimização com restrições do tipo ≥. Variáveis e restrições trocam papéis, a matriz de coeficientes é transposta e os coeficientes da função objetivo e os termos independentes assumem posições correspondentes.</p>
+<p>Mais do que uma transformação algébrica, a dualidade oferece uma interpretação econômica: as variáveis duais podem ser associadas ao valor marginal dos recursos ou das restrições. Hillier e Lieberman dedicam uma etapa própria do estudo de PL à teoria da dualidade e à análise de sensibilidade, justamente porque essas relações ampliam a interpretação da solução ótima para além dos valores das variáveis de decisão.</p>
+<h3>Restrição do tipo ≥ e variável de excesso</h3><p>Quando uma restrição estabelece um requisito mínimo, do tipo <strong>a₁x₁ + a₂x₂ ≥ b</strong>, a conversão em igualdade é feita subtraindo-se uma <strong>variável de excesso</strong>: <strong>a₁x₁ + a₂x₂ − e = b</strong>, com <strong>e ≥ 0</strong>. O excesso mede quanto o lado esquerdo ultrapassa o mínimo exigido.</p>
+<div class="exercise-card"><h4>Exemplo discutido em aula</h4><p>Uma empresa fabrica produtos A e B. Cada unidade de A produz resultado de R$ 40 e utiliza 2 h; cada unidade de B produz resultado de R$ 30 e utiliza 1 h. Há, no máximo, 20 h de produção e, por compromisso contratual, devem ser produzidas pelo menos 8 unidades.</p><div class="formula-card">max Z = 40x₁ + 30x₂\n2x₁ + x₂ + f₁ = 20\nx₁ + x₂ − e₂ = 8\nx₁,x₂,f₁,e₂ ≥ 0</div></div>
+<div class="note"><strong>Atenção conceitual:</strong> diferentemente da variável de folga em uma restrição ≤, a coluna de uma variável de excesso contém −1 e, por si só, não fornece a coluna identidade necessária para uma base inicial viável do Simplex primal. Em uma formulação geral, restrições ≥ costumam exigir uma variável artificial e um procedimento de inicialização, como Duas Fases ou Big-M. Por isso, a presença de coeficientes negativos merece atenção especial no teste de razão e na construção da base.</div>
+</section>
+<section class="section" id="refs"><p class="section-label">referências</p><h2>Referências utilizadas no capítulo</h2>
+<div class="refs-grid">
+<div class="ref-card"><div><span class="ref-type">Livro</span><h4>ANDRADE, Eduardo Leopoldino de</h4><p><em>Introdução à Pesquisa Operacional: métodos e modelos para análise de decisões.</em> Rio de Janeiro: LTC. Referência conceitual para modelagem e apoio à decisão.</p></div></div>
+<div class="ref-card"><div><span class="ref-type">Livro</span><h4>HILLIER, Frederick S.; LIEBERMAN, Gerald J.</h4><p><em>Introdução à Pesquisa Operacional.</em> 9. ed. Porto Alegre: AMGH, 2013. Capítulos de introdução à PL, método Simplex e dualidade.</p></div></div>
+<div class="ref-card"><div><span class="ref-type">Material de aula</span><h4>Aula 4 — Programação Linear</h4><p>Modelo matemático para PL e o método Simplex. Material utilizado como eixo para a organização deste capítulo.</p></div></div>
+</div>
+<div class="note"><strong>Nota editorial:</strong> o texto acima incorpora e articula os conceitos das referências bibliográficas, mas evita reproduzir passagens literais extensas. Para inserir citações textuais específicas de Andrade ou Hillier &amp; Lieberman, é necessário trabalhar a partir das páginas/edições efetivamente disponíveis.</div>
+</section>
+<div class="chapter-nav"><a href="cap2.html"><span class="dir">← anterior</span>Cap. 2</a><a class="next" href="cap4.html"><span class="dir">próximo →</span>Cap. 4</a></div>
+</div>
+<footer><div class="container"><p>© 2026 · Prof. Clayton J A Silva</p><p><a href="../progLinear.html">Programação Linear Aplicada</a></p></div></footer>
+<script>window.addEventListener('scroll',()=>{const h=document.documentElement;document.getElementById('progressFill').style.width=(h.scrollTop/(h.scrollHeight-h.clientHeight)*100)+'%';});</script>
 </body>
 </html>
