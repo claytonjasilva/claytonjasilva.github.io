@@ -1,0 +1,956 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Cap. 2 — Programando com Arduino</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300&display=swap" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css" rel="stylesheet"/>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/contrib/auto-render.min.js"></script>
+<style>
+:root {
+  --bg:        #0a0e17;
+  --surface:   #111827;
+  --surface2:  #161f2e;
+  --border:    #1e2d40;
+  --accent:    #00c2ff;
+  --accent2:   #7c3aed;
+  --text:      #e2e8f0;
+  --muted:     #64748b;
+  --tag-bg:    #0f172a;
+  --font-mono: 'IBM Plex Mono', monospace;
+  --font-sans: 'IBM Plex Sans', sans-serif;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{background:var(--bg);color:var(--text);font-family:var(--font-sans);font-size:16px;line-height:1.65;}
+a{color:var(--accent);text-decoration:none;}
+a:hover{text-decoration:underline;}
+.container{max-width:980px;margin:0 auto;padding:0 2rem;}
+
+nav{position:sticky;top:0;z-index:100;background:rgba(10,14,23,.9);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);padding:.9rem 0;}
+nav .container{display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap;}
+.nav-brand{font-family:var(--font-mono);font-size:.78rem;color:var(--accent);}
+.nav-links{display:flex;gap:1rem;list-style:none;flex-wrap:wrap;}
+.nav-links a{font-family:var(--font-mono);font-size:.7rem;color:var(--muted);}
+.nav-links a:hover{color:var(--text);text-decoration:none;}
+
+.progress-track{height:3px;background:var(--border);position:sticky;top:53px;z-index:99;}
+.progress-fill{height:100%;width:0%;background:linear-gradient(90deg,var(--accent),var(--accent2));transition:width .1s;}
+
+.hero{padding:4rem 0 2.5rem;position:relative;overflow:hidden;}
+.hero::before{content:'';position:absolute;inset:0;background-image:linear-gradient(var(--border) 1px,transparent 1px),linear-gradient(90deg,var(--border) 1px,transparent 1px);background-size:40px 40px;opacity:.3;mask-image:radial-gradient(ellipse 80% 60% at 50% 0%,black 40%,transparent 100%);}
+.hero-eyebrow{font-family:var(--font-mono);font-size:.74rem;color:var(--accent);letter-spacing:.14em;text-transform:uppercase;margin-bottom:1rem;display:flex;align-items:center;gap:.7rem;}
+.hero-eyebrow::before{content:'';width:2rem;height:1px;background:var(--accent);}
+h1{font-size:clamp(2rem,4.5vw,3.2rem);font-weight:300;line-height:1.12;letter-spacing:-.02em;margin-bottom:.6rem;}
+h1 strong{font-weight:600;color:var(--accent);}
+.hero-meta{display:flex;gap:1.5rem;flex-wrap:wrap;margin-top:1.2rem;}
+.meta-item{font-family:var(--font-mono);font-size:.74rem;color:var(--muted);display:flex;align-items:center;gap:.4rem;}
+.meta-item svg{flex-shrink:0;}
+
+.objectives{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:1.4rem 1.6rem;margin-top:1.6rem;}
+.objectives p.label{font-family:var(--font-mono);font-size:.7rem;color:var(--accent);letter-spacing:.1em;text-transform:uppercase;margin-bottom:.7rem;}
+.objectives ul{list-style:none;display:grid;gap:.5rem;}
+.objectives li{font-size:.88rem;color:var(--muted);display:flex;gap:.6rem;}
+.objectives li::before{content:'→';color:var(--accent);flex-shrink:0;}
+
+.toc{display:flex;gap:.5rem;flex-wrap:wrap;margin-top:1.5rem;}
+.toc a{font-family:var(--font-mono);font-size:.7rem;color:var(--muted);border:1px solid var(--border);padding:.35rem .75rem;border-radius:20px;transition:.2s;}
+.toc a:hover{border-color:var(--accent);color:var(--accent);text-decoration:none;}
+
+.section{padding:3rem 0;border-top:1px solid var(--border);}
+.section-label{font-family:var(--font-mono);font-size:.7rem;color:var(--accent);letter-spacing:.14em;text-transform:uppercase;display:flex;align-items:center;gap:.7rem;margin-bottom:1.4rem;}
+.section-label::after{content:'';flex:1;height:1px;background:var(--border);}
+h2{font-size:1.5rem;font-weight:600;letter-spacing:-.01em;margin-bottom:1rem;}
+h3{font-size:1.1rem;font-weight:600;margin:1.6rem 0 .8rem;color:var(--text);}
+h4{font-size:.95rem;font-weight:600;margin:1.2rem 0 .6rem;color:var(--accent);}
+p{margin-bottom:1rem;color:#cbd5e1;}
+strong{color:var(--text);font-weight:600;}
+em{color:var(--accent);font-style:normal;}
+ul.plain{margin:0 0 1rem 1.2rem;color:#cbd5e1;}
+ul.plain li{margin-bottom:.4rem;}
+ol.plain{margin:0 0 1rem 1.2rem;color:#cbd5e1;}
+ol.plain li{margin-bottom:.5rem;}
+
+.codeline{background:var(--tag-bg);border:1px solid var(--border);border-radius:6px;padding:.7rem 1rem;font-family:var(--font-mono);font-size:1rem;color:var(--accent);text-align:center;margin:1rem 0;}
+.codeblock{background:var(--tag-bg);border:1px solid var(--border);border-radius:6px;padding:.9rem 1.1rem;font-family:var(--font-mono);font-size:.78rem;color:#a8d8ef;margin:1rem 0;overflow-x:auto;white-space:pre;line-height:1.6;}
+.codeblock .cmt{color:var(--muted);}
+
+.concept-grid{display:grid;grid-template-columns:1fr 1fr;gap:2rem;align-items:start;margin:1.5rem 0;}
+.concept-text{display:flex;flex-direction:column;justify-content:center;}
+.concept-fig{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:1rem;}
+.concept-fig img,.concept-fig svg{width:100%;display:block;}
+.fig-caption{font-family:var(--font-mono);font-size:.72rem;color:var(--muted);text-align:center;margin-top:.6rem;}
+@media (max-width:760px){.concept-grid{grid-template-columns:1fr;}}
+
+.fig-full{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:1.2rem;margin:1.5rem 0;}
+.fig-full img,.fig-full svg{width:100%;display:block;}
+
+.definition{background:var(--surface);border:1px solid var(--accent2);border-left:3px solid var(--accent2);border-radius:0 8px 8px 0;padding:1.2rem 1.5rem;margin:1.2rem 0;}
+.definition .dtitle{font-family:var(--font-mono);font-size:.7rem;color:var(--accent2);letter-spacing:.1em;text-transform:uppercase;margin-bottom:.5rem;}
+
+.note{background:var(--tag-bg);border:1px solid var(--border);border-radius:6px;padding:.9rem 1.1rem;margin:1rem 0;font-size:.85rem;color:var(--muted);}
+.note strong{color:var(--accent);}
+
+table{width:100%;border-collapse:collapse;font-size:.85rem;margin:1.2rem 0;}
+thead tr{background:var(--tag-bg);}
+thead th{padding:.5rem .7rem;text-align:center;font-family:var(--font-mono);font-size:.68rem;color:var(--muted);letter-spacing:.06em;text-transform:uppercase;font-weight:400;border-bottom:1px solid var(--border);}
+tbody td{padding:.45rem .7rem;border-bottom:1px solid var(--border);color:var(--muted);text-align:center;}
+tbody tr:hover{background:rgba(255,255,255,.02);}
+td.tleft, th.tleft{text-align:left;}
+
+.method-card{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:1.4rem 1.6rem;margin:1.2rem 0;position:relative;overflow:hidden;}
+.method-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--accent),var(--accent2));}
+.method-num{font-family:var(--font-mono);font-size:.7rem;color:var(--accent);background:rgba(0,194,255,.08);border:1px solid rgba(0,194,255,.25);border-radius:4px;padding:.2rem .6rem;display:inline-block;margin-bottom:.7rem;}
+.method-card h4{margin:0 0 .8rem;color:var(--text);font-size:1rem;}
+.steps{list-style:none;counter-reset:step;}
+.steps li{counter-increment:step;display:flex;gap:.7rem;margin-bottom:.6rem;font-size:.88rem;color:#cbd5e1;}
+.steps li::before{content:counter(step);font-family:var(--font-mono);font-size:.72rem;color:var(--accent);background:var(--tag-bg);border:1px solid var(--border);border-radius:50%;width:22px;height:22px;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+
+.ds-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:.6rem;margin:1rem 0;}
+.ds-item{background:var(--tag-bg);border:1px solid var(--border);border-radius:6px;padding:.7rem 1rem;display:flex;gap:.6rem;align-items:center;transition:.2s;}
+.ds-item:hover{border-color:var(--accent);}
+.ds-item a{font-size:.8rem;color:var(--text);font-family:var(--font-mono);}
+.ds-item a:hover{color:var(--accent);text-decoration:none;}
+
+.quiz{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:1.6rem;margin:1.5rem 0;}
+.quiz-header{display:flex;align-items:center;gap:.6rem;margin-bottom:1.2rem;}
+.quiz-header svg{flex-shrink:0;}
+.quiz-title{font-family:var(--font-mono);font-size:.8rem;color:var(--accent2);letter-spacing:.05em;}
+.quiz-q{font-size:.95rem;margin-bottom:.9rem;color:var(--text);}
+.quiz-options{display:flex;flex-direction:column;gap:.55rem;}
+.quiz-opt{background:var(--tag-bg);border:1px solid var(--border);border-radius:6px;padding:.7rem 1rem;font-size:.85rem;color:var(--muted);cursor:pointer;transition:.15s;text-align:left;width:100%;font-family:var(--font-sans);}
+.quiz-opt:hover{border-color:var(--accent);color:var(--text);}
+.quiz-opt.correct{border-color:#22c55e;background:rgba(34,197,94,.08);color:#86efac;}
+.quiz-opt.wrong{border-color:#ef4444;background:rgba(239,68,68,.08);color:#fca5a5;}
+.quiz-feedback{margin-top:.9rem;font-size:.85rem;padding:.8rem 1rem;border-radius:6px;display:none;}
+.quiz-feedback.show{display:block;}
+.quiz-feedback.correct-fb{background:rgba(34,197,94,.08);border:1px solid #22c55e;color:#86efac;}
+.quiz-feedback.wrong-fb{background:rgba(239,68,68,.08);border:1px solid #ef4444;color:#fca5a5;}
+
+.refs-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:.8rem;}
+.ref-card{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:1rem 1.2rem;display:flex;gap:.8rem;align-items:flex-start;transition:.2s;}
+.ref-card:hover{border-color:var(--accent);}
+.ref-card svg{flex-shrink:0;margin-top:.15rem;}
+.ref-card h4{font-size:.88rem;font-weight:600;margin:0 0 .2rem;color:var(--text);}
+.ref-card p{font-size:.76rem;color:var(--muted);margin:0;}
+.ref-type{font-family:var(--font-mono);font-size:.62rem;color:var(--accent);text-transform:uppercase;letter-spacing:.06em;}
+
+.chapter-nav{display:flex;justify-content:space-between;gap:1rem;margin-top:2rem;}
+.chapter-nav a{flex:1;background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:1rem 1.3rem;font-size:.85rem;transition:.2s;}
+.chapter-nav a:hover{border-color:var(--accent);text-decoration:none;}
+.chapter-nav .dir{font-family:var(--font-mono);font-size:.65rem;color:var(--muted);text-transform:uppercase;letter-spacing:.08em;display:block;margin-bottom:.3rem;}
+.chapter-nav .next{text-align:right;}
+
+footer{border-top:1px solid var(--border);padding:2rem 0;margin-top:2rem;}
+footer .container{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;}
+footer p{font-size:.8rem;color:var(--muted);font-family:var(--font-mono);}
+
+@media(max-width:640px){.nav-links{display:none;}.hero{padding:2.5rem 0 2rem;}}
+
+.katex{color:var(--accent);font-size:1.05em;}
+
+/* SVG diagram helpers */
+.dwire{stroke:#3b4a5e;stroke-width:1.6;fill:none;}
+.dbox{stroke:#00c2ff;stroke-width:1.6;fill:none;}
+.dbox2{stroke:#7c3aed;stroke-width:1.6;fill:none;}
+.dlbl{font-family:'IBM Plex Mono',monospace;font-size:13px;fill:#cbd5e1;}
+.dlbl2{font-family:'IBM Plex Mono',monospace;font-size:11px;fill:#64748b;}
+.dfill{fill:#111827;}
+
+/* Complementos para o conteúdo integral importado do Markdown */
+.section pre{overflow:auto;padding:16px 18px;border:1px solid var(--line);border-radius:12px;background:rgba(0,0,0,.22);line-height:1.55}
+.section code{font-family:"JetBrains Mono","Courier New",monospace}
+.section p code,.section li code{padding:.12em .35em;border-radius:5px;background:rgba(0,194,255,.09)}
+.section .fig-full img{max-width:100%;height:auto;display:block;margin:0 auto}
+.section blockquote{margin:18px 0;padding:12px 16px;border-left:3px solid var(--accent);background:rgba(0,194,255,.06)}
+
+.markdown-body { padding-bottom: 2rem; }
+.markdown-body h1 { font-size: 2rem; font-weight: 600; margin: 2rem 0 1rem; }
+.markdown-body h2 { margin-top: 2.2rem; }
+.markdown-body h3 { margin-top: 1.8rem; }
+.markdown-body h4 { margin-top: 1.4rem; }
+.markdown-body pre {
+  overflow:auto; padding:16px 18px; border:1px solid var(--border);
+  border-radius:8px; background:var(--tag-bg); line-height:1.55; margin:1rem 0;
+}
+.markdown-body code { font-family:var(--font-mono); }
+.markdown-body p code,.markdown-body li code {
+  padding:.12em .35em; border-radius:5px; background:rgba(0,194,255,.09);
+}
+.markdown-body table { display:table; }
+.markdown-body hr { border:0; border-top:1px solid var(--border); margin:2rem 0; }
+.markdown-body a { overflow-wrap:anywhere; }
+</style>
+</head>
+<body>
+<nav>
+  <div class="container">
+    <span class="nav-brand">arduino · cap. 2</span>
+    <ul class="nav-links">
+      <li><a href="#21-expressões-lógicas">2.1 Expressões lógicas</a></li>
+      <li><a href="#24-aninhamento-de-ifs---comando-switchcase">2.4 switch...case</a></li>
+      <li><a href="#28-entrada-e-saída-com-caracteres-e-cadeias-de-caracteres-no-arduino">2.8 E/S</a></li>
+    </ul>
+  </div>
+</nav>
+<div class="progress-track"><div class="progress-fill" id="progressFill"></div></div>
+
+<section class="hero">
+  <div class="container">
+    <p class="hero-eyebrow">Arduino · material didático</p>
+    <h1>Cap. 2 — <strong>Controle de Fluxo: Condicionais</strong></h1>
+    <div class="hero-meta">
+      <span class="meta-item">Prof. Clayton J A Silva</span>
+      <span class="meta-item">Rev 2026.2</span>
+    </div>
+    <div class="toc"><a href="#21-expressões-lógicas">2.1 Expressões lógicas</a>
+<a href="#22-condicionais-simples">2.2 Condicionais simples</a>
+<a href="#23-condicionais-compostas">2.3 Condicionais compostas</a>
+<a href="#24-aninhamento-de-ifs---comando-switchcase">2.4 Aninhamento de ifs — switch...case</a>
+<a href="#25-o-operador-ternário--">2.5 O operador ternário ?:</a>
+<a href="#26-desvio-incondicional-comando-goto">2.6 Desvio incondicional — goto</a>
+<a href="#27-tipos-caracteres-e-cadeias-de-caracteres">2.7 Tipos caracteres e cadeias de caracteres</a>
+<a href="#28-entrada-e-saída-com-caracteres-e-cadeias-de-caracteres-no-arduino">2.8 Entrada e saída com caracteres e strings</a>
+</div>
+  </div>
+</section>
+
+<div class="container markdown-body">
+<h1 id="2-programando-com-arduino-controle-de-fluxo-condicionais-simples-e-compostas">2. Programando com Arduino. Controle de fluxo: condicionais simples e compostas</h1>
+<p>Os comandos de controle de fluxo para o Arduíno são aqueles que permitem ao programador <strong>alterar a sequência de execução das instruções</strong> do programa, similares à linguagem C/C++.</p>
+<p>Podem ser divididos em dois grupos:</p>
+<ul>
+<li>Condicionais <strong>simples</strong></li>
+<li>Condicionais <strong>compostas</strong></li>
+</ul>
+<p>As condições que determinam o fluxo de execução das instruções geralmente são definidas pelo resultado de uma <strong>expressão lógica</strong>.</p>
+<h2 id="21-expressões-lógicas">2.1 Expressões lógicas</h2>
+<p>As <strong>expressões aritméticas</strong> resultam em números, por exemplo <strong>ponto flutuante</strong> (tipo <em>float</em>) ou <strong>inteiros</strong> (tipo <em>int</em>).</p>
+<p>As <strong>expressões lógicas</strong> são aquelas cujo resultado é um <strong>valor lógico</strong>. Na linguagem do Arduíno (como em C/C++), o valor lógico <strong>retornado por uma expressão lógica verdadeira é 1</strong>; e o valor lógico <strong>falso é 0</strong>.</p>
+<p>Nesse ponto cabe uma observação:</p>
+<ul>
+<li>Verdadeiro: 1 (resultado de expressões lógicas, <strong>mas qualquer valor diferente de 0 é considerado verdadeiro em contextos booleanos</strong>).</li>
+<li>Falso: 0.</li>
+</ul>
+<p>Assim como os operadores aritméticos especificam à máquina uma operação aritmética, os <strong>operadores lógicos</strong> especificam <strong>operações lógicas</strong>, que são de dois tipos: <strong>relacionais</strong> ou de comparação e operações <strong>lógicas</strong> (próprias da lógica matemática).</p>
+<h3 id="211-operadores-lógicos-de-comparação">2.1.1 Operadores lógicos de comparação</h3>
+<p>Os operadores lógicos de comparação possibilitam criar <strong>proposições simples</strong> estabelecendo a <strong>relação comparativa</strong> entre dois dados do mesmo tipo, por exemplo, duas variáveis, uma variável e uma expressão aritmética, duas constantes etc.</p>
+<p>A tabela especifica os operadores e a respectiva operação lógica correspondente.</p>
+<table>
+<thead>
+<tr class="header">
+<th>Operador</th>
+<th>Operação</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>&gt;</td>
+<td>maior</td>
+</tr>
+<tr class="even">
+<td>&lt;</td>
+<td>menor</td>
+</tr>
+<tr class="odd">
+<td>&gt;=</td>
+<td>maior ou igual</td>
+</tr>
+<tr class="even">
+<td>&lt;=</td>
+<td>menor ou igual</td>
+</tr>
+<tr class="odd">
+<td>==</td>
+<td>igual</td>
+</tr>
+<tr class="even">
+<td>!=</td>
+<td>diferente</td>
+</tr>
+</tbody>
+</table>
+<p>Os operadores relacionais são aplicados a <strong>dois operandos</strong>. Por exemplo, <code>3 &gt; 2</code>, que compara o número 3 com o número 2.</p>
+<p>Os operandos podem conter <strong>números</strong>; <strong>variáveis</strong>, por exemplo, <code>x &gt; 3</code>; e <strong>expressões aritméticas</strong>, por exemplo, <code>x + 3 &lt;= 4 + y</code>. A máquina resolve primeiro as expressões aritméticas (os operadores aritméticos têm precedência sobre os lógicos).</p>
+<p>Expressões lógicas podem ser operandos de outras expressões lógicas. Isso é possível porque as expressões lógicas retornam valores inteiros (int) que são interpretados como 0 (falso) ou 1 (verdadeiro). Pode-se usar esses valores como operandos em outras operações lógicas para construir expressões mais complexas.</p>
+<h3 id="212-operadores-lógicos">2.1.2 Operadores lógicos</h3>
+<p>Variáveis, expressões ou constante lógicas podem ser combinadas com operadores lógicos para formar <strong>proposições compostas</strong>.<br />
+As operações lógicas básicas são <strong>conjunção</strong>, <strong>disjunção</strong> e <strong>negação (inversão lógica)</strong>.</p>
+<table>
+<thead>
+<tr class="header">
+<th>Operador</th>
+<th>Operação</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>&amp;&amp;</td>
+<td>conjunção (<em>and</em>)</td>
+</tr>
+<tr class="even">
+<td>||</td>
+<td>disjunção (<em>or</em>)</td>
+</tr>
+<tr class="odd">
+<td>!</td>
+<td>negação</td>
+</tr>
+</tbody>
+</table>
+<p>Existem operações que podem ser aplicadas <strong>bit a bit</strong>.</p>
+<p>As operações lógicas também podem ser utilizadas <strong>bit a bit</strong>. Nesse caso, os operandos devem ser inteiros. Os operadores são os seguintes:</p>
+<table>
+<thead>
+<tr class="header">
+<th>Operador</th>
+<th>Operação</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>&amp;</td>
+<td>conjunção bit a bit (<em>and</em>)</td>
+</tr>
+<tr class="even">
+<td>\</td>
+<td>disjunção bit a bit (<em>or</em>)</td>
+</tr>
+<tr class="odd">
+<td>^</td>
+<td>ou exclusivo bit a bit (<em>xor</em>)</td>
+</tr>
+<tr class="even">
+<td>!</td>
+<td>negação</td>
+</tr>
+<tr class="odd">
+<td>&lt;&lt;</td>
+<td>deslocamento à esquerda</td>
+</tr>
+<tr class="even">
+<td>&gt;&gt;</td>
+<td>deslocamento à direita</td>
+</tr>
+</tbody>
+</table>
+<p>As operações lógicas bit a bit (ou <em>bitwise</em>) são usadas para manipular bits individuais de um número. Na linguagem do Arduíno (assim como em C/C++), essas operações são realizadas usando operadores específicos que operam diretamente nos bits de um operando. <strong>Essas operações são úteis em muitas aplicações de baixo nível, como manipulação de registros, criptografia, e controle de hardware</strong>.</p>
+<p>As operações de conjunção, disjunção e negação são aplicadas a cada bit dos operandos. Os operadores bit a bit operam diretamente sobre os bits individuais dos operandos.</p>
+<p>As operações de deslocamento requerem como operando o inteiro cuja representação em bita será aplicado o deslocamento, bem como o número de bits de posições de deslocamento. Por exemplo,</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="dt">int</span> a <span class="op">=</span> <span class="dv">3</span><span class="op">;</span> <span class="co">// 11 em binário</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="dt">int</span> res <span class="op">=</span> a <span class="op">&lt;&lt;</span> <span class="dv">2</span><span class="op">;</span> <span class="co">// Desloca os bits de &#39;a&#39; duas posições para a esquerda</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>Serial<span class="op">.</span>begin<span class="op">(</span><span class="dv">9600</span><span class="op">);</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>Serial<span class="op">.</span>println<span class="op">(</span>res<span class="op">);</span> <span class="co">// Imprime o valor de &#39;res&#39; no monitor serial</span></span></code></pre></div>
+<p>irá apresentar na console do monitor serial o valor 12 (1100 em binário).</p>
+<p>Operações lógicas bit a bit são projetadas para serem usadas com tipos de dados inteiros (como <code>int</code>, <code>unsigned int</code>, <code>char</code>, <code>short</code>, <code>long</code>). Aplicar esses operadores a tipos de dados de ponto flutuante (como <code>float</code> e <code>double</code>) não é apropriado e geralmente resulta em comportamento indefinido ou em um erro de compilação, dependendo do compilador e das configurações.</p>
+<p>Os caracteres podem ser usados com operadores bit a bit porque <strong>cada caractere é internamente representado por um valor inteiro correspondente ao seu código ASCII</strong>.</p>
+<h2 id="22-condicionais-simples">2.2 Condicionais simples</h2>
+<p>Na condicional simples, a execução de um bloco de instruções interno ao comando é condicionada ao resultado da expressão lógica da sentença.</p>
+<p>Sua sintaxe é</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="op">(&lt;</span>condição<span class="op">&gt;)</span> <span class="op">{</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  <span class="op">&lt;</span>bloco de instruções<span class="op">&gt;</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<p>Processo de execução pela máquina:</p>
+<ol type="1">
+<li>A condição via de regra é uma expressão lógica, cujo valor é calculado pela máquina. <strong>A condição só pode gerar um resultado dentre dois possíveis: diferente de 0 - 1 se a condição for expressão lógica, (verdadeiro), ou 0, (falso)</strong>.</li>
+</ol>
+<ul>
+<li>Na linguagem para a Arduíno, não existe uma constante de linguagem chamada <em>True</em>. Em vez disso, valores lógicos são representados por 0 e diferente de 0. Por convenção, 0 é considerado falso (<em>false</em>), e qualquer valor diferente de 0 é considerado verdadeiro (<em>true</em>), com 1 sendo usado frequentemente para representar verdadeiro ou resultante de uma expressão lógica.</li>
+</ul>
+<ol start="2" type="1">
+<li><p>A instrução (ou bloco de instruções) interna é executada somente se a condição ou o cálculo da expressão lógica resultar diferente de 0 e a execução do programa prossegue após a estrutura <em>if</em>.</p></li>
+<li><p>Em caso contrário, se a condição for falsa (valor 0), a máquina executa a instrução seguinte ao <em>if</em> do programa, sem executar a instrução (ou bloco de instruções).</p></li>
+</ol>
+<p>Observações gerais:</p>
+<ul>
+<li>O bloco das instruções internas ao <em>if</em> após a instrução condicional <strong>deve ser delimitado entre chaves</strong>.</li>
+<li><strong>Se houver somente uma instrução no bloco</strong> o compilador admite não se usar a delimitação entre chaves.</li>
+<li>A indentação opera exclusivamente para proporcionar mais clareza ao código, facilitando a manutenção, legibilidade etc.</li>
+</ul>
+<p>Um exemplo é o seguinte:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="dt">void</span> setup<span class="op">()</span> <span class="op">{</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  Serial<span class="op">.</span>begin<span class="op">(</span><span class="dv">9600</span><span class="op">);</span> <span class="co">// Inicializa a comunicação serial a 9600 bps</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="dt">void</span> loop<span class="op">()</span> <span class="op">{</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>  <span class="dt">int</span> num<span class="op">;</span> <span class="co">// Declaração da variável num</span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>  <span class="co">// Solicitar ao usuário que insira um número</span></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>  Serial<span class="op">.</span>println<span class="op">(</span><span class="st">&quot;Digite um numero: &quot;</span><span class="op">);</span></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>  <span class="co">// Esperar até que o usuário insira um número no monitor serial</span></span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>  <span class="cf">while</span> <span class="op">(</span>Serial<span class="op">.</span>available<span class="op">()</span> <span class="op">==</span> <span class="dv">0</span><span class="op">)</span> <span class="op">{</span></span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>    <span class="co">// Aguarda a entrada do usuário</span></span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>  <span class="op">}</span></span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>  <span class="co">// Lê o número inserido</span></span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>  num <span class="op">=</span> Serial<span class="op">.</span>parseInt<span class="op">();</span></span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a>  <span class="co">// Limpa o buffer serial para evitar caracteres residuais</span></span>
+<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a>  <span class="cf">while</span> <span class="op">(</span>Serial<span class="op">.</span>available<span class="op">()</span> <span class="op">&gt;</span> <span class="dv">0</span><span class="op">)</span> <span class="op">{</span></span>
+<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a>    Serial<span class="op">.</span>read<span class="op">();</span></span>
+<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a>  <span class="op">}</span></span>
+<span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-24"><a href="#cb3-24" aria-hidden="true" tabindex="-1"></a>  <span class="co">// Verificar o valor de &#39;num&#39; e enviar a resposta correspondente</span></span>
+<span id="cb3-25"><a href="#cb3-25" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> <span class="op">(</span>num <span class="op">&gt;</span> <span class="dv">10</span><span class="op">)</span> <span class="op">{</span></span>
+<span id="cb3-26"><a href="#cb3-26" aria-hidden="true" tabindex="-1"></a>    Serial<span class="op">.</span>println<span class="op">(</span><span class="st">&quot;</span><span class="sc">\n\n</span><span class="st">O numero e maior do que 10&quot;</span><span class="op">);</span></span>
+<span id="cb3-27"><a href="#cb3-27" aria-hidden="true" tabindex="-1"></a>  <span class="op">}</span></span>
+<span id="cb3-28"><a href="#cb3-28" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> <span class="op">(</span>num <span class="op">==</span> <span class="dv">10</span><span class="op">)</span> <span class="op">{</span></span>
+<span id="cb3-29"><a href="#cb3-29" aria-hidden="true" tabindex="-1"></a>    Serial<span class="op">.</span>println<span class="op">(</span><span class="st">&quot;</span><span class="sc">\n\n</span><span class="st">Voce acertou!</span><span class="sc">\n</span><span class="st">&quot;</span><span class="op">);</span></span>
+<span id="cb3-30"><a href="#cb3-30" aria-hidden="true" tabindex="-1"></a>    Serial<span class="op">.</span>println<span class="op">(</span><span class="st">&quot;</span><span class="sc">\n</span><span class="st">O numero e igual a 10&quot;</span><span class="op">);</span></span>
+<span id="cb3-31"><a href="#cb3-31" aria-hidden="true" tabindex="-1"></a>  <span class="op">}</span></span>
+<span id="cb3-32"><a href="#cb3-32" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> <span class="op">(</span>num <span class="op">&lt;</span> <span class="dv">10</span><span class="op">)</span> <span class="op">{</span></span>
+<span id="cb3-33"><a href="#cb3-33" aria-hidden="true" tabindex="-1"></a>    Serial<span class="op">.</span>println<span class="op">(</span><span class="st">&quot;</span><span class="sc">\n\n</span><span class="st">O numero e menor do que 10&quot;</span><span class="op">);</span></span>
+<span id="cb3-34"><a href="#cb3-34" aria-hidden="true" tabindex="-1"></a>  <span class="op">}</span></span>
+<span id="cb3-35"><a href="#cb3-35" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb3-36"><a href="#cb3-36" aria-hidden="true" tabindex="-1"></a>  <span class="co">// Adiciona um pequeno atraso antes de reiniciar o loop</span></span>
+<span id="cb3-37"><a href="#cb3-37" aria-hidden="true" tabindex="-1"></a>  delay<span class="op">(</span><span class="dv">1000</span><span class="op">);</span> </span>
+<span id="cb3-38"><a href="#cb3-38" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<p>Nesse exemplo, acho importante destacar:</p>
+<ol type="1">
+<li><code>Serial.available()</code>: é um método da classe que o objeto Serial representa. Verifica quantos bytes estão disponíveis para leitura na porta serial e retorna o número de bytes disponíveis para leitura na porta serial. Em outras palavras, indica quantos caracteres (ou bytes) foram recebidos pela porta serial e estão prontos para serem lidos.</li>
+<li>A estrutura <code>while (Serial.available() == 0):</code>: é uma estrutura de repetição - como trataremos mais adiante, que continua a rodar em <em>loop</em> enquanto <code>Serial.available()</code> retorna 0, ou seja, mantém o Arduino preso dentro do <em>loop</em> até que pelo menos um byte de dados esteja disponível para leitura. Quando o usuário digita um número e pressiona "Enter", os bytes correspondentes ao número (e possivelmente um caractere de nova linha \n ou \r, <code>Serial.available()</code> retorna um valor maior que 0, significando que há pelo menos um byte de dados na fila de recepção serial, e o loop while termina, permitindo que o código continue sua execução.</li>
+<li><code>while (Serial.available() &gt; 0):</code> é um <em>loop</em> que continua a rodar enquanto <code>Serial.available()</code> retorna um valor maior que 0, indicando que há dados disponíveis residuais no <em>buffer</em> serial. <code>Serial.read()</code> é um método lê um byte de dados do buffer serial, logo, nesse caso, limpando o <em>buffer</em>.</li>
+<li><code>Serial.parseInt():</code>: é um método que lê a entrada serial até encontrar um número válido e busca convertê-lo em um inteiro (int). Ignora automaticamente qualquer caractere não numérico (exceto sinais de negativo) até encontrar o início de um número. Assim que encontra um dígito numérico, começa a construir o número até que ele encontre um número completo ou até que o tempo limite (<em>timeout</em>, 1 segundo, que pode ser ajustado com o método <code>Serial.setTimeout()</code>) seja alcançado. O método retorna o número inteiro que foi lido e convertido. Esse valor pode ser armazenado em uma variável, como no exemplo. continua lendo caracteres do buffer serial. Observação: caracteres como espaços, quebras de linha (\n), ou qualquer caractere não numérico (exceto sinais de negativo) são ignorados até que o método encontre um número válido.</li>
+</ol>
+<h2 id="23-condicionais-compostas">2.3 Condicionais compostas</h2>
+<p>Na condicional composta, <strong>a execução de um bloco de instruções interno</strong> ao comando <em>if</em> é condicionada ao valor da condição ou resultado da expressão lógica da sentença ser verdadeiro (diferente de 0), enquanto a execução de <strong>outro bloco de instruções</strong>, interno ao <em>else</em> do comando <em>if</em>, é condicionada ao resultado ser falso (valor lógico igual a 0).</p>
+<p>A sintaxe é</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="op">(&lt;</span>condição<span class="op">&gt;)</span> <span class="op">{</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  <span class="op">&lt;</span>bloco <span class="dv">1</span> de instruções<span class="op">&gt;</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="cf">else</span> <span class="op">{</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>  <span class="op">&lt;</span>bloco <span class="dv">2</span> de instruções<span class="op">&gt;</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<p>Processo de execução pela máquina:</p>
+<ol type="1">
+<li>A condição é avaliada ou a expressão lógica é calculada pela máquina, gerando um dentre dois resultados, <strong>diferente de 0</strong> (verdadeiro) ou <strong>0</strong> (falso).</li>
+<li>A instrução (ou bloco 1 de instruções) - interno ao <em>if</em> - é executado somente se a expressão lógica de sua sentença resultar 1.</li>
+<li>A instrução (ou bloco 2 de instruções) - interno ao <em>else</em> é executado se a expressão lógica resultar 0.</li>
+<li>Em ambas as situações, o programa prossegue sua execução a partir da instrução seguinte ao comando <em>if</em>.</li>
+</ol>
+<p>Observações gerais:</p>
+<ul>
+<li>Como anteriormente, <strong>os blocos de instruções devem ser delimitados entre chaves</strong>.</li>
+<li><strong>Se houver somente uma instrução no bloco</strong> o compilador admite não se usar a delimitação entre chaves.</li>
+</ul>
+<p>Um exemplo é o seguinte:</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="dt">void</span> setup<span class="op">()</span> <span class="op">{</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  Serial<span class="op">.</span>begin<span class="op">(</span><span class="dv">9600</span><span class="op">);</span> <span class="co">// Inicializa a comunicação serial a 9600 bps</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="dt">void</span> loop<span class="op">()</span> <span class="op">{</span></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>  <span class="dt">int</span> num<span class="op">;</span> <span class="co">// Declaração da variável num</span></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>  <span class="co">// Solicitar ao usuário que insira um número</span></span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>  Serial<span class="op">.</span>println<span class="op">(</span><span class="st">&quot;Digite um numero: &quot;</span><span class="op">);</span></span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>  <span class="co">// Esperar até que o usuário insira um número no monitor serial</span></span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>  <span class="cf">while</span> <span class="op">(</span>Serial<span class="op">.</span>available<span class="op">()</span> <span class="op">==</span> <span class="dv">0</span><span class="op">)</span> <span class="op">{</span></span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>    <span class="co">// Aguarda a entrada do usuário</span></span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>  <span class="op">}</span></span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a>  <span class="co">// Lê o número inserido</span></span>
+<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a>  num <span class="op">=</span> Serial<span class="op">.</span>parseInt<span class="op">();</span></span>
+<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a>  <span class="co">// Limpa o buffer serial para evitar caracteres residuais</span></span>
+<span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a>  <span class="cf">while</span> <span class="op">(</span>Serial<span class="op">.</span>available<span class="op">()</span> <span class="op">&gt;</span> <span class="dv">0</span><span class="op">)</span> <span class="op">{</span></span>
+<span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a>    Serial<span class="op">.</span>read<span class="op">();</span></span>
+<span id="cb5-22"><a href="#cb5-22" aria-hidden="true" tabindex="-1"></a>  <span class="op">}</span></span>
+<span id="cb5-23"><a href="#cb5-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-24"><a href="#cb5-24" aria-hidden="true" tabindex="-1"></a>  <span class="co">// Verificar o valor de &#39;num&#39; e enviar a resposta correspondente</span></span>
+<span id="cb5-25"><a href="#cb5-25" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> <span class="op">(</span>num <span class="op">&gt;</span> <span class="dv">10</span><span class="op">)</span> <span class="op">{</span></span>
+<span id="cb5-26"><a href="#cb5-26" aria-hidden="true" tabindex="-1"></a>    Serial<span class="op">.</span>println<span class="op">(</span><span class="st">&quot;</span><span class="sc">\n\n</span><span class="st">O numero e maior do que 10&quot;</span><span class="op">);</span></span>
+<span id="cb5-27"><a href="#cb5-27" aria-hidden="true" tabindex="-1"></a>  <span class="op">}</span> <span class="cf">else</span> <span class="op">{</span></span>
+<span id="cb5-28"><a href="#cb5-28" aria-hidden="true" tabindex="-1"></a>    Serial<span class="op">.</span>println<span class="op">(</span><span class="st">&quot;</span><span class="sc">\n\n</span><span class="st">O numero e menor ou igual a 10&quot;</span><span class="op">);</span></span>
+<span id="cb5-29"><a href="#cb5-29" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="op">(</span>num <span class="op">&lt;</span> <span class="dv">5</span><span class="op">)</span> <span class="op">{</span></span>
+<span id="cb5-30"><a href="#cb5-30" aria-hidden="true" tabindex="-1"></a>      Serial<span class="op">.</span>println<span class="op">(</span><span class="st">&quot;</span><span class="sc">\n\n</span><span class="st">O numero e menor do que 5</span><span class="sc">\n</span><span class="st">&quot;</span><span class="op">);</span></span>
+<span id="cb5-31"><a href="#cb5-31" aria-hidden="true" tabindex="-1"></a>      Serial<span class="op">.</span>print<span class="op">(</span><span class="st">&quot;</span><span class="sc">\n</span><span class="st">O numero e &quot;</span><span class="op">);</span></span>
+<span id="cb5-32"><a href="#cb5-32" aria-hidden="true" tabindex="-1"></a>      Serial<span class="op">.</span>println<span class="op">(</span>num<span class="op">);</span></span>
+<span id="cb5-33"><a href="#cb5-33" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb5-34"><a href="#cb5-34" aria-hidden="true" tabindex="-1"></a>  <span class="op">}</span></span>
+<span id="cb5-35"><a href="#cb5-35" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb5-36"><a href="#cb5-36" aria-hidden="true" tabindex="-1"></a>  <span class="co">// Adiciona um pequeno atraso antes de reiniciar o loop</span></span>
+<span id="cb5-37"><a href="#cb5-37" aria-hidden="true" tabindex="-1"></a>  delay<span class="op">(</span><span class="dv">1000</span><span class="op">);</span> </span>
+<span id="cb5-38"><a href="#cb5-38" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<h2 id="24-aninhamento-de-ifs---comando-switchcase">2.4 Aninhamento de <em>ifs</em> - comando <code>switch...case</code></h2>
+<p>Seja o seguinte uso de condicional composta</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="dt">void</span> setup<span class="op">()</span> <span class="op">{</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>  Serial<span class="op">.</span>begin<span class="op">(</span><span class="dv">9600</span><span class="op">);</span> <span class="co">// Inicializa a comunicação serial a 9600 bps</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="dt">void</span> loop<span class="op">()</span> <span class="op">{</span></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>  <span class="dt">int</span> a<span class="op">;</span> <span class="co">// Declaração da variável a</span></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>  <span class="co">// Solicitar ao usuário que insira um número</span></span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>  Serial<span class="op">.</span>println<span class="op">(</span><span class="st">&quot;Digite um numero: &quot;</span><span class="op">);</span></span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>  <span class="co">// Esperar até que o usuário insira um número no monitor serial</span></span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>  <span class="cf">while</span> <span class="op">(</span>Serial<span class="op">.</span>available<span class="op">()</span> <span class="op">==</span> <span class="dv">0</span><span class="op">)</span> <span class="op">{</span></span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>    <span class="co">// Aguarda a entrada do usuário</span></span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a>  <span class="op">}</span></span>
+<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a>  <span class="co">// Lê o número inserido</span></span>
+<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a>  a <span class="op">=</span> Serial<span class="op">.</span>parseInt<span class="op">();</span></span>
+<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-19"><a href="#cb6-19" aria-hidden="true" tabindex="-1"></a>  <span class="co">// Limpa o buffer serial para evitar caracteres residuais</span></span>
+<span id="cb6-20"><a href="#cb6-20" aria-hidden="true" tabindex="-1"></a>  <span class="cf">while</span> <span class="op">(</span>Serial<span class="op">.</span>available<span class="op">()</span> <span class="op">&gt;</span> <span class="dv">0</span><span class="op">)</span> <span class="op">{</span></span>
+<span id="cb6-21"><a href="#cb6-21" aria-hidden="true" tabindex="-1"></a>    Serial<span class="op">.</span>read<span class="op">();</span></span>
+<span id="cb6-22"><a href="#cb6-22" aria-hidden="true" tabindex="-1"></a>  <span class="op">}</span></span>
+<span id="cb6-23"><a href="#cb6-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-24"><a href="#cb6-24" aria-hidden="true" tabindex="-1"></a>  <span class="co">// Verificar o valor de &#39;a&#39; e enviar a resposta correspondente</span></span>
+<span id="cb6-25"><a href="#cb6-25" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> <span class="op">(</span>a <span class="op">&gt;</span> <span class="dv">100</span><span class="op">)</span> <span class="op">{</span></span>
+<span id="cb6-26"><a href="#cb6-26" aria-hidden="true" tabindex="-1"></a>    Serial<span class="op">.</span>println<span class="op">(</span><span class="st">&quot;a maior do que 100&quot;</span><span class="op">);</span></span>
+<span id="cb6-27"><a href="#cb6-27" aria-hidden="true" tabindex="-1"></a>  <span class="op">}</span> <span class="cf">else</span> <span class="cf">if</span> <span class="op">(</span>a <span class="op">&gt;</span> <span class="dv">50</span><span class="op">)</span> <span class="op">{</span></span>
+<span id="cb6-28"><a href="#cb6-28" aria-hidden="true" tabindex="-1"></a>    Serial<span class="op">.</span>println<span class="op">(</span><span class="st">&quot;a maior do que 50&quot;</span><span class="op">);</span></span>
+<span id="cb6-29"><a href="#cb6-29" aria-hidden="true" tabindex="-1"></a>  <span class="op">}</span> <span class="cf">else</span> <span class="op">{</span></span>
+<span id="cb6-30"><a href="#cb6-30" aria-hidden="true" tabindex="-1"></a>    Serial<span class="op">.</span>println<span class="op">(</span><span class="st">&quot;a menor ou igual a 50&quot;</span><span class="op">);</span></span>
+<span id="cb6-31"><a href="#cb6-31" aria-hidden="true" tabindex="-1"></a>  <span class="op">}</span></span>
+<span id="cb6-32"><a href="#cb6-32" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb6-33"><a href="#cb6-33" aria-hidden="true" tabindex="-1"></a>  <span class="co">// Adiciona um pequeno atraso antes de reiniciar o loop</span></span>
+<span id="cb6-34"><a href="#cb6-34" aria-hidden="true" tabindex="-1"></a>  delay<span class="op">(</span><span class="dv">1000</span><span class="op">);</span> </span>
+<span id="cb6-35"><a href="#cb6-35" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<p>O código possui dois comandos condicionais compostos <em>if...else</em>. Diz-se que os <strong><em>ifs</em> estão aninhados</strong>.</p>
+<p>A linguagem do Arduíno possui uma instrução composta (<code>switch...case</code>) de condicional composta múltipla cuja sintaxe é a seguinte:</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="cf">switch</span> <span class="op">(&lt;</span>expressão integral<span class="op">&gt;)</span> <span class="op">{</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="cf">case</span> <span class="op">&lt;</span>dado inteiro<span class="op">,</span> caractere ou enumerador<span class="op">&gt;:</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>  <span class="op">&lt;</span>bloco <span class="dv">1</span> de instruções<span class="op">&gt;</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>  <span class="cf">break</span><span class="op">;</span></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="cf">case</span> <span class="op">&lt;</span>dado inteiro<span class="op">,</span> caractere ou enumerador<span class="op">&gt;:</span></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>  <span class="op">&lt;</span>bloco <span class="dv">2</span> de instruções<span class="op">&gt;</span></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>  <span class="cf">break</span><span class="op">;</span></span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a><span class="op">...</span></span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a><span class="cf">default</span><span class="op">:</span></span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>  <span class="op">&lt;</span>bloco n de instruções<span class="op">&gt;</span></span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<p>O argumento do <em>switch</em> é a expressão que você deseja avaliar. <strong>Esta expressão pode ser de qualquer tipo de dado integral, ou seja, que representa inteiros</strong>, como int, char, enum, etc. O valor desta expressão é comparado com os valores especificados em cada case.</p>
+<p>O argumento do <code>case</code> pode ser:</p>
+<ul>
+<li>Constante inteira;</li>
+<li>Constante caractere;</li>
+<li>Enumeradores. Enumeradores são tipos definidos pela palavra reservada <code>enum</code> definidos pelo identificador seguidos de valores entre {} separados por vírgulas. Por exemplo, <code>enum Dias {SEG, TER, QUA, QUI, SEX, SAB, DOM};</code>. Em C, os elementos de uma enumeração (enum) devem ser valores inteiros constantes.</li>
+</ul>
+<p>O funcionamento do <code>switch...case</code> é o seguinte:</p>
+<ol type="1">
+<li>A máquina testa o valor do argumento do <code>switch</code> comparando-o com o argumento do primeiro <code>case</code>.</li>
+<li>Caso seja igual, executa o bloco 1 de instruções (interno ao <em>case</em>) e segue para a instrução posterior ao <em>switch</em> do código.</li>
+<li>Caso não seja igual, testa o valor do argumento do <code>switch</code>, comparando-o com o argumento do próximo <code>case</code>.</li>
+<li>Caso seja igual, executa o bloco de instruções interno ao <em>case</em>; em caso contrário, segue ao próximo <code>case</code>.</li>
+<li>A máquina executa esse procedimento até alcançar <code>default</code>, caso o argumento do <code>switch</code> não seja igual aos argumentos dos <code>case</code>.</li>
+<li>Nesse caso, executa o bloco de instruções interno ao <code>default</code> e segue à execução da próxima instrução do código.</li>
+<li>Importante que o <strong>uso do <em>default</em> é opcional</strong>.</li>
+</ol>
+<p>Adaptando o exemplo anterior para ilustrar o uso do <code>switch...case</code>, temos:</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="dt">void</span> setup<span class="op">()</span> <span class="op">{</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>  Serial<span class="op">.</span>begin<span class="op">(</span><span class="dv">9600</span><span class="op">);</span> <span class="co">// Inicializa a comunicação serial a 9600 bps</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="dt">void</span> loop<span class="op">()</span> <span class="op">{</span></span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>  <span class="dt">int</span> a<span class="op">;</span> <span class="co">// Declaração da variável a</span></span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>  <span class="co">// Solicitar ao usuário que insira um número</span></span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>  Serial<span class="op">.</span>println<span class="op">(</span><span class="st">&quot;Digite um numero: &quot;</span><span class="op">);</span></span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a>  <span class="co">// Esperar até que o usuário insira um número no monitor serial</span></span>
+<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a>  <span class="cf">while</span> <span class="op">(</span>Serial<span class="op">.</span>available<span class="op">()</span> <span class="op">==</span> <span class="dv">0</span><span class="op">)</span> <span class="op">{</span></span>
+<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a>    <span class="co">// Aguarda a entrada do usuário</span></span>
+<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a>  <span class="op">}</span></span>
+<span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb8-16"><a href="#cb8-16" aria-hidden="true" tabindex="-1"></a>  <span class="co">// Lê o número inserido</span></span>
+<span id="cb8-17"><a href="#cb8-17" aria-hidden="true" tabindex="-1"></a>  a <span class="op">=</span> Serial<span class="op">.</span>parseInt<span class="op">();</span></span>
+<span id="cb8-18"><a href="#cb8-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-19"><a href="#cb8-19" aria-hidden="true" tabindex="-1"></a>  <span class="co">// Limpa o buffer serial para evitar caracteres residuais</span></span>
+<span id="cb8-20"><a href="#cb8-20" aria-hidden="true" tabindex="-1"></a>  <span class="cf">while</span> <span class="op">(</span>Serial<span class="op">.</span>available<span class="op">()</span> <span class="op">&gt;</span> <span class="dv">0</span><span class="op">)</span> <span class="op">{</span></span>
+<span id="cb8-21"><a href="#cb8-21" aria-hidden="true" tabindex="-1"></a>    Serial<span class="op">.</span>read<span class="op">();</span></span>
+<span id="cb8-22"><a href="#cb8-22" aria-hidden="true" tabindex="-1"></a>  <span class="op">}</span></span>
+<span id="cb8-23"><a href="#cb8-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-24"><a href="#cb8-24" aria-hidden="true" tabindex="-1"></a>  <span class="co">// Usando switch para verificar o valor de &#39;a&#39;</span></span>
+<span id="cb8-25"><a href="#cb8-25" aria-hidden="true" tabindex="-1"></a>  <span class="cf">switch</span> <span class="op">(</span>a<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb8-26"><a href="#cb8-26" aria-hidden="true" tabindex="-1"></a>    <span class="cf">case</span> <span class="dv">100</span><span class="op">:</span></span>
+<span id="cb8-27"><a href="#cb8-27" aria-hidden="true" tabindex="-1"></a>      Serial<span class="op">.</span>println<span class="op">(</span><span class="st">&quot;Voce digitou 100&quot;</span><span class="op">);</span></span>
+<span id="cb8-28"><a href="#cb8-28" aria-hidden="true" tabindex="-1"></a>      <span class="cf">break</span><span class="op">;</span></span>
+<span id="cb8-29"><a href="#cb8-29" aria-hidden="true" tabindex="-1"></a>    <span class="cf">case</span> <span class="dv">50</span><span class="op">:</span></span>
+<span id="cb8-30"><a href="#cb8-30" aria-hidden="true" tabindex="-1"></a>      Serial<span class="op">.</span>println<span class="op">(</span><span class="st">&quot;Voce digitou 50&quot;</span><span class="op">);</span></span>
+<span id="cb8-31"><a href="#cb8-31" aria-hidden="true" tabindex="-1"></a>      <span class="cf">break</span><span class="op">;</span></span>
+<span id="cb8-32"><a href="#cb8-32" aria-hidden="true" tabindex="-1"></a>    <span class="cf">default</span><span class="op">:</span></span>
+<span id="cb8-33"><a href="#cb8-33" aria-hidden="true" tabindex="-1"></a>      Serial<span class="op">.</span>println<span class="op">(</span><span class="st">&quot;Voce digitou numero diferente de 50 e de 100&quot;</span><span class="op">);</span></span>
+<span id="cb8-34"><a href="#cb8-34" aria-hidden="true" tabindex="-1"></a>      <span class="cf">break</span><span class="op">;</span></span>
+<span id="cb8-35"><a href="#cb8-35" aria-hidden="true" tabindex="-1"></a>  <span class="op">}</span></span>
+<span id="cb8-36"><a href="#cb8-36" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-37"><a href="#cb8-37" aria-hidden="true" tabindex="-1"></a>  <span class="co">// Adiciona um pequeno atraso antes de reiniciar o loop</span></span>
+<span id="cb8-38"><a href="#cb8-38" aria-hidden="true" tabindex="-1"></a>  delay<span class="op">(</span><span class="dv">1000</span><span class="op">);</span> </span>
+<span id="cb8-39"><a href="#cb8-39" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<p><strong>Observação</strong>. Você pode usar o mesmo bloco de instruções subordinado a vários <code>case</code> diferentes. Isso é feito simplesmente omitindo as instruções de <code>break</code> entre os <code>case</code>, permitindo que a execução "caia" (<em>fall through</em>) para o próximo case. Por exemplo,</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="cf">switch</span> <span class="op">(&lt;</span>expressão integral<span class="op">&gt;)</span> <span class="op">{</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="cf">case</span> <span class="op">&lt;</span>dado inteiro<span class="op">,</span> caractere ou enumerador<span class="op">&gt;:</span> </span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="cf">case</span> <span class="op">&lt;</span>dado inteiro<span class="op">,</span> caractere ou enumerador<span class="op">&gt;:</span></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>  <span class="op">&lt;</span>bloco <span class="dv">2</span> de instruções<span class="op">&gt;</span></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>  <span class="cf">break</span><span class="op">;</span></span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a><span class="op">...</span></span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a><span class="cf">default</span><span class="op">:</span></span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>  <span class="op">&lt;</span>bloco n de instruções<span class="op">&gt;</span></span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<h2 id="25-o-operador-ternário--">2.5 O operador ternário <code>? :</code></h2>
+<p>Na linguagem do Arduíno, o operador ternário <code>? :</code> é uma forma concisa de expressão condicional que pode substituir a estrutura <code>if-else</code> para operações simples. Este operador é também conhecido como operador condicional.</p>
+<p>A sintaxe é</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="op">&lt;</span>condição<span class="op">&gt;</span> <span class="op">?</span> <span class="op">&lt;</span>instrução ou bloco de instruções <span class="dv">1</span><span class="op">&gt;</span> <span class="op">:</span> <span class="op">&lt;</span>instrução ou bloco de instruções <span class="dv">2</span><span class="op">&gt;;</span></span></code></pre></div>
+<p>, onde</p>
+<ul>
+<li>condição: Uma expressão lógica que é avaliada como verdadeira (não zero) ou falsa (zero).</li>
+<li>instrução ou bloco de instruções 1: A expressão que é avaliada e retornada se a condição for 1 (verdadeira).</li>
+<li>instrução ou bloco de instruções 2: A expressão que é avaliada e retornada se a condição for 0 (falsa).</li>
+</ul>
+<h2 id="26-desvio-incondicional-comando-goto">2.6 Desvio incondicional. Comando <code>goto</code></h2>
+<p>Na linguagem do Arduíno dispõe-se de um comando de <strong>desvio incondicional</strong>, <code>goto</code>. Precisa ser utilizado com muito cuidado, pois é próprio de uma linguagem não estruturada.</p>
+<p>O comando <code>goto</code> é frequentemente associado a linguagens de programação não estruturadas, <strong>onde o fluxo de controle pode ser alterado arbitrariamente, levando a um código difícil de seguir e manter</strong>. No entanto, é importante entender que o C, embora seja uma linguagem de programação estruturada, inclui o comando goto por razões históricas e por permitir certos usos específicos onde pode ser conveniente.</p>
+<p>As linguagens não estruturadas são caracterizadas pela ausência de estruturas claras para o <strong>controle de fluxo de execução das instruções</strong>, como <em>loops</em> e condicionais, o que frequentemente leva ao uso excessivo de comandos <code>goto</code>, resultando em código espaguete (<em>spaghetti code</em>). Exemplos incluem linguagens de primeira geração como Assembly.</p>
+<p>O formato geral do <code>goto</code> é</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="op">&lt;</span>nome <span class="cf">do</span> rotulo<span class="op">&gt;:</span> <span class="op">&lt;</span>instrução<span class="op">&gt;</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="op">...</span></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="cf">goto</span> <span class="op">&lt;</span>nome <span class="cf">do</span> rótulo<span class="op">&gt;;</span></span></code></pre></div>
+<p>O rótulo (<em>label</em>) pode ser um nome qualquer, contanto que siga as regras de nomenclatura dos identificadores. Um rótulo é definido como um identificador seguido de dois pontos (<code>:</code>), e pode ser colocado antes de qualquer instrução em uma função.</p>
+<h2 id="27-tipos-caracteres-e-cadeias-de-caracteres">2.7 Tipos caracteres e cadeias de caracteres</h2>
+<h3 id="271-tipo-caractere-char">2.7.1 Tipo caractere (<em>char</em>)</h3>
+<p>Os caracteres são tipo <em>char</em>. Os caracteres válidos na linguagem do Arduíno são baseados no conjunto de caracteres ASCII. O ASCII (<em>American Standard Code for Information Interchange</em>) é um padrão de codificação de caracteres que representa texto em computadores e outros dispositivos que utilizam texto. O ASCII usa valores numéricos para representar caracteres, incluindo letras, dígitos, sinais de pontuação e caracteres de controle.</p>
+<p>Caracteres ASCII no Arduíno Letras: A-Z (maiúsculas), a-z (minúsculas) Dígitos: 0-9 Sinais de pontuação: ! " # $ % &amp; ' ( ) * + , - . / : ; &lt; = &gt; ? @ [ \ ] ^ _ { | } ~ ` Caracteres de controle: como \n (nova linha), \t (tabulação), \0 (nulo), entre outros.</p>
+<p>Os caracteres são representados internamente por seus valores ASCII, que são inteiros decimais correspondentes a cada caractere. A tabela ASCII (American Standard Code for Information Interchange) define esses valores para um conjunto padrão de caracteres.</p>
+<p>A tabela ASCII mapeia caracteres para números inteiros. Por exemplo,</p>
+<ul>
+<li>Letras Maiúsculas: 'A': 65; 'B': 66; 'Z': 90</li>
+<li>Letras Minúsculas: 'a': 97; 'b': 98</li>
+<li>Dígitos: '0': 48; '1': 49; '9': 57</li>
+<li>Sinais de Pontuação e Outros Símbolos: '!': 33; '@': 64; '#': 35</li>
+<li>Caracteres de Controle (não imprimíveis): '\n' (nova linha): 10; '\t' (tabulação): 9</li>
+</ul>
+<p>Os caracteres individuais precisam ser delimitados por aspas simples (' '). Alguns caracteres de controle comuns também são representados usando aspas simples, mas com sequências de escape (<code>\</code>).</p>
+<p>A declaração de variáveis do tipo <em>char</em> possui a seguinte sintaxe:</p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="dt">char</span> x<span class="op">;</span></span></code></pre></div>
+<p>e a declaração com inicialização</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="dt">char</span> x <span class="op">=</span> <span class="ch">&#39;&lt;</span><span class="er">caractere&gt;</span><span class="ch">&#39;</span><span class="op">;</span></span></code></pre></div>
+<p>As atribuições podem ser realizadas para caracteres da mesma forma que para variáveis <em>int</em> e <em>float</em>, <code>&lt;nome&gt; = '&lt;caractere&gt;'</code>.</p>
+<p>Além disso, pode-se comparar caracteres diretamente usando os operadores de comparação (==, !=, &lt;, &gt;, &lt;=, &gt;=), pois os caracteres são representados internamente por seus valores ASCII. Similarmente, entre eles podem ser aplicados operadores lógicos bit a bit.</p>
+<h3 id="272-tipo-cadeia-de-caracteres-string">2.7.2 Tipo cadeia de caracteres (<em>string</em>)</h3>
+<p>As cadeias de caracteres podem ser definidas de duas formas no Arduino: usando vetores de caracteres (<code>char</code>) ou objetos <code>String</code>. <strong>Para a linguagem Arduino, um conjunto de caracteres entre aspas duplas é considerado uma <em>string</em>.</strong></p>
+<p>No caso de variáveis, as <em>strings</em> baseadas em <code>char</code> precisam ser declaradas <strong>sem inicialização</strong> ou <strong>com inicialização</strong> da seguinte forma:</p>
+<table>
+<thead>
+<tr class="header">
+<th>Tipo</th>
+<th>Descrição</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>char &lt;nome&gt;[&lt;tamanho&gt;];</code></td>
+<td>Declaração sem inicialização</td>
+</tr>
+<tr class="even">
+<td><code>char &lt;nome&gt;[] = "&lt;cadeia de caracteres&gt;"</code></td>
+<td>Declaração com inicialização</td>
+</tr>
+</tbody>
+</table>
+<p>Onde</p>
+<ul>
+<li>nome é um identificador</li>
+<li>tamanho é o número máximo de caracteres (incluindo o caractere nulo)</li>
+</ul>
+<p><strong>Observações:</strong></p>
+<ol type="1">
+<li>Os comandos de atribuição não podem ser utilizados nas <em>strings</em> baseadas em <code>char</code> da mesma forma que nas variáveis <em>int</em>, <em>float</em> e <em>char</em>; Para manipulação de strings no Arduino, você pode usar o objeto <code>String</code> que permite atribuições diretas, como <code>String nome = "Maria";</code>.</li>
+<li>As <em>strings</em> baseadas em <code>char</code> não podem ser usadas diretamente em operações lógicas da mesma forma que variáveis inteiras ou caracteres. **<em>Strings</em> em C (e Arduino) são arrays de caracteres terminados com o caractere nulo.</li>
+</ol>
+<p><strong>Toda string baseada em <code>char</code> possui um caractere 'terminador' definido no ASCII pelo caractere de escape <code>/0</code></strong>. Por exemplo, a palavra "Maria" é uma <em>string</em> que na linguagem Arduino é definida em memória por:</p>
+<table>
+<thead>
+<tr class="header">
+<th>0</th>
+<th>1</th>
+<th>2</th>
+<th>3</th>
+<th>4</th>
+<th>5</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>'M'</td>
+<td>'a'</td>
+<td>'r'</td>
+<td>'i'</td>
+<td>'a'</td>
+<td>'/0'</td>
+</tr>
+</tbody>
+</table>
+<p>Como uma <em>string</em> baseada em <code>char</code> é um <strong>vetor de caracteres</strong>, o nome do vetor define um <strong>ponteiro</strong> do vetor, ou seja, a variável que aponta para o endereço onde o primeiro caractere do vetor está armazenado em memória. Em razão disso, os elementos da <em>string</em> (os caracteres) podem ser identificados pela sua posição relativa. A sintaxe para a identificação é, como mostrado no exemplo:</p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="dt">char</span> nome<span class="op">[]</span> <span class="op">=</span> <span class="st">&quot;Maria&quot;</span><span class="op">;</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>Serial<span class="op">.</span>print<span class="op">(</span><span class="st">&quot;A primeira letra do nome é &quot;</span><span class="op">);</span></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>Serial<span class="op">.</span>println<span class="op">(</span>nome<span class="op">[</span><span class="dv">0</span><span class="op">]);</span></span></code></pre></div>
+<p>É bom destacar que a posição sempre é iniciada a partir de 0.</p>
+<h3 id="273-tipo-string">2.7.3 Tipo <em>String</em></h3>
+<p>Na linguagem Arduino uma cadeia de caracteres também pode ser declarada com um objeto tipo String. Nesse caso, deve ser declarado da seguinte forma:</p>
+<table>
+<thead>
+<tr class="header">
+<th>Tipo</th>
+<th>Descrição</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>String &lt;nome&gt; = "&lt;cadeia de caracteres&gt;";</code></td>
+<td>Declaração com inicialização</td>
+</tr>
+<tr class="even">
+<td><code>String &lt;nome&gt;;</code></td>
+<td>Declaração sem inicialização</td>
+</tr>
+</tbody>
+</table>
+<h2 id="28-entrada-e-saída-com-caracteres-e-cadeias-de-caracteres-no-arduino">2.8 Entrada e saída com caracteres e cadeias de caracteres no Arduino</h2>
+<h3 id="281-entrada-e-saída-com-o-monitor-serial-do-arduino">2.8.1 Entrada e Saída com o Monitor Serial do Arduino</h3>
+<h4 id="funções-serialprint-e-serialprintln">Funções <code>Serial.print()</code> e <code>Serial.println()</code></h4>
+<p>Como já utilizado nos exemplos anteriores, no Arduino as funções <code>Serial.print()</code> e <code>Serial.println()</code> são usadas para enviar dados do Arduino para o Monitor Serial no computador.</p>
+<ul>
+<li><code>Serial.print()</code>: Imprime os dados na janela do Monitor Serial sem adicionar uma nova linha ao final.</li>
+<li><code>Serial.println()</code>: Imprime os dados na janela do Monitor Serial e move o cursor para a próxima linha.</li>
+</ul>
+<p>Exemplo básico:</p>
+<div class="sourceCode" id="cb15"><pre class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="dt">void</span> setup<span class="op">()</span> <span class="op">{</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>  Serial<span class="op">.</span>begin<span class="op">(</span><span class="dv">9600</span><span class="op">);</span>  <span class="co">// Inicializa a comunicação serial a 9600 bps</span></span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a><span class="dt">void</span> loop<span class="op">()</span> <span class="op">{</span></span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>    <span class="co">// Limpa o buffer serial</span></span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a>  <span class="cf">while</span> <span class="op">(</span>Serial<span class="op">.</span>available<span class="op">()</span> <span class="op">&gt;</span> <span class="dv">0</span><span class="op">)</span> <span class="op">{</span></span>
+<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a>    Serial<span class="op">.</span>read<span class="op">();</span>  <span class="co">// Lê e descarta qualquer dado restante no buffer</span></span>
+<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a>  <span class="op">}</span></span>
+<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a>  Serial<span class="op">.</span>print<span class="op">(</span><span class="st">&quot;Digite um caractere: &quot;</span><span class="op">);</span></span>
+<span id="cb15-11"><a href="#cb15-11" aria-hidden="true" tabindex="-1"></a>  <span class="cf">while</span> <span class="op">(</span>Serial<span class="op">.</span>available<span class="op">()</span> <span class="op">==</span> <span class="dv">0</span><span class="op">)</span> <span class="op">{</span></span>
+<span id="cb15-12"><a href="#cb15-12" aria-hidden="true" tabindex="-1"></a>    <span class="co">// Aguarda até que um caractere seja digitado no Monitor Serial</span></span>
+<span id="cb15-13"><a href="#cb15-13" aria-hidden="true" tabindex="-1"></a>  <span class="op">}</span></span>
+<span id="cb15-14"><a href="#cb15-14" aria-hidden="true" tabindex="-1"></a>  <span class="dt">char</span> c <span class="op">=</span> Serial<span class="op">.</span>read<span class="op">();</span>  <span class="co">// Lê o caractere digitado </span></span>
+<span id="cb15-15"><a href="#cb15-15" aria-hidden="true" tabindex="-1"></a>  Serial<span class="op">.</span>print<span class="op">(</span><span class="st">&quot;</span><span class="sc">\n</span><span class="st">Você digitou: &quot;</span><span class="op">);</span></span>
+<span id="cb15-16"><a href="#cb15-16" aria-hidden="true" tabindex="-1"></a>  Serial<span class="op">.</span>println<span class="op">(</span>c<span class="op">);</span></span>
+<span id="cb15-17"><a href="#cb15-17" aria-hidden="true" tabindex="-1"></a>  delay<span class="op">(</span><span class="dv">1000</span><span class="op">);</span>  <span class="co">// Pequeno atraso para dar tempo ao usuário</span></span>
+<span id="cb15-18"><a href="#cb15-18" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<h4 id="função-serialread">Função <code>Serial.read()</code></h4>
+<p>A função <code>Serial.read()</code> lê o primeiro byte de dados disponíveis na entrada serial e o retorna como um valor inteiro. Esse valor pode ser convertido em um caractere se necessário.</p>
+<p>Exemplo:</p>
+<div class="sourceCode" id="cb16"><pre class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="dt">void</span> setup<span class="op">()</span> <span class="op">{</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>  Serial<span class="op">.</span>begin<span class="op">(</span><span class="dv">9600</span><span class="op">);</span></span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a><span class="dt">void</span> loop<span class="op">()</span> <span class="op">{</span></span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>  delay<span class="op">(</span><span class="dv">1000</span><span class="op">);</span></span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> <span class="op">(</span>Serial<span class="op">.</span>available<span class="op">()</span> <span class="op">&gt;</span> <span class="dv">0</span><span class="op">)</span> <span class="op">{</span></span>
+<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a>    <span class="dt">char</span> c <span class="op">=</span> Serial<span class="op">.</span>read<span class="op">();</span>  <span class="co">// Lê o caractere digitado</span></span>
+<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a>    Serial<span class="op">.</span>print<span class="op">(</span><span class="st">&quot;Você digitou: &quot;</span><span class="op">);</span></span>
+<span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a>    Serial<span class="op">.</span>println<span class="op">(</span>c<span class="op">);</span></span>
+<span id="cb16-11"><a href="#cb16-11" aria-hidden="true" tabindex="-1"></a>    <span class="cf">while</span> <span class="op">(</span>Serial<span class="op">.</span>available<span class="op">()&gt;</span><span class="dv">0</span><span class="op">)</span></span>
+<span id="cb16-12"><a href="#cb16-12" aria-hidden="true" tabindex="-1"></a>      Serial<span class="op">.</span>read<span class="op">();</span></span>
+<span id="cb16-13"><a href="#cb16-13" aria-hidden="true" tabindex="-1"></a>  <span class="op">}</span></span>
+<span id="cb16-14"><a href="#cb16-14" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb16-15"><a href="#cb16-15" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<h4 id="função-serialreadstring">Função <code>Serial.readString()</code></h4>
+<p>A função <code>Serial.readString()</code> lê a entrada serial e retorna uma <code>String</code> contendo os caracteres recebidos até um delimitador ou timeout. Por padrão, o delimitador é o caractere de nova linha (<code>\n</code>).</p>
+<p>Exemplo:</p>
+<div class="sourceCode" id="cb17"><pre class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="dt">void</span> setup<span class="op">()</span> <span class="op">{</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>  Serial<span class="op">.</span>begin<span class="op">(</span><span class="dv">9600</span><span class="op">);</span></span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a><span class="dt">void</span> loop<span class="op">()</span> <span class="op">{</span></span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> <span class="op">(</span>Serial<span class="op">.</span>available<span class="op">()</span> <span class="op">&gt;</span> <span class="dv">0</span><span class="op">)</span> <span class="op">{</span></span>
+<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a>    String texto <span class="op">=</span> Serial<span class="op">.</span>readString<span class="op">();</span></span>
+<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a>    Serial<span class="op">.</span>print<span class="op">(</span><span class="st">&quot;Você digitou: &quot;</span><span class="op">);</span></span>
+<span id="cb17-9"><a href="#cb17-9" aria-hidden="true" tabindex="-1"></a>    Serial<span class="op">.</span>println<span class="op">(</span>texto<span class="op">);</span></span>
+<span id="cb17-10"><a href="#cb17-10" aria-hidden="true" tabindex="-1"></a>  <span class="op">}</span></span>
+<span id="cb17-11"><a href="#cb17-11" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<h4 id="função-serialparseint">Função <code>Serial.parseInt()</code></h4>
+<p>A função <code>Serial.parseInt()</code> lê a entrada serial e converte os números recebidos em um valor inteiro (<code>int</code>).</p>
+<p>Exemplo:</p>
+<div class="sourceCode" id="cb18"><pre class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="dt">void</span> setup<span class="op">()</span> <span class="op">{</span></span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>  Serial<span class="op">.</span>begin<span class="op">(</span><span class="dv">9600</span><span class="op">);</span></span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a><span class="dt">void</span> loop<span class="op">()</span> <span class="op">{</span></span>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a>  Serial<span class="op">.</span>println<span class="op">(</span><span class="st">&quot;Digite um número:&quot;</span><span class="op">);</span></span>
+<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a>  <span class="cf">while</span> <span class="op">(</span>Serial<span class="op">.</span>available<span class="op">()</span> <span class="op">==</span> <span class="dv">0</span><span class="op">)</span> <span class="op">{</span></span>
+<span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a>    <span class="co">// Aguarda a entrada do usuário</span></span>
+<span id="cb18-9"><a href="#cb18-9" aria-hidden="true" tabindex="-1"></a>  <span class="op">}</span></span>
+<span id="cb18-10"><a href="#cb18-10" aria-hidden="true" tabindex="-1"></a>  <span class="dt">int</span> num <span class="op">=</span> Serial<span class="op">.</span>parseInt<span class="op">();</span></span>
+<span id="cb18-11"><a href="#cb18-11" aria-hidden="true" tabindex="-1"></a>  <span class="cf">while</span> <span class="op">(</span>Serial<span class="op">.</span>available<span class="op">()</span> <span class="op">&gt;</span> <span class="dv">0</span><span class="op">)</span> <span class="op">{</span></span>
+<span id="cb18-12"><a href="#cb18-12" aria-hidden="true" tabindex="-1"></a>    <span class="co">// Limpa o buffer</span></span>
+<span id="cb18-13"><a href="#cb18-13" aria-hidden="true" tabindex="-1"></a>    Serial<span class="op">.</span>read<span class="op">();</span></span>
+<span id="cb18-14"><a href="#cb18-14" aria-hidden="true" tabindex="-1"></a>  <span class="op">}</span></span>
+<span id="cb18-15"><a href="#cb18-15" aria-hidden="true" tabindex="-1"></a>  Serial<span class="op">.</span>print<span class="op">(</span><span class="st">&quot;Você digitou: &quot;</span><span class="op">);</span></span>
+<span id="cb18-16"><a href="#cb18-16" aria-hidden="true" tabindex="-1"></a>  Serial<span class="op">.</span>println<span class="op">(</span>num<span class="op">);</span></span>
+<span id="cb18-17"><a href="#cb18-17" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<h3 id="282-manipulação-de-strings-no-arduino">2.8.2 Manipulação de Strings no Arduino</h3>
+<p>As <code>String</code> são objetos utilizados no Arduino para manipulação de texto. As <code>String</code> podem ser manipuladas de diversas maneiras, utilizando métodos específicos.</p>
+<p>Exemplo de criação e manipulação de uma <code>String</code>:</p>
+<div class="sourceCode" id="cb19"><pre class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="dt">void</span> setup<span class="op">()</span> <span class="op">{</span></span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>  Serial<span class="op">.</span>begin<span class="op">(</span><span class="dv">9600</span><span class="op">);</span></span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>  String nome <span class="op">=</span> <span class="st">&quot;Arduino&quot;</span><span class="op">;</span>  <span class="co">// Cria uma String</span></span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>  Serial<span class="op">.</span>print<span class="op">(</span><span class="st">&quot;O nome é: &quot;</span><span class="op">);</span></span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>  Serial<span class="op">.</span>println<span class="op">(</span>nome<span class="op">);</span></span>
+<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a>  nome <span class="op">+=</span> <span class="st">&quot; Mega&quot;</span><span class="op">;</span>  <span class="co">// Concatena &quot; Mega&quot; à String</span></span>
+<span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a>  Serial<span class="op">.</span>print<span class="op">(</span><span class="st">&quot;O nome completo é: &quot;</span><span class="op">);</span></span>
+<span id="cb19-9"><a href="#cb19-9" aria-hidden="true" tabindex="-1"></a>  Serial<span class="op">.</span>println<span class="op">(</span>nome<span class="op">);</span></span>
+<span id="cb19-10"><a href="#cb19-10" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span>
+<span id="cb19-11"><a href="#cb19-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-12"><a href="#cb19-12" aria-hidden="true" tabindex="-1"></a><span class="dt">void</span> loop<span class="op">()</span> <span class="op">{</span></span>
+<span id="cb19-13"><a href="#cb19-13" aria-hidden="true" tabindex="-1"></a>  <span class="co">// O loop fica vazio neste exemplo</span></span>
+<span id="cb19-14"><a href="#cb19-14" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<p>A tabela abaixo apresenta um resumo dos principais métodos para trabalhar com o monitor serial.</p>
+<table>
+<thead>
+<tr class="header">
+<th>Método</th>
+<th>Descrição</th>
+<th>Entrada</th>
+<th>Saída</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>Serial.begin(baudrate)</code></td>
+<td>Inicializa a comunicação serial com a taxa de baud especificada.</td>
+<td><code>baudrate</code> (taxa de transmissão em bps)</td>
+<td>Nenhuma</td>
+</tr>
+<tr class="even">
+<td><code>Serial.available()</code></td>
+<td>Retorna o número de bytes disponíveis para leitura na porta serial.</td>
+<td>Nenhuma</td>
+<td>Número de bytes disponíveis</td>
+</tr>
+<tr class="odd">
+<td><code>Serial.read()</code></td>
+<td>Lê o próximo byte de dados recebidos no buffer serial.</td>
+<td>Nenhuma</td>
+<td>Byte lido (int, -1 se falha)</td>
+</tr>
+<tr class="even">
+<td><code>Serial.peek()</code></td>
+<td>Olha o próximo byte de dados recebidos sem removê-lo do buffer.</td>
+<td>Nenhuma</td>
+<td>Byte lido (int, -1 se falha)</td>
+</tr>
+<tr class="odd">
+<td><code>Serial.flush()</code></td>
+<td>Aguarda até que a transmissão de dados em andamento seja concluída.</td>
+<td>Nenhuma</td>
+<td>Nenhuma</td>
+</tr>
+<tr class="even">
+<td><code>Serial.print(data)</code></td>
+<td>Envia dados para o monitor serial em formato texto.</td>
+<td><code>data</code> (int, float, string, etc.)</td>
+<td>Nenhuma</td>
+</tr>
+<tr class="odd">
+<td><code>Serial.println(data)</code></td>
+<td>Envia dados para o monitor serial em formato texto, seguido por uma nova linha.</td>
+<td><code>data</code> (int, float, string, etc.)</td>
+<td>Nenhuma</td>
+</tr>
+<tr class="even">
+<td><code>Serial.write(val)</code></td>
+<td>Envia um byte ou uma sequência de bytes para o monitor serial.</td>
+<td><code>val</code> (byte, char, array, string)</td>
+<td>Número de bytes escritos</td>
+</tr>
+<tr class="odd">
+<td><code>Serial.end()</code></td>
+<td>Finaliza a comunicação serial, liberando os pinos digitais usados.</td>
+<td>Nenhuma</td>
+<td>Nenhuma</td>
+</tr>
+<tr class="even">
+<td><code>Serial.parseInt()</code></td>
+<td>Lê os dados da porta serial como um valor inteiro.</td>
+<td>Nenhuma</td>
+<td>Valor inteiro lido</td>
+</tr>
+<tr class="odd">
+<td><code>Serial.parseFloat()</code></td>
+<td>Lê os dados da porta serial como um valor flutuante (float).</td>
+<td>Nenhuma</td>
+<td>Valor float lido</td>
+</tr>
+<tr class="even">
+<td><code>Serial.find(target)</code></td>
+<td>Lê os dados recebidos até encontrar uma correspondência com o valor de destino especificado.</td>
+<td><code>target</code> (string ou char)</td>
+<td><code>true</code> se encontrado, <code>false</code> se não</td>
+</tr>
+<tr class="odd">
+<td><code>Serial.readString()</code></td>
+<td>Lê todos os caracteres recebidos como uma string até que um tempo limite expire.</td>
+<td>Nenhuma</td>
+<td>String lida</td>
+</tr>
+<tr class="even">
+<td><code>Serial.readBytes(buffer, length)</code></td>
+<td>Lê uma quantidade específica de bytes no buffer fornecido.</td>
+<td><code>buffer</code> (char array), <code>length</code> (int)</td>
+<td>Número de bytes lidos</td>
+</tr>
+<tr class="odd">
+<td><code>Serial.findUntil(target, terminator)</code></td>
+<td>Lê os dados até encontrar um alvo ou terminador, o que ocorrer primeiro.</td>
+<td><code>target</code>, <code>terminator</code> (string ou char)</td>
+<td><code>true</code> se encontrado, <code>false</code> se não</td>
+</tr>
+<tr class="even">
+<td><code>Serial.setTimeout(timeout)</code></td>
+<td>Define o tempo limite para operações de leitura.</td>
+<td><code>timeout</code> (milissegundos)</td>
+<td>Nenhuma</td>
+</tr>
+</tbody>
+</table>
+<p>Os métodos descritos na tabela são aplicáveis a qualquer objeto da classe <code>HardwareSerial</code> (da qual <code>Serial</code> é uma instância) no Arduino, e não apenas ao monitor serial. A classe <code>HardwareSerial</code> é usada para se comunicar com dispositivos seriais em geral, o que inclui:</p>
+<ul>
+<li>Monitor Serial: Comumente usado para comunicação entre o Arduino e o computador via USB.</li>
+<li>Portas Seriais Físicas: Em placas que possuem múltiplas portas seriais (como o Arduino Mega), você pode usar objetos como Serial1, Serial2, etc., para comunicação com outros dispositivos seriais, como módulos GPS, módulos Bluetooth, sensores, entre outros.</li>
+</ul>
+<p>Esses métodos permitem que você envie e receba dados através de qualquer interface serial disponível na placa, seja ela conectada ao monitor serial no computador ou a outro dispositivo serial externo.</p>
+</div>
+
+<footer>
+  <div class="container">
+    <p>© 2026 · Prof. Clayton J A Silva</p>
+  </div>
+</footer>
+
+<script>
+window.addEventListener('scroll',()=>{
+  const h=document.documentElement;
+  const p=h.scrollTop/(h.scrollHeight-h.clientHeight)*100;
+  const el=document.getElementById('progressFill');
+  if(el) el.style.width=p+'%';
+});
+document.addEventListener("DOMContentLoaded", function() {
+  if (window.renderMathInElement) {
+    renderMathInElement(document.body, {
+      delimiters: [
+        {left: "$$", right: "$$", display: true},
+        {left: "$", right: "$", display: false},
+        {left: "\\(", right: "\\)", display: false},
+        {left: "\\[", right: "\\]", display: true}
+      ],
+      throwOnError: false
+    });
+  }
+});
+</script>
+</body>
+</html>
