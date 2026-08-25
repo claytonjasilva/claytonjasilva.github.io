@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Programação com Arduíno - Capítulo 3</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0a0e17;--surface:#111827;--surface2:#161f2e;--border:#1e2d40;--accent:#00c2ff;--accent2:#7c3aed;--text:#e2e8f0;--muted:#64748b;--tag-bg:#0f172a;--font-mono:'IBM Plex Mono',monospace;--font-sans:'IBM Plex Sans',sans-serif;}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0} html{scroll-behavior:smooth} body{background:var(--bg);color:var(--text);font-family:var(--font-sans);font-size:16px;line-height:1.65} a{color:var(--accent);text-decoration:none} a:hover{text-decoration:underline} .container{max-width:980px;margin:0 auto;padding:0 2rem}
+nav{position:sticky;top:0;z-index:100;background:rgba(10,14,23,.9);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);padding:.9rem 0} nav .container{display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap} .nav-brand{font-family:var(--font-mono);font-size:.78rem;color:var(--accent)} .nav-links{display:flex;gap:1rem;list-style:none;flex-wrap:wrap} .nav-links a{font-family:var(--font-mono);font-size:.7rem;color:var(--muted)} .nav-links a:hover{color:var(--text);text-decoration:none}
+.hero{padding:4rem 0 2.5rem;position:relative;overflow:hidden} .hero::before{content:'';position:absolute;inset:0;background-image:linear-gradient(var(--border) 1px,transparent 1px),linear-gradient(90deg,var(--border) 1px,transparent 1px);background-size:40px 40px;opacity:.3;mask-image:radial-gradient(ellipse 80% 60% at 50% 0%,black 40%,transparent 100%)} .hero-eyebrow{font-family:var(--font-mono);font-size:.74rem;color:var(--accent);letter-spacing:.14em;text-transform:uppercase;margin-bottom:1rem;display:flex;align-items:center;gap:.7rem} .hero-eyebrow::before{content:'';width:2rem;height:1px;background:var(--accent)} h1{font-size:clamp(2rem,4.5vw,3.1rem);font-weight:300;line-height:1.12;letter-spacing:-.02em;margin-bottom:.6rem} h1 strong{font-weight:600;color:var(--accent)} .hero-meta{display:flex;gap:1.5rem;flex-wrap:wrap;margin-top:1.2rem} .meta-item{font-family:var(--font-mono);font-size:.74rem;color:var(--muted)}
+.content{padding:2.5rem 0 4rem} article{background:transparent} article h2{font-size:1.55rem;margin:2.6rem 0 1rem;padding-top:1.5rem;border-top:1px solid var(--border)} article h3{font-size:1.15rem;margin:1.8rem 0 .8rem;color:var(--text)} article h4{font-size:1rem;margin:1.4rem 0 .7rem;color:var(--accent)} article h5{font-size:.95rem;margin:1.2rem 0 .6rem;color:#c4b5fd} article p{margin:0 0 1rem;color:#cbd5e1} article ul,article ol{margin:0 0 1rem 1.4rem;color:#cbd5e1} article li{margin-bottom:.45rem} article strong{color:var(--text)} article em{color:var(--accent)}
+pre{background:var(--tag-bg);border:1px solid var(--border);border-radius:6px;padding:1rem 1.1rem;margin:1rem 0;overflow-x:auto} code{font-family:var(--font-mono);font-size:.8rem;color:#a8d8ef} p code,li code{background:var(--tag-bg);border:1px solid var(--border);padding:.08rem .3rem;border-radius:4px} table{width:100%;border-collapse:collapse;font-size:.85rem;margin:1.2rem 0} th,td{padding:.55rem .7rem;border-bottom:1px solid var(--border);text-align:left} th{background:var(--tag-bg);font-family:var(--font-mono);font-size:.72rem;color:var(--muted)} blockquote{border-left:3px solid var(--accent2);padding:.7rem 1rem;margin:1rem 0;background:var(--tag-bg);color:var(--muted)}
+.chapter-nav{display:flex;justify-content:space-between;gap:1rem;margin-top:3rem} .chapter-nav a{flex:1;background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:1rem 1.3rem;font-size:.85rem;transition:.2s} .chapter-nav a:hover{border-color:var(--accent);text-decoration:none} .chapter-nav .dir{font-family:var(--font-mono);font-size:.65rem;color:var(--muted);text-transform:uppercase;letter-spacing:.08em;display:block;margin-bottom:.3rem} .chapter-nav .next{text-align:right} footer{border-top:1px solid var(--border);padding:2rem 0} footer .container{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem} footer p{font-size:.8rem;color:var(--muted);font-family:var(--font-mono)} @media(max-width:640px){.nav-links{display:none}.hero{padding:2.5rem 0 2rem}.chapter-nav{flex-direction:column}}
+</style>
+</head>
+<body>
+<nav><div class="container"><span class="nav-brand">programação com arduíno · cap. 3</span><ul class="nav-links"><li><a href="progArduino_cap2.html">← Capítulo 2</a></li><li><a href="arq_pratica4_entrada3bits.html">Prática 4</a></li><li><a href="https://www.tinkercad.com/dashboard" target="_blank">Tinkercad</a></li><li><a href="https://claytonjasilva.github.io/arq.html">Disciplina</a></li></ul></div></nav>
+<section class="hero"><div class="container"><p class="hero-eyebrow">Arquitetura de Computadores · Programação com Arduíno</p><h1><strong>Capítulo 3</strong><br>Funções e controle de fluxo com estruturas de repetição</h1><div class="hero-meta"><span class="meta-item">Prof. Clayton J A Silva</span><span class="meta-item">Arduino Mega 2560</span><span class="meta-item">Rev 2026.2</span></div></div></section>
+<main class="content"><div class="container"><article>
+<h2>3.1 Conceitos gerais sobre funções</h2>
+<p>No contexto de uma programação, uma <strong>função</strong> é uma sequência nomeada de instruções que proporciona um resultado.</p>
+<p>É um bloco de código de programa que pode ser chamado várias vezes, produzindo alguns benefícios, como:</p>
+<ul>
+<li><strong>Reutilizar código</strong> - as funções permitem agrupar e generalizar um código para se usado arbitrariamente muitas vezes posteriormente;</li>
+<li><strong>Decomposição procedural</strong> - permitem dividir o sistema desenvolvido em partes, com tarefas bem definidas.</li>
+</ul>
+<h3>3.1.1 Prototipação de funções</h3>
+<p>Na estrutura do programa em C vimos que a prototipação da função se apresenta após as diretivas de pré-processamento e antes do módulo  <em>setup</em>.</p>
+<p>Uma função para ser executada em um determinado trecho de código precisa ser <strong>chamada</strong>.</p>
+<p>A <strong>chamada de função</strong> requer o uso do <strong>nome</strong> e a <strong>passagem dos valores dos argumentos aos parâmetros</strong>.</p>
+<p>Além disso, quando uma função é executada, ela pode devolver um valor (<strong>retornar</strong> valor) derivado da execução da tarefa, <strong>o qual pode ser atribuído a uma variável</strong> ou <strong>utilizado no contexto de uma expressão</strong>.</p>
+<p>Como no padrão ANSI C (C89/C90), a <strong>prototipação de funções</strong> não é obrigatória, mas é fortemente recomendada. Se uma função é utilizada antes de ser definida ou prototipada, o compilador assume que a função retorna um valor do tipo int e que seus parâmetros são do tipo padrão (normalmente int ou double, dependendo de como os argumentos são passados). Isso pode causar problemas se a função realmente retornar outro tipo de dado ou tiver parâmetros de tipos diferentes, pois o compilador não terá as informações corretas para verificar o tipo ou o número de argumentos passados para a função.</p>
+<p>A prototipação ajuda a evitar esses problemas, pois permite ao compilador verificar se as chamadas de função estão corretas em termos de número e tipo dos argumentos. Para prototipar é necessário que o código em C especifique a função a ser usada, contendo:</p>
+<ul>
+<li>o <strong>tipo</strong> de valor que a função retorna (<em>void</em>, retorna vazio; <em>int</em>, retorna inteiro, ou <em>float</em>, retorna ponto flutuante);</li>
+<li>o <strong>identificador</strong> ou <strong>nome</strong> da função; e</li>
+<li>os <strong>parâmetros</strong> que a função utiliza para realizar a tarefa, cujos valores serão definidos pelos <strong>argumentos</strong> utilizados no código que a chamar.</li>
+</ul>
+<p>A prototipação informa ao compilador que a função pode ser utilizada nos módulos <code>setup</code> e <code>loop</code>. A sintaxe para prototipação é dada por</p>
+<pre><code class="language-cpp">&lt;tipo de retorno&gt; &lt;nome da função&gt;(&lt;declaração dos parâmetros&gt;);
+</code></pre>
+<p>Se a função não retornar valor algum utiliza-se a <strong>palavra reservada</strong> <code>void</code>. Na linguagem do Arduíno não se distingue <em>procedure</em> (quando não há retorno de valor) de <em>function</em> como em outras linguagens. Caso não se utilize a palavra reservada <code>void</code>, o compilador assume que a função retorna inteiro.</p>
+<p>O nome da função segue as mesmas regras definidas para definição dos nomes das variáveis.</p>
+<p>Todos os argumentos são passados aos parâmetros <strong>por valor</strong>. Isso significa que a função usará uma <strong>cópia</strong> do valor do argumento.  Objetivamente, isso significa que a alteração na função dos valores passados <strong>não altera os valores dos argumentos</strong>.</p>
+<p>Se for desnecessário que a função utilize parâmetros o código pode informar ao compilador:</p>
+<ul>
+<li>pelo uso da sintaxe <code>&lt;tipo de retorno&gt; &lt;nome da função&gt;(void)</code> ou</li>
+<li>o compilador reconhece a omissão da palavra reservada, usando a sintaxe <code>&lt;tipo de retorno&gt; &lt;nome da função&gt;();</code>.</li>
+</ul>
+<h3>3.1.2 Escopo de variáveis</h3>
+<p>As funções estão diretamente relacionadas ao conceito de <strong>escopo</strong> de variáveis.</p>
+<p>Uma função passa os valores às <strong>variáveis locais</strong> da função, conforme sua prototipação as define.</p>
+<p>As variáveis locais são aquelas que possuem somente valor dentro da função que são declaradas, incluindo a função <em>main</em>, e <strong>deixam de existir quando a função é encerrada</strong>.</p>
+<p>Como alternativa às variáveis locais pode ser conveniente o programador definir <strong>variáveis globais</strong>, ou seja, externas e fora de todas as funções.</p>
+<p>Em cada função que for utilizada a variável global deverá ser <strong>declarada implicitamente, pelo contexto</strong> ou <strong>declarada explicitamente</strong>.</p>
+<p>A declaração implícita ocorrerá quando a declaração é feita fora do contexto de qualquer função, inclusive das funções <code>setup</code> e <code>loop</code>.</p>
+<p>A sintaxe da declaração explícita é dada por <code>extern &lt;tipo&gt; &lt;nome da variável&gt;;</code>, incluída no arquivo em que a variável será usada. O uso de declaração explícita só faz sentido entre arquivos diferentes, quando você deseja acessar uma variável global definida em outro arquivo. Nesse caso, <code>extern</code> informa ao compilador que a variável existe em outro arquivo, permitindo que você a utilize sem redefini-la.</p>
+<h3>3.1.3 Definição de funções</h3>
+<p>Para criar uma nova função é necessário escrever instruções atendendo a sintaxe da linguagem do Arduíno, da seguinte forma</p>
+<pre><code class="language-cpp">&lt;tipo de retorno&gt; &lt;nome da função&gt;(&lt;declaração dos parâmetros&gt;) {
+  &lt;declarações de variáveis&gt;
+  &lt;corpo de instruções&gt;
+  return &lt;valor ou expressão de retorno&gt;
+}
+</code></pre>
+<p>As definições de funções podem estar em qualquer ordem, em um arquivo fonte ou diversos, porém <strong>nenhuma função pode estar dividida em dois arquivos</strong>.</p>
+<p>Se a definição da função for apresentada antes dos módulos <code>setup</code>e <code>loop</code> a prototipação é desnecessária, no entanto, se a prototipação for usada, <strong>se a definição da função não estiver de acordo com o seu protótipo será apresentado um erro na compilação.</strong></p>
+<h3>3.1.4 Biblioteca-padrão</h3>
+<p>As funções, tipos e macros da biblioteca-padrão são declaradas em <em>cabeçalhos</em>-padrão. Na linguagem do Arduíno há um rico conjunto de bibliotecas, usualmente oferecidas pelos fabricantes.</p>
+<p>É possível criar um projeto Arduino com mais de um arquivo. Isso é útil para organizar melhor o código, especialmente em projetos maiores, onde faz sentido dividir o código em diferentes módulos ou usar bibliotecas específicas. Vou explicar como fazer isso passo a passo.</p>
+<h4>3.1.4.1. Estrutura do Projeto</h4>
+<p>Um projeto Arduino pode ter os seguintes tipos de arquivos:</p>
+<ul>
+<li>Arquivo principal (.ino): Este é o arquivo principal do projeto, onde as funções setup() e loop() estão localizadas.</li>
+<li>Arquivos auxiliares (.ino, .cpp, .h): Arquivos adicionais para organizar o código em módulos. Estes arquivos podem conter funções, classes ou variáveis globais.</li>
+<li>Bibliotecas (.h e .cpp): Bibliotecas personalizadas que você cria para encapsular funcionalidades específicas.</li>
+</ul>
+<p>Pode-se criar arquivos adicionais no Arduino IDE:</p>
+<ul>
+<li>a. Criar Módulos com Vários Arquivos .ino</li>
+</ul>
+<p>No Arduino IDE, abra seu projeto principal (o arquivo .ino principal).</p>
+<p>Para adicionar um novo arquivo .ino ao projeto, clique no menu Sketch &gt; New Tab, e dê um nome ao novo arquivo. O novo arquivo será salvo com a extensão .ino.</p>
+<p>Os arquivos .ino adicionais são automaticamente combinados durante a compilação. O Arduino IDE trata todos os arquivos .ino como se fossem um único arquivo, seguindo uma ordem específica (primeiro o arquivo principal, depois os outros em ordem alfabética).</p>
+<ul>
+<li>b. Criar Arquivos .h e .cpp</li>
+</ul>
+<p>Para organizar melhor o código, você pode criar arquivos .h (<em>headers</em>) e .cpp (implementações).</p>
+<p>Crie uma nova biblioteca: Vá para Sketch &gt; Add File... ou New Tab, e nomeie o arquivo com a extensão .h para o cabeçalho e .cpp para a implementação.</p>
+<ol>
+<li>Cabeçalho (.h): Defina as declarações de funções, classes e variáveis globais.</li>
+<li>Implementação (.cpp): Implemente as funções e métodos declarados no arquivo de cabeçalho.</li>
+<li>Projeto (.ino): Elabore o arquivo principal</li>
+</ol>
+<p>Por exemplo, para criar uma biblioteca para gerenciar LEDs:</p>
+<p>Arquivo LEDControl.h:</p>
+<pre><code class="language-cpp">#ifndef LEDCONTROL_H
+#define LEDCONTROL_H
+
+class LEDControl {
+  public:
+    LEDControl(int pin);
+    void on();
+    void off();
+  private:
+    int _pin;
+};
+
+#endif
+</code></pre>
+<p>Arquivo LEDControl.cpp:</p>
+<pre><code class="language-cpp">#include "LEDControl.h"
+#include &lt;Arduino.h&gt;
+
+LEDControl::LEDControl(int pin) {
+  _pin = pin;
+  pinMode(_pin, OUTPUT);
+}
+
+void LEDControl::on() {
+  digitalWrite(_pin, HIGH);
+}
+
+void LEDControl::off() {
+  digitalWrite(_pin, LOW);
+}
+</code></pre>
+<p>Arquivo principal MyProject.ino:</p>
+<pre><code class="language-cpp">#include "LEDControl.h"
+
+LEDControl led(13);
+
+void setup() {
+  // Inicializa o LED
+}
+
+void loop() {
+  led.on();
+  delay(1000);
+  led.off();
+  delay(1000);
+}
+</code></pre>
+<h4>3.1.4.2. Organizando o Código</h4>
+<ul>
+<li>Diretório de Bibliotecas: Se estiver criando uma biblioteca para reutilização, coloque os arquivos .h e .cpp na pasta libraries do Arduino, para que possam ser usados em outros projetos.</li>
+<li>Múltiplos Arquivos .ino: Se usar múltiplos arquivos .ino, apenas inclua as funções específicas e evite setup() e loop() em mais de um arquivo para evitar conflitos.</li>
+</ul>
+<h4>3.1.4.3. Compilação e Upload</h4>
+<p>O Arduino IDE automaticamente compilará todos os arquivos necessários e fará o upload para a placa. Certifique-se de que todos os arquivos estejam salvos na mesma pasta de projeto.</p>
+<h2>3.2 Instruções de controle de fluxo com repetição</h2>
+<p>Os programas muitas vezes precisam automatizar tarefas repetitivas. A repetição ou <strong>iteração</strong> pode ser obtida pela utilização de instruções compostas chamadas instruções de repetição.</p>
+<p>As três instruções de repetição disponíveis na linguagem do Arduíno são <code>while</code>, <code>do-while</code> e <code>for</code>.</p>
+<h3>3.2.1 O comando <code>while</code></h3>
+<p>A instrução <code>while</code> possui a seguinte sintaxe</p>
+<pre><code class="language-cpp">while (&lt;expressão lógica&gt;) {
+  &lt;instrução ou bloco de instruções&gt;
+}
+</code></pre>
+<p>A máquina executa a instrução <em>while</em> da seguinte forma:</p>
+<ol>
+<li>Calcula o resultado da condição lógica. Se a condição lógica for 0 (falso), passa à instrução do código após o <em>while</em> sem executar a instrução (ou bloco) interna.</li>
+<li>Se a expressão resultar diferente de 0 (verdadeiro), a instrução ou o bloco de instruções internos (delimitados pelas chaves) será executado.</li>
+<li>Após executar a primeira vez o bloco de instruções, a máquina volta a testar a condição lógica. <strong>Enquanto</strong> a condição permanecer diferente de 0 (verdadeira) o compilador repetirá a execução do bloco. Cada execução é normalmente referida como um <em><strong>loop</strong></em>.</li>
+<li>A repetição da instrução ou do bloco de instruções internos será interrompida **quando a condição lógica for 0<em>. Nesse momento, o computador passará a executar a instrução após o *while</em>.</li>
+</ol>
+<h4>3.2.1.1 Controle das repetições com <strong>contador</strong></h4>
+<p>É muito comum a repetição ser controlada por uma variável de contagem. No exemplo abaixo utiliza-se a variável designada <em>cont</em></p>
+<pre><code class="language-cpp">cont = 1;
+while (cont&lt;=50) {
+  &lt;instrução ou bloco de instruções&gt;
+  cont = cont + 1;
+}
+</code></pre>
+<p>O comando será executado da seguinte forma:</p>
+<ol>
+<li>Inicialmente a máquina executa a instrução de atribuição <code>cont = 1</code>. A operação é normalmente chamada de <strong>inicialização</strong> da variável de controle.</li>
+<li>Em seguida, executa a expressão lógica <code>cont&lt;50</code>, que retorna 1, consequentemente levando à execução de</li>
+</ol>
+<pre><code class="language-cpp">  &lt;instrução ou bloco de instruções&gt;
+  cont = cont + 1;
+</code></pre>
+<ol start="3">
+<li>Após executar a instrução ou bloco, a máquina <strong>incrementa</strong> a variável <em>cont</em> de 1, que passa a armazenar 2, e retorna para executar a expressão lógica.</li>
+<li>A execução das instruções do bloco ocorrerá 50 vezes - iniciando com o valor de <em>cont</em> igual a 1 até o valor de cont igual a 50, pois nesse intervalo <code>cont&lt;=50</code>, logo retornando valor lógico 1.</li>
+<li>Na última repetição <em>cont</em> passará a valer 51, logo a expressão <code>cont&lt;=50</code> retornará 0.</li>
+</ol>
+<p>Ao invés de utilizar o limite 50, pode-se utilizar uma variável para a qual preliminarmente seja atribuído um valor limite. O importante é inicializar adequadamente a variável de controle, de modo que <strong>o número de <em>loops</em> desejado seja alcançado no intervalo desde sua inicialização até o valor limite estabelecido na condição de guarda.</strong></p>
+<p>Caso a variável <em>cont</em> não seja incrementada, a estrutura permanecerá em ***loop* <strong>infinito</strong>, pois a condição que resulta falso nunca ocorrerá.</p>
+<p>A verificação lógica da condição é realizada no início da estrutura, razão pela qual a estrutura muitas vezes é designada como <strong>instrução de repetição com teste de condição no início</strong>.</p>
+<p>Como já descrito anteriormente, a linguagem C dispõe do operador incremento <code>++</code> que incrementa o operando de 1, portanto a linha de comando <code>cont = cont + 1</code> pode ser substituída por <code>cont++;</code> ou <code>++cont;</code>.</p>
+<p><strong>Salientando novamente</strong>, observe que inserir o operador antes ou depois da variável sinaliza que qualquer outra operação sobre ela será realizada antes ou depois do incremento**.</p>
+<h4>3.2.1.2 Controle das repetições com <em>flag</em></h4>
+<p>Outra situação também muito comum é utilizar uma variável de controle (pode ser chamada de <em>flag</em>) cujo valor determina a interrupção ou não da repetição do bloco de instruções.</p>
+<p>Por exemplo,</p>
+<pre><code class="language-cpp">flag = 1;
+while (flag==1) {
+  &lt;instrução ou bloco de instruções&gt;
+  if (&lt;condição&gt;)
+    flag = 0;
+}
+</code></pre>
+<p>O código será executado da seguinte forma:</p>
+<ol>
+<li>Inicialmente executa-se a instrução de atribuição <code>flag = 1</code>.</li>
+<li>Em seguida, executa-se a expressão lógica <code>flag==1</code>, que retorna 1, consequentemente levando à execução de</li>
+</ol>
+<pre><code class="language-cpp">  &lt;instrução ou bloco de instruções&gt;
+  if (&lt;condição&gt;)
+    flag = 0;
+</code></pre>
+<ol start="3">
+<li>Após executar a instrução ou bloco, a máquina executa a expressão lógica. Se a expressão resultar 1, o valor de <em>flag</em> será modificado para 0. Na execução de <code>flag==1</code> o valor retornado será 0 e o computador passará a executar a instrução seguinte do código.</li>
+<li>O número de <em>loops</em> não é pré-definido, dependendo da condição que pode determinar a mudança da variável <em>flag</em>.</li>
+</ol>
+<h4>3.2.1.3 Instruções <em><strong>break</strong></em> e <em><strong>continue</strong></em></h4>
+<p>Existem duas instruções do Python destinadas a interromper o <em>loop</em> de repetições de instruções compostas de repetição: <code>break</code> e <code>continue</code>.</p>
+<p>As instruções permitem permitem interromper o ciclo de repetições <strong>independentemente da condição de teste do início do comando</strong>.</p>
+<h5>a. <strong>Instrução <code>break</code></strong></h5>
+<p>A instrução <code>break</code> interrompe a execução do <em>loop</em> no ponto em que foi inserida e prossegue a execução do programa a partir da instrução do código seguinte ao <code>while</code>, <code>do-while</code> ou ao <code>for</code>.</p>
+<p>Por exemplo, no código,</p>
+<pre><code class="language-cpp">void setup() {
+  Serial.begin(9600); // Inicializa a comunicação serial
+}
+
+void loop() {
+  int x;
+  while (1){ // loop de while infinito
+    Serial.print("Digite um numero diferente de 0");
+    while (Serial.available() == 0) {}
+    x = Serial.parseInt(); // Lê um número inteiro da entrada serial
+    while (Serial.available() &gt; 0) Serial.read(); // limpa buffer
+    if (x == 0) break; // saída se o digito igual a 0
+  }
+  Serial.println("O numero lido e igual a 0. Digite outro numero");
+  delay(1000);
+}
+</code></pre>
+<h5>b. <strong>Instrução <code>continue</code></strong></h5>
+<p>A instrução <code>continue</code> interrompe a execução do <em>loop</em> no ponto em que foi inserido e remete a execução para o próximo teste de condição do <code>while</code> (ou <code>do-while</code>) ou para o próximo <em>loop</em> do <code>for</code>. Por exemplo,</p>
+<pre><code class="language-cpp">void setup() {
+  Serial.begin(9600); // Inicializa a comunicação serial
+}
+
+void loop() {
+  int x;
+  while (1){ // loop de while infinito
+    Serial.print("Digite um numero diferente de 0");
+    while (Serial.available() == 0) {}
+    x = Serial.parseInt(); // Lê um número inteiro da entrada serial
+    while (Serial.available() &gt; 0) Serial.read(); // limpa buffer
+    if (x == 0) continue; // saída se o digito igual a 0
+  }
+  Serial.println("O numero lido e igual a 0. Digite outro numero");
+  delay(1000);
+}
+</code></pre>
+<p>Compare com o código anterior.</p>
+<h3>3.2.2 O comando <code>do-while</code></h3>
+<p>A instrução <code>do-while</code> possui a seguinte sintaxe</p>
+<pre><code class="language-cpp">do {
+  &lt;instrução ou bloco de instruções&gt;
+}
+while (&lt;condição&gt;);
+</code></pre>
+<p>O compilador executa a instrução <code>do-while</code> da seguinte forma:</p>
+<ol>
+<li>Executa a primeira vez a instrução interna ao <em>do</em>. Ou seja, diferentemente do <em>while</em>, <strong>o comando <em>do-while</em> assegura a repetição pelo menos uma vez da instrução ou bloco de instruções</strong>.</li>
+<li>Após executar a primeira vez a instrução (ou bloco de instruções), a máquina calcula o resultado da condição lógica.
+Se a condição resultar 0 (falso), passa à execução da instrução do código após o <em>do-while</em>, sem executar novo <em>loop</em>.</li>
+<li>Se a condição for diferente de 0 (verdadeiro), a instrução ou o bloco de instruções internos (delimitados pelas chaves) será executado novamente. Novo <em>loop</em>.</li>
+<li>O processo se repete <strong>enquanto</strong> a expressão lógica de condição resultar 1.</li>
+<li>A repetição da instrução ou do bloco de instruções internos será interrompida <strong>quando o resultado da expressão lógica for 0</strong>.
+Nesse momento, a máquina passará a executar a instrução após o <em>do-while</em>.</li>
+</ol>
+<p>O comando <code>do-while</code> é chamado de comando de repetição com <strong>teste de condição no fim da estrutura</strong>.</p>
+<h4>3.2.2.1 Controle das repetições com <strong>contador</strong></h4>
+<p>No caso do comando <code>do-while</code> o contador sempre deverá computar um <em>loop</em>. No exemplo abaixo utiliza-se a variável designada <em>cont</em></p>
+<pre><code class="language-cpp">cont = 1;
+do {
+  &lt;instrução ou bloco de instruções&gt;
+  cont = cont + 1;
+}
+while (cont&lt;=50);
+</code></pre>
+<p>A execução do código é similar à aplicação com o <code>while</code>.</p>
+<h4>3.2.2.2 Controle das repetições com <em>flag</em></h4>
+<p>No caso da utilização do <em>flag</em> é bom lembrar que pelo menos uma execução do comando ou bloco de comandos interno à estrutura ocorrerá.<br/>
+Situações em que pode não ocorrer execução alguma das instruções do <em>loop</em> são mais adequadamente tratadas pelo <em>while</em>, ou usando-se os comandos <em><strong>break</strong></em> ou <em><strong>continue</strong></em>.</p>
+<h3>3.2.3 O comando <code>for</code></h3>
+<p>O loop <code>for</code> na linguagem do Arduíno é similar ao C, normalmente usado para <strong>iterar sobre uma sequência de valores</strong>. A instrução <code>for</code> possui a seguinte sintaxe</p>
+<pre><code class="language-cpp">for (&lt;inicialização da variável de controle&gt;;&lt;condição&gt;;&lt;incremento&gt;) {
+  &lt;instrução ou bloco de instruções&gt;
+}
+</code></pre>
+<p>A instrução será executada da seguinte forma:</p>
+<ol>
+<li>Inicializa-se a variável de controle conforme o comando de atribuição do argumento.</li>
+<li>A máquina verifica a condição.
+Se a condição resultar 0 (falso), passa à execução da instrução do código após o <em>for</em>, sem executar o <em>loop</em>.</li>
+<li>Se a verificação de condição resultar diferente de 0 (verdadeiro), a instrução ou o bloco de instruções internos (delimitados pelas chaves) será executado.</li>
+<li>Após o <em>loop</em> a variável de controle é atualizada conforme o &lt;incremento&gt; especificado no argumento do <code>for</code>.</li>
+<li>A condição é calculada novamente e o processo se repete até que resulte valor lógico igual a 0.</li>
+</ol>
+<p>O <em>loop</em> infinito pode ocorrer se não for especificada a condição de controle</p>
+<pre><code class="language-cpp">for (&lt;inicialização da variável de controle&gt;; ;&lt;incremento&gt;) {
+  &lt;instrução ou bloco de instruções&gt;
+}
+</code></pre>
+<p>É possível e comum declarar a variável de controle diretamente dentro do argumento do <code>for</code>. A variável terá escopo limitado ao loop <code>for</code>. Por exemplo,</p>
+<pre><code class="language-cpp">for (int i=0;i&lt;N;i++&gt;){
+    &lt;bloco de instruções&gt;
+}
+</code></pre>
+<p>O comando <code>for</code> também admite a utilização dos comandos <em><strong>break</strong></em> ou <em><strong>continue</strong></em>.</p>
+</article><div class="chapter-nav"><a href="progArduino_cap2.html"><span class="dir">← anterior</span>Programação com Arduíno - Capítulo 2</a><a class="next" href="progArduino_cap4.md"><span class="dir">próximo →</span>Programação com Arduíno - Capítulo 4</a></div></div></main>
+<footer><div class="container"><p>© 2026 · Prof. Clayton J A Silva</p><p><a href="https://claytonjasilva.github.io">claytonjasilva.github.io</a></p></div></footer>
+</body></html>
