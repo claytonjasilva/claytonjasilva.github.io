@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Prática 3 — Projeto de um sistema combinacional | Sistemas Digitais</title>
+  <style>
+    :root{
+      --bg:#0a0e17; --surface:#111827; --surface2:#0f172a; --border:#243044;
+      --text:#e5edf6; --muted:#94a3b8; --accent:#00c2ff; --accent2:#7c3aed;
+      --ok:#22c55e; --warn:#f59e0b;
+      --font-sans:Inter,Segoe UI,Arial,sans-serif;
+      --font-mono:"JetBrains Mono",Consolas,monospace;
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0;background:var(--bg);color:var(--text);font-family:var(--font-sans);line-height:1.65}
+    a{color:var(--accent);text-decoration:none}
+    a:hover{text-decoration:underline}
+    .container{max-width:1000px;margin:0 auto;padding:0 2rem}
+    nav{position:sticky;top:0;z-index:100;background:rgba(10,14,23,.9);backdrop-filter:blur(12px);
+      border-bottom:1px solid var(--border);padding:1rem 0}
+    nav .container{display:flex;justify-content:space-between;align-items:center;gap:1rem;flex-wrap:wrap}
+    .nav-brand{font-family:var(--font-mono);font-size:.82rem;color:var(--accent)}
+    .nav-links{display:flex;gap:1.2rem;list-style:none;margin:0;padding:0;flex-wrap:wrap}
+    .nav-links a{font-size:.82rem;color:var(--muted)}
+    .nav-links a:hover{color:var(--text);text-decoration:none}
+    .hero{padding:4.5rem 0 3rem;background:
+      radial-gradient(circle at 78% 18%,rgba(124,58,237,.14),transparent 32%),
+      radial-gradient(circle at 18% 30%,rgba(0,194,255,.10),transparent 30%)}
+    .eyebrow{font-family:var(--font-mono);text-transform:uppercase;letter-spacing:.12em;font-size:.72rem;color:var(--accent);margin-bottom:.7rem}
+    h1{font-size:clamp(2rem,5vw,3.6rem);line-height:1.08;margin:.2rem 0 1rem;font-weight:700}
+    h1 strong{color:var(--accent);font-weight:700}
+    .lead{max-width:780px;color:var(--muted);font-size:1.02rem}
+    .section{padding:3rem 0;border-top:1px solid var(--border)}
+    .section-title{display:flex;align-items:center;gap:.8rem;font-family:var(--font-mono);
+      text-transform:uppercase;letter-spacing:.1em;font-size:.72rem;color:var(--accent2);margin-bottom:1rem}
+    .section-title::after{content:"";height:1px;background:var(--border);flex:1}
+    h2{font-size:1.55rem;margin:.2rem 0 1rem}
+    h3{font-size:1.05rem;margin:1.4rem 0 .7rem}
+    p{margin:.55rem 0 1rem;color:#cbd5e1}
+    .card{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:1.25rem 1.4rem;margin:1rem 0}
+    .tool-card{border-left:3px solid var(--accent)}
+    .note{background:rgba(245,158,11,.07);border:1px solid rgba(245,158,11,.24);
+      border-left:3px solid var(--warn);border-radius:8px;padding:1rem 1.15rem;color:#cbd5e1;margin:1rem 0}
+    .tip{background:rgba(34,197,94,.06);border:1px solid rgba(34,197,94,.22);
+      border-left:3px solid var(--ok);border-radius:8px;padding:1rem 1.15rem;color:#cbd5e1;margin:1rem 0}
+    .steps{counter-reset:step;display:flex;flex-direction:column;gap:1rem;margin-top:1.2rem}
+    .step{counter-increment:step;background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:1.25rem 1.4rem}
+    .step h3{display:flex;gap:.75rem;align-items:flex-start;margin:0 0 .75rem}
+    .step h3::before{content:counter(step,decimal-leading-zero);font-family:var(--font-mono);font-size:.72rem;
+      color:var(--accent2);background:rgba(124,58,237,.1);border:1px solid rgba(124,58,237,.25);
+      border-radius:4px;padding:.18rem .48rem;flex-shrink:0;margin-top:.14rem}
+    .task{margin:.8rem 0 0;padding-left:1.35rem;color:#cbd5e1}
+    .task li{margin:.45rem 0}
+    .io-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1rem;margin:1rem 0}
+    .io-card{background:var(--surface2);border:1px solid var(--border);border-radius:8px;padding:1rem 1.1rem}
+    .io-card h3{margin:0 0 .6rem;color:var(--accent);font-family:var(--font-mono);font-size:.9rem}
+    .io-card ul{margin:.3rem 0;padding-left:1.2rem;color:#cbd5e1}
+    code{font-family:var(--font-mono);color:#bae6fd}
+    .btn{display:inline-block;margin-top:.4rem;padding:.65rem .9rem;border:1px solid rgba(0,194,255,.35);
+      border-radius:6px;background:rgba(0,194,255,.07);font-family:var(--font-mono);font-size:.8rem}
+    footer{border-top:1px solid var(--border);padding:2rem 0;margin-top:2rem}
+    footer .container{display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap}
+    footer p{font-family:var(--font-mono);font-size:.78rem;color:var(--muted);margin:0}
+    @media(max-width:700px){.container{padding:0 1.2rem}.nav-links{display:none}.hero{padding:3rem 0 2.2rem}.io-grid{grid-template-columns:1fr}}
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="container">
+    <span class="nav-brand">sisdig · prática 3</span>
+    <ul class="nav-links">
+      <li><a href="#problema">Problema</a></li>
+      <li><a href="#projeto">Projeto</a></li>
+      <li><a href="#implementacao">Implementação</a></li>
+      <li><a href="../sisdig.html">← disciplina</a></li>
+    </ul>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="container">
+    <p class="eyebrow">Sistemas Digitais · Práticas de Laboratório</p>
+    <h1>Prática 3 — <strong>projeto de um sistema combinacional</strong></h1>
+    <p class="lead">Modelagem, minimização por mapas de Karnaugh, simulação e implementação física de um sistema digital de liberação e alarme.</p>
+  </div>
+</header>
+
+<main class="container">
+
+  <section class="section" id="problema">
+    <p class="section-title">01 / situação-problema</p>
+    <h2>Sistema de segurança de uma máquina</h2>
+
+    <div class="card tool-card">
+      <p>Uma máquina deve ser controlada por um <strong>circuito combinacional de segurança</strong>. O circuito recebe quatro informações binárias, representadas fisicamente por chaves do tipo <em>push-button</em>, e produz sinais para indicar a liberação da máquina ou uma condição de alarme.</p>
+      <p>Na montagem didática, os <em>push-buttons</em> apenas simulam os sensores e comandos reais. Um LED verde representa o circuito de acionamento da máquina, enquanto um LED vermelho e um buzzer representam o circuito de alarme.</p>
+    </div>
+
+    <div class="io-grid">
+      <div class="io-card">
+        <h3>Entradas</h3>
+        <ul>
+          <li><strong>H</strong> — comando de habilitação pressionado;</li>
+          <li><strong>A</strong> — autorização do operador confirmada;</li>
+          <li><strong>P</strong> — proteção da máquina fechada;</li>
+          <li><strong>T</strong> — temperatura acima do limite.</li>
+        </ul>
+      </div>
+      <div class="io-card">
+        <h3>Saídas</h3>
+        <ul>
+          <li><strong>L</strong> — liberação da máquina, indicada pelo LED verde;</li>
+          <li><strong>X</strong> — alarme, indicado simultaneamente pelo LED vermelho e pelo buzzer.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3 style="margin-top:0">Regras de funcionamento</h3>
+      <ol class="task">
+        <li>A máquina somente deve ser liberada quando o comando de habilitação estiver pressionado, o operador estiver autorizado, a proteção estiver fechada e a temperatura não estiver acima do limite.</li>
+        <li>O alarme somente deve ser acionado quando o comando de habilitação estiver pressionado e pelo menos uma das seguintes condições ocorrer: operador não autorizado, proteção aberta ou temperatura acima do limite.</li>
+        <li>Quando o comando de habilitação não estiver pressionado, tanto a liberação quanto o alarme deverão permanecer desativados, independentemente das demais entradas.</li>
+        <li>As saídas de liberação e de alarme não podem permanecer ativas simultaneamente.</li>
+      </ol>
+    </div>
+
+    <div class="note">
+      <strong>Convenção:</strong> considere nível lógico 1 quando a condição descrita pela entrada estiver presente e nível lógico 0 quando estiver ausente. Utilize resistores de <em>pull-down</em> ou <em>pull-up</em> para impedir que as entradas fiquem flutuando.
+    </div>
+  </section>
+
+  <section class="section" id="projeto">
+    <p class="section-title">02 / modelagem e minimização</p>
+    <h2>Projeto lógico</h2>
+    <p>Converta as regras de funcionamento em funções booleanas e obtenha um circuito simplificado.</p>
+
+    <div class="steps">
+      <article class="step">
+        <h3>Construção da tabela-verdade</h3>
+        <ul class="task">
+          <li>Liste todas as combinações possíveis das entradas <strong>H</strong>, <strong>A</strong>, <strong>P</strong> e <strong>T</strong>.</li>
+          <li>Determine, para cada combinação, os valores das saídas <strong>L</strong> e <strong>X</strong>.</li>
+          <li>Verifique se nenhuma linha da tabela apresenta as duas saídas ativas simultaneamente.</li>
+        </ul>
+      </article>
+
+      <article class="step">
+        <h3>Mapas de Karnaugh</h3>
+        <ul class="task">
+          <li>Construa um mapa de Karnaugh de quatro variáveis para a saída <strong>L</strong>.</li>
+          <li>Construa outro mapa de Karnaugh de quatro variáveis para a saída <strong>X</strong>.</li>
+          <li>Organize linhas e colunas em código Gray e considere a adjacência circular das células localizadas nas extremidades.</li>
+          <li>Forme os maiores agrupamentos possíveis e obtenha as expressões minimizadas das duas saídas.</li>
+        </ul>
+      </article>
+
+      <article class="step">
+        <h3>Esquema do circuito</h3>
+        <ul class="task">
+          <li>Represente o circuito das duas saídas utilizando exclusivamente portas <strong>AND</strong>, <strong>OR</strong> e <strong>NOT</strong>.</li>
+          <li>Utilize, no máximo, <strong>quatro portas AND, quatro portas OR e quatro portas NOT</strong> no conjunto do circuito.</li>
+          <li>Quando necessário, associe portas de duas entradas para implementar operações com três ou quatro variáveis.</li>
+          <li>Identifique as entradas, os sinais intermediários e as duas saídas no esquema.</li>
+        </ul>
+      </article>
+    </div>
+  </section>
+
+  <section class="section" id="implementacao">
+    <p class="section-title">03 / simulação e montagem</p>
+    <h2>Verificação do projeto</h2>
+
+    <div class="steps">
+      <article class="step">
+        <h3>Simulação no EasyEDA</h3>
+        <p>Elabore o esquema e simule o circuito antes de realizar a montagem física.</p>
+        <ul class="task">
+          <li>Represente as entradas inicialmente com componentes <em>Logic State</em>.</li>
+          <li>Represente as saídas com indicadores lógicos ou LEDs virtuais.</li>
+          <li>Teste as 16 combinações das entradas e compare os resultados com a tabela-verdade.</li>
+          <li>Registre o esquema final e as evidências da simulação.</li>
+        </ul>
+        <a class="btn" href="https://easyeda.com/" target="_blank" rel="noopener noreferrer">Acessar o EasyEDA →</a>
+      </article>
+
+      <article class="step">
+        <h3>Implementação física</h3>
+        <ul class="task">
+          <li>Monte o circuito em protoboard utilizando circuitos integrados com portas AND, OR e NOT.</li>
+          <li>Utilize quatro <em>push-buttons</em> para representar as entradas, cada um com resistor de polarização adequado.</li>
+          <li>Conecte um LED verde à saída <strong>L</strong> e um LED vermelho à saída <strong>X</strong>, sempre com resistores limitadores de corrente.</li>
+          <li>Conecte o buzzer à saída <strong>X</strong>. Se a corrente exigida pelo componente superar a capacidade da porta lógica, utilize um transistor de acionamento e um resistor de base.</li>
+          <li>Teste as condições de liberação, de bloqueio e de alarme e compare o comportamento com a simulação.</li>
+        </ul>
+      </article>
+    </div>
+
+    <div class="note">
+      <strong>Atenção:</strong> desligue a alimentação antes de alterar as conexões. Confira a tensão de alimentação e a pinagem de cada circuito integrado no respectivo <em>datasheet</em>. Não conecte LEDs sem resistores limitadores de corrente.
+    </div>
+  </section>
+
+  <section class="section">
+    <p class="section-title">04 / resultado esperado</p>
+    <h2>Entrega da prática</h2>
+    <div class="card">
+      <p>Ao final da atividade, o grupo deverá apresentar: <strong>(a)</strong> a tabela-verdade completa; <strong>(b)</strong> os dois mapas de Karnaugh com os agrupamentos; <strong>(c)</strong> as expressões booleanas minimizadas; <strong>(d)</strong> o esquema lógico dentro do limite de portas estabelecido; <strong>(e)</strong> os resultados da simulação; e <strong>(f)</strong> a implementação física funcionando em protoboard.</p>
+    </div>
+    <div class="tip">
+      A avaliação deverá considerar a coerência entre o problema, a tabela-verdade, os mapas K, as expressões minimizadas, a simulação e o comportamento do circuito físico.
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="container">
+    <p>© 2026 · Prof. Clayton J A Silva · Sistemas Digitais</p>
+    <p><a href="../sisdig.html">Voltar à página da disciplina</a></p>
+  </div>
+</footer>
+</body>
+</html>
