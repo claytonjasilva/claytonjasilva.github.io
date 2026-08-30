@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Lista de exercícios de Programação Linear, baseada em Daniel Augusto Moreira, Pesquisa Operacional: curso introdutório." />
+  <title>Exercícios de Programação Linear — Prof. Clayton J A Silva</title>
+  <style>
+    :root {
+      --bg: #f5f5f3;
+      --paper: #ffffff;
+      --ink: #171717;
+      --muted: #66645f;
+      --line: #d9d8d3;
+      --accent: #e96f2d;
+      --accent-soft: #fff0e7;
+      --dark: #111111;
+      --radius: 16px;
+      --shadow: 0 10px 28px rgba(0,0,0,.07);
+    }
+
+    * { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--ink);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.65;
+    }
+
+    a { color: inherit; }
+
+    .topbar {
+      background: var(--dark);
+      color: #fff;
+      border-bottom: 1px solid #2a2a2a;
+    }
+
+    .topbar-inner {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 14px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .brand {
+      font-size: .92rem;
+      font-weight: 700;
+      letter-spacing: .02em;
+    }
+
+    .nav a {
+      text-decoration: none;
+      color: #d7d7d7;
+      font-size: .9rem;
+      margin-left: 18px;
+    }
+
+    .nav a:hover { color: #fff; }
+
+    .hero {
+      background: var(--dark);
+      color: #fff;
+      padding: 58px 24px 66px;
+    }
+
+    .hero-inner {
+      max-width: 1120px;
+      margin: 0 auto;
+    }
+
+    .eyebrow {
+      display: inline-block;
+      margin-bottom: 14px;
+      font-size: .78rem;
+      text-transform: uppercase;
+      letter-spacing: .16em;
+      color: #ff9a62;
+      font-weight: 800;
+    }
+
+    h1 {
+      margin: 0;
+      max-width: 760px;
+      font-size: clamp(2.3rem, 6vw, 4.7rem);
+      line-height: .98;
+      letter-spacing: -.055em;
+      font-weight: 800;
+    }
+
+    .hero p {
+      max-width: 760px;
+      margin: 22px 0 0;
+      color: #cfcfcf;
+      font-size: 1.04rem;
+    }
+
+    .meta {
+      margin-top: 28px;
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .tag {
+      border: 1px solid #3a3a3a;
+      border-radius: 999px;
+      padding: 7px 12px;
+      font-size: .82rem;
+      color: #e4e4e4;
+    }
+
+    main {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 42px 24px 72px;
+    }
+
+    .intro-grid {
+      display: grid;
+      grid-template-columns: 1.2fr .8fr;
+      gap: 24px;
+      margin-bottom: 34px;
+    }
+
+    .panel,
+    .exercise {
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+    }
+
+    .panel { padding: 24px; }
+
+    .panel h2,
+    .section-title {
+      margin: 0 0 10px;
+      font-size: 1.3rem;
+      letter-spacing: -.02em;
+    }
+
+    .panel p { margin: 0; color: var(--muted); }
+
+    .source-box {
+      border-left: 4px solid var(--accent);
+    }
+
+    .source-box strong { color: var(--ink); }
+
+    .section-kicker {
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: .13em;
+      font-size: .78rem;
+      font-weight: 800;
+      margin: 44px 0 6px;
+    }
+
+    .section-title {
+      font-size: 2rem;
+      margin-bottom: 22px;
+    }
+
+    .exercise-list {
+      display: grid;
+      gap: 20px;
+    }
+
+    .exercise {
+      padding: 24px;
+      overflow: hidden;
+    }
+
+    .exercise-head {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 14px;
+      border-bottom: 1px solid var(--line);
+      padding-bottom: 12px;
+    }
+
+    .exercise-head h3 {
+      margin: 0;
+      font-size: 1.18rem;
+    }
+
+    .badge {
+      white-space: nowrap;
+      color: var(--accent);
+      font-size: .78rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+    }
+
+    .exercise p { margin: 0 0 10px; }
+
+    .exercise ul,
+    .exercise ol { margin: 8px 0 12px 22px; }
+
+    .exercise li { margin: 5px 0; }
+
+    .math {
+      margin: 14px 0;
+      padding: 14px 18px;
+      background: #f7f7f5;
+      border: 1px solid #e4e3df;
+      border-radius: 12px;
+      font-family: "Times New Roman", Times, serif;
+      font-size: 1.08rem;
+      overflow-x: auto;
+    }
+
+    .math div { margin: 4px 0; }
+
+    .ask {
+      margin-top: 14px;
+      padding: 12px 14px;
+      border-radius: 10px;
+      background: var(--accent-soft);
+      border: 1px solid #ffd8c2;
+    }
+
+    .ask strong { color: #a54412; }
+
+    .resource-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+      margin: 14px 0;
+    }
+
+    .resource-card {
+      background: #f7f7f5;
+      border: 1px solid #e5e4df;
+      border-radius: 12px;
+      padding: 14px;
+    }
+
+    .resource-card h4 { margin: 0 0 8px; }
+    .resource-card ul { margin-bottom: 0; }
+
+    footer {
+      background: var(--dark);
+      color: #bcbcbc;
+      padding: 28px 24px;
+    }
+
+    .footer-inner {
+      max-width: 1120px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      gap: 18px;
+      flex-wrap: wrap;
+      font-size: .88rem;
+    }
+
+    .footer-inner a {
+      color: #fff;
+      text-decoration: none;
+    }
+
+    @media (max-width: 760px) {
+      .intro-grid,
+      .resource-grid { grid-template-columns: 1fr; }
+      .nav { width: 100%; }
+      .nav a { margin: 0 14px 0 0; }
+      .hero { padding-top: 42px; }
+      .exercise { padding: 19px; }
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="topbar-inner">
+      <div class="brand">Prof. Clayton J A Silva</div>
+      <nav class="nav" aria-label="Navegação principal">
+        <a href="../progLinear.html">Programação Linear</a>
+        <a href="#exercicios">Exercícios</a>
+        <a href="#referencia">Referência</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="hero-inner">
+      <span class="eyebrow">Programação Linear · Lista de exercícios</span>
+      <h1>Exercícios de<br>Programação Linear</h1>
+      <p>
+        Questões para prática de modelagem matemática e resolução gráfica de problemas de
+        programação linear com duas variáveis de decisão.
+      </p>
+      <div class="meta">
+        <span class="tag">modelagem</span>
+        <span class="tag">método gráfico</span>
+        <span class="tag">maximização e minimização</span>
+        <span class="tag">análise de sensibilidade</span>
+      </div>
+    </div>
+  </section>
+
+  <main>
+    <section class="intro-grid">
+      <article class="panel">
+        <h2>Orientação</h2>
+        <p>
+          Antes de resolver cada exercício, identifique as variáveis de decisão, escreva a
+          função objetivo, formule as restrições e estabeleça as condições de não negatividade.
+          Nos exercícios gráficos, represente as retas-limite, determine a região viável e
+          avalie a função objetivo nos vértices relevantes.
+        </p>
+      </article>
+
+      <aside class="panel source-box" id="referencia">
+        <h2>Referência</h2>
+        <p>
+          Exercícios adaptados de <strong>Daniel Augusto Moreira</strong>,
+          <em>Pesquisa operacional: curso introdutório</em>, 2ª edição,
+          capítulo de Programação Linear.
+        </p>
+      </aside>
+    </section>
+
+    <div class="section-kicker">01 / prática</div>
+    <h2 class="section-title" id="exercicios">Exercícios propostos</h2>
+
+    <section class="exercise-list">
+      <article class="exercise">
+        <div class="exercise-head">
+          <h3>Exercício 1 — Dois produtos e dois equipamentos</h3>
+          <span class="badge">modelagem + gráfico</span>
+        </div>
+        <p>
+          Uma empresa fabrica os produtos A e B utilizando dois equipamentos que limitam a
+          capacidade de produção. Em determinado período estão disponíveis 30 horas do
+          equipamento 1 e 80 horas do equipamento 2.
+        </p>
+        <div class="resource-grid">
+          <div class="resource-card">
+            <h4>Produto A</h4>
+            <ul>
+              <li>1 h do equipamento 1 por unidade;</li>
+              <li>2 h do equipamento 2 por unidade;</li>
+              <li>lucro unitário: R$ 150.</li>
+            </ul>
+          </div>
+          <div class="resource-card">
+            <h4>Produto B</h4>
+            <ul>
+              <li>não utiliza o equipamento 1;</li>
+              <li>2 h do equipamento 2 por unidade;</li>
+              <li>lucro unitário: R$ 50.</li>
+            </ul>
+          </div>
+        </div>
+        <div class="ask"><strong>Pede-se:</strong> a) formular o modelo de programação linear visando maximizar o lucro; b) resolver graficamente.</div>
+      </article>
+
+      <article class="exercise">
+        <div class="exercise-head">
+          <h3>Exercício 2 — Produção de ternos</h3>
+          <span class="badge">modelagem + gráfico</span>
+        </div>
+        <p>
+          Uma empresa do ramo de confecções deve decidir quanto produzir de dois modelos de
+          terno, Executivo Master e Caibem. A produção está limitada pelas horas disponíveis
+          de costura e acabamento. Há 180 horas-máquina de costura e, no máximo, 240
+          homens-hora de acabamento.
+        </p>
+        <div class="resource-grid">
+          <div class="resource-card">
+            <h4>Executivo Master</h4>
+            <ul>
+              <li>lucro unitário: R$ 120;</li>
+              <li>costura: 2 h-máquina/unidade;</li>
+              <li>acabamento: 2 homens-hora/unidade.</li>
+            </ul>
+          </div>
+          <div class="resource-card">
+            <h4>Caibem</h4>
+            <ul>
+              <li>lucro unitário: R$ 70;</li>
+              <li>costura: 1 h-máquina/unidade;</li>
+              <li>acabamento: 4 homens-hora/unidade.</li>
+            </ul>
+          </div>
+        </div>
+        <div class="ask"><strong>Pede-se:</strong> a) formular o modelo de programação linear; b) resolver graficamente.</div>
+      </article>
+
+      <article class="exercise">
+        <div class="exercise-head">
+          <h3>Exercício 3 — Dois produtos e dois recursos escassos</h3>
+          <span class="badge">modelo dado parcialmente</span>
+        </div>
+        <p>Na fabricação dos produtos X e Y são válidas as seguintes restrições:</p>
+        <div class="math">
+          <div>x + 2y ≤ 80</div>
+          <div>2x + 2y ≤ 120</div>
+          <div>x, y ≥ 0</div>
+        </div>
+        <p>
+          Cada unidade de X fornece lucro de R$ 20 e cada unidade de Y fornece lucro de R$ 30.
+        </p>
+        <div class="ask"><strong>Pede-se:</strong> a) formular o modelo completo visando maximizar o lucro; b) resolver graficamente.</div>
+      </article>
+
+      <article class="exercise">
+        <div class="exercise-head">
+          <h3>Exercício 4 — Maximização</h3>
+          <span class="badge">método gráfico</span>
+        </div>
+        <div class="math">
+          <div><strong>Maximizar</strong> Z = 3x + y</div>
+          <div><strong>Sujeito a:</strong></div>
+          <div>2x + y ≤ 30</div>
+          <div>x + 4y ≤ 40</div>
+          <div>x, y ≥ 0</div>
+        </div>
+        <div class="ask"><strong>Pede-se:</strong> resolver graficamente.</div>
+      </article>
+
+      <article class="exercise">
+        <div class="exercise-head">
+          <h3>Exercício 5 — Maximização com três restrições</h3>
+          <span class="badge">método gráfico</span>
+        </div>
+        <div class="math">
+          <div><strong>Maximizar</strong> Z = x + 2y</div>
+          <div><strong>Sujeito a:</strong></div>
+          <div>x ≤ 3</div>
+          <div>y ≤ 5</div>
+          <div>2x + 2y ≤ 12</div>
+          <div>x, y ≥ 0</div>
+        </div>
+        <div class="ask"><strong>Pede-se:</strong> resolver graficamente.</div>
+      </article>
+
+      <article class="exercise">
+        <div class="exercise-head">
+          <h3>Exercício 6 — Minimização</h3>
+          <span class="badge">método gráfico</span>
+        </div>
+        <div class="math">
+          <div><strong>Minimizar</strong> Z = 2x + y</div>
+          <div><strong>Sujeito a:</strong></div>
+          <div>x + y ≥ 10</div>
+          <div>2x + 3y ≥ 14</div>
+          <div>x, y ≥ 0</div>
+        </div>
+        <div class="ask"><strong>Pede-se:</strong> resolver graficamente.</div>
+      </article>
+
+      <article class="exercise">
+        <div class="exercise-head">
+          <h3>Exercício 7 — Minimização com duas restrições</h3>
+          <span class="badge">método gráfico</span>
+        </div>
+        <div class="math">
+          <div><strong>Minimizar</strong> Z = 4x + y</div>
+          <div><strong>Sujeito a:</strong></div>
+          <div>2x + 2y ≥ 10</div>
+          <div>x + 6y ≥ 20</div>
+          <div>x, y ≥ 0</div>
+        </div>
+        <div class="ask"><strong>Pede-se:</strong> resolver graficamente.</div>
+      </article>
+
+      <article class="exercise">
+        <div class="exercise-head">
+          <h3>Exercício 8 — Acréscimo de uma hora no equipamento 1</h3>
+          <span class="badge">sensibilidade</span>
+        </div>
+        <p>
+          Retome o Exercício 1. Considere agora que o equipamento 1 tenha 31 horas disponíveis,
+          em vez de 30, mantendo-se inalterada a disponibilidade do equipamento 2.
+        </p>
+        <div class="ask">
+          <strong>Pede-se:</strong> a) resolver graficamente o novo problema; b) determinar o novo lucro total;
+          c) determinar quanto a 31ª hora disponível do equipamento 1 acrescenta ao lucro.
+        </div>
+      </article>
+
+      <article class="exercise">
+        <div class="exercise-head">
+          <h3>Exercício 9 — Acréscimo de uma hora no equipamento 2</h3>
+          <span class="badge">sensibilidade</span>
+        </div>
+        <p>
+          Retome o Exercício 1. Considere agora que a disponibilidade do equipamento 2 passe
+          de 80 para 81 horas, mantendo-se inalterados os demais dados do exercício.
+        </p>
+        <div class="ask">
+          <strong>Pede-se:</strong> a) resolver graficamente o novo problema; b) determinar o novo lucro total;
+          c) determinar quanto a 81ª hora disponível do equipamento 2 acrescenta ao lucro.
+        </div>
+      </article>
+
+      <article class="exercise">
+        <div class="exercise-head">
+          <h3>Exercício 10 — Dois produtos e três recursos</h3>
+          <span class="badge">modelagem + gráfico</span>
+        </div>
+        <p>
+          Uma fábrica dispõe de três recursos em quantidades limitadas. Podem ser produzidos
+          os produtos A e B. Há 1.200 unidades do recurso 1, 400 unidades do recurso 2 e 80
+          unidades do recurso 3. O produto A proporciona lucro unitário de R$ 100 e o produto B,
+          lucro unitário de R$ 300.
+        </p>
+        <div class="resource-grid">
+          <div class="resource-card">
+            <h4>1 unidade do produto A requer</h4>
+            <ul>
+              <li>20 unidades do recurso 1;</li>
+              <li>4 unidades do recurso 2;</li>
+              <li>nenhuma unidade do recurso 3.</li>
+            </ul>
+          </div>
+          <div class="resource-card">
+            <h4>1 unidade do produto B requer</h4>
+            <ul>
+              <li>20 unidades do recurso 1;</li>
+              <li>20 unidades do recurso 2;</li>
+              <li>4 unidades do recurso 3.</li>
+            </ul>
+          </div>
+        </div>
+        <div class="ask"><strong>Pede-se:</strong> a) colocar o problema como um modelo de programação linear; b) resolver graficamente.</div>
+      </article>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+      <span>© 2026 · Prof. Clayton J A Silva</span>
+      <span><a href="../progLinear.html">Voltar para Programação Linear</a></span>
+    </div>
+  </footer>
+</body>
+</html>
