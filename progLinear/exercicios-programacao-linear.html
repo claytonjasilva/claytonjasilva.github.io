@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Lista de exercícios de Programação Linear, baseada em Daniel Augusto Moreira, Pesquisa Operacional: curso introdutório." />
+  <meta name="description" content="Lista de exercícios de Programação Linear, baseada em Daniel Augusto Moreira e em Frederick S. Hillier e Gerald J. Lieberman." />
   <title>Exercícios de Programação Linear — Prof. Clayton J A Silva</title>
   <style>
     :root {
@@ -287,8 +287,9 @@
       <div class="brand">Prof. Clayton J A Silva</div>
       <nav class="nav" aria-label="Navegação principal">
         <a href="../progLinear.html">Programação Linear</a>
-        <a href="#exercicios">Exercícios</a>
-        <a href="#referencia">Referência</a>
+        <a href="#exercicios">Moreira</a>
+        <a href="#hillier">Hillier &amp; Lieberman</a>
+        <a href="#referencia">Referências</a>
       </nav>
     </div>
   </header>
@@ -325,15 +326,17 @@
       <aside class="panel source-box" id="referencia">
         <h2>Referência</h2>
         <p>
-          Exercícios adaptados de <strong>Daniel Augusto Moreira</strong>,
-          <em>Pesquisa operacional: curso introdutório</em>, 2ª edição,
-          capítulo de Programação Linear.
+          Exercícios adaptados de duas referências clássicas: <strong>Daniel Augusto Moreira</strong>, <em>Pesquisa operacional: curso introdutório</em>, e <strong>Frederick S. Hillier e Gerald J. Lieberman</strong>, <em>Introdução à Pesquisa Operacional</em>, especialmente o capítulo de introdução à Programação Linear.
         </p>
       </aside>
     </section>
 
     <div class="section-kicker">01 / prática</div>
-    <h2 class="section-title" id="exercicios">Exercícios propostos</h2>
+    <h2 class="section-title" id="exercicios">Exercícios — Daniel Augusto Moreira</h2>
+    <section class="panel source-box" style="margin-bottom:22px">
+      <h2>Fonte dos exercícios</h2>
+      <p><strong>MOREIRA, Daniel Augusto.</strong> <em>Pesquisa operacional: curso introdutório</em>. 2. ed. São Paulo: Cengage Learning.</p>
+    </section>
 
     <section class="exercise-list">
       <article class="exercise">
@@ -539,6 +542,268 @@
         <div class="ask"><strong>Pede-se:</strong> a) colocar o problema como um modelo de programação linear; b) resolver graficamente.</div>
       </article>
     </section>
+
+
+    <div class="section-kicker">02 / exercícios complementares</div>
+    <h2 class="section-title" id="hillier">Exercícios — Hillier &amp; Lieberman</h2>
+    <section class="panel source-box" style="margin-bottom:22px">
+      <h2>Fonte dos exercícios</h2>
+      <p><strong>HILLIER, Frederick S.; LIEBERMAN, Gerald J.</strong> <em>Introdução à pesquisa operacional</em>. 9. ed. Porto Alegre: AMGH, 2013.</p>
+    </section>
+
+    <section class="exercise-list">
+      <article class="exercise">
+        <div class="exercise-head"><h3>H&amp;L 3.1-1 — Uso de software</h3><span class="badge">exploração</span></div>
+        <p>Escolha um dos problemas já apresentados e resolva-o com um software de Programação Linear, registrando as etapas e a solução obtida.</p>
+      </article>
+
+      <article class="exercise">
+        <div class="exercise-head"><h3>H&amp;L 3.1-2 — Construção da região viável</h3><span class="badge">método gráfico</span></div>
+        <p>Para cada conjunto de restrições a seguir, trace as retas-limite e identifique a região de soluções não negativas que as satisfaz.</p>
+        <div class="resource-grid">
+          <div class="resource-card"><h4>(a)</h4><div class="math"><div>x₁ + 3x₂ ≤ 6</div></div></div>
+          <div class="resource-card"><h4>(b)</h4><div class="math"><div>4x₁ + 3x₂ ≤ 12</div></div></div>
+          <div class="resource-card"><h4>(c)</h4><div class="math"><div>4x₁ + x₂ ≤ 8</div></div></div>
+        </div>
+      </article>
+
+      <article class="exercise">
+        <div class="exercise-head"><h3>H&amp;L 3.1-3 — Retas de função objetivo</h3><span class="badge">função objetivo</span></div>
+        <div class="math"><div><strong>Maximizar</strong> Z = 2x₁ + 3x₂</div></div>
+        <div class="ask"><strong>Pede-se:</strong> desenhar as retas da função objetivo correspondentes a Z = 6, Z = 12 e Z = 18.</div>
+      </article>
+
+      <article class="exercise">
+        <div class="exercise-head"><h3>H&amp;L 3.1-4 — Inclinação e interceptos</h3><span class="badge">geometria da PL</span></div>
+        <div class="math"><div>60x₁ + 40x₂ = 600</div></div>
+        <div class="ask"><strong>Pede-se:</strong> a) encontrar a inclinação e o intercepto da reta; b) verificar a inclinação usando dois pontos de interseção com os eixos; c) usar essas informações para traçar a reta.</div>
+      </article>
+
+      <article class="exercise">
+        <div class="exercise-head"><h3>H&amp;L 3.1-5 — Maximização com três restrições</h3><span class="badge">método gráfico</span></div>
+        <div class="math">
+          <div><strong>Maximizar</strong> Z = 2x₁ + x₂</div>
+          <div>x₂ ≤ 10</div>
+          <div>2x₁ + 5x₂ ≤ 60</div>
+          <div>x₁ + x₂ ≤ 18</div>
+          <div>3x₁ + x₂ ≤ 44</div>
+          <div>x₁, x₂ ≥ 0</div>
+        </div>
+        <div class="ask"><strong>Pede-se:</strong> resolver pelo método gráfico.</div>
+      </article>
+
+      <article class="exercise">
+        <div class="exercise-head"><h3>H&amp;L 3.1-6 — Maximização com região poligonal</h3><span class="badge">método gráfico</span></div>
+        <div class="math">
+          <div><strong>Maximizar</strong> Z = 10x₁ + 20x₂</div>
+          <div>−x₁ + 2x₂ ≤ 15</div>
+          <div>x₁ + x₂ ≤ 12</div>
+          <div>5x₁ + 3x₂ ≤ 45</div>
+          <div>x₁, x₂ ≥ 0</div>
+        </div>
+        <div class="ask"><strong>Pede-se:</strong> resolver graficamente.</div>
+      </article>
+
+      <article class="exercise">
+        <div class="exercise-head"><h3>H&amp;L 3.1-7 — Whitt Window Co.</h3><span class="badge">modelagem + gráfico</span></div>
+        <p>Uma empresa produz janelas com esquadria de madeira e de alumínio. O lucro unitário é de US$ 180 para madeira e US$ 90 para alumínio. Há três funcionários: um produz até 6 esquadrias de madeira por dia; outro, até 4 esquadrias de alumínio; e o terceiro dispõe de 48 pés² de vidro por dia. Cada janela de madeira usa 6 pés² de vidro e cada janela de alumínio, 8 pés².</p>
+        <div class="ask"><strong>Pede-se:</strong> formular o modelo e determinar graficamente a produção diária que maximiza o lucro.</div>
+      </article>
+
+      <article class="exercise">
+        <div class="exercise-head"><h3>H&amp;L 3.1-8 — WyndLight Company</h3><span class="badge">modelagem + gráfico</span></div>
+        <p>A empresa produz dois tipos de luminárias. O produto 1 requer 2 h de estrutura metálica e 1 h de componentes elétricos; o produto 2 requer 1 h de estrutura metálica e 2 h de componentes elétricos. Estão disponíveis, no máximo, 200 h de estrutura metálica e 300 h de componentes elétricos. O lucro unitário é de US$ 1 para o produto 1 e US$ 2 para o produto 2, e a demanda do produto 2 é limitada a 60 unidades.</p>
+        <div class="ask"><strong>Pede-se:</strong> formular e resolver graficamente o modelo.</div>
+      </article>
+
+      <article class="exercise">
+        <div class="exercise-head"><h3>H&amp;L 3.1-9 — Seguros: risco especial e hipotecas</h3><span class="badge">modelagem + gráfico</span></div>
+        <p>Uma empresa comercializa dois produtos: seguro de risco especial e hipotecas. O lucro unitário é de US$ 5 e US$ 2, respectivamente. As necessidades de trabalho são:</p>
+        <div class="resource-grid">
+          <div class="resource-card"><h4>Risco especial</h4><ul><li>Subscrição: 3 h</li><li>Administração: 0 h</li><li>Pedidos de indenização: 2 h</li></ul></div>
+          <div class="resource-card"><h4>Hipotecas</h4><ul><li>Subscrição: 2 h</li><li>Administração: 1 h</li><li>Pedidos de indenização: 0 h</li></ul></div>
+        </div>
+        <p>Disponibilidades: 2.400 h de subscrição, 800 h de administração e 1.200 h de pedidos de indenização.</p>
+        <div class="ask"><strong>Pede-se:</strong> formular e resolver graficamente, verificando a solução ótima pela interseção das restrições relevantes.</div>
+      </article>
+
+      <article class="exercise">
+        <div class="exercise-head"><h3>H&amp;L 3.1-10 — Bolos e Pães</h3><span class="badge">modelagem + gráfico</span></div>
+        <p>A empresa fabrica salsichas e pães para cachorro-quente. Há, no máximo, 200 lb de farinha por semana; cada pão usa 0,1 lb. Existe contrato para entrega de 800 lb de carne suína por semana. A mão de obra disponível é de 200 h/semana. Cada salsicha exige 3 min de trabalho e cada pão, 2 min. O lucro unitário é de US$ 0,80 por salsicha e US$ 0,30 por pão.</p>
+        <div class="ask"><strong>Pede-se:</strong> formular e resolver graficamente o modelo de maximização do lucro.</div>
+      </article>
+
+      <article class="exercise">
+        <div class="exercise-head"><h3>H&amp;L 3.1-11 — Omega: três produtos e três máquinas</h3><span class="badge">modelagem + simplex</span></div>
+        <p>Uma fábrica dispõe semanalmente de 500 h de fresadora, 350 h de torno e 150 h de retificadora. Os tempos por unidade são:</p>
+        <div class="math">
+          <div>Fresadora: P1 = 9, P2 = 3, P3 = 5</div>
+          <div>Torno: P1 = 5, P2 = 4, P3 = 0</div>
+          <div>Retificadora: P1 = 3, P2 = 0, P3 = 2</div>
+        </div>
+        <p>Os lucros unitários são US$ 50, US$ 20 e US$ 25 para os produtos 1, 2 e 3; a produção do produto 3 é limitada a 20 unidades por semana.</p>
+        <div class="ask"><strong>Pede-se:</strong> formular o modelo e solucioná-lo por computador pelo método simplex.</div>
+      </article>
+
+      <article class="exercise">
+        <div class="exercise-head"><h3>H&amp;L 3.1-12 — Coeficiente da função objetivo</h3><span class="badge">análise gráfica</span></div>
+        <div class="math">
+          <div><strong>Maximizar</strong> Z = c₁x₁ + x₂</div>
+          <div>x₁ + x₂ ≤ 6</div>
+          <div>x₁ + 2x₂ ≤ 10</div>
+          <div>x₁, x₂ ≥ 0</div>
+        </div>
+        <div class="ask"><strong>Pede-se:</strong> determinar graficamente a(s) solução(ões) ótima(s) para os diferentes valores de c₁.</div>
+      </article>
+
+      <article class="exercise">
+        <div class="exercise-head"><h3>H&amp;L 3.1-13 — Parâmetro k em uma restrição</h3><span class="badge">sensibilidade</span></div>
+        <div class="math">
+          <div><strong>Maximizar</strong> Z = x₁ + 2x₂</div>
+          <div>−x₁ + x₂ ≤ 2</div>
+          <div>x₂ ≤ 3</div>
+          <div>kx₁ + x₂ ≤ 2k + 3, &nbsp; k ≥ 0</div>
+          <div>x₁, x₂ ≥ 0</div>
+        </div>
+        <p>A solução atualmente utilizada é x₁ = 2, x₂ = 3.</p>
+        <div class="ask"><strong>Pede-se:</strong> usar análise gráfica para determinar os valores de k que tornam essa solução efetivamente ótima.</div>
+      </article>
+
+      <article class="exercise">
+        <div class="exercise-head"><h3>H&amp;L 3.1-14 — Coeficientes c₁ e c₂</h3><span class="badge">sensibilidade</span></div>
+        <div class="math">
+          <div><strong>Maximizar</strong> Z = c₁x₁ + c₂x₂</div>
+          <div>2x₁ + x₂ ≤ 11</div>
+          <div>−x₁ + 2x₂ ≤ 2</div>
+          <div>x₁, x₂ ≥ 0</div>
+        </div>
+        <div class="ask"><strong>Pede-se:</strong> determinar graficamente a(s) solução(ões) ótima(s) em função dos valores de c₁ e c₂.</div>
+      </article>
+
+      <article class="exercise">
+        <div class="exercise-head"><h3>H&amp;L 3.2-1 — Dois produtos, três recursos</h3><span class="badge">modelagem + gráfico</span></div>
+        <p>Considere os recursos Q, R e S, com disponibilidades 2, 2 e 4. O consumo por unidade dos produtos A e B é: Q = (2,1), R = (1,2), S = (3,3). Os lucros unitários são 3 para A e 2 para B.</p>
+        <div class="ask"><strong>Pede-se:</strong> formular, resolver graficamente e verificar a solução ótima por meio da solução simultânea das equações relevantes.</div>
+      </article>
+
+      <article class="exercise">
+        <div class="exercise-head"><h3>H&amp;L 3.2-2 — Região viável dada</h3><span class="badge">conceitual</span></div>
+        <p>Considere uma região viável poligonal com vértices (0,0), (0,2), (3,3), (6,3) e (6,0).</p>
+        <div class="ask"><strong>Pede-se:</strong> julgar afirmações sobre possíveis soluções ótimas e múltiplas soluções ótimas, justificando graficamente.</div>
+      </article>
+
+      <article class="exercise">
+        <div class="exercise-head"><h3>H&amp;L 3.2-3 — Escolha de investimentos</h3><span class="badge">modelagem + gráfico</span></div>
+        <p>Você dispõe de US$ 6.000 para investir e de até 600 horas no próximo verão. O investimento A exige US$ 5.000 e 400 h e gera lucro estimado de US$ 4.500. O investimento B exige US$ 4.000 e 500 h e também gera lucro estimado de US$ 4.500. É possível adquirir frações de cada participação.</p>
+        <div class="ask"><strong>Pede-se:</strong> formular e resolver graficamente o problema para maximizar o lucro estimado.</div>
+      </article>
+
+      <article class="exercise">
+        <div class="exercise-head"><h3>H&amp;L 3.2-4 — Soluções ótimas múltiplas</h3><span class="badge">método gráfico</span></div>
+        <div class="math">
+          <div><strong>Maximizar</strong> Z = 500x₁ + 300x₂</div>
+          <div>15x₁ + 5x₂ ≤ 300</div>
+          <div>10x₁ + 6x₂ ≤ 240</div>
+          <div>8x₁ + 12x₂ ≤ 450</div>
+          <div>x₁, x₂ ≥ 0</div>
+        </div>
+        <div class="ask"><strong>Pede-se:</strong> encontrar graficamente todas as soluções ótimas.</div>
+      </article>
+
+      <article class="exercise">
+        <div class="exercise-head"><h3>H&amp;L 3.2-5 — Modelo inviável</h3><span class="badge">inviabilidade</span></div>
+        <div class="math">
+          <div><strong>Maximizar</strong> Z = 5x₁ + 7x₂</div>
+          <div>2x₁ − x₂ ≤ −1</div>
+          <div>−x₁ + 2x₂ ≤ −1</div>
+          <div>x₁, x₂ ≥ 0</div>
+        </div>
+        <div class="ask"><strong>Pede-se:</strong> demonstrar graficamente que não existe solução viável.</div>
+      </article>
+
+      <article class="exercise">
+        <div class="exercise-head"><h3>H&amp;L 3.2-6 — Região ilimitada</h3><span class="badge">ilimitabilidade</span></div>
+        <div class="math">
+          <div>−x₁ + 2x₂ ≤ 50</div>
+          <div>−2x₁ + x₂ ≤ 50</div>
+          <div>x₁, x₂ ≥ 0</div>
+        </div>
+        <div class="ask"><strong>Pede-se:</strong> a) mostrar que a região viável é ilimitada; b) analisar a existência de solução ótima para Z = −x₁ + x₂; c) repetir para Z = x₁ − x₂; d) discutir por que uma região ilimitada não implica necessariamente ausência de solução ótima.</div>
+      </article>
+
+      <article class="exercise">
+        <div class="exercise-head"><h3>H&amp;L 3.3-1 — Hipóteses da Programação Linear</h3><span class="badge">conceitual</span></div>
+        <p>Retome o problema de investimentos do Exercício H&amp;L 3.2-3.</p>
+        <div class="ask"><strong>Pede-se:</strong> discutir por que cada uma das quatro hipóteses da Programação Linear é razoável para esse problema, identificando a hipótese mais discutível e como tratá-la caso necessário.</div>
+      </article>
+
+      <article class="exercise">
+        <div class="exercise-head"><h3>H&amp;L 3.3-2 — Teste das hipóteses de PL</h3><span class="badge">conceitual</span></div>
+        <p>Considere duas variáveis de decisão x₁ e x₂, cada uma podendo assumir os níveis 0, 1 ou 2. Os valores da função objetivo Z para as combinações viáveis são:</p>
+        <div class="math"><div>x₁=0: Z = 0, 4, 8</div><div>x₁=1: Z = 3, 8, 13</div><div>x₁=2: Z = 6, 12, 18</div><div>(colunas correspondem a x₂ = 0, 1, 2)</div></div>
+        <div class="ask"><strong>Pede-se:</strong> indicar se o problema satisfaz completamente cada hipótese da Programação Linear e justificar.</div>
+      </article>
+
+      <article class="exercise">
+        <div class="exercise-head"><h3>H&amp;L 3.4-5 — Minimização</h3><span class="badge">método gráfico</span></div>
+        <div class="math">
+          <div><strong>Minimizar</strong> Z = 15x₁ + 20x₂</div>
+          <div>x₁ + 2x₂ ≥ 10</div>
+          <div>2x₁ − 3x₂ ≤ 6</div>
+          <div>x₁ + x₂ ≥ 6</div>
+          <div>x₁, x₂ ≥ 0</div>
+        </div>
+        <div class="ask"><strong>Pede-se:</strong> resolver graficamente.</div>
+      </article>
+
+      <article class="exercise">
+        <div class="exercise-head"><h3>H&amp;L 3.4-6 — Minimização com igualdade</h3><span class="badge">método gráfico</span></div>
+        <div class="math">
+          <div><strong>Minimizar</strong> Z = 3x₁ + 2x₂</div>
+          <div>x₁ + 2x₂ ≤ 12</div>
+          <div>2x₁ + 3x₂ = 12</div>
+          <div>2x₁ + x₂ ≥ 8</div>
+          <div>x₁, x₂ ≥ 0</div>
+        </div>
+        <div class="ask"><strong>Pede-se:</strong> resolver graficamente.</div>
+      </article>
+
+      <article class="exercise">
+        <div class="exercise-head"><h3>H&amp;L 3.4-7 — Coeficiente c₁</h3><span class="badge">sensibilidade</span></div>
+        <div class="math">
+          <div><strong>Maximizar</strong> Z = c₁x₁ + 2x₂</div>
+          <div>4x₁ + x₂ ≤ 12</div>
+          <div>x₁ − x₂ ≥ 2</div>
+          <div>x₁, x₂ ≥ 0</div>
+        </div>
+        <div class="ask"><strong>Pede-se:</strong> determinar graficamente a(s) solução(ões) ótima(s) para os diversos valores possíveis de c₁.</div>
+      </article>
+
+      <article class="exercise">
+        <div class="exercise-head"><h3>H&amp;L 3.4-8 — Alterações nas restrições</h3><span class="badge">sensibilidade</span></div>
+        <div class="math">
+          <div><strong>Minimizar</strong> Z = 40x₁ + 50x₂</div>
+          <div>2x₁ + 3x₂ ≥ 30</div>
+          <div>x₁ + x₂ = 12</div>
+          <div>2x₁ + x₂ ≥ 20</div>
+          <div>x₁, x₂ ≥ 0</div>
+        </div>
+        <div class="ask"><strong>Pede-se:</strong> a) resolver graficamente; b) reavaliar a solução se a função objetivo for alterada para Z = 40x₁ + 70x₂; c) determinar como a solução muda se a terceira restrição for alterada para 2x₁ + x₂ ≥ 15, usando análise gráfica e de sensibilidade.</div>
+      </article>
+
+      <article class="exercise">
+        <div class="exercise-head"><h3>H&amp;L 3.4-9 — Dieta de bifes e batatas</h3><span class="badge">modelagem + minimização</span></div>
+        <p>Uma refeição pode combinar bifes e batatas. Por porção, bifes fornecem 5 g de carboidratos, 20 g de proteína e 15 g de gordura; batatas fornecem 15 g de carboidratos, 5 g de proteína e 2 g de gordura. As exigências diárias são, respectivamente, pelo menos 50 g de carboidratos, pelo menos 40 g de proteína e no máximo 60 g de gordura. O custo por porção é US$ 4 para bifes e US$ 2 para batatas.</p>
+        <div class="ask"><strong>Pede-se:</strong> formular o modelo de custo mínimo, resolver pelo método gráfico e, opcionalmente, pelo método simplex.</div>
+      </article>
+    </section>
+
+    <section class="panel source-box" style="margin-top:34px">
+      <h2>Referências bibliográficas</h2>
+      <p><strong>MOREIRA, Daniel Augusto.</strong> <em>Pesquisa operacional: curso introdutório</em>. 2. ed. São Paulo: Cengage Learning.</p>
+      <p style="margin-top:10px"><strong>HILLIER, Frederick S.; LIEBERMAN, Gerald J.</strong> <em>Introdução à pesquisa operacional</em>. 9. ed. Porto Alegre: AMGH, 2013.</p>
+    </section>
+
   </main>
 
   <footer>
