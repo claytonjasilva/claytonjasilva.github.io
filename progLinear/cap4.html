@@ -1,304 +1,844 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Cap. 4 — Método Simplex | Programação Linear Aplicada</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300&display=swap" rel="stylesheet">
-<style>
-:root {
-  --bg:        #0a0e17;
-  --surface:   #111827;
-  --surface2:  #161f2e;
-  --border:    #1e2d40;
-  --accent:    #00c2ff;
-  --accent2:   #7c3aed;
-  --text:      #e2e8f0;
-  --muted:     #64748b;
-  --tag-bg:    #0f172a;
-  --font-mono: 'IBM Plex Mono', monospace;
-  --font-sans: 'IBM Plex Sans', sans-serif;
-}
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
-html{scroll-behavior:smooth;}
-body{background:var(--bg);color:var(--text);font-family:var(--font-sans);font-size:16px;line-height:1.65;}
-a{color:var(--accent);text-decoration:none;}
-a:hover{text-decoration:underline;}
-.container{max-width:980px;margin:0 auto;padding:0 2rem;}
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Capítulo 4 — Dualidade em Programação Linear</title>
+  <meta name="description" content="Capítulo 4 — Dualidade em Programação Linear: construção do dual, interpretação econômica, relações primal-dual, método Dual-Simplex e introdução à análise de sensibilidade.">
 
-nav{position:sticky;top:0;z-index:100;background:rgba(10,14,23,.9);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);padding:.9rem 0;}
-nav .container{display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap;}
-.nav-brand{font-family:var(--font-mono);font-size:.78rem;color:var(--accent);}
-.nav-links{display:flex;gap:1rem;list-style:none;flex-wrap:wrap;}
-.nav-links a{font-family:var(--font-mono);font-size:.7rem;color:var(--muted);}
-.nav-links a:hover{color:var(--text);text-decoration:none;}
+  <script>
+    window.MathJax = {
+      tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]']] },
+      svg: { fontCache: 'global' }
+    };
+  </script>
+  <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
 
-.progress-track{height:3px;background:var(--border);position:sticky;top:53px;z-index:99;}
-.progress-fill{height:100%;width:0%;background:linear-gradient(90deg,var(--accent),var(--accent2));transition:width .1s;}
-
-.hero{padding:4rem 0 2.5rem;position:relative;overflow:hidden;}
-.hero::before{content:'';position:absolute;inset:0;background-image:linear-gradient(var(--border) 1px,transparent 1px),linear-gradient(90deg,var(--border) 1px,transparent 1px);background-size:40px 40px;opacity:.3;mask-image:radial-gradient(ellipse 80% 60% at 50% 0%,black 40%,transparent 100%);}
-.hero-eyebrow{font-family:var(--font-mono);font-size:.74rem;color:var(--accent);letter-spacing:.14em;text-transform:uppercase;margin-bottom:1rem;display:flex;align-items:center;gap:.7rem;}
-.hero-eyebrow::before{content:'';width:2rem;height:1px;background:var(--accent);}
-h1{font-size:clamp(2rem,4.5vw,3.2rem);font-weight:300;line-height:1.12;letter-spacing:-.02em;margin-bottom:.6rem;}
-h1 strong{font-weight:600;color:var(--accent);}
-.hero-meta{display:flex;gap:1.5rem;flex-wrap:wrap;margin-top:1.2rem;}
-.meta-item{font-family:var(--font-mono);font-size:.74rem;color:var(--muted);display:flex;align-items:center;gap:.4rem;}
-.meta-item svg{flex-shrink:0;}
-
-.objectives{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:1.4rem 1.6rem;margin-top:1.6rem;}
-.objectives p.label{font-family:var(--font-mono);font-size:.7rem;color:var(--accent);letter-spacing:.1em;text-transform:uppercase;margin-bottom:.7rem;}
-.objectives ul{list-style:none;display:grid;gap:.5rem;}
-.objectives li{font-size:.88rem;color:var(--muted);display:flex;gap:.6rem;}
-.objectives li::before{content:'→';color:var(--accent);flex-shrink:0;}
-
-.toc{display:flex;gap:.5rem;flex-wrap:wrap;margin-top:1.5rem;}
-.toc a{font-family:var(--font-mono);font-size:.7rem;color:var(--muted);border:1px solid var(--border);padding:.35rem .75rem;border-radius:20px;transition:.2s;}
-.toc a:hover{border-color:var(--accent);color:var(--accent);text-decoration:none;}
-
-.section{padding:3rem 0;border-top:1px solid var(--border);}
-.section-label{font-family:var(--font-mono);font-size:.7rem;color:var(--accent);letter-spacing:.14em;text-transform:uppercase;display:flex;align-items:center;gap:.7rem;margin-bottom:1.4rem;}
-.section-label::after{content:'';flex:1;height:1px;background:var(--border);}
-h2{font-size:1.5rem;font-weight:600;letter-spacing:-.01em;margin-bottom:1rem;}
-h3{font-size:1.1rem;font-weight:600;margin:1.6rem 0 .8rem;color:var(--text);}
-h4{font-size:.95rem;font-weight:600;margin:1.2rem 0 .6rem;color:var(--accent);}
-p{margin-bottom:1rem;color:#cbd5e1;}
-strong{color:var(--text);font-weight:600;}
-em{color:var(--accent);font-style:normal;}
-ul.plain{margin:0 0 1rem 1.2rem;color:#cbd5e1;}
-ul.plain li{margin-bottom:.4rem;}
-ol.plain{margin:0 0 1rem 1.2rem;color:#cbd5e1;}
-ol.plain li{margin-bottom:.5rem;}
-
-.codeline{background:var(--tag-bg);border:1px solid var(--border);border-radius:6px;padding:.7rem 1rem;font-family:var(--font-mono);font-size:1rem;color:var(--accent);text-align:center;margin:1rem 0;}
-.codeblock{background:var(--tag-bg);border:1px solid var(--border);border-radius:6px;padding:.9rem 1.1rem;font-family:var(--font-mono);font-size:.78rem;color:#a8d8ef;margin:1rem 0;overflow-x:auto;white-space:pre;line-height:1.6;}
-.codeblock .cmt{color:var(--muted);}
-
-.concept-grid{display:grid;grid-template-columns:1fr 1fr;gap:2rem;align-items:start;margin:1.5rem 0;}
-.concept-text{display:flex;flex-direction:column;justify-content:center;}
-.concept-fig{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:1rem;}
-.concept-fig img,.concept-fig svg{width:100%;display:block;}
-.fig-caption{font-family:var(--font-mono);font-size:.72rem;color:var(--muted);text-align:center;margin-top:.6rem;}
-@media (max-width:760px){.concept-grid{grid-template-columns:1fr;}}
-
-.fig-full{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:1.2rem;margin:1.5rem 0;}
-.fig-full img,.fig-full svg{width:100%;display:block;}
-
-.definition{background:var(--surface);border:1px solid var(--accent2);border-left:3px solid var(--accent2);border-radius:0 8px 8px 0;padding:1.2rem 1.5rem;margin:1.2rem 0;}
-.definition .dtitle{font-family:var(--font-mono);font-size:.7rem;color:var(--accent2);letter-spacing:.1em;text-transform:uppercase;margin-bottom:.5rem;}
-
-.note{background:var(--tag-bg);border:1px solid var(--border);border-radius:6px;padding:.9rem 1.1rem;margin:1rem 0;font-size:.85rem;color:var(--muted);}
-.note strong{color:var(--accent);}
-
-table{width:100%;border-collapse:collapse;font-size:.85rem;margin:1.2rem 0;}
-thead tr{background:var(--tag-bg);}
-thead th{padding:.5rem .7rem;text-align:center;font-family:var(--font-mono);font-size:.68rem;color:var(--muted);letter-spacing:.06em;text-transform:uppercase;font-weight:400;border-bottom:1px solid var(--border);}
-tbody td{padding:.45rem .7rem;border-bottom:1px solid var(--border);color:var(--muted);text-align:center;}
-tbody tr:hover{background:rgba(255,255,255,.02);}
-td.tleft, th.tleft{text-align:left;}
-
-.method-card{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:1.4rem 1.6rem;margin:1.2rem 0;position:relative;overflow:hidden;}
-.method-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--accent),var(--accent2));}
-.method-num{font-family:var(--font-mono);font-size:.7rem;color:var(--accent);background:rgba(0,194,255,.08);border:1px solid rgba(0,194,255,.25);border-radius:4px;padding:.2rem .6rem;display:inline-block;margin-bottom:.7rem;}
-.method-card h4{margin:0 0 .8rem;color:var(--text);font-size:1rem;}
-.steps{list-style:none;counter-reset:step;}
-.steps li{counter-increment:step;display:flex;gap:.7rem;margin-bottom:.6rem;font-size:.88rem;color:#cbd5e1;}
-.steps li::before{content:counter(step);font-family:var(--font-mono);font-size:.72rem;color:var(--accent);background:var(--tag-bg);border:1px solid var(--border);border-radius:50%;width:22px;height:22px;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
-
-.ds-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:.6rem;margin:1rem 0;}
-.ds-item{background:var(--tag-bg);border:1px solid var(--border);border-radius:6px;padding:.7rem 1rem;display:flex;gap:.6rem;align-items:center;transition:.2s;}
-.ds-item:hover{border-color:var(--accent);}
-.ds-item a{font-size:.8rem;color:var(--text);font-family:var(--font-mono);}
-.ds-item a:hover{color:var(--accent);text-decoration:none;}
-
-.quiz{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:1.6rem;margin:1.5rem 0;}
-.quiz-header{display:flex;align-items:center;gap:.6rem;margin-bottom:1.2rem;}
-.quiz-header svg{flex-shrink:0;}
-.quiz-title{font-family:var(--font-mono);font-size:.8rem;color:var(--accent2);letter-spacing:.05em;}
-.quiz-q{font-size:.95rem;margin-bottom:.9rem;color:var(--text);}
-.quiz-options{display:flex;flex-direction:column;gap:.55rem;}
-.quiz-opt{background:var(--tag-bg);border:1px solid var(--border);border-radius:6px;padding:.7rem 1rem;font-size:.85rem;color:var(--muted);cursor:pointer;transition:.15s;text-align:left;width:100%;font-family:var(--font-sans);}
-.quiz-opt:hover{border-color:var(--accent);color:var(--text);}
-.quiz-opt.correct{border-color:#22c55e;background:rgba(34,197,94,.08);color:#86efac;}
-.quiz-opt.wrong{border-color:#ef4444;background:rgba(239,68,68,.08);color:#fca5a5;}
-.quiz-feedback{margin-top:.9rem;font-size:.85rem;padding:.8rem 1rem;border-radius:6px;display:none;}
-.quiz-feedback.show{display:block;}
-.quiz-feedback.correct-fb{background:rgba(34,197,94,.08);border:1px solid #22c55e;color:#86efac;}
-.quiz-feedback.wrong-fb{background:rgba(239,68,68,.08);border:1px solid #ef4444;color:#fca5a5;}
-
-.refs-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:.8rem;}
-.ref-card{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:1rem 1.2rem;display:flex;gap:.8rem;align-items:flex-start;transition:.2s;}
-.ref-card:hover{border-color:var(--accent);}
-.ref-card svg{flex-shrink:0;margin-top:.15rem;}
-.ref-card h4{font-size:.88rem;font-weight:600;margin:0 0 .2rem;color:var(--text);}
-.ref-card p{font-size:.76rem;color:var(--muted);margin:0;}
-.ref-type{font-family:var(--font-mono);font-size:.62rem;color:var(--accent);text-transform:uppercase;letter-spacing:.06em;}
-
-.chapter-nav{display:flex;justify-content:space-between;gap:1rem;margin-top:2rem;}
-.chapter-nav a{flex:1;background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:1rem 1.3rem;font-size:.85rem;transition:.2s;}
-.chapter-nav a:hover{border-color:var(--accent);text-decoration:none;}
-.chapter-nav .dir{font-family:var(--font-mono);font-size:.65rem;color:var(--muted);text-transform:uppercase;letter-spacing:.08em;display:block;margin-bottom:.3rem;}
-.chapter-nav .next{text-align:right;}
-
-footer{border-top:1px solid var(--border);padding:2rem 0;margin-top:2rem;}
-footer .container{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;}
-footer p{font-size:.8rem;color:var(--muted);font-family:var(--font-mono);}
-
-@media(max-width:640px){.nav-links{display:none;}.hero{padding:2.5rem 0 2rem;}}
-
-.katex{color:var(--accent);font-size:1.05em;}
-
-/* SVG diagram helpers */
-.dwire{stroke:#3b4a5e;stroke-width:1.6;fill:none;}
-.dbox{stroke:#00c2ff;stroke-width:1.6;fill:none;}
-.dbox2{stroke:#7c3aed;stroke-width:1.6;fill:none;}
-.dlbl{font-family:'IBM Plex Mono',monospace;font-size:13px;fill:#cbd5e1;}
-.dlbl2{font-family:'IBM Plex Mono',monospace;font-size:11px;fill:#64748b;}
-.dfill{fill:#111827;}
-
-.formula-card{background:var(--tag-bg);border:1px solid var(--border);border-radius:8px;padding:1rem 1.2rem;margin:1rem 0;font-family:var(--font-mono);color:#a8d8ef;overflow-x:auto;white-space:pre-wrap}
-.exercise-card{background:var(--surface);border:1px solid var(--accent);border-radius:8px;padding:1.2rem 1.4rem;margin:1.2rem 0}
-.key-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:.8rem;margin:1.2rem 0}
-.key-card{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:1rem 1.2rem}
-.key-card strong{display:block;color:var(--accent);font-family:var(--font-mono);font-size:.78rem;margin-bottom:.3rem}
-.key-card p{font-size:.86rem;color:var(--muted);margin:0}
-</style>
+  <style>
+    :root{
+      --bg:#f5f7fb;
+      --paper:#ffffff;
+      --ink:#1f2937;
+      --muted:#667085;
+      --brand:#164e63;
+      --brand-2:#0e7490;
+      --accent:#f59e0b;
+      --line:#d9e2ec;
+      --soft:#eef6f8;
+      --ok:#ecfdf3;
+      --warn:#fff8e6;
+      --shadow:0 10px 30px rgba(15,23,42,.08);
+      --radius:16px;
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+      background:var(--bg);
+      color:var(--ink);
+      line-height:1.65;
+    }
+    a{color:var(--brand-2);text-decoration:none}
+    a:hover{text-decoration:underline}
+    .hero{
+      background:linear-gradient(135deg,#0f3f4d,#176b80);
+      color:#fff;
+      padding:64px 20px 54px;
+    }
+    .hero-inner,.container{max-width:1100px;margin:auto}
+    .eyebrow{
+      display:inline-block;
+      font-size:.82rem;
+      letter-spacing:.08em;
+      text-transform:uppercase;
+      opacity:.85;
+      margin-bottom:8px;
+    }
+    h1{font-size:clamp(2rem,4vw,3.35rem);line-height:1.08;margin:.2rem 0 .8rem}
+    .lead{max-width:820px;font-size:1.12rem;opacity:.95;margin:0}
+    .container{padding:32px 20px 70px}
+    .toc{
+      background:var(--paper);
+      border:1px solid var(--line);
+      border-radius:var(--radius);
+      box-shadow:var(--shadow);
+      padding:22px 24px;
+      margin-top:-28px;
+      position:relative;
+    }
+    .toc strong{display:block;margin-bottom:8px}
+    .toc-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:8px 18px}
+    section{
+      background:var(--paper);
+      border:1px solid var(--line);
+      border-radius:var(--radius);
+      padding:30px;
+      margin-top:24px;
+      box-shadow:0 5px 18px rgba(15,23,42,.04);
+    }
+    h2{font-size:1.65rem;line-height:1.25;margin:0 0 16px;color:#123f4c}
+    h3{font-size:1.18rem;margin:25px 0 10px;color:#155e75}
+    p{margin:0 0 12px}
+    ul,ol{margin-top:8px;padding-left:1.3rem}
+    li{margin:.35rem 0}
+    .grid-2{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+    .card{
+      border:1px solid var(--line);
+      border-radius:14px;
+      padding:20px;
+      background:#fff;
+    }
+    .card h3{margin-top:0}
+    .formula{
+      background:#f8fafc;
+      border-left:4px solid var(--brand-2);
+      border-radius:10px;
+      padding:14px 16px;
+      overflow:auto;
+      margin:14px 0;
+    }
+    .note{
+      background:var(--soft);
+      border:1px solid #c9e4ea;
+      border-radius:12px;
+      padding:16px 18px;
+      margin:18px 0;
+    }
+    .warning{
+      background:var(--warn);
+      border:1px solid #f3d290;
+      border-radius:12px;
+      padding:16px 18px;
+      margin:18px 0;
+    }
+    .success{
+      background:var(--ok);
+      border:1px solid #b7ebc6;
+      border-radius:12px;
+      padding:16px 18px;
+      margin:18px 0;
+    }
+    table{
+      width:100%;
+      border-collapse:collapse;
+      margin:14px 0 6px;
+      font-size:.96rem;
+    }
+    th,td{padding:11px 12px;border:1px solid var(--line);vertical-align:top}
+    th{background:#edf4f6;text-align:left;color:#153f4b}
+    .compact th,.compact td{padding:8px 10px}
+    .tag{
+      display:inline-block;
+      background:#e9f3f6;
+      color:#0f5b70;
+      border-radius:999px;
+      padding:3px 9px;
+      font-size:.8rem;
+      font-weight:600;
+      margin-right:6px;
+    }
+    .step{
+      display:grid;
+      grid-template-columns:42px 1fr;
+      gap:12px;
+      align-items:start;
+      margin:14px 0;
+    }
+    .n{
+      width:34px;height:34px;border-radius:50%;
+      display:grid;place-items:center;
+      background:var(--brand-2);color:white;font-weight:700;
+    }
+    .footer{
+      color:var(--muted);
+      text-align:center;
+      padding:28px 20px 44px;
+      font-size:.9rem;
+    }
+    .source{
+      font-size:.9rem;color:var(--muted);
+      border-top:1px dashed var(--line);
+      padding-top:14px;margin-top:22px;
+    }
+    @media (max-width:760px){
+      .grid-2{grid-template-columns:1fr}
+      section{padding:22px 18px}
+      .hero{padding-top:46px}
+    }
+  </style>
 </head>
-<body>
-<nav>
-  <div class="container">
-    <span class="nav-brand">proglinear · cap. 4</span>
-    <ul class="nav-links">
-      <li><a href="#s1">conceitos</a></li>
-      <li><a href="#s2">formulação</a></li>
-      <li><a href="#s3">aplicação</a></li>
-      <li><a href="#exemplo">exemplo</a></li>
-      <li><a href="#quiz">quiz</a></li>
-      <li><a href="../progLinear.html">← disciplina</a></li>
-    </ul>
-  </div>
-</nav>
-<div class="progress-track"><div class="progress-fill" id="progressFill"></div></div>
-<section class="hero">
-  <div class="container">
-    <p class="hero-eyebrow">Programação Linear Aplicada · Capítulo 4</p>
-    <h1>Cap. 4<br><strong>Método Simplex</strong></h1>
-    <div class="hero-meta">
-      <span class="meta-item">leitura ~50 min</span>
-      <span class="meta-item">Prof. Clayton J A Silva</span>
-      <span class="meta-item">IBM0803</span>
-    </div>
-    <div class="objectives">
-      <p class="label">Objetivos de aprendizagem</p>
-      <ul><li>Compreender a lógica geométrica do Simplex.</li><li>Converter restrições para forma padrão.</li><li>Montar tableau Simplex.</li><li>Executar iterações até a otimalidade.</li></ul>
-    </div>
-    <div class="toc">
-      <a href="#s1">Conceitos</a>
-      <a href="#s2">Formulação</a>
-      <a href="#s3">Aplicação</a>
-      <a href="#exemplo">Exemplo orientado</a>
-      <a href="#pratica">Prática sugerida</a>
-      <a href="#quiz">Quiz</a>
-    </div>
-  </div>
-</section>
-<div class="container">
 
-  <section class="section" id="s1">
-    <p class="section-label">4.1 / desenvolvimento</p>
-    <h2>Conceitos fundamentais</h2>
-    <p>O Simplex percorre vértices da região viável buscando melhoria na função objetivo.</p>
-    <div class="key-grid">
-      <div class="key-card"><strong>Para lembrar</strong><p>Explique sempre o significado operacional das variáveis e restrições.</p></div>
-      <div class="key-card"><strong>Em aula</strong><p>Discuta um exemplo numérico e peça aos alunos que interpretem a solução.</p></div>
-      <div class="key-card"><strong>Erro comum</strong><p>Resolver mecanicamente sem validar se o modelo representa o problema real.</p></div>
+<body>
+  <header class="hero">
+    <div class="hero-inner">
+      <span class="eyebrow">Programação Linear</span>
+      <h1>Capítulo 4 — Dualidade em Programação Linear</h1>
+      <p class="lead">
+        Relação entre problemas primal e dual, interpretação econômica das variáveis duais,
+        propriedades primal-dual, Método Dual-Simplex e fundamentos da análise de pós-otimização.
+      </p>
     </div>
-  </section>
-  <section class="section" id="s2">
-    <p class="section-label">4.2 / desenvolvimento</p>
-    <h2>Formulação e interpretação</h2>
-    <p>Restrições do tipo menor ou igual recebem variáveis de folga, que representam recurso não utilizado.</p>
-    <div class="key-grid">
-      <div class="key-card"><strong>Para lembrar</strong><p>Explique sempre o significado operacional das variáveis e restrições.</p></div>
-      <div class="key-card"><strong>Em aula</strong><p>Discuta um exemplo numérico e peça aos alunos que interpretem a solução.</p></div>
-      <div class="key-card"><strong>Erro comum</strong><p>Resolver mecanicamente sem validar se o modelo representa o problema real.</p></div>
-    </div>
-  </section>
-  <section class="section" id="s3">
-    <p class="section-label">4.3 / desenvolvimento</p>
-    <h2>Aplicação em aula</h2>
-    <p>A cada iteração, uma variável entra na base e outra sai, preservando viabilidade e melhorando a solução.</p>
-    <div class="key-grid">
-      <div class="key-card"><strong>Para lembrar</strong><p>Explique sempre o significado operacional das variáveis e restrições.</p></div>
-      <div class="key-card"><strong>Em aula</strong><p>Discuta um exemplo numérico e peça aos alunos que interpretem a solução.</p></div>
-      <div class="key-card"><strong>Erro comum</strong><p>Resolver mecanicamente sem validar se o modelo representa o problema real.</p></div>
-    </div>
-  </section>
-  <section class="section" id="formula">
-    <p class="section-label">síntese matemática</p>
-    <h2>Representação matemática essencial</h2>
-    <div class="formula-card">xB = B^-1 b
-Z = cB^T B^-1 b
-cbar_j = cj - cB^T B^-1 Aj</div>
-    <div class="note"><strong>Observação:</strong> esta síntese deve ser associada a um problema concreto durante a aula.</div>
-  </section>
-  <section class="section" id="exemplo">
-    <p class="section-label">exemplo orientado</p>
-    <h2>Exemplo para discussão em aula</h2>
-    <div class="exercise-card"><h4>Problema-base</h4><p>Maximize Z = 3x1 + 2x2 sujeito a x1+x2&lt;=4 e 2x1+x2&lt;=5. Monte o tableau e resolva.</p></div>
-    <div class="method-card">
-      <span class="method-num">roteiro</span>
-      <h4>Como conduzir a solução</h4>
-      <ol class="steps">
-        <li>Definir variáveis de decisão.</li>
-        <li>Escrever função objetivo.</li>
-        <li>Traduzir limites em restrições.</li>
-        <li>Resolver manualmente ou em ferramenta computacional.</li>
-        <li>Interpretar solução, folgas, restrições ativas e limitações.</li>
-      </ol>
-    </div>
-  </section>
-  <section class="section" id="pratica">
-    <p class="section-label">prática sugerida</p>
-    <h2>Atividade computacional ou de modelagem</h2>
-    <p>Resolver manualmente um problema 2x2 pelo Simplex e conferir no Solver.</p>
-    <div class="ds-grid">
-      <div class="ds-item"><a href="https://www.python.org/" target="_blank">Python.org</a></div>
-      <div class="ds-item"><a href="https://colab.research.google.com/" target="_blank">Google Colab</a></div>
-      <div class="ds-item"><a href="https://docs.scipy.org/doc/scipy/reference/optimize.linprog.html" target="_blank">SciPy linprog</a></div>
-      <div class="ds-item"><a href="https://coin-or.github.io/pulp/" target="_blank">PuLP</a></div>
-    </div>
-  </section>
-  <section class="section" id="quiz">
-    <p class="section-label">checkpoint</p>
-    <h2>Teste rápido</h2>
-    <div class="quiz">
-      <div class="quiz-header"><span class="quiz-title">Pergunta do capítulo</span></div>
-      <p class="quiz-q">Qual atitude é mais adequada ao trabalhar com este tema?</p>
-      <div class="quiz-options">
-        <button class="quiz-opt" onclick="checkAnswer(this, true, 'qfb')">Construir, resolver e interpretar o modelo, verificando se ele representa o problema real.</button>
-        <button class="quiz-opt" onclick="checkAnswer(this, false, 'qfb')">Resolver por tentativa e erro, sem explicitar variáveis e restrições.</button>
-        <button class="quiz-opt" onclick="checkAnswer(this, false, 'qfb')">Ignorar restrições para maximizar apenas a função objetivo.</button>
+  </header>
+
+  <main class="container">
+    <nav class="toc" aria-label="Sumário">
+      <strong>Neste capítulo</strong>
+      <div class="toc-grid">
+        <a href="#objetivos">Objetivos</a>
+        <a href="#introducao">1. Introdução à dualidade</a>
+        <a href="#montagem">2. Montagem do problema dual</a>
+        <a href="#exemplo">3. Exemplo de construção</a>
+        <a href="#irrestritas">4. Variáveis irrestritas em sinal</a>
+        <a href="#economica">5. Interpretação econômica</a>
+        <a href="#relacoes">6. Relações entre soluções ótimas</a>
+        <a href="#propriedades">7. Propriedades primal-dual</a>
+        <a href="#situacoes-especiais">8. Situações especiais na preparação do modelo</a>
+        <a href="#duas-fases">9. Método Simplex em Duas Fases</a>
+        <a href="#dual-simplex">10. Método Dual-Simplex</a>
+        <a href="#sensibilidade">11. Pós-otimização e sensibilidade</a>
       </div>
-      <div class="quiz-feedback" id="qfb"></div>
-    </div>
-  </section>
-  <div class="chapter-nav">
-    <a href="cap3.html"><span class="dir">← anterior</span>Cap. 3</a>
-    <a class="next" href="cap5.html"><span class="dir">próximo →</span>Cap. 5</a>
-  </div>
-</div>
-<footer>
-  <div class="container">
-    <p>© 2026 · Prof. Clayton J A Silva</p>
-    <p><a href="../progLinear.html">Programação Linear Aplicada</a></p>
-  </div>
-</footer>
-<script>
-window.addEventListener('scroll',()=>{const h=document.documentElement;document.getElementById('progressFill').style.width=(h.scrollTop/(h.scrollHeight-h.clientHeight)*100)+'%';});
-function checkAnswer(btn,isCorrect,fbId){const group=btn.parentElement;const buttons=group.querySelectorAll('.quiz-opt');buttons.forEach(b=>b.disabled=true);btn.classList.add(isCorrect?'correct':'wrong');const fb=document.getElementById(fbId);fb.classList.add('show');if(!isCorrect) buttons.forEach(b=>{if(b.getAttribute('onclick').includes(', true,')) b.classList.add('correct');});fb.classList.add(isCorrect?'correct-fb':'wrong-fb');fb.textContent=isCorrect?'✓ Correto. Modelar, resolver e interpretar são etapas inseparáveis.':'✗ Revise os objetivos e a síntese do capítulo.';}
-</script>
+    </nav>
+
+    <section id="objetivos">
+      <h2>Objetivos do capítulo</h2>
+      <p>Ao final deste capítulo, espera-se que o estudante seja capaz de:</p>
+      <ul>
+        <li>formular o problema dual associado a um modelo de Programação Linear;</li>
+        <li>interpretar economicamente as variáveis duais, relacionando-as ao valor marginal dos recursos;</li>
+        <li>relacionar os valores ótimos das funções objetivo do primal e do dual;</li>
+        <li>reconhecer propriedades que ligam os quadros do Simplex às variáveis duais;</li>
+        <li>compreender a lógica de funcionamento do Método Dual-Simplex;</li>
+        <li>introduzir a análise de pós-otimização como instrumento para avaliar a robustez da solução obtida.</li>
+      </ul>
+    </section>
+
+    <section id="introducao">
+      <h2>1. Introdução à dualidade</h2>
+      <p>
+        Todo problema de Programação Linear, denominado <strong>primal</strong>, possui um segundo problema
+        associado, chamado <strong>dual</strong>. Os dois modelos são construídos a partir dos mesmos dados
+        e estão fortemente relacionados: a estrutura de um contém informações sobre o outro.
+      </p>
+      <div class="note">
+        <strong>Ideia central.</strong> Quando o primal representa, por exemplo, a melhor forma de utilizar
+        recursos para maximizar um resultado, o dual pode ser interpretado como um problema de avaliação
+        econômica desses recursos.
+      </div>
+    </section>
+
+    <section id="montagem">
+      <h2>2. Montagem do problema dual</h2>
+      <div class="grid-2">
+        <div class="card">
+          <h3>Problema primal</h3>
+          <div class="formula">
+            \[
+            \max Z=\sum_{j=1}^{n} c_jx_j
+            \]
+            sujeito a
+            \[
+            \sum_{j=1}^{n} a_{ij}x_j \le b_i,\quad i=1,\ldots,m
+            \]
+            \[
+            x_j\ge 0,\quad j=1,\ldots,n
+            \]
+          </div>
+        </div>
+
+        <div class="card">
+          <h3>Problema dual</h3>
+          <div class="formula">
+            \[
+            \min z=\sum_{i=1}^{m} b_iy_i
+            \]
+            sujeito a
+            \[
+            \sum_{i=1}^{m} a_{ij}y_i \ge c_j,\quad j=1,\ldots,n
+            \]
+            \[
+            y_i\ge 0,\quad i=1,\ldots,m
+            \]
+          </div>
+        </div>
+      </div>
+
+      <h3>Regras básicas de correspondência</h3>
+      <table class="compact">
+        <thead>
+          <tr><th>No primal</th><th>No dual</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Cada restrição</td><td>corresponde a uma variável dual</td></tr>
+          <tr><td>Cada variável de decisão</td><td>corresponde a uma restrição</td></tr>
+          <tr><td>Coeficientes do lado direito \(b_i\)</td><td>tornam-se coeficientes da função objetivo</td></tr>
+          <tr><td>Coeficientes da função objetivo \(c_j\)</td><td>tornam-se os lados direitos das restrições</td></tr>
+          <tr><td>Matriz \(A\)</td><td>é transposta: \(A^T\)</td></tr>
+          <tr><td>Maximização com restrições \(\le\)</td><td>Minimização com restrições \(\ge\)</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section id="exemplo">
+      <h2>3. Exemplo de construção do dual</h2>
+      <p>Considere o problema primal:</p>
+      <div class="formula">
+        \[
+        \max Z=x_1+2x_2
+        \]
+        sujeito a
+        \[
+        \begin{aligned}
+        x_1+5x_2 &\le 18\\
+        2x_1+x_2 &\le 15\\
+        5x_1-2x_2 &\le 20\\
+        x_2 &\le 8\\
+        x_1,x_2&\ge 0
+        \end{aligned}
+        \]
+      </div>
+
+      <p>Como há quatro restrições estruturais no primal, o dual terá quatro variáveis: \(y_1,y_2,y_3,y_4\).</p>
+
+      <div class="formula">
+        \[
+        \min z=18y_1+15y_2+20y_3+8y_4
+        \]
+        sujeito a
+        \[
+        \begin{aligned}
+        y_1+2y_2+5y_3 &\ge 1\\
+        5y_1+y_2-2y_3+y_4 &\ge 2\\
+        y_1,y_2,y_3,y_4&\ge 0
+        \end{aligned}
+        \]
+      </div>
+
+      <div class="success">
+        Observe a troca de dimensões: o primal possui <strong>4 restrições e 2 variáveis</strong>;
+        o dual possui <strong>2 restrições e 4 variáveis</strong>.
+      </div>
+    </section>
+
+    <section id="irrestritas">
+      <h2>4. Variáveis irrestritas em sinal</h2>
+      <p>
+        Um caso especial ocorre quando uma restrição do primal é uma igualdade. Uma igualdade pode ser
+        representada por duas desigualdades de sentidos contrários. No dual, isso leva a duas variáveis
+        não negativas cuja diferença pode assumir valor positivo, zero ou negativo.
+      </p>
+      <div class="formula">
+        \[
+        a_{11}x_1+a_{12}x_2=b_1
+        \]
+        é equivalente a
+        \[
+        \begin{cases}
+        a_{11}x_1+a_{12}x_2\le b_1\\
+        -a_{11}x_1-a_{12}x_2\le -b_1
+        \end{cases}
+        \]
+      </div>
+
+      <p>Se as variáveis duais correspondentes forem \(y'_1\) e \(y''_1\), pode-se definir:</p>
+      <div class="formula">
+        \[
+        y_1=y'_1-y''_1
+        \]
+      </div>
+
+      <div class="note">
+        <strong>Consequência:</strong> uma restrição de igualdade no primal corresponde a uma
+        <strong>variável dual irrestrita em sinal</strong>. O raciocínio inverso também é válido.
+      </div>
+    </section>
+
+    <section id="economica">
+      <h2>5. Interpretação econômica das variáveis duais</h2>
+      <p>
+        As variáveis duais admitem uma interpretação econômica especialmente útil: podem representar
+        a <strong>avaliação unitária</strong> ou o <strong>valor marginal</strong> dos recursos disponíveis.
+      </p>
+
+      <h3>Exemplo: dois produtos e três recursos</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>Recurso</th>
+            <th>Disponibilidade</th>
+            <th>Consumo por unidade — Produto 1</th>
+            <th>Consumo por unidade — Produto 2</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>A</td><td>14</td><td>1</td><td>2</td></tr>
+          <tr><td>B</td><td>9</td><td>1</td><td>1</td></tr>
+          <tr><td>C</td><td>56</td><td>7</td><td>4</td></tr>
+        </tbody>
+      </table>
+
+      <p>Se os lucros unitários forem 5 e 6, o primal é:</p>
+      <div class="formula">
+        \[
+        \max Z=5x_1+6x_2
+        \]
+        sujeito a
+        \[
+        \begin{aligned}
+        x_1+2x_2&\le14\\
+        x_1+x_2&\le9\\
+        7x_1+4x_2&\le56\\
+        x_1,x_2&\ge0
+        \end{aligned}
+        \]
+      </div>
+
+      <p>
+        Associando \(y_1,y_2,y_3\) aos recursos A, B e C, o dual procura o menor valor total atribuído
+        ao estoque de recursos, sem atribuir a cada produto um valor inferior ao seu lucro unitário:
+      </p>
+      <div class="formula">
+        \[
+        \min z=14y_1+9y_2+56y_3
+        \]
+        sujeito a
+        \[
+        \begin{aligned}
+        y_1+y_2+7y_3&\ge5\\
+        2y_1+y_2+4y_3&\ge6\\
+        y_1,y_2,y_3&\ge0
+        \end{aligned}
+        \]
+      </div>
+
+      <div class="note">
+        Na solução ótima, as variáveis duais podem ser interpretadas como <strong>preços-sombra</strong>:
+        indicam a variação marginal esperada no valor ótimo do primal quando a disponibilidade de um recurso
+        sofre pequena alteração, respeitadas as condições de validade da solução básica.
+      </div>
+    </section>
+
+    <section id="relacoes">
+      <h2>6. Relações entre os valores ótimos do primal e do dual</h2>
+      <p>Há duas relações fundamentais entre os problemas:</p>
+      <div class="grid-2">
+        <div class="card">
+          <h3>Dualidade fraca</h3>
+          <p>Para quaisquer soluções viáveis do primal e do dual, no caso padrão de maximização/minimização:</p>
+          <div class="formula">\[ Z\le z \]</div>
+        </div>
+        <div class="card">
+          <h3>Dualidade forte</h3>
+          <p>Quando ambos atingem uma solução ótima finita:</p>
+          <div class="formula">\[ \max Z=\min z \]</div>
+        </div>
+      </div>
+
+      <p>No exemplo anterior, a solução ótima apresentada é:</p>
+      <div class="formula">
+        \[
+        x_1=4,\qquad x_2=5,\qquad Z^*=50
+        \]
+        e, no dual,
+        \[
+        y_1=1,\qquad y_2=4,\qquad y_3=0,\qquad z^*=50
+        \]
+      </div>
+    </section>
+
+    <section id="propriedades">
+      <h2>7. Importantes propriedades primal-dual</h2>
+
+      <h3>7.1 Multiplicadores do Simplex</h3>
+      <p>
+        Em qualquer iteração, a matriz associada às variáveis básicas pode ser utilizada para obter os
+        coeficientes da linha transformada da função objetivo. Na solução ótima, esses multiplicadores
+        coincidem com os valores ótimos das variáveis duais.
+      </p>
+      <div class="note">
+        Esses valores também aparecem na literatura como <em>custos implícitos</em>,
+        <em>custos de oportunidade</em> ou <em>preços-sombra</em>.
+      </div>
+
+      <h3>7.2 Valores das variáveis básicas</h3>
+      <p>
+        Os valores das variáveis na base podem ser obtidos aplicando a matriz associada à base ao vetor dos
+        termos independentes do modelo original.
+      </p>
+
+      <h3>7.3 Coeficientes transformados</h3>
+      <p>
+        Os coeficientes de uma variável nas restrições transformadas podem ser obtidos multiplicando-se a
+        mesma matriz básica pelo vetor de coeficientes originais dessa variável.
+      </p>
+
+      <h3>7.4 Relação com a equação \(Z\) transformada</h3>
+      <p>
+        A substituição das variáveis duais pelos multiplicadores do Simplex permite interpretar os
+        coeficientes da equação \(Z\) transformada como diferenças entre os lados das restrições correspondentes
+        do dual. Um coeficiente que viola a condição de otimalidade indica que a solução primal ainda pode ser
+        melhorada e que a solução dual associada ainda não é viável.
+      </p>
+    </section>
+
+
+    <section id="situacoes-especiais">
+      <h2>8. Situações especiais na preparação do modelo para o Simplex</h2>
+      <p>
+        Até aqui, a formulação dos problemas primal e dual permitiu compreender a estrutura matemática e a
+        interpretação econômica dos modelos. Entretanto, alguns problemas não apresentam imediatamente uma
+        <strong>solução básica inicial viável</strong>. Isso ocorre, em especial, quando aparecem restrições do
+        tipo \(\ge\) ou de igualdade.
+      </p>
+
+      <div class="note">
+        <strong>Ponto-chave.</strong> As variáveis de folga, excesso e artificiais têm papéis diferentes.
+        A variável de folga costuma permitir a construção direta de uma base inicial. A variável de excesso,
+        por sua vez, não garante essa base. Quando isso acontece, recorre-se temporariamente às variáveis artificiais.
+      </div>
+
+      <h3>8.1 Transformação de desigualdades</h3>
+      <p>
+        Uma desigualdade pode ser multiplicada por \(-1\), desde que o seu sentido seja invertido. Assim:
+      </p>
+      <div class="formula">
+        \[
+        a_1x_1+a_2x_2\ge b
+        \]
+        é equivalente a
+        \[
+        -a_1x_1-a_2x_2\le -b.
+        \]
+      </div>
+
+      <h3>8.2 Variáveis de excesso</h3>
+      <p>
+        Em uma restrição do tipo \(\ge\), a transformação em igualdade exige a retirada de uma variável
+        de excesso:
+      </p>
+      <div class="formula">
+        \[
+        a_1x_1+a_2x_2\ge b
+        \]
+        transforma-se em
+        \[
+        a_1x_1+a_2x_2-e_1=b,\qquad e_1\ge0.
+        \]
+      </div>
+
+      <p>
+        A variável de excesso mede quanto o lado esquerdo ultrapassa o limite imposto pela restrição.
+        Entretanto, como aparece com coeficiente \(-1\), ela não constitui, em geral, uma variável básica
+        inicial viável.
+      </p>
+
+      <h3>8.3 Por que a variável de excesso não gera uma base inicial</h3>
+      <p>Considere:</p>
+      <div class="formula">
+        \[
+        8x_1+4x_2+4x_3\ge16.
+        \]
+      </div>
+
+      <p>Com a variável de excesso:</p>
+      <div class="formula">
+        \[
+        8x_1+4x_2+4x_3-e_1=16.
+        \]
+      </div>
+
+      <p>Se \(x_1=x_2=x_3=0\), então:</p>
+      <div class="formula">
+        \[
+        -e_1=16
+        \quad\Rightarrow\quad
+        e_1=-16.
+        \]
+      </div>
+
+      <div class="warning">
+        Como \(e_1\ge0\), essa solução inicial é inviável. Portanto, a simples introdução da variável de excesso
+        não resolve o problema da base inicial.
+      </div>
+
+      <h3>8.4 Variáveis artificiais</h3>
+      <p>
+        Para criar temporariamente uma base inicial, introduz-se uma variável artificial. No exemplo:
+      </p>
+      <div class="formula">
+        \[
+        8x_1+4x_2+4x_3-e_1+a_1=16,
+        \qquad a_1\ge0.
+        \]
+      </div>
+
+      <p>
+        Agora, tomando inicialmente \(x_1=x_2=x_3=e_1=0\), temos \(a_1=16\), o que permite iniciar o processo
+        iterativo.
+      </p>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Variável</th>
+            <th>Papel no modelo</th>
+            <th>Significado</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Folga</strong></td>
+            <td>É adicionada a uma restrição \(\le\)</td>
+            <td>Representa recurso não utilizado e frequentemente forma a base inicial.</td>
+          </tr>
+          <tr>
+            <td><strong>Excesso</strong></td>
+            <td>É subtraída de uma restrição \(\ge\)</td>
+            <td>Representa quanto o valor supera o limite mínimo.</td>
+          </tr>
+          <tr>
+            <td><strong>Artificial</strong></td>
+            <td>É introduzida temporariamente quando não existe base inicial evidente</td>
+            <td>Não possui significado físico; serve apenas para iniciar o algoritmo.</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3>8.5 Aspectos matemáticos complementares</h3>
+      <p>
+        Alguns artifícios matemáticos também ajudam a colocar o modelo em uma forma adequada ao algoritmo.
+        Entre eles:
+      </p>
+      <ul>
+        <li>
+          a minimização de uma função \(f(x)\) pode ser tratada, quando conveniente, como a maximização de
+          \(-f(x)\);
+        </li>
+        <li>
+          uma igualdade pode ser representada por duas desigualdades de sentidos opostos;
+        </li>
+        <li>
+          uma variável irrestrita em sinal pode ser escrita como diferença entre duas variáveis não negativas.
+        </li>
+      </ul>
+
+      <div class="formula">
+        \[
+        x_j=x'_j-x''_j,\qquad x'_j\ge0,\quad x''_j\ge0.
+        \]
+      </div>
+
+      <p>
+        Além disso, os modelos lineares pressupõem, em sua forma clássica, <strong>divisibilidade</strong> e
+        <strong>aditividade</strong>. A divisibilidade admite valores fracionários para as variáveis; a aditividade
+        pressupõe que o consumo total de recursos e o resultado total sejam obtidos pela soma das contribuições
+        individuais de cada atividade.
+      </p>
+    </section>
+
+    <section id="duas-fases">
+      <h2>9. Método Simplex em Duas Fases</h2>
+      <p>
+        O Método Simplex em Duas Fases é utilizado quando a formulação não fornece diretamente uma solução
+        básica inicial viável. As variáveis artificiais são empregadas apenas para iniciar o processo e devem
+        ser eliminadas antes da otimização da função objetivo original.
+      </p>
+
+      <h3>9.1 Exemplo de formulação</h3>
+      <p>Considere o problema:</p>
+      <div class="formula">
+        \[
+        \min z=16x_1+12x_2+5x_3
+        \]
+        sujeito a
+        \[
+        \begin{aligned}
+        8x_1+4x_2+4x_3&\ge16\\
+        4x_1+6x_2&\ge12\\
+        x_1,x_2,x_3&\ge0.
+        \end{aligned}
+        \]
+      </div>
+
+      <p>Introduzindo variáveis de excesso:</p>
+      <div class="formula">
+        \[
+        \begin{aligned}
+        8x_1+4x_2+4x_3-e_1&=16\\
+        4x_1+6x_2-e_2&=12.
+        \end{aligned}
+        \]
+      </div>
+
+      <p>
+        Essa transformação ainda não fornece uma base inicial viável. Por isso, são introduzidas duas variáveis
+        artificiais:
+      </p>
+      <div class="formula">
+        \[
+        \begin{aligned}
+        8x_1+4x_2+4x_3-e_1+a_1&=16\\
+        4x_1+6x_2-e_2+a_2&=12.
+        \end{aligned}
+        \]
+      </div>
+
+      <h3>9.2 Fase 1 — obtenção de uma solução básica viável</h3>
+      <p>
+        Na primeira fase, substitui-se temporariamente a função objetivo original por uma função auxiliar que
+        procura reduzir a zero a soma das variáveis artificiais:
+      </p>
+      <div class="formula">
+        \[
+        \min W=a_1+a_2+\cdots+a_k.
+        \]
+      </div>
+
+      <div class="grid-2">
+        <div class="card">
+          <h3>Se \(W^*=0\)</h3>
+          <p>
+            Todas as variáveis artificiais podem ser retiradas da solução. Foi encontrada uma solução básica
+            viável para o problema original.
+          </p>
+        </div>
+        <div class="card">
+          <h3>Se \(W^*>0\)</h3>
+          <p>
+            Pelo menos uma variável artificial permanece positiva. Isso indica que o problema original não
+            possui solução viável.
+          </p>
+        </div>
+      </div>
+
+      <h3>9.3 Fase 2 — otimização da função objetivo original</h3>
+      <p>
+        Concluída a Fase 1 com \(W^*=0\), eliminam-se as colunas correspondentes às variáveis artificiais e
+        restabelece-se a função objetivo original. A solução básica viável encontrada passa a ser o ponto de
+        partida para a otimização.
+      </p>
+
+      <div class="step">
+        <div class="n">1</div>
+        <div><strong>Preparar o modelo.</strong> Converter as restrições em igualdades e introduzir folgas, excessos e, quando necessário, variáveis artificiais.</div>
+      </div>
+      <div class="step">
+        <div class="n">2</div>
+        <div><strong>Executar a Fase 1.</strong> Minimizar a soma das variáveis artificiais.</div>
+      </div>
+      <div class="step">
+        <div class="n">3</div>
+        <div><strong>Testar a viabilidade.</strong> Se \(W^*=0\), existe uma base viável para o problema original.</div>
+      </div>
+      <div class="step">
+        <div class="n">4</div>
+        <div><strong>Executar a Fase 2.</strong> Retomar a função objetivo original e prosseguir com o Simplex até a solução ótima.</div>
+      </div>
+
+      <div class="note">
+        <strong>Leitura conceitual.</strong> O método de duas fases resolve primeiro o problema da
+        <em>viabilidade</em> e somente depois o problema da <em>otimização</em>.
+      </div>
+    </section>
+
+    <section id="dual-simplex">
+      <h2>10. Método Dual-Simplex</h2>
+      <p>
+        O Método Dual-Simplex oferece uma estratégia diferente da utilizada no método de duas fases. Enquanto
+        o método de duas fases procura primeiro construir uma solução primal viável, o Dual-Simplex pode partir
+        de um quadro que já satisfaz o critério de otimalidade, mas apresenta uma ou mais variáveis básicas com
+        valor negativo — isto é, uma solução ainda inviável no primal.
+      </p>
+
+      <div class="grid-2">
+        <div class="card">
+          <h3>Variável que sai</h3>
+          <p>Escolhe-se a variável básica com o valor mais negativo do lado direito.</p>
+        </div>
+        <div class="card">
+          <h3>Variável que entra</h3>
+          <p>
+            É escolhida entre as variáveis não básicas com coeficiente negativo na linha da variável que sai,
+            segundo o teste de razão apropriado.
+          </p>
+        </div>
+      </div>
+
+      <h3>Exemplo</h3>
+      <div class="formula">
+        \[
+        \min z=2x_1+x_2
+        \]
+        sujeito a
+        \[
+        \begin{aligned}
+        4x_1+3x_2&\ge6\\
+        x_1+2x_2&\le3\\
+        x_1,x_2&\ge0
+        \end{aligned}
+        \]
+      </div>
+
+      <p>Após a transformação indicada no método, obtém-se uma solução inicial inviável. As iterações do Dual-Simplex restauram a viabilidade mantendo a condição de otimalidade.</p>
+
+      <div class="success">
+        A solução ótima apresentada no exemplo é
+        \[
+        x_1=\frac35,\qquad x_2=\frac65,\qquad z=\frac{12}{5}.
+        \]
+      </div>
+
+      <div class="warning">
+        Se, na linha escolhida para sair da base, não existir coeficiente com sinal adequado para realizar o
+        teste de entrada, o problema não possui solução viável nas condições consideradas.
+      </div>
+    </section>
+
+    <section id="sensibilidade">
+      <h2>11. Análise de pós-otimização e sensibilidade</h2>
+      <p>
+        Depois de encontrada uma solução ótima, é natural perguntar se ela continuará válida quando os dados do
+        modelo sofrerem alterações. Essa etapa é conhecida como <strong>análise de pós-otimização</strong> ou
+        <strong>análise de sensibilidade</strong>.
+      </p>
+
+      <p>Ela é importante porque, em aplicações reais:</p>
+      <ul>
+        <li>os dados podem ter sido estimados;</li>
+        <li>custos, lucros e disponibilidades de recursos podem variar;</li>
+        <li>novas possibilidades podem surgir após a formulação inicial do modelo.</li>
+      </ul>
+
+      <div class="note">
+        O objetivo não é apenas encontrar uma solução ótima, mas também avaliar <strong>até que ponto essa
+        solução é robusta</strong> diante de pequenas mudanças nos parâmetros do problema.
+      </div>
+    </section>
+
+    <section>
+      <h2>Resumo do capítulo</h2>
+      <p>
+        A dualidade oferece uma segunda leitura do mesmo problema de Programação Linear. Enquanto o primal
+        normalmente descreve decisões operacionais, o dual evidencia a avaliação econômica das restrições e dos
+        recursos. A igualdade entre os valores ótimos dos dois modelos, os multiplicadores do Simplex e a
+        interpretação dos preços-sombra formam a base para análises gerenciais e para estudos de sensibilidade.
+      </p>
+      <p>
+        As situações envolvendo restrições do tipo \(\ge\) ou de igualdade mostram por que variáveis de excesso e
+        artificiais são necessárias em alguns modelos. O Método Simplex em Duas Fases separa a busca por
+        viabilidade da etapa de otimização, enquanto o Método Dual-Simplex segue a lógica complementar de
+        restaurar a viabilidade a partir de um quadro que já satisfaz o critério de otimalidade.
+      </p>
+
+      <p class="source">
+        Conteúdo organizado e reescrito a partir das páginas de referência fornecidas pelo usuário.
+        As formulações e exemplos numéricos foram preservados para fins didáticos.
+      </p>
+    </section>
+  </main>
+
+  <footer class="footer">
+    Programação Linear — Capítulo 4: Dualidade, Dual-Simplex e Sensibilidade
+  </footer>
 </body>
 </html>
