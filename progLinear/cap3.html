@@ -1,262 +1,662 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Cap. 3 — Formulação de Problemas de PL | Programação Linear Aplicada</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300&display=swap" rel="stylesheet">
-<style>
-:root {
-  --bg:        #0a0e17;
-  --surface:   #111827;
-  --surface2:  #161f2e;
-  --border:    #1e2d40;
-  --accent:    #00c2ff;
-  --accent2:   #7c3aed;
-  --text:      #e2e8f0;
-  --muted:     #64748b;
-  --tag-bg:    #0f172a;
-  --font-mono: 'IBM Plex Mono', monospace;
-  --font-sans: 'IBM Plex Sans', sans-serif;
-}
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
-html{scroll-behavior:smooth;}
-body{background:var(--bg);color:var(--text);font-family:var(--font-sans);font-size:16px;line-height:1.65;}
-a{color:var(--accent);text-decoration:none;}
-a:hover{text-decoration:underline;}
-.container{max-width:980px;margin:0 auto;padding:0 2rem;}
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Capítulo 3 — Modelo matemático para PL e o método Simplex</title>
+  <meta name="description" content="Capítulo 3 — Formulação de modelos de Programação Linear, premissas, soluções básicas viáveis e método Simplex.">
 
-nav{position:sticky;top:0;z-index:100;background:rgba(10,14,23,.9);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);padding:.9rem 0;}
-nav .container{display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap;}
-.nav-brand{font-family:var(--font-mono);font-size:.78rem;color:var(--accent);}
-.nav-links{display:flex;gap:1rem;list-style:none;flex-wrap:wrap;}
-.nav-links a{font-family:var(--font-mono);font-size:.7rem;color:var(--muted);}
-.nav-links a:hover{color:var(--text);text-decoration:none;}
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [['\\(','\\)']],
+        displayMath: [['\\[','\\]']]
+      },
+      svg: { fontCache: 'global' }
+    };
+  </script>
+  <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
 
-.progress-track{height:3px;background:var(--border);position:sticky;top:53px;z-index:99;}
-.progress-fill{height:100%;width:0%;background:linear-gradient(90deg,var(--accent),var(--accent2));transition:width .1s;}
+  <style>
+    :root{
+      --bg:#f5f7fb;
+      --paper:#ffffff;
+      --ink:#1f2937;
+      --muted:#667085;
+      --brand:#164e63;
+      --brand-2:#0e7490;
+      --accent:#f59e0b;
+      --line:#d9e2ec;
+      --soft:#eef6f8;
+      --ok:#ecfdf3;
+      --warn:#fff8e6;
+      --shadow:0 10px 30px rgba(15,23,42,.08);
+      --radius:16px;
+    }
 
-.hero{padding:4rem 0 2.5rem;position:relative;overflow:hidden;}
-.hero::before{content:'';position:absolute;inset:0;background-image:linear-gradient(var(--border) 1px,transparent 1px),linear-gradient(90deg,var(--border) 1px,transparent 1px);background-size:40px 40px;opacity:.3;mask-image:radial-gradient(ellipse 80% 60% at 50% 0%,black 40%,transparent 100%);}
-.hero-eyebrow{font-family:var(--font-mono);font-size:.74rem;color:var(--accent);letter-spacing:.14em;text-transform:uppercase;margin-bottom:1rem;display:flex;align-items:center;gap:.7rem;}
-.hero-eyebrow::before{content:'';width:2rem;height:1px;background:var(--accent);}
-h1{font-size:clamp(2rem,4.5vw,3.2rem);font-weight:300;line-height:1.12;letter-spacing:-.02em;margin-bottom:.6rem;}
-h1 strong{font-weight:600;color:var(--accent);}
-.hero-meta{display:flex;gap:1.5rem;flex-wrap:wrap;margin-top:1.2rem;}
-.meta-item{font-family:var(--font-mono);font-size:.74rem;color:var(--muted);display:flex;align-items:center;gap:.4rem;}
-.meta-item svg{flex-shrink:0;}
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+      background:var(--bg);
+      color:var(--ink);
+      line-height:1.65;
+    }
 
-.objectives{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:1.4rem 1.6rem;margin-top:1.6rem;}
-.objectives p.label{font-family:var(--font-mono);font-size:.7rem;color:var(--accent);letter-spacing:.1em;text-transform:uppercase;margin-bottom:.7rem;}
-.objectives ul{list-style:none;display:grid;gap:.5rem;}
-.objectives li{font-size:.88rem;color:var(--muted);display:flex;gap:.6rem;}
-.objectives li::before{content:'→';color:var(--accent);flex-shrink:0;}
+    a{color:var(--brand-2);text-decoration:none}
+    a:hover{text-decoration:underline}
 
-.toc{display:flex;gap:.5rem;flex-wrap:wrap;margin-top:1.5rem;}
-.toc a{font-family:var(--font-mono);font-size:.7rem;color:var(--muted);border:1px solid var(--border);padding:.35rem .75rem;border-radius:20px;transition:.2s;}
-.toc a:hover{border-color:var(--accent);color:var(--accent);text-decoration:none;}
+    .hero{
+      background:linear-gradient(135deg,#0f3f4d,#176b80);
+      color:#fff;
+      padding:64px 20px 54px;
+    }
+    .hero-inner,.container{max-width:1100px;margin:auto}
+    .eyebrow{
+      display:inline-block;
+      font-size:.82rem;
+      letter-spacing:.08em;
+      text-transform:uppercase;
+      opacity:.85;
+      margin-bottom:8px;
+    }
+    h1{font-size:clamp(2rem,4vw,3.35rem);line-height:1.08;margin:.2rem 0 .8rem}
+    .lead{max-width:860px;font-size:1.12rem;opacity:.95;margin:0}
 
-.section{padding:3rem 0;border-top:1px solid var(--border);}
-.section-label{font-family:var(--font-mono);font-size:.7rem;color:var(--accent);letter-spacing:.14em;text-transform:uppercase;display:flex;align-items:center;gap:.7rem;margin-bottom:1.4rem;}
-.section-label::after{content:'';flex:1;height:1px;background:var(--border);}
-h2{font-size:1.5rem;font-weight:600;letter-spacing:-.01em;margin-bottom:1rem;}
-h3{font-size:1.1rem;font-weight:600;margin:1.6rem 0 .8rem;color:var(--text);}
-h4{font-size:.95rem;font-weight:600;margin:1.2rem 0 .6rem;color:var(--accent);}
-p{margin-bottom:1rem;color:#cbd5e1;}
-strong{color:var(--text);font-weight:600;}
-em{color:var(--accent);font-style:normal;}
-ul.plain{margin:0 0 1rem 1.2rem;color:#cbd5e1;}
-ul.plain li{margin-bottom:.4rem;}
-ol.plain{margin:0 0 1rem 1.2rem;color:#cbd5e1;}
-ol.plain li{margin-bottom:.5rem;}
+    .container{padding:32px 20px 70px}
+    .toc{
+      background:var(--paper);
+      border:1px solid var(--line);
+      border-radius:var(--radius);
+      box-shadow:var(--shadow);
+      padding:22px 24px;
+      margin-top:-28px;
+      position:relative;
+    }
+    .toc strong{display:block;margin-bottom:8px}
+    .toc-grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+      gap:8px 18px;
+    }
 
-.codeline{background:var(--tag-bg);border:1px solid var(--border);border-radius:6px;padding:.7rem 1rem;font-family:var(--font-mono);font-size:1rem;color:var(--accent);text-align:center;margin:1rem 0;}
-.codeblock{background:var(--tag-bg);border:1px solid var(--border);border-radius:6px;padding:.9rem 1.1rem;font-family:var(--font-mono);font-size:.78rem;color:#a8d8ef;margin:1rem 0;overflow-x:auto;white-space:pre;line-height:1.6;}
-.codeblock .cmt{color:var(--muted);}
+    section{
+      background:var(--paper);
+      border:1px solid var(--line);
+      border-radius:var(--radius);
+      padding:30px;
+      margin-top:24px;
+      box-shadow:0 5px 18px rgba(15,23,42,.04);
+    }
+    h2{font-size:1.65rem;line-height:1.25;margin:0 0 16px;color:#123f4c}
+    h3{font-size:1.18rem;margin:25px 0 10px;color:#155e75}
+    p{margin:0 0 12px}
+    ul,ol{margin-top:8px;padding-left:1.3rem}
+    li{margin:.35rem 0}
 
-.concept-grid{display:grid;grid-template-columns:1fr 1fr;gap:2rem;align-items:start;margin:1.5rem 0;}
-.concept-text{display:flex;flex-direction:column;justify-content:center;}
-.concept-fig{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:1rem;}
-.concept-fig img,.concept-fig svg{width:100%;display:block;}
-.fig-caption{font-family:var(--font-mono);font-size:.72rem;color:var(--muted);text-align:center;margin-top:.6rem;}
-@media (max-width:760px){.concept-grid{grid-template-columns:1fr;}}
+    .grid-2{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:20px;
+    }
+    .grid-3{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:16px;
+    }
+    .card{
+      border:1px solid var(--line);
+      border-radius:14px;
+      padding:20px;
+      background:#fff;
+    }
+    .card h3{margin-top:0}
 
-.fig-full{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:1.2rem;margin:1.5rem 0;}
-.fig-full img,.fig-full svg{width:100%;display:block;}
+    .formula{
+      background:#f8fafc;
+      border-left:4px solid var(--brand-2);
+      border-radius:10px;
+      padding:14px 16px;
+      overflow:auto;
+      margin:14px 0;
+    }
+    .formula mjx-container[display="true"]{margin:.7em 0!important}
 
-.definition{background:var(--surface);border:1px solid var(--accent2);border-left:3px solid var(--accent2);border-radius:0 8px 8px 0;padding:1.2rem 1.5rem;margin:1.2rem 0;}
-.definition .dtitle{font-family:var(--font-mono);font-size:.7rem;color:var(--accent2);letter-spacing:.1em;text-transform:uppercase;margin-bottom:.5rem;}
+    .note{
+      background:var(--soft);
+      border:1px solid #c9e4ea;
+      border-radius:12px;
+      padding:16px 18px;
+      margin:18px 0;
+    }
+    .warning{
+      background:var(--warn);
+      border:1px solid #f3d290;
+      border-radius:12px;
+      padding:16px 18px;
+      margin:18px 0;
+    }
+    .success{
+      background:var(--ok);
+      border:1px solid #b7ebc6;
+      border-radius:12px;
+      padding:16px 18px;
+      margin:18px 0;
+    }
 
-.note{background:var(--tag-bg);border:1px solid var(--border);border-radius:6px;padding:.9rem 1.1rem;margin:1rem 0;font-size:.85rem;color:var(--muted);}
-.note strong{color:var(--accent);}
+    table{
+      width:100%;
+      border-collapse:collapse;
+      margin:14px 0 6px;
+      font-size:.96rem;
+    }
+    th,td{padding:11px 12px;border:1px solid var(--line);vertical-align:top}
+    th{background:#edf4f6;text-align:left;color:#153f4b}
+    td.center,th.center{text-align:center}
 
-table{width:100%;border-collapse:collapse;font-size:.85rem;margin:1.2rem 0;}
-thead tr{background:var(--tag-bg);}
-thead th{padding:.5rem .7rem;text-align:center;font-family:var(--font-mono);font-size:.68rem;color:var(--muted);letter-spacing:.06em;text-transform:uppercase;font-weight:400;border-bottom:1px solid var(--border);}
-tbody td{padding:.45rem .7rem;border-bottom:1px solid var(--border);color:var(--muted);text-align:center;}
-tbody tr:hover{background:rgba(255,255,255,.02);}
-td.tleft, th.tleft{text-align:left;}
+    .step{
+      display:grid;
+      grid-template-columns:42px 1fr;
+      gap:12px;
+      align-items:start;
+      margin:14px 0;
+    }
+    .n{
+      width:34px;height:34px;border-radius:50%;
+      display:grid;place-items:center;
+      background:var(--brand-2);color:#fff;font-weight:700;
+    }
 
-.method-card{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:1.4rem 1.6rem;margin:1.2rem 0;position:relative;overflow:hidden;}
-.method-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--accent),var(--accent2));}
-.method-num{font-family:var(--font-mono);font-size:.7rem;color:var(--accent);background:rgba(0,194,255,.08);border:1px solid rgba(0,194,255,.25);border-radius:4px;padding:.2rem .6rem;display:inline-block;margin-bottom:.7rem;}
-.method-card h4{margin:0 0 .8rem;color:var(--text);font-size:1rem;}
-.steps{list-style:none;counter-reset:step;}
-.steps li{counter-increment:step;display:flex;gap:.7rem;margin-bottom:.6rem;font-size:.88rem;color:#cbd5e1;}
-.steps li::before{content:counter(step);font-family:var(--font-mono);font-size:.72rem;color:var(--accent);background:var(--tag-bg);border:1px solid var(--border);border-radius:50%;width:22px;height:22px;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+    .tag{
+      display:inline-block;
+      background:#e9f3f6;
+      color:#0f5b70;
+      border-radius:999px;
+      padding:3px 9px;
+      font-size:.8rem;
+      font-weight:600;
+      margin-right:6px;
+    }
 
-.ds-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:.6rem;margin:1rem 0;}
-.ds-item{background:var(--tag-bg);border:1px solid var(--border);border-radius:6px;padding:.7rem 1rem;display:flex;gap:.6rem;align-items:center;transition:.2s;}
-.ds-item:hover{border-color:var(--accent);}
-.ds-item a{font-size:.8rem;color:var(--text);font-family:var(--font-mono);}
-.ds-item a:hover{color:var(--accent);text-decoration:none;}
+    .chapter-nav{
+      display:flex;
+      justify-content:space-between;
+      gap:14px;
+      margin-top:24px;
+    }
+    .chapter-nav a{
+      flex:1;
+      background:var(--paper);
+      border:1px solid var(--line);
+      border-radius:12px;
+      padding:14px 16px;
+    }
+    .chapter-nav .next{text-align:right}
 
-.quiz{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:1.6rem;margin:1.5rem 0;}
-.quiz-header{display:flex;align-items:center;gap:.6rem;margin-bottom:1.2rem;}
-.quiz-header svg{flex-shrink:0;}
-.quiz-title{font-family:var(--font-mono);font-size:.8rem;color:var(--accent2);letter-spacing:.05em;}
-.quiz-q{font-size:.95rem;margin-bottom:.9rem;color:var(--text);}
-.quiz-options{display:flex;flex-direction:column;gap:.55rem;}
-.quiz-opt{background:var(--tag-bg);border:1px solid var(--border);border-radius:6px;padding:.7rem 1rem;font-size:.85rem;color:var(--muted);cursor:pointer;transition:.15s;text-align:left;width:100%;font-family:var(--font-sans);}
-.quiz-opt:hover{border-color:var(--accent);color:var(--text);}
-.quiz-opt.correct{border-color:#22c55e;background:rgba(34,197,94,.08);color:#86efac;}
-.quiz-opt.wrong{border-color:#ef4444;background:rgba(239,68,68,.08);color:#fca5a5;}
-.quiz-feedback{margin-top:.9rem;font-size:.85rem;padding:.8rem 1rem;border-radius:6px;display:none;}
-.quiz-feedback.show{display:block;}
-.quiz-feedback.correct-fb{background:rgba(34,197,94,.08);border:1px solid #22c55e;color:#86efac;}
-.quiz-feedback.wrong-fb{background:rgba(239,68,68,.08);border:1px solid #ef4444;color:#fca5a5;}
+    .source{
+      font-size:.9rem;
+      color:var(--muted);
+      border-top:1px dashed var(--line);
+      padding-top:14px;
+      margin-top:22px;
+    }
+    .footer{
+      color:var(--muted);
+      text-align:center;
+      padding:28px 20px 44px;
+      font-size:.9rem;
+    }
 
-.refs-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:.8rem;}
-.ref-card{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:1rem 1.2rem;display:flex;gap:.8rem;align-items:flex-start;transition:.2s;}
-.ref-card:hover{border-color:var(--accent);}
-.ref-card svg{flex-shrink:0;margin-top:.15rem;}
-.ref-card h4{font-size:.88rem;font-weight:600;margin:0 0 .2rem;color:var(--text);}
-.ref-card p{font-size:.76rem;color:var(--muted);margin:0;}
-.ref-type{font-family:var(--font-mono);font-size:.62rem;color:var(--accent);text-transform:uppercase;letter-spacing:.06em;}
-
-.chapter-nav{display:flex;justify-content:space-between;gap:1rem;margin-top:2rem;}
-.chapter-nav a{flex:1;background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:1rem 1.3rem;font-size:.85rem;transition:.2s;}
-.chapter-nav a:hover{border-color:var(--accent);text-decoration:none;}
-.chapter-nav .dir{font-family:var(--font-mono);font-size:.65rem;color:var(--muted);text-transform:uppercase;letter-spacing:.08em;display:block;margin-bottom:.3rem;}
-.chapter-nav .next{text-align:right;}
-
-footer{border-top:1px solid var(--border);padding:2rem 0;margin-top:2rem;}
-footer .container{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;}
-footer p{font-size:.8rem;color:var(--muted);font-family:var(--font-mono);}
-
-@media(max-width:640px){.nav-links{display:none;}.hero{padding:2.5rem 0 2rem;}}
-
-.katex{color:var(--accent);font-size:1.05em;}
-
-/* SVG diagram helpers */
-.dwire{stroke:#3b4a5e;stroke-width:1.6;fill:none;}
-.dbox{stroke:#00c2ff;stroke-width:1.6;fill:none;}
-.dbox2{stroke:#7c3aed;stroke-width:1.6;fill:none;}
-.dlbl{font-family:'IBM Plex Mono',monospace;font-size:13px;fill:#cbd5e1;}
-.dlbl2{font-family:'IBM Plex Mono',monospace;font-size:11px;fill:#64748b;}
-.dfill{fill:#111827;}
-
-.formula-card{background:var(--tag-bg);border:1px solid var(--border);border-radius:8px;padding:1rem 1.2rem;margin:1rem 0;font-family:var(--font-mono);color:#a8d8ef;overflow-x:auto;white-space:pre-wrap}
-.exercise-card{background:var(--surface);border:1px solid var(--accent);border-radius:8px;padding:1.2rem 1.4rem;margin:1.2rem 0}
-.key-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:.8rem;margin:1.2rem 0}
-.key-card{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:1rem 1.2rem}
-.key-card strong{display:block;color:var(--accent);font-family:var(--font-mono);font-size:.78rem;margin-bottom:.3rem}
-.key-card p{font-size:.86rem;color:var(--muted);margin:0}
-</style>
+    @media(max-width:800px){
+      .grid-2,.grid-3{grid-template-columns:1fr}
+      section{padding:22px 18px}
+      .hero{padding-top:46px}
+      .chapter-nav{flex-direction:column}
+      .chapter-nav .next{text-align:left}
+    }
+  </style>
 </head>
+
 <body>
-<nav>
-  <div class="container">
-    <span class="nav-brand">proglinear · cap. 3</span>
-    <ul class="nav-links">
-      <li><a href="#s1">modelo</a></li><li><a href="#s2">premissas</a></li><li><a href="#s3">geometria</a></li>
-      <li><a href="#s4">simplex</a></li><li><a href="#s5">quadro</a></li><li><a href="#s6">dualidade</a></li>
-      <li><a href="../progLinear.html">← disciplina</a></li>
-    </ul>
-  </div>
-</nav>
-<div class="progress-track"><div class="progress-fill" id="progressFill"></div></div>
-<section class="hero"><div class="container">
-  <p class="hero-eyebrow">Programação Linear Aplicada · Capítulo 3</p>
-  <h1>Cap. 3<br><strong>Modelo matemático para PL e o método Simplex</strong></h1>
-  <div class="hero-meta"><span class="meta-item">Prof. Clayton J A Silva</span><span class="meta-item">IBM0803</span></div>
-  <div class="objectives"><p class="label">Objetivos de aprendizagem</p><ul>
-    <li>Reconhecer a estrutura geral de um modelo de Programação Linear e suas premissas.</li>
-    <li>Relacionar região viável, convexidade, vértices e soluções básicas viáveis.</li>
-    <li>Transformar restrições em equações e organizar o quadro do método Simplex.</li>
-    <li>Executar e interpretar as etapas de uma iteração do Simplex.</li>
-    <li>Introduzir dualidade e discutir o tratamento de restrições do tipo ≥.</li>
-  </ul></div>
-  <div class="toc"><a href="#s1">Modelo geral</a><a href="#s2">Premissas</a><a href="#s3">Região viável</a><a href="#s4">Método Simplex</a><a href="#s5">Quadro e iterações</a><a href="#s6">Dualidade e excesso</a><a href="#refs">Referências</a></div>
-</div></section>
-<div class="container">
-<section class="section" id="s1"><p class="section-label">3.1 / modelo matemático</p><h2>Da situação real ao modelo de Programação Linear</h2>
-<p>A Pesquisa Operacional utiliza modelos como representações simplificadas de situações reais de decisão. O propósito não é reproduzir toda a realidade, mas selecionar as relações que são relevantes para a decisão e expressá-las de forma suficientemente clara para que possam ser analisadas. Nessa perspectiva, a modelagem é uma etapa central: antes de escolher um algoritmo, é necessário definir o que se pretende decidir, qual critério será utilizado para avaliar as alternativas e quais limitações precisam ser respeitadas.</p>
-<p>Essa forma de pensar é coerente com a abordagem apresentada por <strong>Eduardo Leopoldino de Andrade</strong>, que associa a Pesquisa Operacional à construção de modelos para apoiar a análise de decisões, e com <strong>Hillier e Lieberman</strong>, que organizam o estudo da Programação Linear a partir da modelagem, da solução e da interpretação do problema. Assim, o modelo matemático deve permanecer ligado ao significado operacional das variáveis e dos parâmetros: uma solução numericamente correta só é útil se representar adequadamente o problema que motivou sua construção.</p>
-<div class="formula-card">Maximizar ou minimizar   Z = Σ cⱼxⱼ\n\nsujeito a               Σ aᵢⱼxⱼ  (≤, = ou ≥)  bᵢ,   i = 1,...,m\n                         xⱼ ≥ 0,                    j = 1,...,n</div>
-<p>Nessa representação, <strong>x<sub>j</sub></strong> são as variáveis de decisão; <strong>c<sub>j</sub></strong> são os coeficientes da função objetivo; <strong>a<sub>ij</sub></strong> representam os coeficientes técnicos das restrições; e <strong>b<sub>i</sub></strong> expressam disponibilidades, limites ou requisitos. A função objetivo traduz o critério de desempenho — lucro, custo, tempo, produção ou outra grandeza — e as restrições descrevem as condições que delimitam as decisões possíveis.</p>
-<div class="note"><strong>Ideia-chave:</strong> modelar significa traduzir uma decisão real para uma estrutura matemática sem perder o significado das grandezas envolvidas.</div>
-</section>
-<section class="section" id="s2"><p class="section-label">3.2 / premissas</p><h2>Quando um problema pode ser tratado como Programação Linear?</h2>
-<p>O modelo de PL pressupõe relações lineares. Essa hipótese aparece de forma mais clara quando observamos seis condições discutidas em aula: <strong>linearidade, proporcionalidade, aditividade, divisibilidade, certeza dos parâmetros e não negatividade</strong>. Elas não são apenas propriedades formais; indicam como o modelo interpreta o sistema real.</p>
-<div class="key-grid">
-<div class="key-card"><strong>Linearidade</strong><p>A função objetivo e as restrições são expressas por combinações lineares das variáveis.</p></div>
-<div class="key-card"><strong>Proporcionalidade</strong><p>A contribuição de cada variável cresce na mesma proporção da quantidade produzida ou utilizada.</p></div>
-<div class="key-card"><strong>Aditividade</strong><p>O efeito total resulta da soma das contribuições individuais, sem termos de interação entre variáveis.</p></div>
-<div class="key-card"><strong>Divisibilidade</strong><p>As variáveis podem assumir valores fracionários quando a natureza do problema permitir.</p></div>
-<div class="key-card"><strong>Certeza</strong><p>Os coeficientes do modelo são tratados como conhecidos e constantes durante a análise.</p></div>
-<div class="key-card"><strong>Não negatividade</strong><p>Nas formulações usuais, as variáveis de decisão e as variáveis auxiliares são não negativas.</p></div>
-</div>
-<p>Hillier e Lieberman destacam essas hipóteses como parte da estrutura que permite representar um problema por Programação Linear. Na prática, elas também funcionam como um teste de adequação do modelo. Se, por exemplo, o consumo de um recurso variar de forma não proporcional à produção, ou se houver interação entre duas decisões, a representação linear pode deixar de ser apropriada ou exigir uma aproximação.</p>
-</section>
-<section class="section" id="s3"><p class="section-label">3.3 / interpretação geométrica</p><h2>Região viável, convexidade e pontos extremos</h2>
-<p>O conjunto de valores das variáveis que satisfaz simultaneamente todas as restrições e as condições de não negatividade constitui a <strong>região viável</strong>. Em duas variáveis, essa região pode ser visualizada no plano; em dimensões maiores, a interpretação geométrica permanece válida, embora não seja possível desenhá-la diretamente.</p>
-<p>Uma propriedade fundamental é a <strong>convexidade</strong>: se dois pontos pertencem à região viável, todo ponto do segmento de reta que os une também pertence à região. Os limites das restrições formam os vértices, ou pontos extremos, da região. Para problemas lineares com solução ótima finita, existe pelo menos uma solução ótima em um desses vértices. É essa propriedade que fornece a base geométrica para o método Simplex.</p>
-<div class="definition"><p class="dtitle">Solução básica viável</p><p>Ao escrever o modelo como um sistema de equações, escolhe-se um conjunto de variáveis para formar uma base e atribui-se valor zero às demais. Quando os valores obtidos para as variáveis básicas respeitam as condições de viabilidade, tem-se uma solução básica viável. Sob as condições usuais, ela corresponde a um vértice da região viável.</p></div>
-<h3>Relação com sistemas lineares</h3><p>Depois que as desigualdades são convertidas em igualdades, o modelo pode ser escrito de forma matricial como <strong>Ax = b</strong>. A análise de sistemas lineares ajuda a compreender por que a escolha de uma base é importante: dependendo da independência das equações e do número de incógnitas, o sistema pode apresentar solução única, infinitas soluções ou ser incompatível. No Simplex, não se resolve todo o conjunto de soluções de uma só vez; trabalha-se com bases que determinam soluções particulares e permite-se a passagem ordenada de uma solução básica viável para outra.</p>
-</section>
-<section class="section" id="s4"><p class="section-label">3.4 / método simplex</p><h2>O Simplex como procedimento algébrico com interpretação geométrica</h2>
-<p>O método Simplex é um procedimento iterativo para resolver problemas de Programação Linear. Embora sua execução seja algébrica, sua lógica é geométrica: o algoritmo percorre soluções básicas viáveis adjacentes, isto é, vértices que compartilham um limite da região viável, procurando melhorar o valor da função objetivo. Quando não existe uma solução adjacente capaz de produzir melhora, a solução atual é ótima.</p>
-<p>Essa ligação entre álgebra e geometria é importante para compreender o método para além das operações de tabela. Cada quadro representa uma solução básica; cada pivoteamento altera a base; e cada troca de variável corresponde, geometricamente, ao deslocamento para outro ponto extremo. A lógica apresentada nos slides segue a exposição clássica do Simplex encontrada em Hillier e Lieberman: partir de uma solução básica viável, testar a possibilidade de melhoria e avançar para uma solução básica viável adjacente.</p>
-<h3>Preparação do modelo: variáveis de folga</h3><p>Para aplicar o quadro do Simplex às restrições do tipo <strong>≤</strong>, acrescenta-se uma variável de folga não negativa. Ela representa a parcela do recurso disponível que não foi utilizada. Assim, uma restrição como <strong>a₁x₁ + a₂x₂ ≤ b</strong> passa a ser escrita como <strong>a₁x₁ + a₂x₂ + f = b</strong>, com <strong>f ≥ 0</strong>. Essa transformação preserva a região viável e cria uma coluna que pode compor a base inicial.</p>
-<div class="formula-card">Modelo:     Ax ≤ b,  x ≥ 0\nCom folgas: Ax + If = b,  x ≥ 0, f ≥ 0</div>
-<p>Em um modelo com <strong>m</strong> restrições e <strong>n</strong> variáveis de decisão, a inclusão de uma variável de folga para cada restrição do tipo ≤ produz, nesse caso, <strong>n + m</strong> variáveis. Na base inicial mais simples, as variáveis de folga são básicas e as variáveis de decisão são não básicas, inicialmente iguais a zero.</p>
-</section>
-<section class="section" id="s5"><p class="section-label">3.5 / tableau</p><h2>Quadro inicial e etapas de uma iteração</h2>
-<p>O quadro do Simplex organiza, em uma única estrutura, os coeficientes das restrições, as variáveis que pertencem à base, os termos independentes e as informações necessárias para avaliar a função objetivo. Para uma formulação de maximização usando a linha <strong>C<sub>j</sub> − Z<sub>j</sub></strong>, valores positivos nessa linha indicam que ainda existe possibilidade de aumentar o valor de <strong>Z</strong>.</p>
-<div class="method-card"><span class="method-num">iteração</span><h4>Sequência operacional</h4><ol class="steps">
-<li>Calcular, para cada coluna, os valores de <strong>C<sub>j</sub> − Z<sub>j</sub></strong>.</li>
-<li>Verificar se existe algum valor positivo. Se não existir, a solução básica atual é ótima para o caso de maximização considerado.</li>
-<li>Escolher a variável que entra na base, usualmente associada ao maior valor positivo de <strong>C<sub>j</sub> − Z<sub>j</sub></strong>.</li>
-<li>Aplicar o teste da razão mínima <strong>b<sub>i</sub>/a<sub>ip</sub></strong> somente às linhas em que <strong>a<sub>ip</sub> &gt; 0</strong>.</li>
-<li>A menor razão não negativa determina a variável que sai da base; a interseção da linha com a coluna de entrada define o pivô.</li>
-<li>Normalizar a linha pivô e zerar os demais elementos da coluna pivô por operações elementares de linha.</li>
-<li>Recalcular o quadro e repetir o procedimento até que o critério de otimalidade seja satisfeito.</li>
-</ol></div>
-<div class="note"><strong>Por que o teste da razão usa apenas a<sub>ip</sub> &gt; 0?</strong> Ao aumentar a variável que entra na base, apenas coeficientes positivos nessa coluna impõem um limite superior ao crescimento sem tornar negativa uma variável básica. Coeficientes nulos não restringem esse aumento; coeficientes negativos, nesse passo do Simplex primal, não fornecem uma razão que preserve a interpretação do teste de viabilidade.</div>
-<h3>Exemplo: mesas e cadeiras</h3><div class="exercise-card"><p><strong>Maximizar</strong> Z = 50x₁ + 40x₂</p><p><strong>sujeito a</strong> 4x₁ + 2x₂ ≤ 40; &nbsp; 2x₁ + 3x₂ ≤ 30; &nbsp; x₁,x₂ ≥ 0.</p></div>
-<p>Com as folgas <strong>f₁</strong> e <strong>f₂</strong>, a solução básica inicial é (x₁,x₂,f₁,f₂) = (0,0,40,30), com Z = 0. Na primeira iteração, <strong>x₁</strong> entra na base e <strong>f₁</strong> sai; o valor da função objetivo passa a Z = 500. Na iteração seguinte, <strong>x₂</strong> entra e <strong>f₂</strong> sai. O quadro final fornece <strong>x₁ = 5</strong>, <strong>x₂ = 10</strong> e <strong>Z = 650</strong>. O ponto importante não é apenas executar as operações: é interpretar cada troca de base como uma mudança de solução básica viável.</p>
-</section>
-<section class="section" id="s6"><p class="section-label">3.6 / dualidade e restrições ≥</p><h2>Dualidade e variáveis de excesso</h2>
-<p>A dualidade estabelece que a todo problema de Programação Linear, denominado <strong>primal</strong>, pode ser associado outro problema, denominado <strong>dual</strong>. Na forma padrão discutida em aula, um problema primal de maximização com restrições do tipo ≤ relaciona-se a um dual de minimização com restrições do tipo ≥. Variáveis e restrições trocam papéis, a matriz de coeficientes é transposta e os coeficientes da função objetivo e os termos independentes assumem posições correspondentes.</p>
-<p>Mais do que uma transformação algébrica, a dualidade oferece uma interpretação econômica: as variáveis duais podem ser associadas ao valor marginal dos recursos ou das restrições. Hillier e Lieberman dedicam uma etapa própria do estudo de PL à teoria da dualidade e à análise de sensibilidade, justamente porque essas relações ampliam a interpretação da solução ótima para além dos valores das variáveis de decisão.</p>
-<h3>Restrição do tipo ≥ e variável de excesso</h3><p>Quando uma restrição estabelece um requisito mínimo, do tipo <strong>a₁x₁ + a₂x₂ ≥ b</strong>, a conversão em igualdade é feita subtraindo-se uma <strong>variável de excesso</strong>: <strong>a₁x₁ + a₂x₂ − e = b</strong>, com <strong>e ≥ 0</strong>. O excesso mede quanto o lado esquerdo ultrapassa o mínimo exigido.</p>
-<div class="exercise-card"><h4>Exemplo discutido em aula</h4><p>Uma empresa fabrica produtos A e B. Cada unidade de A produz resultado de R$ 40 e utiliza 2 h; cada unidade de B produz resultado de R$ 30 e utiliza 1 h. Há, no máximo, 20 h de produção e, por compromisso contratual, devem ser produzidas pelo menos 8 unidades.</p><div class="formula-card">max Z = 40x₁ + 30x₂\n2x₁ + x₂ + f₁ = 20\nx₁ + x₂ − e₂ = 8\nx₁,x₂,f₁,e₂ ≥ 0</div></div>
-<div class="note"><strong>Atenção conceitual:</strong> diferentemente da variável de folga em uma restrição ≤, a coluna de uma variável de excesso contém −1 e, por si só, não fornece a coluna identidade necessária para uma base inicial viável do Simplex primal. Em uma formulação geral, restrições ≥ costumam exigir uma variável artificial e um procedimento de inicialização, como Duas Fases ou Big-M. Por isso, a presença de coeficientes negativos merece atenção especial no teste de razão e na construção da base.</div>
-</section>
-<section class="section" id="refs"><p class="section-label">referências</p><h2>Referências utilizadas no capítulo</h2>
-<div class="refs-grid">
-<div class="ref-card"><div><span class="ref-type">Livro</span><h4>ANDRADE, Eduardo Leopoldino de</h4><p><em>Introdução à Pesquisa Operacional: métodos e modelos para análise de decisões.</em> Rio de Janeiro: LTC. Referência conceitual para modelagem e apoio à decisão.</p></div></div>
-<div class="ref-card"><div><span class="ref-type">Livro</span><h4>HILLIER, Frederick S.; LIEBERMAN, Gerald J.</h4><p><em>Introdução à Pesquisa Operacional.</em> 9. ed. Porto Alegre: AMGH, 2013. Capítulos de introdução à PL, método Simplex e dualidade.</p></div></div>
-<div class="ref-card"><div><span class="ref-type">Material de aula</span><h4>Aula 4 — Programação Linear</h4><p>Modelo matemático para PL e o método Simplex. Material utilizado como eixo para a organização deste capítulo.</p></div></div>
-</div>
-<div class="note"><strong>Nota editorial:</strong> o texto acima incorpora e articula os conceitos das referências bibliográficas, mas evita reproduzir passagens literais extensas. Para inserir citações textuais específicas de Andrade ou Hillier &amp; Lieberman, é necessário trabalhar a partir das páginas/edições efetivamente disponíveis.</div>
-</section>
-<div class="chapter-nav"><a href="cap2.html"><span class="dir">← anterior</span>Cap. 2</a><a class="next" href="cap4.html"><span class="dir">próximo →</span>Cap. 4</a></div>
-</div>
-<footer><div class="container"><p>© 2026 · Prof. Clayton J A Silva</p><p><a href="../progLinear.html">Programação Linear Aplicada</a></p></div></footer>
-<script>window.addEventListener('scroll',()=>{const h=document.documentElement;document.getElementById('progressFill').style.width=(h.scrollTop/(h.scrollHeight-h.clientHeight)*100)+'%';});</script>
+  <header class="hero">
+    <div class="hero-inner">
+      <span class="eyebrow">Programação Linear</span>
+      <h1>Capítulo 3 — Modelo matemático para PL e o método Simplex</h1>
+      <p class="lead">
+        Estrutura matemática dos modelos de Programação Linear, soluções básicas viáveis,
+        transformação de restrições e desenvolvimento do método Simplex.
+      </p>
+    </div>
+  </header>
+
+  <main class="container">
+    <nav class="toc" aria-label="Sumário">
+      <strong>Neste capítulo</strong>
+      <div class="toc-grid">
+        <a href="#objetivos">Objetivos</a>
+        <a href="#modelo">1. Modelo matemático de PL</a>
+        <a href="#premissas">2. Premissas da Programação Linear</a>
+        <a href="#geometria">3. Região viável e soluções básicas</a>
+        <a href="#simplex">4. Preparação para o Simplex</a>
+        <a href="#quadro">5. Quadro e iterações</a>
+        <a href="#exemplo">6. Exemplo completo</a>
+        <a href="#transicao">7. Limites da base inicial</a>
+        <a href="#referencias">Referências</a>
+      </div>
+    </nav>
+
+    <section id="objetivos">
+      <h2>Objetivos do capítulo</h2>
+      <p>Ao final deste capítulo, espera-se que o estudante seja capaz de:</p>
+      <ul>
+        <li>reconhecer a estrutura geral de um modelo de Programação Linear;</li>
+        <li>identificar as premissas que sustentam a representação linear;</li>
+        <li>relacionar região viável, pontos extremos e soluções básicas viáveis;</li>
+        <li>transformar restrições do tipo \(\le\) em igualdades por meio de variáveis de folga;</li>
+        <li>organizar o quadro do método Simplex e interpretar uma troca de base;</li>
+        <li>executar o teste de otimalidade e o teste da razão mínima;</li>
+        <li>reconhecer por que algumas restrições não fornecem diretamente uma base inicial viável.</li>
+      </ul>
+    </section>
+
+    <section id="modelo">
+      <h2>1. Da situação real ao modelo de Programação Linear</h2>
+      <p>
+        A Pesquisa Operacional utiliza modelos como representações simplificadas de situações reais de decisão.
+        Antes de escolher um algoritmo, é necessário definir o que se pretende decidir, qual critério será usado
+        para comparar alternativas e quais limitações devem ser respeitadas.
+      </p>
+      <p>
+        O modelo matemático deve permanecer ligado ao significado operacional de suas variáveis e parâmetros.
+        Uma solução numericamente correta só é útil quando representa adequadamente o problema que motivou sua
+        construção.
+      </p>
+
+      <h3>1.1 Forma geral de um modelo de Programação Linear</h3>
+      <div class="formula">
+        \[
+        \text{Maximizar ou minimizar}\qquad
+        Z=\sum_{j=1}^{n} c_jx_j
+        \]
+        sujeito a
+        \[
+        \sum_{j=1}^{n} a_{ij}x_j
+        \begin{cases}
+        \le\\
+        =\\
+        \ge
+        \end{cases}
+        b_i,
+        \qquad i=1,\ldots,m
+        \]
+        \[
+        x_j\ge0,\qquad j=1,\ldots,n.
+        \]
+      </div>
+
+      <table>
+        <thead>
+          <tr><th>Símbolo</th><th>Interpretação</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>\(x_j\)</td><td>Variáveis de decisão.</td></tr>
+          <tr><td>\(c_j\)</td><td>Contribuição unitária de cada variável para a função objetivo.</td></tr>
+          <tr><td>\(a_{ij}\)</td><td>Coeficientes técnicos das restrições.</td></tr>
+          <tr><td>\(b_i\)</td><td>Disponibilidades, limites ou requisitos associados às restrições.</td></tr>
+        </tbody>
+      </table>
+
+      <div class="note">
+        <strong>Ideia-chave.</strong> Modelar significa traduzir uma decisão real para uma estrutura matemática,
+        mantendo claro o significado das grandezas utilizadas.
+      </div>
+    </section>
+
+    <section id="premissas">
+      <h2>2. Quando um problema pode ser tratado como Programação Linear?</h2>
+      <p>
+        A Programação Linear pressupõe relações lineares. Na prática, algumas condições ajudam a avaliar se a
+        representação é adequada ao problema.
+      </p>
+
+      <div class="grid-3">
+        <div class="card">
+          <h3>Linearidade</h3>
+          <p>A função objetivo e as restrições são combinações lineares das variáveis.</p>
+        </div>
+        <div class="card">
+          <h3>Proporcionalidade</h3>
+          <p>A contribuição de uma variável varia proporcionalmente ao seu nível de atividade.</p>
+        </div>
+        <div class="card">
+          <h3>Aditividade</h3>
+          <p>O efeito total resulta da soma das contribuições individuais, sem interação entre variáveis.</p>
+        </div>
+        <div class="card">
+          <h3>Divisibilidade</h3>
+          <p>As variáveis podem assumir valores fracionários quando a natureza do problema permitir.</p>
+        </div>
+        <div class="card">
+          <h3>Certeza</h3>
+          <p>Os coeficientes são tratados como conhecidos e constantes durante a análise.</p>
+        </div>
+        <div class="card">
+          <h3>Não negatividade</h3>
+          <p>Na formulação usual, as variáveis assumem valores não negativos.</p>
+        </div>
+      </div>
+
+      <p>
+        Essas hipóteses funcionam também como um teste de adequação. Se o consumo de um recurso não variar de
+        forma proporcional à atividade, ou se houver interação relevante entre decisões, a representação linear
+        pode exigir aproximações ou outro tipo de modelo.
+      </p>
+    </section>
+
+    <section id="geometria">
+      <h2>3. Região viável, convexidade e soluções básicas</h2>
+      <p>
+        O conjunto de valores que satisfaz simultaneamente todas as restrições e as condições de não negatividade
+        constitui a <strong>região viável</strong>. Em duas variáveis, essa região pode ser representada
+        geometricamente.
+      </p>
+      <p>
+        Uma propriedade fundamental é a convexidade. Para um problema linear com solução ótima finita, existe
+        pelo menos uma solução ótima em um ponto extremo da região viável. Essa propriedade fornece a base
+        geométrica para o método Simplex.
+      </p>
+
+      <h3>3.1 Forma matricial</h3>
+      <p>Depois de transformadas as restrições em equações, o sistema pode ser representado por:</p>
+      <div class="formula">
+        \[
+        A\,x=b,\qquad x\ge0.
+        \]
+      </div>
+
+      <h3>3.2 Solução básica</h3>
+      <p>
+        Em um sistema com \(m\) equações independentes, selecionam-se \(m\) variáveis para formar a base.
+        As demais são consideradas não básicas e recebem valor zero. Se \(B\) representa a matriz formada pelas
+        colunas básicas, então:
+      </p>
+      <div class="formula">
+        \[
+        Bx_B=b
+        \]
+        e, quando \(B\) é inversível,
+        \[
+        x_B=B^{-1}b.
+        \]
+      </div>
+
+      <div class="success">
+        Quando todos os componentes de \(x_B\) são não negativos, a solução básica é também
+        <strong>viável</strong>. Sob as condições usuais, ela corresponde a um ponto extremo da região viável.
+      </div>
+    </section>
+
+    <section id="simplex">
+      <h2>4. Preparação do modelo para o método Simplex</h2>
+      <p>
+        O método Simplex é um procedimento iterativo que percorre soluções básicas viáveis adjacentes,
+        procurando melhorar o valor da função objetivo. Para iniciar o processo no caso mais simples, as
+        desigualdades do tipo \(\le\) são convertidas em igualdades com variáveis de folga.
+      </p>
+
+      <h3>4.1 Variáveis de folga</h3>
+      <p>Uma restrição do tipo</p>
+      <div class="formula">
+        \[
+        a_1x_1+a_2x_2\le b
+        \]
+      </div>
+      <p>é transformada em:</p>
+      <div class="formula">
+        \[
+        a_1x_1+a_2x_2+f=b,
+        \qquad f\ge0.
+        \]
+      </div>
+
+      <p>
+        A variável \(f\) representa a parcela do recurso que não foi utilizada. Para \(m\) restrições do tipo
+        \(\le\), pode-se escrever:
+      </p>
+      <div class="formula">
+        \[
+        Ax+If=b,
+        \qquad x\ge0,\quad f\ge0.
+        \]
+      </div>
+
+      <p>
+        Se \(x=0\), resulta \(f=b\). Quando \(b\ge0\), as próprias variáveis de folga formam uma base inicial
+        natural.
+      </p>
+
+      <div class="note">
+        <strong>Base inicial usual.</strong> Variáveis de decisão não básicas:
+        \(x_1=\cdots=x_n=0\). Variáveis de folga básicas: \(f=b\).
+      </div>
+    </section>
+
+    <section id="quadro">
+      <h2>5. Quadro do Simplex e etapas de uma iteração</h2>
+      <p>
+        O quadro organiza os coeficientes das restrições, as variáveis básicas, os termos independentes e os
+        indicadores usados para verificar se uma nova troca de base pode melhorar a função objetivo.
+      </p>
+
+      <h3>5.1 Critério de otimalidade</h3>
+      <p>
+        Para uma formulação de maximização escrita com a linha \(C_j-Z_j\), um valor positivo indica que existe
+        potencial de melhoria. Assim:
+      </p>
+      <div class="formula">
+        \[
+        C_j-Z_j\le0
+        \quad\text{para todo }j
+        \]
+        caracteriza a condição de otimalidade, na convenção utilizada neste capítulo.
+      </div>
+
+      <h3>5.2 Sequência operacional</h3>
+      <div class="step">
+        <div class="n">1</div>
+        <div>Calcular os valores de \(C_j-Z_j\) para as colunas do quadro.</div>
+      </div>
+      <div class="step">
+        <div class="n">2</div>
+        <div>Se todos forem menores ou iguais a zero, a solução básica atual é ótima para o caso considerado.</div>
+      </div>
+      <div class="step">
+        <div class="n">3</div>
+        <div>Escolher a variável que entra na base, usualmente associada ao maior valor positivo de \(C_j-Z_j\).</div>
+      </div>
+      <div class="step">
+        <div class="n">4</div>
+        <div>Aplicar o teste da razão mínima somente às linhas para as quais o coeficiente da coluna de entrada é positivo.</div>
+      </div>
+
+      <div class="formula">
+        \[
+        \theta_i=\frac{b_i}{a_{ip}},
+        \qquad a_{ip}>0.
+        \]
+      </div>
+
+      <div class="step">
+        <div class="n">5</div>
+        <div>A menor razão não negativa determina a variável que sai da base. A interseção da linha com a coluna de entrada é o pivô.</div>
+      </div>
+      <div class="step">
+        <div class="n">6</div>
+        <div>Normalizar a linha pivô e zerar os demais elementos da coluna pivô.</div>
+      </div>
+      <div class="step">
+        <div class="n">7</div>
+        <div>Recalcular o quadro e repetir o processo até satisfazer o critério de otimalidade.</div>
+      </div>
+
+      <div class="note">
+        <strong>Por que somente \(a_{ip}>0\)?</strong> Ao aumentar a variável que entra na base, apenas
+        coeficientes positivos nessa coluna impõem um limite superior ao crescimento sem tornar negativa uma
+        variável básica. Coeficientes nulos não restringem esse aumento; coeficientes negativos não fornecem,
+        nessa etapa do Simplex primal, uma razão que preserve a viabilidade.
+      </div>
+    </section>
+
+    <section id="exemplo">
+      <h2>6. Exemplo: mesas e cadeiras</h2>
+      <p>Considere o modelo:</p>
+
+      <div class="formula">
+        \[
+        \max Z=50x_1+40x_2
+        \]
+        sujeito a
+        \[
+        \begin{aligned}
+        4x_1+2x_2&\le40\\
+        2x_1+3x_2&\le30\\
+        x_1,x_2&\ge0.
+        \end{aligned}
+        \]
+      </div>
+
+      <h3>6.1 Conversão para igualdades</h3>
+      <div class="formula">
+        \[
+        \begin{aligned}
+        4x_1+2x_2+f_1&=40\\
+        2x_1+3x_2+f_2&=30\\
+        x_1,x_2,f_1,f_2&\ge0.
+        \end{aligned}
+        \]
+      </div>
+
+      <p>A solução básica inicial é:</p>
+      <div class="formula">
+        \[
+        (x_1,x_2,f_1,f_2)=(0,0,40,30),
+        \qquad Z=0.
+        \]
+      </div>
+
+      <h3>6.2 Primeira iteração</h3>
+      <p>
+        A variável \(x_1\) possui a maior contribuição positiva para a melhoria da função objetivo no quadro
+        inicial e entra na base. O teste da razão é:
+      </p>
+      <div class="formula">
+        \[
+        \frac{40}{4}=10,
+        \qquad
+        \frac{30}{2}=15.
+        \]
+      </div>
+
+      <p>
+        A menor razão é \(10\); portanto, \(f_1\) sai da base. A primeira nova solução básica é:
+      </p>
+      <div class="formula">
+        \[
+        x_1=10,\qquad x_2=0,\qquad Z=500.
+        \]
+      </div>
+
+      <h3>6.3 Iteração seguinte e solução ótima</h3>
+      <p>
+        A variável \(x_2\) passa a entrar na base e \(f_2\) sai. Ao final do processo, obtém-se:
+      </p>
+      <div class="formula">
+        \[
+        x_1=5,\qquad x_2=10,
+        \qquad Z^*=650.
+        \]
+      </div>
+
+      <div class="success">
+        Cada pivoteamento representa uma troca de base e, geometricamente, uma passagem para uma solução básica
+        viável adjacente.
+      </div>
+    </section>
+
+    <section id="transicao">
+      <h2>7. Quando a base inicial não aparece naturalmente</h2>
+      <p>
+        O procedimento estudado neste capítulo funciona de forma direta quando as restrições são do tipo
+        \(\le\), os termos independentes são não negativos e as variáveis de folga fornecem uma base inicial
+        viável.
+      </p>
+
+      <p>
+        Nem todo modelo apresenta essa estrutura. Uma restrição do tipo \(\ge\), por exemplo, é convertida em
+        igualdade pela subtração de uma variável de excesso:
+      </p>
+
+      <div class="formula">
+        \[
+        a_1x_1+a_2x_2\ge b
+        \]
+        torna-se
+        \[
+        a_1x_1+a_2x_2-e=b,
+        \qquad e\ge0.
+        \]
+      </div>
+
+      <div class="warning">
+        Diferentemente da variável de folga, a variável de excesso aparece com coeficiente \(-1\) e não fornece,
+        por si só, a coluna identidade necessária para uma base inicial viável.
+      </div>
+
+      <p>
+        O tratamento sistemático dessas situações — incluindo variáveis de excesso, variáveis artificiais,
+        Método Simplex em Duas Fases, dualidade e Dual-Simplex — é desenvolvido no
+        <strong>Capítulo 4</strong>.
+      </p>
+    </section>
+
+    <section id="referencias">
+      <h2>Referências utilizadas no capítulo</h2>
+
+      <div class="grid-2">
+        <div class="card">
+          <span class="tag">Livro</span>
+          <h3>ANDRADE, Eduardo Leopoldino de</h3>
+          <p>
+            <em>Introdução à Pesquisa Operacional: métodos e modelos para análise de decisões.</em>
+            Rio de Janeiro: LTC. Referência conceitual para modelagem e apoio à decisão.
+          </p>
+        </div>
+
+        <div class="card">
+          <span class="tag">Livro</span>
+          <h3>HILLIER, Frederick S.; LIEBERMAN, Gerald J.</h3>
+          <p>
+            <em>Introdução à Pesquisa Operacional.</em> 9. ed. Porto Alegre: AMGH, 2013.
+            Referência para formulação de PL e método Simplex.
+          </p>
+        </div>
+      </div>
+
+      <p class="source">
+        O conteúdo foi reorganizado para separar a formulação e o Simplex primal, tratados neste capítulo,
+        dos procedimentos de inicialização especiais e da dualidade, desenvolvidos no capítulo seguinte.
+      </p>
+    </section>
+
+    <div class="chapter-nav">
+      <a href="cap2.html">← Capítulo 2</a>
+      <a class="next" href="cap4.html">Capítulo 4 →</a>
+    </div>
+  </main>
+
+  <footer class="footer">
+    Programação Linear — Capítulo 3: Modelo matemático e método Simplex
+  </footer>
 </body>
 </html>
