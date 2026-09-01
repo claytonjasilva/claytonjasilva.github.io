@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Prática 4 — Circuitos somadores | Sistemas Digitais</title>
+  <style>
+    :root{
+      --bg:#0a0e17; --surface:#111827; --surface2:#0f172a; --border:#243044;
+      --text:#e5edf6; --muted:#94a3b8; --accent:#00c2ff; --accent2:#7c3aed;
+      --ok:#22c55e; --warn:#f59e0b;
+      --font-sans:Inter,Segoe UI,Arial,sans-serif;
+      --font-mono:"JetBrains Mono",Consolas,monospace;
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0;background:var(--bg);color:var(--text);font-family:var(--font-sans);line-height:1.65}
+    a{color:var(--accent);text-decoration:none}
+    a:hover{text-decoration:underline}
+    .container{max-width:1000px;margin:0 auto;padding:0 2rem}
+    nav{position:sticky;top:0;z-index:100;background:rgba(10,14,23,.9);backdrop-filter:blur(12px);
+      border-bottom:1px solid var(--border);padding:1rem 0}
+    nav .container{display:flex;justify-content:space-between;align-items:center;gap:1rem;flex-wrap:wrap}
+    .nav-brand{font-family:var(--font-mono);font-size:.82rem;color:var(--accent)}
+    .nav-links{display:flex;gap:1.2rem;list-style:none;margin:0;padding:0;flex-wrap:wrap}
+    .nav-links a{font-size:.82rem;color:var(--muted)}
+    .nav-links a:hover{color:var(--text);text-decoration:none}
+    .hero{padding:4.5rem 0 3rem;background:
+      radial-gradient(circle at 78% 18%,rgba(124,58,237,.14),transparent 32%),
+      radial-gradient(circle at 18% 30%,rgba(0,194,255,.10),transparent 30%)}
+    .eyebrow{font-family:var(--font-mono);text-transform:uppercase;letter-spacing:.12em;font-size:.72rem;color:var(--accent);margin-bottom:.7rem}
+    h1{font-size:clamp(2rem,5vw,3.6rem);line-height:1.08;margin:.2rem 0 1rem;font-weight:700}
+    h1 strong{color:var(--accent);font-weight:700}
+    .lead{max-width:780px;color:var(--muted);font-size:1.02rem}
+    .section{padding:3rem 0;border-top:1px solid var(--border)}
+    .section-title{display:flex;align-items:center;gap:.8rem;font-family:var(--font-mono);
+      text-transform:uppercase;letter-spacing:.1em;font-size:.72rem;color:var(--accent2);margin-bottom:1rem}
+    .section-title::after{content:"";height:1px;background:var(--border);flex:1}
+    h2{font-size:1.55rem;margin:.2rem 0 1rem}
+    h3{font-size:1.05rem;margin:1.4rem 0 .7rem}
+    p{margin:.55rem 0 1rem;color:#cbd5e1}
+    .card{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:1.25rem 1.4rem;margin:1rem 0}
+    .tool-card{border-left:3px solid var(--accent)}
+    .note{background:rgba(245,158,11,.07);border:1px solid rgba(245,158,11,.24);
+      border-left:3px solid var(--warn);border-radius:8px;padding:1rem 1.15rem;color:#cbd5e1;margin:1rem 0}
+    .tip{background:rgba(34,197,94,.06);border:1px solid rgba(34,197,94,.22);
+      border-left:3px solid var(--ok);border-radius:8px;padding:1rem 1.15rem;color:#cbd5e1;margin:1rem 0}
+    .steps{counter-reset:step;display:flex;flex-direction:column;gap:1rem;margin-top:1.2rem}
+    .step{counter-increment:step;background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:1.25rem 1.4rem}
+    .step h3{display:flex;gap:.75rem;align-items:flex-start;margin:0 0 .75rem}
+    .step h3::before{content:counter(step,decimal-leading-zero);font-family:var(--font-mono);font-size:.72rem;
+      color:var(--accent2);background:rgba(124,58,237,.1);border:1px solid rgba(124,58,237,.25);
+      border-radius:4px;padding:.18rem .48rem;flex-shrink:0;margin-top:.14rem}
+    .task{margin:.8rem 0 0;padding-left:1.35rem;color:#cbd5e1}
+    .task li{margin:.45rem 0}
+    .io-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1rem;margin:1rem 0}
+    .io-card{background:var(--surface2);border:1px solid var(--border);border-radius:8px;padding:1rem 1.1rem}
+    .io-card h3{margin:0 0 .6rem;color:var(--accent);font-family:var(--font-mono);font-size:.9rem}
+    .io-card ul{margin:.3rem 0;padding-left:1.2rem;color:#cbd5e1}
+    .table-wrap{overflow-x:auto;margin:1rem 0}
+    table{width:100%;border-collapse:collapse;background:var(--surface2);font-family:var(--font-mono);font-size:.88rem}
+    th,td{border:1px solid var(--border);padding:.65rem .75rem;text-align:center}
+    th{color:var(--accent);background:rgba(0,194,255,.05)}
+    code{font-family:var(--font-mono);color:#bae6fd}
+    .btn{display:inline-block;margin-top:.4rem;padding:.65rem .9rem;border:1px solid rgba(0,194,255,.35);
+      border-radius:6px;background:rgba(0,194,255,.07);font-family:var(--font-mono);font-size:.8rem}
+    footer{border-top:1px solid var(--border);padding:2rem 0;margin-top:2rem}
+    footer .container{display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap}
+    footer p{font-family:var(--font-mono);font-size:.78rem;color:var(--muted);margin:0}
+    @media(max-width:700px){.container{padding:0 1.2rem}.nav-links{display:none}.hero{padding:3rem 0 2.2rem}.io-grid{grid-template-columns:1fr}}
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="container">
+    <span class="nav-brand">sisdig · prática 4</span>
+    <ul class="nav-links">
+      <li><a href="#meio-somador">Meio-somador</a></li>
+      <li><a href="#somador-completo">Somador completo</a></li>
+      <li><a href="#somador-4bits">Somador de 4 bits</a></li>
+      <li><a href="#complementar">Tarefa complementar</a></li>
+      <li><a href="../sisdig.html">← disciplina</a></li>
+    </ul>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="container">
+    <p class="eyebrow">Sistemas Digitais · Práticas de Laboratório</p>
+    <h1>Prática 4 — <strong>circuitos somadores</strong></h1>
+    <p class="lead">Construção de um meio-somador, simulação de um somador completo, teste de um somador binário de 4 bits e projeto complementar de um somador BCD.</p>
+  </div>
+</header>
+
+<main class="container">
+
+  <section class="section">
+    <p class="section-title">01 / preparação</p>
+    <h2>Objetivos e recursos</h2>
+    <div class="card tool-card">
+      <p>Os circuitos somadores são blocos fundamentais da unidade lógica e aritmética de um processador. Nesta prática, a soma de um único bit será utilizada como ponto de partida para compreender a associação em cascata de somadores e a operação com palavras binárias de quatro bits.</p>
+    </div>
+    <div class="io-grid">
+      <div class="io-card">
+        <h3>Objetivos</h3>
+        <ul>
+          <li>Relacionar a adição binária às portas lógicas;</li>
+          <li>diferenciar meio-somador e somador completo;</li>
+          <li>identificar soma, carry de entrada e carry de saída;</li>
+          <li>testar a soma de operandos binários de 4 bits.</li>
+        </ul>
+      </div>
+      <div class="io-card">
+        <h3>Recursos</h3>
+        <ul>
+          <li>EasyEDA ou simulador lógico equivalente;</li>
+          <li>portas lógicas disponíveis no laboratório;</li>
+          <li>somador binário de 4 bits, como 74HC283 ou equivalente;</li>
+          <li>chaves lógicas e LEDs para as entradas e saídas.</li>
+        </ul>
+      </div>
+    </div>
+    <div class="note"><strong>Convenção:</strong> em cada palavra de quatro bits, o índice 0 identifica o bit menos significativo e o índice 3 identifica o bit mais significativo. Consulte o <em>datasheet</em> do componente escolhido antes de realizar as conexões.</div>
+  </section>
+
+  <section class="section" id="meio-somador">
+    <p class="section-title">02 / construção</p>
+    <h2>Meio-somador</h2>
+    <p>O meio-somador recebe dois bits, <strong>A</strong> e <strong>B</strong>, e produz a soma <strong>S</strong> e o carry de saída <strong>C</strong>. Ele não possui carry de entrada.</p>
+    <div class="steps">
+      <article class="step">
+        <h3>Modelagem do circuito</h3>
+        <ul class="task">
+          <li>Construa a tabela-verdade com as quatro combinações de A e B.</li>
+          <li>Determine as expressões booleanas das saídas S e C.</li>
+          <li>Determine como implementar cada saída utilizando as portas lógicas disponíveis no laboratório.</li>
+          <li>Desenhe o diagrama lógico do meio-somador.</li>
+        </ul>
+      </article>
+      <article class="step">
+        <h3>Montagem e verificação</h3>
+        <ul class="task">
+          <li>Implemente as funções das saídas S e C utilizando as portas lógicas disponíveis no laboratório.</li>
+          <li>Represente A e B por chaves lógicas e conecte LEDs às saídas S e C.</li>
+          <li>Teste as quatro combinações e compare os resultados com a tabela-verdade.</li>
+          <li>Explique por que a combinação A = 1 e B = 1 produz S = 0 e C = 1.</li>
+        </ul>
+      </article>
+    </div>
+  </section>
+
+  <section class="section" id="somador-completo">
+    <p class="section-title">03 / simulação</p>
+    <h2>Somador completo no EasyEDA</h2>
+    <p>O somador completo utiliza as entradas <strong>A</strong>, <strong>B</strong> e <strong>Cin</strong>, correspondente ao carry de entrada. Suas saídas são <strong>Soma</strong> e <strong>Cout</strong>, correspondente ao carry de saída.</p>
+    <div class="steps">
+      <article class="step">
+        <h3>Projeto lógico do somador completo</h3>
+        <ul class="task">
+          <li>Construa a tabela-verdade considerando as entradas A, B e Cin.</li>
+          <li>Determine os valores das saídas Soma e Cout para as oito combinações de entrada.</li>
+          <li>Obtenha e simplifique as expressões booleanas das duas saídas.</li>
+          <li>Projete o circuito escolhendo as portas lógicas que considerar mais adequadas.</li>
+          <li>Identifique no esquema A, B, Cin, Soma, Cout e os sinais intermediários utilizados.</li>
+        </ul>
+      </article>
+      <article class="step">
+        <h3>Simulação das oito combinações</h3>
+        <ul class="task">
+          <li>Monte o circuito no EasyEDA com componentes <em>Logic State</em> nas entradas e indicadores lógicos nas saídas.</li>
+          <li>Teste todas as oito combinações de A, B e Cin.</li>
+          <li>Compare os valores de Soma e Cout com a adição aritmética dos três bits.</li>
+          <li>Registre o esquema e evidências de pelo menos quatro testes, incluindo 0 + 0 + 0 e 1 + 1 + 1.</li>
+        </ul>
+        <a class="btn" href="https://easyeda.com/" target="_blank" rel="noopener noreferrer">Acessar o EasyEDA →</a>
+      </article>
+    </div>
+  </section>
+
+  <section class="section" id="somador-4bits">
+    <p class="section-title">04 / integração e teste</p>
+    <h2>Somador binário de 4 bits</h2>
+    <p>Um somador de 4 bits pode ser obtido pela associação em cascata de quatro somadores completos. Nesta etapa, utilize um circuito integrado somador de 4 bits, como o 74HC283, ou um bloco equivalente disponível no simulador.</p>
+    <div class="io-grid">
+      <div class="io-card">
+        <h3>Entradas</h3>
+        <ul>
+          <li><strong>A3 A2 A1 A0</strong> — primeiro operando;</li>
+          <li><strong>B3 B2 B1 B0</strong> — segundo operando;</li>
+          <li><strong>Cin</strong> — carry de entrada.</li>
+        </ul>
+      </div>
+      <div class="io-card">
+        <h3>Saídas</h3>
+        <ul>
+          <li><strong>S3 S2 S1 S0</strong> — quatro bits menos significativos da soma;</li>
+          <li><strong>Cout</strong> — carry de saída do bit mais significativo.</li>
+        </ul>
+      </div>
+    </div>
+    <div class="steps">
+      <article class="step">
+        <h3>Montagem do circuito de teste</h3>
+        <ul class="task">
+          <li>Configure as entradas dos operandos A e B e a entrada Cin utilizando jumpers, chaves lógicas ou outro recurso adequado disponível no laboratório.</li>
+          <li>Conecte LEDs às quatro saídas de soma e à saída Cout.</li>
+          <li>Alimente corretamente o circuito integrado e não deixe entradas desconectadas.</li>
+          <li>Organize as chaves e os LEDs do bit mais significativo para o menos significativo.</li>
+        </ul>
+      </article>
+      <article class="step">
+        <h3>Plano de testes</h3>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>A</th><th>B</th><th>Cin</th><th>Resultado esperado</th><th>Objetivo</th></tr></thead>
+            <tbody>
+              <tr><td>0011</td><td>0100</td><td>0</td><td>0 0111</td><td>Soma sem carry</td></tr>
+              <tr><td>0111</td><td>0001</td><td>0</td><td>0 1000</td><td>Propagação interna de carry</td></tr>
+              <tr><td>1001</td><td>0110</td><td>0</td><td>0 1111</td><td>Maior soma sem Cout</td></tr>
+              <tr><td>1111</td><td>0001</td><td>0</td><td>1 0000</td><td>Carry de saída</td></tr>
+              <tr><td>1010</td><td>0101</td><td>1</td><td>1 0000</td><td>Uso de Cin</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <ul class="task">
+          <li>Execute todos os testes e registre os valores observados.</li>
+          <li>Acrescente dois casos de teste escolhidos pelo grupo.</li>
+          <li>Explique a função do carry que se propaga entre os estágios.</li>
+          <li>Diferencie carry de saída de overflow em uma operação com números sinalizados.</li>
+        </ul>
+      </article>
+    </div>
+  </section>
+
+  <section class="section" id="complementar">
+    <p class="section-title">05 / tarefa complementar</p>
+    <h2>Simulação de um somador BCD no EasyEDA</h2>
+    <div class="card tool-card">
+      <p>Projete e simule, exclusivamente no EasyEDA, um circuito capaz de somar dois algarismos decimais codificados em BCD, utilizando somadores binários de 4 bits. As entradas válidas de cada operando variam de <code>0000</code> a <code>1001</code>. A soma binária inicial poderá produzir um resultado entre 0 e 18.</p>
+      <p>Quando a soma binária for maior que 9 ou gerar carry de saída, o resultado de quatro bits não será uma representação BCD válida. Nessa situação, o circuito deverá adicionar <code>0110</code> ao resultado inicial para obter o algarismo das unidades e o carry decimal das dezenas.</p>
+    </div>
+    <div class="steps">
+      <article class="step">
+        <h3>Detecção da necessidade de correção</h3>
+        <ul class="task">
+          <li>Utilize o primeiro somador de 4 bits para calcular A + B, considerando inicialmente Cin = 0.</li>
+          <li>Identifique a condição em que a soma é maior que <code>1001</code> ou em que o primeiro somador produz carry.</li>
+          <li>Obtenha e justifique a função lógica de correção <code>K = C4 + S3.S2 + S3.S1</code>.</li>
+        </ul>
+      </article>
+      <article class="step">
+        <h3>Correção e validação do resultado BCD</h3>
+        <ul class="task">
+          <li>Utilize um segundo somador de 4 bits para adicionar <code>0110</code> quando K = 1 e <code>0000</code> quando K = 0.</li>
+          <li>Represente o resultado com quatro bits para as unidades e um bit para as dezenas.</li>
+          <li>Monte no EasyEDA o diagrama completo, identificando os dois somadores e a lógica de correção.</li>
+          <li>Simule pelo menos as operações 4 + 3, 5 + 5, 7 + 8 e 9 + 9.</li>
+          <li>Compare as saídas binárias com os resultados decimais esperados.</li>
+          <li>Registre o esquema e as evidências dos testes realizados no simulador.</li>
+        </ul>
+        <a class="btn" href="https://easyeda.com/" target="_blank" rel="noopener noreferrer">Acessar o EasyEDA →</a>
+      </article>
+    </div>
+    <div class="note"><strong>Atenção:</strong> as combinações de entrada de <code>1010</code> a <code>1111</code> não representam algarismos BCD válidos. O projeto deverá registrar essa restrição, mesmo que essas combinações não sejam utilizadas nos testes.</div>
+  </section>
+
+  <section class="section">
+    <p class="section-title">06 / resultado esperado</p>
+    <h2>Entrega da prática</h2>
+    <div class="card">
+      <p>Ao final da atividade, o grupo deverá apresentar: <strong>(a)</strong> a tabela-verdade, as expressões e o circuito do meio-somador; <strong>(b)</strong> o esquema e os resultados da simulação do somador completo; <strong>(c)</strong> o circuito de teste e os resultados do somador binário de 4 bits; e <strong>(d)</strong> como tarefa complementar, o diagrama, a lógica de correção e as evidências da simulação do somador BCD no EasyEDA.</p>
+    </div>
+    <div class="tip">A avaliação deverá considerar a coerência entre a adição binária, as expressões booleanas, o encadeamento dos carries, os resultados da simulação e a justificativa da correção BCD.</div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="container">
+    <p>© 2026 · Prof. Clayton J A Silva · Sistemas Digitais</p>
+    <p><a href="../sisdig.html">Voltar à página da disciplina</a></p>
+  </div>
+</footer>
+</body>
+</html>
