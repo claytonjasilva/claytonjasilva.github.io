@@ -178,6 +178,7 @@ footer p{font-size:.8rem;color:var(--muted);font-family:var(--font-mono);}
 <li><a href="#s1">1.1 Histórico</a></li>
 <li><a href="#s2">1.2 IAS detalhado</a></li>
 <li><a href="#s3">1.3 Memória e instruções</a></li>
+<li><a href="simulador_ias/" target="_blank" rel="noopener">Simulador IAS</a></li>
 <li><a href="#quiz">Quiz</a></li>
 <li><a href="#anexos">Anexos</a></li>
 <li><a href="https://claytonjasilva.github.io/arq.html">← disciplina</a></li>
@@ -212,6 +213,14 @@ footer p{font-size:.8rem;color:var(--muted);font-family:var(--font-mono);}
 <li>Classificar o conjunto de instruções do processador IAS</li>
 <li>Interpretar e escrever pequenos trechos de código em linguagem de montagem (<em>assembly</em>)</li>
 </ul>
+</div>
+<div class="ref-card" style="margin-top:1.25rem;">
+<svg aria-hidden="true" fill="none" height="22" viewbox="0 0 24 24" width="22"><rect height="16" rx="2" stroke="currentColor" stroke-width="1.5" width="20" x="2" y="4"></rect><path d="M7 9l3 3-3 3M13 15h4" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"></path></svg>
+<div>
+<span class="ref-type">Simulador didático</span>
+<h4><a href="simulador_ias/" target="_blank" rel="noopener">Simulador da máquina IAS</a></h4>
+<p>Monte programas em Assembly e acompanhe, estágio por estágio, a execução do código de máquina, o conteúdo da memória e o estado dos registradores.</p>
+</div>
 </div>
 <div class="toc">
 <a href="#s1">1.1 Breve histórico</a>
@@ -530,6 +539,23 @@ A figura apresenta como a tabela do <em>set</em> de instruções é normalmente 
 <td class="tleft">0000 1110</td>
 <td class="tleft">JUMP M(X,28:39)</td>
 <td class="tleft">Substitui o campo de endereço da instrução à direita da posição de memória X (bits 20 a 39), definida pelo operando, pelos 12 bits mais à direita do conteúdo do acumulador</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Instrução de controle da execução</strong></p>
+<table>
+<thead>
+<tr>
+<th class="tleft"><strong>Código de operação</strong></th>
+<th class="tleft"><strong>Representação simbólica</strong></th>
+<th class="tleft"><strong>Descrição</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tleft">1111 1111</td>
+<td class="tleft">HALT</td>
+<td class="tleft">Interrompe a execução do programa. Neste material, o código de operação <code>1111 1111</code> (<code>FF</code> em hexadecimal) é adotado para manter compatibilidade com o simulador didático.</td>
 </tr>
 </tbody>
 </table>
