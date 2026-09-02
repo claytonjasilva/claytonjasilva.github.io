@@ -525,7 +525,7 @@ A figura apresenta como a tabela do <em>set</em> de instruções é normalmente 
 <tr>
 <td class="tleft">0001 0010</td>
 <td class="tleft">STOR M(X,8:19)</td>
-<td class="tleft">Substitui o campo de endereço da instrução à esquerda da posição de memória X (bits 0 a 19), definida pelo operando, pelos 12 bits mais à direita do conteúdo do acumulador</td>
+<td class="tleft">Substitui o campo de endereço da instrução à esquerda armazenada na posição de memória X, especificada pelo operando, pelos 12 bits mais à direita do acumulador (AC). Os demais bits da palavra de memória permanecem inalterados</td>
 </tr>
 <tr>
 <td class="tleft">0000 1110</td>
@@ -619,27 +619,35 @@ A figura apresenta como a tabela do <em>set</em> de instruções é normalmente 
 </tr>
 </tbody>
 </table>
-<p>O rótulo (<em>label</em>) indica o endereço da primeira linha de instruções de forma simbólica (Início). Obviamente o código armazenado ocupará uma posição na memória IAS, ou seja, entre os endereços 0x000 e 0x3FF (entre 0 e 1023, em hexadecimal).</p>
-<p>Um novo exemplo de código está apresentado abaixo. O código realiza a soma de 10 (0x00A) números binários a partir da posição de memória 0x100. Admite-se que é necessário inicializar algumas posições de memória. Observe que além de rótulo o código admite comentários, delimitado pelo <code>;</code>.</p>
-<pre><code>inicialização da memória
-M[0x000] &lt;- 0x109
-M[0x001] &lt;- 0x101
-M[0x002] &lt;- 0x001
+<p>O rótulo (<em>label</em>) indica simbolicamente o endereço da primeira posição de memória ocupada pelo programa (<em>INÍCIO</em>). Como os endereços da memória IAS possuem 12 bits, podem identificar 2<sup>12</sup> = 4096 posições, numeradas de <code>0x000</code> a <code>0xFFF</code> (de 0 a 4095 em decimal).</p>
+<p>Um novo exemplo de código está apresentado abaixo. O código realiza a soma de 10 (<code>00A</code>) números armazenados entre as posições de memória <code>100</code> e <code>109</code>. As posições <code>000</code>, <code>001</code> e <code>002</code> armazenam, respectivamente, o endereço final, o endereço corrente e o incremento. A posição <code>003</code> recebe a soma parcial. Todos os endereços e operandos são representados em hexadecimal.</p>
+<p>Cada posição de memória do IAS contém duas instruções: uma à esquerda e outra à direita. Por isso, cada endereço aparece duas vezes no código. A instrução <code>STOR M(X,8:19) 201</code> modifica somente o operando da instrução <code>ADD_M(X)</code> armazenada à esquerda da posição <code>201</code>.</p>
+<pre><code>; INICIALIZAÇÃO DA MEMÓRIA
+M[000] &lt;- 109 ; endereço do último valor da sequência
+M[001] &lt;- 101 ; endereço do próximo valor a somar
+M[002] &lt;- 001 ; incremento do endereço
 
-INICIO:
-LOAD_M(X) 0x100 ; carregar o valor de 0x100
-LOOP: 
-ADD_M(X) 0x101 ; soma o próximo valor
-LOAD_M(X) 0x000 ; 0x000 armazena o endereço limite 0x109
-SUB_M(X) 0x001 ; 0x001 armazena o próximo endereço
-JUMP_+M(X,0:19) NOVO_END
-JUMP_M(X,20:39) FIM ; desvia para O final do programa
+; ENDEREÇO: INSTRUÇÃO OPERANDO
+200: LOAD_M(X) 100          ; carrega o primeiro valor
+200: STOR M(X) 003          ; inicializa a soma parcial
 
-NOVO_END: ; atualiza endereço do próximo valor
-LOAD_M(X) 0x001 ; carrega o próximo endereço
-ADD_M(X) 0x002 ; 0x002 armazena 1, logo incrementa o endereço
-JUMP_M(X,28:39) LOOP ; altera operando da instrução em LOOP
-JUMP_M(X,20:39) LOOP ; desvia para instrução em LOOP
+201: ADD_M(X) 101           ; soma o valor do endereço corrente
+201: STOR M(X) 003          ; armazena a soma parcial
+
+202: LOAD_M(X) 001          ; carrega o endereço corrente
+202: SUB_M(X) 000           ; calcula endereço corrente - endereço final
+
+203: JUMP_+M(X,20:39) 206   ; se corrente &gt;= final, salta para HALT
+203: LOAD_M(X) 001          ; início da atualização do endereço
+
+204: ADD_M(X) 002           ; incrementa o endereço corrente
+204: STOR M(X) 001          ; armazena o novo endereço corrente
+
+205: STOR M(X,8:19) 201     ; atualiza o operando de ADD_M(X) em 201
+205: LOAD_M(X) 003          ; recupera a soma parcial
+
+206: JUMP_M(X,0:19) 201     ; retorna à instrução ADD_M(X)
+206: HALT                   ; encerra o programa
 </code></pre>
 <hr/>
 </section>
