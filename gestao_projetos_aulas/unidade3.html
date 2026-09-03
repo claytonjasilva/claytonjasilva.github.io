@@ -2,7 +2,7 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Unidade 3 — Artefatos Básicos | Gestão de Projetos</title>
+  <title>Unidade 3 — Gestão do Escopo de Projetos | Gestão de Projetos</title>
   <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,600;1,300&display=swap" rel="stylesheet">
   <style>
     :root{--bg:#0a0e17;--surface:#111827;--border:#1e2d40;--accent:#00c2ff;--accent2:#7c3aed;--green:#10b981;--yellow:#f59e0b;--red:#ef4444;--text:#e2e8f0;--muted:#64748b;--tag-bg:#0f172a;--font-mono:'IBM Plex Mono',monospace;--font-sans:'IBM Plex Sans',sans-serif;}
@@ -36,6 +36,10 @@
     .def-text{font-size:.95rem;font-weight:400;line-height:1.6;}
     .diagram-wrap{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:1.25rem;margin:1rem 0;overflow-x:auto;}
     .diagram-wrap svg{display:block;margin:0 auto;}
+    .content-figure{margin:1.4rem 0 1.8rem;background:#fff;border:1px solid var(--border);border-radius:8px;overflow:hidden;}
+    .content-figure img{display:block;width:100%;height:auto;}
+    .content-figure figcaption{padding:.75rem 1rem;background:var(--surface);border-top:1px solid var(--border);font-size:.78rem;color:var(--muted);line-height:1.5;}
+    .content-figure figcaption strong{color:var(--text);}
     .feat-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:.75rem;margin:1rem 0;}
     .feat-card{background:var(--surface);border:1px solid var(--border);border-radius:7px;padding:1.1rem 1.25rem;}
     .feat-icon{font-size:1.3rem;margin-bottom:.4rem;}
@@ -44,25 +48,14 @@
     .tap-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:.5rem;margin:1rem 0;}
     .tap-field{background:var(--tag-bg);border:1px solid var(--border);border-radius:5px;padding:.65rem .9rem;font-size:.8rem;}
     .tap-label{font-family:var(--font-mono);font-size:.65rem;color:var(--accent);display:block;margin-bottom:.2rem;}
+    .data-table{width:100%;border-collapse:collapse;margin:1rem 0;background:var(--surface);font-size:.8rem;}
+    .data-table th,.data-table td{border:1px solid var(--border);padding:.7rem .8rem;text-align:left;vertical-align:top;}
+    .data-table th{font-family:var(--font-mono);font-size:.68rem;letter-spacing:.05em;text-transform:uppercase;color:var(--accent);background:var(--tag-bg);}
+    .data-table td{color:var(--muted);}
     /* EAP tree */
     .eap-tree{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:1.5rem;margin:1rem 0;}
     /* Gantt miniature */
     .gantt-mini{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:1.25rem;margin:1rem 0;overflow-x:auto;}
-    /* QUIZ */
-    .quiz-wrap{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:1.75rem;margin-top:1rem;}
-    .quiz-title{font-family:var(--font-mono);font-size:.8rem;color:var(--green);letter-spacing:.1em;text-transform:uppercase;margin-bottom:1.25rem;}
-    .quiz-q{margin-bottom:1.5rem;}.q-text{font-size:.9rem;font-weight:600;margin-bottom:.75rem;}.q-num{font-family:var(--font-mono);font-size:.7rem;color:var(--muted);margin-bottom:.25rem;}
-    .options{display:flex;flex-direction:column;gap:.4rem;}
-    .opt{display:flex;align-items:flex-start;gap:.6rem;cursor:pointer;padding:.55rem .8rem;border-radius:6px;border:1px solid var(--border);transition:border-color .15s,background .15s;font-size:.85rem;}
-    .opt:hover{border-color:var(--accent);background:rgba(0,194,255,.05);}
-    .opt input{margin-top:.15rem;accent-color:var(--accent);cursor:pointer;flex-shrink:0;}
-    .opt.correct{border-color:var(--green)!important;background:rgba(16,185,129,.08);}
-    .opt.wrong{border-color:var(--red)!important;background:rgba(239,68,68,.08);}
-    .quiz-btn{font-family:var(--font-mono);font-size:.78rem;padding:.55rem 1.25rem;background:transparent;border:1px solid var(--accent);color:var(--accent);border-radius:5px;cursor:pointer;transition:background .15s;}
-    .quiz-btn:hover{background:rgba(0,194,255,.08);}.quiz-btn:disabled{opacity:.5;cursor:not-allowed;}
-    .quiz-result{margin-top:1.25rem;padding:1rem 1.25rem;border-radius:8px;font-size:.88rem;display:none;}.quiz-result.show{display:block;}
-    .quiz-result.pass{background:rgba(16,185,129,.1);border:1px solid rgba(16,185,129,.3);color:var(--green);}
-    .quiz-result.fail{background:rgba(239,68,68,.08);border:1px solid rgba(239,68,68,.25);color:#fca5a5;}
     footer{border-top:1px solid var(--border);padding:1.75rem 0;margin-top:2rem;}
     footer .container{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;}
     footer p{font-size:.8rem;color:var(--muted);font-family:var(--font-mono);}
@@ -81,10 +74,10 @@
 <section class="hero">
   <div class="container">
     <p class="hero-eyebrow">Unidade 03</p>
-    <h1>Artefatos Básicos<br><strong>de Gestão</strong></h1>
-    <p class="hero-desc">TAP, EAP, Plano de Gerenciamento, Cronograma e Gráfico de Gantt — os documentos fundamentais de qualquer projeto.</p>
+    <h1>Gestão do Escopo<br><strong>de Projetos</strong></h1>
+    <p class="hero-desc">Da autorização inicial ao controle das entregas: como necessidades são convertidas em requisitos, limites, EAP e referências integradas para planejar e controlar o trabalho do projeto.</p>
     <div class="hero-tags">
-      <span class="tag">TAP</span><span class="tag">EAP / WBS</span><span class="tag">Gráfico de Gantt</span><span class="tag">Plano de GP</span><span class="tag">MS Project</span>
+      <span class="tag">TAP</span><span class="tag">Requisitos</span><span class="tag">EAP / WBS</span><span class="tag">Gráfico de Gantt</span><span class="tag">Plano de GP</span><span class="tag">MS Project</span>
     </div>
   </div>
 </section>
@@ -92,13 +85,16 @@
 <!-- TAP -->
 <section class="section" id="tap">
   <div class="container">
-    <p class="section-label">3.1 / tap</p>
-    <h2>TAP — Termo de Abertura do Projeto</h2>
+    <p class="section-label">3.1 / autorização e escopo inicial</p>
+    <h2>O TAP como ponto de partida para o escopo</h2>
     <div class="def-box">
       <div class="def-label">Definição</div>
       <div class="def-text">Documento emitido pelo <strong>Sponsor</strong> que <strong>autoriza formalmente o projeto</strong> e concede ao GP a autoridade para aplicar os recursos organizacionais.</div>
     </div>
-    <div class="content-card"><p>O TAP é o <em>certidão de nascimento</em> do projeto. Sem ele, o projeto não existe oficialmente na organização.</p></div>
+    <div class="content-card">
+      <p>O TAP é a <em>certidão de nascimento</em> do projeto. Sem ele, o projeto não existe oficialmente na organização.</p>
+      <p>Na gestão do escopo, sua função é estabelecer o enquadramento inicial: propósito, objetivos, requisitos de alto nível, premissas, restrições e autoridade. Esses elementos não constituem ainda o escopo detalhado, mas orientam a coleta de requisitos e impedem que o planejamento se afaste da finalidade autorizada.</p>
+    </div>
     <h3>Componentes típicos do TAP</h3>
     <div class="tap-grid">
       <div class="tap-field"><span class="tap-label">Propósito / Justificativa</span>Por que o projeto existe?</div>
@@ -114,68 +110,258 @@
   </div>
 </section>
 
+<!-- REQUISITOS E DELIMITAÇÃO DO ESCOPO -->
+<section class="section" id="requisitos">
+  <div class="container">
+    <p class="section-label">3.2 / compreender e delimitar o escopo</p>
+    <h2>Do TAP à definição do escopo</h2>
+    <div class="content-card">
+      <p>Com o projeto formalmente autorizado, o planejamento do escopo começa pela identificação das partes interessadas e pela coleta de suas necessidades e expectativas. Os requisitos devem ser definidos, analisados e documentados com detalhe suficiente para que possam ser verificados, aceitos e controlados durante o projeto.</p>
+      <p>Essa passagem é essencial: o TAP apresenta o propósito e os requisitos em alto nível; a coleta de requisitos aprofunda o entendimento do problema e prepara a definição do escopo e a construção da EAP.</p>
+    </div>
+
+    <figure class="content-figure">
+      <img src="images/unidade3/visao-gerenciamento-escopo.webp" alt="Ciclo do gerenciamento do escopo: planejar, coletar requisitos, definir o escopo, criar a EAP, validar e controlar" loading="lazy">
+      <figcaption><strong>Figura 1 — Visão integrada do gerenciamento do escopo.</strong> O ciclo procura assegurar todo o trabalho necessário — e apenas o necessário — articulando escopo do produto e escopo do projeto.</figcaption>
+    </figure>
+
+    <h3>Escopo para o cliente × escopo do projeto</h3>
+    <div class="def-box">
+      <div class="def-label">Ideia central</div>
+      <div class="def-text">O <strong>escopo para o cliente</strong> reúne os produtos, serviços e resultados que atendem às suas necessidades. O <strong>escopo do projeto</strong> é mais amplo: inclui também todo o trabalho necessário para viabilizar essas entregas.</div>
+    </div>
+    <div class="content-card">
+      <p>Por exemplo, o cliente pode solicitar uma instalação pronta para operar. Além da entrega final, o projeto poderá exigir aquisições, transporte, seguros, licenças, testes, treinamento da equipe e atividades de gestão. Mesmo que esses trabalhos não tenham sido pedidos explicitamente, eles integram o escopo quando são necessários para produzir e aceitar a entrega.</p>
+      <div class="highlight"><p><strong>Consequência prática:</strong> compreender o pedido não basta. A equipe precisa entender a necessidade que o originou, verificar se a solução proposta realmente a atende e identificar o trabalho complementar indispensável.</p></div>
+    </div>
+
+    <figure class="content-figure">
+      <img src="images/unidade3/necessidade-requisitos-solucao.webp" alt="Rastreabilidade entre necessidade ou problema, requisitos e solução" loading="lazy">
+      <figcaption><strong>Figura 2 — Da necessidade à solução.</strong> Os requisitos funcionam como ligação verificável entre o problema que justifica o projeto e a solução que será entregue.</figcaption>
+    </figure>
+
+    <h3>Participação dos stakeholders</h3>
+    <div class="tap-grid">
+      <div class="tap-field"><span class="tap-label">Identificar</span>Reconhecer quem define, influencia, utiliza, aceita ou controla as entregas.</div>
+      <div class="tap-field"><span class="tap-label">Compreender</span>Levantar necessidades, expectativas, restrições e critérios de aceitação.</div>
+      <div class="tap-field"><span class="tap-label">Conciliar</span>Tratar diferenças de percepção e construir entendimento compartilhado.</div>
+      <div class="tap-field"><span class="tap-label">Documentar</span>Registrar requisitos de modo claro, verificável e rastreável.</div>
+    </div>
+
+    <h3>Técnicas de coleta de requisitos</h3>
+    <div class="feat-grid">
+      <div class="feat-card"><div class="feat-title">Entrevistas e observação</div><div class="feat-desc">Aprofundam o contexto de uso, as necessidades e as características esperadas.</div></div>
+      <div class="feat-card"><div class="feat-title">Grupos de foco e workshops</div><div class="feat-desc">Reúnem diferentes perspectivas e favorecem discussão, priorização e consenso.</div></div>
+      <div class="feat-card"><div class="feat-title">Brainstorming e técnica Delphi</div><div class="feat-desc">Geram ideias e permitem consolidar opiniões de especialistas.</div></div>
+      <div class="feat-card"><div class="feat-title">Questionários e pesquisas</div><div class="feat-desc">Coletam informações de forma rápida quando há muitos participantes.</div></div>
+      <div class="feat-card"><div class="feat-title">Mapas mentais e protótipos</div><div class="feat-desc">Organizam relações entre ideias e tornam soluções preliminares mais concretas para validação.</div></div>
+      <div class="feat-card"><div class="feat-title">Decisão em grupo</div><div class="feat-desc">Apoia a escolha entre alternativas por unanimidade, maioria, pluralidade ou decisão de uma autoridade designada.</div></div>
+    </div>
+
+    <figure class="content-figure">
+      <img src="images/unidade3/descoberta-refinamento-requisitos.webp" alt="Ciclo de descoberta e refinamento de requisitos com ouvir, registrar, esclarecer e validar" loading="lazy">
+      <figcaption><strong>Figura 3 — Descoberta e refinamento de requisitos.</strong> Ouvir, registrar, esclarecer e validar formam um ciclo controlado. O objetivo é estabilizar progressivamente o entendimento, reduzindo ambiguidades e expansão informal do escopo.</figcaption>
+    </figure>
+
+    <h3>Artefatos produzidos e atualizados</h3>
+    <div class="content-card">
+      <p>A coleta não se encerra com uma lista de desejos. Ela produz e atualiza registros que permitem administrar os requisitos durante todo o projeto. O <strong>Plano de Gerenciamento do Escopo</strong> orienta previamente como esse trabalho será conduzido; a <strong>Matriz de Requisitos</strong> e a <strong>Documentação do Escopo do Cliente</strong> consolidam os resultados obtidos e evoluem à medida que o entendimento é refinado.</p>
+    </div>
+    <div class="tap-grid">
+      <div class="tap-field"><span class="tap-label">Plano de Gerenciamento do Escopo</span>Define como os requisitos serão coletados, analisados, documentados, controlados e reportados.</div>
+      <div class="tap-field"><span class="tap-label">Matriz de Requisitos</span>Relaciona cada requisito à sua origem, aos objetivos e às entregas correspondentes.</div>
+      <div class="tap-field"><span class="tap-label">Documentação do Escopo do Cliente</span>Consolida os produtos, serviços e resultados esperados, com especificações verificáveis.</div>
+    </div>
+
+    <h3>Planejar o controle das mudanças</h3>
+    <div class="content-card">
+      <p>O plano de escopo deve estabelecer previamente quem pode solicitar uma alteração, como o pedido será registrado, quem analisará seus impactos e quem terá autoridade para aprová-lo. Essa autoridade pode variar conforme custo, prazo, risco ou repercussão da mudança em projetos interdependentes.</p>
+      <div class="highlight"><p><strong>Princípio de governança:</strong> quanto maior o impacto da mudança, maior deve ser o nível de autoridade exigido para sua aprovação. Alterações que atinjam compromissos formalizados no TAP ou na linha de base do escopo não devem ser tratadas como simples ajustes operacionais.</p></div>
+      <p>O plano também deve indicar a frequência de avaliação do escopo e quando suas regras serão revistas. Assim, o controle deixa de ser uma reação improvisada e passa a constituir um processo definido.</p>
+    </div>
+
+    <h3>Matriz de rastreabilidade de requisitos</h3>
+    <div class="content-card">
+      <p>A rastreabilidade permite acompanhar um requisito desde a necessidade que lhe deu origem até a entrega que o satisfaz e seu aceite. Ela também ajuda a avaliar mudanças: antes de alterar um requisito, a equipe consegue identificar quais objetivos, entregas e produtos serão afetados.</p>
+    </div>
+    <div style="overflow-x:auto;">
+      <table class="data-table">
+        <thead><tr><th>ID</th><th>Requisito</th><th>Origem</th><th>Vínculo</th><th>Prioridade</th><th>Status</th></tr></thead>
+        <tbody>
+          <tr><td>REQ-01</td><td>Descrição clara e testável</td><td>Stakeholder solicitante</td><td>Objetivo e entrega associados</td><td>Alta, média ou baixa</td><td>Proposto, aprovado, concluído ou cancelado</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="content-card">
+      <p>Além desses campos, a matriz pode registrar justificativa, responsável, versão, data prevista ou efetiva de conclusão e critério de aceite. O conjunto deve ser dimensionado à complexidade do projeto: rastrear é tornar as relações visíveis, não criar burocracia sem finalidade.</p>
+    </div>
+
+    <h3>Documentação: do problema aos critérios verificáveis</h3>
+    <div class="feat-grid">
+      <div class="feat-card"><div class="feat-title">Problema ou oportunidade</div><div class="feat-desc">Explica por que o projeto foi empreendido e quais limitações da situação atual devem ser superadas.</div></div>
+      <div class="feat-card"><div class="feat-title">Requisitos funcionais</div><div class="feat-desc">Descrevem comportamentos, processos, informações e interações que a solução deverá oferecer.</div></div>
+      <div class="feat-card"><div class="feat-title">Requisitos não funcionais</div><div class="feat-desc">Estabelecem condições de desempenho, segurança, disponibilidade, conformidade e outras qualidades.</div></div>
+      <div class="feat-card"><div class="feat-title">Impactos e suporte</div><div class="feat-desc">Registram efeitos em outras áreas ou organizações e necessidades de treinamento, operação e sustentação.</div></div>
+    </div>
+    <div class="def-box">
+      <div class="def-label">Qualidade do requisito</div>
+      <div class="def-text">Uma especificação útil deve ser <strong>consistente, completa, mensurável e testável</strong>. Se não for possível verificar objetivamente seu atendimento, haverá dificuldade para aceitar a entrega e controlar o escopo.</div>
+    </div>
+
+    <h3>O implícito, o óbvio e o não escopo</h3>
+    <div class="content-card">
+      <p>Parte relevante dos conflitos nasce de itens que uma parte considera “óbvios” e a outra não reconhece como obrigação. Expressões genéricas, expectativas não registradas e pressupostos diferentes criam uma área cinzenta entre o entendimento do cliente e o da equipe.</p>
+      <p>Uma forma prática de reduzir essa ambiguidade é declarar explicitamente o <strong>não escopo</strong>: atividades, produtos ou condições relacionados ao projeto, mas que deliberadamente não estão incluídos. O não escopo não substitui a descrição das entregas; ele esclarece seus limites.</p>
+      <div class="highlight"><p><strong>Exemplo:</strong> em um projeto de treinamento, a preparação do conteúdo e a realização das aulas podem estar incluídas, enquanto o fornecimento da sala, dos computadores e da conexão de internet pode permanecer sob responsabilidade do cliente. Registrar essa fronteira evita expectativas incompatíveis.</p></div>
+    </div>
+
+    <figure class="content-figure">
+      <img src="images/unidade3/artefatos-protecao-escopo.webp" alt="Artefatos para delimitar e proteger o escopo: declaração, não escopo, premissas, projeto executivo e interfaces" loading="lazy">
+      <figcaption><strong>Figura 4 — Artefatos para delimitar e proteger o escopo.</strong> Declaração de escopo, não escopo, premissas, detalhamento técnico e controle das interfaces atuam de forma complementar para explicitar limites e responsabilidades.</figcaption>
+    </figure>
+
+    <h3>Da documentação à declaração do escopo</h3>
+    <div class="content-card">
+      <p>A definição do escopo transforma as necessidades já coletadas em uma descrição clara do trabalho que será realizado. Como entradas, utilizam-se o TAP e a documentação dos requisitos; como apoio, podem ser empregadas análise do produto, identificação de alternativas e opinião especializada. A saída é a <strong>Declaração do Escopo</strong>.</p>
+      <p>Antes de detalhar completamente a solução, a equipe pode desenvolver um estudo preliminar ou anteprojeto. Essa validação antecipada ajuda a comparar alternativas e reduz o risco de investir esforço em uma solução que o cliente não considera adequada.</p>
+    </div>
+
+    <h3>Analisar o produto antes de detalhar o trabalho</h3>
+    <div class="content-card">
+      <p>A definição do escopo exige conhecimento suficiente do produto, serviço ou resultado que será gerado. Quando a solução utiliza tecnologia nova ou pouco conhecida pela equipe, o próprio projeto pode precisar incluir pesquisas, ensaios, provas de conceito ou estudos de viabilidade.</p>
+      <p>Conforme a natureza do projeto, a análise pode recorrer a técnicas como decomposição do produto, análise funcional, análise de sistemas, engenharia de sistemas, engenharia de valor e análise de valor. O propósito comum é compreender funções, componentes, interfaces e alternativas antes de assumir compromissos detalhados.</p>
+      <div class="highlight"><p><strong>Implicação para o escopo:</strong> o esforço necessário para conhecer melhor a solução também é trabalho do projeto e deve ser previsto quando não estiver disponível previamente.</p></div>
+    </div>
+
+    <h3>Gerar alternativas de realização</h3>
+    <div class="content-card">
+      <p>Um mesmo resultado pode ser alcançado por estratégias diferentes. Um sistema pode seguir abordagens distintas de desenvolvimento; uma edificação pode utilizar módulos pré-fabricados ou construção no local; componentes podem ser produzidos em paralelo ou em sequência. Quanto maior a complexidade, maior tende a ser o conjunto de alternativas técnicas, organizacionais e logísticas.</p>
+      <p>Durante essa etapa, é útil separar dois movimentos complementares:</p>
+    </div>
+    <div class="tap-grid">
+      <div class="tap-field"><span class="tap-label">Pensamento divergente</span>Amplia o número de possibilidades, suspende julgamentos prematuros e estimula soluções não convencionais.</div>
+      <div class="tap-field"><span class="tap-label">Pensamento convergente</span>Compara as opções por critérios consistentes e seleciona as alternativas mais adequadas ao contexto.</div>
+    </div>
+    <div class="feat-grid">
+      <div class="feat-card"><div class="feat-title">Brainstorming estruturado</div><div class="feat-desc">Os participantes contribuem segundo uma ordem preestabelecida, assegurando oportunidades equivalentes de manifestação.</div></div>
+      <div class="feat-card"><div class="feat-title">Brainstorming não estruturado</div><div class="feat-desc">As ideias são apresentadas à medida que surgem, cabendo à facilitação estimular a participação de todos.</div></div>
+      <div class="feat-card"><div class="feat-title">Pensamento lateral</div><div class="feat-desc">Questiona pressupostos e formas habituais de perceber o problema para abrir caminhos que não seriam considerados inicialmente.</div></div>
+      <div class="feat-card"><div class="feat-title">Opinião especializada</div><div class="feat-desc">Apoia a análise tecnológica e a seleção de alternativas com conhecimento interno ou externo à organização.</div></div>
+    </div>
+    <div class="content-card">
+      <p>A criatividade, sozinha, não determina a escolha. As alternativas precisam ser comparadas por critérios coerentes, como prazo, custo, desempenho, riscos, retorno esperado, disponibilidade de recursos e aderência às restrições. A opção selecionada passa a integrar a estratégia de condução do projeto.</p>
+    </div>
+
+    <h3>Conteúdo mínimo da Declaração do Escopo</h3>
+    <div class="content-card">
+      <p>A Declaração do Escopo consolida o entendimento comum entre as partes interessadas e fornece uma referência para decisões posteriores. Ela detalha o que será produzido, quais entregas compõem o projeto, como o aceite será verificado e quais limites condicionam o trabalho.</p>
+    </div>
+    <div class="tap-grid">
+      <div class="tap-field"><span class="tap-label">Escopo do cliente</span>Características do produto, serviço ou resultado que atenderá aos requisitos identificados.</div>
+      <div class="tap-field"><span class="tap-label">Principais entregas</span>Produtos verificáveis que serão produzidos e apresentados ao cliente ao longo do projeto.</div>
+      <div class="tap-field"><span class="tap-label">Limites e não escopo</span>Indicação explícita do que está incluído e do que permanece fora das responsabilidades do projeto.</div>
+      <div class="tap-field"><span class="tap-label">Critérios de aceite</span>Condições claras, específicas, mensuráveis e, sempre que possível, quantificáveis para considerar cada entrega aceita.</div>
+      <div class="tap-field"><span class="tap-label">Estratégia de condução</span>Alternativas selecionadas e decisões essenciais sobre como o projeto será realizado.</div>
+      <div class="tap-field"><span class="tap-label">Premissas e restrições</span>Hipóteses adotadas e limites que condicionam as decisões e o planejamento.</div>
+    </div>
+    <div class="def-box">
+      <div class="def-label">Atenção à consistência</div>
+      <div class="def-text">O detalhamento dos requisitos pode esclarecer o produto descrito no TAP, mas não deve alterá-lo informalmente. Se o entendimento atualizado exigir mudança do produto ou dos compromissos autorizados, será necessário negociar e aprovar formalmente a alteração correspondente.</div>
+    </div>
+    <div class="content-card">
+      <p>Dependendo do porte e do estágio do projeto, a declaração também pode registrar ligações com outros projetos, stakeholders relevantes, cronograma e custos preliminares, riscos iniciais, recursos necessários, responsabilidades do cliente e dos gerentes funcionais, formas de acompanhamento e fatores críticos de sucesso.</p>
+      <p>O documento deve ser validado pelas pessoas com responsabilidade direta sobre recursos, decisões e recebimento das entregas. Essa validação não elimina mudanças futuras, mas estabelece uma base comum: revisões posteriores devem refletir somente alterações analisadas e aprovadas.</p>
+    </div>
+
+    <div class="content-card">
+      <p><strong>Fonte conceitual:</strong> síntese elaborada a partir de Xavier (2009), especialmente da discussão sobre coleta, documentação e rastreabilidade de requisitos, controle de mudanças, análise do produto, geração de alternativas, delimitação do escopo e composição da Declaração do Escopo.</p>
+    </div>
+  </div>
+</section>
+
 <!-- EAP -->
 <section class="section" id="eap">
   <div class="container">
-    <p class="section-label">3.2 / eap</p>
-    <h2>EAP — Estrutura Analítica do Projeto</h2>
+    <p class="section-label">3.3 / estruturar o escopo</p>
+    <h2>EAP — representação hierárquica do escopo</h2>
     <div class="def-box">
       <div class="def-label">Definição</div>
       <div class="def-text">A EAP (ou WBS — Work Breakdown Structure) é uma <strong>decomposição hierárquica do escopo total</strong> do projeto em pacotes de trabalho menores e gerenciáveis.</div>
     </div>
     <div class="content-card">
-      <p>A EAP decompõe o <em>produto</em>, não o processo. Cada nível inferior representa uma definição crescentemente detalhada do trabalho. O nível mais baixo é o <strong>Pacote de Trabalho</strong>.</p>
+      <p>A EAP é construída a partir do escopo definido e organiza, de forma orientada às entregas, todo o trabalho necessário para realizá-lo. Cada nível inferior apresenta uma decomposição progressivamente mais detalhada; o nível mais baixo é o <strong>Pacote de Trabalho</strong>.</p>
+      <p>Assim, a sequência lógica é: <strong>necessidade → requisito → declaração do escopo → EAP → atividades do cronograma</strong>. A EAP não é uma lista cronológica de tarefas: ela delimita o trabalho antes que esse trabalho seja transformado em atividades, dependências e prazos.</p>
     </div>
 
-    <!-- EAP visual -->
-    <div class="diagram-wrap">
-      <svg viewBox="0 0 700 250" width="100%" xmlns="http://www.w3.org/2000/svg" style="max-width:700px;">
-        <!-- Raiz -->
-        <rect x="260" y="10" width="180" height="36" rx="5" fill="#0f172a" stroke="#00c2ff" stroke-width="1.5"/>
-        <text x="350" y="28" fill="#00c2ff" font-size="10" text-anchor="middle" font-family="sans-serif" font-weight="600">PROJETO</text>
-        <text x="350" y="40" fill="#64748b" font-size="8" text-anchor="middle" font-family="monospace">Nível 1</text>
-        <!-- Linha raiz → nível 2 -->
-        <line x1="350" y1="46" x2="350" y2="60" stroke="#1e2d40"/>
-        <line x1="130" y1="60" x2="570" y2="60" stroke="#1e2d40"/>
-        <!-- Nível 2 -->
-        <line x1="130" y1="60" x2="130" y2="75"/><rect x="60" y="75" width="140" height="34" rx="4" fill="#0f172a" stroke="#7c3aed"/><text x="130" y="92" fill="#7c3aed" font-size="9" text-anchor="middle" font-family="sans-serif">Entregas 1</text><text x="130" y="104" fill="#64748b" font-size="7" text-anchor="middle" font-family="monospace">Nível 2</text>
-        <line x1="350" y1="60" x2="350" y2="75"/><rect x="280" y="75" width="140" height="34" rx="4" fill="#0f172a" stroke="#7c3aed"/><text x="350" y="92" fill="#7c3aed" font-size="9" text-anchor="middle" font-family="sans-serif">Entregas 2</text><text x="350" y="104" fill="#64748b" font-size="7" text-anchor="middle" font-family="monospace">Nível 2</text>
-        <line x1="570" y1="60" x2="570" y2="75"/><rect x="500" y="75" width="140" height="34" rx="4" fill="#0f172a" stroke="#7c3aed"/><text x="570" y="92" fill="#7c3aed" font-size="9" text-anchor="middle" font-family="sans-serif">Entregas 3</text><text x="570" y="104" fill="#64748b" font-size="7" text-anchor="middle" font-family="monospace">Nível 2</text>
-        <!-- Nível 3 — pacotes de trabalho -->
-        <line x1="130" y1="109" x2="130" y2="123"/><line x1="75" y1="123" x2="185" y2="123"/>
-        <line x1="75" y1="123" x2="75" y2="138"/><rect x="25" y="138" width="100" height="28" rx="3" fill="#0f172a" stroke="#10b981"/>
-        <text x="75" y="150" fill="#10b981" font-size="8" text-anchor="middle" font-family="sans-serif">Pacote 1.1</text>
-        <text x="75" y="162" fill="#64748b" font-size="7" text-anchor="middle" font-family="monospace">Nível 3</text>
-        <line x1="185" y1="123" x2="185" y2="138"/><rect x="135" y="138" width="100" height="28" rx="3" fill="#0f172a" stroke="#10b981"/>
-        <text x="185" y="150" fill="#10b981" font-size="8" text-anchor="middle" font-family="sans-serif">Pacote 1.2</text>
-        <text x="185" y="162" fill="#64748b" font-size="7" text-anchor="middle" font-family="monospace">Nível 3</text>
-        <line x1="350" y1="109" x2="350" y2="138"/><rect x="300" y="138" width="100" height="28" rx="3" fill="#0f172a" stroke="#10b981"/>
-        <text x="350" y="150" fill="#10b981" font-size="8" text-anchor="middle" font-family="sans-serif">Pacote 2.1</text>
-        <text x="350" y="162" fill="#64748b" font-size="7" text-anchor="middle" font-family="monospace">Nível 3</text>
-        <line x1="570" y1="109" x2="570" y2="123"/><line x1="520" y1="123" x2="620" y2="123"/>
-        <line x1="520" y1="123" x2="520" y2="138"/><rect x="470" y="138" width="100" height="28" rx="3" fill="#0f172a" stroke="#10b981"/>
-        <text x="520" y="150" fill="#10b981" font-size="8" text-anchor="middle" font-family="sans-serif">Pacote 3.1</text>
-        <text x="520" y="162" fill="#64748b" font-size="7" text-anchor="middle" font-family="monospace">Nível 3</text>
-        <line x1="620" y1="123" x2="620" y2="138"/><rect x="570" y="138" width="100" height="28" rx="3" fill="#0f172a" stroke="#10b981"/>
-        <text x="620" y="150" fill="#10b981" font-size="8" text-anchor="middle" font-family="sans-serif">Pacote 3.2</text>
-        <text x="620" y="162" fill="#64748b" font-size="7" text-anchor="middle" font-family="monospace">Nível 3</text>
-        <!-- Legenda -->
-        <rect x="25" y="200" width="12" height="12" rx="2" fill="none" stroke="#00c2ff"/><text x="42" y="211" fill="#64748b" font-size="8" font-family="sans-serif">Projeto (Nível 1)</text>
-        <rect x="155" y="200" width="12" height="12" rx="2" fill="none" stroke="#7c3aed"/><text x="172" y="211" fill="#64748b" font-size="8" font-family="sans-serif">Entregas (Nível 2)</text>
-        <rect x="290" y="200" width="12" height="12" rx="2" fill="none" stroke="#10b981"/><text x="307" y="211" fill="#64748b" font-size="8" font-family="sans-serif">Pacotes de Trabalho (Nível 3+)</text>
-        <text x="25" y="235" fill="#64748b" font-size="8" font-family="monospace">⚡ Regra 100%: a EAP deve capturar 100% do escopo, sem mais, sem menos.</text>
-      </svg>
+    <h3>Por que decompor o escopo?</h3>
+    <div class="tap-grid">
+      <div class="tap-field"><span class="tap-label">Representar todo o escopo</span>Subdividir as principais entregas até que o trabalho necessário esteja integralmente contemplado.</div>
+      <div class="tap-field"><span class="tap-label">Melhorar as estimativas</span>Quanto mais bem delimitados os pacotes, maior a precisão possível das estimativas de duração, recursos e custos.</div>
+      <div class="tap-field"><span class="tap-label">Atribuir responsabilidades</span>Associar partes identificáveis do trabalho às equipes ou responsáveis por sua execução e controle.</div>
+      <div class="tap-field"><span class="tap-label">Apoiar o desempenho</span>Oferecer uma estrutura comum para planejar, medir, comunicar e controlar o avanço do projeto.</div>
     </div>
+    <div class="def-box">
+      <div class="def-label">Orientação por entregas</div>
+      <div class="def-text">A EAP deve evidenciar os <strong>resultados que precisam ser produzidos</strong>, e não funcionar como simples relação cronológica de ações. As atividades serão derivadas posteriormente dos pacotes de trabalho.</div>
+    </div>
+
+    <h3>Formas de representação</h3>
+    <div class="content-card">
+      <p>Por ser hierárquica, a EAP pode ser apresentada como <strong>diagrama em árvore</strong> ou como <strong>lista indentada e numerada</strong>. As duas formas representam a mesma decomposição; muda apenas a maneira de visualizá-la.</p>
+    </div>
+
+    <figure class="content-figure">
+      <img src="images/unidade3/exemplo-eap-website.webp" alt="Exemplo de EAP hierárquica de um projeto de desenvolvimento de website institucional" loading="lazy">
+      <figcaption><strong>Figura 5 — Exemplo de EAP orientada às entregas.</strong> O projeto é decomposto em entregas principais, entregas secundárias e pacotes de trabalho, identificados por códigos hierárquicos.</figcaption>
+    </figure>
+    <div style="overflow-x:auto;">
+      <table class="data-table">
+        <thead><tr><th>Código</th><th>Elemento da EAP</th><th>Nível</th></tr></thead>
+        <tbody>
+          <tr><td>1</td><td>Projeto</td><td>Resultado global</td></tr>
+          <tr><td>1.1</td><td>Entrega principal A</td><td>Primeira decomposição</td></tr>
+          <tr><td>1.1.1</td><td>Componente A.1</td><td>Subentrega</td></tr>
+          <tr><td>1.1.1.1</td><td>Pacote de trabalho A.1.1</td><td>Menor unidade planejada e controlada</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="content-card">
+      <p>A numeração identifica a posição hierárquica de cada elemento e facilita referências em cronogramas, estimativas, contratos, relatórios e sistemas de acompanhamento. Ela não representa, por si só, ordem de execução ou precedência.</p>
+      <p>Denominações como <em>Estrutura de Decomposição do Trabalho</em>, <em>Estrutura de Divisão do Trabalho</em> e EDT aparecem em parte da literatura. Nesta página, será mantida a expressão <strong>Estrutura Analítica do Projeto (EAP)</strong>, associada à sigla inglesa WBS, para preservar consistência terminológica.</p>
+    </div>
+
+    <h3>EAP e linha de base do escopo</h3>
+    <div class="content-card">
+      <p>Depois de validada, a EAP integra a <strong>linha de base do escopo</strong>. Em uma formulação completa, essa linha de base reúne a Declaração do Escopo, a EAP e o Dicionário da EAP. Esse conjunto fornece a referência aprovada contra a qual o trabalho será detalhado, acompanhado e controlado.</p>
+      <p>A linha de base não é somente um arquivo inicial: ela registra o compromisso vigente. Mudanças posteriores precisam seguir o processo de controle estabelecido e, quando aprovadas, atualizar os documentos afetados.</p>
+    </div>
+
+    <figure class="content-figure">
+      <img src="images/unidade3/artefatos-linha-base.webp" alt="Relação entre documento de requisitos, declaração de escopo, EAP, matriz de rastreabilidade, linha de base e registro de mudanças" loading="lazy">
+      <figcaption><strong>Figura 6 — Relação entre os artefatos do escopo.</strong> Os documentos formam um sistema de rastreabilidade: requisitos fundamentam a declaração e a EAP; a linha de base orienta o controle; mudanças aprovadas atualizam os registros correspondentes.</figcaption>
+    </figure>
+
+    <h3>A EAP como estrutura integradora</h3>
+    <div class="feat-grid">
+      <div class="feat-card"><div class="feat-title">Cronograma</div><div class="feat-desc">Os pacotes de trabalho dão origem às atividades, que depois recebem durações, recursos e dependências.</div></div>
+      <div class="feat-card"><div class="feat-title">Custos</div><div class="feat-desc">As estimativas podem ser organizadas e consolidadas segundo os níveis da decomposição.</div></div>
+      <div class="feat-card"><div class="feat-title">Recursos e responsabilidades</div><div class="feat-desc">Cada pacote pode ser associado a responsáveis, competências, materiais e equipamentos necessários.</div></div>
+      <div class="feat-card"><div class="feat-title">Riscos e qualidade</div><div class="feat-desc">A estrutura ajuda a localizar ameaças, oportunidades, requisitos e verificações relacionados a cada entrega.</div></div>
+      <div class="feat-card"><div class="feat-title">Aquisições</div><div class="feat-desc">Partes do escopo podem ser identificadas para contratação, fornecimento ou desenvolvimento externo.</div></div>
+      <div class="feat-card"><div class="feat-title">Monitoramento e aceite</div><div class="feat-desc">As entregas estruturadas oferecem pontos objetivos para acompanhar progresso e verificar resultados.</div></div>
+    </div>
+    <div class="highlight"><p><strong>Síntese:</strong> a EAP é a fundação estrutural do planejamento. Ela conecta o escopo aprovado ao cronograma, aos custos, aos recursos, aos riscos, à qualidade e às aquisições, mantendo todos esses planos referidos ao mesmo conjunto de entregas.</p></div>
   </div>
 </section>
 
 <!-- GANTT -->
 <section class="section" id="gantt">
   <div class="container">
-    <p class="section-label">3.3 / gráfico de gantt</p>
-    <h2>Gráfico de Gantt</h2>
+    <p class="section-label">3.4 / interface com o cronograma</p>
+    <h2>Da EAP ao cronograma: Gráfico de Gantt</h2>
     <div class="content-card">
-      <p>O gráfico de Gantt representa visualmente o cronograma do projeto: as tarefas nas linhas, o tempo nas colunas e barras horizontais indicando duração. Criado por Henry Gantt no início do século XX, é a representação de cronograma mais usada em gestão de projetos.</p>
+      <p>Depois que os pacotes de trabalho são definidos, eles podem ser decompostos nas atividades necessárias à sua realização. Essa passagem evidencia a interface entre escopo e prazo: a EAP organiza <em>o que</em> precisa ser entregue; o cronograma define <em>como e quando</em> o trabalho correspondente será executado.</p>
+      <p>O gráfico de Gantt não integra a linha de base do escopo, mas representa visualmente o cronograma derivado dela: as tarefas aparecem nas linhas, o tempo nas colunas e barras horizontais indicam duração. Criado por Henry Gantt no início do século XX, é uma das representações de cronograma mais utilizadas em gestão de projetos.</p>
     </div>
     <!-- Gantt mini -->
     <div class="gantt-mini">
@@ -204,8 +390,6 @@
         <!-- Marco -->
         <polygon points="550,153 558,165 542,165" fill="#f59e0b"/>
         <text x="560" y="164" fill="#f59e0b" font-size="8" font-family="monospace">Marco</text>
-        <!-- Caminho crítico indicação -->
-        <text x="8" y="195" fill="#64748b" font-size="8" font-family="monospace">Barras com borda dupla = caminho crítico</text>
       </svg>
     </div>
 
@@ -218,7 +402,7 @@
       <div class="feat-card">
         <div class="feat-icon">🔗</div>
         <div class="feat-title">Dependências</div>
-        <div class="feat-desc">Permite visualizar o sequenciamento: FF (Fim-Início), II (Início-Início), FI (Fim-Fim).</div>
+        <div class="feat-desc">Permite visualizar o sequenciamento: TI (Término–Início), II (Início–Início), TT (Término–Término) e IT (Início–Término).</div>
       </div>
       <div class="feat-card">
         <div class="feat-icon">🏁</div>
@@ -237,10 +421,12 @@
 <!-- PLANO DE GERENCIAMENTO -->
 <section class="section" id="plano">
   <div class="container">
-    <p class="section-label">3.4 / plano de gerenciamento</p>
-    <h2>Plano de Gerenciamento do Projeto</h2>
+    <p class="section-label">3.5 / integrar e controlar o escopo</p>
+    <h2>Plano de Gerenciamento e coerência do escopo</h2>
     <div class="content-card">
-      <p>O Plano de GP é o documento que descreve <strong>como o projeto será executado, monitorado, controlado e encerrado</strong>. É composto pelos planos subsidiários de cada área de conhecimento.</p>
+      <p>O Plano de Gerenciamento do Projeto descreve <strong>como o projeto será executado, monitorado, controlado e encerrado</strong>. Seu desenvolvimento começa no planejamento inicial e é consolidado progressivamente à medida que escopo, cronograma, custos e demais componentes são definidos.</p>
+      <p>Nesta unidade, ele funciona como síntese integradora: TAP, documentação de requisitos, Declaração do Escopo, EAP, Dicionário da EAP, linha de base e registro de mudanças não são documentos isolados. São referências relacionadas que precisam permanecer coerentes durante todo o projeto.</p>
+      <p>Gerenciar o escopo significa preservar essa coerência: validar entregas, comparar o trabalho executado com a linha de base e assegurar que alterações relevantes sejam analisadas, aprovadas e refletidas nos documentos e planos afetados.</p>
     </div>
     <div class="tap-grid">
       <div class="tap-field"><span class="tap-label">Escopo</span>Como definir e controlar o escopo</div>
@@ -255,29 +441,18 @@
   </div>
 </section>
 
-<!-- QUIZ -->
-<section class="section" id="quiz">
+<!-- REFERÊNCIA -->
+<section class="section" id="referencias">
   <div class="container">
-    <p class="section-label">3.5 / quiz</p>
-    <h2>Quiz Rápido — Unidade 3</h2>
-    <div class="quiz-wrap">
-      <div class="quiz-title">⚡ Teste seus conhecimentos — 5 questões</div>
-      <div class="quiz-q" id="q1"><div class="q-num">QUESTÃO 01</div><div class="q-text">O TAP (Termo de Abertura do Projeto) é emitido por quem?</div><div class="options"><label class="opt"><input type="radio" name="q1" value="a"> Pelo Gerente de Projetos.</label><label class="opt"><input type="radio" name="q1" value="b"> Pelo Sponsor (Patrocinador).</label><label class="opt"><input type="radio" name="q1" value="c"> Pela equipe técnica do projeto.</label><label class="opt"><input type="radio" name="q1" value="d"> Pelo cliente principal.</label></div></div>
-      <div class="quiz-q" id="q2"><div class="q-num">QUESTÃO 02</div><div class="q-text">A sigla WBS significa:</div><div class="options"><label class="opt"><input type="radio" name="q2" value="a"> Work Balance Sheet.</label><label class="opt"><input type="radio" name="q2" value="b"> Work Breakdown Structure — mesma coisa que EAP.</label><label class="opt"><input type="radio" name="q2" value="c"> Weekly Budget Summary.</label><label class="opt"><input type="radio" name="q2" value="d"> Workflow and Budget System.</label></div></div>
-      <div class="quiz-q" id="q3"><div class="q-num">QUESTÃO 03</div><div class="q-text">O nível mais baixo da EAP é chamado de:</div><div class="options"><label class="opt"><input type="radio" name="q3" value="a"> Atividade.</label><label class="opt"><input type="radio" name="q3" value="b"> Entregável.</label><label class="opt"><input type="radio" name="q3" value="c"> Pacote de Trabalho.</label><label class="opt"><input type="radio" name="q3" value="d"> Projeto.</label></div></div>
-      <div class="quiz-q" id="q4"><div class="q-num">QUESTÃO 04</div><div class="q-text">No Gráfico de Gantt, um <strong>marco (milestone)</strong> é representado por:</div><div class="options"><label class="opt"><input type="radio" name="q4" value="a"> Uma barra muito longa indicando tarefa complexa.</label><label class="opt"><input type="radio" name="q4" value="b"> Um evento com duração zero, indicando ponto de controle.</label><label class="opt"><input type="radio" name="q4" value="c"> Uma tarefa paralela a todas as outras.</label><label class="opt"><input type="radio" name="q4" value="d"> O fim de cada fase do ciclo de vida.</label></div></div>
-      <div class="quiz-q" id="q5"><div class="q-num">QUESTÃO 05</div><div class="q-text">O Plano de Gerenciamento do Projeto é composto por:</div><div class="options"><label class="opt"><input type="radio" name="q5" value="a"> Apenas o cronograma e o orçamento.</label><label class="opt"><input type="radio" name="q5" value="b"> Os planos subsidiários de cada área de conhecimento.</label><label class="opt"><input type="radio" name="q5" value="c"> O TAP e o registro de stakeholders.</label><label class="opt"><input type="radio" name="q5" value="d"> Somente a EAP e o dicionário da EAP.</label></div></div>
-      <button class="quiz-btn" onclick="checkQuiz()">Verificar respostas</button>
-      <div class="quiz-result" id="quiz-result"></div>
+    <p class="section-label">Referência bibliográfica</p>
+    <div class="content-card">
+      <p>XAVIER, Carlos Magno da Silva. <strong>Gerenciamento de projetos: como definir e controlar o escopo do projeto</strong>. 2. ed. São Paulo: Saraiva, 2009.</p>
+      <p>SILVA, Clayton J. A. <strong>Gestão do escopo de projetos</strong>. Material didático da disciplina Gestão de Projetos, 2026.</p>
     </div>
   </div>
 </section>
 
 <div class="container"><div class="nav-bottom"><a class="nav-pg" href="unidade2.html">← Unidade 2</a><a class="nav-pg" href="unidade4.html">Unidade 4 — Integração e Escopo →</a></div></div>
-<footer><div class="container"><p>© 2026 · Prof. Clayton J A Silva · Ibmec RJ</p><p><a href="../gestao_projetos.html">← Gestão de Projetos</a></p></div></footer>
-<script>
-  const answers={q1:'b',q2:'b',q3:'c',q4:'b',q5:'b'};
-  function checkQuiz(){let score=0;Object.entries(answers).forEach(([q,c])=>{const s=document.querySelector(`input[name="${q}"]:checked`);const opts=document.querySelectorAll(`#${q} .opt`);opts.forEach(o=>o.classList.remove('correct','wrong'));if(s){const p=s.closest('.opt');if(s.value===c){p.classList.add('correct');score++;}else{p.classList.add('wrong');opts.forEach(o=>{if(o.querySelector('input').value===c)o.classList.add('correct');});}}else{opts.forEach(o=>{if(o.querySelector('input').value===c)o.classList.add('correct');});}});const res=document.getElementById('quiz-result');res.className='quiz-result show '+(score>=4?'pass':'fail');res.innerHTML=score>=4?`✅ Ótimo! Você acertou <strong>${score}/5</strong>.`:`❌ Você acertou <strong>${score}/5</strong>. Revise os artefatos.`;document.querySelector('.quiz-btn').disabled=true;}
-</script>
+<footer><div class="container"><p>© 2026 · Prof. Clayton J. A. Silva · ESPM Rio</p><p><a href="../gestao_projetos.html">← Gestão de Projetos</a></p></div></footer>
 </body>
 </html>
