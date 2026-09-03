@@ -2,7 +2,7 @@
 <!--
   Descrição geral: Simulador didático da máquina IAS/von Neumann.
   Data de criação: 01/09/2026.
-  Versão: 2.0.
+  Versão: 2.1.
   Copyright: Clayton J. A. Silva.
 -->
 <html lang="pt-BR">
@@ -41,9 +41,9 @@
   <div class="error" id="error"></div>
   <section class="workspace">
     <article class="panel editor"><div class="panel-title"><div><b>01</b><h2>Programa Assembly</h2></div><small>Endereços e operandos em hexadecimal</small></div><textarea id="source" spellcheck="false">; ENDEREÇO: INSTRUÇÃO OPERANDO
-000: LOAD_M(X) 010
-000: ADD_M(X)  011
-001: STOR_M(X) 012
+000: LOAD M(X) 010
+000: ADD M(X) 011
+001: STOR M(X) 012
 001: HALT</textarea><div class="hint">A primeira instrução ocupa a metade esquerda; a segunda, a metade direita. Não são admitidos rótulos ou diretivas.</div></article>
     <article class="panel editor data-editor"><div class="panel-title"><div><b>02</b><h2>Dados iniciais</h2></div><small>Endereço: valor hexadecimal</small></div><textarea id="dataSource" spellcheck="false">; ENDEREÇO: VALOR DE 40 BITS
 010: 0000000005
@@ -56,24 +56,52 @@
   <footer><span>Endereços: 000–FFF</span><span>Palavra: 40 bits</span><span>Instrução: opcode de 8 bits + endereço de 12 bits</span></footer>
   <script>
     "use strict";
-    const MASK40=(1n<<40n)-1n,SIGN40=1n<<39n;
-    const OPS={NOP:0,"LOAD_M(X)":1,LOAD:1,"LOAD_-M(X)":2,"ADD_M(X)":5,ADD:5,"SUB_M(X)":6,SUB:6,"JUMP_M(X,0:19)":13,JUMP:13,"JUMP+_M(X,0:19)":15,"JUMP+":15,"STOR_M(X)":33,STOR:33,HALT:255};
-    const NAMES={0:"NOP",1:"LOAD M(X)",2:"LOAD -M(X)",5:"ADD M(X)",6:"SUB M(X)",13:"JUMP M(X,0:19)",15:"JUMP+ M(X,0:19)",33:"STOR M(X)",255:"HALT"};
+    const MASK40=(1n<<40n)-1n,SIGN40=1n<<39n,MASK80=(1n<<80n)-1n;
+    const INSTRUCTIONS=[
+      {name:"LOAD MQ,M(X)",op:0x09,operand:true},
+      {name:"LOAD -|M(X)|",op:0x04,operand:true},
+      {name:"JUMP +M(X,20:39)",op:0x10,operand:true},
+      {name:"JUMP +M(X,0:19)",op:0x0F,operand:true},
+      {name:"STOR M(X,28:39)",op:0x13,operand:true},
+      {name:"STOR M(X,8:19)",op:0x12,operand:true},
+      {name:"JUMP M(X,20:39)",op:0x0E,operand:true},
+      {name:"JUMP M(X,0:19)",op:0x0D,operand:true},
+      {name:"LOAD |M(X)|",op:0x03,operand:true},
+      {name:"ADD |M(X)|",op:0x07,operand:true},
+      {name:"SUB |M(X)|",op:0x08,operand:true},
+      {name:"LOAD -M(X)",op:0x02,operand:true},
+      {name:"LOAD M(X)",op:0x01,operand:true},
+      {name:"STOR M(X)",op:0x21,operand:true},
+      {name:"ADD M(X)",op:0x05,operand:true},
+      {name:"SUB M(X)",op:0x06,operand:true},
+      {name:"MUL M(X)",op:0x0B,operand:true},
+      {name:"DIV M(X)",op:0x0C,operand:true},
+      {name:"LOAD MQ",op:0x0A,operand:false},
+      {name:"LSH",op:0x14,operand:false},
+      {name:"RSH",op:0x15,operand:false},
+      {name:"NOP",op:0x00,operand:false},
+      {name:"HALT",op:0xFF,operand:false}
+    ];
+    const NAMES=Object.fromEntries(INSTRUCTIONS.map(item=>[item.op,item.name]));
     const el=id=>document.getElementById(id),u40=n=>n&MASK40,signed=n=>{const v=u40(n);return v>=SIGN40?v-(1n<<40n):v},bin=(n,w)=>(n&((1n<<BigInt(w))-1n)).toString(2).padStart(w,"0"),hex=(n,w)=>(n&((1n<<BigInt(w*4))-1n)).toString(16).toUpperCase().padStart(w,"0");
-    let memory=new Array(4096).fill(0n),baseProgram=[...memory],initialMemory=[...memory],listing=[],registers={},queue=[],clock=0,halted=true,timer=null,startAddress=0,page=0;
+    let memory=new Array(4096).fill(0n),baseProgram=[...memory],initialMemory=[...memory],listing=[],registers={},queue=[],clock=0,halted=true,timer=null,startAddress=0,page=0,ibrPending=false,rightJumpAddress=null;
     function initialRegisters(){return{PC:startAddress,MAR:0,MBR:0n,IR:0,IBR:0,ACC:0n,MQ:0n}}
     function lines(text){return text.split("\n").map((raw,i)=>({text:raw.split(";")[0].trim(),line:i+1})).filter(x=>x.text)}
     function address(raw,line){if(!/^[0-9A-Fa-f]{1,3}$/.test(raw))throw Error(`Linha ${line}: endereço hexadecimal inválido.`);return parseInt(raw,16)}
-    function assemble(source){const words=new Array(4096).fill(0n),counts=new Map(),items=[];for(const item of lines(source)){const m=item.text.match(/^([0-9A-Fa-f]{1,3})\s*:\s*(.+)$/);if(!m)throw Error(`Linha ${item.line}: use 000: INSTRUÇÃO OPERANDO.`);const a=address(m[1],item.line),parts=m[2].trim().split(/\s+/),op=OPS[parts[0].toUpperCase()];if(op===undefined)throw Error(`Linha ${item.line}: instrução desconhecida.`);const needs=![0,255].includes(op);if(needs&&!parts[1])throw Error(`Linha ${item.line}: informe o operando.`);if(parts[1]&&!/^[0-9A-Fa-f]{1,3}$/.test(parts[1]))throw Error(`Linha ${item.line}: operando hexadecimal inválido.`);const operand=parts[1]?parseInt(parts[1],16):0,count=counts.get(a)||0;if(count>=2)throw Error(`Endereço ${hex(BigInt(a),3)}: máximo de duas instruções.`);const inst=(BigInt(op)<<12n)|BigInt(operand);words[a]=count?words[a]|inst:inst<<20n;items.push({address:a});counts.set(a,count+1)}if(!items.length)throw Error("Digite ao menos uma instrução.");return{words,items,start:Math.min(...items.map(x=>x.address))}}
+    function parseInstruction(raw,line){const normalized=raw.replace(/\s+/g," ").trim().toUpperCase();for(const spec of INSTRUCTIONS){const name=spec.name.toUpperCase();if(!spec.operand&&normalized===name)return{op:spec.op,operand:0};if(spec.operand&&normalized.startsWith(name+" ")){const value=normalized.slice(name.length+1).trim();if(!/^[0-9A-F]{1,3}$/.test(value))throw Error(`Linha ${line}: operando hexadecimal inválido.`);return{op:spec.op,operand:parseInt(value,16)}}}throw Error(`Linha ${line}: instrução desconhecida ou sintaxe diferente da tabela do Capítulo 1.`)}
+    function assemble(source){const words=new Array(4096).fill(0n),counts=new Map(),items=[];for(const item of lines(source)){const m=item.text.match(/^([0-9A-Fa-f]{1,3})\s*:\s*(.+)$/);if(!m)throw Error(`Linha ${item.line}: use 000: INSTRUÇÃO OPERANDO.`);const a=address(m[1],item.line),decoded=parseInstruction(m[2],item.line),count=counts.get(a)||0;if(count>=2)throw Error(`Endereço ${hex(BigInt(a),3)}: máximo de duas instruções.`);const inst=(BigInt(decoded.op)<<12n)|BigInt(decoded.operand);words[a]=count?words[a]|inst:inst<<20n;items.push({address:a});counts.set(a,count+1)}if(!items.length)throw Error("Digite ao menos uma instrução.");return{words,items,start:Math.min(...items.map(x=>x.address))}}
     function parseData(text){const out=[],seen=new Set();for(const item of lines(text)){const m=item.text.match(/^([0-9A-Fa-f]{1,3})\s*:\s*([0-9A-Fa-f]{1,10})$/);if(!m)throw Error(`Dados, linha ${item.line}: use 010: 0000000005.`);const a=address(m[1],item.line);if(seen.has(a))throw Error(`Dados: endereço ${hex(BigInt(a),3)} repetido.`);seen.add(a);out.push({address:a,value:BigInt("0x"+m[2])})}return out}
     function showError(message=""){el("error").textContent=message;el("error").classList.toggle("show",!!message)}
     function stop(){if(timer){clearInterval(timer);timer=null}}
     function setHalted(value){halted=value;el("step").disabled=value;el("instruction").disabled=value;el("run").disabled=value;el("halt").style.display=value&&listing.length?"block":"none"}
-    function reset(){stop();registers=initialRegisters();memory=[...initialMemory];queue=[];clock=0;setHalted(false);render("BUSCA","Pronto","A próxima etapa inicia a busca da palavra indicada por PC.")}
+    function reset(){stop();registers=initialRegisters();memory=[...initialMemory];queue=[];clock=0;ibrPending=false;rightJumpAddress=null;setHalted(false);render("BUSCA","Pronto","A próxima etapa inicia a busca da palavra indicada por PC.")}
     function loadProgram(){try{const p=assemble(el("source").value),data=parseData(el("dataSource").value),used=new Set(p.items.map(x=>x.address));data.forEach(d=>{if(used.has(d.address))throw Error(`O endereço ${hex(BigInt(d.address),3)} contém código e não pode receber dados.`)});baseProgram=[...p.words];initialMemory=[...p.words];data.forEach(d=>initialMemory[d.address]=d.value);listing=p.items;startAddress=p.start;page=Math.floor(startAddress/256);el("memoryPage").value=page;showError();reset()}catch(e){showError(e.message)}}
     function reloadData(){try{const data=parseData(el("dataSource").value),used=new Set(listing.map(x=>x.address));initialMemory=[...baseProgram];data.forEach(d=>{if(used.has(d.address))throw Error(`O endereço ${hex(BigInt(d.address),3)} contém código e não pode receber dados.`);initialMemory[d.address]=d.value});showError();reset()}catch(e){showError(e.message)}}
-    function executionStages(inst,fromIBR){const op=fromIBR?(inst>>12)&255:registers.IR,desc={0:"Nenhuma operação",1:"MBR ← M[MAR]; ACC ← MBR",2:"MBR ← M[MAR]; ACC ← −MBR",5:"MBR ← M[MAR]; ACC ← ACC + MBR",6:"MBR ← M[MAR]; ACC ← ACC − MBR",13:"PC ← MAR; IBR ← 0",15:"Se ACC ≥ 0: PC ← MAR; IBR ← 0",33:"MBR ← ACC; M[MAR] ← MBR",255:"Interromper a execução"};return[{name:"Decodificação",phase:"DECODIFICAÇÃO",micro:fromIBR?"IR ← IBR[0:7]; MAR ← IBR[8:19]; IBR ← 0":"UC decodifica IR",action:()=>{if(fromIBR){registers.IR=op;registers.MAR=inst&4095;registers.IBR=0}}},{name:"Execução",phase:"EXECUÇÃO",micro:desc[op]||"Opcode não implementado",action:()=>{switch(registers.IR){case 0:break;case 1:registers.MBR=memory[registers.MAR];registers.ACC=registers.MBR;break;case 2:registers.MBR=memory[registers.MAR];registers.ACC=u40(-signed(registers.MBR));break;case 5:registers.MBR=memory[registers.MAR];registers.ACC=u40(signed(registers.ACC)+signed(registers.MBR));break;case 6:registers.MBR=memory[registers.MAR];registers.ACC=u40(signed(registers.ACC)-signed(registers.MBR));break;case 33:registers.MBR=registers.ACC;memory[registers.MAR]=registers.MBR;break;case 13:registers.PC=registers.MAR;registers.IBR=0;break;case 15:if(signed(registers.ACC)>=0){registers.PC=registers.MAR;registers.IBR=0}break;case 255:setHalted(true);stop();break;default:showError("Opcode não implementado.");setHalted(true)}}}]}
-    function stages(){if(registers.IBR)return executionStages(registers.IBR,true);return[{name:"Busca 1",phase:"BUSCA",micro:"MAR ← PC",action:()=>registers.MAR=registers.PC},{name:"Busca 2",phase:"BUSCA",micro:"MBR ← M[MAR]",action:()=>registers.MBR=memory[registers.MAR]},{name:"Busca 3",phase:"BUSCA",micro:"IR ← MBR[0:7]; MAR ← MBR[8:19]; IBR ← MBR[20:39]; PC ← PC + 1",action:()=>{const left=Number((registers.MBR>>20n)&((1n<<20n)-1n));registers.IR=(left>>12)&255;registers.MAR=left&4095;registers.IBR=Number(registers.MBR&((1n<<20n)-1n));registers.PC=(registers.PC+1)&4095}},...executionStages(0,false)]}
+    function jumpLeft(){registers.PC=registers.MAR;registers.IBR=0;ibrPending=false;rightJumpAddress=null}
+    function jumpRight(){rightJumpAddress=registers.MAR;registers.IBR=0;ibrPending=false}
+    function executionStages(inst,fromIBR){const op=fromIBR?(inst>>12)&255:registers.IR,desc={0x00:"Nenhuma operação",0x01:"MBR ← M[MAR]; ACC ← MBR",0x02:"MBR ← M[MAR]; ACC ← −MBR",0x03:"MBR ← M[MAR]; ACC ← |MBR|",0x04:"MBR ← M[MAR]; ACC ← −|MBR|",0x05:"MBR ← M[MAR]; ACC ← ACC + MBR",0x06:"MBR ← M[MAR]; ACC ← ACC − MBR",0x07:"MBR ← M[MAR]; ACC ← ACC + |MBR|",0x08:"MBR ← M[MAR]; ACC ← ACC − |MBR|",0x09:"MBR ← M[MAR]; MQ ← MBR",0x0A:"ACC ← MQ",0x0B:"ACC:MQ ← MQ × M[MAR]",0x0C:"MQ ← ACC ÷ M[MAR]; ACC ← resto",0x0D:"Desvia para a instrução esquerda de M[MAR]",0x0E:"Desvia para a instrução direita de M[MAR]",0x0F:"Se ACC ≥ 0, desvia para a instrução esquerda",0x10:"Se ACC ≥ 0, desvia para a instrução direita",0x12:"M[MAR](8:19) ← ACC(28:39)",0x13:"M[MAR](28:39) ← ACC(28:39)",0x14:"ACC ← ACC × 2",0x15:"ACC ← ACC ÷ 2",0x21:"MBR ← ACC; M[MAR] ← MBR",0xFF:"Interromper a execução"};return[{name:"Decodificação",phase:"DECODIFICAÇÃO",micro:fromIBR?"IR ← IBR[0:7]; MAR ← IBR[8:19]; IBR ← 0":"UC decodifica IR",action:()=>{if(fromIBR){registers.IR=op;registers.MAR=inst&4095;registers.IBR=0;ibrPending=false}}},{name:"Execução",phase:"EXECUÇÃO",micro:desc[op]||"Opcode não implementado",action:()=>{const value=()=>{registers.MBR=memory[registers.MAR];return signed(registers.MBR)};switch(registers.IR){case 0x00:break;case 0x01:registers.MBR=memory[registers.MAR];registers.ACC=registers.MBR;break;case 0x02:registers.ACC=u40(-value());break;case 0x03:registers.ACC=u40(value()<0n?-value():value());break;case 0x04:{const v=value();registers.ACC=u40(-(v<0n?-v:v));break}case 0x05:registers.ACC=u40(signed(registers.ACC)+value());break;case 0x06:registers.ACC=u40(signed(registers.ACC)-value());break;case 0x07:{const v=value();registers.ACC=u40(signed(registers.ACC)+(v<0n?-v:v));break}case 0x08:{const v=value();registers.ACC=u40(signed(registers.ACC)-(v<0n?-v:v));break}case 0x09:registers.MBR=memory[registers.MAR];registers.MQ=registers.MBR;break;case 0x0A:registers.ACC=registers.MQ;break;case 0x0B:{const product=(signed(registers.MQ)*value())&MASK80;registers.ACC=(product>>40n)&MASK40;registers.MQ=product&MASK40;break}case 0x0C:{const divisor=value();if(divisor===0n){showError("Divisão por zero.");setHalted(true);stop();break}const dividend=signed(registers.ACC);registers.MQ=u40(dividend/divisor);registers.ACC=u40(dividend%divisor);break}case 0x0D:jumpLeft();break;case 0x0E:jumpRight();break;case 0x0F:if(signed(registers.ACC)>=0n)jumpLeft();break;case 0x10:if(signed(registers.ACC)>=0n)jumpRight();break;case 0x12:memory[registers.MAR]=(memory[registers.MAR]&~(0xFFFn<<20n))|((registers.ACC&0xFFFn)<<20n);break;case 0x13:memory[registers.MAR]=(memory[registers.MAR]&~0xFFFn)|(registers.ACC&0xFFFn);break;case 0x14:registers.ACC=u40(signed(registers.ACC)*2n);break;case 0x15:registers.ACC=u40(signed(registers.ACC)>>1n);break;case 0x21:registers.MBR=registers.ACC;memory[registers.MAR]=registers.MBR;break;case 0xFF:setHalted(true);stop();break;default:showError("Opcode não implementado.");setHalted(true)}}}]}
+    function fetchRightStages(){return[{name:"Busca 1",phase:"BUSCA",micro:"MAR ← endereço de desvio",action:()=>{registers.MAR=rightJumpAddress;rightJumpAddress=null}},{name:"Busca 2",phase:"BUSCA",micro:"MBR ← M[MAR]",action:()=>registers.MBR=memory[registers.MAR]},{name:"Busca 3",phase:"BUSCA",micro:"IBR ← MBR[20:39]; PC ← MAR + 1",action:()=>{registers.IBR=Number(registers.MBR&((1n<<20n)-1n));registers.PC=(registers.MAR+1)&4095;ibrPending=true}}]}
+    function stages(){if(rightJumpAddress!==null)return fetchRightStages();if(ibrPending)return executionStages(registers.IBR,true);return[{name:"Busca 1",phase:"BUSCA",micro:"MAR ← PC",action:()=>registers.MAR=registers.PC},{name:"Busca 2",phase:"BUSCA",micro:"MBR ← M[MAR]",action:()=>registers.MBR=memory[registers.MAR]},{name:"Busca 3",phase:"BUSCA",micro:"IR ← MBR[0:7]; MAR ← MBR[8:19]; IBR ← MBR[20:39]; PC ← PC + 1",action:()=>{const left=Number((registers.MBR>>20n)&((1n<<20n)-1n));registers.IR=(left>>12)&255;registers.MAR=left&4095;registers.IBR=Number(registers.MBR&((1n<<20n)-1n));registers.PC=(registers.PC+1)&4095;ibrPending=true}},...executionStages(0,false)]}
     function step(){if(halted)return;if(!queue.length)queue=stages();const next=queue.shift();next.action();clock++;render(next.phase,next.name,next.micro)}
     function nextInstruction(){let guard=0;do{step();guard++}while(queue.length&&guard<8)}
     function run(){if(!halted&&!timer)timer=setInterval(step,650)}
