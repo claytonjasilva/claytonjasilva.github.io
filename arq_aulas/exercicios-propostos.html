@@ -1,1098 +1,866 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>Exercícios Propostos — Arquitetura de Computadores</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&amp;family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300&amp;display=swap" rel="stylesheet"/>
 <style>
-  :root {
-    --bg: #ffffff;
-    --text: #1f2430;
-    --muted: #5b6472;
-    --accent: #7a3b8c;
-    --accent-soft: #f3ecf6;
-    --border: #e2e4ea;
-    --card-bg: #fafafb;
-    --code-bg: #f4f2f7;
-  }
-  @media (prefers-color-scheme: dark) {
-    :root {
-      --bg: #1b1c20;
-      --text: #e8e8ec;
-      --muted: #a3a8b4;
-      --accent: #c896db;
-      --accent-soft: #2c2433;
-      --border: #33353c;
-      --card-bg: #232428;
-      --code-bg: #262530;
-    }
-  }
-  * { box-sizing: border-box; }
-  body {
-    background: var(--bg);
-    color: var(--text);
-    font-family: "Segoe UI", -apple-system, BlinkMacSystemFont, Helvetica, Arial, sans-serif;
-    margin: 0;
-    line-height: 1.6;
-  }
-  .wrap {
-    max-width: 880px;
-    margin: 0 auto;
-    padding: 48px 24px 96px;
-  }
-  header.page {
-    margin-bottom: 40px;
-    border-bottom: 1px solid var(--border);
-    padding-bottom: 28px;
-  }
-  h1 {
-    font-size: 1.7rem;
-    margin: 0 0 6px;
-    letter-spacing: -0.01em;
-  }
-  .subtitle {
-    color: var(--muted);
-    font-size: 0.95rem;
-    margin: 0;
-  }
-  h2.intro-title {
-    font-size: 1.05rem;
-    text-transform: uppercase;
-    letter-spacing: 0.06em;
-    color: var(--accent);
-    margin: 0 0 12px;
-  }
-  section.intro p { margin: 0 0 12px; color: var(--text); }
-  section.intro { margin-bottom: 44px; }
-  section.intro ul { margin: 0 0 12px; padding-left: 22px; color: var(--text); }
-  section.intro li { margin-bottom: 4px; }
+:root {
+  --bg:#0a0e17; --surface:#111827; --surface2:#161f2e; --border:#1e2d40;
+  --accent:#00c2ff; --accent2:#7c3aed; --text:#e2e8f0; --muted:#64748b;
+  --tag-bg:#0f172a; --body-text:#cbd5e1; --font-mono:'IBM Plex Mono', monospace; --font-sans:'IBM Plex Sans', sans-serif;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{background:var(--bg);color:var(--text);font-family:var(--font-sans);font-size:16px;line-height:1.65;}
+a{color:var(--accent);text-decoration:none;} a:hover{text-decoration:underline;}
+.container{max-width:1000px;margin:0 auto;padding:0 2rem;}
 
-  nav.toc {
-    background: var(--card-bg);
-    border: 1px solid var(--border);
-    border-radius: 10px;
-    padding: 18px 22px;
-    margin-bottom: 44px;
-  }
-  nav.toc h2 {
-    font-size: 0.85rem;
-    text-transform: uppercase;
-    letter-spacing: 0.06em;
-    color: var(--accent);
-    margin: 0 0 10px;
-  }
-  nav.toc ol { margin: 0; padding-left: 20px; columns: 2; }
-  nav.toc a { color: var(--text); text-decoration: none; }
-  nav.toc a:hover { color: var(--accent); text-decoration: underline; }
-  nav.toc li { break-inside: avoid; margin-bottom: 6px; font-size: 0.93rem; }
+nav{position:sticky;top:0;z-index:100;background:rgba(10,14,23,.9);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);padding:.9rem 0;}
+nav .container{display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap;}
+.nav-brand{font-family:var(--font-mono);font-size:.78rem;color:var(--accent);}
+.nav-links{display:flex;gap:1rem;list-style:none;flex-wrap:wrap;}
+.nav-links a{font-family:var(--font-mono);font-size:.7rem;color:var(--muted);}
+.nav-links a:hover{color:var(--text);text-decoration:none;}
 
-  h2.chapter {
-    font-size: 1.3rem;
-    margin: 0 0 6px;
-    padding-top: 8px;
-    color: var(--text);
-    border-bottom: 2px solid var(--accent);
-    display: inline-block;
-    padding-bottom: 6px;
-  }
-  section.chapter { margin-bottom: 52px; scroll-margin-top: 20px; }
-  p.chapter-note { color: var(--muted); font-size: 0.9rem; margin: 10px 0 22px; }
+.hero{padding:4rem 0 2.5rem;position:relative;overflow:hidden;}
+.hero::before{content:'';position:absolute;inset:0;background-image:linear-gradient(var(--border) 1px,transparent 1px),linear-gradient(90deg,var(--border) 1px,transparent 1px);background-size:40px 40px;opacity:.3;mask-image:radial-gradient(ellipse 80% 60% at 50% 0%,black 40%,transparent 100%);}
+.hero-eyebrow{font-family:var(--font-mono);font-size:.74rem;color:var(--accent);letter-spacing:.14em;text-transform:uppercase;margin-bottom:1rem;display:flex;align-items:center;gap:.7rem;}
+.hero-eyebrow::before{content:'';width:2rem;height:1px;background:var(--accent);}
+h1{font-size:clamp(2rem,4.5vw,3.2rem);font-weight:300;line-height:1.12;letter-spacing:-.02em;margin-bottom:.6rem;}
+h1 strong{font-weight:600;color:var(--accent);}
+.hero-sub{font-size:.88rem;color:var(--muted);font-family:var(--font-mono);margin-bottom:1.5rem;}
 
-  h3.subsec {
-    font-size: 0.95rem;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-    color: var(--muted);
-    margin: 28px 0 12px;
-  }
+.hero-tags{display:flex;flex-wrap:wrap;gap:.5rem;}
+.tag{font-family:var(--font-mono);font-size:.72rem;color:var(--accent2);background:rgba(124,58,237,.1);border:1px solid rgba(124,58,237,.25);border-radius:4px;padding:.25rem .6rem;}
 
-  ol.exercicios { list-style: none; counter-reset: exi; margin: 0; padding: 0; }
-  li.exercicio {
-    counter-increment: exi;
-    position: relative;
-    background: var(--card-bg);
-    border: 1px solid var(--border);
-    border-radius: 10px;
-    padding: 18px 20px 18px 56px;
-    margin-bottom: 16px;
-  }
-  li.exercicio::before {
-    content: counter(exi);
-    position: absolute;
-    left: 16px;
-    top: 18px;
-    width: 26px;
-    height: 26px;
-    border-radius: 50%;
-    background: var(--accent-soft);
-    color: var(--accent);
-    font-weight: 700;
-    font-size: 0.85rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  li.exercicio p { margin: 0 0 10px; }
-  li.exercicio p:last-child { margin-bottom: 0; }
-  li.exercicio ol.sub, li.exercicio ul.sub {
-    margin: 6px 0 10px;
-    padding-left: 22px;
-  }
-  li.exercicio ol.sub li, li.exercicio ul.sub li { margin-bottom: 6px; }
-  .fonte {
-    display: block;
-    margin-top: 10px;
-    font-size: 0.82rem;
-    color: var(--muted);
-    font-style: italic;
-  }
-  .overline { text-decoration: overline; }
-  .expr {
-    font-family: "Cambria Math", Cambria, "Times New Roman", serif;
-    font-style: italic;
-  }
-  figure.circuito {
-    margin: 14px 0;
-    background: #ffffff;
-    border: 1px solid var(--border);
-    border-radius: 8px;
-    padding: 10px;
-    overflow-x: auto;
-  }
-  figure.circuito svg { display: block; margin: 0 auto; max-width: 100%; height: auto; }
-  figure.circuito figcaption {
-    text-align: center;
-    font-size: 0.8rem;
-    color: var(--muted);
-    margin-top: 6px;
-  }
+.section{padding:3rem 0;border-top:1px solid var(--border);}
+.section-title{font-family:var(--font-mono);font-size:.84rem;font-weight:600;color:var(--accent);letter-spacing:.16em;text-transform:uppercase;display:flex;align-items:center;gap:.75rem;margin-bottom:1.4rem;}
+.section-title::after{content:'';flex:1;height:1px;background:var(--border);}
+.section-lead{color:var(--text);font-size:.98rem;font-weight:500;margin:0 0 1.4rem;max-width:820px;}
+h2{font-size:1.25rem;font-weight:600;margin-bottom:1rem;}
+h3{font-size:1rem;font-weight:600;margin:1.75rem 0 .9rem;color:var(--text);}
+h3:first-child{margin-top:0;}
+h3.subsec{font-family:var(--font-mono);font-size:.78rem;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);font-weight:600;margin:2rem 0 1rem;}
+p{margin-bottom:1rem;color:var(--body-text);}
+p:last-child{margin-bottom:0;}
+strong{color:var(--text);font-weight:600;} em{color:var(--accent);font-style:normal;}
 
-  table.ref {
-    width: 100%;
-    border-collapse: collapse;
-    margin: 10px 0 16px;
-    font-size: 0.88rem;
-  }
-  table.ref caption {
-    text-align: left;
-    font-size: 0.85rem;
-    color: var(--muted);
-    margin-bottom: 6px;
-    caption-side: top;
-  }
-  table.ref th, table.ref td {
-    border: 1px solid var(--border);
-    padding: 6px 10px;
-    text-align: left;
-    vertical-align: top;
-  }
-  table.ref th { background: var(--accent-soft); color: var(--accent); font-weight: 600; }
-  table.ref td.mono, table.ref th.mono { font-family: "Cascadia Code", Consolas, monospace; }
+/* ── SUMÁRIO / TOC ── */
+.content-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:1px;background:var(--border);border:1px solid var(--border);border-radius:8px;overflow:hidden;}
+.content-card{background:var(--surface);padding:1.25rem 1.5rem;display:flex;gap:1rem;align-items:flex-start;transition:background .2s;}
+.content-card:hover{background:var(--surface2);}
+.content-num{font-family:var(--font-mono);font-size:.7rem;color:var(--accent);background:rgba(0,194,255,.08);border:1px solid rgba(0,194,255,.2);border-radius:3px;padding:.2rem .5rem;white-space:nowrap;flex-shrink:0;margin-top:.1rem;}
+.content-num.anexo{color:var(--accent2);background:rgba(124,58,237,.08);border-color:rgba(124,58,237,.2);}
+.content-card a{font-size:.875rem;color:var(--text);font-weight:500;line-height:1.4;}
+.content-card a:hover{color:var(--accent);text-decoration:none;}
 
-  details.tabela-completa {
-    margin: 10px 0 16px;
-    border: 1px solid var(--border);
-    border-radius: 8px;
-    padding: 10px 14px;
-    background: var(--card-bg);
-  }
-  details.tabela-completa summary {
-    cursor: pointer;
-    font-size: 0.88rem;
-    color: var(--accent);
-    font-weight: 600;
-  }
+/* ── EXERCÍCIOS ── */
+ol.exercicios{list-style:none;counter-reset:exi;margin:0 0 1rem;padding:0;display:flex;flex-direction:column;gap:.9rem;}
+li.exercicio{counter-increment:exi;position:relative;background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:1.3rem 1.5rem 1.3rem 3.6rem;}
+li.exercicio::before{content:counter(exi);position:absolute;left:1.1rem;top:1.3rem;width:1.7rem;height:1.7rem;border-radius:4px;background:rgba(0,194,255,.08);border:1px solid rgba(0,194,255,.25);color:var(--accent);font-family:var(--font-mono);font-weight:600;font-size:.78rem;display:flex;align-items:center;justify-content:center;}
+li.exercicio h3{font-size:.98rem;margin:0 0 .6rem;color:var(--text);}
+li.exercicio ol.sub,li.exercicio ul.sub{margin:.4rem 0 .8rem;padding-left:1.4rem;color:var(--body-text);}
+li.exercicio ol.sub li,li.exercicio ul.sub li{margin-bottom:.4rem;}
+.fonte{display:block;margin-top:.7rem;font-family:var(--font-mono);font-size:.72rem;color:var(--muted);}
+.expr{font-family:"Cambria Math",Cambria,"Times New Roman",serif;font-style:italic;color:var(--text);}
+.overline{text-decoration:overline;}
 
-  .nota-correcao {
-    background: var(--accent-soft);
-    border-left: 3px solid var(--accent);
-    padding: 10px 14px;
-    border-radius: 0 6px 6px 0;
-    font-size: 0.85rem;
-    color: var(--text);
-    margin: 10px 0;
-  }
+/* ── CÓDIGO ── */
+.codeblock,pre.codeblock{background:var(--tag-bg);border:1px solid var(--border);border-radius:6px;padding:.9rem 1.1rem;font-family:var(--font-mono);font-size:.78rem;color:#a8d8ef;margin:.7rem 0 1rem;overflow-x:auto;white-space:pre;line-height:1.6;}
+code,.mono{font-family:var(--font-mono);background:var(--tag-bg);padding:1px 6px;border-radius:4px;font-size:.85em;color:#a8d8ef;}
 
-  footer.page {
-    margin-top: 60px;
-    padding-top: 20px;
-    border-top: 1px solid var(--border);
-    color: var(--muted);
-    font-size: 0.85rem;
-  }
-  a.backtop { color: var(--accent); text-decoration: none; font-size: 0.85rem; }
+/* ── CIRCUITOS ── */
+figure.circuito{margin:1rem 0;background:#ffffff;border:1px solid var(--border);border-radius:8px;padding:.9rem;overflow-x:auto;}
+figure.circuito svg{display:block;margin:0 auto;max-width:100%;height:auto;}
+figure.circuito figcaption{text-align:center;font-family:var(--font-mono);font-size:.72rem;color:var(--muted);margin-top:.6rem;}
+
+/* ── TABELAS ── */
+.table-wrap{overflow-x:auto;border:1px solid var(--border);border-radius:8px;margin:.7rem 0 1rem;}
+table{width:100%;border-collapse:collapse;font-size:.85rem;}
+thead tr{background:var(--tag-bg);border-bottom:1px solid var(--border);}
+thead th{padding:.6rem .9rem;text-align:left;font-family:var(--font-mono);font-size:.68rem;color:var(--accent);letter-spacing:.08em;text-transform:uppercase;font-weight:600;}
+tbody tr{border-bottom:1px solid var(--border);transition:background .15s;}
+tbody tr:last-child{border-bottom:none;}
+tbody tr:hover{background:rgba(255,255,255,.02);}
+tbody td{padding:.6rem .9rem;color:var(--body-text);}
+tbody td.mono,thead th.mono{font-family:var(--font-mono);color:var(--accent);white-space:nowrap;}
+
+details.tabela-completa{margin:.7rem 0 1rem;border:1px solid var(--border);border-radius:8px;padding:.8rem 1.1rem;background:var(--tag-bg);}
+details.tabela-completa summary{cursor:pointer;font-family:var(--font-mono);font-size:.8rem;color:var(--accent);font-weight:600;}
+details.tabela-completa .table-wrap{margin-top:.8rem;}
+
+.nota-correcao{background:rgba(124,58,237,.08);border-left:3px solid var(--accent2);border-radius:0 6px 6px 0;padding:.8rem 1.1rem;font-size:.82rem;color:var(--body-text);margin:.7rem 0;}
+.nota-correcao code{color:var(--accent2);}
+
+.note{background:var(--tag-bg);border:1px solid var(--border);border-radius:6px;padding:.9rem 1.1rem;margin:1rem 0;font-size:.85rem;color:var(--muted);}
+.note strong{color:var(--accent);}
+
+footer{border-top:1px solid var(--border);padding:2rem 0;margin-top:2rem;}
+footer .container{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;}
+footer p{font-size:.8rem;color:var(--muted);font-family:var(--font-mono);}
+
+@media (max-width:640px){
+  .hero{padding:2.5rem 0 2rem;}
+  .nav-links{display:none;}
+  li.exercicio{padding-left:3.2rem;}
+}
 </style>
 </head>
 <body>
-<div class="wrap">
 
-<header class="page">
-  <h1>Exercícios Propostos</h1>
-  <p class="subtitle">Arquitetura de Computadores — banco de questões organizado por capítulo</p>
-</header>
-
-<section class="intro">
-  <h2 class="intro-title">Introdução</h2>
-  <p>Este documento reúne exercícios propostos na disciplina de Arquitetura de Computadores, extraídos das
-  avaliações (AP1, AP2 e AS) aplicadas nas turmas de 2022.2, 2023.2 e 2024.1. As questões foram selecionadas
-  entre as diferentes variantes usadas em cada turma — quando duas provas traziam a mesma questão apenas com
-  valores numéricos distintos, manteve-se uma única versão representativa; quando as variantes eram
-  qualitativamente diferentes (por exemplo, dois circuitos ou dois enunciados de programação distintos),
-  ambas foram mantidas.</p>
-  <p>Os enunciados foram revisados e, quando necessário, pequenos equívocos de formulação ou de transcrição
-  foram corrigidos — preservando integralmente a forma e o conteúdo de cada questão. As principais correções
-  estão sinalizadas ao longo do texto em caixas de nota. Os circuitos lógicos e o diagrama de temporização que
-  ilustravam algumas questões, originalmente capturas de tela de ferramentas de simulação, foram redesenhados
-  como imagens vetoriais (SVG).</p>
-  <p>A organização segue os capítulos da disciplina
-  (<a href="https://claytonjasilva.github.io/arq.html" target="_blank" rel="noopener">Arquitetura de Computadores — 2026.2</a>):</p>
-</section>
-
-<nav class="toc">
-  <h2>Sumário</h2>
-  <ol>
-    <li><a href="#cap1">Máquina de von Neumann</a></li>
-    <li><a href="#cap2">Organização e Modelo de Máquina de Níveis</a></li>
-    <li><a href="#cap3">Nível de Lógica Digital</a></li>
-    <li><a href="#cap4">Sistema de Memória</a></li>
-    <li><a href="#cap5">Barramento</a></li>
-    <li><a href="#cap6">Processadores</a></li>
-    <li><a href="#cap7">Sistemas Operacionais</a></li>
-    <li><a href="#cap8">Microcontroladores — Atmel ATmega2560</a></li>
-    <li><a href="#anexo">Anexo — Representação Numérica e Aritmética Binária</a></li>
-  </ol>
+<nav>
+<div class="container">
+<span class="nav-brand">arq · exercícios propostos</span>
+<ul class="nav-links">
+<li><a href="#cap1">cap.1</a></li>
+<li><a href="#cap2">cap.2</a></li>
+<li><a href="#cap3">cap.3</a></li>
+<li><a href="#cap4">cap.4</a></li>
+<li><a href="#cap5">cap.5</a></li>
+<li><a href="#cap6">cap.6</a></li>
+<li><a href="#cap7">cap.7</a></li>
+<li><a href="#cap8">cap.8</a></li>
+<li><a href="#anexo">anexo</a></li>
+<li><a href="https://claytonjasilva.github.io/arq.html" target="_blank" rel="noopener">← disciplina</a></li>
+</ul>
+</div>
 </nav>
 
+<section class="hero">
+<div class="container">
+<p class="hero-eyebrow">Arquitetura de Computadores · Banco de Questões</p>
+<h1>Exercícios<br/><strong>Propostos</strong></h1>
+<p class="hero-sub">Prof. Clayton J A Silva · Ibmec RJ · organizado por capítulo</p>
+<div class="hero-tags">
+<span class="tag">AP1 · AP2 · AS</span>
+<span class="tag">2022.2 – 2024.1</span>
+<span class="tag">61 exercícios</span>
+<span class="tag">9 seções</span>
+</div>
+</div>
+</section>
+
+<div class="container">
+
+<!-- ===================== INTRODUÇÃO ===================== -->
+<section class="section" id="introducao">
+<p class="section-title">00 / Introdução</p>
+<p class="section-lead">Banco de exercícios extraído das avaliações aplicadas na disciplina, organizado pelos capítulos do programa.</p>
+<p>Este documento reúne exercícios propostos na disciplina de Arquitetura de Computadores, extraídos das avaliações (AP1, AP2 e AS) aplicadas nas turmas de 2022.2, 2023.2 e 2024.1. As questões foram selecionadas entre as diferentes variantes usadas em cada turma — quando duas provas traziam a mesma questão apenas com valores numéricos distintos, manteve-se uma única versão representativa; quando as variantes eram qualitativamente diferentes (por exemplo, dois circuitos ou dois enunciados de programação distintos), ambas foram mantidas.</p>
+<p>Os enunciados foram revisados e, quando necessário, pequenos equívocos de formulação ou de transcrição foram corrigidos — preservando integralmente a forma e o conteúdo de cada questão. As principais correções estão sinalizadas ao longo do texto em caixas de nota. Os circuitos lógicos e o diagrama de temporização que ilustravam algumas questões, originalmente capturas de tela de ferramentas de simulação, foram redesenhados como imagens vetoriais (SVG).</p>
+<p>A organização segue os capítulos da disciplina (<a href="https://claytonjasilva.github.io/arq.html" target="_blank" rel="noopener">Arquitetura de Computadores — 2026.2</a>), listados a seguir.</p>
+</section>
+
+<!-- ===================== SUMÁRIO ===================== -->
+<section class="section" id="sumario">
+<p class="section-title">01 / Sumário</p>
+<div class="content-grid">
+<div class="content-card"><span class="content-num">Cap 1</span><a href="#cap1">Máquina de von Neumann</a></div>
+<div class="content-card"><span class="content-num">Cap 2</span><a href="#cap2">Organização e Modelo de Máquina de Níveis</a></div>
+<div class="content-card"><span class="content-num">Cap 3</span><a href="#cap3">Nível de Lógica Digital</a></div>
+<div class="content-card"><span class="content-num">Cap 4</span><a href="#cap4">Sistema de Memória</a></div>
+<div class="content-card"><span class="content-num">Cap 5</span><a href="#cap5">Barramento</a></div>
+<div class="content-card"><span class="content-num">Cap 6</span><a href="#cap6">Processadores</a></div>
+<div class="content-card"><span class="content-num">Cap 7</span><a href="#cap7">Sistemas Operacionais</a></div>
+<div class="content-card"><span class="content-num">Cap 8</span><a href="#cap8">Microcontroladores — Atmel ATmega2560</a></div>
+<div class="content-card"><span class="content-num anexo">Anexo</span><a href="#anexo">Representação Numérica e Aritmética Binária</a></div>
+</div>
+</section>
+
 <!-- ===================== CAPÍTULO 1 ===================== -->
-<section class="chapter" id="cap1">
-  <h2 class="chapter">1. Máquina de von Neumann</h2>
-  <p class="chapter-note">Elementos e organização da arquitetura, endereçamento, representação de instruções e
-  o conjunto de instruções da máquina IAS.</p>
+<section class="section" id="cap1">
+<p class="section-title">02 / Capítulo 1 — Máquina de von Neumann</p>
+<p class="section-lead">Elementos e organização da arquitetura, endereçamento, representação de instruções e o conjunto de instruções da máquina IAS.</p>
 
-  <ol class="exercicios">
+<ol class="exercicios">
 
-    <li class="exercicio">
-      <p>A máquina de von Neumann possui elementos com funções bem definidas. A arquitetura básica contempla
-      processador, memória e dispositivos de entrada/saída, elementos que são interconectados possibilitando
-      o resultado conjunto. A respeito da arquitetura, avaliar as afirmações:</p>
-      <ol class="sub" type="I">
-        <li>O processador possui tipicamente duas unidades funcionais: unidade lógica e aritmética e unidade
-        de controle.</li>
-        <li>O sinal trafegado pelos barramentos de dados e de endereços possui uma abstração que se configura
-        como unidade básica de informação, chamada de bit.</li>
-        <li>As informações podem ser indicadas em múltiplos de bits, chamados de bytes.</li>
-      </ol>
-      <p>Assinalar a alternativa correta: (a) I e II corretas; (b) I e III corretas; (c) II e III corretas;
-      (d) todas corretas; (e) todas incorretas.</p>
-      <span class="fonte">Fonte: AS — 2023.2, questão 2.</span>
-    </li>
+<li class="exercicio">
+<p>A máquina de von Neumann possui elementos com funções bem definidas. A arquitetura básica contempla processador, memória e dispositivos de entrada/saída, elementos que são interconectados possibilitando o resultado conjunto. A respeito da arquitetura, avaliar as afirmações:</p>
+<ol class="sub" type="I">
+<li>O processador possui tipicamente duas unidades funcionais: unidade lógica e aritmética e unidade de controle.</li>
+<li>O sinal trafegado pelos barramentos de dados e de endereços possui uma abstração que se configura como unidade básica de informação, chamada de bit.</li>
+<li>As informações podem ser indicadas em múltiplos de bits, chamados de bytes.</li>
+</ol>
+<p>Assinalar a alternativa correta: (a) I e II corretas; (b) I e III corretas; (c) II e III corretas; (d) todas corretas; (e) todas incorretas.</p>
+<span class="fonte">Fonte: AS — 2023.2, questão 2.</span>
+</li>
 
-    <li class="exercicio">
-      <p>Um programa armazenado em memória, em uma máquina de von Neumann, ocupa os endereços compreendidos
-      entre as posições de memória 0x01A e 0x1B6. Quantas instruções são executadas, admitindo que o espaço de
-      memória seja plenamente ocupado por instruções? Qual é o espaço em memória ocupado, em bytes?</p>
-      <span class="fonte">Fonte: AP1 — 2022.2, questão 1d.</span>
-    </li>
+<li class="exercicio">
+<p>Um programa armazenado em memória, em uma máquina de von Neumann, ocupa os endereços compreendidos entre as posições de memória 0x01A e 0x1B6. Quantas instruções são executadas, admitindo que o espaço de memória seja plenamente ocupado por instruções? Qual é o espaço em memória ocupado, em bytes?</p>
+<span class="fonte">Fonte: AP1 — 2022.2, questão 1d.</span>
+</li>
 
-    <li class="exercicio">
-      <p>Seja uma máquina computacional de arquitetura similar à máquina de von Neumann. A máquina possui
-      instruções de modo direto com operandos de 10 bits. Quais são os limites inferior e superior de memória
-      que podem ser usados pelas instruções, em hexadecimal? A máquina possui também instruções de modo
-      imediato com 10 bits, cujo operando é dividido em dois campos. Admitindo binário puro, qual é o valor
-      máximo dos dados operados por essas instruções, em decimal?</p>
-      <span class="fonte">Fonte: AP1 — 2022.2, questão 1e.</span>
-    </li>
+<li class="exercicio">
+<p>Seja uma máquina computacional de arquitetura similar à máquina de von Neumann. A máquina possui instruções de modo direto com operandos de 10 bits. Quais são os limites inferior e superior de memória que podem ser usados pelas instruções, em hexadecimal? A máquina possui também instruções de modo imediato com 10 bits, cujo operando é dividido em dois campos. Admitindo binário puro, qual é o valor máximo dos dados operados por essas instruções, em decimal?</p>
+<span class="fonte">Fonte: AP1 — 2022.2, questão 1e.</span>
+</li>
 
-    <li class="exercicio">
-      <p>Um programa armazenado em uma máquina de von Neumann ocupa as linhas de endereço 0x1AA a 0x200 da
-      memória. Admitindo que 65% das instruções requeiram um acesso para busca ou escrita de dados na memória,
-      cujo tempo de resposta é de 2 nanossegundos, qual seria o tempo aproximado de execução do programa?</p>
-      <span class="fonte">Fonte: AP1 — 2022.2, questão 1f.</span>
-    </li>
+<li class="exercicio">
+<p>Um programa armazenado em uma máquina de von Neumann ocupa as linhas de endereço 0x1AA a 0x200 da memória. Admitindo que 65% das instruções requeiram um acesso para busca ou escrita de dados na memória, cujo tempo de resposta é de 2 nanossegundos, qual seria o tempo aproximado de execução do programa?</p>
+<span class="fonte">Fonte: AP1 — 2022.2, questão 1f.</span>
+</li>
 
-    <li class="exercicio">
-      <p>Assinalar verdadeiro (V) ou falso (F) nas proposições sobre o registrador de instrução (IR), o
-      registrador temporário de instrução (IBR), o contador de programa (PC) e o endereçamento de memória:</p>
-      <ol class="sub" type="a">
-        <li>A camada mais primitiva é definida como o nível de lógica digital; o componente básico desse
-        nível é a porta lógica.</li>
-        <li>Quanto mais alto o nível ou camada, maior será a abstração da sua respectiva linguagem.</li>
-        <li>O Sistema Operacional é a camada de maior abstração, pois contempla uma linguagem cujas
-        instruções estão diretamente acessíveis ao usuário.</li>
-        <li>O nível de microarquitetura compreende os circuitos especializados, como circuitos lógicos e
-        aritméticos, que são internos ao processador.</li>
-        <li>No modelo de níveis, a camada de microarquitetura está imediatamente acima do nível mais
-        primitivo.</li>
-        <li>Cada um dos circuitos especializados do nível de microarquitetura é responsável pela execução de
-        uma tarefa específica, uma vez selecionado pela Unidade de Controle após a decodificação da instrução
-        binária.</li>
-      </ol>
-      <span class="fonte">Fonte: AP2 — 2024.1 (turma 2A), questão 1.1.</span>
-    </li>
+<li class="exercicio">
+<p>Assinalar verdadeiro (V) ou falso (F) nas proposições sobre o registrador de instrução (IR), o registrador temporário de instrução (IBR), o contador de programa (PC) e o endereçamento de memória:</p>
+<ol class="sub" type="a">
+<li>A camada mais primitiva é definida como o nível de lógica digital; o componente básico desse nível é a porta lógica.</li>
+<li>Quanto mais alto o nível ou camada, maior será a abstração da sua respectiva linguagem.</li>
+<li>O Sistema Operacional é a camada de maior abstração, pois contempla uma linguagem cujas instruções estão diretamente acessíveis ao usuário.</li>
+<li>O nível de microarquitetura compreende os circuitos especializados, como circuitos lógicos e aritméticos, que são internos ao processador.</li>
+<li>No modelo de níveis, a camada de microarquitetura está imediatamente acima do nível mais primitivo.</li>
+<li>Cada um dos circuitos especializados do nível de microarquitetura é responsável pela execução de uma tarefa específica, uma vez selecionado pela Unidade de Controle após a decodificação da instrução binária.</li>
+</ol>
+<span class="fonte">Fonte: AP2 — 2024.1 (turma 2A), questão 1.1.</span>
+</li>
 
-    <li class="exercicio">
-      <p>Seja a sequência de instruções de um programa em linguagem de montagem para a máquina de von Neumann:</p>
-      <pre style="background:var(--code-bg);padding:10px 14px;border-radius:6px;overflow-x:auto;">load  m(x), 0x000
+<li class="exercicio">
+<p>Seja a sequência de instruções de um programa em linguagem de montagem para a máquina de von Neumann:</p>
+<pre class="codeblock">load  m(x), 0x000
 add   m(x), 0x001
 stor  m(x), 0x003
 sub   m(x), 0x002
 stor  m(x), 0x003</pre>
-      <p>Responder:</p>
-      <ol class="sub" type="a">
-        <li>Considerando o modelo de máquina de níveis, a qual nível corresponde o programa?</li>
-        <li>O referido programa na forma binária corresponde a qual nível do modelo da máquina de níveis?</li>
-        <li>A máquina de níveis possui uma camada híbrida, com instruções cuja abstração é próxima do nível de
-        hardware e outras, próxima do nível de aplicação — como é chamada essa camada?</li>
-        <li>O nível de lógica digital contempla o uso de dispositivos chamados de que?</li>
-        <li>Os elementos internos ao processador definem o nível da máquina designado como que?</li>
-      </ol>
-      <p>Em seguida, avaliar as afirmações a respeito do mesmo programa: (I) o programa soma dois dados,
-      respectivamente das posições de memória 0x000 e 0x001, subtrai do dado armazenado no endereço 0x002 e
-      armazena o resultado no endereço 0x003; (II) a primeira instrução <code>stor m(x), 0x003</code> poderia
-      ser excluída sem alterar o resultado final; (III) o programa ocupa no mínimo três linhas de endereço de
-      memória. Assinalar a alternativa correta quanto à veracidade de I, II e III, e apresentar a representação
-      em binário das instruções da primeira linha de endereço do código.</p>
-      <span class="fonte">Fonte: AS — 2023.2, questões 6, 7 e 8.</span>
-    </li>
+<p>Responder:</p>
+<ol class="sub" type="a">
+<li>Considerando o modelo de máquina de níveis, a qual nível corresponde o programa?</li>
+<li>O referido programa na forma binária corresponde a qual nível do modelo da máquina de níveis?</li>
+<li>A máquina de níveis possui uma camada híbrida, com instruções cuja abstração é próxima do nível de hardware e outras, próxima do nível de aplicação — como é chamada essa camada?</li>
+<li>O nível de lógica digital contempla o uso de dispositivos chamados de que?</li>
+<li>Os elementos internos ao processador definem o nível da máquina designado como que?</li>
+</ol>
+<p>Em seguida, avaliar as afirmações a respeito do mesmo programa: (I) o programa soma dois dados, respectivamente das posições de memória 0x000 e 0x001, subtrai do dado armazenado no endereço 0x002 e armazena o resultado no endereço 0x003; (II) a primeira instrução <code>stor m(x), 0x003</code> poderia ser excluída sem alterar o resultado final; (III) o programa ocupa no mínimo três linhas de endereço de memória. Assinalar a alternativa correta quanto à veracidade de I, II e III, e apresentar a representação em binário das instruções da primeira linha de endereço do código.</p>
+<span class="fonte">Fonte: AS — 2023.2, questões 6, 7 e 8.</span>
+</li>
 
-    <li class="exercicio">
-      <p>Elaborar um programa para ler e somar os dados armazenados nos endereços 0x00B a 0x010 da memória de
-      uma máquina IAS. A primeira instrução do programa deve desviar a execução para o endereço 0x100. O
-      programa deve subtrair o resultado encontrado do dado armazenado no endereço 0x011 e multiplicar por 2.
-      O resultado final deve ser armazenado no endereço 0x012. Apresentar o código em assembly e o código
-      convertido para a linguagem de máquina (em hexadecimal) — admitir que os endereços das posições acima de
-      0x012 podem ser usados para armazenar dados temporários. Usar a tabela de códigos da máquina IAS
-      apresentada a seguir.</p>
+<li class="exercicio">
+<p>Elaborar um programa para ler e somar os dados armazenados nos endereços 0x00B a 0x010 da memória de uma máquina IAS. A primeira instrução do programa deve desviar a execução para o endereço 0x100. O programa deve subtrair o resultado encontrado do dado armazenado no endereço 0x011 e multiplicar por 2. O resultado final deve ser armazenado no endereço 0x012. Apresentar o código em assembly e o código convertido para a linguagem de máquina (em hexadecimal) — admitir que os endereços das posições acima de 0x012 podem ser usados para armazenar dados temporários. Usar a tabela de códigos da máquina IAS apresentada a seguir.</p>
 
-      <details class="tabela-completa">
-        <summary>Conjunto de instruções da máquina IAS (tabela corrigida)</summary>
-        <table class="ref">
-          <thead>
-            <tr><th class="mono">Código</th><th>Instrução</th><th>Descrição</th></tr>
-          </thead>
-          <tbody>
-            <tr><td class="mono">0000 0001</td><td>LOAD M(X)</td><td>Transfere o conteúdo da posição de memória X para o acumulador (ACC)</td></tr>
-            <tr><td class="mono">0000 0010</td><td>LOAD −M(X)</td><td>Transfere o negativo do conteúdo de M(X) para o ACC</td></tr>
-            <tr><td class="mono">0000 0011</td><td>LOAD |M(X)|</td><td>Transfere o valor absoluto de M(X) para o ACC</td></tr>
-            <tr><td class="mono">0000 0100</td><td>LOAD −|M(X)|</td><td>Transfere o negativo do valor absoluto de M(X) para o ACC</td></tr>
-            <tr><td class="mono">0000 0101</td><td>ADD M(X)</td><td>Soma M(X) ao ACC; armazena o resultado no ACC</td></tr>
-            <tr><td class="mono">0000 0110</td><td>SUB M(X)</td><td>Subtrai M(X) do ACC; armazena o resultado no ACC</td></tr>
-            <tr><td class="mono">0000 0111</td><td>ADD |M(X)|</td><td>Soma o módulo de M(X) ao ACC; armazena o resultado no ACC</td></tr>
-            <tr><td class="mono">0000 1000</td><td>SUB |M(X)|</td><td>Subtrai o módulo de M(X) do ACC; armazena o resultado no ACC</td></tr>
-            <tr><td class="mono">0000 1001</td><td>LOAD MQ,M(X)</td><td>Transfere o conteúdo de M(X) para o registrador MQ</td></tr>
-            <tr><td class="mono">0000 1010</td><td>LOAD MQ</td><td>Transfere o conteúdo do registrador MQ para o ACC</td></tr>
-            <tr><td class="mono">0000 1011</td><td>MUL M(X)</td><td>Multiplica M(X) por MQ; bits mais significativos em ACC, menos significativos em MQ</td></tr>
-            <tr><td class="mono">0000 1100</td><td>DIV M(X)</td><td>Divide ACC por M(X); quociente em MQ, resto em ACC</td></tr>
-            <tr><td class="mono">0000 1101</td><td>JUMP M(X,0:19)</td><td>A próxima instrução é buscada nos bits 0 a 19 de M(X)</td></tr>
-            <tr><td class="mono">0000 1110</td><td>JUMP M(X,20:39)</td><td>A próxima instrução é buscada nos bits 20 a 39 de M(X)</td></tr>
-            <tr><td class="mono">0000 1111</td><td>JUMP+ M(X,0:19)</td><td>Se ACC ≥ 0, a próxima instrução é buscada nos bits 0 a 19 de M(X)</td></tr>
-            <tr><td class="mono">0001 0000</td><td>JUMP+ M(X,20:39)</td><td>Se ACC ≥ 0, a próxima instrução é buscada nos bits 20 a 39 de M(X)</td></tr>
-            <tr><td class="mono">0001 0001</td><td>LSH</td><td>Multiplica o conteúdo do acumulador por 2 (deslocamento à esquerda)</td></tr>
-            <tr><td class="mono">0001 0010</td><td>RSH</td><td>Divide o conteúdo do acumulador por 2 (deslocamento à direita)</td></tr>
-            <tr><td class="mono">0001 0011</td><td>STOR M(X,8:19)</td><td>Transfere os 12 bits mais à direita do ACC para os bits 8:19 de M(X)</td></tr>
-            <tr><td class="mono">0001 0100</td><td>STOR M(X,28:39)</td><td>Transfere os 12 bits mais à direita do ACC para os bits 28:39 de M(X)</td></tr>
-            <tr><td class="mono">0010 0001</td><td>STOR M(X)</td><td>Transfere o conteúdo do ACC para a posição de memória X</td></tr>
-          </tbody>
-        </table>
-      </details>
-      <div class="nota-correcao">Correção de transcrição: nas provas originais, <code>JUMP+ M(X,20:39)</code>
-      aparecia com o mesmo código de <code>JUMP M(X,20:39)</code> (0000 1110); <code>SUB M(X)</code> aparecia
-      grafado como 0010 0110 (colidindo com o padrão de <code>STOR M(X)</code>); e, em uma das variantes, a
-      última linha da tabela — que é uma instrução de alteração de endereço — estava rotulada como
-      <span class="expr">JUMP M(X,28:39)</span> em vez de <span class="expr">STOR M(X,28:39)</span>. A tabela
-      acima apresenta os códigos corrigidos e consistentes.</div>
-      <span class="fonte">Fonte: AP1 — 2022.2, questão 2, e tabela anexa às provas AP1/AP2/AS.</span>
-    </li>
+<details class="tabela-completa">
+<summary>Conjunto de instruções da máquina IAS (tabela corrigida)</summary>
+<div class="table-wrap">
+<table>
+<thead><tr><th class="mono">Código</th><th>Instrução</th><th>Descrição</th></tr></thead>
+<tbody>
+<tr><td class="mono">0000 0001</td><td>LOAD M(X)</td><td>Transfere o conteúdo da posição de memória X para o acumulador (ACC)</td></tr>
+<tr><td class="mono">0000 0010</td><td>LOAD −M(X)</td><td>Transfere o negativo do conteúdo de M(X) para o ACC</td></tr>
+<tr><td class="mono">0000 0011</td><td>LOAD |M(X)|</td><td>Transfere o valor absoluto de M(X) para o ACC</td></tr>
+<tr><td class="mono">0000 0100</td><td>LOAD −|M(X)|</td><td>Transfere o negativo do valor absoluto de M(X) para o ACC</td></tr>
+<tr><td class="mono">0000 0101</td><td>ADD M(X)</td><td>Soma M(X) ao ACC; armazena o resultado no ACC</td></tr>
+<tr><td class="mono">0000 0110</td><td>SUB M(X)</td><td>Subtrai M(X) do ACC; armazena o resultado no ACC</td></tr>
+<tr><td class="mono">0000 0111</td><td>ADD |M(X)|</td><td>Soma o módulo de M(X) ao ACC; armazena o resultado no ACC</td></tr>
+<tr><td class="mono">0000 1000</td><td>SUB |M(X)|</td><td>Subtrai o módulo de M(X) do ACC; armazena o resultado no ACC</td></tr>
+<tr><td class="mono">0000 1001</td><td>LOAD MQ,M(X)</td><td>Transfere o conteúdo de M(X) para o registrador MQ</td></tr>
+<tr><td class="mono">0000 1010</td><td>LOAD MQ</td><td>Transfere o conteúdo do registrador MQ para o ACC</td></tr>
+<tr><td class="mono">0000 1011</td><td>MUL M(X)</td><td>Multiplica M(X) por MQ; bits mais significativos em ACC, menos significativos em MQ</td></tr>
+<tr><td class="mono">0000 1100</td><td>DIV M(X)</td><td>Divide ACC por M(X); quociente em MQ, resto em ACC</td></tr>
+<tr><td class="mono">0000 1101</td><td>JUMP M(X,0:19)</td><td>A próxima instrução é buscada nos bits 0 a 19 de M(X)</td></tr>
+<tr><td class="mono">0000 1110</td><td>JUMP M(X,20:39)</td><td>A próxima instrução é buscada nos bits 20 a 39 de M(X)</td></tr>
+<tr><td class="mono">0000 1111</td><td>JUMP+ M(X,0:19)</td><td>Se ACC ≥ 0, a próxima instrução é buscada nos bits 0 a 19 de M(X)</td></tr>
+<tr><td class="mono">0001 0000</td><td>JUMP+ M(X,20:39)</td><td>Se ACC ≥ 0, a próxima instrução é buscada nos bits 20 a 39 de M(X)</td></tr>
+<tr><td class="mono">0001 0001</td><td>LSH</td><td>Multiplica o conteúdo do acumulador por 2 (deslocamento à esquerda)</td></tr>
+<tr><td class="mono">0001 0010</td><td>RSH</td><td>Divide o conteúdo do acumulador por 2 (deslocamento à direita)</td></tr>
+<tr><td class="mono">0001 0011</td><td>STOR M(X,8:19)</td><td>Transfere os 12 bits mais à direita do ACC para os bits 8:19 de M(X)</td></tr>
+<tr><td class="mono">0001 0100</td><td>STOR M(X,28:39)</td><td>Transfere os 12 bits mais à direita do ACC para os bits 28:39 de M(X)</td></tr>
+<tr><td class="mono">0010 0001</td><td>STOR M(X)</td><td>Transfere o conteúdo do ACC para a posição de memória X</td></tr>
+</tbody>
+</table>
+</div>
+</details>
+<div class="nota-correcao">Correção de transcrição: nas provas originais, <code>JUMP+ M(X,20:39)</code> aparecia com o mesmo código de <code>JUMP M(X,20:39)</code> (0000 1110); <code>SUB M(X)</code> aparecia grafado como 0010 0110 (colidindo com o padrão de <code>STOR M(X)</code>); e, em uma das variantes, a última linha da tabela — que é uma instrução de alteração de endereço — estava rotulada como <span class="expr">JUMP M(X,28:39)</span> em vez de <span class="expr">STOR M(X,28:39)</span>. A tabela acima apresenta os códigos corrigidos e consistentes.</div>
+<span class="fonte">Fonte: AP1 — 2022.2, questão 2, e tabela anexa às provas AP1/AP2/AS.</span>
+</li>
 
-  </ol>
+</ol>
 </section>
 
 <!-- ===================== CAPÍTULO 2 ===================== -->
-<section class="chapter" id="cap2">
-  <h2 class="chapter">2. Organização e Modelo de Máquina de Níveis</h2>
-  <p class="chapter-note">Camadas do modelo de níveis, tradução versus interpretação, e os elementos que
-  realizam a conversão entre camadas.</p>
+<section class="section" id="cap2">
+<p class="section-title">03 / Capítulo 2 — Organização e Modelo de Máquina de Níveis</p>
+<p class="section-lead">Camadas do modelo de níveis, tradução versus interpretação, e os elementos que realizam a conversão entre camadas.</p>
 
-  <ol class="exercicios">
+<ol class="exercicios">
 
-    <li class="exercicio">
-      <p>Explique sucintamente a distinção entre interpretação e tradução no processo de conversão de códigos
-      de uma máquina computacional de um nível para a máquina do nível inferior, considerando o modelo de
-      máquina de níveis ou camadas.</p>
-      <span class="fonte">Fonte: AP1 — 2022.2, questão 1a.</span>
-    </li>
+<li class="exercicio">
+<p>Explique sucintamente a distinção entre interpretação e tradução no processo de conversão de códigos de uma máquina computacional de um nível para a máquina do nível inferior, considerando o modelo de máquina de níveis ou camadas.</p>
+<span class="fonte">Fonte: AP1 — 2022.2, questão 1a.</span>
+</li>
 
-    <li class="exercicio">
-      <p>Citar três elementos do nível de microarquitetura na máquina de von Neumann, explicando o seu papel.
-      Segundo o modelo de seis níveis, como se designa o nível imediatamente superior ao nível de
-      microarquitetura e qual é o seu significado?</p>
-      <span class="fonte">Fonte: AP1 — 2022.2, questão 1b.</span>
-    </li>
+<li class="exercicio">
+<p>Citar três elementos do nível de microarquitetura na máquina de von Neumann, explicando o seu papel. Segundo o modelo de seis níveis, como se designa o nível imediatamente superior ao nível de microarquitetura e qual é o seu significado?</p>
+<span class="fonte">Fonte: AP1 — 2022.2, questão 1b.</span>
+</li>
 
-    <li class="exercicio">
-      <p>As portas lógicas executam operações sobre dados na forma elétrica, abstraídos como 0s e 1s.
-      Considerando o modelo da máquina de seis níveis, a qual nível pertencem os circuitos combinacionais
-      construídos com portas lógicas? Cite um exemplo desse tipo de circuito.</p>
-      <span class="fonte">Fonte: AP1 — 2022.2, questão 1c.</span>
-    </li>
+<li class="exercicio">
+<p>As portas lógicas executam operações sobre dados na forma elétrica, abstraídos como 0s e 1s. Considerando o modelo da máquina de seis níveis, a qual nível pertencem os circuitos combinacionais construídos com portas lógicas? Cite um exemplo desse tipo de circuito.</p>
+<span class="fonte">Fonte: AP1 — 2022.2, questão 1c.</span>
+</li>
 
-    <li class="exercicio">
-      <p>Estabelecer a relação entre as funções apresentadas na coluna da esquerda e os respectivos elementos
-      da arquitetura dos sistemas computacionais, na coluna da direita:</p>
-      <table class="ref">
-        <thead><tr><th>Função</th><th>Elemento</th></tr></thead>
-        <tbody>
-          <tr><td>Realiza a conversão e execução das instruções de um código de uma camada, uma a uma, para instruções da linguagem da(s) camada(s) inferior(es)</td><td>Tradutor</td></tr>
-          <tr><td>Uma das seis camadas estudadas é chamada comumente de camada híbrida</td><td>Interpretador</td></tr>
-          <tr><td>Realiza a conversão de todas as instruções de um código de uma camada para instruções da linguagem da(s) camada(s) inferior(es)</td><td>Nível de lógica digital</td></tr>
-          <tr><td>Realiza especificamente a conversão das instruções em linguagem de montagem para instruções em linguagem de máquina</td><td>Sistema Operacional</td></tr>
-          <tr><td>Contém elementos chamados de portas lógicas; constitui a camada mais primitiva do modelo de níveis</td><td>Montador</td></tr>
-        </tbody>
-      </table>
-      <span class="fonte">Fonte: AP2 — 2024.1 (turma 2A), questão 1.2.</span>
-    </li>
+<li class="exercicio">
+<p>Estabelecer a relação entre as funções apresentadas na coluna da esquerda e os respectivos elementos da arquitetura dos sistemas computacionais, na coluna da direita:</p>
+<div class="table-wrap">
+<table>
+<thead><tr><th>Função</th><th>Elemento</th></tr></thead>
+<tbody>
+<tr><td>Realiza a conversão e execução das instruções de um código de uma camada, uma a uma, para instruções da linguagem da(s) camada(s) inferior(es)</td><td>Tradutor</td></tr>
+<tr><td>Uma das seis camadas estudadas é chamada comumente de camada híbrida</td><td>Interpretador</td></tr>
+<tr><td>Realiza a conversão de todas as instruções de um código de uma camada para instruções da linguagem da(s) camada(s) inferior(es)</td><td>Nível de lógica digital</td></tr>
+<tr><td>Realiza especificamente a conversão das instruções em linguagem de montagem para instruções em linguagem de máquina</td><td>Sistema Operacional</td></tr>
+<tr><td>Contém elementos chamados de portas lógicas; constitui a camada mais primitiva do modelo de níveis</td><td>Montador</td></tr>
+</tbody>
+</table>
+</div>
+<span class="fonte">Fonte: AP2 — 2024.1 (turma 2A), questão 1.2.</span>
+</li>
 
-    <li class="exercicio">
-      <p>Preencher as lacunas das afirmações a seguir com o termo mais adequado:</p>
-      <ol class="sub" type="a">
-        <li>No modelo de máquina de níveis, a camada mais primitiva é definida como o ____________. O
-        componente básico desse nível é a porta lógica.</li>
-        <li>O Sistema Operacional é a camada que contempla uma linguagem cujas instruções estão diretamente
-        acessíveis ao usuário e instruções mais próximas do nível de linguagem de máquina — por esse motivo,
-        em termos de abstração, é chamada de camada ____________.</li>
-        <li>O elemento da arquitetura que realiza a conversão e execução das instruções de um código de uma
-        camada, uma a uma, para instruções da linguagem da(s) camada(s) inferior(es) é chamado de
-        ____________.</li>
-        <li>Cada um dos circuitos especializados do nível de ____________ é responsável pela execução de uma
-        tarefa específica, uma vez selecionado pela Unidade de Controle após a decodificação da instrução
-        binária.</li>
-        <li>O programa que converte as instruções do nível de linguagem de montagem para as camadas inferiores
-        é chamado de ____________.</li>
-      </ol>
-      <span class="fonte">Fonte: AS — 2024.1, 1ª parte.</span>
-    </li>
+<li class="exercicio">
+<p>Preencher as lacunas das afirmações a seguir com o termo mais adequado:</p>
+<ol class="sub" type="a">
+<li>No modelo de máquina de níveis, a camada mais primitiva é definida como o ____________. O componente básico desse nível é a porta lógica.</li>
+<li>O Sistema Operacional é a camada que contempla uma linguagem cujas instruções estão diretamente acessíveis ao usuário e instruções mais próximas do nível de linguagem de máquina — por esse motivo, em termos de abstração, é chamada de camada ____________.</li>
+<li>O elemento da arquitetura que realiza a conversão e execução das instruções de um código de uma camada, uma a uma, para instruções da linguagem da(s) camada(s) inferior(es) é chamado de ____________.</li>
+<li>Cada um dos circuitos especializados do nível de ____________ é responsável pela execução de uma tarefa específica, uma vez selecionado pela Unidade de Controle após a decodificação da instrução binária.</li>
+<li>O programa que converte as instruções do nível de linguagem de montagem para as camadas inferiores é chamado de ____________.</li>
+</ol>
+<span class="fonte">Fonte: AS — 2024.1, 1ª parte.</span>
+</li>
 
-    <li class="exercicio">
-      <p>Explique sucintamente o que caracteriza o processo de conversão de código de uma camada para sua
-      camada subjacente inferior, distinguindo tradução e interpretação. Em seguida, selecionar, entre as seis
-      camadas do modelo, qual delas recebe a designação de camada híbrida.</p>
-      <span class="fonte">Fonte: AP2-teste — 2024.1, questões 3 e 4.</span>
-    </li>
+<li class="exercicio">
+<p>Explique sucintamente o que caracteriza o processo de conversão de código de uma camada para sua camada subjacente inferior, distinguindo tradução e interpretação. Em seguida, selecionar, entre as seis camadas do modelo, qual delas recebe a designação de camada híbrida.</p>
+<span class="fonte">Fonte: AP2-teste — 2024.1, questões 3 e 4.</span>
+</li>
 
-    <li class="exercicio">
-      <p>Preencher as lacunas para construir proposições verdadeiras a respeito do nível ISA e do nível de
-      linguagem de montagem:</p>
-      <ol class="sub" type="a">
-        <li>A instrução <code>LDI Rd, k</code> carrega o valor k no registrador Rd. O operando é o próprio
-        dado — nesse caso, a instrução é chamada de modo ____________ (imediato/direto).</li>
-        <li>A instrução <code>LDS Rd, k</code> carrega o dado contido no endereço k no registrador. O operando
-        indica o endereço do dado — nesse caso, a instrução é chamada de modo ____________ (imediato/direto).</li>
-        <li>Nos códigos em linguagem de montagem (assembly), tipicamente as instruções ocupam linhas
-        ____________ (adjacentes/não adjacentes) de memória, o que inspira o uso do conceito de programa
-        armazenado.</li>
-        <li>Comparando as instruções LDI e LDS, é intuitivo pensar que a instrução LDI é mais ____________
-        (rápida/lenta), porque realiza menos acessos à memória para ser executada.</li>
-      </ol>
-      <span class="fonte">Fonte: AP2 — 2024.1 (turma 2A), 3ª parte.</span>
-    </li>
+<li class="exercicio">
+<p>Preencher as lacunas para construir proposições verdadeiras a respeito do nível ISA e do nível de linguagem de montagem:</p>
+<ol class="sub" type="a">
+<li>A instrução <code>LDI Rd, k</code> carrega o valor k no registrador Rd. O operando é o próprio dado — nesse caso, a instrução é chamada de modo ____________ (imediato/direto).</li>
+<li>A instrução <code>LDS Rd, k</code> carrega o dado contido no endereço k no registrador. O operando indica o endereço do dado — nesse caso, a instrução é chamada de modo ____________ (imediato/direto).</li>
+<li>Nos códigos em linguagem de montagem (assembly), tipicamente as instruções ocupam linhas ____________ (adjacentes/não adjacentes) de memória, o que inspira o uso do conceito de programa armazenado.</li>
+<li>Comparando as instruções LDI e LDS, é intuitivo pensar que a instrução LDI é mais ____________ (rápida/lenta), porque realiza menos acessos à memória para ser executada.</li>
+</ol>
+<span class="fonte">Fonte: AP2 — 2024.1 (turma 2A), 3ª parte.</span>
+</li>
 
-  </ol>
+</ol>
 </section>
 
 <!-- ===================== CAPÍTULO 3 ===================== -->
-<section class="chapter" id="cap3">
-  <h2 class="chapter">3. Nível de Lógica Digital</h2>
-  <p class="chapter-note">Circuitos combinacionais: projeto a partir de especificação, derivação da expressão
-  lógica a partir de um circuito dado, e construção de tabelas-verdade.</p>
+<section class="section" id="cap3">
+<p class="section-title">04 / Capítulo 3 — Nível de Lógica Digital</p>
+<p class="section-lead">Circuitos combinacionais: projeto a partir de especificação, derivação da expressão lógica a partir de um circuito dado, e construção de tabelas-verdade.</p>
 
-  <h3 class="subsec">Projeto de circuitos a partir de uma especificação</h3>
-  <ol class="exercicios">
+<h3 class="subsec">Projeto de circuitos a partir de uma especificação</h3>
+<ol class="exercicios">
 
-    <li class="exercicio">
-      <p>Utilizando portas lógicas AND, OR e inversores, implementar um circuito que receba um número N de 3
-      bits e o multiplique por 2 (o que equivale a deslocar o número um bit à esquerda).</p>
-      <span class="fonte">Fonte: AP1 — 2022.2, questão 4a.</span>
-    </li>
+<li class="exercicio">
+<p>Utilizando portas lógicas AND, OR e inversores, implementar um circuito que receba um número N de 3 bits e o multiplique por 2 (o que equivale a deslocar o número um bit à esquerda).</p>
+<span class="fonte">Fonte: AP1 — 2022.2, questão 4a.</span>
+</li>
 
-    <li class="exercicio">
-      <p>Utilizando portas lógicas AND, OR e inversores, propor um circuito para implementar a expressão
-      lógica <span class="expr">y(A,B,C) = A·B + A·C + <span class="overline">A·B·C</span></span>.</p>
-      <span class="fonte">Fonte: AS — 2022.2, questão 10ii.</span>
-    </li>
+<li class="exercicio">
+<p>Utilizando portas lógicas AND, OR e inversores, propor um circuito para implementar a expressão lógica <span class="expr">y(A,B,C) = A·B + A·C + <span class="overline">A·B·C</span></span>.</p>
+<span class="fonte">Fonte: AS — 2022.2, questão 10ii.</span>
+</li>
 
-  </ol>
+</ol>
 
-  <h3 class="subsec">Derivação da expressão lógica a partir do circuito</h3>
-  <p style="color:var(--muted);font-size:0.88rem;margin-top:-6px;">Para cada circuito, apresentar a expressão
-  lógica de S, indicando parcialmente a expressão na saída de cada porta.</p>
-  <ol class="exercicios">
+<h3 class="subsec">Derivação da expressão lógica a partir do circuito</h3>
+<p style="color:var(--muted);font-size:.85rem;margin-top:-.6rem;">Para cada circuito, apresentar a expressão lógica de S, indicando parcialmente a expressão na saída de cada porta.</p>
+<ol class="exercicios">
 
-    <li class="exercicio">
-      <p>Seja o circuito apresentado na figura abaixo.</p>
-      <figure class="circuito">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 240" font-family="Segoe UI, Arial, sans-serif">
-        <rect x="0" y="0" width="560" height="240" fill="white"/>
-        <path d="M 50,50 L 130,50" fill="none" stroke="#1f6b4a" stroke-width="2"/>
-        <text x="42" y="55" font-size="15" font-weight="600" fill="#3a1f42" text-anchor="end">A</text>
-        <path d="M 50,70 L 130,70" fill="none" stroke="#1f6b4a" stroke-width="2"/>
-        <text x="42" y="75" font-size="15" font-weight="600" fill="#3a1f42" text-anchor="end">B</text>
-        <path d="M 130,30 L 170.0,30 A 20.0,20.0 0 0 1 170.0,70 L 130,70 Z" fill="white" stroke="#3a1f42" stroke-width="2"/><text x="149.2" y="55.0" font-size="13" fill="#3a1f42" text-anchor="middle">1</text>
-        <path d="M 50,125 L 130,125" fill="none" stroke="#1f6b4a" stroke-width="2"/>
-        <text x="42" y="130" font-size="15" font-weight="600" fill="#3a1f42" text-anchor="end">C</text>
-        <path d="M 130,110 L 166,125.0 L 130,140 Z" fill="white" stroke="#3a1f42" stroke-width="2"/><circle cx="170" cy="125.0" r="4" fill="white" stroke="#3a1f42" stroke-width="2"/>
-        <path d="M 240,40 C 257.92,40 257.92,70.0 240,100 C 275.2,100 294.4,77.2 304,70.0 C 294.4,62.8 275.2,40 240,40 Z" fill="white" stroke="#3a1f42" stroke-width="2"/><text x="261.76" y="75.0" font-size="13" fill="#3a1f42" text-anchor="middle">3</text>
-        <path d="M 190,50 L 220,50 L 220,56.8 L 240,56.8" fill="none" stroke="#1f6b4a" stroke-width="2"/>
-        <path d="M 182,125 L 202,125 L 202,83.19999999999999 L 240,83.19999999999999" fill="none" stroke="#1f6b4a" stroke-width="2"/>
-        <path d="M 350,70 L 380.0,70 A 30.0,30.0 0 0 1 380.0,130 L 350,130 Z" fill="white" stroke="#3a1f42" stroke-width="2"/>
-        <path d="M 304,70.0 L 324,70.0 L 324,86.8 L 350,86.8" fill="none" stroke="#1f6b4a" stroke-width="2"/>
-        <path d="M 50,190 L 350,190" fill="none" stroke="#1f6b4a" stroke-width="2"/>
-        <text x="42" y="195" font-size="15" font-weight="600" fill="#3a1f42" text-anchor="end">D</text>
-        <path d="M 350,190 L 350,113.19999999999999" fill="none" stroke="#1f6b4a" stroke-width="2"/>
-        <path d="M 410,100.0 L 436,100.0" fill="none" stroke="#1f6b4a" stroke-width="2"/><text x="442" y="105.0" font-size="16" font-weight="600" fill="#3a1f42" text-anchor="start">S</text>
-        </svg>
-        <figcaption>Circuito combinacional — portas 1 (AND), 2 (inversor), 3 (OR) e porta AND de saída</figcaption>
-      </figure>
-      <span class="fonte">Fonte: AP1 — 2022.2, questão 4b.</span>
-    </li>
+<li class="exercicio">
+<p>Seja o circuito apresentado na figura abaixo.</p>
+<figure class="circuito">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 240" font-family="Segoe UI, Arial, sans-serif">
+<rect x="0" y="0" width="560" height="240" fill="white"/>
+<path d="M 50,50 L 130,50" fill="none" stroke="#1f6b4a" stroke-width="2"/>
+<text x="42" y="55" font-size="15" font-weight="600" fill="#3a1f42" text-anchor="end">A</text>
+<path d="M 50,70 L 130,70" fill="none" stroke="#1f6b4a" stroke-width="2"/>
+<text x="42" y="75" font-size="15" font-weight="600" fill="#3a1f42" text-anchor="end">B</text>
+<path d="M 130,30 L 170.0,30 A 20.0,20.0 0 0 1 170.0,70 L 130,70 Z" fill="white" stroke="#3a1f42" stroke-width="2"/><text x="149.2" y="55.0" font-size="13" fill="#3a1f42" text-anchor="middle">1</text>
+<path d="M 50,125 L 130,125" fill="none" stroke="#1f6b4a" stroke-width="2"/>
+<text x="42" y="130" font-size="15" font-weight="600" fill="#3a1f42" text-anchor="end">C</text>
+<path d="M 130,110 L 166,125.0 L 130,140 Z" fill="white" stroke="#3a1f42" stroke-width="2"/><circle cx="170" cy="125.0" r="4" fill="white" stroke="#3a1f42" stroke-width="2"/>
+<path d="M 240,40 C 257.92,40 257.92,70.0 240,100 C 275.2,100 294.4,77.2 304,70.0 C 294.4,62.8 275.2,40 240,40 Z" fill="white" stroke="#3a1f42" stroke-width="2"/><text x="261.76" y="75.0" font-size="13" fill="#3a1f42" text-anchor="middle">3</text>
+<path d="M 190,50 L 220,50 L 220,56.8 L 240,56.8" fill="none" stroke="#1f6b4a" stroke-width="2"/>
+<path d="M 182,125 L 202,125 L 202,83.19999999999999 L 240,83.19999999999999" fill="none" stroke="#1f6b4a" stroke-width="2"/>
+<path d="M 350,70 L 380.0,70 A 30.0,30.0 0 0 1 380.0,130 L 350,130 Z" fill="white" stroke="#3a1f42" stroke-width="2"/>
+<path d="M 304,70.0 L 324,70.0 L 324,86.8 L 350,86.8" fill="none" stroke="#1f6b4a" stroke-width="2"/>
+<path d="M 50,190 L 350,190" fill="none" stroke="#1f6b4a" stroke-width="2"/>
+<text x="42" y="195" font-size="15" font-weight="600" fill="#3a1f42" text-anchor="end">D</text>
+<path d="M 350,190 L 350,113.19999999999999" fill="none" stroke="#1f6b4a" stroke-width="2"/>
+<path d="M 410,100.0 L 436,100.0" fill="none" stroke="#1f6b4a" stroke-width="2"/><text x="442" y="105.0" font-size="16" font-weight="600" fill="#3a1f42" text-anchor="start">S</text>
+</svg>
+<figcaption>Circuito combinacional — portas 1 (AND), 2 (inversor), 3 (OR) e porta AND de saída</figcaption>
+</figure>
+<span class="fonte">Fonte: AP1 — 2022.2, questão 4b.</span>
+</li>
 
-    <li class="exercicio">
-      <p>Seja o circuito apresentado na figura abaixo.</p>
-      <figure class="circuito">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 340" font-family="Segoe UI, Arial, sans-serif">
-        <rect x="0" y="0" width="700" height="340" fill="white"/>
-        <path d="M 30,40 L 90,40" fill="none" stroke="#1f6b4a" stroke-width="2"/>
-        <text x="22" y="45" font-size="15" font-weight="600" fill="#3a1f42" text-anchor="end">A</text>
-        <path d="M 90,25 L 126,40.0 L 90,55 Z" fill="white" stroke="#3a1f42" stroke-width="2"/><circle cx="130" cy="40.0" r="4" fill="white" stroke="#3a1f42" stroke-width="2"/><text x="104.08" y="45.0" font-size="12" fill="#3a1f42" text-anchor="middle">1</text>
-        <path d="M 30,80 L 60,80" fill="none" stroke="#1f6b4a" stroke-width="2"/>
-        <text x="22" y="85" font-size="15" font-weight="600" fill="#3a1f42" text-anchor="end">B</text>
-        <circle cx="60" cy="80" r="3.5" fill="#1f6b4a"/>
-        <path d="M 190,20 L 225.0,20 A 25.0,25.0 0 0 1 225.0,70 L 190,70 Z" fill="white" stroke="#3a1f42" stroke-width="2"/><text x="209.2" y="50.0" font-size="13" fill="#3a1f42" text-anchor="middle">2</text>
-        <path d="M 142,40 L 162,40 L 162,34.0 L 190,34.0" fill="none" stroke="#1f6b4a" stroke-width="2"/>
-        <path d="M 60,80 L 150,80 L 150,56.0 L 190,56.0" fill="none" stroke="#1f6b4a" stroke-width="2"/>
-        <path d="M 30,140 L 90,140" fill="none" stroke="#1f6b4a" stroke-width="2"/>
-        <text x="22" y="145" font-size="15" font-weight="600" fill="#3a1f42" text-anchor="end">C</text>
-        <path d="M 60,80 L 60,120" fill="none" stroke="#1f6b4a" stroke-width="2"/>
-        <path d="M 90,108 C 107.92,108 107.92,130.0 90,152 C 125.2,152 144.4,135.28 154,130.0 C 144.4,124.72 125.2,108 90,108 Z" fill="white" stroke="#3a1f42" stroke-width="2"/><text x="111.76" y="135.0" font-size="13" fill="#3a1f42" text-anchor="middle">3</text>
-        <path d="M 60,80 L 60,120.32 L 90,120.32" fill="none" stroke="#1f6b4a" stroke-width="2"/>
-        <path d="M 90,140 L 90,139.68" fill="none" stroke="#1f6b4a" stroke-width="2"/>
-        <path d="M 154,130.0 L 180,130.0 L 180,130 L 190,130" fill="none" stroke="#1f6b4a" stroke-width="2"/>
-        <path d="M 190,115 L 226,130.0 L 190,145 Z" fill="white" stroke="#3a1f42" stroke-width="2"/><circle cx="230" cy="130.0" r="4" fill="white" stroke="#3a1f42" stroke-width="2"/><text x="204.08" y="135.0" font-size="12" fill="#3a1f42" text-anchor="middle">4</text>
-        <path d="M 340,55 L 365.0,55 A 35.0,35.0 0 0 1 365.0,125 L 340,125 Z" fill="white" stroke="#3a1f42" stroke-width="2"/><text x="359.2" y="95.0" font-size="13" fill="#3a1f42" text-anchor="middle">5</text>
-        <path d="M 250,45.0 L 280,45.0 L 280,74.6 L 340,74.6" fill="none" stroke="#1f6b4a" stroke-width="2"/>
-        <path d="M 242,130 L 272,130 L 272,105.4 L 340,105.4" fill="none" stroke="#1f6b4a" stroke-width="2"/>
-        <path d="M 30,270 L 450,270" fill="none" stroke="#1f6b4a" stroke-width="2"/>
-        <text x="22" y="275" font-size="15" font-weight="600" fill="#3a1f42" text-anchor="end">D</text>
-        <path d="M 460,65 C 477.92,65 477.92,110.0 460,155 C 495.2,155 514.4,120.8 524,110.0 C 514.4,99.2 495.2,65 460,65 Z" fill="white" stroke="#3a1f42" stroke-width="2"/><text x="481.76" y="115.0" font-size="13" fill="#3a1f42" text-anchor="middle">6</text>
-        <path d="M 400,90.0 L 420,90.0 L 420,90.2 L 460,90.2" fill="none" stroke="#1f6b4a" stroke-width="2"/>
-        <path d="M 450,270 L 450,129.8 L 460,129.8" fill="none" stroke="#1f6b4a" stroke-width="2"/>
-        <path d="M 524,110.0 L 550,110.0 L 550,110 L 560,110" fill="none" stroke="#1f6b4a" stroke-width="2"/>
-        <path d="M 560,95 L 596,110.0 L 560,125 Z" fill="white" stroke="#3a1f42" stroke-width="2"/><circle cx="600" cy="110.0" r="4" fill="white" stroke="#3a1f42" stroke-width="2"/><text x="574.08" y="115.0" font-size="12" fill="#3a1f42" text-anchor="middle">7</text>
-        <path d="M 612,110 L 638,110" fill="none" stroke="#1f6b4a" stroke-width="2"/><text x="644" y="115" font-size="16" font-weight="600" fill="#3a1f42" text-anchor="start">S</text>
-        </svg>
-        <figcaption>Circuito combinacional — portas 1, 4 (inversores), 2, 3, 6 (OR), 5 (AND) e 7 (inversor de saída)</figcaption>
-      </figure>
-      <span class="fonte">Fonte: AP1 — 2022.2 (variante 2), questão 4b.</span>
-    </li>
+<li class="exercicio">
+<p>Seja o circuito apresentado na figura abaixo.</p>
+<figure class="circuito">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 340" font-family="Segoe UI, Arial, sans-serif">
+<rect x="0" y="0" width="700" height="340" fill="white"/>
+<path d="M 30,40 L 90,40" fill="none" stroke="#1f6b4a" stroke-width="2"/>
+<text x="22" y="45" font-size="15" font-weight="600" fill="#3a1f42" text-anchor="end">A</text>
+<path d="M 90,25 L 126,40.0 L 90,55 Z" fill="white" stroke="#3a1f42" stroke-width="2"/><circle cx="130" cy="40.0" r="4" fill="white" stroke="#3a1f42" stroke-width="2"/><text x="104.08" y="45.0" font-size="12" fill="#3a1f42" text-anchor="middle">1</text>
+<path d="M 30,80 L 60,80" fill="none" stroke="#1f6b4a" stroke-width="2"/>
+<text x="22" y="85" font-size="15" font-weight="600" fill="#3a1f42" text-anchor="end">B</text>
+<circle cx="60" cy="80" r="3.5" fill="#1f6b4a"/>
+<path d="M 190,20 L 225.0,20 A 25.0,25.0 0 0 1 225.0,70 L 190,70 Z" fill="white" stroke="#3a1f42" stroke-width="2"/><text x="209.2" y="50.0" font-size="13" fill="#3a1f42" text-anchor="middle">2</text>
+<path d="M 142,40 L 162,40 L 162,34.0 L 190,34.0" fill="none" stroke="#1f6b4a" stroke-width="2"/>
+<path d="M 60,80 L 150,80 L 150,56.0 L 190,56.0" fill="none" stroke="#1f6b4a" stroke-width="2"/>
+<path d="M 30,140 L 90,140" fill="none" stroke="#1f6b4a" stroke-width="2"/>
+<text x="22" y="145" font-size="15" font-weight="600" fill="#3a1f42" text-anchor="end">C</text>
+<path d="M 60,80 L 60,120" fill="none" stroke="#1f6b4a" stroke-width="2"/>
+<path d="M 90,108 C 107.92,108 107.92,130.0 90,152 C 125.2,152 144.4,135.28 154,130.0 C 144.4,124.72 125.2,108 90,108 Z" fill="white" stroke="#3a1f42" stroke-width="2"/><text x="111.76" y="135.0" font-size="13" fill="#3a1f42" text-anchor="middle">3</text>
+<path d="M 60,80 L 60,120.32 L 90,120.32" fill="none" stroke="#1f6b4a" stroke-width="2"/>
+<path d="M 90,140 L 90,139.68" fill="none" stroke="#1f6b4a" stroke-width="2"/>
+<path d="M 154,130.0 L 180,130.0 L 180,130 L 190,130" fill="none" stroke="#1f6b4a" stroke-width="2"/>
+<path d="M 190,115 L 226,130.0 L 190,145 Z" fill="white" stroke="#3a1f42" stroke-width="2"/><circle cx="230" cy="130.0" r="4" fill="white" stroke="#3a1f42" stroke-width="2"/><text x="204.08" y="135.0" font-size="12" fill="#3a1f42" text-anchor="middle">4</text>
+<path d="M 340,55 L 365.0,55 A 35.0,35.0 0 0 1 365.0,125 L 340,125 Z" fill="white" stroke="#3a1f42" stroke-width="2"/><text x="359.2" y="95.0" font-size="13" fill="#3a1f42" text-anchor="middle">5</text>
+<path d="M 250,45.0 L 280,45.0 L 280,74.6 L 340,74.6" fill="none" stroke="#1f6b4a" stroke-width="2"/>
+<path d="M 242,130 L 272,130 L 272,105.4 L 340,105.4" fill="none" stroke="#1f6b4a" stroke-width="2"/>
+<path d="M 30,270 L 450,270" fill="none" stroke="#1f6b4a" stroke-width="2"/>
+<text x="22" y="275" font-size="15" font-weight="600" fill="#3a1f42" text-anchor="end">D</text>
+<path d="M 460,65 C 477.92,65 477.92,110.0 460,155 C 495.2,155 514.4,120.8 524,110.0 C 514.4,99.2 495.2,65 460,65 Z" fill="white" stroke="#3a1f42" stroke-width="2"/><text x="481.76" y="115.0" font-size="13" fill="#3a1f42" text-anchor="middle">6</text>
+<path d="M 400,90.0 L 420,90.0 L 420,90.2 L 460,90.2" fill="none" stroke="#1f6b4a" stroke-width="2"/>
+<path d="M 450,270 L 450,129.8 L 460,129.8" fill="none" stroke="#1f6b4a" stroke-width="2"/>
+<path d="M 524,110.0 L 550,110.0 L 550,110 L 560,110" fill="none" stroke="#1f6b4a" stroke-width="2"/>
+<path d="M 560,95 L 596,110.0 L 560,125 Z" fill="white" stroke="#3a1f42" stroke-width="2"/><circle cx="600" cy="110.0" r="4" fill="white" stroke="#3a1f42" stroke-width="2"/><text x="574.08" y="115.0" font-size="12" fill="#3a1f42" text-anchor="middle">7</text>
+<path d="M 612,110 L 638,110" fill="none" stroke="#1f6b4a" stroke-width="2"/><text x="644" y="115" font-size="16" font-weight="600" fill="#3a1f42" text-anchor="start">S</text>
+</svg>
+<figcaption>Circuito combinacional — portas 1, 4 (inversores), 2, 3, 6 (OR), 5 (AND) e 7 (inversor de saída)</figcaption>
+</figure>
+<span class="fonte">Fonte: AP1 — 2022.2 (variante 2), questão 4b.</span>
+</li>
 
-    <li class="exercicio">
-      <p>Seja o circuito apresentado na figura abaixo.</p>
-      <figure class="circuito">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 300" font-family="Segoe UI, Arial, sans-serif">
-        <rect x="0" y="0" width="700" height="300" fill="white"/>
-        <path d="M 30,32 L 100,32" fill="none" stroke="#1f6b4a" stroke-width="2"/>
-        <text x="22" y="37" font-size="15" font-weight="600" fill="#3a1f42" text-anchor="end">A</text>
-        <path d="M 30,52 L 100,52" fill="none" stroke="#1f6b4a" stroke-width="2"/>
-        <text x="22" y="57" font-size="15" font-weight="600" fill="#3a1f42" text-anchor="end">B</text>
-        <path d="M 100,20 L 138.0,20 A 22.0,22.0 0 0 1 138.0,64 L 100,64 Z" fill="white" stroke="#3a1f42" stroke-width="2"/><text x="119.2" y="47.0" font-size="13" fill="#3a1f42" text-anchor="middle">1</text>
-        <path d="M 30,122 L 100,122" fill="none" stroke="#1f6b4a" stroke-width="2"/>
-        <text x="22" y="127" font-size="15" font-weight="600" fill="#3a1f42" text-anchor="end">C</text>
-        <path d="M 30,146 L 100,146" fill="none" stroke="#1f6b4a" stroke-width="2"/>
-        <text x="22" y="151" font-size="15" font-weight="600" fill="#3a1f42" text-anchor="end">D</text>
-        <path d="M 100,110 C 117.92,110 117.92,134.0 100,158 C 135.2,158 154.4,139.76 164,134.0 C 154.4,128.24 135.2,110 100,110 Z" fill="white" stroke="#3a1f42" stroke-width="2"/><text x="121.76" y="139.0" font-size="13" fill="#3a1f42" text-anchor="middle">2</text>
-        <circle cx="182" cy="134.0" r="3.5" fill="#1f6b4a"/>
-        <path d="M 270,45 C 287.92,45 287.92,80.0 270,115 C 305.2,115 324.4,88.4 334,80.0 C 324.4,71.6 305.2,45 270,45 Z" fill="white" stroke="#3a1f42" stroke-width="2"/><text x="291.76" y="85.0" font-size="13" fill="#3a1f42" text-anchor="middle">3</text>
-        <path d="M 160,42.0 L 190,42.0 L 190,64.6 L 270,64.6" fill="none" stroke="#1f6b4a" stroke-width="2"/>
-        <path d="M 164,134.0 L 182,134.0 L 182,95.4 L 270,95.4" fill="none" stroke="#1f6b4a" stroke-width="2"/>
-        <path d="M 182,134.0 L 182,165 L 270,165" fill="none" stroke="#1f6b4a" stroke-width="2"/>
-        <path d="M 270,150 L 306,165.0 L 270,180 Z" fill="white" stroke="#3a1f42" stroke-width="2"/><circle cx="310" cy="165.0" r="4" fill="white" stroke="#3a1f42" stroke-width="2"/><text x="284.08" y="170.0" font-size="12" fill="#3a1f42" text-anchor="middle">4</text>
-        <path d="M 420,70 C 437.92,70 437.92,115.0 420,160 C 455.2,160 474.4,125.8 484,115.0 C 474.4,104.2 455.2,70 420,70 Z" fill="white" stroke="#3a1f42" stroke-width="2"/><text x="441.76" y="120.0" font-size="13" fill="#3a1f42" text-anchor="middle">5</text>
-        <path d="M 334,80.0 L 364,80.0 L 364,95.2 L 420,95.2" fill="none" stroke="#1f6b4a" stroke-width="2"/>
-        <path d="M 322,165 L 352,165 L 352,134.8 L 420,134.8" fill="none" stroke="#1f6b4a" stroke-width="2"/>
-        <path d="M 484,115.0 L 510,115.0" fill="none" stroke="#1f6b4a" stroke-width="2"/><text x="516" y="120.0" font-size="16" font-weight="600" fill="#3a1f42" text-anchor="start">S</text>
-        </svg>
-        <figcaption>Circuito combinacional — portas 1 (AND), 2, 3, 5 (OR) e 4 (inversor)</figcaption>
-      </figure>
-      <span class="fonte">Fonte: AP2 — 2024.1 (turma 2A) / AS — 2024.1 (turma 3A), questão de lógica digital.</span>
-    </li>
+<li class="exercicio">
+<p>Seja o circuito apresentado na figura abaixo.</p>
+<figure class="circuito">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 300" font-family="Segoe UI, Arial, sans-serif">
+<rect x="0" y="0" width="700" height="300" fill="white"/>
+<path d="M 30,32 L 100,32" fill="none" stroke="#1f6b4a" stroke-width="2"/>
+<text x="22" y="37" font-size="15" font-weight="600" fill="#3a1f42" text-anchor="end">A</text>
+<path d="M 30,52 L 100,52" fill="none" stroke="#1f6b4a" stroke-width="2"/>
+<text x="22" y="57" font-size="15" font-weight="600" fill="#3a1f42" text-anchor="end">B</text>
+<path d="M 100,20 L 138.0,20 A 22.0,22.0 0 0 1 138.0,64 L 100,64 Z" fill="white" stroke="#3a1f42" stroke-width="2"/><text x="119.2" y="47.0" font-size="13" fill="#3a1f42" text-anchor="middle">1</text>
+<path d="M 30,122 L 100,122" fill="none" stroke="#1f6b4a" stroke-width="2"/>
+<text x="22" y="127" font-size="15" font-weight="600" fill="#3a1f42" text-anchor="end">C</text>
+<path d="M 30,146 L 100,146" fill="none" stroke="#1f6b4a" stroke-width="2"/>
+<text x="22" y="151" font-size="15" font-weight="600" fill="#3a1f42" text-anchor="end">D</text>
+<path d="M 100,110 C 117.92,110 117.92,134.0 100,158 C 135.2,158 154.4,139.76 164,134.0 C 154.4,128.24 135.2,110 100,110 Z" fill="white" stroke="#3a1f42" stroke-width="2"/><text x="121.76" y="139.0" font-size="13" fill="#3a1f42" text-anchor="middle">2</text>
+<circle cx="182" cy="134.0" r="3.5" fill="#1f6b4a"/>
+<path d="M 270,45 C 287.92,45 287.92,80.0 270,115 C 305.2,115 324.4,88.4 334,80.0 C 324.4,71.6 305.2,45 270,45 Z" fill="white" stroke="#3a1f42" stroke-width="2"/><text x="291.76" y="85.0" font-size="13" fill="#3a1f42" text-anchor="middle">3</text>
+<path d="M 160,42.0 L 190,42.0 L 190,64.6 L 270,64.6" fill="none" stroke="#1f6b4a" stroke-width="2"/>
+<path d="M 164,134.0 L 182,134.0 L 182,95.4 L 270,95.4" fill="none" stroke="#1f6b4a" stroke-width="2"/>
+<path d="M 182,134.0 L 182,165 L 270,165" fill="none" stroke="#1f6b4a" stroke-width="2"/>
+<path d="M 270,150 L 306,165.0 L 270,180 Z" fill="white" stroke="#3a1f42" stroke-width="2"/><circle cx="310" cy="165.0" r="4" fill="white" stroke="#3a1f42" stroke-width="2"/><text x="284.08" y="170.0" font-size="12" fill="#3a1f42" text-anchor="middle">4</text>
+<path d="M 420,70 C 437.92,70 437.92,115.0 420,160 C 455.2,160 474.4,125.8 484,115.0 C 474.4,104.2 455.2,70 420,70 Z" fill="white" stroke="#3a1f42" stroke-width="2"/><text x="441.76" y="120.0" font-size="13" fill="#3a1f42" text-anchor="middle">5</text>
+<path d="M 334,80.0 L 364,80.0 L 364,95.2 L 420,95.2" fill="none" stroke="#1f6b4a" stroke-width="2"/>
+<path d="M 322,165 L 352,165 L 352,134.8 L 420,134.8" fill="none" stroke="#1f6b4a" stroke-width="2"/>
+<path d="M 484,115.0 L 510,115.0" fill="none" stroke="#1f6b4a" stroke-width="2"/><text x="516" y="120.0" font-size="16" font-weight="600" fill="#3a1f42" text-anchor="start">S</text>
+</svg>
+<figcaption>Circuito combinacional — portas 1 (AND), 2, 3, 5 (OR) e 4 (inversor)</figcaption>
+</figure>
+<span class="fonte">Fonte: AP2 — 2024.1 (turma 2A) / AS — 2024.1 (turma 3A), questão de lógica digital.</span>
+</li>
 
-    <li class="exercicio">
-      <p>Seja o circuito apresentado na figura abaixo.</p>
-      <figure class="circuito">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 340" font-family="Segoe UI, Arial, sans-serif">
-        <rect x="0" y="0" width="800" height="340" fill="white"/>
-        <path d="M 30,32 L 90,32" fill="none" stroke="#1f6b4a" stroke-width="2"/>
-        <text x="22" y="37" font-size="15" font-weight="600" fill="#3a1f42" text-anchor="end">A</text>
-        <path d="M 30,56 L 90,56" fill="none" stroke="#1f6b4a" stroke-width="2"/>
-        <text x="22" y="61" font-size="15" font-weight="600" fill="#3a1f42" text-anchor="end">B</text>
-        <path d="M 90,20 C 107.92,20 107.92,44.0 90,68 C 125.2,68 144.4,49.76 154,44.0 C 144.4,38.24 125.2,20 90,20 Z" fill="white" stroke="#3a1f42" stroke-width="2"/><text x="111.76" y="49.0" font-size="13" fill="#3a1f42" text-anchor="middle">1</text>
-        <circle cx="172" cy="44.0" r="3.5" fill="#1f6b4a"/>
-        <path d="M 30,202 L 90,202" fill="none" stroke="#1f6b4a" stroke-width="2"/>
-        <text x="22" y="207" font-size="15" font-weight="600" fill="#3a1f42" text-anchor="end">C</text>
-        <path d="M 30,226 L 90,226" fill="none" stroke="#1f6b4a" stroke-width="2"/>
-        <text x="22" y="231" font-size="15" font-weight="600" fill="#3a1f42" text-anchor="end">D</text>
-        <path d="M 90,190 C 107.92,190 107.92,214.0 90,238 C 125.2,238 144.4,219.76 154,214.0 C 144.4,208.24 125.2,190 90,190 Z" fill="white" stroke="#3a1f42" stroke-width="2"/><text x="111.76" y="219.0" font-size="13" fill="#3a1f42" text-anchor="middle">2</text>
-        <circle cx="172" cy="214.0" r="3.5" fill="#1f6b4a"/>
-        <path d="M 172,44.0 L 172,30 L 210,30" fill="none" stroke="#1f6b4a" stroke-width="2"/>
-        <path d="M 210,15 L 246,30.0 L 210,45 Z" fill="white" stroke="#3a1f42" stroke-width="2"/><circle cx="250" cy="30.0" r="4" fill="white" stroke="#3a1f42" stroke-width="2"/><text x="224.08" y="35.0" font-size="12" fill="#3a1f42" text-anchor="middle">3</text>
-        <path d="M 210,90 L 240.0,90 A 30.0,30.0 0 0 1 240.0,150 L 210,150 Z" fill="white" stroke="#3a1f42" stroke-width="2"/><text x="229.2" y="125.0" font-size="13" fill="#3a1f42" text-anchor="middle">4</text>
-        <path d="M 172,44.0 L 172,106.8 L 210,106.8" fill="none" stroke="#1f6b4a" stroke-width="2"/>
-        <path d="M 172,214.0 L 172,133.2 L 210,133.2" fill="none" stroke="#1f6b4a" stroke-width="2"/>
-        <path d="M 172,214.0 L 172,260 L 210,260" fill="none" stroke="#1f6b4a" stroke-width="2"/>
-        <path d="M 210,245 L 246,260.0 L 210,275 Z" fill="white" stroke="#3a1f42" stroke-width="2"/><circle cx="250" cy="260.0" r="4" fill="white" stroke="#3a1f42" stroke-width="2"/><text x="224.08" y="265.0" font-size="12" fill="#3a1f42" text-anchor="middle">5</text>
-        <path d="M 340,140 C 357.92,140 357.92,195.0 340,250 C 375.2,250 394.4,208.2 404,195.0 C 394.4,181.8 375.2,140 340,140 Z" fill="white" stroke="#3a1f42" stroke-width="2"/><text x="361.76" y="200.0" font-size="13" fill="#3a1f42" text-anchor="middle">6</text>
-        <path d="M 270,120.0 L 300,120.0 L 300,170.8 L 340,170.8" fill="none" stroke="#1f6b4a" stroke-width="2"/>
-        <path d="M 262,260 L 292,260 L 292,219.2 L 340,219.2" fill="none" stroke="#1f6b4a" stroke-width="2"/>
-        <path d="M 490,60 C 507.92,60 507.92,145.0 490,230 C 525.2,230 544.4,165.4 554,145.0 C 544.4,124.6 525.2,60 490,60 Z" fill="white" stroke="#3a1f42" stroke-width="2"/><text x="511.76" y="150.0" font-size="13" fill="#3a1f42" text-anchor="middle">7</text>
-        <path d="M 262,30 L 292,30 L 292,107.6 L 490,107.6" fill="none" stroke="#1f6b4a" stroke-width="2"/>
-        <path d="M 404,195.0 L 434,195.0 L 434,182.39999999999998 L 490,182.39999999999998" fill="none" stroke="#1f6b4a" stroke-width="2"/>
-        <path d="M 554,145.0 L 580,145.0" fill="none" stroke="#1f6b4a" stroke-width="2"/><text x="586" y="150.0" font-size="16" font-weight="600" fill="#3a1f42" text-anchor="start">S</text>
-        </svg>
-        <figcaption>Circuito combinacional — portas 1, 2, 6, 7 (OR), 3, 5 (inversores) e 4 (AND)</figcaption>
-      </figure>
-      <span class="fonte">Fonte: AP2-teste — 2024.1 (turmas 3A/4A), questão de lógica digital.</span>
-    </li>
+<li class="exercicio">
+<p>Seja o circuito apresentado na figura abaixo.</p>
+<figure class="circuito">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 340" font-family="Segoe UI, Arial, sans-serif">
+<rect x="0" y="0" width="800" height="340" fill="white"/>
+<path d="M 30,32 L 90,32" fill="none" stroke="#1f6b4a" stroke-width="2"/>
+<text x="22" y="37" font-size="15" font-weight="600" fill="#3a1f42" text-anchor="end">A</text>
+<path d="M 30,56 L 90,56" fill="none" stroke="#1f6b4a" stroke-width="2"/>
+<text x="22" y="61" font-size="15" font-weight="600" fill="#3a1f42" text-anchor="end">B</text>
+<path d="M 90,20 C 107.92,20 107.92,44.0 90,68 C 125.2,68 144.4,49.76 154,44.0 C 144.4,38.24 125.2,20 90,20 Z" fill="white" stroke="#3a1f42" stroke-width="2"/><text x="111.76" y="49.0" font-size="13" fill="#3a1f42" text-anchor="middle">1</text>
+<circle cx="172" cy="44.0" r="3.5" fill="#1f6b4a"/>
+<path d="M 30,202 L 90,202" fill="none" stroke="#1f6b4a" stroke-width="2"/>
+<text x="22" y="207" font-size="15" font-weight="600" fill="#3a1f42" text-anchor="end">C</text>
+<path d="M 30,226 L 90,226" fill="none" stroke="#1f6b4a" stroke-width="2"/>
+<text x="22" y="231" font-size="15" font-weight="600" fill="#3a1f42" text-anchor="end">D</text>
+<path d="M 90,190 C 107.92,190 107.92,214.0 90,238 C 125.2,238 144.4,219.76 154,214.0 C 144.4,208.24 125.2,190 90,190 Z" fill="white" stroke="#3a1f42" stroke-width="2"/><text x="111.76" y="219.0" font-size="13" fill="#3a1f42" text-anchor="middle">2</text>
+<circle cx="172" cy="214.0" r="3.5" fill="#1f6b4a"/>
+<path d="M 172,44.0 L 172,30 L 210,30" fill="none" stroke="#1f6b4a" stroke-width="2"/>
+<path d="M 210,15 L 246,30.0 L 210,45 Z" fill="white" stroke="#3a1f42" stroke-width="2"/><circle cx="250" cy="30.0" r="4" fill="white" stroke="#3a1f42" stroke-width="2"/><text x="224.08" y="35.0" font-size="12" fill="#3a1f42" text-anchor="middle">3</text>
+<path d="M 210,90 L 240.0,90 A 30.0,30.0 0 0 1 240.0,150 L 210,150 Z" fill="white" stroke="#3a1f42" stroke-width="2"/><text x="229.2" y="125.0" font-size="13" fill="#3a1f42" text-anchor="middle">4</text>
+<path d="M 172,44.0 L 172,106.8 L 210,106.8" fill="none" stroke="#1f6b4a" stroke-width="2"/>
+<path d="M 172,214.0 L 172,133.2 L 210,133.2" fill="none" stroke="#1f6b4a" stroke-width="2"/>
+<path d="M 172,214.0 L 172,260 L 210,260" fill="none" stroke="#1f6b4a" stroke-width="2"/>
+<path d="M 210,245 L 246,260.0 L 210,275 Z" fill="white" stroke="#3a1f42" stroke-width="2"/><circle cx="250" cy="260.0" r="4" fill="white" stroke="#3a1f42" stroke-width="2"/><text x="224.08" y="265.0" font-size="12" fill="#3a1f42" text-anchor="middle">5</text>
+<path d="M 340,140 C 357.92,140 357.92,195.0 340,250 C 375.2,250 394.4,208.2 404,195.0 C 394.4,181.8 375.2,140 340,140 Z" fill="white" stroke="#3a1f42" stroke-width="2"/><text x="361.76" y="200.0" font-size="13" fill="#3a1f42" text-anchor="middle">6</text>
+<path d="M 270,120.0 L 300,120.0 L 300,170.8 L 340,170.8" fill="none" stroke="#1f6b4a" stroke-width="2"/>
+<path d="M 262,260 L 292,260 L 292,219.2 L 340,219.2" fill="none" stroke="#1f6b4a" stroke-width="2"/>
+<path d="M 490,60 C 507.92,60 507.92,145.0 490,230 C 525.2,230 544.4,165.4 554,145.0 C 544.4,124.6 525.2,60 490,60 Z" fill="white" stroke="#3a1f42" stroke-width="2"/><text x="511.76" y="150.0" font-size="13" fill="#3a1f42" text-anchor="middle">7</text>
+<path d="M 262,30 L 292,30 L 292,107.6 L 490,107.6" fill="none" stroke="#1f6b4a" stroke-width="2"/>
+<path d="M 404,195.0 L 434,195.0 L 434,182.39999999999998 L 490,182.39999999999998" fill="none" stroke="#1f6b4a" stroke-width="2"/>
+<path d="M 554,145.0 L 580,145.0" fill="none" stroke="#1f6b4a" stroke-width="2"/><text x="586" y="150.0" font-size="16" font-weight="600" fill="#3a1f42" text-anchor="start">S</text>
+</svg>
+<figcaption>Circuito combinacional — portas 1, 2, 6, 7 (OR), 3, 5 (inversores) e 4 (AND)</figcaption>
+</figure>
+<span class="fonte">Fonte: AP2-teste — 2024.1 (turmas 3A/4A), questão de lógica digital.</span>
+</li>
 
-  </ol>
+</ol>
 
-  <h3 class="subsec">Tabela-verdade a partir de uma expressão lógica dada</h3>
-  <ol class="exercicios">
+<h3 class="subsec">Tabela-verdade a partir de uma expressão lógica dada</h3>
+<ol class="exercicios">
 
-    <li class="exercicio">
-      <p>Apresentar a tabela-verdade relativa à expressão lógica do circuito dada por:</p>
-      <p style="text-align:center;font-size:1.1rem;" class="expr">S(A,B,C) = A·B·C + A·C + (A+B)·C</p>
-      <span class="fonte">Fonte: AP2 — 2024.1 (turma 2A), questão de lógica digital.</span>
-    </li>
+<li class="exercicio">
+<p>Apresentar a tabela-verdade relativa à expressão lógica do circuito dada por:</p>
+<p style="text-align:center;font-size:1.1rem;" class="expr">S(A,B,C) = A·B·C + A·C + (A+B)·C</p>
+<span class="fonte">Fonte: AP2 — 2024.1 (turma 2A), questão de lógica digital.</span>
+</li>
 
-    <li class="exercicio">
-      <p>Seja a proposição <span class="expr">X = p + q + (~p·r + s)</span>, onde a conjunção é representada
-      por (.), a disjunção por (+) e a negação por (~).</p>
-      <ol class="sub" type="a">
-        <li>Determine o valor lógico da expressão para V(p) = V(q) = 1 e V(r) = V(s) = 0.</li>
-        <li>Quantas linhas deve possuir a tabela-verdade completa dessa expressão?</li>
-      </ol>
-      <span class="fonte">Fonte: AS — 2023.2, questão 12b–c.</span>
-    </li>
+<li class="exercicio">
+<p>Seja a proposição <span class="expr">X = p + q + (~p·r + s)</span>, onde a conjunção é representada por (.), a disjunção por (+) e a negação por (~).</p>
+<ol class="sub" type="a">
+<li>Determine o valor lógico da expressão para V(p) = V(q) = 1 e V(r) = V(s) = 0.</li>
+<li>Quantas linhas deve possuir a tabela-verdade completa dessa expressão?</li>
+</ol>
+<span class="fonte">Fonte: AS — 2023.2, questão 12b–c.</span>
+</li>
 
-  </ol>
+</ol>
 </section>
 
 <!-- ===================== CAPÍTULO 4 ===================== -->
-<section class="chapter" id="cap4">
-  <h2 class="chapter">4. Sistema de Memória</h2>
-  <p class="chapter-note">Capacidade, tempo de acesso, hierarquia de memória, cache e mapeamento direto.</p>
+<section class="section" id="cap4">
+<p class="section-title">05 / Capítulo 4 — Sistema de Memória</p>
+<p class="section-lead">Capacidade, tempo de acesso, hierarquia de memória, cache e mapeamento direto.</p>
 
-  <ol class="exercicios">
+<ol class="exercicios">
 
-    <li class="exercicio">
-      <p>Os dispositivos de memória possuem características que impactam o desempenho global do sistema
-      computacional. Citar e explicar com suas palavras duas dessas características.</p>
-      <span class="fonte">Fonte: AP2 — 2022.2, questão 1.</span>
-    </li>
+<li class="exercicio">
+<p>Os dispositivos de memória possuem características que impactam o desempenho global do sistema computacional. Citar e explicar com suas palavras duas dessas características.</p>
+<span class="fonte">Fonte: AP2 — 2022.2, questão 1.</span>
+</li>
 
-    <li class="exercicio">
-      <p>Considere uma memória com 15 linhas de endereço, que armazena em cada linha uma palavra de 12 bits.
-      Determinar a capacidade de armazenamento do dispositivo, em bits e em bytes.</p>
-      <span class="fonte">Fonte: AS — 2022.2, questão 2.</span>
-    </li>
+<li class="exercicio">
+<p>Considere uma memória com 15 linhas de endereço, que armazena em cada linha uma palavra de 12 bits. Determinar a capacidade de armazenamento do dispositivo, em bits e em bytes.</p>
+<span class="fonte">Fonte: AS — 2022.2, questão 2.</span>
+</li>
 
-    <li class="exercicio">
-      <p>Admitindo que o processador realize 2000 operações de leitura/escrita em um barramento de dados de 16
-      bits de um dispositivo de memória, no intervalo de 10 milissegundos, qual é a largura de banda (taxa de
-      transmissão) no barramento?</p>
-      <span class="fonte">Fonte: AS — 2022.2, questão 3.</span>
-    </li>
+<li class="exercicio">
+<p>Admitindo que o processador realize 2000 operações de leitura/escrita em um barramento de dados de 16 bits de um dispositivo de memória, no intervalo de 10 milissegundos, qual é a largura de banda (taxa de transmissão) no barramento?</p>
+<span class="fonte">Fonte: AS — 2022.2, questão 3.</span>
+</li>
 
-    <li class="exercicio">
-      <p>Seja uma memória RAM cujo tempo de acesso é de 150 nseg. (i) Qual será o tempo médio de execução de um
-      programa composto por 200 instruções com acesso à memória? (ii) Se o programa possuir mais 1000
-      instruções que não acessam à memória, cujo tempo de execução médio seja de 5 nseg por instrução, qual
-      será o novo tempo de execução do programa? Presumir que o tempo de sistema é muito menor do que o tempo
-      de acesso.</p>
-      <span class="fonte">Fonte: AS — 2022.2, questão 4.</span>
-    </li>
+<li class="exercicio">
+<p>Seja uma memória RAM cujo tempo de acesso é de 150 nseg. (i) Qual será o tempo médio de execução de um programa composto por 200 instruções com acesso à memória? (ii) Se o programa possuir mais 1000 instruções que não acessam à memória, cujo tempo de execução médio seja de 5 nseg por instrução, qual será o novo tempo de execução do programa? Presumir que o tempo de sistema é muito menor do que o tempo de acesso.</p>
+<span class="fonte">Fonte: AS — 2022.2, questão 4.</span>
+</li>
 
-    <li class="exercicio">
-      <p>A arquitetura dos sistemas computacionais organiza o sistema de memória alocando diversos e
-      diferentes tipos de tecnologias. (i) Explicar com suas palavras o que significa uma memória volátil.
-      (ii) Quais são as tecnologias típicas empregadas na organização da memória secundária?</p>
-      <span class="fonte">Fonte: AP2 — 2022.2, questão 5.</span>
-    </li>
+<li class="exercicio">
+<p>A arquitetura dos sistemas computacionais organiza o sistema de memória alocando diversos e diferentes tipos de tecnologias. (i) Explicar com suas palavras o que significa uma memória volátil. (ii) Quais são as tecnologias típicas empregadas na organização da memória secundária?</p>
+<span class="fonte">Fonte: AP2 — 2022.2, questão 5.</span>
+</li>
 
-    <li class="exercicio">
-      <p>Explicar com suas palavras o conceito de programa armazenado na organização do sistema de memória das
-      arquiteturas de computadores.</p>
-      <span class="fonte">Fonte: AP2 — 2022.2, questão 6.</span>
-    </li>
+<li class="exercicio">
+<p>Explicar com suas palavras o conceito de programa armazenado na organização do sistema de memória das arquiteturas de computadores.</p>
+<span class="fonte">Fonte: AP2 — 2022.2, questão 6.</span>
+</li>
 
-    <li class="exercicio">
-      <p>Seja um programa armazenado em memória constituído por 500 instruções, executado por um determinado
-      processador. As 100 instruções que não acessam memória são executadas, cada uma, em quatro ciclos de
-      clock interno do processador, de 100 MHz. As demais instruções são executadas com acesso à memória, cuja
-      latência é de 200 nseg — admitir a latência aproximadamente igual ao tempo de acesso. (i) Determinar o
-      tempo de execução do programa nessa máquina. (ii) Admitir que o projeto da arquitetura evoluiu e que foi
-      inserida uma cache com latência de 5 nseg. Considerando uma taxa de acerto de 75%, em quanto tempo o
-      programa passará a ser executado?</p>
-      <span class="fonte">Fonte: AS — 2022.2, questão 6.</span>
-    </li>
+<li class="exercicio">
+<p>Seja um programa armazenado em memória constituído por 500 instruções, executado por um determinado processador. As 100 instruções que não acessam memória são executadas, cada uma, em quatro ciclos de clock interno do processador, de 100 MHz. As demais instruções são executadas com acesso à memória, cuja latência é de 200 nseg — admitir a latência aproximadamente igual ao tempo de acesso. (i) Determinar o tempo de execução do programa nessa máquina. (ii) Admitir que o projeto da arquitetura evoluiu e que foi inserida uma cache com latência de 5 nseg. Considerando uma taxa de acerto de 75%, em quanto tempo o programa passará a ser executado?</p>
+<span class="fonte">Fonte: AS — 2022.2, questão 6.</span>
+</li>
 
-    <li class="exercicio">
-      <p>Seja um sistema de memória de uma arquitetura computacional que utilize mapeamento direto MP–cache. A
-      memória primária possui 128 MB de capacidade de armazenamento; a cache possui 32 kB. Ambas utilizam
-      palavras de 1 byte. (i) Admitindo que cada bloco da cache possua 8 kB, quantos blocos e quantas linhas de
-      cache da MP o sistema possuirá? (ii) Quantas e quais linhas de cache na MP estarão mapeadas em cada
-      bloco? (iii) Explicar, justificando, o que acontecerá se o processador requisitar o endereço 2456d,
-      admitindo que estejam carregadas na cache, respectivamente, as linhas L0, L1, L2 e L3.</p>
-      <span class="fonte">Fonte: AP2 — 2022.2, questão 8.</span>
-    </li>
+<li class="exercicio">
+<p>Seja um sistema de memória de uma arquitetura computacional que utilize mapeamento direto MP–cache. A memória primária possui 128 MB de capacidade de armazenamento; a cache possui 32 kB. Ambas utilizam palavras de 1 byte. (i) Admitindo que cada bloco da cache possua 8 kB, quantos blocos e quantas linhas de cache da MP o sistema possuirá? (ii) Quantas e quais linhas de cache na MP estarão mapeadas em cada bloco? (iii) Explicar, justificando, o que acontecerá se o processador requisitar o endereço 2456d, admitindo que estejam carregadas na cache, respectivamente, as linhas L0, L1, L2 e L3.</p>
+<span class="fonte">Fonte: AP2 — 2022.2, questão 8.</span>
+</li>
 
-    <li class="exercicio">
-      <p>Explicar, com suas palavras, a política de substituição de dados da cache utilizando a técnica LRU.
-      Ilustrar com um exemplo com base nos dados do exercício anterior (mapeamento direto MP–cache).</p>
-      <span class="fonte">Fonte: AP2 — 2022.2, questão 9.</span>
-    </li>
+<li class="exercicio">
+<p>Explicar, com suas palavras, a política de substituição de dados da cache utilizando a técnica LRU. Ilustrar com um exemplo com base nos dados do exercício anterior (mapeamento direto MP–cache).</p>
+<span class="fonte">Fonte: AP2 — 2022.2, questão 9.</span>
+</li>
 
-    <li class="exercicio">
-      <p>Assinalar verdadeiro (V) ou falso (F):</p>
-      <ol class="sub" type="a">
-        <li>O nível mais baixo da hierarquia de memória representa os componentes de armazenamento com
-        tipicamente elevada capacidade e baixa velocidade.</li>
-        <li>Os registradores são os elementos que possuem menor capacidade de armazenamento e menor latência,
-        estando portanto no topo da pirâmide.</li>
-        <li>A memória de trabalho, que ocupa as posições intermediárias da pirâmide, é chamada de memória
-        primária.</li>
-        <li>A medida de custo de elementos de memória é tipicamente definida em unidade monetária por bit.</li>
-        <li>A tecnologia de memória que requer alimentação elétrica para manter os dados define a memória
-        designada como memória estática.</li>
-        <li>Quanto ao tipo de acesso aos dados armazenados, a memória pode ser classificada como aleatória ou
-        de acesso sequencial.</li>
-      </ol>
-      <span class="fonte">Fonte: AP2 — 2024.1 (turma 2A), 4ª parte.</span>
-    </li>
+<li class="exercicio">
+<p>Assinalar verdadeiro (V) ou falso (F):</p>
+<ol class="sub" type="a">
+<li>O nível mais baixo da hierarquia de memória representa os componentes de armazenamento com tipicamente elevada capacidade e baixa velocidade.</li>
+<li>Os registradores são os elementos que possuem menor capacidade de armazenamento e menor latência, estando portanto no topo da pirâmide.</li>
+<li>A memória de trabalho, que ocupa as posições intermediárias da pirâmide, é chamada de memória primária.</li>
+<li>A medida de custo de elementos de memória é tipicamente definida em unidade monetária por bit.</li>
+<li>A tecnologia de memória que requer alimentação elétrica para manter os dados define a memória designada como memória estática.</li>
+<li>Quanto ao tipo de acesso aos dados armazenados, a memória pode ser classificada como aleatória ou de acesso sequencial.</li>
+</ol>
+<span class="fonte">Fonte: AP2 — 2024.1 (turma 2A), 4ª parte.</span>
+</li>
 
-    <li class="exercicio">
-      <p>Completar as lacunas com as respostas corretas:</p>
-      <ol class="sub" type="a">
-        <li>Dada uma memória com latência de 5 nanossegundos e um barramento de dados de 20 bits, a vazão é de
-        ____________.</li>
-        <li>Seja um programa com 1000 instruções, em que 90% acessam o sistema de memória, cuja latência é de
-        20 nanossegundos. Ignorando o tempo de execução das demais instruções e o tempo de busca da instrução
-        em memória, o programa será executado no tempo de ____________.</li>
-        <li>Seja um programa com 1000 instruções, em que 10% acessam a memória primária, cuja latência é de 20
-        nanossegundos, e as demais acessam a memória cache, cuja latência é de 3 nanossegundos. Ignorando o
-        tempo de busca da instrução em memória, o programa será executado no tempo de ____________.</li>
-        <li>A memória cache é fundamental para aumentar a performance do sistema computacional, possuindo
-        tipicamente velocidade maior do que a memória primária. A eficiência do seu uso está condicionada ao
-        princípio ____________.</li>
-      </ol>
-      <span class="fonte">Fonte: AP2 — 2024.1 (turma 2A), 4ª parte.</span>
-    </li>
+<li class="exercicio">
+<p>Completar as lacunas com as respostas corretas:</p>
+<ol class="sub" type="a">
+<li>Dada uma memória com latência de 5 nanossegundos e um barramento de dados de 20 bits, a vazão é de ____________.</li>
+<li>Seja um programa com 1000 instruções, em que 90% acessam o sistema de memória, cuja latência é de 20 nanossegundos. Ignorando o tempo de execução das demais instruções e o tempo de busca da instrução em memória, o programa será executado no tempo de ____________.</li>
+<li>Seja um programa com 1000 instruções, em que 10% acessam a memória primária, cuja latência é de 20 nanossegundos, e as demais acessam a memória cache, cuja latência é de 3 nanossegundos. Ignorando o tempo de busca da instrução em memória, o programa será executado no tempo de ____________.</li>
+<li>A memória cache é fundamental para aumentar a performance do sistema computacional, possuindo tipicamente velocidade maior do que a memória primária. A eficiência do seu uso está condicionada ao princípio ____________.</li>
+</ol>
+<span class="fonte">Fonte: AP2 — 2024.1 (turma 2A), 4ª parte.</span>
+</li>
 
-    <li class="exercicio">
-      <p>Explique sucintamente o que é o princípio de localidade. Qual é o elemento de memória cujo
-      funcionamento se baseia nesse princípio?</p>
-      <span class="fonte">Fonte: AS — 2024.1, 3ª parte.</span>
-    </li>
+<li class="exercicio">
+<p>Explique sucintamente o que é o princípio de localidade. Qual é o elemento de memória cujo funcionamento se baseia nesse princípio?</p>
+<span class="fonte">Fonte: AS — 2024.1, 3ª parte.</span>
+</li>
 
-    <li class="exercicio">
-      <p>Quais são os três parâmetros típicos para avaliação do desempenho de elementos de memória?</p>
-      <span class="fonte">Fonte: AS — 2024.1, 3ª parte.</span>
-    </li>
+<li class="exercicio">
+<p>Quais são os três parâmetros típicos para avaliação do desempenho de elementos de memória?</p>
+<span class="fonte">Fonte: AS — 2024.1, 3ª parte.</span>
+</li>
 
-    <li class="exercicio">
-      <p>Como se designa a tecnologia de memória em que o armazenamento do dado depende da alimentação ou não
-      de energia elétrica?</p>
-      <span class="fonte">Fonte: AS — 2024.1, 3ª parte.</span>
-    </li>
+<li class="exercicio">
+<p>Como se designa a tecnologia de memória em que o armazenamento do dado depende da alimentação ou não de energia elétrica?</p>
+<span class="fonte">Fonte: AS — 2024.1, 3ª parte.</span>
+</li>
 
-  </ol>
+</ol>
 </section>
 
 <!-- ===================== CAPÍTULO 5 ===================== -->
-<section class="chapter" id="cap5">
-  <h2 class="chapter">5. Barramento</h2>
-  <p class="chapter-note">Sinais, temporização, classificação funcional e vazão.</p>
+<section class="section" id="cap5">
+<p class="section-title">06 / Capítulo 5 — Barramento</p>
+<p class="section-lead">Sinais, temporização, classificação funcional e vazão.</p>
 
-  <ol class="exercicios">
+<ol class="exercicios">
 
-    <li class="exercicio">
-      <p>Sejam os sinais elétricos apresentados na figura abaixo, trafegando em um barramento entre processador
-      e memória. Admitindo um clock de 2,5 MHz:</p>
-      <figure class="circuito">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 260" font-family="Segoe UI, Arial, sans-serif">
-        <rect x="0" y="0" width="640" height="260" fill="white"/>
-        <text x="124" y="35" font-size="15" font-weight="600" fill="#3a1f42" text-anchor="end">ck</text>
-        <line x1="140" y1="48" x2="600" y2="48" stroke="#ccc" stroke-width="1"/>
-        <text x="124" y="90" font-size="15" font-weight="600" fill="#3a1f42" text-anchor="end">R</text>
-        <line x1="140" y1="103" x2="600" y2="103" stroke="#ccc" stroke-width="1"/>
-        <text x="124" y="145" font-size="15" font-weight="600" fill="#3a1f42" text-anchor="end">endereço</text>
-        <line x1="140" y1="158" x2="600" y2="158" stroke="#ccc" stroke-width="1"/>
-        <text x="124" y="200" font-size="15" font-weight="600" fill="#3a1f42" text-anchor="end">dados</text>
-        <line x1="140" y1="213" x2="600" y2="213" stroke="#ccc" stroke-width="1"/>
-        <path d="M 140,48 L 140,16 L 160.0,16 L 160.0,48 L 180,48 L 180,16 L 200.0,16 L 200.0,48 L 220,48 L 220,16 L 240.0,16 L 240.0,48 L 260,48 L 260,16 L 280.0,16 L 280.0,48 L 300,48 L 300,16 L 320.0,16 L 320.0,48 L 340,48 L 340,16 L 360.0,16 L 360.0,48 L 380,48 L 380,16 L 400.0,16 L 400.0,48 L 420,48 L 420,16 L 440.0,16 L 440.0,48 L 460,48 L 460,16 L 480.0,16 L 480.0,48 L 500,48 L 500,16 L 520.0,16 L 520.0,48 L 540,48 L 540,16 L 560.0,16 L 560.0,48 L 580,48" fill="none" stroke="#1f6b4a" stroke-width="2"/>
-        <path d="M 140,103 L 180,103 L 180,71 L 260,71 L 260,103 L 600,103" fill="none" stroke="#1f6b4a" stroke-width="2"/>
-        <path d="M 140,158 L 240,158 L 250,126 L 330,126 L 340,158 L 600,158" fill="none" stroke="#1f6b4a" stroke-width="2"/>
-        <path d="M 140,213 L 380,213 L 390,181 L 470,181 L 480,213 L 600,213" fill="none" stroke="#1f6b4a" stroke-width="2"/>
-        </svg>
-        <figcaption>Diagrama de temporização — sinais de clock (ck), pedido de leitura (R), endereço e dados</figcaption>
-      </figure>
-      <ol class="sub" type="i">
-        <li>Em quanto tempo o processador realizará a leitura de dados?</li>
-        <li>A comunicação estabelecida se classifica como síncrona ou assíncrona? Justificar a resposta.</li>
-      </ol>
-      <span class="fonte">Fonte: AP2 — 2022.2, questão 10.</span>
-    </li>
+<li class="exercicio">
+<p>Sejam os sinais elétricos apresentados na figura abaixo, trafegando em um barramento entre processador e memória. Admitindo um clock de 2,5 MHz:</p>
+<figure class="circuito">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 260" font-family="Segoe UI, Arial, sans-serif">
+<rect x="0" y="0" width="640" height="260" fill="white"/>
+<text x="124" y="35" font-size="15" font-weight="600" fill="#3a1f42" text-anchor="end">ck</text>
+<line x1="140" y1="48" x2="600" y2="48" stroke="#ccc" stroke-width="1"/>
+<text x="124" y="90" font-size="15" font-weight="600" fill="#3a1f42" text-anchor="end">R</text>
+<line x1="140" y1="103" x2="600" y2="103" stroke="#ccc" stroke-width="1"/>
+<text x="124" y="145" font-size="15" font-weight="600" fill="#3a1f42" text-anchor="end">endereço</text>
+<line x1="140" y1="158" x2="600" y2="158" stroke="#ccc" stroke-width="1"/>
+<text x="124" y="200" font-size="15" font-weight="600" fill="#3a1f42" text-anchor="end">dados</text>
+<line x1="140" y1="213" x2="600" y2="213" stroke="#ccc" stroke-width="1"/>
+<path d="M 140,48 L 140,16 L 160.0,16 L 160.0,48 L 180,48 L 180,16 L 200.0,16 L 200.0,48 L 220,48 L 220,16 L 240.0,16 L 240.0,48 L 260,48 L 260,16 L 280.0,16 L 280.0,48 L 300,48 L 300,16 L 320.0,16 L 320.0,48 L 340,48 L 340,16 L 360.0,16 L 360.0,48 L 380,48 L 380,16 L 400.0,16 L 400.0,48 L 420,48 L 420,16 L 440.0,16 L 440.0,48 L 460,48 L 460,16 L 480.0,16 L 480.0,48 L 500,48 L 500,16 L 520.0,16 L 520.0,48 L 540,48 L 540,16 L 560.0,16 L 560.0,48 L 580,48" fill="none" stroke="#1f6b4a" stroke-width="2"/>
+<path d="M 140,103 L 180,103 L 180,71 L 260,71 L 260,103 L 600,103" fill="none" stroke="#1f6b4a" stroke-width="2"/>
+<path d="M 140,158 L 240,158 L 250,126 L 330,126 L 340,158 L 600,158" fill="none" stroke="#1f6b4a" stroke-width="2"/>
+<path d="M 140,213 L 380,213 L 390,181 L 470,181 L 480,213 L 600,213" fill="none" stroke="#1f6b4a" stroke-width="2"/>
+</svg>
+<figcaption>Diagrama de temporização — sinais de clock (ck), pedido de leitura (R), endereço e dados</figcaption>
+</figure>
+<ol class="sub" type="i">
+<li>Em quanto tempo o processador realizará a leitura de dados?</li>
+<li>A comunicação estabelecida se classifica como síncrona ou assíncrona? Justificar a resposta.</li>
+</ol>
+<span class="fonte">Fonte: AP2 — 2022.2, questão 10.</span>
+</li>
 
-    <li class="exercicio">
-      <p>Quanto à funcionalidade, como os barramentos podem ser classificados?</p>
-      <span class="fonte">Fonte: AS — 2023.2, questão 12d.</span>
-    </li>
+<li class="exercicio">
+<p>Quanto à funcionalidade, como os barramentos podem ser classificados?</p>
+<span class="fonte">Fonte: AS — 2023.2, questão 12d.</span>
+</li>
 
-    <li class="exercicio">
-      <p>Seja uma memória endereçável por um barramento de 16 bits, com palavra de 1 byte. Qual é a capacidade
-      de armazenamento da memória em kbits? Se o tempo de resposta da memória é de 5 milissegundos, qual será a
-      taxa ou vazão em um barramento de 8 bits?</p>
-      <span class="fonte">Fonte: AS — 2023.2, questão 4.</span>
-    </li>
+<li class="exercicio">
+<p>Seja uma memória endereçável por um barramento de 16 bits, com palavra de 1 byte. Qual é a capacidade de armazenamento da memória em kbits? Se o tempo de resposta da memória é de 5 milissegundos, qual será a taxa ou vazão em um barramento de 8 bits?</p>
+<span class="fonte">Fonte: AS — 2023.2, questão 4.</span>
+</li>
 
-  </ol>
+</ol>
 </section>
 
 <!-- ===================== CAPÍTULO 6 ===================== -->
-<section class="chapter" id="cap6">
-  <h2 class="chapter">6. Processadores</h2>
-  <p class="chapter-note">Unidades funcionais e desempenho.</p>
+<section class="section" id="cap6">
+<p class="section-title">07 / Capítulo 6 — Processadores</p>
+<p class="section-lead">Unidades funcionais e desempenho.</p>
 
-  <ol class="exercicios">
+<ol class="exercicios">
 
-    <li class="exercicio">
-      <p>Cite duas estratégias de aumento de performance dos processadores.</p>
-      <span class="fonte">Fonte: AS — 2023.2, questão 12e.</span>
-    </li>
+<li class="exercicio">
+<p>Cite duas estratégias de aumento de performance dos processadores.</p>
+<span class="fonte">Fonte: AS — 2023.2, questão 12e.</span>
+</li>
 
-    <li class="exercicio">
-      <p>O processador possui tipicamente duas unidades funcionais. Quais são elas e qual é o papel de cada
-      uma?</p>
-      <span class="fonte">Fonte: AS — 2023.2, questão 2 (item I).</span>
-    </li>
+<li class="exercicio">
+<p>O processador possui tipicamente duas unidades funcionais. Quais são elas e qual é o papel de cada uma?</p>
+<span class="fonte">Fonte: AS — 2023.2, questão 2 (item I).</span>
+</li>
 
-    <li class="exercicio">
-      <p>A unidade de controle de um sistema computacional é alimentada por um sinal de clock de 8 GHz. O
-      sistema executa 5 instruções sem acesso à memória em um ciclo de clock. Avaliar as afirmações: (I) o
-      período de clock é de 0,125 nanossegundos; (II) o sistema executa as instruções a uma taxa de 40G
-      instruções/seg; (III) um programa que contém 1000 instruções sem acesso à memória será executado em 25
-      nanossegundos. Assinalar a alternativa correta quanto à veracidade de I, II e III.</p>
-      <span class="fonte">Fonte: AS — 2023.2, questão 10.</span>
-    </li>
+<li class="exercicio">
+<p>A unidade de controle de um sistema computacional é alimentada por um sinal de clock de 8 GHz. O sistema executa 5 instruções sem acesso à memória em um ciclo de clock. Avaliar as afirmações: (I) o período de clock é de 0,125 nanossegundos; (II) o sistema executa as instruções a uma taxa de 40G instruções/seg; (III) um programa que contém 1000 instruções sem acesso à memória será executado em 25 nanossegundos. Assinalar a alternativa correta quanto à veracidade de I, II e III.</p>
+<span class="fonte">Fonte: AS — 2023.2, questão 10.</span>
+</li>
 
-  </ol>
+</ol>
 </section>
 
 <!-- ===================== CAPÍTULO 7 ===================== -->
-<section class="chapter" id="cap7">
-  <h2 class="chapter">7. Sistemas Operacionais</h2>
-  <p class="chapter-note">Tipos de instrução e elementos típicos.</p>
+<section class="section" id="cap7">
+<p class="section-title">08 / Capítulo 7 — Sistemas Operacionais</p>
+<p class="section-lead">Tipos de instrução e elementos típicos.</p>
 
-  <ol class="exercicios">
+<ol class="exercicios">
 
-    <li class="exercicio">
-      <p>Os sistemas operacionais utilizam instruções de dois tipos. (i) Quais são esses tipos? (ii) Apresentar
-      dois elementos típicos dos sistemas operacionais, explicando a respectiva função.</p>
-      <span class="fonte">Fonte: AP2 — 2022.2, questão 11.</span>
-    </li>
+<li class="exercicio">
+<p>Os sistemas operacionais utilizam instruções de dois tipos. (i) Quais são esses tipos? (ii) Apresentar dois elementos típicos dos sistemas operacionais, explicando a respectiva função.</p>
+<span class="fonte">Fonte: AP2 — 2022.2, questão 11.</span>
+</li>
 
-  </ol>
+</ol>
 </section>
 
 <!-- ===================== CAPÍTULO 8 ===================== -->
-<section class="chapter" id="cap8">
-  <h2 class="chapter">8. Microcontroladores — Atmel ATmega2560</h2>
-  <p class="chapter-note">Programação em linguagem de montagem (assembly) para o microcontrolador AVR
-  ATmega2560.</p>
+<section class="section" id="cap8">
+<p class="section-title">09 / Capítulo 8 — Microcontroladores — Atmel ATmega2560</p>
+<p class="section-lead">Programação em linguagem de montagem (assembly) para o microcontrolador AVR ATmega2560.</p>
 
-  <ol class="exercicios">
+<ol class="exercicios">
 
-    <li class="exercicio">
-      <p>Elaborar um código em linguagem de montagem para o assembler do Atmega2560 que armazene os números
-      pares de 2 a 10 (inclusive) nos endereços de memória a partir de 0x200.</p>
-      <span class="fonte">Fonte: AP2 — 2024.1 (turma 2A), 5ª parte, questão 1.</span>
-    </li>
+<li class="exercicio">
+<p>Elaborar um código em linguagem de montagem para o assembler do Atmega2560 que armazene os números pares de 2 a 10 (inclusive) nos endereços de memória a partir de 0x200.</p>
+<span class="fonte">Fonte: AP2 — 2024.1 (turma 2A), 5ª parte, questão 1.</span>
+</li>
 
-    <li class="exercicio">
-      <p>Elaborar um código em linguagem de montagem para o assembler do Atmega2560 que: (i) armazene dois
-      números em memória, nos endereços 0x200 e 0x201 (definidos arbitrariamente); (ii) armazene a soma dos
-      números no endereço 0x202 se forem iguais, ou a diferença no endereço 0x203 se forem diferentes.</p>
-      <span class="fonte">Fonte: AP2 — 2024.1 (turma 2A), 5ª parte, questão 2.</span>
-    </li>
+<li class="exercicio">
+<p>Elaborar um código em linguagem de montagem para o assembler do Atmega2560 que: (i) armazene dois números em memória, nos endereços 0x200 e 0x201 (definidos arbitrariamente); (ii) armazene a soma dos números no endereço 0x202 se forem iguais, ou a diferença no endereço 0x203 se forem diferentes.</p>
+<span class="fonte">Fonte: AP2 — 2024.1 (turma 2A), 5ª parte, questão 2.</span>
+</li>
 
-    <li class="exercicio">
-      <p>Elaborar um código em linguagem de montagem para o assembler do Atmega2560 que implemente um loop para
-      somar os números armazenados entre os endereços 0x200 e 0x2FF, armazenando o resultado no endereço
-      0x300.</p>
-      <span class="fonte">Fonte: AP2 — 2024.1 (turma 2A), 5ª parte, questão 3.</span>
-    </li>
+<li class="exercicio">
+<p>Elaborar um código em linguagem de montagem para o assembler do Atmega2560 que implemente um loop para somar os números armazenados entre os endereços 0x200 e 0x2FF, armazenando o resultado no endereço 0x300.</p>
+<span class="fonte">Fonte: AP2 — 2024.1 (turma 2A), 5ª parte, questão 3.</span>
+</li>
 
-    <li class="exercicio">
-      <p>Elaborar um código em linguagem de montagem para o assembler do Atmega2560 que armazene os números de
-      1 a 5 (inclusive) nos endereços de memória a partir de 0x20F.</p>
-      <span class="fonte">Fonte: AS — 2024.1, 5ª parte, questão 1.</span>
-    </li>
+<li class="exercicio">
+<p>Elaborar um código em linguagem de montagem para o assembler do Atmega2560 que armazene os números de 1 a 5 (inclusive) nos endereços de memória a partir de 0x20F.</p>
+<span class="fonte">Fonte: AS — 2024.1, 5ª parte, questão 1.</span>
+</li>
 
-  </ol>
+</ol>
 
-  <details class="tabela-completa">
-    <summary>Instruções do ATmega2560 e sintaxe do assembler (referência)</summary>
-    <table class="ref">
-      <thead><tr><th class="mono">Instrução</th><th>Sintaxe / operação</th></tr></thead>
-      <tbody>
-        <tr><td class="mono">LDI</td><td>Carrega operando no registrador. <code>LDI Rd,K</code>, 16≤d≤31, 0≤K≤255; Rd ← K</td></tr>
-        <tr><td class="mono">INC</td><td>Incrementa registrador. <code>INC Rd</code>, 0≤d≤31; Rd ← Rd + 1</td></tr>
-        <tr><td class="mono">ADD</td><td>Soma dois registradores (similar ao SUB). <code>ADD Rd,Rr</code>; Rd ← Rd + Rr</td></tr>
-        <tr><td class="mono">STS</td><td>Armazena registrador diretamente em memória. <code>STS k,Rr</code>, 0≤k≤65535; DS(k) ← Rr</td></tr>
-        <tr><td class="mono">LDS</td><td>Carrega dado da memória diretamente no registrador. <code>LDS Rd,k</code>; Rd ← DS(k)</td></tr>
-        <tr><td class="mono">EOR</td><td>Ou-exclusivo entre registradores. <code>EOR Rd,Rr</code>; Rd ← Rd ⊕ Rr</td></tr>
-        <tr><td class="mono">JMP</td><td>Desvio incondicional. <code>JMP k</code>, 0≤k&lt;4M; PC ← k</td></tr>
-        <tr><td class="mono">CP</td><td>Compara dois registradores. <code>CP Rd,Rr</code>: Rd − Rr; se 0x00, seta o bit 1 do registrador de status</td></tr>
-        <tr><td class="mono">BREQ</td><td>Desvia se iguais. <code>BREQ k</code>, −64≤k≤+63</td></tr>
-        <tr><td class="mono">BRNE</td><td>Desvia se diferentes. <code>BRNE k</code>, −64≤k≤+63</td></tr>
-        <tr><td class="mono">ST</td><td>Armazena indiretamente em memória. <code>ST X,Rr</code>; grava Rr no endereço X (r27,r26)</td></tr>
-        <tr><td class="mono">LD</td><td>Carrega indiretamente registrador. <code>LD Rr,Y</code>; carrega de Y (r29,r28) em Rr</td></tr>
-        <tr><td class="mono">DEC</td><td>Decrementa registrador. <code>DEC Rr</code>; Rr ← Rr − 1</td></tr>
-        <tr><td class="mono">BRLO</td><td>Desvia se menor. <code>BRLO k</code>, −64≤k≤+63</td></tr>
-        <tr><td class="mono">BRMI</td><td>Desvia se negativo. <code>BRMI k</code>, −64≤k≤+63</td></tr>
-      </tbody>
-    </table>
-    <p style="font-size:0.85rem;color:var(--muted);margin-top:10px;">Diretivas do assembler: comentários com
-    <code>;</code>; <code>.def</code> define um nome simbólico para um registrador (ex.: <code>.def flag=r16</code>);
-    <code>.set</code> atribui um valor a um rótulo, usável em expressões posteriores (ex.:
-    <code>.set cont=1</code>); constantes inteiras podem ser fornecidas em decimal (padrão) ou hexadecimal
-    (ex.: <code>0xff</code>).</p>
-  </details>
+<details class="tabela-completa">
+<summary>Instruções do ATmega2560 e sintaxe do assembler (referência)</summary>
+<div class="table-wrap">
+<table>
+<thead><tr><th class="mono">Instrução</th><th>Sintaxe / operação</th></tr></thead>
+<tbody>
+<tr><td class="mono">LDI</td><td>Carrega operando no registrador. <code>LDI Rd,K</code>, 16≤d≤31, 0≤K≤255; Rd ← K</td></tr>
+<tr><td class="mono">INC</td><td>Incrementa registrador. <code>INC Rd</code>, 0≤d≤31; Rd ← Rd + 1</td></tr>
+<tr><td class="mono">ADD</td><td>Soma dois registradores (similar ao SUB). <code>ADD Rd,Rr</code>; Rd ← Rd + Rr</td></tr>
+<tr><td class="mono">STS</td><td>Armazena registrador diretamente em memória. <code>STS k,Rr</code>, 0≤k≤65535; DS(k) ← Rr</td></tr>
+<tr><td class="mono">LDS</td><td>Carrega dado da memória diretamente no registrador. <code>LDS Rd,k</code>; Rd ← DS(k)</td></tr>
+<tr><td class="mono">EOR</td><td>Ou-exclusivo entre registradores. <code>EOR Rd,Rr</code>; Rd ← Rd ⊕ Rr</td></tr>
+<tr><td class="mono">JMP</td><td>Desvio incondicional. <code>JMP k</code>, 0≤k&lt;4M; PC ← k</td></tr>
+<tr><td class="mono">CP</td><td>Compara dois registradores. <code>CP Rd,Rr</code>: Rd − Rr; se 0x00, seta o bit 1 do registrador de status</td></tr>
+<tr><td class="mono">BREQ</td><td>Desvia se iguais. <code>BREQ k</code>, −64≤k≤+63</td></tr>
+<tr><td class="mono">BRNE</td><td>Desvia se diferentes. <code>BRNE k</code>, −64≤k≤+63</td></tr>
+<tr><td class="mono">ST</td><td>Armazena indiretamente em memória. <code>ST X,Rr</code>; grava Rr no endereço X (r27,r26)</td></tr>
+<tr><td class="mono">LD</td><td>Carrega indiretamente registrador. <code>LD Rr,Y</code>; carrega de Y (r29,r28) em Rr</td></tr>
+<tr><td class="mono">DEC</td><td>Decrementa registrador. <code>DEC Rr</code>; Rr ← Rr − 1</td></tr>
+<tr><td class="mono">BRLO</td><td>Desvia se menor. <code>BRLO k</code>, −64≤k≤+63</td></tr>
+<tr><td class="mono">BRMI</td><td>Desvia se negativo. <code>BRMI k</code>, −64≤k≤+63</td></tr>
+</tbody>
+</table>
+</div>
+<p style="font-size:.8rem;color:var(--muted);margin-top:.8rem;">Diretivas do assembler: comentários com <code>;</code>; <code>.def</code> define um nome simbólico para um registrador (ex.: <code>.def flag=r16</code>); <code>.set</code> atribui um valor a um rótulo, usável em expressões posteriores (ex.: <code>.set cont=1</code>); constantes inteiras podem ser fornecidas em decimal (padrão) ou hexadecimal (ex.: <code>0xff</code>).</p>
+</details>
 </section>
 
 <!-- ===================== ANEXO ===================== -->
-<section class="chapter" id="anexo">
-  <h2 class="chapter">Anexo — Representação Numérica e Aritmética Binária</h2>
-  <p class="chapter-note">Bases numéricas, complemento, ponto flutuante e características fundamentais da
-  máquina de von Neumann.</p>
+<section class="section" id="anexo">
+<p class="section-title">10 / Anexo — Representação Numérica e Aritmética Binária</p>
+<p class="section-lead">Bases numéricas, complemento, ponto flutuante e características fundamentais da máquina de von Neumann.</p>
 
-  <ol class="exercicios">
+<ol class="exercicios">
 
-    <li class="exercicio">
-      <p>A máquina de von Neumann possui elementos com funções bem definidas — processador, memória e
-      dispositivos de entrada/saída. Responder: (i) quais são os dois elementos internos ao processador? (ii)
-      o que é um bit? (iii) uma palavra de memória de 4 bytes corresponde a quantos bits? (iv) o que representa
-      a frequência de clock de um processador? (v) o que é o tempo de resposta de uma memória?</p>
-      <span class="fonte">Fonte: Arquitetura Form 1 (questionário).</span>
-    </li>
+<li class="exercicio">
+<p>A máquina de von Neumann possui elementos com funções bem definidas — processador, memória e dispositivos de entrada/saída. Responder: (i) quais são os dois elementos internos ao processador? (ii) o que é um bit? (iii) uma palavra de memória de 4 bytes corresponde a quantos bits? (iv) o que representa a frequência de clock de um processador? (v) o que é o tempo de resposta de uma memória?</p>
+<span class="fonte">Fonte: Arquitetura Form 1 (questionário).</span>
+</li>
 
-    <li class="exercicio">
-      <p>Seja um barramento de dados que transmite 1000 bits em 2 microssegundos. Qual é a taxa de transmissão
-      (bit-rate) desse barramento? Se o clock que rege essa transmissão tem período de 1 nanossegundo, quantos
-      bits são transmitidos por ciclo?</p>
-      <span class="fonte">Fonte: Arquitetura Form 1 (questionário).</span>
-    </li>
+<li class="exercicio">
+<p>Seja um barramento de dados que transmite 1000 bits em 2 microssegundos. Qual é a taxa de transmissão (bit-rate) desse barramento? Se o clock que rege essa transmissão tem período de 1 nanossegundo, quantos bits são transmitidos por ciclo?</p>
+<span class="fonte">Fonte: Arquitetura Form 1 (questionário).</span>
+</li>
 
-    <li class="exercicio">
-      <p>Quantas linhas de endereço são necessárias para endereçar uma memória de N bytes? E para endereçar uma
-      memória organizada em palavras de N bits? Converter o número decimal indicado em cada caso para binário e
-      determinar a quantidade de linhas necessárias.</p>
-      <span class="fonte">Fonte: Arquitetura Form 1 (questionário).</span>
-    </li>
+<li class="exercicio">
+<p>Quantas linhas de endereço são necessárias para endereçar uma memória de N bytes? E para endereçar uma memória organizada em palavras de N bits? Converter o número decimal indicado em cada caso para binário e determinar a quantidade de linhas necessárias.</p>
+<span class="fonte">Fonte: Arquitetura Form 1 (questionário).</span>
+</li>
 
-    <li class="exercicio">
-      <p>Converter o binário 100111 para a base 10. Converter o número 0x24A para a base 10.</p>
-      <span class="fonte">Fonte: AS — 2024.1, 6ª parte, questão 1a–b.</span>
-    </li>
+<li class="exercicio">
+<p>Converter o binário 100111 para a base 10. Converter o número 0x24A para a base 10.</p>
+<span class="fonte">Fonte: AS — 2024.1, 6ª parte, questão 1a–b.</span>
+</li>
 
-    <li class="exercicio">
-      <p>Apresentar as parcelas da operação binária 1010011 + 11101.</p>
-      <span class="fonte">Fonte: AS — 2024.1, 6ª parte, questão 1c.</span>
-    </li>
+<li class="exercicio">
+<p>Apresentar as parcelas da operação binária 1010011 + 11101.</p>
+<span class="fonte">Fonte: AS — 2024.1, 6ª parte, questão 1c.</span>
+</li>
 
-    <li class="exercicio">
-      <p>Seja uma máquina cuja palavra é de 8 bits, com representação em binário puro. Dado o número A = 11001,
-      qual seria o valor do número B que resultaria em overflow em uma operação de adição A + B?</p>
-      <span class="fonte">Fonte: AS — 2024.1, 6ª parte, questão 1d.</span>
-    </li>
+<li class="exercicio">
+<p>Seja uma máquina cuja palavra é de 8 bits, com representação em binário puro. Dado o número A = 11001, qual seria o valor do número B que resultaria em overflow em uma operação de adição A + B?</p>
+<span class="fonte">Fonte: AS — 2024.1, 6ª parte, questão 1d.</span>
+</li>
 
-    <li class="exercicio">
-      <p>Uma máquina com barramento de endereços de 11 bits pode endereçar no máximo quantas posições de
-      memória?</p>
-      <span class="fonte">Fonte: AS — 2024.1, 6ª parte, questão 1e.</span>
-    </li>
+<li class="exercicio">
+<p>Uma máquina com barramento de endereços de 11 bits pode endereçar no máximo quantas posições de memória?</p>
+<span class="fonte">Fonte: AS — 2024.1, 6ª parte, questão 1e.</span>
+</li>
 
-    <li class="exercicio">
-      <p>Seja uma arquitetura que utiliza 7 bits para representar dados numéricos. Qual seria a faixa de
-      representação (em hexadecimal) para números inteiros em excesso 64?</p>
-      <span class="fonte">Fonte: AP1 — 2022.2, questão 3a.</span>
-    </li>
+<li class="exercicio">
+<p>Seja uma arquitetura que utiliza 7 bits para representar dados numéricos. Qual seria a faixa de representação (em hexadecimal) para números inteiros em excesso 64?</p>
+<span class="fonte">Fonte: AP1 — 2022.2, questão 3a.</span>
+</li>
 
-    <li class="exercicio">
-      <p>Seja uma arquitetura que utiliza 12 bits para representar dados numéricos. Dada a grandeza numérica,
-      em hexadecimal, 0x37A, na representação em complemento de 2, qual seria o correspondente valor no sistema
-      decimal? Qual seria o seu simétrico, em hexadecimal?</p>
-      <span class="fonte">Fonte: AP1 — 2022.2, questão 3b.</span>
-    </li>
+<li class="exercicio">
+<p>Seja uma arquitetura que utiliza 12 bits para representar dados numéricos. Dada a grandeza numérica, em hexadecimal, 0x37A, na representação em complemento de 2, qual seria o correspondente valor no sistema decimal? Qual seria o seu simétrico, em hexadecimal?</p>
+<span class="fonte">Fonte: AP1 — 2022.2, questão 3b.</span>
+</li>
 
-    <li class="exercicio">
-      <p>Seja uma arquitetura que utiliza 9 bits para representar dados numéricos, usando 4 bits para o
-      expoente de ponto flutuante. Admitindo bit de sinal para a mantissa e excesso para o expoente, qual seria
-      a faixa de representação numérica do sistema?</p>
-      <span class="fonte">Fonte: AP1 — 2022.2, questão 3c.</span>
-    </li>
+<li class="exercicio">
+<p>Seja uma arquitetura que utiliza 9 bits para representar dados numéricos, usando 4 bits para o expoente de ponto flutuante. Admitindo bit de sinal para a mantissa e excesso para o expoente, qual seria a faixa de representação numérica do sistema?</p>
+<span class="fonte">Fonte: AP1 — 2022.2, questão 3c.</span>
+</li>
 
-    <li class="exercicio">
-      <p>Seja uma máquina que utiliza 12 bits para representação de dados numéricos. Qual será o resultado, em
-      binário e hexadecimal, da operação 374 − 277, em complemento de 2? Apresentar a operação passo a passo,
-      de acordo com a notação usada.</p>
-      <span class="fonte">Fonte: AP1 — 2022.2, questão 3d.</span>
-    </li>
+<li class="exercicio">
+<p>Seja uma máquina que utiliza 12 bits para representação de dados numéricos. Qual será o resultado, em binário e hexadecimal, da operação 374 − 277, em complemento de 2? Apresentar a operação passo a passo, de acordo com a notação usada.</p>
+<span class="fonte">Fonte: AP1 — 2022.2, questão 3d.</span>
+</li>
 
-    <li class="exercicio">
-      <p>Seja uma arquitetura que utiliza 11 bits para representar dados numéricos. (i) Qual é o valor do
-      número decimal 456d, em binário, na representação em binário puro? (ii) Qual será a faixa de números
-      inteiros, negativos e positivos, em hexadecimal, caso seja utilizada representação em sinal e magnitude?
-      (iii) Qual será a representação em hexadecimal da grandeza numérica decimal −727d se o sistema utilizar
-      notação em complemento de 1?</p>
-      <span class="fonte">Fonte: AS — 2022.2, questão 7.</span>
-    </li>
+<li class="exercicio">
+<p>Seja uma arquitetura que utiliza 11 bits para representar dados numéricos. (i) Qual é o valor do número decimal 456d, em binário, na representação em binário puro? (ii) Qual será a faixa de números inteiros, negativos e positivos, em hexadecimal, caso seja utilizada representação em sinal e magnitude? (iii) Qual será a representação em hexadecimal da grandeza numérica decimal −727d se o sistema utilizar notação em complemento de 1?</p>
+<span class="fonte">Fonte: AS — 2022.2, questão 7.</span>
+</li>
 
-    <li class="exercicio">
-      <p>Seja uma arquitetura que utiliza palavras de 8 bits. Admitindo que o processador realize a operação de
-      adição dos números A = 0111 0011 e B = 0110 1000, apresentar o processo de soma, bit a bit, e o resultado
-      em hexadecimal.</p>
-      <span class="fonte">Fonte: AS — 2022.2, questão 8.</span>
-    </li>
+<li class="exercicio">
+<p>Seja uma arquitetura que utiliza palavras de 8 bits. Admitindo que o processador realize a operação de adição dos números A = 0111 0011 e B = 0110 1000, apresentar o processo de soma, bit a bit, e o resultado em hexadecimal.</p>
+<span class="fonte">Fonte: AS — 2022.2, questão 8.</span>
+</li>
 
-    <li class="exercicio">
-      <p>Realizar as operações indicadas a seguir, apresentando o memorial descritivo de cada operação:</p>
-      <ol class="sub" type="a">
-        <li>10100000 − 101011 = </li>
-        <li>0xA3F + 0xFA = </li>
-        <li>110111 + 101 = </li>
-      </ol>
-      <span class="fonte">Fonte: AS — 2023.2, questão 5.</span>
-    </li>
+<li class="exercicio">
+<p>Realizar as operações indicadas a seguir, apresentando o memorial descritivo de cada operação:</p>
+<ol class="sub" type="a">
+<li>10100000 − 101011 = </li>
+<li>0xA3F + 0xFA = </li>
+<li>110111 + 101 = </li>
+</ol>
+<span class="fonte">Fonte: AS — 2023.2, questão 5.</span>
+</li>
 
-  </ol>
+</ol>
 </section>
 
-<footer class="page">
-  <p>Documento gerado a partir das avaliações (AP1, AP2, AS) aplicadas na disciplina de Arquitetura de
-  Computadores entre 2022.2 e 2024.1. Nomes e matrículas de alunos não constam neste material.</p>
-  <p><a class="backtop" href="#">↑ Voltar ao topo</a></p>
+</div>
+
+<!-- FOOTER -->
+<footer>
+<div class="container">
+<p>© 2026 · Prof. Clayton J A Silva · Ibmec RJ · Documento gerado a partir das avaliações (AP1, AP2, AS) de 2022.2–2024.1. Nomes e matrículas de alunos não constam neste material.</p>
+<p><a href="https://claytonjasilva.github.io/arq.html">← voltar para a disciplina</a></p>
+</div>
 </footer>
 
-</div>
 </body>
 </html>
