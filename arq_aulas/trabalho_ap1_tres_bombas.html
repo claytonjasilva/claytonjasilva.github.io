@@ -1,0 +1,271 @@
+<!DOCTYPE html><html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Trabalho AP1 — Sistema programável de três bombas</title><link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&amp;family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300&amp;display=swap" rel="stylesheet"/><style>
+
+:root {
+  --bg:#0a0e17; --surface:#111827; --surface2:#161f2e; --border:#1e2d40;
+  --accent:#00c2ff; --accent2:#7c3aed; --text:#e2e8f0; --muted:#64748b;
+  --tag-bg:#0f172a; --body-text:#cbd5e1; --font-mono:'IBM Plex Mono', monospace; --font-sans:'IBM Plex Sans', sans-serif;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{background:var(--bg);color:var(--text);font-family:var(--font-sans);font-size:16px;line-height:1.65;}
+a{color:var(--accent);text-decoration:none;} a:hover{text-decoration:underline;}
+.container{max-width:1000px;margin:0 auto;padding:0 2rem;}
+
+nav{position:sticky;top:0;z-index:100;background:rgba(10,14,23,.9);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);padding:.9rem 0;}
+nav .container{display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap;}
+.nav-brand{font-family:var(--font-mono);font-size:.78rem;color:var(--accent);}
+.nav-links{display:flex;gap:1rem;list-style:none;flex-wrap:wrap;}
+.nav-links a{font-family:var(--font-mono);font-size:.7rem;color:var(--muted);}
+.nav-links a:hover{color:var(--text);text-decoration:none;}
+
+.hero{padding:4rem 0 2.5rem;position:relative;overflow:hidden;}
+.hero::before{content:'';position:absolute;inset:0;background-image:linear-gradient(var(--border) 1px,transparent 1px),linear-gradient(90deg,var(--border) 1px,transparent 1px);background-size:40px 40px;opacity:.3;mask-image:radial-gradient(ellipse 80% 60% at 50% 0%,black 40%,transparent 100%);}
+.hero-eyebrow{font-family:var(--font-mono);font-size:.74rem;color:var(--accent);letter-spacing:.14em;text-transform:uppercase;margin-bottom:1rem;display:flex;align-items:center;gap:.7rem;}
+.hero-eyebrow::before{content:'';width:2rem;height:1px;background:var(--accent);}
+h1{font-size:clamp(2rem,4.5vw,3.2rem);font-weight:300;line-height:1.12;letter-spacing:-.02em;margin-bottom:.6rem;}
+h1 strong{font-weight:600;color:var(--accent);}
+.hero-sub{font-size:.88rem;color:var(--muted);font-family:var(--font-mono);margin-bottom:1.5rem;}
+
+.hero-tags{display:flex;flex-wrap:wrap;gap:.5rem;}
+.tag{font-family:var(--font-mono);font-size:.72rem;color:var(--accent2);background:rgba(124,58,237,.1);border:1px solid rgba(124,58,237,.25);border-radius:4px;padding:.25rem .6rem;}
+
+.section{padding:3rem 0;border-top:1px solid var(--border);}
+.section-title{font-family:var(--font-mono);font-size:.84rem;font-weight:600;color:var(--accent);letter-spacing:.16em;text-transform:uppercase;display:flex;align-items:center;gap:.75rem;margin-bottom:1.4rem;}
+.section-title::after{content:'';flex:1;height:1px;background:var(--border);}
+.section-lead{color:var(--text);font-size:.98rem;font-weight:500;margin:0 0 1.4rem;max-width:820px;}
+h2{font-size:1.25rem;font-weight:600;margin-bottom:1rem;}
+h3{font-size:1rem;font-weight:600;margin:1.75rem 0 .9rem;color:var(--text);}
+h3:first-child{margin-top:0;}
+h3.subsec{font-family:var(--font-mono);font-size:.78rem;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);font-weight:600;margin:2rem 0 1rem;}
+p{margin-bottom:1rem;color:var(--body-text);}
+p:last-child{margin-bottom:0;}
+strong{color:var(--text);font-weight:600;} em{color:var(--accent);font-style:normal;}
+
+/* ── SUMÁRIO / TOC ── */
+.content-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:1px;background:var(--border);border:1px solid var(--border);border-radius:8px;overflow:hidden;}
+.content-card{background:var(--surface);padding:1.25rem 1.5rem;display:flex;gap:1rem;align-items:flex-start;transition:background .2s;}
+.content-card:hover{background:var(--surface2);}
+.content-num{font-family:var(--font-mono);font-size:.7rem;color:var(--accent);background:rgba(0,194,255,.08);border:1px solid rgba(0,194,255,.2);border-radius:3px;padding:.2rem .5rem;white-space:nowrap;flex-shrink:0;margin-top:.1rem;}
+.content-num.anexo{color:var(--accent2);background:rgba(124,58,237,.08);border-color:rgba(124,58,237,.2);}
+.content-card a{font-size:.875rem;color:var(--text);font-weight:500;line-height:1.4;}
+.content-card a:hover{color:var(--accent);text-decoration:none;}
+
+/* ── EXERCÍCIOS ── */
+ol.trabalhos{list-style:none;counter-reset:exi;margin:0 0 1rem;padding:0;display:flex;flex-direction:column;gap:.9rem;}
+li.trabalho{counter-increment:exi;position:relative;background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:1.3rem 1.5rem 1.3rem 3.6rem;}
+li.trabalho::before{content:counter(exi);position:absolute;left:1.1rem;top:1.3rem;width:1.7rem;height:1.7rem;border-radius:4px;background:rgba(0,194,255,.08);border:1px solid rgba(0,194,255,.25);color:var(--accent);font-family:var(--font-mono);font-weight:600;font-size:.78rem;display:flex;align-items:center;justify-content:center;}
+li.trabalho h3{font-size:.98rem;margin:0 0 .6rem;color:var(--text);}
+li.trabalho ol.sub,li.trabalho ul.sub{margin:.4rem 0 .8rem;padding-left:1.4rem;color:var(--body-text);}
+li.trabalho ol.sub li,li.trabalho ul.sub li{margin-bottom:.4rem;}
+.fonte{display:block;margin-top:.7rem;font-family:var(--font-mono);font-size:.72rem;color:var(--muted);}
+.expr{font-family:"Cambria Math",Cambria,"Times New Roman",serif;font-style:italic;color:var(--text);}
+.overline{text-decoration:overline;}
+
+/* ── CÓDIGO ── */
+.codeblock,pre.codeblock{background:var(--tag-bg);border:1px solid var(--border);border-radius:6px;padding:.9rem 1.1rem;font-family:var(--font-mono);font-size:.78rem;color:#a8d8ef;margin:.7rem 0 1rem;overflow-x:auto;white-space:pre;line-height:1.6;}
+code,.mono{font-family:var(--font-mono);background:var(--tag-bg);padding:1px 6px;border-radius:4px;font-size:.85em;color:#a8d8ef;}
+
+/* ── CIRCUITOS ── */
+figure.circuito{margin:1rem 0;background:#ffffff;border:1px solid var(--border);border-radius:8px;padding:.9rem;overflow-x:auto;}
+figure.circuito svg{display:block;margin:0 auto;max-width:100%;height:auto;}
+figure.circuito figcaption{text-align:center;font-family:var(--font-mono);font-size:.72rem;color:var(--muted);margin-top:.6rem;}
+
+/* ── TABELAS ── */
+.table-wrap{overflow-x:auto;border:1px solid var(--border);border-radius:8px;margin:.7rem 0 1rem;}
+table{width:100%;border-collapse:collapse;font-size:.85rem;}
+thead tr{background:var(--tag-bg);border-bottom:1px solid var(--border);}
+thead th{padding:.6rem .9rem;text-align:left;font-family:var(--font-mono);font-size:.68rem;color:var(--accent);letter-spacing:.08em;text-transform:uppercase;font-weight:600;}
+tbody tr{border-bottom:1px solid var(--border);transition:background .15s;}
+tbody tr:last-child{border-bottom:none;}
+tbody tr:hover{background:rgba(255,255,255,.02);}
+tbody td{padding:.6rem .9rem;color:var(--body-text);}
+tbody td.mono,thead th.mono{font-family:var(--font-mono);color:var(--accent);white-space:nowrap;}
+
+details.tabela-completa{margin:.7rem 0 1rem;border:1px solid var(--border);border-radius:8px;padding:.8rem 1.1rem;background:var(--tag-bg);}
+details.tabela-completa summary{cursor:pointer;font-family:var(--font-mono);font-size:.8rem;color:var(--accent);font-weight:600;}
+details.tabela-completa .table-wrap{margin-top:.8rem;}
+
+.nota-correcao{background:rgba(124,58,237,.08);border-left:3px solid var(--accent2);border-radius:0 6px 6px 0;padding:.8rem 1.1rem;font-size:.82rem;color:var(--body-text);margin:.7rem 0;}
+.nota-correcao code{color:var(--accent2);}
+
+.note{background:var(--tag-bg);border:1px solid var(--border);border-radius:6px;padding:.9rem 1.1rem;margin:1rem 0;font-size:.85rem;color:var(--muted);}
+.note strong{color:var(--accent);}
+
+footer{border-top:1px solid var(--border);padding:2rem 0;margin-top:2rem;}
+footer .container{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;}
+footer p{font-size:.8rem;color:var(--muted);font-family:var(--font-mono);}
+
+@media (max-width:640px){
+  .hero{padding:2.5rem 0 2rem;}
+  .nav-links{display:none;}
+  li.trabalho{padding-left:3.2rem;}
+}
+
+
+/* Ajustes para os enunciados dos trabalhos. */
+.hero .container{position:relative;}
+.section,li.trabalho{scroll-margin-top:6rem;}
+.titulo-item{font-size:1.05rem;font-weight:600;color:var(--text);margin:0 0 .8rem;}
+.meta-item,.data-item{display:block;margin-top:.7rem;font-family:var(--font-mono);font-size:.72rem;color:var(--muted);}
+.enunciado ul,.enunciado ol.sub{margin:.4rem 0 .8rem;padding-left:1.4rem;color:var(--body-text);}
+.enunciado li{margin-bottom:.4rem;}
+.enunciado th{padding:.6rem .9rem;text-align:left;font-family:var(--font-mono);font-size:.68rem;color:var(--accent);letter-spacing:.08em;text-transform:uppercase;background:var(--tag-bg);}
+.enunciado td{padding:.6rem .9rem;color:var(--body-text);}
+.enunciado tr{border-bottom:1px solid var(--border);}
+.enunciado tr:last-child{border-bottom:0;}
+a:focus-visible{outline:2px solid var(--accent);outline-offset:4px;}
+@media(max-width:640px){
+  .container{padding:0 1rem;}
+  li.trabalho{padding:1.2rem 1rem 1.2rem 3.2rem;overflow-wrap:anywhere;}
+  .content-grid{grid-template-columns:1fr;}
+}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto;}}
+main ul,main ol{padding-left:1.4rem;margin:.7rem 0 1.2rem;color:var(--body-text)} main li{margin-bottom:.4rem} h4{font-size:.95rem;margin:1.4rem 0 .7rem;color:var(--text)} .section-title{letter-spacing:.08em} .section{scroll-margin-top:5rem} .hero .container{position:relative} td code{white-space:nowrap} @media print{nav,.hero::before{display:none} :root{--bg:#fff;--surface:#fff;--tag-bg:#f1f5f9;--text:#111827;--body-text:#334155;--muted:#475569;--accent:#075985;--border:#cbd5e1} body{font-size:10pt} .hero{padding:1rem 0}.section{padding:1.2rem 0}tr{break-inside:avoid}h2,h3,h4{break-after:avoid}.table-wrap{overflow:visible}pre{white-space:pre-wrap!important}footer{margin-top:1rem}}</style></head><body><nav aria-label="Navegação do documento"><div class="container"><span class="nav-brand">arq · trabalho AP1</span><ul class="nav-links"><li><a href="#descricao">projeto</a></li><li><a href="#funcionalidades">requisitos</a></li><li><a href="#testes">testes</a></li><li><a href="#avaliacao">avaliação</a></li></ul></div></nav><header class="hero"><div class="container"><p class="hero-eyebrow">Arquitetura de Computadores · Documento de Requisitos Técnicos</p><h1>Sistema programável<br><strong>de três bombas</strong></h1><p class="hero-sub">Trabalho AP1 · Arduino Mega 2560 · Prof. Clayton J A Silva</p><div class="hero-tags"><span class="tag">3 entradas analógicas</span><span class="tag">Assembly pelo monitor serial</span><span class="tag">128 posições de memória</span><span class="tag">ISA definida pelo grupo</span></div></div></header><main class="container"><section class="section"><h2 class="section-title">Sumário</h2><div class="content-grid"><div class="content-card"><a href="#descricao">01 / Descrição geral do projeto</a></div>
+<div class="content-card"><a href="#funcionalidades">02 / Funcionalidades do produto</a></div>
+<div class="content-card"><a href="#eletrico">03 / Descrição detalhada do esquema elétrico</a></div>
+<div class="content-card"><a href="#testes">04 / Setup de testes</a></div>
+<div class="content-card"><a href="#sketch">05 / Regras de elaboração do sketch</a></div>
+<div class="content-card"><a href="#avaliacao">06 / Regras de avaliação</a></div>
+<div class="content-card"><a href="#repositorio">07 / Repositório</a></div>
+<div class="content-card"><a href="#entregaveis">08 / Entregáveis</a></div></div></section><section class="section" id="descricao">
+<h2 class="section-title">01 / Descrição geral do projeto</h2>
+<h3>1.1 Escopo</h3>
+<p>Desenvolver, em grupo, um sistema embarcado baseado no <strong>Arduino Mega 2560</strong> para monitorar três reservatórios e controlar suas respectivas bombas. Três potenciômetros deverão simular, de forma independente, os níveis de água. As bombas serão representadas por LEDs.</p>
+<p>O usuário deverá construir um programa em linguagem assembly pelo monitor serial. O montador deverá validar e converter cada instrução em uma palavra binária, armazenando-a em uma memória simulada de <strong>128 posições</strong>. O executor deverá buscar, decodificar e executar essas palavras binárias.</p>
+<div class="note"><strong>Definição obrigatória pelo grupo:</strong> o grupo deverá arbitrar todos os códigos binários das instruções, a largura fixa da palavra, os campos de opcode e operandos e as regras de codificação. Este documento define o comportamento das instruções, mas não fornece seus opcodes.</div>
+<p>O foco é a aplicação dos conceitos de Arquitetura de Computadores. O sketch e a documentação deverão identificar entrada/saída, Unidade de Controle (UC), Unidade Lógica e Aritmética (ULA), memória e registradores simulados.</p>
+<h3>1.2 Não escopo</h3>
+<ul><li>Acionamento de bombas reais, motores ou cargas de potência.</li><li>Teclado matricial, sensor ultrassônico, comunicação em rede ou eletrônica avançada.</li><li>Reprodução fiel da ISA de um processador comercial.</li></ul>
+<h3>1.3 Objetivos</h3>
+<ul><li>Aplicar programa armazenado e ciclo de busca, decodificação e execução.</li><li>Projetar uma ISA e relacionar assembly, código binário e endereçamento hexadecimal.</li><li>Implementar aquisição analógica, comparação, desvios e controle de saídas.</li><li>Inspecionar memória e registradores para explicar a execução do programa.</li><li>Organizar o sketch em funções claras e documentadas.</li></ul>
+</section>
+<section class="section" id="funcionalidades">
+<h2 class="section-title">02 / Funcionalidades do produto</h2>
+<h3>2.1 Elementos arquiteturais obrigatórios</h3>
+<div class="table-wrap"><table><thead><tr><th>Elemento</th><th>Requisito</th></tr></thead><tbody>
+<tr><td><code>MEM_PROG</code></td><td>128 palavras de largura fixa W, uma instrução completa por posição. Endereços de <code>0x00</code> a <code>0x7F</code>. O grupo define W e o tipo ou estrutura de armazenamento.</td></tr>
+<tr><td><code>PC</code></td><td>Contador que determina o endereço da próxima instrução.</td></tr>
+<tr><td><code>IR</code></td><td>Registrador que recebe a palavra binária completa buscada em memória.</td></tr>
+<tr><td><code>ACC</code></td><td>Acumulador que recebe o percentual lido por READ ou INFO e o resultado da diferença calculada por CMP.</td></tr>
+<tr><td><code>NIVEL</code> e validade</td><td>Três registradores de nível, associados às bombas 1, 2 e 3, e indicação de que cada leitura já foi realizada.</td></tr>
+<tr><td><code>FLAG_L</code>, <code>FLAG_Z</code>, <code>FLAG_G</code></td><td>Indicadores de menor, igual e maior, atualizados por CMP, e indicação de que existe uma comparação válida.</td></tr>
+<tr><td>Controle</td><td>Ponteiro de carga, quantidade de posições ocupadas, modo de operação e estado de execução.</td></tr>
+<tr><td>Saídas</td><td>Estados independentes das três bombas, dos três alarmes preventivos e dos três alarmes corretivos.</td></tr>
+</tbody></table></div>
+<p>Os elementos deverão ter uso efetivo, nomes identificáveis e comentários sobre seu papel arquitetural. A UC implementa a busca, decodificação, execução e atualização do PC. A ULA realiza a diferença e a comparação. A arquitetura simulada deverá ser distinguida da arquitetura física do ATmega2560.</p>
+<h3>2.2 Modelo de operação do sistema</h3>
+<h4>2.2.1 Entrada e montagem — LOAD</h4>
+<p>O comando <code>LOAD</code> inicia um novo programa: interrompe a execução, desliga bombas e alarmes, apaga o display, limpa a memória e os estados internos e posiciona o ponteiro de carga em <code>0x00</code>. Todas as posições são zeradas, mas permanecem marcadas como não carregadas.</p>
+<p>O usuário envia uma instrução assembly por linha, confirmada por Enter. O montador valida o mnemônico e os operandos, gera a palavra binária e a grava na próxima posição livre. A confirmação deverá mostrar <strong>endereço hexadecimal e palavra binária completa</strong>. A carga avança uma posição somente após uma instrução válida. Nenhuma instrução será executada durante a carga.</p>
+<p><code>END</code> finaliza a carga. O montador deverá verificar se os destinos dos desvios correspondem a posições carregadas; referências futuras são permitidas durante a digitação. Pendências impedem RUN ou AUTO e devem ser informadas. Para corrigir o programa, o usuário pode iniciar nova carga com LOAD.</p>
+<h4>2.2.2 Execução passo a passo e automática</h4>
+<p><code>RUN</code> inicia uma sessão passo a passo em <code>0x00</code>. A execução de uma instrução ocorre somente ao receber <code>STEP</code> ou <code>*</code>. <code>AUTO</code> inicia execução contínua em <code>0x00</code>. Ambos preservam o programa e reinicializam registradores, validade das leituras e comparações e saídas, com bombas e alarmes desligados e display apagado.</p>
+<ol><li>Buscar a palavra em <code>MEM_PROG[PC]</code>.</li><li>Carregar a palavra completa em IR.</li><li>Extrair opcode e operandos por operações sobre os bits.</li><li>Executar a ação e atualizar os estados.</li><li>Avançar PC em uma posição ou carregar o destino do desvio.</li></ol>
+<p><strong>É proibido executar o programa reinterpretando strings assembly.</strong> A conversão para binário acontece na montagem; durante a execução, o controle deve depender exclusivamente das palavras armazenadas. Textos podem ser mantidos para consulta, sem determinar a ação executada.</p>
+<h4>2.2.3 Parada e estados internos</h4>
+<p><code>HALT</code> encerra normalmente a execução e mantém as saídas. <code>STOP</code> cancela a execução ou uma espera e desliga bombas e alarmes. Após parada, novos passos são ignorados até RUN ou AUTO. Erros de execução também interrompem o programa, desligam bombas e alarmes e geram diagnóstico no monitor serial.</p>
+<p>Depois de cada instrução, mostrar: endereço executado, palavra de IR em binário, mnemônico decodificado, ACC em decimal com sinal, indicadores, níveis e estados das saídas. Mostrar o próximo PC em hexadecimal quando houver continuidade; em parada, informar o estado, sem apresentar um endereço fictício.</p>
+<h4>2.2.4 Comandos do ambiente</h4>
+<div class="table-wrap"><table><thead><tr><th>Comando</th><th>Função</th></tr></thead><tbody>
+<tr><td><code>LOAD</code></td><td>Iniciar nova carga e reinicializar o sistema.</td></tr><tr><td><code>END</code></td><td>Finalizar a carga e validar destinos de desvios.</td></tr>
+<tr><td><code>RUN</code></td><td>Iniciar execução passo a passo em <code>0x00</code>.</td></tr><tr><td><code>STEP</code> ou <code>*</code></td><td>Executar uma instrução na sessão passo a passo.</td></tr>
+<tr><td><code>AUTO</code></td><td>Iniciar execução contínua em <code>0x00</code>.</td></tr><tr><td><code>STOP</code></td><td>Interromper a execução e desligar bombas e alarmes.</td></tr>
+<tr><td><code>MEM</code></td><td>Consultar todas as 128 posições de memória.</td></tr><tr><td><code>MEM 0x00 0x0F</code></td><td>Consultar um intervalo inclusivo de endereços.</td></tr>
+<tr><td><code>STATUS</code></td><td>Consultar modo, PC, registradores, indicadores e saídas.</td></tr>
+</tbody></table></div>
+<p>Comandos do ambiente não são instruções da ISA e não ocupam a memória de programa. MEM e STATUS deverão estar disponíveis durante carga, parada e execução; não podem alterar PC, memória ou saídas. Durante AUTO, a consulta poderá pausar a execução entre instruções e retomá-la ao final. STEP adicional durante WAIT deverá ser rejeitado, sem enfileiramento. STOP deve continuar sendo atendido durante WAIT e programas com laços.</p>
+<h3>2.3 Conjunto de instruções</h3>
+<p><code>x</code> identifica a bomba (1, 2 ou 3); <code>n</code> é um percentual inteiro decimal entre 0 e 100; <code>a</code> é um endereço hexadecimal com prefixo <code>0x</code>; <code>t</code> é uma quantidade inteira decimal de unidades de 100 ms, com limite definido pelo grupo.</p>
+<div class="table-wrap"><table><thead><tr><th>Mnemônico</th><th>Descrição funcional</th></tr></thead><tbody>
+<tr><td><code>READ x</code></td><td>Ler a entrada analógica do reservatório x, converter em percentual inteiro e armazenar em NIVEL[x] e ACC. Marcar a leitura como válida.</td></tr>
+<tr><td><code>ON x</code></td><td>Ligar o LED que representa a bomba x.</td></tr><tr><td><code>OFF x</code></td><td>Desligar o LED que representa a bomba x.</td></tr>
+<tr><td><code>ALARM x</code></td><td>Ativar o estado de manutenção corretiva da bomba x e o buzzer. Informar a identificação da bomba no monitor serial.</td></tr>
+<tr><td><code>LED x</code></td><td>Ativar o LED de manutenção preventiva da bomba x.</td></tr>
+<tr><td><code>INFO x</code></td><td>Realizar nova leitura, atualizar NIVEL[x] e ACC, marcar leitura válida e mostrar a faixa no display. Informar bomba, percentual e dígito no monitor serial.</td></tr>
+<tr><td><code>SILENCE x</code></td><td>Desativar o estado de manutenção corretiva da bomba x. O buzzer só desliga quando não houver nenhum alarme corretivo ativo.</td></tr>
+<tr><td><code>LEDOFF x</code></td><td>Desativar o LED de manutenção preventiva da bomba x.</td></tr>
+<tr><td><code>CMP x, n</code></td><td>Comparar o último nível válido da bomba x com n, sem nova leitura. Armazenar NIVEL[x] − n em ACC e atualizar FLAG_L, FLAG_Z e FLAG_G, exatamente um verdadeiro.</td></tr>
+<tr><td><code>JMP a</code></td><td>Desviar incondicionalmente para a.</td></tr><tr><td><code>JL a</code></td><td>Desviar se FLAG_L for verdadeiro.</td></tr><tr><td><code>JE a</code></td><td>Desviar se FLAG_Z for verdadeiro.</td></tr><tr><td><code>JG a</code></td><td>Desviar se FLAG_G for verdadeiro.</td></tr>
+<tr><td><code>WAIT t</code></td><td>Aguardar t unidades de 100 ms antes de permitir a próxima instrução, mantendo atendimento ao monitor serial.</td></tr><tr><td><code>HALT</code></td><td>Encerrar a execução e manter o estado das saídas.</td></tr>
+</tbody></table></div>
+<p>Somente CMP altera os indicadores de comparação. READ e INFO atualizam os níveis, mas não os indicadores. CMP sem leitura válida e desvio condicional sem comparação válida são erros. Se a condição de desvio for falsa, a execução segue para a posição seguinte. Alarmes são independentes do comando da bomba: ALARM e LED não a desligam automaticamente.</p>
+<h4>2.3.1 Codificação binária arbitrada pelo grupo</h4>
+<ul><li>Definir um opcode exclusivo para cada instrução e justificar a quantidade de bits.</li><li>Definir a largura fixa W e a disposição dos campos de cada formato, incluindo operandos de CMP.</li><li>Prever endereços de <code>0x00</code> a <code>0x7F</code>, identificação das três bombas e percentual de 0 a 100.</li><li>Definir o preenchimento de campos não utilizados e a detecção de combinações inválidas.</li><li>Apresentar tabela de mnemônicos, opcodes binários, formatos e exemplos completos. Não basta codificar o opcode: os operandos também devem estar na palavra armazenada.</li><li>Calcular a capacidade lógica da memória em bits (128 × W) e explicar o espaço efetivamente ocupado pela implementação.</li></ul>
+<h3>2.4 Código e descrição de cada funcionalidade</h3>
+<div class="table-wrap"><table><thead><tr><th>Código</th><th>Funcionalidade e requisito</th><th>Relação arquitetural</th></tr></thead><tbody>
+<tr><td>F01</td><td>Receber uma linha assembly pelo monitor serial e validar a sintaxe.</td><td>Entrada / linguagem de montagem</td></tr>
+<tr><td>F02</td><td>Montar opcode e operandos conforme a codificação definida pelo grupo.</td><td>Montador / ISA</td></tr>
+<tr><td>F03</td><td>Gravar uma palavra por posição e controlar ocupação e carga.</td><td>Memória de programa</td></tr>
+<tr><td>F04</td><td>Buscar palavras binárias, carregar IR, decodificar e atualizar PC.</td><td>UC / ciclo de instrução</td></tr>
+<tr><td>F05</td><td>Ler três entradas analógicas e converter em percentuais.</td><td>Entrada de dados / registradores</td></tr>
+<tr><td>F06</td><td>Comparar níveis e implementar desvios condicionais.</td><td>ULA / fluxo de controle</td></tr>
+<tr><td>F07</td><td>Controlar independentemente as bombas simuladas.</td><td>Saída digital</td></tr>
+<tr><td>F08</td><td>Gerenciar alarmes preventivos e corretivos por bomba.</td><td>Saída / estados</td></tr>
+<tr><td>F09</td><td>Exibir a faixa atual no display compartilhado.</td><td>Codificação / saída</td></tr>
+<tr><td>F10</td><td>Consultar memória na tabela END | PALAVRA BINÁRIA.</td><td>Endereçamento / inspeção</td></tr>
+<tr><td>F11</td><td>Executar WAIT, HALT, STOP e tratar falhas.</td><td>Temporização / controle</td></tr>
+</tbody></table></div>
+<h3>2.5 Representação dos níveis e tratamento de erros</h3>
+<p>Converter a leitura analógica para percentual inteiro entre 0 e 100, documentando a fórmula e o arredondamento. O display deverá seguir a convenção abaixo.</p>
+<div class="table-wrap"><table><thead><tr><th>Percentual inteiro</th><th>Dígito</th></tr></thead><tbody><tr><td>0 a 10%</td><td>1</td></tr><tr><td>11 a 20%</td><td>2</td></tr><tr><td>21 a 30%</td><td>3</td></tr><tr><td>31 a 40%</td><td>4</td></tr><tr><td>41 a 50%</td><td>5</td></tr><tr><td>51 a 60%</td><td>6</td></tr><tr><td>61 a 70%</td><td>7</td></tr><tr><td>71 a 90%</td><td>8</td></tr><tr><td>91 a 100%</td><td>9</td></tr></tbody></table></div>
+<p>A faixa do dígito 8 é deliberadamente mais ampla para manter o dígito 1 para até 10% e o dígito 9 para acima de 90%. O display mantém a última indicação até outra instrução INFO ou reinicialização.</p>
+<p>ACC deverá representar diferenças entre −100 e +100. O grupo deverá documentar sua largura e a representação em complemento de 2. Uma diferença negativa de CMP é um resultado válido, exibido no monitor serial, e não um erro do display. INFO exibe uma faixa de nível, não o conteúdo negativo de ACC.</p>
+<p>Rejeitar mnemônico desconhecido, bomba inexistente, operandos fora da faixa, endereço sem notação hexadecimal, excesso de operandos e memória cheia. A linha rejeitada não altera a memória nem avança a carga. Na execução, validar a palavra e impedir acesso a posições não carregadas. Ao chegar à última posição sem HALT ou desvio válido, interromper com erro, sem retornar automaticamente a <code>0x00</code>.</p>
+<h3>2.6 Consulta de memória e notação dos endereços</h3>
+<div class="note"><strong>Regra geral:</strong> toda indicação da posição de uma instrução deverá usar hexadecimal com prefixo <code>0x</code> e dois dígitos, de <code>0x00</code> a <code>0x7F</code>. A regra vale para entrada de destinos, PC, ponteiro de carga, tabelas, exemplos, documentação e mensagens de erro. Quantidades de posições, bombas, percentuais e tempos podem ser decimais.</div>
+<p>O comando <code>MEM</code> deverá apresentar as 128 posições em ordem crescente. A forma <code>MEM 0x00 0x0F</code> limita a consulta ao intervalo inclusivo. Intervalos invertidos ou fora da memória devem ser rejeitados.</p>
+<pre class="codeblock">END    | PALAVRA BINÁRIA
+0x00   | &lt;W bits armazenados nesta posição&gt;
+0x01   | &lt;W bits armazenados nesta posição&gt;
+0x02   | &lt;W bits armazenados nesta posição&gt;
+...</pre>
+<p>O quadro é apenas um modelo de apresentação: <strong>na implementação, a segunda coluna deverá conter exclusivamente os W dígitos 0 ou 1 efetivamente armazenados, com zeros à esquerda</strong>. Não deverá apresentar mnemônicos nem códigos gerados novamente a partir de texto. Como o grupo arbitra a codificação, não são fornecidas palavras binárias de exemplo.</p>
+<p>Posições não carregadas deverão aparecer com W zeros. A quantidade de posições ocupadas e o intervalo carregado devem ser informados fora da tabela. O controle de ocupação deverá ser separado do conteúdo: uma palavra zerada não determina, por si só, se a posição é executável.</p>
+</section>
+<section class="section" id="eletrico">
+<h2 class="section-title">03 / Descrição detalhada do esquema elétrico</h2>
+<h3>3.1 Relação de componentes</h3>
+<ul><li>Arduino Mega 2560 e cabo USB para o monitor serial.</li><li>Três potenciômetros lineares de 10 kΩ.</li><li>Três LEDs de funcionamento e três LEDs de manutenção preventiva.</li><li>Um buzzer ativo ou módulo de buzzer compatível com a placa.</li><li>Um display de sete segmentos de um dígito.</li><li>Resistores limitadores por LED e por segmento, protoboard e jumpers.</li></ul>
+<h3>3.2 Conexões</h3>
+<p>Ligar os extremos de cada potenciômetro a 5 V e GND e seu cursor à entrada analógica correspondente. Usar terra comum e resistor em série em cada LED e segmento. Documentar a polaridade do display, os resistores adotados e o circuito de acionamento do buzzer, respeitando as características dos componentes e os limites elétricos da placa. O display deverá ser comandado pelas saídas digitais.</p>
+<h3>3.3 Pinagem de referência</h3>
+<div class="table-wrap"><table><thead><tr><th>Pino</th><th>Elemento</th></tr></thead><tbody><tr><td>A0, A1, A2</td><td>Potenciômetros dos reservatórios 1, 2 e 3, respectivamente</td></tr><tr><td>22 a 28</td><td>Segmentos a, b, c, d, e, f e g, respectivamente</td></tr><tr><td>30, 31, 32</td><td>LEDs das bombas 1, 2 e 3</td></tr><tr><td>33, 34, 35</td><td>LEDs preventivos das bombas 1, 2 e 3</td></tr><tr><td>45</td><td>Sinal de controle do buzzer</td></tr></tbody></table></div>
+<p>A pinagem deverá ser seguida e identificada no esquema. Os números desta tabela identificam pinos físicos, não endereços de instruções.</p>
+</section>
+<section class="section" id="testes">
+<h2 class="section-title">04 / Setup de testes</h2>
+<p>Para cada teste, registrar entrada, resultado esperado, resultado obtido e evidência. Utilizar as palavras binárias definidas pelo grupo.</p>
+<h3>4.1 Montagem e programa armazenado</h3><p>Carregar READ 1, ON 1, OFF 1 e HALT, uma por linha. Demonstrar que a carga não aciona as saídas e que as instruções ocupam <code>0x00</code>, <code>0x01</code>, <code>0x02</code> e <code>0x03</code>. Consultar MEM e explicar cada campo de uma palavra.</p>
+<h3>4.2 Ciclo de instrução</h3><p>Executar o programa anterior passo a passo. Apresentar endereço executado, IR binário e próximo PC, identificando no código a busca e a decodificação por bits.</p>
+<h3>4.3 Leitura independente</h3><p>Ajustar os três potenciômetros para níveis distintos e executar READ para cada bomba. Verificar registradores e ACC, incluindo os extremos de 0% e 100%.</p>
+<h3>4.4 Comparação e desvios</h3><p>Testar nível menor, igual e maior que o limite. Demonstrar CMP, os três indicadores e os desvios correspondentes. Explicar o resultado negativo de uma comparação, por exemplo 20 − 30 = −10, e sua representação em complemento de 2.</p>
+<h3>4.5 Bombas e alarmes</h3><p>Acionar e desligar cada bomba e LED preventivo. Ativar ALARM 1 e ALARM 2; executar SILENCE 1 e comprovar que o buzzer permanece ativo; executar SILENCE 2 e comprovar seu desligamento.</p>
+<h3>4.6 Display</h3><p>Executar INFO para as três bombas, verificando identificação no monitor serial e dígito no display. Testar todos os limites da tabela, incluindo 10/11%, 70/71% e 90/91%. Podem ser usados dados de teste controlados para verificar os limites, além da demonstração física com potenciômetros.</p>
+<h3>4.7 Memória e endereçamento</h3><p>Exibir MEM completo e por intervalo. Carregar todas as 128 posições, até <code>0x7F</code>, e demonstrar a rejeição de uma instrução adicional. Verificar que a consulta não modifica o programa, o PC ou as saídas.</p>
+<h3>4.8 Tratamento de erros</h3><p>Testar instrução desconhecida, bomba inválida, endereço decimal, intervalo inválido, comparação sem leitura e desvio condicional sem comparação. Demonstrar também a detecção de opcode inválido e de execução em posição não carregada; para a corrupção da palavra, poderá ser utilizada uma versão de teste documentada.</p>
+<h3>4.9 Controle automático</h3><p>Escrever um programa assembly que leia periodicamente os níveis das três bombas, ligue cada uma abaixo de 30%, desligue acima de 80% e preserve seu estado de 30% a 80%, inclusive. As decisões deverão estar no programa armazenado, usando CMP e desvios. Verificar subida e descida do nível, WAIT e atendimento a STOP durante o laço.</p>
+<h3>4.10 HALT e avaliação conceitual</h3><p>Demonstrar HALT em programa finito e comprovar que passos posteriores não executam instruções até novo RUN ou AUTO. Cada integrante deverá localizar memória, PC, IR, ACC, UC, ULA e montador, explicando o percurso assembly → palavra binária → memória → busca → decodificação → execução.</p>
+</section>
+<section class="section" id="sketch">
+<h2 class="section-title">05 / Regras de elaboração do sketch</h2>
+<h3>5.1 Clareza e organização</h3><p>Usar funções, indentação consistente, nomes significativos e comentários sobre os elementos arquiteturais. Separar interface serial, montagem, memória, decodificação, execução, aquisição analógica e acionamento das saídas.</p>
+<h3>5.2 Estrutura mínima</h3><p>Implementar funções para receber linha, validar operandos, codificar instrução, gravar palavra, consultar memória, buscar/decodificar/executar, comparar níveis, exibir faixa, controlar alarmes e tratar erros. A temporização de WAIT deverá manter o atendimento aos comandos do monitor serial.</p>
+<h3>5.3 Implementações não aceitas</h3><ul><li>Código integralmente concentrado no loop, sem organização funcional.</li><li>Elementos arquiteturais apenas nominais, sem uso efetivo.</li><li>Execução imediata durante a carga ou execução baseada em strings.</li><li>Consulta de memória que reconstrua palavras a partir do texto em vez de ler a memória.</li><li>Controle automático fixo no sketch, substituindo as decisões do programa assembly.</li></ul>
+<h3>5.4 Identificação do grupo</h3><p>Incluir no início do sketch comentário com matrícula, nome e participação de cada integrante: TA — trabalhou ativamente; TP — trabalhou parcialmente; NT — não trabalhou.</p>
+</section>
+<section class="section" id="avaliacao">
+<h2 class="section-title">06 / Regras de avaliação</h2>
+<h3>6.1 Peso e organização</h3><p>O trabalho corresponde a <strong>30% da nota da AP1</strong>. O desenvolvimento deverá ser realizado pelos grupos definidos em sala, com indicação de um representante. Não serão aceitas entregas individuais ou fora do grupo definido.</p>
+<h3>6.2 Representante e presença</h3><p>O representante deverá organizar o repositório, submeter os artefatos e conduzir a apresentação com participação dos demais integrantes. A presença de todos é obrigatória. A ausência implica redução de 40% da nota individual e não poderá ser compensada por envio posterior de material.</p>
+<h3>6.3 Condições de entrega</h3><p>Publicar documentação em Markdown e sketch no GitHub indicado pelo professor, com histórico de commits, antes do início da apresentação. O protótipo deverá estar montado e funcional. Não será permitido subir arquivos após o início da apresentação, alterar o código durante a avaliação ou apresentar protótipo sem documentação correspondente.</p>
+<h3>6.4 Sequência da apresentação</h3><ol><li>Apresentar o projeto e sua relação com a disciplina.</li><li>Explicar a ISA arbitrada, seus formatos e a memória.</li><li>Identificar PC, IR, ACC, UC e ULA no sketch.</li><li>Demonstrar carga, consulta MEM, execução e funcionalidades.</li><li>Executar os testes solicitados e encerrar um programa por HALT.</li></ol>
+<p>Para cada funcionalidade, explicar sua função, localizar a implementação, executá-la e comparar o resultado esperado ao obtido.</p>
+<h3>6.5 Critérios</h3><div class="table-wrap"><table><thead><tr><th>Conceito</th><th>Nota</th><th>Critério</th></tr></thead><tbody><tr><td>Excelente</td><td>10,0</td><td>Todas as funcionalidades implementadas e atendidas.</td></tr><tr><td>Ótimo</td><td>9,0</td><td>Pequenas falhas em funcionalidades.</td></tr><tr><td>Bom</td><td>7,0</td><td>Muitas funcionalidades não atendidas.</td></tr><tr><td>Insuficiente</td><td>0,0</td><td>Projeto não apresentado ou sem funcionamento mínimo.</td></tr></tbody></table></div>
+<h3>6.6 Penalizações específicas</h3><div class="table-wrap"><table><thead><tr><th>Situação</th><th>Consequência</th></tr></thead><tbody><tr><td>Ausência de integrante</td><td>−40% da nota individual.</td></tr><tr><td>Participação TP</td><td>−40% da nota individual.</td></tr><tr><td>Participação NT</td><td>Nota individual 0,0 no trabalho.</td></tr><tr><td>Repositório incompleto</td><td>Poderá invalidar a avaliação.</td></tr><tr><td>Ausência de HALT, memória binária efetiva ou ciclo de busca/decodificação</td><td>Falha conceitual grave.</td></tr><tr><td>Ausência de definição documentada dos códigos binários, consulta MEM ou notação hexadecimal dos endereços</td><td>Requisito obrigatório não atendido.</td></tr><tr><td>Ausência de tratamento de erros e limites</td><td>Redução de nota.</td></tr><tr><td>Pinagem em desacordo</td><td>Poderá inviabilizar a avaliação.</td></tr></tbody></table></div>
+<h3>6.7 Data</h3><p>A data de apresentação será definida pelo professor em sala.</p>
+</section>
+<section class="section" id="repositorio"><h2 class="section-title">07 / Repositório</h2><p>Os artefatos deverão ser publicados em repositório na conta <a href="https://github.com/claytonjasilva">github.com/claytonjasilva</a>. O nome será definido pelo professor ou pelo representante em comum acordo com o professor.</p></section>
+<section class="section" id="entregaveis"><h2 class="section-title">08 / Entregáveis</h2><ol><li>Documentação em Markdown com arquitetura, requisitos e descrição da solução.</li><li>Tabela da ISA com os códigos binários arbitrados pelo grupo, largura W, formatos, campos e exemplos de montagem.</li><li>Sketch comentado e identificação dos integrantes.</li><li>Esquema elétrico, componentes e pinagem.</li><li>Programas de teste em assembly, com posições em hexadecimal, e respectivas tabelas END | PALAVRA BINÁRIA.</li><li>Relatório de testes e rastreamento do ciclo de instrução.</li><li>Protótipo funcional em protoboard.</li><li>Repositório GitHub com histórico de commits.</li></ol></section>
+</main><footer><div class="container"><p>Arquitetura de Computadores · Trabalho AP1 · Sistema programável de monitoramento e controle de três bombas.</p></div></footer></body></html>
