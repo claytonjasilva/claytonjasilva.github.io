@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Trabalhos Propostos — Arquitetura de Computadores</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&amp;family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300&amp;display=swap" rel="stylesheet"/>
+<style>
+
+:root {
+  --bg:#0a0e17; --surface:#111827; --surface2:#161f2e; --border:#1e2d40;
+  --accent:#00c2ff; --accent2:#7c3aed; --text:#e2e8f0; --muted:#64748b;
+  --tag-bg:#0f172a; --body-text:#cbd5e1; --font-mono:'IBM Plex Mono', monospace; --font-sans:'IBM Plex Sans', sans-serif;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{background:var(--bg);color:var(--text);font-family:var(--font-sans);font-size:16px;line-height:1.65;}
+a{color:var(--accent);text-decoration:none;} a:hover{text-decoration:underline;}
+.container{max-width:1000px;margin:0 auto;padding:0 2rem;}
+
+nav{position:sticky;top:0;z-index:100;background:rgba(10,14,23,.9);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);padding:.9rem 0;}
+nav .container{display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap;}
+.nav-brand{font-family:var(--font-mono);font-size:.78rem;color:var(--accent);}
+.nav-links{display:flex;gap:1rem;list-style:none;flex-wrap:wrap;}
+.nav-links a{font-family:var(--font-mono);font-size:.7rem;color:var(--muted);}
+.nav-links a:hover{color:var(--text);text-decoration:none;}
+
+.hero{padding:4rem 0 2.5rem;position:relative;overflow:hidden;}
+.hero::before{content:'';position:absolute;inset:0;background-image:linear-gradient(var(--border) 1px,transparent 1px),linear-gradient(90deg,var(--border) 1px,transparent 1px);background-size:40px 40px;opacity:.3;mask-image:radial-gradient(ellipse 80% 60% at 50% 0%,black 40%,transparent 100%);}
+.hero-eyebrow{font-family:var(--font-mono);font-size:.74rem;color:var(--accent);letter-spacing:.14em;text-transform:uppercase;margin-bottom:1rem;display:flex;align-items:center;gap:.7rem;}
+.hero-eyebrow::before{content:'';width:2rem;height:1px;background:var(--accent);}
+h1{font-size:clamp(2rem,4.5vw,3.2rem);font-weight:300;line-height:1.12;letter-spacing:-.02em;margin-bottom:.6rem;}
+h1 strong{font-weight:600;color:var(--accent);}
+.hero-sub{font-size:.88rem;color:var(--muted);font-family:var(--font-mono);margin-bottom:1.5rem;}
+
+.hero-tags{display:flex;flex-wrap:wrap;gap:.5rem;}
+.tag{font-family:var(--font-mono);font-size:.72rem;color:var(--accent2);background:rgba(124,58,237,.1);border:1px solid rgba(124,58,237,.25);border-radius:4px;padding:.25rem .6rem;}
+
+.section{padding:3rem 0;border-top:1px solid var(--border);}
+.section-title{font-family:var(--font-mono);font-size:.84rem;font-weight:600;color:var(--accent);letter-spacing:.16em;text-transform:uppercase;display:flex;align-items:center;gap:.75rem;margin-bottom:1.4rem;}
+.section-title::after{content:'';flex:1;height:1px;background:var(--border);}
+.section-lead{color:var(--text);font-size:.98rem;font-weight:500;margin:0 0 1.4rem;max-width:820px;}
+h2{font-size:1.25rem;font-weight:600;margin-bottom:1rem;}
+h3{font-size:1rem;font-weight:600;margin:1.75rem 0 .9rem;color:var(--text);}
+h3:first-child{margin-top:0;}
+h3.subsec{font-family:var(--font-mono);font-size:.78rem;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);font-weight:600;margin:2rem 0 1rem;}
+p{margin-bottom:1rem;color:var(--body-text);}
+p:last-child{margin-bottom:0;}
+strong{color:var(--text);font-weight:600;} em{color:var(--accent);font-style:normal;}
+
+/* ── SUMÁRIO / TOC ── */
+.content-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:1px;background:var(--border);border:1px solid var(--border);border-radius:8px;overflow:hidden;}
+.content-card{background:var(--surface);padding:1.25rem 1.5rem;display:flex;gap:1rem;align-items:flex-start;transition:background .2s;}
+.content-card:hover{background:var(--surface2);}
+.content-num{font-family:var(--font-mono);font-size:.7rem;color:var(--accent);background:rgba(0,194,255,.08);border:1px solid rgba(0,194,255,.2);border-radius:3px;padding:.2rem .5rem;white-space:nowrap;flex-shrink:0;margin-top:.1rem;}
+.content-num.anexo{color:var(--accent2);background:rgba(124,58,237,.08);border-color:rgba(124,58,237,.2);}
+.content-card a{font-size:.875rem;color:var(--text);font-weight:500;line-height:1.4;}
+.content-card a:hover{color:var(--accent);text-decoration:none;}
+
+/* ── EXERCÍCIOS ── */
+ol.trabalhos{list-style:none;counter-reset:exi;margin:0 0 1rem;padding:0;display:flex;flex-direction:column;gap:.9rem;}
+li.trabalho{counter-increment:exi;position:relative;background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:1.3rem 1.5rem 1.3rem 3.6rem;}
+li.trabalho::before{content:counter(exi);position:absolute;left:1.1rem;top:1.3rem;width:1.7rem;height:1.7rem;border-radius:4px;background:rgba(0,194,255,.08);border:1px solid rgba(0,194,255,.25);color:var(--accent);font-family:var(--font-mono);font-weight:600;font-size:.78rem;display:flex;align-items:center;justify-content:center;}
+li.trabalho h3{font-size:.98rem;margin:0 0 .6rem;color:var(--text);}
+li.trabalho ol.sub,li.trabalho ul.sub{margin:.4rem 0 .8rem;padding-left:1.4rem;color:var(--body-text);}
+li.trabalho ol.sub li,li.trabalho ul.sub li{margin-bottom:.4rem;}
+.fonte{display:block;margin-top:.7rem;font-family:var(--font-mono);font-size:.72rem;color:var(--muted);}
+.expr{font-family:"Cambria Math",Cambria,"Times New Roman",serif;font-style:italic;color:var(--text);}
+.overline{text-decoration:overline;}
+
+/* ── CÓDIGO ── */
+.codeblock,pre.codeblock{background:var(--tag-bg);border:1px solid var(--border);border-radius:6px;padding:.9rem 1.1rem;font-family:var(--font-mono);font-size:.78rem;color:#a8d8ef;margin:.7rem 0 1rem;overflow-x:auto;white-space:pre;line-height:1.6;}
+code,.mono{font-family:var(--font-mono);background:var(--tag-bg);padding:1px 6px;border-radius:4px;font-size:.85em;color:#a8d8ef;}
+
+/* ── CIRCUITOS ── */
+figure.circuito{margin:1rem 0;background:#ffffff;border:1px solid var(--border);border-radius:8px;padding:.9rem;overflow-x:auto;}
+figure.circuito svg{display:block;margin:0 auto;max-width:100%;height:auto;}
+figure.circuito figcaption{text-align:center;font-family:var(--font-mono);font-size:.72rem;color:var(--muted);margin-top:.6rem;}
+
+/* ── TABELAS ── */
+.table-wrap{overflow-x:auto;border:1px solid var(--border);border-radius:8px;margin:.7rem 0 1rem;}
+table{width:100%;border-collapse:collapse;font-size:.85rem;}
+thead tr{background:var(--tag-bg);border-bottom:1px solid var(--border);}
+thead th{padding:.6rem .9rem;text-align:left;font-family:var(--font-mono);font-size:.68rem;color:var(--accent);letter-spacing:.08em;text-transform:uppercase;font-weight:600;}
+tbody tr{border-bottom:1px solid var(--border);transition:background .15s;}
+tbody tr:last-child{border-bottom:none;}
+tbody tr:hover{background:rgba(255,255,255,.02);}
+tbody td{padding:.6rem .9rem;color:var(--body-text);}
+tbody td.mono,thead th.mono{font-family:var(--font-mono);color:var(--accent);white-space:nowrap;}
+
+details.tabela-completa{margin:.7rem 0 1rem;border:1px solid var(--border);border-radius:8px;padding:.8rem 1.1rem;background:var(--tag-bg);}
+details.tabela-completa summary{cursor:pointer;font-family:var(--font-mono);font-size:.8rem;color:var(--accent);font-weight:600;}
+details.tabela-completa .table-wrap{margin-top:.8rem;}
+
+.nota-correcao{background:rgba(124,58,237,.08);border-left:3px solid var(--accent2);border-radius:0 6px 6px 0;padding:.8rem 1.1rem;font-size:.82rem;color:var(--body-text);margin:.7rem 0;}
+.nota-correcao code{color:var(--accent2);}
+
+.note{background:var(--tag-bg);border:1px solid var(--border);border-radius:6px;padding:.9rem 1.1rem;margin:1rem 0;font-size:.85rem;color:var(--muted);}
+.note strong{color:var(--accent);}
+
+footer{border-top:1px solid var(--border);padding:2rem 0;margin-top:2rem;}
+footer .container{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;}
+footer p{font-size:.8rem;color:var(--muted);font-family:var(--font-mono);}
+
+@media (max-width:640px){
+  .hero{padding:2.5rem 0 2rem;}
+  .nav-links{display:none;}
+  li.trabalho{padding-left:3.2rem;}
+}
+
+
+/* Ajustes para os enunciados dos trabalhos. */
+.hero .container{position:relative;}
+.section,li.trabalho{scroll-margin-top:6rem;}
+.titulo-item{font-size:1.05rem;font-weight:600;color:var(--text);margin:0 0 .8rem;}
+.meta-item,.data-item{display:block;margin-top:.7rem;font-family:var(--font-mono);font-size:.72rem;color:var(--muted);}
+.enunciado ul,.enunciado ol.sub{margin:.4rem 0 .8rem;padding-left:1.4rem;color:var(--body-text);}
+.enunciado li{margin-bottom:.4rem;}
+.enunciado th{padding:.6rem .9rem;text-align:left;font-family:var(--font-mono);font-size:.68rem;color:var(--accent);letter-spacing:.08em;text-transform:uppercase;background:var(--tag-bg);}
+.enunciado td{padding:.6rem .9rem;color:var(--body-text);}
+.enunciado tr{border-bottom:1px solid var(--border);}
+.enunciado tr:last-child{border-bottom:0;}
+a:focus-visible{outline:2px solid var(--accent);outline-offset:4px;}
+@media(max-width:640px){
+  .container{padding:0 1rem;}
+  li.trabalho{padding:1.2rem 1rem 1.2rem 3.2rem;overflow-wrap:anywhere;}
+  .content-grid{grid-template-columns:1fr;}
+}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto;}}
+</style>
+</head>
+<body>
+<nav aria-label="Navegação principal">
+<div class="container">
+<span class="nav-brand">arq · trabalhos propostos</span>
+<ul class="nav-links">
+<li><a href="#introducao">introdução</a></li>
+<li><a href="#sumario">sumário</a></li>
+<li><a href="#trabalhos">trabalhos</a></li>
+<li><a href="https://claytonjasilva.github.io/arq.html">← disciplina</a></li>
+</ul>
+</div>
+</nav>
+<header class="hero">
+<div class="container">
+<p class="hero-eyebrow">Arquitetura de Computadores · Trabalhos em Grupo</p>
+<h1>Trabalhos<br><strong>Propostos</strong></h1>
+<p class="hero-sub">Prof. Clayton J A Silva · Ibmec RJ · organizado por período letivo</p>
+<div class="hero-tags">
+<span class="tag">Arduino Mega 2560</span>
+<span class="tag">2022.1 – 2024.1</span>
+<span class="tag">10 trabalhos</span>
+<span class="tag">4 períodos letivos</span>
+</div>
+</div>
+</header>
+<main class="container">
+<section class="section" id="introducao">
+
+  <h2 class="section-title">00 / Introdução</h2>
+  <p>Este documento reúne os enunciados dos trabalhos propostos ao longo de diferentes períodos letivos na disciplina de Arquitetura de Computadores, ministrada pelo Prof. Clayton Jones Alves da Silva. Os trabalhos abordam, de forma geral, o projeto e a implementação de sistemas embarcados baseados no microcontrolador Arduino Mega 2560, explorando conceitos de representação de dados (complemento de 1 e complemento de 2), arquitetura de conjunto de instruções (ISA), dispositivos de entrada e saída, programação em linguagem de montagem (assembly) e em C/C++ (sketches), além de sensores e atuadores.</p>
+  <p>Os itens a seguir estão organizados em ordem cronológica, cada um identificado pelo enunciado original e seguido do período letivo correspondente, na forma (ano.período).</p>
+
+</section>
+<section class="section" id="sumario">
+<h2 class="section-title">01 / Sumário</h2>
+<div class="content-grid">
+<div class="content-card"><span class="content-num">2022.1</span><a href="#periodo-2022-1">Trabalhos de 2022.1</a></div>
+<div class="content-card"><span class="content-num">2022.2</span><a href="#periodo-2022-2">Trabalhos de 2022.2</a></div>
+<div class="content-card"><span class="content-num">2023.1</span><a href="#periodo-2023-1">Trabalhos de 2023.1</a></div>
+<div class="content-card"><span class="content-num">2024.1</span><a href="#periodo-2024-1">Trabalhos de 2024.1</a></div>
+</div>
+</section>
+<section class="section" id="trabalhos">
+<h2 class="section-title">02 / Trabalhos</h2>
+<ol class="trabalhos">
+
+<li class="trabalho" id="periodo-2022-1">
+  <p class="titulo-item">AP1 – Parte 2 – Trabalho em Grupo: Somador 74LS283 e complemento de 1/2 na máquina IAS</p>
+  <div class="enunciado">
+    <p><strong>Condições gerais:</strong> o trabalho (parte 2 da AP1) perfaz 50% da nota da primeira avaliação bimestral. Deve ser realizado e submetido em grupo, com entrega presencial.</p>
+    <p><strong>Dados do problema:</strong> projetar um sistema embarcado constituído de placa principal baseada no microcontrolador Atmel ATmega V2560, Arduíno Mega 2560; sistema digital constituído por teclado de 8 teclas digitais, A(A3 A2 A1 A0) e B(B3 B2 B1 B0), que gera a soma binária A+B, como dispositivo de entrada; display LCD 16x2, como dispositivo de saída.</p>
+    <p>O dispositivo de entrada deve utilizar como base o somador 74LS283. Os sinais da soma binária resultante devem alimentar entradas digitais da placa do Arduíno Mega 2560. O Arduíno deve processar a entrada da seguinte forma: caso o bit mais significativo do somador seja 1, o sistema deve calcular o complemento de 2 do número; caso seja 0, o sistema deve calcular o complemento de 1 do número. O resultado deve ser enviado ao display LCD 1602, com a representação hexadecimal do binário obtido.</p>
+    <p><strong>Pedido:</strong></p>
+    <ol class="sub">
+      <li>Esquema elétrico geral, utilizando o EasyEDA ou o Proteus, apresentando os componentes e todas as ligações realizadas.</li>
+      <li>Simulação lógica computacional, utilizando o Logisim, para testar o funcionamento do esquema elaborado.</li>
+      <li>Código utilizado para a placa do Arduíno Atmel 2560.</li>
+      <li>Modelo físico funcionando de acordo com o pedido formulado.</li>
+      <li>Admitindo o funcionamento do sistema em uma máquina IAS, apresentar o código, em representação simbólica (assembly) e correspondente representação hexadecimal do nível ISA, implementando a soma dos números binários armazenados nos endereços 0x100 e 0x101, armazenando o resultado no endereço 0x102; calcular o complemento de 2 e o complemento de 1 da soma resultante e armazenar os resultados nas posições 0x103 e 0x104. Admitir que as posições 0x105 a 0x3FF de memória estão disponíveis para uso temporário. Apresentar o código com a alocação dos endereços de memória, supondo que a primeira linha está no endereço 0x00F.</li>
+    </ol>
+  </div>
+  <span class="data-item">(2022.1)</span>
+</li>
+
+<li class="trabalho">
+  <p class="titulo-item">AP2 – Parte 2 – Trabalho em Grupo: teclado de 9 teclas e desvio de execução em assembler</p>
+  <div class="enunciado">
+    <p><strong>Condições gerais:</strong> o trabalho (parte 2 da AP2) perfaz 50% da nota da segunda avaliação bimestral, com entrega presencial e toda a equipe presente.</p>
+    <p><strong>Dados do problema:</strong> um sistema baseado no microcontrolador 2560 possui uma entrada para um teclado de 9 teclas (A a I), cujas palavras do código binário de 1 byte estão associadas a endereços de memória SRAM a partir de 0x200, em uma tabela de códigos. Quando uma tecla é acionada, é gerado um conjunto de 8 bits para uma porta de entrada do microcontrolador. O byte correspondente, armazenado no registrador de I/O, é comparado com o byte da tabela de códigos; quando encontrado, o sistema desvia a execução para endereços específicos da SRAM associados a cada tecla (0x0264 a 0x0584).</p>
+    <p>Quando a tecla digitada é a tecla 'A', o sistema calcula a soma dos dados armazenados nos endereços 0x1000 a 0x10FF e carrega o resultado no endereço 0x1200. Quando é a tecla 'B', o sistema determina o maior valor dos dados armazenados no mesmo intervalo e carrega o resultado no endereço 0x1201. Para as demais teclas, o sistema gera o complemento de 1 dos bits correspondentes à tecla digitada e armazena o valor no endereço 0x1201.</p>
+    <p><strong>Pedido:</strong> elaborar um projeto em assembler (montador) para o microcontrolador AVR Atmega2560, utilizando o Simulador do Microchip Studio7, organizando o código para: carregar dados de teste na faixa 0x1000–0x10FF; carregar os dados na tabela de códigos do teclado; elaborar o código de pesquisa do dado na tabela de códigos e desvio; elaborar o código relativo à tecla A; elaborar o código relativo à tecla B; elaborar o código relativo às demais teclas. É obrigatório usar comentários, macros quando necessário, e labels para referenciar os desvios.</p>
+  </div>
+  <span class="data-item">(2022.1)</span>
+</li>
+
+<li class="trabalho" id="periodo-2022-2">
+  <p class="titulo-item">AP1 – Parte 2 – Trabalho em Grupo: operações aritméticas imediatas e diretas com LEDs</p>
+  <div class="enunciado">
+    <p><strong>Condições gerais:</strong> o trabalho (parte 2 da AP1) perfaz 50% da nota da primeira avaliação bimestral, realizado e submetido em grupo, com entrega presencial.</p>
+    <p><strong>Dados do problema:</strong> projetar um sistema embarcado baseado no Arduíno Mega 2560. O sistema deve receber uma palavra binária de 6 bits como entrada E(E5...E0) e produzir uma palavra de saída binária de 6 bits, S(S5...S0), com cada pino de saída conectado a um LED. O sistema deve possibilitar quatro operações: adição imediata (add), subtração imediata (sub), adição direta (add x) e subtração direta (sub y), de acordo com a faixa de entrada (0x00–0x0F, 0x10–0x1F, 0x20–0x2F, 0x30–0x3F).</p>
+    <p>A subtração imediata apresenta o resultado em complemento de 2. Na adição/subtração direta, os valores são somados/subtraídos de variáveis x e y definidas no código; a subtração direta apresenta o resultado no modo definido por uma variável <code>modo</code> (0: bit sinal; 1: complemento de 1; 2: complemento de 2; 3: excesso). Em caso de overflow, todos os LEDs devem piscar.</p>
+    <p><strong>Teste de verificação:</strong> setup com x = 34d, y = 48d, modo = 2; sequência de instruções: add 0x7; sub y, 0xF; add x, 0xB; sub, 0xC.</p>
+    <p><strong>Pedido:</strong></p>
+    <ol class="sub">
+      <li>Memorial descritivo dos componentes utilizados.</li>
+      <li>Esquema elétrico geral do circuito, indicando todas as ligações.</li>
+      <li>Protótipo do sistema com base na placa Arduíno Mega Atmel 2560.</li>
+      <li>Código elaborado para a IDE do Arduíno.</li>
+      <li>Relatório descrevendo o resultado do teste proposto e analisando se é o esperado, elaborando pelo menos mais dois testes em notação simbólica.</li>
+    </ol>
+  </div>
+  <span class="data-item">(2022.2)</span>
+</li>
+
+<li class="trabalho" id="periodo-2023-1">
+  <p class="titulo-item">Trabalho 1 (Turma 2ª/4ª): complemento de 1/2, adição e subtração via LCD</p>
+  <div class="enunciado">
+    <p><strong>Condições gerais:</strong> trabalho 1 em grupo da disciplina. No dia da entrega o grupo apresenta o sistema funcionando; o representante envia o sketch por e-mail, contendo no código o nome, a matrícula e a autoavaliação de cada componente do grupo (TA: trabalhou ativamente; TP: trabalhou parcialmente; NT: não trabalhou). A nota compõe uma das notas de AC, com peso 3.</p>
+    <p><strong>Especificação do sistema:</strong> projetar um sistema embarcado baseado no Arduíno Mega 2560 com shield de LCD 1602. O sistema deve receber do usuário, via monitor serial, uma palavra binária de 6 bits como entrada E(E5...E0), e produzir no LCD uma palavra binária de 6 bits, S(S5...S0). O sistema deve possibilitar quatro operações conforme a faixa de entrada: complemento de 1 (0x00–0x0F), complemento de 2 (0x10–0x1F), adição (0x20–0x2F) e subtração (0x30–0x3F). A subtração deve, por meio de uma macro <code>MODO</code>, possibilitar uma das três formas de representação de números negativos.</p>
+    <p><strong>Pedido:</strong> apresentar o código com extensão .ino (sketch) para resolver o problema; carregar o código no Arduíno, já incluído o circuito (shield) do LCD 1602, e verificar o funcionamento.</p>
+  </div>
+  <span class="data-item">(2023.1)</span>
+</li>
+
+<li class="trabalho">
+  <p class="titulo-item">Trabalho 1 (Turma 3ª): variante — complemento, adição e subtração via LCD</p>
+  <div class="enunciado">
+    <p>Mesmas condições gerais e especificação de sistema do trabalho equivalente da turma 2ª/4ª (Arduíno Mega 2560 com shield LCD 1602, entrada binária de 6 bits via monitor serial), com a convenção de operações reorganizada por faixa de entrada: 0x00–0x0F (complemento), 0x10–0x1F (adição), 0x20–0x2F (subtração binário puro) e 0x30–0x3F (subtração em complemento). O complemento (0x00–0x0F) deve, por meio de uma macro <code>MODO</code> (ou variável), possibilitar saída em complemento de 1 ou de 2; a subtração em complemento segue a mesma variável.</p>
+    <p><strong>Pedido:</strong> apresentar o código com extensão .ino (sketch) para resolver o problema; carregar o código no Arduíno, já incluído o circuito (shield) do LCD 1602, e verificar o funcionamento.</p>
+  </div>
+  <span class="data-item">(2023.1)</span>
+</li>
+
+<li class="trabalho">
+  <p class="titulo-item">AP1 – Parte 2 – Trabalho em Grupo: arquitetura de conjunto de instruções (ISA) com Arduíno</p>
+  <div class="enunciado">
+    <p><strong>Condições gerais:</strong> o trabalho (parte 2 da AP1) perfaz 50% da nota da primeira avaliação bimestral. No dia da entrega o representante envia o sketch por e-mail, contendo no código o nome, a matrícula e a autoavaliação de cada componente do grupo.</p>
+    <p><strong>Especificação do sistema:</strong> Arduíno Mega 2560 com shield LCD 1602. O sistema deve receber, via monitor serial, uma sequência de instruções em código binário de 11 bits, E(E10...E0). Os três bits mais significativos representam o opcode da operação, conforme a tabela:</p>
+    <div class="table-wrap"><table>
+      <tr><th>Opcode</th><th>Mnemônico</th><th>Significado</th></tr>
+      <tr><td>000</td><td>Comp1</td><td>Complemento de 1 do operando E7...E0, carregado em variável X</td></tr>
+      <tr><td>001</td><td>Add</td><td>Soma dos operandos (E7 E6 E5 E4) e (E3 E2 E1 E0), carregada em X</td></tr>
+      <tr><td>010</td><td>AddI</td><td>Soma imediata do operando E7...E0 com X, resultado em X</td></tr>
+      <tr><td>011</td><td>Sub</td><td>Subtração dos operandos (E7 E6 E5 E4) e (E3 E2 E1 E0), carregada em X</td></tr>
+      <tr><td>100</td><td>SubI</td><td>Subtração imediata do operando E7...E0 com X, resultado em X</td></tr>
+      <tr><td>101</td><td>Ldo</td><td>Lê X (operando 0) ou Y (operando ≠0), exibe no LCD em 9 bits (bit sinal)</td></tr>
+      <tr><td>110</td><td>Sto</td><td>Armazena o operando E7...E0 na variável X</td></tr>
+      <tr><td>111</td><td>Trans</td><td>Copia o valor de X para Y</td></tr>
+    </table></div>
+    <p><strong>Análise solicitada</strong> para a sequência: Add 0x3A; Ldo 0x00; AddI 0x01; Ldo 0x00; AddI 0x01; Trans 0xXX; AddI 0x0A; Ldo 0xFF; Ldo 0x00; Sto 0x00.</p>
+    <p><strong>Pedido:</strong> apresentar o código .ino (sketch); carregar no Arduíno com o shield LCD 1602 e verificar o funcionamento; apresentar a análise solicitada.</p>
+  </div>
+  <span class="data-item">(2023.1)</span>
+</li>
+
+<li class="trabalho">
+  <p class="titulo-item">AP2 – Parte 2 – Trabalho em Grupo: evolução do sistema ISA para entrada via teclado</p>
+  <div class="enunciado">
+    <p><strong>Condições gerais:</strong> o trabalho (parte 2 da AP2) perfaz 50% da nota da segunda avaliação bimestral. Entrega conforme prazo definido no GitHub do grupo; o representante envia o link do sketch por e-mail, contendo nome, matrícula e autoavaliação de cada componente.</p>
+    <p><strong>Fase 1:</strong> mesma especificação do sistema baseado em opcodes de 11 bits do trabalho AP1 (tabela de instruções Comp1/Add/AddI/Sub/SubI/Ldo/Sto/Trans), com Arduíno Mega 2560 e shield LCD 1602, recebendo as instruções via monitor serial.</p>
+    <p><strong>Fase 2:</strong> evoluir o código da fase 1 de modo que o sistema receba do usuário, através de teclado físico, as instruções em sequência no mesmo código binário de 11 bits E(E10...E0).</p>
+    <p><strong>Pedido:</strong> apresentar o código .ino (sketch) para resolver o problema apresentado; atualizar o código na pasta do grupo no GitHub.</p>
+  </div>
+  <span class="data-item">(2023.1)</span>
+</li>
+
+<li class="trabalho">
+  <p class="titulo-item">Trabalho 2 – Turma Centro: assembler AVR, tabela ordenada e busca por intervalo</p>
+  <div class="enunciado">
+    <p><strong>Condições gerais:</strong> o trabalho (parte 2 da AP2) perfaz 50% da nota da segunda avaliação bimestral. No dia da entrega o representante envia o código com extensão .zip por e-mail (com versão adicional em .txt), contendo nome, matrícula e autoavaliação de cada componente.</p>
+    <p><strong>Pedidos:</strong> elaborar um código para o assembler do microcontrolador AVR Atmega 2560 que: (1) crie uma tabela de 100 valores ordenados contendo números pares e múltiplos de 3, a partir do endereço 0x200; (2) utilizando uma instrução <code>IN</code> em portas de I/O (endereços 0x00 a 0x3F) para ler dois dados quaisquer, some os valores da tabela armazenada a partir de 0x200 cujo valor esteja entre os dois números lidos, armazenando o resultado na posição de memória RAM imediatamente após a última linha da tabela.</p>
+    <p>Responder também: qual o espaço de memória flash utilizado pelo programa, e qual a faixa de endereços da memória flash utilizada. Devem ser utilizados comentários e rótulos necessários para a compreensão do código.</p>
+  </div>
+  <span class="data-item">(2023.1)</span>
+</li>
+
+<li class="trabalho" id="periodo-2024-1">
+  <p class="titulo-item">Trabalho Proposto AP1: sistema de alarme digital programável</p>
+  <div class="enunciado">
+    <p><strong>1. Visão geral:</strong> desenvolver um sistema de alarme digital programável com o Arduino Mega 2560, aplicando conceitos de dispositivos de entrada/saída, sensores, atuadores e representação de dados, com ênfase em modularização, uso de funções e estruturas de controle. A ativação do alarme é definida por chave seletora (on-off), sinalizada por LEDs; as horas de início e término são definidas por conjuntos de chaves (dip-switches). O Arduíno lê a chave seletora, as chaves de horário, a hora atual via monitor serial, mantém o relógio atualizado, lê o sinal detectado e gera o alarme em caso de invasão. Uma saída de 5 bits, representada por LEDs, mostra o tempo restante (em horas) para o desligamento, em complemento de 1.</p>
+    <p><strong>2. Material utilizado:</strong> Arduino Mega 2560; LEDs de status e de contagem regressiva; buzzer; chaves dip switch para horários de ativação/desativação (formato 24h binário puro).</p>
+    <p><strong>3. Shield:</strong> LEDs de status (verde/vermelho); chaves dip switch para horários de início/término; buzzer; LEDs de contagem regressiva em complemento de 1; sensor de presença simulado por chave.</p>
+    <p><strong>4. Funcionalidades desejadas:</strong> ativação/desativação do sistema pela chave seletora; configuração dos horários limite via dip switches (com sinalização de overflow acima de 24h); configuração da hora atual e manutenção do relógio via monitor serial; determinação e exibição da hora restante em complemento de 1; acionamento e desligamento automático do alarme conforme detecção de presença simulada.</p>
+    <p><strong>5. Testes:</strong> de hardware (ativação/desativação, leitura das chaves de horário, contagem regressiva, acionamento do buzzer, detecção de intrusão) e de software (conversões binário-decimal, funcionamento do relógio e do timer, verificação de intervalo de alarme, overflow de horário).</p>
+    <p><strong>6. Apresentação da solução:</strong> descrição detalhada do shield; código-fonte (sketch) comentado; demonstração de funcionalidade do sistema em operação.</p>
+  </div>
+  <span class="data-item">(2024.1)</span>
+</li>
+
+<li class="trabalho">
+  <p class="titulo-item">Trabalho Proposto AP2: evolução do alarme com sensor de movimento/presença</p>
+  <div class="enunciado">
+    <p><strong>1. Visão geral:</strong> continuação do trabalho AP1 (sistema de alarme digital programável com Arduino Mega 2560). Na parte 2, a ser apresentada na AP2, o grupo deve substituir a chave que simulava o invasor por um sensor de movimento ou de presença. Referências de prática disponibilizadas nos repositórios do professor no GitHub (sensor ultrassônico e sensor de movimento).</p>
+    <p><strong>Apresentação:</strong> no dia da aplicação da AP2, logo após a prova, com todos os componentes do grupo presentes (o ausente recebe grau 0,0 no trabalho).</p>
+    <p><strong>2. Material utilizado:</strong> além do material da fase 1, sensor ultrassônico HC-SR04 (para detectar aproximação do invasor a uma distância) ou sensor de presença PIR.</p>
+    <p><strong>3. Shield:</strong> mantém os elementos da fase 1 (LEDs de status, dip switches de horário, buzzer, LEDs de contagem regressiva), substituindo a chave/jumper simuladora por um sensor ultrassônico ou PIR.</p>
+    <p><strong>4. Funcionalidades desejadas:</strong> mantém as funcionalidades da fase 1 (ativação/desativação, configuração de horários, relógio, contagem regressiva em complemento de 1, acionamento automático), complementadas pelo sensoriamento real do invasor conforme o tipo de sensor escolhido.</p>
+    <p><strong>5. Testes:</strong> mantém os testes de hardware e software da fase 1, complementados por um teste de invasão específico, verificando a detecção conforme o sensor utilizado.</p>
+    <p><strong>6. Apresentação da solução:</strong> descrição detalhada do shield; código-fonte (sketch) comentado; demonstração de funcionalidade.</p>
+  </div>
+  <span class="data-item">(2024.1)</span>
+</li>
+
+</ol>
+</section>
+</main>
+<footer>
+<div class="container">
+<p>Documento consolidado a partir dos enunciados originais arquivados na disciplina de Arquitetura de Computadores. Referências a nomes e matrículas de alunos foram removidas.</p>
+<p><a href="https://claytonjasilva.github.io/arq.html">← voltar para a disciplina</a></p>
+</div>
+</footer>
+</body>
+</html>
