@@ -7,9 +7,9 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/contrib/auto-render.min.js"></script>
+
+
+
 <style>
 :root {
   --bg:        #0a0e17;
@@ -34,8 +34,8 @@ a:hover{text-decoration:underline;}
 nav{position:sticky;top:0;z-index:100;background:rgba(10,14,23,.9);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);padding:.9rem 0;}
 nav .container{display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap;}
 .nav-brand{font-family:var(--font-mono);font-size:.78rem;color:var(--accent);}
-.nav-links{display:flex;gap:1.2rem;list-style:none;flex-wrap:wrap;}
-.nav-links a{font-family:var(--font-mono);font-size:.74rem;color:var(--muted);}
+.nav-links{display:flex;gap:1.1rem;list-style:none;flex-wrap:wrap;}
+.nav-links a{font-family:var(--font-mono);font-size:.72rem;color:var(--muted);}
 .nav-links a:hover{color:var(--text);text-decoration:none;}
 
 .progress-track{height:3px;background:var(--border);position:sticky;top:53px;z-index:99;}
@@ -66,13 +66,25 @@ h1 strong{font-weight:600;color:var(--accent);}
 .section-label::after{content:'';flex:1;height:1px;background:var(--border);}
 h2{font-size:1.5rem;font-weight:600;letter-spacing:-.01em;margin-bottom:1rem;}
 h3{font-size:1.1rem;font-weight:600;margin:1.6rem 0 .8rem;color:var(--text);}
+h4{font-size:.95rem;font-weight:600;margin:1.2rem 0 .6rem;color:var(--accent);}
 p{margin-bottom:1rem;color:#cbd5e1;}
 strong{color:var(--text);font-weight:600;}
 em{color:var(--accent);font-style:normal;}
+ul.plain{margin:0 0 1rem 1.2rem;color:#cbd5e1;}
+ul.plain li{margin-bottom:.4rem;}
+
+.codeline{background:var(--tag-bg);border:1px solid var(--border);border-radius:6px;padding:.7rem 1rem;font-family:var(--font-mono);font-size:1rem;color:var(--accent);text-align:center;margin:1rem 0;}
+
+/* TWO COLUMN: concept + figure */
+.concept-grid{display:grid;grid-template-columns:1fr 1fr;gap:2rem;align-items:start;margin:1.5rem 0;}
+.concept-text{display:flex;flex-direction:column;justify-content:center;}
+.concept-fig{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:1rem;}
+.concept-fig img,.concept-fig svg{width:100%;display:block;}
+.fig-caption{font-family:var(--font-mono);font-size:.72rem;color:var(--muted);text-align:center;margin-top:.6rem;}
+@media (max-width:760px){.concept-grid{grid-template-columns:1fr;}}
 
 .fig-full{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:1.2rem;margin:1.5rem 0;}
 .fig-full img,.fig-full svg{width:100%;display:block;}
-.fig-caption{font-family:var(--font-mono);font-size:.72rem;color:var(--muted);text-align:center;margin-top:.6rem;}
 
 .definition{background:var(--surface);border:1px solid var(--accent2);border-left:3px solid var(--accent2);border-radius:0 8px 8px 0;padding:1.2rem 1.5rem;margin:1.2rem 0;}
 .definition .dtitle{font-family:var(--font-mono);font-size:.7rem;color:var(--accent2);letter-spacing:.1em;text-transform:uppercase;margin-bottom:.5rem;}
@@ -80,35 +92,23 @@ em{color:var(--accent);font-style:normal;}
 .note{background:var(--tag-bg);border:1px solid var(--border);border-radius:6px;padding:.9rem 1.1rem;margin:1rem 0;font-size:.85rem;color:var(--muted);}
 .note strong{color:var(--accent);}
 
-table{width:100%;border-collapse:collapse;font-size:.85rem;margin:1.2rem 0;}
+table{width:100%;border-collapse:collapse;font-size:.88rem;margin:1.2rem 0;}
 thead tr{background:var(--tag-bg);}
-thead th{padding:.5rem .7rem;text-align:center;font-family:var(--font-mono);font-size:.68rem;color:var(--muted);letter-spacing:.06em;text-transform:uppercase;font-weight:400;border-bottom:1px solid var(--border);}
-tbody td{padding:.45rem .7rem;border-bottom:1px solid var(--border);color:var(--muted);text-align:center;}
+thead th{padding:.6rem .9rem;text-align:left;font-family:var(--font-mono);font-size:.7rem;color:var(--muted);letter-spacing:.08em;text-transform:uppercase;font-weight:400;border-bottom:1px solid var(--border);}
+tbody td{padding:.55rem .9rem;border-bottom:1px solid var(--border);color:var(--muted);}
 tbody tr:hover{background:rgba(255,255,255,.02);}
+tbody td:first-child{font-family:var(--font-mono);color:var(--accent);}
+table.center td, table.center th{text-align:center;}
 
-/* HIGHLIGHT COLUMN */
-.hl-gt td:nth-child(5){color:#00c2ff;font-weight:600;}
-.hl-eq td:nth-child(6){color:#7c3aed;font-weight:600;}
-.hl-lt td:nth-child(7){color:#22c55e;font-weight:600;}
+/* INTEGRATION LEVEL GRID */
+.level-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:.6rem;margin:1.2rem 0;}
+.level-item{background:var(--surface);border:1px solid var(--border);border-radius:6px;padding:.8rem 1rem;text-align:center;}
+.level-item .sigla{font-family:var(--font-mono);font-weight:600;color:var(--accent);font-size:.95rem;}
+.level-item .range{font-size:.72rem;color:var(--muted);margin-top:.2rem;}
 
-.legend-row{display:flex;gap:1.5rem;flex-wrap:wrap;margin:1rem 0;}
-.legend-item{display:flex;align-items:center;gap:.5rem;font-family:var(--font-mono);font-size:.78rem;color:var(--muted);}
-.legend-dot{width:10px;height:10px;border-radius:3px;flex-shrink:0;}
-
-.quiz{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:1.6rem;margin:1.5rem 0;}
-.quiz-header{display:flex;align-items:center;gap:.6rem;margin-bottom:1.2rem;}
-.quiz-header svg{flex-shrink:0;}
-.quiz-title{font-family:var(--font-mono);font-size:.8rem;color:var(--accent2);letter-spacing:.05em;}
-.quiz-q{font-size:.95rem;margin-bottom:.9rem;color:var(--text);}
-.quiz-options{display:flex;flex-direction:column;gap:.55rem;}
-.quiz-opt{background:var(--tag-bg);border:1px solid var(--border);border-radius:6px;padding:.7rem 1rem;font-size:.85rem;color:var(--muted);cursor:pointer;transition:.15s;text-align:left;width:100%;font-family:var(--font-sans);}
-.quiz-opt:hover{border-color:var(--accent);color:var(--text);}
-.quiz-opt.correct{border-color:#22c55e;background:rgba(34,197,94,.08);color:#86efac;}
-.quiz-opt.wrong{border-color:#ef4444;background:rgba(239,68,68,.08);color:#fca5a5;}
-.quiz-feedback{margin-top:.9rem;font-size:.85rem;padding:.8rem 1rem;border-radius:6px;display:none;}
-.quiz-feedback.show{display:block;}
-.quiz-feedback.correct-fb{background:rgba(34,197,94,.08);border:1px solid #22c55e;color:#86efac;}
-.quiz-feedback.wrong-fb{background:rgba(239,68,68,.08);border:1px solid #ef4444;color:#fca5a5;}
+/* EXAMPLE BOX */
+.example{background:var(--tag-bg);border:1px solid var(--accent);border-radius:6px;padding:1rem 1.2rem;margin:1rem 0;font-family:var(--font-mono);font-size:.88rem;color:var(--text);}
+.example .ex-label{font-family:var(--font-sans);font-size:.72rem;color:var(--accent);text-transform:uppercase;letter-spacing:.06em;margin-bottom:.5rem;display:block;}
 
 .refs-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:.8rem;}
 .ref-card{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:1rem 1.2rem;display:flex;gap:.8rem;align-items:flex-start;transition:.2s;}
@@ -128,254 +128,48 @@ footer{border-top:1px solid var(--border);padding:2rem 0;margin-top:2rem;}
 footer .container{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;}
 footer p{font-size:.8rem;color:var(--muted);font-family:var(--font-mono);}
 
-@media(max-width:640px){.nav-links{display:none;}.hero{padding:2.5rem 0 2rem;}table{font-size:.76rem;}}
+@media(max-width:640px){.nav-links{display:none;}.hero{padding:2.5rem 0 2rem;}}
 
 .katex{color:var(--accent);font-size:1.05em;}
-</style>
+
+:root{--muted:#a3b2c7} .container{max-width:1180px} section[id],h3[id]{scroll-margin-top:100px}
+.table-wrap{overflow-x:auto} .codeline{overflow-x:auto} figure a{display:block} figure img{height:auto;border-radius:4px}
+.fig-caption{line-height:1.6} .steps{padding-left:1.5rem;margin-bottom:1rem;color:#cbd5e1}.steps li{margin:.5rem 0}
+.bit-work{white-space:pre;overflow-x:auto;font-family:var(--font-mono);padding:1rem;background:var(--surface);border:1px solid var(--border);border-radius:6px}
+@media(max-width:640px){.container{padding:0 1rem}.fig-full{padding:.35rem}.nav-links{display:flex;gap:.6rem}.nav-links a{font-size:.65rem}table th,table td{padding:.4rem}}
+.maps{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1.5rem}.one{background:#123846;color:#78e7ff;font-weight:600}.maps td{position:relative}.group{font-size:.85rem;color:#cbd5e1}.maps h3{margin-top:0}.wirelist{line-height:1.9} @media(max-width:640px){section[id]{scroll-margin-top:150px}} </style>
 </head>
-<body>
-
-<nav>
-  <div class="container">
-    <span class="nav-brand">sisdig · cap. 5</span>
-    <ul class="nav-links">
-      <li><a href="#s1">5.1 Comparador</a></li>
-      <li><a href="#s2">5.2 CI</a></li>
-      <li><a href="#quiz">Quiz</a></li>
-      <li><a href="https://claytonjasilva.github.io/sisdig.html">← disciplina</a></li>
-    </ul>
-  </div>
-</nav>
-<div class="progress-track"><div class="progress-fill" id="progressFill"></div></div>
-
-<section class="hero">
-  <div class="container">
-    <p class="hero-eyebrow">Sistemas Digitais · Ibmec RJ</p>
-    <h1>Cap. 5 — Circuitos<br><strong>Comparadores</strong></h1>
-
-    <div class="hero-meta">
-      <span class="meta-item">
-        <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><circle cx="7" cy="7" r="6" stroke="currentColor" stroke-width="1.2"/><path d="M7 4v3l2 1.5" stroke="currentColor" stroke-width="1.2"/></svg>
-        leitura ~15 min
-      </span>
-      <span class="meta-item">
-        <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><rect x="2" y="3" width="10" height="9" rx="1" stroke="currentColor" stroke-width="1.2"/><line x1="2" y1="6" x2="12" y2="6" stroke="currentColor" stroke-width="1.2"/></svg>
-        Prof. Clayton J A Silva
-      </span>
-      <span class="meta-item">
-        <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 7l4 4 6-7" stroke="currentColor" stroke-width="1.4" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        Rev 2026.1
-      </span>
-    </div>
-
-    <div class="objectives">
-      <p class="label">Objetivos de aprendizagem</p>
-      <ul>
-        <li>Definir o comportamento de um comparador de 2 bits via tabela-verdade</li>
-        <li>Aplicar o Mapa K para obter a expressão mínima da saída A&gt;B</li>
-        <li>Reconhecer o circuito comparador resultante e o CI 74LS85</li>
-      </ul>
-    </div>
-
-    <div class="toc">
-      <a href="#s1">5.1 Comparador de 2 bits</a>
-      <a href="#s2">5.2 CI Comparador</a>
-    </div>
-  </div>
-</section>
-
-<div class="container">
-
-  <!-- 5.1 -->
-  <section class="section" id="s1">
-    <p class="section-label">5.1 / comparador de 2 bits</p>
-    <h2>Comparador de 2 bits</h2>
-
-    <p>Um <strong>comparador</strong> é um circuito combinacional projetado para comparar a grandeza relativa de duas palavras binárias.</p>
-
-    <div class="fig-full">
-      <img src="../assets/img/sisdig/cap5_comparador2bits.svg" alt="Comparador de 2 bits — diagrama funcional">
-      <p class="fig-caption">Fig. 5.1 — Diagrama funcional do comparador de 2 bits</p>
-    </div>
-
-    <p>A tabela-verdade que descreve o funcionamento do circuito é a seguinte:</p>
-
-    <div class="legend-row">
-      <span class="legend-item"><span class="legend-dot" style="background:#00c2ff"></span>A &gt; B</span>
-      <span class="legend-item"><span class="legend-dot" style="background:#7c3aed"></span>A = B</span>
-      <span class="legend-item"><span class="legend-dot" style="background:#22c55e"></span>A &lt; B</span>
-    </div>
-
-    <table>
-      <thead><tr><th>A1</th><th>A0</th><th>B1</th><th>B0</th><th>A&gt;B</th><th>A=B</th><th>A&lt;B</th></tr></thead>
-      <tbody>
-        <tr class="hl-eq"><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>1</td><td>0</td></tr>
-        <tr class="hl-lt"><td>0</td><td>0</td><td>0</td><td>1</td><td>0</td><td>0</td><td>1</td></tr>
-        <tr class="hl-lt"><td>0</td><td>0</td><td>1</td><td>0</td><td>0</td><td>0</td><td>1</td></tr>
-        <tr class="hl-lt"><td>0</td><td>0</td><td>1</td><td>1</td><td>0</td><td>0</td><td>1</td></tr>
-        <tr class="hl-gt"><td>0</td><td>1</td><td>0</td><td>0</td><td>1</td><td>0</td><td>0</td></tr>
-        <tr class="hl-eq"><td>0</td><td>1</td><td>0</td><td>1</td><td>0</td><td>1</td><td>0</td></tr>
-        <tr class="hl-lt"><td>0</td><td>1</td><td>1</td><td>0</td><td>0</td><td>0</td><td>1</td></tr>
-        <tr class="hl-lt"><td>0</td><td>1</td><td>1</td><td>1</td><td>0</td><td>0</td><td>1</td></tr>
-        <tr class="hl-gt"><td>1</td><td>0</td><td>0</td><td>0</td><td>1</td><td>0</td><td>0</td></tr>
-        <tr class="hl-gt"><td>1</td><td>0</td><td>0</td><td>1</td><td>1</td><td>0</td><td>0</td></tr>
-        <tr class="hl-eq"><td>1</td><td>0</td><td>1</td><td>0</td><td>0</td><td>1</td><td>0</td></tr>
-        <tr class="hl-lt"><td>1</td><td>0</td><td>1</td><td>1</td><td>0</td><td>0</td><td>1</td></tr>
-        <tr class="hl-gt"><td>1</td><td>1</td><td>0</td><td>0</td><td>1</td><td>0</td><td>0</td></tr>
-        <tr class="hl-gt"><td>1</td><td>1</td><td>0</td><td>1</td><td>1</td><td>0</td><td>0</td></tr>
-        <tr class="hl-gt"><td>1</td><td>1</td><td>1</td><td>0</td><td>1</td><td>0</td><td>0</td></tr>
-        <tr class="hl-eq"><td>1</td><td>1</td><td>1</td><td>1</td><td>0</td><td>1</td><td>0</td></tr>
-      </tbody>
-    </table>
-
-    <p>A figura abaixo apresenta o Mapa K para a saída <strong>A&gt;B</strong>:</p>
-    <div class="fig-full">
-      <img src="../assets/img/sisdig/cap5_mapaK_amaiorb.svg" alt="Mapa K — saída A maior que B">
-      <p class="fig-caption">Fig. 5.2 — Mapa K para a saída A &gt; B</p>
-    </div>
-
-    <p>A partir do Mapa K, obtém-se o circuito apresentado na figura abaixo:</p>
-    <div class="fig-full">
-      <img src="../assets/img/sisdig/cap5_circuito_comparador.svg" alt="Circuito comparador de 2 bits — saída A maior que B">
-      <p class="fig-caption">Fig. 5.3 — Circuito comparador de 2 bits, saída A &gt; B</p>
-    </div>
-
-    <div class="note">As saídas <strong>A=B</strong> e <strong>A&lt;B</strong> podem ser obtidas pelo mesmo procedimento — construindo o respectivo Mapa K a partir da tabela-verdade.</div>
-  </section>
-
-  <!-- 5.2 -->
-  <section class="section" id="s2">
-    <p class="section-label">5.2 / ci comparador</p>
-    <h2>CI Comparador</h2>
-
-    <p>Como outros circuitos funcionalmente importantes, o comparador pode ser obtido na forma integrada.</p>
-
-    <div class="definition">
-      <p class="dtitle">datasheet de referência</p>
-      <p style="margin:0">Ver o <a href="https://html.alldatasheetpt.com/html-pdf/8074/NSC/7485/35/1/7485.html" target="_blank"><em>datasheet</em> do 74LS85 →</a></p>
-    </div>
-  </section>
-
-  <!-- QUIZ -->
-  <section class="section" id="quiz">
-    <p class="section-label">checkpoint</p>
-    <h2>Teste seus conhecimentos</h2>
-
-    <div class="quiz">
-      <div class="quiz-header">
-        <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="8" stroke="#7c3aed" stroke-width="1.4"/><text x="10" y="14" font-size="10" fill="#7c3aed" text-anchor="middle" font-weight="600">?</text></svg>
-        <span class="quiz-title">Pergunta 1 de 3</span>
-      </div>
-      <p class="quiz-q">Um comparador de 2 bits possui quantas entradas e quantas saídas?</p>
-      <div class="quiz-options">
-        <button class="quiz-opt" onclick="checkAnswer(this, false, 'q1fb')">2 entradas, 2 saídas</button>
-        <button class="quiz-opt" onclick="checkAnswer(this, true, 'q1fb')">4 entradas, 3 saídas</button>
-        <button class="quiz-opt" onclick="checkAnswer(this, false, 'q1fb')">4 entradas, 4 saídas</button>
-      </div>
-      <div class="quiz-feedback" id="q1fb"></div>
-    </div>
-
-    <div class="quiz">
-      <div class="quiz-header">
-        <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="8" stroke="#7c3aed" stroke-width="1.4"/><text x="10" y="14" font-size="10" fill="#7c3aed" text-anchor="middle" font-weight="600">?</text></svg>
-        <span class="quiz-title">Pergunta 2 de 3</span>
-      </div>
-      <p class="quiz-q">Para A1=1, A0=0, B1=0, B0=1 (A=10, B=01 em binário), qual saída deve ser 1?</p>
-      <div class="quiz-options">
-        <button class="quiz-opt" onclick="checkAnswer(this, true, 'q2fb')">A &gt; B</button>
-        <button class="quiz-opt" onclick="checkAnswer(this, false, 'q2fb')">A = B</button>
-        <button class="quiz-opt" onclick="checkAnswer(this, false, 'q2fb')">A &lt; B</button>
-      </div>
-      <div class="quiz-feedback" id="q2fb"></div>
-    </div>
-
-    <div class="quiz">
-      <div class="quiz-header">
-        <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="8" stroke="#7c3aed" stroke-width="1.4"/><text x="10" y="14" font-size="10" fill="#7c3aed" text-anchor="middle" font-weight="600">?</text></svg>
-        <span class="quiz-title">Pergunta 3 de 3</span>
-      </div>
-      <p class="quiz-q">Qual ferramenta foi utilizada para obter a expressão mínima da saída A&gt;B a partir da tabela-verdade?</p>
-      <div class="quiz-options">
-        <button class="quiz-opt" onclick="checkAnswer(this, false, 'q3fb')">Teorema de De Morgan</button>
-        <button class="quiz-opt" onclick="checkAnswer(this, true, 'q3fb')">Mapa de Karnaugh (Mapa K)</button>
-        <button class="quiz-opt" onclick="checkAnswer(this, false, 'q3fb')">Tabela ASCII</button>
-      </div>
-      <div class="quiz-feedback" id="q3fb"></div>
-    </div>
-  </section>
-
-  <!-- REFERÊNCIAS -->
-  <section class="section" id="refs">
-    <p class="section-label">referências e aprofundamento</p>
-    <h2>Para ir além</h2>
-
-    <div class="refs-grid">
-      <a class="ref-card" href="https://html.alldatasheetpt.com/html-pdf/8074/NSC/7485/35/1/7485.html" target="_blank" style="color:inherit;">
-        <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M3 2h8l4 4v10H3V2z" stroke="#00c2ff" stroke-width="1.3"/><line x1="6" y1="8" x2="12" y2="8" stroke="#00c2ff" stroke-width="1.1"/><line x1="6" y1="11" x2="10" y2="11" stroke="#00c2ff" stroke-width="1.1"/></svg>
-        <div><span class="ref-type">datasheet</span><h4>74LS85</h4><p>Comparador de magnitude de 4 bits</p></div>
-      </a>
-      <a class="ref-card" href="https://www.youtube.com/results?search_query=comparador+de+magnitude+circuito+digital" target="_blank" style="color:inherit;">
-        <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><rect x="2" y="4" width="14" height="10" rx="2" stroke="#7c3aed" stroke-width="1.3"/><polygon points="8,7 8,11 12,9" fill="#7c3aed"/></svg>
-        <div><span class="ref-type">vídeo</span><h4>Comparador de magnitude</h4><p>Busca curada de vídeos explicativos</p></div>
-      </a>
-      <a class="ref-card" href="https://claytonjasilva.github.io/sisdig_aulas/cap4.html" style="color:inherit;">
-        <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><rect x="2" y="2" width="14" height="14" rx="2" stroke="#00c2ff" stroke-width="1.3"/><line x1="2" y1="7" x2="16" y2="7" stroke="#00c2ff" stroke-width="1.1"/></svg>
-        <div><span class="ref-type">capítulo anterior</span><h4>Cap. 4 — Somadores e Subtratores</h4><p>Circuitos aritméticos binários</p></div>
-      </a>
-      <a class="ref-card" href="https://claytonjasilva.github.io/avaliacoes.html" target="_blank" style="color:inherit;">
-        <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><rect x="3" y="2" width="12" height="14" rx="1.5" stroke="#7c3aed" stroke-width="1.3"/><line x1="6" y1="6" x2="12" y2="6" stroke="#7c3aed" stroke-width="1.1"/><line x1="6" y1="9" x2="12" y2="9" stroke="#7c3aed" stroke-width="1.1"/></svg>
-        <div><span class="ref-type">avaliação</span><h4>Sistema de Avaliações</h4><p>Pesos AC/AP1/AP2 da disciplina</p></div>
-      </a>
-    </div>
-  </section>
-
-  <!-- CHAPTER NAV -->
-  <div class="chapter-nav">
-    <a href="cap4.html"><span class="dir">← anterior</span>Cap. 4 — Somadores e Subtratores Binários</a>
-    <a class="next" href="#" style="opacity:.5;cursor:default;"><span class="dir">próximo →</span>Cap. 6 — Codificadores e Decodificadores</a>
-  </div>
-
-</div>
-
-<footer>
-  <div class="container">
-    <p>© 2026 · Prof. Clayton J A Silva · Ibmec RJ</p>
-    <p><a href="https://claytonjasilva.github.io">claytonjasilva.github.io</a></p>
-  </div>
-</footer>
-
-<script>
-window.addEventListener('scroll', () => {
-  const h = document.documentElement;
-  const scrolled = (h.scrollTop) / (h.scrollHeight - h.clientHeight) * 100;
-  document.getElementById('progressFill').style.width = scrolled + '%';
-});
-
-function checkAnswer(btn, isCorrect, fbId) {
-  const group = btn.parentElement;
-  const buttons = group.querySelectorAll('.quiz-opt');
-  buttons.forEach(b => b.disabled = true);
-  btn.classList.add(isCorrect ? 'correct' : 'wrong');
-  const fb = document.getElementById(fbId);
-  fb.classList.add('show');
-  const msgs = {
-    q1fb: isCorrect ? '✓ Correto! A1,A0,B1,B0 são as 4 entradas; A>B, A=B, A<B são as 3 saídas.' : '✗ Revise a Fig. 5.1 — diagrama funcional.',
-    q2fb: isCorrect ? '✓ Correto! A=10₂=2 e B=01₂=1, logo A>B.' : '✗ Converta A1A0 e B1B0 para decimal e compare.',
-    q3fb: isCorrect ? '✓ Correto! O Mapa K (Fig. 5.2) foi usado para minimizar a expressão de A>B.' : '✗ Revise a Fig. 5.2 — Mapa K da saída A>B.'
-  };
-  if (!isCorrect) buttons.forEach(b => { if (b.getAttribute('onclick').includes(', true,')) b.classList.add('correct'); });
-  fb.classList.add(isCorrect ? 'correct-fb' : 'wrong-fb');
-  fb.textContent = msgs[fbId];
-}
-
-renderMathInElement(document.body, {
-  delimiters: [
-    {left: "$$", right: "$$", display: true},
-    {left: "$", right: "$", display: false}
-  ],
-  throwOnError: false
-});
-</script>
-
-</body>
-</html>
+<body><nav><div class="container"><span class="nav-brand">sisdig · cap. 5</span><ul class="nav-links"><li><a href="#s1">Dois bits</a></li><li><a href="#palavras">Palavras de 2 bits</a></li><li><a href="#mapas">Mapas K</a></li><li><a href="#s2">7485</a></li><li><a href="../sisdig.html">← disciplina</a></li></ul></div></nav><div class="progress-track"><div class="progress-fill" id="progressFill"></div></div>
+<header class="hero"><div class="container"><p class="hero-eyebrow">Sistemas Digitais · Ibmec RJ</p><h1>Cap. 5 — Circuitos<br><strong>Comparadores</strong></h1><p>Prof. Clayton J A Silva</p><div class="objectives"><p class="label">Objetivos de aprendizagem</p><ul><li>Comparar dois bits e obter as expressões das três saídas.</li><li>Projetar a comparação de duas palavras de 2 bits usando tabela verdade, mapas K e portas lógicas.</li><li>Interpretar a pinagem, os sinais de cascata e o funcionamento do 7485.</li></ul></div><div class="toc"><a href="#s1">5.1 Comparação de dois bits</a><a href="#palavras">5.2 Palavras de 2 bits</a><a href="#s2">5.3 CI 7485</a></div></div></header><main class="container"><section class="section" id="s1"><p class="section-label">5.1 / Comparação de dois bits: A e B</p><h2>Comparação de dois bits: A e B</h2>
+<p>Um <strong>comparador de magnitude</strong> é um circuito combinacional que indica a relação entre dois valores. Começamos com <strong>dois bits no total: A e B, um bit por operando</strong>. Na próxima seção, cada operando terá dois bits.</p><p>As saídas são ativas em 1: G indica A &gt; B; L indica A &lt; B; E indica A = B. Para cada combinação estável de entradas, exatamente uma dessas três relações é verdadeira.</p>
+<figure class="fig-full"><a href="images_sisdig/comparador-1-bit-desafio.png" target="_blank" rel="noopener" aria-label="Ampliar figura 1"><img src="images_sisdig/comparador-1-bit-desafio.png" alt="Diagrama funcional do comparador de um bit por operando" loading="lazy" decoding="async"></a><figcaption class="fig-caption">Fig. 5.1 — Diagrama funcional do comparador de um bit por operando. Selecione a imagem para ampliar.</figcaption></figure><div class="table-wrap"><table><thead><tr><th scope="col">A</th><th scope="col">B</th><th scope="col">G: A &gt; B</th><th scope="col">L: A &lt; B</th><th scope="col">E: A = B</th></tr></thead><tbody><tr><td>0</td><td>0</td><td>0</td><td>0</td><td>1</td></tr><tr><td>0</td><td>1</td><td>0</td><td>1</td><td>0</td></tr><tr><td>1</td><td>0</td><td>1</td><td>0</td><td>0</td></tr><tr><td>1</td><td>1</td><td>0</td><td>0</td><td>1</td></tr></tbody></table></div>
+<h3>Expressões booleanas</h3><div class="codeline">G = A·~B<br>L = ~A·B<br>E = A·B + ~A·~B</div><p>G vale 1 apenas quando A = 1 e B = 0; L vale 1 apenas no caso contrário. E vale 1 quando ambos são 0 ou ambos são 1. O símbolo <strong>~</strong> indica NOT, · indica AND e + indica OR.</p>
+<h3>Circuito com portas AND, OR e NOT</h3><p>As saídas G e L usam uma AND cada, com uma entrada negada. Para E, duas AND reconhecem os casos 11 e 00, e uma OR combina esses casos. A repetição dos rótulos A e B na figura representa os mesmos sinais.</p>
+<figure class="fig-full"><a href="images_sisdig/comparador-1-bit-portas.png" target="_blank" rel="noopener" aria-label="Ampliar figura 2"><img src="images_sisdig/comparador-1-bit-portas.png" alt="Implementação das saídas maior, menor e igual usando AND, OR e NOT" loading="lazy" decoding="async"></a><figcaption class="fig-caption">Fig. 5.2 — Implementação das saídas maior, menor e igual usando AND, OR e NOT. Selecione a imagem para ampliar.</figcaption></figure></section><section class="section" id="palavras"><p class="section-label">5.2 / Comparação de dois números de 2 bits</p><h2>Comparação de dois números de 2 bits</h2>
+<p>Agora, A = A<sub>1</sub>A<sub>0</sub> e B = B<sub>1</sub>B<sub>0</sub> são palavras binárias <strong>sem sinal</strong>, com valores de 0 a 3. Existem quatro entradas físicas, portanto a tabela verdade contém 2<sup>4</sup> = <strong>16 combinações</strong>.</p>
+<p>Primeiro comparamos A<sub>1</sub> e B<sub>1</sub>, os bits mais significativos. Se forem diferentes, eles determinam a relação. Se forem iguais, a decisão depende de A<sub>0</sub> e B<sub>0</sub>. Por exemplo, 10<sub>2</sub> &gt; 01<sub>2</sub>, mesmo que o bit menos significativo de A seja menor.</p>
+<h3>Tabela verdade completa</h3>
+<div class="table-wrap"><table><thead><tr><th scope="col">A₁</th><th scope="col">A₀</th><th scope="col">B₁</th><th scope="col">B₀</th><th scope="col">G: A &gt; B</th><th scope="col">L: A &lt; B</th><th scope="col">E: A = B</th></tr></thead><tbody><tr><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>1</td></tr><tr><td>0</td><td>0</td><td>0</td><td>1</td><td>0</td><td>1</td><td>0</td></tr><tr><td>0</td><td>0</td><td>1</td><td>0</td><td>0</td><td>1</td><td>0</td></tr><tr><td>0</td><td>0</td><td>1</td><td>1</td><td>0</td><td>1</td><td>0</td></tr><tr><td>0</td><td>1</td><td>0</td><td>0</td><td>1</td><td>0</td><td>0</td></tr><tr><td>0</td><td>1</td><td>0</td><td>1</td><td>0</td><td>0</td><td>1</td></tr><tr><td>0</td><td>1</td><td>1</td><td>0</td><td>0</td><td>1</td><td>0</td></tr><tr><td>0</td><td>1</td><td>1</td><td>1</td><td>0</td><td>1</td><td>0</td></tr><tr><td>1</td><td>0</td><td>0</td><td>0</td><td>1</td><td>0</td><td>0</td></tr><tr><td>1</td><td>0</td><td>0</td><td>1</td><td>1</td><td>0</td><td>0</td></tr><tr><td>1</td><td>0</td><td>1</td><td>0</td><td>0</td><td>0</td><td>1</td></tr><tr><td>1</td><td>0</td><td>1</td><td>1</td><td>0</td><td>1</td><td>0</td></tr><tr><td>1</td><td>1</td><td>0</td><td>0</td><td>1</td><td>0</td><td>0</td></tr><tr><td>1</td><td>1</td><td>0</td><td>1</td><td>1</td><td>0</td><td>0</td></tr><tr><td>1</td><td>1</td><td>1</td><td>0</td><td>1</td><td>0</td><td>0</td></tr><tr><td>1</td><td>1</td><td>1</td><td>1</td><td>0</td><td>0</td><td>1</td></tr></tbody></table></div>
+<h3 id="mapas">Mapas de Karnaugh</h3><p>Em cada mapa, as linhas são A<sub>1</sub>A<sub>0</sub> e as colunas são B<sub>1</sub>B<sub>0</sub>. Ambas seguem a ordem Gray <strong>00, 01, 11, 10</strong>. Células nas bordas opostas também são adjacentes. Todas as entradas são válidas, portanto não há condições <em>don't care</em>.</p><div class="maps"><div><h3>G: A &gt; B</h3><table aria-label="Mapa K G: A &gt; B"><thead><tr><th scope="col">A₁A₀ ↓ / B₁B₀ →</th><th scope="col">00</th><th scope="col">01</th><th scope="col">11</th><th scope="col">10</th></tr></thead><tbody><tr><th scope="row">00</th><td class="zero">0</td><td class="zero">0</td><td class="zero">0</td><td class="zero">0</td></tr><tr><th scope="row">01</th><td class="one">1</td><td class="zero">0</td><td class="zero">0</td><td class="zero">0</td></tr><tr><th scope="row">11</th><td class="one">1</td><td class="one">1</td><td class="zero">0</td><td class="one">1</td></tr><tr><th scope="row">10</th><td class="one">1</td><td class="one">1</td><td class="zero">0</td><td class="zero">0</td></tr></tbody></table></div><div><h3>L: A &lt; B</h3><table aria-label="Mapa K L: A &lt; B"><thead><tr><th scope="col">A₁A₀ ↓ / B₁B₀ →</th><th scope="col">00</th><th scope="col">01</th><th scope="col">11</th><th scope="col">10</th></tr></thead><tbody><tr><th scope="row">00</th><td class="zero">0</td><td class="one">1</td><td class="one">1</td><td class="one">1</td></tr><tr><th scope="row">01</th><td class="zero">0</td><td class="zero">0</td><td class="one">1</td><td class="one">1</td></tr><tr><th scope="row">11</th><td class="zero">0</td><td class="zero">0</td><td class="zero">0</td><td class="zero">0</td></tr><tr><th scope="row">10</th><td class="zero">0</td><td class="zero">0</td><td class="one">1</td><td class="zero">0</td></tr></tbody></table></div><div><h3>E: A = B</h3><table aria-label="Mapa K E: A = B"><thead><tr><th scope="col">A₁A₀ ↓ / B₁B₀ →</th><th scope="col">00</th><th scope="col">01</th><th scope="col">11</th><th scope="col">10</th></tr></thead><tbody><tr><th scope="row">00</th><td class="one">1</td><td class="zero">0</td><td class="zero">0</td><td class="zero">0</td></tr><tr><th scope="row">01</th><td class="zero">0</td><td class="one">1</td><td class="zero">0</td><td class="zero">0</td></tr><tr><th scope="row">11</th><td class="zero">0</td><td class="zero">0</td><td class="one">1</td><td class="zero">0</td></tr><tr><th scope="row">10</th><td class="zero">0</td><td class="zero">0</td><td class="zero">0</td><td class="one">1</td></tr></tbody></table></div></div><h3>Agrupamentos e expressões mínimas</h3><p><strong>Saída G:</strong> um grupo de quatro células ocupa as linhas 11 e 10 nas colunas 00 e 01. Um par ocupa as linhas 01 e 11 na coluna 00. Outro par ocupa a linha 11 nas colunas 00 e 10, unidas pela borda. Eles produzem, respectivamente:</p>
+<div class="codeline">G = A₁·~B₁ + A₀·~B₁·~B₀ + A₁·A₀·~B₀</div>
+<p><strong>Saída L:</strong> o grupo de quatro ocupa as linhas 00 e 01 nas colunas 11 e 10. Um par ocupa a linha 00 nas colunas 01 e 11. Outro ocupa as linhas 00 e 10 na coluna 11, unidas pela borda:</p>
+<div class="codeline">L = ~A₁·B₁ + ~A₁·~A₀·B₀ + ~A₀·B₁·B₀</div>
+<p><strong>Saída E:</strong> as quatro células em 1 estão isoladas; células na diagonal não são adjacentes. A soma de produtos contém quatro mintermos:</p>
+<div class="codeline">E = ~A₁·~A₀·~B₁·~B₀ + ~A₁·A₀·~B₁·B₀<br>+ A₁·~A₀·B₁·~B₀ + A₁·A₀·B₁·B₀</div>
+<p>Uma forma fatorada mais conveniente compara cada par de bits e exige igualdade nos dois pares:</p><div class="codeline">E = (A₁·B₁ + ~A₁·~B₁)·(A₀·B₀ + ~A₀·~B₀)</div>
+<h3>Implementação do circuito</h3><p>A figura dos slides implementa G: cada termo da expressão corresponde a uma porta AND; uma OR combina os três termos. As portas NOT fornecem os bits negados. Entradas com o mesmo rótulo recebem o mesmo sinal.</p>
+<figure class="fig-full"><a href="images_sisdig/comparador-2-bits-maior.png" target="_blank" rel="noopener" aria-label="Ampliar figura 3"><img src="images_sisdig/comparador-2-bits-maior.png" alt="Circuito de comparação A maior que B para duas palavras de 2 bits" loading="lazy" decoding="async"></a><figcaption class="fig-caption">Fig. 5.3 — Circuito de comparação A maior que B para duas palavras de 2 bits. Selecione a imagem para ampliar.</figcaption></figure>
+<p>Para construir <strong>L</strong>, repetimos a estrutura de três AND e uma OR com os termos da expressão de L. Para <strong>E</strong>, duas redes AND–OR comparam os pares (A<sub>1</sub>, B<sub>1</sub>) e (A<sub>0</sub>, B<sub>0</sub>); suas saídas entram em uma AND final. Assim, as três saídas podem ser implementadas usando somente AND, OR e NOT.</p>
+<div class="note"><strong>Verificação:</strong> em todas as 16 combinações, G, L e E são mutuamente exclusivas e uma delas vale 1. Isso permite conferir se as expressões e as conexões estão coerentes.</div></section>
+<section class="section" id="s2"><p class="section-label">5.3 / CI 7485: comparador de magnitude de 4 bits</p><h2>CI 7485: comparador de magnitude de 4 bits</h2>
+<p>O <strong>7485</strong> reúne a comparação de duas palavras de quatro bits e sinais para expansão em cascata. A referência dos slides é o <strong>DM74LS85 da National Semiconductor</strong>. A e B podem representar valores binários sem sinal de 0 a 15 ou dígitos BCD válidos de 0 a 9. Não há validação de código BCD: entradas de 1010 a 1111 continuam sendo comparadas como valores binários.</p>
+<figure class="fig-full"><a href="images_sisdig/dm74ls85-resumo-v2.png" target="_blank" rel="noopener" aria-label="Ampliar figura 4"><img src="images_sisdig/dm74ls85-resumo-v2.png" alt="DM74LS85: descrição, pinagem DIP de 16 pinos e tabela funcional resumida" loading="lazy" decoding="async"></a><figcaption class="fig-caption">Fig. 5.4 — DM74LS85: descrição, pinagem DIP de 16 pinos e tabela funcional resumida. Selecione a imagem para ampliar.</figcaption></figure>
+<h3>Entradas e saídas</h3><p>A<sub>3</sub> e B<sub>3</sub> são os bits mais significativos. As saídas O(&gt;), O(=) e O(&lt;) indicam a relação encontrada, em nível alto. As entradas I(&gt;), I(=) e I(&lt;) recebem o resultado de um estágio que compara bits menos significativos; elas não são bits adicionais dos operandos.</p>
+<div class="table-wrap"><table><thead><tr><th scope="col">Grupo</th><th scope="col">Sinais e pinos (DIP-16)</th></tr></thead><tbody><tr><td>Operando A</td><td>A₃: 15 · A₂: 13 · A₁: 12 · A₀: 10</td></tr><tr><td>Operando B</td><td>B₃: 1 · B₂: 14 · B₁: 11 · B₀: 9</td></tr><tr><td>Entradas de cascata</td><td>I(&gt;): 4 · I(=): 3 · I(&lt;): 2</td></tr><tr><td>Saídas</td><td>O(&gt;): 5 · O(=): 6 · O(&lt;): 7</td></tr><tr><td>Alimentação</td><td>VCC: 16 · GND: 8; 5 V nominais para DM74LS85</td></tr></tbody></table></div>
+<h3>Uso isolado</h3><p>Para comparar apenas duas palavras de quatro bits, ligue <strong>I(&gt;) = 0, I(=) = 1 e I(&lt;) = 0</strong>. Essa configuração informa que não há diferença em posições inferiores. Com ela, exatamente uma saída fica ativa para cada par de operandos.</p>
+<h3>Como os sinais de cascata afetam o resultado</h3><p>Quando A e B diferem nos quatro bits locais, a relação local prevalece e as entradas de cascata são indiferentes. Quando as palavras locais são iguais, as entradas de cascata determinam o resultado conforme a tabela funcional.</p>
+<div class="table-wrap"><table><thead><tr><th scope="col">Comparação local</th><th scope="col">I(&gt;)</th><th scope="col">I(=)</th><th scope="col">I(&lt;)</th><th scope="col">O(&gt;)</th><th scope="col">O(=)</th><th scope="col">O(&lt;)</th></tr></thead><tbody><tr><td>A &gt; B</td><td>X</td><td>X</td><td>X</td><td>1</td><td>0</td><td>0</td></tr><tr><td>A &lt; B</td><td>X</td><td>X</td><td>X</td><td>0</td><td>0</td><td>1</td></tr><tr><td>A = B</td><td>1</td><td>0</td><td>0</td><td>1</td><td>0</td><td>0</td></tr><tr><td>A = B</td><td>X</td><td>1</td><td>X</td><td>0</td><td>1</td><td>0</td></tr><tr><td>A = B</td><td>0</td><td>0</td><td>1</td><td>0</td><td>0</td><td>1</td></tr><tr><td>A = B</td><td>1</td><td>0</td><td>1</td><td>0</td><td>0</td><td>0</td></tr><tr><td>A = B</td><td>0</td><td>0</td><td>0</td><td>1</td><td>0</td><td>1</td></tr></tbody></table></div>
+<p><strong>X = 0 ou 1:</strong> o valor dessa entrada não altera as saídas na linha indicada. Na ordem I(&gt;), I(=), I(&lt;), a condição de igualdade é <strong>X1X</strong>, não 1XX. Assim, se A = B e as três entradas de cascata forem 1, O(=) será 1 e as outras saídas serão 0.</p><p>As duas últimas linhas completam os casos omitidos no resumo visual: com I(=) = 0, entradas de cascata 101 desativam todas as saídas, enquanto 000 ativa simultaneamente O(&gt;) e O(&lt;). Essas combinações não representam um resultado normal de comparação. A regra de uma única saída ativa pressupõe a configuração de uso isolado ou uma cascata corretamente inicializada.</p>
+<h3>Cascateamento para palavras maiores</h3><ol class="steps"><li>Um primeiro CI compara os quatro bits menos significativos. Inicialize suas entradas de cascata com 0, 1 e 0 na ordem &gt;, =, &lt;.</li><li>Conecte O(&gt;), O(=) e O(&lt;) desse CI às entradas correspondentes do CI dos quatro bits mais significativos.</li><li>Leia o resultado nas saídas do CI mais significativo.</li></ol><p>Se a parte mais significativa diferir, ela determina o resultado. Se for igual, o resultado da parte menos significativa decide. A mesma estrutura pode ser repetida para palavras maiores.</p>
+<div class="note"><strong>Sem sinal:</strong> o 7485 compara magnitude binária. Comparar diretamente palavras em complemento de 2 não produz, em geral, a ordem numérica com sinal; esse uso exige lógica adicional.</div></section>
+<section class="section" id="refs"><p class="section-label">Referências</p><h2>Material de apoio</h2><ul class="plain"><li><a href="https://kazojc.com/elementy_czynne/IC/DM74LS85-2.pdf">National Semiconductor — DM74LS85, descrição, pinagem e tabela funcional</a>.</li><li><a href="https://ece-classes.usc.edu/ee459/library/datasheets/DM74LS85.pdf">DM74LS85 — folha de dados Fairchild, tabela funcional</a>.</li><li><a href="grid.html">Bibliografia da disciplina</a>: Floyd, <em>Sistemas Digitais: Fundamentos e Aplicações</em>.</li></ul></section><div class="chapter-nav"><a href="cap4.html"><span class="dir">← anterior</span>Cap. 4 — Somadores e Subtratores</a><a class="next" href="cap6.html"><span class="dir">próximo →</span>Cap. 6 — Codificadores e Decodificadores</a></div></main><footer><div class="container"><p>© 2026 · Prof. Clayton J A Silva · Ibmec RJ</p><a href="../sisdig.html">Sistemas Digitais</a></div></footer><script>function updateProgress(){const h=document.documentElement;const total=h.scrollHeight-h.clientHeight;document.getElementById('progressFill').style.width=(total>0?h.scrollTop/total*100:0)+'%';}window.addEventListener('scroll',updateProgress,{passive:true});window.addEventListener('resize',updateProgress);updateProgress();</script></body></html>
