@@ -3,13 +3,13 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Cap. 4 — Somadores e Subtratores Binários | Sistemas Digitais</title>
+<title>Cap. 4 — Circuitos MSI, Somadores e Subtratores | Sistemas Digitais</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/contrib/auto-render.min.js"></script>
+
+
+
 <style>
 :root {
   --bg:        #0a0e17;
@@ -110,22 +110,6 @@ table.center td, table.center th{text-align:center;}
 .example{background:var(--tag-bg);border:1px solid var(--accent);border-radius:6px;padding:1rem 1.2rem;margin:1rem 0;font-family:var(--font-mono);font-size:.88rem;color:var(--text);}
 .example .ex-label{font-family:var(--font-sans);font-size:.72rem;color:var(--accent);text-transform:uppercase;letter-spacing:.06em;margin-bottom:.5rem;display:block;}
 
-/* QUIZ */
-.quiz{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:1.6rem;margin:1.5rem 0;}
-.quiz-header{display:flex;align-items:center;gap:.6rem;margin-bottom:1.2rem;}
-.quiz-header svg{flex-shrink:0;}
-.quiz-title{font-family:var(--font-mono);font-size:.8rem;color:var(--accent2);letter-spacing:.05em;}
-.quiz-q{font-size:.95rem;margin-bottom:.9rem;color:var(--text);}
-.quiz-options{display:flex;flex-direction:column;gap:.55rem;}
-.quiz-opt{background:var(--tag-bg);border:1px solid var(--border);border-radius:6px;padding:.7rem 1rem;font-size:.85rem;color:var(--muted);cursor:pointer;transition:.15s;text-align:left;width:100%;font-family:var(--font-sans);}
-.quiz-opt:hover{border-color:var(--accent);color:var(--text);}
-.quiz-opt.correct{border-color:#22c55e;background:rgba(34,197,94,.08);color:#86efac;}
-.quiz-opt.wrong{border-color:#ef4444;background:rgba(239,68,68,.08);color:#fca5a5;}
-.quiz-feedback{margin-top:.9rem;font-size:.85rem;padding:.8rem 1rem;border-radius:6px;display:none;}
-.quiz-feedback.show{display:block;}
-.quiz-feedback.correct-fb{background:rgba(34,197,94,.08);border:1px solid #22c55e;color:#86efac;}
-.quiz-feedback.wrong-fb{background:rgba(239,68,68,.08);border:1px solid #ef4444;color:#fca5a5;}
-
 .refs-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:.8rem;}
 .ref-card{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:1rem 1.2rem;display:flex;gap:.8rem;align-items:flex-start;transition:.2s;}
 .ref-card:hover{border-color:var(--accent);}
@@ -147,446 +131,103 @@ footer p{font-size:.8rem;color:var(--muted);font-family:var(--font-mono);}
 @media(max-width:640px){.nav-links{display:none;}.hero{padding:2.5rem 0 2rem;}}
 
 .katex{color:var(--accent);font-size:1.05em;}
+
+:root{--muted:#a3b2c7} .container{max-width:1180px} section[id],h3[id]{scroll-margin-top:100px}
+.table-wrap{overflow-x:auto} .codeline{overflow-x:auto} figure a{display:block} figure img{height:auto;border-radius:4px}
+.fig-caption{line-height:1.6} .steps{padding-left:1.5rem;margin-bottom:1rem;color:#cbd5e1}.steps li{margin:.5rem 0}
+.bit-work{white-space:pre;overflow-x:auto;font-family:var(--font-mono);padding:1rem;background:var(--surface);border:1px solid var(--border);border-radius:6px}
+@media(max-width:640px){.container{padding:0 1rem}.fig-full{padding:.35rem}.nav-links{display:flex;gap:.6rem}.nav-links a{font-size:.65rem}table th,table td{padding:.4rem}}
 </style>
 </head>
-<body>
-
-<nav>
-  <div class="container">
-    <span class="nav-brand">sisdig · cap. 4</span>
-    <ul class="nav-links">
-      <li><a href="#s1">4.1 Meio-som.</a></li>
-      <li><a href="#s2">4.2 Completo</a></li>
-      <li><a href="#s4">4.4 CI</a></li>
-      <li><a href="#s5">4.5 Subtrat.</a></li>
-      <li><a href="#quiz">Quiz</a></li>
-      <li><a href="https://claytonjasilva.github.io/sisdig.html">← disciplina</a></li>
-    </ul>
-  </div>
-</nav>
+<body><nav><div class="container"><span class="nav-brand">sisdig · cap. 4</span><ul class="nav-links"><li><a href="#intro">CIs e MSI</a></li><li><a href="#s1">Soma binária</a></li><li><a href="#s2">Completo</a></li><li><a href="#s3">n bits</a></li><li><a href="#s4">74283</a></li><li><a href="#bcd">BCD</a></li><li><a href="#s5">Subtração</a></li><li><a href="../sisdig.html">← disciplina</a></li></ul></div></nav>
 <div class="progress-track"><div class="progress-fill" id="progressFill"></div></div>
+<header class="hero"><div class="container"><p class="hero-eyebrow">Sistemas Digitais · Ibmec RJ</p><h1>Circuitos combinacionais MSI:<br><strong>Somadores e Subtratores</strong></h1><p>Prof. Clayton J A Silva · Capítulo 4</p>
+<div class="objectives"><p class="label">Objetivos de aprendizagem</p><ul><li>Relacionar semicondutores, encapsulamento e escalas de integração.</li><li>Reconhecer os circuitos MSI estudados no curso e sua presença nos processadores.</li><li>Construir somadores binários e BCD por módulos e interpretar o carry.</li><li>Entender o empréstimo na subtração e realizar A − B por complemento de 1.</li></ul></div>
+<div class="toc"><a href="#intro">CIs e MSI</a><a href="#s1">Soma binária</a><a href="#s2">Completo</a><a href="#s3">n bits</a><a href="#s4">74283</a><a href="#bcd">BCD</a><a href="#s5">Subtração</a></div></div></header><main class="container"><section class="section" id="intro"><p class="section-label">4.1 / Circuitos integrados e funções MSI</p><h2>Circuitos integrados e funções MSI</h2>
+<h3>Encapsulamento: a interface física do circuito</h3>
+<p>O componente que conectamos à placa contém um <strong>circuito integrado (CI)</strong>: transistores e interconexões fabricados em uma pequena pastilha de material semicondutor, o <em>die</em>. O <strong>encapsulamento</strong> protege essa pastilha, fornece suporte mecânico e estabelece as conexões elétricas com o circuito externo. Também participa da dissipação de calor.</p>
+<p>No encapsulamento <strong>DIP</strong>, os terminais ficam em duas fileiras. Visto por cima, com o entalhe voltado para cima, o pino 1 fica à esquerda do entalhe; a numeração segue no sentido anti-horário. A função de cada pino deve ser consultada no datasheet. O número de terminais não informa, por si só, quantas portas existem internamente.</p>
+<h3>Semicondutor e dopagem</h3>
+<p>O silício é um semicondutor cuja condução elétrica pode ser controlada. A <strong>dopagem</strong> introduz quantidades controladas de impurezas: dopantes doadores, como o fósforo, produzem regiões do tipo <strong>n</strong>, com elétrons como portadores majoritários; dopantes aceitadores, como o boro, produzem regiões do tipo <strong>p</strong>, com lacunas como portadores majoritários. Isso não significa que o material inteiro adquira carga líquida positiva ou negativa.</p>
+<p>Regiões dopadas, camadas isolantes e contatos permitem fabricar transistores. Interligados, esses transistores implementam portas lógicas; as portas formam os blocos combinacionais estudados neste capítulo.</p>
+<h3>Escalas de integração</h3>
+<p>As classificações SSI, MSI, LSI, VLSI, ULSI e GSI descrevem a quantidade de elementos integrados. A figura apresenta as faixas históricas adotadas no material da disciplina, em número de portas. Esses limites são aproximações didáticas: variam entre referências e não devem ser confundidos com contagens de transistores.</p>
+<figure class="fig-full"><a href="images_sisdig/circuitos-integrados-widescreen.png" target="_blank" rel="noopener" aria-label="Ampliar figura 1"><img src="images_sisdig/circuitos-integrados-widescreen.png" alt="Circuito integrado, encapsulamento e escalas de integração" loading="lazy" decoding="async"></a><figcaption class="fig-caption">Fig. 4.1 — Circuito integrado, encapsulamento e escalas de integração. Selecione a imagem para ampliar.</figcaption></figure>
+<h3>Os circuitos MSI mais comuns</h3>
+<p>A integração em média escala (<strong>MSI</strong>) permitiu reunir funções completas em um CI. No curso, o foco está nos blocos <strong>combinacionais</strong>: suas saídas dependem dos valores presentes nas entradas, após o tempo de propagação do circuito.</p>
+<div class="table-wrap"><table class="center"><thead><tr><th scope="col">Família</th><th scope="col">Função</th><th scope="col">Estudo no curso</th></tr></thead><tbody><tr><td>Aritméticos</td><td>Executam operações como soma e subtração de palavras binárias.</td><td>Somadores binários, somadores BCD e subtratores neste capítulo.</td></tr><tr><td>Comparadores</td><td>Indicam as relações A &gt; B, A = B e A &lt; B.</td><td>Comparação de magnitude no capítulo 5.</td></tr><tr><td>Codificadores e decodificadores</td><td>Associam entradas a palavras de um código ou reconhecem palavras para ativar saídas.</td><td>Conversão e interpretação de códigos no capítulo 6.</td></tr><tr><td>Multiplexadores e demultiplexadores</td><td>Selecionam uma entrada para a saída ou encaminham uma entrada à saída selecionada.</td><td>Seleção e distribuição de dados.</td></tr><tr><td>Outros MSI</td><td>Contadores e registradores armazenam estado e realizam sequenciamento.</td><td>Pertencem ao estudo de circuitos sequenciais.</td></tr></tbody></table></div><figure class="fig-full"><a href="images_sisdig/circuitos-combinacionais-widescreen.png" target="_blank" rel="noopener" aria-label="Ampliar figura 2"><img src="images_sisdig/circuitos-combinacionais-widescreen.png" alt="Famílias de circuitos combinacionais abordadas no curso" loading="lazy" decoding="async"></a><figcaption class="fig-caption">Fig. 4.2 — Famílias de circuitos combinacionais abordadas no curso. Selecione a imagem para ampliar.</figcaption></figure>
+<h3>Circuitos aritméticos, lógicos e a ULA</h3>
+<p>Circuitos <strong>aritméticos</strong> tratam palavras como números e realizam soma, subtração e outras operações. Circuitos <strong>lógicos</strong> realizam operações como AND, OR, NOT e XOR, frequentemente bit a bit. Ambos podem ser construídos com portas lógicas.</p>
+<p>Essas funções aparecem em componentes MSI e também são incorporadas à <strong>unidade lógica e aritmética (ULA)</strong> dos processadores. Uma ULA reúne blocos de cálculo e seleção do resultado conforme sinais de controle; ela não é, necessariamente, um CI separado. Em um processador integrado, essas funções fazem parte de um circuito de escala muito maior.</p></section><section class="section" id="s1"><p class="section-label">4.2 / Soma binária e meio-somador</p><h2>Soma binária e meio-somador</h2>
+<h3>Soma de dois bits</h3><p>Somamos uma posição por vez, começando pelo bit menos significativo. A soma 1 + 1 produz 10: o bit da posição é 0 e o <em>carry</em> transportado à posição seguinte é 1.</p>
+<div class="table-wrap"><table class="center"><thead><tr><th scope="col">A</th><th scope="col">B</th><th scope="col">Soma de dois bits (Carry S)</th></tr></thead><tbody><tr><td>0</td><td>0</td><td>00</td></tr><tr><td>0</td><td>1</td><td>01</td></tr><tr><td>1</td><td>0</td><td>01</td></tr><tr><td>1</td><td>1</td><td>10</td></tr></tbody></table></div>
+<h3>Processo de soma de palavras binárias</h3><p>Na posição i, somam-se A<sub>i</sub>, B<sub>i</sub> e o carry C<sub>i</sub> recebido da posição anterior. O resultado fornece S<sub>i</sub> e o novo carry C<sub>i+1</sub>. Para uma soma sem transporte externo, C<sub>0</sub> = 0.</p>
+<div class="codeline">A<sub>i</sub> + B<sub>i</sub> + C<sub>i</sub> = S<sub>i</sub> + 2C<sub>i+1</sub></div>
+<figure class="fig-full"><a href="images_sisdig/soma-binaria-5-bits-v2.png" target="_blank" rel="noopener" aria-label="Ampliar figura 3"><img src="images_sisdig/soma-binaria-5-bits-v2.png" alt="Soma de duas palavras de 5 bits e transporte entre posições" loading="lazy" decoding="async"></a><figcaption class="fig-caption">Fig. 4.3 — Soma de duas palavras de 5 bits e transporte entre posições. Selecione a imagem para ampliar.</figcaption></figure>
+<h3>Meio-somador</h3><p>O <strong>meio-somador</strong> recebe apenas A<sub>0</sub> e B<sub>0</sub>. Ele é suficiente para a posição 0 quando não há carry de entrada. Suas saídas são o bit de soma S<sub>0</sub> e o carry para a posição 1.</p>
+<div class="codeline">S<sub>0</sub> = ~A<sub>0</sub>·B<sub>0</sub> + A<sub>0</sub>·~B<sub>0</sub> = A<sub>0</sub> ⊕ B<sub>0</sub><br>Carry = A<sub>0</sub>·B<sub>0</sub></div>
+<p class="note">Nesta página, <strong>~</strong> precedendo uma variável indica negação lógica; · indica AND; +, nas expressões booleanas, indica OR.</p>
+<figure class="fig-full"><a href="images_sisdig/meio-somador-v2.png" target="_blank" rel="noopener" aria-label="Ampliar figura 4"><img src="images_sisdig/meio-somador-v2.png" alt="Meio-somador: portas AND, OR e NOT, tabela verdade e expressões das saídas" loading="lazy" decoding="async"></a><figcaption class="fig-caption">Fig. 4.4 — Meio-somador: portas AND, OR e NOT, tabela verdade e expressões das saídas. Selecione a imagem para ampliar.</figcaption></figure></section><section class="section" id="s2"><p class="section-label">4.3 / Somador completo</p><h2>Somador completo</h2>
+<p>O <strong>somador completo</strong> recebe três bits: A, B e C<sub>in</sub>. Ele soma também o transporte recebido e gera S e C<sub>out</sub>. O carry de saída vale 1 quando pelo menos duas entradas valem 1.</p>
+<figure class="fig-full"><a href="images_sisdig/somador-completo.png" target="_blank" rel="noopener" aria-label="Ampliar figura 5"><img src="images_sisdig/somador-completo.png" alt="Somador completo com carry de entrada e de saída" loading="lazy" decoding="async"></a><figcaption class="fig-caption">Fig. 4.5 — Somador completo com carry de entrada e de saída. Selecione a imagem para ampliar.</figcaption></figure>
+<div class="codeline">S = A ⊕ B ⊕ C<sub>in</sub><br>C<sub>out</sub> = A·B + A·C<sub>in</sub> + B·C<sub>in</sub></div></section><section class="section" id="s3"><p class="section-label">4.4 / Somador de n bits</p><h2>Somador de n bits</h2>
+<p>Para somar duas palavras de n bits sem carry externo, conectamos <strong>um meio-somador</strong> na posição 0 e <strong>n − 1 somadores completos</strong> nas posições 1 a n − 1. O carry de cada estágio entra no seguinte; os bits S<sub>i</sub> permanecem em suas respectivas posições.</p>
+<figure class="fig-full"><a href="images_sisdig/somador-n-bits-cascateamento.png" target="_blank" rel="noopener" aria-label="Ampliar figura 6"><img src="images_sisdig/somador-n-bits-cascateamento.png" alt="Cascateamento de um meio-somador e n − 1 somadores completos" loading="lazy" decoding="async"></a><figcaption class="fig-caption">Fig. 4.6 — Cascateamento de um meio-somador e n − 1 somadores completos. Selecione a imagem para ampliar.</figcaption></figure>
+<p>Se houver carry externo C<sub>0</sub>, usamos um somador completo também na primeira posição. Em uma cadeia simples, o resultado final só se estabiliza depois da propagação dos carries.</p>
+<div class="note"><strong>Carry e overflow:</strong> para operandos sem sinal, C<sub>n</sub> = 1 indica que a soma ultrapassou n bits; a palavra completa é C<sub>n</sub>S<sub>n−1</sub>…S<sub>0</sub>. Para números com sinal em complemento de 2, o carry final isolado não caracteriza overflow.</div></section><section class="section" id="s4"><p class="section-label">4.5 / Somador 74283: funcionamento e cascateamento</p><h2>Somador 74283: funcionamento e cascateamento</h2>
+<p>A família <strong>74283</strong> implementa a soma binária de duas palavras de 4 bits com carry de entrada. As variantes 74LS283 e 74HC283 realizam essa função, mas pertencem a tecnologias diferentes; alimentação, níveis elétricos e temporização devem ser conferidos no datasheet da variante utilizada.</p>
+<figure class="fig-full"><a href="images_sisdig/somador-4-bits-bloco-v2.png" target="_blank" rel="noopener" aria-label="Ampliar figura 7"><img src="images_sisdig/somador-4-bits-bloco-v2.png" alt="Somador de 4 bits: duas palavras de entrada, carry de entrada, quatro bits de soma e carry final" loading="lazy" decoding="async"></a><figcaption class="fig-caption">Fig. 4.7 — Somador de 4 bits: duas palavras de entrada, carry de entrada, quatro bits de soma e carry final. Selecione a imagem para ampliar.</figcaption></figure>
+<div class="codeline">A + B + C<sub>0</sub> = 16C<sub>4</sub> + S</div>
+<p>O circuito aceita <strong>todas as combinações binárias de 0000 a 1111</strong> em cada operando. Ele não aplica correção decimal BCD. O 74LS283 possui antecipação interna de carry nos quatro bits, diferentemente de uma simples cadeia de portas que aguarda cada transporte sucessivamente. Consulte o <a href="https://www.ti.com/lit/ds/symlink/sn74ls283.pdf">datasheet da Texas Instruments</a>.</p>
+<h3>Expansão para 8 bits</h3><p>O bloco das posições 0 a 3 recebe C<sub>0</sub>; sua saída C<sub>4</sub> é ligada à entrada de carry do bloco das posições 4 a 7. As oito saídas de soma formam S<sub>7</sub>…S<sub>0</sub>, enquanto C<sub>8</sub> é o transporte final.</p>
+<figure class="fig-full"><a href="images_sisdig/somador-8-bits-74hc283.png" target="_blank" rel="noopener" aria-label="Ampliar figura 8"><img src="images_sisdig/somador-8-bits-74hc283.png" alt="Dois somadores de 4 bits formando um somador binário de 8 bits" loading="lazy" decoding="async"></a><figcaption class="fig-caption">Fig. 4.8 — Dois somadores de 4 bits formando um somador binário de 8 bits. Selecione a imagem para ampliar.</figcaption></figure></section><section class="section" id="bcd"><p class="section-label">4.6 / Somador BCD: funcionamento e cascateamento</p><h2>Somador BCD: funcionamento e cascateamento</h2>
+<p>No código <strong>BCD 8421</strong>, cada dígito decimal é representado por quatro bits. São válidas as palavras 0000 a 1001. Por exemplo, 25 é representado por 0010 0101: um grupo para o dígito 2 e outro para o dígito 5.</p>
+<p>Um somador BCD de um dígito recebe A e B entre 0 e 9 e um carry de entrada entre 0 e 1. A soma pode variar de 0 a 19. A saída tem <strong>um dígito BCD de quatro bits</strong> e <strong>um carry decimal</strong> para a próxima posição.</p>
+<div class="codeline">A + B + C<sub>in</sub> = 10C<sub>out</sub> + dígito de saída</div>
+<h3>Correção da soma binária</h3><p>Calcula-se primeiro a soma binária T. Se T estiver entre 0 e 9, não há correção. Se T for maior que 9, acrescenta-se <strong>0110 (6)</strong> aos quatro bits inferiores para obter o dígito BCD. A correção é necessária tanto quando os quatro bits excedem 1001 quanto quando a primeira soma gera carry binário.</p>
+<div class="example"><span class="ex-label">Exemplos</span>5 + 4 = 9: 0101 + 0100 = 1001<br>6 + 7 = 13: 1101 + 0110 = 1 0011 → carry decimal 1, dígito 3<br>9 + 9 = 18: soma binária 1 0010; 0010 + 0110 = 1000 → carry decimal 1, dígito 8</div>
+<p>No último exemplo, a correção dos quatro bits não gera um novo carry, mas o carry decimal permanece 1. Portanto, não basta observar apenas o transporte da segunda soma.</p>
+<h3>Exemplo de CI: Motorola MC14560B</h3><p>O MC14560B é um somador decimal em BCD natural. A matriz resume a soma dos dígitos válidos para C<sub>in</sub> = 0 e C<sub>in</sub> = 1.</p>
+<figure class="fig-full"><a href="images_sisdig/somador-bcd-matriz-cin-v2.png" target="_blank" rel="noopener" aria-label="Ampliar figura 9"><img src="images_sisdig/somador-bcd-matriz-cin-v2.png" alt="Matriz de soma BCD para entradas decimais válidas" loading="lazy" decoding="async"></a><figcaption class="fig-caption">Fig. 4.9 — Matriz de soma BCD para entradas decimais válidas. Selecione a imagem para ampliar.</figcaption></figure>
+<p class="note">Entradas de 1010 a 1111 estão fora do código BCD. O CI produz níveis elétricos, mas não se deve interpretar essa resposta como uma soma binária pura. Consulte o <a href="https://digsys.upc.edu/csd/chips/classic/MC14560.pdf">datasheet Motorola MC14560B</a> para as condições especificadas.</p>
+<h3>Cascateamento de dígitos</h3><p>Um bloco soma as unidades, outro as dezenas e outro as centenas. O carry de cada bloco é transportado para a próxima <strong>posição decimal</strong>. Cada grupo de quatro bits continua representando um único dígito.</p>
+<figure class="fig-full"><a href="images_sisdig/somador-bcd-3-digitos.png" target="_blank" rel="noopener" aria-label="Ampliar figura 10"><img src="images_sisdig/somador-bcd-3-digitos.png" alt="Três somadores BCD em cascata, com transporte decimal até o milhar" loading="lazy" decoding="async"></a><figcaption class="fig-caption">Fig. 4.10 — Três somadores BCD em cascata, com transporte decimal até o milhar. Selecione a imagem para ampliar.</figcaption></figure></section><section class="section" id="s5"><p class="section-label">4.7 / Subtratores e complemento de 1</p><h2>Subtratores e complemento de 1</h2>
+<h3>Tabela de subtração de dois bits</h3><p>Quando A = 0 e B = 1, é necessário pedir uma unidade à posição seguinte. Essa unidade vale dois na posição atual: 10<sub>2</sub> − 1<sub>2</sub> = 1<sub>2</sub>. O sinal de <em>borrow</em> registra esse empréstimo.</p>
+<div class="table-wrap"><table class="center"><thead><tr><th scope="col">A</th><th scope="col">B</th><th scope="col">Diferença</th><th scope="col">Borrow</th></tr></thead><tbody><tr><td>0</td><td>0</td><td>0</td><td>0</td></tr><tr><td>0</td><td>1</td><td>1</td><td>1</td></tr><tr><td>1</td><td>0</td><td>1</td><td>0</td></tr><tr><td>1</td><td>1</td><td>0</td><td>0</td></tr></tbody></table></div>
+<h3>Meio-subtrator: expressão e circuito</h3><p>A saída DIF é o bit da diferença; BORROW sinaliza o empréstimo. A relação aritmética é A − B = DIF − 2·BORROW.</p>
+<div class="codeline">DIF = ~A·B + A·~B = A ⊕ B<br>BORROW = ~A·B</div>
+<figure class="fig-full"><a href="images_sisdig/meio-subtrator.png" target="_blank" rel="noopener" aria-label="Ampliar figura 11"><img src="images_sisdig/meio-subtrator.png" alt="Meio-subtrator com portas AND, OR e NOT e sua tabela verdade" loading="lazy" decoding="async"></a><figcaption class="fig-caption">Fig. 4.11 — Meio-subtrator com portas AND, OR e NOT e sua tabela verdade. Selecione a imagem para ampliar.</figcaption></figure>
+<h3>Subtrator completo</h3><p>Nas demais posições, o subtrator também recebe B<sub>in</sub>, o empréstimo solicitado pela posição menos significativa. Ele calcula A − B − B<sub>in</sub> e produz DIF e B<sub>out</sub>.</p>
+<div class="table-wrap"><table class="center"><thead><tr><th scope="col">A</th><th scope="col">B</th><th scope="col">B<sub>in</sub></th><th scope="col">DIF</th><th scope="col">B<sub>out</sub></th></tr></thead><tbody><tr><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr><tr><td>0</td><td>0</td><td>1</td><td>1</td><td>1</td></tr><tr><td>0</td><td>1</td><td>0</td><td>1</td><td>1</td></tr><tr><td>0</td><td>1</td><td>1</td><td>0</td><td>1</td></tr><tr><td>1</td><td>0</td><td>0</td><td>1</td><td>0</td></tr><tr><td>1</td><td>0</td><td>1</td><td>0</td><td>0</td></tr><tr><td>1</td><td>1</td><td>0</td><td>0</td><td>0</td></tr><tr><td>1</td><td>1</td><td>1</td><td>1</td><td>1</td></tr></tbody></table></div>
+<div class="codeline">DIF = A ⊕ B ⊕ B<sub>in</sub><br>B<sub>out</sub> = ~A·B + ~A·B<sub>in</sub> + B·B<sub>in</sub></div>
+<h3>A dificuldade do empréstimo</h3><p>Em uma operação como 1000 − 0001, o empréstimo atravessa várias posições que contêm zero. Um circuito direto precisa propagar esse pedido e levar em conta o empréstimo recebido em cada posição. Assim como ocorre com o carry, essa dependência contribui para o atraso de propagação.</p>
+<p>É possível construir um subtrator de n bits com um meio-subtrator e n − 1 subtratores completos. Outra abordagem é <strong>reutilizar o somador</strong>, transformando a subtração em uma soma com o complemento do subtraendo.</p>
+<h3>Subtração por complemento de 1</h3><p>Para calcular A − B, fixe a largura n dos operandos. O complemento de 1 de B é obtido invertendo <strong>todos os n bits</strong>: C<sub>1</sub>(B) = ~B.</p>
+<ol class="steps"><li>Calcule T = A + ~B, com carry de entrada igual a 0.</li><li>Separe os n bits inferiores de T e o carry final C<sub>n</sub>.</li><li>Some <strong>sempre</strong> C<sub>n</sub> aos n bits inferiores. Se C<sub>n</sub> = 0, nada se altera; se valer 1, acrescenta-se uma unidade.</li></ol>
+<div class="codeline">T = A + ~B<br>R = T[n−1:0] + C<sub>n</sub></div>
+<p>Esse retorno do transporte à posição menos significativa é chamado de <strong>carry circular</strong>. Ele é uma segunda adição ao resultado parcial, não um 1 fixo colocado na entrada da primeira soma.</p>
+<pre class="bit-work" aria-label="Exemplo de 7 menos 3 por complemento de 1">A = 0111 (7)     B = 0011 (3)     ~B = 1100
 
-<section class="hero">
-  <div class="container">
-    <p class="hero-eyebrow">Sistemas Digitais · Ibmec RJ</p>
-    <h1>Cap. 4 — Circuitos Aritméticos:<br><strong>Somadores e Subtratores</strong></h1>
+    0111
+  + 1100
+  ------
+  1 0011    → carry final = 1
 
-    <div class="hero-meta">
-      <span class="meta-item">
-        <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><circle cx="7" cy="7" r="6" stroke="currentColor" stroke-width="1.2"/><path d="M7 4v3l2 1.5" stroke="currentColor" stroke-width="1.2"/></svg>
-        leitura ~30 min
-      </span>
-      <span class="meta-item">
-        <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><rect x="2" y="3" width="10" height="9" rx="1" stroke="currentColor" stroke-width="1.2"/><line x1="2" y1="6" x2="12" y2="6" stroke="currentColor" stroke-width="1.2"/></svg>
-        Prof. Clayton J A Silva
-      </span>
-      <span class="meta-item">
-        <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 7l4 4 6-7" stroke="currentColor" stroke-width="1.4" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        Rev 2026.1
-      </span>
-    </div>
-
-    <div class="objectives">
-      <p class="label">Objetivos de aprendizagem</p>
-      <ul>
-        <li>Projetar o meio-somador e o somador completo a partir da tabela-verdade</li>
-        <li>Construir um somador modular de <em>n</em> bits por cascateamento</li>
-        <li>Reconhecer os graus de integração de circuitos (SSI a GSI) e o CI 54LS283</li>
-        <li>Aplicar a correção do código BCD na soma de dígitos decimais</li>
-        <li>Projetar o meio-subtrator e o subtrator completo</li>
-      </ul>
-    </div>
-
-    <div class="toc">
-      <a href="#s1">4.1 Meio-somador</a>
-      <a href="#s2">4.2 Somador completo</a>
-      <a href="#s3">4.3 Somador de n bits</a>
-      <a href="#s4">4.4 CI Somador</a>
-      <a href="#s5">4.5 Subtratores</a>
-    </div>
-  </div>
+    0011
+  + 0001    → soma do carry circular
+  ------
+    0100    = 4</pre>
+<h3>Resultado negativo e zero</h3><p>Para operandos A e B inicialmente interpretados como magnitudes sem sinal, se A &lt; B não há carry final. Os n bits obtidos são o complemento de 1 da magnitude da diferença. Por exemplo, 3 − 7 produz 1011; invertendo esses bits, obtemos 0100, portanto a diferença é −4. O sinal deve ser interpretado com essa informação; o bit mais significativo sozinho não basta para toda a faixa de operandos sem sinal.</p>
+<p>Se A = B, a operação produz 111…111, a representação de <strong>zero negativo</strong> no complemento de 1. Pode-se normalizá-la para 000…000. Quando as palavras são usadas como números com sinal em complemento de 1, a faixa é de −(2<sup>n−1</sup> − 1) a +(2<sup>n−1</sup> − 1), com duas representações de zero; resultados fora dessa faixa exigem tratamento de overflow.</p>
+<div class="note"><strong>Distinção:</strong> A + ~B + 1, com 1 fixo desde o início e descarte do carry final, é a técnica de complemento de 2. Aqui estudamos complemento de 1 e retorno do carry produzido por A + ~B.</div>
 </section>
-
-<div class="container">
-
-  <p style="margin-top:2rem">Sistemas digitais são projetados para realizar uma variedade de operações aritméticas com bits. Uma das operações mais comuns é a <strong>adição binária</strong>.</p>
-
-  <!-- 4.1 -->
-  <section class="section" id="s1">
-    <p class="section-label">4.1 / meio-somador</p>
-    <h2>Meio-somador</h2>
-
-    <p>A operação de adição de dois bits é dada por:</p>
-    <table class="center" style="max-width:300px">
-      <thead><tr><th>+</th><th>0</th><th>1</th></tr></thead>
-      <tbody>
-        <tr><td><strong>0</strong></td><td>0</td><td>1</td></tr>
-        <tr><td><strong>1</strong></td><td>1</td><td><strong>1</strong>0</td></tr>
-      </tbody>
-    </table>
-
-    <p>Uma abordagem para projetar um circuito somador é <strong>modularizar</strong> o circuito. O módulo relativo à soma dos bits menos significativos de dois números A e B de <em>n</em> bits é chamado de <strong>meio-somador</strong>.</p>
-
-    <div class="note">O circuito meio-somador considera que: $\text{BIT}_0 = 1 + \text{BIT}_1 = 1 \Rightarrow CARRY = 1,\ SOMA = 0$</div>
-
-    <p>A tabela-verdade da soma de dois bits A e B é:</p>
-    <table class="center">
-      <thead><tr><th>A</th><th>B</th><th>SOMA</th><th>CARRY</th></tr></thead>
-      <tbody>
-        <tr><td>0</td><td>0</td><td>0</td><td>0</td></tr>
-        <tr><td>0</td><td>1</td><td>1</td><td>0</td></tr>
-        <tr><td>1</td><td>0</td><td>1</td><td>0</td></tr>
-        <tr><td>1</td><td>1</td><td>0</td><td>1</td></tr>
-      </tbody>
-    </table>
-
-    <p>Obtendo a expressão booleana e minimizando:</p>
-    <div class="codeline">$$SOMA = \bar{A}.B + A.\bar{B} = A \oplus B \qquad CARRY = A.B$$</div>
-
-    <div class="concept-grid">
-      <div class="concept-text">
-        <p>O meio-somador é representado logicamente pela figura ao lado.</p>
-        <div class="note">Observe que o meio-somador <strong>não possui entrada de carry</strong> — apenas dois bits de entrada. Para um somador completo, é necessário outro módulo.</div>
-      </div>
-      <div class="concept-fig">
-        <img src="../assets/img/sisdig/cap4_meio_somador.svg" alt="Meio-somador">
-        <p class="fig-caption">Fig. 4.1 — Meio-somador</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- 4.2 -->
-  <section class="section" id="s2">
-    <p class="section-label">4.2 / somador completo</p>
-    <h2>Somador completo</h2>
-    <p>O somador completo apresenta o comportamento descrito pela tabela-verdade abaixo, onde $C_{in}$ e $C_{out}$ representam respectivamente o <em>carry</em> de entrada e o <em>carry</em> de saída:</p>
-
-    <table class="center">
-      <thead><tr><th>A</th><th>B</th><th>C<sub>in</sub></th><th>SOMA</th><th>C<sub>out</sub></th></tr></thead>
-      <tbody>
-        <tr><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
-        <tr><td>0</td><td>0</td><td>1</td><td>1</td><td>0</td></tr>
-        <tr><td>0</td><td>1</td><td>0</td><td>1</td><td>0</td></tr>
-        <tr><td>0</td><td>1</td><td>1</td><td>0</td><td>1</td></tr>
-        <tr><td>1</td><td>0</td><td>0</td><td>1</td><td>0</td></tr>
-        <tr><td>1</td><td>0</td><td>1</td><td>0</td><td>1</td></tr>
-        <tr><td>1</td><td>1</td><td>0</td><td>0</td><td>1</td></tr>
-        <tr><td>1</td><td>1</td><td>1</td><td>1</td><td>1</td></tr>
-      </tbody>
-    </table>
-
-    <div class="concept-grid">
-      <div class="concept-fig">
-        <img src="../assets/img/sisdig/cap4_somador_completo.svg" alt="Somador completo">
-        <p class="fig-caption">Fig. 4.2 — Somador completo</p>
-      </div>
-      <div class="concept-text">
-        <p>De modo similar ao meio-somador, pode-se obter a expressão booleana relativa a cada saída e, a partir dela, os respectivos circuitos com portas lógicas.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- 4.3 -->
-  <section class="section" id="s3">
-    <p class="section-label">4.3 / somador de n bits</p>
-    <h2>Somador de <em>n</em> bits</h2>
-
-    <p>Um somador de dois números binários A e B de <em>n</em> bits pode ser implementado modularmente, utilizando o <strong>cascateamento</strong> de <strong>1 meio-somador</strong> e <strong><em>n-1</em> somadores completos</strong>.</p>
-
-    <ul class="plain">
-      <li>O meio-somador realiza a adição dos dígitos menos significativos $A_0$ e $B_0$.</li>
-      <li>O <em>carry</em> do meio-somador é <strong>transportado</strong> para o módulo seguinte.</li>
-      <li>A soma do meio-somador é o dígito menos significativo do resultado, $S_0$.</li>
-      <li>No somador completo seguinte, as entradas A e B recebem $A_1$ e $B_1$, e $C_{in}$ recebe o <em>carry</em> do meio-somador.</li>
-      <li>A saída do primeiro somador completo é $S_1$. Nos módulos seguintes a arquitetura se repete.</li>
-    </ul>
-
-    <div class="fig-full">
-      <img src="../assets/img/sisdig/cap4_somador_modular.svg" alt="Somador modular de n bits">
-      <p class="fig-caption">Fig. 4.3 — Somador modular de n bits</p>
-    </div>
-
-    <div class="definition">
-      <p style="margin:0">O dígito <strong>mais significativo</strong> da soma é o <em>carry</em> do <strong>último módulo</strong>.</p>
-    </div>
-  </section>
-
-  <!-- 4.4 -->
-  <section class="section" id="s4">
-    <p class="section-label">4.4 / ci somador</p>
-    <h2>CI Somador</h2>
-
-    <h3>4.4.1 Circuitos integrados digitais (CIs)</h3>
-    <p>O <strong>chip</strong> é um conjunto de elementos eletrônicos integrados em um substrato semicondutor, <strong>encapsulados</strong> em uma embalagem protetora (por exemplo, DIP).</p>
-
-    <div class="fig-full">
-      <img src="https://github.com/claytonjasilva/claytonjasilva.github.io/raw/main/sisdig_aulas/images_sisdig/circuitointegrado.jpg" alt="Encapsulamento e pinagem do chip">
-      <p class="fig-caption">Fig. 4.4 — (a) Pinagem do chip · (b) Chanfro indicando a numeração</p>
-    </div>
-    <p>A figura (a) evidencia a <strong>pinagem</strong> do chip, através da qual são estabelecidas as conexões. A figura (b) indica o <strong>chanfro</strong> (entalhe) que indica a numeração da pinagem.</p>
-
-    <h4>Grau de integração</h4>
-    <p>A quantidade de elementos integrados define o grau de integração, conforme o número de portas no substrato:</p>
-    <div class="level-grid">
-      <div class="level-item"><div class="sigla">SSI</div><div class="range">&lt; 12 portas</div></div>
-      <div class="level-item"><div class="sigla">MSI</div><div class="range">12 – 99</div></div>
-      <div class="level-item"><div class="sigla">LSI</div><div class="range">100 – 9.999</div></div>
-      <div class="level-item"><div class="sigla">VLSI</div><div class="range">10K – 99.999</div></div>
-      <div class="level-item"><div class="sigla">ULSI</div><div class="range">100K – 999.999</div></div>
-      <div class="level-item"><div class="sigla">GSI</div><div class="range">&gt; 1.000.000</div></div>
-    </div>
-
-    <h3>4.4.2 Somadores integrados</h3>
-    <p>Fabricantes como a <em>National Semiconductor</em> integram e encapsulam somadores em chips identificados por um código — por exemplo, <strong>54LS283</strong>. Ver o <a href="https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/sisdig_aulas/sistemas_digitais_datasheet_74LS283_National.pdf" target="_blank"><em>datasheet</em> do 74LS283 →</a></p>
-
-    <table>
-      <thead><tr><th>Característica</th><th>Descrição</th></tr></thead>
-      <tbody>
-        <tr><td>Pinagem</td><td>16 pinos</td></tr>
-        <tr><td>Entradas lógicas</td><td>A (4 bits), B (4 bits) e C0</td></tr>
-        <tr><td>Saídas lógicas</td><td>$\Sigma$ (4 bits) e C4</td></tr>
-        <tr><td>Alimentação ($V_{CC}$)</td><td>5 volts (nominal)</td></tr>
-      </tbody>
-    </table>
-
-    <p>O 54LS283 pode ser <strong>cascateado</strong> utilizando os pinos de <em>carry</em> de entrada e saída, da mesma forma que na construção modular com meio-somador e somadores completos.</p>
-
-    <div class="fig-full">
-      <img src="https://github.com/claytonjasilva/claytonjasilva.github.io/raw/main/sisdig_aulas/images_sisdig/somadorcascata.jpg" alt="Cascateamento de CIs somadores">
-      <p class="fig-caption">Fig. 4.5 — Cascateamento de somadores de 4 bits</p>
-    </div>
-
-    <h3>4.4.3 Somador BCD (<em>Binary-Coded Decimal</em>)</h3>
-    <p>Uma das formas de implementar eletronicamente números decimais é utilizar módulos que representam somente os dígitos decimais em sua forma binária:</p>
-
-    <table class="center" style="max-width:400px">
-      <thead><tr><th>Palavra</th><th>Decimal</th></tr></thead>
-      <tbody>
-        <tr><td>0000</td><td>0</td></tr><tr><td>0001</td><td>1</td></tr>
-        <tr><td>0010</td><td>2</td></tr><tr><td>0011</td><td>3</td></tr>
-        <tr><td>0100</td><td>4</td></tr><tr><td>0101</td><td>5</td></tr>
-        <tr><td>0110</td><td>6</td></tr><tr><td>0111</td><td>7</td></tr>
-        <tr><td>1000</td><td>8</td></tr><tr><td>1001</td><td>9</td></tr>
-      </tbody>
-    </table>
-
-    <p>A soma BCD é realizada em grupos de 4 bits. Quando a soma é inferior a 9, a operação é de binário puro:</p>
-
-    <div class="example">
-      <span class="ex-label">exemplo — soma sem correção</span>
-      5 + 4 = 9 → 0101 + 0100 = 1001 ✓<br>
-      45 + 33 = 78 → (5+3) 0101+0011=1000 · (4+3) 0100+0011=0111 ✓
-    </div>
-
-    <p>Quando a soma resulta maior que 9 ($1001_2$), é necessário somar o resultado ao complemento $C(1001) = 0110$:</p>
-
-    <div class="example">
-      <span class="ex-label">exemplo — soma com correção</span>
-      6 + 7 = 13 → 0110 + 0111 = 1101 (palavra inválida)<br>
-      → 1101 + 0110 = 1 0011 → carry=1, soma=0011
-    </div>
-
-    <p>O somador BCD implementa a soma de cada dígito decimal, transportando o <em>carry</em>, reproduzindo exatamente a soma decimal:</p>
-
-    <div class="fig-full">
-      <img src="https://github.com/claytonjasilva/claytonjasilva.github.io/raw/main/sisdig_aulas/images_sisdig/somadorbcd.jpg" alt="Somador BCD">
-      <p class="fig-caption">Fig. 4.6 — Somador BCD: A e B são os dígitos decimais, Σ é a saída, carry transportado entre dezenas, centenas...</p>
-    </div>
-  </section>
-
-  <!-- 4.5 -->
-  <section class="section" id="s5">
-    <p class="section-label">4.5 / subtratores</p>
-    <h2>Subtratores</h2>
-
-    <p>A subtração binária é dada por:</p>
-    <table class="center" style="max-width:300px">
-      <thead><tr><th>−</th><th>0</th><th>1</th></tr></thead>
-      <tbody>
-        <tr><td><strong>0</strong></td><td>0</td><td>1</td></tr>
-        <tr><td><strong>1</strong></td><td><strong>1</strong>1</td><td>0</td></tr>
-      </tbody>
-    </table>
-
-    <div class="definition">
-      <p style="margin:0">A subtração binária normalmente é realizada pela adição do minuendo ao <strong>complemento de 1</strong> ou <strong>complemento de 2</strong> do subtraendo.</p>
-    </div>
-
-    <p>Normalmente não se implementa computacionalmente a operação de subtração. No entanto, caso seja necessário, pode-se adotar o mesmo método da adição, com o <strong>meio-subtrator</strong> e o <strong>subtrator completo</strong>.</p>
-
-    <p>A tabela-verdade do meio-subtrator é:</p>
-    <table class="center">
-      <thead><tr><th>A</th><th>B</th><th>A−B</th><th>BORROW</th></tr></thead>
-      <tbody>
-        <tr><td>0</td><td>0</td><td>0</td><td>0</td></tr>
-        <tr><td>0</td><td>1</td><td>1</td><td>1</td></tr>
-        <tr><td>1</td><td>0</td><td>1</td><td>0</td></tr>
-        <tr><td>1</td><td>1</td><td>0</td><td>0</td></tr>
-      </tbody>
-    </table>
-
-    <p>Obtendo a expressão booleana e minimizando:</p>
-    <div class="codeline">$$A - B = \bar{A}.B + A.\bar{B} = A \oplus B \qquad BORROW = \bar{A}.B$$</div>
-
-    <div class="concept-grid">
-      <div class="concept-fig">
-        <img src="../assets/img/sisdig/cap4_meio_subtrator.svg" alt="Meio-subtrator">
-        <p class="fig-caption">Fig. 4.7 — Meio-subtrator</p>
-      </div>
-      <div class="concept-text">
-        <p>O meio-subtrator é representado logicamente pela figura ao lado.</p>
-      </div>
-    </div>
-
-    <p>O circuito com portas lógicas é apresentado abaixo:</p>
-    <div class="fig-full">
-      <img src="../assets/img/sisdig/cap4_circuito_meio_subtrator.svg" alt="Circuito do meio-subtrator com portas lógicas">
-      <p class="fig-caption">Fig. 4.8 — Circuito do meio-subtrator com portas lógicas</p>
-    </div>
-
-    <p>De modo similar ao somador completo, pode-se desenvolver o <strong>subtrator completo</strong>, descrito pela tabela-verdade, onde $B_{in}$ e $B_{out}$ representam respectivamente o <em>borrow</em> de entrada e de saída:</p>
-
-    <table class="center">
-      <thead><tr><th>A</th><th>B</th><th>B<sub>in</sub></th><th>DIF</th><th>B<sub>out</sub></th></tr></thead>
-      <tbody>
-        <tr><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
-        <tr><td>0</td><td>0</td><td>1</td><td>1</td><td>1</td></tr>
-        <tr><td>0</td><td>1</td><td>0</td><td>1</td><td>1</td></tr>
-        <tr><td>0</td><td>1</td><td>1</td><td>0</td><td>1</td></tr>
-        <tr><td>1</td><td>0</td><td>0</td><td>1</td><td>0</td></tr>
-        <tr><td>1</td><td>0</td><td>1</td><td>0</td><td>0</td></tr>
-        <tr><td>1</td><td>1</td><td>0</td><td>0</td><td>0</td></tr>
-        <tr><td>1</td><td>1</td><td>1</td><td>1</td><td>1</td></tr>
-      </tbody>
-    </table>
-
-    <p>O subtrator completo é representado por uma figura similar à do somador completo, com as devidas substituições.</p>
-
-    <div class="definition">
-      <p style="margin:0">Um subtrator de dois números binários A e B de <em>n</em> bits pode ser implementado modularmente, utilizando o <strong>cascateamento</strong> de <strong>1 meio-subtrator</strong> e <strong><em>n-1</em> subtratores completos</strong>.</p>
-    </div>
-  </section>
-
-  <!-- QUIZ -->
-  <section class="section" id="quiz">
-    <p class="section-label">checkpoint</p>
-    <h2>Teste seus conhecimentos</h2>
-
-    <div class="quiz">
-      <div class="quiz-header">
-        <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="8" stroke="#7c3aed" stroke-width="1.4"/><text x="10" y="14" font-size="10" fill="#7c3aed" text-anchor="middle" font-weight="600">?</text></svg>
-        <span class="quiz-title">Pergunta 1 de 3</span>
-      </div>
-      <p class="quiz-q">Por que o meio-somador não pode, por si só, formar um somador de n bits?</p>
-      <div class="quiz-options">
-        <button class="quiz-opt" onclick="checkAnswer(this, false, 'q1fb')">Porque ele só soma números pares</button>
-        <button class="quiz-opt" onclick="checkAnswer(this, true, 'q1fb')">Porque ele não possui entrada de carry</button>
-        <button class="quiz-opt" onclick="checkAnswer(this, false, 'q1fb')">Porque ele exige alimentação de 12V</button>
-      </div>
-      <div class="quiz-feedback" id="q1fb"></div>
-    </div>
-
-    <div class="quiz">
-      <div class="quiz-header">
-        <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="8" stroke="#7c3aed" stroke-width="1.4"/><text x="10" y="14" font-size="10" fill="#7c3aed" text-anchor="middle" font-weight="600">?</text></svg>
-        <span class="quiz-title">Pergunta 2 de 3</span>
-      </div>
-      <p class="quiz-q">Na soma BCD 6+7=13, qual correção é necessária?</p>
-      <div class="quiz-options">
-        <button class="quiz-opt" onclick="checkAnswer(this, false, 'q2fb')">Subtrair 0110 do resultado</button>
-        <button class="quiz-opt" onclick="checkAnswer(this, true, 'q2fb')">Somar 0110 ao resultado, pois 1101 é palavra BCD inválida</button>
-        <button class="quiz-opt" onclick="checkAnswer(this, false, 'q2fb')">Nenhuma correção é necessária</button>
-      </div>
-      <div class="quiz-feedback" id="q2fb"></div>
-    </div>
-
-    <div class="quiz">
-      <div class="quiz-header">
-        <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="8" stroke="#7c3aed" stroke-width="1.4"/><text x="10" y="14" font-size="10" fill="#7c3aed" text-anchor="middle" font-weight="600">?</text></svg>
-        <span class="quiz-title">Pergunta 3 de 3</span>
-      </div>
-      <p class="quiz-q">A expressão BORROW do meio-subtrator é igual a:</p>
-      <div class="quiz-options">
-        <button class="quiz-opt" onclick="checkAnswer(this, false, 'q3fb')">$A \cdot B$</button>
-        <button class="quiz-opt" onclick="checkAnswer(this, true, 'q3fb')">$\bar{A} \cdot B$</button>
-        <button class="quiz-opt" onclick="checkAnswer(this, false, 'q3fb')">$A \oplus B$</button>
-      </div>
-      <div class="quiz-feedback" id="q3fb"></div>
-    </div>
-  </section>
-
-  <!-- REFERÊNCIAS -->
-  <section class="section" id="refs">
-    <p class="section-label">referências e aprofundamento</p>
-    <h2>Para ir além</h2>
-
-    <div class="refs-grid">
-      <a class="ref-card" href="https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/sisdig_aulas/sistemas_digitais_datasheet_74LS283_National.pdf" target="_blank" style="color:inherit;">
-        <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M3 2h8l4 4v10H3V2z" stroke="#00c2ff" stroke-width="1.3"/><line x1="6" y1="8" x2="12" y2="8" stroke="#00c2ff" stroke-width="1.1"/><line x1="6" y1="11" x2="10" y2="11" stroke="#00c2ff" stroke-width="1.1"/></svg>
-        <div><span class="ref-type">datasheet</span><h4>74LS283 (National)</h4><p>Somador de 4 bits — folha de dados oficial</p></div>
-      </a>
-      <a class="ref-card" href="https://www.youtube.com/results?search_query=somador+completo+circuito+digital" target="_blank" style="color:inherit;">
-        <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><rect x="2" y="4" width="14" height="10" rx="2" stroke="#7c3aed" stroke-width="1.3"/><polygon points="8,7 8,11 12,9" fill="#7c3aed"/></svg>
-        <div><span class="ref-type">vídeo</span><h4>Somador completo — funcionamento</h4><p>Busca curada de vídeos explicativos</p></div>
-      </a>
-      <a class="ref-card" href="https://claytonjasilva.github.io/sisdig_aulas/cap3.html" style="color:inherit;">
-        <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><rect x="2" y="2" width="14" height="14" rx="2" stroke="#00c2ff" stroke-width="1.3"/><line x1="2" y1="7" x2="16" y2="7" stroke="#00c2ff" stroke-width="1.1"/></svg>
-        <div><span class="ref-type">capítulo anterior</span><h4>Cap. 3 — Circuitos Combinacionais</h4><p>Mapa K e formas canônicas</p></div>
-      </a>
-      <a class="ref-card" href="https://claytonjasilva.github.io/avaliacoes.html" target="_blank" style="color:inherit;">
-        <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><rect x="3" y="2" width="12" height="14" rx="1.5" stroke="#7c3aed" stroke-width="1.3"/><line x1="6" y1="6" x2="12" y2="6" stroke="#7c3aed" stroke-width="1.1"/><line x1="6" y1="9" x2="12" y2="9" stroke="#7c3aed" stroke-width="1.1"/></svg>
-        <div><span class="ref-type">avaliação</span><h4>Sistema de Avaliações</h4><p>Pesos AC/AP1/AP2 da disciplina</p></div>
-      </a>
-    </div>
-  </section>
-
-  <!-- CHAPTER NAV -->
-  <div class="chapter-nav">
-    <a href="cap3.html"><span class="dir">← anterior</span>Cap. 3 — Projeto de Circuitos Combinacionais</a>
-    <a class="next" href="#" style="opacity:.5;cursor:default;"><span class="dir">próximo →</span>Cap. 5 — Circuitos Comparadores</a>
-  </div>
-
-</div>
-
-<footer>
-  <div class="container">
-    <p>© 2026 · Prof. Clayton J A Silva · Ibmec RJ</p>
-    <p><a href="https://claytonjasilva.github.io">claytonjasilva.github.io</a></p>
-  </div>
-</footer>
-
+<section class="section" id="refs"><p class="section-label">Referências</p><h2>Material de apoio</h2><ul class="plain">
+<li><a href="grid.html">Bibliografia da disciplina</a>: Floyd, <em>Sistemas Digitais: Fundamentos e Aplicações</em>; Capuano, <em>Sistemas Digitais: Circuitos Combinacionais e Sequenciais</em>.</li>
+<li><a href="https://www.ti.com/lit/ds/symlink/sn74ls283.pdf">Texas Instruments — 74283 / 74LS283, somador binário de 4 bits</a>.</li>
+<li><a href="https://digsys.upc.edu/csd/chips/classic/MC14560.pdf">Motorola — MC14560B, somador BCD</a>.</li></ul></section>
+<div class="chapter-nav"><a href="cap3.html"><span class="dir">← anterior</span>Cap. 3 — Circuitos Combinacionais</a><a class="next" href="cap5.html"><span class="dir">próximo →</span>Cap. 5 — Circuitos Comparadores</a></div></main>
+<footer><div class="container"><p>© 2026 · Prof. Clayton J A Silva · Ibmec RJ</p><p><a href="../sisdig.html">Sistemas Digitais</a></p></div></footer>
 <script>
-window.addEventListener('scroll', () => {
-  const h = document.documentElement;
-  const scrolled = (h.scrollTop) / (h.scrollHeight - h.clientHeight) * 100;
-  document.getElementById('progressFill').style.width = scrolled + '%';
-});
-
-function checkAnswer(btn, isCorrect, fbId) {
-  const group = btn.parentElement;
-  const buttons = group.querySelectorAll('.quiz-opt');
-  buttons.forEach(b => b.disabled = true);
-  btn.classList.add(isCorrect ? 'correct' : 'wrong');
-  const fb = document.getElementById(fbId);
-  fb.classList.add('show');
-  const msgs = {
-    q1fb: isCorrect ? '✓ Correto! Sem entrada de carry, ele não consegue receber o transporte do módulo anterior.' : '✗ Revise a seção 4.1 — Meio-somador.',
-    q2fb: isCorrect ? '✓ Correto! 1101 não é uma palavra BCD válida (>9), por isso soma-se 0110 para corrigir.' : '✗ Revise a seção 4.4.3 — Somador BCD.',
-    q3fb: isCorrect ? '✓ Correto! BORROW = Ā·B — só ocorre empréstimo quando A=0 e B=1.' : '✗ Revise a tabela-verdade do meio-subtrator.'
-  };
-  if (!isCorrect) buttons.forEach(b => { if (b.getAttribute('onclick').includes(', true,')) b.classList.add('correct'); });
-  fb.classList.add(isCorrect ? 'correct-fb' : 'wrong-fb');
-  fb.textContent = msgs[fbId];
-}
-
-renderMathInElement(document.body, {
-  delimiters: [
-    {left: "$$", right: "$$", display: true},
-    {left: "$", right: "$", display: false}
-  ],
-  throwOnError: false
-});
-</script>
-
-</body>
-</html>
+function updateProgress(){const h=document.documentElement;const total=h.scrollHeight-h.clientHeight;document.getElementById('progressFill').style.width=(total>0?h.scrollTop/total*100:0)+'%';}
+window.addEventListener('scroll',updateProgress,{passive:true});window.addEventListener('resize',updateProgress);updateProgress();
+</script></body></html>
