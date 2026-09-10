@@ -3,13 +3,13 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Cap. 6 — Circuitos Codificadores e Decodificadores | Sistemas Digitais</title>
+<title>Cap. 6 — Códigos, Codificadores e Decodificadores | Sistemas Digitais</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/contrib/auto-render.min.js"></script>
+
+
+
 <style>
 :root {
   --bg:        #0a0e17;
@@ -70,10 +70,21 @@ h4{font-size:.95rem;font-weight:600;margin:1.2rem 0 .6rem;color:var(--accent);}
 p{margin-bottom:1rem;color:#cbd5e1;}
 strong{color:var(--text);font-weight:600;}
 em{color:var(--accent);font-style:normal;}
+ul.plain{margin:0 0 1rem 1.2rem;color:#cbd5e1;}
+ul.plain li{margin-bottom:.4rem;}
+
+.codeline{background:var(--tag-bg);border:1px solid var(--border);border-radius:6px;padding:.7rem 1rem;font-family:var(--font-mono);font-size:1rem;color:var(--accent);text-align:center;margin:1rem 0;}
+
+/* TWO COLUMN: concept + figure */
+.concept-grid{display:grid;grid-template-columns:1fr 1fr;gap:2rem;align-items:start;margin:1.5rem 0;}
+.concept-text{display:flex;flex-direction:column;justify-content:center;}
+.concept-fig{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:1rem;}
+.concept-fig img,.concept-fig svg{width:100%;display:block;}
+.fig-caption{font-family:var(--font-mono);font-size:.72rem;color:var(--muted);text-align:center;margin-top:.6rem;}
+@media (max-width:760px){.concept-grid{grid-template-columns:1fr;}}
 
 .fig-full{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:1.2rem;margin:1.5rem 0;}
 .fig-full img,.fig-full svg{width:100%;display:block;}
-.fig-caption{font-family:var(--font-mono);font-size:.72rem;color:var(--muted);text-align:center;margin-top:.6rem;}
 
 .definition{background:var(--surface);border:1px solid var(--accent2);border-left:3px solid var(--accent2);border-radius:0 8px 8px 0;padding:1.2rem 1.5rem;margin:1.2rem 0;}
 .definition .dtitle{font-family:var(--font-mono);font-size:.7rem;color:var(--accent2);letter-spacing:.1em;text-transform:uppercase;margin-bottom:.5rem;}
@@ -81,47 +92,23 @@ em{color:var(--accent);font-style:normal;}
 .note{background:var(--tag-bg);border:1px solid var(--border);border-radius:6px;padding:.9rem 1.1rem;margin:1rem 0;font-size:.85rem;color:var(--muted);}
 .note strong{color:var(--accent);}
 
-table{width:100%;border-collapse:collapse;font-size:.85rem;margin:1.2rem 0;}
+table{width:100%;border-collapse:collapse;font-size:.88rem;margin:1.2rem 0;}
 thead tr{background:var(--tag-bg);}
-thead th{padding:.5rem .7rem;text-align:center;font-family:var(--font-mono);font-size:.68rem;color:var(--muted);letter-spacing:.06em;text-transform:uppercase;font-weight:400;border-bottom:1px solid var(--border);}
-tbody td{padding:.45rem .6rem;border-bottom:1px solid var(--border);color:var(--muted);text-align:center;}
+thead th{padding:.6rem .9rem;text-align:left;font-family:var(--font-mono);font-size:.7rem;color:var(--muted);letter-spacing:.08em;text-transform:uppercase;font-weight:400;border-bottom:1px solid var(--border);}
+tbody td{padding:.55rem .9rem;border-bottom:1px solid var(--border);color:var(--muted);}
 tbody tr:hover{background:rgba(255,255,255,.02);}
+tbody td:first-child{font-family:var(--font-mono);color:var(--accent);}
+table.center td, table.center th{text-align:center;}
 
-/* ASCII TABLE — horizontal scroll */
-.ascii-wrap{overflow-x:auto;border:1px solid var(--border);border-radius:8px;margin:1.2rem 0;}
-.ascii-wrap table{margin:0;font-size:.78rem;min-width:780px;}
-.ascii-wrap td,.ascii-wrap th{font-family:var(--font-mono);padding:.4rem .5rem;}
-.ascii-wrap thead th{background:var(--tag-bg);}
-.ascii-wrap tbody td:first-child{background:var(--tag-bg);color:var(--accent);font-weight:600;}
+/* INTEGRATION LEVEL GRID */
+.level-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:.6rem;margin:1.2rem 0;}
+.level-item{background:var(--surface);border:1px solid var(--border);border-radius:6px;padding:.8rem 1rem;text-align:center;}
+.level-item .sigla{font-family:var(--font-mono);font-weight:600;color:var(--accent);font-size:.95rem;}
+.level-item .range{font-size:.72rem;color:var(--muted);margin-top:.2rem;}
 
-/* SEGMENT DIAGRAM */
-.segment-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(70px,1fr));gap:.5rem;margin:1.2rem 0;}
-.segment-item{background:var(--surface);border:1px solid var(--border);border-radius:6px;padding:.6rem;text-align:center;}
-.segment-item .letter{font-family:var(--font-mono);font-weight:600;color:var(--accent);font-size:1rem;}
-
+/* EXAMPLE BOX */
 .example{background:var(--tag-bg);border:1px solid var(--accent);border-radius:6px;padding:1rem 1.2rem;margin:1rem 0;font-family:var(--font-mono);font-size:.88rem;color:var(--text);}
 .example .ex-label{font-family:var(--font-sans);font-size:.72rem;color:var(--accent);text-transform:uppercase;letter-spacing:.06em;margin-bottom:.5rem;display:block;}
-
-.ds-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:.6rem;margin:1rem 0;}
-.ds-item{background:var(--tag-bg);border:1px solid var(--border);border-radius:6px;padding:.7rem 1rem;display:flex;gap:.6rem;align-items:center;transition:.2s;}
-.ds-item:hover{border-color:var(--accent);}
-.ds-item a{font-size:.8rem;color:var(--text);font-family:var(--font-mono);}
-.ds-item a:hover{color:var(--accent);text-decoration:none;}
-
-.quiz{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:1.6rem;margin:1.5rem 0;}
-.quiz-header{display:flex;align-items:center;gap:.6rem;margin-bottom:1.2rem;}
-.quiz-header svg{flex-shrink:0;}
-.quiz-title{font-family:var(--font-mono);font-size:.8rem;color:var(--accent2);letter-spacing:.05em;}
-.quiz-q{font-size:.95rem;margin-bottom:.9rem;color:var(--text);}
-.quiz-options{display:flex;flex-direction:column;gap:.55rem;}
-.quiz-opt{background:var(--tag-bg);border:1px solid var(--border);border-radius:6px;padding:.7rem 1rem;font-size:.85rem;color:var(--muted);cursor:pointer;transition:.15s;text-align:left;width:100%;font-family:var(--font-sans);}
-.quiz-opt:hover{border-color:var(--accent);color:var(--text);}
-.quiz-opt.correct{border-color:#22c55e;background:rgba(34,197,94,.08);color:#86efac;}
-.quiz-opt.wrong{border-color:#ef4444;background:rgba(239,68,68,.08);color:#fca5a5;}
-.quiz-feedback{margin-top:.9rem;font-size:.85rem;padding:.8rem 1rem;border-radius:6px;display:none;}
-.quiz-feedback.show{display:block;}
-.quiz-feedback.correct-fb{background:rgba(34,197,94,.08);border:1px solid #22c55e;color:#86efac;}
-.quiz-feedback.wrong-fb{background:rgba(239,68,68,.08);border:1px solid #ef4444;color:#fca5a5;}
 
 .refs-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:.8rem;}
 .ref-card{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:1rem 1.2rem;display:flex;gap:.8rem;align-items:flex-start;transition:.2s;}
@@ -144,404 +131,56 @@ footer p{font-size:.8rem;color:var(--muted);font-family:var(--font-mono);}
 @media(max-width:640px){.nav-links{display:none;}.hero{padding:2.5rem 0 2rem;}}
 
 .katex{color:var(--accent);font-size:1.05em;}
-</style>
+
+:root{--muted:#a3b2c7} .container{max-width:1180px} section[id],h3[id]{scroll-margin-top:100px}
+.table-wrap{overflow-x:auto} .codeline{overflow-x:auto} figure a{display:block} figure img{height:auto;border-radius:4px}
+.fig-caption{line-height:1.6} .steps{padding-left:1.5rem;margin-bottom:1rem;color:#cbd5e1}.steps li{margin:.5rem 0}
+.bit-work{white-space:pre;overflow-x:auto;font-family:var(--font-mono);padding:1rem;background:var(--surface);border:1px solid var(--border);border-radius:6px}
+@media(max-width:640px){.container{padding:0 1rem}.fig-full{padding:.35rem}.nav-links{display:flex;gap:.6rem}.nav-links a{font-size:.65rem}table th,table td{padding:.4rem}}
+@media(max-width:640px){section[id],h3[id]{scroll-margin-top:160px}} </style>
 </head>
-<body>
-
-<nav>
-  <div class="container">
-    <span class="nav-brand">sisdig · cap. 6</span>
-    <ul class="nav-links">
-      <li><a href="#s1">6.1 Códigos</a></li>
-      <li><a href="#s2">6.2 Codificadores</a></li>
-      <li><a href="#s3">6.3 Decodificadores</a></li>
-      <li><a href="#quiz">Quiz</a></li>
-      <li><a href="https://claytonjasilva.github.io/sisdig.html">← disciplina</a></li>
-    </ul>
-  </div>
-</nav>
-<div class="progress-track"><div class="progress-fill" id="progressFill"></div></div>
-
-<section class="hero">
-  <div class="container">
-    <p class="hero-eyebrow">Sistemas Digitais · Ibmec RJ</p>
-    <h1>Cap. 6 — Circuitos<br><strong>Codificadores e Decodificadores</strong></h1>
-
-    <div class="hero-meta">
-      <span class="meta-item">
-        <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><circle cx="7" cy="7" r="6" stroke="currentColor" stroke-width="1.2"/><path d="M7 4v3l2 1.5" stroke="currentColor" stroke-width="1.2"/></svg>
-        leitura ~30 min
-      </span>
-      <span class="meta-item">
-        <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><rect x="2" y="3" width="10" height="9" rx="1" stroke="currentColor" stroke-width="1.2"/><line x1="2" y1="6" x2="12" y2="6" stroke="currentColor" stroke-width="1.2"/></svg>
-        Prof. Clayton J A Silva
-      </span>
-      <span class="meta-item">
-        <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 7l4 4 6-7" stroke="currentColor" stroke-width="1.4" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        Rev 2026.1
-      </span>
-    </div>
-
-    <div class="objectives">
-      <p class="label">Objetivos de aprendizagem</p>
-      <ul>
-        <li>Diferenciar códigos BCD, UDC (código de Gray) e alfanuméricos (ASCII)</li>
-        <li>Projetar a tabela-verdade de um codificador binário</li>
-        <li>Compreender o funcionamento do CI CD4511 (BCD para 7 segmentos)</li>
-        <li>Projetar a tabela-verdade de um decodificador binário e seu sinal de <em>enable</em></li>
-      </ul>
-    </div>
-
-    <div class="toc">
-      <a href="#s1a">6.1.1 Código BCD</a>
-      <a href="#s1b">6.1.2 Código UDC</a>
-      <a href="#s1c">6.1.3 ASCII</a>
-      <a href="#s2">6.2 Codificadores</a>
-      <a href="#s3">6.3 Decodificadores</a>
-    </div>
-  </div>
-</section>
-
-<div class="container">
-
-  <!-- 6.1 -->
-  <section class="section" id="s1">
-    <p class="section-label">6.1 / códigos binários</p>
-    <h2>Códigos binários</h2>
-
-    <p>O processo de codificação digital consiste na definição de um grupo de dígitos binários para representar um conjunto discreto de elementos. Sinteticamente, um <strong>código</strong> é uma representação simbólica de uma transformação da informação.</p>
-
-    <div class="definition">
-      <p class="dtitle">palavra do código</p>
-      <p style="margin:0">Cada <strong>palavra do código</strong> define uma representação binária <strong>inequívoca</strong> — única para cada elemento discreto. Se duas palavras distintas representam o mesmo elemento, o código é <strong>ambíguo</strong> — característica indesejável.</p>
-    </div>
-
-    <p>Existem diferentes esquemas de codificação, cada um com particularidades, vantagens e desvantagens (não discutidas aqui).</p>
-
-    <!-- 6.1.1 BCD -->
-    <h3 id="s1a">6.1.1 Código BCD (<em>Binary Coded Decimal</em>)</h3>
-    <p>O código BCD representa os dígitos decimais. Existem vários tipos; trataremos do código <strong>8421 BCD</strong>, também designado <strong>NBCD</strong> (<em>Natural Binary Coded Decimal</em>).</p>
-
-    <table style="max-width:300px">
-      <thead><tr><th>Palavra</th><th>Decimal</th></tr></thead>
-      <tbody>
-        <tr><td>0000</td><td>0</td></tr><tr><td>0001</td><td>1</td></tr>
-        <tr><td>0010</td><td>2</td></tr><tr><td>0011</td><td>3</td></tr>
-        <tr><td>0100</td><td>4</td></tr><tr><td>0101</td><td>5</td></tr>
-        <tr><td>0110</td><td>6</td></tr><tr><td>0111</td><td>7</td></tr>
-        <tr><td>1000</td><td>8</td></tr><tr><td>1001</td><td>9</td></tr>
-      </tbody>
-    </table>
-
-    <!-- 6.1.2 UDC -->
-    <h3 id="s1b">6.1.2 Códigos UDC (<em>Unit Distance Code</em>)</h3>
-    <p>Em aplicações onde é desejável que, entre palavras adjacentes, apenas <strong>uma posição mude por vez</strong>, usa-se um código de <strong>distância unitária</strong> — o código <strong>UDC</strong>.</p>
-
-    <p>Um código UDC conhecido é o <strong>código de Gray</strong> de 4 bits:</p>
-
-    <table style="max-width:300px">
-      <thead><tr><th>Palavra</th><th>Decimal</th></tr></thead>
-      <tbody>
-        <tr><td>0000</td><td>0</td></tr><tr><td>0001</td><td>1</td></tr>
-        <tr><td>0011</td><td>2</td></tr><tr><td>0010</td><td>3</td></tr>
-        <tr><td>0110</td><td>4</td></tr><tr><td>0111</td><td>5</td></tr>
-        <tr><td>0101</td><td>6</td></tr><tr><td>0100</td><td>7</td></tr>
-        <tr><td>1100</td><td>8</td></tr><tr><td>1101</td><td>9</td></tr>
-        <tr><td>1111</td><td>10</td></tr><tr><td>1110</td><td>11</td></tr>
-        <tr><td>1010</td><td>12</td></tr><tr><td>1011</td><td>13</td></tr>
-        <tr><td>1001</td><td>14</td></tr><tr><td>1000</td><td>15</td></tr>
-      </tbody>
-    </table>
-
-    <!-- 6.1.3 ASCII -->
-    <h3 id="s1c">6.1.3 Códigos alfanuméricos</h3>
-    <p>Quando os elementos discretos incluem, além dos dígitos decimais, caracteres alfabéticos e símbolos especiais, caracteriza-se um <strong>código alfanumérico</strong>.</p>
-
-    <p>O código <strong>ASCII</strong> (<em>American Standard Code for Information Interchange</em>) é o mais amplamente usado. Cada palavra possui 8 bits, mas utiliza efetivamente <strong>7 bits</strong> para representar 128 sinais:</p>
-
-    <ul style="margin:0 0 1rem 1.2rem;color:#cbd5e1;">
-      <li>95 sinais gráficos (letras, algarismos, pontuação, sinais matemáticos);</li>
-      <li>33 sinais de controle.</li>
-    </ul>
-
-    <p>O bit não utilizado (8º bit) pode ser empregado de diferentes formas (por exemplo, paridade).</p>
-
-    <div class="ascii-wrap">
-      <table>
-        <thead>
-          <tr><th>b4 b3 b2 b1</th><th>000</th><th>001</th><th>010</th><th>011</th><th>100</th><th>101</th><th>110</th><th>111</th></tr>
-        </thead>
-        <tbody>
-          <tr><td>0000</td><td>NULL</td><td>DLE</td><td>SP</td><td>0</td><td>@</td><td>P</td><td>`</td><td>p</td></tr>
-          <tr><td>0001</td><td>SOH</td><td>DC1</td><td>!</td><td>1</td><td>A</td><td>Q</td><td>a</td><td>q</td></tr>
-          <tr><td>0010</td><td>STX</td><td>DC2</td><td>"</td><td>2</td><td>B</td><td>R</td><td>b</td><td>r</td></tr>
-          <tr><td>0011</td><td>ETX</td><td>DC3</td><td>#</td><td>3</td><td>C</td><td>S</td><td>c</td><td>s</td></tr>
-          <tr><td>0100</td><td>EOT</td><td>DC4</td><td>$</td><td>4</td><td>D</td><td>T</td><td>d</td><td>t</td></tr>
-          <tr><td>0101</td><td>ENQ</td><td>NAK</td><td>%</td><td>5</td><td>E</td><td>U</td><td>e</td><td>u</td></tr>
-          <tr><td>0110</td><td>ACK</td><td>SYN</td><td>&amp;</td><td>6</td><td>F</td><td>V</td><td>f</td><td>v</td></tr>
-          <tr><td>0111</td><td>BEL</td><td>ETB</td><td>'</td><td>7</td><td>G</td><td>W</td><td>g</td><td>w</td></tr>
-          <tr><td>1000</td><td>BS</td><td>CAN</td><td>(</td><td>8</td><td>H</td><td>X</td><td>h</td><td>x</td></tr>
-          <tr><td>1001</td><td>HT</td><td>EM</td><td>)</td><td>9</td><td>I</td><td>Y</td><td>i</td><td>y</td></tr>
-          <tr><td>1010</td><td>LF</td><td>SUB</td><td>*</td><td>:</td><td>J</td><td>Z</td><td>j</td><td>z</td></tr>
-          <tr><td>1011</td><td>VT</td><td>ESC</td><td>+</td><td>;</td><td>K</td><td>[</td><td>k</td><td>{</td></tr>
-          <tr><td>1100</td><td>FF</td><td>FS</td><td>,</td><td>&lt;</td><td>L</td><td>\</td><td>l</td><td>|</td></tr>
-          <tr><td>1101</td><td>CR</td><td>GS</td><td>-</td><td>=</td><td>M</td><td>]</td><td>m</td><td>}</td></tr>
-          <tr><td>1110</td><td>SO</td><td>RS</td><td>.</td><td>&gt;</td><td>N</td><td>^</td><td>n</td><td>~</td></tr>
-          <tr><td>1111</td><td>SI</td><td>US</td><td>/</td><td>?</td><td>O</td><td>_</td><td>o</td><td>DEL</td></tr>
-        </tbody>
-      </table>
-    </div>
-
-    <div class="example">
-      <span class="ex-label">exemplo</span>
-      Caractere <strong>B</strong> → 0100 0010 → 0x42 → 66 (decimal)
-    </div>
-
-    <div class="note">Cada caractere pode ser referenciado por sua representação binária e, de modo equivalente, pela representação decimal ou hexadecimal.</div>
-  </section>
-
-  <!-- 6.2 -->
-  <section class="section" id="s2">
-    <p class="section-label">6.2 / circuitos codificadores</p>
-    <h2>Circuitos codificadores</h2>
-
-    <p>São circuitos lógicos que aceitam <em>M</em> entradas, em que <strong>somente uma entrada é ativada por vez</strong>, e ativam as saídas correspondentes à palavra do código de <em>N</em> bits que representa a entrada. A entrada ativada representa o símbolo discreto.</p>
-
-    <div class="fig-full">
-      <img src="https://github.com/claytonjasilva/claytonjasilva.github.io/raw/main/sisdig_aulas/images_sisdig/codificador.jpg" alt="Circuito codificador">
-      <p class="fig-caption">Fig. 6.1 — Circuito codificador típico</p>
-    </div>
-
-    <div class="note">É necessário que $2^N \geq M$, de modo que todos os elementos discretos de entrada sejam representados sem ambiguidade.</div>
-
-    <p>Um codificador binário de 8 bits pode ter o comportamento representado pela tabela-verdade:</p>
-
-    <table>
-      <thead><tr><th>A7</th><th>A6</th><th>A5</th><th>A4</th><th>A3</th><th>A2</th><th>A1</th><th>A0</th><th>O2</th><th>O1</th><th>O0</th></tr></thead>
-      <tbody>
-        <tr><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>1</td><td>0</td><td>0</td><td>0</td></tr>
-        <tr><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>1</td><td>0</td><td>0</td><td>0</td><td>1</td></tr>
-        <tr><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>1</td><td>0</td><td>0</td><td>0</td><td>1</td><td>0</td></tr>
-        <tr><td>0</td><td>0</td><td>0</td><td>0</td><td>1</td><td>0</td><td>0</td><td>0</td><td>0</td><td>1</td><td>1</td></tr>
-        <tr><td>0</td><td>0</td><td>0</td><td>1</td><td>0</td><td>0</td><td>0</td><td>0</td><td>1</td><td>0</td><td>0</td></tr>
-        <tr><td>0</td><td>0</td><td>1</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>1</td><td>0</td><td>1</td></tr>
-        <tr><td>0</td><td>1</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>1</td><td>1</td><td>0</td></tr>
-        <tr><td>1</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>1</td><td>1</td><td>1</td><td>1</td></tr>
-      </tbody>
-    </table>
-
-    <p>As entradas são $A_7A_6A_5A_4A_3A_2A_1A_0$; as saídas são $O_2O_1O_0$. A tabela sugere que <strong>pelo menos uma entrada sempre estará ativada</strong>: a entrada $A_j$ ativada implica a palavra binária de 3 bits equivalente ao decimal <em>j</em>.</p>
-
-    <div class="note">Dependendo do projeto, o codificador também pode definir palavras relacionadas a outra combinação binária própria das entradas.</div>
-
-    <h3>Exemplo: CD4511B</h3>
-    <p>Um exemplo típico é o <a href="https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/sisdig_aulas/sistemas_digitais_datasheet_CD4511_Texas.pdf" target="_blank">CD4511B</a> — CI com 4 bits de entradas lógicas e 7 bits de saídas lógicas. Funcionalmente, converte as entradas <em>ABCD</em> de um código BCD para as saídas associadas a um <em>display</em> de 7 segmentos.</p>
-
-    <p>O <em>display</em> de 7 segmentos é o encapsulamento de 7 LEDs, identificados pelas letras <em>a, b, c, d, e, f, g</em>, que formam caracteres alfanuméricos quando ativados:</p>
-
-    <div class="segment-grid">
-      <div class="segment-item"><div class="letter">a</div></div>
-      <div class="segment-item"><div class="letter">b</div></div>
-      <div class="segment-item"><div class="letter">c</div></div>
-      <div class="segment-item"><div class="letter">d</div></div>
-      <div class="segment-item"><div class="letter">e</div></div>
-      <div class="segment-item"><div class="letter">f</div></div>
-      <div class="segment-item"><div class="letter">g</div></div>
-    </div>
-
-    <div class="fig-full">
-      <img src="https://github.com/claytonjasilva/claytonjasilva.github.io/raw/main/sisdig_aulas/images_sisdig/setesegmentos.jpg" alt="Display de 7 segmentos">
-      <p class="fig-caption">Fig. 6.2 — Display de 7 segmentos</p>
-    </div>
-
-    <div class="fig-full">
-      <img src="https://github.com/claytonjasilva/claytonjasilva.github.io/raw/main/sisdig_aulas/images_sisdig/circuitodecoder7segmentos.jpg" alt="Circuito decoder-display">
-      <p class="fig-caption">Fig. 6.3 — Esquema elétrico da conexão decoder-display</p>
-    </div>
-
-    <p>O CD4511 também possui <strong>entradas de controle</strong> que influenciam a palavra gerada na saída.</p>
-
-    <div class="definition">
-      <p class="dtitle">nomenclatura do datasheet</p>
-      <p style="margin:0">Embora o <em>datasheet</em> trate o CD4511 como <em>BCD-to-7-Segment Decoder</em>, ele satisfaz exatamente a definição de <strong>codificador</strong> apresentada aqui — realiza de fato a <strong>decodificação</strong> do código BCD e a <strong>codificação</strong> para o código de 7 segmentos.</p>
-    </div>
-  </section>
-
-  <!-- 6.3 -->
-  <section class="section" id="s3">
-    <p class="section-label">6.3 / circuitos decodificadores</p>
-    <h2>Circuitos decodificadores (<em>decoders</em>)</h2>
-
-    <p>Realizando a operação <strong>inversa</strong> dos codificadores, os <em>decoders</em> são circuitos lógicos que aceitam <em>N</em> entradas de um código, cada combinação representando uma palavra, e <strong>ativam somente uma das <em>M</em> saídas</strong> correspondente ao elemento associado àquela palavra.</p>
-
-    <div class="fig-full">
-      <img src="https://github.com/claytonjasilva/claytonjasilva.github.io/raw/main/sisdig_aulas/images_sisdig/decodificador.jpg" alt="Circuito decodificador">
-      <p class="fig-caption">Fig. 6.4 — Circuito decodificador típico</p>
-    </div>
-
-    <p>Um decodificador binário de 3 bits pode ter o comportamento representado pela tabela-verdade:</p>
-
-    <table>
-      <thead><tr><th>C</th><th>B</th><th>A</th><th>O7</th><th>O6</th><th>O5</th><th>O4</th><th>O3</th><th>O2</th><th>O1</th><th>O0</th></tr></thead>
-      <tbody>
-        <tr><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>1</td></tr>
-        <tr><td>0</td><td>0</td><td>1</td><td>0</td><td>0</td><td>0</td><td>1</td><td>0</td><td>0</td><td>1</td><td>0</td></tr>
-        <tr><td>0</td><td>1</td><td>0</td><td>0</td><td>0</td><td>1</td><td>0</td><td>0</td><td>1</td><td>0</td><td>0</td></tr>
-        <tr><td>0</td><td>1</td><td>1</td><td>0</td><td>1</td><td>0</td><td>0</td><td>1</td><td>0</td><td>0</td><td>0</td></tr>
-        <tr><td>1</td><td>0</td><td>0</td><td>1</td><td>0</td><td>0</td><td>1</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
-        <tr><td>1</td><td>0</td><td>1</td><td>0</td><td>0</td><td>1</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
-        <tr><td>1</td><td>1</td><td>0</td><td>0</td><td>1</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
-        <tr><td>1</td><td>1</td><td>1</td><td>1</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
-      </tbody>
-    </table>
-
-    <p>Como já visto no CD4511, os circuitos integrados operam não somente com sinais lógicos, mas também com <strong>sinais de controle</strong>:</p>
-
-    <div class="fig-full">
-      <img src="https://github.com/claytonjasilva/claytonjasilva.github.io/raw/main/sisdig_aulas/images_sisdig/decodificadorcontrole.jpg" alt="Sinal de controle - enable">
-      <p class="fig-caption">Fig. 6.5 — Sinal de controle (enable)</p>
-    </div>
-
-    <div class="definition">
-      <p class="dtitle">sinal de enable</p>
-      <p style="margin:0">O sinal de controle é chamado de <strong><em>enable</em></strong>. Normalmente habilita ou desabilita o circuito para realizar a função para a qual foi projetado.</p>
-    </div>
-
-    <p>O esquema geral de um <em>decoder</em> BCD produzindo saída decimal:</p>
-    <div class="fig-full">
-      <img src="https://github.com/claytonjasilva/claytonjasilva.github.io/raw/main/sisdig_aulas/images_sisdig/decoderbcddecimal.jpg" alt="Decoder BCD-decimal">
-      <p class="fig-caption">Fig. 6.6 — Decoder BCD-decimal</p>
-    </div>
-
-    <div class="note">Diferentemente da tabela-verdade anterior, nem todas as combinações de entrada ativam uma saída — somente as palavras binárias válidas do código BCD ativam saída.</div>
-
-    <h3>Datasheets de referência</h3>
-    <div class="ds-grid">
-      <div class="ds-item"><a href="https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/sisdig_aulas/sistemas_digitais_datasheet_CD4511_Texas.pdf" target="_blank">Codificador BCD-7seg — CD4511</a></div>
-      <div class="ds-item"><a href="https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/sisdig_aulas/sistemas_digitais_datasheet_CD4028_Texas.pdf" target="_blank">Decoder BCD-decimal — CD4028</a></div>
-    </div>
-  </section>
-
-  <!-- QUIZ -->
-  <section class="section" id="quiz">
-    <p class="section-label">checkpoint</p>
-    <h2>Teste seus conhecimentos</h2>
-
-    <div class="quiz">
-      <div class="quiz-header">
-        <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="8" stroke="#7c3aed" stroke-width="1.4"/><text x="10" y="14" font-size="10" fill="#7c3aed" text-anchor="middle" font-weight="600">?</text></svg>
-        <span class="quiz-title">Pergunta 1 de 3</span>
-      </div>
-      <p class="quiz-q">No código de Gray, o que caracteriza a "distância unitária" entre palavras adjacentes?</p>
-      <div class="quiz-options">
-        <button class="quiz-opt" onclick="checkAnswer(this, false, 'q1fb')">Todas as posições mudam simultaneamente</button>
-        <button class="quiz-opt" onclick="checkAnswer(this, true, 'q1fb')">Apenas uma posição (bit) muda de uma palavra para a próxima</button>
-        <button class="quiz-opt" onclick="checkAnswer(this, false, 'q1fb')">As palavras têm sempre o mesmo número de 1s</button>
-      </div>
-      <div class="quiz-feedback" id="q1fb"></div>
-    </div>
-
-    <div class="quiz">
-      <div class="quiz-header">
-        <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="8" stroke="#7c3aed" stroke-width="1.4"/><text x="10" y="14" font-size="10" fill="#7c3aed" text-anchor="middle" font-weight="600">?</text></svg>
-        <span class="quiz-title">Pergunta 2 de 3</span>
-      </div>
-      <p class="quiz-q">Em um circuito codificador com M entradas e N bits de saída, qual condição deve ser satisfeita?</p>
-      <div class="quiz-options">
-        <button class="quiz-opt" onclick="checkAnswer(this, false, 'q2fb')">$N \geq M$</button>
-        <button class="quiz-opt" onclick="checkAnswer(this, true, 'q2fb')">$2^N \geq M$</button>
-        <button class="quiz-opt" onclick="checkAnswer(this, false, 'q2fb')">$M \geq 2^N$</button>
-      </div>
-      <div class="quiz-feedback" id="q2fb"></div>
-    </div>
-
-    <div class="quiz">
-      <div class="quiz-header">
-        <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="8" stroke="#7c3aed" stroke-width="1.4"/><text x="10" y="14" font-size="10" fill="#7c3aed" text-anchor="middle" font-weight="600">?</text></svg>
-        <span class="quiz-title">Pergunta 3 de 3</span>
-      </div>
-      <p class="quiz-q">Qual é a função do sinal de <em>enable</em> em um decoder?</p>
-      <div class="quiz-options">
-        <button class="quiz-opt" onclick="checkAnswer(this, false, 'q3fb')">Aumentar a velocidade do circuito</button>
-        <button class="quiz-opt" onclick="checkAnswer(this, true, 'q3fb')">Habilitar ou desabilitar o circuito para realizar sua função</button>
-        <button class="quiz-opt" onclick="checkAnswer(this, false, 'q3fb')">Converter o sinal para código ASCII</button>
-      </div>
-      <div class="quiz-feedback" id="q3fb"></div>
-    </div>
-  </section>
-
-  <!-- REFERÊNCIAS -->
-  <section class="section" id="refs">
-    <p class="section-label">referências e aprofundamento</p>
-    <h2>Para ir além</h2>
-
-    <div class="refs-grid">
-      <a class="ref-card" href="https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/sisdig_aulas/sistemas_digitais_datasheet_CD4511_Texas.pdf" target="_blank" style="color:inherit;">
-        <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M3 2h8l4 4v10H3V2z" stroke="#00c2ff" stroke-width="1.3"/><line x1="6" y1="8" x2="12" y2="8" stroke="#00c2ff" stroke-width="1.1"/><line x1="6" y1="11" x2="10" y2="11" stroke="#00c2ff" stroke-width="1.1"/></svg>
-        <div><span class="ref-type">datasheet</span><h4>CD4511 (Texas)</h4><p>BCD para 7 segmentos</p></div>
-      </a>
-      <a class="ref-card" href="https://www.youtube.com/results?search_query=codigo+de+gray+ascii+codificadores" target="_blank" style="color:inherit;">
-        <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><rect x="2" y="4" width="14" height="10" rx="2" stroke="#7c3aed" stroke-width="1.3"/><polygon points="8,7 8,11 12,9" fill="#7c3aed"/></svg>
-        <div><span class="ref-type">vídeo</span><h4>Código de Gray e ASCII</h4><p>Busca curada de vídeos explicativos</p></div>
-      </a>
-      <a class="ref-card" href="https://claytonjasilva.github.io/sisdig_aulas/cap8.html" style="color:inherit;">
-        <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><rect x="2" y="2" width="14" height="14" rx="2" stroke="#00c2ff" stroke-width="1.3"/><line x1="2" y1="7" x2="16" y2="7" stroke="#00c2ff" stroke-width="1.1"/></svg>
-        <div><span class="ref-type">capítulo anterior</span><h4>Cap. 8 — Máquinas Sequenciais</h4><p>Fundamentos de circuitos sequenciais</p></div>
-      </a>
-      <a class="ref-card" href="https://claytonjasilva.github.io/avaliacoes.html" target="_blank" style="color:inherit;">
-        <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><rect x="3" y="2" width="12" height="14" rx="1.5" stroke="#7c3aed" stroke-width="1.3"/><line x1="6" y1="6" x2="12" y2="6" stroke="#7c3aed" stroke-width="1.1"/><line x1="6" y1="9" x2="12" y2="9" stroke="#7c3aed" stroke-width="1.1"/></svg>
-        <div><span class="ref-type">avaliação</span><h4>Sistema de Avaliações</h4><p>Pesos AC/AP1/AP2 da disciplina</p></div>
-      </a>
-    </div>
-  </section>
-
-  <!-- CHAPTER NAV -->
-  <div class="chapter-nav">
-    <a href="cap5.html"><span class="dir">← anterior</span>Cap. 5 — Circuitos Comparadores</a>
-    <a class="next" href="#" style="opacity:.5;cursor:default;"><span class="dir">próximo →</span>Cap. 7 — Multiplexadores</a>
-  </div>
-
-</div>
-
-<footer>
-  <div class="container">
-    <p>© 2026 · Prof. Clayton J A Silva · Ibmec RJ</p>
-    <p><a href="https://claytonjasilva.github.io">claytonjasilva.github.io</a></p>
-  </div>
-</footer>
-
-<script>
-window.addEventListener('scroll', () => {
-  const h = document.documentElement;
-  const scrolled = (h.scrollTop) / (h.scrollHeight - h.clientHeight) * 100;
-  document.getElementById('progressFill').style.width = scrolled + '%';
-});
-
-function checkAnswer(btn, isCorrect, fbId) {
-  const group = btn.parentElement;
-  const buttons = group.querySelectorAll('.quiz-opt');
-  buttons.forEach(b => b.disabled = true);
-  btn.classList.add(isCorrect ? 'correct' : 'wrong');
-  const fb = document.getElementById(fbId);
-  fb.classList.add('show');
-  const msgs = {
-    q1fb: isCorrect ? '✓ Correto! Por isso o código de Gray é chamado UDC — Unit Distance Code.' : '✗ Revise a seção 6.1.2.',
-    q2fb: isCorrect ? '✓ Correto! 2ᴺ palavras de N bits devem ser suficientes para representar M entradas sem ambiguidade.' : '✗ Revise a seção 6.2.',
-    q3fb: isCorrect ? '✓ Correto! O enable controla se o circuito está ativo ou não.' : '✗ Revise a definição de enable na seção 6.3.'
-  };
-  if (!isCorrect) buttons.forEach(b => { if (b.getAttribute('onclick').includes(', true,')) b.classList.add('correct'); });
-  fb.classList.add(isCorrect ? 'correct-fb' : 'wrong-fb');
-  fb.textContent = msgs[fbId];
-}
-
-renderMathInElement(document.body, {
-  delimiters: [
-    {left: "$$", right: "$$", display: true},
-    {left: "$", right: "$", display: false}
-  ],
-  throwOnError: false
-});
-</script>
-
-</body>
-</html>
+<body><nav><div class="container"><span class="nav-brand">sisdig · cap. 6</span><ul class="nav-links"><li><a href="#s1">Códigos</a></li><li><a href="#s2">Codificadores</a></li><li><a href="#s3">Decodificadores</a></li><li><a href="#display">7 segmentos</a></li><li><a href="#ci7442">7442</a></li><li><a href="#conversao">Conversão</a></li><li><a href="../sisdig.html">← disciplina</a></li></ul></div></nav><div class="progress-track"><div class="progress-fill" id="progressFill"></div></div><header class="hero"><div class="container"><p class="hero-eyebrow">Sistemas Digitais · Ibmec RJ</p><h1>Cap. 6 — Códigos,<br><strong>Codificadores e Decodificadores</strong></h1><p>Prof. Clayton J A Silva</p><div class="objectives"><p class="label">Objetivos de aprendizagem</p><ul><li>Definir palavras de código sem ambiguidade e calcular o número mínimo de bits.</li><li>Relacionar distância de Hamming, redundância, detecção e correção de erros.</li><li>Reconhecer BCD 8421, Gray e ASCII e suas aplicações.</li><li>Interpretar codificadores com prioridade, decodificadores e conversores de códigos.</li></ul></div><div class="toc"><a href="#s1a">BCD 8421</a><a href="#s1b">Gray / UDC</a><a href="#s1c">ASCII</a><a href="#s2">Codificador</a><a href="#s3">Decoder</a><a href="#conversao">Conversão A → B</a></div></div></header><main class="container"><section class="section" id="s1"><p class="section-label">6.1 / Códigos binários</p><h2>Códigos binários</h2>
+<p><strong>Codificação binária</strong> é a associação de palavras de bits aos elementos de um conjunto discreto: dígitos, letras, teclas, posições de um eixo ou estados de um sistema. Os bits não carregam um significado por si mesmos: a interpretação depende do código acordado entre quem produz e quem recebe a informação.</p>
+<h3>Palavras e ausência de ambiguidade</h3><p>Uma <strong>palavra de código</strong> é uma sequência de bits que representa um elemento. Para recuperar a informação sem ambiguidade, elementos distintos devem receber palavras distintas. Se círculo e quadrado fossem ambos representados por 00, o receptor não conseguiria decidir qual foi enviado.</p><p>Duas palavras diferentes associadas ao mesmo elemento não criam, por si só, ambiguidade de decodificação; podem constituir representações alternativas. Neste capítulo, adotamos uma palavra por elemento. Também é necessário conhecer os limites entre palavras: em códigos de comprimento fixo, agrupamos os bits de m em m; em códigos de comprimento variável, são necessárias regras que permitam separar a sequência de maneira única.</p>
+<h3>Número mínimo de bits</h3><p>Com m bits existem 2<sup>m</sup> combinações. Para representar N elementos distintos por palavras de comprimento fixo, precisamos de:</p><div class="codeline">2<sup>m</sup> ≥ N &nbsp; ⇒ &nbsp; m<sub>mín</sub> = ⌈log₂ N⌉</div><p>O símbolo ⌈ ⌉ significa arredondar para cima. Quatro elementos exigem pelo menos 2 bits; cinco exigem 3; dez exigem 4. Se também for necessário representar “nenhum elemento selecionado”, esse estado deve ser incluído na contagem.</p><p>O mínimo garante espaço para distinguir os elementos, mas não proteção contra erros. Bits adicionais podem criar <strong>redundância</strong>, permitindo reconhecer alterações ocorridas na transmissão ou no armazenamento.</p>
+<h3>Distância de Hamming</h3><p>A distância de Hamming entre duas palavras do mesmo comprimento é o <strong>número de posições em que elas diferem</strong>. Por exemplo, 10110 e 10001 diferem em três posições: d<sub>H</sub> = 3. Também podemos calculá-la aplicando XOR às palavras e contando os bits 1 do resultado.</p><p>A <strong>distância mínima d<sub>mín</sub></strong> de um código é a menor distância entre quaisquer duas palavras válidas distintas. É essa distância do conjunto inteiro, e não apenas a distância entre um par escolhido, que determina as garantias de proteção.</p>
+<figure class="fig-full"><a href="images_sisdig/codigo-binario-conceitos.png" target="_blank" rel="noopener" aria-label="Ampliar figura 1"><img src="images_sisdig/codigo-binario-conceitos.png" alt="Representação de elementos discretos, palavras distintas, número mínimo de bits e distância de Hamming" loading="lazy" decoding="async"></a><figcaption class="fig-caption">Fig. 6.1 — Representação de elementos discretos, palavras distintas, número mínimo de bits e distância de Hamming. Selecione a imagem para ampliar.</figcaption></figure>
+<h3>Detecção e correção de erros</h3><p>Um erro de bit troca 0 por 1 ou 1 por 0. Para detectar até t erros, toda palavra alterada por até t trocas deve ficar fora do conjunto de palavras válidas. Para corrigir até t erros, a palavra recebida deve identificar uma única palavra válida a uma distância de no máximo t.</p><div class="codeline">Detectar até t erros: d<sub>mín</sub> ≥ t + 1<br>Corrigir até t erros: d<sub>mín</sub> ≥ 2t + 1</div><p>Equivalentemente, um código com distância mínima d<sub>mín</sub> permite detectar até d<sub>mín</sub> − 1 erros, ou corrigir até ⌊(d<sub>mín</sub> − 1)/2⌋ erros. São garantias para erros de substituição de bits em palavras do mesmo comprimento; não significam que qualquer quantidade maior de erros será reconhecida.</p><p><strong>Exemplo:</strong> o código {000, 111} representa dois elementos e tem d<sub>mín</sub> = 3. Se 000 for recebido como 001, a palavra válida mais próxima é 000, permitindo corrigir um erro. Porém, se ocorrerem duas trocas e chegar 011, um decodificador que corrige por proximidade escolherá 111 incorretamente. Portanto, a capacidade de detectar dois erros, quando usada apenas para detecção, não implica detectar dois erros enquanto se corrige um automaticamente.</p><p>Um bit de paridade cria um código com d<sub>mín</sub> = 2: detecta qualquer erro isolado e, em geral, um número ímpar de trocas, mas não informa qual bit deve ser corrigido. Códigos de Hamming usam relações de paridade organizadas para localizar um erro; um código de Hamming com distância 3 corrige um erro de bit. Não se deve confundir <em>distância de Hamming</em>, uma medida, com uma família específica de códigos.</p>
+<h3 id="s1a">6.1.1 BCD 8421: representação de dígitos decimais</h3><p>O <strong>BCD 8421</strong> (<em>Binary-Coded Decimal</em>), também chamado NBCD, representa cada dígito decimal por quatro bits com pesos 8, 4, 2 e 1. São válidas as palavras 0000 a 1001; as seis restantes não representam dígitos nesse código.</p><p>O número 25 é escrito como <strong>0010 0101 em BCD</strong>: 0010 representa 2 e 0101 representa 5. Em binário puro, 25 é 11001. A separação por dígitos facilita interfaces decimais, mostradores e circuitos que precisam conservar cada posição decimal, embora use mais bits que a representação binária compacta.</p>
+<figure class="fig-full"><a href="images_sisdig/codigo-bcd-8421.png" target="_blank" rel="noopener" aria-label="Ampliar figura 2"><img src="images_sisdig/codigo-bcd-8421.png" alt="Código BCD 8421: cada dígito decimal ocupa quatro bits" loading="lazy" decoding="async"></a><figcaption class="fig-caption">Fig. 6.2 — Código BCD 8421: cada dígito decimal ocupa quatro bits. Selecione a imagem para ampliar.</figcaption></figure>
+<p>Palavras não utilizadas podem revelar alguns erros, mas o BCD não garante a detecção de um erro isolado: 0000 e 0001 são ambas válidas e diferem em um único bit. Sua distância mínima é 1.</p>
+<h3 id="s1b">6.1.2 Gray: código de distância unitária</h3><p>Um código <strong>UDC</strong> (<em>Unit Distance Code</em>) faz com que palavras consecutivas na sequência difiram em apenas um bit. O <strong>código de Gray refletido</strong> é um exemplo: com dois bits, a sequência é 00, 01, 11, 10.</p><p>No binário usual, uma transição como 0111 → 1000 altera quatro bits. Se as mudanças não forem perfeitamente simultâneas, uma leitura intermediária pode indicar outro valor. Em sensores de posição e encoders, Gray reduz esse problema ao limitar a transição entre posições vizinhas a um bit. Ele também define a ordem das linhas e colunas dos mapas de Karnaugh.</p>
+<figure class="fig-full"><a href="images_sisdig/codigo-gray-distancia-unitaria.png" target="_blank" rel="noopener" aria-label="Ampliar figura 3"><img src="images_sisdig/codigo-gray-distancia-unitaria.png" alt="Código de Gray e mudança de um único bit entre posições consecutivas" loading="lazy" decoding="async"></a><figcaption class="fig-caption">Fig. 6.3 — Código de Gray e mudança de um único bit entre posições consecutivas. Selecione a imagem para ampliar.</figcaption></figure>
+<p class="note"><strong>Finalidades diferentes:</strong> Gray reduz a ambiguidade durante transições adjacentes; não é, por isso, um código corretor de erros. Na sequência completa de m bits, todas as palavras são utilizadas e d<sub>mín</sub> = 1. A palavra Gray também não deve ser interpretada usando diretamente os pesos binários usuais.</p>
+<h3 id="s1c">6.1.3 ASCII: representação de caracteres</h3><p>O <strong>ASCII</strong> (<em>American Standard Code for Information Interchange</em>) padroniza a representação de caracteres de texto e controle. Usa <strong>7 bits</strong>, totalizando 128 códigos: 95 imprimíveis, incluindo o espaço, e 33 de controle.</p><p>Padronizar essa associação permite que sistemas distintos interpretem o mesmo caractere. A letra A é 1000001, valor decimal 65; a letra a é 1100001, valor 97. O caractere “5” é 0110101, valor 53, e não a representação numérica do inteiro 5. O ASCII básico não inclui letras portuguesas acentuadas; elas exigem outro esquema de codificação.</p>
+<figure class="fig-full"><a href="images_sisdig/codigo-ascii-v3.png" target="_blank" rel="noopener" aria-label="Ampliar figura 4"><img src="images_sisdig/codigo-ascii-v3.png" alt="ASCII: sete bits, caracteres imprimíveis e de controle, e o uso do oitavo bit" loading="lazy" decoding="async"></a><figcaption class="fig-caption">Fig. 6.4 — ASCII: sete bits, caracteres imprimíveis e de controle, e o uso do oitavo bit. Selecione a imagem para ampliar.</figcaption></figure>
+<p>Quando armazenado em um byte de oito bits, um caractere ASCII pode receber um zero à esquerda. Em determinadas interfaces, o bit adicional é usado para paridade; outras convenções o utilizam em extensões. <strong>Esse oitavo bit não faz parte do ASCII original</strong>, e não existe uma única extensão universal chamada “ASCII estendido”. O bit mais significativo dos sete bits ASCII, b<sub>6</sub>, faz parte do código e não é reservado.</p></section>
+<section class="section" id="s2"><p class="section-label">6.2 / Circuitos codificadores e prioridade</p><h2>Circuitos codificadores e prioridade</h2>
+<p>Um <strong>codificador</strong> recebe N linhas que representam elementos discretos e produz uma palavra de m bits que identifica o elemento selecionado. No caso elementar, pressupõe-se uma única entrada ativa por vez. A palavra de saída pode conter vários bits 1; o que é único é o elemento representado.</p><p>Com N entradas físicas existem 2<sup>N</sup> combinações elétricas, inclusive nenhuma entrada ativa e várias ativas simultaneamente. O projeto precisa definir quais situações são permitidas e como tratar as demais.</p>
+<h3>Por que estabelecer prioridade?</h3><p>Se duas teclas forem pressionadas ao mesmo tempo, um codificador simples sem regra para esse caso pode produzir uma palavra que não identifica corretamente nenhuma delas. Um <strong>codificador com prioridade</strong> resolve a seleção escolhendo a entrada ativa de maior prioridade.</p><p>Na figura, A<sub>7</sub> tem precedência sobre A<sub>6</sub>, e assim sucessivamente até A<sub>0</sub>. Quando A<sub>7</sub> = 1, as outras sete entradas podem valer 0 ou 1 sem alterar a escolha. O símbolo <strong>X</strong> resume essas possibilidades; não é um terceiro nível lógico.</p>
+<figure class="fig-full"><a href="images_sisdig/codificador-prioridade-validade.png" target="_blank" rel="noopener" aria-label="Ampliar figura 5"><img src="images_sisdig/codificador-prioridade-validade.png" alt="Codificador de oito entradas com prioridade e indicação de validade" loading="lazy" decoding="async"></a><figcaption class="fig-caption">Fig. 6.5 — Codificador de oito entradas com prioridade e indicação de validade. Selecione a imagem para ampliar.</figcaption></figure>
+<h3>Nenhuma entrada ativa também é um estado</h3><p>Oito entradas selecionáveis mais o estado “nenhuma” totalizam <strong>nove estados de saída</strong>. São necessários pelo menos quatro bits para atribuir uma palavra distinta a cada estado. Na figura, V indica validade e O<sub>2</sub>O<sub>1</sub>O<sub>0</sub> informa o índice da entrada escolhida: 0000 significa nenhuma; 1000 significa A<sub>0</sub>; 1111 significa A<sub>7</sub>.</p><p>As 256 combinações de entrada são agrupadas em nove resultados pela prioridade. Isso não preserva a informação sobre todas as entradas simultaneamente ativas: preserva apenas a entrada selecionada. Para representar todas as combinações sem perda, seriam necessários pelo menos oito bits.</p>
+<h3>Exemplo: três teclas</h3><p>Cada tecla normalmente aberta conecta sua entrada à alimentação quando pressionada. Um resistor <em>pull-down</em> mantém a entrada em 0 quando a tecla está solta. Assim, pressionada = 1 e solta = 0. A prioridade é Tecla 2 &gt; Tecla 1 &gt; Tecla 0.</p>
+<figure class="fig-full"><a href="images_sisdig/codificador-3-teclas.png" target="_blank" rel="noopener" aria-label="Ampliar figura 6"><img src="images_sisdig/codificador-3-teclas.png" alt="Ligação de três teclas a um codificador com prioridade e tabela compacta" loading="lazy" decoding="async"></a><figcaption class="fig-caption">Fig. 6.6 — Ligação de três teclas a um codificador com prioridade e tabela compacta. Selecione a imagem para ampliar.</figcaption></figure>
+<p>Agora são quatro estados — três teclas selecionáveis e nenhuma — e <strong>dois bits são suficientes</strong>: 00 para nenhuma, 01 para Tecla 0, 10 para Tecla 1 e 11 para Tecla 2. Se as teclas 0 e 1 forem pressionadas, a saída será 10, pois a Tecla 1 tem precedência.</p>
+<div class="table-wrap"><table><thead><tr><th scope="col">A₂</th><th scope="col">A₁</th><th scope="col">A₀</th><th scope="col">O₁O₀</th><th scope="col">Seleção</th></tr></thead><tbody><tr><td>1</td><td>X</td><td>X</td><td>11</td><td>Tecla 2</td></tr><tr><td>0</td><td>1</td><td>X</td><td>10</td><td>Tecla 1</td></tr><tr><td>0</td><td>0</td><td>1</td><td>01</td><td>Tecla 0</td></tr><tr><td>0</td><td>0</td><td>0</td><td>00</td><td>Nenhuma</td></tr></tbody></table></div>
+<p>As quatro linhas cobrem 4 + 2 + 1 + 1 = 8 combinações. Para uma montagem real com teclas mecânicas, o tratamento dos repiques dos contatos é uma função adicional; a tabela descreve o comportamento lógico com as entradas estabilizadas.</p></section>
+<section class="section" id="s3"><p class="section-label">6.3 / Decodificadores: reconhecer a palavra de entrada</p><h2>Decodificadores: reconhecer a palavra de entrada</h2>
+<p>Um <strong>decodificador binário</strong> recebe uma palavra de m bits e ativa a linha correspondente ao elemento representado. Um decoder completo tem 2<sup>m</sup> saídas. Quando habilitado, uma única saída fica ativa para cada palavra de entrada.</p>
+<figure class="fig-full"><a href="images_sisdig/decodificador-binario.png" target="_blank" rel="noopener" aria-label="Ampliar figura 7"><img src="images_sisdig/decodificador-binario.png" alt="Decodificador: uma palavra de entrada seleciona uma única saída" loading="lazy" decoding="async"></a><figcaption class="fig-caption">Fig. 6.7 — Decodificador: uma palavra de entrada seleciona uma única saída. Selecione a imagem para ampliar.</figcaption></figure>
+<p>Com saídas ativas em 1, um decoder de dois bits funciona como na tabela abaixo. A entrada 00 também seleciona uma saída: O<sub>0</sub>.</p>
+<div class="table-wrap"><table><thead><tr><th scope="col">A₁</th><th scope="col">A₀</th><th scope="col">O₃</th><th scope="col">O₂</th><th scope="col">O₁</th><th scope="col">O₀</th></tr></thead><tbody><tr><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>1</td></tr><tr><td>0</td><td>1</td><td>0</td><td>0</td><td>1</td><td>0</td></tr><tr><td>1</td><td>0</td><td>0</td><td>1</td><td>0</td><td>0</td></tr><tr><td>1</td><td>1</td><td>1</td><td>0</td><td>0</td><td>0</td></tr></tbody></table></div>
+<h3>Em que sentido é o inverso do coder?</h3><p>O coder transforma a seleção de uma linha em uma palavra; o decoder transforma a palavra na seleção de uma linha. Eles são inversos sobre os elementos representados, desde que utilizem a mesma associação. Porém, um decoder após um codificador com prioridade recupera apenas a entrada escolhida, não todas as entradas que estavam ativas.</p><p>Um sinal de <strong>enable</strong>, quando disponível, habilita ou desabilita a decodificação. Desabilitado, o circuito deixa todas as saídas inativas. A polaridade depende do CI: uma saída ativa pode ser 1 ou 0. Em decoders de códigos incompletos, palavras não utilizadas também podem não selecionar saída alguma, conforme o datasheet.</p></section>
+<section class="section" id="display"><p class="section-label">6.4 / Decodificação BCD para display de 7 segmentos</p><h2>Decodificação BCD para display de 7 segmentos</h2>
+<h3>Como funciona o display</h3><p>Um display de sete segmentos reúne sete elementos luminosos, identificados por <strong>a, b, c, d, e, f e g</strong>. O segmento a fica no topo; b e c à direita; d embaixo; e e f à esquerda; g no centro. Combinando segmentos acesos, formam-se os dígitos: o 1 usa b e c; o 8 usa todos os sete.</p><p>Nos displays de LEDs de <strong>ânodo comum</strong>, os ânodos se ligam à alimentação e cada segmento acende quando seu cátodo é levado a um potencial suficientemente baixo. Nos de <strong>cátodo comum</strong>, o terminal comum vai ao potencial baixo e o acionamento se dá pelos ânodos. É necessário limitar a corrente, normalmente com um resistor em série para cada segmento.</p>
+<h3>Exemplo dos slides: SN74LS47</h3><p>O <strong>SN74LS47</strong> recebe um dígito BCD em D C B A, com D como bit mais significativo, e gera os sete sinais do display de ânodo comum. Suas saídas são de coletor aberto e ativas em nível baixo: com o display conectado, <strong>0 acende e 1 apaga</strong> o segmento.</p>
+<figure class="fig-full"><a href="images_sisdig/decoder-bcd-7segmentos-tabela.png" target="_blank" rel="noopener" aria-label="Ampliar figura 8"><img src="images_sisdig/decoder-bcd-7segmentos-tabela.png" alt="SN74LS47 ligado ao display de ânodo comum, com tabela verdade resumida" loading="lazy" decoding="async"></a><figcaption class="fig-caption">Fig. 6.8 — SN74LS47 ligado ao display de ânodo comum, com tabela verdade resumida. Selecione a imagem para ampliar.</figcaption></figure>
+<p>O nome consagrado é <strong>decodificador/driver BCD para sete segmentos</strong>. Ele também pode ser entendido como um conversor entre duas representações do mesmo dígito. Ao contrário do decoder binário com uma saída por elemento, sua saída é uma <strong>palavra de sete bits</strong>, e vários segmentos podem estar ativos simultaneamente.</p><h3>Controles de teste e apagamento</h3><ul class="plain"><li><strong>~LT</strong>: teste das lâmpadas; em 0, acende os segmentos quando não há apagamento externo.</li><li><strong>~BI</strong>: entrada de apagamento; em 0, apaga o display independentemente do dígito.</li><li><strong>~RBI</strong>: permite suprimir o zero; com ~LT = 1, entrada BCD 0000 e ~RBI = 0, os segmentos ficam apagados.</li><li><strong>~BI/RBO</strong>: pino compartilhado entre apagamento de entrada e sinal de saída para propagar a supressão de zeros.</li></ul><p>Na tabela da imagem, ~BI indica o comando externo, não necessariamente o nível resultante do pino compartilhado. Quando o CI suprime um zero, ~RBO vai a 0. X significa que aquela entrada pode ser 0 ou 1 sem alterar a linha considerada.</p><p>As palavras 1010 a 1111 não são dígitos BCD; o SN74LS47 gera padrões específicos para elas, omitidos no resumo. Também há variantes de desenho dos algarismos: no SN74LS47, o 6 da tabela não usa a e o 9 não usa d. Não se deve substituir esses valores pelos de um decoder genérico.</p><p class="note">O CD4511B citado em versões anteriores é outro CI: destina-se a display de cátodo comum e possui armazenamento por latch. Sua ligação e seus controles não devem ser confundidos com os do SN74LS47 mostrado aqui. Consulte o datasheet do componente efetivamente utilizado.</p></section>
+<section class="section" id="ci7442"><p class="section-label">6.5 / 7442: decodificador BCD para decimal</p><h2>7442: decodificador BCD para decimal</h2>
+<p>O <strong>7442</strong> recebe quatro bits D C B A e disponibiliza dez saídas, uma para cada dígito decimal. D é o bit mais significativo e A o menos significativo. Para entradas de 0000 a 1001, a saída correspondente ao dígito fica em <strong>0</strong>; as outras nove permanecem em 1.</p>
+<figure class="fig-full"><a href="images_sisdig/decodificador-7442.png" target="_blank" rel="noopener" aria-label="Ampliar figura 9"><img src="images_sisdig/decodificador-7442.png" alt="7442: quatro entradas BCD, dez saídas ativas em zero e tabela verdade" loading="lazy" decoding="async"></a><figcaption class="fig-caption">Fig. 6.9 — 7442: quatro entradas BCD, dez saídas ativas em zero e tabela verdade. Selecione a imagem para ampliar.</figcaption></figure>
+<p>Por exemplo, D C B A = 0101 seleciona a saída do dígito 5. Para qualquer entrada entre 1010 e 1111, <strong>nenhuma saída é ativada: todas ficam em 1</strong>. Esse comportamento é definido para esse circuito, não uma regra universal de todo decoder.</p><p>O 7442 identifica uma posição decimal em uma entre dez linhas; o SN74LS47 produz o padrão de sete segmentos que desenha um dígito. Ambos recebem BCD, mas geram códigos de saída e acionam cargas diferentes.</p></section>
+<section class="section" id="refs"><p class="section-label">Referências</p><h2>Material de apoio</h2><ul class="plain"><li><a href="grid.html">Bibliografia da disciplina</a>: Floyd, <em>Sistemas Digitais: Fundamentos e Aplicações</em>.</li><li><a href="https://www.ti.com/lit/ds/symlink/sn74ls47.pdf">Texas Instruments — SN74LS47, tabela funcional e acionamento do display</a>.</li><li><a href="https://www.ti.com/lit/ds/symlink/cd4511b.pdf">Texas Instruments — CD4511B, latch/decoder/driver BCD para sete segmentos</a>.</li></ul></section>
+<section class="section" id="conversao"><p class="section-label">6.6 / Conversão de códigos entre sistemas</p><h2>Conversão de códigos entre sistemas</h2>
+<p>Dois sistemas podem representar os mesmos elementos usando palavras diferentes. Um sensor pode entregar Gray, o circuito de cálculo pode operar em binário, e a interface com o usuário pode exigir BCD ou sinais para um display. Conectar os fios sem converter o significado pode fazer o receptor interpretar outro elemento.</p><p>Um <strong>conversor de códigos</strong> recebe a palavra do padrão A e gera a palavra correspondente no padrão B, preservando o elemento representado. Se os códigos têm m e p bits, respectivamente, devem oferecer palavras suficientes para os N elementos: 2<sup>m</sup> ≥ N e 2<sup>p</sup> ≥ N. Os comprimentos podem ser diferentes.</p><p>Conceitualmente, o decoder A reconhece o elemento e ativa sua linha; o coder B produz a nova representação. Na prática, as expressões podem ser minimizadas e implementadas diretamente, sem dois CIs separados. As palavras não utilizadas precisam ter tratamento definido pelo projeto, como sinalização de entrada inválida.</p><p>O limite tracejado da figura reúne essas funções em <strong>um único projeto</strong>. O sistema 1 fornece uma palavra de entrada, e o conversor entrega ao sistema 2 uma palavra de saída formada por p bits. A conversão altera a representação; o elemento identificado permanece o mesmo.</p>
+<figure class="fig-full"><a href="images_sisdig/conversao-codigos-projeto-unico.png" target="_blank" rel="noopener" aria-label="Ampliar figura 10"><img src="images_sisdig/conversao-codigos-projeto-unico.png" alt="Um único conversor adapta o código A ao código B para os mesmos elementos" loading="lazy" decoding="async"></a><figcaption class="fig-caption">Fig. 6.10 — Um único conversor adapta o código A ao código B para os mesmos elementos. Selecione a imagem para ampliar.</figcaption></figure></section><div class="chapter-nav"><a href="cap5.html"><span class="dir">← anterior</span>Cap. 5 — Circuitos Comparadores</a><a class="next" href="cap7.html"><span class="dir">próximo →</span>Cap. 7 — Multiplexadores</a></div></main><footer><div class="container"><p>© 2026 · Prof. Clayton J A Silva · Ibmec RJ</p><a href="../sisdig.html">Sistemas Digitais</a></div></footer><script>function updateProgress(){const h=document.documentElement;const total=h.scrollHeight-h.clientHeight;document.getElementById('progressFill').style.width=(total>0?h.scrollTop/total*100:0)+'%';}window.addEventListener('scroll',updateProgress,{passive:true});window.addEventListener('resize',updateProgress);updateProgress();</script></body></html>
