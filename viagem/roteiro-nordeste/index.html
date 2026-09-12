@@ -293,6 +293,9 @@
   .badge.livre { color: var(--ok); }
   .day .km, .day .acum { font-family: var(--font-mono); font-variant-numeric: tabular-nums; font-size: 0.85rem; }
   .day .acum { color: var(--muted); }
+  .day .hrs { display: inline-block; margin-left: 6px; font-size: 0.72rem; color: var(--muted); }
+  .day .hrs::before { content: "("; }
+  .day .hrs::after { content: ")"; }
   .day .check { order: 5; flex: 1 1 100%; display: flex; align-items: center; gap: 8px; font-family: var(--font-body); font-size: 0.86rem; color: var(--muted); min-height: 32px; }
   .day .check input { accent-color: var(--accent); width: 22px; height: 22px; }
 
@@ -402,11 +405,13 @@
 
       <div class="stat-row">
         <div class="stat"><span class="n">38</span><span class="l">dias corridos</span></div>
-        <div class="stat"><span class="n">~7.821</span><span class="l">km rodados</span></div>
-        <div class="stat"><span class="n">4</span><span class="l">trechos</span></div>
+        <div class="stat"><span class="n" id="stat-km-total">~7.881</span><span class="l">km rodados</span></div>
+        <div class="stat"><span class="n" id="stat-h-total">~109h48</span><span class="l">de estrada (estimativa)</span></div>
+        <div class="stat"><span class="n">5</span><span class="l">trechos</span></div>
         <div class="stat"><span class="n">~11</span><span class="l">estados</span></div>
         <div class="stat"><span class="n">7</span><span class="l">pontos de controle fixos</span></div>
       </div>
+      <p class="score-caption" style="margin-top:-8px">tempo de estrada = km ÷ velocidade média típica estimada por trecho (não inclui paradas) &mdash; recalcula sozinho se vocês editarem km ou velocidade de algum dia</p>
 
       <section>
         <p class="strip-title">Sequência da rota (esquemático &mdash; comprimento das barras em escala logarítmica de km)</p>
@@ -423,7 +428,7 @@
             <span class="trecho-acc-head-text">
               <span class="trecho-num">TRECHO 01</span>
               <span class="trecho-acc-title">Rio → Petrolina</span>
-              <span class="trecho-acc-meta">26 a 29/12 · 4 dias · ~2.218 km</span>
+              <span class="trecho-acc-meta">26 a 29/12 · 4 dias · <span class="tm-km" data-t="t1">~1.923 km</span></span>
             </span>
             <svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
           </button>
@@ -438,15 +443,19 @@
               <p class="score-caption">amarelo = estrada (40%) · vermelho = paradas (30%) · branco = beleza (30%) &mdash; avaliação inicial minha, editável</p>
             </div>
             <div class="callout">
-              <span class="t">Ritmo</span>
-              Quatro dias para ~2.218&nbsp;km dá uma média de ~555&nbsp;km/dia. Para chegar a Petrolina em 29/12 (liberando um dia extra em Caxias), o pernoite em Xique-Xique (BA) foi eliminado: o último dia vira um salto único de ~758&nbsp;km (Barreiras → Petrolina), acima do teto de 550&nbsp;km/dia e até do limite excepcional de 650&nbsp;km/dia &mdash; o dia mais longo de toda a viagem. Saiam de Barreiras ao amanhecer e abasteçam com folga; se o cansaço acumulado pesar, ainda dá para reintroduzir a parada em Xique-Xique, abrindo mão de 1 dia da folga extra em Caxias.
+              <span class="t">Por que BR-116 em vez de Montes Claros/BR-135</span>
+              O caminho antigo (BH → Montes Claros → Barreiras, BR-135) tem estrada de terra confirmada: ~48&nbsp;km entre Itacarambi/São João das Missões e Manga (norte de MG), e outro trecho não pavimentado no oeste da Bahia perto de Correntina/São Desidério/Jaborandi. A BR-116 (Rio–Bahia), por Governador Valadares, Vitória da Conquista e Feira de Santana, é rodovia federal principal, com praça de pedágio e obras de concessão em andamento — sem relatos de trechos sem asfalto nesse percurso. De quebra, o total cai de ~2.218&nbsp;km para ~1.923&nbsp;km, sem precisar de dia extra nem mexer no resto do calendário.
             </div>
             <div class="callout">
-              <span class="t">Atenção &mdash; possível trecho sem asfalto (Montes Claros → Barreiras)</span>
-              Pesquisei notícias recentes (2025&ndash;2026): a BR-135 no oeste da Bahia, entre a divisa com Minas e Barreiras (perto de Correntina, São Desidério e Jaborandi), ainda tem trechos sem pavimentação &mdash; uma licitação de 38&nbsp;km só abriu em julho/2026, e uma obra maior (Cocos&ndash;Mandaí) sequer começou. É bem provável que ainda haja estrada de terra por ali na data da viagem. A alternativa comprovadamente asfaltada que encontrei é um desvio via Brasília (BR-040 → BR-020), mas isso acrescenta ~350&ndash;450&nbsp;km e cerca de 1 dia a mais só nesse trecho. Ainda não ajustei o roteiro nesse ponto &mdash; aguardando decisão.
+              <span class="t">Ritmo</span>
+              Quatro dias para ~1.923&nbsp;km dá uma média de ~481&nbsp;km/dia, bem mais equilibrada que antes: dois dias de ~560&nbsp;km (Rio → Governador Valadares e Governador Valadares → Vitória da Conquista, no limite excepcional) e dois de ~400&nbsp;km. Nenhum dia isolado tão extremo quanto o antigo salto de 758&nbsp;km.
+            </div>
+            <div class="callout">
+              <span class="t">Repetição de estrada</span>
+              Este trecho reaproveita o mesmo corredor (BR-116, Governador Valadares ↔ Vitória da Conquista) usado na volta, no trecho 4 &mdash; ou seja, vocês passam pela BR-116 e por Vitória da Conquista duas vezes na viagem (ida em 27&ndash;28/12, volta em 25&ndash;29/1). Se preferirem uma rota diferente na ida para não repetir a estrada, é só avisar.
             </div>
             <div class="map-card">
-              <div class="route-line"><b>Rio de Janeiro</b> → Belo Horizonte → Montes Claros → Barreiras → (Xique-Xique, sem pernoite) → <b>Petrolina</b></div>
+              <div class="route-line"><b>Rio de Janeiro</b> → Governador Valadares → Vitória da Conquista → Feira de Santana → <b>Petrolina</b></div>
               <a class="btn" target="_blank" rel="noopener" id="map-t1">Abrir rota completa no Google Maps</a>
             </div>
             <div class="days" id="t1"></div>
@@ -459,7 +468,7 @@
             <span class="trecho-acc-head-text">
               <span class="trecho-num">TRECHO 02</span>
               <span class="trecho-acc-title">Petrolina → Picos → Caxias (MA)</span>
-              <span class="trecho-acc-meta">30 a 31/12 · 2 dias · ~730 km</span>
+              <span class="trecho-acc-meta">30 a 31/12 · 2 dias · <span class="tm-km" data-t="t2">~730 km</span></span>
             </span>
             <svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
           </button>
@@ -474,8 +483,8 @@
               <p class="score-caption">o trecho mais fraco do roteiro nos três critérios &mdash; é a travessia obrigatória do sertão, não o destaque da viagem</p>
             </div>
             <div class="callout">
-              <span class="t">Parada em Picos quebra o salto de 730&nbsp;km</span>
-              Em vez de um único dia de 730&nbsp;km (acima do teto de 550&nbsp;km/dia), o trecho agora tem uma parada intermediária em Picos (PI): 30/12 Petrolina → Picos (~320&nbsp;km) e 31/12 Picos → Caxias (~410&nbsp;km), chegando a tempo do Réveillon. Nenhum dos dois passa de 550&nbsp;km. É pista simples pelo sertão de PE/PI/MA, com trechos retos e postos mais espaçados &mdash; abasteçam sempre que possível, principalmente no dia 31 com postos fechando mais cedo. Como consequência, Caxias fica com apenas 1 dia livre (1/1) antes da saída em 2/1, em vez dos 2 dias livres do plano anterior.
+              <span class="t">Petrolina → Picos → Caxias</span>
+              Parada intermediária em Picos (PI) quebra os 730&nbsp;km em dois dias, nenhum acima de 550&nbsp;km: 30/12 Petrolina → Picos (~320&nbsp;km) e 31/12 Picos → Caxias (~410&nbsp;km), chegando a tempo do Réveillon. É pista simples pelo sertão de PE/PI/MA, com trechos retos e postos mais espaçados &mdash; abasteçam sempre que possível, principalmente no dia 31, com postos fechando mais cedo na véspera. Caxias fica com 1 dia livre (1/1) antes da saída em 2/1.
             </div>
             <div class="map-card">
               <div class="route-line"><b>Petrolina</b> → Picos → <b>Caxias (MA)</b></div>
@@ -491,12 +500,12 @@
             <span class="trecho-acc-head-text">
               <span class="trecho-num">TRECHO 03</span>
               <span class="trecho-acc-title">Caxias → Recife</span>
-              <span class="trecho-acc-meta">1/1 a 14/1 · 14 dias · ~1.818 km</span>
+              <span class="trecho-acc-meta">1/1 a 14/1 · 14 dias · <span class="tm-km" data-t="t3">~2.173 km</span></span>
             </span>
             <svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
           </button>
           <div class="trecho-acc-body" id="acc-body-t3" hidden>
-            <p class="panel-intro">Via Barreirinhas, Jericoacoara, Fortaleza e João Pessoa.</p>
+            <p class="panel-intro">Via Barreirinhas, Sobral, Jijoca de Jericoacoara, Fortaleza e João Pessoa.</p>
             <div class="score-wrap">
               <div class="score-row needs-db" id="score-t3">
                 <div class="score-sq estrada"><input type="number" min="0" max="10" step="0.5" data-score="t3" data-crit="estrada"><span class="lbl">estrada</span></div>
@@ -504,18 +513,18 @@
                 <div class="score-sq beleza"><input type="number" min="0" max="10" step="0.5" data-score="t3" data-crit="beleza"><span class="lbl">beleza</span></div>
                 <div class="score-final"><span class="val">–</span><span class="lbl">nota /10</span></div>
               </div>
-              <p class="score-caption">estrada penalizada pela Rota das Emoções (areia + balsas); paradas e beleza no topo do roteiro (Lençóis, Jeri, litoral)</p>
+              <p class="score-caption">estrada 100% asfaltada (BR-222/CE-085, com um desvio maior pelo interior); paradas e beleza no topo do roteiro (Lençóis, Jeri, litoral)</p>
             </div>
             <div class="callout deco">
-              <span class="t">Rota Barreirinhas → Jericoacoara</span>
-              Com 2 dias inteiros em Caxias e 3 em Fortaleza (um a mais do que na versão anterior, para preservar a chegada em João Pessoa em 8/1 e sua permanência lá, ambas fixas), sobra fôlego para descansar depois dos dois dias mais puxados da viagem. Optei pela Rota das Emoções (Tutóia, balsas, trechos de areia, ~330&nbsp;km) em vez da alternativa 100% asfaltada via Sobral, que sozinha consome 2 dias.
+              <span class="t">Barreirinhas → Sobral → Jijoca (sem areia nem balsa)</span>
+              A Rota das Emoções tradicional (Tutóia, balsas, dunas) tem trechos de areia entre Tutóia e Barreirinhas, e o acesso à vila de Jericoacoara nunca é 100% pavimentado (últimos ~23&nbsp;km sempre em duna, mesmo de 4x4). Por isso o trajeto vai pelo interior, 100% asfalto: Barreirinhas → Sobral (~520&nbsp;km, BR-222) → Jijoca de Jericoacoara (~165&nbsp;km, CE-187/CE-085). Jijoca tem pousadas normais e acesso de moto; para conhecer a vila e as dunas, deixem a moto estacionada em Jijoca e façam o passeio de bugueiro/mototáxi local como passageiros.
             </div>
             <div class="callout">
               <span class="t">Fortaleza → João Pessoa (688 km) &mdash; terceiro dia mais longo do roteiro</span>
-              A chegada em João Pessoa em 8/1 é fixa; esse trecho continua sendo um salto único passando perto de Natal (parada rápida, sem pernoite), acima de 650&nbsp;km.
+              Salto único passando perto de Natal (parada rápida, sem pernoite), acima de 650&nbsp;km, para manter a chegada em João Pessoa em 8/1.
             </div>
             <div class="map-card">
-              <div class="route-line"><b>Caxias</b> → Barreirinhas → Jericoacoara → Fortaleza → João Pessoa → <b>Recife</b></div>
+              <div class="route-line"><b>Caxias</b> → Barreirinhas → Sobral → Jijoca de Jericoacoara → Fortaleza → João Pessoa → <b>Recife</b></div>
               <a class="btn" target="_blank" rel="noopener" id="map-t3">Abrir rota completa no Google Maps</a>
             </div>
             <div class="days" id="t3"></div>
@@ -527,13 +536,13 @@
           <button type="button" class="trecho-acc-head" data-acc-toggle="t4" aria-expanded="false">
             <span class="trecho-acc-head-text">
               <span class="trecho-num">TRECHO 04</span>
-              <span class="trecho-acc-title">Recife → Vitória da Conquista → Rio</span>
-              <span class="trecho-acc-meta">15/1 a 1/2 · 18 dias · ~3.055 km</span>
+              <span class="trecho-acc-title">Recife → Vitória da Conquista</span>
+              <span class="trecho-acc-meta">15/1 a 25/1 · 11 dias · <span class="tm-km" data-t="t4">~1.935 km</span></span>
             </span>
             <svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
           </button>
           <div class="trecho-acc-body" id="acc-body-t4" hidden>
-            <p class="panel-intro">Via Porto de Galinhas (parada rápida, sem pernoite), Japaratinga (parada obrigatória), Maceió, Salvador, Ilhéus e Porto Seguro — com permanência ampliada em Vitória da Conquista.</p>
+            <p class="panel-intro">Via Porto de Galinhas (parada rápida, sem pernoite), Japaratinga (parada obrigatória), Maceió, Salvador, Ilhéus e Porto Seguro.</p>
             <div class="score-wrap">
               <div class="score-row needs-db" id="score-t4">
                 <div class="score-sq estrada"><input type="number" min="0" max="10" step="0.5" data-score="t4" data-crit="estrada"><span class="lbl">estrada</span></div>
@@ -544,22 +553,51 @@
               <p class="score-caption">o trecho mais completo do roteiro nos três critérios &mdash; BR-101 em bom estado, paradas de alto nível, litoral baiano/alagoano</p>
             </div>
             <div class="callout deco">
-              <span class="t">Recife: quanto tempo ficar</span>
-              Com João Pessoa liberando 11/1, vocês chegam a Recife bem antes do "por volta de 15/1" original. Assumi que a ideia é aproveitar Recife/Olinda até por volta do dia 15, e a partir daí seguir para o litoral de Alagoas.
-            </div>
-            <div class="callout deco">
               <span class="t">Vale o desvio</span>
-              Com a folga entre Recife e Vitória da Conquista, dá para descer a costa por Porto de Galinhas (parada rápida), Japaratinga (Costa dos Corais &mdash; parada obrigatória), Maceió, Salvador (1 dia), Praia do Forte, Ilhéus (Terra do Cacau) e Porto Seguro/Arraial d'Ajuda antes de cortar para o interior em Vitória da Conquista. O roteiro fecha em 31/1, deixando 1/2 como margem de segurança.
-            </div>
-            <div class="callout deco">
-              <span class="t">Vitória da Conquista: permanência ampliada</span>
-              Para dar mais tempo de descanso antes da reta final, o pernoite em Porto de Galinhas virou apenas uma parada rápida a caminho de Japaratinga (mesma distância total do dia, sem perder a cidade do roteiro) e um dos dois dias livres em Salvador foi remanejado &mdash; os 2 dias ganhos viram 3 dias livres em Vitória da Conquista (era 1).
+              De Recife até Vitória da Conquista, a costa desce por Porto de Galinhas (parada rápida), Japaratinga (Costa dos Corais &mdash; parada obrigatória), Maceió, Salvador (1 dia), Praia do Forte, Ilhéus (Terra do Cacau) e Porto Seguro/Arraial d'Ajuda, antes de cortar para o interior em Vitória da Conquista.
             </div>
             <div class="map-card">
-              <div class="route-line"><b>Recife</b> → Porto de Galinhas → Japaratinga → Maceió → Aracaju → Salvador → Praia do Forte → Ilhéus → Porto Seguro → Vitória da Conquista → Governador Valadares → Além Paraíba → <b>Rio de Janeiro</b></div>
+              <div class="route-line"><b>Recife</b> → Porto de Galinhas → Japaratinga → Maceió → Aracaju → Salvador → Praia do Forte → Ilhéus → Porto Seguro → <b>Vitória da Conquista</b></div>
               <a class="btn" target="_blank" rel="noopener" id="map-t4">Abrir rota completa no Google Maps</a>
             </div>
             <div class="days" id="t4"></div>
+          </div>
+        </div>
+
+        <!-- TRECHO 5 -->
+        <div class="trecho-acc" data-trecho="t5">
+          <button type="button" class="trecho-acc-head" data-acc-toggle="t5" aria-expanded="false">
+            <span class="trecho-acc-head-text">
+              <span class="trecho-num">TRECHO 05</span>
+              <span class="trecho-acc-title">Vitória da Conquista → Rio (retorno)</span>
+              <span class="trecho-acc-meta">26/1 a 1/2 · 7 dias · <span class="tm-km" data-t="t5">~1.120 km</span></span>
+            </span>
+            <svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+          <div class="trecho-acc-body" id="acc-body-t5" hidden>
+            <p class="panel-intro">3 dias livres em Vitória da Conquista, depois volta direto ao Rio via Governador Valadares e Além Paraíba (BR-116/BR-040).</p>
+            <div class="score-wrap">
+              <div class="score-row needs-db" id="score-t5">
+                <div class="score-sq estrada"><input type="number" min="0" max="10" step="0.5" data-score="t5" data-crit="estrada"><span class="lbl">estrada</span></div>
+                <div class="score-sq paradas"><input type="number" min="0" max="10" step="0.5" data-score="t5" data-crit="paradas"><span class="lbl">paradas</span></div>
+                <div class="score-sq beleza"><input type="number" min="0" max="10" step="0.5" data-score="t5" data-crit="beleza"><span class="lbl">beleza</span></div>
+                <div class="score-final"><span class="val">–</span><span class="lbl">nota /10</span></div>
+              </div>
+              <p class="score-caption">trecho de retorno direto, sem paradas turísticas planejadas &mdash; mesmo corredor (BR-116) do trecho 1, sentido contrário</p>
+            </div>
+            <div class="callout deco">
+              <span class="t">Vitória da Conquista: 3 dias livres</span>
+              Descanso mais longo antes da reta final de volta ao Rio. O roteiro fecha em 31/1, deixando 1/2 como margem de segurança.
+            </div>
+            <div class="callout">
+              <span class="t">Mesma estrada do trecho 1, sentido contrário</span>
+              Governador Valadares → Vitória da Conquista (ida, trecho 1) e Vitória da Conquista → Governador Valadares (volta, aqui) usam o mesmo corredor da BR-116. O dia 29/1 (560&nbsp;km) fica no limite excepcional de 650&nbsp;km/dia.
+            </div>
+            <div class="map-card">
+              <div class="route-line"><b>Vitória da Conquista</b> → Governador Valadares → Além Paraíba → <b>Rio de Janeiro</b></div>
+              <a class="btn" target="_blank" rel="noopener" id="map-t5">Abrir rota completa no Google Maps</a>
+            </div>
+            <div class="days" id="t5"></div>
           </div>
         </div>
 
@@ -584,8 +622,12 @@
         <div class="stop-grid" id="stops-t3"></div>
       </div>
       <div class="stop-group">
-        <p class="stop-group-title">Trecho 04 · Recife → Rio</p>
+        <p class="stop-group-title">Trecho 04 · Recife → Vitória da Conquista</p>
         <div class="stop-grid" id="stops-t4"></div>
+      </div>
+      <div class="stop-group">
+        <p class="stop-group-title">Trecho 05 · Vitória da Conquista → Rio</p>
+        <div class="stop-grid" id="stops-t5"></div>
       </div>
     </section>
 
@@ -643,7 +685,7 @@
 
       <div class="help-list">
         <p><b>Sobre as distâncias:</b> valores aproximados a partir de fontes públicas de rotas rodoviárias; confirme com Waze/Google Maps/Qualp mais perto da viagem, especialmente em trechos com balsa ou estrada não pavimentada.</p>
-        <p><b>Edição:</b> qualquer linha do roteiro pode ser ajustada (botão "editar"); "reverter" volta à baseline original. O km acumulado é recalculado automaticamente.</p>
+        <p><b>Edição:</b> qualquer linha do roteiro pode ser ajustada (botão "editar", disponível mesmo depois de marcar "concluído"); "reverter" volta à baseline original. Km acumulado, tempo de estrada estimado e os totais no topo (km e horas) recalculam sozinhos. "Concluído" é só um lembrete visual salvo neste aparelho (não sincroniza entre os dois celulares).</p>
         <p><b>Pontuação:</b> os quadrados de cada trecho são uma avaliação inicial minha (estrada 40%, paradas 30%, beleza 30%) &mdash; editem os números como acharem melhor, a nota final se recalcula sozinha.</p>
         <p><b>Hospedagem:</b> nos pontos sem família, use "Buscar no Booking" e cole o link da reserva confirmada quando fecharem.</p>
         <p><b>Despesas:</b> combustível, alimentação, hospedagem e outros entram na mesma lista, com totais gerais e por categoria; em combustível, km e litros também calculam o consumo médio.</p>
@@ -681,63 +723,67 @@
 (function () {
   // ---------- baseline day-by-day data ----------
   // [data, dia-semana, trajeto, nota, via, km, badges[], from, to]
+  // 10º campo de cada linha = velocidade média estimada (km/h) para o cálculo de tempo de estrada.
+  // Faixas usadas: 85 = duplicada/excelente · 78 = federal boa, pista simples · 70 = sertão/pista simples reta, posto espaçado · 63 = serra, curvas, litoral com mais movimento ou travessia
   var days = {
     t1: [
-      ['26/12','SÁB','Rio de Janeiro (RJ) → Belo Horizonte (MG)','', 'BR-040', 440, [], 'Rio de Janeiro, RJ, Brasil', 'Belo Horizonte, MG, Brasil'],
-      ['27/12','DOM','Belo Horizonte (MG) → Montes Claros (MG)','', 'BR-040 / BR-135', 420, [], 'Belo Horizonte, MG, Brasil', 'Montes Claros, MG, Brasil'],
-      ['28/12','SEG','Montes Claros (MG) → Barreiras (BA)','dia mais longo do trecho', 'BR-135 / BR-242', 600, ['longo'], 'Montes Claros, MG, Brasil', 'Barreiras, BA, Brasil'],
-      ['29/12','TER','Barreiras (BA) → Petrolina (PE)','sem pernoite em Xique-Xique · chegada no ponto de controle', 'BR-242 / BR-407', 758, ['fixo','longo'], 'Barreiras, BA, Brasil', 'Petrolina, PE, Brasil']
+      ['26/12','SÁB','Rio de Janeiro (RJ) → Governador Valadares (MG)','via Além Paraíba, sem pernoite', 'BR-040 / BR-116', 560, ['longo'], 'Rio de Janeiro, RJ, Brasil', 'Governador Valadares, MG, Brasil', 78],
+      ['27/12','DOM','Governador Valadares (MG) → Vitória da Conquista (BA)','', 'BR-116', 560, ['longo'], 'Governador Valadares, MG, Brasil', 'Vitória da Conquista, BA, Brasil', 63],
+      ['28/12','SEG','Vitória da Conquista (BA) → Feira de Santana (BA)','', 'BR-116', 404, [], 'Vitória da Conquista, BA, Brasil', 'Feira de Santana, BA, Brasil', 70],
+      ['29/12','TER','Feira de Santana (BA) → Petrolina (PE)','via Juazeiro (BA) · chegada no ponto de controle', 'BR-116 / BR-324 / BR-407', 399, ['fixo'], 'Feira de Santana, BA, Brasil', 'Petrolina, PE, Brasil', 75]
     ],
     t2: [
-      ['30/12','QUA','Petrolina (PE) → Picos (PI)','viagem dividida para não passar de 550 km/dia', 'BR-407', 320, [], 'Petrolina, PE, Brasil', 'Picos, PI, Brasil'],
-      ['31/12','QUI','Picos (PI) → Caxias (MA)','chegada a tempo do Réveillon · chegada no ponto de controle', 'BR-316', 410, ['fixo'], 'Picos, PI, Brasil', 'Caxias, MA, Brasil']
+      ['30/12','QUA','Petrolina (PE) → Picos (PI)','', 'BR-407', 320, [], 'Petrolina, PE, Brasil', 'Picos, PI, Brasil', 70],
+      ['31/12','QUI','Picos (PI) → Caxias (MA)','chegada a tempo do Réveillon · chegada no ponto de controle', 'BR-316', 410, ['fixo'], 'Picos, PI, Brasil', 'Caxias, MA, Brasil', 70]
     ],
     t3: [
-      ['01/1','SEX','Caxias (MA) — dia livre','descanso pós-trecho longo · pouco movimento no primeiro dia do ano', '', 0, ['livre'], '', ''],
-      ['02/1','SÁB','Caxias (MA) → Barreirinhas (MA)','', 'BR-222 / MA-034', 380, [], 'Caxias, MA, Brasil', 'Barreirinhas, MA, Brasil'],
-      ['03/1','DOM','Barreirinhas → Jericoacoara (CE)','Rota das Emoções: balsas + estrada de areia', 'Rota das Emoções', 330, ['decisao'], 'Barreirinhas, MA, Brasil', 'Jericoacoara, CE, Brasil'],
-      ['04/1','SEG','Jericoacoara → Fortaleza (CE)','', 'CE-085 / BR-402', 300, [], 'Jericoacoara, CE, Brasil', 'Fortaleza, CE, Brasil'],
-      ['05/1','TER','Fortaleza — dia livre (1/3)','Beira-Mar, Mercado Central', '', 0, ['livre'], '', ''],
-      ['06/1','QUA','Fortaleza — dia livre (2/3)','', '', 0, ['livre'], '', ''],
-      ['07/1','QUI','Fortaleza — dia livre (3/3)','dia extra, para manter a chegada em João Pessoa em 8/1', '', 0, ['livre'], '', ''],
-      ['08/1','SEX','Fortaleza → João Pessoa (PB)','via Natal, parada rápida sem pernoite · chegada no ponto de controle', 'BR-304 / BR-101', 688, ['fixo','longo'], 'Fortaleza, CE, Brasil', 'João Pessoa, PB, Brasil'],
-      ['09/1','SÁB','João Pessoa — dia livre (1/2)','Ponta do Seixas', '', 0, ['livre'], '', ''],
-      ['10/1','DOM','João Pessoa — dia livre (2/2)','', '', 0, ['livre'], '', ''],
-      ['11/1','SEG','João Pessoa → Recife (PE)','partida do ponto de controle', 'BR-101', 120, ['fixo'], 'João Pessoa, PB, Brasil', 'Recife, PE, Brasil'],
-      ['12/1','TER','Recife — dia livre (1/3)','Olinda', '', 0, ['livre'], '', ''],
-      ['13/1','QUA','Recife — dia livre (2/3)','', '', 0, ['livre'], '', ''],
-      ['14/1','QUI','Recife — dia livre (3/3)','', '', 0, ['livre'], '', '']
+      ['01/1','SEX','Caxias (MA) — dia livre','pouco movimento no primeiro dia do ano', '', 0, ['livre'], '', '', 0],
+      ['02/1','SÁB','Caxias (MA) → Barreirinhas (MA)','', 'BR-222 / MA-034', 380, [], 'Caxias, MA, Brasil', 'Barreirinhas, MA, Brasil', 78],
+      ['03/1','DOM','Barreirinhas (MA) → Sobral (CE)','rota 100% asfaltada pelo interior (BR-222), evitando as balsas e a estrada de areia da Rota das Emoções', 'BR-222', 520, ['longo'], 'Barreirinhas, MA, Brasil', 'Sobral, CE, Brasil', 78],
+      ['04/1','SEG','Sobral (CE) → Jijoca de Jericoacoara (CE)','pernoite em Jijoca (acesso asfaltado); a vila de Jericoacoara em si só se chega pelos últimos ~23 km de duna, sem trecho pavimentado — visitem de bugueiro/mototáxi local, moto fica estacionada em Jijoca', 'CE-187 / CE-085', 165, [], 'Sobral, CE, Brasil', 'Jijoca de Jericoacoara, CE, Brasil', 78],
+      ['05/1','TER','Jijoca de Jericoacoara → Fortaleza (CE)','', 'CE-085 / BR-402', 300, [], 'Jijoca de Jericoacoara, CE, Brasil', 'Fortaleza, CE, Brasil', 78],
+      ['06/1','QUA','Fortaleza — dia livre (1/2)','Beira-Mar, Mercado Central', '', 0, ['livre'], '', '', 0],
+      ['07/1','QUI','Fortaleza — dia livre (2/2)','', '', 0, ['livre'], '', '', 0],
+      ['08/1','SEX','Fortaleza → João Pessoa (PB)','via Natal, parada rápida sem pernoite · chegada no ponto de controle', 'BR-304 / BR-101', 688, ['fixo','longo'], 'Fortaleza, CE, Brasil', 'João Pessoa, PB, Brasil', 78],
+      ['09/1','SÁB','João Pessoa — dia livre (1/2)','Ponta do Seixas', '', 0, ['livre'], '', '', 0],
+      ['10/1','DOM','João Pessoa — dia livre (2/2)','', '', 0, ['livre'], '', '', 0],
+      ['11/1','SEG','João Pessoa → Recife (PE)','partida do ponto de controle', 'BR-101', 120, ['fixo'], 'João Pessoa, PB, Brasil', 'Recife, PE, Brasil', 85],
+      ['12/1','TER','Recife — dia livre (1/3)','Olinda', '', 0, ['livre'], '', '', 0],
+      ['13/1','QUA','Recife — dia livre (2/3)','', '', 0, ['livre'], '', '', 0],
+      ['14/1','QUI','Recife — dia livre (3/3)','', '', 0, ['livre'], '', '', 0]
     ],
     t4: [
-      ['15/1','SEX','Recife → Japaratinga (AL)','passagem por Porto de Galinhas (sem pernoite) · parada obrigatória · 1 dia em Japaratinga · piscinas naturais', 'PE-060 / AL-101', 215, ['fixo'], 'Recife, PE, Brasil', 'Japaratinga, AL, Brasil'],
-      ['16/1','SÁB','Japaratinga → Maceió (AL)','', 'AL-101', 90, [], 'Japaratinga, AL, Brasil', 'Maceió, AL, Brasil'],
-      ['17/1','DOM','Maceió — dia livre','Pajuçara, Praia do Francês', '', 0, ['livre'], '', ''],
-      ['18/1','SEG','Maceió → Aracaju (SE)','', 'BR-101', 280, [], 'Maceió, AL, Brasil', 'Aracaju, SE, Brasil'],
-      ['19/1','TER','Aracaju → Salvador (BA)','travessia da Baía de Todos os Santos', 'BR-101', 360, [], 'Aracaju, SE, Brasil', 'Salvador, BA, Brasil'],
-      ['20/1','QUA','Salvador — dia livre','Pelourinho, Elevador Lacerda', '', 0, ['livre'], '', ''],
-      ['21/1','QUI','Salvador → Praia do Forte (BA)','', 'BA-099 (Linha Verde)', 80, [], 'Salvador, BA, Brasil', 'Praia do Forte, BA, Brasil'],
-      ['22/1','SEX','Praia do Forte → Ilhéus (BA)','Terra do Cacau, roteiro de Jorge Amado', 'BA-099 / BR-101', 380, [], 'Praia do Forte, BA, Brasil', 'Ilhéus, BA, Brasil'],
-      ['23/1','SÁB','Ilhéus → Porto Seguro (BA)','Costa do Descobrimento', 'BR-101', 200, [], 'Ilhéus, BA, Brasil', 'Porto Seguro, BA, Brasil'],
-      ['24/1','DOM','Porto Seguro — dia livre','Arraial d’Ajuda', '', 0, ['livre'], '', ''],
-      ['25/1','SEG','Porto Seguro → Vitória da Conquista (BA)','chegada no ponto de controle', 'BR-367 / BR-116', 330, ['fixo'], 'Porto Seguro, BA, Brasil', 'Vitória da Conquista, BA, Brasil'],
-      ['26/1','TER','Vitória da Conquista — dia livre (1/3)','dias extras: sacrificados 1 dia em Salvador e o pernoite em Porto de Galinhas', '', 0, ['livre'], '', ''],
-      ['27/1','QUA','Vitória da Conquista — dia livre (2/3)','', '', 0, ['livre'], '', ''],
-      ['28/1','QUI','Vitória da Conquista — dia livre (3/3)','descanso antes da reta final', '', 0, ['livre'], '', ''],
-      ['29/1','SEX','Vitória da Conquista → Governador Valadares (MG)','', 'BR-116', 560, [], 'Vitória da Conquista, BA, Brasil', 'Governador Valadares, MG, Brasil'],
-      ['30/1','SÁB','Governador Valadares → Além Paraíba (MG)','', 'BR-116 / BR-040', 370, [], 'Governador Valadares, MG, Brasil', 'Além Paraíba, MG, Brasil'],
-      ['31/1','DOM','Além Paraíba → Rio de Janeiro (RJ)','chegada antecipada, com folga até 1/2', 'BR-040', 190, [], 'Além Paraíba, MG, Brasil', 'Rio de Janeiro, RJ, Brasil'],
-      ['01/2','SEG','Margem de segurança / chegada oficial','', '', 0, ['fixo'], '', '']
+      ['15/1','SEX','Recife → Japaratinga (AL)','passagem por Porto de Galinhas (sem pernoite) · parada obrigatória · 1 dia em Japaratinga · piscinas naturais', 'PE-060 / AL-101', 215, ['fixo'], 'Recife, PE, Brasil', 'Japaratinga, AL, Brasil', 63],
+      ['16/1','SÁB','Japaratinga → Maceió (AL)','', 'AL-101', 90, [], 'Japaratinga, AL, Brasil', 'Maceió, AL, Brasil', 63],
+      ['17/1','DOM','Maceió — dia livre','Pajuçara, Praia do Francês', '', 0, ['livre'], '', '', 0],
+      ['18/1','SEG','Maceió → Aracaju (SE)','', 'BR-101', 280, [], 'Maceió, AL, Brasil', 'Aracaju, SE, Brasil', 78],
+      ['19/1','TER','Aracaju → Salvador (BA)','travessia da Baía de Todos os Santos', 'BR-101', 360, [], 'Aracaju, SE, Brasil', 'Salvador, BA, Brasil', 63],
+      ['20/1','QUA','Salvador — dia livre','Pelourinho, Elevador Lacerda', '', 0, ['livre'], '', '', 0],
+      ['21/1','QUI','Salvador → Praia do Forte (BA)','', 'BA-099 (Linha Verde)', 80, [], 'Salvador, BA, Brasil', 'Praia do Forte, BA, Brasil', 63],
+      ['22/1','SEX','Praia do Forte → Ilhéus (BA)','Terra do Cacau, roteiro de Jorge Amado', 'BA-099 / BR-101', 380, [], 'Praia do Forte, BA, Brasil', 'Ilhéus, BA, Brasil', 70],
+      ['23/1','SÁB','Ilhéus → Porto Seguro (BA)','Costa do Descobrimento', 'BR-101', 200, [], 'Ilhéus, BA, Brasil', 'Porto Seguro, BA, Brasil', 78],
+      ['24/1','DOM','Porto Seguro — dia livre','Arraial d’Ajuda', '', 0, ['livre'], '', '', 0],
+      ['25/1','SEG','Porto Seguro → Vitória da Conquista (BA)','chegada no ponto de controle', 'BR-367 / BR-116', 330, ['fixo'], 'Porto Seguro, BA, Brasil', 'Vitória da Conquista, BA, Brasil', 63]
+    ],
+    t5: [
+      ['26/1','TER','Vitória da Conquista — dia livre (1/3)','', '', 0, ['livre'], '', '', 0],
+      ['27/1','QUA','Vitória da Conquista — dia livre (2/3)','', '', 0, ['livre'], '', '', 0],
+      ['28/1','QUI','Vitória da Conquista — dia livre (3/3)','descanso antes da reta final', '', 0, ['livre'], '', '', 0],
+      ['29/1','SEX','Vitória da Conquista → Governador Valadares (MG)','', 'BR-116', 560, ['longo'], 'Vitória da Conquista, BA, Brasil', 'Governador Valadares, MG, Brasil', 63],
+      ['30/1','SÁB','Governador Valadares → Além Paraíba (MG)','', 'BR-116 / BR-040', 370, [], 'Governador Valadares, MG, Brasil', 'Além Paraíba, MG, Brasil', 78],
+      ['31/1','DOM','Além Paraíba → Rio de Janeiro (RJ)','chegada antecipada, com folga até 1/2', 'BR-040', 190, [], 'Além Paraíba, MG, Brasil', 'Rio de Janeiro, RJ, Brasil', 85],
+      ['01/2','SEG','Margem de segurança / chegada oficial','', '', 0, ['fixo'], '', '', 0]
     ]
   };
-  var FLAT_BASE = [].concat(days.t1, days.t2, days.t3, days.t4);
-  var SLICES = { t1: [0, 4], t2: [4, 6], t3: [6, 20], t4: [20, 38] };
+  var FLAT_BASE = [].concat(days.t1, days.t2, days.t3, days.t4, days.t5);
+  var SLICES = { t1: [0, 4], t2: [4, 6], t3: [6, 20], t4: [20, 31], t5: [31, 38] };
 
   // ---------- overnight stops: hospedagem + fotos ----------
   var STOPS = {
     t1: [
-      {slug:'belo-horizonte', city:'Belo Horizonte', uf:'MG', arrive:'26/12', depart:'27/12', family:false},
-      {slug:'montes-claros', city:'Montes Claros', uf:'MG', arrive:'27/12', depart:'28/12', family:false},
-      {slug:'barreiras', city:'Barreiras', uf:'BA', arrive:'28/12', depart:'29/12', family:false},
+      {slug:'governador-valadares-ida', city:'Governador Valadares', uf:'MG', arrive:'26/12', depart:'27/12', family:false},
+      {slug:'vitoria-da-conquista-ida', city:'Vitória da Conquista', uf:'BA', arrive:'27/12', depart:'28/12', family:false},
+      {slug:'feira-de-santana', city:'Feira de Santana', uf:'BA', arrive:'28/12', depart:'29/12', family:false},
       {slug:'petrolina', city:'Petrolina', uf:'PE', arrive:'29/12', depart:'30/12', family:false}
     ],
     t2: [
@@ -746,8 +792,9 @@
     ],
     t3: [
       {slug:'barreirinhas', city:'Barreirinhas', uf:'MA', arrive:'02/01', depart:'03/01', family:false},
-      {slug:'jericoacoara', city:'Jericoacoara', uf:'CE', arrive:'03/01', depart:'04/01', family:false},
-      {slug:'fortaleza', city:'Fortaleza', uf:'CE', arrive:'04/01', depart:'08/01', family:true},
+      {slug:'sobral', city:'Sobral', uf:'CE', arrive:'03/01', depart:'04/01', family:false},
+      {slug:'jijoca', city:'Jijoca de Jericoacoara', uf:'CE', arrive:'04/01', depart:'05/01', family:false},
+      {slug:'fortaleza', city:'Fortaleza', uf:'CE', arrive:'05/01', depart:'08/01', family:true},
       {slug:'joao-pessoa', city:'João Pessoa', uf:'PB', arrive:'08/01', depart:'11/01', family:false},
       {slug:'recife', city:'Recife', uf:'PE', arrive:'11/01', depart:'15/01', family:true}
     ],
@@ -759,28 +806,33 @@
       {slug:'praia-do-forte', city:'Praia do Forte', uf:'BA', arrive:'21/01', depart:'22/01', family:false},
       {slug:'ilheus', city:'Ilhéus', uf:'BA', arrive:'22/01', depart:'23/01', family:false},
       {slug:'porto-seguro', city:'Porto Seguro', uf:'BA', arrive:'23/01', depart:'25/01', family:false},
-      {slug:'vitoria-da-conquista', city:'Vitória da Conquista', uf:'BA', arrive:'25/01', depart:'29/01', family:true},
+      {slug:'vitoria-da-conquista', city:'Vitória da Conquista', uf:'BA', arrive:'25/01', depart:'29/01', family:true}
+    ],
+    t5: [
       {slug:'governador-valadares', city:'Governador Valadares', uf:'MG', arrive:'29/01', depart:'30/01', family:false},
       {slug:'alem-paraiba', city:'Além Paraíba', uf:'MG', arrive:'30/01', depart:'31/01', family:false}
     ]
   };
-  var ALL_STOPS = [].concat(STOPS.t1, STOPS.t2, STOPS.t3, STOPS.t4);
+  var ALL_STOPS = [].concat(STOPS.t1, STOPS.t2, STOPS.t3, STOPS.t4, STOPS.t5);
 
   var TRECHO_ROUTE = {
     t1: {origin:'Rio de Janeiro, RJ, Brasil', destination:'Petrolina, PE, Brasil',
-      waypoints:['Belo Horizonte, MG, Brasil','Montes Claros, MG, Brasil','Barreiras, BA, Brasil','Xique-Xique, BA, Brasil']},
+      waypoints:['Além Paraíba, MG, Brasil','Governador Valadares, MG, Brasil','Vitória da Conquista, BA, Brasil','Feira de Santana, BA, Brasil','Juazeiro, BA, Brasil']},
     t2: {origin:'Petrolina, PE, Brasil', destination:'Caxias, MA, Brasil', waypoints:['Picos, PI, Brasil']},
     t3: {origin:'Caxias, MA, Brasil', destination:'Recife, PE, Brasil',
-      waypoints:['Barreirinhas, MA, Brasil','Jericoacoara, CE, Brasil','Fortaleza, CE, Brasil','João Pessoa, PB, Brasil']},
-    t4: {origin:'Recife, PE, Brasil', destination:'Rio de Janeiro, RJ, Brasil',
-      waypoints:['Porto de Galinhas, PE, Brasil','Japaratinga, AL, Brasil','Maceió, AL, Brasil','Aracaju, SE, Brasil','Salvador, BA, Brasil','Praia do Forte, BA, Brasil','Ilhéus, BA, Brasil','Porto Seguro, BA, Brasil','Vitória da Conquista, BA, Brasil','Governador Valadares, MG, Brasil','Além Paraíba, MG, Brasil']}
+      waypoints:['Barreirinhas, MA, Brasil','Sobral, CE, Brasil','Jijoca de Jericoacoara, CE, Brasil','Fortaleza, CE, Brasil','João Pessoa, PB, Brasil']},
+    t4: {origin:'Recife, PE, Brasil', destination:'Vitória da Conquista, BA, Brasil',
+      waypoints:['Porto de Galinhas, PE, Brasil','Japaratinga, AL, Brasil','Maceió, AL, Brasil','Aracaju, SE, Brasil','Salvador, BA, Brasil','Praia do Forte, BA, Brasil','Ilhéus, BA, Brasil','Porto Seguro, BA, Brasil']},
+    t5: {origin:'Vitória da Conquista, BA, Brasil', destination:'Rio de Janeiro, RJ, Brasil',
+      waypoints:['Governador Valadares, MG, Brasil','Além Paraíba, MG, Brasil']}
   };
 
   var SCORE_BASE = {
     t1: {estrada:6.5, paradas:5,  beleza:5.5},
     t2: {estrada:4.5, paradas:4,  beleza:4},
     t3: {estrada:6,   paradas:9,  beleza:9},
-    t4: {estrada:7.5, paradas:9,  beleza:8.5}
+    t4: {estrada:7.5, paradas:9,  beleza:8.5},
+    t5: {estrada:6.5, paradas:3,  beleza:4}
   };
   var scoreOverrides = {};
   var overrides = {}; // roteiro edits: idx(string) -> {route, note, via, km}
@@ -959,26 +1011,35 @@
   function escAttr(s) { return String(s == null ? '' : s).replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;'); }
   var badgeLabel = { fixo: 'ponto fixo', longo: 'trecho longo', decisao: 'decisão de rota', livre: 'dia livre' };
 
-  // ---------- roteiro: baseline + overrides, recomputed cumulative km ----------
+  // ---------- roteiro: baseline + overrides, recomputed cumulative km/horas ----------
+  function fmtH(h) {
+    if (!h) return '';
+    var totalMin = Math.round(h * 60);
+    var hh = Math.floor(totalMin / 60), mm = totalMin % 60;
+    return mm ? ('~' + hh + 'h' + (mm < 10 ? '0' : '') + mm) : ('~' + hh + 'h');
+  }
   function effectiveRow(idx) {
     var base = FLAT_BASE[idx];
     var o = overrides[String(idx)];
+    var km = (o && o.km != null) ? Number(o.km) : base[5];
+    var kmh = (o && o.kmh != null) ? Number(o.kmh) : (base[9] || 0);
     return {
       idx: idx, date: base[0], wd: base[1],
       route: (o && o.route != null) ? o.route : base[2],
       note:  (o && o.note  != null) ? o.note  : base[3],
       via:   (o && o.via   != null) ? o.via   : base[4],
-      km:    (o && o.km    != null) ? Number(o.km) : base[5],
+      km: km, kmh: kmh, horas: kmh ? (km / kmh) : 0,
       tags: base[6], from: base[7], to: base[8],
       overridden: !!o
     };
   }
   function buildEffectiveList() {
-    var list = [], acum = 0;
+    var list = [], acum = 0, acumH = 0;
     for (var i = 0; i < FLAT_BASE.length; i++) {
       var r = effectiveRow(i);
       acum += (Number(r.km) || 0);
-      r.acum = acum;
+      acumH += (Number(r.horas) || 0);
+      r.acum = acum; r.acumH = acumH;
       list.push(r);
     }
     return list;
@@ -1007,21 +1068,32 @@
           '<input class="ef-note" type="text" placeholder="observação" value="' + escAttr(r.note) + '">' +
           '<input class="ef-via" type="text" placeholder="rodovia" value="' + escAttr(r.via) + '">' +
           '<span class="ef-km-wrap"><input class="ef-km" type="number" step="1" value="' + r.km + '"> km neste dia</span>' +
+          '<span class="ef-km-wrap"><input class="ef-kmh" type="number" step="1" value="' + r.kmh + '"> km/h média (estimativa)</span>' +
           '<span class="row-actions"><button type="button" class="save-edit" data-idx="' + r.idx + '">salvar</button>' +
           '<button type="button" class="cancel-edit">cancelar</button></span>' +
         '</div>' +
-        '<div class="km">' + (r.km ? r.km + ' km' : '&mdash;') + '</div>' +
-        '<div class="acum">' + r.acum + ' km</div>' +
+        '<div class="km">' + (r.km ? r.km + ' km' : '&mdash;') + (r.horas ? '<span class="hrs">' + fmtH(r.horas) + '</span>' : '') + '</div>' +
+        '<div class="acum">' + r.acum + ' km' + (r.acumH ? '<span class="hrs">' + fmtH(r.acumH) + ' de estrada</span>' : '') + '</div>' +
         '<label class="check"><input type="checkbox" id="day-' + r.idx + '"> concluído</label>';
       el.appendChild(div);
     });
   }
+  function fmtKm(n) { return '~' + Math.round(n).toLocaleString('pt-BR') + ' km'; }
   function renderAll() {
     var list = buildEffectiveList();
     Object.keys(SLICES).forEach(function (t) {
       var r = SLICES[t];
-      renderTrecho(document.getElementById(t), list.slice(r[0], r[1]));
+      var slice = list.slice(r[0], r[1]);
+      renderTrecho(document.getElementById(t), slice);
+      var kmEl = document.querySelector('.tm-km[data-t="' + t + '"]');
+      if (kmEl) kmEl.textContent = fmtKm(slice.reduce(function (a, x) { return a + (Number(x.km) || 0); }, 0));
     });
+    var totalKm = list.length ? list[list.length - 1].acum : 0;
+    var totalH = list.length ? list[list.length - 1].acumH : 0;
+    var kmTotalEl = document.getElementById('stat-km-total');
+    if (kmTotalEl) kmTotalEl.textContent = fmtKm(totalKm);
+    var hTotalEl = document.getElementById('stat-h-total');
+    if (hTotalEl) hTotalEl.textContent = fmtH(totalH).replace('~', '~') || '—';
     reapplyCheckboxState();
   }
   function reapplyCheckboxState() {
@@ -1080,14 +1152,14 @@
   }
   function watchScores() {
     if (!db) return;
-    ['t1', 't2', 't3', 't4'].forEach(function (t) {
+    ['t1', 't2', 't3', 't4', 't5'].forEach(function (t) {
       db.doc('avaliacao/' + t).onSnapshot(function (snap) {
         scoreOverrides[t] = snap.exists ? snap.data() : {};
         renderScore(t);
       }, function (err) { console.error(err); });
     });
   }
-  ['t1', 't2', 't3', 't4'].forEach(renderScore); // paint baseline scores immediately
+  ['t1', 't2', 't3', 't4', 't5'].forEach(renderScore); // paint baseline scores immediately
 
   // ---------- stop cards (hospedagem + fotos) ----------
   function renderStops(containerId, stops) {
@@ -1117,6 +1189,7 @@
   renderStops('stops-t2', STOPS.t2);
   renderStops('stops-t3', STOPS.t3);
   renderStops('stops-t4', STOPS.t4);
+  renderStops('stops-t5', STOPS.t5);
 
   function saveHospedagem(slug, url) {
     if (!db) return;
@@ -1408,7 +1481,8 @@
         route: row.querySelector('.ef-route').value.trim(),
         note: row.querySelector('.ef-note').value.trim(),
         via: row.querySelector('.ef-via').value.trim(),
-        km: parseFloat(row.querySelector('.ef-km').value) || 0
+        km: parseFloat(row.querySelector('.ef-km').value) || 0,
+        kmh: parseFloat(row.querySelector('.ef-kmh').value) || 0
       });
       row.classList.remove('editing');
       return;
@@ -1448,10 +1522,11 @@
 
   // ---------- route strip (major overnight stops only) ----------
   var nodes = [
-    ['Rio de Janeiro','RJ', true], [440,'Belo Horizonte','MG', false],
-    [1020,'Barreiras','BA', false], [758,'Petrolina','PE', true],
+    ['Rio de Janeiro','RJ', true], [560,'Governador Valadares','MG', false],
+    [560,'Vitória da Conquista','BA', false], [404,'Feira de Santana','BA', false],
+    [399,'Petrolina','PE', true],
     [730,'Caxias','MA', true], [380,'Barreirinhas','MA', false],
-    [330,'Jericoacoara','CE', false], [300,'Fortaleza','CE', false],
+    [685,'Jijoca de Jericoacoara','CE', false], [300,'Fortaleza','CE', false],
     [688,'João Pessoa','PB', true], [120,'Recife','PE', true],
     [215,'Japaratinga','AL', true], [90,'Maceió','AL', false],
     [640,'Salvador','BA', false], [660,'Porto Seguro','BA', false],
@@ -1477,7 +1552,7 @@
     d.innerHTML = '<span class="dot"></span><span class="city">' + city + '</span><span class="uf">' + uf + '</span>';
     return d;
   }
-  ['t1', 't2', 't3', 't4'].forEach(function (t) {
+  ['t1', 't2', 't3', 't4', 't5'].forEach(function (t) {
     var r = TRECHO_ROUTE[t];
     var a = document.getElementById('map-' + t);
     if (a) a.href = mapsUrl(r.origin, r.destination, r.waypoints);
@@ -1501,7 +1576,7 @@
     if (!body || !head) return;
     var opening = body.hidden;
     // close every trecho first — only one open at a time
-    ['t1', 't2', 't3', 't4'].forEach(function (o) {
+    ['t1', 't2', 't3', 't4', 't5'].forEach(function (o) {
       var ob = document.getElementById('acc-body-' + o);
       var oh = document.querySelector('[data-acc-toggle="' + o + '"]');
       if (ob) ob.hidden = true;
@@ -1514,7 +1589,7 @@
   // trecho before the trip starts, and the last one once it's over)
   function defaultOpenTrecho() {
     var now = new Date(); now.setHours(0, 0, 0, 0);
-    var order = ['t1', 't2', 't3', 't4'];
+    var order = ['t1', 't2', 't3', 't4', 't5'];
     var pick = null;
     order.forEach(function (t) {
       var r = SLICES[t];
@@ -1525,7 +1600,7 @@
     });
     if (!pick) {
       var t1start = new Date(toISODate(FLAT_BASE[0][0]) + 'T00:00:00');
-      pick = (now < t1start) ? 't1' : 't4';
+      pick = (now < t1start) ? 't1' : 't5';
     }
     toggleTrecho(pick);
   }
