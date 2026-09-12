@@ -1,12 +1,25 @@
 <title>Roteiro RJ–Nordeste–RJ</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#10160f">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Roteiro NE">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%231c7a49'/%3E%3Cpath d='M32 14c-8.3 0-15 6.7-15 15 0 11.3 15 21 15 21s15-9.7 15-21c0-8.3-6.7-15-15-15Z' fill='%23fff'/%3E%3Ccircle cx='32' cy='29' r='6' fill='%231c7a49'/%3E%3C/svg%3E">
+<link rel="manifest" href="data:application/manifest+json,%7B%22name%22%3A%22Roteiro%20RJ-Nordeste-RJ%22%2C%22short_name%22%3A%22Roteiro%20NE%22%2C%22start_url%22%3A%22.%22%2C%22display%22%3A%22standalone%22%2C%22background_color%22%3A%22%2310160f%22%2C%22theme_color%22%3A%22%231c7a49%22%7D">
 <style>
   /*
-    Palette: inspired by Brazilian federal-highway signage (placas BR verdes)
-    rather than a generic warm/cream scheme — road green as the working accent,
-    sertão-dust amber as the secondary, a cool slate for informational asides.
-    Built mobile-first: base rules target a phone in one hand; a single
-    min-width breakpoint promotes the denser desktop layout used only
-    occasionally, for post-trip edits on a laptop.
+    Built as an app, not a responsive document: a phone held in one hand is
+    the primary and only fully-designed surface — fixed bottom tab bar,
+    one accordion trecho open at a time, a fixed (non-fluid) type scale
+    tuned generously for that surface. A notebook browser is the
+    exceptional case: same shell, just more breathing room around it —
+    there is no separate desktop layout to maintain.
+
+    Palette: inspired by Brazilian federal-highway signage (placas BR
+    verdes) rather than a generic warm/cream scheme — road green as the
+    working accent, sertão-dust amber as the secondary, a cool slate for
+    informational asides.
   */
   :root {
     --ink: #1a2420;
@@ -73,81 +86,105 @@
   }
 
   * { box-sizing: border-box; }
-  html { -webkit-text-size-adjust: 100%; }
+  [hidden] { display: none !important; } /* a component class setting `display` can otherwise outrank the hidden attribute */
+  html { -webkit-text-size-adjust: 100%; font-size: 106.25%; } /* ~17px base — an app's generous floor, not a document's */
   body {
     margin: 0;
     background: var(--paper);
     color: var(--ink);
     font-family: var(--font-body);
-    padding-inline: max(16px, calc((100% - 960px) / 2));
-    padding-block: 24px 64px;
     line-height: 1.5;
-    font-size: 16px;
   }
   a { color: var(--accent); }
-  .wrap { max-width: 960px; margin: 0 auto; display: flex; flex-direction: column; gap: 32px; }
 
-  /* inputs: 16px minimum avoids iOS auto-zoom on focus (this is edited from a phone);
-     44px minimum height on every tappable control for one-thumb use on the road */
+  /* inputs: 16px minimum avoids iOS auto-zoom on focus; 44px minimum height on every
+     tappable control for one-thumb use on the road */
   input, button, textarea { font-family: inherit; }
   input[type="text"], input[type="number"], input[type="url"], input[type="date"] { font-size: 16px; }
   button { touch-action: manipulation; }
-  /* drop the spin-button stepper — it eats width in small number fields and adds nothing on a touchscreen */
   input[type="number"]::-webkit-outer-spin-button,
   input[type="number"]::-webkit-inner-spin-button { -webkit-appearance: none; margin: 0; }
   input[type="number"] { -moz-appearance: textfield; }
 
-  /* ---------- Header ---------- */
-  header.hero {
-    display: flex;
-    flex-direction: column;
-    gap: 14px;
-    border-bottom: 2px solid var(--border);
-    padding-bottom: 22px;
+  /* ======================================================================
+     App shell — top bar, scrolling content, fixed bottom tab bar.
+     One shell for every screen size: on a notebook it just gets more
+     breathing room around the same column, never a different layout.
+     ====================================================================== */
+  .app { display: flex; flex-direction: column; min-height: 100vh; }
+  .shell-col { width: 100%; max-width: 640px; margin: 0 auto; padding-inline: 18px; }
+
+  .app-bar {
+    position: sticky; top: 0; z-index: 10;
+    background: var(--paper);
+    border-bottom: 1px solid var(--border);
+    padding-block: max(12px, env(safe-area-inset-top)) 12px;
   }
+  .app-bar .shell-col { display: flex; flex-direction: column; gap: 2px; }
   .eyebrow {
     font-family: var(--font-mono);
-    font-size: 0.76rem;
-    letter-spacing: 0.12em;
+    font-size: 0.72rem;
+    letter-spacing: 0.1em;
     text-transform: uppercase;
     color: var(--accent);
   }
-  h1 {
+  .app-title {
     font-family: var(--font-display);
     font-weight: 800;
-    font-size: clamp(2.1rem, 11vw, 4.2rem);
-    line-height: 0.95;
-    letter-spacing: 0.005em;
+    font-size: 1.55rem;
+    line-height: 1.05;
     margin: 0;
     text-wrap: balance;
   }
-  .hero-sub { font-size: 1rem; color: var(--muted); max-width: 66ch; }
+  .app-bar-sub { font-size: 0.88rem; color: var(--muted); margin: 0; }
+
+  .capability-note {
+    font-family: var(--font-body); font-size: 0.9rem; color: var(--warn-ink);
+    background: var(--warn-bg); border: 1px solid var(--warn-border);
+    margin: 10px 0 0; padding: 10px 12px; border-radius: 6px;
+  }
+
+  .app-content { flex: 1; padding-block: 20px calc(90px + env(safe-area-inset-bottom)); }
+  .panel { display: flex; flex-direction: column; gap: 22px; }
+  .panel[hidden] { display: none; }
+  .panel-intro { font-size: 0.95rem; color: var(--muted); }
+  .panel-title {
+    font-family: var(--font-display); font-weight: 800; font-size: 1.3rem; margin: 0 0 2px; text-wrap: balance;
+  }
+
+  /* ---------- Bottom tab bar ---------- */
+  .app-tabbar {
+    position: fixed; left: 0; right: 0; bottom: 0; z-index: 20;
+    background: var(--surface); border-top: 1px solid var(--border);
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+  .app-tabbar .shell-col { display: flex; padding-inline: 6px; }
+  .tab-btn {
+    flex: 1 1 0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 3px;
+    padding: 9px 4px 8px; min-height: 58px;
+    background: none; border: none; color: var(--muted); cursor: pointer;
+    font-family: var(--font-mono); font-size: 0.66rem; text-transform: uppercase; letter-spacing: 0.03em;
+  }
+  .tab-btn svg { width: 22px; height: 22px; stroke: currentColor; fill: none; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+  .tab-btn.active { color: var(--accent); }
+  .tab-btn:focus-visible { outline: 2px solid var(--accent); outline-offset: -2px; border-radius: 6px; }
+
+  /* ---------- Stat tiles ---------- */
   .stat-row {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 1px;
-    background: var(--border);
-    border: 1px solid var(--border);
-    margin-top: 2px;
+    display: grid; grid-template-columns: repeat(2, 1fr); gap: 1px;
+    background: var(--border); border: 1px solid var(--border);
   }
   .stat { background: var(--surface); padding: 14px 16px; display: flex; flex-direction: column; gap: 2px; }
-  /* an odd count leaves the last tile alone in a 2-col mobile row — let it fill the row instead of leaving an empty cell */
   .stat-row .stat:last-child:nth-child(odd) { grid-column: 1 / -1; }
   .stat .n { font-family: var(--font-mono); font-variant-numeric: tabular-nums; font-size: 1.5rem; font-weight: 700; }
-  .stat .l { font-size: 0.74rem; text-transform: uppercase; letter-spacing: 0.06em; color: var(--muted); }
-  .capability-note { font-family: var(--font-body); font-size: 0.86rem; color: var(--warn-border); }
+  .stat .l { font-size: 0.76rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--muted); }
 
   /* ---------- Route strip ---------- */
   .strip-title, .sub-title {
-    font-family: var(--font-display);
-    font-size: 1.05rem;
-    font-weight: 700;
-    letter-spacing: 0.03em;
-    text-transform: uppercase;
-    color: var(--muted);
-    margin: 0 0 12px;
+    font-family: var(--font-display); font-size: 1rem; font-weight: 700; letter-spacing: 0.02em;
+    text-transform: uppercase; color: var(--muted); margin: 0 0 10px;
   }
-  .strip-scroll { overflow-x: auto; padding-bottom: 6px; -webkit-overflow-scrolling: touch; }
+  .strip-scroll { overflow-x: auto; padding-bottom: 6px; -webkit-overflow-scrolling: touch; margin: 0 -18px; padding-inline: 18px; }
   .strip { display: flex; align-items: flex-end; min-width: 1500px; padding: 10px 4px 0; }
   .node { display: flex; flex-direction: column; align-items: center; flex: 0 0 auto; width: 84px; }
   .node .dot { width: 11px; height: 11px; border-radius: 50%; background: var(--accent-2); border: 2px solid var(--paper); outline: 1px solid var(--border); margin-bottom: 8px; }
@@ -162,22 +199,29 @@
   .baseline-note {
     border: 1px solid var(--accent);
     background: color-mix(in srgb, var(--accent) 12%, var(--surface));
-    color: var(--ink);
-    padding: 12px 16px;
-    font-size: 0.92rem;
+    color: var(--ink); padding: 12px 16px; font-size: 0.92rem; border-radius: 6px;
   }
   .baseline-note b { color: var(--accent); }
 
-  /* ---------- Trecho sections ---------- */
-  section.trecho { display: flex; flex-direction: column; gap: 14px; }
-  .trecho-head { display: flex; flex-direction: column; gap: 6px 16px; border-bottom: 1px solid var(--border); padding-bottom: 10px; }
-  .trecho-num { font-family: var(--font-mono); font-size: 0.82rem; color: var(--accent); letter-spacing: 0.06em; }
-  h2 { font-family: var(--font-display); font-weight: 800; font-size: clamp(1.5rem, 6vw, 2rem); margin: 0; text-wrap: balance; }
-  .trecho-meta { font-family: var(--font-mono); font-size: 0.8rem; color: var(--muted); display: flex; gap: 14px; flex-wrap: wrap; }
-  .trecho-meta b { color: var(--ink); font-weight: 700; }
+  /* ---------- Trecho accordion ---------- */
+  .trecho-list { display: flex; flex-direction: column; gap: 10px; }
+  .trecho-acc { border: 1px solid var(--border); border-radius: 8px; overflow: hidden; background: var(--surface); }
+  .trecho-acc-head {
+    width: 100%; display: flex; align-items: center; gap: 12px; text-align: left;
+    padding: 14px 16px; min-height: 56px; background: none; border: none; cursor: pointer; color: var(--ink);
+  }
+  .trecho-acc-head-text { display: flex; flex-direction: column; gap: 2px; flex: 1 1 auto; min-width: 0; }
+  .trecho-num { font-family: var(--font-mono); font-size: 0.72rem; color: var(--accent); letter-spacing: 0.06em; }
+  .trecho-acc-title { font-family: var(--font-display); font-weight: 800; font-size: 1.15rem; line-height: 1.15; text-wrap: balance; }
+  .trecho-acc-meta { font-family: var(--font-mono); font-size: 0.78rem; color: var(--muted); }
+  .trecho-acc-head .chev { flex: 0 0 auto; width: 20px; height: 20px; stroke: var(--muted); fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; transition: transform 0.15s ease; }
+  .trecho-acc-head[aria-expanded="true"] .chev { transform: rotate(180deg); }
+  .trecho-acc-body { padding: 0 16px 18px; display: flex; flex-direction: column; gap: 16px; border-top: 1px solid var(--border); padding-top: 16px; }
+  .trecho-acc-body[hidden] { display: none; }
+  .trecho-acc-head[aria-expanded="true"] { border-bottom: 0; }
 
-  .callout { border: 1px solid var(--warn-border); background: var(--warn-bg); color: var(--warn-ink); padding: 12px 16px; font-size: 0.94rem; display: flex; flex-direction: column; gap: 6px; }
-  .callout .t { font-weight: 700; font-family: var(--font-display); letter-spacing: 0.02em; text-transform: uppercase; font-size: 0.85rem; }
+  .callout { border: 1px solid var(--warn-border); background: var(--warn-bg); color: var(--warn-ink); padding: 12px 14px; font-size: 0.92rem; display: flex; flex-direction: column; gap: 6px; border-radius: 6px; }
+  .callout .t { font-weight: 700; font-family: var(--font-display); letter-spacing: 0.02em; text-transform: uppercase; font-size: 0.82rem; }
   .callout.deco { border-color: var(--deco-border); background: var(--deco-bg); color: var(--deco-ink); }
 
   /* ---------- Score squares (fixed semantic colors, same in both themes — a legend, not themed UI) ---------- */
@@ -185,10 +229,9 @@
   .score-caption { font-family: var(--font-body); font-size: 0.8rem; color: var(--muted); }
   .score-row { display: flex; gap: 10px; align-items: stretch; flex-wrap: wrap; }
   .score-sq {
-    width: 72px; min-height: 72px;
+    width: 68px; min-height: 68px;
     display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 3px;
-    border: 1px solid rgba(0,0,0,0.25);
-    border-radius: 6px;
+    border: 1px solid rgba(0,0,0,0.25); border-radius: 6px;
   }
   .score-sq.estrada { background: #e8c94a; }
   .score-sq.paradas { background: #c94a3a; }
@@ -197,65 +240,58 @@
   .score-sq.paradas, .score-sq.paradas .lbl { color: #ffffff; }
   .score-sq.beleza, .score-sq.beleza .lbl { color: #1c2420; }
   .score-sq input {
-    width: 48px; text-align: center; font-family: var(--font-mono); font-weight: 700;
+    width: 44px; text-align: center; font-family: var(--font-mono); font-weight: 700;
     font-size: 16px; border: none; background: transparent; color: inherit; padding: 4px;
   }
-  .score-sq .lbl { font-family: var(--font-mono); font-size: 0.62rem; text-transform: uppercase; letter-spacing: 0.02em; text-align: center; line-height: 1.15; }
+  .score-sq .lbl { font-family: var(--font-mono); font-size: 0.6rem; text-transform: uppercase; letter-spacing: 0.02em; text-align: center; line-height: 1.15; }
   .score-final {
-    width: 72px; min-height: 72px;
+    width: 68px; min-height: 68px;
     display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 3px;
     border: 2px solid var(--accent); border-radius: 6px; color: var(--accent);
   }
-  .score-final .val { font-family: var(--font-display); font-weight: 800; font-size: 1.4rem; }
-  .score-final .lbl { font-family: var(--font-mono); font-size: 0.62rem; text-transform: uppercase; color: var(--muted); }
+  .score-final .val { font-family: var(--font-display); font-weight: 800; font-size: 1.3rem; }
+  .score-final .lbl { font-family: var(--font-mono); font-size: 0.6rem; text-transform: uppercase; color: var(--muted); }
 
   /* ---------- Map card ---------- */
-  .map-card { border: 1px solid var(--border); background: var(--surface); padding: 14px 16px; display: flex; flex-direction: column; gap: 10px; }
-  .map-card .route-line { font-family: var(--font-mono); font-size: 0.82rem; color: var(--muted); line-height: 1.7; overflow-wrap: break-word; }
+  .map-card { border: 1px solid var(--border); background: var(--paper); padding: 14px 14px; display: flex; flex-direction: column; gap: 10px; border-radius: 6px; }
+  .map-card .route-line { font-family: var(--font-mono); font-size: 0.8rem; color: var(--muted); line-height: 1.7; overflow-wrap: break-word; }
   .map-card .route-line b { color: var(--ink); font-weight: 600; }
   .btn {
     display: inline-flex; align-items: center; justify-content: center; gap: 6px;
     font-family: var(--font-mono); font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.03em;
-    padding: 11px 16px; min-height: 44px; border-radius: 4px;
+    padding: 11px 16px; min-height: 44px; border-radius: 6px;
     background: var(--accent); color: var(--accent-ink); border: 1px solid var(--accent);
     text-decoration: none; cursor: pointer; width: fit-content; white-space: nowrap;
   }
   .btn.ghost { background: transparent; color: var(--accent); }
   .maplink {
-    font-family: var(--font-mono); font-size: 0.72rem; color: var(--accent); text-decoration: none;
-    border-bottom: 1px dotted var(--accent); width: fit-content; display: inline-block; margin-top: 2px;
+    font-family: var(--font-mono); font-size: 0.74rem; color: var(--accent); text-decoration: none;
+    border-bottom: 1px dotted var(--accent); width: fit-content; margin-top: 2px;
     min-height: 32px; display: inline-flex; align-items: center;
   }
 
-  /* ---------- Day rows — mobile-first: a stacked field card, not a dense table ---------- */
+  /* ---------- Day rows — a stacked field card, not a dense table ---------- */
   .days { display: flex; flex-direction: column; border-top: 1px solid var(--border); }
-  .day {
-    display: flex; flex-wrap: wrap; align-items: baseline;
-    gap: 4px 12px; padding: 14px 4px; border-bottom: 1px solid var(--border);
-  }
-  .day.rest { background: color-mix(in srgb, var(--surface) 60%, transparent); }
-  .day .date {
-    order: 1; flex: 0 0 auto;
-    font-family: var(--font-mono); font-size: 0.86rem; display: flex; align-items: baseline; gap: 6px;
-  }
+  .day { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 12px; padding: 14px 2px; border-bottom: 1px solid var(--border); }
+  .day.rest { background: color-mix(in srgb, var(--paper) 55%, transparent); }
+  .day .date { order: 1; flex: 0 0 auto; font-family: var(--font-mono); font-size: 0.85rem; display: flex; align-items: baseline; gap: 6px; }
   .day .date .wd { color: var(--muted); font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.06em; }
   .day .km { order: 2; flex: 0 0 auto; margin-left: auto; }
   .day .acum { order: 3; flex: 0 0 auto; }
   .day .km::before { content: "hoje "; color: var(--muted); }
   .day .acum::before { content: "· total "; color: var(--muted); }
   .day .route { display: flex; flex-direction: column; gap: 4px; }
-  .day .route.view-block { order: 4; flex: 1 1 100%; }
-  .day .route.edit-block { order: 4; flex: 1 1 100%; }
-  .day .route .r { font-weight: 600; }
+  .day .route.view-block, .day .route.edit-block { order: 4; flex: 1 1 100%; }
+  .day .route .r { font-weight: 600; font-size: 1.02rem; }
   .day .route .note { font-size: 0.88rem; color: var(--muted); }
-  .day .route .via { font-family: var(--font-mono); font-size: 0.74rem; letter-spacing: 0.02em; color: var(--accent-2); }
+  .day .route .via { font-family: var(--font-mono); font-size: 0.76rem; letter-spacing: 0.02em; color: var(--accent-2); }
   .badges { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 2px; }
   .badge { font-family: var(--font-mono); font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.04em; padding: 3px 8px; border-radius: 4px; border: 1px solid currentColor; }
   .badge.fixo { color: var(--accent); }
   .badge.longo { color: var(--warn-border); }
   .badge.decisao { color: var(--accent-2); }
   .badge.livre { color: var(--ok); }
-  .day .km, .day .acum { font-family: var(--font-mono); font-variant-numeric: tabular-nums; font-size: 0.86rem; }
+  .day .km, .day .acum { font-family: var(--font-mono); font-variant-numeric: tabular-nums; font-size: 0.85rem; }
   .day .acum { color: var(--muted); }
   .day .check { order: 5; flex: 1 1 100%; display: flex; align-items: center; gap: 8px; font-family: var(--font-body); font-size: 0.86rem; color: var(--muted); min-height: 32px; }
   .day .check input { accent-color: var(--accent); width: 22px; height: 22px; }
@@ -263,7 +299,7 @@
   .row-actions { display: flex; gap: 8px; margin-top: 4px; flex-wrap: wrap; }
   .row-actions button {
     font-family: var(--font-mono); font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.02em;
-    color: var(--accent); background: none; border: 1px solid var(--accent); border-radius: 4px;
+    color: var(--accent); background: none; border: 1px solid var(--accent); border-radius: 6px;
     padding: 8px 12px; min-height: 40px; cursor: pointer;
   }
   .row-actions .cancel-edit, .row-actions .revert-edit { color: var(--muted); border-color: var(--border); }
@@ -271,31 +307,31 @@
   .route.edit-block { display: none; flex-direction: column; gap: 8px; }
   .day.editing .route.view-block { display: none; }
   .day.editing .route.edit-block { display: flex; }
-  .route.edit-block input {
-    padding: 10px 10px; border: 1px solid var(--border); background: var(--paper); color: var(--ink); border-radius: 4px; width: 100%; min-height: 44px;
-  }
+  .route.edit-block input { padding: 10px 10px; border: 1px solid var(--border); background: var(--paper); color: var(--ink); border-radius: 6px; width: 100%; min-height: 44px; }
   .route.edit-block .ef-km-wrap { display: flex; align-items: center; gap: 6px; font-family: var(--font-mono); font-size: 0.8rem; color: var(--muted); }
   .route.edit-block .ef-km-wrap input { width: 100px; }
 
   /* ---------- Stop cards: hospedagem + fotos ---------- */
+  .stop-group { display: flex; flex-direction: column; gap: 10px; }
+  .stop-group-title { font-family: var(--font-mono); font-size: 0.76rem; color: var(--accent); letter-spacing: 0.06em; text-transform: uppercase; margin: 4px 0 0; }
   .stop-grid { display: grid; grid-template-columns: 1fr; gap: 12px; }
-  .stop-card { border: 1px solid var(--border); background: var(--surface); padding: 14px 16px; display: flex; flex-direction: column; gap: 10px; }
+  .stop-card { border: 1px solid var(--border); background: var(--surface); padding: 14px 16px; display: flex; flex-direction: column; gap: 10px; border-radius: 8px; }
   .stop-head { display: flex; justify-content: space-between; align-items: baseline; gap: 8px; flex-wrap: wrap; }
   .stop-city { font-family: var(--font-display); font-weight: 700; font-size: 1.1rem; }
   .stop-city .uf { font-family: var(--font-mono); font-size: 0.68rem; color: var(--muted); margin-left: 4px; }
-  .stop-dates { font-family: var(--font-mono); font-size: 0.72rem; color: var(--muted); }
+  .stop-dates { font-family: var(--font-mono); font-size: 0.74rem; color: var(--muted); }
   .family-badge {
     font-family: var(--font-mono); font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.04em;
     color: var(--ok); border: 1px solid var(--ok); padding: 5px 9px; border-radius: 4px; width: fit-content;
   }
   .hosp-row { display: flex; flex-direction: column; gap: 8px; }
   .hosp-edit { display: flex; flex-wrap: wrap; gap: 8px; }
-  .hosp-edit input { flex: 1 1 160px; min-width: 0; padding: 10px 10px; border: 1px solid var(--border); background: var(--paper); color: var(--ink); border-radius: 4px; min-height: 44px; }
+  .hosp-edit input { flex: 1 1 160px; min-width: 0; padding: 10px 10px; border: 1px solid var(--border); background: var(--paper); color: var(--ink); border-radius: 6px; min-height: 44px; }
   .hosp-saved a { font-size: 0.86rem; }
   .photo-row { display: flex; flex-wrap: wrap; gap: 10px; align-items: flex-start; }
   .photo-grid { display: flex; flex-wrap: wrap; gap: 10px; }
   .photo-thumb-wrap { position: relative; width: 64px; height: 64px; flex: 0 0 auto; }
-  .photo-thumb { width: 64px; height: 64px; display: block; border-radius: 4px; overflow: hidden; border: 1px solid var(--border); }
+  .photo-thumb { width: 64px; height: 64px; display: block; border-radius: 6px; overflow: hidden; border: 1px solid var(--border); }
   .photo-thumb img { width: 100%; height: 100%; object-fit: cover; display: block; }
   .photo-del {
     position: absolute; top: -8px; right: -8px; width: 28px; height: 28px; border-radius: 50%;
@@ -304,53 +340,38 @@
   }
   .photo-add {
     width: 64px; height: 64px; display: flex; align-items: center; justify-content: center;
-    border: 1px dashed var(--border); border-radius: 4px; font-family: var(--font-mono); font-size: 0.64rem;
+    border: 1px dashed var(--border); border-radius: 6px; font-family: var(--font-mono); font-size: 0.64rem;
     color: var(--muted); cursor: pointer; text-align: center; line-height: 1.2; flex: 0 0 auto;
   }
   .needs-db.offline { opacity: 0.4; pointer-events: none; }
 
   /* ---------- Fuel section ---------- */
-  .fuel-form { display: grid; grid-template-columns: 1fr; gap: 12px; border: 1px solid var(--border); background: var(--surface); padding: 16px; }
+  .fuel-form { display: grid; grid-template-columns: 1fr; gap: 12px; border: 1px solid var(--border); background: var(--surface); padding: 16px; border-radius: 8px; }
   .fuel-form label { display: flex; flex-direction: column; gap: 5px; font-family: var(--font-mono); font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.03em; color: var(--muted); }
-  .fuel-form input { padding: 11px 10px; border: 1px solid var(--border); background: var(--paper); color: var(--ink); border-radius: 4px; min-height: 44px; }
+  .fuel-form input { padding: 11px 10px; border: 1px solid var(--border); background: var(--paper); color: var(--ink); border-radius: 6px; min-height: 44px; }
   .fuel-form button { grid-column: 1 / -1; }
   .fuel-empty { font-size: 0.9rem; color: var(--muted); padding: 10px 4px; }
 
   /* ---------- Sync / export panel ---------- */
   .sync-grid { display: grid; grid-template-columns: 1fr; gap: 16px; }
-  .sync-box { border: 1px solid var(--border); background: var(--surface); padding: 16px; display: flex; flex-direction: column; gap: 10px; align-items: flex-start; }
+  .sync-box { border: 1px solid var(--border); background: var(--surface); padding: 16px; display: flex; flex-direction: column; gap: 10px; align-items: flex-start; border-radius: 8px; }
   .sync-label { font-family: var(--font-mono); font-size: 0.74rem; text-transform: uppercase; letter-spacing: 0.03em; color: var(--muted); margin: 0; }
-  .sync-text { width: 100%; min-height: 90px; font-family: var(--font-mono); font-size: 0.76rem; padding: 10px; border: 1px solid var(--border); background: var(--paper); color: var(--ink); border-radius: 4px; resize: vertical; }
+  .sync-text { width: 100%; min-height: 90px; font-family: var(--font-mono); font-size: 0.78rem; padding: 10px; border: 1px solid var(--border); background: var(--paper); color: var(--ink); border-radius: 6px; resize: vertical; }
   .sync-status { font-size: 0.88rem; color: var(--muted); min-height: 1.2em; }
 
-  footer { border-top: 2px solid var(--border); padding-top: 20px; font-size: 0.94rem; color: var(--muted); display: flex; flex-direction: column; gap: 10px; }
-  footer b { color: var(--ink); }
+  .help-list { display: flex; flex-direction: column; gap: 12px; font-size: 0.94rem; color: var(--muted); }
+  .help-list b { color: var(--ink); }
 
   /* ======================================================================
-     Desktop / laptop enhancement — occasional use, for post-trip edits.
-     Everything above is the primary (mobile) experience.
+     Notebook — exceptional use: the same shell, just more room around it.
      ====================================================================== */
   @media (min-width: 720px) {
-    .stat-row { grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); }
+    .shell-col { max-width: 760px; padding-inline: 28px; }
+    .app-content { padding-block: 28px calc(96px + env(safe-area-inset-bottom)); }
+    .stat-row { grid-template-columns: repeat(auto-fit, minmax(125px, 1fr)); }
     .stat-row .stat:last-child:nth-child(odd) { grid-column: auto; }
-    .trecho-head { flex-direction: row; align-items: baseline; }
-    .trecho-meta { margin-left: auto; }
-
-    .day {
-      display: grid; grid-template-columns: 108px 1fr 78px 88px; gap: 10px 16px; align-items: start;
-      padding: 10px 4px;
-    }
-    .day .date, .day .km, .day .acum, .day .route.view-block, .day .route.edit-block { flex: initial; margin-left: 0; }
-    .day .date { order: 1; flex-direction: column; align-items: flex-start; gap: 0; line-height: 1.25; padding-top: 2px; }
-    .day .route.view-block, .day .route.edit-block { order: 2; }
-    .day .km { order: 3; }
-    .day .acum { order: 4; }
-    .day .km, .day .acum { text-align: right; padding-top: 2px; }
-    .day .km::before, .day .acum::before { content: ""; }
-    .day .check { order: 5; grid-column: 1 / -1; }
-
     .stop-grid { grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); }
-    .fuel-form { grid-template-columns: repeat(auto-fit, minmax(110px, 1fr)); align-items: end; }
+    .fuel-form { grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); align-items: end; }
     .fuel-form button { grid-column: auto; }
     .sync-grid { grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); }
   }
@@ -358,222 +379,283 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;800&family=Work+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap">
 
-<div class="wrap">
+<div class="app">
 
-  <header class="hero">
-    <div class="eyebrow">Roadbook de viagem &middot; moto, dois-up &middot; rev. 7</div>
-    <h1>Rio&thinsp;&ndash;&thinsp;Sertão&thinsp;&ndash;&thinsp;Litoral&thinsp;&ndash;&thinsp;Rio</h1>
-    <p class="hero-sub">26 de dezembro de 2026 a 1º de fevereiro de 2027 &mdash; Réveillon em Caxias (MA), dois dias inteiros em Fortaleza, João Pessoa de 8 a 11/1, um dia em Japaratinga e volta ao Rio no início de fevereiro.</p>
-    <div class="stat-row">
-      <div class="stat"><span class="n">38</span><span class="l">dias corridos</span></div>
-      <div class="stat"><span class="n">~7.821</span><span class="l">km rodados</span></div>
-      <div class="stat"><span class="n">4</span><span class="l">trechos</span></div>
-      <div class="stat"><span class="n">~11</span><span class="l">estados</span></div>
-      <div class="stat"><span class="n">6</span><span class="l">pontos de controle fixos</span></div>
+  <header class="app-bar">
+    <div class="shell-col">
+      <span class="eyebrow">Roadbook &middot; moto, dois-up &middot; rev. 8</span>
+      <h1 class="app-title">Rio&thinsp;&ndash;&thinsp;Sertão&thinsp;&ndash;&thinsp;Litoral&thinsp;&ndash;&thinsp;Rio</h1>
+      <p class="app-bar-sub">26/12/2026 a 1º/2/2027</p>
     </div>
-    <p class="capability-note" id="local-mode-note" hidden>Esta cópia está rodando fora do Claude (por exemplo, publicada no GitHub Pages) — edição, hospedagem, fotos e abastecimento continuam funcionando, mas ficam salvos <b>somente neste navegador/aparelho</b>, sem sincronizar entre o seu celular e o da sua esposa. Para ter tudo sincronizado entre os dois, em qualquer aparelho, usem o link original hospedado no Claude.</p>
   </header>
 
-  <div class="baseline-note">
-    <b>Isto é a baseline do roteiro.</b> Cada linha tem um botão "editar" (rota, km, observação) &mdash; ajustem direto pelo celular durante a viagem, o que for salvo fica visível para os dois em qualquer aparelho. "Reverter" volta a linha ao planejamento original a qualquer momento; o km acumulado se recalcula sozinho.
-  </div>
+  <p class="capability-note shell-col" id="local-mode-note" hidden>Esta cópia está rodando fora do Claude (por exemplo, publicada no GitHub Pages) — edição, hospedagem, fotos e abastecimento continuam funcionando, mas ficam salvos <b>somente neste navegador/aparelho</b>, sem sincronizar entre o seu celular e o da sua esposa. Para ter tudo sincronizado entre os dois, em qualquer aparelho, usem o link hospedado no Claude.</p>
 
-  <section>
-    <p class="strip-title">Sequência da rota (esquemático, não geográfico &mdash; comprimento das barras em escala logarítmica de km)</p>
-    <div class="strip-scroll">
-      <div class="strip" id="strip"></div>
-    </div>
-  </section>
+  <main class="app-content">
 
-  <!-- TRECHO 1 -->
-  <section class="trecho">
-    <div class="trecho-head">
-      <span class="trecho-num">TRECHO 01</span>
-      <h2>Rio → Petrolina</h2>
-      <div class="trecho-meta"><span>26 a 30/12</span><span><b>5 dias</b></span><span><b>~2.218 km</b></span></div>
-    </div>
-    <div class="score-wrap">
-      <div class="score-row needs-db" id="score-t1">
-        <div class="score-sq estrada"><input type="number" min="0" max="10" step="0.5" data-score="t1" data-crit="estrada"><span class="lbl">estrada</span></div>
-        <div class="score-sq paradas"><input type="number" min="0" max="10" step="0.5" data-score="t1" data-crit="paradas"><span class="lbl">paradas</span></div>
-        <div class="score-sq beleza"><input type="number" min="0" max="10" step="0.5" data-score="t1" data-crit="beleza"><span class="lbl">beleza</span></div>
-        <div class="score-final"><span class="val">–</span><span class="lbl">nota /10</span></div>
+    <!-- ROTEIRO -->
+    <section class="panel shell-col" id="panel-roteiro" data-panel="roteiro">
+      <div class="baseline-note">
+        <b>Isto é a baseline do roteiro.</b> Cada linha tem um botão "editar" &mdash; ajustem direto pelo celular durante a viagem, o que for salvo fica visível para os dois em qualquer aparelho. "Reverter" volta a linha ao planejamento original a qualquer momento.
       </div>
-      <p class="score-caption">amarelo = estrada (peso 40%) · vermelho = paradas (peso 30%) · branco = beleza (peso 30%) &mdash; avaliação inicial minha, editável</p>
-    </div>
-    <div class="callout">
-      <span class="t">Ritmo</span>
-      Cinco dias para ~2.218&nbsp;km dá uma média de ~444&nbsp;km/dia &mdash; confortavelmente dentro do seu teto de 550&nbsp;km/dia, com um único dia mais longo (Montes Claros → Barreiras, 600&nbsp;km). Juazeiro (BA) e Petrolina são cidades conjugadas, ligadas por ponte (~2&nbsp;km) &mdash; o pernoite intermediário antes de Petrolina é em Xique-Xique (BA), no meio do caminho real entre Barreiras e Petrolina.
-    </div>
-    <div class="map-card">
-      <div class="route-line"><b>Rio de Janeiro</b> → Belo Horizonte → Montes Claros → Barreiras → Xique-Xique → <b>Petrolina</b></div>
-      <a class="btn" target="_blank" rel="noopener" id="map-t1">Abrir rota completa no Google Maps</a>
-    </div>
-    <div class="days" id="t1"></div>
-    <p class="sub-title">Hospedagem &amp; álbum</p>
-    <div class="stop-grid" id="stops-t1"></div>
-  </section>
 
-  <!-- TRECHO 2 -->
-  <section class="trecho">
-    <div class="trecho-head">
-      <span class="trecho-num">TRECHO 02</span>
-      <h2>Petrolina → Caxias (MA)</h2>
-      <div class="trecho-meta"><span>31/12</span><span><b>1 dia</b></span><span><b>~730 km</b></span></div>
-    </div>
-    <div class="score-wrap">
-      <div class="score-row needs-db" id="score-t2">
-        <div class="score-sq estrada"><input type="number" min="0" max="10" step="0.5" data-score="t2" data-crit="estrada"><span class="lbl">estrada</span></div>
-        <div class="score-sq paradas"><input type="number" min="0" max="10" step="0.5" data-score="t2" data-crit="paradas"><span class="lbl">paradas</span></div>
-        <div class="score-sq beleza"><input type="number" min="0" max="10" step="0.5" data-score="t2" data-crit="beleza"><span class="lbl">beleza</span></div>
-        <div class="score-final"><span class="val">–</span><span class="lbl">nota /10</span></div>
+      <div class="stat-row">
+        <div class="stat"><span class="n">38</span><span class="l">dias corridos</span></div>
+        <div class="stat"><span class="n">~7.821</span><span class="l">km rodados</span></div>
+        <div class="stat"><span class="n">4</span><span class="l">trechos</span></div>
+        <div class="stat"><span class="n">~11</span><span class="l">estados</span></div>
+        <div class="stat"><span class="n">6</span><span class="l">pontos de controle fixos</span></div>
       </div>
-      <p class="score-caption">o trecho mais fraco do roteiro nos três critérios &mdash; é a travessia obrigatória do sertão, não o destaque da viagem</p>
-    </div>
-    <div class="callout">
-      <span class="t">Atenção &mdash; dia mais exigente do roteiro</span>
-      730&nbsp;km num único dia passa do seu próprio teto (até 650&nbsp;km, excepcionalmente). É pista simples pelo sertão de PE/PI/MA, com trechos retos e cansativos e postos mais espaçados &mdash; ainda mais crítico sendo 31/12, quando muitos postos e restaurantes fecham cedo. Recomendo sair de Petrolina ao amanhecer (~5h), abastecer sempre que possível e revisar pneus/corrente/óleo na véspera.<br>
-      <b>Alternativa a considerar:</b> antecipar a chegada a Petrolina para 29/12 e dividir este trecho em dois dias.
-    </div>
-    <div class="map-card">
-      <div class="route-line"><b>Petrolina</b> → <b>Caxias (MA)</b></div>
-      <a class="btn" target="_blank" rel="noopener" id="map-t2">Abrir rota no Google Maps</a>
-    </div>
-    <div class="days" id="t2"></div>
-    <p class="sub-title">Hospedagem &amp; álbum</p>
-    <div class="stop-grid" id="stops-t2"></div>
-  </section>
 
-  <!-- TRECHO 3 -->
-  <section class="trecho">
-    <div class="trecho-head">
-      <span class="trecho-num">TRECHO 03</span>
-      <h2>Caxias → Recife <span style="font-weight:400; color:var(--muted); font-size:0.6em;">via Barreirinhas, Jericoacoara, Fortaleza, João Pessoa</span></h2>
-      <div class="trecho-meta"><span>1º a 14/1</span><span><b>14 dias</b></span><span><b>~1.818 km</b></span></div>
-    </div>
-    <div class="score-wrap">
-      <div class="score-row needs-db" id="score-t3">
-        <div class="score-sq estrada"><input type="number" min="0" max="10" step="0.5" data-score="t3" data-crit="estrada"><span class="lbl">estrada</span></div>
-        <div class="score-sq paradas"><input type="number" min="0" max="10" step="0.5" data-score="t3" data-crit="paradas"><span class="lbl">paradas</span></div>
-        <div class="score-sq beleza"><input type="number" min="0" max="10" step="0.5" data-score="t3" data-crit="beleza"><span class="lbl">beleza</span></div>
-        <div class="score-final"><span class="val">–</span><span class="lbl">nota /10</span></div>
+      <section>
+        <p class="strip-title">Sequência da rota (esquemático &mdash; comprimento das barras em escala logarítmica de km)</p>
+        <div class="strip-scroll">
+          <div class="strip" id="strip"></div>
+        </div>
+      </section>
+
+      <div class="trecho-list" id="trecho-list">
+
+        <!-- TRECHO 1 -->
+        <div class="trecho-acc" data-trecho="t1">
+          <button type="button" class="trecho-acc-head" data-acc-toggle="t1" aria-expanded="false">
+            <span class="trecho-acc-head-text">
+              <span class="trecho-num">TRECHO 01</span>
+              <span class="trecho-acc-title">Rio → Petrolina</span>
+              <span class="trecho-acc-meta">26 a 30/12 · 5 dias · ~2.218 km</span>
+            </span>
+            <svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+          <div class="trecho-acc-body" id="acc-body-t1" hidden>
+            <div class="score-wrap">
+              <div class="score-row needs-db" id="score-t1">
+                <div class="score-sq estrada"><input type="number" min="0" max="10" step="0.5" data-score="t1" data-crit="estrada"><span class="lbl">estrada</span></div>
+                <div class="score-sq paradas"><input type="number" min="0" max="10" step="0.5" data-score="t1" data-crit="paradas"><span class="lbl">paradas</span></div>
+                <div class="score-sq beleza"><input type="number" min="0" max="10" step="0.5" data-score="t1" data-crit="beleza"><span class="lbl">beleza</span></div>
+                <div class="score-final"><span class="val">–</span><span class="lbl">nota /10</span></div>
+              </div>
+              <p class="score-caption">amarelo = estrada (40%) · vermelho = paradas (30%) · branco = beleza (30%) &mdash; avaliação inicial minha, editável</p>
+            </div>
+            <div class="callout">
+              <span class="t">Ritmo</span>
+              Cinco dias para ~2.218&nbsp;km dá uma média de ~444&nbsp;km/dia &mdash; confortavelmente dentro do seu teto de 550&nbsp;km/dia, com um único dia mais longo (Montes Claros → Barreiras, 600&nbsp;km). Juazeiro (BA) e Petrolina são cidades conjugadas, ligadas por ponte (~2&nbsp;km) &mdash; o pernoite intermediário antes de Petrolina é em Xique-Xique (BA), no meio do caminho real entre Barreiras e Petrolina.
+            </div>
+            <div class="map-card">
+              <div class="route-line"><b>Rio de Janeiro</b> → Belo Horizonte → Montes Claros → Barreiras → Xique-Xique → <b>Petrolina</b></div>
+              <a class="btn" target="_blank" rel="noopener" id="map-t1">Abrir rota completa no Google Maps</a>
+            </div>
+            <div class="days" id="t1"></div>
+          </div>
+        </div>
+
+        <!-- TRECHO 2 -->
+        <div class="trecho-acc" data-trecho="t2">
+          <button type="button" class="trecho-acc-head" data-acc-toggle="t2" aria-expanded="false">
+            <span class="trecho-acc-head-text">
+              <span class="trecho-num">TRECHO 02</span>
+              <span class="trecho-acc-title">Petrolina → Caxias (MA)</span>
+              <span class="trecho-acc-meta">31/12 · 1 dia · ~730 km</span>
+            </span>
+            <svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+          <div class="trecho-acc-body" id="acc-body-t2" hidden>
+            <div class="score-wrap">
+              <div class="score-row needs-db" id="score-t2">
+                <div class="score-sq estrada"><input type="number" min="0" max="10" step="0.5" data-score="t2" data-crit="estrada"><span class="lbl">estrada</span></div>
+                <div class="score-sq paradas"><input type="number" min="0" max="10" step="0.5" data-score="t2" data-crit="paradas"><span class="lbl">paradas</span></div>
+                <div class="score-sq beleza"><input type="number" min="0" max="10" step="0.5" data-score="t2" data-crit="beleza"><span class="lbl">beleza</span></div>
+                <div class="score-final"><span class="val">–</span><span class="lbl">nota /10</span></div>
+              </div>
+              <p class="score-caption">o trecho mais fraco do roteiro nos três critérios &mdash; é a travessia obrigatória do sertão, não o destaque da viagem</p>
+            </div>
+            <div class="callout">
+              <span class="t">Atenção &mdash; dia mais exigente do roteiro</span>
+              730&nbsp;km num único dia passa do seu próprio teto (até 650&nbsp;km, excepcionalmente). É pista simples pelo sertão de PE/PI/MA, com trechos retos e cansativos e postos mais espaçados &mdash; ainda mais crítico sendo 31/12, quando muitos postos e restaurantes fecham cedo. Recomendo sair de Petrolina ao amanhecer (~5h), abastecer sempre que possível e revisar pneus/corrente/óleo na véspera.<br>
+              <b>Alternativa a considerar:</b> antecipar a chegada a Petrolina para 29/12 e dividir este trecho em dois dias.
+            </div>
+            <div class="map-card">
+              <div class="route-line"><b>Petrolina</b> → <b>Caxias (MA)</b></div>
+              <a class="btn" target="_blank" rel="noopener" id="map-t2">Abrir rota no Google Maps</a>
+            </div>
+            <div class="days" id="t2"></div>
+          </div>
+        </div>
+
+        <!-- TRECHO 3 -->
+        <div class="trecho-acc" data-trecho="t3">
+          <button type="button" class="trecho-acc-head" data-acc-toggle="t3" aria-expanded="false">
+            <span class="trecho-acc-head-text">
+              <span class="trecho-num">TRECHO 03</span>
+              <span class="trecho-acc-title">Caxias → Recife</span>
+              <span class="trecho-acc-meta">1º a 14/1 · 14 dias · ~1.818 km</span>
+            </span>
+            <svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+          <div class="trecho-acc-body" id="acc-body-t3" hidden>
+            <p class="panel-intro">Via Barreirinhas, Jericoacoara, Fortaleza e João Pessoa.</p>
+            <div class="score-wrap">
+              <div class="score-row needs-db" id="score-t3">
+                <div class="score-sq estrada"><input type="number" min="0" max="10" step="0.5" data-score="t3" data-crit="estrada"><span class="lbl">estrada</span></div>
+                <div class="score-sq paradas"><input type="number" min="0" max="10" step="0.5" data-score="t3" data-crit="paradas"><span class="lbl">paradas</span></div>
+                <div class="score-sq beleza"><input type="number" min="0" max="10" step="0.5" data-score="t3" data-crit="beleza"><span class="lbl">beleza</span></div>
+                <div class="score-final"><span class="val">–</span><span class="lbl">nota /10</span></div>
+              </div>
+              <p class="score-caption">estrada penalizada pela Rota das Emoções (areia + balsas); paradas e beleza no topo do roteiro (Lençóis, Jeri, litoral)</p>
+            </div>
+            <div class="callout deco">
+              <span class="t">Rota Barreirinhas → Jericoacoara</span>
+              Com 2 dias inteiros em Caxias e 2 em Fortaleza, o calendário até João Pessoa (chegada 8/1) fica apertado. Optei pela Rota das Emoções (Tutóia, balsas, trechos de areia, ~330&nbsp;km) em vez da alternativa 100% asfaltada via Sobral, que sozinha consome 2 dias.
+            </div>
+            <div class="callout">
+              <span class="t">Fortaleza → João Pessoa (688 km) &mdash; segundo dia mais longo do roteiro</span>
+              Para cumprir a chegada em João Pessoa no dia 8/1 mantendo os 2 dias inteiros em Fortaleza, esse trecho vira um salto único passando perto de Natal (parada rápida, sem pernoite), acima de 650&nbsp;km.
+            </div>
+            <div class="map-card">
+              <div class="route-line"><b>Caxias</b> → Barreirinhas → Jericoacoara → Fortaleza → João Pessoa → <b>Recife</b></div>
+              <a class="btn" target="_blank" rel="noopener" id="map-t3">Abrir rota completa no Google Maps</a>
+            </div>
+            <div class="days" id="t3"></div>
+          </div>
+        </div>
+
+        <!-- TRECHO 4 -->
+        <div class="trecho-acc" data-trecho="t4">
+          <button type="button" class="trecho-acc-head" data-acc-toggle="t4" aria-expanded="false">
+            <span class="trecho-acc-head-text">
+              <span class="trecho-num">TRECHO 04</span>
+              <span class="trecho-acc-title">Recife → Vitória da Conquista → Rio</span>
+              <span class="trecho-acc-meta">15/1 a 1/2 · 18 dias · ~3.055 km</span>
+            </span>
+            <svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+          <div class="trecho-acc-body" id="acc-body-t4" hidden>
+            <p class="panel-intro">Via Japaratinga, Maceió, Salvador, Ilhéus e Porto Seguro.</p>
+            <div class="score-wrap">
+              <div class="score-row needs-db" id="score-t4">
+                <div class="score-sq estrada"><input type="number" min="0" max="10" step="0.5" data-score="t4" data-crit="estrada"><span class="lbl">estrada</span></div>
+                <div class="score-sq paradas"><input type="number" min="0" max="10" step="0.5" data-score="t4" data-crit="paradas"><span class="lbl">paradas</span></div>
+                <div class="score-sq beleza"><input type="number" min="0" max="10" step="0.5" data-score="t4" data-crit="beleza"><span class="lbl">beleza</span></div>
+                <div class="score-final"><span class="val">–</span><span class="lbl">nota /10</span></div>
+              </div>
+              <p class="score-caption">o trecho mais completo do roteiro nos três critérios &mdash; BR-101 em bom estado, paradas de alto nível, litoral baiano/alagoano</p>
+            </div>
+            <div class="callout deco">
+              <span class="t">Recife: quanto tempo ficar</span>
+              Com João Pessoa liberando 11/1, vocês chegam a Recife bem antes do "por volta de 15/1" original. Assumi que a ideia é aproveitar Recife/Olinda até por volta do dia 15, e a partir daí seguir para o litoral de Alagoas.
+            </div>
+            <div class="callout deco">
+              <span class="t">Vale o desvio</span>
+              Com a folga entre Recife e Vitória da Conquista, dá para descer a costa por Porto de Galinhas, Japaratinga (Costa dos Corais), Maceió, Salvador (2 dias), Praia do Forte, Ilhéus (Terra do Cacau) e Porto Seguro/Arraial d'Ajuda antes de cortar para o interior em Vitória da Conquista. O roteiro fecha em 31/1, deixando 1/2 como margem de segurança.
+            </div>
+            <div class="map-card">
+              <div class="route-line"><b>Recife</b> → Porto de Galinhas → Japaratinga → Maceió → Aracaju → Salvador → Praia do Forte → Ilhéus → Porto Seguro → Vitória da Conquista → Governador Valadares → Além Paraíba → <b>Rio de Janeiro</b></div>
+              <a class="btn" target="_blank" rel="noopener" id="map-t4">Abrir rota completa no Google Maps</a>
+            </div>
+            <div class="days" id="t4"></div>
+          </div>
+        </div>
+
       </div>
-      <p class="score-caption">estrada penalizada pela Rota das Emoções (areia + balsas); paradas e beleza no topo do roteiro (Lençóis, Jeri, litoral)</p>
-    </div>
-    <div class="callout deco">
-      <span class="t">Rota Barreirinhas → Jericoacoara</span>
-      Com 2 dias inteiros em Caxias e 2 em Fortaleza, o calendário até João Pessoa (chegada 8/1) fica apertado. Optei pela Rota das Emoções (Tutóia, balsas, trechos de areia, ~330&nbsp;km) em vez da alternativa 100% asfaltada via Sobral, que sozinha consome 2 dias.
-    </div>
-    <div class="callout">
-      <span class="t">Fortaleza → João Pessoa (688 km) &mdash; segundo dia mais longo do roteiro</span>
-      Para cumprir a chegada em João Pessoa no dia 8/1 mantendo os 2 dias inteiros em Fortaleza, esse trecho vira um salto único passando perto de Natal (parada rápida, sem pernoite), acima de 650&nbsp;km.
-    </div>
-    <div class="map-card">
-      <div class="route-line"><b>Caxias</b> → Barreirinhas → Jericoacoara → Fortaleza → João Pessoa → <b>Recife</b></div>
-      <a class="btn" target="_blank" rel="noopener" id="map-t3">Abrir rota completa no Google Maps</a>
-    </div>
-    <div class="days" id="t3"></div>
-    <p class="sub-title">Hospedagem &amp; álbum</p>
-    <div class="stop-grid" id="stops-t3"></div>
-  </section>
+    </section>
 
-  <!-- TRECHO 4 -->
-  <section class="trecho">
-    <div class="trecho-head">
-      <span class="trecho-num">TRECHO 04</span>
-      <h2>Recife → Vitória da Conquista → Rio <span style="font-weight:400; color:var(--muted); font-size:0.6em;">via Japaratinga, Maceió, Salvador, Ilhéus, Porto Seguro</span></h2>
-      <div class="trecho-meta"><span>15/1 a 1/2</span><span><b>18 dias</b></span><span><b>~3.055 km</b></span></div>
-    </div>
-    <div class="score-wrap">
-      <div class="score-row needs-db" id="score-t4">
-        <div class="score-sq estrada"><input type="number" min="0" max="10" step="0.5" data-score="t4" data-crit="estrada"><span class="lbl">estrada</span></div>
-        <div class="score-sq paradas"><input type="number" min="0" max="10" step="0.5" data-score="t4" data-crit="paradas"><span class="lbl">paradas</span></div>
-        <div class="score-sq beleza"><input type="number" min="0" max="10" step="0.5" data-score="t4" data-crit="beleza"><span class="lbl">beleza</span></div>
-        <div class="score-final"><span class="val">–</span><span class="lbl">nota /10</span></div>
+    <!-- HOSPEDAGEM & FOTOS -->
+    <section class="panel shell-col" id="panel-hospedagem" data-panel="hospedagem" hidden>
+      <p class="panel-title">Hospedagem &amp; fotos</p>
+      <p class="panel-intro">Um álbum por parada. Caxias, Fortaleza, Recife e Vitória da Conquista ficam na casa de familiares, sem card de reserva.</p>
+
+      <div class="stop-group">
+        <p class="stop-group-title">Trecho 01 · Rio → Petrolina</p>
+        <div class="stop-grid" id="stops-t1"></div>
       </div>
-      <p class="score-caption">o trecho mais completo do roteiro nos três critérios &mdash; BR-101 em bom estado, paradas de alto nível, litoral baiano/alagoano</p>
-    </div>
-    <div class="callout deco">
-      <span class="t">Recife: quanto tempo ficar</span>
-      Com João Pessoa liberando 11/1, vocês chegam a Recife bem antes do "por volta de 15/1" original. Assumi que a ideia é aproveitar Recife/Olinda até por volta do dia 15, e a partir daí seguir para o litoral de Alagoas.
-    </div>
-    <div class="callout deco">
-      <span class="t">Vale o desvio</span>
-      Com a folga entre Recife e Vitória da Conquista, dá para descer a costa por Porto de Galinhas, Japaratinga (Costa dos Corais), Maceió, Salvador (2 dias), Praia do Forte, Ilhéus (Terra do Cacau) e Porto Seguro/Arraial d'Ajuda antes de cortar para o interior em Vitória da Conquista. O roteiro fecha em 31/1, deixando 1/2 como margem de segurança.
-    </div>
-    <div class="map-card">
-      <div class="route-line"><b>Recife</b> → Porto de Galinhas → Japaratinga → Maceió → Aracaju → Salvador → Praia do Forte → Ilhéus → Porto Seguro → Vitória da Conquista → Governador Valadares → Além Paraíba → <b>Rio de Janeiro</b></div>
-      <a class="btn" target="_blank" rel="noopener" id="map-t4">Abrir rota completa no Google Maps</a>
-    </div>
-    <div class="days" id="t4"></div>
-    <p class="sub-title">Hospedagem &amp; álbum</p>
-    <div class="stop-grid" id="stops-t4"></div>
-  </section>
-
-  <!-- ABASTECIMENTO -->
-  <section class="trecho">
-    <div class="trecho-head">
-      <span class="trecho-num">CONTROLE</span>
-      <h2>Abastecimento</h2>
-      <div class="trecho-meta"><span>registro à parte, moto</span></div>
-    </div>
-    <div class="callout deco">
-      <span class="t">Como usar</span>
-      Cada abastecimento fica salvo na própria página &mdash; lancem pelo celular no posto (data, km do odômetro, litros e valor) e a média de consumo se atualiza sozinha para os dois.
-    </div>
-    <div class="stat-row">
-      <div class="stat"><span class="n" id="fuel-total-valor">—</span><span class="l">total gasto</span></div>
-      <div class="stat"><span class="n" id="fuel-total-litros">—</span><span class="l">litros abastecidos</span></div>
-      <div class="stat"><span class="n" id="fuel-media">—</span><span class="l">consumo médio (km/l)</span></div>
-    </div>
-    <form class="fuel-form needs-db" id="fuel-form">
-      <label>Data<input type="date" id="fuel-data" required></label>
-      <label>Km atual<input type="number" id="fuel-km" min="0" step="1" required></label>
-      <label>Litros<input type="number" id="fuel-litros" min="0" step="0.01" required></label>
-      <label>Valor (R$)<input type="number" id="fuel-valor" min="0" step="0.01" required></label>
-      <label>Posto / local<input type="text" id="fuel-local" placeholder="opcional"></label>
-      <button class="btn" type="submit">Adicionar</button>
-    </form>
-    <div class="days" id="fuel-list"></div>
-    <p class="fuel-empty" id="fuel-empty">Nenhum abastecimento registrado ainda.</p>
-  </section>
-
-  <!-- SINCRONIZAR / JUNTAR DADOS -->
-  <section class="trecho">
-    <div class="trecho-head">
-      <span class="trecho-num">CONTROLE</span>
-      <h2>Exportar &amp; juntar dados</h2>
-      <div class="trecho-meta"><span>para juntar o que foi editado em navegadores/aparelhos diferentes</span></div>
-    </div>
-    <div class="callout deco">
-      <span class="t">Quando usar</span>
-      Cada cópia estática (por exemplo, aberta no GitHub Pages em dois celulares diferentes) guarda seus próprios dados sozinha, sem sincronizar entre si. Para juntar tudo num só lugar &mdash; por exemplo, depois da viagem, ou de volta neste link hospedado no Claude &mdash; exportem os dados de cada aparelho aqui e importem no destino final. Importar <b>mescla</b> (soma fotos e abastecimentos, substitui roteiro/notas/hospedagem pelo mais recente importado) &mdash; não apaga o que já está salvo.
-    </div>
-    <div class="sync-grid">
-      <div class="sync-box">
-        <p class="sync-label">1&nbsp;&middot; Exportar deste aparelho</p>
-        <button class="btn" type="button" id="sync-export-btn">Gerar exportação</button>
-        <textarea class="sync-text" id="sync-export-text" readonly placeholder="clique em “gerar exportação”…" hidden></textarea>
-        <a class="btn ghost" id="sync-download-link" download="roteiro-dados.json" hidden>Baixar arquivo .json</a>
+      <div class="stop-group">
+        <p class="stop-group-title">Trecho 02 · Petrolina → Caxias</p>
+        <div class="stop-grid" id="stops-t2"></div>
       </div>
-      <div class="sync-box">
-        <p class="sync-label">2&nbsp;&middot; Importar (mescla com o que já existe aqui)</p>
-        <label class="btn ghost" style="cursor:pointer;">Escolher arquivo .json<input type="file" accept="application/json" id="sync-import-file" hidden></label>
-        <textarea class="sync-text" id="sync-import-text" placeholder="…ou cole aqui o JSON exportado do outro aparelho"></textarea>
-        <button class="btn" type="button" id="sync-import-btn">Importar e mesclar</button>
+      <div class="stop-group">
+        <p class="stop-group-title">Trecho 03 · Caxias → Recife</p>
+        <div class="stop-grid" id="stops-t3"></div>
       </div>
-    </div>
-    <p class="sync-status" id="sync-status"></p>
-  </section>
+      <div class="stop-group">
+        <p class="stop-group-title">Trecho 04 · Recife → Rio</p>
+        <div class="stop-grid" id="stops-t4"></div>
+      </div>
+    </section>
 
-  <footer>
-    <p><b>Sobre as distâncias:</b> valores aproximados a partir de fontes públicas de rotas rodoviárias; confirme com Waze/Google Maps/Qualp mais perto da viagem, especialmente em trechos com balsa ou estrada não pavimentada.</p>
-    <p><b>Edição:</b> qualquer linha do roteiro pode ser ajustada (botão "editar") direto pelo celular; "reverter" volta à baseline original. O km acumulado é recalculado automaticamente.</p>
-    <p><b>Pontuação:</b> os quadrados de cada trecho são uma avaliação inicial minha (estrada 40%, paradas 30%, beleza 30%) &mdash; editem os números como acharem melhor, a nota final se recalcula sozinha.</p>
-    <p><b>Hospedagem:</b> Caxias, Fortaleza, Recife e Vitória da Conquista ficam na casa de familiares &mdash; sem card de reserva. Nos demais pontos, use "Buscar no Booking" e cole o link da reserva confirmada quando fecharem.</p>
-    <p><b>Fotos e abastecimento:</b> ficam guardados na própria página e sobrevivem a reaberturas e atualizações do roteiro; dá para remover uma foto enviada por engano. No link hospedado no Claude, tudo isso sincroniza entre os dois em qualquer aparelho; numa cópia estática publicada fora do Claude (ex.: GitHub Pages), continua funcionando, mas fica salvo só no navegador de quem editou.</p>
-    <p><b>Clima:</b> dezembro a fevereiro é verão em todo o percurso; chuvas rápidas de fim de tarde são comuns no litoral, e o sertão pode ter pancadas isoladas que afetam estradas de terra.</p>
-  </footer>
+    <!-- ABASTECIMENTO -->
+    <section class="panel shell-col" id="panel-abastecimento" data-panel="abastecimento" hidden>
+      <p class="panel-title">Abastecimento</p>
+      <p class="panel-intro">Lancem pelo celular no posto (data, km do odômetro, litros e valor) &mdash; a média de consumo se atualiza sozinha para os dois.</p>
+      <div class="stat-row">
+        <div class="stat"><span class="n" id="fuel-total-valor">—</span><span class="l">total gasto</span></div>
+        <div class="stat"><span class="n" id="fuel-total-litros">—</span><span class="l">litros abastecidos</span></div>
+        <div class="stat"><span class="n" id="fuel-media">—</span><span class="l">consumo médio (km/l)</span></div>
+      </div>
+      <form class="fuel-form needs-db" id="fuel-form">
+        <label>Data<input type="date" id="fuel-data" required></label>
+        <label>Km atual<input type="number" id="fuel-km" min="0" step="1" required></label>
+        <label>Litros<input type="number" id="fuel-litros" min="0" step="0.01" required></label>
+        <label>Valor (R$)<input type="number" id="fuel-valor" min="0" step="0.01" required></label>
+        <label>Posto / local<input type="text" id="fuel-local" placeholder="opcional"></label>
+        <button class="btn" type="submit">Adicionar</button>
+      </form>
+      <div class="days" id="fuel-list"></div>
+      <p class="fuel-empty" id="fuel-empty">Nenhum abastecimento registrado ainda.</p>
+    </section>
+
+    <!-- AJUSTES -->
+    <section class="panel shell-col" id="panel-ajustes" data-panel="ajustes" hidden>
+      <p class="panel-title">Ajustes &amp; dados</p>
+
+      <div class="sync-grid">
+        <div class="sync-box">
+          <p class="sync-label">Exportar deste aparelho</p>
+          <button class="btn" type="button" id="sync-export-btn">Gerar exportação</button>
+          <textarea class="sync-text" id="sync-export-text" readonly placeholder="clique em “gerar exportação”…" hidden></textarea>
+          <a class="btn ghost" id="sync-download-link" download="roteiro-dados.json" hidden>Baixar arquivo .json</a>
+        </div>
+        <div class="sync-box">
+          <p class="sync-label">Importar (mescla com o que já existe aqui)</p>
+          <label class="btn ghost" style="cursor:pointer;">Escolher arquivo .json<input type="file" accept="application/json" id="sync-import-file" hidden></label>
+          <textarea class="sync-text" id="sync-import-text" placeholder="…ou cole aqui o JSON exportado do outro aparelho"></textarea>
+          <button class="btn" type="button" id="sync-import-btn">Importar e mesclar</button>
+        </div>
+      </div>
+      <p class="sync-status" id="sync-status"></p>
+      <p class="panel-intro">Use isto para juntar o que cada um editou em navegadores/aparelhos diferentes &mdash; por exemplo, depois da viagem, ou de volta neste link hospedado no Claude. Importar <b>mescla</b> (soma fotos e abastecimentos, substitui roteiro/notas/hospedagem pelo mais recente importado) &mdash; não apaga o que já está salvo.</p>
+
+      <div class="help-list">
+        <p><b>Sobre as distâncias:</b> valores aproximados a partir de fontes públicas de rotas rodoviárias; confirme com Waze/Google Maps/Qualp mais perto da viagem, especialmente em trechos com balsa ou estrada não pavimentada.</p>
+        <p><b>Edição:</b> qualquer linha do roteiro pode ser ajustada (botão "editar"); "reverter" volta à baseline original. O km acumulado é recalculado automaticamente.</p>
+        <p><b>Pontuação:</b> os quadrados de cada trecho são uma avaliação inicial minha (estrada 40%, paradas 30%, beleza 30%) &mdash; editem os números como acharem melhor, a nota final se recalcula sozinha.</p>
+        <p><b>Hospedagem:</b> nos pontos sem família, use "Buscar no Booking" e cole o link da reserva confirmada quando fecharem.</p>
+        <p><b>Fotos e abastecimento:</b> ficam guardados na própria página; dá para remover uma foto enviada por engano. No link hospedado no Claude, tudo sincroniza entre os dois em qualquer aparelho; numa cópia estática fora do Claude (ex.: GitHub Pages), continua funcionando, mas fica salvo só no navegador de quem editou.</p>
+        <p><b>Clima:</b> dezembro a fevereiro é verão em todo o percurso; chuvas rápidas de fim de tarde são comuns no litoral, e o sertão pode ter pancadas isoladas que afetam estradas de terra.</p>
+      </div>
+    </section>
+
+  </main>
+
+  <nav class="app-tabbar" aria-label="Navegação principal">
+    <div class="shell-col">
+      <button type="button" class="tab-btn active" data-tab="roteiro" aria-current="page">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="5" cy="6" r="2"/><path d="M5 8c0 5 13 3 13 8"/><circle cx="18" cy="18" r="2"/></svg>
+        <span>Roteiro</span>
+      </button>
+      <button type="button" class="tab-btn" data-tab="hospedagem">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 19v-7a2 2 0 0 1 2-2h5a2 2 0 0 1 2 2v2"/><path d="M12 14h7a2 2 0 0 1 2 2v3"/><path d="M3 21v-2h18v2"/><circle cx="6.5" cy="11.5" r="1.4"/></svg>
+        <span>Hospedagem</span>
+      </button>
+      <button type="button" class="tab-btn" data-tab="abastecimento">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="3" width="10" height="18" rx="1.5"/><path d="M14 9h3a2 2 0 0 1 2 2v6.5a1.5 1.5 0 0 0 3 0V8l-2.5-2.5"/><path d="M7 8h4"/></svg>
+        <span>Abastec.</span>
+      </button>
+      <button type="button" class="tab-btn" data-tab="ajustes">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h10M4 17h13"/></svg>
+        <span>Ajustes</span>
+      </button>
+    </div>
+  </nav>
+
 </div>
 
 <script>
@@ -1285,6 +1367,8 @@
       deletePhoto(t.getAttribute('data-slug'), t.getAttribute('data-item'), t.getAttribute('data-asset'));
       return;
     }
+    if ((t = e.target.closest('.tab-btn'))) { switchTab(t.getAttribute('data-tab')); return; }
+    if ((t = e.target.closest('[data-acc-toggle]'))) { toggleTrecho(t.getAttribute('data-acc-toggle')); return; }
   });
   document.body.addEventListener('change', function (e) {
     if (e.target.matches('input[type=file][data-photo-slug]')) {
@@ -1340,6 +1424,54 @@
     var a = document.getElementById('map-' + t);
     if (a) a.href = mapsUrl(r.origin, r.destination, r.waypoints);
   });
+
+  // ---------- app shell: bottom tabs ----------
+  function switchTab(name) {
+    document.querySelectorAll('.panel').forEach(function (p) { p.hidden = (p.getAttribute('data-panel') !== name); });
+    document.querySelectorAll('.tab-btn').forEach(function (b) {
+      var active = b.getAttribute('data-tab') === name;
+      b.classList.toggle('active', active);
+      if (active) b.setAttribute('aria-current', 'page'); else b.removeAttribute('aria-current');
+    });
+    window.scrollTo({ top: 0 });
+  }
+
+  // ---------- app shell: trecho accordion (one open at a time) ----------
+  function toggleTrecho(t) {
+    var body = document.getElementById('acc-body-' + t);
+    var head = document.querySelector('[data-acc-toggle="' + t + '"]');
+    if (!body || !head) return;
+    var opening = body.hidden;
+    // close every trecho first — only one open at a time
+    ['t1', 't2', 't3', 't4'].forEach(function (o) {
+      var ob = document.getElementById('acc-body-' + o);
+      var oh = document.querySelector('[data-acc-toggle="' + o + '"]');
+      if (ob) ob.hidden = true;
+      if (oh) oh.setAttribute('aria-expanded', 'false');
+    });
+    if (opening) { body.hidden = false; head.setAttribute('aria-expanded', 'true'); }
+  }
+
+  // open the trecho that covers today's date by default (falls back to the first
+  // trecho before the trip starts, and the last one once it's over)
+  function defaultOpenTrecho() {
+    var now = new Date(); now.setHours(0, 0, 0, 0);
+    var order = ['t1', 't2', 't3', 't4'];
+    var pick = null;
+    order.forEach(function (t) {
+      var r = SLICES[t];
+      var first = FLAT_BASE[r[0]], last = FLAT_BASE[r[1] - 1];
+      var start = new Date(toISODate(first[0]) + 'T00:00:00');
+      var end = new Date(toISODate(last[0]) + 'T23:59:59');
+      if (!pick && now >= start && now <= end) pick = t;
+    });
+    if (!pick) {
+      var t1start = new Date(toISODate(FLAT_BASE[0][0]) + 'T00:00:00');
+      pick = (now < t1start) ? 't1' : 't4';
+    }
+    toggleTrecho(pick);
+  }
+  defaultOpenTrecho();
 
   renderAll(); // paint the baseline immediately, before any capability resolves
 
