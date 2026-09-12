@@ -1,0 +1,1328 @@
+<title>Roteiro RJ–Nordeste–RJ</title>
+<style>
+  :root {
+    --ink: #1c2420;
+    --paper: #efece0;
+    --surface: #f9f7ee;
+    --surface-2: #e6e2d1;
+    --border: #d3cdb8;
+    --muted: #6b6b5c;
+    --accent: #b8631f;
+    --accent-ink: #ffffff;
+    --accent-2: #2c7873;
+    --accent-2-ink: #ffffff;
+    --ok: #3f7d47;
+    --warn-bg: #f4ded0;
+    --warn-border: #c96a2e;
+    --warn-ink: #6e3712;
+    --deco-bg: #e2ecea;
+    --deco-border: #2c7873;
+    --deco-ink: #1c4b48;
+    --font-display: 'Big Shoulders Display', 'Oswald', 'Arial Narrow', sans-serif;
+    --font-body: 'Literata', 'Georgia', serif;
+    --font-mono: 'JetBrains Mono', 'SFMono-Regular', Menlo, Consolas, monospace;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --ink: #e9e5d6;
+      --paper: #161d19;
+      --surface: #1d2622;
+      --surface-2: #26312b;
+      --border: #3a463d;
+      --muted: #a3a08c;
+      --accent: #e08a45;
+      --accent-ink: #1c1006;
+      --accent-2: #59b3ac;
+      --accent-2-ink: #06201e;
+      --ok: #7bc389;
+      --warn-bg: #3a2413;
+      --warn-border: #d97b3d;
+      --warn-ink: #f3d3b6;
+      --deco-bg: #16302d;
+      --deco-border: #4fa39c;
+      --deco-ink: #bfe6e1;
+    }
+  }
+  :root[data-theme="dark"] {
+    --ink: #e9e5d6;
+    --paper: #161d19;
+    --surface: #1d2622;
+    --surface-2: #26312b;
+    --border: #3a463d;
+    --muted: #a3a08c;
+    --accent: #e08a45;
+    --accent-ink: #1c1006;
+    --accent-2: #59b3ac;
+    --accent-2-ink: #06201e;
+    --ok: #7bc389;
+    --warn-bg: #3a2413;
+    --warn-border: #d97b3d;
+    --warn-ink: #f3d3b6;
+    --deco-bg: #16302d;
+    --deco-border: #4fa39c;
+    --deco-ink: #bfe6e1;
+  }
+
+  * { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+  body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: var(--font-body);
+    padding-inline: max(16px, calc((100% - 960px) / 2));
+    padding-block: 28px 64px;
+    line-height: 1.5;
+  }
+  a { color: var(--accent-2); }
+  .wrap { max-width: 960px; margin: 0 auto; display: flex; flex-direction: column; gap: 40px; }
+
+  /* inputs: 16px minimum avoids iOS auto-zoom on focus (this is edited from a phone) */
+  input, button, textarea { font-family: inherit; }
+  input[type="text"], input[type="number"], input[type="url"], input[type="date"] { font-size: 16px; }
+
+  /* ---------- Header ---------- */
+  header.hero {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    border-bottom: 2px solid var(--border);
+    padding-bottom: 28px;
+  }
+  .eyebrow {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--accent);
+  }
+  h1 {
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: clamp(2.4rem, 7vw, 4.2rem);
+    line-height: 0.92;
+    letter-spacing: 0.01em;
+    margin: 0;
+    text-wrap: balance;
+  }
+  .hero-sub { font-size: 1.05rem; color: var(--muted); max-width: 66ch; }
+  .stat-row {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 1px;
+    background: var(--border);
+    border: 1px solid var(--border);
+    margin-top: 4px;
+  }
+  .stat { background: var(--surface); padding: 14px 16px; display: flex; flex-direction: column; gap: 2px; }
+  .stat .n { font-family: var(--font-mono); font-variant-numeric: tabular-nums; font-size: 1.5rem; font-weight: 700; }
+  .stat .l { font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted); }
+  .capability-note { font-family: var(--font-mono); font-size: 0.72rem; color: var(--warn-border); }
+
+  /* ---------- Route strip ---------- */
+  .strip-title, .sub-title {
+    font-family: var(--font-display);
+    font-size: 1.05rem;
+    font-weight: 700;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin: 0 0 12px;
+  }
+  .strip-scroll { overflow-x: auto; padding-bottom: 6px; }
+  .strip { display: flex; align-items: flex-end; min-width: 1500px; padding: 10px 4px 0; }
+  .node { display: flex; flex-direction: column; align-items: center; flex: 0 0 auto; width: 84px; }
+  .node .dot { width: 11px; height: 11px; border-radius: 50%; background: var(--accent-2); border: 2px solid var(--paper); outline: 1px solid var(--border); margin-bottom: 8px; }
+  .node.fixed .dot { background: var(--accent); }
+  .node .city { font-family: var(--font-display); font-weight: 700; font-size: 0.92rem; text-align: center; line-height: 1.05; }
+  .node .uf { font-family: var(--font-mono); font-size: 0.65rem; color: var(--muted); letter-spacing: 0.05em; }
+  .seg { flex: 0 0 auto; display: flex; flex-direction: column; align-items: center; justify-content: flex-end; padding-bottom: 19px; }
+  .seg .bar { height: 3px; background: var(--border); position: relative; }
+  .seg .km { font-family: var(--font-mono); font-size: 0.68rem; color: var(--muted); margin-bottom: 5px; white-space: nowrap; }
+
+  /* ---------- Baseline callout ---------- */
+  .baseline-note {
+    border: 1px solid var(--accent);
+    background: color-mix(in srgb, var(--accent) 10%, var(--surface));
+    color: var(--ink);
+    padding: 12px 16px;
+    font-size: 0.9rem;
+  }
+  .baseline-note b { color: var(--accent); }
+
+  /* ---------- Trecho sections ---------- */
+  section.trecho { display: flex; flex-direction: column; gap: 16px; }
+  .trecho-head { display: flex; flex-wrap: wrap; align-items: baseline; gap: 10px 16px; border-bottom: 1px solid var(--border); padding-bottom: 10px; }
+  .trecho-num { font-family: var(--font-mono); font-size: 0.8rem; color: var(--accent); letter-spacing: 0.06em; }
+  h2 { font-family: var(--font-display); font-weight: 800; font-size: clamp(1.4rem, 4vw, 2rem); margin: 0; text-wrap: balance; }
+  .trecho-meta { margin-left: auto; font-family: var(--font-mono); font-size: 0.78rem; color: var(--muted); display: flex; gap: 14px; flex-wrap: wrap; }
+  .trecho-meta b { color: var(--ink); font-weight: 700; }
+
+  .callout { border: 1px solid var(--warn-border); background: var(--warn-bg); color: var(--warn-ink); padding: 12px 16px; font-size: 0.92rem; display: flex; flex-direction: column; gap: 6px; }
+  .callout .t { font-weight: 700; font-family: var(--font-display); letter-spacing: 0.02em; text-transform: uppercase; font-size: 0.85rem; }
+  .callout.deco { border-color: var(--deco-border); background: var(--deco-bg); color: var(--deco-ink); }
+
+  /* ---------- Score squares (fixed semantic colors, same in both themes) ---------- */
+  .score-wrap { display: flex; flex-direction: column; gap: 6px; }
+  .score-caption { font-family: var(--font-mono); font-size: 0.68rem; color: var(--muted); }
+  .score-row { display: flex; gap: 10px; align-items: stretch; flex-wrap: wrap; }
+  .score-sq {
+    width: 68px; min-height: 68px;
+    display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 3px;
+    border: 1px solid rgba(0,0,0,0.25);
+    border-radius: 4px;
+  }
+  .score-sq.estrada { background: #e8c94a; }
+  .score-sq.paradas { background: #c94a3a; }
+  .score-sq.beleza  { background: #ffffff; border-color: #b9b39c; }
+  .score-sq.estrada, .score-sq.estrada .lbl { color: #2b2205; }
+  .score-sq.paradas, .score-sq.paradas .lbl { color: #ffffff; }
+  .score-sq.beleza, .score-sq.beleza .lbl { color: #1c2420; }
+  .score-sq input {
+    width: 46px; text-align: center; font-family: var(--font-mono); font-weight: 700;
+    font-size: 16px; border: none; background: transparent; color: inherit; padding: 2px;
+  }
+  .score-sq .lbl { font-family: var(--font-mono); font-size: 0.56rem; text-transform: uppercase; letter-spacing: 0.02em; text-align: center; line-height: 1.15; }
+  .score-final {
+    width: 68px; min-height: 68px;
+    display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 3px;
+    border: 2px solid var(--accent); border-radius: 4px; color: var(--accent);
+  }
+  .score-final .val { font-family: var(--font-display); font-weight: 800; font-size: 1.4rem; }
+  .score-final .lbl { font-family: var(--font-mono); font-size: 0.56rem; text-transform: uppercase; color: var(--muted); }
+
+  /* ---------- Map card ---------- */
+  .map-card { border: 1px solid var(--border); background: var(--surface); padding: 14px 16px; display: flex; flex-direction: column; gap: 10px; }
+  .map-card .route-line { font-family: var(--font-mono); font-size: 0.8rem; color: var(--muted); line-height: 1.7; overflow-wrap: break-word; }
+  .map-card .route-line b { color: var(--ink); font-weight: 600; }
+  .btn {
+    display: inline-flex; align-items: center; gap: 6px;
+    font-family: var(--font-mono); font-size: 0.74rem; text-transform: uppercase; letter-spacing: 0.04em;
+    padding: 9px 14px; min-height: 36px; border-radius: 3px;
+    background: var(--accent-2); color: var(--accent-2-ink); border: 1px solid var(--accent-2);
+    text-decoration: none; cursor: pointer; width: fit-content; white-space: nowrap;
+  }
+  .btn.ghost { background: transparent; color: var(--accent-2); }
+  .maplink {
+    font-family: var(--font-mono); font-size: 0.66rem; color: var(--accent-2); text-decoration: none;
+    border-bottom: 1px dotted var(--accent-2); width: fit-content; display: inline-block; margin-top: 2px;
+  }
+
+  /* ---------- Day rows ---------- */
+  .days { display: flex; flex-direction: column; border-top: 1px solid var(--border); }
+  .day { display: grid; grid-template-columns: 108px 1fr 78px 88px; gap: 10px 16px; align-items: start; padding: 10px 4px; border-bottom: 1px solid var(--border); }
+  .day.rest { background: color-mix(in srgb, var(--surface) 60%, transparent); }
+  .day .date { font-family: var(--font-mono); font-size: 0.82rem; display: flex; flex-direction: column; line-height: 1.25; padding-top: 2px; }
+  .day .date .wd { color: var(--muted); font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.06em; }
+  .day .route { display: flex; flex-direction: column; gap: 3px; }
+  .day .route .r { font-weight: 600; }
+  .day .route .note { font-size: 0.84rem; color: var(--muted); }
+  .day .route .via { font-family: var(--font-mono); font-size: 0.68rem; letter-spacing: 0.02em; color: var(--accent-2); }
+  .badges { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 2px; }
+  .badge { font-family: var(--font-mono); font-size: 0.62rem; text-transform: uppercase; letter-spacing: 0.05em; padding: 2px 7px; border-radius: 3px; border: 1px solid currentColor; }
+  .badge.fixo { color: var(--accent); }
+  .badge.longo { color: var(--warn-border); }
+  .badge.decisao { color: var(--accent-2); }
+  .badge.livre { color: var(--ok); }
+  .day .km, .day .acum { font-family: var(--font-mono); font-variant-numeric: tabular-nums; font-size: 0.86rem; text-align: right; padding-top: 2px; }
+  .day .acum { color: var(--muted); }
+  .day .check { grid-column: 1 / -1; display: flex; align-items: center; gap: 6px; font-family: var(--font-mono); font-size: 0.72rem; color: var(--muted); }
+  .day .check input { accent-color: var(--accent-2); width: 18px; height: 18px; }
+
+  .row-actions { display: flex; gap: 8px; margin-top: 4px; flex-wrap: wrap; }
+  .row-actions button {
+    font-family: var(--font-mono); font-size: 0.66rem; text-transform: uppercase; letter-spacing: 0.03em;
+    color: var(--accent-2); background: none; border: 1px solid var(--accent-2); border-radius: 3px;
+    padding: 6px 10px; min-height: 30px; cursor: pointer;
+  }
+  .row-actions .cancel-edit, .row-actions .revert-edit { color: var(--muted); border-color: var(--border); }
+
+  .route.edit-block { display: none; flex-direction: column; gap: 6px; }
+  .day.editing .route.view-block { display: none; }
+  .day.editing .route.edit-block { display: flex; }
+  .route.edit-block input {
+    padding: 8px 9px; border: 1px solid var(--border); background: var(--paper); color: var(--ink); border-radius: 3px; width: 100%;
+  }
+  .route.edit-block .ef-km-wrap { display: flex; align-items: center; gap: 6px; font-family: var(--font-mono); font-size: 0.78rem; color: var(--muted); }
+  .route.edit-block .ef-km-wrap input { width: 90px; }
+
+  @media (max-width: 620px) {
+    .day { grid-template-columns: 1fr auto; }
+    .day .km, .day .acum { text-align: left; }
+    .day .km::before { content: "km do dia "; color: var(--muted); }
+    .day .acum::before { content: "acumulado "; color: var(--muted); }
+  }
+
+  /* ---------- Stop cards: hospedagem + fotos ---------- */
+  .stop-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: 12px; }
+  .stop-card { border: 1px solid var(--border); background: var(--surface); padding: 12px 14px; display: flex; flex-direction: column; gap: 10px; }
+  .stop-head { display: flex; justify-content: space-between; align-items: baseline; gap: 8px; flex-wrap: wrap; }
+  .stop-city { font-family: var(--font-display); font-weight: 700; font-size: 1.05rem; }
+  .stop-city .uf { font-family: var(--font-mono); font-size: 0.62rem; color: var(--muted); margin-left: 4px; }
+  .stop-dates { font-family: var(--font-mono); font-size: 0.66rem; color: var(--muted); }
+  .family-badge {
+    font-family: var(--font-mono); font-size: 0.66rem; text-transform: uppercase; letter-spacing: 0.05em;
+    color: var(--ok); border: 1px solid var(--ok); padding: 4px 8px; border-radius: 3px; width: fit-content;
+  }
+  .hosp-row { display: flex; flex-direction: column; gap: 6px; }
+  .hosp-edit { display: flex; gap: 6px; }
+  .hosp-edit input { flex: 1; min-width: 0; padding: 8px 9px; border: 1px solid var(--border); background: var(--paper); color: var(--ink); border-radius: 3px; }
+  .hosp-saved a { font-size: 0.8rem; }
+  .photo-row { display: flex; flex-wrap: wrap; gap: 8px; align-items: flex-start; }
+  .photo-grid { display: flex; flex-wrap: wrap; gap: 8px; }
+  .photo-thumb-wrap { position: relative; width: 56px; height: 56px; flex: 0 0 auto; }
+  .photo-thumb { width: 56px; height: 56px; display: block; border-radius: 3px; overflow: hidden; border: 1px solid var(--border); }
+  .photo-thumb img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .photo-del {
+    position: absolute; top: -7px; right: -7px; width: 24px; height: 24px; border-radius: 50%;
+    background: var(--warn-border); color: #fff; border: 2px solid var(--paper); font-size: 14px; line-height: 1;
+    cursor: pointer; display: flex; align-items: center; justify-content: center; padding: 0;
+  }
+  .photo-add {
+    width: 56px; height: 56px; display: flex; align-items: center; justify-content: center;
+    border: 1px dashed var(--border); border-radius: 3px; font-family: var(--font-mono); font-size: 0.6rem;
+    color: var(--muted); cursor: pointer; text-align: center; line-height: 1.2; flex: 0 0 auto;
+  }
+  .needs-db.offline { opacity: 0.4; pointer-events: none; }
+
+  /* ---------- Fuel section ---------- */
+  .fuel-form { display: grid; grid-template-columns: repeat(auto-fit, minmax(110px, 1fr)); gap: 10px; align-items: end; border: 1px solid var(--border); background: var(--surface); padding: 14px; }
+  .fuel-form label { display: flex; flex-direction: column; gap: 4px; font-family: var(--font-mono); font-size: 0.66rem; text-transform: uppercase; letter-spacing: 0.04em; color: var(--muted); }
+  .fuel-form input { padding: 9px 8px; border: 1px solid var(--border); background: var(--paper); color: var(--ink); border-radius: 3px; }
+  .fuel-empty { font-size: 0.88rem; color: var(--muted); padding: 10px 4px; }
+
+  /* ---------- Sync / export panel ---------- */
+  .sync-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px; }
+  .sync-box { border: 1px solid var(--border); background: var(--surface); padding: 14px 16px; display: flex; flex-direction: column; gap: 8px; align-items: flex-start; }
+  .sync-label { font-family: var(--font-mono); font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.04em; color: var(--muted); margin: 0; }
+  .sync-text { width: 100%; min-height: 90px; font-family: var(--font-mono); font-size: 0.72rem; padding: 8px; border: 1px solid var(--border); background: var(--paper); color: var(--ink); border-radius: 3px; resize: vertical; }
+  .sync-status { font-size: 0.86rem; color: var(--muted); min-height: 1.2em; }
+
+  footer { border-top: 2px solid var(--border); padding-top: 20px; font-size: 0.92rem; color: var(--muted); display: flex; flex-direction: column; gap: 8px; }
+  footer b { color: var(--ink); }
+</style>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;800&family=Literata:ital,opsz,wght@0,18..144,400;0,18..144,600;0,18..144,700;1,18..144,400&family=JetBrains+Mono:wght@400;500;700&display=swap">
+
+<div class="wrap">
+
+  <header class="hero">
+    <div class="eyebrow">Roadbook de viagem &middot; moto, dois-up &middot; rev. 6</div>
+    <h1>Rio&thinsp;&ndash;&thinsp;Sertão&thinsp;&ndash;&thinsp;Litoral&thinsp;&ndash;&thinsp;Rio</h1>
+    <p class="hero-sub">26 de dezembro de 2026 a 1º de fevereiro de 2027 &mdash; Réveillon em Caxias (MA), dois dias inteiros em Fortaleza, João Pessoa de 8 a 11/1, um dia em Japaratinga e volta ao Rio no início de fevereiro.</p>
+    <div class="stat-row">
+      <div class="stat"><span class="n">38</span><span class="l">dias corridos</span></div>
+      <div class="stat"><span class="n">~7.821</span><span class="l">km rodados</span></div>
+      <div class="stat"><span class="n">4</span><span class="l">trechos</span></div>
+      <div class="stat"><span class="n">~11</span><span class="l">estados</span></div>
+      <div class="stat"><span class="n">6</span><span class="l">pontos de controle fixos</span></div>
+    </div>
+    <p class="capability-note" id="local-mode-note" hidden>Esta cópia está rodando fora do Claude (por exemplo, publicada no GitHub Pages) — edição, hospedagem, fotos e abastecimento continuam funcionando, mas ficam salvos <b>somente neste navegador/aparelho</b>, sem sincronizar entre o seu celular e o da sua esposa. Para ter tudo sincronizado entre os dois, em qualquer aparelho, usem o link original hospedado no Claude.</p>
+  </header>
+
+  <div class="baseline-note">
+    <b>Isto é a baseline do roteiro.</b> Cada linha tem um botão "editar" (rota, km, observação) &mdash; ajustem direto pelo celular durante a viagem, o que for salvo fica visível para os dois em qualquer aparelho. "Reverter" volta a linha ao planejamento original a qualquer momento; o km acumulado se recalcula sozinho.
+  </div>
+
+  <section>
+    <p class="strip-title">Sequência da rota (esquemático, não geográfico &mdash; comprimento das barras em escala logarítmica de km)</p>
+    <div class="strip-scroll">
+      <div class="strip" id="strip"></div>
+    </div>
+  </section>
+
+  <!-- TRECHO 1 -->
+  <section class="trecho">
+    <div class="trecho-head">
+      <span class="trecho-num">TRECHO 01</span>
+      <h2>Rio → Petrolina</h2>
+      <div class="trecho-meta"><span>26 a 30/12</span><span><b>5 dias</b></span><span><b>~2.218 km</b></span></div>
+    </div>
+    <div class="score-wrap">
+      <div class="score-row needs-db" id="score-t1">
+        <div class="score-sq estrada"><input type="number" min="0" max="10" step="0.5" data-score="t1" data-crit="estrada"><span class="lbl">estrada</span></div>
+        <div class="score-sq paradas"><input type="number" min="0" max="10" step="0.5" data-score="t1" data-crit="paradas"><span class="lbl">paradas</span></div>
+        <div class="score-sq beleza"><input type="number" min="0" max="10" step="0.5" data-score="t1" data-crit="beleza"><span class="lbl">beleza</span></div>
+        <div class="score-final"><span class="val">–</span><span class="lbl">nota /10</span></div>
+      </div>
+      <p class="score-caption">amarelo = estrada (peso 40%) · vermelho = paradas (peso 30%) · branco = beleza (peso 30%) &mdash; avaliação inicial minha, editável</p>
+    </div>
+    <div class="callout">
+      <span class="t">Ritmo</span>
+      Cinco dias para ~2.218&nbsp;km dá uma média de ~444&nbsp;km/dia &mdash; confortavelmente dentro do seu teto de 550&nbsp;km/dia, com um único dia mais longo (Montes Claros → Barreiras, 600&nbsp;km). Juazeiro (BA) e Petrolina são cidades conjugadas, ligadas por ponte (~2&nbsp;km) &mdash; o pernoite intermediário antes de Petrolina é em Xique-Xique (BA), no meio do caminho real entre Barreiras e Petrolina.
+    </div>
+    <div class="map-card">
+      <div class="route-line"><b>Rio de Janeiro</b> → Belo Horizonte → Montes Claros → Barreiras → Xique-Xique → <b>Petrolina</b></div>
+      <a class="btn" target="_blank" rel="noopener" id="map-t1">Abrir rota completa no Google Maps</a>
+    </div>
+    <div class="days" id="t1"></div>
+    <p class="sub-title">Hospedagem &amp; álbum</p>
+    <div class="stop-grid" id="stops-t1"></div>
+  </section>
+
+  <!-- TRECHO 2 -->
+  <section class="trecho">
+    <div class="trecho-head">
+      <span class="trecho-num">TRECHO 02</span>
+      <h2>Petrolina → Caxias (MA)</h2>
+      <div class="trecho-meta"><span>31/12</span><span><b>1 dia</b></span><span><b>~730 km</b></span></div>
+    </div>
+    <div class="score-wrap">
+      <div class="score-row needs-db" id="score-t2">
+        <div class="score-sq estrada"><input type="number" min="0" max="10" step="0.5" data-score="t2" data-crit="estrada"><span class="lbl">estrada</span></div>
+        <div class="score-sq paradas"><input type="number" min="0" max="10" step="0.5" data-score="t2" data-crit="paradas"><span class="lbl">paradas</span></div>
+        <div class="score-sq beleza"><input type="number" min="0" max="10" step="0.5" data-score="t2" data-crit="beleza"><span class="lbl">beleza</span></div>
+        <div class="score-final"><span class="val">–</span><span class="lbl">nota /10</span></div>
+      </div>
+      <p class="score-caption">o trecho mais fraco do roteiro nos três critérios &mdash; é a travessia obrigatória do sertão, não o destaque da viagem</p>
+    </div>
+    <div class="callout">
+      <span class="t">Atenção &mdash; dia mais exigente do roteiro</span>
+      730&nbsp;km num único dia passa do seu próprio teto (até 650&nbsp;km, excepcionalmente). É pista simples pelo sertão de PE/PI/MA, com trechos retos e cansativos e postos mais espaçados &mdash; ainda mais crítico sendo 31/12, quando muitos postos e restaurantes fecham cedo. Recomendo sair de Petrolina ao amanhecer (~5h), abastecer sempre que possível e revisar pneus/corrente/óleo na véspera.<br>
+      <b>Alternativa a considerar:</b> antecipar a chegada a Petrolina para 29/12 e dividir este trecho em dois dias.
+    </div>
+    <div class="map-card">
+      <div class="route-line"><b>Petrolina</b> → <b>Caxias (MA)</b></div>
+      <a class="btn" target="_blank" rel="noopener" id="map-t2">Abrir rota no Google Maps</a>
+    </div>
+    <div class="days" id="t2"></div>
+    <p class="sub-title">Hospedagem &amp; álbum</p>
+    <div class="stop-grid" id="stops-t2"></div>
+  </section>
+
+  <!-- TRECHO 3 -->
+  <section class="trecho">
+    <div class="trecho-head">
+      <span class="trecho-num">TRECHO 03</span>
+      <h2>Caxias → Recife <span style="font-weight:400; color:var(--muted); font-size:0.6em;">via Barreirinhas, Jericoacoara, Fortaleza, João Pessoa</span></h2>
+      <div class="trecho-meta"><span>1º a 14/1</span><span><b>14 dias</b></span><span><b>~1.818 km</b></span></div>
+    </div>
+    <div class="score-wrap">
+      <div class="score-row needs-db" id="score-t3">
+        <div class="score-sq estrada"><input type="number" min="0" max="10" step="0.5" data-score="t3" data-crit="estrada"><span class="lbl">estrada</span></div>
+        <div class="score-sq paradas"><input type="number" min="0" max="10" step="0.5" data-score="t3" data-crit="paradas"><span class="lbl">paradas</span></div>
+        <div class="score-sq beleza"><input type="number" min="0" max="10" step="0.5" data-score="t3" data-crit="beleza"><span class="lbl">beleza</span></div>
+        <div class="score-final"><span class="val">–</span><span class="lbl">nota /10</span></div>
+      </div>
+      <p class="score-caption">estrada penalizada pela Rota das Emoções (areia + balsas); paradas e beleza no topo do roteiro (Lençóis, Jeri, litoral)</p>
+    </div>
+    <div class="callout deco">
+      <span class="t">Rota Barreirinhas → Jericoacoara</span>
+      Com 2 dias inteiros em Caxias e 2 em Fortaleza, o calendário até João Pessoa (chegada 8/1) fica apertado. Optei pela Rota das Emoções (Tutóia, balsas, trechos de areia, ~330&nbsp;km) em vez da alternativa 100% asfaltada via Sobral, que sozinha consome 2 dias.
+    </div>
+    <div class="callout">
+      <span class="t">Fortaleza → João Pessoa (688 km) &mdash; segundo dia mais longo do roteiro</span>
+      Para cumprir a chegada em João Pessoa no dia 8/1 mantendo os 2 dias inteiros em Fortaleza, esse trecho vira um salto único passando perto de Natal (parada rápida, sem pernoite), acima de 650&nbsp;km.
+    </div>
+    <div class="map-card">
+      <div class="route-line"><b>Caxias</b> → Barreirinhas → Jericoacoara → Fortaleza → João Pessoa → <b>Recife</b></div>
+      <a class="btn" target="_blank" rel="noopener" id="map-t3">Abrir rota completa no Google Maps</a>
+    </div>
+    <div class="days" id="t3"></div>
+    <p class="sub-title">Hospedagem &amp; álbum</p>
+    <div class="stop-grid" id="stops-t3"></div>
+  </section>
+
+  <!-- TRECHO 4 -->
+  <section class="trecho">
+    <div class="trecho-head">
+      <span class="trecho-num">TRECHO 04</span>
+      <h2>Recife → Vitória da Conquista → Rio <span style="font-weight:400; color:var(--muted); font-size:0.6em;">via Japaratinga, Maceió, Salvador, Ilhéus, Porto Seguro</span></h2>
+      <div class="trecho-meta"><span>15/1 a 1/2</span><span><b>18 dias</b></span><span><b>~3.055 km</b></span></div>
+    </div>
+    <div class="score-wrap">
+      <div class="score-row needs-db" id="score-t4">
+        <div class="score-sq estrada"><input type="number" min="0" max="10" step="0.5" data-score="t4" data-crit="estrada"><span class="lbl">estrada</span></div>
+        <div class="score-sq paradas"><input type="number" min="0" max="10" step="0.5" data-score="t4" data-crit="paradas"><span class="lbl">paradas</span></div>
+        <div class="score-sq beleza"><input type="number" min="0" max="10" step="0.5" data-score="t4" data-crit="beleza"><span class="lbl">beleza</span></div>
+        <div class="score-final"><span class="val">–</span><span class="lbl">nota /10</span></div>
+      </div>
+      <p class="score-caption">o trecho mais completo do roteiro nos três critérios &mdash; BR-101 em bom estado, paradas de alto nível, litoral baiano/alagoano</p>
+    </div>
+    <div class="callout deco">
+      <span class="t">Recife: quanto tempo ficar</span>
+      Com João Pessoa liberando 11/1, vocês chegam a Recife bem antes do "por volta de 15/1" original. Assumi que a ideia é aproveitar Recife/Olinda até por volta do dia 15, e a partir daí seguir para o litoral de Alagoas.
+    </div>
+    <div class="callout deco">
+      <span class="t">Vale o desvio</span>
+      Com a folga entre Recife e Vitória da Conquista, dá para descer a costa por Porto de Galinhas, Japaratinga (Costa dos Corais), Maceió, Salvador (2 dias), Praia do Forte, Ilhéus (Terra do Cacau) e Porto Seguro/Arraial d'Ajuda antes de cortar para o interior em Vitória da Conquista. O roteiro fecha em 31/1, deixando 1/2 como margem de segurança.
+    </div>
+    <div class="map-card">
+      <div class="route-line"><b>Recife</b> → Porto de Galinhas → Japaratinga → Maceió → Aracaju → Salvador → Praia do Forte → Ilhéus → Porto Seguro → Vitória da Conquista → Governador Valadares → Além Paraíba → <b>Rio de Janeiro</b></div>
+      <a class="btn" target="_blank" rel="noopener" id="map-t4">Abrir rota completa no Google Maps</a>
+    </div>
+    <div class="days" id="t4"></div>
+    <p class="sub-title">Hospedagem &amp; álbum</p>
+    <div class="stop-grid" id="stops-t4"></div>
+  </section>
+
+  <!-- ABASTECIMENTO -->
+  <section class="trecho">
+    <div class="trecho-head">
+      <span class="trecho-num">CONTROLE</span>
+      <h2>Abastecimento</h2>
+      <div class="trecho-meta"><span>registro à parte, moto</span></div>
+    </div>
+    <div class="callout deco">
+      <span class="t">Como usar</span>
+      Cada abastecimento fica salvo na própria página &mdash; lancem pelo celular no posto (data, km do odômetro, litros e valor) e a média de consumo se atualiza sozinha para os dois.
+    </div>
+    <div class="stat-row">
+      <div class="stat"><span class="n" id="fuel-total-valor">—</span><span class="l">total gasto</span></div>
+      <div class="stat"><span class="n" id="fuel-total-litros">—</span><span class="l">litros abastecidos</span></div>
+      <div class="stat"><span class="n" id="fuel-media">—</span><span class="l">consumo médio (km/l)</span></div>
+    </div>
+    <form class="fuel-form needs-db" id="fuel-form">
+      <label>Data<input type="date" id="fuel-data" required></label>
+      <label>Km atual<input type="number" id="fuel-km" min="0" step="1" required></label>
+      <label>Litros<input type="number" id="fuel-litros" min="0" step="0.01" required></label>
+      <label>Valor (R$)<input type="number" id="fuel-valor" min="0" step="0.01" required></label>
+      <label>Posto / local<input type="text" id="fuel-local" placeholder="opcional"></label>
+      <button class="btn" type="submit">Adicionar</button>
+    </form>
+    <div class="days" id="fuel-list"></div>
+    <p class="fuel-empty" id="fuel-empty">Nenhum abastecimento registrado ainda.</p>
+  </section>
+
+  <!-- SINCRONIZAR / JUNTAR DADOS -->
+  <section class="trecho">
+    <div class="trecho-head">
+      <span class="trecho-num">CONTROLE</span>
+      <h2>Exportar &amp; juntar dados</h2>
+      <div class="trecho-meta"><span>para juntar o que foi editado em navegadores/aparelhos diferentes</span></div>
+    </div>
+    <div class="callout deco">
+      <span class="t">Quando usar</span>
+      Cada cópia estática (por exemplo, aberta no GitHub Pages em dois celulares diferentes) guarda seus próprios dados sozinha, sem sincronizar entre si. Para juntar tudo num só lugar &mdash; por exemplo, depois da viagem, ou de volta neste link hospedado no Claude &mdash; exportem os dados de cada aparelho aqui e importem no destino final. Importar <b>mescla</b> (soma fotos e abastecimentos, substitui roteiro/notas/hospedagem pelo mais recente importado) &mdash; não apaga o que já está salvo.
+    </div>
+    <div class="sync-grid">
+      <div class="sync-box">
+        <p class="sync-label">1&nbsp;&middot; Exportar deste aparelho</p>
+        <button class="btn" type="button" id="sync-export-btn">Gerar exportação</button>
+        <textarea class="sync-text" id="sync-export-text" readonly placeholder="clique em “gerar exportação”…" hidden></textarea>
+        <a class="btn ghost" id="sync-download-link" download="roteiro-dados.json" hidden>Baixar arquivo .json</a>
+      </div>
+      <div class="sync-box">
+        <p class="sync-label">2&nbsp;&middot; Importar (mescla com o que já existe aqui)</p>
+        <label class="btn ghost" style="cursor:pointer;">Escolher arquivo .json<input type="file" accept="application/json" id="sync-import-file" hidden></label>
+        <textarea class="sync-text" id="sync-import-text" placeholder="…ou cole aqui o JSON exportado do outro aparelho"></textarea>
+        <button class="btn" type="button" id="sync-import-btn">Importar e mesclar</button>
+      </div>
+    </div>
+    <p class="sync-status" id="sync-status"></p>
+  </section>
+
+  <footer>
+    <p><b>Sobre as distâncias:</b> valores aproximados a partir de fontes públicas de rotas rodoviárias; confirme com Waze/Google Maps/Qualp mais perto da viagem, especialmente em trechos com balsa ou estrada não pavimentada.</p>
+    <p><b>Edição:</b> qualquer linha do roteiro pode ser ajustada (botão "editar") direto pelo celular; "reverter" volta à baseline original. O km acumulado é recalculado automaticamente.</p>
+    <p><b>Pontuação:</b> os quadrados de cada trecho são uma avaliação inicial minha (estrada 40%, paradas 30%, beleza 30%) &mdash; editem os números como acharem melhor, a nota final se recalcula sozinha.</p>
+    <p><b>Hospedagem:</b> Caxias, Fortaleza, Recife e Vitória da Conquista ficam na casa de familiares &mdash; sem card de reserva. Nos demais pontos, use "Buscar no Booking" e cole o link da reserva confirmada quando fecharem.</p>
+    <p><b>Fotos e abastecimento:</b> ficam guardados na própria página e sobrevivem a reaberturas e atualizações do roteiro; dá para remover uma foto enviada por engano. No link hospedado no Claude, tudo isso sincroniza entre os dois em qualquer aparelho; numa cópia estática publicada fora do Claude (ex.: GitHub Pages), continua funcionando, mas fica salvo só no navegador de quem editou.</p>
+    <p><b>Clima:</b> dezembro a fevereiro é verão em todo o percurso; chuvas rápidas de fim de tarde são comuns no litoral, e o sertão pode ter pancadas isoladas que afetam estradas de terra.</p>
+  </footer>
+</div>
+
+<script>
+(function () {
+  // ---------- baseline day-by-day data ----------
+  // [data, dia-semana, trajeto, nota, via, km, badges[], from, to]
+  var days = {
+    t1: [
+      ['26/12','SÁB','Rio de Janeiro (RJ) → Belo Horizonte (MG)','', 'BR-040', 440, [], 'Rio de Janeiro, RJ, Brasil', 'Belo Horizonte, MG, Brasil'],
+      ['27/12','DOM','Belo Horizonte (MG) → Montes Claros (MG)','', 'BR-040 / BR-135', 420, [], 'Belo Horizonte, MG, Brasil', 'Montes Claros, MG, Brasil'],
+      ['28/12','SEG','Montes Claros (MG) → Barreiras (BA)','dia mais longo do trecho', 'BR-135 / BR-242', 600, ['longo'], 'Montes Claros, MG, Brasil', 'Barreiras, BA, Brasil'],
+      ['29/12','TER','Barreiras (BA) → Xique-Xique (BA)','', 'BR-242', 397, [], 'Barreiras, BA, Brasil', 'Xique-Xique, BA, Brasil'],
+      ['30/12','QUA','Xique-Xique (BA) → Petrolina (PE)','chegada no ponto de controle', 'BR-242 / BR-407', 361, ['fixo'], 'Xique-Xique, BA, Brasil', 'Petrolina, PE, Brasil']
+    ],
+    t2: [
+      ['31/12','QUI','Petrolina (PE) → Caxias (MA)','Réveillon em Caxias · saia ao amanhecer', 'BR-407 / BR-316 / BR-135', 730, ['fixo','longo'], 'Petrolina, PE, Brasil', 'Caxias, MA, Brasil']
+    ],
+    t3: [
+      ['01/1','SEX','Caxias (MA) — dia livre (1/2)','virada do ano / descanso pós-trecho longo', '', 0, ['livre'], '', ''],
+      ['02/1','SÁB','Caxias (MA) — dia livre (2/2)','', '', 0, ['livre'], '', ''],
+      ['03/1','DOM','Caxias (MA) → Barreirinhas (MA)','', 'BR-222 / MA-034', 380, [], 'Caxias, MA, Brasil', 'Barreirinhas, MA, Brasil'],
+      ['04/1','SEG','Barreirinhas → Jericoacoara (CE)','Rota das Emoções: balsas + estrada de areia', 'Rota das Emoções', 330, ['decisao'], 'Barreirinhas, MA, Brasil', 'Jericoacoara, CE, Brasil'],
+      ['05/1','TER','Jericoacoara → Fortaleza (CE)','', 'CE-085 / BR-402', 300, [], 'Jericoacoara, CE, Brasil', 'Fortaleza, CE, Brasil'],
+      ['06/1','QUA','Fortaleza — dia livre (1/2)','Beira-Mar, Mercado Central', '', 0, ['livre'], '', ''],
+      ['07/1','QUI','Fortaleza — dia livre (2/2)','', '', 0, ['livre'], '', ''],
+      ['08/1','SEX','Fortaleza → João Pessoa (PB)','via Natal, parada rápida sem pernoite · chegada no ponto de controle', 'BR-304 / BR-101', 688, ['fixo','longo'], 'Fortaleza, CE, Brasil', 'João Pessoa, PB, Brasil'],
+      ['09/1','SÁB','João Pessoa — dia livre (1/2)','Ponta do Seixas', '', 0, ['livre'], '', ''],
+      ['10/1','DOM','João Pessoa — dia livre (2/2)','', '', 0, ['livre'], '', ''],
+      ['11/1','SEG','João Pessoa → Recife (PE)','partida do ponto de controle', 'BR-101', 120, ['fixo'], 'João Pessoa, PB, Brasil', 'Recife, PE, Brasil'],
+      ['12/1','TER','Recife — dia livre (1/3)','Olinda', '', 0, ['livre'], '', ''],
+      ['13/1','QUA','Recife — dia livre (2/3)','', '', 0, ['livre'], '', ''],
+      ['14/1','QUI','Recife — dia livre (3/3)','', '', 0, ['livre'], '', '']
+    ],
+    t4: [
+      ['15/1','SEX','Recife → Porto de Galinhas (PE)','', 'PE-060', 65, [], 'Recife, PE, Brasil', 'Porto de Galinhas, PE, Brasil'],
+      ['16/1','SÁB','Porto de Galinhas → Japaratinga (AL)','1 dia em Japaratinga · piscinas naturais', 'PE-060 / AL-101', 150, [], 'Porto de Galinhas, PE, Brasil', 'Japaratinga, AL, Brasil'],
+      ['17/1','DOM','Japaratinga → Maceió (AL)','', 'AL-101', 90, [], 'Japaratinga, AL, Brasil', 'Maceió, AL, Brasil'],
+      ['18/1','SEG','Maceió — dia livre','Pajuçara, Praia do Francês', '', 0, ['livre'], '', ''],
+      ['19/1','TER','Maceió → Aracaju (SE)','', 'BR-101', 280, [], 'Maceió, AL, Brasil', 'Aracaju, SE, Brasil'],
+      ['20/1','QUA','Aracaju → Salvador (BA)','travessia da Baía de Todos os Santos', 'BR-101', 360, [], 'Aracaju, SE, Brasil', 'Salvador, BA, Brasil'],
+      ['21/1','QUI','Salvador — dia livre (1/2)','Pelourinho, Elevador Lacerda', '', 0, ['livre'], '', ''],
+      ['22/1','SEX','Salvador — dia livre (2/2)','', '', 0, ['livre'], '', ''],
+      ['23/1','SÁB','Salvador → Praia do Forte (BA)','', 'BA-099 (Linha Verde)', 80, [], 'Salvador, BA, Brasil', 'Praia do Forte, BA, Brasil'],
+      ['24/1','DOM','Praia do Forte → Ilhéus (BA)','Terra do Cacau, roteiro de Jorge Amado', 'BA-099 / BR-101', 380, [], 'Praia do Forte, BA, Brasil', 'Ilhéus, BA, Brasil'],
+      ['25/1','SEG','Ilhéus → Porto Seguro (BA)','Costa do Descobrimento', 'BR-101', 200, [], 'Ilhéus, BA, Brasil', 'Porto Seguro, BA, Brasil'],
+      ['26/1','TER','Porto Seguro — dia livre','Arraial d’Ajuda', '', 0, ['livre'], '', ''],
+      ['27/1','QUA','Porto Seguro → Vitória da Conquista (BA)','chegada no ponto de controle', 'BR-367 / BR-116', 330, ['fixo'], 'Porto Seguro, BA, Brasil', 'Vitória da Conquista, BA, Brasil'],
+      ['28/1','QUI','Vitória da Conquista — dia livre','descanso antes da reta final', '', 0, ['livre'], '', ''],
+      ['29/1','SEX','Vitória da Conquista → Governador Valadares (MG)','', 'BR-116', 560, [], 'Vitória da Conquista, BA, Brasil', 'Governador Valadares, MG, Brasil'],
+      ['30/1','SÁB','Governador Valadares → Além Paraíba (MG)','', 'BR-116 / BR-040', 370, [], 'Governador Valadares, MG, Brasil', 'Além Paraíba, MG, Brasil'],
+      ['31/1','DOM','Além Paraíba → Rio de Janeiro (RJ)','chegada antecipada, com folga até 1/2', 'BR-040', 190, [], 'Além Paraíba, MG, Brasil', 'Rio de Janeiro, RJ, Brasil'],
+      ['01/2','SEG','Margem de segurança / chegada oficial','', '', 0, ['fixo'], '', '']
+    ]
+  };
+  var FLAT_BASE = [].concat(days.t1, days.t2, days.t3, days.t4);
+  var SLICES = { t1: [0, 5], t2: [5, 6], t3: [6, 20], t4: [20, 38] };
+
+  // ---------- overnight stops: hospedagem + fotos ----------
+  var STOPS = {
+    t1: [
+      {slug:'belo-horizonte', city:'Belo Horizonte', uf:'MG', arrive:'26/12', depart:'27/12', family:false},
+      {slug:'montes-claros', city:'Montes Claros', uf:'MG', arrive:'27/12', depart:'28/12', family:false},
+      {slug:'barreiras', city:'Barreiras', uf:'BA', arrive:'28/12', depart:'29/12', family:false},
+      {slug:'xique-xique', city:'Xique-Xique', uf:'BA', arrive:'29/12', depart:'30/12', family:false},
+      {slug:'petrolina', city:'Petrolina', uf:'PE', arrive:'30/12', depart:'31/12', family:false}
+    ],
+    t2: [ {slug:'caxias', city:'Caxias', uf:'MA', arrive:'31/12', depart:'03/01', family:true} ],
+    t3: [
+      {slug:'barreirinhas', city:'Barreirinhas', uf:'MA', arrive:'03/01', depart:'04/01', family:false},
+      {slug:'jericoacoara', city:'Jericoacoara', uf:'CE', arrive:'04/01', depart:'05/01', family:false},
+      {slug:'fortaleza', city:'Fortaleza', uf:'CE', arrive:'05/01', depart:'08/01', family:true},
+      {slug:'joao-pessoa', city:'João Pessoa', uf:'PB', arrive:'08/01', depart:'11/01', family:false},
+      {slug:'recife', city:'Recife', uf:'PE', arrive:'11/01', depart:'15/01', family:true}
+    ],
+    t4: [
+      {slug:'porto-de-galinhas', city:'Porto de Galinhas', uf:'PE', arrive:'15/01', depart:'16/01', family:false},
+      {slug:'japaratinga', city:'Japaratinga', uf:'AL', arrive:'16/01', depart:'17/01', family:false},
+      {slug:'maceio', city:'Maceió', uf:'AL', arrive:'17/01', depart:'19/01', family:false},
+      {slug:'aracaju', city:'Aracaju', uf:'SE', arrive:'19/01', depart:'20/01', family:false},
+      {slug:'salvador', city:'Salvador', uf:'BA', arrive:'20/01', depart:'23/01', family:false},
+      {slug:'praia-do-forte', city:'Praia do Forte', uf:'BA', arrive:'23/01', depart:'24/01', family:false},
+      {slug:'ilheus', city:'Ilhéus', uf:'BA', arrive:'24/01', depart:'25/01', family:false},
+      {slug:'porto-seguro', city:'Porto Seguro', uf:'BA', arrive:'25/01', depart:'27/01', family:false},
+      {slug:'vitoria-da-conquista', city:'Vitória da Conquista', uf:'BA', arrive:'27/01', depart:'29/01', family:true},
+      {slug:'governador-valadares', city:'Governador Valadares', uf:'MG', arrive:'29/01', depart:'30/01', family:false},
+      {slug:'alem-paraiba', city:'Além Paraíba', uf:'MG', arrive:'30/01', depart:'31/01', family:false}
+    ]
+  };
+  var ALL_STOPS = [].concat(STOPS.t1, STOPS.t2, STOPS.t3, STOPS.t4);
+
+  var TRECHO_ROUTE = {
+    t1: {origin:'Rio de Janeiro, RJ, Brasil', destination:'Petrolina, PE, Brasil',
+      waypoints:['Belo Horizonte, MG, Brasil','Montes Claros, MG, Brasil','Barreiras, BA, Brasil','Xique-Xique, BA, Brasil']},
+    t2: {origin:'Petrolina, PE, Brasil', destination:'Caxias, MA, Brasil', waypoints:[]},
+    t3: {origin:'Caxias, MA, Brasil', destination:'Recife, PE, Brasil',
+      waypoints:['Barreirinhas, MA, Brasil','Jericoacoara, CE, Brasil','Fortaleza, CE, Brasil','João Pessoa, PB, Brasil']},
+    t4: {origin:'Recife, PE, Brasil', destination:'Rio de Janeiro, RJ, Brasil',
+      waypoints:['Porto de Galinhas, PE, Brasil','Japaratinga, AL, Brasil','Maceió, AL, Brasil','Aracaju, SE, Brasil','Salvador, BA, Brasil','Praia do Forte, BA, Brasil','Ilhéus, BA, Brasil','Porto Seguro, BA, Brasil','Vitória da Conquista, BA, Brasil','Governador Valadares, MG, Brasil','Além Paraíba, MG, Brasil']}
+  };
+
+  var SCORE_BASE = {
+    t1: {estrada:6.5, paradas:5,  beleza:5.5},
+    t2: {estrada:4.5, paradas:4,  beleza:4},
+    t3: {estrada:6,   paradas:9,  beleza:9},
+    t4: {estrada:7.5, paradas:9,  beleza:8.5}
+  };
+  var scoreOverrides = {};
+  var overrides = {}; // roteiro edits: idx(string) -> {route, note, via, km}
+  var db = null, assetsCap = null, assetsIsLocal = false, localCap = null, downloadsCap = null;
+
+  // ---------- local fallback store (used only when window.claude/db is unavailable,
+  // e.g. a static copy opened outside Claude such as GitHub Pages) ----------
+  // Mimics the same doc()/collection()/set()/delete()/onSnapshot()/add() surface as the
+  // real "db" capability, backed by localStorage; photos are backed by IndexedDB (blobs
+  // don't fit in localStorage). Everything here is per-browser only — it does not sync
+  // between devices or people, unlike the real db capability.
+  function makeLocalCapabilities() {
+    var LS_KEY = 'roteiro-rjne-localdata-v1';
+    var mem = null;
+    function load() {
+      if (mem) return mem;
+      try { mem = JSON.parse(localStorage.getItem(LS_KEY) || '{}'); } catch (e) { mem = {}; }
+      return mem;
+    }
+    function persist() {
+      try { localStorage.setItem(LS_KEY, JSON.stringify(mem)); } catch (e) { /* storage full or unavailable */ }
+    }
+    var listeners = [];
+    function notifyAll() { listeners.slice().forEach(function (l) { l.fire(); }); }
+    function uid() { return 'l' + Date.now().toString(36) + Math.random().toString(36).slice(2, 8); }
+
+    function docRef(path) {
+      load();
+      return {
+        get: function () {
+          var exists = Object.prototype.hasOwnProperty.call(mem, path);
+          return Promise.resolve({ id: path.split('/').pop(), exists: exists, data: function () { return mem[path] || {}; } });
+        },
+        set: function (data) { mem[path] = JSON.parse(JSON.stringify(data)); persist(); notifyAll(); return Promise.resolve(); },
+        delete: function () { delete mem[path]; persist(); notifyAll(); return Promise.resolve(); },
+        onSnapshot: function (cb) {
+          var fire = function () {
+            var exists = Object.prototype.hasOwnProperty.call(mem, path);
+            cb({ exists: exists, data: function () { return mem[path] || {}; } });
+          };
+          listeners.push({ path: path, fire: fire });
+          fire();
+          return function () {};
+        },
+        collection: function (name) { return collectionRef(path + '/' + name); }
+      };
+    }
+    function collectionRef(path) {
+      load();
+      var order = null;
+      function children() {
+        var prefix = path + '/', out = [];
+        Object.keys(mem).forEach(function (k) {
+          if (k.indexOf(prefix) === 0) {
+            var rest = k.slice(prefix.length);
+            if (rest.length && rest.indexOf('/') === -1) out.push({ id: rest, data: mem[k] });
+          }
+        });
+        if (order) {
+          out.sort(function (a, b) {
+            var av = a.data[order.field], bv = b.data[order.field];
+            if (av < bv) return order.dir === 'desc' ? 1 : -1;
+            if (av > bv) return order.dir === 'desc' ? -1 : 1;
+            return 0;
+          });
+        }
+        return out;
+      }
+      var ref = {
+        add: function (data) {
+          var id = uid();
+          mem[path + '/' + id] = JSON.parse(JSON.stringify(data));
+          persist(); notifyAll();
+          return Promise.resolve({ id: id });
+        },
+        doc: function (id) { return docRef(path + '/' + id); },
+        orderBy: function (field, dir) { order = { field: field, dir: dir || 'asc' }; return ref; },
+        get: function () {
+          var docs = children().map(function (c) { return { id: c.id, exists: true, data: function () { return c.data; } }; });
+          return Promise.resolve({ docs: docs, size: docs.length, empty: docs.length === 0 });
+        },
+        onSnapshot: function (cb) {
+          var fire = function () {
+            var docs = children().map(function (c) { return { id: c.id, data: function () { return c.data; } }; });
+            cb({ docs: docs, size: docs.length });
+          };
+          listeners.push({ path: path, fire: fire });
+          fire();
+          return function () {};
+        }
+      };
+      return ref;
+    }
+
+    var IDB_NAME = 'roteiro-rjne-fotos';
+    var idbPromise = null;
+    function openIdb() {
+      if (idbPromise) return idbPromise;
+      idbPromise = new Promise(function (resolve, reject) {
+        if (!window.indexedDB) { reject(new Error('sem indexedDB')); return; }
+        var req = indexedDB.open(IDB_NAME, 1);
+        req.onupgradeneeded = function () { req.result.createObjectStore('blobs'); };
+        req.onsuccess = function () { resolve(req.result); };
+        req.onerror = function () { reject(req.error); };
+      });
+      return idbPromise;
+    }
+    var blobUrlCache = {};
+    var localAssets = {
+      upload: function (blob) {
+        var id = uid();
+        return openIdb().then(function (idb) {
+          return new Promise(function (resolve, reject) {
+            var tx = idb.transaction('blobs', 'readwrite');
+            tx.objectStore('blobs').put(blob, id);
+            tx.oncomplete = function () { resolve({ id: id, url: URL.createObjectURL(blob), sizeBytes: blob.size, contentType: blob.type }); };
+            tx.onerror = function () { reject(tx.error); };
+          });
+        });
+      },
+      delete: function (ref) {
+        return openIdb().then(function (idb) {
+          return new Promise(function (resolve, reject) {
+            var tx = idb.transaction('blobs', 'readwrite');
+            tx.objectStore('blobs').delete(ref);
+            tx.oncomplete = function () { resolve({ deleted: true }); };
+            tx.onerror = function () { reject(tx.error); };
+          });
+        });
+      },
+      getUrl: function (id) {
+        if (blobUrlCache[id]) return Promise.resolve(blobUrlCache[id]);
+        return openIdb().then(function (idb) {
+          return new Promise(function (resolve, reject) {
+            var tx = idb.transaction('blobs', 'readonly');
+            var req = tx.objectStore('blobs').get(id);
+            req.onsuccess = function () {
+              if (!req.result) { resolve(null); return; }
+              var url = URL.createObjectURL(req.result);
+              blobUrlCache[id] = url;
+              resolve(url);
+            };
+            req.onerror = function () { reject(req.error); };
+          });
+        });
+      },
+      getBlob: function (id) {
+        return openIdb().then(function (idb) {
+          return new Promise(function (resolve, reject) {
+            var tx = idb.transaction('blobs', 'readonly');
+            var req = tx.objectStore('blobs').get(id);
+            req.onsuccess = function () { resolve(req.result || null); };
+            req.onerror = function () { reject(req.error); };
+          });
+        });
+      }
+    };
+
+    return { db: { doc: docRef, collection: collectionRef }, assets: localAssets };
+  }
+
+  function mapsUrl(origin, destination, waypoints) {
+    var url = 'https://www.google.com/maps/dir/?api=1&travelmode=driving';
+    url += '&origin=' + encodeURIComponent(origin);
+    url += '&destination=' + encodeURIComponent(destination);
+    if (waypoints && waypoints.length) url += '&waypoints=' + waypoints.map(encodeURIComponent).join('|');
+    return url;
+  }
+  function toISODate(dm) {
+    var p = dm.split('/'); var day = p[0], month = p[1];
+    return ((month === '12') ? 2026 : 2027) + '-' + month + '-' + day;
+  }
+  function bookingUrl(city, checkinISO, checkoutISO) {
+    return 'https://www.booking.com/searchresults.html?ss=' + encodeURIComponent(city + ', Brasil') + '&checkin=' + checkinISO + '&checkout=' + checkoutISO;
+  }
+  function escAttr(s) { return String(s == null ? '' : s).replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;'); }
+  var badgeLabel = { fixo: 'ponto fixo', longo: 'trecho longo', decisao: 'decisão de rota', livre: 'dia livre' };
+
+  // ---------- roteiro: baseline + overrides, recomputed cumulative km ----------
+  function effectiveRow(idx) {
+    var base = FLAT_BASE[idx];
+    var o = overrides[String(idx)];
+    return {
+      idx: idx, date: base[0], wd: base[1],
+      route: (o && o.route != null) ? o.route : base[2],
+      note:  (o && o.note  != null) ? o.note  : base[3],
+      via:   (o && o.via   != null) ? o.via   : base[4],
+      km:    (o && o.km    != null) ? Number(o.km) : base[5],
+      tags: base[6], from: base[7], to: base[8],
+      overridden: !!o
+    };
+  }
+  function buildEffectiveList() {
+    var list = [], acum = 0;
+    for (var i = 0; i < FLAT_BASE.length; i++) {
+      var r = effectiveRow(i);
+      acum += (Number(r.km) || 0);
+      r.acum = acum;
+      list.push(r);
+    }
+    return list;
+  }
+  function renderTrecho(el, rows) {
+    el.innerHTML = '';
+    rows.forEach(function (r) {
+      var div = document.createElement('div');
+      div.className = 'day' + (r.tags.indexOf('livre') > -1 ? ' rest' : '');
+      var badges = r.tags.map(function (b) { return '<span class="badge ' + b + '">' + badgeLabel[b] + '</span>'; }).join('');
+      var maplink = (r.from && r.to) ? '<a class="maplink" target="_blank" rel="noopener" href="' + mapsUrl(r.from, r.to, []) + '">Abrir esse trecho no Maps</a>' : '';
+      div.innerHTML =
+        '<div class="date"><span class="wd">' + r.wd + '</span>' + r.date + '</div>' +
+        '<div class="route view-block">' +
+          '<span class="r">' + r.route + '</span>' +
+          (r.note ? '<span class="note">' + r.note + '</span>' : '') +
+          (r.via ? '<span class="via">via ' + r.via + '</span>' : '') +
+          maplink +
+          (badges ? '<span class="badges">' + badges + '</span>' : '') +
+          '<span class="row-actions needs-db"><button type="button" class="edit-toggle">editar</button>' +
+            (r.overridden ? '<button type="button" class="revert-edit" data-idx="' + r.idx + '">reverter</button>' : '') +
+          '</span>' +
+        '</div>' +
+        '<div class="route edit-block">' +
+          '<input class="ef-route" type="text" value="' + escAttr(r.route) + '">' +
+          '<input class="ef-note" type="text" placeholder="observação" value="' + escAttr(r.note) + '">' +
+          '<input class="ef-via" type="text" placeholder="rodovia" value="' + escAttr(r.via) + '">' +
+          '<span class="ef-km-wrap"><input class="ef-km" type="number" step="1" value="' + r.km + '"> km neste dia</span>' +
+          '<span class="row-actions"><button type="button" class="save-edit" data-idx="' + r.idx + '">salvar</button>' +
+          '<button type="button" class="cancel-edit">cancelar</button></span>' +
+        '</div>' +
+        '<div class="km">' + (r.km ? r.km + ' km' : '&mdash;') + '</div>' +
+        '<div class="acum">' + r.acum + ' km</div>' +
+        '<label class="check"><input type="checkbox" id="day-' + r.idx + '"> concluído</label>';
+      el.appendChild(div);
+    });
+  }
+  function renderAll() {
+    var list = buildEffectiveList();
+    Object.keys(SLICES).forEach(function (t) {
+      var r = SLICES[t];
+      renderTrecho(document.getElementById(t), list.slice(r[0], r[1]));
+    });
+    reapplyCheckboxState();
+  }
+  function reapplyCheckboxState() {
+    document.querySelectorAll('.check input').forEach(function (box) {
+      var key = 'roteiro-rj-ne-' + box.id;
+      try { if (localStorage.getItem(key) === '1') box.checked = true; } catch (e) {}
+      box.addEventListener('change', function () {
+        try { localStorage.setItem(key, box.checked ? '1' : '0'); } catch (e) {}
+      });
+    });
+  }
+  function saveOverride(idx, data) {
+    if (!db) return;
+    data.updatedAt = new Date().toISOString();
+    db.doc('roteiro/day-' + idx).set(data).catch(function (e) { console.error(e); });
+  }
+  function revertOverride(idx) {
+    if (!db) return;
+    db.doc('roteiro/day-' + idx).delete().catch(function (e) { console.error(e); });
+  }
+  function watchRoteiro() {
+    if (!db) return;
+    db.collection('roteiro').onSnapshot(function (qs) {
+      var next = {};
+      qs.docs.forEach(function (d) { next[d.id.replace('day-', '')] = d.data(); });
+      overrides = next;
+      renderAll();
+    }, function (err) { console.error(err); });
+  }
+
+  // ---------- scores ----------
+  function effectiveScore(t) {
+    var o = scoreOverrides[t] || {}, b = SCORE_BASE[t];
+    return {
+      estrada: (o.estrada != null ? Number(o.estrada) : b.estrada),
+      paradas: (o.paradas != null ? Number(o.paradas) : b.paradas),
+      beleza:  (o.beleza  != null ? Number(o.beleza)  : b.beleza)
+    };
+  }
+  function weighted(s) { return s.estrada * 0.4 + s.paradas * 0.3 + s.beleza * 0.3; }
+  function renderScore(t) {
+    var s = effectiveScore(t);
+    var el = document.getElementById('score-' + t);
+    if (!el) return;
+    el.querySelector('.score-sq.estrada input').value = s.estrada;
+    el.querySelector('.score-sq.paradas input').value = s.paradas;
+    el.querySelector('.score-sq.beleza input').value = s.beleza;
+    el.querySelector('.score-final .val').textContent = weighted(s).toFixed(1);
+  }
+  function saveScore(t, crit, val) {
+    if (!db) return;
+    var current = effectiveScore(t);
+    current[crit] = val;
+    current.updatedAt = new Date().toISOString();
+    db.doc('avaliacao/' + t).set(current).catch(function (e) { console.error(e); });
+  }
+  function watchScores() {
+    if (!db) return;
+    ['t1', 't2', 't3', 't4'].forEach(function (t) {
+      db.doc('avaliacao/' + t).onSnapshot(function (snap) {
+        scoreOverrides[t] = snap.exists ? snap.data() : {};
+        renderScore(t);
+      }, function (err) { console.error(err); });
+    });
+  }
+  ['t1', 't2', 't3', 't4'].forEach(renderScore); // paint baseline scores immediately
+
+  // ---------- stop cards (hospedagem + fotos) ----------
+  function renderStops(containerId, stops) {
+    var el = document.getElementById(containerId);
+    stops.forEach(function (stop) {
+      var checkin = toISODate(stop.arrive), checkout = toISODate(stop.depart);
+      var card = document.createElement('div');
+      card.className = 'stop-card';
+      var head = '<div class="stop-head"><span class="stop-city">' + stop.city + '<span class="uf">' + stop.uf + '</span></span>' +
+        '<span class="stop-dates">' + stop.arrive + ' → ' + stop.depart + '</span></div>';
+      var hosp = stop.family
+        ? '<span class="family-badge">casa da família</span>'
+        : '<div class="hosp-row needs-db">' +
+            '<a class="btn ghost" target="_blank" rel="noopener" href="' + bookingUrl(stop.city, checkin, checkout) + '">Buscar no Booking</a>' +
+            '<span class="hosp-edit"><input type="url" placeholder="Link da reserva" id="hosp-input-' + stop.slug + '">' +
+            '<button class="btn" type="button" data-hosp-save="' + stop.slug + '">Salvar</button></span>' +
+            '<span class="hosp-saved" id="hosp-saved-' + stop.slug + '" hidden></span></div>';
+      var fotos = '<div class="photo-row">' +
+        '<div class="photo-grid" id="fotos-' + stop.slug + '"></div>' +
+        '<label class="photo-add needs-db">+ foto<input type="file" accept="image/*" hidden data-photo-slug="' + stop.slug + '"></label>' +
+        '</div>';
+      card.innerHTML = head + hosp + fotos;
+      el.appendChild(card);
+    });
+  }
+  renderStops('stops-t1', STOPS.t1);
+  renderStops('stops-t2', STOPS.t2);
+  renderStops('stops-t3', STOPS.t3);
+  renderStops('stops-t4', STOPS.t4);
+
+  function saveHospedagem(slug, url) {
+    if (!db) return;
+    db.doc('hospedagem/' + slug).set({ url: url, updatedAt: new Date().toISOString() }).catch(function (e) { console.error(e); });
+  }
+  function watchHospedagem(slug) {
+    if (!db) return;
+    db.doc('hospedagem/' + slug).onSnapshot(function (snap) {
+      var savedEl = document.getElementById('hosp-saved-' + slug);
+      if (!savedEl) return;
+      if (snap.exists && snap.data().url) {
+        savedEl.hidden = false;
+        savedEl.innerHTML = '<a target="_blank" rel="noopener" href="' + snap.data().url + '">reserva salva ✓ ver</a>';
+      } else { savedEl.hidden = true; }
+    }, function (err) { console.error(err); });
+  }
+  function addPhoto(slug, file) {
+    if (!assetsCap || !db) return;
+    assetsCap.upload(file).then(function (res) {
+      return db.doc('fotos/' + slug).collection('items').add({ assetId: res.id, addedAt: new Date().toISOString() });
+    }).catch(function (e) { console.error(e); });
+  }
+  function deletePhoto(slug, itemId, assetId) {
+    if (!db) return;
+    if (!window.confirm('Remover esta foto?')) return;
+    db.doc('fotos/' + slug).collection('items').doc(itemId).delete().catch(function (e) { console.error(e); });
+    if (assetsCap) assetsCap.delete(assetId).catch(function (e) { console.error(e); });
+  }
+  function watchFotos(slug) {
+    if (!db) return;
+    db.doc('fotos/' + slug).collection('items').orderBy('addedAt', 'asc').onSnapshot(function (qs) {
+      var grid = document.getElementById('fotos-' + slug);
+      if (!grid) return;
+      grid.innerHTML = '';
+      qs.docs.forEach(function (d) {
+        var data = d.data();
+        var wrap = document.createElement('div');
+        wrap.className = 'photo-thumb-wrap';
+        wrap.innerHTML =
+          '<a class="photo-thumb" target="_blank" rel="noopener"><img loading="lazy" alt="foto"></a>' +
+          '<button type="button" class="photo-del" data-slug="' + slug + '" data-item="' + d.id + '" data-asset="' + data.assetId + '" title="remover foto">×</button>';
+        grid.appendChild(wrap);
+        var imgEl = wrap.querySelector('img'), aEl = wrap.querySelector('a');
+        if (assetsIsLocal && assetsCap && assetsCap.getUrl) {
+          assetsCap.getUrl(data.assetId).then(function (url) {
+            if (url) { imgEl.src = url; aEl.href = url; }
+          });
+        } else {
+          var blobUrl = '/_blob/' + data.assetId;
+          imgEl.src = blobUrl; aEl.href = blobUrl;
+        }
+      });
+    }, function (err) { console.error(err); });
+  }
+
+  // ---------- abastecimento ----------
+  function initFuelForm() {
+    var form = document.getElementById('fuel-form');
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      if (!db) return;
+      var km = parseFloat(document.getElementById('fuel-km').value);
+      var litros = parseFloat(document.getElementById('fuel-litros').value);
+      var valor = parseFloat(document.getElementById('fuel-valor').value);
+      var data = document.getElementById('fuel-data').value;
+      var local = document.getElementById('fuel-local').value.trim();
+      if (!isFinite(km) || !isFinite(litros) || !isFinite(valor)) return;
+      db.collection('abastecimentos').add({ km: km, litros: litros, valor: valor, local: local, data: data, createdAt: new Date().toISOString() })
+        .then(function () { form.reset(); }).catch(function (e) { console.error(e); });
+    });
+  }
+  function watchFuel() {
+    if (!db) return;
+    db.collection('abastecimentos').orderBy('km', 'asc').onSnapshot(function (qs) {
+      var list = document.getElementById('fuel-list');
+      var empty = document.getElementById('fuel-empty');
+      list.innerHTML = '';
+      empty.hidden = qs.size > 0;
+      var prevKm = null, totalValor = 0, totalLitros = 0, consumos = [];
+      qs.docs.forEach(function (d) {
+        var v = d.data();
+        totalValor += (v.valor || 0);
+        totalLitros += (v.litros || 0);
+        var consumo = null;
+        if (prevKm !== null && v.litros) {
+          var c = (v.km - prevKm) / v.litros;
+          if (isFinite(c) && c > 0) { consumo = c; consumos.push(c); }
+        }
+        var row = document.createElement('div');
+        row.className = 'day';
+        row.innerHTML =
+          '<div class="date"><span class="wd">' + (v.data ? new Date(v.data + 'T00:00:00').toLocaleDateString('pt-BR') : '') + '</span></div>' +
+          '<div class="route"><span class="r">' + v.km + ' km' + (v.local ? ' · ' + v.local : '') + '</span>' +
+          '<span class="note">' + v.litros + ' L · R$ ' + Number(v.valor).toFixed(2) + (consumo ? ' · ' + consumo.toFixed(1) + ' km/l' : '') + '</span></div>' +
+          '<div class="km"></div><div class="acum"></div>';
+        list.appendChild(row);
+        prevKm = v.km;
+      });
+      document.getElementById('fuel-total-valor').textContent = 'R$ ' + totalValor.toFixed(0);
+      document.getElementById('fuel-total-litros').textContent = totalLitros.toFixed(1);
+      document.getElementById('fuel-media').textContent = consumos.length ? (consumos.reduce(function (a, b) { return a + b; }, 0) / consumos.length).toFixed(1) : '—';
+    }, function (err) { console.error(err); });
+  }
+
+  // ---------- export / import (juntar dados de dois navegadores/aparelhos) ----------
+  function blobToDataUrl(blob) {
+    return new Promise(function (resolve, reject) {
+      var fr = new FileReader();
+      fr.onload = function () { resolve(fr.result); };
+      fr.onerror = function () { reject(fr.error); };
+      fr.readAsDataURL(blob);
+    });
+  }
+  function dataUrlToBlob(dataUrl) { return fetch(dataUrl).then(function (r) { return r.blob(); }); }
+  function assetToDataUrl(assetId) {
+    if (assetsIsLocal && localCap) {
+      return localCap.assets.getBlob(assetId).then(function (blob) { return blob ? blobToDataUrl(blob) : null; });
+    }
+    return fetch('/_blob/' + assetId).then(function (r) { return r.ok ? r.blob() : null; })
+      .then(function (b) { return b ? blobToDataUrl(b) : null; }).catch(function () { return null; });
+  }
+
+  async function buildExport() {
+    var out = { exportedAt: new Date().toISOString(), roteiro: {}, avaliacao: {}, hospedagem: {}, fotos: {}, abastecimentos: [] };
+    var roteiroSnap = await db.collection('roteiro').get();
+    roteiroSnap.docs.forEach(function (d) { out.roteiro[d.id] = d.data(); });
+    for (var i = 0; i < 4; i++) {
+      var t = 't' + (i + 1);
+      var s = await db.doc('avaliacao/' + t).get();
+      if (s.exists) out.avaliacao[t] = s.data();
+    }
+    for (var j = 0; j < ALL_STOPS.length; j++) {
+      var stop = ALL_STOPS[j];
+      if (!stop.family) {
+        var hs = await db.doc('hospedagem/' + stop.slug).get();
+        if (hs.exists) out.hospedagem[stop.slug] = hs.data();
+      }
+      var itemsSnap = await db.doc('fotos/' + stop.slug).collection('items').get();
+      if (itemsSnap.docs.length) {
+        var arr = [];
+        for (var k = 0; k < itemsSnap.docs.length; k++) {
+          var item = itemsSnap.docs[k].data();
+          var dataUrl = await assetToDataUrl(item.assetId);
+          if (dataUrl) arr.push({ addedAt: item.addedAt, dataUrl: dataUrl });
+        }
+        if (arr.length) out.fotos[stop.slug] = arr;
+      }
+    }
+    var fuelSnap = await db.collection('abastecimentos').get();
+    fuelSnap.docs.forEach(function (d) { out.abastecimentos.push(d.data()); });
+    return out;
+  }
+
+  async function mergeImport(incoming) {
+    if (incoming.roteiro) {
+      for (var id in incoming.roteiro) await db.doc('roteiro/' + id).set(incoming.roteiro[id]);
+    }
+    if (incoming.avaliacao) {
+      for (var t in incoming.avaliacao) await db.doc('avaliacao/' + t).set(incoming.avaliacao[t]);
+    }
+    if (incoming.hospedagem) {
+      for (var slug in incoming.hospedagem) await db.doc('hospedagem/' + slug).set(incoming.hospedagem[slug]);
+    }
+    if (incoming.fotos && assetsCap) {
+      for (var slug2 in incoming.fotos) {
+        var list = incoming.fotos[slug2];
+        for (var k = 0; k < list.length; k++) {
+          var blob = await dataUrlToBlob(list[k].dataUrl);
+          var res = await assetsCap.upload(blob);
+          await db.doc('fotos/' + slug2).collection('items').add({ assetId: res.id, addedAt: list[k].addedAt || new Date().toISOString() });
+        }
+      }
+    }
+    if (incoming.abastecimentos && incoming.abastecimentos.length) {
+      for (var m = 0; m < incoming.abastecimentos.length; m++) await db.collection('abastecimentos').add(incoming.abastecimentos[m]);
+    }
+  }
+
+  function initSyncPanel() {
+    var exportBtn = document.getElementById('sync-export-btn');
+    if (!exportBtn) return;
+    var exportText = document.getElementById('sync-export-text');
+    var downloadLink = document.getElementById('sync-download-link');
+    var importFile = document.getElementById('sync-import-file');
+    var importText = document.getElementById('sync-import-text');
+    var importBtn = document.getElementById('sync-import-btn');
+    var statusEl = document.getElementById('sync-status');
+
+    exportBtn.addEventListener('click', function () {
+      statusEl.textContent = 'gerando…';
+      buildExport().then(function (out) {
+        var json = JSON.stringify(out);
+        exportText.value = json;
+        exportText.hidden = false;
+        var filename = 'roteiro-dados-' + Date.now() + '.json';
+        if (downloadsCap) {
+          // running inside Claude: the viewer sandbox blocks plain <a download>,
+          // so hand the file over through the downloads capability instead
+          downloadsCap.save({ filename: filename, data: json }).then(function () {
+            statusEl.textContent = 'arquivo salvo — leve para onde quiserem juntar os dados (ou copie o texto acima).';
+          }).catch(function (e) {
+            console.error(e);
+            statusEl.textContent = (e && e.code === 'declined')
+              ? 'download cancelado — o texto acima continua disponível para copiar.'
+              : 'não consegui salvar o arquivo — copie o texto acima manualmente.';
+          });
+        } else {
+          var blob = new Blob([json], { type: 'application/json' });
+          var url = URL.createObjectURL(blob);
+          downloadLink.href = url;
+          downloadLink.setAttribute('download', filename);
+          downloadLink.hidden = false;
+          statusEl.textContent = 'pronto — baixe o arquivo (ou copie o texto acima) e leve para onde quiserem juntar os dados.';
+        }
+      }).catch(function (e) { console.error(e); statusEl.textContent = 'não consegui gerar a exportação — veja o console.'; });
+    });
+
+    function runImport(text) {
+      var incoming;
+      try { incoming = JSON.parse(text); } catch (e) { statusEl.textContent = 'esse texto não é um JSON válido.'; return; }
+      statusEl.textContent = 'importando…';
+      mergeImport(incoming).then(function () {
+        statusEl.textContent = 'importado e mesclado com sucesso — o roteiro acima já foi atualizado.';
+        importText.value = '';
+      }).catch(function (e) { console.error(e); statusEl.textContent = 'algo falhou durante a importação — veja o console.'; });
+    }
+    importBtn.addEventListener('click', function () {
+      var text = importText.value.trim();
+      if (text) { runImport(text); return; }
+      statusEl.textContent = 'cole o JSON exportado ou escolha um arquivo.';
+    });
+    importFile.addEventListener('change', function () {
+      var file = importFile.files[0];
+      if (!file) return;
+      var reader = new FileReader();
+      reader.onload = function () { runImport(reader.result); };
+      reader.readAsText(file);
+      importFile.value = '';
+    });
+  }
+
+  // ---------- event delegation ----------
+  document.body.addEventListener('click', function (e) {
+    var t;
+    if ((t = e.target.closest('.edit-toggle'))) { t.closest('.day').classList.add('editing'); return; }
+    if ((t = e.target.closest('.cancel-edit'))) { t.closest('.day').classList.remove('editing'); return; }
+    if ((t = e.target.closest('.save-edit'))) {
+      var row = t.closest('.day');
+      var idx = t.getAttribute('data-idx');
+      saveOverride(idx, {
+        route: row.querySelector('.ef-route').value.trim(),
+        note: row.querySelector('.ef-note').value.trim(),
+        via: row.querySelector('.ef-via').value.trim(),
+        km: parseFloat(row.querySelector('.ef-km').value) || 0
+      });
+      row.classList.remove('editing');
+      return;
+    }
+    if ((t = e.target.closest('.revert-edit'))) { revertOverride(t.getAttribute('data-idx')); return; }
+    if ((t = e.target.closest('[data-hosp-save]'))) {
+      var slug = t.getAttribute('data-hosp-save');
+      var input = document.getElementById('hosp-input-' + slug);
+      var url = input && input.value.trim();
+      if (url) saveHospedagem(slug, url);
+      return;
+    }
+    if ((t = e.target.closest('.photo-del'))) {
+      deletePhoto(t.getAttribute('data-slug'), t.getAttribute('data-item'), t.getAttribute('data-asset'));
+      return;
+    }
+  });
+  document.body.addEventListener('change', function (e) {
+    if (e.target.matches('input[type=file][data-photo-slug]')) {
+      var slug = e.target.getAttribute('data-photo-slug');
+      var file = e.target.files[0];
+      if (file) addPhoto(slug, file);
+      e.target.value = '';
+      return;
+    }
+    if (e.target.matches('input[data-score]')) {
+      var tId = e.target.getAttribute('data-score');
+      var crit = e.target.getAttribute('data-crit');
+      var val = parseFloat(e.target.value);
+      if (!isFinite(val)) return;
+      val = Math.max(0, Math.min(10, val));
+      saveScore(tId, crit, val);
+    }
+  });
+
+  // ---------- route strip (major overnight stops only) ----------
+  var nodes = [
+    ['Rio de Janeiro','RJ', true], [440,'Belo Horizonte','MG', false],
+    [1020,'Barreiras','BA', false], [758,'Petrolina','PE', true],
+    [730,'Caxias','MA', true], [380,'Barreirinhas','MA', false],
+    [330,'Jericoacoara','CE', false], [300,'Fortaleza','CE', false],
+    [688,'João Pessoa','PB', true], [120,'Recife','PE', true],
+    [215,'Japaratinga','AL', false], [90,'Maceió','AL', false],
+    [640,'Salvador','BA', false], [660,'Porto Seguro','BA', false],
+    [330,'Vitória da Conquista','BA', true], [1120,'Rio de Janeiro','RJ', true]
+  ];
+  var strip = document.getElementById('strip');
+  var maxLog = Math.log(1120);
+  nodes.forEach(function (item, i) {
+    if (i === 0) { strip.appendChild(makeNode(item[0], item[1], item[2])); }
+    else {
+      var km = item[0], city = item[1], uf = item[2], fixed = item[3];
+      var seg = document.createElement('div');
+      seg.className = 'seg';
+      seg.style.width = (40 + (Math.log(km) / maxLog) * 130) + 'px';
+      seg.innerHTML = '<span class="km">' + km + ' km</span><div class="bar" style="width:100%"></div>';
+      strip.appendChild(seg);
+      strip.appendChild(makeNode(city, uf, fixed));
+    }
+  });
+  function makeNode(city, uf, fixed) {
+    var d = document.createElement('div');
+    d.className = 'node' + (fixed ? ' fixed' : '');
+    d.innerHTML = '<span class="dot"></span><span class="city">' + city + '</span><span class="uf">' + uf + '</span>';
+    return d;
+  }
+  ['t1', 't2', 't3', 't4'].forEach(function (t) {
+    var r = TRECHO_ROUTE[t];
+    var a = document.getElementById('map-' + t);
+    if (a) a.href = mapsUrl(r.origin, r.destination, r.waypoints);
+  });
+
+  renderAll(); // paint the baseline immediately, before any capability resolves
+
+  // ---------- capability bootstrap ----------
+  (async function () {
+    var claudeDb = null, claudeAssets = null;
+    try { claudeDb = (window.claude && window.claude.use) ? await window.claude.use('db') : null; } catch (e) { claudeDb = null; }
+    try { claudeAssets = (window.claude && window.claude.use) ? await window.claude.use('assets') : null; } catch (e) { claudeAssets = null; }
+    try { downloadsCap = (window.claude && window.claude.use) ? await window.claude.use('downloads') : null; } catch (e) { downloadsCap = null; }
+
+    if (claudeDb) {
+      // running inside Claude, on the hosted artifact: edits sync live across every viewer/device
+      db = claudeDb;
+      assetsCap = claudeAssets;
+    } else {
+      // no Claude backend on this page (a static copy, e.g. published on GitHub Pages) —
+      // fall back to a per-browser store so editing still works, just without cross-device sync
+      var local = makeLocalCapabilities();
+      db = local.db;
+      assetsIsLocal = true;
+      localCap = local;
+      assetsCap = window.indexedDB ? local.assets : null;
+      var noteEl = document.getElementById('local-mode-note');
+      if (noteEl) noteEl.hidden = false;
+    }
+
+    watchRoteiro();
+    watchScores();
+    ALL_STOPS.forEach(function (s) { if (!s.family) watchHospedagem(s.slug); watchFotos(s.slug); });
+    watchFuel();
+    initFuelForm();
+    initSyncPanel();
+
+    if (!assetsCap) {
+      document.querySelectorAll('.photo-add').forEach(function (el) { el.classList.add('offline'); });
+    }
+  })();
+})();
+</script>
