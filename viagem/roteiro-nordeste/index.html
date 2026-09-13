@@ -267,8 +267,9 @@
   .maplink {
     font-family: var(--font-mono); font-size: 0.74rem; color: var(--accent); text-decoration: none;
     border-bottom: 1px dotted var(--accent); width: fit-content; margin-top: 2px;
-    min-height: 32px; display: inline-flex; align-items: center;
+    min-height: 32px; display: inline-flex; align-items: center; gap: 5px;
   }
+  .ico-maps { width: 15px; height: 15px; flex: 0 0 auto; stroke: currentColor; fill: none; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
 
   /* ---------- Day rows — a stacked field card, not a dense table ---------- */
   .days { display: flex; flex-direction: column; border-top: 1px solid var(--border); }
@@ -327,6 +328,8 @@
     font-family: var(--font-mono); font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.04em;
     color: var(--ok); border: 1px solid var(--ok); padding: 5px 9px; border-radius: 4px; width: fit-content;
   }
+  .hosp-toggle-row { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+  .btn.sm { padding: 7px 10px; font-size: 0.68rem; min-height: 34px; }
   .hosp-row { display: flex; flex-direction: column; gap: 8px; }
   .hosp-edit { display: flex; flex-wrap: wrap; gap: 8px; }
   .hosp-edit input { flex: 1 1 160px; min-width: 0; padding: 10px 10px; border: 1px solid var(--border); background: var(--paper); color: var(--ink); border-radius: 6px; min-height: 44px; }
@@ -365,6 +368,13 @@
 
   .help-list { display: flex; flex-direction: column; gap: 12px; font-size: 0.94rem; color: var(--muted); }
   .help-list b { color: var(--ink); }
+  .plain-select {
+    padding: 11px 10px; border: 1px solid var(--border); background: var(--paper); color: var(--ink);
+    border-radius: 6px; min-height: 44px; font-size: 16px; width: 100%;
+    appearance: none; -webkit-appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2357665c' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+    background-repeat: no-repeat; background-position: right 10px center; background-size: 18px; padding-right: 34px;
+  }
 
   /* ======================================================================
      Notebook — exceptional use: the same shell, just more room around it.
@@ -411,7 +421,6 @@
         <div class="stat"><span class="n">~11</span><span class="l">estados</span></div>
         <div class="stat"><span class="n">7</span><span class="l">pontos de controle fixos</span></div>
       </div>
-      <p class="score-caption" style="margin-top:-8px">tempo de estrada = km ÷ velocidade média típica estimada por trecho (não inclui paradas) &mdash; recalcula sozinho se vocês editarem km ou velocidade de algum dia</p>
 
       <section>
         <p class="strip-title">Sequência da rota (esquemático &mdash; comprimento das barras em escala logarítmica de km)</p>
@@ -428,7 +437,7 @@
             <span class="trecho-acc-head-text">
               <span class="trecho-num">TRECHO 01</span>
               <span class="trecho-acc-title">Rio → Petrolina</span>
-              <span class="trecho-acc-meta">26 a 29/12 · 4 dias · <span class="tm-km" data-t="t1">~1.923 km</span></span>
+              <span class="trecho-acc-meta"><span class="tm-dates" data-t="t1">26 a 29/12</span> · <span class="tm-days" data-t="t1">4 dias</span> · <span class="tm-km" data-t="t1">~1.923 km</span></span>
             </span>
             <svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
           </button>
@@ -443,20 +452,20 @@
               <p class="score-caption">amarelo = estrada (40%) · vermelho = paradas (30%) · branco = beleza (30%) &mdash; avaliação inicial minha, editável</p>
             </div>
             <div class="callout">
-              <span class="t">Por que BR-116 em vez de Montes Claros/BR-135</span>
-              O caminho antigo (BH → Montes Claros → Barreiras, BR-135) tem estrada de terra confirmada: ~48&nbsp;km entre Itacarambi/São João das Missões e Manga (norte de MG), e outro trecho não pavimentado no oeste da Bahia perto de Correntina/São Desidério/Jaborandi. A BR-116 (Rio–Bahia), por Governador Valadares, Vitória da Conquista e Feira de Santana, é rodovia federal principal, com praça de pedágio e obras de concessão em andamento — sem relatos de trechos sem asfalto nesse percurso. De quebra, o total cai de ~2.218&nbsp;km para ~1.923&nbsp;km, sem precisar de dia extra nem mexer no resto do calendário.
+              <span class="t">BR-116 (Rio–Bahia)</span>
+              Rodovia federal principal ao longo de todo o trecho, com praça de pedágio e obras de concessão em andamento entre Governador Valadares e Feira de Santana &mdash; sem trechos sem asfalto no percurso.
             </div>
             <div class="callout">
               <span class="t">Ritmo</span>
-              Quatro dias para ~1.923&nbsp;km dá uma média de ~481&nbsp;km/dia, bem mais equilibrada que antes: dois dias de ~560&nbsp;km (Rio → Governador Valadares e Governador Valadares → Vitória da Conquista, no limite excepcional) e dois de ~400&nbsp;km. Nenhum dia isolado tão extremo quanto o antigo salto de 758&nbsp;km.
+              Quatro dias para ~1.923&nbsp;km, média de ~481&nbsp;km/dia: dois dias de ~560&nbsp;km (Rio → Governador Valadares e Governador Valadares → Vitória da Conquista, no limite excepcional de 650&nbsp;km/dia) e dois de ~400&nbsp;km.
             </div>
             <div class="callout">
               <span class="t">Repetição de estrada</span>
-              Este trecho reaproveita o mesmo corredor (BR-116, Governador Valadares ↔ Vitória da Conquista) usado na volta, no trecho 4 &mdash; ou seja, vocês passam pela BR-116 e por Vitória da Conquista duas vezes na viagem (ida em 27&ndash;28/12, volta em 25&ndash;29/1). Se preferirem uma rota diferente na ida para não repetir a estrada, é só avisar.
+              Este trecho reaproveita o mesmo corredor (BR-116, Governador Valadares ↔ Vitória da Conquista) usado na volta, no trecho 5 &mdash; ou seja, vocês passam pela BR-116 e por Vitória da Conquista duas vezes na viagem.
             </div>
             <div class="map-card">
               <div class="route-line"><b>Rio de Janeiro</b> → Governador Valadares → Vitória da Conquista → Feira de Santana → <b>Petrolina</b></div>
-              <a class="btn" target="_blank" rel="noopener" id="map-t1">Abrir rota completa no Google Maps</a>
+              <a class="btn" target="_blank" rel="noopener" id="map-t1"><svg class="ico-maps" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s7-7.2 7-12.5A7 7 0 1 0 5 8.5C5 13.8 12 21 12 21z"/><circle cx="12" cy="8.5" r="2.5"/></svg>Ver no Google Maps</a>
             </div>
             <div class="days" id="t1"></div>
           </div>
@@ -468,7 +477,7 @@
             <span class="trecho-acc-head-text">
               <span class="trecho-num">TRECHO 02</span>
               <span class="trecho-acc-title">Petrolina → Picos → Caxias (MA)</span>
-              <span class="trecho-acc-meta">30 a 31/12 · 2 dias · <span class="tm-km" data-t="t2">~730 km</span></span>
+              <span class="trecho-acc-meta"><span class="tm-dates" data-t="t2">30 a 31/12</span> · <span class="tm-days" data-t="t2">2 dias</span> · <span class="tm-km" data-t="t2">~730 km</span></span>
             </span>
             <svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
           </button>
@@ -484,11 +493,11 @@
             </div>
             <div class="callout">
               <span class="t">Petrolina → Picos → Caxias</span>
-              Parada intermediária em Picos (PI) quebra os 730&nbsp;km em dois dias, nenhum acima de 550&nbsp;km: 30/12 Petrolina → Picos (~320&nbsp;km) e 31/12 Picos → Caxias (~410&nbsp;km), chegando a tempo do Réveillon. É pista simples pelo sertão de PE/PI/MA, com trechos retos e postos mais espaçados &mdash; abasteçam sempre que possível, principalmente no dia 31, com postos fechando mais cedo na véspera. Caxias fica com 1 dia livre (1/1) antes da saída em 2/1.
+              Parada intermediária em Picos (PI) quebra os 730&nbsp;km em dois dias, nenhum acima de 550&nbsp;km: Petrolina → Picos (~320&nbsp;km) e Picos → Caxias (~410&nbsp;km), chegando a tempo do Réveillon. É pista simples pelo sertão de PE/PI/MA, com trechos retos e postos mais espaçados &mdash; abasteçam sempre que possível, principalmente no último dia, com postos fechando mais cedo na véspera.
             </div>
             <div class="map-card">
               <div class="route-line"><b>Petrolina</b> → Picos → <b>Caxias (MA)</b></div>
-              <a class="btn" target="_blank" rel="noopener" id="map-t2">Abrir rota no Google Maps</a>
+              <a class="btn" target="_blank" rel="noopener" id="map-t2"><svg class="ico-maps" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s7-7.2 7-12.5A7 7 0 1 0 5 8.5C5 13.8 12 21 12 21z"/><circle cx="12" cy="8.5" r="2.5"/></svg>Ver no Google Maps</a>
             </div>
             <div class="days" id="t2"></div>
           </div>
@@ -500,7 +509,7 @@
             <span class="trecho-acc-head-text">
               <span class="trecho-num">TRECHO 03</span>
               <span class="trecho-acc-title">Caxias → Recife</span>
-              <span class="trecho-acc-meta">1/1 a 14/1 · 14 dias · <span class="tm-km" data-t="t3">~2.173 km</span></span>
+              <span class="trecho-acc-meta"><span class="tm-dates" data-t="t3">1/1 a 14/1</span> · <span class="tm-days" data-t="t3">14 dias</span> · <span class="tm-km" data-t="t3">~2.173 km</span></span>
             </span>
             <svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
           </button>
@@ -520,12 +529,12 @@
               A Rota das Emoções tradicional (Tutóia, balsas, dunas) tem trechos de areia entre Tutóia e Barreirinhas, e o acesso à vila de Jericoacoara nunca é 100% pavimentado (últimos ~23&nbsp;km sempre em duna, mesmo de 4x4). Por isso o trajeto vai pelo interior, 100% asfalto: Barreirinhas → Sobral (~520&nbsp;km, BR-222) → Jijoca de Jericoacoara (~165&nbsp;km, CE-187/CE-085). Jijoca tem pousadas normais e acesso de moto; para conhecer a vila e as dunas, deixem a moto estacionada em Jijoca e façam o passeio de bugueiro/mototáxi local como passageiros.
             </div>
             <div class="callout">
-              <span class="t">Fortaleza → João Pessoa (688 km) &mdash; terceiro dia mais longo do roteiro</span>
-              Salto único passando perto de Natal (parada rápida, sem pernoite), acima de 650&nbsp;km, para manter a chegada em João Pessoa em 8/1.
+              <span class="t">Fortaleza → João Pessoa (688 km)</span>
+              Salto único passando perto de Natal (parada rápida, sem pernoite), acima de 650&nbsp;km &mdash; o maior dia de estrada do roteiro.
             </div>
             <div class="map-card">
               <div class="route-line"><b>Caxias</b> → Barreirinhas → Sobral → Jijoca de Jericoacoara → Fortaleza → João Pessoa → <b>Recife</b></div>
-              <a class="btn" target="_blank" rel="noopener" id="map-t3">Abrir rota completa no Google Maps</a>
+              <a class="btn" target="_blank" rel="noopener" id="map-t3"><svg class="ico-maps" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s7-7.2 7-12.5A7 7 0 1 0 5 8.5C5 13.8 12 21 12 21z"/><circle cx="12" cy="8.5" r="2.5"/></svg>Ver no Google Maps</a>
             </div>
             <div class="days" id="t3"></div>
           </div>
@@ -537,7 +546,7 @@
             <span class="trecho-acc-head-text">
               <span class="trecho-num">TRECHO 04</span>
               <span class="trecho-acc-title">Recife → Vitória da Conquista</span>
-              <span class="trecho-acc-meta">15/1 a 25/1 · 11 dias · <span class="tm-km" data-t="t4">~1.935 km</span></span>
+              <span class="trecho-acc-meta"><span class="tm-dates" data-t="t4">15/1 a 25/1</span> · <span class="tm-days" data-t="t4">11 dias</span> · <span class="tm-km" data-t="t4">~1.935 km</span></span>
             </span>
             <svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
           </button>
@@ -558,7 +567,7 @@
             </div>
             <div class="map-card">
               <div class="route-line"><b>Recife</b> → Porto de Galinhas → Japaratinga → Maceió → Aracaju → Salvador → Praia do Forte → Ilhéus → Porto Seguro → <b>Vitória da Conquista</b></div>
-              <a class="btn" target="_blank" rel="noopener" id="map-t4">Abrir rota completa no Google Maps</a>
+              <a class="btn" target="_blank" rel="noopener" id="map-t4"><svg class="ico-maps" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s7-7.2 7-12.5A7 7 0 1 0 5 8.5C5 13.8 12 21 12 21z"/><circle cx="12" cy="8.5" r="2.5"/></svg>Ver no Google Maps</a>
             </div>
             <div class="days" id="t4"></div>
           </div>
@@ -570,7 +579,7 @@
             <span class="trecho-acc-head-text">
               <span class="trecho-num">TRECHO 05</span>
               <span class="trecho-acc-title">Vitória da Conquista → Rio (retorno)</span>
-              <span class="trecho-acc-meta">26/1 a 1/2 · 7 dias · <span class="tm-km" data-t="t5">~1.120 km</span></span>
+              <span class="trecho-acc-meta"><span class="tm-dates" data-t="t5">26/1 a 1/2</span> · <span class="tm-days" data-t="t5">7 dias</span> · <span class="tm-km" data-t="t5">~1.120 km</span></span>
             </span>
             <svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
           </button>
@@ -585,17 +594,17 @@
               </div>
               <p class="score-caption">trecho de retorno direto, sem paradas turísticas planejadas &mdash; mesmo corredor (BR-116) do trecho 1, sentido contrário</p>
             </div>
-            <div class="callout deco">
-              <span class="t">Vitória da Conquista: 3 dias livres</span>
-              Descanso mais longo antes da reta final de volta ao Rio. O roteiro fecha em 31/1, deixando 1/2 como margem de segurança.
+            <div class="callout deco" id="t5-callout-vdc">
+              <span class="t">Vitória da Conquista: descanso antes da reta final</span>
+              Último descanso mais longo antes da volta direta ao Rio.
             </div>
             <div class="callout">
               <span class="t">Mesma estrada do trecho 1, sentido contrário</span>
-              Governador Valadares → Vitória da Conquista (ida, trecho 1) e Vitória da Conquista → Governador Valadares (volta, aqui) usam o mesmo corredor da BR-116. O dia 29/1 (560&nbsp;km) fica no limite excepcional de 650&nbsp;km/dia.
+              Governador Valadares → Vitória da Conquista (ida, trecho 1) e Vitória da Conquista → Governador Valadares (volta, aqui) usam o mesmo corredor da BR-116. O primeiro dia da volta (560&nbsp;km) fica no limite excepcional de 650&nbsp;km/dia.
             </div>
             <div class="map-card">
               <div class="route-line"><b>Vitória da Conquista</b> → Governador Valadares → Além Paraíba → <b>Rio de Janeiro</b></div>
-              <a class="btn" target="_blank" rel="noopener" id="map-t5">Abrir rota completa no Google Maps</a>
+              <a class="btn" target="_blank" rel="noopener" id="map-t5"><svg class="ico-maps" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s7-7.2 7-12.5A7 7 0 1 0 5 8.5C5 13.8 12 21 12 21z"/><circle cx="12" cy="8.5" r="2.5"/></svg>Ver no Google Maps</a>
             </div>
             <div class="days" id="t5"></div>
           </div>
@@ -607,7 +616,7 @@
     <!-- HOSPEDAGEM & FOTOS -->
     <section class="panel shell-col" id="panel-hospedagem" data-panel="hospedagem" hidden>
       <p class="panel-title">Hospedagem &amp; fotos</p>
-      <p class="panel-intro">Um álbum por parada. Caxias, Fortaleza, Recife e Vitória da Conquista ficam na casa de familiares, sem card de reserva.</p>
+      <p class="panel-intro">Um álbum por parada. Caxias, Fortaleza, Recife e Vitória da Conquista começam marcados como casa de familiares, sem card de reserva &mdash; dá para trocar isso a qualquer momento em cada card.</p>
 
       <div class="stop-group">
         <p class="stop-group-title">Trecho 01 · Rio → Petrolina</p>
@@ -666,6 +675,12 @@
     <section class="panel shell-col" id="panel-ajustes" data-panel="ajustes" hidden>
       <p class="panel-title">Ajustes &amp; dados</p>
 
+      <div class="sync-box">
+        <p class="sync-label">Dia extra de folga</p>
+        <p class="panel-intro" style="margin:0;">O roteiro tem 1 dia de folga "flutuante". Por padrão fica em Vitória da Conquista (4 dias livres lá em vez de 3), com chegada final ao Rio em 1º/2. Escolham outra cidade para movê-lo — as datas seguintes do roteiro se ajustam sozinhas.</p>
+        <select class="plain-select needs-db" id="margin-select"></select>
+      </div>
+
       <div class="sync-grid">
         <div class="sync-box">
           <p class="sync-label">Exportar deste aparelho</p>
@@ -685,9 +700,10 @@
 
       <div class="help-list">
         <p><b>Sobre as distâncias:</b> valores aproximados a partir de fontes públicas de rotas rodoviárias; confirme com Waze/Google Maps/Qualp mais perto da viagem, especialmente em trechos com balsa ou estrada não pavimentada.</p>
-        <p><b>Edição:</b> qualquer linha do roteiro pode ser ajustada (botão "editar", disponível mesmo depois de marcar "concluído"); "reverter" volta à baseline original. Km acumulado, tempo de estrada estimado e os totais no topo (km e horas) recalculam sozinhos. "Concluído" é só um lembrete visual salvo neste aparelho (não sincroniza entre os dois celulares).</p>
+        <p><b>Edição:</b> qualquer linha do roteiro pode ser ajustada (botão "editar", disponível mesmo depois de marcar "concluído"); "reverter" volta à baseline original. Km acumulado, tempo de estrada estimado e os totais no topo (km e horas) recalculam sozinhos &mdash; tempo de estrada = km ÷ velocidade média estimada por dia (não inclui paradas). "Concluído" é só um lembrete visual salvo neste aparelho (não sincroniza entre os dois celulares).</p>
         <p><b>Pontuação:</b> os quadrados de cada trecho são uma avaliação inicial minha (estrada 40%, paradas 30%, beleza 30%) &mdash; editem os números como acharem melhor, a nota final se recalcula sozinha.</p>
-        <p><b>Hospedagem:</b> nos pontos sem família, use "Buscar no Booking" e cole o link da reserva confirmada quando fecharem.</p>
+        <p><b>Dia extra de folga:</b> abaixo, em "Dia extra de folga", escolham em qual cidade ele fica &mdash; todas as datas seguintes do roteiro se ajustam sozinhas. Se alguém já tiver editado manualmente um dia depois da cidade escolhida, confiram se o conteúdo editado ainda corresponde ao dia certo após a mudança.</p>
+        <p><b>Hospedagem:</b> nos pontos sem família, use "Buscar no Booking" e cole o link da reserva confirmada quando fecharem. Caxias, Fortaleza, Recife e Vitória da Conquista começam marcados como casa de familiares — dá para trocar para busca de reserva (ou voltar) a qualquer momento, direto no card da parada.</p>
         <p><b>Despesas:</b> combustível, alimentação, hospedagem e outros entram na mesma lista, com totais gerais e por categoria; em combustível, km e litros também calculam o consumo médio.</p>
         <p><b>Fotos e despesas:</b> ficam guardados na própria página; dá para remover uma foto enviada por engano. No link hospedado no Claude, tudo sincroniza entre os dois em qualquer aparelho; numa cópia estática fora do Claude (ex.: GitHub Pages), continua funcionando, mas fica salvo só no navegador de quem editou.</p>
         <p><b>Clima:</b> dezembro a fevereiro é verão em todo o percurso; chuvas rápidas de fim de tarde são comuns no litoral, e o sertão pode ter pancadas isoladas que afetam estradas de terra.</p>
@@ -722,98 +738,193 @@
 <script>
 (function () {
   // ---------- baseline day-by-day data ----------
-  // [data, dia-semana, trajeto, nota, via, km, badges[], from, to]
+  // [placeholder-data, placeholder-wd, trajeto, nota, via, km, badges[], from, to, kmh]
+  // Os campos 1 e 2 (data / dia-da-semana) NÃO são usados para exibição — a data real de cada
+  // linha é calculada a partir da sua posição na sequência (computeDateWd()), porque 1 dos 38
+  // dias da viagem é "flutuante": o casal escolhe em qual cidade ele fica (Ajustes → "dia extra
+  // de folga"), e isso desloca automaticamente as datas de tudo que vem depois.
   // 10º campo de cada linha = velocidade média estimada (km/h) para o cálculo de tempo de estrada.
   // Faixas usadas: 85 = duplicada/excelente · 78 = federal boa, pista simples · 70 = sertão/pista simples reta, posto espaçado · 63 = serra, curvas, litoral com mais movimento ou travessia
-  var days = {
-    t1: [
-      ['26/12','SÁB','Rio de Janeiro (RJ) → Governador Valadares (MG)','via Além Paraíba, sem pernoite', 'BR-040 / BR-116', 560, ['longo'], 'Rio de Janeiro, RJ, Brasil', 'Governador Valadares, MG, Brasil', 78],
-      ['27/12','DOM','Governador Valadares (MG) → Vitória da Conquista (BA)','', 'BR-116', 560, ['longo'], 'Governador Valadares, MG, Brasil', 'Vitória da Conquista, BA, Brasil', 63],
-      ['28/12','SEG','Vitória da Conquista (BA) → Feira de Santana (BA)','', 'BR-116', 404, [], 'Vitória da Conquista, BA, Brasil', 'Feira de Santana, BA, Brasil', 70],
-      ['29/12','TER','Feira de Santana (BA) → Petrolina (PE)','via Juazeiro (BA) · chegada no ponto de controle', 'BR-116 / BR-324 / BR-407', 399, ['fixo'], 'Feira de Santana, BA, Brasil', 'Petrolina, PE, Brasil', 75]
-    ],
-    t2: [
-      ['30/12','QUA','Petrolina (PE) → Picos (PI)','', 'BR-407', 320, [], 'Petrolina, PE, Brasil', 'Picos, PI, Brasil', 70],
-      ['31/12','QUI','Picos (PI) → Caxias (MA)','chegada a tempo do Réveillon · chegada no ponto de controle', 'BR-316', 410, ['fixo'], 'Picos, PI, Brasil', 'Caxias, MA, Brasil', 70]
-    ],
-    t3: [
-      ['01/1','SEX','Caxias (MA) — dia livre','pouco movimento no primeiro dia do ano', '', 0, ['livre'], '', '', 0],
-      ['02/1','SÁB','Caxias (MA) → Barreirinhas (MA)','', 'BR-222 / MA-034', 380, [], 'Caxias, MA, Brasil', 'Barreirinhas, MA, Brasil', 78],
-      ['03/1','DOM','Barreirinhas (MA) → Sobral (CE)','rota 100% asfaltada pelo interior (BR-222), evitando as balsas e a estrada de areia da Rota das Emoções', 'BR-222', 520, ['longo'], 'Barreirinhas, MA, Brasil', 'Sobral, CE, Brasil', 78],
-      ['04/1','SEG','Sobral (CE) → Jijoca de Jericoacoara (CE)','pernoite em Jijoca (acesso asfaltado); a vila de Jericoacoara em si só se chega pelos últimos ~23 km de duna, sem trecho pavimentado — visitem de bugueiro/mototáxi local, moto fica estacionada em Jijoca', 'CE-187 / CE-085', 165, [], 'Sobral, CE, Brasil', 'Jijoca de Jericoacoara, CE, Brasil', 78],
-      ['05/1','TER','Jijoca de Jericoacoara → Fortaleza (CE)','', 'CE-085 / BR-402', 300, [], 'Jijoca de Jericoacoara, CE, Brasil', 'Fortaleza, CE, Brasil', 78],
-      ['06/1','QUA','Fortaleza — dia livre (1/2)','Beira-Mar, Mercado Central', '', 0, ['livre'], '', '', 0],
-      ['07/1','QUI','Fortaleza — dia livre (2/2)','', '', 0, ['livre'], '', '', 0],
-      ['08/1','SEX','Fortaleza → João Pessoa (PB)','via Natal, parada rápida sem pernoite · chegada no ponto de controle', 'BR-304 / BR-101', 688, ['fixo','longo'], 'Fortaleza, CE, Brasil', 'João Pessoa, PB, Brasil', 78],
-      ['09/1','SÁB','João Pessoa — dia livre (1/2)','Ponta do Seixas', '', 0, ['livre'], '', '', 0],
-      ['10/1','DOM','João Pessoa — dia livre (2/2)','', '', 0, ['livre'], '', '', 0],
-      ['11/1','SEG','João Pessoa → Recife (PE)','partida do ponto de controle', 'BR-101', 120, ['fixo'], 'João Pessoa, PB, Brasil', 'Recife, PE, Brasil', 85],
-      ['12/1','TER','Recife — dia livre (1/3)','Olinda', '', 0, ['livre'], '', '', 0],
-      ['13/1','QUA','Recife — dia livre (2/3)','', '', 0, ['livre'], '', '', 0],
-      ['14/1','QUI','Recife — dia livre (3/3)','', '', 0, ['livre'], '', '', 0]
-    ],
-    t4: [
-      ['15/1','SEX','Recife → Japaratinga (AL)','passagem por Porto de Galinhas (sem pernoite) · parada obrigatória · 1 dia em Japaratinga · piscinas naturais', 'PE-060 / AL-101', 215, ['fixo'], 'Recife, PE, Brasil', 'Japaratinga, AL, Brasil', 63],
-      ['16/1','SÁB','Japaratinga → Maceió (AL)','', 'AL-101', 90, [], 'Japaratinga, AL, Brasil', 'Maceió, AL, Brasil', 63],
-      ['17/1','DOM','Maceió — dia livre','Pajuçara, Praia do Francês', '', 0, ['livre'], '', '', 0],
-      ['18/1','SEG','Maceió → Aracaju (SE)','', 'BR-101', 280, [], 'Maceió, AL, Brasil', 'Aracaju, SE, Brasil', 78],
-      ['19/1','TER','Aracaju → Salvador (BA)','travessia da Baía de Todos os Santos', 'BR-101', 360, [], 'Aracaju, SE, Brasil', 'Salvador, BA, Brasil', 63],
-      ['20/1','QUA','Salvador — dia livre','Pelourinho, Elevador Lacerda', '', 0, ['livre'], '', '', 0],
-      ['21/1','QUI','Salvador → Praia do Forte (BA)','', 'BA-099 (Linha Verde)', 80, [], 'Salvador, BA, Brasil', 'Praia do Forte, BA, Brasil', 63],
-      ['22/1','SEX','Praia do Forte → Ilhéus (BA)','Terra do Cacau, roteiro de Jorge Amado', 'BA-099 / BR-101', 380, [], 'Praia do Forte, BA, Brasil', 'Ilhéus, BA, Brasil', 70],
-      ['23/1','SÁB','Ilhéus → Porto Seguro (BA)','Costa do Descobrimento', 'BR-101', 200, [], 'Ilhéus, BA, Brasil', 'Porto Seguro, BA, Brasil', 78],
-      ['24/1','DOM','Porto Seguro — dia livre','Arraial d’Ajuda', '', 0, ['livre'], '', '', 0],
-      ['25/1','SEG','Porto Seguro → Vitória da Conquista (BA)','chegada no ponto de controle', 'BR-367 / BR-116', 330, ['fixo'], 'Porto Seguro, BA, Brasil', 'Vitória da Conquista, BA, Brasil', 63]
-    ],
-    t5: [
-      ['26/1','TER','Vitória da Conquista — dia livre (1/3)','', '', 0, ['livre'], '', '', 0],
-      ['27/1','QUA','Vitória da Conquista — dia livre (2/3)','', '', 0, ['livre'], '', '', 0],
-      ['28/1','QUI','Vitória da Conquista — dia livre (3/3)','descanso antes da reta final', '', 0, ['livre'], '', '', 0],
-      ['29/1','SEX','Vitória da Conquista → Governador Valadares (MG)','', 'BR-116', 560, ['longo'], 'Vitória da Conquista, BA, Brasil', 'Governador Valadares, MG, Brasil', 63],
-      ['30/1','SÁB','Governador Valadares → Além Paraíba (MG)','', 'BR-116 / BR-040', 370, [], 'Governador Valadares, MG, Brasil', 'Além Paraíba, MG, Brasil', 78],
-      ['31/1','DOM','Além Paraíba → Rio de Janeiro (RJ)','chegada antecipada, com folga até 1/2', 'BR-040', 190, [], 'Além Paraíba, MG, Brasil', 'Rio de Janeiro, RJ, Brasil', 85],
-      ['01/2','SEG','Margem de segurança / chegada oficial','', '', 0, ['fixo'], '', '', 0]
-    ]
-  };
-  var FLAT_BASE = [].concat(days.t1, days.t2, days.t3, days.t4, days.t5);
-  var SLICES = { t1: [0, 4], t2: [4, 6], t3: [6, 20], t4: [20, 31], t5: [31, 38] };
+  var T1_BASE = [
+    ['','','Rio de Janeiro (RJ) → Governador Valadares (MG)','via Além Paraíba, sem pernoite', 'BR-040 / BR-116', 560, ['longo'], 'Rio de Janeiro, RJ, Brasil', 'Governador Valadares, MG, Brasil', 78],
+    ['','','Governador Valadares (MG) → Vitória da Conquista (BA)','', 'BR-116', 560, ['longo'], 'Governador Valadares, MG, Brasil', 'Vitória da Conquista, BA, Brasil', 63],
+    ['','','Vitória da Conquista (BA) → Feira de Santana (BA)','', 'BR-116', 404, [], 'Vitória da Conquista, BA, Brasil', 'Feira de Santana, BA, Brasil', 70],
+    ['','','Feira de Santana (BA) → Petrolina (PE)','via Juazeiro (BA) · chegada no ponto de controle', 'BR-116 / BR-324 / BR-407', 399, ['fixo'], 'Feira de Santana, BA, Brasil', 'Petrolina, PE, Brasil', 75]
+  ];
+  var T2_BASE = [
+    ['','','Petrolina (PE) → Picos (PI)','', 'BR-407', 320, [], 'Petrolina, PE, Brasil', 'Picos, PI, Brasil', 70],
+    ['','','Picos (PI) → Caxias (MA)','chegada a tempo do Réveillon · chegada no ponto de controle', 'BR-316', 410, ['fixo'], 'Picos, PI, Brasil', 'Caxias, MA, Brasil', 70]
+  ];
+  var T3_CORE = [
+    ['','','Caxias (MA) — dia livre','pouco movimento no primeiro dia do ano', '', 0, ['livre'], '', '', 0],
+    ['','','Caxias (MA) → Barreirinhas (MA)','', 'BR-222 / MA-034', 380, [], 'Caxias, MA, Brasil', 'Barreirinhas, MA, Brasil', 78],
+    ['','','Barreirinhas (MA) → Sobral (CE)','rota 100% asfaltada pelo interior (BR-222), evitando as balsas e a estrada de areia da Rota das Emoções', 'BR-222', 520, ['longo'], 'Barreirinhas, MA, Brasil', 'Sobral, CE, Brasil', 78],
+    ['','','Sobral (CE) → Jijoca de Jericoacoara (CE)','pernoite em Jijoca (acesso asfaltado); a vila de Jericoacoara em si só se chega pelos últimos ~23 km de duna, sem trecho pavimentado — visitem de bugueiro/mototáxi local, moto fica estacionada em Jijoca', 'CE-187 / CE-085', 165, [], 'Sobral, CE, Brasil', 'Jijoca de Jericoacoara, CE, Brasil', 78],
+    ['','','Jijoca de Jericoacoara → Fortaleza (CE)','', 'CE-085 / BR-402', 300, [], 'Jijoca de Jericoacoara, CE, Brasil', 'Fortaleza, CE, Brasil', 78],
+    ['','','Fortaleza — dia livre (1/2)','Beira-Mar, Mercado Central', '', 0, ['livre'], '', '', 0],
+    ['','','Fortaleza — dia livre (2/2)','', '', 0, ['livre'], '', '', 0],
+    ['','','Fortaleza → João Pessoa (PB)','via Natal, parada rápida sem pernoite · chegada no ponto de controle', 'BR-304 / BR-101', 688, ['fixo','longo'], 'Fortaleza, CE, Brasil', 'João Pessoa, PB, Brasil', 78],
+    ['','','João Pessoa — dia livre (1/2)','Ponta do Seixas', '', 0, ['livre'], '', '', 0],
+    ['','','João Pessoa — dia livre (2/2)','', '', 0, ['livre'], '', '', 0],
+    ['','','João Pessoa → Recife (PE)','partida do ponto de controle', 'BR-101', 120, ['fixo'], 'João Pessoa, PB, Brasil', 'Recife, PE, Brasil', 85],
+    ['','','Recife — dia livre (1/3)','Olinda', '', 0, ['livre'], '', '', 0],
+    ['','','Recife — dia livre (2/3)','', '', 0, ['livre'], '', '', 0],
+    ['','','Recife — dia livre (3/3)','', '', 0, ['livre'], '', '', 0]
+  ];
+  var T4_CORE = [
+    ['','','Recife → Japaratinga (AL)','passagem por Porto de Galinhas (sem pernoite) · parada obrigatória · 1 dia em Japaratinga · piscinas naturais', 'PE-060 / AL-101', 215, ['fixo'], 'Recife, PE, Brasil', 'Japaratinga, AL, Brasil', 63],
+    ['','','Japaratinga → Maceió (AL)','', 'AL-101', 90, [], 'Japaratinga, AL, Brasil', 'Maceió, AL, Brasil', 63],
+    ['','','Maceió — dia livre','Pajuçara, Praia do Francês', '', 0, ['livre'], '', '', 0],
+    ['','','Maceió → Aracaju (SE)','', 'BR-101', 280, [], 'Maceió, AL, Brasil', 'Aracaju, SE, Brasil', 78],
+    ['','','Aracaju → Salvador (BA)','travessia da Baía de Todos os Santos', 'BR-101', 360, [], 'Aracaju, SE, Brasil', 'Salvador, BA, Brasil', 63],
+    ['','','Salvador — dia livre','Pelourinho, Elevador Lacerda', '', 0, ['livre'], '', '', 0],
+    ['','','Salvador → Praia do Forte (BA)','', 'BA-099 (Linha Verde)', 80, [], 'Salvador, BA, Brasil', 'Praia do Forte, BA, Brasil', 63],
+    ['','','Praia do Forte → Ilhéus (BA)','Terra do Cacau, roteiro de Jorge Amado', 'BA-099 / BR-101', 380, [], 'Praia do Forte, BA, Brasil', 'Ilhéus, BA, Brasil', 70],
+    ['','','Ilhéus → Porto Seguro (BA)','Costa do Descobrimento', 'BR-101', 200, [], 'Ilhéus, BA, Brasil', 'Porto Seguro, BA, Brasil', 78],
+    ['','','Porto Seguro — dia livre','Arraial d’Ajuda', '', 0, ['livre'], '', '', 0],
+    ['','','Porto Seguro → Vitória da Conquista (BA)','chegada no ponto de controle', 'BR-367 / BR-116', 330, ['fixo'], 'Porto Seguro, BA, Brasil', 'Vitória da Conquista, BA, Brasil', 63]
+  ];
+  // T5 sem o dia extra — usado quando o dia flutuante fica em outra cidade: 3 dias livres em
+  // Vitória da Conquista, chegada final ao Rio no penúltimo dia do calendário (31/1).
+  var T5_CORE = [
+    ['','','Vitória da Conquista — dia livre (1/3)','', '', 0, ['livre'], '', '', 0],
+    ['','','Vitória da Conquista — dia livre (2/3)','', '', 0, ['livre'], '', '', 0],
+    ['','','Vitória da Conquista — dia livre (3/3)','descanso antes da reta final', '', 0, ['livre'], '', '', 0],
+    ['','','Vitória da Conquista → Governador Valadares (MG)','', 'BR-116', 560, ['longo'], 'Vitória da Conquista, BA, Brasil', 'Governador Valadares, MG, Brasil', 63],
+    ['','','Governador Valadares → Além Paraíba (MG)','', 'BR-116 / BR-040', 370, [], 'Governador Valadares, MG, Brasil', 'Além Paraíba, MG, Brasil', 78],
+    ['','','Além Paraíba → Rio de Janeiro (RJ)','chegada no ponto de controle final', 'BR-040', 190, ['fixo'], 'Além Paraíba, MG, Brasil', 'Rio de Janeiro, RJ, Brasil', 85]
+  ];
+
+  // ---------- dia extra de folga (flutuante): em qual cidade ele fica ----------
+  var MARGIN_CITIES = [
+    { key: 'caxias', label: 'Caxias (MA)' },
+    { key: 'fortaleza', label: 'Fortaleza (CE)' },
+    { key: 'recife', label: 'Recife (PE)' },
+    { key: 'salvador', label: 'Salvador (BA)' },
+    { key: 'vitoria', label: 'Vitória da Conquista (BA)' }
+  ];
+  var DEFAULT_MARGIN = 'vitoria';
+
+  function renumberFreeDays(rows, fromIdx, toIdx, cityLabel) {
+    var n = toIdx - fromIdx + 1;
+    for (var i = fromIdx; i <= toIdx; i++) {
+      rows[i][2] = cityLabel + ' — dia livre' + (n > 1 ? ' (' + (i - fromIdx + 1) + '/' + n + ')' : '');
+    }
+  }
+  function buildT3(marginCity) {
+    var rows = T3_CORE.map(function (r) { return r.slice(); });
+    if (marginCity === 'caxias') {
+      rows.splice(1, 0, ['','','Caxias (MA) — dia livre','', '', 0, ['livre'], '', '', 0]);
+      renumberFreeDays(rows, 0, 1, 'Caxias (MA)');
+    } else if (marginCity === 'fortaleza') {
+      rows.splice(7, 0, ['','','Fortaleza — dia livre','', '', 0, ['livre'], '', '', 0]);
+      renumberFreeDays(rows, 5, 7, 'Fortaleza');
+    } else if (marginCity === 'recife') {
+      rows.push(['','','Recife — dia livre','', '', 0, ['livre'], '', '', 0]);
+      renumberFreeDays(rows, rows.length - 4, rows.length - 1, 'Recife');
+    }
+    return rows;
+  }
+  function buildT4(marginCity) {
+    var rows = T4_CORE.map(function (r) { return r.slice(); });
+    if (marginCity === 'salvador') {
+      rows.splice(6, 0, ['','','Salvador — dia livre','', '', 0, ['livre'], '', '', 0]);
+      renumberFreeDays(rows, 5, 6, 'Salvador');
+    }
+    return rows;
+  }
+  function buildT5(marginCity) {
+    var rows = T5_CORE.map(function (r) { return r.slice(); });
+    if (marginCity === 'vitoria') {
+      rows[2][3] = ''; // a nota de "descanso antes da reta final" passa para o novo último dia livre
+      rows.splice(3, 0, ['','','Vitória da Conquista — dia livre','descanso antes da reta final', '', 0, ['livre'], '', '', 0]);
+      renumberFreeDays(rows, 0, 3, 'Vitória da Conquista');
+    }
+    return rows;
+  }
+
+  var START_DATE = Date.UTC(2026, 11, 26); // 26/12/2026
+  var WD_LABELS = ['DOM','SEG','TER','QUA','QUI','SEX','SÁB'];
+  function computeDateWd(idx) {
+    var d = new Date(START_DATE + idx * 86400000);
+    var day = d.getUTCDate(), month = d.getUTCMonth() + 1;
+    return { date: (day < 10 ? '0' : '') + day + '/' + month, wd: WD_LABELS[d.getUTCDay()] };
+  }
+
+  var days, FLAT_BASE, SLICES;
+  function rebuildSchedule(marginCity) {
+    days = { t1: T1_BASE, t2: T2_BASE, t3: buildT3(marginCity), t4: buildT4(marginCity), t5: buildT5(marginCity) };
+    FLAT_BASE = [].concat(days.t1, days.t2, days.t3, days.t4, days.t5);
+    var cursor = 0;
+    SLICES = {};
+    ['t1', 't2', 't3', 't4', 't5'].forEach(function (t) {
+      SLICES[t] = [cursor, cursor + days[t].length];
+      cursor += days[t].length;
+    });
+  }
 
   // ---------- overnight stops: hospedagem + fotos ----------
+  // arrive/depart não são mais literais fixos — recomputeStopDates() os calcula a partir da
+  // posição real de cada parada em FLAT_BASE, então continuam corretos mesmo quando o dia
+  // extra de folga muda de cidade.
   var STOPS = {
     t1: [
-      {slug:'governador-valadares-ida', city:'Governador Valadares', uf:'MG', arrive:'26/12', depart:'27/12', family:false},
-      {slug:'vitoria-da-conquista-ida', city:'Vitória da Conquista', uf:'BA', arrive:'27/12', depart:'28/12', family:false},
-      {slug:'feira-de-santana', city:'Feira de Santana', uf:'BA', arrive:'28/12', depart:'29/12', family:false},
-      {slug:'petrolina', city:'Petrolina', uf:'PE', arrive:'29/12', depart:'30/12', family:false}
+      {slug:'governador-valadares-ida', city:'Governador Valadares', uf:'MG', family:false},
+      {slug:'vitoria-da-conquista-ida', city:'Vitória da Conquista', uf:'BA', family:false},
+      {slug:'feira-de-santana', city:'Feira de Santana', uf:'BA', family:false},
+      {slug:'petrolina', city:'Petrolina', uf:'PE', family:false}
     ],
     t2: [
-      {slug:'picos', city:'Picos', uf:'PI', arrive:'30/12', depart:'31/12', family:false},
-      {slug:'caxias', city:'Caxias', uf:'MA', arrive:'31/12', depart:'02/01', family:true}
+      {slug:'picos', city:'Picos', uf:'PI', family:false},
+      {slug:'caxias', city:'Caxias', uf:'MA', family:true}
     ],
     t3: [
-      {slug:'barreirinhas', city:'Barreirinhas', uf:'MA', arrive:'02/01', depart:'03/01', family:false},
-      {slug:'sobral', city:'Sobral', uf:'CE', arrive:'03/01', depart:'04/01', family:false},
-      {slug:'jijoca', city:'Jijoca de Jericoacoara', uf:'CE', arrive:'04/01', depart:'05/01', family:false},
-      {slug:'fortaleza', city:'Fortaleza', uf:'CE', arrive:'05/01', depart:'08/01', family:true},
-      {slug:'joao-pessoa', city:'João Pessoa', uf:'PB', arrive:'08/01', depart:'11/01', family:false},
-      {slug:'recife', city:'Recife', uf:'PE', arrive:'11/01', depart:'15/01', family:true}
+      {slug:'barreirinhas', city:'Barreirinhas', uf:'MA', family:false},
+      {slug:'sobral', city:'Sobral', uf:'CE', family:false},
+      {slug:'jijoca', city:'Jijoca de Jericoacoara', uf:'CE', family:false},
+      {slug:'fortaleza', city:'Fortaleza', uf:'CE', family:true},
+      {slug:'joao-pessoa', city:'João Pessoa', uf:'PB', family:false},
+      {slug:'recife', city:'Recife', uf:'PE', family:true}
     ],
     t4: [
-      {slug:'japaratinga', city:'Japaratinga', uf:'AL', arrive:'15/01', depart:'16/01', family:false},
-      {slug:'maceio', city:'Maceió', uf:'AL', arrive:'16/01', depart:'18/01', family:false},
-      {slug:'aracaju', city:'Aracaju', uf:'SE', arrive:'18/01', depart:'19/01', family:false},
-      {slug:'salvador', city:'Salvador', uf:'BA', arrive:'19/01', depart:'21/01', family:false},
-      {slug:'praia-do-forte', city:'Praia do Forte', uf:'BA', arrive:'21/01', depart:'22/01', family:false},
-      {slug:'ilheus', city:'Ilhéus', uf:'BA', arrive:'22/01', depart:'23/01', family:false},
-      {slug:'porto-seguro', city:'Porto Seguro', uf:'BA', arrive:'23/01', depart:'25/01', family:false},
-      {slug:'vitoria-da-conquista', city:'Vitória da Conquista', uf:'BA', arrive:'25/01', depart:'29/01', family:true}
+      {slug:'japaratinga', city:'Japaratinga', uf:'AL', family:false},
+      {slug:'maceio', city:'Maceió', uf:'AL', family:false},
+      {slug:'aracaju', city:'Aracaju', uf:'SE', family:false},
+      {slug:'salvador', city:'Salvador', uf:'BA', family:false},
+      {slug:'praia-do-forte', city:'Praia do Forte', uf:'BA', family:false},
+      {slug:'ilheus', city:'Ilhéus', uf:'BA', family:false},
+      {slug:'porto-seguro', city:'Porto Seguro', uf:'BA', family:false},
+      {slug:'vitoria-da-conquista', city:'Vitória da Conquista', uf:'BA', family:true}
     ],
     t5: [
-      {slug:'governador-valadares', city:'Governador Valadares', uf:'MG', arrive:'29/01', depart:'30/01', family:false},
-      {slug:'alem-paraiba', city:'Além Paraíba', uf:'MG', arrive:'30/01', depart:'31/01', family:false}
+      {slug:'governador-valadares', city:'Governador Valadares', uf:'MG', family:false},
+      {slug:'alem-paraiba', city:'Além Paraíba', uf:'MG', family:false}
     ]
   };
   var ALL_STOPS = [].concat(STOPS.t1, STOPS.t2, STOPS.t3, STOPS.t4, STOPS.t5);
+  function recomputeStopDates() {
+    Object.keys(STOPS).forEach(function (tKey) {
+      var slice = SLICES[tKey];
+      STOPS[tKey].forEach(function (stop) {
+        var cityMatch = stop.city + ', ' + stop.uf + ', Brasil';
+        var arrIdx = -1;
+        for (var i = slice[0]; i < slice[1]; i++) {
+          if (FLAT_BASE[i][8] === cityMatch) { arrIdx = i; break; }
+        }
+        if (arrIdx === -1) return;
+        var depIdx = -1;
+        for (var j = arrIdx + 1; j < FLAT_BASE.length; j++) {
+          if (FLAT_BASE[j][7] === cityMatch) { depIdx = j; break; }
+        }
+        if (depIdx === -1) depIdx = arrIdx + 1;
+        stop.arrive = computeDateWd(arrIdx).date;
+        stop.depart = computeDateWd(depIdx).date;
+      });
+    });
+  }
+  var currentMargin = DEFAULT_MARGIN;
+  rebuildSchedule(currentMargin);
+  recomputeStopDates();
 
   var TRECHO_ROUTE = {
     t1: {origin:'Rio de Janeiro, RJ, Brasil', destination:'Petrolina, PE, Brasil',
@@ -835,6 +946,8 @@
     t5: {estrada:6.5, paradas:3,  beleza:4}
   };
   var scoreOverrides = {};
+  var familyOverrides = {}; // slug -> true/false, only present when overridden away from STOPS baseline
+  var hospCache = {}; // slug -> last known {url} from db, so re-rendering a stop card doesn't lose it
   var overrides = {}; // roteiro edits: idx(string) -> {route, note, via, km}
   var db = null, assetsCap = null, assetsIsLocal = false, localCap = null, downloadsCap = null;
 
@@ -994,6 +1107,7 @@
     return { db: { doc: docRef, collection: collectionRef }, assets: localAssets };
   }
 
+  var MAP_ICON = '<svg class="ico-maps" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s7-7.2 7-12.5A7 7 0 1 0 5 8.5C5 13.8 12 21 12 21z"/><circle cx="12" cy="8.5" r="2.5"/></svg>';
   function mapsUrl(origin, destination, waypoints) {
     var url = 'https://www.google.com/maps/dir/?api=1&travelmode=driving';
     url += '&origin=' + encodeURIComponent(origin);
@@ -1003,6 +1117,7 @@
   }
   function toISODate(dm) {
     var p = dm.split('/'); var day = p[0], month = p[1];
+    if (month.length < 2) month = '0' + month;
     return ((month === '12') ? 2026 : 2027) + '-' + month + '-' + day;
   }
   function bookingUrl(city, checkinISO, checkoutISO) {
@@ -1016,6 +1131,10 @@
     if (!h) return '';
     var totalMin = Math.round(h * 60);
     var hh = Math.floor(totalMin / 60), mm = totalMin % 60;
+    if (hh >= 24) {
+      var dd = Math.floor(hh / 24), rh = hh % 24;
+      return '~' + dd + 'd' + (rh ? ' ' + rh + 'h' : '');
+    }
     return mm ? ('~' + hh + 'h' + (mm < 10 ? '0' : '') + mm) : ('~' + hh + 'h');
   }
   function effectiveRow(idx) {
@@ -1023,8 +1142,9 @@
     var o = overrides[String(idx)];
     var km = (o && o.km != null) ? Number(o.km) : base[5];
     var kmh = (o && o.kmh != null) ? Number(o.kmh) : (base[9] || 0);
+    var dw = computeDateWd(idx);
     return {
-      idx: idx, date: base[0], wd: base[1],
+      idx: idx, date: dw.date, wd: dw.wd,
       route: (o && o.route != null) ? o.route : base[2],
       note:  (o && o.note  != null) ? o.note  : base[3],
       via:   (o && o.via   != null) ? o.via   : base[4],
@@ -1050,7 +1170,7 @@
       var div = document.createElement('div');
       div.className = 'day' + (r.tags.indexOf('livre') > -1 ? ' rest' : '');
       var badges = r.tags.map(function (b) { return '<span class="badge ' + b + '">' + badgeLabel[b] + '</span>'; }).join('');
-      var maplink = (r.from && r.to) ? '<a class="maplink" target="_blank" rel="noopener" href="' + mapsUrl(r.from, r.to, []) + '">Abrir esse trecho no Maps</a>' : '';
+      var maplink = (r.from && r.to) ? '<a class="maplink" target="_blank" rel="noopener" href="' + mapsUrl(r.from, r.to, []) + '">' + MAP_ICON + 'Ver no Google Maps</a>' : '';
       div.innerHTML =
         '<div class="date"><span class="wd">' + r.wd + '</span>' + r.date + '</div>' +
         '<div class="route view-block">' +
@@ -1093,7 +1213,7 @@
     var kmTotalEl = document.getElementById('stat-km-total');
     if (kmTotalEl) kmTotalEl.textContent = fmtKm(totalKm);
     var hTotalEl = document.getElementById('stat-h-total');
-    if (hTotalEl) hTotalEl.textContent = fmtH(totalH).replace('~', '~') || '—';
+    if (hTotalEl) hTotalEl.textContent = fmtH(totalH) || '—';
     reapplyCheckboxState();
   }
   function reapplyCheckboxState() {
@@ -1162,27 +1282,44 @@
   ['t1', 't2', 't3', 't4', 't5'].forEach(renderScore); // paint baseline scores immediately
 
   // ---------- stop cards (hospedagem + fotos) ----------
+  var stopBySlug = {};
+  ALL_STOPS.forEach(function (s) { stopBySlug[s.slug] = s; });
+  function effectiveFamily(stop) {
+    return Object.prototype.hasOwnProperty.call(familyOverrides, stop.slug) ? familyOverrides[stop.slug] : stop.family;
+  }
+  function renderHospArea(stop) {
+    var el = document.getElementById('hosp-area-' + stop.slug);
+    if (!el) return;
+    if (effectiveFamily(stop)) {
+      el.innerHTML = '<div class="hosp-toggle-row"><span class="family-badge">casa da família</span>' +
+        '<button type="button" class="btn ghost sm needs-db" data-family-toggle="' + stop.slug + '" data-set="false">ativar busca de reserva</button></div>';
+    } else {
+      var checkin = toISODate(stop.arrive), checkout = toISODate(stop.depart);
+      el.innerHTML = '<div class="hosp-row needs-db">' +
+          '<a class="btn ghost" target="_blank" rel="noopener" href="' + bookingUrl(stop.city, checkin, checkout) + '">Buscar no Booking</a>' +
+          '<span class="hosp-edit"><input type="url" placeholder="Link da reserva" id="hosp-input-' + stop.slug + '">' +
+          '<button class="btn" type="button" data-hosp-save="' + stop.slug + '">Salvar</button></span>' +
+          '<span class="hosp-saved" id="hosp-saved-' + stop.slug + '" hidden></span>' +
+          '<button type="button" class="btn ghost sm" data-family-toggle="' + stop.slug + '" data-set="true">marcar como casa de família</button>' +
+        '</div>';
+      applyHospCache(stop.slug);
+    }
+  }
   function renderStops(containerId, stops) {
     var el = document.getElementById(containerId);
     stops.forEach(function (stop) {
-      var checkin = toISODate(stop.arrive), checkout = toISODate(stop.depart);
       var card = document.createElement('div');
       card.className = 'stop-card';
       var head = '<div class="stop-head"><span class="stop-city">' + stop.city + '<span class="uf">' + stop.uf + '</span></span>' +
-        '<span class="stop-dates">' + stop.arrive + ' → ' + stop.depart + '</span></div>';
-      var hosp = stop.family
-        ? '<span class="family-badge">casa da família</span>'
-        : '<div class="hosp-row needs-db">' +
-            '<a class="btn ghost" target="_blank" rel="noopener" href="' + bookingUrl(stop.city, checkin, checkout) + '">Buscar no Booking</a>' +
-            '<span class="hosp-edit"><input type="url" placeholder="Link da reserva" id="hosp-input-' + stop.slug + '">' +
-            '<button class="btn" type="button" data-hosp-save="' + stop.slug + '">Salvar</button></span>' +
-            '<span class="hosp-saved" id="hosp-saved-' + stop.slug + '" hidden></span></div>';
+        '<span class="stop-dates" id="stop-dates-' + stop.slug + '">' + stop.arrive + ' → ' + stop.depart + '</span></div>';
+      var hospArea = '<div class="hosp-area" id="hosp-area-' + stop.slug + '"></div>';
       var fotos = '<div class="photo-row">' +
         '<div class="photo-grid" id="fotos-' + stop.slug + '"></div>' +
         '<label class="photo-add needs-db">+ foto<input type="file" accept="image/*" hidden data-photo-slug="' + stop.slug + '"></label>' +
         '</div>';
-      card.innerHTML = head + hosp + fotos;
+      card.innerHTML = head + hospArea + fotos;
       el.appendChild(card);
+      renderHospArea(stop); // paint baseline immediately, before any db override resolves
     });
   }
   renderStops('stops-t1', STOPS.t1);
@@ -1191,6 +1328,28 @@
   renderStops('stops-t4', STOPS.t4);
   renderStops('stops-t5', STOPS.t5);
 
+  function saveFamilyOverride(slug, val) {
+    if (!db) return;
+    db.doc('familia/' + slug).set({ family: val, updatedAt: new Date().toISOString() }).catch(function (e) { console.error(e); });
+  }
+  function watchFamily(slug) {
+    if (!db) return;
+    db.doc('familia/' + slug).onSnapshot(function (snap) {
+      if (snap.exists && typeof snap.data().family === 'boolean') familyOverrides[slug] = snap.data().family;
+      else delete familyOverrides[slug];
+      var stop = stopBySlug[slug];
+      if (stop) renderHospArea(stop);
+    }, function (err) { console.error(err); });
+  }
+  function applyHospCache(slug) {
+    var savedEl = document.getElementById('hosp-saved-' + slug);
+    if (!savedEl) return;
+    var data = hospCache[slug];
+    if (data && data.url) {
+      savedEl.hidden = false;
+      savedEl.innerHTML = '<a target="_blank" rel="noopener" href="' + data.url + '">reserva salva ✓ ver</a>';
+    } else { savedEl.hidden = true; }
+  }
   function saveHospedagem(slug, url) {
     if (!db) return;
     db.doc('hospedagem/' + slug).set({ url: url, updatedAt: new Date().toISOString() }).catch(function (e) { console.error(e); });
@@ -1198,12 +1357,8 @@
   function watchHospedagem(slug) {
     if (!db) return;
     db.doc('hospedagem/' + slug).onSnapshot(function (snap) {
-      var savedEl = document.getElementById('hosp-saved-' + slug);
-      if (!savedEl) return;
-      if (snap.exists && snap.data().url) {
-        savedEl.hidden = false;
-        savedEl.innerHTML = '<a target="_blank" rel="noopener" href="' + snap.data().url + '">reserva salva ✓ ver</a>';
-      } else { savedEl.hidden = true; }
+      hospCache[slug] = (snap.exists && snap.data().url) ? snap.data() : null;
+      applyHospCache(slug);
     }, function (err) { console.error(err); });
   }
   function addPhoto(slug, file) {
@@ -1341,20 +1496,22 @@
   }
 
   async function buildExport() {
-    var out = { exportedAt: new Date().toISOString(), roteiro: {}, avaliacao: {}, hospedagem: {}, fotos: {}, despesas: [] };
+    var out = { exportedAt: new Date().toISOString(), roteiro: {}, avaliacao: {}, hospedagem: {}, familia: {}, fotos: {}, despesas: [], config: {} };
     var roteiroSnap = await db.collection('roteiro').get();
     roteiroSnap.docs.forEach(function (d) { out.roteiro[d.id] = d.data(); });
-    for (var i = 0; i < 4; i++) {
+    var marginSnap = await db.doc('config/margin').get();
+    if (marginSnap.exists) out.config.margin = marginSnap.data();
+    for (var i = 0; i < 5; i++) {
       var t = 't' + (i + 1);
       var s = await db.doc('avaliacao/' + t).get();
       if (s.exists) out.avaliacao[t] = s.data();
     }
     for (var j = 0; j < ALL_STOPS.length; j++) {
       var stop = ALL_STOPS[j];
-      if (!stop.family) {
-        var hs = await db.doc('hospedagem/' + stop.slug).get();
-        if (hs.exists) out.hospedagem[stop.slug] = hs.data();
-      }
+      var hs = await db.doc('hospedagem/' + stop.slug).get();
+      if (hs.exists) out.hospedagem[stop.slug] = hs.data();
+      var fam = await db.doc('familia/' + stop.slug).get();
+      if (fam.exists) out.familia[stop.slug] = fam.data();
       var itemsSnap = await db.doc('fotos/' + stop.slug).collection('items').get();
       if (itemsSnap.docs.length) {
         var arr = [];
@@ -1380,6 +1537,12 @@
     }
     if (incoming.hospedagem) {
       for (var slug in incoming.hospedagem) await db.doc('hospedagem/' + slug).set(incoming.hospedagem[slug]);
+    }
+    if (incoming.familia) {
+      for (var slugFam in incoming.familia) await db.doc('familia/' + slugFam).set(incoming.familia[slugFam]);
+    }
+    if (incoming.config && incoming.config.margin) {
+      await db.doc('config/margin').set(incoming.config.margin);
     }
     if (incoming.fotos && assetsCap) {
       for (var slug2 in incoming.fotos) {
@@ -1495,6 +1658,12 @@
       if (url) saveHospedagem(slug, url);
       return;
     }
+    if ((t = e.target.closest('[data-family-toggle]'))) {
+      var famSlug = t.getAttribute('data-family-toggle');
+      var famSet = t.getAttribute('data-set') === 'true';
+      saveFamilyOverride(famSlug, famSet);
+      return;
+    }
     if ((t = e.target.closest('.photo-del'))) {
       deletePhoto(t.getAttribute('data-slug'), t.getAttribute('data-item'), t.getAttribute('data-asset'));
       return;
@@ -1593,18 +1762,103 @@
     var pick = null;
     order.forEach(function (t) {
       var r = SLICES[t];
-      var first = FLAT_BASE[r[0]], last = FLAT_BASE[r[1] - 1];
-      var start = new Date(toISODate(first[0]) + 'T00:00:00');
-      var end = new Date(toISODate(last[0]) + 'T23:59:59');
+      var start = new Date(toISODate(computeDateWd(r[0]).date) + 'T00:00:00');
+      var end = new Date(toISODate(computeDateWd(r[1] - 1).date) + 'T23:59:59');
       if (!pick && now >= start && now <= end) pick = t;
     });
     if (!pick) {
-      var t1start = new Date(toISODate(FLAT_BASE[0][0]) + 'T00:00:00');
+      var t1start = new Date(toISODate(computeDateWd(0).date) + 'T00:00:00');
       pick = (now < t1start) ? 't1' : 't5';
     }
     toggleTrecho(pick);
   }
   defaultOpenTrecho();
+
+  // ---------- dia extra de folga: seletor de cidade + recomputação em cascata ----------
+  function fmtRangeLabel(startIdx, endIdx) {
+    return computeDateWd(startIdx).date + ' a ' + computeDateWd(endIdx).date;
+  }
+  function updateTrechoMeta() {
+    Object.keys(SLICES).forEach(function (t) {
+      var r = SLICES[t];
+      var datesEl = document.querySelector('.tm-dates[data-t="' + t + '"]');
+      var daysEl = document.querySelector('.tm-days[data-t="' + t + '"]');
+      var n = r[1] - r[0];
+      if (datesEl) datesEl.textContent = fmtRangeLabel(r[0], r[1] - 1);
+      if (daysEl) daysEl.textContent = n + (n === 1 ? ' dia' : ' dias');
+    });
+  }
+  function updateStopDatesDisplay() {
+    ALL_STOPS.forEach(function (stop) {
+      var el = document.getElementById('stop-dates-' + stop.slug);
+      if (el) el.textContent = stop.arrive + ' → ' + stop.depart;
+    });
+  }
+  function updateT5Callout(marginCity) {
+    var el = document.getElementById('t5-callout-vdc');
+    if (!el) return;
+    var n = (marginCity === 'vitoria') ? 4 : 3;
+    var t = el.querySelector('.t');
+    if (t) t.textContent = 'Vitória da Conquista: ' + n + (n === 1 ? ' dia livre' : ' dias livres');
+  }
+  function applyMargin(marginCity, opts) {
+    opts = opts || {};
+    var prevMargin = currentMargin;
+    rebuildSchedule(marginCity);
+    // salvaguarda: as 3 datas verdadeiramente fixas do calendário (partida do Rio, chegada em
+    // Caxias para o Réveillon, chegada final no Rio) nunca podem se mover — se alguma alteração
+    // futura violar isso, a mudança é bloqueada e desfeita.
+    var caxiasIdx = -1;
+    for (var i = 0; i < FLAT_BASE.length; i++) { if (FLAT_BASE[i][8] === 'Caxias, MA, Brasil') { caxiasIdx = i; break; } }
+    var okStart = (computeDateWd(0).date === '26/12');
+    var okCaxias = (caxiasIdx > -1 && computeDateWd(caxiasIdx).date === '31/12');
+    var okEnd = (computeDateWd(FLAT_BASE.length - 1).date === '01/2');
+    if (!okStart || !okCaxias || !okEnd) {
+      rebuildSchedule(prevMargin);
+      if (!opts.silent) window.alert('Essa alteração violaria uma data fixa do roteiro (partida do Rio, chegada em Caxias no Réveillon ou chegada final no Rio) — nada foi alterado.');
+      return false;
+    }
+    currentMargin = marginCity;
+    recomputeStopDates();
+    updateTrechoMeta();
+    updateStopDatesDisplay();
+    updateT5Callout(marginCity);
+    renderAll();
+    return true;
+  }
+  function saveMarginConfig(key) {
+    if (!db) return;
+    db.doc('config/margin').set({ city: key, updatedAt: new Date().toISOString() }).catch(function (e) { console.error(e); });
+  }
+  function initMarginSelect() {
+    var sel = document.getElementById('margin-select');
+    if (!sel) return;
+    MARGIN_CITIES.forEach(function (c) {
+      var opt = document.createElement('option');
+      opt.value = c.key; opt.textContent = c.label;
+      sel.appendChild(opt);
+    });
+    sel.value = currentMargin;
+    sel.addEventListener('change', function () {
+      var prev = currentMargin;
+      var ok = applyMargin(sel.value);
+      if (!ok) { sel.value = prev; return; }
+      saveMarginConfig(sel.value);
+    });
+  }
+  function watchMarginConfig() {
+    if (!db) return;
+    db.doc('config/margin').onSnapshot(function (snap) {
+      var key = (snap.exists && snap.data().city) ? snap.data().city : DEFAULT_MARGIN;
+      if (key !== currentMargin) applyMargin(key, { silent: true });
+      var sel = document.getElementById('margin-select');
+      if (sel) sel.value = currentMargin;
+    }, function (err) { console.error(err); });
+  }
+  initMarginSelect();
+  updateTrechoMeta();
+  updateStopDatesDisplay();
+  updateT5Callout(currentMargin);
 
   renderAll(); // paint the baseline immediately, before any capability resolves
 
@@ -1633,7 +1887,8 @@
 
     watchRoteiro();
     watchScores();
-    ALL_STOPS.forEach(function (s) { if (!s.family) watchHospedagem(s.slug); watchFotos(s.slug); });
+    watchMarginConfig();
+    ALL_STOPS.forEach(function (s) { watchHospedagem(s.slug); watchFotos(s.slug); watchFamily(s.slug); });
     watchDespesas();
     initDespesasForm();
     initSyncPanel();
