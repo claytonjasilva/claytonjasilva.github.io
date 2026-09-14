@@ -167,6 +167,14 @@
       .hero{padding-top:46px}
     }
   </style>
+
+  <style>
+    .flux-section{margin-top:24px}.flux-scroll{overflow-x:auto;margin:16px 0;border:1px solid #d9e2ec;border-radius:8px;background:#fff}
+    .flux-scroll svg{display:block;width:100%;min-width:900px;height:auto}
+    .flux-node{fill:#eef6f8;stroke:#164e63;stroke-width:1.5}.flux-decision{fill:#fff8e6;stroke:#976412;stroke-width:1.5}.flux-note{fill:#f8fafc;stroke:#cbd5e1;stroke-dasharray:4 4}.flux-stop{fill:#fff1f2;stroke:#9f1239}
+    .flux-text,.flux-center,.flux-center-small,.flux-label{font-family:Arial,sans-serif;font-size:16px;fill:#1f2937}.flux-center{text-anchor:middle;font-weight:600}.flux-center-small{text-anchor:middle;font-size:15px}.flux-label{font-size:14px;font-weight:700;fill:#164e63}.flux-edge{fill:none;stroke:#164e63;stroke-width:1.7}.flux-dotted{fill:none;stroke:#94a3b8;stroke-dasharray:4 4}
+    @media print{.flux-scroll{overflow:visible;border:0}.flux-scroll svg{min-width:0;width:100%}.flux-section{break-before:page}}
+  </style>
 </head>
 
 <body>
@@ -739,6 +747,125 @@
         <strong>Leitura conceitual.</strong> O método de duas fases resolve primeiro o problema da
         <em>viabilidade</em> e somente depois o problema da <em>otimização</em>.
       </div>
+
+      <div id="fluxograma-duas-fases" class="flux-section">
+        <h3>Fluxograma — Método Simplex em Duas Fases</h3>
+        <p>Acompanhe as decisões e as iterações. As notas à direita explicam cada etapa; as setas de retorno indicam a repetição do processo.</p>
+        <div class="flux-scroll" tabindex="0" role="region" aria-label="Fluxograma com notas explicativas; permite rolagem horizontal em telas pequenas">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1040 2670" role="img" aria-labelledby="flux-title flux-desc">
+<title id="flux-title">Fluxograma do método Simplex em duas fases</title>
+<desc id="flux-desc">Doze etapas com notas explicativas. Na Fase 1, testar otimalidade antes de iterar e verificar artificiais após o ótimo. Na Fase 2, testar otimalidade, pivotar ou registrar ilimitação. Encerrar com interpretação e Solver.</desc>
+<defs><marker id="flux-arrow" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#164e63"/></marker></defs>
+<rect x="205" y="10" width="250" height="42" rx="21" class="flux-node"/>
+<text x="330" y="37" class="flux-center"><tspan x="330" dy="0">Início</tspan></text>
+<rect x="155" y="101" width="350" height="98" rx="8" class="flux-node"/>
+<text x="330" y="155" class="flux-center"><tspan x="330" dy="0">1. Modelar o problema original</tspan></text>
+<rect x="565" y="72" width="460" height="150" rx="6" class="flux-note"/>
+<text x="580" y="97" class="flux-label"><tspan x="580" dy="0">NOTA 1</tspan></text>
+<text x="580" y="123" class="flux-text"><tspan x="580" dy="0">Definir variáveis de decisão, função objetivo de</tspan><tspan x="580" dy="21">minimização, restrições e domínios.</tspan></text>
+<path d="M505,150 H565" class="flux-dotted"/>
+<rect x="155" y="306" width="350" height="98" rx="8" class="flux-node"/>
+<text x="330" y="350" class="flux-center"><tspan x="330" dy="0">2. Remodelar o problema</tspan><tspan x="330" dy="21">Incluir excesso e artificiais</tspan></text>
+<rect x="565" y="277" width="460" height="150" rx="6" class="flux-note"/>
+<text x="580" y="302" class="flux-label"><tspan x="580" dy="0">NOTA 2</tspan></text>
+<text x="580" y="328" class="flux-text"><tspan x="580" dy="0">Normalizar lados direitos negativos, invertendo</tspan><tspan x="580" dy="21">desigualdades quando necessário. Adicionar folga em</tspan><tspan x="580" dy="21">≤ e subtrair excesso em ≥. Incluir artificiais onde</tspan><tspan x="580" dy="21">necessário para formar a base inicial.</tspan></text>
+<path d="M505,355 H565" class="flux-dotted"/>
+<rect x="155" y="511" width="350" height="98" rx="8" class="flux-node"/>
+<text x="330" y="545" class="flux-center"><tspan x="330" dy="0">3. Fase 1: montar o quadro</tspan><tspan x="330" dy="21">inicial</tspan><tspan x="330" dy="21">Base inicial</tspan></text>
+<rect x="565" y="482" width="460" height="150" rx="6" class="flux-note"/>
+<text x="580" y="507" class="flux-label"><tspan x="580" dy="0">NOTA 3</tspan></text>
+<text x="580" y="533" class="flux-text"><tspan x="580" dy="0">Nos exemplos da planilha, as artificiais formam a</tspan><tspan x="580" dy="21">base inicial e recebem os valores de b. As não</tspan><tspan x="580" dy="21">básicas iniciam em zero. Minimizar W = soma das</tspan><tspan x="580" dy="21">artificiais e ajustar a linha objetivo à base.</tspan></text>
+<path d="M505,560 H565" class="flux-dotted"/>
+<polygon points="330,703 505,765 330,827 155,765" class="flux-decision"/>
+<text x="330" y="760" class="flux-center"><tspan x="330" dy="0">4. A fase 1 alcançou o ponto</tspan><tspan x="330" dy="21">ótimo?</tspan></text>
+<rect x="565" y="687" width="460" height="150" rx="6" class="flux-note"/>
+<text x="580" y="712" class="flux-label"><tspan x="580" dy="0">NOTA 4</tspan></text>
+<text x="580" y="738" class="flux-text"><tspan x="580" dy="0">Na função auxiliar transformada da planilha, a</tspan><tspan x="580" dy="21">condição de parada é C − Z ≤ 0 em todas as colunas.</tspan><tspan x="580" dy="21">O ótimo auxiliar ainda exige verificar se as</tspan><tspan x="580" dy="21">artificiais zeraram.</tspan></text>
+<path d="M505,765 H565" class="flux-dotted"/>
+<rect x="155" y="921" width="350" height="98" rx="8" class="flux-node"/>
+<text x="330" y="965" class="flux-center"><tspan x="330" dy="0">5. Gerar a iteração i</tspan><tspan x="330" dy="21">Base i · Quadro i</tspan></text>
+<rect x="565" y="892" width="460" height="150" rx="6" class="flux-note"/>
+<text x="580" y="917" class="flux-label"><tspan x="580" dy="0">NOTA 5</tspan></text>
+<text x="580" y="943" class="flux-text"><tspan x="580" dy="0">Escolher uma coluna que melhore o objetivo. Calcular</tspan><tspan x="580" dy="21">b/coefficientes positivos da coluna. A menor razão</tspan><tspan x="580" dy="21">não negativa define quem sai. Normalizar a linha</tspan><tspan x="580" dy="21">pivô, zerar o restante da coluna e atualizar base e</tspan><tspan x="580" dy="21">objetivo.</tspan></text>
+<path d="M505,970 H565" class="flux-dotted"/>
+<polygon points="330,1113 505,1175 330,1237 155,1175" class="flux-decision"/>
+<text x="330" y="1170" class="flux-center"><tspan x="330" dy="0">6. Todas as artificiais são</tspan><tspan x="330" dy="21">iguais a zero?</tspan></text>
+<rect x="565" y="1097" width="460" height="150" rx="6" class="flux-note"/>
+<text x="580" y="1122" class="flux-label"><tspan x="580" dy="0">NOTA 6</tspan></text>
+<text x="580" y="1148" class="flux-text"><tspan x="580" dy="0">No ótimo auxiliar, W = 0 significa que todas as</tspan><tspan x="580" dy="21">artificiais são zero: o original é viável. Se W &gt; 0,</tspan><tspan x="580" dy="21">o original é inviável. Artificiais positivas antes</tspan><tspan x="580" dy="21">do ótimo não permitem essa conclusão.</tspan></text>
+<path d="M505,1175 H565" class="flux-dotted"/>
+<rect x="155" y="1331" width="350" height="98" rx="8" class="flux-node"/>
+<text x="330" y="1375" class="flux-center"><tspan x="330" dy="0">7. Fase 2: montar o quadro</tspan><tspan x="330" dy="21">inicial</tspan></text>
+<rect x="565" y="1302" width="460" height="168" rx="6" class="flux-note"/>
+<text x="580" y="1327" class="flux-label"><tspan x="580" dy="0">NOTA 7</tspan></text>
+<text x="580" y="1353" class="flux-text"><tspan x="580" dy="0">Partir da base viável da Fase 1. Retirar artificiais</tspan><tspan x="580" dy="21">básicas de valor zero por pivô ou remover a linha</tspan><tspan x="580" dy="21">redundante. Excluir apenas colunas artificiais;</tspan><tspan x="580" dy="21">manter originais, folgas, excessos e restrições</tspan><tspan x="580" dy="21">transformadas. Restaurar custos reais e recalcular Z</tspan><tspan x="580" dy="21">− C.</tspan></text>
+<path d="M505,1380 H565" class="flux-dotted"/>
+<polygon points="330,1523 505,1585 330,1647 155,1585" class="flux-decision"/>
+<text x="330" y="1580" class="flux-center"><tspan x="330" dy="0">8. A fase 2 alcançou o ponto</tspan><tspan x="330" dy="21">ótimo?</tspan></text>
+<rect x="565" y="1507" width="460" height="150" rx="6" class="flux-note"/>
+<text x="580" y="1532" class="flux-label"><tspan x="580" dy="0">NOTA 8</tspan></text>
+<text x="580" y="1558" class="flux-text"><tspan x="580" dy="0">Para minimização, com a convenção Z − C, todos os</tspan><tspan x="580" dy="21">custos reduzidos devem ser ≤ 0. A base inicial da</tspan><tspan x="580" dy="21">Fase 2 pode já ser ótima, dispensando novas</tspan><tspan x="580" dy="21">iterações.</tspan></text>
+<path d="M505,1585 H565" class="flux-dotted"/>
+<polygon points="330,1728 505,1790 330,1852 155,1790" class="flux-decision"/>
+<text x="330" y="1795" class="flux-center"><tspan x="330" dy="0">9. Existe pivô admissível?</tspan></text>
+<rect x="565" y="1712" width="460" height="150" rx="6" class="flux-note"/>
+<text x="580" y="1737" class="flux-label"><tspan x="580" dy="0">NOTA 9</tspan></text>
+<text x="580" y="1763" class="flux-text"><tspan x="580" dy="0">Escolher coluna com Z − C positivo. Havendo</tspan><tspan x="580" dy="21">coeficiente positivo nas restrições, aplicar a menor</tspan><tspan x="580" dy="21">razão não negativa. Sem coeficiente positivo, há</tspan><tspan x="580" dy="21">direção viável de redução ilimitada do objetivo.</tspan></text>
+<path d="M505,1790 H565" class="flux-dotted"/>
+<rect x="155" y="1946" width="350" height="98" rx="8" class="flux-node"/>
+<text x="330" y="1990" class="flux-center"><tspan x="330" dy="0">10. Gerar a iteração i</tspan><tspan x="330" dy="21">Base i · Quadro i</tspan></text>
+<rect x="565" y="1917" width="460" height="150" rx="6" class="flux-note"/>
+<text x="580" y="1942" class="flux-label"><tspan x="580" dy="0">NOTA 10</tspan></text>
+<text x="580" y="1968" class="flux-text"><tspan x="580" dy="0">Pivotar e atualizar base, quadro e Z − C. A</tspan><tspan x="580" dy="21">viabilidade é preservada e o objetivo não aumenta.</tspan><tspan x="580" dy="21">Normalmente passa-se a um PEF adjacente. Na</tspan><tspan x="580" dy="21">degenerescência, o ponto pode não mudar. Usar regra</tspan><tspan x="580" dy="21">anticiclagem, como Bland.</tspan></text>
+<path d="M505,1995 H565" class="flux-dotted"/>
+<rect x="155" y="2151" width="350" height="98" rx="8" class="flux-node"/>
+<text x="330" y="2205" class="flux-center"><tspan x="330" dy="0">11. Interpretar a solução</tspan></text>
+<rect x="565" y="2122" width="460" height="150" rx="6" class="flux-note"/>
+<text x="580" y="2147" class="flux-label"><tspan x="580" dy="0">NOTA 11</tspan></text>
+<text x="580" y="2173" class="flux-text"><tspan x="580" dy="0">Ler as básicas no lado direito; as não básicas são</tspan><tspan x="580" dy="21">zero. Calcular o objetivo original. Folgas indicam</tspan><tspan x="580" dy="21">capacidade não utilizada e excessos indicam</tspan><tspan x="580" dy="21">atendimento acima do mínimo.</tspan></text>
+<path d="M505,2200 H565" class="flux-dotted"/>
+<rect x="155" y="2356" width="350" height="98" rx="8" class="flux-node"/>
+<text x="330" y="2410" class="flux-center"><tspan x="330" dy="0">12. Conferir com o Solver</tspan></text>
+<rect x="565" y="2327" width="460" height="150" rx="6" class="flux-note"/>
+<text x="580" y="2352" class="flux-label"><tspan x="580" dy="0">NOTA 12</tspan></text>
+<text x="580" y="2378" class="flux-text"><tspan x="580" dy="0">Resolver o original com Simplex LP, sem artificiais</tspan><tspan x="580" dy="21">e respeitando os domínios. Conferir viabilidade,</tspan><tspan x="580" dy="21">objetivo, folgas e excessos. Ótimos alternativos</tspan><tspan x="580" dy="21">podem ter variáveis diferentes e o mesmo objetivo.</tspan></text>
+<path d="M505,2405 H565" class="flux-dotted"/>
+<path d="M330,52 V101" class="flux-edge" marker-end="url(#flux-arrow)"/>
+<path d="M330,199 V306" class="flux-edge" marker-end="url(#flux-arrow)"/>
+<path d="M330,404 V511" class="flux-edge" marker-end="url(#flux-arrow)"/>
+<path d="M330,609 V703" class="flux-edge" marker-end="url(#flux-arrow)"/>
+<path d="M330,827 V921" class="flux-edge" marker-end="url(#flux-arrow)"/>
+<text x="340" y="851" class="flux-label"><tspan x="340" dy="0">Não</tspan></text>
+<path d="M330,1237 V1331" class="flux-edge" marker-end="url(#flux-arrow)"/>
+<text x="340" y="1261" class="flux-label"><tspan x="340" dy="0">Sim</tspan></text>
+<path d="M330,1429 V1523" class="flux-edge" marker-end="url(#flux-arrow)"/>
+<path d="M330,1647 V1728" class="flux-edge" marker-end="url(#flux-arrow)"/>
+<text x="340" y="1671" class="flux-label"><tspan x="340" dy="0">Não</tspan></text>
+<path d="M330,1852 V1946" class="flux-edge" marker-end="url(#flux-arrow)"/>
+<text x="340" y="1876" class="flux-label"><tspan x="340" dy="0">Sim</tspan></text>
+<path d="M330,2249 V2356" class="flux-edge" marker-end="url(#flux-arrow)"/>
+<path d="M155,765 H110 V1175 H155" class="flux-edge" marker-end="url(#flux-arrow)"/>
+<text x="112" y="753" class="flux-label"><tspan x="112" dy="0">Sim</tspan></text>
+<path d="M155,970 H65 V683 H330 V703" class="flux-edge" marker-end="url(#flux-arrow)"/>
+<text x="8" y="958" class="flux-label"><tspan x="8" dy="0">Retornar</tspan></text>
+<path d="M155,1585 H110 V2200 H155" class="flux-edge" marker-end="url(#flux-arrow)"/>
+<text x="113" y="1573" class="flux-label"><tspan x="113" dy="0">Sim</tspan></text>
+<path d="M155,1995 H65 V1503 H330 V1523" class="flux-edge" marker-end="url(#flux-arrow)"/>
+<text x="8" y="1983" class="flux-label"><tspan x="8" dy="0">Retornar</tspan></text>
+<path d="M505,1175 H535 V1269 H490" class="flux-edge" marker-end="url(#flux-arrow)"/>
+<rect x="145" y="1252" width="345" height="36" rx="18" class="flux-stop"/>
+<text x="317" y="1276" class="flux-center-small"><tspan x="317" dy="0">Não → Original inviável → Fim</tspan></text>
+<path d="M505,1790 H535 V1884 H490" class="flux-edge" marker-end="url(#flux-arrow)"/>
+<rect x="145" y="1867" width="345" height="36" rx="18" class="flux-stop"/>
+<text x="317" y="1891" class="flux-center-small"><tspan x="317" dy="0">Não → Original ilimitado → Fim</tspan></text>
+<rect x="205" y="2595" width="250" height="42" rx="21" class="flux-node"/>
+<text x="330" y="2622" class="flux-center"><tspan x="330" dy="0">Fim</tspan></text>
+<path d="M330,2454 V2595" class="flux-edge" marker-end="url(#flux-arrow)"/>
+</svg>
+        </div>
+        <p class="note"><strong>Observação de leitura.</strong> Na Fase 1, a linha C − Z corresponde à função auxiliar transformada utilizada na planilha; seu valor “Z” não deve ser confundido com W = soma das artificiais. Nas verificações numéricas de zero, utilize uma tolerância, por exemplo, 10<sup>−6</sup>.</p>
+      </div>
+
     </section>
 
     <section id="dual-simplex">
