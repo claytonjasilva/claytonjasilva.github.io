@@ -1,16 +1,6 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Cap. 7 — Circuitos Multiplexadores | Sistemas Digitais</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/contrib/auto-render.min.js"></script>
-<style>
+<html lang="pt-BR"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="description" content="Multiplexadores e demultiplexadores: portas lógicas, 74151, expansão 16:1, conversão paralelo-série, funções booleanas e 74HC138."><title>Cap. 7 — Multiplexadores e Demultiplexadores | Sistemas Digitais</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300&display=swap" rel="stylesheet"><style>
 :root {
   --bg:        #0a0e17;
   --surface:   #111827;
@@ -113,20 +103,6 @@ tbody tr:hover{background:rgba(255,255,255,.02);}
 .ds-item a{font-size:.8rem;color:var(--text);font-family:var(--font-mono);}
 .ds-item a:hover{color:var(--accent);text-decoration:none;}
 
-.quiz{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:1.6rem;margin:1.5rem 0;}
-.quiz-header{display:flex;align-items:center;gap:.6rem;margin-bottom:1.2rem;}
-.quiz-header svg{flex-shrink:0;}
-.quiz-title{font-family:var(--font-mono);font-size:.8rem;color:var(--accent2);letter-spacing:.05em;}
-.quiz-q{font-size:.95rem;margin-bottom:.9rem;color:var(--text);}
-.quiz-options{display:flex;flex-direction:column;gap:.55rem;}
-.quiz-opt{background:var(--tag-bg);border:1px solid var(--border);border-radius:6px;padding:.7rem 1rem;font-size:.85rem;color:var(--muted);cursor:pointer;transition:.15s;text-align:left;width:100%;font-family:var(--font-sans);}
-.quiz-opt:hover{border-color:var(--accent);color:var(--text);}
-.quiz-opt.correct{border-color:#22c55e;background:rgba(34,197,94,.08);color:#86efac;}
-.quiz-opt.wrong{border-color:#ef4444;background:rgba(239,68,68,.08);color:#fca5a5;}
-.quiz-feedback{margin-top:.9rem;font-size:.85rem;padding:.8rem 1rem;border-radius:6px;display:none;}
-.quiz-feedback.show{display:block;}
-.quiz-feedback.correct-fb{background:rgba(34,197,94,.08);border:1px solid #22c55e;color:#86efac;}
-.quiz-feedback.wrong-fb{background:rgba(239,68,68,.08);border:1px solid #ef4444;color:#fca5a5;}
 
 .refs-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:.8rem;}
 .ref-card{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:1rem 1.2rem;display:flex;gap:.8rem;align-items:flex-start;transition:.2s;}
@@ -149,508 +125,141 @@ footer p{font-size:.8rem;color:var(--muted);font-family:var(--font-mono);}
 @media(max-width:640px){.nav-links{display:none;}.hero{padding:2.5rem 0 2rem;}}
 
 .katex{color:var(--accent);font-size:1.05em;}
-</style>
-</head>
-<body>
-
-<nav>
-  <div class="container">
-    <span class="nav-brand">sisdig · cap. 7</span>
-    <ul class="nav-links">
-      <li><a href="#s1">7.1 Conceito</a></li>
-      <li><a href="#s2">7.2 CI</a></li>
-      <li><a href="#s3">7.3 Aplicações</a></li>
-      <li><a href="#s4">7.4 Demux</a></li>
-      <li><a href="#quiz">Quiz</a></li>
-      <li><a href="https://claytonjasilva.github.io/sisdig.html">← disciplina</a></li>
-    </ul>
-  </div>
-</nav>
-<div class="progress-track"><div class="progress-fill" id="progressFill"></div></div>
-
-<section class="hero">
-  <div class="container">
-    <p class="hero-eyebrow">Sistemas Digitais · Ibmec RJ</p>
-    <h1>Cap. 7 — Circuitos<br><strong>Multiplexadores</strong></h1>
-
-    <div class="hero-meta">
-      <span class="meta-item">
-        <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><circle cx="7" cy="7" r="6" stroke="currentColor" stroke-width="1.2"/><path d="M7 4v3l2 1.5" stroke="currentColor" stroke-width="1.2"/></svg>
-        leitura ~30 min
-      </span>
-      <span class="meta-item">
-        <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><rect x="2" y="3" width="10" height="9" rx="1" stroke="currentColor" stroke-width="1.2"/><line x1="2" y1="6" x2="12" y2="6" stroke="currentColor" stroke-width="1.2"/></svg>
-        Prof. Clayton J A Silva
-      </span>
-      <span class="meta-item">
-        <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 7l4 4 6-7" stroke="currentColor" stroke-width="1.4" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        Rev 2026.1
-      </span>
-    </div>
-
-    <div class="objectives">
-      <p class="label">Objetivos de aprendizagem</p>
-      <ul>
-        <li>Definir o multiplexador como seletor de dados e deduzir sua expressão lógica</li>
-        <li>Interpretar o CI 74151 e seu sinal de enable</li>
-        <li>Projetar conversores paralelo-série (assíncrono e síncrono) e geradores de função com mux</li>
-        <li>Reconhecer o demultiplexador como operação inversa do mux</li>
-      </ul>
-    </div>
-
-    <div class="toc">
-      <a href="#s1">7.1 Conceito</a>
-      <a href="#s2">7.2 CI de multiplexação</a>
-      <a href="#s3a">7.3.1 Conversor paralelo-série</a>
-      <a href="#s3b">7.3.2 Gerador de funções</a>
-      <a href="#s3c">7.3.3 Implementação com 74HC151</a>
-      <a href="#s4">7.4 Demultiplexador</a>
-    </div>
-  </div>
-</section>
-
-<div class="container">
-
-  <!-- 7.1 -->
-  <section class="section" id="s1">
-    <p class="section-label">7.1 / conceito</p>
-    <h2>Conceito</h2>
-
-    <p>Antes da definição formal, vale observar o comportamento do circuito abaixo, composto por duas portas AND, uma porta OR e um inversor:</p>
-
-    <div class="fig-full">
-      <svg viewBox="0 0 640 280" xmlns="http://www.w3.org/2000/svg">
-        <style>.wire{stroke:#3b4a5e;stroke-width:1.6;fill:none;}.gate{stroke:#00c2ff;stroke-width:1.6;fill:none;}.lbl{font-family:'IBM Plex Mono',monospace;font-size:13px;fill:#cbd5e1;}.lbl2{font-family:'IBM Plex Mono',monospace;font-size:12px;fill:#64748b;}.dot{fill:#cbd5e1;}</style>
-        <!-- inputs -->
-        <text x="10" y="58" class="lbl">I1</text><circle cx="34" cy="54" r="3" class="dot"/>
-        <path d="M37 54 H120" class="wire"/>
-        <text x="10" y="178" class="lbl">I0</text><circle cx="34" cy="174" r="3" class="dot"/>
-        <path d="M37 174 H120" class="wire"/>
-        <text x="6" y="240" class="lbl">S</text><circle cx="34" cy="236" r="3" class="dot"/>
-        <path d="M37 236 H80 V60 H120" class="wire"/>
-        <!-- inverter for AND2 -->
-        <path d="M80 236 V150 H105" class="wire"/>
-        <path d="M105 142 L130 150 L105 158 Z" class="gate"/>
-        <circle cx="134" cy="150" r="3" class="gate"/>
-        <path d="M137 150 H160" class="wire"/>
-        <!-- AND1 gate -->
-        <path d="M120 40 H150 A22 22 0 0 1 150 70 H120 Z" class="gate"/>
-        <text x="128" y="59" class="lbl2">1</text>
-        <path d="M172 55 H230" class="wire"/>
-        <!-- AND2 gate -->
-        <path d="M160 160 H190 A22 22 0 0 1 190 190 H160 Z" class="gate"/>
-        <text x="168" y="179" class="lbl2">2</text>
-        <path d="M212 175 H230" class="wire"/>
-        <path d="M160 174 V160" class="wire"/>
-        <!-- feed I0 into AND2 top -->
-        <path d="M120 174 H160" class="wire"/>
-        <!-- OR gate -->
-        <path d="M230 40 Q260 40 270 65 Q280 90 270 115 Q260 140 230 140 Q245 90 230 40 Z" class="gate" transform="translate(0,40)"/>
-        <path d="M242 55 H260" class="wire" style="display:none"/>
-        <path d="M270 145 H310" class="wire"/>
-        <circle cx="314" cy="145" r="3" class="dot"/>
-        <text x="322" y="150" class="lbl">Z</text>
-      </svg>
-      <p class="fig-caption">Fig. 7.0 — Circuito de motivação: qual é o comportamento da saída Z?</p>
-    </div>
-
-    <div class="note">Analisando: quando <strong>S = 0</strong>, a porta 2 está habilitada (entrada invertida de S em H) e <strong>Z = I0</strong>. Quando <strong>S = 1</strong>, a porta 1 está habilitada e <strong>Z = I1</strong>. A entrada S <strong>seleciona</strong> qual dado passa para a saída — esse é exatamente o comportamento de um <em>multiplexador</em>.</div>
-
-    <p>Os circuitos multiplexadores são também chamados de <strong>seletores de dados</strong>. São circuitos lógicos que aceitam vários dados de entrada e selecionam um deles em um determinado instante. Atuam como uma <strong>chave digital</strong>.</p>
-
-    <div class="definition">
-      <p class="dtitle">tipos de entrada</p>
-      <p style="margin:0">Possuem entradas de <strong>dados</strong> e entradas <strong>de seleção (ou de endereço)</strong>. Possuem <strong>uma única saída</strong>.</p>
-    </div>
-
-    <div class="fig-full">
-      <img src="https://github.com/claytonjasilva/claytonjasilva.github.io/raw/main/sisdig_aulas/images_sisdig/multiplexador.jpg" alt="Circuito multiplexador">
-      <p class="fig-caption">Fig. 7.1 — Circuito multiplexador (visão em chave digital: o código das entradas de seleção determina qual entrada é transmitida para a saída Z)</p>
-    </div>
-
-    <div class="note">Para selecionar <em>N</em> entradas de dados, são necessárias pelo menos <em>M</em> entradas seletoras, tal que $2^M = N$.</div>
-
-    <p>Analisando um multiplexador com duas entradas de dados — é suficiente uma entrada seletora. A tabela-verdade do circuito:</p>
-
-    <table>
-      <thead><tr><th>I1</th><th>I0</th><th>S</th><th>Z</th></tr></thead>
-      <tbody>
-        <tr><td>0</td><td>0</td><td>0</td><td>0</td></tr>
-        <tr><td>0</td><td>0</td><td>1</td><td>0</td></tr>
-        <tr><td>0</td><td>1</td><td>0</td><td>1</td></tr>
-        <tr><td>0</td><td>1</td><td>1</td><td>0</td></tr>
-        <tr><td>1</td><td>0</td><td>0</td><td>0</td></tr>
-        <tr><td>1</td><td>0</td><td>1</td><td>1</td></tr>
-        <tr><td>1</td><td>1</td><td>0</td><td>1</td></tr>
-        <tr><td>1</td><td>1</td><td>1</td><td>1</td></tr>
-      </tbody>
-    </table>
-
-    <p>Por inspeção: quando <em>S=0</em>, a saída é igual a $I_0$; quando <em>S=1</em>, a saída é igual a $I_1$. A tabela pode ser simplificada:</p>
-
-    <table style="max-width:300px">
-      <thead><tr><th>S</th><th>Z</th></tr></thead>
-      <tbody>
-        <tr><td>0</td><td>I0</td></tr>
-        <tr><td>1</td><td>I1</td></tr>
-      </tbody>
-    </table>
-
-    <p>A expressão lógica resultante é:</p>
-    <div class="codeline">$$Z = I_0.\bar{S} + I_1.S$$</div>
-
-    <p>Similarmente, pode-se projetar um multiplexador de 4 entradas. Utilizando portas lógicas, obtém-se o circuito da figura:</p>
-    <div class="fig-full">
-      <img src="https://github.com/claytonjasilva/claytonjasilva.github.io/raw/main/sisdig_aulas/images_sisdig/multiplexador4entradas.jpg" alt="Circuito multiplexador de 4 entradas">
-      <p class="fig-caption">Fig. 7.2 — Multiplexador de 4 entradas, selecionado por S1S0</p>
-    </div>
-
-    <p>Generalizando para um multiplexador de 4 entradas, a tabela-verdade simplificada é:</p>
-    <table style="max-width:300px">
-      <thead><tr><th>S1</th><th>S0</th><th>Saída</th></tr></thead>
-      <tbody>
-        <tr><td>0</td><td>0</td><td>Z = I0</td></tr>
-        <tr><td>0</td><td>1</td><td>Z = I1</td></tr>
-        <tr><td>1</td><td>0</td><td>Z = I2</td></tr>
-        <tr><td>1</td><td>1</td><td>Z = I3</td></tr>
-      </tbody>
-    </table>
-  </section>
-
-  <!-- 7.2 -->
-  <section class="section" id="s2">
-    <p class="section-label">7.2 / ci de multiplexação</p>
-    <h2>Circuito integrado de multiplexação</h2>
-
-
-    <div class="fig-full">
-      <img src="https://github.com/claytonjasilva/claytonjasilva.github.io/raw/main/sisdig_aulas/images_sisdig/multiplexador8entradas.jpg" alt="Circuito multiplexador de 8 entradas">
-      <p class="fig-caption">Fig. 7.3 — CI 74151, multiplexador de 8 entradas</p>
-    </div>
-
-    <p>O CI 74151 possui uma entrada de controle <em>enable</em> ($\bar{E}$). A tabela-verdade relativa ao CI:</p>
-
-    <table>
-      <thead><tr><th>Ē</th><th>S2</th><th>S1</th><th>S0</th><th>Z̄</th><th>Z</th></tr></thead>
-      <tbody>
-        <tr><td>H</td><td>X</td><td>X</td><td>X</td><td>H</td><td>L</td></tr>
-        <tr><td>L</td><td>L</td><td>L</td><td>L</td><td>Ī0</td><td>I0</td></tr>
-        <tr><td>L</td><td>L</td><td>L</td><td>H</td><td>Ī1</td><td>I1</td></tr>
-        <tr><td>L</td><td>L</td><td>H</td><td>L</td><td>Ī2</td><td>I2</td></tr>
-        <tr><td>L</td><td>L</td><td>H</td><td>H</td><td>Ī3</td><td>I3</td></tr>
-        <tr><td>L</td><td>H</td><td>L</td><td>L</td><td>Ī4</td><td>I4</td></tr>
-        <tr><td>L</td><td>H</td><td>L</td><td>H</td><td>Ī5</td><td>I5</td></tr>
-        <tr><td>L</td><td>H</td><td>H</td><td>L</td><td>Ī6</td><td>I6</td></tr>
-        <tr><td>L</td><td>H</td><td>H</td><td>H</td><td>Ī7</td><td>I7</td></tr>
-      </tbody>
-    </table>
-
-    <div class="note">Quando $\bar{E}$ = H (nível alto), o circuito está <strong>desabilitado</strong> — Z permanece em L independentemente de S2S1S0. Quando $\bar{E}$ = L, o mux opera normalmente, selecionando a entrada indicada por S2S1S0 em código binário.</div>
-
-    <p>Além da saída Z, o CI possui uma <strong>saída invertida</strong> ($\bar{Z}$) do sinal multiplexado.</p>
-
-    <p>O <a href="https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/sisdig_aulas/sistemas_digitais_datasheet_SN74HC151N_Texas.pdf" target="_blank"><em>datasheet</em> completo do 74151 →</a> apresenta os detalhes elétricos e mecânicos do CI, além das entradas e saída lógicas.</p>
-
-    <div class="note">O CI da <em>Texas Instruments</em> possui alguma modificação na identificação da pinagem em relação ao esquema lógico apresentado.</div>
-  </section>
-
-  <!-- 7.3 -->
-  <section class="section" id="s3">
-    <p class="section-label">7.3 / aplicações com multiplexadores</p>
-    <h2>Aplicações com multiplexadores</h2>
-
-    <p>Os multiplexadores podem ser usados em aplicações específicas, como:</p>
-    <ul class="plain">
-      <li>Conversor paralelo-série</li>
-      <li>Gerador de funções</li>
-    </ul>
-
-    <!-- 7.3.1 -->
-    <h3 id="s3a">7.3.1 Mux como conversor paralelo-série</h3>
-    <div class="fig-full">
-      <img src="https://github.com/claytonjasilva/claytonjasilva.github.io/raw/main/sisdig_aulas/images_sisdig/conversorparaleloserie.jpg" alt="Conversor paralelo-série com multiplexador">
-      <p class="fig-caption">Fig. 7.4 — Conversor paralelo-série com multiplexador</p>
-    </div>
-
-    <div class="method-card">
-      <span class="method-num">princípio de funcionamento</span>
-      <ol class="steps">
-        <li>As entradas de dados são conectadas às saídas de um registrador (bits armazenados simultaneamente) — possivelmente vindo de um barramento paralelo, transferidos serialmente.</li>
-        <li>As entradas seletoras $S_2S_1S_0$ recebem três bits que determinam a entrada a transferir, variando de 000 a 111.</li>
-        <li>A entrada de controle <em>enable</em> está ativada em nível baixo.</li>
-        <li>Conforme a variação dos bits de seleção, a respectiva entrada lógica é transferida para a saída <em>Z</em> (e a invertida para $\bar{Z}$).</li>
-        <li>Se as entradas seletoras variarem crescente ou decrescentemente, os bits do registrador são transferidos serialmente na ordem correspondente.</li>
-        <li>Quando o <em>enable</em> está em H, o conversor deixa de operar.</li>
-      </ol>
-    </div>
-
-    <p>A conversão pode ser <strong>assíncrona</strong> (um circuito ou pessoa ativa a sequência manualmente) ou <strong>síncrona</strong> — operando automaticamente conforme um sinal de <em>clock</em>, alimentando as entradas seletoras por meio de um <strong>contador paralelo síncrono</strong>.</p>
-
-    <div class="fig-full">
-      <img src="https://github.com/claytonjasilva/claytonjasilva.github.io/raw/main/sisdig_aulas/images_sisdig/contadorsincrono.jpg" alt="Saída de um contador síncrono">
-      <p class="fig-caption">Fig. 7.5 — Saída de um contador paralelo síncrono</p>
-    </div>
-
-    <ul class="plain">
-      <li>O sinal de referência é o sinal de <em>clock</em>;</li>
-      <li>O sinal <strong>A</strong> possui metade da frequência do <em>clock</em>;</li>
-      <li>O sinal <strong>B</strong> possui metade da frequência do sinal <strong>A</strong>.</li>
-    </ul>
-
-    <p>Esses sinais são gerados por <strong>contadores paralelos</strong> — produzem os bits simultaneamente, podendo operar em contagem crescente ou decrescente:</p>
-
-    <table style="max-width:400px">
-      <thead><tr><th>Contagem</th><th>B</th><th>A</th><th>Clock</th></tr></thead>
-      <tbody>
-        <tr><td>0</td><td>0</td><td>0</td><td>0</td></tr>
-        <tr><td>1</td><td>0</td><td>0</td><td>1</td></tr>
-        <tr><td>2</td><td>0</td><td>1</td><td>0</td></tr>
-        <tr><td>3</td><td>0</td><td>1</td><td>1</td></tr>
-        <tr><td>4</td><td>1</td><td>0</td><td>0</td></tr>
-        <tr><td>5</td><td>1</td><td>0</td><td>1</td></tr>
-        <tr><td>6</td><td>1</td><td>1</td><td>0</td></tr>
-        <tr><td>7</td><td>1</td><td>1</td><td>1</td></tr>
-      </tbody>
-    </table>
-
-    <p>A figura ilustra o mux como conversor paralelo-série <strong>síncrono</strong>, utilizando o sinal de um contador paralelo. O sinal de <em>clock</em> pode alimentar a entrada seletora menos significativa:</p>
-
-    <div class="fig-full">
-      <img src="https://github.com/claytonjasilva/claytonjasilva.github.io/raw/main/sisdig_aulas/images_sisdig/conversorserieparalelosincrono.jpg" alt="Conversor paralelo-série com multiplexador síncrono">
-      <p class="fig-caption">Fig. 7.6 — Conversor paralelo-série síncrono</p>
-    </div>
-
-    <div class="note">O período de $S_0$ é a metade do período de $S_1$, que por sua vez é a metade do período de $S_2$. O período de $S_0$ corresponde ao tempo em que cada bit do registrador é transferido serialmente.</div>
-
-    <!-- 7.3.2 -->
-    <h3 id="s3b">7.3.2 Mux como gerador de funções</h3>
-    <div class="fig-full">
-      <img src="https://github.com/claytonjasilva/claytonjasilva.github.io/raw/main/sisdig_aulas/images_sisdig/geradorfuncoes.jpg" alt="Gerador de funções com multiplexador">
-      <p class="fig-caption">Fig. 7.7 — Gerador de funções com multiplexador</p>
-    </div>
-
-    <div class="definition">
-      <p class="dtitle">princípio de funcionamento</p>
-      <p style="margin:0">As entradas seletoras são as <strong>variáveis booleanas independentes</strong> da função. Cada combinação das entradas corresponde à conexão da entrada de dados com <strong>0</strong> ou <strong>1</strong>.</p>
-    </div>
-
-    <p>A tabela-verdade referente à função obtida pelo circuito:</p>
-    <table style="max-width:300px">
-      <thead><tr><th>A</th><th>B</th><th>C</th><th>Z</th></tr></thead>
-      <tbody>
-        <tr><td>0</td><td>0</td><td>0</td><td>0</td></tr>
-        <tr><td>0</td><td>0</td><td>1</td><td>1</td></tr>
-        <tr><td>0</td><td>1</td><td>0</td><td>1</td></tr>
-        <tr><td>0</td><td>1</td><td>1</td><td>0</td></tr>
-        <tr><td>1</td><td>0</td><td>0</td><td>0</td></tr>
-        <tr><td>1</td><td>0</td><td>1</td><td>0</td></tr>
-        <tr><td>1</td><td>1</td><td>0</td><td>0</td></tr>
-        <tr><td>1</td><td>1</td><td>1</td><td>1</td></tr>
-      </tbody>
-    </table>
-
-    <!-- 7.3.3 -->
-    <h3 id="s3c">7.3.3 Implementação prática com o 74HC151</h3>
-    <p>Na prática, o mux de 8 entradas (ex.: 74HC151) implementa diretamente qualquer função de <strong>3 variáveis</strong>: basta conectar cada entrada de dados ($I_0$ a $I_7$) a <strong>0</strong> (terra) ou <strong>1</strong> (Vcc, via resistor de pull-up) de acordo com a linha correspondente da tabela-verdade, e ligar as variáveis booleanas <strong>A, B, C</strong> às entradas seletoras $S_0, S_1, S_2$.</p>
-
-    <div class="fig-full">
-      <svg viewBox="0 0 640 260" xmlns="http://www.w3.org/2000/svg">
-        <style>.wr{stroke:#3b4a5e;stroke-width:1.4;fill:none;}.ic{stroke:#00c2ff;stroke-width:1.6;fill:none;}.lb{font-family:'IBM Plex Mono',monospace;font-size:11px;fill:#cbd5e1;}.lb2{font-family:'IBM Plex Mono',monospace;font-size:11px;fill:#64748b;}</style>
-        <rect x="170" y="40" width="260" height="150" rx="4" class="ic"/>
-        <text x="220" y="120" class="lb" fill="#7c3aed">74HC151</text>
-        <!-- selector inputs -->
-        <text x="100" y="64" class="lb">A</text><path d="M115 60 H170" class="wr"/><text x="178" y="58" class="lb2">S0</text>
-        <text x="100" y="84" class="lb">B</text><path d="M115 80 H170" class="wr"/><text x="178" y="78" class="lb2">S1</text>
-        <text x="100" y="104" class="lb">C</text><path d="M115 100 H170" class="wr"/><text x="178" y="98" class="lb2">S2</text>
-        <!-- enable to GND -->
-        <text x="92" y="124" class="lb2">E̅→GND</text><path d="M150 120 H170" class="wr"/>
-        <!-- data inputs across top, alternating GND/Vcc -->
-        <g class="lb2">
-          <text x="180" y="36">I0</text><text x="210" y="36">I1</text><text x="240" y="36">I2</text><text x="270" y="36">I3</text>
-          <text x="300" y="36">I4</text><text x="330" y="36">I5</text><text x="360" y="36">I6</text><text x="390" y="36">I7</text>
-        </g>
-        <path d="M183 40 V20 M213 40 V20 M243 40 V20 M273 40 V20 M303 40 V20 M333 40 V20 M363 40 V20 M393 40 V20" class="wr"/>
-        <text x="178" y="14" class="lb2" style="fill:#475569">0</text>
-        <text x="208" y="14" class="lb2" style="fill:#475569">0</text>
-        <text x="238" y="14" class="lb2" style="fill:#475569">0</text>
-        <text x="268" y="14" class="lb2" style="fill:#475569">1</text>
-        <text x="298" y="14" class="lb2" style="fill:#475569">0</text>
-        <text x="328" y="14" class="lb2" style="fill:#475569">0</text>
-        <text x="358" y="14" class="lb2" style="fill:#475569">0</text>
-        <text x="388" y="14" class="lb2" style="fill:#475569">1</text>
-        <!-- output -->
-        <path d="M300 190 V215" class="wr"/>
-        <text x="294" y="232" class="lb">Z</text>
-      </svg>
-      <p class="fig-caption">Fig. 7.7b — 74HC151 fiação fixa implementando uma função de 3 variáveis (exemplo: linhas 011 e 111 em nível alto)</p>
-    </div>
-
-    <div class="note">Essa técnica permite implementar <strong>qualquer</strong> função booleana de até 3 variáveis sem necessidade de simplificação (Mapa de Karnaugh ou Soma de Produtos) — basta "cabear" a tabela-verdade diretamente nas entradas de dados do CI.</div>
-  </section>
-
-  <!-- 7.4 -->
-  <section class="section" id="s4">
-    <p class="section-label">7.4 / demultiplexador</p>
-    <h2>Demultiplexador</h2>
-
-    <p>Os demultiplexadores realizam a operação <strong>inversa</strong> do mux.</p>
-
-    <div class="fig-full">
-      <img src="https://github.com/claytonjasilva/claytonjasilva.github.io/raw/main/sisdig_aulas/images_sisdig/demultiplexador.jpg" alt="Demultiplexador">
-      <p class="fig-caption">Fig. 7.8 — Demultiplexador</p>
-    </div>
-
-    <p>Algumas operações propiciadas pelo demux são inversas às do multiplexador, como o <strong>conversor série-paralelo</strong>:</p>
-
-    <div class="fig-full">
-      <img src="https://github.com/claytonjasilva/claytonjasilva.github.io/raw/main/sisdig_aulas/images_sisdig/conversorserieparalelo.jpg" alt="Conversor série-paralelo com demultiplexador">
-      <p class="fig-caption">Fig. 7.9 — Conversor série-paralelo com demultiplexador</p>
-    </div>
-
-    <p>Assim como no mux, a conversão pode ser <strong>assíncrona</strong> (sinais de seleção variando manualmente, controlados por um circuito controlador) ou <strong>síncrona</strong>, com os bits seletores $S_2S_1S_0$ alimentados por um <strong>contador paralelo síncrono</strong>, referenciado pelo sinal de <em>clock</em>:</p>
-
-    <table style="max-width:420px">
-      <thead><tr><th>Contagem</th><th>C</th><th>B</th><th>A</th></tr></thead>
-      <tbody>
-        <tr><td>0</td><td>0</td><td>0</td><td>0</td></tr>
-        <tr><td>1</td><td>0</td><td>0</td><td>1</td></tr>
-        <tr><td>2</td><td>0</td><td>1</td><td>0</td></tr>
-        <tr><td>3</td><td>0</td><td>1</td><td>1</td></tr>
-        <tr><td>4</td><td>1</td><td>0</td><td>0</td></tr>
-        <tr><td>5</td><td>1</td><td>0</td><td>1</td></tr>
-        <tr><td>6</td><td>1</td><td>1</td><td>0</td></tr>
-        <tr><td>7</td><td>1</td><td>1</td><td>1</td></tr>
-      </tbody>
-    </table>
-
-    <div class="note">No conversor paralelo-série síncrono com demux, o sinal de <em>enable</em> ($\bar{E}$) costuma ser controlado por um circuito controlador que habilita a transferência apenas durante a janela de contagem completa (000 a 111), evitando leituras espúrias entre ciclos.</div>
-
-    <h3>Datasheets de referência</h3>
-    <div class="ds-grid">
-      <div class="ds-item"><a href="https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/sisdig_aulas/sistemas_digitais_datasheet_SN74HC151N_Texas.pdf" target="_blank">MUX 8 entradas — SN74HC151N</a></div>
-    </div>
-  </section>
-
-  <!-- QUIZ -->
-  <section class="section" id="quiz">
-    <p class="section-label">checkpoint</p>
-    <h2>Teste seus conhecimentos</h2>
-
-    <div class="quiz">
-      <div class="quiz-header">
-        <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="8" stroke="#7c3aed" stroke-width="1.4"/><text x="10" y="14" font-size="10" fill="#7c3aed" text-anchor="middle" font-weight="600">?</text></svg>
-        <span class="quiz-title">Pergunta 1 de 3</span>
-      </div>
-      <p class="quiz-q">Para multiplexar 8 entradas de dados, quantas entradas seletoras são necessárias no mínimo?</p>
-      <div class="quiz-options">
-        <button class="quiz-opt" onclick="checkAnswer(this, false, 'q1fb')">2</button>
-        <button class="quiz-opt" onclick="checkAnswer(this, true, 'q1fb')">3</button>
-        <button class="quiz-opt" onclick="checkAnswer(this, false, 'q1fb')">8</button>
-      </div>
-      <div class="quiz-feedback" id="q1fb"></div>
-    </div>
-
-    <div class="quiz">
-      <div class="quiz-header">
-        <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="8" stroke="#7c3aed" stroke-width="1.4"/><text x="10" y="14" font-size="10" fill="#7c3aed" text-anchor="middle" font-weight="600">?</text></svg>
-        <span class="quiz-title">Pergunta 2 de 3</span>
-      </div>
-      <p class="quiz-q">No 74151, quando Ē = H (nível alto), o que ocorre?</p>
-      <div class="quiz-options">
-        <button class="quiz-opt" onclick="checkAnswer(this, false, 'q2fb')">O mux seleciona a entrada I7</button>
-        <button class="quiz-opt" onclick="checkAnswer(this, true, 'q2fb')">O circuito é desabilitado, Z permanece em L</button>
-        <button class="quiz-opt" onclick="checkAnswer(this, false, 'q2fb')">A frequência do clock dobra</button>
-      </div>
-      <div class="quiz-feedback" id="q2fb"></div>
-    </div>
-
-    <div class="quiz">
-      <div class="quiz-header">
-        <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="8" stroke="#7c3aed" stroke-width="1.4"/><text x="10" y="14" font-size="10" fill="#7c3aed" text-anchor="middle" font-weight="600">?</text></svg>
-        <span class="quiz-title">Pergunta 3 de 3</span>
-      </div>
-      <p class="quiz-q">No mux usado como gerador de funções, o que representam as entradas seletoras?</p>
-      <div class="quiz-options">
-        <button class="quiz-opt" onclick="checkAnswer(this, false, 'q3fb')">Os bits de um registrador</button>
-        <button class="quiz-opt" onclick="checkAnswer(this, true, 'q3fb')">As variáveis booleanas independentes da função</button>
-        <button class="quiz-opt" onclick="checkAnswer(this, false, 'q3fb')">O sinal de clock</button>
-      </div>
-      <div class="quiz-feedback" id="q3fb"></div>
-    </div>
-  </section>
-
-  <!-- REFERÊNCIAS -->
-  <section class="section" id="refs">
-    <p class="section-label">referências e aprofundamento</p>
-    <h2>Para ir além</h2>
-
-    <div class="refs-grid">
-      <a class="ref-card" href="https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/sisdig_aulas/sistemas_digitais_datasheet_SN74HC151N_Texas.pdf" target="_blank" style="color:inherit;">
-        <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M3 2h8l4 4v10H3V2z" stroke="#00c2ff" stroke-width="1.3"/><line x1="6" y1="8" x2="12" y2="8" stroke="#00c2ff" stroke-width="1.1"/><line x1="6" y1="11" x2="10" y2="11" stroke="#00c2ff" stroke-width="1.1"/></svg>
-        <div><span class="ref-type">datasheet</span><h4>SN74HC151N (Texas)</h4><p>Multiplexador de 8 entradas</p></div>
-      </a>
-      <a class="ref-card" href="https://www.youtube.com/results?search_query=multiplexador+demultiplexador+circuito+digital" target="_blank" style="color:inherit;">
-        <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><rect x="2" y="4" width="14" height="10" rx="2" stroke="#7c3aed" stroke-width="1.3"/><polygon points="8,7 8,11 12,9" fill="#7c3aed"/></svg>
-        <div><span class="ref-type">vídeo</span><h4>Multiplexadores e Demultiplexadores</h4><p>Busca curada de vídeos explicativos</p></div>
-      </a>
-      <a class="ref-card" href="https://claytonjasilva.github.io/sisdig_aulas/cap6.html" style="color:inherit;">
-        <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><rect x="2" y="2" width="14" height="14" rx="2" stroke="#00c2ff" stroke-width="1.3"/><line x1="2" y1="7" x2="16" y2="7" stroke="#00c2ff" stroke-width="1.1"/></svg>
-        <div><span class="ref-type">capítulo anterior</span><h4>Cap. 6 — Codificadores e Decodificadores</h4><p>Códigos binários e circuitos correlatos</p></div>
-      </a>
-      <a class="ref-card" href="https://claytonjasilva.github.io/avaliacoes.html" target="_blank" style="color:inherit;">
-        <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><rect x="3" y="2" width="12" height="14" rx="1.5" stroke="#7c3aed" stroke-width="1.3"/><line x1="6" y1="6" x2="12" y2="6" stroke="#7c3aed" stroke-width="1.1"/><line x1="6" y1="9" x2="12" y2="9" stroke="#7c3aed" stroke-width="1.1"/></svg>
-        <div><span class="ref-type">avaliação</span><h4>Sistema de Avaliações</h4><p>Pesos AC/AP1/AP2 da disciplina</p></div>
-      </a>
-    </div>
-  </section>
-
-  <!-- CHAPTER NAV -->
-  <div class="chapter-nav">
-    <a href="cap6.html"><span class="dir">← anterior</span>Cap. 6 — Codificadores e Decodificadores</a>
-    <a class="next" href="#" style="opacity:.5;cursor:default;"><span class="dir">próximo →</span>Cap. 9 — Memória e Flip-Flops</a>
-  </div>
-
-</div>
-
-<footer>
-  <div class="container">
-    <p>© 2026 · Prof. Clayton J A Silva · Ibmec RJ</p>
-    <p><a href="https://claytonjasilva.github.io">claytonjasilva.github.io</a></p>
-  </div>
-</footer>
-
-<script>
-window.addEventListener('scroll', () => {
-  const h = document.documentElement;
-  const scrolled = (h.scrollTop) / (h.scrollHeight - h.clientHeight) * 100;
-  document.getElementById('progressFill').style.width = scrolled + '%';
-});
-
-function checkAnswer(btn, isCorrect, fbId) {
-  const group = btn.parentElement;
-  const buttons = group.querySelectorAll('.quiz-opt');
-  buttons.forEach(b => b.disabled = true);
-  btn.classList.add(isCorrect ? 'correct' : 'wrong');
-  const fb = document.getElementById(fbId);
-  fb.classList.add('show');
-  const msgs = {
-    q1fb: isCorrect ? '✓ Correto! 2³=8, então 3 entradas seletoras bastam.' : '✗ Lembre-se: 2^M = N.',
-    q2fb: isCorrect ? '✓ Correto! Com Ē=H o circuito está desabilitado, independente de S2S1S0.' : '✗ Revise a tabela-verdade do 74151.',
-    q3fb: isCorrect ? '✓ Correto! As entradas seletoras tornam-se as variáveis da função booleana.' : '✗ Revise a seção 7.3.2.'
-  };
-  if (!isCorrect) buttons.forEach(b => { if (b.getAttribute('onclick').includes(', true,')) b.classList.add('correct'); });
-  fb.classList.add(isCorrect ? 'correct-fb' : 'wrong-fb');
-  fb.textContent = msgs[fbId];
-}
-
-renderMathInElement(document.body, {
-  delimiters: [
-    {left: "$$", right: "$$", display: true},
-    {left: "$", right: "$", display: false}
-  ],
-  throwOnError: false
-});
-</script>
-
-</body>
-</html>
+/* Leitura do capítulo e figuras extraídas da apresentação. */
+.container{max-width:1160px;}
+.nav-links a,.fig-caption,.meta-item,.objectives li,.toc a{color:#aab8cc;}
+.section{scroll-margin-top:110px;}
+h3{scroll-margin-top:110px;}
+.section>p,.section>ul,.section>ol{max-width:86ch;}
+.fig-full{padding:.7rem;}
+.fig-full a{display:block;background:#fff;border-radius:4px;overflow:hidden;}
+.fig-full img{width:100%;height:auto;background:#fff;}
+.fig-full a:focus-visible{outline:3px solid var(--accent);outline-offset:4px;}
+.fig-caption{padding:.35rem .5rem 0;font-family:var(--font-sans);font-size:.88rem;line-height:1.5;}
+.note{color:#becbdd;font-size:.95rem;}
+.table-wrap{overflow-x:auto;margin:1.2rem 0;}
+table{margin:0;}
+thead th{color:#b7c6da;font-size:.78rem;}
+tbody td{color:#d5dfec;}
+.table-wrap caption{text-align:left;padding-bottom:.5rem;font-weight:600;color:var(--text);}
+.formula{background:var(--tag-bg);border-left:3px solid var(--accent);padding:1rem 1.2rem;margin:1.2rem 0;font-family:var(--font-mono);font-size:1.05rem;overflow-x:auto;}
+.over{text-decoration:overline;text-decoration-thickness:1px;}
+.subsection{margin-top:2rem;}
+.skip-link{position:absolute;left:1rem;top:-80px;z-index:200;background:var(--surface);padding:.6rem 1rem;}
+.skip-link:focus{top:.5rem;}
+.ref-card{display:block;}
+.chapter-nav a{min-width:0;}
+@media(max-width:640px){.container{padding:0 1rem;}.section{padding:2rem 0;}.fig-full{padding:.35rem;margin:1rem 0;}.hero{padding-top:2rem;}.formula{font-size:.92rem;}.chapter-nav{flex-direction:column;}.toc a{font-size:.75rem;}.progress-track{top:49px;}}
+@media print{nav,.progress-track,.toc,.chapter-nav,.skip-link{display:none;}body{background:#fff;color:#111;}p,li,strong,h1,h2,h3,h4,.note,.fig-caption{color:#111!important;}.container{max-width:none;padding:0;}section{break-inside:auto;}figure{break-inside:avoid;}.hero::before{display:none;}.note,.definition,.objectives,.formula{background:#fff;border-color:#aaa;}.fig-full{border:0;padding:0;}a{color:#111;}}
+</style></head><body>
+<a class="skip-link" href="#conteudo">Ir para o conteúdo</a>
+<nav aria-label="Navegação do capítulo"><div class="container"><span class="nav-brand">sisdig · cap. 7</span><ul class="nav-links"><li><a href="#s1">Conceitos</a></li><li><a href="#s2">74151</a></li><li><a href="#expansao">Expansão</a></li><li><a href="#s3">Aplicações</a></li><li><a href="#s4">DEMUX</a></li><li><a href="https://claytonjasilva.github.io/sisdig.html">← disciplina</a></li></ul></div></nav>
+<div class="progress-track" aria-hidden="true"><div class="progress-fill" id="progressFill"></div></div>
+<header class="hero"><div class="container"><p class="hero-eyebrow">Sistemas Digitais · Ibmec RJ</p><h1>Cap. 7 — <strong>Multiplexadores<br>e Demultiplexadores</strong></h1><div class="hero-meta"><span class="meta-item">Prof. Clayton J A Silva</span><span class="meta-item">Revisão · setembro de 2026</span></div>
+<div class="objectives"><p class="label">Objetivos de aprendizagem</p><ul><li>Explicar como as portas lógicas realizam a seleção de dados e relacionar N entradas a m seletores.</li><li>Interpretar a habilitação e as saídas do 74151 e combinar blocos para construir um MUX 16:1.</li><li>Analisar conversão paralelo–série, contadores, compartilhamento de canais e geração de funções booleanas.</li><li>Distinguir MUX e DEMUX e interpretar o 74HC138 como demultiplexador.</li></ul></div><div class="toc" aria-label="Sumário"><a href="#s1">7.1 Portas</a><a href="#seletor">7.2 Seleção</a><a href="#s2">7.3 74151</a><a href="#expansao">7.4 Expansão</a><a href="#s3">7.5 Paralelo–série</a><a href="#canal-74151">7.6 Canal compartilhado</a><a href="#s3b">7.7 Funções</a><a href="#s4">7.8 DEMUX</a><a href="#refs">Datasheets</a></div></div></header>
+<main class="container" id="conteudo"><section class="section" id="s1"><p class="section-label">7.1 / slides 2–3</p><h2>Do circuito com portas ao seletor de dados</h2>
+<p>Um multiplexador (MUX) é um circuito combinacional que encaminha uma entre várias entradas de dados para uma saída. A apresentação começa pela implementação com portas: observar qual caminho fica habilitado permite compreender o bloco integrado que será usado adiante.</p>
+<h3 id="mux-2x1">7.1.1 Multiplexador 2:1</h3>
+<figure class="fig-full" data-slide="2" id="fig-1"><a href="images_sisdig/cap7/slide-02.png" target="_blank" rel="noopener" aria-label="Abrir figura 1 em tamanho original"><img src="images_sisdig/cap7/slide-02.png" width="1672" height="941" loading="lazy" decoding="async" alt="Duas portas AND, uma OR e um inversor formam um MUX 2:1. S igual a zero seleciona I0; S igual a um seleciona I1."></a><figcaption class="fig-caption">Figura 7.1 · MUX 2:1 implementado com portas lógicas · Slide 2. Clique na imagem para ampliar.</figcaption></figure>
+<p>As entradas I<sub>0</sub> e I<sub>1</sub> transportam os dados. A entrada S determina qual deles chega a Z. O inversor produz o complemento de S, fazendo com que apenas uma das portas AND possa transmitir seu dado em cada estado estável da seleção.</p>
+<p>Com <strong>S = 0</strong>, a AND ligada a I<sub>0</sub> recebe 1 na entrada de controle e deixa esse dado passar. A outra AND recebe 0 e produz 0. Com <strong>S = 1</strong>, ocorre o contrário: I<sub>1</sub> atravessa sua AND. A porta OR reúne os dois caminhos.</p>
+<div class="formula">Z = I<sub>0</sub> · <span class="over">S</span> + I<sub>1</sub> · S</div>
+<p>Na expressão, o ponto representa AND e o sinal de adição representa OR. Não se trata de somar dois números: os produtos habilitam caminhos alternativos. Se o dado selecionado mudar, a saída acompanha a mudança após o atraso de propagação. O MUX não armazena o valor anterior.</p>
+<h3 id="mux-4x1">7.1.2 Multiplexador 4:1</h3>
+<figure class="fig-full" data-slide="3" id="fig-2"><a href="images_sisdig/cap7/slide-03.png" target="_blank" rel="noopener" aria-label="Abrir figura 2 em tamanho original"><img src="images_sisdig/cap7/slide-03.png" width="1672" height="941" loading="lazy" decoding="async" alt="Quatro portas AND e uma OR implementam o MUX 4:1. Os seletores S1 S0 escolhem I0, I1, I2 ou I3 para os códigos 00, 01, 10 e 11."></a><figcaption class="fig-caption">Figura 7.2 · MUX 4:1 e sua tabela de seleção · Slide 3. Clique na imagem para ampliar.</figcaption></figure>
+<p>Para escolher entre quatro entradas são necessários dois bits de seleção. Cada AND recebe um dado e uma combinação específica de S<sub>1</sub>, S<sub>0</sub> e seus complementos. Apenas uma dessas combinações vale 1 por vez.</p>
+<div class="formula">Z = I<sub>0</sub>·<span class="over">S</span><sub>1</sub>·<span class="over">S</span><sub>0</sub> + I<sub>1</sub>·<span class="over">S</span><sub>1</sub>·S<sub>0</sub> + I<sub>2</sub>·S<sub>1</sub>·<span class="over">S</span><sub>0</sub> + I<sub>3</sub>·S<sub>1</sub>·S<sub>0</sub></div>
+<p>No caso destacado, S<sub>1</sub>S<sub>0</sub> = 10. O produto associado a I<sub>2</sub> é habilitado e Z = I<sub>2</sub>, independentemente dos valores das outras três entradas. <strong>Quatro entradas de 1 bit não constituem uma saída de 4 bits:</strong> o circuito continua produzindo apenas um bit por vez.</p>
+</section><section class="section" id="seletor"><p class="section-label">7.2 / slides 4–6</p><h2>Multiplexação e compartilhamento de um canal</h2>
+<h3>7.2.1 O MUX como chave digital</h3>
+<figure class="fig-full" data-slide="4" id="fig-3"><a href="images_sisdig/cap7/slide-04.png" target="_blank" rel="noopener" aria-label="Abrir figura 3 em tamanho original"><img src="images_sisdig/cap7/slide-04.png" width="1672" height="941" loading="lazy" decoding="async" alt="Bloco MUX com entradas I0, I1 até I N menos 1, uma saída Z e entradas de seleção na base."></a><figcaption class="fig-caption">Figura 7.3 · Representação conceitual de um multiplexador · Slide 4. Clique na imagem para ampliar.</figcaption></figure>
+<p>O desenho da chave resume o comportamento das portas: a seleção estabelece um caminho entre uma entrada e Z. O contato móvel é uma analogia funcional; em um circuito integrado, a comutação ocorre eletronicamente.</p>
+<p>É importante distinguir as <strong>entradas de dados</strong>, que carregam a informação, das <strong>entradas de seleção</strong>, que identificam a origem desejada. Uma entrada de dados pode permanecer em 0 ou 1 ou transportar um trem de bits. O MUX encaminha seu nível instantâneo enquanto ela estiver selecionada.</p>
+<h3>7.2.2 Três computadores e uma saída compartilhada</h3>
+<figure class="fig-full" data-slide="5" id="fig-4"><a href="images_sisdig/cap7/slide-05.png" target="_blank" rel="noopener" aria-label="Abrir figura 4 em tamanho original"><img src="images_sisdig/cap7/slide-05.png" width="1672" height="941" loading="lazy" decoding="async" alt="Três computadores enviam dados a um MUX. Um relógio e um contador alternam a seleção entre A, B e C. A faixa inferior mostra intervalos sucessivos de uso do canal."></a><figcaption class="fig-caption">Figura 7.4 · Alternância entre três fluxos seriais · Slide 5. Clique na imagem para ampliar.</figcaption></figure>
+<p>Os computadores A, B e C são fontes independentes de dados seriais. Em cada intervalo, o canal de saída recebe somente o sinal da fonte escolhida. A sequência de seleção 00, 01, 10, 00 produz a alternância A, B, C, A.</p>
+<p>O relógio marca a troca dos intervalos, e o contador gera o código de seleção. Um intervalo pode conter vários bits, como sugere a faixa inferior. Nesse caso, o relógio de seleção avança mais lentamente que os bits transmitidos. A frequência de seleção depende de quantos bits cada fonte deve enviar em sua vez.</p>
+<div class="note"><strong>Leitura do exemplo:</strong> a legenda do slide indica o computador B como fonte selecionada. O caminho funcional é I<sub>1</sub> → Z; o traço interno da chave é apenas uma representação conceitual. Para a implementação, use as ligações explícitas do 74151 apresentadas na seção 7.6.</div>
+<p>O MUX, sozinho, não sincroniza computadores nem guarda dados que chegam fora da vez. Para evitar perdas, os transmissores precisam respeitar os intervalos ou usar buffers e controle de acesso. A multiplexação por divisão de tempo exige também que o receptor saiba a qual fonte pertence cada intervalo.</p>
+<h3>7.2.3 Relação entre seletores e entradas de dados</h3>
+<figure class="fig-full" data-slide="6" id="fig-5"><a href="images_sisdig/cap7/slide-06.png" target="_blank" rel="noopener" aria-label="Abrir figura 5 em tamanho original"><img src="images_sisdig/cap7/slide-06.png" width="1672" height="941" loading="lazy" decoding="async" alt="Com m bits de seleção existem 2 elevado a m códigos. O código binário k seleciona a entrada Ik, de I0 até I N menos 1."></a><figcaption class="fig-caption">Figura 7.5 · Tabela generalizada de seleção · Slide 6. Clique na imagem para ampliar.</figcaption></figure>
+<p>Um grupo de m bits produz 2<sup>m</sup> combinações diferentes. Quando todos os códigos são utilizados, o MUX possui N = 2<sup>m</sup> entradas de dados. O valor binário da seleção é o índice k da entrada encaminhada à saída.</p>
+<div class="formula">N = 2<sup>m</sup> &nbsp;&nbsp; e &nbsp;&nbsp; Z = I<sub>k</sub></div>
+<p>A tabela generalizada evita enumerar todas as combinações dos dados: basta informar qual I<sub>k</sub> é escolhido. As demais entradas podem assumir qualquer valor sem alterar Z, desde que a seleção permaneça estável.</p>
+<p>Para uma quantidade N que não seja potência de dois, o número mínimo de seletores é <strong>m = ⌈log<sub>2</sub>N⌉</strong>. Assim, três fontes exigem dois bits, mas o código 11 fica sem uso. O controlador precisa tratar ou evitar esse estado.</p>
+</section><section class="section" id="s2"><p class="section-label">7.3 / slides 7–8</p><h2>O circuito integrado 74151</h2>
+<p>A apresentação passa da construção com portas para um componente MSI: o 74151 reúne a função de um MUX 8:1 em um único circuito integrado. A figura usa a nomenclatura do SN74LS151 da Texas Instruments.</p>
+<figure class="fig-full" data-slide="8" id="fig-6"><a href="images_sisdig/cap7/slide-08.png" target="_blank" rel="noopener" aria-label="Abrir figura 6 em tamanho original"><img src="images_sisdig/cap7/slide-08.png" width="1672" height="941" loading="lazy" decoding="async" alt="O SN74LS151 tem oito dados D0 a D7, seletores C B A, habilitação G ativa em nível baixo e saídas complementares Y e W. Desabilitado, Y vale zero e W vale um."></a><figcaption class="fig-caption">Figura 7.6 · 74151 com a tabela funcional do fabricante · Slide 8. Clique na imagem para ampliar.</figcaption></figure>
+<p>As oito entradas D<sub>0</sub> a D<sub>7</sub> correspondem às entradas I<sub>0</sub> a I<sub>7</sub> usadas nos esquemas conceituais. Os seletores C, B e A têm pesos 4, 2 e 1, respectivamente: C corresponde a S<sub>2</sub>, B a S<sub>1</sub> e A a S<sub>0</sub>.</p>
+<p>A entrada <span class="over">G</span> é uma habilitação ativa em nível baixo. Com nível 0, a saída não inversora Y acompanha a entrada selecionada e W fornece o complemento. Com nível 1, a seleção deixa de atuar: <strong>Y = 0 e W = 1</strong>. Esse estado é diferente de uma saída em alta impedância.</p>
+<div class="table-wrap"><table><caption>Resumo funcional do 74151</caption><thead><tr><th scope="col">Habilitação <span class="over">G</span></th><th scope="col">Seleção CBA</th><th scope="col">Y</th><th scope="col">W</th></tr></thead><tbody><tr><td>1</td><td>Qualquer</td><td>0</td><td>1</td></tr><tr><td>0</td><td>Código k</td><td>I<sub>k</sub></td><td><span class="over">I</span><sub>k</sub></td></tr></tbody></table></div>
+<p>Na tabela do fabricante, H significa nível alto, L significa nível baixo e X indica uma condição indiferente. O X não representa um terceiro valor lógico: significa que aquele sinal não modifica o resultado da linha.</p>
+<div class="note"><strong>Leitura dos componentes:</strong> 74151, 74LS151 e 74HC151 implementam a mesma função de seleção, mas pertencem a famílias com características elétricas distintas. Confira alimentação, níveis de entrada, temporização e nomes dos pinos no datasheet do componente utilizado. Os desenhos deste capítulo são esquemas funcionais, não a disposição física dos terminais.</div>
+<p>Referência: <a href="https://www.ti.com/lit/ds/symlink/sn74ls151.pdf" target="_blank" rel="noopener">datasheet SN74LS151 da Texas Instruments</a>.</p>
+</section><section class="section" id="expansao"><p class="section-label">7.4 / slides 9–10</p><h2>Expansão: construir um MUX 16:1</h2>
+<h3>7.4.1 Combinação de integração MSI e SSI</h3>
+<figure class="fig-full" data-slide="9" id="fig-7"><a href="images_sisdig/cap7/slide-09.png" target="_blank" rel="noopener" aria-label="Abrir figura 7 em tamanho original"><img src="images_sisdig/cap7/slide-09.png" width="1672" height="941" loading="lazy" decoding="async" alt="Dois MUX 8:1 recebem I0 a I7 e I8 a I15. Um circuito de duas AND, uma OR e um inversor usa S3 para selecionar a saída do primeiro ou do segundo MUX."></a><figcaption class="fig-caption">Figura 7.7 · Dois 74151 e seleção final com portas SSI · Slide 9. Clique na imagem para ampliar.</figcaption></figure>
+<p>As dezesseis entradas são divididas em dois grupos. O MUX A recebe I<sub>0</sub> a I<sub>7</sub> e o MUX B recebe I<sub>8</sub> a I<sub>15</sub>. Os dois compartilham S<sub>2</sub>, S<sub>1</sub> e S<sub>0</sub>, selecionando simultaneamente a mesma posição dentro de seus grupos.</p>
+<p>Por exemplo, o código 101 faz o primeiro MUX fornecer I<sub>5</sub> e o segundo fornecer I<sub>13</sub>. O quarto seletor, S<sub>3</sub>, escolhe qual desses dois resultados será encaminhado a Z.</p>
+<p>O estágio final retoma o MUX 2:1 do início do capítulo. Quando S<sub>3</sub> = 0, a AND superior transmite Y<sub>A</sub>; quando S<sub>3</sub> = 1, a AND inferior transmite Y<sub>B</sub>. A OR combina esses caminhos. Os 74151 permanecem habilitados, com <span class="over">G</span> em 0.</p>
+<div class="formula">Z = Y<sub>A</sub> · <span class="over">S</span><sub>3</sub> + Y<sub>B</sub> · S<sub>3</sub></div>
+<p>A figura combina <strong>MSI</strong>, nos blocos multiplexadores, com <strong>SSI</strong>, nas portas que realizam a seleção final. Um ponto cheio marca uma conexão elétrica; o cruzamento sem ponto entre S<sub>3</sub> e Y<sub>B</sub> não conecta esses sinais.</p>
+<h3>7.4.2 Expansão usando apenas MUX 8:1</h3>
+<figure class="fig-full" data-slide="10" id="fig-8"><a href="images_sisdig/cap7/slide-10.png" target="_blank" rel="noopener" aria-label="Abrir figura 8 em tamanho original"><img src="images_sisdig/cap7/slide-10.png" width="1672" height="941" loading="lazy" decoding="async" alt="As saídas dos dois primeiros 74151 entram em D0 e D1 de um terceiro. Nesse terceiro MUX, C e B são zero e A recebe S3; D2 a D7 são fixados em zero."></a><figcaption class="fig-caption">Figura 7.8 · Três MUX 8:1 formando um MUX 16:1 · Slide 10. Clique na imagem para ampliar.</figcaption></figure>
+<p>O terceiro 74151 substitui as portas do estágio final. Ligam-se Y<sub>A</sub> a D<sub>0</sub> e Y<sub>B</sub> a D<sub>1</sub>. Como os seletores C e B desse terceiro CI estão em 0, apenas os endereços 000 e 001 podem ser gerados. O seletor A recebe S<sub>3</sub>.</p>
+<p>Desse modo, o terceiro MUX 8:1 é utilizado como um MUX 2:1. Suas entradas D<sub>2</sub> a D<sub>7</sub> não são selecionadas e aparecem fixadas em 0. Os três CIs ficam habilitados, e a saída final é a saída não inversora Y do último estágio.</p>
+<p>As duas soluções realizam a mesma função. A primeira evidencia a construção com portas; a segunda mostra como um bloco integrado pode realizar uma função menor que sua capacidade total. Em ambas, os dados atravessam dois estágios, cujos atrasos de propagação se acumulam.</p>
+</section><section class="section" id="s3"><p class="section-label">7.5 / slides 11–13</p><h2>Conversão paralelo–série</h2>
+<p>As aplicações começam pela leitura sequencial de uma palavra paralela. Oito bits estão disponíveis ao mesmo tempo nas entradas do MUX; ao variar o endereço, o circuito apresenta um deles por vez em Z. O MUX faz a seleção, enquanto um controlador ou contador determina a sequência.</p>
+<h3 id="s3a">7.5.1 Seleção em intervalos não regulares</h3>
+<figure class="fig-full" data-slide="12" id="fig-9"><a href="images_sisdig/cap7/slide-12.png" target="_blank" rel="noopener" aria-label="Abrir figura 9 em tamanho original"><img src="images_sisdig/cap7/slide-12.png" width="1672" height="941" loading="lazy" decoding="async" alt="Controlador aplica S2 S1 S0 em intervalos desiguais. As entradas fixas 1 0 1 1 0 0 1 0 aparecem na saída nessa ordem conforme a seleção vai de 000 a 111."></a><figcaption class="fig-caption">Figura 7.9 · Conversão com seleção assíncrona · Slide 12. Clique na imagem para ampliar.</figcaption></figure>
+<p>No exemplo, I<sub>0</sub>…I<sub>7</sub> contêm, nessa ordem, <strong>1, 0, 1, 1, 0, 0, 1, 0</strong>. O controlador aplica 000, 001, 010 e assim por diante até 111. A largura desigual dos intervalos indica que a seleção não é comandada por um clock periódico no desenho.</p>
+<p>Leia o diagrama verticalmente: primeiro identifique o código S<sub>2</sub>S<sub>1</sub>S<sub>0</sub>, depois localize a entrada I<sub>k</sub> correspondente e, por fim, confira Z. Em 010 e 011 a saída permanece em 1, porque I<sub>2</sub> e I<sub>3</sub> valem 1. Portanto, uma nova seleção não exige uma transição na saída.</p>
+<p>A palavra precisa permanecer estável durante a leitura, por exemplo nas saídas de um registrador. Se os dados mudarem antes de completar a sequência, os bits transmitidos podem pertencer a palavras diferentes.</p>
+<div class="note"><strong>Sentido de “assíncrono” neste exemplo:</strong> os instantes de seleção são definidos pelo controlador, sem intervalos periódicos obrigatórios. A figura não especifica um protocolo UART ou uma interface completa de comunicação. O receptor ainda precisa de um critério para reconhecer quando o bit está válido.</div>
+<h3>7.5.2 Seleção síncrona por contador crescente</h3>
+<figure class="fig-full" data-slide="13" id="fig-10"><a href="images_sisdig/cap7/slide-13.png" target="_blank" rel="noopener" aria-label="Abrir figura 10 em tamanho original"><img src="images_sisdig/cap7/slide-13.png" width="1672" height="941" loading="lazy" decoding="async" alt="Clock periódico aciona contador crescente de 000 a 111. Q2 Q1 Q0 controlam S2 S1 S0 e a saída transmite 1 0 1 1 0 0 1 0 em oito períodos iguais."></a><figcaption class="fig-caption">Figura 7.10 · Clock e contador síncrono de três bits · Slide 13. Clique na imagem para ampliar.</figcaption></figure>
+<p>Agora o controlador é um contador binário crescente de três bits. As saídas Q<sub>2</sub>, Q<sub>1</sub> e Q<sub>0</sub> são ligadas aos seletores S<sub>2</sub>, S<sub>1</sub> e S<sub>0</sub>. A cada borda ativa do clock, o contador avança uma posição e seleciona o próximo dado.</p>
+<p>Com a contagem inicialmente em 000, os intervalos seguintes correspondem a 001, 010, 011, 100, 101, 110 e 111. Em um contador módulo 8 livre, a sequência retorna a 000. A cada período de clock é apresentado um bit; oito períodos percorrem a palavra completa.</p>
+<div class="formula">T<sub>bit</sub> = T<sub>clock</sub> &nbsp; · &nbsp; T<sub>palavra</sub> = 8T<sub>clock</sub></div>
+<p>Este circuito antecipa o estudo dos contadores. Em contagem binária contínua, Q<sub>0</sub> tem frequência f<sub>clock</sub>/2, Q<sub>1</sub> tem f<sub>clock</sub>/4 e Q<sub>2</sub> tem f<sub>clock</sub>/8. O período completo de Q<sub>0</sub> dura dois períodos de clock; <strong>não deve ser confundido com a duração de um bit transmitido</strong>.</p>
+<p>O MUX continua sendo combinacional: o comportamento síncrono vem do contador que controla suas entradas. O diagrama idealiza as mudanças simultâneas. Na implementação, o contador e o MUX possuem atrasos, e o receptor deve amostrar a saída somente após sua estabilização. Um registrador e um controle de carga permitem atualizar a palavra entre ciclos completos.</p>
+</section><section class="section" id="canal-74151"><p class="section-label">7.6 / slides 14</p><h2>Três fontes seriais usando o 74151</h2>
+<figure class="fig-full" data-slide="14" id="fig-11"><a href="images_sisdig/cap7/slide-14.png" target="_blank" rel="noopener" aria-label="Abrir figura 11 em tamanho original"><img src="images_sisdig/cap7/slide-14.png" width="1672" height="941" loading="lazy" decoding="async" alt="Computadores A B C ligam-se a I0 I1 I2 do 74151. Contador módulo 3 comanda S1 e S0; S2 e habilitação ficam em zero. A saída Y alimenta o canal compartilhado."></a><figcaption class="fig-caption">Figura 7.11 · Implementação do canal compartilhado com um 74151 · Slide 14. Clique na imagem para ampliar.</figcaption></figure>
+<p>O exemplo de compartilhamento de canal reaparece agora com um CI real. A, B e C chegam a I<sub>0</sub>, I<sub>1</sub> e I<sub>2</sub>. O 74151 possui oito entradas, mas apenas três são utilizadas. As entradas restantes são mantidas em um nível definido, indicado como 0 V.</p>
+<p>O seletor S<sub>2</sub> fica em 0. Um contador módulo 3 fornece Q<sub>1</sub> e Q<sub>0</sub> a S<sub>1</sub> e S<sub>0</sub>, na sequência 00 → 01 → 10 → 00. Assim, os endereços efetivos são 000, 001 e 010. Um contador binário comum de dois bits incluiria 11 e precisaria de controle adicional para funcionar em módulo 3.</p>
+<p>A habilitação fica em nível baixo e a saída usada é Y, não inversora. Quando o código é 001, o fluxo serial de B atravessa o circuito. A cada mudança de seleção, a saída passa a acompanhar a fonte seguinte.</p>
+<p>O relógio mostrado é o <strong>relógio de seleção dos canais</strong>. Ele não precisa ser o relógio de cada bit. Se cada intervalo comportar um bloco de bits, a troca de canal só deve ocorrer após o bloco reservado àquela fonte. As formas de onda da figura representam fluxos de modo ilustrativo, sem definir um protocolo de rede.</p>
+<div class="note"><strong>Alcance do esquema:</strong> as entradas do 74151 recebem sinais digitais compatíveis com sua família lógica. Os computadores representam fontes de dados; uma ligação física a USB, Ethernet ou outra interface exige circuitos próprios. O MUX não substitui essas interfaces nem fornece armazenamento.</div>
+</section><section class="section" id="s3b"><p class="section-label">7.7 / slides 15</p><h2>MUX como gerador de funções booleanas</h2>
+<figure class="fig-full" data-slide="15" id="fig-12"><a href="images_sisdig/cap7/slide-15.png" target="_blank" rel="noopener" aria-label="Abrir figura 12 em tamanho original"><img src="images_sisdig/cap7/slide-15.png" width="1672" height="941" loading="lazy" decoding="async" alt="74HC151 com I1 I2 I7 ligados a mais 5 volts e demais dados a zero. Variáveis A B C ligadas a S0 S1 S2. A tabela em ordem C B A gera um para 001, 010 e 111."></a><figcaption class="fig-caption">Figura 7.12 · Entradas fixas e forma canônica da função · Slide 15. Clique na imagem para ampliar.</figcaption></figure>
+<p>Em vez de receber dados variáveis, cada entrada do MUX é ligada permanentemente a um nível lógico. As variáveis da função passam a ocupar as entradas de seleção. Cada linha da tabela-verdade escolhe uma entrada cujo valor já foi definido pelas conexões.</p>
+<p>Na figura, A → S<sub>0</sub>, B → S<sub>1</sub> e C → S<sub>2</sub>. Por isso, o índice das entradas segue o código <strong>CBA</strong>. I<sub>1</sub>, I<sub>2</sub> e I<sub>7</sub> estão em +5 V; I<sub>0</sub>, I<sub>3</sub>, I<sub>4</sub>, I<sub>5</sub> e I<sub>6</sub> estão em 0 V. A habilitação também está em 0 V.</p>
+<p>A saída não inversora vale 1 nas combinações 001, 010 e 111. Cada uma produz um mintermo: uma variável aparece complementada quando vale 0 naquela linha e sem complemento quando vale 1. A soma lógica desses mintermos fornece a forma canônica:</p>
+<div class="formula">Z = <span class="over">C</span>·<span class="over">B</span>·A + <span class="over">C</span>·B·<span class="over">A</span> + C·B·A</div>
+<p>Por exemplo, CBA = 010 seleciona I<sub>2</sub>, ligado a +5 V, e corresponde ao termo <span class="over">C</span>B<span class="over">A</span>. Já 101 seleciona I<sub>5</sub>, ligado a 0 V, e não contribui com um mintermo para a soma.</p>
+<h3 id="s3c">Procedimento para implementar uma função</h3>
+<ol class="plain"><li>Defina a tabela-verdade e a ordem das variáveis nos seletores.</li><li>Para cada código k, ligue I<sub>k</sub> ao nível correspondente ao valor desejado para a função.</li><li>Mantenha o circuito habilitado e use a saída com a polaridade prevista.</li><li>Confira as combinações da tabela comparando cada entrada selecionada com Z.</li></ol>
+<p>Um MUX 8:1 implementa dessa maneira qualquer função booleana de três variáveis, sem exigir simplificação prévia. “Gerador de funções” significa aqui <strong>realização de uma função lógica combinacional</strong>: não se trata de um gerador autônomo de ondas. As conexões fixas estabelecem a função; os valores aplicados a A, B e C determinam seu resultado.</p>
+<p>No exemplo com 74HC151 alimentado em 5 V, os nós de mesma tensão indicam ligações ao mesmo potencial. As conexões de alimentação e as entradas fixas devem respeitar o datasheet da família utilizada.</p>
+</section><section class="section" id="s4"><p class="section-label">7.8 / slides 16–18</p><h2>Demultiplexadores</h2>
+<h3>7.8.1 Uma entrada, várias saídas</h3>
+<figure class="fig-full" data-slide="17" id="fig-13"><a href="images_sisdig/cap7/slide-17.png" target="_blank" rel="noopener" aria-label="Abrir figura 13 em tamanho original"><img src="images_sisdig/cap7/slide-17.png" width="1672" height="941" loading="lazy" decoding="async" alt="Uma entrada D é encaminhada por uma chave conceitual à saída O0, entre O0, O1 e O N menos 1. Entradas de seleção escolhem o destino."></a><figcaption class="fig-caption">Figura 7.13 · Princípio de funcionamento do DEMUX · Slide 17. Clique na imagem para ampliar.</figcaption></figure>
+<p>O DEMUX distribui uma entrada de dados para uma das saídas, conforme o código de seleção. Enquanto o MUX escolhe uma origem entre várias, o DEMUX escolhe um destino. Com m seletores, podem ser endereçadas até 2<sup>m</sup> saídas.</p>
+<p>Na figura, D é encaminhado a O<sub>0</sub>. A chave é uma representação conceitual da seleção eletrônica. O desenho não define, por si só, o nível das saídas não selecionadas: esse comportamento depende da implementação e deve ser consultado na tabela funcional do componente.</p>
+<p>Um DEMUX não guarda os bits distribuídos. Para obter uma palavra paralela persistente a partir de um fluxo serial, é necessário acrescentar elementos de memória e controlar o instante de gravação de cada bit. Apenas mudar a seleção não preserva automaticamente o dado na saída anterior.</p>
+<h3>7.8.2 74HC138 configurado como DEMUX 1:8</h3>
+<figure class="fig-full" data-slide="18" id="fig-14"><a href="images_sisdig/cap7/slide-18.png" target="_blank" rel="noopener" aria-label="Abrir figura 14 em tamanho original"><img src="images_sisdig/cap7/slide-18.png" width="1672" height="941" loading="lazy" decoding="async" alt="D é aplicado a E1 ativa em nível baixo, E2 fica em zero e E3 em mais 5 volts. A2 A1 A0 escolhem Y0 a Y7. A saída escolhida acompanha D e as demais ficam em um."></a><figcaption class="fig-caption">Figura 7.14 · 74HC138 e tabela resumida de demultiplexação · Slide 18. Clique na imagem para ampliar.</figcaption></figure>
+<p>O 74HC138 é um decodificador de três bits com oito saídas ativas em nível baixo. Suas habilitações permitem utilizá-lo também como demultiplexador. Na configuração do slide, o dado D é aplicado à habilitação ativa em nível baixo E<sub>1</sub>, E<sub>2</sub> permanece em 0 e E<sub>3</sub> em 1.</p>
+<p>A<sub>2</sub>A<sub>1</sub>A<sub>0</sub> determina a saída escolhida. Com D = 0, o CI está habilitado e somente essa saída vai a 0. Com D = 1, o CI é desabilitado e todas as saídas ficam em 1. Assim, <strong>a saída selecionada acompanha D e as demais permanecem em 1</strong>.</p>
+<div class="table-wrap"><table><caption>Comportamento na configuração do slide, com E₂ = 0 e E₃ = 1</caption><thead><tr><th scope="col">Seleção A₂A₁A₀</th><th scope="col">D</th><th scope="col">Saída selecionada</th><th scope="col">Demais saídas</th></tr></thead><tbody><tr><td>Código k</td><td>0</td><td>Y<sub>k</sub> = 0</td><td>1</td></tr><tr><td>Código k</td><td>1</td><td>Y<sub>k</sub> = 1</td><td>1</td></tr></tbody></table></div>
+<p>Por exemplo, com seleção 101, Y<sub>5</sub> acompanha D. Se D alternar entre 0 e 1 mantendo o endereço estável, Y<sub>5</sub> reproduz essa alternância. As outras sete saídas continuam em 1. Isso explica por que a tabela resumida pode escrever Y<sub>k</sub> = D mesmo que o componente seja um decodificador com saídas ativas em nível baixo.</p>
+<p>A tabela corresponde às ligações específicas da figura. Aplicar o dado a outra habilitação pode alterar a polaridade da transferência. Consulte o <a href="https://assets.nexperia.com/documents/data-sheet/74HC_HCT138.pdf" target="_blank" rel="noopener">datasheet do 74HC138/74HCT138 da Nexperia</a> para identificar os terminais e as condições de habilitação.</p>
+</section><section class="section" id="refs"><p class="section-label">referências</p><h2>Datasheets e material de apoio</h2><div class="refs-grid">
+<a class="ref-card" href="https://www.ti.com/lit/ds/symlink/sn74ls151.pdf" target="_blank" rel="noopener"><span class="ref-type">Texas Instruments</span><h4>SN74LS151</h4><p>Seleção de dados, habilitação e saídas complementares.</p></a>
+<a class="ref-card" href="https://assets.nexperia.com/documents/data-sheet/74HC_HCT151.pdf" target="_blank" rel="noopener"><span class="ref-type">Nexperia</span><h4>74HC151 / 74HCT151</h4><p>Multiplexador de oito entradas das famílias HC e HCT.</p></a>
+<a class="ref-card" href="https://assets.nexperia.com/documents/data-sheet/74HC_HCT138.pdf" target="_blank" rel="noopener"><span class="ref-type">Nexperia</span><h4>74HC138 / 74HCT138</h4><p>Decodificador e demultiplexador com saídas ativas em nível baixo.</p></a>
+</div><p style="margin-top:1rem">Figuras extraídas da apresentação <cite>Circuitos combinacionais MSI — Multiplexadores</cite>, do Prof. Clayton J A Silva. A sequência acompanha os slides; os textos desenvolvem a leitura dos circuitos e das formas de onda.</p></section><div class="chapter-nav"><a href="https://claytonjasilva.github.io/sisdig_aulas/cap6.html"><span class="dir">← capítulo anterior</span>Cap. 6 — Codificadores e Decodificadores</a><a class="next" href="https://claytonjasilva.github.io/sisdig.html"><span class="dir">disciplina →</span>Programa de Sistemas Digitais</a></div></main>
+<footer><div class="container"><p>© 2026 · Prof. Clayton J A Silva · Ibmec RJ</p><p><a href="https://claytonjasilva.github.io">claytonjasilva.github.io</a></p></div></footer>
+<script>(()=>{const fill=document.getElementById('progressFill');function update(){const h=document.documentElement;const total=h.scrollHeight-h.clientHeight;fill.style.width=(total>0?Math.max(0,Math.min(100,h.scrollTop/total*100)):0)+'%';}window.addEventListener('scroll',update,{passive:true});window.addEventListener('resize',update);window.addEventListener('load',update);update();})();</script>
+</body></html>
