@@ -47,3 +47,15 @@ Não há edição simultânea compartilhada. O salvamento detecta quando a cópi
 Copie esta pasta inteira para o diretório desejado no repositório já publicado pelo GitHub Pages. Preserve os quatro arquivos `index.html`, `style.css`, `model.js` e `app.js` juntos. Os caminhos dos recursos são relativos, permitindo publicação em uma subpasta. Não é preciso alterar a página inicial do site.
 
 Nenhum commit, push ou publicação foi realizado nesta preparação. Os arquivos JSON exportados dos projetos não precisam ser incluídos no repositório.
+
+## Importação de EAP do MS Project
+
+Na aba 02, use “Importar a EAP do MS Project”, junto a “Documentação de escopo”. Salve o projeto no MS Project como XML e selecione o arquivo. O formato .mpp não é lido diretamente. A prévia permite conferir antes de acrescentar elementos. São preservados WBS (ou OutlineNumber), nomes, notas, hierarquia por OutlineLevel e identificação de marcos. A tarefa-resumo de nível zero e linhas nulas são ignoradas. Não são importados recursos, dependências de cronograma ou requisitos automaticamente. Revise as tarefas para distinguir entregáveis de atividades.
+
+A importação aceita até 20 MB e 5.000 elementos; hierarquias incompletas e códigos duplicados ou já existentes são rejeitados sem alteração dos dados. Em ciclos encerrados, abra um novo ciclo antes de importar. Preserve também project-import.js junto aos arquivos da aplicação.
+
+Ao criar um elemento, o seletor do elemento superior mostra código e nome. O código sugerido usa o prefixo do pai e o próximo número disponível; pode ser editado. A mudança de pai atualiza a sugestão enquanto o usuário não tiver personalizado o código.
+
+## Exclusão de projeto
+
+“Apagar projeto” remove apenas o projeto selecionado deste navegador, incluindo EAP, requisitos, atividades e matrizes, após confirmação pelo nome. Exporte uma cópia JSON antes se quiser preservar os dados. Outros projetos e arquivos exportados não são alterados. A verificação de revisão impede que uma aba desatualizada sobrescreva ou recrie um projeto apagado.
