@@ -59,3 +59,9 @@ Ao criar um elemento, o seletor do elemento superior mostra código e nome. O c�
 ## Exclusão de projeto
 
 “Apagar projeto” remove apenas o projeto selecionado deste navegador, incluindo EAP, requisitos, atividades e matrizes, após confirmação pelo nome. Exporte uma cópia JSON antes se quiser preservar os dados. Outros projetos e arquivos exportados não são alterados. A verificação de revisão impede que uma aba desatualizada sobrescreva ou recrie um projeto apagado.
+
+## Marcos na EAP
+
+Crie ou edite o elemento em “EAP e entregáveis” e marque “Marco (atividade de duração zero)”. Ele mantém código, nome, descrição e elemento superior, como qualquer atividade, e aparece identificado na árvore e nos seletores. Desmarcar a opção torna o elemento uma atividade comum, preservando código, vínculos e hierarquia. Elementos antigos sem a propriedade são tratados como não marcos; marcos já importados do Project conservam sua marcação.
+
+A importação XML usa o campo Milestone do MS Project. A marcação é preservada nos backups JSON, nas versões da matriz e na coluna “Marco na EAP” do CSV. A aba de verificação serve para planejar testes dos elementos; a definição do marco é feita no cadastro da EAP.

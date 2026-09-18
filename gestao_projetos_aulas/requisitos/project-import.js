@@ -22,7 +22,6 @@
       stack.length=level-1;
       const milestone=['1','true'].includes(value(task,'Milestone'));
       const item={id:crypto.randomUUID(),code,name,parent:level===1?'':stack[level-2].id,description:value(task,'Notes'),sourceUID:uid,sourceOutline:outline,milestone};
-      if(milestone)item.description=[item.description,'Marco importado do MS Project (duração zero).'].filter(Boolean).join('\n');
       elements.push(item);stack.push(item);codes.add(code);if(uid)uids.add(uid);
       if(elements.length>5000)throw Error('Importe no máximo 5.000 elementos por arquivo.');
     }
