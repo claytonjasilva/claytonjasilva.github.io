@@ -224,13 +224,102 @@ code.formula {
 }
 
 .problem-block { padding-bottom: .5rem; }
+
+/* Leitura das instruções e entregas */
+:root { --muted: #a8b6ca; --accent2: #b5a0ff; }
+.container { max-width: 1080px; }
+.hero { padding: 3.5rem 0 2.5rem; }
+.hero::before { pointer-events: none; }
+.hero .container { position: relative; }
+.hero-sub { line-height: 1.7; }
+.section, .subsection-heading { scroll-margin-top: 8rem; }
+.section-heading { align-items: baseline; line-height: 1.35; }
+.section-heading::after { min-width: 1.5rem; }
+.section-number { flex-shrink: 0; }
+.section-intro, p.body-text { line-height: 1.85; max-width: 85ch; }
+a { overflow-wrap: anywhere; }
+a:focus-visible, [tabindex]:focus-visible { outline: 3px solid var(--accent); outline-offset: 5px; border-radius: 3px; }
+.subsection-heading { font-family: var(--font-sans); font-size: 1.2rem; padding: .8rem 0; border-bottom: 1px solid #35445b; }
+.aval-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); align-items: start; }
+.aval-card, .content-card, .ds-item { min-width: 0; }
+.aval-card p, .aval-list li, .content-card p, .deliverable-item, .concept-box > p, ul.qa-list li { font-size: .97rem; line-height: 1.8; }
+.aval-card h3 { font-size: 1.08rem; line-height: 1.5; }
+.aval-list { gap: .8rem; }
+.aval-list li { display: block; position: relative; padding-left: 1.2rem; }
+.aval-list li::before { position: absolute; left: 0; top: 0; }
+ol.step-list { gap: .7rem; }
+ol.step-list li { display: block; position: relative; padding: .65rem .75rem .65rem 2.6rem; font-size: .97rem; line-height: 1.8; background: #101827; border-radius: 6px; }
+ol.step-list li::before { position: absolute; left: .45rem; top: .8rem; }
+code.formula { max-width: 100%; white-space: normal; overflow-wrap: anywhere; font-size: .88rem; line-height: 1.8; vertical-align: baseline; }
+.formula-block { display: block !important; width: fit-content; margin: .75rem 0 !important; padding: .7rem .9rem !important; border-left: 3px solid var(--accent) !important; user-select: all; }
+.deliverable-item { max-width: none; background: var(--surface); border: 1px solid #2b3a50; border-radius: 9px; padding: 1.25rem 1.4rem; margin: 0 0 1rem; }
+.deliverable-item > strong:first-child { display: block; color: var(--text); font-size: 1.08rem; margin-bottom: .65rem; }
+.deliverable-item:has(> .aval-list) { border-top: 3px solid var(--accent); }
+.deliverable-item > .aval-list { margin: 1rem 0 !important; gap: 1rem; }
+.deliverable-item > .aval-list > li { padding: 1rem 1.1rem; background: var(--tag-bg); border: 1px solid #293a51; border-radius: 6px; }
+.deliverable-item > .aval-list > li::before { content: none; }
+.calc-label { display: block; color: var(--accent); font-size: 1rem; margin-bottom: .5rem; }
+.callout { font-size: 1rem; line-height: 1.8; padding: 1.15rem 1.4rem; background: #102334; }
+.note-obs { font-style: normal; font-size: .92rem; line-height: 1.8; }
+.concept-box { padding: 1.4rem; }
+.concept-box::before { margin: -1.4rem -1.4rem 1.2rem; }
+.concept-box h4 { font-size: 1.15rem; }
+.concept-box .qa-lead { font-size: 1rem; }
+ul.qa-list { gap: .9rem; }
+ul.qa-list li { padding: .8rem .8rem .8rem 2rem; background: #0f172a; border-radius: 5px; }
+ul.qa-list li::before { left: .7rem; top: .8rem; }
+.agenda-wrap table { font-size: .95rem; }
+.agenda-wrap thead th { color: #c3d2e4; font-size: .8rem; }
+.agenda-wrap td { overflow-wrap: anywhere; }
+.quick-guide { margin-top: 1.5rem; padding: 1.3rem; background: #111e30; border: 1px solid #34516c; border-radius: 8px; }
+.quick-guide h2 { font-size: 1.15rem; margin-bottom: .65rem; }
+.quick-guide p { color: var(--muted); margin-bottom: 1rem; }
+.quick-links { display: flex; flex-wrap: wrap; gap: .65rem; list-style: none; }
+.quick-links a { display: block; padding: .65rem .9rem; background: #0a1727; border: 1px solid #3b5872; border-radius: 5px; font-size: .94rem; }
+.deadline { display: inline-block; font-size: 1.25rem; padding: .15rem .5rem; background: #12334a; border-radius: 4px; }
+.skip-link { position: absolute; left: 1rem; top: -8rem; z-index: 200; padding: .75rem 1rem; background: #fff; color: #102334; }
+.skip-link:focus { top: 1rem; }
+@media (max-width: 700px) {
+ .container { padding: 0 1.1rem; }
+ nav { position: static; padding: .8rem 0; }
+ nav .container { padding: 0 1.1rem; }
+ .nav-links { gap: .55rem 1rem; }
+ .nav-links a { font-size: .8rem; padding: .25rem 0; display: inline-block; }
+ .hero { padding: 2.25rem 0 2rem; }
+ .hero-eyebrow { font-size: .68rem; letter-spacing: .08em; }
+ .aval-grid, .content-grid, .ds-grid { grid-template-columns: minmax(0,1fr); }
+ .section { padding: 2rem 0; }
+ .section-heading { gap: .55rem; font-size: 1.3rem; }
+ .section-heading::after { display: none; }
+ .deliverable-item, .concept-box, .aval-card { padding: 1rem; }
+ .concept-box::before { margin: -1rem -1rem 1rem; }
+ .section, .subsection-heading { scroll-margin-top: 1rem; }
+ .quick-links { display: grid; grid-template-columns: 1fr; }
+ .agenda-wrap table { min-width: 580px; }
+}
+@media print {
+ :root { --bg: #fff; --surface: #fff; --text: #111; --muted: #333; --accent: #075575; --accent2: #50348c; --tag-bg: #f4f4f4; }
+ nav, .skip-link, .quick-guide { display: none; }
+ body { font-size: 11pt; }
+ .container { max-width: none; padding: 0; }
+ .hero { padding: 0 0 1rem; }
+ .hero::before { display: none; }
+ .section { padding: 1rem 0; }
+ .aval-grid { display: block; }
+ .aval-card, .deliverable-item { margin-bottom: 1rem; }
+ .callout, .deadline, .quick-links a { background: #f4f4f4; }
+ .subsection-heading, .section-heading, h4 { break-after: avoid; }
+ .agenda-wrap { overflow: visible; }
+}
+
 </style>
 </head>
 <body>
+<a class="skip-link" href="#entrega">Ir para entrega e avaliação</a>
 <nav>
 <div class="container">
 <span class="nav-brand">claytonjasilva.github.io</span>
-<ul class="nav-links"><li><a href="#introducao">introdução</a></li><li><a href="#entrega">entrega</a></li><li><a href="#problema1">problema 1</a></li><li><a href="#problema2">problema 2</a></li><li><a href="#problema3">problema 3</a></li><li><a href="#referencias">referências</a></li><li><a href="../progLinear.html">← disciplina</a></li></ul>
+<ul class="nav-links"><li><a href="#introducao">introdução</a></li><li><a href="#entrega">entrega</a></li><li><a href="#problema1">problema 1</a></li><li><a href="#problema2">problema 2</a></li><li><a href="#problema3">problema 3</a></li><li><a href="#referencias">referências</a></li><li><a href="../../progLinear.html">← disciplina</a></li></ul>
 </div>
 </nav>
 <section class="hero">
@@ -239,6 +328,15 @@ code.formula {
 <h1>Programação Linear <strong>Aplicada</strong></h1>
 <p class="hero-sub">Prof. Clayton J A Silva · Ibmec Rio · Programação Linear — Ciência de Dados</p>
 <div class="hero-tags"><span class="tag">Finanças</span><span class="tag">Logística</span><span class="tag">Vendas</span><span class="tag">Dados públicos reais</span><span class="tag">Excel Solver</span></div>
+<aside class="quick-guide" aria-labelledby="guia-titulo">
+<h2 id="guia-titulo">O que você precisa fazer</h2>
+<p>Resolva os três problemas. Em cada um, apresente: dados tratados, modelo matemático, interpretação da solução, análise de sensibilidade e conclusão.</p>
+<ul class="quick-links">
+<li><a href="#entrega">Prazo, arquivos e avaliação</a></li>
+<li><a href="#item-3-3">Entregas do problema 1</a></li>
+<li><a href="#item-4-3">Entregas do problema 2</a></li>
+<li><a href="#item-5-3">Entregas do problema 3</a></li>
+</ul></aside>
 </div>
 </section>
 
@@ -266,7 +364,7 @@ code.formula {
 <div class="aval-card ap">
 <span class="aval-badge badge-ap">2.1 · Prazo</span>
 <h3>Prazo e formato de entrega</h3>
-<p>O trabalho deve ser entregue até o dia <strong style="color:var(--text)">13/03/2027</strong>. Nessa mesma data, cada grupo deverá apresentar formalmente os seus resultados à turma (apresentação oral, com tempo a ser combinado em sala de aula).</p>
+<p>O trabalho deve ser entregue até o dia <strong class="deadline" style="color:var(--text)">13/03/2027</strong>. Nessa mesma data, cada grupo deverá apresentar formalmente os seus resultados à turma (apresentação oral, com tempo a ser combinado em sala de aula).</p>
 </div>
 <div class="aval-card ac">
 <span class="aval-badge badge-ac">2.2 · Artefatos</span>
@@ -303,7 +401,7 @@ code.formula {
 <section class="section problem-block" id="problema1">
 <h2 class="section-heading"><span class="section-number">03</span>Problema 1 — Alocação de Carteira (Finanças)</h2>
 
-<h3 class="subsection-heading">// 3.1 enunciado</h3>
+<h3 class="subsection-heading" id="item-3-1">3.1 enunciado</h3>
 <p class="body-text">A Ápice Capital Gestora de Recursos Ltda. é uma gestora de recursos fictícia, responsável pela administração de uma carteira multimercado de R$ 10.000.000,00 (dez milhões de reais), pertencente a um fundo de pensão igualmente fictício. O comitê de investimentos da gestora solicitou um estudo quantitativo para definir a alocação desse capital entre quatro classes de ativos disponíveis no mercado brasileiro, respeitando um conjunto de políticas internas de risco e liquidez aprovadas pelo comitê de risco da gestora.</p>
 <p class="body-text">As quatro classes de ativos consideradas são: (a) fundos referenciados DI/CDI, de liquidez diária e baixo risco; (b) títulos públicos prefixados, cujo retorno esperado deve ser tomado como equivalente mensal da meta da taxa Selic média vigente no período; (c) títulos públicos indexados à inflação (Tesouro IPCA+), cujo retorno mensal deve ser composto pela variação média do IPCA somada a um spread médio de mercado de 6,00% ao ano, praticado em títulos de médio prazo dessa natureza; e (d) fundos cambiais, referenciados à variação da taxa de câmbio comercial do dólar americano.</p>
 <p class="body-text">A política de investimentos da gestora estabelece as seguintes regras, válidas para o período de alocação:</p>
@@ -316,7 +414,7 @@ code.formula {
 </ul>
 <div class="callout"><strong>Em resumo:</strong> a empresa deseja determinar o valor MÁXIMO do retorno mensal esperado da carteira, decidindo que fração do capital alocar em cada um dos quatro tipos de investimento, sem desrespeitar nenhuma das regras internas listadas acima.</div>
 
-<h3 class="subsection-heading">// 3.2 dados — de onde vêm e como obtê-los</h3>
+<h3 class="subsection-heading" id="item-3-2">3.2 dados — de onde vêm e como obtê-los</h3>
 <p class="body-text">Os quatro indicadores usados neste problema (CDI, Selic, IPCA e dólar comercial) são publicados diariamente ou mensalmente pelo Banco Central do Brasil, de forma gratuita, no Sistema Gerenciador de Séries Temporais (SGS).</p>
 <div class="agenda-wrap"><table><thead><tr><th>Classe de ativo</th><th>Indicador</th><th>Link oficial (fonte original)</th></tr></thead><tbody>
 <tr><td>DI/CDI</td><td>Série SGS 12</td><td>api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados</td></tr>
@@ -335,14 +433,14 @@ code.formula {
 <li>Guarde o arquivo limpo: ele será a base para os cálculos da seção 3.3.</li>
 </ol>
 
-<h3 class="subsection-heading">// 3.3 o que deve ser entregue</h3>
+<h3 class="subsection-heading" id="item-3-3">3.3 o que deve ser entregue</h3>
 <div class="deliverable-item"><strong>i) Extração e limpeza dos dados.</strong> Confirme que as quatro abas da planilha estão completas e sem linhas duplicadas ou em branco. Entenda o que cada coluna representa: nas abas CDI e Selic, "Valor" é uma taxa de juros (% ao dia e % ao ano, respectivamente); na aba IPCA, "Valor" já é a variação mensal do índice (%); na aba Dólar, "Valor" é o preço do dólar em reais naquele dia.</div>
 <div class="deliverable-item"><strong>ii) Modelagem com dados médios (fazer no Excel).</strong> Em cada aba, crie uma coluna auxiliar ao lado dos valores e calcule os retornos e riscos abaixo. Depois de calculados, esses quatro pares (retorno, risco) são os únicos números que alimentam o modelo de Programação Linear.
 <ul class="aval-list" style="margin-top:.6rem;">
-<li>CDI (taxa diária, % ao dia): em uma coluna auxiliar, calcule, para cada linha, o equivalente mensal daquela taxa diária com a fórmula <code class="formula">=((1+B2/100)^21-1)*100</code> (o expoente 21 representa o número aproximado de dias úteis em um mês). Depois, use <code class="formula">=MÉDIA()</code> e <code class="formula">=DESVPAD.A()</code> sobre essa coluna auxiliar para obter o retorno médio mensal e o risco (volatilidade) do CDI.</li>
-<li>Selic (taxa anual, % ao ano): mesma ideia, mas a fórmula da coluna auxiliar é <code class="formula">=((1+B2/100)^(1/12)-1)*100</code>. Em seguida, use MÉDIA() e DESVPAD.A() sobre essa coluna.</li>
-<li>IPCA (já é mensal): não precisa de coluna auxiliar. Use =MÉDIA() e =DESVPAD.A() diretamente sobre a coluna Valor. Para obter o retorno do IPCA+, some ao resultado da MÉDIA() o valor do spread mensal de 6% a.a., que se calcula uma única vez com <code class="formula">=((1,06)^(1/12)-1)*100</code>. O risco do IPCA+ é o mesmo desvio-padrão do IPCA.</li>
-<li>Dólar (preço diário, em R$): crie uma coluna auxiliar com a variação percentual entre um dia e o dia anterior: <code class="formula">=(B3-B2)/B2*100</code>. Calcule a MÉDIA() e o DESVPAD.A() dessa coluna (valores diários) e, em seguida, converta para a escala mensal multiplicando a média por 21 e o desvio-padrão por <code class="formula">=RAIZ(21)</code> (regra simples de conversão de escala do dia para o mês).</li>
+<li><strong class="calc-label">CDI (taxa diária, % ao dia):</strong> em uma coluna auxiliar, calcule, para cada linha, o equivalente mensal daquela taxa diária com a fórmula <code class="formula formula-block">=((1+B2/100)^21-1)*100</code> (o expoente 21 representa o número aproximado de dias úteis em um mês). Depois, use <code class="formula">=MÉDIA()</code> e <code class="formula">=DESVPAD.A()</code> sobre essa coluna auxiliar para obter o retorno médio mensal e o risco (volatilidade) do CDI.</li>
+<li><strong class="calc-label">Selic (taxa anual, % ao ano):</strong> mesma ideia, mas a fórmula da coluna auxiliar é <code class="formula formula-block">=((1+B2/100)^(1/12)-1)*100</code>. Em seguida, use MÉDIA() e DESVPAD.A() sobre essa coluna.</li>
+<li><strong class="calc-label">IPCA (já é mensal):</strong> não precisa de coluna auxiliar. Use =MÉDIA() e =DESVPAD.A() diretamente sobre a coluna Valor. Para obter o retorno do IPCA+, some ao resultado da MÉDIA() o valor do spread mensal de 6% a.a., que se calcula uma única vez com <code class="formula formula-block">=((1,06)^(1/12)-1)*100</code>. O risco do IPCA+ é o mesmo desvio-padrão do IPCA.</li>
+<li><strong class="calc-label">Dólar (preço diário, em R$):</strong> crie uma coluna auxiliar com a variação percentual entre um dia e o dia anterior: <code class="formula">=(B3-B2)/B2*100</code>. Calcule a MÉDIA() e o DESVPAD.A() dessa coluna (valores diários) e, em seguida, converta para a escala mensal multiplicando a média por 21 e o desvio-padrão por <code class="formula">=RAIZ(21)</code> (regra simples de conversão de escala do dia para o mês).</li>
 </ul>
 <p style="margin-top:.7rem;">Com os 4 retornos e os 4 riscos em mãos, <strong style="color:var(--text)">monte o modelo de Programação Linear</strong> definindo 4 variáveis de decisão (a fração do capital em cada classe) e escrevendo a função-objetivo e as restrições exatamente como descritas no enunciado (item 3.1). Resolva o modelo no Solver do Excel.</p>
 </div>
@@ -367,13 +465,13 @@ code.formula {
 <section class="section problem-block" id="problema2">
 <h2 class="section-heading"><span class="section-number">04</span>Problema 2 — Alocação de Capacidade em Malha Aérea (Logística)</h2>
 
-<h3 class="subsection-heading">// 4.1 enunciado</h3>
+<h3 class="subsection-heading" id="item-4-1">4.1 enunciado</h3>
 <p class="body-text">A AeroCarga Internacional Ltda. é uma transportadora aérea de cargas fictícia que opera a partir de um hub central de distribuição. Para o planejamento do próximo mês, a empresa decidiu usar, como referência de mercado, os padrões reais de distância geográfica e de frequência histórica de voos de uma malha aérea real (rede de rotas operada a partir de um grande hub, com dados de fevereiro de 2011), considerando que a estrutura de distâncias e a importância relativa de cada rota permanecem representativas da operação atual da empresa.</p>
 <p class="body-text">A diretoria de operações precisa decidir quantos voos de carga alocar mensalmente a cada uma das seis rotas mais importantes que partem do hub, respeitando o orçamento operacional mensal disponível e os compromissos mínimos e máximos de capacidade contratados em cada rota.</p>
 <p class="body-text">Cada rota tem um custo operacional proporcional à distância percorrida, estimado em R$ 38,00 por quilômetro voado. A empresa dispõe de um orçamento operacional de R$ 20.000.000,00 por mês. Por política comercial, cada rota tem um número mínimo contratual de voos mensais, equivalente a 70% da participação de mercado real daquela rota (calculada sobre uma capacidade de referência da malha de 300 voos/mês), e um número máximo de voos definido pela capacidade física de pátio e slots do aeroporto de destino, equivalente a 160% dessa mesma referência.</p>
 <div class="callout"><strong>Em resumo:</strong> a empresa deseja determinar o número MÁXIMO de voos que pode oferecer, ponderado pela demanda histórica real de cada rota, sem ultrapassar o orçamento disponível nem os limites contratuais de cada rota.</div>
 
-<h3 class="subsection-heading">// 4.2 dados — de onde vêm e como obtê-los</h3>
+<h3 class="subsection-heading" id="item-4-2">4.2 dados — de onde vêm e como obtê-los</h3>
 <p class="body-text">Os dados reais de rotas vêm do conjunto público 2011_february_aa_flight_paths.csv, disponibilizado gratuitamente no repositório plotly/datasets (GitHub), no link:</p>
 <p class="body-text" style="text-align:center;"><a href="https://raw.githubusercontent.com/plotly/datasets/master/2011_february_aa_flight_paths.csv" target="_blank">raw.githubusercontent.com/plotly/datasets/master/2011_february_aa_flight_paths.csv</a></p>
 <p class="body-text">O arquivo contém, para cada rota operada por uma companhia aérea em fevereiro de 2011: as coordenadas geográficas (latitude/longitude) dos aeroportos de origem e de destino, o código IATA de cada aeroporto e o número de voos realizados naquela rota no mês (coluna cnt) — valor interpretado, neste trabalho, como a relevância/demanda histórica real de cada rota.</p>
@@ -388,12 +486,12 @@ code.formula {
 <li>Filtre apenas as linhas cujo airport1 seja esse hub e ordene pela coluna cnt, do maior para o menor. Selecione as 6 primeiras linhas: são as 6 rotas mais importantes, que serão usadas no modelo.</li>
 </ol>
 
-<h3 class="subsection-heading">// 4.3 o que deve ser entregue</h3>
+<h3 class="subsection-heading" id="item-4-3">4.3 o que deve ser entregue</h3>
 <div class="deliverable-item"><strong>i) Extração e limpeza dos dados.</strong> Siga o passo a passo acima para chegar às 6 rotas do hub escolhido. Confira se não há linhas duplicadas ou com dados faltando entre elas.</div>
 <div class="deliverable-item"><strong>ii) Modelagem com dados médios (fazer no Excel).</strong> Para cada uma das 6 rotas, calcule:
 <ul class="aval-list" style="margin-top:.6rem;">
-<li>Distância real (km), a partir das coordenadas, usando a fórmula de Haversine. Em uma célula, digite: <code class="formula">=6371*2*ASEN(RAIZ(SEN(RADIANOS(lat2-lat1)/2)^2+COS(RADIANOS(lat1))*COS(RADIANOS(lat2))*SEN(RADIANOS(lon2-lon1)/2)^2))</code> — substituindo lat1/lon1 (origem) e lat2/lon2 (destino) pelas células correspondentes.</li>
-<li>Participação de mercado da rota (share): <code class="formula">=cnt_da_rota / SOMA(cnt das 6 rotas)</code>.</li>
+<li>Distância real (km), a partir das coordenadas, usando a fórmula de Haversine. Em uma célula, digite: <code class="formula formula-block">=6371*2*ASEN(RAIZ(SEN(RADIANOS(lat2-lat1)/2)^2+COS(RADIANOS(lat1))*COS(RADIANOS(lat2))*SEN(RADIANOS(lon2-lon1)/2)^2))</code> — substituindo lat1/lon1 (origem) e lat2/lon2 (destino) pelas células correspondentes.</li>
+<li>Participação de mercado da rota (share): <code class="formula formula-block">=cnt_da_rota / SOMA(cnt das 6 rotas)</code>.</li>
 <li>Custo por voo: = distância (km) × R$ 38,00.</li>
 <li>Mínimo contratual da rota: = 70% × share × 300 (arredondar para baixo). Máximo de capacidade: = 160% × share × 300 (arredondar para cima).</li>
 </ul>
@@ -420,12 +518,12 @@ code.formula {
 <section class="section problem-block" id="problema3">
 <h2 class="section-heading"><span class="section-number">05</span>Problema 3 — Mix de Lapidação e Venda de Diamantes (Vendas)</h2>
 
-<h3 class="subsection-heading">// 5.1 enunciado</h3>
+<h3 class="subsection-heading" id="item-5-1">5.1 enunciado</h3>
 <p class="body-text">A Cristal &amp; Cia Lapidação de Diamantes Ltda. é uma joalheria/lapidária fictícia que compra diamantes brutos e os lapida em cinco categorias de qualidade de corte — Fair, Good, Very Good, Premium e Ideal — antes de revendê-los no mercado. Para o próximo mês, a diretoria comercial precisa decidir quantos quilates de diamante bruto lapidar em cada categoria de corte, respeitando três tipos de limitação: a disponibilidade de matéria-prima (pedra bruta em estoque), a capacidade de mão de obra especializada de lapidação e a demanda máxima que o mercado consegue absorver mensalmente em cada categoria.</p>
 <p class="body-text">A empresa dispõe de 400 quilates de pedra bruta e de 650 horas de mão de obra especializada por mês. O tempo médio de lapidação necessário por quilate varia conforme a categoria, em função da precisão exigida em cada corte: 1,0 hora/quilate (Fair), 1,3 hora/quilate (Good), 1,6 hora/quilate (Very Good), 1,8 hora/quilate (Premium) e 2,2 horas/quilate (Ideal, o corte de maior precisão). O mercado consegue absorver, no total, até 520 quilates lapidados por mês, distribuídos entre as cinco categorias proporcionalmente à importância histórica real de cada uma.</p>
 <div class="callout"><strong>Em resumo:</strong> a empresa deseja determinar o mix de produção mensal (quilates lapidados por categoria de corte) que MAXIMIZA a receita total, sem ultrapassar a matéria-prima disponível, as horas de mão de obra disponíveis, nem a demanda que o mercado absorve em cada categoria.</div>
 
-<h3 class="subsection-heading">// 5.2 dados — de onde vêm e como obtê-los</h3>
+<h3 class="subsection-heading" id="item-5-2">5.2 dados — de onde vêm e como obtê-los</h3>
 <p class="body-text">Os preços médios de venda por quilate e a importância relativa (participação de mercado) de cada categoria de corte vêm do conjunto de dados público diamonds, com aproximadamente 53.940 transações reais de venda de diamantes lapidados, disponível gratuitamente no repositório público mwaskom/seaborn-data (GitHub), em:</p>
 <p class="body-text" style="text-align:center;"><a href="https://raw.githubusercontent.com/mwaskom/seaborn-data/master/diamonds.csv" target="_blank">raw.githubusercontent.com/mwaskom/seaborn-data/master/diamonds.csv</a></p>
 <p class="body-text">O arquivo contém, entre outras variáveis, o quilate (carat), a categoria de corte (cut), o preço de venda (price) e as dimensões físicas (x, y, z) de cada diamante da amostra. Para facilitar, o arquivo já está disponível, sem qualquer alteração, com o nome <code class="formula">Problema3_Vendas_Diamantes.csv</code>.</p>
@@ -436,12 +534,12 @@ code.formula {
 <li>Baixe o arquivo Problema3_Vendas_Diamantes.csv e abra-o no Excel (Dados → De Texto/CSV).</li>
 <li>Remova linhas duplicadas: selecione toda a tabela e use Dados → Remover Duplicatas (marcando todas as colunas). Também remova linhas em que x, y ou z sejam iguais a 0 — são erros de digitação conhecidos da base (use um Filtro nessas três colunas).</li>
 <li>Crie uma nova coluna "preço_por_quilate" com a fórmula <code class="formula">=price/carat</code>, aplicada a cada linha restante.</li>
-<li>Para cada uma das cinco categorias de corte (Fair, Good, Very Good, Premium, Ideal), calcule o preço médio por quilate com a função <code class="formula">=MÉDIASE(coluna_cut; "categoria"; coluna_preço_por_quilate)</code>.</li>
-<li>Calcule também, para cada categoria, o total de quilates vendidos na amostra com <code class="formula">=SOMASE(coluna_cut; "categoria"; coluna_carat)</code> — ou o número de registros com <code class="formula">=CONT.SE(coluna_cut; "categoria")</code>, caso prefira usar contagem em vez de quilates.</li>
+<li>Para cada uma das cinco categorias de corte (Fair, Good, Very Good, Premium, Ideal), calcule o preço médio por quilate com a função <code class="formula formula-block">=MÉDIASE(coluna_cut; "categoria"; coluna_preço_por_quilate)</code>.</li>
+<li>Calcule também, para cada categoria, o total de quilates vendidos na amostra com <code class="formula formula-block">=SOMASE(coluna_cut; "categoria"; coluna_carat)</code> — ou o número de registros com <code class="formula formula-block">=CONT.SE(coluna_cut; "categoria")</code>, caso prefira usar contagem em vez de quilates.</li>
 <li>A participação de mercado de cada categoria é o total de quilates dessa categoria dividido pela soma dos totais das cinco categorias. Multiplique essa participação por 520 (quilates/mês que o mercado absorve) para obter a demanda máxima mensal de cada categoria.</li>
 </ol>
 
-<h3 class="subsection-heading">// 5.3 o que deve ser entregue</h3>
+<h3 class="subsection-heading" id="item-5-3">5.3 o que deve ser entregue</h3>
 <div class="deliverable-item"><strong>i) Extração e limpeza dos dados.</strong> Siga o passo a passo acima: remover duplicidades e linhas com x, y ou z iguais a zero; calcular o preço por quilate de cada transação.</div>
 <div class="deliverable-item"><strong>ii) Modelagem com dados médios (fazer no Excel).</strong> Com o preço médio por quilate e a demanda máxima de cada categoria já calculados (passo a passo acima), monte o modelo de Programação Linear definindo 5 variáveis de decisão (quilates lapidados em cada categoria) e escrevendo a função-objetivo e as restrições descritas no enunciado (item 5.1). Resolva o modelo no Solver do Excel.</div>
 <div class="deliverable-item"><strong>iii) Interpretação da solução ótima.</strong> Depois de rodar o Solver, identifique quais recursos (matéria-prima, mão de obra) foram totalmente utilizados e quais sobraram; identifique quais categorias atingiram o teto de demanda de mercado e quais ficaram abaixo dele.</div>
@@ -475,7 +573,7 @@ code.formula {
 <footer>
 <div class="container">
 <p>© 2026 · Prof. Clayton J A Silva</p>
-<p><a href="../progLinear.html">← voltar para Programação Linear</a></p>
+<p><a href="../../progLinear.html">← voltar para Programação Linear</a></p>
 </div>
 </footer>
 </body>
