@@ -126,7 +126,7 @@ h3 { font-size: 1rem; font-weight: 600; margin: 1.75rem 0 0.9rem; color: var(--t
 .aval-card h3 { font-size: 0.95rem; font-weight: 600; margin: 0; }
 .aval-card p { font-size: .85rem; color: var(--muted); }
 .aval-list { list-style: none; display: flex; flex-direction: column; gap: 0.4rem; }
-.aval-list li { font-size: 0.85rem; color: var(--muted); display: flex; gap: 0.5rem; }
+.aval-list li { font-size: 0.85rem; color: var(--muted); display: block; }
 .aval-list li::before { content: '·'; color: var(--accent); flex-shrink: 0; }
 
 .ds-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 0.6rem; }
@@ -220,7 +220,7 @@ ul.qa-list li::before { content: '?'; position: absolute; left: 0; top: 0; color
 code.formula {
   font-family: var(--font-mono); font-size: .8rem; background: var(--tag-bg);
   border: 1px solid var(--border); border-radius: 4px; padding: .15rem .5rem; color: var(--accent);
-  white-space: nowrap; display: inline-block; line-height: 1.6; margin: .15rem 0;
+  white-space: normal; overflow-wrap: anywhere; display: inline; line-height: 1.6; margin: .15rem 0;
 }
 
 .problem-block { padding-bottom: .5rem; }
@@ -312,6 +312,15 @@ ul.qa-list li::before { left: .7rem; top: .8rem; }
  .agenda-wrap { overflow: visible; }
 }
 
+
+/* Estrutura vertical dos cálculos: cada trecho ocupa sua própria linha. */
+.calculation-guide { display: block; margin: 1.25rem 0; }
+.calculation-card { display: block; padding: 1.25rem; margin: 0 0 1rem; background: #0c1726; border: 1px solid #39506a; border-left: 4px solid #00c2ff; border-radius: 6px; }
+.calculation-card h4 { margin: 0 0 .8rem; color: #8cddff; font-size: 1.12rem; }
+.calculation-card p { display: block; margin: .65rem 0; color: #d0dbea; line-height: 1.8; }
+.calculation-formula { display: block; margin: .8rem 0; padding: .8rem 1rem; background: #18273b; border-radius: 4px; }
+.calculation-code { font-family: var(--font-mono); font-size: .95rem; color: #a5eaff; white-space: normal; overflow-wrap: anywhere; }
+@media(max-width:700px) { .calculation-card { padding: .9rem; } }
 </style>
 </head>
 <body>
@@ -436,12 +445,24 @@ ul.qa-list li::before { left: .7rem; top: .8rem; }
 <h3 class="subsection-heading" id="item-3-3">3.3 o que deve ser entregue</h3>
 <div class="deliverable-item"><strong>i) Extração e limpeza dos dados.</strong> Confirme que as quatro abas da planilha estão completas e sem linhas duplicadas ou em branco. Entenda o que cada coluna representa: nas abas CDI e Selic, "Valor" é uma taxa de juros (% ao dia e % ao ano, respectivamente); na aba IPCA, "Valor" já é a variação mensal do índice (%); na aba Dólar, "Valor" é o preço do dólar em reais naquele dia.</div>
 <div class="deliverable-item"><strong>ii) Modelagem com dados médios (fazer no Excel).</strong> Em cada aba, crie uma coluna auxiliar ao lado dos valores e calcule os retornos e riscos abaixo. Depois de calculados, esses quatro pares (retorno, risco) são os únicos números que alimentam o modelo de Programação Linear.
-<ul class="aval-list" style="margin-top:.6rem;">
-<li><strong class="calc-label">CDI (taxa diária, % ao dia):</strong> em uma coluna auxiliar, calcule, para cada linha, o equivalente mensal daquela taxa diária com a fórmula <code class="formula formula-block">=((1+B2/100)^21-1)*100</code> (o expoente 21 representa o número aproximado de dias úteis em um mês). Depois, use <code class="formula">=MÉDIA()</code> e <code class="formula">=DESVPAD.A()</code> sobre essa coluna auxiliar para obter o retorno médio mensal e o risco (volatilidade) do CDI.</li>
-<li><strong class="calc-label">Selic (taxa anual, % ao ano):</strong> mesma ideia, mas a fórmula da coluna auxiliar é <code class="formula formula-block">=((1+B2/100)^(1/12)-1)*100</code>. Em seguida, use MÉDIA() e DESVPAD.A() sobre essa coluna.</li>
-<li><strong class="calc-label">IPCA (já é mensal):</strong> não precisa de coluna auxiliar. Use =MÉDIA() e =DESVPAD.A() diretamente sobre a coluna Valor. Para obter o retorno do IPCA+, some ao resultado da MÉDIA() o valor do spread mensal de 6% a.a., que se calcula uma única vez com <code class="formula formula-block">=((1,06)^(1/12)-1)*100</code>. O risco do IPCA+ é o mesmo desvio-padrão do IPCA.</li>
-<li><strong class="calc-label">Dólar (preço diário, em R$):</strong> crie uma coluna auxiliar com a variação percentual entre um dia e o dia anterior: <code class="formula">=(B3-B2)/B2*100</code>. Calcule a MÉDIA() e o DESVPAD.A() dessa coluna (valores diários) e, em seguida, converta para a escala mensal multiplicando a média por 21 e o desvio-padrão por <code class="formula">=RAIZ(21)</code> (regra simples de conversão de escala do dia para o mês).</li>
-</ul>
+<div class="calculation-guide">
+<article class="calculation-card"><h4>CDI (taxa diária, % ao dia):</h4>
+<p>Em uma coluna auxiliar, calcule, para cada linha, o equivalente mensal daquela taxa diária com a fórmula</p>
+<div class="calculation-formula"><code class="calculation-code">=((1+B2/100)^21-1)*100</code></div>
+<p>(o expoente 21 representa o número aproximado de dias úteis em um mês). Depois, use <code class="formula">=MÉDIA()</code> e <code class="formula">=DESVPAD.A()</code> sobre essa coluna auxiliar para obter o retorno médio mensal e o risco (volatilidade) do CDI.</p></article>
+<article class="calculation-card"><h4>Selic (taxa anual, % ao ano):</h4>
+<p>Mesma ideia, mas a fórmula da coluna auxiliar é</p>
+<div class="calculation-formula"><code class="calculation-code">=((1+B2/100)^(1/12)-1)*100</code></div>
+<p>Em seguida, use MÉDIA() e DESVPAD.A() sobre essa coluna.</p></article>
+<article class="calculation-card"><h4>IPCA (já é mensal):</h4>
+<p>Não precisa de coluna auxiliar. Use =MÉDIA() e =DESVPAD.A() diretamente sobre a coluna Valor. Para obter o retorno do IPCA+, some ao resultado da MÉDIA() o valor do spread mensal de 6% a.a., que se calcula uma única vez com</p>
+<div class="calculation-formula"><code class="calculation-code">=((1,06)^(1/12)-1)*100</code></div>
+<p>O risco do IPCA+ é o mesmo desvio-padrão do IPCA.</p></article>
+<article class="calculation-card"><h4>Dólar (preço diário, em R$):</h4>
+<p>Crie uma coluna auxiliar com a variação percentual entre um dia e o dia anterior:</p>
+<div class="calculation-formula"><code class="calculation-code">=(B3-B2)/B2*100</code></div>
+<p>Calcule a MÉDIA() e o DESVPAD.A() dessa coluna (valores diários) e, em seguida, converta para a escala mensal multiplicando a média por 21 e o desvio-padrão por <code class="formula">=RAIZ(21)</code> (regra simples de conversão de escala do dia para o mês).</p></article>
+</div>
 <p style="margin-top:.7rem;">Com os 4 retornos e os 4 riscos em mãos, <strong style="color:var(--text)">monte o modelo de Programação Linear</strong> definindo 4 variáveis de decisão (a fração do capital em cada classe) e escrevendo a função-objetivo e as restrições exatamente como descritas no enunciado (item 3.1). Resolva o modelo no Solver do Excel.</p>
 </div>
 <div class="deliverable-item"><strong>iii) Interpretação da solução ótima.</strong> Depois de rodar o Solver, veja quanto ficou alocado em cada classe. Para cada restrição do enunciado, diga se ela ficou "no limite" (ativa) ou "com sobra" (com folga) e explique, em suas próprias palavras, por que isso faz sentido para o negócio.</div>
