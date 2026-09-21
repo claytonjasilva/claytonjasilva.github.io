@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Trabalho AP1 — Programação Linear — Prof. Clayton J A Silva</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&amp;family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,600;1,300&amp;display=swap" rel="stylesheet"/>
+<style>
+
+:root {
+  --bg:        #0a0e17;
+  --surface:   #111827;
+  --border:    #1e2d40;
+  --accent:    #00c2ff;
+  --accent2:   #7c3aed;
+  --text:      #e2e8f0;
+  --muted:     #64748b;
+  --tag-bg:    #0f172a;
+  --font-mono: 'IBM Plex Mono', monospace;
+  --font-sans: 'IBM Plex Sans', sans-serif;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-sans);
+  font-size: 16px;
+  line-height: 1.6;
+  min-height: 100vh;
+}
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; }
+.container { max-width: 1000px; margin: 0 auto; padding: 0 2rem; }
+
+nav {
+  position: sticky; top: 0; z-index: 100;
+  background: rgba(10,14,23,0.88);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border);
+  padding: 1rem 0;
+}
+nav .container { display: flex; align-items: center; justify-content: space-between; gap: 1rem; flex-wrap: wrap; max-width: 1100px; margin: 0 auto; padding-left: 2rem; padding-right: 2rem; box-sizing: border-box; }
+.nav-brand { font-family: var(--font-mono); font-size: 0.82rem; color: var(--accent); display: inline-block; padding: .2rem 0; }
+.nav-links { display: flex; gap: 1.5rem; list-style: none; flex-wrap: wrap; }
+.nav-links a { font-family: var(--font-mono); font-size: 0.78rem; color: var(--muted); transition: color 0.2s; }
+.nav-links a:hover { color: var(--text); text-decoration: none; }
+@media (max-width:640px){
+  nav .container{ padding-left:1rem; padding-right:1rem; }
+  .nav-brand{ margin-bottom:.35rem; }
+}
+
+.hero { padding: 5rem 0 3.5rem; position: relative; overflow: hidden; }
+.hero::before {
+  content: ''; position: absolute; inset: 0;
+  background-image:
+    linear-gradient(var(--border) 1px, transparent 1px),
+    linear-gradient(90deg, var(--border) 1px, transparent 1px);
+  background-size: 40px 40px; opacity: 0.3;
+  mask-image: radial-gradient(ellipse 80% 60% at 50% 0%, black 40%, transparent 100%);
+}
+.hero-eyebrow {
+  font-family: var(--font-mono); font-size: 0.75rem; color: var(--accent);
+  letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 1rem;
+  display: flex; align-items: center; gap: 0.75rem;
+}
+.hero-eyebrow::before { content: ''; display: inline-block; width: 2rem; height: 1px; background: var(--accent); }
+h1 { font-size: clamp(1.8rem, 4vw, 3rem); font-weight: 300; line-height: 1.1; letter-spacing: -0.02em; margin-bottom: 0.75rem; }
+h1 strong { font-weight: 600; color: var(--accent); }
+.hero-sub { font-size: 0.88rem; color: var(--muted); font-family: var(--font-mono); margin-bottom: 2rem; }
+.hero-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+.tag {
+  font-family: var(--font-mono); font-size: 0.72rem; color: var(--accent2);
+  background: rgba(124,58,237,0.1); border: 1px solid rgba(124,58,237,0.25);
+  border-radius: 4px; padding: 0.25rem 0.6rem;
+}
+
+.section { padding: 3rem 0; border-top: 1px solid var(--border); }
+h3 { font-size: 1rem; font-weight: 600; margin: 1.75rem 0 0.9rem; color: var(--text); }
+
+.content-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1px;
+  background: var(--border);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  overflow: hidden;
+}
+.content-card {
+  background: var(--surface);
+  padding: 1.25rem 1.5rem;
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+  transition: background 0.2s;
+  min-height: 120px;
+}
+.content-card:hover { background: #161f2e; }
+.content-num {
+  font-family: var(--font-mono); font-size: 0.7rem; color: var(--accent);
+  background: rgba(0,194,255,0.08); border: 1px solid rgba(0,194,255,0.2);
+  border-radius: 3px; padding: 0.2rem 0.5rem; white-space: nowrap; flex-shrink: 0; margin-top: 0.1rem;
+}
+.content-card a { font-size: 0.9rem; color: var(--text); font-weight: 600; line-height: 1.35; }
+.content-card a:hover { color: var(--accent); text-decoration: none; }
+.content-card p { color: var(--muted); font-size: 0.78rem; margin-top: 0.35rem; line-height: 1.45; }
+
+.aval-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 1rem; }
+.aval-card {
+  border: 1px solid var(--border); border-radius: 8px; padding: 1.5rem;
+  background: var(--surface); display: flex; flex-direction: column; gap: 0.75rem;
+  position: relative; overflow: hidden;
+}
+.aval-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; }
+.aval-card.ap::before { background: linear-gradient(90deg, var(--accent), rgba(0,194,255,0.3)); }
+.aval-card.ac::before { background: linear-gradient(90deg, var(--accent2), rgba(124,58,237,0.3)); }
+.aval-badge {
+  font-family: var(--font-mono); font-size: 0.7rem; font-weight: 600;
+  padding: 0.25rem 0.6rem; border-radius: 4px; display: inline-block; width: fit-content;
+}
+.badge-ap { background: rgba(0,194,255,0.1); border: 1px solid rgba(0,194,255,0.25); color: var(--accent); }
+.badge-ac { background: rgba(124,58,237,0.1); border: 1px solid rgba(124,58,237,0.25); color: var(--accent2); }
+.aval-card h3 { font-size: 0.95rem; font-weight: 600; margin: 0; }
+.aval-card p { font-size: .85rem; color: var(--muted); }
+.aval-list { list-style: none; display: flex; flex-direction: column; gap: 0.4rem; }
+.aval-list li { font-size: 0.85rem; color: var(--muted); display: flex; gap: 0.5rem; }
+.aval-list li::before { content: '·'; color: var(--accent); flex-shrink: 0; }
+
+.ds-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 0.6rem; }
+.ds-item {
+  background: var(--tag-bg); border: 1px solid var(--border); border-radius: 6px;
+  padding: 0.85rem 1rem; display: flex; gap: 0.75rem; align-items: center;
+  transition: border-color 0.2s;
+}
+.ds-item:hover { border-color: var(--accent); }
+.ds-item a { font-size: 0.8rem; color: var(--text); font-family: var(--font-mono); line-height: 1.5; }
+.ds-item a:hover { color: var(--accent); text-decoration: none; }
+
+footer { border-top: 1px solid var(--border); padding: 2rem 0; margin-top: 2rem; }
+footer .container { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; }
+footer p { font-size: 0.82rem; color: var(--muted); font-family: var(--font-mono); }
+
+@media (max-width: 600px) {
+  .hero { padding: 3.5rem 0 2.5rem; }
+  h1 { font-size: 1.8rem; }
+}
+
+/* ── AGENDA-STYLE TABLES (reaproveitado para tabelas de dados) ── */
+.agenda-wrap { overflow-x:auto; border:1px solid var(--border); border-radius:8px; margin: 1rem 0; }
+.agenda-wrap table { width:100%; border-collapse:collapse; font-size:.875rem; }
+.agenda-wrap thead tr { background:var(--tag-bg); border-bottom:1px solid var(--border); }
+.agenda-wrap thead th { padding:.75rem 1rem; text-align:left; font-family:var(--font-mono); font-size:.72rem; color:var(--muted); letter-spacing:.1em; text-transform:uppercase; font-weight:400; }
+.agenda-wrap tbody tr { border-bottom:1px solid var(--border); transition:background .15s; }
+.agenda-wrap tbody tr:last-child { border-bottom:none; }
+.agenda-wrap tbody tr:hover { background:rgba(255,255,255,.02); }
+.agenda-wrap tbody td { padding:.75rem 1rem; color:var(--muted); }
+.agenda-wrap tbody td:first-child { font-family:var(--font-mono); font-size:.78rem; }
+.agenda-wrap tbody td:last-child { color:var(--text); }
+
+/* ── HIERARQUIA VISUAL ── */
+.section-heading {
+  display: flex; align-items: center; gap: .85rem; margin-bottom: 1.35rem;
+  font-size: clamp(1.35rem, 2vw, 1.7rem); font-weight: 600; letter-spacing: -0.01em;
+}
+.section-heading::after { content: ''; flex: 1; height: 1px; background: var(--border); }
+.section-number { font-family: var(--font-mono); font-size: .72rem; color: var(--accent); letter-spacing: .12em; white-space: nowrap; }
+.section-intro { color: var(--muted); margin: -.45rem 0 1.4rem; max-width: 780px; }
+.subsection-heading { font-family: var(--font-mono); font-size: .9rem; color: var(--text); margin: 2.25rem 0 1rem; font-weight: 600; }
+
+p.body-text { color: var(--muted); margin-bottom: 1rem; max-width: 820px; }
+p.body-text strong { color: var(--text); }
+
+/* ── CALLOUT "Em resumo" ── */
+.callout {
+  background: var(--tag-bg); border: 1px solid var(--border); border-left: 3px solid var(--accent);
+  border-radius: 6px; padding: 1rem 1.25rem; margin: 1.1rem 0; font-size: .88rem; color: var(--text);
+}
+.callout strong { color: var(--accent); }
+
+/* ── OBSERVAÇÃO (planilha no GitHub) ── */
+.note-obs {
+  background: var(--tag-bg); border: 1px solid var(--border); border-left: 3px solid var(--accent2);
+  border-radius: 6px; padding: .9rem 1.1rem; margin: 1rem 0; font-size: .82rem; color: var(--muted); font-style: italic;
+}
+.note-obs strong { color: var(--accent2); font-style: normal; }
+.note-obs a { font-style: normal; }
+
+/* ── PASSO A PASSO ── */
+ol.step-list { counter-reset: step; list-style: none; display: flex; flex-direction: column; gap: .65rem; margin: 1rem 0 1.5rem; }
+ol.step-list li { counter-increment: step; display: flex; gap: .85rem; font-size: .87rem; color: var(--muted); align-items: flex-start; }
+ol.step-list li::before {
+  content: counter(step); flex-shrink: 0; width: 1.6rem; height: 1.6rem; margin-top: .05rem;
+  border-radius: 50%; background: rgba(0,194,255,.1); border: 1px solid rgba(0,194,255,.3);
+  color: var(--accent); font-family: var(--font-mono); font-size: .72rem;
+  display: flex; align-items: center; justify-content: center;
+}
+
+/* ── ENTREGÁVEIS i–v ── */
+.deliverable-item { margin-bottom: 1.1rem; font-size: .88rem; color: var(--muted); max-width: 820px; }
+.deliverable-item > strong { color: var(--text); }
+
+/* ── CAIXA DE CONCEITO (análise de sensibilidade) ── */
+.concept-box {
+  background: var(--surface); border: 1px solid var(--border); border-radius: 8px;
+  padding: 1.4rem 1.6rem; margin: 1.5rem 0 2.5rem;
+}
+.concept-box::before { content: ''; display: block; height: 2px; margin: -1.4rem -1.6rem 1.2rem; background: linear-gradient(90deg, var(--accent2), rgba(124,58,237,0.3)); }
+.concept-box h4 { font-size: .95rem; color: var(--accent2); margin-bottom: .7rem; }
+.concept-box > p { color: var(--muted); font-size: .87rem; margin-bottom: .9rem; }
+.concept-box .qa-lead { color: var(--text); font-weight: 600; font-size: .87rem; margin: 1rem 0 .7rem; }
+
+/* ── PERGUNTAS DE SENSIBILIDADE ── */
+ul.qa-list { list-style: none; display: flex; flex-direction: column; gap: .55rem; }
+ul.qa-list li { font-size: .87rem; color: var(--muted); padding-left: 1.4rem; position: relative; }
+ul.qa-list li::before { content: '?'; position: absolute; left: 0; top: 0; color: var(--accent2); font-family: var(--font-mono); font-weight: 600; }
+
+code.formula {
+  font-family: var(--font-mono); font-size: .8rem; background: var(--tag-bg);
+  border: 1px solid var(--border); border-radius: 4px; padding: .15rem .5rem; color: var(--accent);
+  white-space: nowrap; display: inline-block; line-height: 1.6; margin: .15rem 0;
+}
+
+.problem-block { padding-bottom: .5rem; }
+</style>
+</head>
+<body>
+<nav>
+<div class="container">
+<span class="nav-brand">claytonjasilva.github.io</span>
+<ul class="nav-links"><li><a href="#introducao">introdução</a></li><li><a href="#entrega">entrega</a></li><li><a href="#problema1">problema 1</a></li><li><a href="#problema2">problema 2</a></li><li><a href="#problema3">problema 3</a></li><li><a href="#referencias">referências</a></li><li><a href="../progLinear.html">← disciplina</a></li></ul>
+</div>
+</nav>
+<section class="hero">
+<div class="container">
+<div class="hero-eyebrow">Trabalho AP1 · Enunciado do aluno</div>
+<h1>Programação Linear <strong>Aplicada</strong></h1>
+<p class="hero-sub">Prof. Clayton J A Silva · Ibmec Rio · Programação Linear — Ciência de Dados</p>
+<div class="hero-tags"><span class="tag">Finanças</span><span class="tag">Logística</span><span class="tag">Vendas</span><span class="tag">Dados públicos reais</span><span class="tag">Excel Solver</span></div>
+</div>
+</section>
+
+<div class="container">
+
+<section class="section" id="introducao">
+<h2 class="section-heading"><span class="section-number">01</span>Introdução</h2>
+<p class="section-intro">Este é o trabalho da disciplina de Programação Linear, do curso de Ciência de Dados. Ele propõe três problemas aplicados, construídos a partir de dados públicos reais das áreas de finanças, logística e vendas. As empresas e as políticas internas descritas em cada enunciado são fictícias, mas os dados que você vai extrair, tratar e usar para montar cada modelo são reais.</p>
+<p class="body-text">Como esta é uma das primeiras vezes que a turma trabalha com extração e tratamento de dados, todo o material necessário já foi baixado da internet e organizado em planilhas prontas para uso, com nomes associados a cada problema (por exemplo, <code class="formula">Problema1_Financas_DadosBCB.xlsx</code>). Você não precisa programar nada: todos os cálculos — médias, desvios-padrão, proporções — devem ser feitos no Excel (ou em outra planilha eletrônica equivalente), usando funções simples como <code class="formula">MÉDIA()</code>, <code class="formula">DESVPAD.A()</code>, <code class="formula">MÉDIASE()</code> e <code class="formula">SOMASE()</code>. A própria resolução do modelo de Programação Linear e a obtenção dos preços-sombra também devem ser feitas no Excel, com o suplemento Solver (menu Dados → Solver; se a opção não aparecer, ative-a em Arquivo → Opções → Suprimentos → Solver).</p>
+<p class="body-text">Para cada um dos três problemas, sua entrega deve conter cinco partes, sempre na mesma ordem: <strong>(i)</strong> a extração e a limpeza dos dados indicados, feitas à luz da interpretação do enunciado; <strong>(ii)</strong> a modelagem matemática do problema de Programação Linear, usando os valores médios calculados a partir dos dados reais como parâmetros do modelo; <strong>(iii)</strong> a interpretação da solução ótima obtida, incluindo a identificação e a discussão das restrições que ficaram "no limite" (ativas) e das que apresentam folga ou excesso; <strong>(iv)</strong> a análise de sensibilidade do modelo, obtendo e interpretando os preços-sombra de cada restrição (o Relatório de Sensibilidade do Solver fornece esses valores automaticamente); e <strong>(v)</strong> uma conclusão final que retome o pedido do enunciado, com uma recomendação objetiva de decisão.</p>
+<div class="callout"><strong>Antes de começar:</strong> leia com atenção o prazo de entrega, os artefatos exigidos e os critérios de avaliação do trabalho, na seção <a href="#entrega">2 — Entrega e Avaliação</a>.</div>
+<p class="body-text">Todas as premissas de negócio que não decorrem diretamente dos dados (por exemplo: orçamentos, capacidades, custos unitários e políticas internas de cada empresa fictícia) estão explicitadas nos próprios enunciados — apenas o enunciado é fictício; os dados que o alimentam são reais.</p>
+
+<h3 class="subsection-heading">// resumo dos três problemas</h3>
+<div class="content-grid">
+<div class="content-card"><span class="content-num">P1</span><div><a href="#problema1">Alocação ótima de carteira de investimentos (Finanças)</a><p>Com dados reais do Banco Central (CDI, Selic, IPCA e dólar), definir como alocar R$ 10 milhões entre quatro classes de ativos de modo a maximizar o retorno mensal esperado, respeitando limites de liquidez, concentração, proteção e risco.</p></div></div>
+<div class="content-card"><span class="content-num">P2</span><div><a href="#problema2">Alocação de capacidade em malha aérea de carga (Logística)</a><p>Com dados reais de rotas aéreas (distâncias geográficas e frequência histórica de voos), definir quantos voos mensais alocar a cada uma das 6 rotas mais importantes de um hub, maximizando o nível de serviço sem estourar o orçamento nem os limites contratuais.</p></div></div>
+<div class="content-card"><span class="content-num">P3</span><div><a href="#problema3">Mix de lapidação e venda de diamantes (Vendas)</a><p>Com dados reais de vendas de diamantes lapidados, definir quantos quilates lapidar em cada categoria de corte de modo a maximizar a receita mensal, respeitando matéria-prima, mão de obra especializada e demanda de mercado.</p></div></div>
+</div>
+</section>
+
+<section class="section" id="entrega">
+<h2 class="section-heading"><span class="section-number">02</span>Entrega e Avaliação</h2>
+<div class="aval-grid">
+<div class="aval-card ap">
+<span class="aval-badge badge-ap">2.1 · Prazo</span>
+<h3>Prazo e formato de entrega</h3>
+<p>O trabalho deve ser entregue até o dia <strong style="color:var(--text)">13/03/2027</strong>. Nessa mesma data, cada grupo deverá apresentar formalmente os seus resultados à turma (apresentação oral, com tempo a ser combinado em sala de aula).</p>
+</div>
+<div class="aval-card ac">
+<span class="aval-badge badge-ac">2.2 · Artefatos</span>
+<h3>Artefatos a serem enviados</h3>
+<p style="margin-bottom:.3rem;">No dia da apresentação, cada grupo deve enviar ao professor, para os três problemas resolvidos:</p>
+<ul class="aval-list">
+<li>a apresentação utilizada (arquivo PowerPoint, .pptx), com os principais resultados de cada problema;</li>
+<li>a planilha eletrônica limpa e organizada, com os dados tratados e os cálculos de médias, desvios-padrão e demais parâmetros usados nos modelos;</li>
+<li>os modelos de Programação Linear comentados — variáveis, função-objetivo, restrições, solução do Solver e Relatório de Sensibilidade —, com as respectivas interpretações.</li>
+</ul>
+</div>
+<div class="aval-card ap">
+<span class="aval-badge badge-ap">2.3 · Nota</span>
+<h3>Avaliação e composição da nota</h3>
+<p>Este trabalho corresponde a <strong style="color:var(--text)">30% da nota final</strong> da disciplina (nota de até 3,0 pontos), somada à nota da prova, que corresponde aos <strong style="color:var(--text)">70% restantes</strong> (nota de até 7,0 pontos). A nota final da disciplina será lançada pelo professor no sistema acadêmico.</p>
+</div>
+<div class="aval-card ac">
+<span class="aval-badge badge-ac">2.4 · Participação</span>
+<h3>Identificação do grupo e avaliação da participação</h3>
+<p>Todos os artefatos entregues devem conter, na capa ou na primeira página, a identificação de todos os integrantes do grupo. O próprio grupo deve atribuir a cada integrante uma nota de participação individual, de 0 (zero) a 3 (três), refletindo o envolvimento de cada um na realização do trabalho.</p>
+</div>
+</div>
+
+<h3 class="subsection-heading">// ficha de participação do grupo — reproduza esta tabela nos artefatos entregues</h3>
+<div class="agenda-wrap"><table><thead><tr><th>Nome do integrante</th><th>Nota de participação atribuída pelo grupo (0 a 3)</th></tr></thead><tbody>
+<tr><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>&nbsp;</td><td>&nbsp;</td></tr>
+</tbody></table></div>
+</section>
+
+<section class="section problem-block" id="problema1">
+<h2 class="section-heading"><span class="section-number">03</span>Problema 1 — Alocação de Carteira (Finanças)</h2>
+
+<h3 class="subsection-heading">// 3.1 enunciado</h3>
+<p class="body-text">A Ápice Capital Gestora de Recursos Ltda. é uma gestora de recursos fictícia, responsável pela administração de uma carteira multimercado de R$ 10.000.000,00 (dez milhões de reais), pertencente a um fundo de pensão igualmente fictício. O comitê de investimentos da gestora solicitou um estudo quantitativo para definir a alocação desse capital entre quatro classes de ativos disponíveis no mercado brasileiro, respeitando um conjunto de políticas internas de risco e liquidez aprovadas pelo comitê de risco da gestora.</p>
+<p class="body-text">As quatro classes de ativos consideradas são: (a) fundos referenciados DI/CDI, de liquidez diária e baixo risco; (b) títulos públicos prefixados, cujo retorno esperado deve ser tomado como equivalente mensal da meta da taxa Selic média vigente no período; (c) títulos públicos indexados à inflação (Tesouro IPCA+), cujo retorno mensal deve ser composto pela variação média do IPCA somada a um spread médio de mercado de 6,00% ao ano, praticado em títulos de médio prazo dessa natureza; e (d) fundos cambiais, referenciados à variação da taxa de câmbio comercial do dólar americano.</p>
+<p class="body-text">A política de investimentos da gestora estabelece as seguintes regras, válidas para o período de alocação:</p>
+<ul class="aval-list">
+<li>no mínimo 15% do capital deve permanecer em fundos DI/CDI, por exigência de liquidez imediata;</li>
+<li>no máximo 40% do capital pode ser alocado em títulos prefixados, dado o risco de marcação a mercado dessa classe;</li>
+<li>no mínimo 10% do capital deve ser destinado a títulos indexados à inflação, como proteção do poder de compra do fundo;</li>
+<li>por política de hedge cambial, entre 5% e 15% do capital deve permanecer em fundos cambiais;</li>
+<li>o "risco ponderado" da carteira — a soma das frações alocadas em cada classe, multiplicadas pela volatilidade histórica média mensal (desvio-padrão) da respectiva classe — não pode exceder 0,35% ao mês.</li>
+</ul>
+<div class="callout"><strong>Em resumo:</strong> a empresa deseja determinar o valor MÁXIMO do retorno mensal esperado da carteira, decidindo que fração do capital alocar em cada um dos quatro tipos de investimento, sem desrespeitar nenhuma das regras internas listadas acima.</div>
+
+<h3 class="subsection-heading">// 3.2 dados — de onde vêm e como obtê-los</h3>
+<p class="body-text">Os quatro indicadores usados neste problema (CDI, Selic, IPCA e dólar comercial) são publicados diariamente ou mensalmente pelo Banco Central do Brasil, de forma gratuita, no Sistema Gerenciador de Séries Temporais (SGS).</p>
+<div class="agenda-wrap"><table><thead><tr><th>Classe de ativo</th><th>Indicador</th><th>Link oficial (fonte original)</th></tr></thead><tbody>
+<tr><td>DI/CDI</td><td>Série SGS 12</td><td>api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados</td></tr>
+<tr><td>Prefixado</td><td>Série SGS 432 (meta Selic)</td><td>api.bcb.gov.br/dados/serie/bcdata.sgs.432/dados</td></tr>
+<tr><td>IPCA+</td><td>Série SGS 433 (IPCA mensal)</td><td>api.bcb.gov.br/dados/serie/bcdata.sgs.433/dados</td></tr>
+<tr><td>Cambial</td><td>Série SGS 1 (dólar comercial)</td><td>api.bcb.gov.br/dados/serie/bcdata.sgs.1/dados</td></tr>
+</tbody></table></div>
+<p class="body-text">Para não exigir que a turma acesse diretamente esses links (que retornam dados em formato de código, não em planilha), os quatro indicadores já foram baixados e organizados na planilha única <code class="formula">Problema1_Financas_DadosBCB.xlsx</code>, com uma aba para cada série (CDI_serie12, Selic_serie432, IPCA_serie433 e Dolar_serie1), cada uma com duas colunas: Data e Valor.</p>
+<div class="note-obs"><strong>Observação:</strong> a mesma planilha bruta (Problema1_Financas_DadosBCB.xlsx) também está disponível na pasta de materiais da disciplina. Assim que essa pasta for publicada, o arquivo poderá ser baixado diretamente em <a href="https://claytonjasilva.github.io/progLinear/trabalhoap1/Problema1_Financas_DadosBCB.xlsx" target="_blank">claytonjasilva.github.io/progLinear/trabalhoap1/Problema1_Financas_DadosBCB.xlsx</a> — essa é a forma mais simples de obter o arquivo, sem precisar acessar o site de origem.</div>
+
+<h4 style="font-size:.88rem;color:var(--text);margin:1.5rem 0 .5rem;">Passo a passo para obter e organizar os dados</h4>
+<ol class="step-list">
+<li>Baixe o arquivo Problema1_Financas_DadosBCB.xlsx (endereço indicado na observação acima) e abra-o no Excel.</li>
+<li>Confira as quatro abas do arquivo. Cada uma traz a série completa, do dia 01/01/2023 até 01/09/2026, exatamente como publicada pelo Banco Central — nenhum tratamento foi feito ainda.</li>
+<li>Verifique se há linhas em branco, datas repetidas ou valores ausentes em cada aba; se houver, remova-as antes de calcular qualquer coisa (limpeza dos dados).</li>
+<li>Guarde o arquivo limpo: ele será a base para os cálculos da seção 3.3.</li>
+</ol>
+
+<h3 class="subsection-heading">// 3.3 o que deve ser entregue</h3>
+<div class="deliverable-item"><strong>i) Extração e limpeza dos dados.</strong> Confirme que as quatro abas da planilha estão completas e sem linhas duplicadas ou em branco. Entenda o que cada coluna representa: nas abas CDI e Selic, "Valor" é uma taxa de juros (% ao dia e % ao ano, respectivamente); na aba IPCA, "Valor" já é a variação mensal do índice (%); na aba Dólar, "Valor" é o preço do dólar em reais naquele dia.</div>
+<div class="deliverable-item"><strong>ii) Modelagem com dados médios (fazer no Excel).</strong> Em cada aba, crie uma coluna auxiliar ao lado dos valores e calcule os retornos e riscos abaixo. Depois de calculados, esses quatro pares (retorno, risco) são os únicos números que alimentam o modelo de Programação Linear.
+<ul class="aval-list" style="margin-top:.6rem;">
+<li>CDI (taxa diária, % ao dia): em uma coluna auxiliar, calcule, para cada linha, o equivalente mensal daquela taxa diária com a fórmula <code class="formula">=((1+B2/100)^21-1)*100</code> (o expoente 21 representa o número aproximado de dias úteis em um mês). Depois, use <code class="formula">=MÉDIA()</code> e <code class="formula">=DESVPAD.A()</code> sobre essa coluna auxiliar para obter o retorno médio mensal e o risco (volatilidade) do CDI.</li>
+<li>Selic (taxa anual, % ao ano): mesma ideia, mas a fórmula da coluna auxiliar é <code class="formula">=((1+B2/100)^(1/12)-1)*100</code>. Em seguida, use MÉDIA() e DESVPAD.A() sobre essa coluna.</li>
+<li>IPCA (já é mensal): não precisa de coluna auxiliar. Use =MÉDIA() e =DESVPAD.A() diretamente sobre a coluna Valor. Para obter o retorno do IPCA+, some ao resultado da MÉDIA() o valor do spread mensal de 6% a.a., que se calcula uma única vez com <code class="formula">=((1,06)^(1/12)-1)*100</code>. O risco do IPCA+ é o mesmo desvio-padrão do IPCA.</li>
+<li>Dólar (preço diário, em R$): crie uma coluna auxiliar com a variação percentual entre um dia e o dia anterior: <code class="formula">=(B3-B2)/B2*100</code>. Calcule a MÉDIA() e o DESVPAD.A() dessa coluna (valores diários) e, em seguida, converta para a escala mensal multiplicando a média por 21 e o desvio-padrão por <code class="formula">=RAIZ(21)</code> (regra simples de conversão de escala do dia para o mês).</li>
+</ul>
+<p style="margin-top:.7rem;">Com os 4 retornos e os 4 riscos em mãos, <strong style="color:var(--text)">monte o modelo de Programação Linear</strong> definindo 4 variáveis de decisão (a fração do capital em cada classe) e escrevendo a função-objetivo e as restrições exatamente como descritas no enunciado (item 3.1). Resolva o modelo no Solver do Excel.</p>
+</div>
+<div class="deliverable-item"><strong>iii) Interpretação da solução ótima.</strong> Depois de rodar o Solver, veja quanto ficou alocado em cada classe. Para cada restrição do enunciado, diga se ela ficou "no limite" (ativa) ou "com sobra" (com folga) e explique, em suas próprias palavras, por que isso faz sentido para o negócio.</div>
+<div class="deliverable-item"><strong>iv) Análise de sensibilidade.</strong> Gere o Relatório de Sensibilidade do Solver (na janela de resultados do Solver, marque a caixa "Sensibilidade" antes de clicar em OK) e responda às perguntas formuladas a seguir.</div>
+<div class="deliverable-item"><strong>v) Conclusão.</strong> Escreva, em um parágrafo, qual alocação você recomendaria ao comitê de investimentos, quanto de retorno mensal (em reais) essa alocação gera, e se alguma das políticas internas está "custando" retorno à carteira.</div>
+
+<div class="concept-box">
+<h4>Análise de sensibilidade — conceito</h4>
+<p><strong style="color:var(--text)">O que é a análise de sensibilidade?</strong></p>
+<p>Depois de resolver um modelo de Programação Linear, é natural perguntar: "o que aconteceria se um dos números do problema mudasse um pouco?" A análise de sensibilidade responde exatamente a isso, sem precisar refazer o modelo do zero. Ela mostra, para cada restrição, um número chamado preço-sombra (ou valor dual): o quanto o resultado ótimo (aqui, o retorno mensal da carteira) mudaria se o limite daquela restrição aumentasse em uma unidade. Uma restrição que está "no limite" (ativa) quase sempre tem um preço-sombra diferente de zero — ela está de fato impedindo um resultado melhor. Já uma restrição "com sobra" (com folga) tem preço-sombra igual a zero — ela não está atrapalhando o resultado, então relaxá-la não ajudaria em nada. O Solver do Excel calcula esses valores automaticamente no Relatório de Sensibilidade, na coluna "Sombra Preço" (ou "Shadow Price").</p>
+<p class="qa-lead">Com base nesse conceito, responda no seu relatório:</p>
+<ul class="qa-list">
+<li>Qual é o preço-sombra da restrição de concentração máxima em Prefixado (40%)? O que ele significa em pontos percentuais de retorno?</li>
+<li>Qual é o preço-sombra da restrição de proteção mínima em IPCA+ (10%)? Quanto a carteira "deixa de ganhar" por mês por causa dessa exigência?</li>
+<li>Qual é o preço-sombra da restrição de hedge cambial mínimo (5%)? Compare esse valor com os demais: qual política interna é a mais "cara" para a rentabilidade da carteira?</li>
+<li>O orçamento de risco (0,35% ao mês) está ativo ou tem folga na solução ótima? Se o comitê decidisse reduzir esse limite, a partir de que valor a solução ótima começaria a mudar?</li>
+</ul>
+</div>
+</section>
+
+<section class="section problem-block" id="problema2">
+<h2 class="section-heading"><span class="section-number">04</span>Problema 2 — Alocação de Capacidade em Malha Aérea (Logística)</h2>
+
+<h3 class="subsection-heading">// 4.1 enunciado</h3>
+<p class="body-text">A AeroCarga Internacional Ltda. é uma transportadora aérea de cargas fictícia que opera a partir de um hub central de distribuição. Para o planejamento do próximo mês, a empresa decidiu usar, como referência de mercado, os padrões reais de distância geográfica e de frequência histórica de voos de uma malha aérea real (rede de rotas operada a partir de um grande hub, com dados de fevereiro de 2011), considerando que a estrutura de distâncias e a importância relativa de cada rota permanecem representativas da operação atual da empresa.</p>
+<p class="body-text">A diretoria de operações precisa decidir quantos voos de carga alocar mensalmente a cada uma das seis rotas mais importantes que partem do hub, respeitando o orçamento operacional mensal disponível e os compromissos mínimos e máximos de capacidade contratados em cada rota.</p>
+<p class="body-text">Cada rota tem um custo operacional proporcional à distância percorrida, estimado em R$ 38,00 por quilômetro voado. A empresa dispõe de um orçamento operacional de R$ 20.000.000,00 por mês. Por política comercial, cada rota tem um número mínimo contratual de voos mensais, equivalente a 70% da participação de mercado real daquela rota (calculada sobre uma capacidade de referência da malha de 300 voos/mês), e um número máximo de voos definido pela capacidade física de pátio e slots do aeroporto de destino, equivalente a 160% dessa mesma referência.</p>
+<div class="callout"><strong>Em resumo:</strong> a empresa deseja determinar o número MÁXIMO de voos que pode oferecer, ponderado pela demanda histórica real de cada rota, sem ultrapassar o orçamento disponível nem os limites contratuais de cada rota.</div>
+
+<h3 class="subsection-heading">// 4.2 dados — de onde vêm e como obtê-los</h3>
+<p class="body-text">Os dados reais de rotas vêm do conjunto público 2011_february_aa_flight_paths.csv, disponibilizado gratuitamente no repositório plotly/datasets (GitHub), no link:</p>
+<p class="body-text" style="text-align:center;"><a href="https://raw.githubusercontent.com/plotly/datasets/master/2011_february_aa_flight_paths.csv" target="_blank">raw.githubusercontent.com/plotly/datasets/master/2011_february_aa_flight_paths.csv</a></p>
+<p class="body-text">O arquivo contém, para cada rota operada por uma companhia aérea em fevereiro de 2011: as coordenadas geográficas (latitude/longitude) dos aeroportos de origem e de destino, o código IATA de cada aeroporto e o número de voos realizados naquela rota no mês (coluna cnt) — valor interpretado, neste trabalho, como a relevância/demanda histórica real de cada rota.</p>
+<p class="body-text">Para facilitar, o arquivo já está disponível, sem qualquer alteração, com o nome <code class="formula">Problema2_Logistica_RotasAereas.csv</code>.</p>
+<div class="note-obs"><strong>Observação:</strong> a mesma planilha bruta (Problema2_Logistica_RotasAereas.csv) também está disponível na pasta de materiais da disciplina. Assim que essa pasta for publicada, o arquivo poderá ser baixado diretamente em <a href="https://claytonjasilva.github.io/progLinear/trabalhoap1/Problema2_Logistica_RotasAereas.csv" target="_blank">claytonjasilva.github.io/progLinear/trabalhoap1/Problema2_Logistica_RotasAereas.csv</a> — essa é a forma mais simples de obter o arquivo, sem precisar acessar o site de origem.</div>
+
+<h4 style="font-size:.88rem;color:var(--text);margin:1.5rem 0 .5rem;">Passo a passo para obter e organizar os dados</h4>
+<ol class="step-list">
+<li>Baixe o arquivo Problema2_Logistica_RotasAereas.csv e abra-o no Excel (Dados → De Texto/CSV, ou simplesmente dando duplo clique no arquivo).</li>
+<li>Observe as colunas: start_lat/start_lon (coordenadas do aeroporto de origem), end_lat/end_lon (coordenadas do destino), airport1 (origem), airport2 (destino) e cnt (número de voos no mês — a demanda real).</li>
+<li>Use uma tabela dinâmica (ou a função CONT.SE) na coluna airport1 para descobrir qual aeroporto de origem aparece mais vezes — esse é o "hub" com maior número de rotas.</li>
+<li>Filtre apenas as linhas cujo airport1 seja esse hub e ordene pela coluna cnt, do maior para o menor. Selecione as 6 primeiras linhas: são as 6 rotas mais importantes, que serão usadas no modelo.</li>
+</ol>
+
+<h3 class="subsection-heading">// 4.3 o que deve ser entregue</h3>
+<div class="deliverable-item"><strong>i) Extração e limpeza dos dados.</strong> Siga o passo a passo acima para chegar às 6 rotas do hub escolhido. Confira se não há linhas duplicadas ou com dados faltando entre elas.</div>
+<div class="deliverable-item"><strong>ii) Modelagem com dados médios (fazer no Excel).</strong> Para cada uma das 6 rotas, calcule:
+<ul class="aval-list" style="margin-top:.6rem;">
+<li>Distância real (km), a partir das coordenadas, usando a fórmula de Haversine. Em uma célula, digite: <code class="formula">=6371*2*ASEN(RAIZ(SEN(RADIANOS(lat2-lat1)/2)^2+COS(RADIANOS(lat1))*COS(RADIANOS(lat2))*SEN(RADIANOS(lon2-lon1)/2)^2))</code> — substituindo lat1/lon1 (origem) e lat2/lon2 (destino) pelas células correspondentes.</li>
+<li>Participação de mercado da rota (share): <code class="formula">=cnt_da_rota / SOMA(cnt das 6 rotas)</code>.</li>
+<li>Custo por voo: = distância (km) × R$ 38,00.</li>
+<li>Mínimo contratual da rota: = 70% × share × 300 (arredondar para baixo). Máximo de capacidade: = 160% × share × 300 (arredondar para cima).</li>
+</ul>
+<p style="margin-top:.7rem;">Com essas 6 linhas de dados prontas, <strong style="color:var(--text)">monte o modelo de Programação Linear</strong> definindo 6 variáveis de decisão (voos/mês em cada rota) e escrevendo a função-objetivo e as restrições descritas no enunciado (item 4.1). Resolva o modelo no Solver do Excel.</p>
+</div>
+<div class="deliverable-item"><strong>iii) Interpretação da solução ótima.</strong> Depois de rodar o Solver, veja quantos voos ficaram alocados em cada rota. Diga quais rotas ficaram "no mínimo", quais ficaram "no máximo" e qual (ou quais) ficou em um valor intermediário. Explique por que isso faz sentido, olhando o custo por voo de cada rota.</div>
+<div class="deliverable-item"><strong>iv) Análise de sensibilidade.</strong> Gere o Relatório de Sensibilidade do Solver (marque a caixa "Sensibilidade" na janela de resultados) e responda às perguntas formuladas a seguir.</div>
+<div class="deliverable-item"><strong>v) Conclusão.</strong> Escreva, em um parágrafo, qual alocação de voos você recomendaria à diretoria de operações e se a empresa deveria pedir mais orçamento ou renegociar algum contrato mínimo.</div>
+
+<div class="concept-box">
+<h4>Análise de sensibilidade — conceito</h4>
+<p><strong style="color:var(--text)">O que é a análise de sensibilidade?</strong></p>
+<p>A análise de sensibilidade mostra o quanto o resultado ótimo mudaria se um dos limites do problema fosse alterado em uma unidade, sem que seja preciso resolver o modelo de novo. Esse número é chamado de preço-sombra (ou valor dual) da restrição. Uma restrição "no limite" (ativa) tem preço-sombra diferente de zero: ela está de fato travando o resultado. Uma restrição "com sobra" (com folga) tem preço-sombra igual a zero: aumentar ou diminuir aquele limite não mudaria em nada a solução ótima. No Solver do Excel, esses valores aparecem na coluna "Sombra Preço" do Relatório de Sensibilidade, uma para cada restrição.</p>
+<p class="qa-lead">Com base nesse conceito, responda no seu relatório:</p>
+<ul class="qa-list">
+<li>Qual é o preço-sombra do orçamento operacional? O que ele significa: quanto o nível de serviço aumentaria se a empresa tivesse R$ 1,00 a mais de orçamento por mês?</li>
+<li>Quais rotas têm preço-sombra positivo no limite máximo de capacidade (slots)? O que isso sugere sobre onde vale mais a pena a empresa negociar mais espaço no aeroporto?</li>
+<li>Quais rotas têm preço-sombra positivo no mínimo contratual? Isso significa que o contrato mínimo está "ajudando" ou "atrapalhando" o resultado da empresa?</li>
+<li>A rota que ficou em nível intermediário (nem no mínimo, nem no máximo) tem preço-sombra igual a zero nos seus próprios limites — por quê?</li>
+</ul>
+</div>
+</section>
+
+<section class="section problem-block" id="problema3">
+<h2 class="section-heading"><span class="section-number">05</span>Problema 3 — Mix de Lapidação e Venda de Diamantes (Vendas)</h2>
+
+<h3 class="subsection-heading">// 5.1 enunciado</h3>
+<p class="body-text">A Cristal &amp; Cia Lapidação de Diamantes Ltda. é uma joalheria/lapidária fictícia que compra diamantes brutos e os lapida em cinco categorias de qualidade de corte — Fair, Good, Very Good, Premium e Ideal — antes de revendê-los no mercado. Para o próximo mês, a diretoria comercial precisa decidir quantos quilates de diamante bruto lapidar em cada categoria de corte, respeitando três tipos de limitação: a disponibilidade de matéria-prima (pedra bruta em estoque), a capacidade de mão de obra especializada de lapidação e a demanda máxima que o mercado consegue absorver mensalmente em cada categoria.</p>
+<p class="body-text">A empresa dispõe de 400 quilates de pedra bruta e de 650 horas de mão de obra especializada por mês. O tempo médio de lapidação necessário por quilate varia conforme a categoria, em função da precisão exigida em cada corte: 1,0 hora/quilate (Fair), 1,3 hora/quilate (Good), 1,6 hora/quilate (Very Good), 1,8 hora/quilate (Premium) e 2,2 horas/quilate (Ideal, o corte de maior precisão). O mercado consegue absorver, no total, até 520 quilates lapidados por mês, distribuídos entre as cinco categorias proporcionalmente à importância histórica real de cada uma.</p>
+<div class="callout"><strong>Em resumo:</strong> a empresa deseja determinar o mix de produção mensal (quilates lapidados por categoria de corte) que MAXIMIZA a receita total, sem ultrapassar a matéria-prima disponível, as horas de mão de obra disponíveis, nem a demanda que o mercado absorve em cada categoria.</div>
+
+<h3 class="subsection-heading">// 5.2 dados — de onde vêm e como obtê-los</h3>
+<p class="body-text">Os preços médios de venda por quilate e a importância relativa (participação de mercado) de cada categoria de corte vêm do conjunto de dados público diamonds, com aproximadamente 53.940 transações reais de venda de diamantes lapidados, disponível gratuitamente no repositório público mwaskom/seaborn-data (GitHub), em:</p>
+<p class="body-text" style="text-align:center;"><a href="https://raw.githubusercontent.com/mwaskom/seaborn-data/master/diamonds.csv" target="_blank">raw.githubusercontent.com/mwaskom/seaborn-data/master/diamonds.csv</a></p>
+<p class="body-text">O arquivo contém, entre outras variáveis, o quilate (carat), a categoria de corte (cut), o preço de venda (price) e as dimensões físicas (x, y, z) de cada diamante da amostra. Para facilitar, o arquivo já está disponível, sem qualquer alteração, com o nome <code class="formula">Problema3_Vendas_Diamantes.csv</code>.</p>
+<div class="note-obs"><strong>Observação:</strong> a mesma planilha bruta (Problema3_Vendas_Diamantes.csv) também está disponível na pasta de materiais da disciplina. Assim que essa pasta for publicada, o arquivo poderá ser baixado diretamente em <a href="https://claytonjasilva.github.io/progLinear/trabalhoap1/Problema3_Vendas_Diamantes.csv" target="_blank">claytonjasilva.github.io/progLinear/trabalhoap1/Problema3_Vendas_Diamantes.csv</a> — essa é a forma mais simples de obter o arquivo, sem precisar acessar o site de origem.</div>
+
+<h4 style="font-size:.88rem;color:var(--text);margin:1.5rem 0 .5rem;">Passo a passo para obter e organizar os dados</h4>
+<ol class="step-list">
+<li>Baixe o arquivo Problema3_Vendas_Diamantes.csv e abra-o no Excel (Dados → De Texto/CSV).</li>
+<li>Remova linhas duplicadas: selecione toda a tabela e use Dados → Remover Duplicatas (marcando todas as colunas). Também remova linhas em que x, y ou z sejam iguais a 0 — são erros de digitação conhecidos da base (use um Filtro nessas três colunas).</li>
+<li>Crie uma nova coluna "preço_por_quilate" com a fórmula <code class="formula">=price/carat</code>, aplicada a cada linha restante.</li>
+<li>Para cada uma das cinco categorias de corte (Fair, Good, Very Good, Premium, Ideal), calcule o preço médio por quilate com a função <code class="formula">=MÉDIASE(coluna_cut; "categoria"; coluna_preço_por_quilate)</code>.</li>
+<li>Calcule também, para cada categoria, o total de quilates vendidos na amostra com <code class="formula">=SOMASE(coluna_cut; "categoria"; coluna_carat)</code> — ou o número de registros com <code class="formula">=CONT.SE(coluna_cut; "categoria")</code>, caso prefira usar contagem em vez de quilates.</li>
+<li>A participação de mercado de cada categoria é o total de quilates dessa categoria dividido pela soma dos totais das cinco categorias. Multiplique essa participação por 520 (quilates/mês que o mercado absorve) para obter a demanda máxima mensal de cada categoria.</li>
+</ol>
+
+<h3 class="subsection-heading">// 5.3 o que deve ser entregue</h3>
+<div class="deliverable-item"><strong>i) Extração e limpeza dos dados.</strong> Siga o passo a passo acima: remover duplicidades e linhas com x, y ou z iguais a zero; calcular o preço por quilate de cada transação.</div>
+<div class="deliverable-item"><strong>ii) Modelagem com dados médios (fazer no Excel).</strong> Com o preço médio por quilate e a demanda máxima de cada categoria já calculados (passo a passo acima), monte o modelo de Programação Linear definindo 5 variáveis de decisão (quilates lapidados em cada categoria) e escrevendo a função-objetivo e as restrições descritas no enunciado (item 5.1). Resolva o modelo no Solver do Excel.</div>
+<div class="deliverable-item"><strong>iii) Interpretação da solução ótima.</strong> Depois de rodar o Solver, identifique quais recursos (matéria-prima, mão de obra) foram totalmente utilizados e quais sobraram; identifique quais categorias atingiram o teto de demanda de mercado e quais ficaram abaixo dele.</div>
+<div class="deliverable-item"><strong>iv) Análise de sensibilidade.</strong> Gere o Relatório de Sensibilidade do Solver (marque a caixa "Sensibilidade" na janela de resultados) e responda às perguntas formuladas a seguir.</div>
+<div class="deliverable-item"><strong>v) Conclusão.</strong> Recomende à diretoria comercial o mix de produção ótimo, diga se compensaria contratar mais horas de mão de obra especializada (e até que preço-hora isso continuaria sendo vantajoso) e aponte se há categorias em que a empresa está deixando demanda de mercado sem atender.</div>
+
+<div class="concept-box">
+<h4>Análise de sensibilidade — conceito</h4>
+<p><strong style="color:var(--text)">O que é a análise de sensibilidade?</strong></p>
+<p>A análise de sensibilidade mostra o quanto a receita ótima mudaria se um dos limites do problema fosse alterado em uma unidade, sem precisar resolver o modelo de novo. Esse número é o preço-sombra (ou valor dual) da restrição. Quando um recurso é usado por inteiro (restrição ativa), seu preço-sombra é maior que zero: ele está de fato limitando a receita. Quando sobra recurso (restrição com folga), o preço-sombra é zero: ter um pouco mais daquele recurso não mudaria em nada o resultado. No Solver do Excel, esses valores aparecem na coluna "Sombra Preço" do Relatório de Sensibilidade.</p>
+<p class="qa-lead">Com base nesse conceito, responda no seu relatório:</p>
+<ul class="qa-list">
+<li>Qual é o preço-sombra da mão de obra especializada? Quanto a receita aumentaria se a empresa tivesse 1 hora a mais de mão de obra por mês? A partir de que custo-hora não compensaria mais contratar horas extras?</li>
+<li>Qual é o preço-sombra da matéria-prima (pedra bruta)? Faz sentido esse valor ser zero ou próximo de zero? Relacione sua resposta com a existência (ou não) de folga nessa restrição.</li>
+<li>Compare os preços-sombra dos limites de demanda das categorias Fair, Good, Premium e Very Good. Por que a categoria que consome mais horas de lapidação por quilate tende a ter o menor preço-sombra de demanda?</li>
+<li>A categoria Ideal fica com demanda não plenamente atendida na solução ótima. O que isso implica sobre o preço-sombra do limite de demanda dessa categoria? Explique usando o conceito de folga.</li>
+</ul>
+</div>
+</section>
+
+<section class="section" id="referencias">
+<h2 class="section-heading"><span class="section-number">06</span>Referências</h2>
+<div class="ds-grid">
+<div class="ds-item"><a href="https://api.bcb.gov.br/dados/serie/" target="_blank">BANCO CENTRAL DO BRASIL. Sistema Gerenciador de Séries Temporais (SGS): séries 1, 12, 432 e 433. Brasília: BCB, 2026.</a></div>
+<div class="ds-item"><a href="https://github.com/plotly/datasets" target="_blank">PLOTLY TECHNOLOGIES INC. datasets: 2011_february_aa_flight_paths.csv. San Francisco: Plotly, [2016].</a></div>
+<div class="ds-item"><a href="https://github.com/mwaskom/seaborn-data" target="_blank">WASKOM, Michael. seaborn-data: diamonds.csv. [S. l.]: mwaskom, [2016].</a></div>
+</div>
+</section>
+
+</div>
+<footer>
+<div class="container">
+<p>© 2026 · Prof. Clayton J A Silva</p>
+<p><a href="../progLinear.html">← voltar para Programação Linear</a></p>
+</div>
+</footer>
+</body>
+</html>
