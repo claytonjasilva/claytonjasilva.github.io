@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Laboratório – MS Project: Alocação de Recursos</title>
+<style>
+  :root{
+    --bg:#0f1420; --panel:#171e2e; --panel2:#1e2739; --line:#2c3850;
+    --text:#e3e8f2; --muted:#9aa6bd; --accent:#4fa3ff; --ok:#3ecf8e;
+    --warn:#ffb347; --crit:#ff6b6b;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--text);font-family:"Segoe UI",Roboto,Arial,sans-serif;line-height:1.6}
+  main{max-width:1000px;margin:0 auto;padding:32px 16px 64px}
+  h1{font-size:1.9rem;margin:0 0 4px}
+  h2{font-size:1.35rem;margin:40px 0 12px;padding-bottom:6px;border-bottom:2px solid var(--line);color:var(--accent)}
+  h3{font-size:1.1rem;margin:24px 0 8px}
+  .sub{color:var(--muted);margin:0 0 24px}
+  .box{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:16px 20px;margin:16px 0}
+  .box.warn{border-left:4px solid var(--warn)}
+  .box.ok{border-left:4px solid var(--ok)}
+  .box.info{border-left:4px solid var(--accent)}
+  table{width:100%;border-collapse:collapse;margin:12px 0;font-size:.93rem}
+  th,td{border:1px solid var(--line);padding:6px 10px;text-align:left;vertical-align:top}
+  th{background:var(--panel2);color:var(--accent)}
+  tr:nth-child(even) td{background:rgba(255,255,255,.02)}
+  td.c,th.c{text-align:center}
+  .sum td{font-weight:600}
+  .crit{color:var(--crit);font-weight:600}
+  .ms{color:var(--warn)}
+  ol.steps{counter-reset:s;list-style:none;padding:0}
+  ol.steps>li{counter-increment:s;position:relative;background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:14px 18px 14px 64px;margin:12px 0}
+  ol.steps>li::before{content:counter(s);position:absolute;left:16px;top:14px;width:32px;height:32px;border-radius:50%;background:var(--accent);color:#0f1420;font-weight:700;display:flex;align-items:center;justify-content:center}
+  ol.steps.b{counter-reset:s 6}
+  ol.steps.c{counter-reset:s 11}
+  .menu{font-family:Consolas,monospace;background:var(--panel2);border:1px solid var(--line);border-radius:4px;padding:1px 6px;font-size:.88rem;white-space:nowrap}
+  ul{padding-left:22px}
+  .tw{overflow-x:auto}
+  footer{margin-top:48px;color:var(--muted);font-size:.85rem;border-top:1px solid var(--line);padding-top:12px}
+</style>
+</head>
+<body>
+<main>
+
+<h1>Laboratório – MS Project: Alocação de Recursos</h1>
+<p class="sub">Gestão de Projetos · Prática em laboratório · Estudo de caso “Projetar Sala de Aula”</p>
+
+<div class="box info">
+  <strong>Objetivos da aula</strong>
+  <ul>
+    <li>Revisar o lançamento da EAP, das atividades, das durações e das dependências (Partes A).</li>
+    <li>Cadastrar recursos e atribuí-los às atividades pela primeira vez (Parte B).</li>
+    <li>Identificar superalocações e discutir alternativas de solução (Parte C).</li>
+  </ul>
+</div>
+
+<h2>1. Dados do projeto</h2>
+<p>Data de início: <strong>sexta-feira, 25/09/2026</strong>. Calendário: <strong>Padrão</strong> (seg–sex, 8h/dia). Término esperado: <strong>terça-feira, 06/10/2026</strong> (8 dias úteis).</p>
+
+<div class="tw">
+<table>
+  <tr><th class="c">ID</th><th>EDT</th><th>Nome da tarefa</th><th class="c">Duração</th><th class="c">Predecessoras</th></tr>
+  <tr class="sum"><td class="c">0</td><td>0</td><td>Projetar Sala de Aula <em>(tarefa resumo do projeto)</em></td><td class="c">—</td><td class="c">—</td></tr>
+  <tr class="sum"><td class="c">1</td><td>1</td><td>Gerenciar projeto</td><td class="c">—</td><td class="c">—</td></tr>
+  <tr><td class="c">2</td><td>1.1</td><td class="ms">◆ Iniciar projeto (kickoff)</td><td class="c">0 dias</td><td class="c">—</td></tr>
+  <tr><td class="c">3</td><td>1.2</td><td>Monitorar e controlar</td><td class="c">7 dias</td><td class="c">2</td></tr>
+  <tr class="sum"><td class="c">4</td><td>2</td><td>Preparar infraestrutura</td><td class="c">—</td><td class="c">—</td></tr>
+  <tr><td class="c">5</td><td>2.1</td><td>Preparar rede de dados</td><td class="c">5 dias</td><td class="c">2</td></tr>
+  <tr><td class="c">6</td><td>2.2</td><td>Preparar rede elétrica</td><td class="c">5 dias</td><td class="c">2</td></tr>
+  <tr><td class="c">7</td><td>2.3</td><td class="ms">◆ Aprovar infraestrutura</td><td class="c">0 dias</td><td class="c">5;6</td></tr>
+  <tr class="sum"><td class="c">8</td><td>3</td><td>Adquirir e instalar equipamentos</td><td class="c">—</td><td class="c">—</td></tr>
+  <tr><td class="c">9</td><td>3.1</td><td class="crit">Adquirir mobiliário</td><td class="c">7 dias</td><td class="c">2</td></tr>
+  <tr><td class="c">10</td><td>3.2</td><td>Adquirir computadores</td><td class="c">3 dias</td><td class="c">2</td></tr>
+  <tr><td class="c">11</td><td>3.3</td><td>Adquirir ar-condicionado</td><td class="c">3 dias</td><td class="c">2</td></tr>
+  <tr><td class="c">12</td><td>3.4</td><td>Instalar ar-condicionado</td><td class="c">1 dia</td><td class="c">11</td></tr>
+  <tr><td class="c">13</td><td>4</td><td class="crit">Montar sala</td><td class="c">1 dia</td><td class="c">7;9;10;12</td></tr>
+  <tr><td class="c">14</td><td>5</td><td class="ms">◆ Inaugurar sala</td><td class="c">0 dias</td><td class="c">13</td></tr>
+</table>
+</div>
+
+<div class="box warn">
+  <strong>Atenção à numeração.</strong> No arquivo do ProjectLibre, “Projetar Sala de Aula” é a linha 1. No MS Project usaremos a <em>tarefa resumo do projeto</em> (ID 0); por isso os IDs acima estão deslocados em uma unidade e as <strong>predecessoras devem ser digitadas com os IDs desta tabela</strong>. Durações e tarefas resumo (em negrito) não são digitadas: o MS Project as calcula.
+</div>
+
+<h2>2. Parte A – Revisão: lançamento do cronograma</h2>
+<ol class="steps">
+  <li><strong>Criar o projeto e definir a data de início.</strong><br>
+    <span class="menu">Arquivo › Novo › Projeto em Branco</span> e, em seguida, <span class="menu">Projeto › Informações do Projeto</span>: Data de início = <strong>25/09/2026</strong>; Agendar a partir de = Data de início do projeto; Calendário = Padrão.</li>
+  <li><strong>Configurar agendamento automático e exibir a tarefa resumo do projeto.</strong><br>
+    Na barra de status (canto inferior esquerdo), selecione <span class="menu">Novas Tarefas: Agendada Automaticamente</span>. Em <span class="menu">Formato</span>, marque <span class="menu">Tarefa Resumo do Projeto</span> e <span class="menu">Tarefas Críticas</span>. Renomeie a tarefa 0 para “Projetar Sala de Aula”.</li>
+  <li><strong>Lançar a EAP (nomes das tarefas).</strong><br>
+    Digite as 14 tarefas na ordem da tabela e use <span class="menu">Tarefa › Recuar</span> (Alt+Shift+→) para criar a hierarquia. Inclua a coluna <em>EDT</em> (clique no cabeçalho “Adicionar Nova Coluna” › EDT) e confira os códigos.</li>
+  <li><strong>Lançar as durações.</strong><br>
+    Digite apenas nas tarefas de nível mais baixo. Os marcos recebem <strong>0 dias</strong> (o símbolo ◆ aparece no Gantt).</li>
+  <li><strong>Lançar as predecessoras.</strong><br>
+    Digite os IDs na coluna <em>Predecessoras</em>, separados por ponto e vírgula (ex.: <code>7;9;10;12</code>). O vínculo padrão é Término-Início (TI). <em>Não</em> vincule tarefas resumo.</li>
+  <li><strong>Conferir o cronograma (ponto de controle 1).</strong><br>
+    <ul>
+      <li>Aprovar infraestrutura: 01/10/2026 · Instalar ar-condicionado: 30/09/2026</li>
+      <li>Montar sala: 06/10/2026 · Inaugurar sala: 06/10/2026 · Duração total: <strong>8 dias</strong></li>
+      <li>Caminho crítico (vermelho): Kickoff › Adquirir mobiliário › Montar sala › Inaugurar sala</li>
+    </ul>
+    Salve como <code>sala-de-aula.mpp</code>.</li>
+</ol>
+
+<h2>3. Parte B – Cadastro e atribuição de recursos</h2>
+<ol class="steps b">
+  <li><strong>Abrir a Planilha de Recursos.</strong><br>
+    <span class="menu">Exibir › Planilha de Recursos</span>. Cada linha é um recurso disponível para o projeto; cadastrar não significa ainda atribuir.</li>
+  <li><strong>Cadastrar os recursos.</strong>
+    <table>
+      <tr><th>Nome do recurso</th><th>Tipo</th><th>Iniciais</th><th class="c">Unid. máximas</th><th>Calendário base</th></tr>
+      <tr><td>Eletricista</td><td>Trabalho</td><td>ELE</td><td class="c">100%</td><td>Padrão</td></tr>
+      <tr><td>Serviços Gerais</td><td>Trabalho</td><td>SG</td><td class="c">100%</td><td>Padrão</td></tr>
+      <tr><td>Setor de Compras</td><td>Trabalho</td><td>COMP</td><td class="c">100%</td><td>Padrão</td></tr>
+      <tr><td>Setor de TI</td><td>Trabalho</td><td>TI</td><td class="c">100%</td><td>Padrão</td></tr>
+    </table>
+    Nesta aula as colunas de custo (Taxa padrão, Taxa h. extra, Custo/uso) ficam em branco.</li>
+  <li><strong>Voltar ao Gantt e exibir a coluna de recursos.</strong><br>
+    <span class="menu">Exibir › Gráfico de Gantt</span>. A coluna <em>Nomes dos Recursos</em> já vem na tabela Entrada; se não estiver visível, arraste a divisória entre tabela e gráfico para a direita.</li>
+  <li><strong>Atribuir os recursos.</strong><br>
+    Selecione a tarefa e use <span class="menu">Recurso › Atribuir Recursos</span> (Alt+F10), escolhendo o recurso e clicando em <em>Atribuir</em>. Alternativa: escolher na lista suspensa da coluna <em>Nomes dos Recursos</em>.
+    <table>
+      <tr><th class="c">ID</th><th>Tarefa</th><th>Recurso(s)</th></tr>
+      <tr><td class="c">5</td><td>Preparar rede de dados</td><td>Setor de TI</td></tr>
+      <tr><td class="c">6</td><td>Preparar rede elétrica</td><td>Eletricista</td></tr>
+      <tr><td class="c">9</td><td>Adquirir mobiliário</td><td>Setor de Compras</td></tr>
+      <tr><td class="c">10</td><td>Adquirir computadores</td><td>Setor de Compras</td></tr>
+      <tr><td class="c">11</td><td>Adquirir ar-condicionado</td><td>Setor de Compras</td></tr>
+      <tr><td class="c">12</td><td>Instalar ar-condicionado</td><td>Eletricista</td></tr>
+      <tr><td class="c">13</td><td>Montar sala</td><td>Serviços Gerais; Setor de TI <em>(atribuir os dois de uma só vez)</em></td></tr>
+    </table>
+    Tarefas <strong>sem recurso</strong>: marcos (2, 7, 14), tarefas resumo e “Monitorar e controlar” (ID 3), que caberia a um gerente de projeto ainda não cadastrado.</li>
+  <li><strong>Observar o que mudou (ponto de controle 2).</strong><br>
+    Insira a coluna <em>Trabalho</em>. Nenhuma data deve ter mudado. Valores esperados: Adquirir mobiliário = 56 h; Preparar rede de dados = 40 h; Montar sala = 16 h (8 h por recurso); total do projeto = <strong>208 h</strong>.</li>
+</ol>
+
+<h2>4. Parte C – Análise da alocação</h2>
+<ol class="steps c">
+  <li><strong>Localizar as superalocações.</strong><br>
+    Na coluna <em>Indicadores</em> do Gantt aparece o ícone vermelho de pessoa; na Planilha de Recursos, o nome superalocado fica em vermelho. Esperado:
+    <ul>
+      <li><strong>Setor de Compras</strong>: 300% entre 25/09 e 29/09 (tarefas 9, 10 e 11 em paralelo).</li>
+      <li><strong>Eletricista</strong>: 200% em 30/09 (tarefas 6 e 12 no mesmo dia).</li>
+    </ul></li>
+  <li><strong>Examinar a carga por recurso.</strong><br>
+    <span class="menu">Exibir › Uso dos Recursos</span> (horas por dia; valores acima de 8 h aparecem em vermelho) e <span class="menu">Exibir › Gráfico de Recursos</span> (histograma com a linha de Unid. máximas).</li>
+  <li><strong>Discutir alternativas (sem executar ainda).</strong>
+    <ul>
+      <li>Aumentar as Unid. máximas do Setor de Compras para 300% (três compradores). A superalocação desaparece sem alterar datas.</li>
+      <li>Atrasar o ar-condicionado até o eletricista terminar a rede elétrica. O que acontece com o caminho crítico?</li>
+      <li>Nivelar automaticamente (<span class="menu">Recurso › Nivelar Tudo</span>). Qual é a nova data de inauguração? Desfazer com Ctrl+Z.</li>
+    </ul>
+    Salve o arquivo final.</li>
+</ol>
+
+<h2>5. Comentários principais sobre o cadastro de recursos</h2>
+
+<div class="box">
+  <h3>Tipo do recurso</h3>
+  <ul>
+    <li><strong>Trabalho</strong>: pessoas e equipamentos que consomem <em>tempo</em> (geram horas de trabalho e seguem um calendário).</li>
+    <li><strong>Material</strong>: itens consumíveis medidos em unidades (m de cabo, unidades de tomada). Exige <em>Rótulo do material</em>.</li>
+    <li><strong>Custo</strong>: despesas que não dependem de duração nem de trabalho (frete, taxa de licença).</li>
+  </ul>
+  Neste projeto todos são do tipo Trabalho. Note que os computadores, móveis e o ar-condicionado são <em>objetos</em> de aquisição, e não recursos das tarefas.
+</div>
+
+<div class="box">
+  <h3>Unidades máximas</h3>
+  <p>Representam a capacidade disponível do recurso: 100% = uma pessoa em tempo integral; 50% = meio período; 300% = três pessoas equivalentes. Quando o recurso é um <strong>setor ou equipe</strong> (Setor de Compras, Setor de TI), o valor deve refletir quantas pessoas o setor efetivamente disponibiliza ao projeto. Deixar 100% para um setor inteiro é a causa mais comum de superalocações “falsas”.</p>
+</div>
+
+<div class="box">
+  <h3>Relação Trabalho = Duração × Unidades</h3>
+  <p>Ao atribuir um recurso, o MS Project calcula <strong>Trabalho = Duração × Unidades atribuídas</strong>. Por isso, 7 dias de Adquirir mobiliário com 100% resultam em 56 h (7 × 8 h). Alterar um dos três termos recalcula os demais conforme o <em>tipo de tarefa</em> (Unidades fixas, Duração fixa ou Trabalho fixo; padrão: Unidades fixas).</p>
+</div>
+
+<div class="box warn">
+  <h3>Controlada pelo empenho</h3>
+  <p>Se a tarefa for <em>controlada pelo empenho</em> e um segundo recurso for acrescentado <strong>depois</strong> da primeira atribuição, o trabalho total é mantido e a <strong>duração diminui</strong> (ex.: Montar sala cairia para 0,5 dia). Por isso, na tarefa 13, os dois recursos são atribuídos de uma só vez. Verifique em <span class="menu">Informações da Tarefa › Avançado</span>.</p>
+</div>
+
+<div class="box">
+  <h3>Calendário do recurso</h3>
+  <p>Cada recurso pode ter calendário próprio (férias, feriados, turno diferenciado), definido em <span class="menu">Informações do Recurso › Alterar Calendário de Trabalho</span>. O calendário do recurso prevalece sobre o do projeto na programação das suas tarefas.</p>
+</div>
+
+<div class="box">
+  <h3>Onde não atribuir recursos</h3>
+  <p>Não atribua recursos a <strong>tarefas resumo</strong> (o trabalho seria contabilizado em duplicidade) nem a <strong>marcos</strong> (duração zero não gera trabalho). Recursos são atribuídos somente aos pacotes de trabalho.</p>
+</div>
+
+<div class="box ok">
+  <h3>Superalocação é informação, não erro</h3>
+  <p>O MS Project <em>não</em> impede que um recurso seja alocado acima da sua capacidade; ele apenas sinaliza. A decisão de resolver (aumentar capacidade, redistribuir, atrasar tarefas com folga ou nivelar) é do gerente do projeto e deve considerar o impacto no caminho crítico.</p>
+</div>
+
+<footer>Prof. Clayton Jones Alves da Silva · Ibmec RJ · Gestão de Projetos</footer>
+</main>
+</body>
+</html>
