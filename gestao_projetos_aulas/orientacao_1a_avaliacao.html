@@ -1,0 +1,1349 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Orientação para a 1ª Avaliação — Gestão de Projetos — Prof. Clayton J A Silva</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&amp;family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,600;1,300&amp;display=swap" rel="stylesheet"/>
+<style>
+:root {
+  --bg:#0a0e17; --surface:#111827; --border:#1e2d40; --accent:#00c2ff;
+  --accent2:#7c3aed; --green:#10b981; --red:#f43f5e; --text:#e2e8f0; --muted:#64748b;
+  --tag-bg:#0f172a; --font-mono:'IBM Plex Mono',monospace;
+  --font-sans:'IBM Plex Sans',sans-serif;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:var(--font-sans);font-size:16px;line-height:1.6;min-height:100vh}
+a{color:var(--accent);text-decoration:none}
+a:hover{text-decoration:underline}
+.container{width:100%;max-width:1060px;margin:0 auto;padding:0 2rem}
+
+nav{position:sticky;top:0;z-index:100;background:rgba(10,14,23,.90);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);padding:1rem 0}
+nav .container{display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap;max-width:1100px}
+.nav-brand{display:inline-block;padding:.2rem 0;font-family:var(--font-mono);font-size:.82rem;color:var(--accent)}
+.nav-links{display:flex;gap:1.25rem;list-style:none;flex-wrap:wrap}
+.nav-links a{font-family:var(--font-mono);font-size:.76rem;color:var(--muted)}
+.nav-links a:hover{color:var(--text);text-decoration:none}
+
+.hero{padding:5rem 0 3.5rem;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;inset:0;background-image:linear-gradient(var(--border) 1px,transparent 1px),linear-gradient(90deg,var(--border) 1px,transparent 1px);background-size:40px 40px;opacity:.3;mask-image:radial-gradient(ellipse 80% 60% at 50% 0%,black 40%,transparent 100%)}
+.hero .container{position:relative}
+.hero-tag{font-family:var(--font-mono);font-size:.72rem;color:var(--accent);letter-spacing:.12em;text-transform:uppercase;margin-bottom:.6rem}
+h1{font-size:clamp(2rem,4vw,3rem);font-weight:300;line-height:1.1;letter-spacing:-.02em;margin-bottom:.75rem}
+.hero-sub{font-size:.88rem;color:var(--muted);font-family:var(--font-mono)}
+
+.section{padding:3rem 0;border-top:1px solid var(--border)}
+.section-heading{display:flex;align-items:center;gap:.85rem;margin-bottom:1.35rem;font-size:clamp(1.35rem,2vw,1.7rem);font-weight:600;letter-spacing:-.01em}
+.section-heading::after{content:'';flex:1;height:1px;background:var(--border)}
+.section-number{font-family:var(--font-mono);font-size:.72rem;color:var(--accent);letter-spacing:.12em;white-space:nowrap}
+.section-intro{color:var(--muted);margin:-.45rem 0 1.4rem;max-width:820px}
+
+.content-num{font-family:var(--font-mono);font-size:.7rem;color:var(--accent);background:rgba(0,194,255,.08);border:1px solid rgba(0,194,255,.2);border-radius:3px;padding:.2rem .5rem;white-space:nowrap}
+
+/* instruções e painel */
+.aval-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:1rem}
+.aval-card{border:1px solid var(--border);border-radius:8px;padding:1.5rem;background:var(--surface);position:relative;overflow:hidden}
+.aval-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--accent),var(--accent2))}
+.aval-badge{font-family:var(--font-mono);font-size:.7rem;color:var(--accent);display:inline-block;margin-bottom:.7rem}
+.aval-card h3{font-size:.98rem;margin-bottom:.55rem}
+.aval-list{list-style:none;display:flex;flex-direction:column;gap:.35rem}
+.aval-list li{font-size:.84rem;color:var(--muted)}
+.aval-list li::before{content:'·';color:var(--accent);margin-right:.45rem}
+.score{font-family:var(--font-mono);font-size:1.6rem;color:var(--text);margin:.2rem 0 .6rem}
+.score small{font-size:.78rem;color:var(--muted)}
+.btn-row{display:flex;gap:.6rem;flex-wrap:wrap}
+.btn{font-family:var(--font-mono);font-size:.74rem;color:var(--accent);background:rgba(0,194,255,.06);border:1px solid rgba(0,194,255,.25);border-radius:4px;padding:.4rem .75rem;cursor:pointer}
+.btn:hover{background:rgba(0,194,255,.14)}
+
+/* questões */
+.q-list{display:flex;flex-direction:column;gap:1rem}
+.q-card{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:1.3rem 1.4rem;scroll-margin-top:5rem}
+.q-head{display:flex;gap:1rem;align-items:flex-start;margin-bottom:.9rem}
+.q-text{font-size:.95rem;font-weight:600;line-height:1.45}
+.opt-list{list-style:none;display:flex;flex-direction:column;gap:.45rem;margin-left:3.4rem}
+.opt{width:100%;display:flex;gap:.65rem;align-items:flex-start;text-align:left;background:var(--tag-bg);border:1px solid var(--border);border-radius:6px;padding:.55rem .8rem;color:var(--muted);font-family:var(--font-sans);font-size:.88rem;line-height:1.45;cursor:pointer;transition:border-color .15s,color .15s}
+.opt:hover:not(:disabled){border-color:rgba(0,194,255,.45);color:var(--text)}
+.opt:disabled{cursor:default}
+.opt-letter{font-family:var(--font-mono);color:var(--accent);font-weight:600;min-width:1.4rem}
+.opt.correct{border-color:var(--green);background:rgba(16,185,129,.10);color:var(--text)}
+.opt.correct .opt-letter{color:var(--green)}
+.opt.wrong{border-color:var(--red);background:rgba(244,63,94,.08);color:var(--text)}
+.opt.wrong .opt-letter{color:var(--red)}
+.q-feedback{margin:.85rem 0 0 3.4rem;padding:.7rem .9rem;border-left:2px solid var(--accent2);background:rgba(124,58,237,.06);border-radius:0 6px 6px 0;font-size:.84rem;color:var(--muted)}
+.q-feedback strong{color:var(--text)}
+
+/* partes */
+.part-banner{padding:3.2rem 0 1.2rem;border-top:1px solid var(--border);background:linear-gradient(180deg,rgba(124,58,237,.07),transparent)}
+.part-title{font-size:clamp(1.6rem,3vw,2.2rem);font-weight:300;letter-spacing:-.02em;margin-bottom:.6rem}
+.part-banner .section-intro{margin:0}
+
+/* figuras */
+.fig-card{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:1.3rem 1.4rem;margin:0 0 1.4rem;position:relative;overflow:hidden}
+.fig-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--accent),var(--accent2))}
+.fig-card figcaption{font-size:.9rem;color:var(--muted);margin-bottom:1rem}
+.fig-card figcaption strong{color:var(--text)}
+.fig-card .aval-badge{margin:0 .5rem 0 0}
+.fig-scroll{overflow-x:auto}
+.fig-svg{display:block;width:100%;min-width:820px;height:auto;font-family:var(--font-sans)}
+.fig-note{font-size:.78rem;color:var(--muted);margin-top:.8rem}
+.fig-legend{display:flex;gap:1.2rem;flex-wrap:wrap;margin-top:.8rem;font-family:var(--font-mono);font-size:.72rem;color:var(--muted)}
+.lg{display:inline-block;width:14px;height:10px;border-radius:2px;margin-right:.4rem;vertical-align:middle}
+.lg-l1,.w-l1{fill:rgba(124,58,237,.28);stroke:var(--accent2);stroke-width:1.5}
+.lg-l2,.w-l2{fill:rgba(0,194,255,.14);stroke:var(--accent);stroke-width:1.2}
+.lg-l3,.w-l3{fill:var(--tag-bg);stroke:#2c4460;stroke-width:1}
+.lg-l4,.w-l4{fill:var(--bg);stroke:#2c4460;stroke-width:1;stroke-dasharray:4 3}
+.lg-l1{background:rgba(124,58,237,.28);border:1px solid var(--accent2)}
+.lg-l2{background:rgba(0,194,255,.14);border:1px solid var(--accent)}
+.lg-l3{background:var(--tag-bg);border:1px solid #2c4460}
+.lg-l4{background:var(--bg);border:1px dashed #2c4460}
+.w-link{fill:none;stroke:#3a5575;stroke-width:1.3}
+.w-code{font-family:var(--font-mono);font-size:11px;fill:var(--accent);font-weight:600}
+.w-name{font-size:12px;fill:var(--text)}
+.g-head{font-family:var(--font-mono);font-size:10.5px;fill:var(--muted);letter-spacing:.06em;text-transform:uppercase}
+.g-day{font-family:var(--font-mono);font-size:10.5px;fill:var(--muted)}
+.g-grid{stroke:var(--border);stroke-width:.6;opacity:.5}
+.g-grid-major{stroke:var(--border);stroke-width:1}
+.g-sep{stroke:var(--border);stroke-width:1}
+.g-band{fill:rgba(255,255,255,.018)}
+.g-id{font-family:var(--font-mono);font-size:12px;fill:var(--accent);font-weight:600}
+.g-txt{font-size:12.5px;fill:var(--text)}
+.g-mono{font-family:var(--font-mono);font-size:11.5px;fill:var(--muted)}
+.g-bar{fill:var(--accent);opacity:.85}
+.g-ms{fill:#f59e0b}
+.g-dep{fill:none;stroke:#7a8ba3;stroke-width:1.1}
+.g-arrow{fill:#7a8ba3}
+.agenda-wrap.rtm td{color:var(--text)}
+.agenda-wrap.rtm td:nth-child(4),.agenda-wrap.rtm td:nth-child(5){color:var(--muted)}
+.agenda-wrap.rtm td:first-child{color:var(--accent)}
+.rtm td.mono{font-family:var(--font-mono);white-space:nowrap}
+.tag{display:inline-block;font-family:var(--font-mono);font-size:.68rem;padding:.12rem .45rem;border-radius:3px;white-space:nowrap;border:1px solid}
+.t-fun{color:var(--accent);border-color:rgba(0,194,255,.35);background:rgba(0,194,255,.07)}
+.t-nf{color:#a78bfa;border-color:rgba(124,58,237,.45);background:rgba(124,58,237,.08)}
+.t-norm{color:#fbbf24;border-color:rgba(245,158,11,.4);background:rgba(245,158,11,.07)}
+.t-op{color:var(--green);border-color:rgba(16,185,129,.4);background:rgba(16,185,129,.07)}
+.t-tec{color:#f472b6;border-color:rgba(236,72,153,.4);background:rgba(236,72,153,.07)}
+
+/* gabarito */
+.agenda-wrap{overflow-x:auto;border:1px solid var(--border);border-radius:8px}
+.agenda-wrap table{width:100%;border-collapse:collapse;font-size:.86rem}
+.agenda-wrap th{padding:.75rem 1rem;text-align:left;font-family:var(--font-mono);font-size:.7rem;color:var(--muted);letter-spacing:.08em;text-transform:uppercase;background:var(--tag-bg)}
+.agenda-wrap td{padding:.72rem 1rem;border-top:1px solid var(--border);color:var(--muted);vertical-align:top}
+.agenda-wrap td:first-child{font-family:var(--font-mono);white-space:nowrap}
+.gab-item{display:inline-block;font-family:var(--font-mono);font-size:.8rem;color:var(--text);margin:0 .9rem .3rem 0;white-space:nowrap}
+.gab-item a{color:var(--muted)}
+details.gab summary{cursor:pointer;font-family:var(--font-mono);font-size:.84rem;color:var(--accent);margin-bottom:1rem}
+
+footer{border-top:1px solid var(--border);padding:2rem 0;margin-top:2rem}
+footer .container{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem}
+footer p{font-size:.82rem;color:var(--muted);font-family:var(--font-mono)}
+
+@media(max-width:760px){
+  .container,nav .container{padding-left:1rem;padding-right:1rem}
+  .nav-links{gap:.8rem}
+  .hero{padding:3.5rem 0 2.5rem}
+  .opt-list,.q-feedback{margin-left:0}
+  .q-head{flex-direction:column;gap:.5rem}
+}
+@media(max-width:560px){.nav-links{display:none}}
+@media print{
+  :root{--bg:#fff;--surface:#fff;--text:#000;--muted:#333;--border:#bbb;--tag-bg:#fff}
+  nav,.hero::before,#painel,.q-feedback,#gabarito{display:none!important}
+  .fig-card,.fig-svg *{print-color-adjust:exact;-webkit-print-color-adjust:exact}
+  .q-card{break-inside:avoid}
+}
+</style>
+</head>
+<body>
+<nav>
+<div class="container">
+<a class="nav-brand" href="../index.html">claytonjasilva.github.io</a>
+<ul class="nav-links">
+<li><a href="#painel">instruções</a></li>
+<li><a href="#cap1">cap 1</a></li>
+<li><a href="#cap2">cap 2</a></li>
+<li><a href="#cap3">cap 3</a></li>
+<li><a href="#cap4">cap 4</a></li>
+<li><a href="#eap">eap</a></li>
+<li><a href="#gantt">cronograma</a></li>
+<li><a href="#matriz">matriz</a></li>
+<li><a href="#gabarito">gabarito</a></li>
+<li><a href="../gestao_projetos.html">← disciplina</a></li>
+</ul>
+</div>
+</nav>
+<header class="hero">
+<div class="container">
+<p class="hero-tag">Lista de exercícios</p>
+<h1>Orientação para a 1ª Avaliação</h1>
+<p class="hero-sub">Gestão de Projetos · Prof. Clayton J A Silva - ESPM Rio - 2026.2</p>
+</div>
+</header>
+<main>
+<section class="section" id="painel">
+<div class="container">
+<h2 class="section-heading"><span class="section-number">00</span>Instruções</h2>
+<div class="aval-grid">
+<article class="aval-card">
+<span class="aval-badge">Como usar</span>
+<h3>Questões de múltipla escolha</h3>
+<ul class="aval-list">
+<li>Parte 1: 48 questões conceituais sobre os Capítulos 1 a 4.</li>
+<li>Parte 2: 27 questões aplicadas sobre EAP, cronograma e matriz de rastreabilidade.</li>
+<li>Cada questão tem uma única alternativa correta.</li>
+<li>Clique em uma alternativa para verificar a resposta e ler a justificativa.</li>
+<li>Use os slides e o livro da disciplina para revisar os pontos em que errar.</li>
+</ul>
+</article>
+<article class="aval-card">
+<span class="aval-badge">Conteúdo</span>
+<h3>Conteúdo abordado</h3>
+<ul class="aval-list">
+<li><a href="#cap1">Cap 01 · Fundamentos de Gestão de Projetos</a></li>
+<li><a href="#cap2">Cap 02 · Governança, complexidade e maturidade</a></li>
+<li><a href="#cap3">Cap 03 · Gestão do escopo</a></li>
+<li><a href="#cap4">Cap 04 · Gestão do tempo</a></li>
+<li><a href="#eap">Parte 2 · EAP, cronograma e matriz de rastreabilidade</a></li>
+</ul>
+</article>
+<article class="aval-card">
+<span class="aval-badge">Desempenho</span>
+<h3>Seu resultado nesta sessão</h3>
+<p class="score"><span id="acertos">0</span> <small>acertos em</small> <span id="respondidas">0</span> <small>/ 75 respondidas</small></p>
+<div class="btn-row">
+<button class="btn" id="btn-reset" type="button">Reiniciar lista</button>
+<button class="btn" id="btn-show" type="button">Mostrar todas as respostas</button>
+</div>
+</article>
+</div>
+</div>
+</section>
+<section class="part-banner"><div class="container"><p class="hero-tag">Parte 1</p><h2 class="part-title">Questões conceituais</h2><p class="section-intro">Fundamentos, governança, complexidade, maturidade, escopo e tempo.</p></div></section>
+<section class="section" id="cap1">
+<div class="container">
+<h2 class="section-heading"><span class="section-number">01</span>Fundamentos de Gestão de Projetos</h2>
+<p class="section-intro">Capítulo 1 · Projeto, operação, programas, portfólios, restrição tripla, ciclo de vida e abordagens.</p>
+
+<div class="q-list">
+<article class="q-card" id="q1">
+<div class="q-head"><span class="content-num">Q01</span><p class="q-text">Os elementos que caracterizam um empreendimento de trabalho como projeto são:</p></div>
+<ol class="opt-list">
+<li><button class="opt" type="button" data-ok="0"><span class="opt-letter">A)</span><span>Execução exclusiva pela área técnica da organização</span></button></li>
+<li><button class="opt" type="button" data-ok="0"><span class="opt-letter">B)</span><span>Ausência de restrições e de incertezas</span></button></li>
+<li><button class="opt" type="button" data-ok="1"><span class="opt-letter">C)</span><span>Temporariedade e entrega de um resultado singular</span></button></li>
+<li><button class="opt" type="button" data-ok="0"><span class="opt-letter">D)</span><span>Continuidade e repetição das atividades</span></button></li>
+</ol>
+<p class="q-feedback" hidden><strong>Resposta: C.</strong> Projeto é um esforço temporário, com início e fim definidos, que produz um produto, serviço ou resultado único.</p>
+</article>
+<article class="q-card" id="q2">
+<div class="q-head"><span class="content-num">Q02</span><p class="q-text">A diferença essencial entre processos e projetos é que:</p></div>
+<ol class="opt-list">
+<li><button class="opt" type="button" data-ok="0"><span class="opt-letter">A)</span><span>Ambos possuem início e fim definidos e não se repetem</span></button></li>
+<li><button class="opt" type="button" data-ok="0"><span class="opt-letter">B)</span><span>Projetos não consomem recursos organizacionais, ao contrário dos processos</span></button></li>
+<li><button class="opt" type="button" data-ok="0"><span class="opt-letter">C)</span><span>Processos produzem resultados únicos; projetos são contínuos e repetitivos</span></button></li>
+<li><button class="opt" type="button" data-ok="1"><span class="opt-letter">D)</span><span>Processos sustentam a operação contínua de forma repetitiva; projetos promovem transformação e produzem resultados únicos</span></button></li>
+</ol>
+<p class="q-feedback" hidden><strong>Resposta: D.</strong> Processos transformam entradas em saídas de forma repetitiva; projetos têm início e fim definidos e não se repetem da mesma forma.</p>
+</article>
+<article class="q-card" id="q3">
+<div class="q-head"><span class="content-num">Q03</span><p class="q-text">Um programa pode ser definido como:</p></div>
+<ol class="opt-list">
+<li><button class="opt" type="button" data-ok="1"><span class="opt-letter">A)</span><span>Um conjunto de projetos relacionados, coordenados para obter benefícios que nenhum projeto isolado conseguiria gerar</span></button></li>
+<li><button class="opt" type="button" data-ok="0"><span class="opt-letter">B)</span><span>O documento que autoriza formalmente o início do projeto</span></button></li>
+<li><button class="opt" type="button" data-ok="0"><span class="opt-letter">C)</span><span>Um projeto de grande porte, com orçamento superior aos demais</span></button></li>
+<li><button class="opt" type="button" data-ok="0"><span class="opt-letter">D)</span><span>Um conjunto de rotinas operacionais padronizadas</span></button></li>
+</ol>
+<p class="q-feedback" hidden><strong>Resposta: A.</strong> O foco do programa é integrar e coordenar projetos para maximizar benefícios.</p>
+</article>
+<article class="q-card" id="q4">
+<div class="q-head"><span class="content-num">Q04</span><p class="q-text">A principal função do portfólio é:</p></div>
+<ol class="opt-list">
+<li><button class="opt" type="button" data-ok="0"><span class="opt-letter">A)</span><span>Executar as atividades técnicas de engenharia</span></button></li>
+<li><button class="opt" type="button" data-ok="1"><span class="opt-letter">B)</span><span>Selecionar, priorizar e balancear iniciativas para viabilizar a estratégia organizacional</span></button></li>
+<li><button class="opt" type="button" data-ok="0"><span class="opt-letter">C)</span><span>Registrar as lições aprendidas ao final de cada projeto</span></button></li>
+<li><button class="opt" type="button" data-ok="0"><span class="opt-letter">D)</span><span>Produzir entregas específicas com início e fim definidos</span></button></li>
+</ol>
+<p class="q-feedback" hidden><strong>Resposta: B.</strong> O portfólio busca gerar valor e assegurar o alinhamento das iniciativas com a estratégia.</p>
+</article>
+<article class="q-card" id="q5">
+<div class="q-head"><span class="content-num">Q05</span><p class="q-text">Os três elementos que compõem a chamada restrição tripla são:</p></div>
+<ol class="opt-list">
+<li><button class="opt" type="button" data-ok="0"><span class="opt-letter">A)</span><span>Iniciação, execução e encerramento</span></button></li>
+<li><button class="opt" type="button" data-ok="0"><span class="opt-letter">B)</span><span>Qualidade, riscos e comunicação</span></button></li>
+<li><button class="opt" type="button" data-ok="0"><span class="opt-letter">C)</span><span>Objetivos, recursos e stakeholders</span></button></li>
+<li><button class="opt" type="button" data-ok="1"><span class="opt-letter">D)</span><span>Prazo, custo e escopo</span></button></li>
+</ol>
+<p class="q-feedback" hidden><strong>Resposta: D.</strong> Prazo, custo e escopo são restrições interdependentes: alterar uma delas pressiona as demais.</p>
+</article>
+<article class="q-card" id="q6">
+<div class="q-head"><span class="content-num">Q06</span><p class="q-text">Tipicamente, o sucesso do projeto resulta:</p></div>
+<ol class="opt-list">
+<li><button class="opt" type="button" data-ok="1"><span class="opt-letter">A)</span><span>Do equilíbrio entre o desempenho operacional (restrição tripla) e a geração de valor e benefícios organizacionais</span></button></li>
+<li><button class="opt" type="button" data-ok="0"><span class="opt-letter">B)</span><span>Da entrega do maior número possível de funcionalidades</span></button></li>
+<li><button class="opt" type="button" data-ok="0"><span class="opt-letter">C)</span><span>Apenas da satisfação da equipe técnica</span></button></li>
+<li><button class="opt" type="button" data-ok="0"><span class="opt-letter">D)</span><span>Exclusivamente do cumprimento do prazo contratual</span></button></li>
+</ol>
+<p class="q-feedback" hidden><strong>Resposta: A.</strong> Cumprir prazo, custo e escopo é necessário, mas não suficiente: o projeto precisa gerar valor de negócio e benefícios realizados.</p>
+</article>
+<article class="q-card" id="q7">
+<div class="q-head"><span class="content-num">Q07</span><p class="q-text">As partes interessadas (stakeholders) de um projeto são:</p></div>
+<ol class="opt-list">
+<li><button class="opt" type="button" data-ok="0"><span class="opt-letter">A)</span><span>Somente os membros da equipe do projeto</span></button></li>
+<li><button class="opt" type="button" data-ok="1"><span class="opt-letter">B)</span><span>Pessoas ou organizações que influenciam ou são impactadas pelo projeto</span></button></li>
+<li><button class="opt" type="button" data-ok="0"><span class="opt-letter">C)</span><span>Apenas os acionistas da organização executora</span></button></li>
+<li><button class="opt" type="button" data-ok="0"><span class="opt-letter">D)</span><span>Os fornecedores que assinam contrato com a organização</span></button></li>
+</ol>
+<p class="q-feedback" hidden><strong>Resposta: B.</strong> Stakeholders incluem clientes, usuários, patrocinadores, equipe, fornecedores e demais afetados ou influentes.</p>
+</article>
+<article class="q-card" id="q8">
+<div class="q-head"><span class="content-num">Q08</span><p class="q-text">A etapa do projeto cuja finalidade é estabelecer a linha de base e os artefatos que orientarão o trabalho é a:</p></div>
+<ol class="opt-list">
+<li><button class="opt" type="button" data-ok="0"><span class="opt-letter">A)</span><span>Etapa de execução</span></button></li>
+<li><button class="opt" type="button" data-ok="0"><span class="opt-letter">B)</span><span>Etapa de iniciação</span></button></li>
+<li><button class="opt" type="button" data-ok="1"><span class="opt-letter">C)</span><span>Etapa de planejamento</span></button></li>
+<li><button class="opt" type="button" data-ok="0"><span class="opt-letter">D)</span><span>Etapa de encerramento</span></button></li>
+</ol>
+<p class="q-feedback" hidden><strong>Resposta: C.</strong> Na etapa de iniciação preparam-se as condições e definem-se os objetivos; na de planejamento estabelecem-se a linha de base e os artefatos que orientam o trabalho.</p>
+</article>
+<article class="q-card" id="q9">
+<div class="q-head"><span class="content-num">Q09</span><p class="q-text">A etapa de monitoramento e controle tem como objetivo:</p></div>
+<ol class="opt-list">
+<li><button class="opt" type="button" data-ok="0"><span class="opt-letter">A)</span><span>Concluir formalmente o projeto após a entrega final</span></button></li>
+<li><button class="opt" type="button" data-ok="0"><span class="opt-letter">B)</span><span>Realizar o trabalho planejado para produzir as entregas</span></button></li>
+<li><button class="opt" type="button" data-ok="0"><span class="opt-letter">C)</span><span>Autorizar formalmente o projeto</span></button></li>
+<li><button class="opt" type="button" data-ok="1"><span class="opt-letter">D)</span><span>Observar e medir o desempenho para orientar eventuais ajustes</span></button></li>
+</ol>
+<p class="q-feedback" hidden><strong>Resposta: D.</strong> Monitorar e controlar é comparar o realizado com o planejado e tomar ações corretivas.</p>
+</article>
+<article class="q-card" id="q10">
+<div class="q-head"><span class="content-num">Q10</span><p class="q-text">A abordagem preditiva é mais indicada quando:</p></div>
+<ol class="opt-list">
+<li><button class="opt" type="button" data-ok="1"><span class="opt-letter">A)</span><span>Os requisitos são bem compreendidos e as mudanças esperadas são mínimas</span></button></li>
+<li><button class="opt" type="button" data-ok="0"><span class="opt-letter">B)</span><span>Não há qualquer restrição de prazo ou custo</span></button></li>
+<li><button class="opt" type="button" data-ok="0"><span class="opt-letter">C)</span><span>Os requisitos evoluem continuamente e há necessidade de aprendizado</span></button></li>
+<li><button class="opt" type="button" data-ok="0"><span class="opt-letter">D)</span><span>O produto é desenvolvido em ciclos curtos com entregas incrementais</span></button></li>
+</ol>
+<p class="q-feedback" hidden><strong>Resposta: A.</strong> Na abordagem preditiva, escopo, prazo e custo são definidos com antecedência e só se alteram por controle formal de mudanças.</p>
+</article>
+<article class="q-card" id="q11">
+<div class="q-head"><span class="content-num">Q11</span><p class="q-text">A abordagem iterativa e incremental caracteriza-se por:</p></div>
+<ol class="opt-list">
+<li><button class="opt" type="button" data-ok="0"><span class="opt-letter">A)</span><span>Entregar o produto uma única vez, ao final do projeto</span></button></li>
+<li><button class="opt" type="button" data-ok="0"><span class="opt-letter">B)</span><span>Definir todo o escopo antes de iniciar a execução, sem revisões</span></button></li>
+<li><button class="opt" type="button" data-ok="1"><span class="opt-letter">C)</span><span>Desenvolver o produto em ciclos sucessivos de refinamento, com entregas incrementais de valor</span></button></li>
+<li><button class="opt" type="button" data-ok="0"><span class="opt-letter">D)</span><span>Eliminar a necessidade de planejamento</span></button></li>
+</ol>
+<p class="q-feedback" hidden><strong>Resposta: C.</strong> É indicada quando os requisitos evoluem ou há necessidade de aprendizado contínuo.</p>
+</article>
+</div>
+</div>
+</section>
+<section class="section" id="cap2">
+<div class="container">
+<h2 class="section-heading"><span class="section-number">02</span>Governança, complexidade e maturidade</h2>
+<p class="section-intro">Capítulo 2 · Governança, PMO, revisões de controle, maturidade (MMGP), níveis de complexidade, abordagens e metodologias.</p>
+
+<div class="q-list">
+<article class="q-card" id="q12">
+<div class="q-head"><span class="content-num">Q12</span><p class="q-text">A governança de projetos trata essencialmente de:</p></div>
+<ol class="opt-list">
+<li><button class="opt" type="button" data-ok="0"><span class="opt-letter">A)</span><span>Como elaborar o gráfico de Gantt</span></button></li>
+<li><button class="opt" type="button" data-ok="1"><span class="opt-letter">B)</span><span>Quem decide o quê, em que momento e com base em quais informações</span></button></li>
+<li><button class="opt" type="button" data-ok="0"><span class="opt-letter">C)</span><span>Quais ferramentas de software serão utilizadas</span></button></li>
+<li><button class="opt" type="button" data-ok="0"><span class="opt-letter">D)</span><span>Como calcular o caminho crítico</span></button></li>
+</ol>
+<p class="q-feedback" hidden><strong>Resposta: B.</strong> Governança define autoridade, responsabilidades e fluxos de decisão.</p>
+</article>
+<article class="q-card" id="q13">
+<div class="q-head"><span class="content-num">Q13</span><p class="q-text">São funções típicas do PMO (Escritório de Projetos):</p></div>
+<ol class="opt-list">
+<li><button class="opt" type="button" data-ok="0"><span class="opt-letter">A)</span><span>Executar diretamente todas as atividades técnicas dos projetos</span></button></li>
+<li><button class="opt" type="button" data-ok="1"><span class="opt-letter">B)</span><span>Padronizar processos, consolidar informações, monitorar desempenho e apoiar a tomada de decisão</span></button></li>
+<li><button class="opt" type="button" data-ok="0"><span class="opt-letter">C)</span><span>Substituir o comitê diretivo nas decisões estratégicas</span></button></li>
+<li><button class="opt" type="button" data-ok="0"><span class="opt-letter">D)</span><span>Assinar o Termo de Abertura e designar o gerente do projeto</span></button></li>
+</ol>
+<p class="q-feedback" hidden><strong>Resposta: B.</strong> O PMO dá suporte à governança; não substitui o Sponsor nem o comitê diretivo.</p>
+</article>
+<article class="q-card" id="q14">
+<div class="q-head"><span class="content-num">Q14</span><p class="q-text">Quanto ao propósito das reuniões de Revisão Técnica e de Revisão Gerencial, é correto afirmar que:</p></div>
+<ol class="opt-list">
+<li><button class="opt" type="button" data-ok="0"><span class="opt-letter">A)</span><span>Ambas têm o mesmo propósito e podem ser conduzidas indistintamente</span></button></li>
+<li><button class="opt" type="button" data-ok="0"><span class="opt-letter">B)</span><span>Ambas se destinam exclusivamente a verificar o cumprimento do orçamento</span></button></li>
+<li><button class="opt" type="button" data-ok="1"><span class="opt-letter">C)</span><span>A Revisão Técnica verifica a maturidade técnica do trabalho da etapa; a Revisão Gerencial trata do status contratual, administrativo e das decisões que dependem da alta gerência e do cliente</span></button></li>
+<li><button class="opt" type="button" data-ok="0"><span class="opt-letter">D)</span><span>A Revisão Técnica trata do status contratual e administrativo; a Revisão Gerencial verifica a maturidade técnica do trabalho</span></button></li>
+</ol>
+<p class="q-feedback" hidden><strong>Resposta: C.</strong> São reuniões alinhadas, mas não simultâneas: a conclusão satisfatória da Revisão Técnica é pré-requisito para a Revisão Gerencial, o que evita decisões gerenciais sem base técnica validada.</p>
+</article>
+<article class="q-card" id="q15">
+<div class="q-head"><span class="content-num">Q15</span><p class="q-text">Maturidade organizacional em gestão de projetos é:</p></div>
+<ol class="opt-list">
+<li><button class="opt" type="button" data-ok="1"><span class="opt-letter">A)</span><span>A capacidade de conduzir projetos de forma consistente, previsível e repetível</span></button></li>
+<li><button class="opt" type="button" data-ok="0"><span class="opt-letter">B)</span><span>A quantidade de projetos executados simultaneamente</span></button></li>
+<li><button class="opt" type="button" data-ok="0"><span class="opt-letter">C)</span><span>O tempo de existência da organização no mercado</span></button></li>
+<li><button class="opt" type="button" data-ok="0"><span class="opt-letter">D)</span><span>O grau de complexidade técnica dos produtos</span></button></li>
+</ol>
+<p class="q-feedback" hidden><strong>Resposta: A.</strong> Organizações mais maduras entregam com mais previsibilidade, controlam melhor os riscos e aprendem continuamente.</p>
+</article>
+<article class="q-card" id="q16">
+<div class="q-head"><span class="content-num">Q16</span><p class="q-text">O modelo MMGP, de Darci Prado, organiza a maturidade em:</p></div>
+<ol class="opt-list">
+<li><button class="opt" type="button" data-ok="0"><span class="opt-letter">A)</span><span>3 níveis e 5 dimensões</span></button></li>
+<li><button class="opt" type="button" data-ok="0"><span class="opt-letter">B)</span><span>10 áreas de conhecimento e 5 grupos de processos</span></button></li>
+<li><button class="opt" type="button" data-ok="0"><span class="opt-letter">C)</span><span>4 níveis e 4 dimensões</span></button></li>
+<li><button class="opt" type="button" data-ok="1"><span class="opt-letter">D)</span><span>5 níveis e 7 dimensões</span></button></li>
+</ol>
+<p class="q-feedback" hidden><strong>Resposta: D.</strong> Os níveis são: quase desconhecido, iniciado, padronizado, gerenciado e otimizado.</p>
+</article>
+<article class="q-card" id="q17">
+<div class="q-head"><span class="content-num">Q17</span><p class="q-text">No MMGP, o nível em que existe plataforma de gestão padronizada, com metodologia, baselines, medição de desempenho e registro de anomalias, é o:</p></div>
+<ol class="opt-list">
+<li><button class="opt" type="button" data-ok="0"><span class="opt-letter">A)</span><span>Nível 1 — Quase desconhecido</span></button></li>
+<li><button class="opt" type="button" data-ok="0"><span class="opt-letter">B)</span><span>Nível 5 — Otimizado</span></button></li>
+<li><button class="opt" type="button" data-ok="1"><span class="opt-letter">C)</span><span>Nível 3 — Padronizado</span></button></li>
+<li><button class="opt" type="button" data-ok="0"><span class="opt-letter">D)</span><span>Nível 2 — Iniciado</span></button></li>
+</ol>
+<p class="q-feedback" hidden><strong>Resposta: C.</strong> No nível 4 (gerenciado) a plataforma funciona e produz resultados; no 5, há otimização por inovação.</p>
+</article>
+<article class="q-card" id="q18">
+<div class="q-head"><span class="content-num">Q18</span><p class="q-text">Na classificação de complexidade, o contexto em que causa e efeito existem, mas exigem conhecimento especializado, é denominado:</p></div>
+<ol class="opt-list">
+<li><button class="opt" type="button" data-ok="0"><span class="opt-letter">A)</span><span>Caótico</span></button></li>
+<li><button class="opt" type="button" data-ok="1"><span class="opt-letter">B)</span><span>Complicado</span></button></li>
+<li><button class="opt" type="button" data-ok="0"><span class="opt-letter">C)</span><span>Simples</span></button></li>
+<li><button class="opt" type="button" data-ok="0"><span class="opt-letter">D)</span><span>Complexo</span></button></li>
+</ol>
+<p class="q-feedback" hidden><strong>Resposta: B.</strong> No complexo, causa e efeito emergem por experimentação; no caótico, não há tempo para análise.</p>
+</article>
+<article class="q-card" id="q19">
+<div class="q-head"><span class="content-num">Q19</span><p class="q-text">Em um Sistema de Sistemas, o principal desafio de gestão está:</p></div>
+<ol class="opt-list">
+<li><button class="opt" type="button" data-ok="1"><span class="opt-letter">A)</span><span>Nas interfaces, isto é, em fazer os sistemas interoperarem de forma confiável e alinhada ao negócio</span></button></li>
+<li><button class="opt" type="button" data-ok="0"><span class="opt-letter">B)</span><span>Na escolha da linguagem de programação</span></button></li>
+<li><button class="opt" type="button" data-ok="0"><span class="opt-letter">C)</span><span>No desenvolvimento isolado de cada sistema</span></button></li>
+<li><button class="opt" type="button" data-ok="0"><span class="opt-letter">D)</span><span>Na redução do número de stakeholders</span></button></li>
+</ol>
+<p class="q-feedback" hidden><strong>Resposta: A.</strong> A capacidade do conjunto emerge da integração: mudanças em um sistema podem impactar vários outros.</p>
+</article>
+<article class="q-card" id="q20">
+<div class="q-head"><span class="content-num">Q20</span><p class="q-text">Sobre abordagens de gestão e metodologias, é correto afirmar que:</p></div>
+<ol class="opt-list">
+<li><button class="opt" type="button" data-ok="0"><span class="opt-letter">A)</span><span>São sinônimos e podem ser usadas indistintamente</span></button></li>
+<li><button class="opt" type="button" data-ok="0"><span class="opt-letter">B)</span><span>Cada abordagem admite uma única metodologia</span></button></li>
+<li><button class="opt" type="button" data-ok="0"><span class="opt-letter">C)</span><span>Scrum é uma abordagem, e não uma metodologia</span></button></li>
+<li><button class="opt" type="button" data-ok="1"><span class="opt-letter">D)</span><span>A abordagem define como o trabalho é conduzido no tempo; a metodologia fornece práticas, técnicas e artefatos para executá-lo</span></button></li>
+</ol>
+<p class="q-feedback" hidden><strong>Resposta: D.</strong> Uma mesma abordagem pode ser apoiada por metodologias diferentes (PMBOK, PRINCE2, Scrum, Kanban etc.).</p>
+</article>
+<article class="q-card" id="q21">
+<div class="q-head"><span class="content-num">Q21</span><p class="q-text">No Scrum, a Sprint corresponde a:</p></div>
+<ol class="opt-list">
+<li><button class="opt" type="button" data-ok="0"><span class="opt-letter">A)</span><span>Uma reunião diária de 15 minutos</span></button></li>
+<li><button class="opt" type="button" data-ok="0"><span class="opt-letter">B)</span><span>O documento de encerramento do projeto</span></button></li>
+<li><button class="opt" type="button" data-ok="0"><span class="opt-letter">C)</span><span>A lista priorizada de tudo que pode gerar valor</span></button></li>
+<li><button class="opt" type="button" data-ok="1"><span class="opt-letter">D)</span><span>Um ciclo curto, de 1 a 4 semanas, para construir e entregar incrementos de valor</span></button></li>
+</ol>
+<p class="q-feedback" hidden><strong>Resposta: D.</strong> A Daily Scrum é a reunião diária; o Product Backlog é a lista priorizada.</p>
+</article>
+</div>
+</div>
+</section>
+<section class="section" id="cap3">
+<div class="container">
+<h2 class="section-heading"><span class="section-number">03</span>Gestão do escopo</h2>
+<p class="section-intro">Capítulo 3 · TAP, Sponsor, requisitos, declaração do escopo, EAP, pacotes de trabalho e controle de mudanças.</p>
+
+<div class="q-list">
+<article class="q-card" id="q22">
+<div class="q-head"><span class="content-num">Q22</span><p class="q-text">O Termo de Abertura do Projeto (TAP) é:</p></div>
+<ol class="opt-list">
+<li><button class="opt" type="button" data-ok="0"><span class="opt-letter">A)</span><span>O relatório final de lições aprendidas</span></button></li>
+<li><button class="opt" type="button" data-ok="1"><span class="opt-letter">B)</span><span>O documento emitido pelo Sponsor que autoriza formalmente o projeto e concede ao GP autoridade para aplicar recursos</span></button></li>
+<li><button class="opt" type="button" data-ok="0"><span class="opt-letter">C)</span><span>O documento que detalha todas as atividades do cronograma</span></button></li>
+<li><button class="opt" type="button" data-ok="0"><span class="opt-letter">D)</span><span>O contrato assinado com os fornecedores</span></button></li>
+</ol>
+<p class="q-feedback" hidden><strong>Resposta: B.</strong> O TAP é a “certidão de nascimento” do projeto: sem ele, o projeto não existe oficialmente.</p>
+</article>
+<article class="q-card" id="q23">
+<div class="q-head"><span class="content-num">Q23</span><p class="q-text">Sobre o papel do Sponsor (patrocinador), é correto afirmar que ele:</p></div>
+<ol class="opt-list">
+<li><button class="opt" type="button" data-ok="1"><span class="opt-letter">A)</span><span>Dá direção, legitimidade e poder de decisão, sem gerenciar a rotina do projeto</span></button></li>
+<li><button class="opt" type="button" data-ok="0"><span class="opt-letter">B)</span><span>Gerencia as atividades diárias da equipe</span></button></li>
+<li><button class="opt" type="button" data-ok="0"><span class="opt-letter">C)</span><span>Elabora a EAP e o dicionário da EAP</span></button></li>
+<li><button class="opt" type="button" data-ok="0"><span class="opt-letter">D)</span><span>Executa os testes de aceitação das entregas</span></button></li>
+</ol>
+<p class="q-feedback" hidden><strong>Resposta: A.</strong> Entre suas atribuições: assinar o TAP, designar o GP, autorizar recursos e decidir questões escaladas.</p>
+</article>
+<article class="q-card" id="q24">
+<div class="q-head"><span class="content-num">Q24</span><p class="q-text">O gerenciamento do escopo busca assegurar que o projeto inclua:</p></div>
+<ol class="opt-list">
+<li><button class="opt" type="button" data-ok="0"><span class="opt-letter">A)</span><span>Todo trabalho que a equipe julgar tecnicamente interessante</span></button></li>
+<li><button class="opt" type="button" data-ok="0"><span class="opt-letter">B)</span><span>O maior número possível de funcionalidades</span></button></li>
+<li><button class="opt" type="button" data-ok="1"><span class="opt-letter">C)</span><span>Todo o trabalho necessário, e apenas o necessário, para ser concluído com sucesso</span></button></li>
+<li><button class="opt" type="button" data-ok="0"><span class="opt-letter">D)</span><span>Somente o trabalho solicitado explicitamente pelo cliente</span></button></li>
+</ol>
+<p class="q-feedback" hidden><strong>Resposta: C.</strong> Relaciona-se com a definição e o controle do que está e do que não está incluído no projeto.</p>
+</article>
+<article class="q-card" id="q25">
+<div class="q-head"><span class="content-num">Q25</span><p class="q-text">A diferença entre escopo do produto e escopo do projeto é:</p></div>
+<ol class="opt-list">
+<li><button class="opt" type="button" data-ok="0"><span class="opt-letter">A)</span><span>O escopo do produto inclui as atividades de gestão do projeto</span></button></li>
+<li><button class="opt" type="button" data-ok="0"><span class="opt-letter">B)</span><span>São conceitos idênticos</span></button></li>
+<li><button class="opt" type="button" data-ok="0"><span class="opt-letter">C)</span><span>O escopo do projeto se refere apenas ao orçamento</span></button></li>
+<li><button class="opt" type="button" data-ok="1"><span class="opt-letter">D)</span><span>O escopo do produto reúne características e funções da entrega; o do projeto, o trabalho necessário para produzi-la</span></button></li>
+</ol>
+<p class="q-feedback" hidden><strong>Resposta: D.</strong> O escopo do projeto é maior que o pedido do cliente: inclui aquisições, licenças, testes, treinamento e gestão.</p>
+</article>
+<article class="q-card" id="q26">
+<div class="q-head"><span class="content-num">Q26</span><p class="q-text">Sobre os processos de gerenciamento do escopo (planejar o gerenciamento, coletar requisitos, definir o escopo, criar a EAP, validar e controlar o escopo), é correto afirmar que:</p></div>
+<ol class="opt-list">
+<li><button class="opt" type="button" data-ok="0"><span class="opt-letter">A)</span><span>O controle do escopo ocorre apenas na etapa de encerramento</span></button></li>
+<li><button class="opt" type="button" data-ok="0"><span class="opt-letter">B)</span><span>A criação da EAP dispensa a declaração do escopo e o documento de requisitos</span></button></li>
+<li><button class="opt" type="button" data-ok="1"><span class="opt-letter">C)</span><span>Não há uma sequência única obrigatória: o essencial é executar os processos de gestão e produzir os artefatos correspondentes, atualizando-os ao longo do projeto</span></button></li>
+<li><button class="opt" type="button" data-ok="0"><span class="opt-letter">D)</span><span>Devem ser executados uma única vez, em ordem rígida, no início do projeto</span></button></li>
+</ol>
+<p class="q-feedback" hidden><strong>Resposta: C.</strong> Os processos interagem e se repetem; o que importa é que produzam e mantenham coerentes os artefatos: requisitos, declaração do escopo, EAP e dicionário, matriz de rastreabilidade, baseline e registro de mudanças.</p>
+</article>
+<article class="q-card" id="q27">
+<div class="q-head"><span class="content-num">Q27</span><p class="q-text">É importante que o plano de gerenciamento do escopo estabeleça, desde o início, o processo de aceitação das entregas porque:</p></div>
+<ol class="opt-list">
+<li><button class="opt" type="button" data-ok="0"><span class="opt-letter">A)</span><span>O aceite é uma formalidade que pode ser definida ao final do projeto</span></button></li>
+<li><button class="opt" type="button" data-ok="1"><span class="opt-letter">B)</span><span>Define quem avalia, com quais critérios, em que prazo e qual o efeito do silêncio, evitando impasses no aceite — frequentemente vinculado a marcos contratuais e ao faturamento</span></button></li>
+<li><button class="opt" type="button" data-ok="0"><span class="opt-letter">C)</span><span>Dispensa a definição de critérios de aceite na declaração do escopo</span></button></li>
+<li><button class="opt" type="button" data-ok="0"><span class="opt-letter">D)</span><span>Transfere ao cliente a responsabilidade pela execução das entregas</span></button></li>
+</ol>
+<p class="q-feedback" hidden><strong>Resposta: B.</strong> Sem um processo de aceitação definido, entregas tecnicamente concluídas podem ficar indefinidamente sem aceite, com impacto em prazo e em faturamento.</p>
+</article>
+<article class="q-card" id="q28">
+<div class="q-head"><span class="content-num">Q28</span><p class="q-text">É importante que o plano de gerenciamento do escopo estabeleça o processo de solicitação de alteração do escopo porque:</p></div>
+<ol class="opt-list">
+<li><button class="opt" type="button" data-ok="1"><span class="opt-letter">A)</span><span>Garante que toda alteração seja formalizada, tenha seu impacto em prazo e custo avaliado e seja aprovada antes da execução, prevenindo o scope creep</span></button></li>
+<li><button class="opt" type="button" data-ok="0"><span class="opt-letter">B)</span><span>Permite à equipe aceitar informalmente pequenos pedidos para agradar o cliente</span></button></li>
+<li><button class="opt" type="button" data-ok="0"><span class="opt-letter">C)</span><span>Impede qualquer mudança de escopo durante o projeto</span></button></li>
+<li><button class="opt" type="button" data-ok="0"><span class="opt-letter">D)</span><span>Substitui a necessidade de uma baseline de escopo aprovada</span></button></li>
+</ol>
+<p class="q-feedback" hidden><strong>Resposta: A.</strong> Mudanças são legítimas; o problema está nas alterações sucessivas e não controladas, que comprometem progressivamente custo, prazo e qualidade.</p>
+</article>
+<article class="q-card" id="q29">
+<div class="q-head"><span class="content-num">Q29</span><p class="q-text">Para ser útil, um requisito deve ser:</p></div>
+<ol class="opt-list">
+<li><button class="opt" type="button" data-ok="1"><span class="opt-letter">A)</span><span>Consistente, completo, mensurável e testável</span></button></li>
+<li><button class="opt" type="button" data-ok="0"><span class="opt-letter">B)</span><span>Registrado apenas verbalmente, para ganhar agilidade</span></button></li>
+<li><button class="opt" type="button" data-ok="0"><span class="opt-letter">C)</span><span>Definido exclusivamente pela equipe técnica</span></button></li>
+<li><button class="opt" type="button" data-ok="0"><span class="opt-letter">D)</span><span>Genérico, para admitir diferentes interpretações</span></button></li>
+</ol>
+<p class="q-feedback" hidden><strong>Resposta: A.</strong> Um requisito só ajuda se puder ser verificado.</p>
+</article>
+<article class="q-card" id="q30">
+<div class="q-head"><span class="content-num">Q30</span><p class="q-text">A matriz de rastreabilidade de requisitos tem como finalidade:</p></div>
+<ol class="opt-list">
+<li><button class="opt" type="button" data-ok="0"><span class="opt-letter">A)</span><span>Calcular a folga das atividades</span></button></li>
+<li><button class="opt" type="button" data-ok="0"><span class="opt-letter">B)</span><span>Listar os fornecedores do projeto</span></button></li>
+<li><button class="opt" type="button" data-ok="1"><span class="opt-letter">C)</span><span>Conectar cada requisito à sua origem, objetivo, entrega, critério de aceite e status</span></button></li>
+<li><button class="opt" type="button" data-ok="0"><span class="opt-letter">D)</span><span>Registrar o orçamento aprovado</span></button></li>
+</ol>
+<p class="q-feedback" hidden><strong>Resposta: C.</strong> Antes de aceitar ou alterar um requisito, a equipe precisa enxergar os impactos.</p>
+</article>
+<article class="q-card" id="q31">
+<div class="q-head"><span class="content-num">Q31</span><p class="q-text">Tipicamente, o levantamento e o refinamento dos requisitos devem:</p></div>
+<ol class="opt-list">
+<li><button class="opt" type="button" data-ok="0"><span class="opt-letter">A)</span><span>Restringir-se ao representante do cliente que assinou o contrato, em uma única entrevista</span></button></li>
+<li><button class="opt" type="button" data-ok="1"><span class="opt-letter">B)</span><span>Envolver todas as partes interessadas relevantes e combinar múltiplas técnicas, como entrevistas, workshops, questionários e protótipos</span></button></li>
+<li><button class="opt" type="button" data-ok="0"><span class="opt-letter">C)</span><span>Ser conduzidos apenas pela equipe técnica, sem participação dos usuários</span></button></li>
+<li><button class="opt" type="button" data-ok="0"><span class="opt-letter">D)</span><span>Utilizar uma única técnica padronizada, para evitar divergências</span></button></li>
+</ol>
+<p class="q-feedback" hidden><strong>Resposta: B.</strong> Identificar, compreender, conciliar e documentar: a participação ativa dos stakeholders reduz ambiguidades, e a combinação de técnicas amplia a compreensão da necessidade.</p>
+</article>
+<article class="q-card" id="q32">
+<div class="q-head"><span class="content-num">Q32</span><p class="q-text">O conceito de não escopo refere-se:</p></div>
+<ol class="opt-list">
+<li><button class="opt" type="button" data-ok="0"><span class="opt-letter">A)</span><span>Às entregas previstas para uma fase posterior do mesmo contrato</span></button></li>
+<li><button class="opt" type="button" data-ok="0"><span class="opt-letter">B)</span><span>Ao trabalho executado pela equipe sem registro formal</span></button></li>
+<li><button class="opt" type="button" data-ok="0"><span class="opt-letter">C)</span><span>Aos requisitos que ainda não foram detalhados</span></button></li>
+<li><button class="opt" type="button" data-ok="1"><span class="opt-letter">D)</span><span>À indicação explícita do que não está incluído no projeto e permanece fora das responsabilidades da equipe</span></button></li>
+</ol>
+<p class="q-feedback" hidden><strong>Resposta: D.</strong> Registrado na Declaração do Escopo, o não escopo explicita onde termina a responsabilidade do projeto e previne ambiguidades, conflitos e scope creep.</p>
+</article>
+<article class="q-card" id="q33">
+<div class="q-head"><span class="content-num">Q33</span><p class="q-text">No contexto do escopo, uma premissa é:</p></div>
+<ol class="opt-list">
+<li><button class="opt" type="button" data-ok="0"><span class="opt-letter">A)</span><span>Um requisito funcional do produto</span></button></li>
+<li><button class="opt" type="button" data-ok="0"><span class="opt-letter">B)</span><span>Um critério para considerar uma entrega aceita</span></button></li>
+<li><button class="opt" type="button" data-ok="1"><span class="opt-letter">C)</span><span>Uma hipótese considerada verdadeira para fins de planejamento, sem comprovação no momento, que justifica revisão caso não se confirme</span></button></li>
+<li><button class="opt" type="button" data-ok="0"><span class="opt-letter">D)</span><span>Um limite imposto ao projeto, como data fixa ou orçamento máximo</span></button></li>
+</ol>
+<p class="q-feedback" hidden><strong>Resposta: C.</strong> Ex.: acesso a documentos, disponibilidade de pessoas-chave, agenda acordada. Cada premissa relevante deve ser registrada também como risco.</p>
+</article>
+<article class="q-card" id="q34">
+<div class="q-head"><span class="content-num">Q34</span><p class="q-text">No contexto do escopo, uma restrição é:</p></div>
+<ol class="opt-list">
+<li><button class="opt" type="button" data-ok="0"><span class="opt-letter">A)</span><span>Uma funcionalidade opcional do produto</span></button></li>
+<li><button class="opt" type="button" data-ok="1"><span class="opt-letter">B)</span><span>Um fator que limita as opções da equipe, como orçamento máximo, data imposta, normas ou recursos disponíveis</span></button></li>
+<li><button class="opt" type="button" data-ok="0"><span class="opt-letter">C)</span><span>Um risco que já se materializou</span></button></li>
+<li><button class="opt" type="button" data-ok="0"><span class="opt-letter">D)</span><span>Uma hipótese assumida como verdadeira sem comprovação</span></button></li>
+</ol>
+<p class="q-feedback" hidden><strong>Resposta: B.</strong> Restrições condicionam as decisões e o planejamento; premissas são hipóteses que ainda precisam se confirmar.</p>
+</article>
+<article class="q-card" id="q35">
+<div class="q-head"><span class="content-num">Q35</span><p class="q-text">A construção da Estrutura Analítica do Projeto (EAP) consiste em:</p></div>
+<ol class="opt-list">
+<li><button class="opt" type="button" data-ok="0"><span class="opt-letter">A)</span><span>Decompor o trabalho até o nível das tarefas diárias de cada membro da equipe</span></button></li>
+<li><button class="opt" type="button" data-ok="0"><span class="opt-letter">B)</span><span>Representar a hierarquia de cargos e funções da equipe do projeto</span></button></li>
+<li><button class="opt" type="button" data-ok="0"><span class="opt-letter">C)</span><span>Listar cronologicamente as ações do projeto, do início ao fim</span></button></li>
+<li><button class="opt" type="button" data-ok="1"><span class="opt-letter">D)</span><span>Decompor progressivamente o trabalho do projeto em entregas cada vez menores, orientadas a resultados, até o nível do pacote de trabalho</span></button></li>
+</ol>
+<p class="q-feedback" hidden><strong>Resposta: D.</strong> Decompõe-se até o nível necessário para planejar, atribuir e controlar, sem detalhamento excessivo. As atividades serão derivadas posteriormente dos pacotes de trabalho.</p>
+</article>
+<article class="q-card" id="q36">
+<div class="q-head"><span class="content-num">Q36</span><p class="q-text">A “regra dos 100%” aplicada à EAP estabelece que:</p></div>
+<ol class="opt-list">
+<li><button class="opt" type="button" data-ok="1"><span class="opt-letter">A)</span><span>O somatório dos elementos de um nível deve representar 100% do elemento do nível acima</span></button></li>
+<li><button class="opt" type="button" data-ok="0"><span class="opt-letter">B)</span><span>100% do orçamento deve ser gasto no primeiro nível</span></button></li>
+<li><button class="opt" type="button" data-ok="0"><span class="opt-letter">C)</span><span>Cada pacote deve ser executado por 100% da equipe</span></button></li>
+<li><button class="opt" type="button" data-ok="0"><span class="opt-letter">D)</span><span>Todos os pacotes devem ter a mesma duração</span></button></li>
+</ol>
+<p class="q-feedback" hidden><strong>Resposta: A.</strong> Garante que todo o escopo esteja contemplado — nada a mais, nada a menos.</p>
+</article>
+<article class="q-card" id="q37">
+<div class="q-head"><span class="content-num">Q37</span><p class="q-text">O pacote de trabalho é:</p></div>
+<ol class="opt-list">
+<li><button class="opt" type="button" data-ok="0"><span class="opt-letter">A)</span><span>O nível mais alto da EAP, que representa o projeto</span></button></li>
+<li><button class="opt" type="button" data-ok="0"><span class="opt-letter">B)</span><span>O documento de autorização do projeto</span></button></li>
+<li><button class="opt" type="button" data-ok="0"><span class="opt-letter">C)</span><span>Uma atividade diária da equipe</span></button></li>
+<li><button class="opt" type="button" data-ok="1"><span class="opt-letter">D)</span><span>O menor componente da EAP para o qual o trabalho pode ser planejado, estimado e controlado</span></button></li>
+</ol>
+<p class="q-feedback" hidden><strong>Resposta: D.</strong> Deve ser orientado à entrega, delimitado, estimável, atribuível, verificável e gerenciável.</p>
+</article>
+<article class="q-card" id="q38">
+<div class="q-head"><span class="content-num">Q38</span><p class="q-text">O crescimento gradual e não controlado do escopo, decorrente da aceitação informal de pequenas solicitações de mudança, é denominado:</p></div>
+<ol class="opt-list">
+<li><button class="opt" type="button" data-ok="1"><span class="opt-letter">A)</span><span>Scope creep</span></button></li>
+<li><button class="opt" type="button" data-ok="0"><span class="opt-letter">B)</span><span>Baseline</span></button></li>
+<li><button class="opt" type="button" data-ok="0"><span class="opt-letter">C)</span><span>Fast tracking</span></button></li>
+<li><button class="opt" type="button" data-ok="0"><span class="opt-letter">D)</span><span>Gold plating</span></button></li>
+</ol>
+<p class="q-feedback" hidden><strong>Resposta: A.</strong> Gold plating é a inclusão de funcionalidades não solicitadas pelo cliente, por iniciativa da própria equipe.</p>
+</article>
+<article class="q-card" id="q39">
+<div class="q-head"><span class="content-num">Q39</span><p class="q-text">No fluxo de controle de mudanças, quando a mudança gera impacto em cronograma ou custo:</p></div>
+<ol class="opt-list">
+<li><button class="opt" type="button" data-ok="0"><span class="opt-letter">A)</span><span>A mudança é executada imediatamente, sem formalização</span></button></li>
+<li><button class="opt" type="button" data-ok="0"><span class="opt-letter">B)</span><span>A equipe absorve o impacto sem informar o cliente</span></button></li>
+<li><button class="opt" type="button" data-ok="1"><span class="opt-letter">C)</span><span>As novas condições são submetidas ao cliente e, aprovadas, formalizadas em termo aditivo</span></button></li>
+<li><button class="opt" type="button" data-ok="0"><span class="opt-letter">D)</span><span>O projeto é encerrado e reiniciado</span></button></li>
+</ol>
+<p class="q-feedback" hidden><strong>Resposta: C.</strong> Somente quando não há impacto em prazo ou custo a mudança pode ser executada imediatamente.</p>
+</article>
+</div>
+</div>
+</section>
+<section class="section" id="cap4">
+<div class="container">
+<h2 class="section-heading"><span class="section-number">04</span>Gestão do tempo</h2>
+<p class="section-intro">Capítulo 4 · Cronograma, marcos, baseline, da EAP às atividades, sequenciamento, dependências e caminho crítico.</p>
+
+<div class="q-list">
+<article class="q-card" id="q40">
+<div class="q-head"><span class="content-num">Q40</span><p class="q-text">Os marcos (milestones) de um cronograma são:</p></div>
+<ol class="opt-list">
+<li><button class="opt" type="button" data-ok="0"><span class="opt-letter">A)</span><span>Atividades de longa duração que concentram os recursos</span></button></li>
+<li><button class="opt" type="button" data-ok="1"><span class="opt-letter">B)</span><span>Pontos de controle de duração nula, que não consomem recursos</span></button></li>
+<li><button class="opt" type="button" data-ok="0"><span class="opt-letter">C)</span><span>Pacotes de trabalho do último nível da EAP</span></button></li>
+<li><button class="opt" type="button" data-ok="0"><span class="opt-letter">D)</span><span>Reservas financeiras do projeto</span></button></li>
+</ol>
+<p class="q-feedback" hidden><strong>Resposta: B.</strong> Marcos contratuais (aceite e faturamento) têm efeitos jurídicos e financeiros diretos.</p>
+</article>
+<article class="q-card" id="q41">
+<div class="q-head"><span class="content-num">Q41</span><p class="q-text">A linha de base (baseline) do cronograma é:</p></div>
+<ol class="opt-list">
+<li><button class="opt" type="button" data-ok="0"><span class="opt-letter">A)</span><span>A primeira atividade do cronograma</span></button></li>
+<li><button class="opt" type="button" data-ok="0"><span class="opt-letter">B)</span><span>O cronograma atualizado diariamente pela equipe</span></button></li>
+<li><button class="opt" type="button" data-ok="0"><span class="opt-letter">C)</span><span>A duração da atividade mais longa</span></button></li>
+<li><button class="opt" type="button" data-ok="1"><span class="opt-letter">D)</span><span>A referência aprovada contra a qual o desempenho real é comparado</span></button></li>
+</ol>
+<p class="q-feedback" hidden><strong>Resposta: D.</strong> Uma baseline mal construída produz comparações irrelevantes, ainda que o acompanhamento seja rigoroso.</p>
+</article>
+<article class="q-card" id="q42">
+<div class="q-head"><span class="content-num">Q42</span><p class="q-text">Na passagem da EAP para a lista de atividades, é correto afirmar que:</p></div>
+<ol class="opt-list">
+<li><button class="opt" type="button" data-ok="1"><span class="opt-letter">A)</span><span>Atividades são identificadas por verbos; produtos e entregas, por substantivos</span></button></li>
+<li><button class="opt" type="button" data-ok="0"><span class="opt-letter">B)</span><span>A lista de atividades substitui a EAP</span></button></li>
+<li><button class="opt" type="button" data-ok="0"><span class="opt-letter">C)</span><span>Atividades de gestão aparecem obrigatoriamente na EAP do produto</span></button></li>
+<li><button class="opt" type="button" data-ok="0"><span class="opt-letter">D)</span><span>Atividades e entregas são sempre identificadas por substantivos</span></button></li>
+</ol>
+<p class="q-feedback" hidden><strong>Resposta: A.</strong> Hierarquia: projeto → entregas → pacotes de trabalho → atividades.</p>
+</article>
+<article class="q-card" id="q43">
+<div class="q-head"><span class="content-num">Q43</span><p class="q-text">Tipicamente, a relação entre EAP, cronograma e orçamento é:</p></div>
+<ol class="opt-list">
+<li><button class="opt" type="button" data-ok="0"><span class="opt-letter">A)</span><span>Cronograma e orçamento são elaborados de forma independente da EAP</span></button></li>
+<li><button class="opt" type="button" data-ok="1"><span class="opt-letter">B)</span><span>A EAP é o ponto de partida: seus pacotes são decompostos em atividades, sequenciadas e estimadas para compor o cronograma; das atividades e recursos do cronograma deriva o orçamento</span></button></li>
+<li><button class="opt" type="button" data-ok="0"><span class="opt-letter">C)</span><span>A EAP é elaborada a partir do cronograma já aprovado</span></button></li>
+<li><button class="opt" type="button" data-ok="0"><span class="opt-letter">D)</span><span>O orçamento é definido primeiro, e a EAP é ajustada a ele</span></button></li>
+</ol>
+<p class="q-feedback" hidden><strong>Resposta: B.</strong> Sem escopo claro, não é possível estimar prazo, equipe ou custo. Atividades → tempo; recursos → custo.</p>
+</article>
+<article class="q-card" id="q44">
+<div class="q-head"><span class="content-num">Q44</span><p class="q-text">Na elaboração do cronograma a partir da EAP, durações e relações de dependência devem ser atribuídas:</p></div>
+<ol class="opt-list">
+<li><button class="opt" type="button" data-ok="0"><span class="opt-letter">A)</span><span>Às entregas-resumo, dispensando o sequenciamento das atividades folha</span></button></li>
+<li><button class="opt" type="button" data-ok="0"><span class="opt-letter">B)</span><span>Apenas aos elementos dos níveis 1 e 2, para simplificar o cronograma</span></button></li>
+<li><button class="opt" type="button" data-ok="1"><span class="opt-letter">C)</span><span>Somente às atividades de nível folha; os elementos de nível superior têm duração e datas resultantes das atividades que os compõem</span></button></li>
+<li><button class="opt" type="button" data-ok="0"><span class="opt-letter">D)</span><span>A todos os níveis da EAP, inclusive às entregas-resumo, de forma independente</span></button></li>
+</ol>
+<p class="q-feedback" hidden><strong>Resposta: C.</strong> Atribuir tempo ou vínculos a elementos-resumo gera duplicidade e datas inconsistentes com as atividades que os compõem.</p>
+</article>
+<article class="q-card" id="q45">
+<div class="q-head"><span class="content-num">Q45</span><p class="q-text">A relação de precedência mais utilizada na prática é:</p></div>
+<ol class="opt-list">
+<li><button class="opt" type="button" data-ok="0"><span class="opt-letter">A)</span><span>Início para Início (SS)</span></button></li>
+<li><button class="opt" type="button" data-ok="1"><span class="opt-letter">B)</span><span>Término para Início (FS)</span></button></li>
+<li><button class="opt" type="button" data-ok="0"><span class="opt-letter">C)</span><span>Início para Término (SF)</span></button></li>
+<li><button class="opt" type="button" data-ok="0"><span class="opt-letter">D)</span><span>Término para Término (FF)</span></button></li>
+</ol>
+<p class="q-feedback" hidden><strong>Resposta: B.</strong> A relação SF é rara (ex.: operação em turnos).</p>
+</article>
+<article class="q-card" id="q46">
+<div class="q-head"><span class="content-num">Q46</span><p class="q-text">O atraso (lag) em uma relação de precedência representa:</p></div>
+<ol class="opt-list">
+<li><button class="opt" type="button" data-ok="1"><span class="opt-letter">A)</span><span>Uma espera obrigatória entre o término da predecessora e o início da sucessora</span></button></li>
+<li><button class="opt" type="button" data-ok="0"><span class="opt-letter">B)</span><span>A duração pessimista na estimativa PERT</span></button></li>
+<li><button class="opt" type="button" data-ok="0"><span class="opt-letter">C)</span><span>A folga total da atividade</span></button></li>
+<li><button class="opt" type="button" data-ok="0"><span class="opt-letter">D)</span><span>O início da sucessora antes do término da predecessora</span></button></li>
+</ol>
+<p class="q-feedback" hidden><strong>Resposta: A.</strong> Já a antecedência (lead) permite que a sucessora comece antes do término da predecessora.</p>
+</article>
+<article class="q-card" id="q47">
+<div class="q-head"><span class="content-num">Q47</span><p class="q-text">Quanto à natureza, as dependências que decorrem de boas práticas ou preferência da equipe e podem ser revistas para comprimir o cronograma são as:</p></div>
+<ol class="opt-list">
+<li><button class="opt" type="button" data-ok="0"><span class="opt-letter">A)</span><span>Obrigatórias</span></button></li>
+<li><button class="opt" type="button" data-ok="0"><span class="opt-letter">B)</span><span>Externas</span></button></li>
+<li><button class="opt" type="button" data-ok="0"><span class="opt-letter">C)</span><span>Contratuais</span></button></li>
+<li><button class="opt" type="button" data-ok="1"><span class="opt-letter">D)</span><span>Arbitradas</span></button></li>
+</ol>
+<p class="q-feedback" hidden><strong>Resposta: D.</strong> Obrigatórias não admitem flexibilização; externas dependem de fornecedores, reguladores e terceiros.</p>
+</article>
+<article class="q-card" id="q48">
+<div class="q-head"><span class="content-num">Q48</span><p class="q-text">O caminho crítico de um projeto é:</p></div>
+<ol class="opt-list">
+<li><button class="opt" type="button" data-ok="0"><span class="opt-letter">A)</span><span>O conjunto de atividades com maior folga</span></button></li>
+<li><button class="opt" type="button" data-ok="0"><span class="opt-letter">B)</span><span>A sequência de atividades de maior custo</span></button></li>
+<li><button class="opt" type="button" data-ok="1"><span class="opt-letter">C)</span><span>A sequência mais longa de atividades, que define a duração mínima do projeto</span></button></li>
+<li><button class="opt" type="button" data-ok="0"><span class="opt-letter">D)</span><span>A sequência com o maior número de marcos</span></button></li>
+</ol>
+<p class="q-feedback" hidden><strong>Resposta: C.</strong> Atividades críticas não têm folga: qualquer atraso nelas atrasa a data final do projeto.</p>
+</article>
+</div>
+</div>
+</section>
+<section class="part-banner"><div class="container"><p class="hero-tag">Parte 2</p><h2 class="part-title">Questões aplicadas</h2><p class="section-intro">Um mesmo projeto — a implantação de uma Loja Virtual — representado por sua EAP, seu cronograma e sua matriz de rastreabilidade de requisitos.</p></div></section>
+<section class="section" id="eap">
+<div class="container">
+<h2 class="section-heading"><span class="section-number">05</span>Estrutura Analítica do Projeto</h2>
+<p class="section-intro">Observe a Figura 1 e responda: decomposição, ramos, identificação e numeração dos elementos e pacotes de trabalho.</p>
+<figure class="fig-card">
+<figcaption><span class="aval-badge">Figura 1</span> EAP do projeto <strong>Loja Virtual</strong> — implantação de uma loja de comércio eletrônico</figcaption>
+<div class="fig-scroll"><svg class="fig-svg" viewBox="0 0 1000 500" role="img" aria-label="EAP do projeto Loja Virtual">
+<rect class="w-l1" x="370.0" y="16" width="260" height="52" rx="6"/>
+<text class="w-code" x="380.0" y="33">1</text>
+<text class="w-name" x="380.0" y="48">Loja Virtual (projeto)</text>
+<path class="w-link" d="M500.0 68 V94 M110.0 94 H890.0"/>
+<path class="w-link" d="M110.0 94 V116"/>
+<path class="w-link" d="M305.0 94 V116"/>
+<path class="w-link" d="M500.0 94 V116"/>
+<path class="w-link" d="M695.0 94 V116"/>
+<path class="w-link" d="M890.0 94 V116"/>
+<rect class="w-l2" x="25" y="116" width="170" height="52" rx="6"/>
+<text class="w-code" x="35" y="133">1.1</text>
+<text class="w-name" x="35" y="148">Gestão do</text>
+<text class="w-name" x="35" y="162">projeto</text>
+<rect class="w-l3" x="53" y="196" width="142" height="46" rx="6"/>
+<text class="w-code" x="63" y="213">1.1.1</text>
+<text class="w-name" x="63" y="228">Plano do</text>
+<text class="w-name" x="63" y="242">projeto</text>
+<path class="w-link" d="M39 219.0 H53"/>
+<rect class="w-l3" x="53" y="256" width="142" height="46" rx="6"/>
+<text class="w-code" x="63" y="273">1.1.2</text>
+<text class="w-name" x="63" y="288">Relatórios de</text>
+<text class="w-name" x="63" y="302">acompanhamento</text>
+<path class="w-link" d="M39 279.0 H53"/>
+<path class="w-link" d="M39 168 V279.0"/>
+<rect class="w-l2" x="220" y="116" width="170" height="52" rx="6"/>
+<text class="w-code" x="230" y="133">1.2</text>
+<text class="w-name" x="230" y="148">Requisitos</text>
+<rect class="w-l3" x="248" y="196" width="142" height="46" rx="6"/>
+<text class="w-code" x="258" y="213">1.2.1</text>
+<text class="w-name" x="258" y="228">Documento de</text>
+<text class="w-name" x="258" y="242">requisitos</text>
+<path class="w-link" d="M234 219.0 H248"/>
+<rect class="w-l3" x="248" y="256" width="142" height="46" rx="6"/>
+<text class="w-code" x="258" y="273">1.2.2</text>
+<text class="w-name" x="258" y="288">Catálogo de</text>
+<text class="w-name" x="258" y="302">produtos</text>
+<path class="w-link" d="M234 279.0 H248"/>
+<path class="w-link" d="M234 168 V279.0"/>
+<rect class="w-l2" x="415" y="116" width="170" height="52" rx="6"/>
+<text class="w-code" x="425" y="133">1.3</text>
+<text class="w-name" x="425" y="148">Plataforma</text>
+<rect class="w-l3" x="443" y="196" width="142" height="46" rx="6"/>
+<text class="w-code" x="453" y="213">1.3.1</text>
+<text class="w-name" x="453" y="228">Layout</text>
+<text class="w-name" x="453" y="242">aprovado</text>
+<path class="w-link" d="M429 219.0 H443"/>
+<rect class="w-l3" x="443" y="256" width="142" height="46" rx="6"/>
+<text class="w-code" x="453" y="273">1.3.2</text>
+<text class="w-name" x="453" y="288">Módulo de</text>
+<text class="w-name" x="453" y="302">pagamento</text>
+<path class="w-link" d="M429 279.0 H443"/>
+<rect class="w-l4" x="471" y="316" width="114" height="46" rx="6"/>
+<text class="w-code" x="481" y="333">1.3.2.1</text>
+<text class="w-name" x="481" y="348">Pagamento</text>
+<text class="w-name" x="481" y="362">por cartão</text>
+<path class="w-link" d="M457 339.0 H471"/>
+<rect class="w-l4" x="471" y="376" width="114" height="46" rx="6"/>
+<text class="w-code" x="481" y="393">1.3.2.2</text>
+<text class="w-name" x="481" y="408">Pagamento</text>
+<text class="w-name" x="481" y="422">por Pix</text>
+<path class="w-link" d="M457 399.0 H471"/>
+<path class="w-link" d="M457 302 V399.0"/>
+<rect class="w-l3" x="443" y="436" width="142" height="46" rx="6"/>
+<text class="w-code" x="453" y="453">1.3.3</text>
+<text class="w-name" x="453" y="468">Integração</text>
+<text class="w-name" x="453" y="482">com frete</text>
+<path class="w-link" d="M429 459.0 H443"/>
+<path class="w-link" d="M429 168 V459.0"/>
+<rect class="w-l2" x="610" y="116" width="170" height="52" rx="6"/>
+<text class="w-code" x="620" y="133">1.4</text>
+<text class="w-name" x="620" y="148">Testes e</text>
+<text class="w-name" x="620" y="162">implantação</text>
+<rect class="w-l3" x="638" y="196" width="142" height="46" rx="6"/>
+<text class="w-code" x="648" y="213">1.4.1</text>
+<text class="w-name" x="648" y="228">Relatório de</text>
+<text class="w-name" x="648" y="242">testes</text>
+<path class="w-link" d="M624 219.0 H638"/>
+<rect class="w-l3" x="638" y="256" width="142" height="46" rx="6"/>
+<text class="w-code" x="648" y="273">1.4.2</text>
+<text class="w-name" x="648" y="288">Loja</text>
+<text class="w-name" x="648" y="302">publicada</text>
+<path class="w-link" d="M624 279.0 H638"/>
+<path class="w-link" d="M624 168 V279.0"/>
+<rect class="w-l2" x="805" y="116" width="170" height="52" rx="6"/>
+<text class="w-code" x="815" y="133">1.5</text>
+<text class="w-name" x="815" y="148">Encerramento</text>
+<rect class="w-l3" x="833" y="196" width="142" height="46" rx="6"/>
+<text class="w-code" x="843" y="213">1.5.1</text>
+<text class="w-name" x="843" y="228">Termo de</text>
+<text class="w-name" x="843" y="242">aceite</text>
+<path class="w-link" d="M819 219.0 H833"/>
+<rect class="w-l3" x="833" y="256" width="142" height="46" rx="6"/>
+<text class="w-code" x="843" y="273">1.5.2</text>
+<text class="w-name" x="843" y="288">Lições</text>
+<text class="w-name" x="843" y="302">aprendidas</text>
+<path class="w-link" d="M819 279.0 H833"/>
+<path class="w-link" d="M819 168 V279.0"/>
+</svg></div>
+<div class="fig-legend">
+<span><i class="lg lg-l1"></i>Nível 1</span><span><i class="lg lg-l2"></i>Nível 2</span><span><i class="lg lg-l3"></i>Nível 3</span><span><i class="lg lg-l4"></i>Nível 4</span>
+</div>
+</figure>
+<div class="q-list">
+<article class="q-card" id="q49">
+<div class="q-head"><span class="content-num">Q49</span><p class="q-text">A EAP da Figura 1 é descrita como uma “árvore invertida” porque:</p></div>
+<ol class="opt-list">
+<li><button class="opt" type="button" data-ok="0"><span class="opt-letter">A)</span><span>Representa a sequência cronológica das atividades, da esquerda para a direita</span></button></li>
+<li><button class="opt" type="button" data-ok="0"><span class="opt-letter">B)</span><span>Mostra a hierarquia de cargos da equipe, do gerente aos técnicos</span></button></li>
+<li><button class="opt" type="button" data-ok="0"><span class="opt-letter">C)</span><span>Organiza os custos do maior para o menor valor</span></button></li>
+<li><button class="opt" type="button" data-ok="1"><span class="opt-letter">D)</span><span>Parte do projeto como um todo, no topo (raiz), e se decompõe progressivamente em entregas cada vez menores nos níveis inferiores</span></button></li>
+</ol>
+<p class="q-feedback" hidden><strong>Resposta: D.</strong> Cada nível detalha o nível acima: projeto → entregas principais (ramos) → entregas menores → pacotes de trabalho.</p>
+</article>
+<article class="q-card" id="q50">
+<div class="q-head"><span class="content-num">Q50</span><p class="q-text">Quantos níveis de decomposição a EAP da Figura 1 apresenta?</p></div>
+<ol class="opt-list">
+<li><button class="opt" type="button" data-ok="0"><span class="opt-letter">A)</span><span>2 níveis</span></button></li>
+<li><button class="opt" type="button" data-ok="1"><span class="opt-letter">B)</span><span>4 níveis</span></button></li>
+<li><button class="opt" type="button" data-ok="0"><span class="opt-letter">C)</span><span>5 níveis</span></button></li>
+<li><button class="opt" type="button" data-ok="0"><span class="opt-letter">D)</span><span>3 níveis</span></button></li>
+</ol>
+<p class="q-feedback" hidden><strong>Resposta: B.</strong> Nível 1: projeto (1); nível 2: ramos (1.1 a 1.5); nível 3: por exemplo, 1.3.2; nível 4: 1.3.2.1 e 1.3.2.2.</p>
+</article>
+<article class="q-card" id="q51">
+<div class="q-head"><span class="content-num">Q51</span><p class="q-text">O código 1.3.2.2 identifica:</p></div>
+<ol class="opt-list">
+<li><button class="opt" type="button" data-ok="1"><span class="opt-letter">A)</span><span>O elemento “Pagamento por Pix”, que decompõe o Módulo de pagamento (1.3.2), pertencente ao ramo Plataforma (1.3)</span></button></li>
+<li><button class="opt" type="button" data-ok="0"><span class="opt-letter">B)</span><span>A segunda atividade da segunda semana do projeto</span></button></li>
+<li><button class="opt" type="button" data-ok="0"><span class="opt-letter">C)</span><span>Um marco de duração nula do cronograma</span></button></li>
+<li><button class="opt" type="button" data-ok="0"><span class="opt-letter">D)</span><span>O elemento “Módulo de pagamento”, no nível 2</span></button></li>
+</ol>
+<p class="q-feedback" hidden><strong>Resposta: A.</strong> Cada dígito indica a posição em um nível: 1 (projeto) → 3 (Plataforma) → 2 (Módulo de pagamento) → 2 (Pagamento por Pix).</p>
+</article>
+<article class="q-card" id="q52">
+<div class="q-head"><span class="content-num">Q52</span><p class="q-text">Quantos pacotes de trabalho existem na EAP da Figura 1?</p></div>
+<ol class="opt-list">
+<li><button class="opt" type="button" data-ok="0"><span class="opt-letter">A)</span><span>11</span></button></li>
+<li><button class="opt" type="button" data-ok="0"><span class="opt-letter">B)</span><span>13</span></button></li>
+<li><button class="opt" type="button" data-ok="1"><span class="opt-letter">C)</span><span>12</span></button></li>
+<li><button class="opt" type="button" data-ok="0"><span class="opt-letter">D)</span><span>5</span></button></li>
+</ol>
+<p class="q-feedback" hidden><strong>Resposta: C.</strong> Pacotes são os elementos folha, que não se decompõem: 10 no nível 3 (todos, exceto 1.3.2) e 2 no nível 4 (1.3.2.1 e 1.3.2.2).</p>
+</article>
+<article class="q-card" id="q53">
+<div class="q-head"><span class="content-num">Q53</span><p class="q-text">Sobre o elemento 1.3.2 Módulo de pagamento, é correto afirmar que:</p></div>
+<ol class="opt-list">
+<li><button class="opt" type="button" data-ok="0"><span class="opt-letter">A)</span><span>Deve receber duração própria no cronograma, além da duração de 1.3.2.1 e 1.3.2.2</span></button></li>
+<li><button class="opt" type="button" data-ok="1"><span class="opt-letter">B)</span><span>Não é pacote de trabalho, pois se decompõe em 1.3.2.1 e 1.3.2.2; sua conclusão resulta da conclusão desses dois pacotes</span></button></li>
+<li><button class="opt" type="button" data-ok="0"><span class="opt-letter">C)</span><span>É um pacote de trabalho, por estar no nível 3</span></button></li>
+<li><button class="opt" type="button" data-ok="0"><span class="opt-letter">D)</span><span>É uma atividade, pois descreve uma ação</span></button></li>
+</ol>
+<p class="q-feedback" hidden><strong>Resposta: B.</strong> Durações e dependências são atribuídas apenas aos elementos folha; os níveis superiores têm seus resultados consolidados a partir deles.</p>
+</article>
+<article class="q-card" id="q54">
+<div class="q-head"><span class="content-num">Q54</span><p class="q-text">O ramo 1.1 Gestão do projeto, na extremidade esquerda da EAP, justifica-se porque:</p></div>
+<ol class="opt-list">
+<li><button class="opt" type="button" data-ok="1"><span class="opt-letter">A)</span><span>O trabalho de gestão consome esforço, recursos e custo e, portanto, integra o escopo do projeto</span></button></li>
+<li><button class="opt" type="button" data-ok="0"><span class="opt-letter">B)</span><span>Serve apenas para registrar o nome do gerente do projeto</span></button></li>
+<li><button class="opt" type="button" data-ok="0"><span class="opt-letter">C)</span><span>A gestão deve sempre ser o primeiro elemento da sequência de execução</span></button></li>
+<li><button class="opt" type="button" data-ok="0"><span class="opt-letter">D)</span><span>É o único ramo que o cliente irá aceitar formalmente</span></button></li>
+</ol>
+<p class="q-feedback" hidden><strong>Resposta: A.</strong> Pela regra dos 100%, a EAP deve contemplar todo o trabalho do projeto — inclusive planejamento, acompanhamento e relatórios.</p>
+</article>
+<article class="q-card" id="q55">
+<div class="q-head"><span class="content-num">Q55</span><p class="q-text">O ramo 1.5 Encerramento, na extremidade direita da EAP, reúne entregas destinadas a:</p></div>
+<ol class="opt-list">
+<li><button class="opt" type="button" data-ok="0"><span class="opt-letter">A)</span><span>Especificar os requisitos do produto</span></button></li>
+<li><button class="opt" type="button" data-ok="0"><span class="opt-letter">B)</span><span>Contratar os fornecedores de hospedagem</span></button></li>
+<li><button class="opt" type="button" data-ok="1"><span class="opt-letter">C)</span><span>Formalizar a aceitação do resultado pelo cliente e registrar as lições aprendidas</span></button></li>
+<li><button class="opt" type="button" data-ok="0"><span class="opt-letter">D)</span><span>Iniciar a operação comercial da loja</span></button></li>
+</ol>
+<p class="q-feedback" hidden><strong>Resposta: C.</strong> O encerramento formal (termo de aceite) e o registro de lições aprendidas também são trabalho do projeto e precisam estar previstos.</p>
+</article>
+<article class="q-card" id="q56">
+<div class="q-head"><span class="content-num">Q56</span><p class="q-text">Os elementos da EAP são nomeados por substantivos — por exemplo, “Layout aprovado” e “Relatório de testes” — porque:</p></div>
+<ol class="opt-list">
+<li><button class="opt" type="button" data-ok="0"><span class="opt-letter">A)</span><span>A numeração exige nomes com uma única palavra</span></button></li>
+<li><button class="opt" type="button" data-ok="0"><span class="opt-letter">B)</span><span>Substantivos ocupam menos espaço no diagrama</span></button></li>
+<li><button class="opt" type="button" data-ok="0"><span class="opt-letter">C)</span><span>Atividades não fazem parte do projeto</span></button></li>
+<li><button class="opt" type="button" data-ok="1"><span class="opt-letter">D)</span><span>Representam entregas ou resultados verificáveis, e não ações</span></button></li>
+</ol>
+<p class="q-feedback" hidden><strong>Resposta: D.</strong> A EAP é orientada a entregas; as atividades, nomeadas por verbos, são derivadas depois, no cronograma.</p>
+</article>
+<article class="q-card" id="q57">
+<div class="q-head"><span class="content-num">Q57</span><p class="q-text">Durante a execução, a equipe decide desenvolver também um aplicativo para celular, não solicitado pelo cliente e não previsto na EAP. Essa situação caracteriza:</p></div>
+<ol class="opt-list">
+<li><button class="opt" type="button" data-ok="1"><span class="opt-letter">A)</span><span>Gold plating</span></button></li>
+<li><button class="opt" type="button" data-ok="0"><span class="opt-letter">B)</span><span>Criação de um novo pacote de trabalho aprovado</span></button></li>
+<li><button class="opt" type="button" data-ok="0"><span class="opt-letter">C)</span><span>Fast tracking</span></button></li>
+<li><button class="opt" type="button" data-ok="0"><span class="opt-letter">D)</span><span>Decomposição adequada do escopo</span></button></li>
+</ol>
+<p class="q-feedback" hidden><strong>Resposta: A.</strong> É trabalho fora do escopo aprovado, que consome recursos sem gerar valor correspondente. Qualquer inclusão deveria passar pelo controle formal de mudanças.</p>
+</article>
+</div>
+</div>
+</section>
+<section class="section" id="gantt">
+<div class="container">
+<h2 class="section-heading"><span class="section-number">06</span>Cronograma e caminho crítico</h2>
+<p class="section-intro">Observe a Figura 2 e responda: duração das atividades, marcos, caminho crítico e folgas.</p>
+<figure class="fig-card">
+<figcaption><span class="aval-badge">Figura 2</span> Cronograma (gráfico de Gantt) do projeto <strong>Loja Virtual</strong> — escala em dias; todas as dependências são do tipo término-início (FS)</figcaption>
+<div class="fig-scroll"><svg class="fig-svg" viewBox="0 0 1000 352" role="img" aria-label="Cronograma de Gantt do projeto Loja Virtual">
+<defs><marker id="arr" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L8 4 L0 8 Z" class="g-arrow"/></marker></defs>
+<text class="g-head" x="12" y="26">ID</text>
+<text class="g-head" x="44" y="26">Atividade</text>
+<text class="g-head" x="292" y="26">EAP</text>
+<text class="g-head" x="358" y="26">Dur.</text>
+<text class="g-head" x="408" y="26">Pred.</text>
+<line class="g-grid-major" x1="470.0" y1="34" x2="470.0" y2="348"/>
+<text class="g-day" x="470.0" y="26" text-anchor="middle">0</text>
+<line class="g-grid" x1="489.8076923076923" y1="34" x2="489.8076923076923" y2="348"/>
+<line class="g-grid-major" x1="509.61538461538464" y1="34" x2="509.61538461538464" y2="348"/>
+<text class="g-day" x="509.61538461538464" y="26" text-anchor="middle">2</text>
+<line class="g-grid" x1="529.4230769230769" y1="34" x2="529.4230769230769" y2="348"/>
+<line class="g-grid-major" x1="549.2307692307693" y1="34" x2="549.2307692307693" y2="348"/>
+<text class="g-day" x="549.2307692307693" y="26" text-anchor="middle">4</text>
+<line class="g-grid" x1="569.0384615384615" y1="34" x2="569.0384615384615" y2="348"/>
+<line class="g-grid-major" x1="588.8461538461538" y1="34" x2="588.8461538461538" y2="348"/>
+<text class="g-day" x="588.8461538461538" y="26" text-anchor="middle">6</text>
+<line class="g-grid" x1="608.6538461538462" y1="34" x2="608.6538461538462" y2="348"/>
+<line class="g-grid-major" x1="628.4615384615385" y1="34" x2="628.4615384615385" y2="348"/>
+<text class="g-day" x="628.4615384615385" y="26" text-anchor="middle">8</text>
+<line class="g-grid" x1="648.2692307692307" y1="34" x2="648.2692307692307" y2="348"/>
+<line class="g-grid-major" x1="668.0769230769231" y1="34" x2="668.0769230769231" y2="348"/>
+<text class="g-day" x="668.0769230769231" y="26" text-anchor="middle">10</text>
+<line class="g-grid" x1="687.8846153846154" y1="34" x2="687.8846153846154" y2="348"/>
+<line class="g-grid-major" x1="707.6923076923076" y1="34" x2="707.6923076923076" y2="348"/>
+<text class="g-day" x="707.6923076923076" y="26" text-anchor="middle">12</text>
+<line class="g-grid" x1="727.5" y1="34" x2="727.5" y2="348"/>
+<line class="g-grid-major" x1="747.3076923076923" y1="34" x2="747.3076923076923" y2="348"/>
+<text class="g-day" x="747.3076923076923" y="26" text-anchor="middle">14</text>
+<line class="g-grid" x1="767.1153846153845" y1="34" x2="767.1153846153845" y2="348"/>
+<line class="g-grid-major" x1="786.9230769230769" y1="34" x2="786.9230769230769" y2="348"/>
+<text class="g-day" x="786.9230769230769" y="26" text-anchor="middle">16</text>
+<line class="g-grid" x1="806.7307692307693" y1="34" x2="806.7307692307693" y2="348"/>
+<line class="g-grid-major" x1="826.5384615384615" y1="34" x2="826.5384615384615" y2="348"/>
+<text class="g-day" x="826.5384615384615" y="26" text-anchor="middle">18</text>
+<line class="g-grid" x1="846.3461538461538" y1="34" x2="846.3461538461538" y2="348"/>
+<line class="g-grid-major" x1="866.1538461538462" y1="34" x2="866.1538461538462" y2="348"/>
+<text class="g-day" x="866.1538461538462" y="26" text-anchor="middle">20</text>
+<line class="g-grid" x1="885.9615384615385" y1="34" x2="885.9615384615385" y2="348"/>
+<line class="g-grid-major" x1="905.7692307692307" y1="34" x2="905.7692307692307" y2="348"/>
+<text class="g-day" x="905.7692307692307" y="26" text-anchor="middle">22</text>
+<line class="g-grid" x1="925.5769230769231" y1="34" x2="925.5769230769231" y2="348"/>
+<line class="g-grid-major" x1="945.3846153846154" y1="34" x2="945.3846153846154" y2="348"/>
+<text class="g-day" x="945.3846153846154" y="26" text-anchor="middle">24</text>
+<line class="g-grid" x1="965.1923076923076" y1="34" x2="965.1923076923076" y2="348"/>
+<line class="g-grid-major" x1="985.0" y1="34" x2="985.0" y2="348"/>
+<text class="g-day" x="985.0" y="26" text-anchor="middle">26</text>
+<line class="g-sep" x1="0" y1="34" x2="1000" y2="34"/>
+<rect class="g-band" x="0" y="40" width="1000" height="30"/>
+<text class="g-id" x="12" y="61.0">A</text>
+<text class="g-txt" x="44" y="61.0">Levantar requisitos</text>
+<text class="g-mono" x="292" y="61.0">1.2.1</text>
+<text class="g-mono" x="358" y="61.0">5 d</text>
+<text class="g-mono" x="408" y="61.0">—</text>
+<text class="g-id" x="12" y="91.0">B</text>
+<text class="g-txt" x="44" y="91.0">Produzir catálogo</text>
+<text class="g-mono" x="292" y="91.0">1.2.2</text>
+<text class="g-mono" x="358" y="91.0">4 d</text>
+<text class="g-mono" x="408" y="91.0">A</text>
+<rect class="g-band" x="0" y="100" width="1000" height="30"/>
+<text class="g-id" x="12" y="121.0">C</text>
+<text class="g-txt" x="44" y="121.0">Desenvolver layout</text>
+<text class="g-mono" x="292" y="121.0">1.3.1</text>
+<text class="g-mono" x="358" y="121.0">6 d</text>
+<text class="g-mono" x="408" y="121.0">A</text>
+<text class="g-id" x="12" y="151.0">D</text>
+<text class="g-txt" x="44" y="151.0">Implementar pagamento por cartão</text>
+<text class="g-mono" x="292" y="151.0">1.3.2.1</text>
+<text class="g-mono" x="358" y="151.0">8 d</text>
+<text class="g-mono" x="408" y="151.0">C</text>
+<rect class="g-band" x="0" y="160" width="1000" height="30"/>
+<text class="g-id" x="12" y="181.0">E</text>
+<text class="g-txt" x="44" y="181.0">Implementar pagamento por Pix</text>
+<text class="g-mono" x="292" y="181.0">1.3.2.2</text>
+<text class="g-mono" x="358" y="181.0">3 d</text>
+<text class="g-mono" x="408" y="181.0">C</text>
+<text class="g-id" x="12" y="211.0">F</text>
+<text class="g-txt" x="44" y="211.0">Integrar cálculo de frete</text>
+<text class="g-mono" x="292" y="211.0">1.3.3</text>
+<text class="g-mono" x="358" y="211.0">4 d</text>
+<text class="g-mono" x="408" y="211.0">C</text>
+<rect class="g-band" x="0" y="220" width="1000" height="30"/>
+<text class="g-id" x="12" y="241.0">G</text>
+<text class="g-txt" x="44" y="241.0">Testar a loja</text>
+<text class="g-mono" x="292" y="241.0">1.4.1</text>
+<text class="g-mono" x="358" y="241.0">4 d</text>
+<text class="g-mono" x="408" y="241.0">B, D, E, F</text>
+<text class="g-id" x="12" y="271.0">H</text>
+<text class="g-txt" x="44" y="271.0">Publicar a loja</text>
+<text class="g-mono" x="292" y="271.0">1.4.2</text>
+<text class="g-mono" x="358" y="271.0">1 d</text>
+<text class="g-mono" x="408" y="271.0">G</text>
+<rect class="g-band" x="0" y="280" width="1000" height="30"/>
+<text class="g-id" x="12" y="301.0">M1</text>
+<text class="g-txt" x="44" y="301.0">Requisitos aprovados (marco)</text>
+<text class="g-mono" x="358" y="301.0">0 d</text>
+<text class="g-mono" x="408" y="301.0">A</text>
+<path class="g-ms" d="M569.0384615384615 289.0 L577.0384615384615 297.0 L569.0384615384615 305.0 L561.0384615384615 297.0 Z"/>
+<text class="g-id" x="12" y="331.0">M2</text>
+<text class="g-txt" x="44" y="331.0">Loja publicada (marco)</text>
+<text class="g-mono" x="358" y="331.0">0 d</text>
+<text class="g-mono" x="408" y="331.0">H</text>
+<path class="g-ms" d="M945.3846153846154 319.0 L953.3846153846154 327.0 L945.3846153846154 335.0 L937.3846153846154 327.0 Z"/>
+<path class="g-dep" d="M569.0384615384615 57.0 H569.0384615384615 V79.0" marker-end="url(#arr)"/>
+<path class="g-dep" d="M569.0384615384615 57.0 H569.0384615384615 V109.0" marker-end="url(#arr)"/>
+<path class="g-dep" d="M687.8846153846154 117.0 H687.8846153846154 V139.0" marker-end="url(#arr)"/>
+<path class="g-dep" d="M687.8846153846154 117.0 H687.8846153846154 V169.0" marker-end="url(#arr)"/>
+<path class="g-dep" d="M687.8846153846154 117.0 H687.8846153846154 V199.0" marker-end="url(#arr)"/>
+<path class="g-dep" d="M648.2692307692307 87.0 H846.3461538461538 V229.0" marker-end="url(#arr)"/>
+<path class="g-dep" d="M846.3461538461538 147.0 H846.3461538461538 V229.0" marker-end="url(#arr)"/>
+<path class="g-dep" d="M747.3076923076923 177.0 H846.3461538461538 V229.0" marker-end="url(#arr)"/>
+<path class="g-dep" d="M767.1153846153845 207.0 H846.3461538461538 V229.0" marker-end="url(#arr)"/>
+<path class="g-dep" d="M925.5769230769231 237.0 H925.5769230769231 V259.0" marker-end="url(#arr)"/>
+<rect class="g-bar" x="470.0" y="50.0" width="99.03846153846153" height="14" rx="3"/>
+<rect class="g-bar" x="569.0384615384615" y="80.0" width="79.23076923076923" height="14" rx="3"/>
+<rect class="g-bar" x="569.0384615384615" y="110.0" width="118.84615384615384" height="14" rx="3"/>
+<rect class="g-bar" x="687.8846153846154" y="140.0" width="158.46153846153845" height="14" rx="3"/>
+<rect class="g-bar" x="687.8846153846154" y="170.0" width="59.42307692307692" height="14" rx="3"/>
+<rect class="g-bar" x="687.8846153846154" y="200.0" width="79.23076923076923" height="14" rx="3"/>
+<rect class="g-bar" x="846.3461538461538" y="230.0" width="79.23076923076923" height="14" rx="3"/>
+<rect class="g-bar" x="925.5769230769231" y="260.0" width="19.807692307692307" height="14" rx="3"/>
+</svg></div>
+<p class="fig-note">Atividades derivadas dos pacotes de trabalho da Figura 1. As atividades dos ramos 1.1 (gestão) e 1.5 (encerramento) foram omitidas para simplificar.</p>
+</figure>
+<div class="q-list">
+<article class="q-card" id="q58">
+<div class="q-head"><span class="content-num">Q58</span><p class="q-text">Qual é a duração total do projeto representado na Figura 2?</p></div>
+<ol class="opt-list">
+<li><button class="opt" type="button" data-ok="0"><span class="opt-letter">A)</span><span>20 dias</span></button></li>
+<li><button class="opt" type="button" data-ok="1"><span class="opt-letter">B)</span><span>24 dias</span></button></li>
+<li><button class="opt" type="button" data-ok="0"><span class="opt-letter">C)</span><span>26 dias</span></button></li>
+<li><button class="opt" type="button" data-ok="0"><span class="opt-letter">D)</span><span>35 dias</span></button></li>
+</ol>
+<p class="q-feedback" hidden><strong>Resposta: B.</strong> O projeto termina quando termina a atividade H (dia 24), determinada pela sequência mais longa.</p>
+</article>
+<article class="q-card" id="q59">
+<div class="q-head"><span class="content-num">Q59</span><p class="q-text">O caminho crítico do projeto é:</p></div>
+<ol class="opt-list">
+<li><button class="opt" type="button" data-ok="0"><span class="opt-letter">A)</span><span>A → B → G → H</span></button></li>
+<li><button class="opt" type="button" data-ok="0"><span class="opt-letter">B)</span><span>A → C → E → G → H</span></button></li>
+<li><button class="opt" type="button" data-ok="0"><span class="opt-letter">C)</span><span>A → C → F → G → H</span></button></li>
+<li><button class="opt" type="button" data-ok="1"><span class="opt-letter">D)</span><span>A → C → D → G → H</span></button></li>
+</ol>
+<p class="q-feedback" hidden><strong>Resposta: D.</strong> 5 + 6 + 8 + 4 + 1 = 24 dias. É a sequência mais longa, sem folga.</p>
+</article>
+<article class="q-card" id="q60">
+<div class="q-head"><span class="content-num">Q60</span><p class="q-text">A atividade G (Testar a loja) só pode começar no dia 19 porque:</p></div>
+<ol class="opt-list">
+<li><button class="opt" type="button" data-ok="0"><span class="opt-letter">A)</span><span>Depende apenas da atividade F</span></button></li>
+<li><button class="opt" type="button" data-ok="0"><span class="opt-letter">B)</span><span>É a atividade de maior duração do projeto</span></button></li>
+<li><button class="opt" type="button" data-ok="1"><span class="opt-letter">C)</span><span>Depende do término de B, D, E e F, e a última delas a terminar é D, no dia 19</span></button></li>
+<li><button class="opt" type="button" data-ok="0"><span class="opt-letter">D)</span><span>Todas as atividades de teste começam na terceira semana</span></button></li>
+</ol>
+<p class="q-feedback" hidden><strong>Resposta: C.</strong> Com várias predecessoras, a sucessora começa após o término mais tardio entre elas (B: 9; D: 19; E: 14; F: 15).</p>
+</article>
+<article class="q-card" id="q61">
+<div class="q-head"><span class="content-num">Q61</span><p class="q-text">Qual é a folga da atividade B (Produzir catálogo)?</p></div>
+<ol class="opt-list">
+<li><button class="opt" type="button" data-ok="0"><span class="opt-letter">A)</span><span>0 dia</span></button></li>
+<li><button class="opt" type="button" data-ok="0"><span class="opt-letter">B)</span><span>5 dias</span></button></li>
+<li><button class="opt" type="button" data-ok="0"><span class="opt-letter">C)</span><span>4 dias</span></button></li>
+<li><button class="opt" type="button" data-ok="1"><span class="opt-letter">D)</span><span>10 dias</span></button></li>
+</ol>
+<p class="q-feedback" hidden><strong>Resposta: D.</strong> B termina no dia 9, mas G só começa no dia 19: B pode atrasar até 10 dias sem afetar o término do projeto.</p>
+</article>
+<article class="q-card" id="q62">
+<div class="q-head"><span class="content-num">Q62</span><p class="q-text">Qual é a folga da atividade F (Integrar cálculo de frete)?</p></div>
+<ol class="opt-list">
+<li><button class="opt" type="button" data-ok="0"><span class="opt-letter">A)</span><span>8 dias</span></button></li>
+<li><button class="opt" type="button" data-ok="1"><span class="opt-letter">B)</span><span>4 dias</span></button></li>
+<li><button class="opt" type="button" data-ok="0"><span class="opt-letter">C)</span><span>0 dia</span></button></li>
+<li><button class="opt" type="button" data-ok="0"><span class="opt-letter">D)</span><span>5 dias</span></button></li>
+</ol>
+<p class="q-feedback" hidden><strong>Resposta: B.</strong> F termina no dia 15; G começa no dia 19. Folga = 19 − 15 = 4 dias. (A atividade E tem folga de 5 dias.)</p>
+</article>
+<article class="q-card" id="q63">
+<div class="q-head"><span class="content-num">Q63</span><p class="q-text">Se a atividade D atrasar 2 dias, o término do projeto passa a ser:</p></div>
+<ol class="opt-list">
+<li><button class="opt" type="button" data-ok="1"><span class="opt-letter">A)</span><span>Dia 26</span></button></li>
+<li><button class="opt" type="button" data-ok="0"><span class="opt-letter">B)</span><span>Dia 28</span></button></li>
+<li><button class="opt" type="button" data-ok="0"><span class="opt-letter">C)</span><span>Dia 25</span></button></li>
+<li><button class="opt" type="button" data-ok="0"><span class="opt-letter">D)</span><span>Dia 24, sem alteração</span></button></li>
+</ol>
+<p class="q-feedback" hidden><strong>Resposta: A.</strong> D está no caminho crítico (folga zero): todo atraso nela se transfere integralmente para o término do projeto.</p>
+</article>
+<article class="q-card" id="q64">
+<div class="q-head"><span class="content-num">Q64</span><p class="q-text">Se a atividade B atrasar 3 dias, o término do projeto:</p></div>
+<ol class="opt-list">
+<li><button class="opt" type="button" data-ok="0"><span class="opt-letter">A)</span><span>Depende da duração da atividade H</span></button></li>
+<li><button class="opt" type="button" data-ok="0"><span class="opt-letter">B)</span><span>Passa para o dia 27</span></button></li>
+<li><button class="opt" type="button" data-ok="1"><span class="opt-letter">C)</span><span>Não se altera, pois o atraso é absorvido pela folga de B</span></button></li>
+<li><button class="opt" type="button" data-ok="0"><span class="opt-letter">D)</span><span>Passa para o dia 25</span></button></li>
+</ol>
+<p class="q-feedback" hidden><strong>Resposta: C.</strong> B tem 10 dias de folga; um atraso de 3 dias a faz terminar no dia 12, ainda antes do início de G (dia 19).</p>
+</article>
+<article class="q-card" id="q65">
+<div class="q-head"><span class="content-num">Q65</span><p class="q-text">Sobre os marcos M1 (Requisitos aprovados) e M2 (Loja publicada), é correto afirmar que:</p></div>
+<ol class="opt-list">
+<li><button class="opt" type="button" data-ok="1"><span class="opt-letter">A)</span><span>Têm duração nula e sinalizam pontos de controle — M1 no dia 5 e M2 no dia 24</span></button></li>
+<li><button class="opt" type="button" data-ok="0"><span class="opt-letter">B)</span><span>Podem ser removidos sem prejuízo, pois não afetam o controle do projeto</span></button></li>
+<li><button class="opt" type="button" data-ok="0"><span class="opt-letter">C)</span><span>São atividades do caminho crítico com duração própria</span></button></li>
+<li><button class="opt" type="button" data-ok="0"><span class="opt-letter">D)</span><span>Duram um dia cada e consomem recursos da equipe</span></button></li>
+</ol>
+<p class="q-feedback" hidden><strong>Resposta: A.</strong> Marcos não consomem recursos; servem para verificar o avanço e, muitas vezes, estão ligados a aceite e faturamento.</p>
+</article>
+<article class="q-card" id="q66">
+<div class="q-head"><span class="content-num">Q66</span><p class="q-text">Para reduzir o prazo total por meio de crashing ou fast tracking, o gerente deve concentrar esforços:</p></div>
+<ol class="opt-list">
+<li><button class="opt" type="button" data-ok="0"><span class="opt-letter">A)</span><span>Nas atividades E e F, por serem mais curtas</span></button></li>
+<li><button class="opt" type="button" data-ok="1"><span class="opt-letter">B)</span><span>Nas atividades do caminho crítico (A, C, D, G ou H)</span></button></li>
+<li><button class="opt" type="button" data-ok="0"><span class="opt-letter">C)</span><span>Na atividade B, por ter a maior folga</span></button></li>
+<li><button class="opt" type="button" data-ok="0"><span class="opt-letter">D)</span><span>Em qualquer atividade, pois todas afetam igualmente o prazo</span></button></li>
+</ol>
+<p class="q-feedback" hidden><strong>Resposta: B.</strong> Encurtar uma atividade com folga (como E) não reduz a duração do projeto; só o caminho crítico determina o término.</p>
+</article>
+<article class="q-card" id="q67">
+<div class="q-head"><span class="content-num">Q67</span><p class="q-text">A coluna “EAP” do cronograma associa cada atividade a um código da Figura 1. Essa associação serve para:</p></div>
+<ol class="opt-list">
+<li><button class="opt" type="button" data-ok="0"><span class="opt-letter">A)</span><span>Definir o custo de cada atividade</span></button></li>
+<li><button class="opt" type="button" data-ok="0"><span class="opt-letter">B)</span><span>Indicar a ordem de execução das atividades</span></button></li>
+<li><button class="opt" type="button" data-ok="0"><span class="opt-letter">C)</span><span>Identificar o responsável por cada atividade</span></button></li>
+<li><button class="opt" type="button" data-ok="1"><span class="opt-letter">D)</span><span>Garantir a rastreabilidade: cada atividade deriva de um pacote de trabalho, e cada pacote está representado no cronograma</span></button></li>
+</ol>
+<p class="q-feedback" hidden><strong>Resposta: D.</strong> Sem essa ligação, o cronograma pode ficar incompleto ou conter atividades sem entrega aprovada (gold plating).</p>
+</article>
+</div>
+</div>
+</section>
+<section class="section" id="matriz">
+<div class="container">
+<h2 class="section-heading"><span class="section-number">07</span>Matriz de rastreabilidade de requisitos</h2>
+<p class="section-intro">Observe a Figura 3 e responda: requisitos, tipos, critérios de aceitação e relação com as entregas.</p>
+<figure class="fig-card">
+<figcaption><span class="aval-badge">Figura 3</span> Matriz de rastreabilidade de requisitos do projeto <strong>Loja Virtual</strong></figcaption>
+<div class="agenda-wrap rtm"><table>
+<thead><tr><th>ID</th><th>Requisito</th><th>Tipo</th><th>Origem</th><th>Critério de aceitação</th><th>Entrega (EAP)</th></tr></thead>
+<tbody>
+<tr><td>RQ01</td><td>Aceitar pagamento por cartão de crédito e por Pix</td><td><span class="tag t-fun">Funcional</span></td><td>Diretoria comercial</td><td>100% das transações de teste aprovadas nos dois meios de pagamento</td><td class="mono">1.3.2</td></tr>
+<tr><td>RQ02</td><td>Carregar as páginas da loja rapidamente</td><td><span class="tag t-nf">Não funcional</span></td><td>Marketing</td><td>Tempo médio de carregamento ≤ 3 s em 50 acessos de teste</td><td class="mono">1.3.1</td></tr>
+<tr><td>RQ03</td><td>Calcular o frete automaticamente a partir do CEP</td><td><span class="tag t-fun">Funcional</span></td><td>Logística</td><td>Frete correto em 20 CEPs de teste de diferentes regiões</td><td class="mono">1.3.3</td></tr>
+<tr><td>RQ04</td><td>Tratar dados pessoais conforme a LGPD</td><td><span class="tag t-norm">Normativo</span></td><td>Jurídico</td><td>Política de privacidade publicada e consentimento registrado em 100% dos cadastros</td><td class="mono">1.4.2</td></tr>
+<tr><td>RQ05</td><td>Permitir que a equipe de vendas cadastre produtos sem apoio técnico</td><td><span class="tag t-op">Operacional</span></td><td>Vendas</td><td>3 vendedores cadastram 10 produtos em até 30 min após treinamento</td><td class="mono">1.2.2</td></tr>
+<tr><td>RQ06</td><td>Operar com conexão segura (HTTPS)</td><td><span class="tag t-tec">Técnico</span></td><td>TI</td><td>Certificado SSL válido verificado em todas as páginas</td><td class="mono">1.4.2</td></tr>
+<tr><td>RQ07</td><td>Ter visual bonito e moderno</td><td><span class="tag t-nf">Não funcional</span></td><td>Marketing</td><td>Agradar à diretoria</td><td class="mono">1.3.1</td></tr>
+<tr><td>RQ08</td><td>Emitir nota fiscal eletrônica automaticamente a cada venda</td><td><span class="tag t-fun">Funcional</span></td><td>Financeiro</td><td>NF-e emitida em 100% das vendas de teste</td><td class="mono">—</td></tr>
+</tbody></table></div>
+<p class="fig-note">A coluna “Entrega (EAP)” remete aos códigos da Figura 1.</p>
+</figure>
+<div class="q-list">
+<article class="q-card" id="q68">
+<div class="q-head"><span class="content-num">Q68</span><p class="q-text">Qual requisito da Figura 3 é classificado como normativo?</p></div>
+<ol class="opt-list">
+<li><button class="opt" type="button" data-ok="0"><span class="opt-letter">A)</span><span>RQ01 — Aceitar pagamento por cartão de crédito e por Pix</span></button></li>
+<li><button class="opt" type="button" data-ok="0"><span class="opt-letter">B)</span><span>RQ05 — Permitir que a equipe de vendas cadastre produtos</span></button></li>
+<li><button class="opt" type="button" data-ok="1"><span class="opt-letter">C)</span><span>RQ04 — Tratar dados pessoais conforme a LGPD</span></button></li>
+<li><button class="opt" type="button" data-ok="0"><span class="opt-letter">D)</span><span>RQ06 — Operar com conexão segura (HTTPS)</span></button></li>
+</ol>
+<p class="q-feedback" hidden><strong>Resposta: C.</strong> Requisitos normativos decorrem de leis, regulamentos e normas; RQ06 é técnico.</p>
+</article>
+<article class="q-card" id="q69">
+<div class="q-head"><span class="content-num">Q69</span><p class="q-text">O requisito RQ02 (carregar as páginas rapidamente) é classificado como não funcional porque:</p></div>
+<ol class="opt-list">
+<li><button class="opt" type="button" data-ok="0"><span class="opt-letter">A)</span><span>Não possui critério de aceitação</span></button></li>
+<li><button class="opt" type="button" data-ok="1"><span class="opt-letter">B)</span><span>Expressa uma qualidade do produto (desempenho), e não uma função que ele executa</span></button></li>
+<li><button class="opt" type="button" data-ok="0"><span class="opt-letter">C)</span><span>Não será implementado no projeto</span></button></li>
+<li><button class="opt" type="button" data-ok="0"><span class="opt-letter">D)</span><span>Foi solicitado pela área de Marketing</span></button></li>
+</ol>
+<p class="q-feedback" hidden><strong>Resposta: B.</strong> Requisitos funcionais descrevem o que o produto faz; não funcionais, como ele deve se comportar (desempenho, segurança, usabilidade etc.).</p>
+</article>
+<article class="q-card" id="q70">
+<div class="q-head"><span class="content-num">Q70</span><p class="q-text">O requisito RQ05 é classificado como operacional porque:</p></div>
+<ol class="opt-list">
+<li><button class="opt" type="button" data-ok="0"><span class="opt-letter">A)</span><span>Trata de uma exigência legal</span></button></li>
+<li><button class="opt" type="button" data-ok="0"><span class="opt-letter">B)</span><span>Define a tecnologia de hospedagem</span></button></li>
+<li><button class="opt" type="button" data-ok="0"><span class="opt-letter">C)</span><span>Refere-se ao cálculo automático do frete</span></button></li>
+<li><button class="opt" type="button" data-ok="1"><span class="opt-letter">D)</span><span>Descreve como os usuários — a equipe de vendas — irão operar a solução no dia a dia</span></button></li>
+</ol>
+<p class="q-feedback" hidden><strong>Resposta: D.</strong> Requisitos operacionais expressam as condições de uso e operação da solução pelos seus usuários.</p>
+</article>
+<article class="q-card" id="q71">
+<div class="q-head"><span class="content-num">Q71</span><p class="q-text">Qual requisito deve ser reescrito, por não apresentar critério de aceitação mensurável?</p></div>
+<ol class="opt-list">
+<li><button class="opt" type="button" data-ok="1"><span class="opt-letter">A)</span><span>RQ07 — Ter visual bonito e moderno</span></button></li>
+<li><button class="opt" type="button" data-ok="0"><span class="opt-letter">B)</span><span>RQ03 — Calcular o frete automaticamente a partir do CEP</span></button></li>
+<li><button class="opt" type="button" data-ok="0"><span class="opt-letter">C)</span><span>RQ02 — Carregar as páginas da loja rapidamente</span></button></li>
+<li><button class="opt" type="button" data-ok="0"><span class="opt-letter">D)</span><span>RQ06 — Operar com conexão segura (HTTPS)</span></button></li>
+</ol>
+<p class="q-feedback" hidden><strong>Resposta: A.</strong> “Agradar à diretoria” é subjetivo e não pode ser verificado. RQ02 também parte de um termo vago (“rapidamente”), mas seu critério o torna mensurável (≤ 3 s).</p>
+</article>
+<article class="q-card" id="q72">
+<div class="q-head"><span class="content-num">Q72</span><p class="q-text">A coluna “Critério de aceitação” da matriz tem como finalidade:</p></div>
+<ol class="opt-list">
+<li><button class="opt" type="button" data-ok="0"><span class="opt-letter">A)</span><span>Definir o custo de implementação do requisito</span></button></li>
+<li><button class="opt" type="button" data-ok="0"><span class="opt-letter">B)</span><span>Registrar a opinião da equipe técnica sobre o requisito</span></button></li>
+<li><button class="opt" type="button" data-ok="1"><span class="opt-letter">C)</span><span>Definir uma medida objetiva que permita verificar se o requisito foi atendido e, assim, aceitar a entrega</span></button></li>
+<li><button class="opt" type="button" data-ok="0"><span class="opt-letter">D)</span><span>Indicar a data de conclusão do requisito</span></button></li>
+</ol>
+<p class="q-feedback" hidden><strong>Resposta: C.</strong> Um requisito só ajuda se puder ser verificado: consistente, completo, mensurável e testável.</p>
+</article>
+<article class="q-card" id="q73">
+<div class="q-head"><span class="content-num">Q73</span><p class="q-text">O requisito RQ08 não está associado a nenhuma entrega da EAP. Essa situação indica que:</p></div>
+<ol class="opt-list">
+<li><button class="opt" type="button" data-ok="0"><span class="opt-letter">A)</span><span>O requisito já foi atendido e pode ser ignorado</span></button></li>
+<li><button class="opt" type="button" data-ok="1"><span class="opt-letter">B)</span><span>Há uma lacuna entre requisitos e escopo: o requisito deve ser incorporado à EAP por mudança formal ou declarado como não escopo</span></button></li>
+<li><button class="opt" type="button" data-ok="0"><span class="opt-letter">C)</span><span>A matriz está correta, pois nem todo requisito precisa de entrega</span></button></li>
+<li><button class="opt" type="button" data-ok="0"><span class="opt-letter">D)</span><span>O requisito deve ser implementado informalmente pela equipe</span></button></li>
+</ol>
+<p class="q-feedback" hidden><strong>Resposta: B.</strong> A rastreabilidade revela requisitos sem entrega correspondente — um risco de o cliente esperar algo que o projeto não prevê.</p>
+</article>
+<article class="q-card" id="q74">
+<div class="q-head"><span class="content-num">Q74</span><p class="q-text">A área de Logística solicita alterar o requisito RQ03. Pela matriz e pelo cronograma, a mudança impacta diretamente:</p></div>
+<ol class="opt-list">
+<li><button class="opt" type="button" data-ok="0"><span class="opt-letter">A)</span><span>A entrega 1.4.2 e a atividade H</span></button></li>
+<li><button class="opt" type="button" data-ok="0"><span class="opt-letter">B)</span><span>A entrega 1.3.2 e a atividade D</span></button></li>
+<li><button class="opt" type="button" data-ok="1"><span class="opt-letter">C)</span><span>A entrega 1.3.3 (Integração com frete) e, no cronograma, a atividade F</span></button></li>
+<li><button class="opt" type="button" data-ok="0"><span class="opt-letter">D)</span><span>Apenas a entrega 1.5.1 (Termo de aceite)</span></button></li>
+</ol>
+<p class="q-feedback" hidden><strong>Resposta: C.</strong> Seguindo a rastreabilidade requisito → entrega → atividade, a equipe avalia o impacto antes de aceitar a mudança. Como F tem folga de 4 dias, pequenos acréscimos não afetariam o prazo final.</p>
+</article>
+<article class="q-card" id="q75">
+<div class="q-head"><span class="content-num">Q75</span><p class="q-text">Havendo dúvida sobre o critério de aceitação de RQ05, a equipe deve consultar, prioritariamente:</p></div>
+<ol class="opt-list">
+<li><button class="opt" type="button" data-ok="1"><span class="opt-letter">A)</span><span>A área de Vendas, indicada como origem do requisito</span></button></li>
+<li><button class="opt" type="button" data-ok="0"><span class="opt-letter">B)</span><span>A área de TI</span></button></li>
+<li><button class="opt" type="button" data-ok="0"><span class="opt-letter">C)</span><span>O fornecedor da plataforma de pagamento</span></button></li>
+<li><button class="opt" type="button" data-ok="0"><span class="opt-letter">D)</span><span>O Jurídico</span></button></li>
+</ol>
+<p class="q-feedback" hidden><strong>Resposta: A.</strong> A coluna “Origem” identifica a parte interessada que originou o requisito e que deve participar de seu esclarecimento e aceite.</p>
+</article>
+</div>
+</div>
+</section>
+<section class="section" id="gabarito">
+<div class="container">
+<h2 class="section-heading"><span class="section-number">08</span>Gabarito</h2>
+<details class="gab">
+<summary>Exibir gabarito completo →</summary>
+<div class="agenda-wrap">
+<table>
+<thead><tr><th>Bloco</th><th>Tema</th><th>Questão · Resposta</th></tr></thead>
+<tbody>
+<tr><td>Cap 01</td><td>Fundamentos de Gestão de Projetos</td><td><span class="gab-item"><a href="#q1">01</a> C</span> <span class="gab-item"><a href="#q2">02</a> D</span> <span class="gab-item"><a href="#q3">03</a> A</span> <span class="gab-item"><a href="#q4">04</a> B</span> <span class="gab-item"><a href="#q5">05</a> D</span> <span class="gab-item"><a href="#q6">06</a> A</span> <span class="gab-item"><a href="#q7">07</a> B</span> <span class="gab-item"><a href="#q8">08</a> C</span> <span class="gab-item"><a href="#q9">09</a> D</span> <span class="gab-item"><a href="#q10">10</a> A</span> <span class="gab-item"><a href="#q11">11</a> C</span></td></tr>
+<tr><td>Cap 02</td><td>Governança, complexidade e maturidade</td><td><span class="gab-item"><a href="#q12">12</a> B</span> <span class="gab-item"><a href="#q13">13</a> B</span> <span class="gab-item"><a href="#q14">14</a> C</span> <span class="gab-item"><a href="#q15">15</a> A</span> <span class="gab-item"><a href="#q16">16</a> D</span> <span class="gab-item"><a href="#q17">17</a> C</span> <span class="gab-item"><a href="#q18">18</a> B</span> <span class="gab-item"><a href="#q19">19</a> A</span> <span class="gab-item"><a href="#q20">20</a> D</span> <span class="gab-item"><a href="#q21">21</a> D</span></td></tr>
+<tr><td>Cap 03</td><td>Gestão do escopo</td><td><span class="gab-item"><a href="#q22">22</a> B</span> <span class="gab-item"><a href="#q23">23</a> A</span> <span class="gab-item"><a href="#q24">24</a> C</span> <span class="gab-item"><a href="#q25">25</a> D</span> <span class="gab-item"><a href="#q26">26</a> C</span> <span class="gab-item"><a href="#q27">27</a> B</span> <span class="gab-item"><a href="#q28">28</a> A</span> <span class="gab-item"><a href="#q29">29</a> A</span> <span class="gab-item"><a href="#q30">30</a> C</span> <span class="gab-item"><a href="#q31">31</a> B</span> <span class="gab-item"><a href="#q32">32</a> D</span> <span class="gab-item"><a href="#q33">33</a> C</span> <span class="gab-item"><a href="#q34">34</a> B</span> <span class="gab-item"><a href="#q35">35</a> D</span> <span class="gab-item"><a href="#q36">36</a> A</span> <span class="gab-item"><a href="#q37">37</a> D</span> <span class="gab-item"><a href="#q38">38</a> A</span> <span class="gab-item"><a href="#q39">39</a> C</span></td></tr>
+<tr><td>Cap 04</td><td>Gestão do tempo</td><td><span class="gab-item"><a href="#q40">40</a> B</span> <span class="gab-item"><a href="#q41">41</a> D</span> <span class="gab-item"><a href="#q42">42</a> A</span> <span class="gab-item"><a href="#q43">43</a> B</span> <span class="gab-item"><a href="#q44">44</a> C</span> <span class="gab-item"><a href="#q45">45</a> B</span> <span class="gab-item"><a href="#q46">46</a> A</span> <span class="gab-item"><a href="#q47">47</a> D</span> <span class="gab-item"><a href="#q48">48</a> C</span></td></tr>
+<tr><td>Fig 1</td><td>Estrutura Analítica do Projeto</td><td><span class="gab-item"><a href="#q49">49</a> D</span> <span class="gab-item"><a href="#q50">50</a> B</span> <span class="gab-item"><a href="#q51">51</a> A</span> <span class="gab-item"><a href="#q52">52</a> C</span> <span class="gab-item"><a href="#q53">53</a> B</span> <span class="gab-item"><a href="#q54">54</a> A</span> <span class="gab-item"><a href="#q55">55</a> C</span> <span class="gab-item"><a href="#q56">56</a> D</span> <span class="gab-item"><a href="#q57">57</a> A</span></td></tr>
+<tr><td>Fig 2</td><td>Cronograma e caminho crítico</td><td><span class="gab-item"><a href="#q58">58</a> B</span> <span class="gab-item"><a href="#q59">59</a> D</span> <span class="gab-item"><a href="#q60">60</a> C</span> <span class="gab-item"><a href="#q61">61</a> D</span> <span class="gab-item"><a href="#q62">62</a> B</span> <span class="gab-item"><a href="#q63">63</a> A</span> <span class="gab-item"><a href="#q64">64</a> C</span> <span class="gab-item"><a href="#q65">65</a> A</span> <span class="gab-item"><a href="#q66">66</a> B</span> <span class="gab-item"><a href="#q67">67</a> D</span></td></tr>
+<tr><td>Fig 3</td><td>Matriz de rastreabilidade de requisitos</td><td><span class="gab-item"><a href="#q68">68</a> C</span> <span class="gab-item"><a href="#q69">69</a> B</span> <span class="gab-item"><a href="#q70">70</a> D</span> <span class="gab-item"><a href="#q71">71</a> A</span> <span class="gab-item"><a href="#q72">72</a> C</span> <span class="gab-item"><a href="#q73">73</a> B</span> <span class="gab-item"><a href="#q74">74</a> C</span> <span class="gab-item"><a href="#q75">75</a> A</span></td></tr>
+</tbody>
+</table>
+</div>
+</details>
+</div>
+</section>
+</main>
+<footer>
+<div class="container">
+<p>© 2026 · Prof. Clayton J A Silva</p>
+<p><a href="../gestao_projetos.html">← voltar para a disciplina</a></p>
+</div>
+</footer>
+<script>
+(function(){
+  var ac=document.getElementById('acertos'), rs=document.getElementById('respondidas');
+  var nA=0,nR=0;
+  function reveal(card,chosen){
+    var opts=card.querySelectorAll('.opt');
+    opts.forEach(function(b){
+      b.disabled=true;
+      if(b.dataset.ok==='1') b.classList.add('correct');
+      else if(b===chosen) b.classList.add('wrong');
+    });
+    card.querySelector('.q-feedback').hidden=false;
+  }
+  document.querySelectorAll('.q-card').forEach(function(card){
+    card.querySelectorAll('.opt').forEach(function(b){
+      b.addEventListener('click',function(){
+        if(b.disabled) return;
+        nR++; if(b.dataset.ok==='1') nA++;
+        ac.textContent=nA; rs.textContent=nR;
+        reveal(card,b);
+      });
+    });
+  });
+  document.getElementById('btn-show').addEventListener('click',function(){
+    document.querySelectorAll('.q-card').forEach(function(card){
+      if(!card.querySelector('.opt:disabled')) reveal(card,null);
+    });
+  });
+  document.getElementById('btn-reset').addEventListener('click',function(){
+    document.querySelectorAll('.opt').forEach(function(b){b.disabled=false;b.classList.remove('correct','wrong');});
+    document.querySelectorAll('.q-feedback').forEach(function(f){f.hidden=true;});
+    nA=nR=0; ac.textContent=0; rs.textContent=0;
+    window.scrollTo({top:0,behavior:'smooth'});
+  });
+})();
+</script>
+</body>
+</html>
