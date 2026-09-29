@@ -77,7 +77,7 @@ h1{font-size:clamp(2rem,4vw,3rem);font-weight:300;line-height:1.1;letter-spacing
 .disabled-link{display:block;color:var(--muted);font-weight:600;line-height:1.35;margin:.35rem 0}
 .practice-label{font-family:var(--font-mono);font-size:.68rem;color:var(--accent2)}
 
-.aval-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:1rem}
+.aval-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,420px),1fr));gap:1rem}
 .aval-card{border:1px solid var(--border);border-radius:8px;padding:1.5rem;background:var(--surface);position:relative;overflow:hidden}
 .aval-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--accent),var(--accent2))}
 .aval-badge{font-family:var(--font-mono);font-size:.7rem;color:var(--accent);display:inline-block;margin-bottom:.7rem}
@@ -86,6 +86,17 @@ h1{font-size:clamp(2rem,4vw,3rem);font-weight:300;line-height:1.1;letter-spacing
 .aval-list li{font-size:.84rem;color:var(--muted)}
 .aval-list li::before{content:'·';color:var(--accent);margin-right:.45rem}
 
+.aval-formula{font-family:var(--font-mono);font-size:.82rem;color:var(--text);background:var(--tag-bg);border:1px solid var(--border);border-radius:6px;padding:.7rem .8rem;margin:.2rem 0 .9rem;line-height:1.7}
+.aval-formula span{color:var(--accent)}
+.aval-weight{font-family:var(--font-mono);font-size:.72rem;color:var(--green);background:rgba(16,185,129,.08);border:1px solid rgba(16,185,129,.3);border-radius:3px;padding:.1rem .45rem;margin-left:.4rem;white-space:nowrap}
+.exercise-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:1rem}
+.exercise-card{background:var(--surface);border:1px solid rgba(0,194,255,.35);border-radius:8px;padding:1.4rem;position:relative;overflow:hidden;box-shadow:0 0 0 1px rgba(0,194,255,.08),0 8px 24px rgba(0,194,255,.06)}
+.exercise-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--accent),var(--accent2))}
+.exercise-card .exercise-flag{display:inline-block;font-family:var(--font-mono);font-size:.68rem;color:var(--bg);background:var(--accent);border-radius:3px;padding:.15rem .5rem;margin-bottom:.75rem;letter-spacing:.04em}
+.exercise-card h3{font-size:1.02rem;line-height:1.35;margin-bottom:.5rem}
+.exercise-card h3 a{color:var(--text)}
+.exercise-card h3 a:hover{color:var(--accent);text-decoration:none}
+.exercise-card p{color:var(--muted);font-size:.82rem;margin-bottom:.9rem}
 .exercise-note{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:1.4rem;color:var(--muted)}
 
 footer{border-top:1px solid var(--border);padding:2rem 0;margin-top:2rem}
@@ -146,14 +157,14 @@ footer p{font-size:.82rem;color:var(--muted);font-family:var(--font-mono)}
 <tr><td>28/08/2026</td><td>Sexta-feira</td><td>Gestão do escopo · Declaração do escopo e critérios de aceitação</td></tr>
 <tr><td>03/09/2026</td><td>Quinta-feira</td><td>Gestão do escopo · Estrutura Analítica do Projeto e dicionário da EAP</td></tr>
 <tr><td>04/09/2026</td><td>Sexta-feira</td><td>Prática de laboratório · Criar Estrutura Analítica de Projeto (EAP)</td></tr>
-<tr><td>10/09/2026</td><td>Quinta-feira</td><td>Prática de laboratório · Definir o escopo</td></tr>
-<tr class="row-review"><td>11/09/2026</td><td>Sexta-feira</td><td>Revisão integrada · Fundamentos, governança, complexidade, maturidade e escopo</td></tr>
-<tr class="row-eval"><td>17/09/2026</td><td>Quinta-feira</td><td>1ª Avaliação Bimestral</td></tr>
-<tr><td>18/09/2026</td><td>Sexta-feira</td><td>Gestão do tempo · Definição e sequenciamento de atividades</td></tr>
-<tr><td>24/09/2026</td><td>Quinta-feira</td><td>Gestão do tempo · Estimativas, dependências e restrições</td></tr>
-<tr><td>25/09/2026</td><td>Sexta-feira</td><td>Gestão do tempo · Cronograma, marcos e caminho crítico</td></tr>
-<tr><td>01/10/2026</td><td>Quinta-feira</td><td>Prática de laboratório · Criar Cronograma de Projeto</td></tr>
-<tr><td>02/10/2026</td><td>Sexta-feira</td><td>Gestão de pessoas · Estruturas organizacionais, papéis e responsabilidades</td></tr>
+<tr><td>10/09/2026</td><td>Quinta-feira</td><td>Gestão do escopo</td></tr>
+<tr><td>11/09/2026</td><td>Sexta-feira</td><td>Prática de laboratório · Criando projeto no MS Project</td></tr>
+<tr><td>17/09/2026</td><td>Quinta-feira</td><td>Gestão do escopo</td></tr>
+<tr><td>18/09/2026</td><td>Sexta-feira</td><td>Prática de laboratório · Matriz de Requisitos</td></tr>
+<tr><td>24/09/2026</td><td>Quinta-feira</td><td>Gestão do tempo</td></tr>
+<tr><td>25/09/2026</td><td>Sexta-feira</td><td>Prática de laboratório · Alocação de recursos com MS Project</td></tr>
+<tr><td>01/10/2026</td><td>Quinta-feira</td><td>Gestão do tempo</td></tr>
+<tr class="row-eval"><td>02/10/2026</td><td>Sexta-feira</td><td>Aplicação da 1ª Avaliação Bimestral</td></tr>
 <tr><td>08/10/2026</td><td>Quinta-feira</td><td>Gestão de pessoas · Competências, liderança e desenvolvimento de equipes</td></tr>
 <tr><td>09/10/2026</td><td>Sexta-feira</td><td>Gestão de pessoas · Comunicação, conflitos e integração da equipe</td></tr>
 <tr class="row-holiday"><td>15/10/2026</td><td>Quinta-feira</td><td>Feriado · Dia do Professor — não haverá aula</td></tr>
@@ -346,20 +357,30 @@ footer p{font-size:.82rem;color:var(--muted);font-family:var(--font-mono)}
 <div class="aval-grid">
 <article class="aval-card">
 <span class="aval-badge">Avaliações Bimestrais</span>
-<h3>1ª e 2ª Avaliações Bimestrais</h3>
+<h3>1ª e 2ª Avaliações Bimestrais <span class="aval-weight">20% cada</span></h3>
 <ul class="aval-list">
+<li>Cada Avaliação Bimestral representa 20% da nota final.</li>
 <li>Cada Avaliação Bimestral será composta por uma prova individual (60%) e um trabalho em grupo (40%).</li>
-<li>1ª Avaliação Bimestral: 17/09/2026.</li>
+<li>1ª Avaliação Bimestral: 02/10/2026.</li>
 <li>2ª Avaliação Bimestral: 03/12/2026.</li>
 </ul>
 </article>
 <article class="aval-card">
-<span class="aval-badge">Avaliação Continuada</span>
-<h3>Atividades ao longo do semestre</h3>
+<span class="aval-badge">Projeto Extensionista</span>
+<h3>Avaliação de Maturidade <span class="aval-weight">50%</span></h3>
 <ul class="aval-list">
+<li>A nota do Projeto Extensionista perfaz 50% da nota final.</li>
+<li>Consiste no trabalho de Avaliação de Maturidade em gestão de projetos, conforme a <a href="https://claytonjasilva.github.io/gestao_projetos_aulas/pratica4.html" rel="noopener" target="_blank">Prática 4 – Avaliação de Maturidade (MMGP) →</a></li>
+<li>Os grupos constituídos devem fazer a apresentação dos artefatos, como detalhado na prática.</li>
+</ul>
+</article>
+<article class="aval-card">
+<span class="aval-badge">Avaliação Continuada</span>
+<h3>Atividades ao longo do semestre <span class="aval-weight">até 10%</span></h3>
+<ul class="aval-list">
+<li>Pode constituir até 10% da nota final, condicionada à entrega dos formulários e à participação nas aulas de correção.</li>
 <li>Exercícios propostos ao longo das aulas.</li>
 <li>Práticas de laboratório e estudos de caso.</li>
-<li>Entregas e atividades de acompanhamento.</li>
 <li><a href="gestao_projetos_aulas/forms/form_1_fundamentos_de_gestao_de_projetos_google_formularios.pdf" rel="noopener" target="_blank">📝 Formulário 1 – Fundamentos de Gestão de Projetos →</a></li>
 <li><a href="gestao_projetos_aulas/forms/Form%202%20-%20Governan%C3%A7a%2C%20complexidade%20e%20maturidade%20de%20projetos.pdf" rel="noopener" target="_blank">📝 Formulário 2 – Governança, maturidade e complexidade de projetos →</a></li>
 <li><a href="https://forms.gle/wEpqpiBn8GYxJiEz7" rel="noopener" target="_blank">📝 Formulário 3 - Gestão de escopo →</a></li>
@@ -368,9 +389,12 @@ footer p{font-size:.82rem;color:var(--muted);font-family:var(--font-mono)}
 <article class="aval-card">
 <span class="aval-badge">Sistema de Avaliações</span>
 <h3>Composição da nota final</h3>
+<p class="aval-formula">NF = <span>0,20</span> × AB1 + <span>0,20</span> × AB2 + <span>0,50</span> × PE + <span>0,10</span> × AC</p>
 <ul class="aval-list">
-<li>A nota final será composta da média (1ª Avaliação Bimestral + 2ª Avaliação Bimestral + Avaliação Continuada) / 3.</li>
-<li>A Avaliação Bimestral será composta por uma prova individual (60%) + um trabalho em grupo (40%).</li>
+<li>AB1 · 1ª Avaliação Bimestral: 20%.</li>
+<li>AB2 · 2ª Avaliação Bimestral: 20%.</li>
+<li>PE · Projeto Extensionista (Avaliação de Maturidade): 50%.</li>
+<li>AC · Avaliação Continuada: até 10%, condicionada à entrega dos formulários e à participação nas aulas de correção.</li>
 </ul>
 </article>
 </div>
@@ -379,7 +403,14 @@ footer p{font-size:.82rem;color:var(--muted);font-family:var(--font-mono)}
 <section class="section" id="exercicios">
 <div class="container">
 <h2 class="section-heading"><span class="section-number">06</span>Exercícios</h2>
-<p class="exercise-note">Os exercícios serão propostos à medida que a disciplina se desenrolar.</p>
+<div class="exercise-grid">
+<article class="exercise-card">
+<span class="exercise-flag">1ª Avaliação Bimestral · 02/10</span>
+<h3><a href="gestao_projetos_aulas/orientacao_1a_avaliacao.html">Orientações para a 1ª Avaliação Bimestral - dia 2/10</a></h3>
+<p>Lista de exercícios com questões conceituais (Capítulos 1 a 4) e questões aplicadas sobre EAP, cronograma e matriz de rastreabilidade de requisitos, com correção interativa e gabarito.</p>
+<a class="card-link" href="gestao_projetos_aulas/orientacao_1a_avaliacao.html">Abrir lista de exercícios →</a>
+</article>
+</div>
 </div>
 </section>
 </main>
