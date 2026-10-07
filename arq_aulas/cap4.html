@@ -1,664 +1,89 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Cap. 4 — Sistema de Memória | Arquitetura de Computadores</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/contrib/auto-render.min.js"></script>
-<style>
-:root {
-  --bg:        #0a0e17;
-  --surface:   #111827;
-  --surface2:  #161f2e;
-  --border:    #1e2d40;
-  --accent:    #00c2ff;
-  --accent2:   #7c3aed;
-  --text:      #e2e8f0;
-  --muted:     #64748b;
-  --tag-bg:    #0f172a;
-  --font-mono: 'IBM Plex Mono', monospace;
-  --font-sans: 'IBM Plex Sans', sans-serif;
-}
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
-html{scroll-behavior:smooth;}
-body{background:var(--bg);color:var(--text);font-family:var(--font-sans);font-size:16px;line-height:1.65;}
-a{color:var(--accent);text-decoration:none;}
-a:hover{text-decoration:underline;}
-.container{max-width:980px;margin:0 auto;padding:0 2rem;}
-
-nav{position:sticky;top:0;z-index:100;background:rgba(10,14,23,.9);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);padding:.9rem 0;}
-nav .container{display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap;}
-.nav-brand{font-family:var(--font-mono);font-size:.78rem;color:var(--accent);}
-.nav-links{display:flex;gap:1rem;list-style:none;flex-wrap:wrap;}
-.nav-links a{font-family:var(--font-mono);font-size:.7rem;color:var(--muted);}
-.nav-links a:hover{color:var(--text);text-decoration:none;}
-
-.progress-track{height:3px;background:var(--border);position:sticky;top:53px;z-index:99;}
-.progress-fill{height:100%;width:0%;background:linear-gradient(90deg,var(--accent),var(--accent2));transition:width .1s;}
-
-.hero{padding:4rem 0 2.5rem;position:relative;overflow:hidden;}
-.hero::before{content:'';position:absolute;inset:0;background-image:linear-gradient(var(--border) 1px,transparent 1px),linear-gradient(90deg,var(--border) 1px,transparent 1px);background-size:40px 40px;opacity:.3;mask-image:radial-gradient(ellipse 80% 60% at 50% 0%,black 40%,transparent 100%);}
-.hero-eyebrow{font-family:var(--font-mono);font-size:.74rem;color:var(--accent);letter-spacing:.14em;text-transform:uppercase;margin-bottom:1rem;display:flex;align-items:center;gap:.7rem;}
-.hero-eyebrow::before{content:'';width:2rem;height:1px;background:var(--accent);}
-h1{font-size:clamp(2rem,4.5vw,3.2rem);font-weight:300;line-height:1.12;letter-spacing:-.02em;margin-bottom:.6rem;}
-h1 strong{font-weight:600;color:var(--accent);}
-.hero-meta{display:flex;gap:1.5rem;flex-wrap:wrap;margin-top:1.2rem;}
-.meta-item{font-family:var(--font-mono);font-size:.74rem;color:var(--muted);display:flex;align-items:center;gap:.4rem;}
-.meta-item svg{flex-shrink:0;}
-
-.objectives{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:1.4rem 1.6rem;margin-top:1.6rem;}
-.objectives p.label{font-family:var(--font-mono);font-size:.7rem;color:var(--accent);letter-spacing:.1em;text-transform:uppercase;margin-bottom:.7rem;}
-.objectives ul{list-style:none;display:grid;gap:.5rem;}
-.objectives li{font-size:.88rem;color:var(--muted);display:flex;gap:.6rem;}
-.objectives li::before{content:'→';color:var(--accent);flex-shrink:0;}
-
-.toc{display:flex;gap:.5rem;flex-wrap:wrap;margin-top:1.5rem;}
-.toc a{font-family:var(--font-mono);font-size:.7rem;color:var(--muted);border:1px solid var(--border);padding:.35rem .75rem;border-radius:20px;transition:.2s;}
-.toc a:hover{border-color:var(--accent);color:var(--accent);text-decoration:none;}
-
-.section{padding:3rem 0;border-top:1px solid var(--border);}
-.section-label{font-family:var(--font-mono);font-size:.7rem;color:var(--accent);letter-spacing:.14em;text-transform:uppercase;display:flex;align-items:center;gap:.7rem;margin-bottom:1.4rem;}
-.section-label::after{content:'';flex:1;height:1px;background:var(--border);}
-h2{font-size:1.5rem;font-weight:600;letter-spacing:-.01em;margin-bottom:1rem;}
-h3{font-size:1.1rem;font-weight:600;margin:1.6rem 0 .8rem;color:var(--text);}
-h4{font-size:.95rem;font-weight:600;margin:1.2rem 0 .6rem;color:var(--accent);}
-p{margin-bottom:1rem;color:#cbd5e1;}
-strong{color:var(--text);font-weight:600;}
-em{color:var(--accent);font-style:normal;}
-ul.plain{margin:0 0 1rem 1.2rem;color:#cbd5e1;}
-ul.plain li{margin-bottom:.4rem;}
-ol.plain{margin:0 0 1rem 1.2rem;color:#cbd5e1;}
-ol.plain li{margin-bottom:.5rem;}
-
-.codeline{background:var(--tag-bg);border:1px solid var(--border);border-radius:6px;padding:.7rem 1rem;font-family:var(--font-mono);font-size:1rem;color:var(--accent);text-align:center;margin:1rem 0;}
-
-.concept-grid{display:grid;grid-template-columns:1fr 1fr;gap:2rem;align-items:start;margin:1.5rem 0;}
-.concept-text{display:flex;flex-direction:column;justify-content:center;}
-.concept-fig{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:1rem;}
-.concept-fig img,.concept-fig svg{width:100%;display:block;}
-.fig-caption{font-family:var(--font-mono);font-size:.72rem;color:var(--muted);text-align:center;margin-top:.6rem;}
-@media (max-width:760px){.concept-grid{grid-template-columns:1fr;}}
-
-.fig-full{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:1.2rem;margin:1.5rem 0;}
-.fig-full img,.fig-full svg{width:100%;display:block;}
-
-.definition{background:var(--surface);border:1px solid var(--accent2);border-left:3px solid var(--accent2);border-radius:0 8px 8px 0;padding:1.2rem 1.5rem;margin:1.2rem 0;}
-.definition .dtitle{font-family:var(--font-mono);font-size:.7rem;color:var(--accent2);letter-spacing:.1em;text-transform:uppercase;margin-bottom:.5rem;}
-
-.note{background:var(--tag-bg);border:1px solid var(--border);border-radius:6px;padding:.9rem 1.1rem;margin:1rem 0;font-size:.85rem;color:var(--muted);}
-.note strong{color:var(--accent);}
-
-table{width:100%;border-collapse:collapse;font-size:.85rem;margin:1.2rem 0;}
-thead tr{background:var(--tag-bg);}
-thead th{padding:.5rem .7rem;text-align:center;font-family:var(--font-mono);font-size:.68rem;color:var(--muted);letter-spacing:.06em;text-transform:uppercase;font-weight:400;border-bottom:1px solid var(--border);}
-tbody td{padding:.45rem .7rem;border-bottom:1px solid var(--border);color:var(--muted);text-align:center;}
-tbody tr:hover{background:rgba(255,255,255,.02);}
-td.tleft, th.tleft{text-align:left;}
-
-.method-card{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:1.4rem 1.6rem;margin:1.2rem 0;position:relative;overflow:hidden;}
-.method-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--accent),var(--accent2));}
-.method-num{font-family:var(--font-mono);font-size:.7rem;color:var(--accent);background:rgba(0,194,255,.08);border:1px solid rgba(0,194,255,.25);border-radius:4px;padding:.2rem .6rem;display:inline-block;margin-bottom:.7rem;}
-.method-card h4{margin:0 0 .8rem;color:var(--text);font-size:1rem;}
-.steps{list-style:none;counter-reset:step;}
-.steps li{counter-increment:step;display:flex;gap:.7rem;margin-bottom:.6rem;font-size:.88rem;color:#cbd5e1;}
-.steps li::before{content:counter(step);font-family:var(--font-mono);font-size:.72rem;color:var(--accent);background:var(--tag-bg);border:1px solid var(--border);border-radius:50%;width:22px;height:22px;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
-
-.ds-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:.6rem;margin:1rem 0;}
-.ds-item{background:var(--tag-bg);border:1px solid var(--border);border-radius:6px;padding:.7rem 1rem;display:flex;gap:.6rem;align-items:center;transition:.2s;}
-.ds-item:hover{border-color:var(--accent);}
-.ds-item a{font-size:.8rem;color:var(--text);font-family:var(--font-mono);}
-.ds-item a:hover{color:var(--accent);text-decoration:none;}
-
-.quiz{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:1.6rem;margin:1.5rem 0;}
-.quiz-header{display:flex;align-items:center;gap:.6rem;margin-bottom:1.2rem;}
-.quiz-header svg{flex-shrink:0;}
-.quiz-title{font-family:var(--font-mono);font-size:.8rem;color:var(--accent2);letter-spacing:.05em;}
-.quiz-q{font-size:.95rem;margin-bottom:.9rem;color:var(--text);}
-.quiz-options{display:flex;flex-direction:column;gap:.55rem;}
-.quiz-opt{background:var(--tag-bg);border:1px solid var(--border);border-radius:6px;padding:.7rem 1rem;font-size:.85rem;color:var(--muted);cursor:pointer;transition:.15s;text-align:left;width:100%;font-family:var(--font-sans);}
-.quiz-opt:hover{border-color:var(--accent);color:var(--text);}
-.quiz-opt.correct{border-color:#22c55e;background:rgba(34,197,94,.08);color:#86efac;}
-.quiz-opt.wrong{border-color:#ef4444;background:rgba(239,68,68,.08);color:#fca5a5;}
-.quiz-feedback{margin-top:.9rem;font-size:.85rem;padding:.8rem 1rem;border-radius:6px;display:none;}
-.quiz-feedback.show{display:block;}
-.quiz-feedback.correct-fb{background:rgba(34,197,94,.08);border:1px solid #22c55e;color:#86efac;}
-.quiz-feedback.wrong-fb{background:rgba(239,68,68,.08);border:1px solid #ef4444;color:#fca5a5;}
-
-.refs-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:.8rem;}
-.ref-card{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:1rem 1.2rem;display:flex;gap:.8rem;align-items:flex-start;transition:.2s;}
-.ref-card:hover{border-color:var(--accent);}
-.ref-card svg{flex-shrink:0;margin-top:.15rem;}
-.ref-card h4{font-size:.88rem;font-weight:600;margin:0 0 .2rem;color:var(--text);}
-.ref-card p{font-size:.76rem;color:var(--muted);margin:0;}
-.ref-type{font-family:var(--font-mono);font-size:.62rem;color:var(--accent);text-transform:uppercase;letter-spacing:.06em;}
-
-.chapter-nav{display:flex;justify-content:space-between;gap:1rem;margin-top:2rem;}
-.chapter-nav a{flex:1;background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:1rem 1.3rem;font-size:.85rem;transition:.2s;}
-.chapter-nav a:hover{border-color:var(--accent);text-decoration:none;}
-.chapter-nav .dir{font-family:var(--font-mono);font-size:.65rem;color:var(--muted);text-transform:uppercase;letter-spacing:.08em;display:block;margin-bottom:.3rem;}
-.chapter-nav .next{text-align:right;}
-
-footer{border-top:1px solid var(--border);padding:2rem 0;margin-top:2rem;}
-footer .container{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;}
-footer p{font-size:.8rem;color:var(--muted);font-family:var(--font-mono);}
-
-@media(max-width:640px){.nav-links{display:none;}.hero{padding:2.5rem 0 2rem;}}
-
-.katex{color:var(--accent);font-size:1.05em;}
-
-.dwire{stroke:#3b4a5e;stroke-width:1.6;fill:none;}
-.dbox{stroke:#00c2ff;stroke-width:1.6;fill:none;}
-.dbox2{stroke:#7c3aed;stroke-width:1.6;fill:none;}
-.dlbl{font-family:'IBM Plex Mono',monospace;font-size:13px;fill:#cbd5e1;}
-.dlbl2{font-family:'IBM Plex Mono',monospace;font-size:11px;fill:#64748b;}
-</style>
-</head>
-<body>
-
-<nav>
-  <div class="container">
-    <span class="nav-brand">arq · cap. 4</span>
-    <ul class="nav-links">
-      <li><a href="#s1">4.1 Hierarquia</a></li>
-      <li><a href="#s2">4.2 Tecnologias</a></li>
-      <li><a href="#s3">4.3 Memória Principal</a></li>
-      <li><a href="#s4">4.4 Cache</a></li>
-      <li><a href="#quiz">Quiz</a></li>
-      <li><a href="https://claytonjasilva.github.io/arq.html">← disciplina</a></li>
-    </ul>
-  </div>
-</nav>
-<div class="progress-track"><div class="progress-fill" id="progressFill"></div></div>
-
-<section class="hero">
-  <div class="container">
-    <p class="hero-eyebrow">Arquitetura de Computadores · Ibmec RJ</p>
-    <h1>Cap. 4 — Sistema<br>de <strong>Memória</strong></h1>
-
-    <div class="hero-meta">
-      <span class="meta-item">
-        <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><circle cx="7" cy="7" r="6" stroke="currentColor" stroke-width="1.2"/><path d="M7 4v3l2 1.5" stroke="currentColor" stroke-width="1.2"/></svg>
-        leitura ~35 min
-      </span>
-      <span class="meta-item">
-        <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><rect x="2" y="3" width="10" height="9" rx="1" stroke="currentColor" stroke-width="1.2"/><line x1="2" y1="6" x2="12" y2="6" stroke="currentColor" stroke-width="1.2"/></svg>
-        Prof. Clayton J A Silva
-      </span>
-      <span class="meta-item">
-        <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 7l4 4 6-7" stroke="currentColor" stroke-width="1.4" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        Rev 2026.2
-      </span>
-    </div>
-
-    <div class="objectives">
-      <p class="label">Objetivos de aprendizagem</p>
-      <ul>
-        <li>Descrever a hierarquia do sistema de memória e seus parâmetros (capacidade, tempo de acesso, ciclo)</li>
-        <li>Classificar as tecnologias de memória: ROM x RAM, estática x dinâmica, síncrona x assíncrona</li>
-        <li>Compreender a organização endereçável da memória principal</li>
-        <li>Aplicar o princípio da localidade e a organização MP-cache</li>
-        <li>Calcular o tempo médio de acesso e analisar técnicas de mapeamento e substituição de cache</li>
-      </ul>
-    </div>
-
-    <div class="toc">
-      <a href="#s1">4.1 Hierarquia do sistema de memória</a>
-      <a href="#s2">4.2 Tecnologias de construção</a>
-      <a href="#s3">4.3 Memória Principal</a>
-      <a href="#s4a">4.4.1 Organização MP e cache</a>
-      <a href="#s4b">4.4.2 Requisição de dados</a>
-      <a href="#s4c">4.4.3 Mapeamento MP-cache</a>
-      <a href="#s4d">4.4.4 Substituição de dados</a>
-    </div>
-  </div>
-</section>
-
-<div class="container">
-
-  <!-- 4.1 -->
-  <section class="section" id="s1">
-    <p class="section-label">4.1 / hierarquia do sistema de memória</p>
-    <h2>Hierarquia do sistema de memória</h2>
-
-    <p>As características de performance de cada tipo de memória usado no sistema de computação podem ser representadas por uma pirâmide, que relaciona <strong>capacidade de armazenamento</strong>, <strong>velocidade</strong> e <strong>custo</strong>.</p>
-
-    <div class="fig-full">
-      <svg viewBox="0 0 560 280" xmlns="http://www.w3.org/2000/svg">
-        <path d="M280 20 L340 90 H220 Z" class="dbox" fill="rgba(0,194,255,.10)"/>
-        <text x="280" y="65" text-anchor="middle" class="dlbl2">Registradores</text>
-        <path d="M220 90 H340 L380 150 H180 Z" class="dbox" fill="rgba(0,194,255,.08)"/>
-        <text x="280" y="128" text-anchor="middle" class="dlbl2">Cache</text>
-        <path d="M180 150 H380 L420 210 H140 Z" class="dbox" fill="rgba(0,194,255,.06)"/>
-        <text x="280" y="188" text-anchor="middle" class="dlbl2">Memória Principal</text>
-        <path d="M140 210 H420 L460 270 H100 Z" class="dbox" fill="rgba(0,194,255,.04)"/>
-        <text x="280" y="248" text-anchor="middle" class="dlbl2">Memória Secundária</text>
-        <text x="470" y="50" class="dlbl2" fill="#7c3aed">↑ velocidade, custo/bit</text>
-        <text x="470" y="262" class="dlbl2" fill="#7c3aed">↑ capacidade, tempo de uso</text>
-      </svg>
-      <p class="fig-caption">Fig. 4.1 — Pirâmide de hierarquia do sistema de memória: registradores, cache, memória principal e memória secundária</p>
-    </div>
-
-    <p>Quanto mais próximo da <strong>base</strong>, maior a capacidade de armazenamento e o tempo de uso, e menor o custo por bit armazenado. Os quatro tipos de memória usados são: <strong>memória secundária</strong>, <strong>memória principal</strong>, <strong>memória cache</strong> e <strong>registradores</strong>.</p>
-
-    <table>
-      <thead><tr><th class="tleft">Tipo</th><th>Capacidade</th><th>Velocidade</th><th>Custo/bit</th></tr></thead>
-      <tbody>
-        <tr><td class="tleft">Registradores</td><td>menor</td><td>maior</td><td>maior</td></tr>
-        <tr><td class="tleft">Cache</td><td>baixa/média</td><td>alta</td><td>alto</td></tr>
-        <tr><td class="tleft">Memória Principal</td><td>média</td><td>média</td><td>médio</td></tr>
-        <tr><td class="tleft">Memória Secundária</td><td>maior</td><td>menor</td><td>menor</td></tr>
-      </tbody>
-    </table>
-
-    <div class="definition">
-      <p class="dtitle">parâmetros de memória</p>
-      <p style="margin:0"><strong>Capacidade</strong>: número de bits que a memória pode armazenar — em bytes (B), com múltiplos 2<sup>10</sup>=1K, 2<sup>20</sup>=1M, 2<sup>30</sup>=1G.<br><strong>Tempo de acesso</strong>: tempo entre a disponibilização do endereço e a disponibilização do dado.<br><strong>Ciclo de memória</strong>: tempo entre duas operações sucessivas de acesso (leitura ou escrita).</p>
-    </div>
-    <div class="codeline">$$t_C = t_A + t_S$$</div>
-    <p style="text-align:center; font-size:.82rem; color:var(--muted); margin-top:-.6rem;"><em>t<sub>C</sub></em>: ciclo de memória · <em>t<sub>A</sub></em>: tempo de acesso · <em>t<sub>S</sub></em>: tempo de outras operações do sistema</p>
-  </section>
-
-  <!-- 4.2 -->
-  <section class="section" id="s2">
-    <p class="section-label">4.2 / tecnologias de construção</p>
-    <h2>Tecnologias de construção</h2>
-
-    <div class="fig-full">
-      <svg viewBox="0 0 560 220" xmlns="http://www.w3.org/2000/svg">
-        <rect x="240" y="10" width="100" height="40" rx="6" class="dbox" fill="rgba(0,194,255,.07)"/>
-        <text x="290" y="34" text-anchor="middle" class="dlbl2">Memória</text>
-        <path d="M260 50 V80 H120 V100" class="dwire"/>
-        <path d="M320 50 V80 H440 V100" class="dwire"/>
-        <rect x="60" y="100" width="120" height="40" rx="6" class="dbox" fill="rgba(0,194,255,.07)"/>
-        <text x="120" y="124" text-anchor="middle" class="dlbl2">ROM</text>
-        <rect x="380" y="100" width="120" height="40" rx="6" class="dbox2" fill="rgba(124,58,237,.07)"/>
-        <text x="440" y="124" text-anchor="middle" class="dlbl2">RAM</text>
-        <path d="M90 140 V165 H30 V185 M150 140 V165 H210 V185" class="dwire"/>
-        <text x="30" y="200" class="dlbl2" style="font-size:9px">PROM</text>
-        <text x="210" y="200" class="dlbl2" style="font-size:9px">EPROM/EEPROM/Flash</text>
-        <path d="M410 140 V165 H350 V185 M470 140 V165 H530 V185" class="dwire"/>
-        <text x="350" y="200" class="dlbl2" style="font-size:9px">estática</text>
-        <text x="530" y="200" class="dlbl2" style="font-size:9px">dinâmica</text>
-      </svg>
-      <p class="fig-caption">Fig. 4.2 — Árvore de classificação das tecnologias de memória: ROM e RAM</p>
-    </div>
-
-    <table>
-      <thead><tr><th class="tleft">Atributo</th><th class="tleft">ROM (<em>Read Only Memory</em>)</th><th class="tleft">RAM (<em>Random Access Memory</em>)</th></tr></thead>
-      <tbody>
-        <tr><td class="tleft">Leitura/escrita</td><td class="tleft">Não admite livremente — escrita controlada</td><td class="tleft">Admite leitura e escrita livremente</td></tr>
-        <tr><td class="tleft">Volatilidade</td><td class="tleft">Não volátil — mantém dados sem alimentação</td><td class="tleft">Volátil — perde dados sem alimentação</td></tr>
-        <tr><td class="tleft">Forma de acesso</td><td class="tleft">Aleatório</td><td class="tleft">Aleatório</td></tr>
-      </tbody>
-    </table>
-
-    <div class="note">No <strong>acesso aleatório</strong>, o tempo de acesso é curto e igual para todas as células, sem necessidade de ler outras posições antes. No <strong>acesso sequencial</strong>, é necessária uma sucessão preliminar de posições antes de acessar a célula de interesse.</div>
-
-    <p>A evolução das ROMs venceu o inconveniente de não admitir reprogramação:</p>
-    <table>
-      <thead><tr><th class="tleft">Tecnologia</th><th class="tleft">Característica</th></tr></thead>
-      <tbody>
-        <tr><td class="tleft">PROM (<em>Programmable ROM</em>)</td><td class="tleft">Programável uma única vez</td></tr>
-        <tr><td class="tleft">EPROM (<em>Erasable PROM</em>)</td><td class="tleft">Apagada e programada novamente</td></tr>
-        <tr><td class="tleft">EEPROM (<em>Electrically-Erasable PROM</em>)</td><td class="tleft">Apagada e gravada eletricamente</td></tr>
-        <tr><td class="tleft">Flash</td><td class="tleft">Tipo de EEPROM reprogramável no próprio circuito — cada vez mais usada</td></tr>
-      </tbody>
-    </table>
-
-    <p>Aplicações típicas das ROMs:</p>
-    <ul class="plain">
-      <li><strong>Firmware</strong> — inicialização das máquinas, integra hardware + software</li>
-      <li><strong>Bootstrap</strong> — código de inicialização que chama o sistema operacional</li>
-      <li>Tabela de dados não voláteis</li>
-      <li>Conversor de códigos</li>
-      <li>Gerador de funções</li>
-      <li>Armazenamento auxiliar</li>
-    </ul>
-
-    <table>
-      <thead><tr><th class="tleft">Classificação</th><th class="tleft">Tipo A</th><th class="tleft">Tipo B</th></tr></thead>
-      <tbody>
-        <tr><td class="tleft">Quanto à retenção do dado</td><td class="tleft"><strong>Estática</strong> — dado permanece armazenado</td><td class="tleft"><strong>Dinâmica</strong> — requer <em>refresh</em> periódico</td></tr>
-        <tr><td class="tleft">Quanto à temporização</td><td class="tleft"><strong>Assíncrona</strong> — libera dados só após sinal de controle</td><td class="tleft"><strong>Síncrona (SDRAM)</strong> — acompanha o clock do sistema</td></tr>
-      </tbody>
-    </table>
-
-    <div class="note">A evolução mais recente é a <strong>SDRAM DDR</strong> (<em>Double Data Rate</em>), que transfere dados tanto na transição positiva quanto na negativa do ciclo de clock.</div>
-
-    <p>Os dispositivos de memória são construídos com semicondutores — destacam-se as tecnologias <strong>MOS</strong> (óxido metálico) e <strong>CMOS</strong> (óxido complementar) — além de meios magnéticos e ópticos.</p>
-
-    <table>
-      <thead><tr><th class="tleft">Nível da hierarquia</th><th class="tleft">Tecnologia</th><th class="tleft">Função principal</th></tr></thead>
-      <tbody>
-        <tr><td class="tleft">Memória secundária</td><td class="tleft">Meios ópticos e magnéticos</td><td class="tleft">Armazenar grandes volumes, tempo de acesso/ciclo lentos, custo baixo</td></tr>
-        <tr><td class="tleft">Memória principal</td><td class="tleft">Semicondutor (RAM estática/dinâmica)</td><td class="tleft">Armazenar programa e dados acessados pelo processador</td></tr>
-        <tr><td class="tleft">Memória cache</td><td class="tleft">Semicondutor (ROM), interna ou não ao processador</td><td class="tleft">Armazenar dados localmente/temporalmente mais prováveis de acesso (localidade)</td></tr>
-        <tr><td class="tleft">Registradores</td><td class="tleft">Semicondutor</td><td class="tleft">Dezenas de bits, internos ao processador</td></tr>
-      </tbody>
-    </table>
-  </section>
-
-  <!-- 4.3 -->
-  <section class="section" id="s3">
-    <p class="section-label">4.3 / memória principal</p>
-    <h2>Memória Principal ou Primária</h2>
-
-    <p>A <strong>MP</strong> armazena programas e dados. As instruções compreendem um campo de código (<em>opcode</em>) e um campo de operandos — ambos ocupam endereços bem definidos na MP.</p>
-
-    <p>O endereço de memória pode ser entendido como uma matriz de células, cada uma armazenando 0 ou 1. A MP contém <em>M</em> linhas de endereço de palavra de <em>N</em> bits, endereçáveis em forma binária por 2<sup>L</sup>, tal que 2<sup>L</sup>=M.</p>
-
-    <div class="fig-full">
-      <svg viewBox="0 0 560 220" xmlns="http://www.w3.org/2000/svg">
-        <rect x="170" y="40" width="220" height="140" rx="6" class="dbox" fill="rgba(0,194,255,.05)"/>
-        <text x="280" y="115" text-anchor="middle" class="dlbl" fill="#00c2ff">RAM 4Kbit</text>
-        <text x="280" y="132" text-anchor="middle" class="dlbl2">(Motorola)</text>
-
-        <text x="100" y="58" class="dlbl2">A0–A9</text><path d="M125 54 H170" class="dwire"/>
-        <text x="100" y="160" class="dlbl2">VCC, VSS</text><path d="M140 156 H170" class="dwire"/>
-        <text x="80" y="95" class="dlbl2">W̄ (R/W)</text><path d="M130 91 H170" class="dwire"/>
-        <text x="90" y="125" class="dlbl2">S̄ (enable)</text><path d="M140 121 H170" class="dwire"/>
-
-        <path d="M390 90 H450" class="dwire"/>
-        <text x="458" y="95" class="dlbl2">I/O1–I/O4</text>
-      </svg>
-      <p class="fig-caption">Fig. 4.3 — Exemplo de memória RAM Motorola, 4096 bits (4 Kbits)</p>
-    </div>
-
-    <table>
-      <thead><tr><th class="tleft">Pino</th><th class="tleft">Função</th></tr></thead>
-      <tbody>
-        <tr><td class="tleft">A0–A9</td><td class="tleft">Barramento de endereço (10 bits → 2<sup>10</sup>=1024 posições, faixa 000H–3FFH)</td></tr>
-        <tr><td class="tleft">I/O1–I/O4</td><td class="tleft">Barramento de dados — cada posição armazena uma palavra de 4 bits</td></tr>
-        <tr><td class="tleft">W̄</td><td class="tleft">Habilita leitura ou escrita: $\bar{W}=0$ → escrita; $\bar{W}=1$ → leitura</td></tr>
-        <tr><td class="tleft">S̄</td><td class="tleft">Habilita/desabilita o chip: $\bar{S}=0$ → memória habilitada</td></tr>
-        <tr><td class="tleft">VCC, VSS</td><td class="tleft">Alimentação do chip</td></tr>
-      </tbody>
-    </table>
-
-    <div class="note">Células adjacentes em memória têm endereços consecutivos. O tamanho típico de cada célula é de <strong>8 bits (1 byte)</strong>; bytes são agrupados em palavras de 4 ou 8 bytes. Exemplo: a memória Motorola MCM2114 possui tempo de ciclo de leitura fixo de <strong>200 ns</strong>.</div>
-  </section>
-
-  <!-- 4.4 -->
-  <section class="section" id="s4">
-    <p class="section-label">4.4 / memória cache</p>
-    <h2>Memória cache</h2>
-
-    <h3 id="s4a">4.4.1 Organização MP e cache</h3>
-    <p>A cache ocupa o terceiro nível a partir da base da pirâmide: média/baixa capacidade, custo alto, velocidade elevada — equilíbrio custo-benefício no desempenho.</p>
-
-    <div class="definition">
-      <p class="dtitle">princípio da localidade</p>
-      <p style="margin:0">Os programas armazenados se situam, na execução, localmente próximos no <strong>tempo</strong> ou no <strong>espaço</strong>.<br><strong>Localidade espacial</strong>: instruções subsequentes tendem a estar em endereços próximos (o PC normalmente incrementa em 1 unidade).<br><strong>Localidade temporal</strong>: uma instrução tem alta probabilidade de ser executada novamente em curto espaço de tempo.</p>
-    </div>
-
-    <div class="fig-full">
-      <svg viewBox="0 0 560 220" xmlns="http://www.w3.org/2000/svg">
-        <rect x="20" y="80" width="70" height="60" rx="6" class="dbox" fill="rgba(0,194,255,.1)"/>
-        <text x="55" y="100" text-anchor="middle" class="dlbl2">CPU</text>
-        <text x="55" y="116" text-anchor="middle" class="dlbl2" style="font-size:9px">+ L1</text>
-        <path d="M90 110 H140" class="dwire"/>
-        <rect x="140" y="80" width="90" height="60" rx="6" class="dbox" fill="rgba(0,194,255,.07)"/>
-        <text x="185" y="113" text-anchor="middle" class="dlbl2">Cache L2</text>
-        <path d="M230 110 H280" class="dwire"/>
-        <rect x="280" y="70" width="100" height="80" rx="6" class="dbox" fill="rgba(0,194,255,.05)"/>
-        <text x="330" y="113" text-anchor="middle" class="dlbl2">Cache L3</text>
-        <path d="M380 110 H430" class="dwire"/>
-        <rect x="430" y="60" width="110" height="100" rx="6" class="dbox2" fill="rgba(124,58,237,.05)"/>
-        <text x="485" y="113" text-anchor="middle" class="dlbl2" fill="#7c3aed">Memória<tspan x="485" dy="14">Principal</tspan></text>
-        <text x="280" y="30" class="dlbl2" style="font-size:9px">controlador de cache coordena leitura/escrita entre níveis</text>
-      </svg>
-      <p class="fig-caption">Fig. 4.4 — Níveis de cache (L1 interno ao processador, L2 no pacote da CPU, L3 externa) e Memória Principal</p>
-    </div>
-
-    <p>No <strong>L1</strong>, instruções e dados são separados. No <strong>L2</strong>, dados do L3 ficam prontamente disponíveis via barramento local, desonerando o barramento externo. No <strong>L3</strong>, dados são armazenados para desonerar o tempo de resposta da MP (mais lenta).</p>
-
-    <p>Para explorar o princípio da localidade, a MP e a cache são organizadas em blocos:</p>
-
-    <div class="fig-full">
-      <svg viewBox="0 0 560 230" xmlns="http://www.w3.org/2000/svg">
-        <text x="20" y="20" class="dlbl2">Memória Principal — N linhas de cache, K posições cada</text>
-        <g class="dbox" fill="rgba(124,58,237,.05)">
-          <rect x="20" y="30" width="50" height="30"/><rect x="70" y="30" width="50" height="30"/>
-          <rect x="120" y="30" width="50" height="30"/><rect x="170" y="30" width="50" height="30"/>
-          <rect x="220" y="30" width="50" height="30"/><rect x="270" y="30" width="50" height="30"/>
-        </g>
-        <text x="45" y="50" text-anchor="middle" class="dlbl2" style="font-size:9px">L0</text>
-        <text x="95" y="50" text-anchor="middle" class="dlbl2" style="font-size:9px">L1</text>
-        <text x="145" y="50" text-anchor="middle" class="dlbl2" style="font-size:9px">L2</text>
-        <text x="195" y="50" text-anchor="middle" class="dlbl2" style="font-size:9px">L3</text>
-        <text x="245" y="50" text-anchor="middle" class="dlbl2" style="font-size:9px">L4</text>
-        <text x="295" y="50" text-anchor="middle" class="dlbl2" style="font-size:9px">...N-1</text>
-
-        <text x="20" y="100" class="dlbl2">Cache — M blocos, K posições cada (M &lt; N)</text>
-        <g class="dbox" fill="rgba(0,194,255,.08)">
-          <rect x="20" y="110" width="60" height="34"/><rect x="90" y="110" width="60" height="34"/><rect x="160" y="110" width="60" height="34"/>
-        </g>
-        <text x="50" y="131" text-anchor="middle" class="dlbl2" style="font-size:9px">Bloco 0</text>
-        <text x="120" y="131" text-anchor="middle" class="dlbl2" style="font-size:9px">Bloco 1</text>
-        <text x="190" y="131" text-anchor="middle" class="dlbl2" style="font-size:9px">Bloco 2</text>
-
-        <path d="M45 60 V90 M95 60 V90 M145 60 V90 M195 60 V90 M245 60 V90 M295 60 V90" class="dwire" stroke-dasharray="2,2"/>
-        <path d="M45 90 H50 V110 M95 90 H120 V110 M145 90 H190 V110" class="dwire" stroke-dasharray="2,2"/>
-        <text x="350" y="125" class="dlbl2">B = L mod M</text>
-      </svg>
-      <p class="fig-caption">Fig. 4.5 — Organização MP-cache: a MP possui N×K posições, a cache possui M×K posições (M &lt; N)</p>
-    </div>
-
-    <div class="note">A cache armazena, em cada bloco: o <strong>campo de dados</strong> (tamanho da linha de cache), um <strong>flag de validade</strong>, e um campo <strong>tag</strong> que identifica qual linha de cache da MP está ali armazenada.</div>
-
-    <h3 id="s4b">4.4.2 Processo de requisição de dados à cache</h3>
-    <p>Como <em>N &gt; M</em>, nem todos os dados da MP podem ser mapeados na cache simultaneamente.</p>
-
-    <div class="method-card">
-      <span class="method-num">processo</span>
-      <h4>Requisição de dado pelo processador</h4>
-      <ol class="steps">
-        <li>O processador requisita um dado/instrução ao <strong>controlador da cache</strong></li>
-        <li>O controlador verifica se o dado está presente na cache (e em qual bloco/endereço)</li>
-        <li><strong>Acerto (hit)</strong>: o dado está presente — disponibilizado no tempo de resposta da cache</li>
-        <li><strong>Falta (miss)</strong>: o dado não está presente — buscado na MP (tempo de resposta da MP), a cache é <strong>atualizada</strong>, e o dado é disponibilizado ao processador</li>
-      </ol>
-    </div>
-
-    <p>O tempo médio de acesso ao sistema de memória, considerando o uso de cache, é dado por:</p>
-    <div class="codeline">$$t_{medio} = c + (1-h).m$$</div>
-    <p style="text-align:center; font-size:.82rem; color:var(--muted); margin-top:-.6rem;"><em>c</em>: tempo de acesso à cache · <em>m</em>: tempo de acesso à MP · <em>h</em>: taxa de acertos</p>
-    <div class="note">A taxa de acertos <em>h</em> é calculada considerando que, em <em>k</em> acessos, ocorreram <em>k-1</em> acertos e 1 falta: <strong>h = (k-1)/k</strong>.</div>
-
-    <h3 id="s4c">4.4.3 Mapeamento MP-cache</h3>
-    <p>É necessário definir uma política de mapeamento que relacione os blocos da MP aos blocos da cache. Existem três técnicas:</p>
-
-    <table>
-      <thead><tr><th class="tleft">Técnica</th><th class="tleft">Característica</th></tr></thead>
-      <tbody>
-        <tr><td class="tleft" id="s4c1"><strong>Mapeamento direto</strong></td><td class="tleft">Relacionamento <strong>predefinido</strong> entre linhas de cache da MP e blocos da cache — aumenta eficiência, mas mantém dados pouco usados por causa do relacionamento fixo</td></tr>
-        <tr><td class="tleft" id="s4c2"><strong>Totalmente associativo</strong></td><td class="tleft">Sem relação predeterminada — maior eficiência, porém maior complexidade de circuito para o espelhamento de dados</td></tr>
-        <tr><td class="tleft" id="s4c3"><strong>Associativo por conjunto</strong></td><td class="tleft">Concilia a simplicidade do mapeamento direto com a eficiência do totalmente associativo</td></tr>
-      </tbody>
-    </table>
-
-    <div class="fig-full">
-      <svg viewBox="0 0 560 200" xmlns="http://www.w3.org/2000/svg">
-        <text x="20" y="20" class="dlbl2">MP: N=12 linhas de cache, K=4 palavras cada (48 posições)</text>
-        <g class="dbox" fill="rgba(124,58,237,.05)">
-          <rect x="20" y="30" width="40" height="26"/><rect x="60" y="30" width="40" height="26"/><rect x="100" y="30" width="40" height="26"/>
-          <rect x="140" y="30" width="40" height="26"/><rect x="180" y="30" width="40" height="26"/><rect x="220" y="30" width="40" height="26"/>
-          <rect x="260" y="30" width="40" height="26"/><rect x="300" y="30" width="40" height="26"/><rect x="340" y="30" width="40" height="26"/>
-          <rect x="380" y="30" width="40" height="26"/><rect x="420" y="30" width="40" height="26"/><rect x="460" y="30" width="40" height="26"/>
-        </g>
-        <text x="40" y="48" text-anchor="middle" class="dlbl2" style="font-size:8px">L0</text><text x="80" y="48" text-anchor="middle" class="dlbl2" style="font-size:8px">L1</text>
-        <text x="120" y="48" text-anchor="middle" class="dlbl2" style="font-size:8px">L2</text><text x="160" y="48" text-anchor="middle" class="dlbl2" style="font-size:8px">L3</text>
-        <text x="200" y="48" text-anchor="middle" class="dlbl2" style="font-size:8px">L4</text><text x="240" y="48" text-anchor="middle" class="dlbl2" style="font-size:8px">L5</text>
-        <text x="280" y="48" text-anchor="middle" class="dlbl2" style="font-size:8px">L6</text><text x="320" y="48" text-anchor="middle" class="dlbl2" style="font-size:8px">L7</text>
-        <text x="360" y="48" text-anchor="middle" class="dlbl2" style="font-size:8px">L8</text><text x="400" y="48" text-anchor="middle" class="dlbl2" style="font-size:8px">L9</text>
-        <text x="440" y="48" text-anchor="middle" class="dlbl2" style="font-size:8px">L10</text><text x="480" y="48" text-anchor="middle" class="dlbl2" style="font-size:8px">L11</text>
-
-        <text x="20" y="100" class="dlbl2">Cache: M=3 blocos, K=4 palavras cada (12 posições)</text>
-        <g class="dbox" fill="rgba(0,194,255,.08)">
-          <rect x="20" y="110" width="150" height="34"/><rect x="180" y="110" width="150" height="34"/><rect x="340" y="110" width="150" height="34"/>
-        </g>
-        <text x="95" y="131" text-anchor="middle" class="dlbl2">Bloco 0 — L0,L3,L6,L9</text>
-        <text x="255" y="131" text-anchor="middle" class="dlbl2">Bloco 1 — L1,L4,L7,L10</text>
-        <text x="415" y="131" text-anchor="middle" class="dlbl2">Bloco 2 — L2,L5,L8,L11</text>
-        <text x="20" y="180" class="dlbl2" fill="#00c2ff">B = L mod M  ·  exemplo: linha 7 → bloco (7 mod 3) = 1</text>
-      </svg>
-      <p class="fig-caption">Fig. 4.6 — Exemplo de mapeamento direto: linhas de cache da MP (3n, 3n+1, 3n+2) mapeadas nos blocos 0, 1 e 2</p>
-    </div>
-
-    <p>As relações de endereçamento do sistema MP-cache:</p>
-    <table>
-      <thead><tr><th class="tleft">Relação</th><th class="tleft">Fórmula</th></tr></thead>
-      <tbody>
-        <tr><td class="tleft">Bloco a partir da linha</td><td class="tleft">$$B = L \bmod M$$</td></tr>
-        <tr><td class="tleft">Linha a partir do endereço MP</td><td class="tleft">$$L = EndMP \;div\; K$$</td></tr>
-        <tr><td class="tleft">Bloco a partir do endereço cache</td><td class="tleft">$$B = EndCache \;div\; K$$</td></tr>
-        <tr><td class="tleft">Posição na linha/bloco</td><td class="tleft">$$P = End \bmod K$$</td></tr>
-      </tbody>
-    </table>
-    <div class="note">Exemplo: o endereço 25 da MP está na posição 1 da linha 6 (K=4). O endereço 11 da cache está na posição 3 do seu bloco.</div>
-
-    <h3 id="s4d">4.4.4 Substituição de dados da cache</h3>
-    <p>Quando ocorre uma <strong>falta</strong>, é necessário buscar o dado na MP e <strong>substituir</strong> os dados de algum bloco da cache:</p>
-    <table>
-      <thead><tr><th class="tleft">Técnica</th><th class="tleft">Critério de substituição</th></tr></thead>
-      <tbody>
-        <tr><td class="tleft"><strong>FIFO</strong> (<em>First-In-First-Out</em>)</td><td class="tleft">Substitui o bloco cujos dados foram os <strong>primeiros</strong> a ser inseridos</td></tr>
-        <tr><td class="tleft"><strong>LRU</strong> (<em>Least Recently Used</em>)</td><td class="tleft">Substitui o bloco que há <strong>mais tempo não é acessado</strong></td></tr>
-      </tbody>
-    </table>
-
-    <p><strong>Política de escrita de dados</strong> — o controlador também atualiza os dados escritos na cache de volta para a MP:</p>
-
-    <div class="fig-full">
-      <svg viewBox="0 0 560 180" xmlns="http://www.w3.org/2000/svg">
-        <text x="100" y="20" text-anchor="middle" class="dlbl" fill="#00c2ff">Escrita direta (write through)</text>
-        <rect x="30" y="40" width="70" height="40" rx="6" class="dbox" fill="rgba(0,194,255,.08)"/>
-        <text x="65" y="64" text-anchor="middle" class="dlbl2">CPU</text>
-        <path d="M100 60 H140" class="dwire"/>
-        <rect x="140" y="40" width="70" height="40" rx="6" class="dbox" fill="rgba(0,194,255,.08)"/>
-        <text x="175" y="64" text-anchor="middle" class="dlbl2">Cache</text>
-        <path d="M210 60 H250" class="dwire"/>
-        <rect x="250" y="40" width="70" height="40" rx="6" class="dbox2" fill="rgba(124,58,237,.06)"/>
-        <text x="285" y="64" text-anchor="middle" class="dlbl2">MP</text>
-        <text x="160" y="105" class="dlbl2" style="font-size:9px">escreve simultaneamente</text>
-        <text x="160" y="118" class="dlbl2" style="font-size:9px">na cache e na MP</text>
-
-        <text x="460" y="20" text-anchor="middle" class="dlbl" fill="#7c3aed">Escrita retardada (write back)</text>
-        <rect x="380" y="40" width="70" height="40" rx="6" class="dbox" fill="rgba(0,194,255,.08)"/>
-        <text x="415" y="64" text-anchor="middle" class="dlbl2">CPU</text>
-        <path d="M450 60 H490" class="dwire"/>
-        <rect x="490" y="40" width="70" height="40" rx="6" class="dbox" fill="rgba(0,194,255,.08)"/>
-        <text x="525" y="64" text-anchor="middle" class="dlbl2">Cache</text>
-        <path d="M525 80 V100" class="dwire" stroke-dasharray="3,3"/>
-        <text x="430" y="118" class="dlbl2" style="font-size:9px">MP só é atualizada quando</text>
-        <text x="430" y="131" class="dlbl2" style="font-size:9px">o bloco precisa ser substituído</text>
-      </svg>
-      <p class="fig-caption">Fig. 4.7 — Políticas de escrita: escrita direta (atualiza MP a cada escrita) vs. escrita retardada (atualiza MP apenas na substituição)</p>
-    </div>
-
-    <div class="note">A <strong>escrita direta</strong> mantém os dados de uma linha de cache da MP sempre iguais aos do bloco da cache, com perda de eficiência pelo tempo de escrita na MP. A <strong>escrita retardada</strong> é mais eficiente, adiando a atualização até a substituição do bloco.</div>
-  </section>
-
-  <!-- QUIZ -->
-  <section class="section" id="quiz">
-    <p class="section-label">checkpoint</p>
-    <h2>Teste seus conhecimentos</h2>
-
-    <div class="quiz">
-      <div class="quiz-header">
-        <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="8" stroke="#7c3aed" stroke-width="1.4"/><text x="10" y="14" font-size="10" fill="#7c3aed" text-anchor="middle" font-weight="600">?</text></svg>
-        <span class="quiz-title">Pergunta 1 de 3</span>
-      </div>
-      <p class="quiz-q">Na pirâmide de hierarquia de memória, ao se aproximar da base, o que ocorre?</p>
-      <div class="quiz-options">
-        <button class="quiz-opt" onclick="checkAnswer(this, false, 'q1fb')">Aumenta a velocidade e o custo por bit</button>
-        <button class="quiz-opt" onclick="checkAnswer(this, true, 'q1fb')">Aumenta a capacidade de armazenamento e diminui o custo por bit</button>
-        <button class="quiz-opt" onclick="checkAnswer(this, false, 'q1fb')">A memória torna-se volátil</button>
-      </div>
-      <div class="quiz-feedback" id="q1fb"></div>
-    </div>
-
-    <div class="quiz">
-      <div class="quiz-header">
-        <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="8" stroke="#7c3aed" stroke-width="1.4"/><text x="10" y="14" font-size="10" fill="#7c3aed" text-anchor="middle" font-weight="600">?</text></svg>
-        <span class="quiz-title">Pergunta 2 de 3</span>
-      </div>
-      <p class="quiz-q">No mapeamento direto MP-cache, o bloco de destino de uma linha L é calculado por:</p>
-      <div class="quiz-options">
-        <button class="quiz-opt" onclick="checkAnswer(this, false, 'q2fb')">B = L × M</button>
-        <button class="quiz-opt" onclick="checkAnswer(this, true, 'q2fb')">B = L mod M</button>
-        <button class="quiz-opt" onclick="checkAnswer(this, false, 'q2fb')">B = L + M</button>
-      </div>
-      <div class="quiz-feedback" id="q2fb"></div>
-    </div>
-
-    <div class="quiz">
-      <div class="quiz-header">
-        <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="8" stroke="#7c3aed" stroke-width="1.4"/><text x="10" y="14" font-size="10" fill="#7c3aed" text-anchor="middle" font-weight="600">?</text></svg>
-        <span class="quiz-title">Pergunta 3 de 3</span>
-      </div>
-      <p class="quiz-q">Qual a diferença essencial entre escrita direta (write through) e escrita retardada (write back)?</p>
-      <div class="quiz-options">
-        <button class="quiz-opt" onclick="checkAnswer(this, true, 'q3fb')">Na escrita direta a MP é atualizada a cada escrita; na retardada, só quando o bloco é substituído</button>
-        <button class="quiz-opt" onclick="checkAnswer(this, false, 'q3fb')">A escrita retardada nunca atualiza a MP</button>
-        <button class="quiz-opt" onclick="checkAnswer(this, false, 'q3fb')">A escrita direta só funciona com mapeamento associativo</button>
-      </div>
-      <div class="quiz-feedback" id="q3fb"></div>
-    </div>
-  </section>
-
-  <!-- CHAPTER NAV -->
-  <div class="chapter-nav">
-    <a href="cap3.html"><span class="dir">← anterior</span>Cap. 3 — Nível de Lógica Digital</a>
-    <a class="next" href="cap5.html"><span class="dir">próximo →</span>Cap. 5 — Barramento</a>
-  </div>
-
-</div>
-
-<footer>
-  <div class="container">
-    <p>© 2026 · Prof. Clayton J A Silva · Ibmec RJ</p>
-    <p><a href="https://claytonjasilva.github.io">claytonjasilva.github.io</a></p>
-  </div>
-</footer>
-
-<script>
-window.addEventListener('scroll', () => {
-  const h = document.documentElement;
-  const scrolled = (h.scrollTop) / (h.scrollHeight - h.clientHeight) * 100;
-  document.getElementById('progressFill').style.width = scrolled + '%';
-});
-
-function checkAnswer(btn, isCorrect, fbId) {
-  const group = btn.parentElement;
-  const buttons = group.querySelectorAll('.quiz-opt');
-  buttons.forEach(b => b.disabled = true);
-  btn.classList.add(isCorrect ? 'correct' : 'wrong');
-  const fb = document.getElementById(fbId);
-  fb.classList.add('show');
-  const msgs = {
-    q1fb: isCorrect ? '✓ Correto! Mais capacidade, menos custo por bit — mas também menor velocidade.' : '✗ Revise a Fig. 4.1.',
-    q2fb: isCorrect ? '✓ Correto! B = L mod M relaciona a linha da MP ao bloco da cache.' : '✗ Revise a seção 4.4.3.',
-    q3fb: isCorrect ? '✓ Correto! Esse é o critério que diferencia as duas políticas de escrita.' : '✗ Revise a Fig. 4.7.'
-  };
-  if (!isCorrect) buttons.forEach(b => { if (b.getAttribute('onclick').includes(', true,')) b.classList.add('correct'); });
-  fb.classList.add(isCorrect ? 'correct-fb' : 'wrong-fb');
-  fb.textContent = msgs[fbId];
-}
-
-renderMathInElement(document.body, {
-  delimiters: [
-    {left: "$$", right: "$$", display: true},
-    {left: "$", right: "$", display: false}
-  ],
-  throwOnError: false
-});
-</script>
-
-</body>
-</html>
+<html lang="pt-BR"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="Capítulo 4: sistema de memória, hierarquia, tecnologias, memória principal e cache."><title>Cap. 4 — Sistema de Memória | Arquitetura de Computadores</title><style>:root{--bg:#0a0e17;--surface:#111827;--border:#2d3c50;--accent:#00c2ff;--text:#e2e8f0;--muted:#a8b7ca}*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--text);font:17px/1.75 "IBM Plex Sans","Segoe UI",Arial,sans-serif}a{color:var(--accent);text-decoration:none}a:hover{text-decoration:underline}a:focus-visible{outline:3px solid #fbbf24;outline-offset:4px}.container{max-width:1050px;padding:0 28px;margin:auto}nav{position:sticky;top:0;background:#0a0e17f5;border-bottom:1px solid var(--border);z-index:5;padding:15px 0}nav .container{display:flex;justify-content:space-between;gap:18px;align-items:center;flex-wrap:wrap}.nav-brand,.section-label,.eyebrow{font:13px/1.5 "IBM Plex Mono",Consolas,monospace;color:var(--accent)}.nav-links{display:flex;flex-wrap:wrap;gap:16px;font-size:13px}.hero{padding:60px 0 35px;background:radial-gradient(ellipse at 80% 10%,#142d47,transparent 60%)}h1{font-size:clamp(36px,6vw,58px);line-height:1.12;font-weight:300;margin:18px 0}h1 strong{color:var(--accent)}h2{font-size:29px;line-height:1.3;margin:12px 0 25px}h3{font-size:22px;line-height:1.4;margin:36px 0 15px}.hero-meta{color:var(--muted);font-size:14px}.objectives{border:1px solid var(--border);background:var(--surface);border-radius:9px;padding:18px 24px;margin-top:25px}.toc{display:flex;gap:10px;flex-wrap:wrap;margin-top:25px}.toc a{font-size:13px;border:1px solid var(--border);border-radius:20px;padding:5px 14px}.section{padding:50px 0;border-top:1px solid var(--border);scroll-margin-top:100px}p{color:#cbd5e1;margin:0 0 18px}strong{color:var(--text)}.plain{padding-left:25px;color:#cbd5e1}.plain li{margin-bottom:10px}.definition{border-left:4px solid #8b5cf6;background:var(--surface);padding:22px 25px;border-radius:0 8px 8px 0;margin:25px 0}.dtitle{font-weight:700;color:#c4b5fd}.definition p:last-child{margin:0}.note{background:#162137;border:1px solid var(--border);padding:18px 22px;border-radius:7px;font-size:15px;margin:25px 0;color:#cbd5e1}.codeline{background:#102338;border:1px solid #28567b;padding:19px;text-align:center;line-height:1.8;border-radius:8px;margin:23px 0;color:#b8eaff;font:17px/1.8 Consolas,monospace;overflow-wrap:anywhere}.fig-full{margin:30px 0;padding:14px;background:var(--surface);border:1px solid var(--border);border-radius:9px}.fig-full img{display:block;width:100%;height:auto;background:white;border-radius:4px}figcaption{font-size:14px;line-height:1.5;color:var(--muted);padding:14px 7px 5px}.figure-download{font-size:13px;padding:5px 7px}.table-scroll{overflow-x:auto;margin:24px 0;border:1px solid var(--border);border-radius:8px}table{width:100%;border-collapse:collapse;font-size:14px;line-height:1.55;text-align:left}caption{padding:15px;text-align:left;font-weight:600;background:#18253a;color:var(--text)}thead{background:#142034}th,td{padding:13px 14px;border-bottom:1px solid var(--border);vertical-align:top}th{color:var(--text)}td{color:#cbd5e1}tbody th{font-weight:500}tbody tr:nth-child(even){background:#101827}.citation{font-size:.9em;color:var(--muted)}.source{font-size:14px;color:var(--muted)}.references li{font-size:15px;scroll-margin-top:110px}footer{border-top:1px solid var(--border);padding:30px 0;color:var(--muted);font-size:14px}.skip{position:absolute;left:-9999px}.skip:focus{left:15px;top:15px;z-index:10;background:#111827;padding:12px}.progress-track{height:3px;background:var(--border)}.progress-fill{height:3px;background:var(--accent);width:0}@media(max-width:650px){body{font-size:16px}.container{padding:0 18px}.section{padding:35px 0;scroll-margin-top:150px}h2{font-size:25px}h3{font-size:20px}.fig-full{padding:7px;margin:22px 0}table{min-width:650px}.nav-links{gap:12px}nav{position:static}}@media print{body{background:white;color:#172e49;font-size:11pt}nav,.toc,.figure-download,.progress-track{display:none}.hero{padding:0;background:none}.container{max-width:none;padding:0}h1{font-size:28pt}h2{font-size:19pt}h3{font-size:15pt}p,td,.plain,.source,figcaption{color:#24364c}strong,th{color:#172e49}.section{padding:20px 0}.definition,.note,.codeline,.fig-full,.objectives{background:#f5f8fc;color:#172e49;border-color:#ccd5df}caption,thead{background:#e8eef5;color:#172e49}.fig-full,table{break-inside:avoid}a{color:#125487}tbody tr:nth-child(even){background:#f5f8fc}.table-scroll{overflow:visible}}
+</style></head><body><a class="skip" href="#conteudo">Ir para o conteúdo</a><nav aria-label="Seções do capítulo"><div class="container"><a class="nav-brand" href="#inicio">ARQUITETURA DE COMPUTADORES · CAP. 4</a><div class="nav-links"><a href="#s0">Introdução</a><a href="#s1">Hierarquia</a><a href="#s2">Desempenho</a><a href="#s3">Tecnologias</a><a href="#s4">Tabelas</a><a href="#s5">MP</a><a href="#s6">Cache</a><a href="#referencias">Fontes</a></div></div></nav><div class="progress-track" aria-hidden="true"><div class="progress-fill" id="progress"></div></div><header class="hero" id="inicio"><div class="container"><div class="eyebrow">ELEMENTOS DO SISTEMA DE COMPUTAÇÃO</div><h1>Cap. 4 — Sistema<br>de <strong>Memória</strong></h1><p class="hero-meta">Prof. Clayton J A Silva · Base: Nota de Aula 4 (2021.2)</p><div class="objectives"><strong>Objetivos do capítulo</strong><p>Compreender o papel da memória no desempenho da arquitetura; distinguir características e tecnologias de armazenamento; interpretar capacidade, tempos e vazão; explicar a organização da MP e as operações de leitura e escrita em sistemas com cache.</p></div><div class="toc" aria-label="Sumário"><a href="#s0">Introdução</a><a href="#s1">Hierarquia</a><a href="#s2">Desempenho</a><a href="#s3">Tecnologias</a><a href="#s4">Tabelas</a><a href="#s5">MP</a><a href="#s6">Cache</a><a href="#referencias">Fontes</a></div></div></header><main class="container" id="conteudo"><section class="section" id="s0"><div class="section-label">4.1 • Elementos do sistema de computação</div><h2>Da máquina de von Neumann aos gargalos de desempenho</h2>
+<p>A Figura 1 reapresenta a máquina IAS, referência para a arquitetura de von Neumann, cujo detalhamento foi apresentado nas primeiras sessões do curso. A CPU (do inglês, <i>Central Processing Unit</i>), simplesmente processador, contém a Unidade de Controle, os circuitos lógicos e aritméticos e registradores. A memória armazena as instruções do programa e os dados sobre os quais essas instruções operam.</p><figure class="fig-full"><a href="imagens/01-ias-nota4.png" target="_blank"><img src="imagens/01-ias-nota4.png" alt="Figura 1 – Máquina IAS. Reprodução da Figura 1 da Nota de Aula 4, Prof. Clayton J A Silva (2021.2)." loading="lazy"></a><figcaption>Figura 1 – Máquina IAS. Reprodução da Figura 1 da Nota de Aula 4, Prof. Clayton J A Silva (2021.2).</figcaption></figure>
+<p>Os elementos são interligados por caminhos de comunicação pelos quais trafegam endereços, dados e sinais de controle. Para executar uma instrução, o processador precisa buscar a instrução e, conforme a operação, ler ou escrever dados. Se esses elementos não atenderem à demanda na velocidade necessária, parte do tempo de execução será consumida pela espera. <span class="citation">(<a href="#ref-tanenbaum">Tanenbaum, 2007</a>; <a href="#ref-stallings">Stallings, 2019</a>).</span></p>
+<div class="definition"><p class="dtitle">Gargalo da máquina de von Neumann</p><p>O chamado <strong>gargalo de von Neumann</strong> é a limitação imposta à execução pela comunicação entre o processador e a memória que armazena instruções e dados. Backus descreve essa limitação como o estreito caminho pelo qual a informação precisa trafegar entre esses elementos. <span class="citation">(<a href="#ref-backus">Backus, 1978, seção 3, p. 615</a>).</span></p><p>A latência dos acessos e a quantidade de informação transferida por unidade de tempo limitam o ritmo de processamento. No modelo clássico, instruções e dados disputam o caminho de acesso à memória. <span class="citation">(<a href="#ref-stallings">Stallings, 2019</a>).</span></p></div>
+<p>Nos sistemas modernos, vários mecanismos reduzem essa limitação: caches, caminhos separados para instruções e dados em determinados níveis, múltiplos canais de memória e sobreposição de operações. Ainda assim, o processador pode solicitar dados mais rapidamente do que o sistema de memória consegue fornecê-los. A limitação depende também do programa executado, especialmente da sequência de endereços acessados. <span class="citation">(<a href="#ref-tanenbaum">Tanenbaum, 2007</a>; <a href="#ref-stallings">Stallings, 2019</a>).</span></p>
+<ul class="plain"><li><strong>Memória:</strong> o tempo de resposta, a capacidade disponível e a vazão influenciam a disponibilidade das instruções e dos dados.</li><li><strong>Barramento e demais interconexões:</strong> a largura dos caminhos, a taxa de transferência e a disputa por recursos limitam o tráfego entre os elementos.</li><li><strong>Processador:</strong> a frequência, a organização interna e a quantidade de operações em execução determinam a demanda por instruções e dados. Aumentar a capacidade de processamento não garante que a memória acompanhe essa demanda.</li></ul>
+<p>Os capítulos seguintes serão destinados a discutir mudanças tecnológicas que procuram superar ou reduzir esses gargalos. Iniciaremos a discussão pelo <strong>sistema de memória, neste Capítulo 4</strong>; posteriormente serão tratados os barramentos e os processadores. A Figura 2 apresenta uma visão geral desses elementos, baseada no slide 2.</p><figure class="fig-full"><a href="imagens/02-visao-geral.svg" target="_blank"><img src="imagens/02-visao-geral.svg" alt="Figura 2 – Elementos da arquitetura e limitação da comunicação CPU–memória. Elaboração didática baseada no slide 2." loading="lazy"></a><figcaption>Figura 2 – Elementos da arquitetura e limitação da comunicação CPU–memória. Elaboração didática baseada no slide 2.</figcaption></figure><p class="source">Referências conceituais: <a href="#ref-tanenbaum">Tanenbaum (2007)</a>, <a href="#ref-stallings">Stallings (2019)</a>.</p></section>
+<section class="section" id="s1"><div class="section-label">4.2 • Sistema de memória</div><h2>Memória, operações e hierarquia</h2>
+<p>Memória é um dispositivo, ou um conjunto de dispositivos, destinado a armazenar informação na forma de bits. Os bits podem representar instruções, números, caracteres, endereços ou outras formas de dados. A finalidade do armazenamento e as condições de acesso determinam como cada dispositivo será empregado na arquitetura. <span class="citation">(<a href="#ref-tanenbaum">Tanenbaum, 2007</a>; <a href="#ref-stallings">Stallings, 2019</a>).</span></p>
+<p>Na <strong>operação de leitura</strong>, o sistema seleciona uma posição e obtém a informação armazenada. Em termos lógicos, a leitura preserva a informação; em tecnologias como a DRAM, a leitura física exige que o circuito restaure a carga da célula. Na <strong>operação de escrita</strong>, o sistema seleciona uma posição e registra um novo valor, substituindo o valor anterior. Memórias programáveis não voláteis podem exigir procedimentos específicos de apagamento e programação. <span class="citation">(<a href="#ref-tanenbaum">Tanenbaum, 2007</a>; <a href="#ref-stallings">Stallings, 2019</a>).</span></p>
+<p>As tecnologias de construção de dispositivos de memória são variadas. Não existe uma única tecnologia que ofereça, simultaneamente, grande capacidade, resposta muito rápida, persistência e baixo custo. Por essa razão, diversos tipos de tecnologia são empregados em um mesmo sistema de computação. <span class="citation">(<a href="#ref-tanenbaum">Tanenbaum, 2007</a>; <a href="#ref-stallings">Stallings, 2019</a>).</span></p>
+<h3>4.2.1 Hierarquia do sistema de memória</h3><p>A estratégia de armazenamento pode ser estudada como um <strong>sistema hierárquico</strong>. A Figura 3 representa os quatro grupos utilizados na Nota 4: registradores, cache, memória principal ou primária e memória secundária. A cache pode, por sua vez, ser dividida em níveis. Em processadores atuais, L1 e L2 costumam estar integradas ao processador, e L3 também pode estar. A hierarquia expressa os níveis de acesso, não uma separação obrigatória entre componentes internos e externos.  <span class="citation">(<a href="#ref-intel-cache">Intel, 2015</a>).</span> <span class="citation">(<a href="#ref-tanenbaum">Tanenbaum, 2007</a>; <a href="#ref-stallings">Stallings, 2019</a>).</span></p><figure class="fig-full"><a href="imagens/03-hierarquia.svg" target="_blank"><img src="imagens/03-hierarquia.svg" alt="Figura 3 – Hierarquia do sistema de memória com registradores e caches integrados ao processador. A localização física depende da arquitetura." loading="lazy"></a><figcaption>Figura 3 – Hierarquia do sistema de memória com registradores e caches integrados ao processador. A localização física depende da arquitetura.</figcaption></figure>
+<p>Quanto mais próximo do processador, em geral, menor é a capacidade de armazenamento, menor é o tempo de acesso e maior é o custo por bit. Quanto mais próximo da base, maior é a capacidade e menor é o custo por bit, com tempos de acesso maiores. Essas tendências orientam o projeto; a posição na hierarquia não determina, por si só, volatilidade ou tempo de retenção. <span class="citation">(<a href="#ref-tanenbaum">Tanenbaum, 2007</a>; <a href="#ref-stallings">Stallings, 2019</a>).</span></p>
+<h3>4.2.2 Papel de cada camada na arquitetura</h3>
+<ul class="plain"><li><strong>Memória secundária ou de armazenamento de massa:</strong> mantém grandes quantidades de dados e programas, normalmente de modo não volátil. Os dados necessários à execução são transferidos para a memória de trabalho.</li><li><strong>Memória principal (MP), também chamada de memória primária, ou memória de trabalho:</strong> armazena as instruções e os dados dos programas em execução. Em computadores de uso geral, é tipicamente construída com DRAM.</li><li><strong>Memória cache, intermediária com o processador:</strong> mantém cópias de blocos de informação dos níveis seguintes, procurando atender rapidamente aos acessos mais prováveis.</li><li><strong>Registradores, memória interna ao processador:</strong> armazenam operandos, resultados, endereços e informações de controle diretamente usadas na execução. O PC guarda o endereço da próxima instrução; o IR guarda a instrução buscada, no modelo didático.</li></ul>
+<p>O papel é uma classificação funcional. As caches também podem estar fisicamente dentro do processador; isso não as transforma em registradores. A Figura 4 acrescenta os papéis à hierarquia anterior. <span class="citation">(<a href="#ref-tanenbaum">Tanenbaum, 2007</a>; <a href="#ref-stallings">Stallings, 2019</a>).</span></p><figure class="fig-full"><a href="imagens/04-hierarquia-papeis.svg" target="_blank"><img src="imagens/04-hierarquia-papeis.svg" alt="Figura 4 – As camadas de memória e sua função na arquitetura." loading="lazy"></a><figcaption>Figura 4 – As camadas de memória e sua função na arquitetura.</figcaption></figure>
+<h3>4.2.3 Tecnologias empregadas nas camadas</h3>
+<p>Os registradores são construídos com circuitos semicondutores, como bancos de registradores em <strong>CMOS</strong>, tecnologia que combina transistores MOS complementares. As caches de CPU empregam tipicamente <strong>SRAM</strong>, RAM estática; a MP utiliza <strong>DRAM</strong>, RAM dinâmica. As características estática e dinâmica serão definidas mais à frente. <span class="citation">(<a href="#ref-tanenbaum">Tanenbaum, 2007</a>; <a href="#ref-stallings">Stallings, 2019</a>).</span></p>
+<p><strong>DDR</strong> (<i>Double Data Rate</i>) é uma tecnologia de memória síncrona que permite transferir dados nas duas bordas do sinal de temporização. DDR4 e DDR5 são gerações dessa família. O armazenamento de massa utiliza <strong>NAND flash</strong>, memória semicondutora não volátil, com programação por páginas e apagamento por blocos, nos SSDs; meios magnéticos, nos HDDs e fitas; e meios ópticos, nos discos ópticos. <span class="citation">(<a href="#ref-stallings">Stallings, 2019</a>; <a href="#ref-microchip">Microchip</a>; <a href="#ref-kingston">Kingston</a>).</span></p><p>A Figura 5 situa essas tecnologias na hierarquia. A escolha em cada camada depende das características de capacidade, tempo de resposta e custo.</p><figure class="fig-full"><a href="imagens/05-hierarquia-tecnologias.svg" target="_blank"><img src="imagens/05-hierarquia-tecnologias.svg" alt="Figura 5 – Tecnologias contemporâneas distribuídas nas camadas. Exemplos, não uma configuração obrigatória." loading="lazy"></a><figcaption>Figura 5 – Tecnologias contemporâneas distribuídas nas camadas. Exemplos, não uma configuração obrigatória.</figcaption></figure></section>
+<section class="section" id="s2"><div class="section-label">4.3 • Parâmetros de desempenho</div><h2>Capacidade, tempos, vazão e custo</h2>
+<h3>4.3.1 Capacidade de armazenamento</h3><p>A capacidade é a quantidade total de informação que o dispositivo pode armazenar. Pode ser expressa em bits ou bytes e em seus múltiplos. Um <strong>bit</strong> admite dois valores, 0 e 1; um <strong>byte (B)</strong> corresponde a 8 bits. Deve-se distinguir B, byte, de bit ou b, quando este símbolo é empregado para bit. <span class="citation">(<a href="#ref-tanenbaum">Tanenbaum, 2007</a>; <a href="#ref-stallings">Stallings, 2019</a>).</span></p>
+<p>Os símbolos K, M, G e T aparecem frequentemente no material técnico. Para evitar ambiguidade, os múltiplos decimais e binários serão explicitamente diferenciados:</p><div class="table-scroll"><table><caption>Tabela 1 – Unidades de capacidade; convenção NIST/IEC.</caption><thead><tr><th scope="col">Ordem</th><th scope="col">Múltiplo decimal de bytes</th><th scope="col">Múltiplo binário de bytes</th></tr></thead><tbody><tr><th scope="row">quilo / kibi</th><td>1 kB = 10³ B = 1 000 B</td><td>1 KiB = 2¹⁰ B = 1 024 B</td></tr><tr><th scope="row">mega / mebi</th><td>1 MB = 10⁶ B</td><td>1 MiB = 2²⁰ B</td></tr><tr><th scope="row">giga / gibi</th><td>1 GB = 10⁹ B</td><td>1 GiB = 2³⁰ B</td></tr><tr><th scope="row">tera / tebi</th><td>1 TB = 10¹² B</td><td>1 TiB = 2⁴⁰ B</td></tr><tr><th scope="row">peta / pebi</th><td>1 PB = 10¹⁵ B</td><td>1 PiB = 2⁵⁰ B</td></tr><tr><th scope="row">exa / exbi</th><td>1 EB = 10¹⁸ B</td><td>1 EiB = 2⁶⁰ B</td></tr></tbody></table></div><p>Assim, a expressão tradicional “1 KB = 2¹⁰ bytes”, usada na nota, será escrita aqui como <strong>1 KiB = 2¹⁰ B</strong>. Um dispositivo anunciado como 1 TB possui 10¹² bytes, aproximadamente 0,909 TiB, antes das reservas e da formatação. Fonte: <a href="#ref-nist">NIST – prefixos binários</a>.</p>
+<h3>4.3.2 Tempo de acesso, tempo de resposta, ciclo e latência</h3>
+<p>O <strong>tempo de acesso (t<sub>A</sub>)</strong>, também chamado aqui de <strong>tempo de resposta</strong>, é o intervalo entre a condição que inicia um acesso e a disponibilização do dado válido no <strong>barramento de dados</strong>. Em uma leitura, a condição inicial corresponde à apresentação de um endereço válido e à requisição da operação, conforme os sinais de controle exigidos pela memória. <span class="citation">(<a href="#ref-tanenbaum">Tanenbaum, 2007</a>; <a href="#ref-stallings">Stallings, 2019</a>).</span></p>
+<p>O <strong>tempo de ciclo (t<sub>C</sub>)</strong> é o menor intervalo admitido entre o início de duas operações sucessivas de acesso à memória. No modelo simples da Nota 4, após disponibilizar o dado, a memória necessita de um intervalo de recuperação (t<sub>S</sub>) até poder iniciar outro acesso. Assim:</p>
+<div class="codeline">t<sub>C</sub> = t<sub>A</sub> + t<sub>S</sub></div>
+<p>A relação descreve uma operação sem sobreposição de acessos. A recuperação depende da tecnologia; por essa razão, tempo de acesso e tempo de ciclo não são necessariamente iguais. <span class="citation">(<a href="#ref-stallings">Stallings, 2019</a>).</span></p>
+<p>A <strong>latência</strong> é o tempo decorrido entre a requisição e o seu atendimento. Considere que o processador requisita um dado para armazená-lo em um registrador: se o atendimento for considerado concluído quando o dado for efetivamente armazenado, a latência inclui o acesso à memória, a transferência e o recebimento pelo processador. Portanto, pode ser maior que o tempo de acesso da memória. <span class="citation">(<a href="#ref-stallings">Stallings, 2019</a>; <a href="#ref-intel">Intel, manual de otimização</a>).</span></p>
+<p>A medida de latência pode variar conforme o evento adotado para indicar que a requisição foi atendida. Se esse evento for a disponibilização do dado válido no barramento, ela coincide com o tempo de acesso; se for o recebimento completo pelo processador, inclui também o tempo necessário para concluir esse recebimento. Latência não é sinônimo de tempo de ciclo.</p>
+<figure class="fig-full"><a href="imagens/06-tempos.svg" target="_blank"><img src="imagens/06-tempos.svg" alt="Figura 6 – Sinais de controle, endereço e dados em uma leitura. Tempo de acesso tA, recuperação tS e ciclo tC, em modelo sem sobreposição." loading="lazy"></a><figcaption>Figura 6 – Sinais de controle, endereço e dados em uma leitura. Tempo de acesso tA, recuperação tS e ciclo tC, em modelo sem sobreposição.</figcaption></figure>
+<h3>4.3.3 Vazão e largura do barramento de dados</h3>
+<p>A <strong>vazão</strong> é a quantidade de informação transferida por unidade de tempo. O barramento de dados possui um conjunto de linhas que transportam bits simultaneamente. Se ele transfere W bits em um acesso que consome t<sub>A</sub> segundos, a vazão pode ser estimada, de forma simplificada, por:</p>
+<div class="codeline">v ≈ largura do barramento de dados / tempo de acesso<br>v ≈ W / t<sub>A</sub> &nbsp; [bit/s]</div>
+<p>Por exemplo, um barramento de dados de <strong>32 bits</strong> e um tempo de acesso de <strong>10 ns</strong> resultam em v ≈ 32/(10 × 10<sup>−9</sup>) = 3,2 × 10<sup>9</sup> bit/s, ou <strong>400 MB/s</strong>. Os valores desse exemplo são didáticos.</p>
+<p>O <strong>barramento de endereços</strong> seleciona a posição da memória; o <strong>barramento de dados</strong> transporta a informação. É a largura do segundo que entra no cálculo da vazão. A estimativa acima considera uma transferência por acesso e desconsidera recuperação e outros intervalos. Se cada transferência exigir um ciclo completo, utiliza-se t<sub>C</sub> no denominador. O desempenho real depende da organização e do funcionamento da memória. <span class="citation">(<a href="#ref-stallings">Stallings, 2019</a>).</span></p>
+<h3>4.3.4 Custo por unidade de informação</h3><p>O custo deve ser comparado por unidade de informação armazenada: custo por bit, por MiB, por GB etc. Se um dispositivo custa P e oferece capacidade Q, o custo unitário é P/Q. Por exemplo, em uma cotação <strong>hipotética</strong>, R$ 400 por 1 TB resultam em R$ 0,40/GB. A moeda, a data e a convenção de capacidade precisam ser informadas. <span class="citation">(<a href="#ref-tanenbaum">Tanenbaum, 2007</a>; <a href="#ref-stallings">Stallings, 2019</a>).</span></p>
+<p>As tecnologias mais rápidas normalmente ocupam mais área de circuito por bit e oferecem menor capacidade pelo mesmo custo. A hierarquia combina uma pequena quantidade de memória rápida com uma grande quantidade de memória de menor custo por bit. Cache e registradores integrados não costumam ter preço de compra isolado: seu custo está associado à área de silício e ao projeto do processador. <span class="citation">(<a href="#ref-tanenbaum">Tanenbaum, 2007</a>; <a href="#ref-stallings">Stallings, 2019</a>).</span></p><p class="source">Conceitos: <a href="#ref-stallings">Stallings (2019)</a>, <a href="#ref-tanenbaum">Tanenbaum (2007)</a>. Especificações: <a href="#ref-kingston">Kingston</a>. Medição em CPUs: <a href="#ref-intel">Intel – manual de otimização</a>.</p></section>
+<section class="section" id="s3"><div class="section-label">4.4 • Tecnologias de construção</div><h2>Características tecnológicas dos dispositivos</h2>
+<p>As características dos tipos de memória dependem fortemente da tecnologia de construção. Os critérios seguintes são independentes: uma memória pode ser, ao mesmo tempo, semicondutora, não volátil e de acesso aleatório para leitura.</p>
+<h3>4.4.1 Tipo de acesso</h3><p>No <strong>acesso aleatório</strong>, é possível selecionar uma posição pelo endereço sem ler previamente as posições anteriores. No modelo básico, o tempo independe da posição. Isso não garante um tempo efetivamente idêntico em sistemas modernos: bancos, linhas abertas, filas e caches podem alterar a resposta. <span class="citation">(<a href="#ref-tanenbaum">Tanenbaum, 2007</a>; <a href="#ref-stallings">Stallings, 2019</a>).</span></p>
+<p>No <strong>acesso sequencial</strong>, os dados são alcançados percorrendo uma sequência, como ocorre na fita magnética. HDDs e discos ópticos utilizam <strong>acesso direto</strong> a blocos: o mecanismo posiciona-se na região desejada e transfere o bloco, com tempo variável. SSDs oferecem acesso direto a blocos ao sistema, sem posicionamento mecânico. Essa interface não deve ser confundida com a seleção de uma célula RAM por endereço. <span class="citation">(<a href="#ref-tanenbaum">Tanenbaum, 2007</a>; <a href="#ref-stallings">Stallings, 2019</a>).</span></p>
+<h3>4.4.2 Volatilidade</h3><p>Uma memória <strong>volátil</strong> perde a informação armazenada quando deixa de receber alimentação suficiente. Uma memória <strong>não volátil</strong> retém a informação sem alimentação, dentro das condições e do prazo de retenção especificados. SRAM e DRAM convencionais são voláteis; ROM, EEPROM, flash e meios magnéticos são não voláteis. <span class="citation">(<a href="#ref-tanenbaum">Tanenbaum, 2007</a>; <a href="#ref-stallings">Stallings, 2019</a>).</span></p><p>RAM significa <i>Random Access Memory</i>, ou memória de acesso aleatório. O nome descreve a forma de acesso, não a volatilidade. Existem memórias RAM não voláteis, como tecnologias MRAM e FRAM, além de dispositivos que combinam SRAM com armazenamento de respaldo. <span class="citation">(<a href="#ref-tanenbaum">Tanenbaum, 2007</a>; <a href="#ref-stallings">Stallings, 2019</a>).</span></p>
+<h3>4.4.3 Refresh: memória estática e dinâmica</h3><p>Uma <strong>SRAM</strong> mantém o estado em circuitos biestáveis enquanto houver alimentação; não necessita de refresh periódico. Uma <strong>DRAM</strong> representa os bits por carga elétrica em células que perdem carga ao longo do tempo. O controlador e os circuitos internos realizam periodicamente o <strong>refresh</strong>, restaurando a informação. “Estática” não significa não volátil: a SRAM também perde os dados sem alimentação. <span class="citation">(<a href="#ref-tanenbaum">Tanenbaum, 2007</a>; <a href="#ref-stallings">Stallings, 2019</a>).</span></p>
+<h3>4.4.4 Controle síncrono e assíncrono</h3><p>Na memória <strong>assíncrona</strong>, os tempos são definidos em relação às mudanças dos endereços e dos sinais de controle, sem depender de um clock comum para receber cada comando. Na memória <strong>síncrona</strong>, os comandos são recebidos em relação a um clock; a transferência de dados segue a temporização definida pela interface, podendo usar sinais de strobe. <span class="citation">(<a href="#ref-tanenbaum">Tanenbaum, 2007</a>; <a href="#ref-stallings">Stallings, 2019</a>).</span></p><p>A SDRAM é uma DRAM síncrona. Ela <strong>continua necessitando de comandos e sinais de controle</strong>, como seleção, leitura, escrita, ativação e refresh. A sincronização não elimina esses sinais. DDR SDRAM transfere dados nas duas bordas do sinal de temporização; isso não significa que todo comando ou operação interna ocorre duas vezes por ciclo. <span class="citation">(<a href="#ref-tanenbaum">Tanenbaum, 2007</a>; <a href="#ref-stallings">Stallings, 2019</a>).</span></p>
+<h3>4.4.5 Material e construção</h3><p>Memórias de <strong>estado sólido</strong> não utilizam partes mecânicas móveis para acessar a informação. SRAM, DRAM e flash são exemplos semicondutores. MOS significa <i>metal–oxide–semiconductor</i>; CMOS emprega transistores MOS complementares. Esses termos descrevem estruturas e processos de circuito, não camadas da hierarquia. <span class="citation">(<a href="#ref-tanenbaum">Tanenbaum, 2007</a>; <a href="#ref-stallings">Stallings, 2019</a>).</span></p><p>Nos <strong>meios magnéticos</strong>, a informação é representada por estados de magnetização, como em HDDs e fitas. Nos <strong>meios ópticos</strong>, é representada por propriedades do meio lidas por luz, como em CDs, DVDs e Blu-ray. Estado sólido e semicondutor não são categorias opostas: um SSD é simultaneamente de estado sólido e baseado em memória semicondutora. <span class="citation">(<a href="#ref-tanenbaum">Tanenbaum, 2007</a>; <a href="#ref-stallings">Stallings, 2019</a>).</span></p>
+<h3>4.4.6 Leitura e escrita</h3><p>Memórias de <strong>leitura e escrita</strong> permitem atualizar os dados nas condições de operação do dispositivo. Memória <strong>somente de leitura</strong>, ROM (<i>Read Only Memory</i>), é destinada à leitura durante o uso normal. Na ROM de máscara, o conteúdo é definido na fabricação. PROM, EPROM, EEPROM e flash permitem programação sob condições específicas; apagar ou programar não equivale necessariamente a uma escrita RAM comum. <span class="citation">(<a href="#ref-tanenbaum">Tanenbaum, 2007</a>; <a href="#ref-stallings">Stallings, 2019</a>).</span></p>
+<h3>4.4.7 Adendo: evolução RAM × ROM e aplicações</h3><p>A árvore tradicional da Nota 4 distingue duas famílias históricas. A evolução da família ROM ampliou a possibilidade de programação: PROM pode ser programada uma vez; EPROM pode ser apagada por radiação ultravioleta; EEPROM admite apagamento elétrico; flash, pertencente à família das memórias eletricamente apagáveis, opera com apagamento em blocos. Essas tecnologias coexistem e não constituem uma sequência em que cada uma substituiu integralmente a anterior. <span class="citation">(<a href="#ref-tanenbaum">Tanenbaum, 2007</a>; <a href="#ref-stallings">Stallings, 2019</a>).</span></p><figure class="fig-full"><a href="imagens/08-evolucao.svg" target="_blank"><img src="imagens/08-evolucao.svg" alt="Figura 7 – Famílias de memórias semicondutoras e ampliação das possibilidades de programação." loading="lazy"></a><figcaption>Figura 7 – Famílias de memórias semicondutoras e ampliação das possibilidades de programação.</figcaption></figure>
+<p>Na família RAM de trabalho, SRAM e DRAM coexistem. As DRAMs FPM, EDO e BEDO têm interesse histórico; SDRAM e suas gerações DDR ampliaram o desempenho e organizaram a comunicação síncrona. O emprego depende do compromisso entre capacidade, velocidade, consumo, custo e retenção. <span class="citation">(<a href="#ref-tanenbaum">Tanenbaum, 2007</a>; <a href="#ref-stallings">Stallings, 2019</a>).</span></p><div class="table-scroll"><table><caption>Tabela 2 – Aplicações das famílias de memória.</caption><thead><tr><th scope="col">Tecnologia</th><th scope="col">Programação / apagamento</th><th scope="col">Emprego típico</th></tr></thead><tbody><tr><th scope="row">ROM de máscara</th><td>Definida na fabricação; não reprogramável</td><td>Código ou tabelas fixos em produtos de grande volume</td></tr><tr><th scope="row">PROM / OTP</th><td>Programação única</td><td>Identificação, configuração permanente e firmware fixo</td></tr><tr><th scope="row">EPROM</th><td>Apagamento por UV e nova programação</td><td>Equipamentos legados e desenvolvimento histórico</td></tr><tr><th scope="row">EEPROM</th><td>Apagamento/programação elétricos, frequentemente por byte ou página</td><td>Configuração, calibração, identificação e pequenos dados persistentes</td></tr><tr><th scope="row">Flash NOR</th><td>Programação por unidades/páginas; apagamento por setores/blocos</td><td>Firmware e boot; execução direta quando a interface permite</td></tr><tr><th scope="row">Flash NAND</th><td>Leitura/programação por páginas; apagamento por blocos</td><td>SSD, eMMC/UFS e cartões; grande volume de dados</td></tr><tr><th scope="row">SRAM</th><td>Leitura/escrita; sem refresh</td><td>Cache de CPU, buffers e RAM interna em microcontroladores</td></tr><tr><th scope="row">DRAM / SDRAM / DDR</th><td>Leitura/escrita; com refresh</td><td>Memória de trabalho de computadores e aceleradores</td></tr></tbody></table></div>
+<p>Firmware é o software que controla funções do equipamento e sua inicialização. Um bootloader prepara ou carrega etapas posteriores, inclusive o sistema operacional. Tabelas de dados, conversores de códigos e geradores de funções podem ser implementados por conteúdo persistente, conforme a aplicação. Em muitos sistemas atuais essas funções são armazenadas em flash, podendo ser atualizadas. <span class="citation">(<a href="#ref-tanenbaum">Tanenbaum, 2007</a>; <a href="#ref-stallings">Stallings, 2019</a>).</span></p><p class="source">Referências: <a href="#ref-tanenbaum">Tanenbaum (2007)</a>, <a href="#ref-stallings">Stallings (2019)</a>, <a href="#ref-microchip">Microchip – produtos de memória e EEPROM</a>, <a href="#ref-eeram">Microchip – EERAM</a>.</p></section><section class="section" id="s4"><div class="section-label">4.5 • Comparação das tecnologias</div><h2>Tabelas de características e desempenho</h2>
+<p>As tabelas seguintes apresentam características, aplicações e exemplos de especificações de dispositivos de memória. As fontes estão identificadas junto de cada tabela. As especificações foram consultadas em <strong>7 de outubro de 2026</strong>; os produtos são exemplos documentados, não um inventário de todas as tecnologias existentes.</p><h3>4.5.1 Características por camada</h3><div class="table-scroll"><table><caption>Tabela 3 – Características tecnológicas por camada.</caption><thead><tr><th scope="col">Camada / dispositivo</th><th scope="col">Acesso</th><th scope="col">Volatilidade</th><th scope="col">Refresh</th><th scope="col">Controle / interface</th><th scope="col">Material / leitura e escrita</th></tr></thead><tbody><tr><th scope="row">Registradores</th><td>Seleção direta pelo circuito/ISA</td><td>Volátil</td><td>Não periódico</td><td>Tipicamente síncrono ao núcleo</td><td>Semicondutor CMOS; leitura/escrita</td></tr><tr><th scope="row">Cache L1, L2 e L3</th><td>Endereço + consulta de tags</td><td>Volátil</td><td>Não periódico na SRAM</td><td>Circuitos integrados ao processador; tipicamente síncronos</td><td>Tipicamente SRAM; leitura/escrita</td></tr><tr><th scope="row">MP em DDR SDRAM</th><td>Aleatório endereçado; organização em bancos</td><td>Volátil</td><td>Sim</td><td>Síncrono, com comandos e strobes</td><td>DRAM semicondutora; leitura/escrita</td></tr><tr><th scope="row">SSD</th><td>Direto a blocos lógicos</td><td>Não volátil</td><td>Sem refresh periódico de DRAM para reter a NAND</td><td>SATA ou PCIe/NVMe; depende do dispositivo</td><td>NAND flash; leitura/programação/apagamento</td></tr><tr><th scope="row">HDD</th><td>Direto a blocos; posicionamento mecânico</td><td>Não volátil</td><td>Não</td><td>Controlador e interface de armazenamento</td><td>Meio magnético; leitura/escrita</td></tr><tr><th scope="row">Fita magnética</th><td>Sequencial; busca exige percurso</td><td>Não volátil</td><td>Não</td><td>Controlador da unidade</td><td>Meio magnético; leitura/escrita ou WORM</td></tr><tr><th scope="row">Disco óptico</th><td>Direto a setores; posicionamento</td><td>Não volátil</td><td>Não</td><td>Controlador da unidade</td><td>Meio óptico; somente leitura, gravável ou regravável, conforme o disco</td></tr></tbody></table></div><p class="note">A necessidade de refresh da célula DRAM é diferente da manutenção de dados de um SSD. Um SSD pode realizar correção de erros, remapeamento e regravações internas; isso não o classifica como DRAM dinâmica. Dispositivos de armazenamento possuem interfaces e controladores próprios: “síncrono/assíncrono” não deve ser atribuído a toda a camada como se fosse uma única célula de memória.</p><p class="source">Fontes: <a href="#ref-stallings">Stallings</a>, <a href="#ref-intel">Intel</a>, <a href="#ref-kingston">Kingston</a>, <a href="#ref-sata">Samsung 870 EVO</a>, <a href="#ref-hdd">Seagate Exos X24</a>, <a href="#ref-ibm">IBM LTO-9</a>.</p><h3>4.5.2 Capacidade e parâmetros de desempenho</h3><p>Capacidade e tempo dependem do modelo e do ponto de medição. Em vez de atribuir um único tempo “típico” a uma tecnologia inteira, a Tabela 4 separa os parâmetros documentados. <strong>Tempo de acesso, ciclo, CAS latency e vazão não são medidas intercambiáveis.</strong></p><div class="table-scroll"><table><caption>Tabela 4 – Exemplos documentados de capacidade e desempenho.</caption><thead><tr><th scope="col">Dispositivo / exemplo</th><th scope="col">Capacidade documentada</th><th scope="col">Parâmetro de desempenho</th><th scope="col">Custo por unidade</th></tr></thead><tbody><tr><th scope="row">Registradores de CPU</th><td>Depende da ISA e da implementação</td><td>Acesso interno; não há tempo único em ns para todas as CPUs</td><td>Muito alto em área por bit; sem preço avulso usual</td></tr><tr><th scope="row">Caches Ryzen 9 9950X</th><td>L1: 1 280 KB; L2: 16 MB; L3: 64 MB (totais anunciados)</td><td>A latência exige caracterizar cada nível e a microarquitetura; capacidade não determina ciclos</td><td>Alto em área por bit; parte do processador</td></tr><tr><th scope="row">SRAM assíncrona Infineon CY7C10612G30-10ZSXI</th><td>16 Mbit, organização 1M × 16</td><td>tAA = 10 ns; tRC = 10 ns, conforme especificação</td><td>Cotação por bit/MiB; não é a SRAM interna de uma CPU</td></tr><tr><th scope="row">DDR5 Kingston KVR56U46BS8K2-32</th><td>Kit 32 GB, 2 módulos de 16 GB</td><td>5 600 MT/s; CL46 ≈ 16,4 ns; tRC ≥ 48 ns; pico agregado 44,8 GB/s por módulo de 64 bits</td><td>Cotação por GB/GiB do kit</td></tr><tr><th scope="row">SSD SATA Samsung 870 EVO, 1 TB</th><td>1 TB decimal</td><td>Leitura/escrita sequencial até 560/530 MB/s; leitura aleatória QD1 até 13 000 IOPS</td><td>Cotação por GB; incluir modelo e capacidade</td></tr><tr><th scope="row">SSD NVMe Samsung 990 PRO, 1 TB</th><td>1 TB decimal</td><td>Leitura/escrita sequencial até 7 450/6 900 MB/s</td><td>Cotação por GB; incluir modelo e capacidade</td></tr><tr><th scope="row">HDD Seagate Exos X24</th><td>Exemplo de 24 TB decimais</td><td>Transferência sustentada até 285 MB/s no diâmetro externo</td><td>Baixo por GB em grandes capacidades, em geral</td></tr><tr><th scope="row">Fita LTO-9 em unidade IBM</th><td>18 TB nativos por cartucho</td><td>Transferência nativa até 400 MB/s; busca depende do posicionamento</td><td>Custo da mídia por TB + unidade e biblioteca</td></tr></tbody></table></div><p class="source">Fontes por linha: <a href="#ref-amd">AMD Ryzen 9 9950X</a>, <a href="#ref-sram">Infineon SRAM</a>, <a href="#ref-kingston">Kingston DDR5</a>, <a href="#ref-sata">Samsung 870 EVO</a>, <a href="#ref-nvme">Samsung 990 PRO</a>, <a href="#ref-hdd">Seagate Exos X24</a>, <a href="#ref-ibm">IBM LTO-9</a>. KB/MB dos fabricantes de CPU foram mantidos como anunciados. No cálculo didático de campos de endereço, utilizam-se explicitamente potências de dois.</p><p>Os números de SSD são máximos declarados nas condições de teste do fabricante; não representam a latência de toda leitura individual. QD é a profundidade de fila. Não se deve converter IOPS com fila elevada em latência usando apenas 1/IOPS: há operações simultâneas. No caso de fila unitária, 1/IOPS aproxima o tempo médio por operação do teste, mas ainda não é o tempo físico de acesso a uma célula NAND.</p><p>Valores monetários fixos foram substituídos pelo <strong>critério de custo</strong>. Uma comparação de preços precisa de cotações na mesma moeda, data, região e unidade de capacidade. O custo relativo é uma tendência; durabilidade, interface, garantia e requisitos da aplicação também influenciam a escolha.</p><h3>4.5.3 Comparação SSD SATA e SSD NVMe</h3><div class="table-scroll"><table><caption>Tabela 5 – Comparação de dois SSDs de mesma capacidade.</caption><thead><tr><th scope="col">Atributo</th><th scope="col">Samsung 870 EVO • 1 TB</th><th scope="col">Samsung 990 PRO • 1 TB</th></tr></thead><tbody><tr><th scope="row">Formato físico</th><td>2,5 polegadas</td><td>M.2 2280</td></tr><tr><th scope="row">Interface e protocolo</th><td>SATA 6 Gb/s; normalmente AHCI no controlador do sistema</td><td>PCIe 4.0 ×4; NVMe</td></tr><tr><th scope="row">Memória de armazenamento</th><td>V-NAND, 3 bits por célula (TLC)</td><td>V-NAND, 3 bits por célula (TLC)</td></tr><tr><th scope="row">Leitura sequencial, até</th><td>560 MB/s</td><td>7 450 MB/s</td></tr><tr><th scope="row">Escrita sequencial, até</th><td>530 MB/s</td><td>6 900 MB/s</td></tr><tr><th scope="row">Endurance declarada para 1 TB</th><td>600 TBW</td><td>600 TBW</td></tr><tr><th scope="row">Garantia limitada</th><td>5 anos ou limite TBW, o que ocorrer primeiro</td><td>5 anos ou limite TBW, o que ocorrer primeiro</td></tr><tr><th scope="row">Emprego típico</th><td>Atualização de equipamentos com SATA; armazenamento de uso geral</td><td>Armazenamento com maior demanda de vazão em sistemas PCIe/NVMe</td></tr></tbody></table></div><p><strong>M.2 é formato físico; NVMe é protocolo.</strong> Existem dispositivos M.2 SATA. PCIe é a interconexão utilizada pelo exemplo NVMe. TBW é a quantidade total de bytes escritos indicada na especificação de endurance, não o número de regravações de cada célula. A comparação usa a versão de 1 TB de ambos os produtos.</p><p class="source">Fontes: <a href="#ref-sata">datasheet Samsung 870 EVO</a> e <a href="#ref-nvme">especificações Samsung 990 PRO de 1 TB</a>.</p><h3>4.5.4 Memórias não voláteis além das camadas de trabalho</h3><div class="table-scroll"><table><caption>Tabela 6 – Memórias não voláteis e suas aplicações.</caption><thead><tr><th scope="col">Tecnologia</th><th scope="col">Acesso / retenção</th><th scope="col">Atualização</th><th scope="col">Refresh / interface</th><th scope="col">Emprego</th></tr></thead><tbody><tr><th scope="row">ROM de máscara / PROM</th><td>Endereçado para leitura; não volátil</td><td>Nenhuma / programação única</td><td>Sem refresh; interface depende do circuito</td><td>Código e dados permanentes</td></tr><tr><th scope="row">EPROM</th><td>Endereçado para leitura; não volátil</td><td>Apagamento UV; reprogramável</td><td>Sem refresh; tradicionalmente paralela assíncrona</td><td>Sistemas legados</td></tr><tr><th scope="row">EEPROM</th><td>Endereçado; não volátil</td><td>Elétrica, por byte/página conforme o componente</td><td>Sem refresh de DRAM; serial ou paralela</td><td>Parâmetros persistentes e calibração</td></tr><tr><th scope="row">Flash NOR</th><td>Endereçado; não volátil</td><td>Programação e apagamento por setores/blocos</td><td>Sem refresh de DRAM; serial ou paralela</td><td>Firmware, boot e código</td></tr><tr><th scope="row">Flash NAND</th><td>Páginas e blocos; não volátil</td><td>Programação por páginas; apagamento por blocos</td><td>Controlador gerencia ECC e blocos defeituosos</td><td>Armazenamento de massa</td></tr><tr><th scope="row">EERAM</th><td>SRAM de trabalho com respaldo não volátil</td><td>Escrita SRAM; salvamento e recuperação do conteúdo</td><td>Sem refresh SRAM; cópia ao respaldo exige energia de suporte</td><td>Registro de dados que devem sobreviver à falta de alimentação</td></tr></tbody></table></div><p class="source">Fontes: <a href="#ref-microchip">Microchip – portfólio e características de memória</a>, <a href="#ref-eeram">Microchip – EERAM</a>.</p></section>
+<section class="section" id="s5"><div class="section-label">4.6 • Memória principal</div><h2>Memória principal ou primária: organização da MP</h2><p>A memória principal armazena os programas, constituídos por sequências de instruções, e os dados empregados durante a execução. As instruções compreendem o código da operação, chamado de <i>opcode</i>, e campos adicionais definidos pelo conjunto de instruções do processador. Os formatos e os tamanhos variam entre arquiteturas. <span class="citation">(<a href="#ref-tanenbaum">Tanenbaum, 2007</a>; <a href="#ref-stallings">Stallings, 2019</a>).</span></p><p>A MP pode ser compreendida como um conjunto de posições endereçáveis, cada uma armazenando N bits. Se existem L bits de endereço, podem ser selecionadas <strong>2<sup>L</sup> posições</strong>, na faixa de 0 a 2<sup>L</sup> − 1. A capacidade do dispositivo será 2<sup>L</sup> × N bits. Uma célula física armazena um bit; uma posição endereçável reúne uma ou mais células. Em muitas arquiteturas, o endereço do sistema seleciona um byte; o tamanho da palavra da CPU pode ser maior. <span class="citation">(<a href="#ref-tanenbaum">Tanenbaum, 2007</a>; <a href="#ref-stallings">Stallings, 2019</a>).</span></p><div class="note">A capacidade endereçável não é necessariamente a capacidade instalada. Além disso, largura do endereço, largura dos dados do chip e tamanho de instrução são atributos diferentes. O ATmega2560 citado na nota possui organização Harvard, com espaços de programa e dados distintos; não se deve calcular sua capacidade real como se fosse uma MP unificada de palavras de 32 bits. O exemplo a seguir permite estudar a organização sem misturar essas propriedades. <a href="https://ww1.microchip.com/downloads/en/devicedoc/atmega640-1280-1281-2560-2561-datasheet-ds40002211a.pdf" target="_blank" rel="noopener">Fonte: datasheet Microchip ATmega2560</a>.</div><h3>4.6.1 Exemplo: memória Motorola MCM2114</h3><p>Seja a SRAM histórica Motorola MCM2114, utilizada na Nota 4 e no slide de pinagem. Possui <strong>1 024 posições de 4 bits</strong>, totalizando 4 096 bits, ou 512 bytes de capacidade. O exemplo é de uma SRAM assíncrona; a memória de trabalho de computadores atuais emprega normalmente DRAM e interfaces mais complexas.</p><figure class="fig-full"><a href="imagens/09-mp-pinagem.svg" target="_blank"><img src="imagens/09-mp-pinagem.svg" alt="Figura 8 – Pinagem didática e organização 1 024 × 4 da MCM2114, baseada na Figura 5 da nota e nos slides 28 a 33." loading="lazy"></a><figcaption>Figura 8 – Pinagem didática e organização 1 024 × 4 da MCM2114, baseada na Figura 5 da nota e nos slides 28 a 33.</figcaption></figure><div class="table-scroll"><table><caption>Tabela 7 – Identificação dos pinos do exemplo histórico, conforme a Nota 4.</caption><thead><tr><th scope="col">Pinos</th><th scope="col">Função</th></tr></thead><tbody><tr><th scope="row">A₀ a A₉</th><td>Recebem os 10 bits do endereço. A₀ é o menos significativo; A₉, o mais significativo. Selecionam 000H a 3FFH, isto é, 0 a 1 023.</td></tr><tr><th scope="row">I/O₁ a I/O₄</th><td>Quatro linhas bidirecionais de dados: saída na leitura, entrada na escrita.</td></tr><tr><th scope="row">Vcc</th><td>Alimentação positiva; no exemplo histórico, +5 V nominal.</td></tr><tr><th scope="row">Vss</th><td>Referência de potencial, terra (0 V).</td></tr><tr><th scope="row">/W ou W̅</th><td>Write enable ativo em zero: /W = 0 seleciona escrita; /W = 1 permite leitura quando o chip está selecionado.</td></tr><tr><th scope="row">/S ou S̅</th><td>Chip select ativo em zero: /S = 0 habilita o chip; /S = 1 o desabilita.</td></tr></tbody></table></div><p>A barra superior, ou o prefixo “/”, indica <strong>sinal ativo em nível baixo</strong>. Para /S = 1, a saída de dados fica em alta impedância, permitindo compartilhar as linhas sem que o chip conduza os dados. Vcc e Vss são alimentação; não são sinais que selecionam a operação.</p><h3>4.6.2 Decodificação de endereço</h3><p>O <strong>decodificador de endereço</strong> converte a combinação binária apresentada nos pinos A₀–A₉ na seleção da posição correspondente. No modelo didático, cada uma das 1 024 combinações ativa uma das posições da matriz. Por exemplo, 0000000101₂ seleciona a posição 5. As quatro células dessa posição são ligadas aos circuitos de leitura ou escrita. <span class="citation">(<a href="#ref-tanenbaum">Tanenbaum, 2007</a>; <a href="#ref-stallings">Stallings, 2019</a>).</span></p><p>A Figura 8 simplifica a organização física: chips reais podem distribuir a seleção em linhas, colunas e bancos. A decodificação interna do chip seleciona a posição; a decodificação externa, quando existem vários chips, determina qual dispositivo recebe a seleção.</p><h3>4.6.3 Operações de leitura e escrita</h3><p>Na <strong>leitura</strong>, aplica-se o endereço, mantém-se /S = 0 e /W = 1 e aguarda-se o tempo necessário até a saída válida. O processador ou o controlador deve liberar as linhas I/O para que o chip possa conduzi-las. O próximo acesso respeita o tempo mínimo de ciclo. <span class="citation">(<a href="#ref-tanenbaum">Tanenbaum, 2007</a>; <a href="#ref-stallings">Stallings, 2019</a>).</span></p><p>Na <strong>escrita</strong>, aplica-se o endereço e o dado, seleciona-se o chip e ativa-se /W = 0. O dado e o endereço devem permanecer estáveis pelos intervalos de preparação (<i>setup</i>) e manutenção (<i>hold</i>) requeridos em torno do evento que encerra a escrita. O pulso de escrita também tem uma duração mínima. <span class="citation">(<a href="#ref-tanenbaum">Tanenbaum, 2007</a>; <a href="#ref-stallings">Stallings, 2019</a>).</span></p><figure class="fig-full"><a href="imagens/10-mp-tempos.svg" target="_blank"><img src="imagens/10-mp-tempos.svg" alt="Figura 9 – Funcionamento temporal de leitura e escrita. Desenho funcional sem escala, não um substituto para o datasheet." loading="lazy"></a><figcaption>Figura 9 – Funcionamento temporal de leitura e escrita. Desenho funcional sem escala, não um substituto para o datasheet.</figcaption></figure><p>Não se deve interpretar um tempo de ciclo de 200 ns como a latência obrigatória de qualquer versão da MCM2114. Os tempos variam conforme a versão e as condições; acesso e ciclo são especificações diferentes. Como exemplo documentado de SRAM assíncrona, a Infineon citada na Tabela 4 especifica tAA e tRC de 10 ns.</p><p class="source">Exemplo e pinagem: Nota de Aula 4 (2021.2), Figura 5; slides 28–33. Conceitos: <a href="#ref-tanenbaum">Tanenbaum (2007)</a>, <a href="#ref-stallings">Stallings (2019)</a>. Exemplo de tempos especificados: <a href="#ref-sram">Infineon</a>.</p></section>
+<section class="section" id="s6"><div class="section-label">4.7 • Memória cache</div><h2>Organização, funcionamento e desempenho da cache</h2>
+<h3>4.7.1 Complexidade e desempenho</h3><p>A cache é uma memória rápida, de capacidade menor que a MP, utilizada para reduzir o tempo médio dos acessos. Ela é chamada de <strong>memória intermediária</strong> porque atende requisições entre o núcleo de processamento e os níveis mais distantes da hierarquia. Em uma configuração com vários níveis, cada cache é intermediária em relação ao nível seguinte. <span class="citation">(<a href="#ref-tanenbaum">Tanenbaum, 2007</a>; <a href="#ref-stallings">Stallings, 2019</a>).</span></p>
+<p>Inserir a cache aumenta a complexidade: são necessários dados, tags, comparadores, bits de estado, circuitos de controle e políticas de substituição e escrita. O ganho ocorre quando a maior parte dos acessos encontra o dado nos níveis rápidos. Nem todo programa obtém o mesmo benefício; acessos pouco reutilizados ou um conjunto de trabalho muito grande podem produzir muitas faltas. <span class="citation">(<a href="#ref-tanenbaum">Tanenbaum, 2007</a>; <a href="#ref-stallings">Stallings, 2019</a>).</span></p><p>As caches de CPU são construídas tipicamente com <strong>SRAM</strong>, que mantém o estado enquanto alimentada, sem refresh periódico. A SRAM emprega mais área por bit que a DRAM convencional. Assim, a capacidade de cache é relativamente baixa em comparação com a MP, embora possa atingir dezenas ou centenas de megabytes em determinadas arquiteturas. <span class="citation">(<a href="#ref-tanenbaum">Tanenbaum, 2007</a>; <a href="#ref-stallings">Stallings, 2019</a>).</span></p>
+<h3>4.7.2 Princípio de localidade</h3><p>O princípio que permite explorar a cache se chama <strong>princípio de localidade</strong>. A <strong>localidade temporal</strong> é a tendência de uma informação acessada voltar a ser acessada em um intervalo curto. Uma variável acumuladora ou uma instrução dentro de um laço são exemplos. <span class="citation">(<a href="#ref-tanenbaum">Tanenbaum, 2007</a>; <a href="#ref-stallings">Stallings, 2019</a>).</span></p><p>A <strong>localidade espacial</strong> é a tendência de acessar posições próximas a uma posição recém-acessada. Percorrer um vetor e executar instruções consecutivas são exemplos. Por isso, a cache recebe normalmente um bloco que inclui o dado solicitado e posições vizinhas. A localidade é uma propriedade frequente dos programas, não uma garantia. O PC avança conforme o tamanho das instruções e a organização da ISA, e não necessariamente uma unidade por instrução. <span class="citation">(<a href="#ref-tanenbaum">Tanenbaum, 2007</a>; <a href="#ref-stallings">Stallings, 2019</a>).</span></p>
+<h3>4.7.3 Níveis L1, L2 e L3 e controlador</h3><figure class="fig-full"><a href="imagens/11-cache-niveis.svg" target="_blank"><img src="imagens/11-cache-niveis.svg" alt="Figura 10 – Distribuição didática de L1, L2 e L3, atualizando a organização do slide 36." loading="lazy"></a><figcaption>Figura 10 – Distribuição didática de L1, L2 e L3, atualizando a organização do slide 36.</figcaption></figure>
+<p>A <strong>L1</strong> fica mais próxima do núcleo e costuma separar instruções (L1-I) e dados (L1-D). A <strong>L2</strong> normalmente tem maior capacidade e pode ser privada ou compartilhada. A <strong>L3</strong>, quando presente, costuma ser compartilhada por um grupo de núcleos. Nos processadores atuais, os níveis podem estar integrados ao chip ou ao encapsulamento, inclusive em chiplets ou estruturas empilhadas. O número do nível não determina que a cache seja externa ao processador.</p><div class="table-scroll"><table><caption>Tabela 8 – Comparação L1/L2/L3, capacidades anunciadas pela AMD.</caption><thead><tr><th scope="col">Nível</th><th scope="col">Papel e organização frequente</th><th scope="col">Capacidade: exemplo Ryzen 9 9950X</th><th scope="col">Tempo de resposta / tecnologia</th></tr></thead><tbody><tr><th scope="row">L1</th><td>Próxima de cada núcleo; frequentemente dividida em I e D</td><td>1 280 KB totais em 16 núcleos; média de 80 KB/núcleo somando I e D</td><td>Menor latência na hierarquia de caches; tipicamente SRAM</td></tr><tr><th scope="row">L2</th><td>Retém blocos que não cabem na L1; neste tipo de CPU, usualmente privada por núcleo</td><td>16 MB totais; média de 1 MB/núcleo</td><td>Maior que L1 em geral; tipicamente SRAM</td></tr><tr><th scope="row">L3</th><td>Último nível neste exemplo; compartilhamento depende da topologia</td><td>64 MB totais; não implica um banco único igualmente próximo de todos os núcleos</td><td>Maior que L2 em geral; depende também do núcleo solicitante; tipicamente SRAM</td></tr></tbody></table></div>
+<p>A tabela não atribui faixas fixas de 1–3, 5–12 ou 10–30 ciclos a todos os níveis. A latência varia com a microarquitetura, a frequência, o tipo de acesso e a localização do dado. Devem-se usar especificações ou medições da CPU estudada. Fontes: <a href="#ref-amd">AMD – capacidades do 9950X</a>; <a href="#ref-intel">Intel – caracterização de hierarquias e latências</a>.</p>
+<p>O <strong>controlador de cache</strong> recebe a requisição, interpreta o endereço, consulta os estados e compara as tags. Ele determina acerto ou falta, solicita o bloco ao nível seguinte, escolhe uma linha para substituição quando necessário e controla as atualizações de escrita. Em sistemas com vários núcleos, também participa dos mecanismos que mantêm coerentes as cópias dos dados. <span class="citation">(<a href="#ref-tanenbaum">Tanenbaum, 2007</a>; <a href="#ref-stallings">Stallings, 2019</a>).</span></p>
+<div class="note"><strong>Como o controle é implementado?</strong> O fluxograma apresenta um algoritmo para facilitar a compreensão. Em uma cache de CPU, essa lógica é normalmente implementada por circuitos de hardware e máquinas de estados. Não é correto afirmar genericamente que cada acesso executa um código armazenado no controlador. Alguns projetos possuem mecanismos programáveis ou microcódigo para funções específicas; isso depende da implementação.</div><figure class="fig-full"><a href="imagens/13-cache-leitura.svg" target="_blank"><img src="imagens/13-cache-leitura.svg" alt="Figura 11 – Processo de leitura controlado pela cache, baseado no slide 42." loading="lazy"></a><figcaption>Figura 11 – Processo de leitura controlado pela cache, baseado no slide 42.</figcaption></figure>
+<h3>4.7.4 Organização da MP em blocos e da cache em linhas</h3>
+<p>Seja uma memória principal com <strong>16 posições</strong>, numeradas de 0 a 15, cada uma armazenando 1 byte. Agrupando as posições de duas em duas, formam-se <strong>8 blocos</strong>: B0 contém as posições 0 e 1; B1, as posições 2 e 3; B2, as posições 4 e 5; e assim sucessivamente, até B7, que contém as posições 14 e 15.</p>
+<p>Seja, ainda, uma cache com <strong>2 linhas</strong>. Cada linha possui espaço para os <strong>2 bytes de um bloco completo</strong>. A cache pode conter somente dois dos oito blocos em um dado instante. No exemplo da Figura 12, a linha 0 contém B2 e a linha 1 contém B5. Assim, a cache armazena os bytes dos endereços 4, 5, 10 e 11.</p>
+<figure class="fig-full"><a href="imagens/12-blocos-linhas.svg" target="_blank"><img src="imagens/12-blocos-linhas.svg" alt="Figura 12 – Exemplo de dois blocos da MP presentes em duas linhas da cache: cada linha armazena dois bytes." loading="lazy"></a><figcaption>Figura 12 – Exemplo de dois blocos da MP presentes em duas linhas da cache: cada linha armazena dois bytes.</figcaption></figure>
+<p>O mesmo raciocínio pode ser generalizado. Se a MP possui <strong>M blocos</strong> e a cache possui <strong>C linhas</strong>, cada bloco e cada linha contendo <strong>K posições</strong> de <strong>N bits</strong>, então:</p>
+<div class="codeline">MP: M × K posições &nbsp; → &nbsp; M × K × N bits<br>Cache: C × K posições &nbsp; → &nbsp; C × K × N bits de dados</div>
+<p>No exemplo, M = 8, C = 2, K = 2 e N = 8: a MP possui 8 × 2 × 8 = 128 bits (16 bytes), e a cache possui 2 × 2 × 8 = 32 bits (4 bytes). Os blocos da MP são numerados de 0 a M − 1; as linhas da cache, de 0 a C − 1.</p>
+<p>Como M é maior que C, diversos blocos da MP podem ser candidatos a ocupar uma mesma linha. Entretanto, <strong>uma linha contém apenas um bloco por vez</strong>. O <strong>tag</strong> permite identificar qual bloco está presente, em conjunto com o índice quando o mapeamento utiliza índice. O bit <strong>válido</strong> indica se o conteúdo pode ser utilizado. Sob escrita retroativa, o bit <strong>modificado</strong> (<i>dirty</i>) indica que o bloco difere da cópia do próximo nível. <span class="citation">(<a href="#ref-stallings">Stallings, 2019</a>).</span></p>
+<p>Tags e bits de estado são armazenados além dos dados. Eles aumentam o armazenamento físico necessário, sem ampliar a capacidade de dados anunciada da cache. A maneira de associar os blocos às linhas depende do mapeamento, que será tratado a seguir. O exemplo reduzido M = 8, C = 2 e K = 2 será mantido nos cálculos de mapeamento.</p>
+<h3>4.7.5 Operação de leitura</h3><p>Seja o endereço X solicitado pela CPU. O controlador identifica o bloco, consulta as linhas permitidas pelo mapeamento e verifica se a tag corresponde e o estado é válido. Se o bloco está presente, ocorre um <strong>acerto</strong> (<i>hit</i>): o deslocamento seleciona o dado dentro da linha e a resposta é fornecida ao núcleo. <span class="citation">(<a href="#ref-tanenbaum">Tanenbaum, 2007</a>; <a href="#ref-stallings">Stallings, 2019</a>).</span></p><p>Se o bloco não está presente, ocorre uma <strong>falta</strong> (<i>miss</i>). O controlador solicita o bloco ao próximo nível, seleciona a linha de destino e atualiza os dados, a tag e o estado. Se houver uma vítima modificada sob write-back, seu conteúdo precisa ser preservado no próximo nível antes da reutilização. O dado solicitado é então entregue à CPU; projetos reais podem antecipar a entrega da palavra crítica. <span class="citation">(<a href="#ref-tanenbaum">Tanenbaum, 2007</a>; <a href="#ref-stallings">Stallings, 2019</a>).</span></p>
+<h3>4.7.6 Mapeamento direto</h3><p>No mapeamento direto, cada bloco da MP possui uma única linha de destino. Para um endereço X expresso em posições do exemplo: <span class="citation">(<a href="#ref-tanenbaum">Tanenbaum, 2007</a>; <a href="#ref-stallings">Stallings, 2019</a>).</span></p><div class="codeline">bloco b = ⌊X/K⌋ &nbsp; • &nbsp; deslocamento d = X mod K<br>linha ℓ = b mod C &nbsp; • &nbsp; tag = ⌊b/C⌋</div>
+<p>A regra de associação é implementada pela decodificação do endereço; não requer necessariamente uma tabela de software. Se M é múltiplo de C, existem M/C blocos candidatos a cada linha. Esse quociente não é uma regra geral para todos os tipos de mapeamento. <span class="citation">(<a href="#ref-tanenbaum">Tanenbaum, 2007</a>; <a href="#ref-stallings">Stallings, 2019</a>).</span></p><figure class="fig-full"><a href="imagens/14-mapeamento-direto.svg" target="_blank"><img src="imagens/14-mapeamento-direto.svg" alt="Figura 13 – Mapeamento direto com oito blocos e duas linhas; decomposição completa do endereço." loading="lazy"></a><figcaption>Figura 13 – Mapeamento direto com oito blocos e duas linhas; decomposição completa do endereço.</figcaption></figure>
+<p>Se C e K são potências de dois, o endereço é dividido em <strong>tag | índice de linha | deslocamento</strong>. Neste exemplo, são 2 + 1 + 1 bits. Para X = 13 = 1101₂, b = 6, ℓ = 0, tag = 3 e d = 1. O dado está presente somente se a linha 0 estiver válida e sua tag for 3. <span class="citation">(<a href="#ref-tanenbaum">Tanenbaum, 2007</a>; <a href="#ref-stallings">Stallings, 2019</a>).</span></p><p>Essa técnica é simples, mas produz faltas por conflito: B0 e B2 disputam a linha 0 mesmo que a linha 1 esteja livre. Na falta, o destino é fixo; não existe escolha entre várias linhas para substituir. <span class="citation">(<a href="#ref-tanenbaum">Tanenbaum, 2007</a>; <a href="#ref-stallings">Stallings, 2019</a>).</span></p>
+<h3>4.7.7 Mapeamento totalmente associativo e substituição</h3><p>No mapeamento totalmente associativo, <strong>qualquer bloco pode ocupar qualquer linha</strong>. O controlador compara a tag com as tags das linhas válidas. No exemplo, o endereço se divide em <strong>tag de 3 bits | deslocamento de 1 bit</strong>; a tag identifica o bloco completo, pois não existe índice de linha no endereço. <span class="citation">(<a href="#ref-tanenbaum">Tanenbaum, 2007</a>; <a href="#ref-stallings">Stallings, 2019</a>).</span></p><figure class="fig-full"><a href="imagens/15-mapeamento-associativo.svg" target="_blank"><img src="imagens/15-mapeamento-associativo.svg" alt="Figura 14 – Mapeamento totalmente associativo e escolha da linha de substituição." loading="lazy"></a><figcaption>Figura 14 – Mapeamento totalmente associativo e escolha da linha de substituição.</figcaption></figure>
+<p>Quando existe uma linha inválida, ela pode receber o bloco. Se todas estão ocupadas, o controlador utiliza uma política de substituição: <span class="citation">(<a href="#ref-tanenbaum">Tanenbaum, 2007</a>; <a href="#ref-stallings">Stallings, 2019</a>).</span></p><ul class="plain"><li><strong>FIFO:</strong> substitui o bloco inserido há mais tempo. Um acesso não altera a ordem de inserção.</li><li><strong>LRU:</strong> substitui o bloco que há mais tempo não é acessado, e não necessariamente o mais antigo na cache.</li><li><strong>Pseudo-LRU:</strong> aproxima a decisão LRU com menos metadados e circuitos.</li><li><strong>Aleatória:</strong> escolhe uma vítima sem manter toda a ordem de uso.</li></ul>
+<p>Se B0 foi carregado antes de B1 e, depois, B0 foi acessado novamente, FIFO escolherá B0, enquanto LRU escolherá B1. A associação completa reduz conflitos de destino, mas exige mais comparadores e controle; não garante ganho de desempenho em todo projeto.</p>
+<p>O <strong>mapeamento associativo por conjunto</strong> combina as técnicas. A cache é dividida em S conjuntos de A vias, com C = S × A. O bloco b vai para o conjunto b mod S e pode ocupar qualquer uma das A linhas desse conjunto. A política de substituição atua dentro do conjunto. O endereço se divide em tag | índice do conjunto | deslocamento. <span class="citation">(<a href="#ref-tanenbaum">Tanenbaum, 2007</a>; <a href="#ref-stallings">Stallings, 2019</a>).</span></p>
+<h3>4.7.8 Desempenho de sistemas com cache</h3><p>A taxa de acertos h é a razão entre os acessos atendidos pela cache e o total de acessos. A taxa de faltas é 1 − h. No exemplo restrito de k acessos a um bloco, com uma primeira falta e k − 1 acertos, h = (k − 1)/k. Essa relação não vale automaticamente para qualquer sequência de acessos. <span class="citation">(<a href="#ref-tanenbaum">Tanenbaum, 2007</a>; <a href="#ref-stallings">Stallings, 2019</a>).</span></p>
+<p>Se c é o tempo de consulta à cache e p é a <strong>penalidade adicional de falta</strong>, o tempo médio de acesso, em um modelo serial simples, será: <span class="citation">(<a href="#ref-tanenbaum">Tanenbaum, 2007</a>; <a href="#ref-stallings">Stallings, 2019</a>).</span></p><div class="codeline">t<sub>M</sub> = c + (1 − h) × p</div>
+<p>Por exemplo, com <strong>valores didáticos</strong> c = 2 ns, p = 80 ns e h = 0,95, resulta t<sub>M</sub> = 2 + 0,05 × 80 = <strong>6 ns</strong>. A consulta à cache é paga em todos os acessos; a penalidade adicional é paga somente nas faltas. O custo de substituir uma linha modificada pode fazer parte dessa penalidade.</p>
+<p>Na expressão da Nota 4, t<sub>M</sub> = c + (1 − h) × m, m deve ser entendido como o custo adicional após a consulta, incluindo os componentes assumidos no modelo. Se m representar o <strong>tempo total de uma falta</strong>, medido desde o início da consulta, a forma equivalente será t<sub>M</sub> = h × c + (1 − h) × m, pois m = c + p. Isso resolve a diferença entre a fórmula da nota e a do slide 54.</p>
+<p>Para dois níveis consultados em sequência, usando taxas de faltas locais f₁ e f₂ e tempos c₁ e c₂, o modelo se estende a t<sub>M</sub> = c₁ + f₁ × (c₂ + f₂ × p<sub>MP</sub>). f₂ é a fração de faltas entre os acessos que chegaram à L2. Operações sobrepostas, prefetch e filas exigem modelos mais detalhados.</p>
+<p>Um menor tempo médio de acesso não implica o mesmo fator de redução no tempo total do programa. O ganho depende da parcela de execução limitada por memória, das faltas e das operações que o processador consegue realizar durante a espera. Aumentar a capacidade ou a associatividade pode reduzir faltas e, ao mesmo tempo, aumentar tempo de consulta, área e consumo. <span class="citation">(<a href="#ref-tanenbaum">Tanenbaum, 2007</a>; <a href="#ref-stallings">Stallings, 2019</a>).</span></p>
+<h3>4.7.9 Operação de escrita</h3><p>A leitura procura uma cópia válida; a escrita precisa definir onde e quando as cópias serão atualizadas. Em um <strong>acerto de escrita</strong>, duas políticas principais podem ser empregadas: <span class="citation">(<a href="#ref-tanenbaum">Tanenbaum, 2007</a>; <a href="#ref-stallings">Stallings, 2019</a>).</span></p><ul class="plain"><li><strong>Escrita direta, write-through:</strong> o dado é atualizado na cache e a atualização é enviada ao nível seguinte em cada escrita. Um buffer pode desacoplar a execução da CPU da conclusão dessa transferência; as cópias não precisam ser eletricamente atualizadas no mesmo instante.</li><li><strong>Escrita retroativa, write-back:</strong> o dado é atualizado na cache e a linha é marcada como modificada. O bloco é escrito no nível seguinte quando precisa ser expulso ou quando uma operação de limpeza/coerência exige a atualização. Uma linha não modificada pode ser descartada sem escrita.</li></ul><figure class="fig-full"><a href="imagens/16-cache-escrita.svg" target="_blank"><img src="imagens/16-cache-escrita.svg" alt="Figura 15 – Políticas de escrita, baseada nos slides 52 e 53 e nas Figuras 12 e 13 da Nota 4." loading="lazy"></a><figcaption>Figura 15 – Políticas de escrita, baseada nos slides 52 e 53 e nas Figuras 12 e 13 da Nota 4.</figcaption></figure>
+<p>Em uma <strong>falta de escrita</strong>, a decisão é independente: <span class="citation">(<a href="#ref-tanenbaum">Tanenbaum, 2007</a>; <a href="#ref-stallings">Stallings, 2019</a>).</span></p><ul class="plain"><li><strong>Write-allocate:</strong> aloca uma linha para o bloco, normalmente obtendo o bloco no próximo nível, e realiza a escrita nessa linha.</li><li><strong>No-write-allocate:</strong> envia a escrita ao próximo nível sem carregar o bloco nessa cache.</li></ul><p>Write-back é frequentemente combinado com write-allocate, e write-through com no-write-allocate, mas as combinações dependem do projeto. Em hierarquias com vários níveis, “próximo nível” pode ser L2 ou L3; uma escrita não precisa alcançar imediatamente a MP. <span class="citation">(<a href="#ref-tanenbaum">Tanenbaum, 2007</a>; <a href="#ref-stallings">Stallings, 2019</a>).</span></p>
+<p>Em sistemas com vários núcleos, a coerência controla as cópias do mesmo bloco para que as leituras observem os valores permitidos pela arquitetura. Ela acrescenta estados, mensagens e possíveis transferências entre caches. O tratamento detalhado de coerência e consistência de memória depende da arquitetura do processador. <span class="citation">(<a href="#ref-tanenbaum">Tanenbaum, 2007</a>; <a href="#ref-stallings">Stallings, 2019</a>).</span></p><p class="source">Referências para organização, localidade, mapeamento, substituição, desempenho e escrita: <a href="#ref-tanenbaum">Tanenbaum (2007)</a>, <a href="#ref-stallings">Stallings (2019)</a>. Implementações e caracterização de CPUs: <a href="#ref-intel">Intel – manual de otimização</a>.</p></section>
+<section class="section" id="referencias"><div class="section-label">Fontes</div><h2>Referências e materiais de apoio</h2><p>Material-base: SILVA, Clayton J A. <i>Nota de Aula 4 – Elementos do sistema de computação</i>, 2021.2; e <i>Arquitetura de Computadores – Memória e Barramento</i>, slides de memória 2–54. Os slides de barramento, a partir do 55, não integram este capítulo.</p><ol class="plain references"><li id="ref-tanenbaum">TANENBAUM, A. S. Organização estruturada de computadores. 5. ed. Prentice-Hall, 2007. Referência conceitual preservada da Nota 4. Ver também TANENBAUM, A. S.; AUSTIN, T. Structured Computer Organization. 6. ed. Pearson, 2013. <a href="https://in.pearson.com/content/dam/region-growth/india/pearson-india/Support/pdf/06-CSE.pdf" target="_blank" rel="noopener">Consultar fonte</a>.</li><li id="ref-stallings">STALLINGS, W. Computer Organization and Architecture: Designing for Performance. 11. ed. Pearson, 2019. Hierarquia, memória interna e cache. <a href="https://www.pearson.com/en-us/subject-catalog/p/computer-organization-and-architecture/P200000003394/9780135204979" target="_blank" rel="noopener">Consultar fonte</a>.</li><li id="ref-nist">NIST. Prefixes for binary multiples. Convenção para bit, byte e múltiplos binários. <a href="https://physics.nist.gov/cuu/Units/binary.html" target="_blank" rel="noopener">Consultar fonte</a>.</li><li id="ref-kingston">KINGSTON. KVR56U46BS8K2-32. Datasheet: kit DDR5-5600 CL46 de 32 GB. <a href="https://www.kingston.com/datasheets/KVR56U46BS8K2-32.pdf" target="_blank" rel="noopener">Consultar fonte</a>.</li><li id="ref-amd">AMD. Ryzen 9 9950X. Especificações de núcleos e capacidades totais de cache. <a href="https://www.amd.com/en/products/processors/desktops/ryzen/9000-series/amd-ryzen-9-9950x.html" target="_blank" rel="noopener">Consultar fonte</a>.</li><li id="ref-intel">INTEL. Intel 64 and IA-32 Architectures Optimization Reference Manual. Organização, latência e vazão em microarquiteturas específicas. <a href="https://www.intel.com/content/www/us/en/developer/articles/technical/intel64-and-ia32-architectures-optimization.html" target="_blank" rel="noopener">Consultar fonte</a>.</li><li id="ref-sram">INFINEON. CY7C10612G30-10ZSXI. SRAM assíncrona 16 Mbit, tAA e tRC de 10 ns. <a href="https://www.infineon.com/part/CY7C10612G30-10ZSXI" target="_blank" rel="noopener">Consultar fonte</a>.</li><li id="ref-sata">SAMSUNG. SSD 870 EVO Data Sheet, revisão 1.1. Dados do modelo de 1 TB. <a href="https://download.semiconductor.samsung.com/resources/data-sheet/Samsung_SSD_870_EVO_Data_Sheet_Rev1.1_230509_10129500053000.pdf" target="_blank" rel="noopener">Consultar fonte</a>.</li><li id="ref-nvme">SAMSUNG. 990 PRO PCIe 4.0 NVMe M.2 SSD, 1 TB. Especificações e garantia. <a href="https://www.samsung.com/be_fr/memory-storage/nvme-ssd/990-pro-1tb-nvme-pcie-gen-4-mz-v9p1t0bw/" target="_blank" rel="noopener">Consultar fonte</a>.</li><li id="ref-hdd">SEAGATE. Exos X24 Data Sheet. Capacidade e transferência sustentada. <a href="https://www.seagate.com/content/dam/seagate/en/content-fragments/products/datasheets/exos-x24/exos-x24-DS2080-2307US-en_US.pdf" target="_blank" rel="noopener">Consultar fonte</a>.</li><li id="ref-ibm">IBM. LTO tape drives. Capacidade e taxa nativas de unidades LTO-9. <a href="https://www.ibm.com/docs/en/dtl?topic=drives-lto-tape" target="_blank" rel="noopener">Consultar fonte</a>.</li><li id="ref-microchip">MICROCHIP. Memory Products; Memory Features. SRAM, EEPROM, flash e usos em microcontroladores. <a href="https://www.microchip.com/en-us/products/microcontrollers/8-bit-mcus/peripherals/system-flexibility/memory" target="_blank" rel="noopener">Consultar fonte</a>.</li><li id="ref-eeram">MICROCHIP. Serial EERAM. SRAM com respaldo não volátil e salvamento na queda de alimentação. <a href="https://www.microchip.com/en-us/products/memory/serial-eeram" target="_blank" rel="noopener">Consultar fonte</a>.</li><li id="ref-backus">BACKUS, John. Can Programming Be Liberated from the von Neumann Style? A Functional Style and Its Algebra of Programs. <i>Communications of the ACM</i>, v. 21, n. 8, p. 613–641, 1978. Seção 3 (p. 615): computadores de von Neumann e seu gargalo. <a href="https://doi.org/10.1145/359576.359579" target="_blank" rel="noopener">Artigo / DOI</a> · <a href="https://worrydream.com/refs/Backus_1978_-_Can_Programming_Be_Liberated_from_the_von_Neumann_Style.pdf" target="_blank" rel="noopener">Texto do artigo</a>.</li><li id="ref-intel-cache">INTEL. <i>Improving Real-Time Performance by Utilizing Cache Allocation Technology</i>. 2015. Hierarquia L1, L2 e L3 e integração no processador. <a href="https://www.intel.com/content/dam/www/public/us/en/documents/white-papers/cache-allocation-technology-white-paper.pdf" target="_blank" rel="noopener">White paper</a>.</li></ol><p class="source">Fontes técnicas consultadas em 7 de outubro de 2026. Os desenhos são esquemas didáticos originais baseados na sequência do material, exceto a Figura 1, reproduzida da nota. </p></section></main><footer><div class="container">Arquitetura de Computadores · Capítulo 4 — Sistema de Memória · Prof. Clayton J A Silva</div></footer><script>function updateProgress(){const max=document.documentElement.scrollHeight-innerHeight;document.getElementById("progress").style.width=(max>0?Math.min(100,scrollY/max*100):0)+"%";}addEventListener("scroll",updateProgress,{passive:true});addEventListener("resize",updateProgress);updateProgress();</script></body></html>
