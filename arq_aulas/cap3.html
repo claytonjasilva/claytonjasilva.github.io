@@ -114,20 +114,6 @@ td.tleft, th.tleft{text-align:left;}
 .ds-item a{font-size:.8rem;color:var(--text);font-family:var(--font-mono);}
 .ds-item a:hover{color:var(--accent);text-decoration:none;}
 
-.quiz{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:1.6rem;margin:1.5rem 0;}
-.quiz-header{display:flex;align-items:center;gap:.6rem;margin-bottom:1.2rem;}
-.quiz-header svg{flex-shrink:0;}
-.quiz-title{font-family:var(--font-mono);font-size:.8rem;color:var(--accent2);letter-spacing:.05em;}
-.quiz-q{font-size:.95rem;margin-bottom:.9rem;color:var(--text);}
-.quiz-options{display:flex;flex-direction:column;gap:.55rem;}
-.quiz-opt{background:var(--tag-bg);border:1px solid var(--border);border-radius:6px;padding:.7rem 1rem;font-size:.85rem;color:var(--muted);cursor:pointer;transition:.15s;text-align:left;width:100%;font-family:var(--font-sans);}
-.quiz-opt:hover{border-color:var(--accent);color:var(--text);}
-.quiz-opt.correct{border-color:#22c55e;background:rgba(34,197,94,.08);color:#86efac;}
-.quiz-opt.wrong{border-color:#ef4444;background:rgba(239,68,68,.08);color:#fca5a5;}
-.quiz-feedback{margin-top:.9rem;font-size:.85rem;padding:.8rem 1rem;border-radius:6px;display:none;}
-.quiz-feedback.show{display:block;}
-.quiz-feedback.correct-fb{background:rgba(34,197,94,.08);border:1px solid #22c55e;color:#86efac;}
-.quiz-feedback.wrong-fb{background:rgba(239,68,68,.08);border:1px solid #ef4444;color:#fca5a5;}
 
 .refs-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:.8rem;}
 .ref-card{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:1rem 1.2rem;display:flex;gap:.8rem;align-items:flex-start;transition:.2s;}
@@ -151,12 +137,71 @@ footer p{font-size:.8rem;color:var(--muted);font-family:var(--font-mono);}
 
 .katex{color:var(--accent);font-size:1.05em;}
 
-.dwire{stroke:#3b4a5e;stroke-width:1.6;fill:none;}
-.dbox{stroke:#00c2ff;stroke-width:1.6;fill:none;}
-.dbox2{stroke:#7c3aed;stroke-width:1.6;fill:none;}
-.dlbl{font-family:'IBM Plex Mono',monospace;font-size:13px;fill:#cbd5e1;}
-.dlbl2{font-family:'IBM Plex Mono',monospace;font-size:11px;fill:#64748b;}
-.gate{stroke:#00c2ff;stroke-width:1.6;fill:none;}
+.circ .g{fill:rgba(0,194,255,.07);stroke:#00c2ff;stroke-width:1.8;stroke-linejoin:round;}
+.circ .w{stroke:#6b7f99;stroke-width:1.8;fill:none;stroke-linecap:round;stroke-linejoin:round;transition:stroke .2s;}
+.circ .w.hi{stroke:#facc15;}
+.circ .jd{fill:#9fb3c8;transition:fill .2s;}
+.circ .jd.hi{fill:#facc15;}
+.circ .term{fill:#0a0e17;stroke:#cbd5e1;stroke-width:1.6;}
+.circ text{font-family:'IBM Plex Mono',monospace;}
+.circ .t{font-size:14px;fill:#e2e8f0;font-weight:500;}
+.circ .ts{font-size:11.5px;fill:#8a9bb3;}
+.circ .tb{font-size:11px;fill:#a78bfa;letter-spacing:.04em;}
+.circ .tg{font-size:10px;fill:#00c2ff;opacity:.85;}
+.circ .tv{font-size:15px;fill:#64748b;font-weight:600;}
+.circ .tv.hi{fill:#facc15;}
+.circ .sub{font-size:.72em;baseline-shift:sub;}
+.circ .box{fill:rgba(124,58,237,.04);stroke:#7c3aed;stroke-width:1.2;stroke-dasharray:5 4;}
+.circ .blk{fill:rgba(0,194,255,.07);stroke:#00c2ff;stroke-width:1.8;}
+.circ .blk2{fill:rgba(124,58,237,.10);stroke:#7c3aed;stroke-width:1.8;}
+.circ .tbig{font-size:34px;fill:#e2e8f0;font-family:'IBM Plex Sans',sans-serif;}
+.circ .w.bus{stroke-width:3.2;}
+.circ .arrh{fill:#6b7f99;}
+.circ .w.axis{stroke:#475569;}
+.circ .lvl{fill:#0f172a;stroke:#1e2d40;stroke-width:1.4;}
+.circ .lvl.hl{fill:rgba(0,194,255,.10);stroke:#00c2ff;}
+.circ .lvl.dev{stroke-dasharray:5 4;fill:none;}
+.circ .lvn{font-size:20px;fill:#475569;font-weight:600;}
+.circ .lvn.hl,.circ .thl{fill:#00c2ff;}
+.circ .tcode{font-size:13px;fill:#a5f3fc;}
+
+figure{margin:1.5rem 0;}
+.fig-title{font-family:var(--font-mono);font-size:.74rem;color:var(--text);text-align:center;margin:0 0 .8rem;}
+.fig-source{font-family:var(--font-mono);font-size:.68rem;color:var(--muted);text-align:left;margin:.7rem 0 0;}
+.concept-fig .fig-title{margin-bottom:.4rem;}
+.tt-wrap{margin:1.4rem 0;}
+.tt-wrap .fig-title{text-align:left;}
+table.tt{margin:.2rem 0;font-family:var(--font-mono);}
+table.tt th{text-transform:none;font-size:.78rem;}
+table.tt td.mid,table.tt th.mid{color:#94a3b8;background:rgba(124,58,237,.05);}
+table.tt td.out{color:var(--accent);font-weight:600;background:rgba(0,194,255,.05);}
+table.tt th.out{color:var(--accent);}
+table.tt td.in{color:#cbd5e1;}
+.ex-head{display:flex;align-items:baseline;gap:.7rem;margin:1.8rem 0 .5rem;}
+.ex-head .method-num{margin:0;}
+.ex-head h4{margin:0;color:var(--text);}
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:1.6rem;align-items:start;}
+@media (max-width:760px){.two-col{grid-template-columns:1fr;}}
+pre.colsum{background:var(--tag-bg);border:1px solid var(--border);border-radius:6px;padding:1rem 1.4rem;font-family:var(--font-mono);font-size:.95rem;line-height:1.55;color:#cbd5e1;overflow-x:auto;margin:1rem 0;}
+pre.colsum .c{color:#a78bfa;} pre.colsum .r{color:var(--accent);font-weight:600;}
+.sim{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:1.2rem;margin:1.5rem 0;}
+.sim .fig-title{margin-bottom:1rem;}
+.sim-ctrl{display:flex;flex-wrap:wrap;gap:1.2rem;align-items:center;justify-content:space-between;margin-bottom:1rem;}
+.sim-group{display:flex;align-items:center;gap:.45rem;font-family:var(--font-mono);font-size:.8rem;color:var(--muted);}
+.bit{font-family:var(--font-mono);font-size:.82rem;background:var(--tag-bg);color:var(--muted);border:1px solid var(--border);border-radius:6px;padding:.4rem .7rem;cursor:pointer;transition:.15s;}
+.bit:hover{border-color:var(--accent);color:var(--text);}
+.bit.on{border-color:#facc15;color:#facc15;background:rgba(250,204,21,.08);}
+.sim-read{font-family:var(--font-mono);font-size:.85rem;color:var(--text);background:var(--tag-bg);border:1px solid var(--border);border-radius:6px;padding:.45rem .8rem;}
+.sim-read b{color:#facc15;font-weight:600;}
+.sim svg{width:100%;display:block;}
+.trace{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:.4rem;margin-top:1rem;}
+.trace div{font-family:var(--font-mono);font-size:.74rem;color:var(--muted);background:var(--tag-bg);border:1px solid var(--border);border-radius:5px;padding:.4rem .6rem;}
+.trace div b{color:var(--accent);font-weight:500;}
+.trace div .v1{color:#facc15;font-weight:600;}
+.lvl-table td{vertical-align:top;font-size:.8rem;}
+.lvl-table td:first-child{font-family:var(--font-mono);color:var(--accent);font-weight:600;}
+.lvl-table tr.hl td{background:rgba(0,194,255,.05);}
+.abnt-ref{font-size:.88rem;color:#cbd5e1;text-align:left;margin-bottom:.9rem;padding-left:0;}
 </style>
 </head>
 <body>
@@ -165,10 +210,12 @@ footer p{font-size:.8rem;color:var(--muted);font-family:var(--font-mono);}
   <div class="container">
     <span class="nav-brand">arq · cap. 3</span>
     <ul class="nav-links">
+      <li><a href="#s0">Introdução</a></li>
       <li><a href="#s1">3.1 Álgebra Booleana</a></li>
       <li><a href="#s2">3.2 Tabela-verdade</a></li>
       <li><a href="#s3">3.3 Portas lógicas</a></li>
-      <li><a href="#quiz">Quiz</a></li>
+      <li><a href="#s4">3.4 Somador</a></li>
+      <li><a href="#s5">3.5 Abstração</a></li>
       <li><a href="https://claytonjasilva.github.io/arq.html">← disciplina</a></li>
     </ul>
   </div>
@@ -183,7 +230,7 @@ footer p{font-size:.8rem;color:var(--muted);font-family:var(--font-mono);}
     <div class="hero-meta">
       <span class="meta-item">
         <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><circle cx="7" cy="7" r="6" stroke="currentColor" stroke-width="1.2"/><path d="M7 4v3l2 1.5" stroke="currentColor" stroke-width="1.2"/></svg>
-        leitura ~30 min
+        leitura ~50 min
       </span>
       <span class="meta-item">
         <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><rect x="2" y="3" width="10" height="9" rx="1" stroke="currentColor" stroke-width="1.2"/><line x1="2" y1="6" x2="12" y2="6" stroke="currentColor" stroke-width="1.2"/></svg>
@@ -198,15 +245,19 @@ footer p{font-size:.8rem;color:var(--muted);font-family:var(--font-mono);}
     <div class="objectives">
       <p class="label">Objetivos de aprendizagem</p>
       <ul>
+        <li>Situar o nível de lógica digital no modelo de máquina multinível como o nível de menor abstração</li>
         <li>Definir proposição, valor lógico e operadores lógicos primitivos (AND, OR, NOT)</li>
-        <li>Construir e interpretar tabelas-verdade para expressões booleanas</li>
+        <li>Construir e interpretar tabelas-verdade para expressões booleanas, inclusive funções de três variáveis</li>
         <li>Reconhecer tautologias, contradições e equivalências lógicas</li>
         <li>Identificar as portas lógicas básicas e seus respectivos fabricantes/datasheets</li>
         <li>Descrever algebricamente circuitos lógicos combinacionais e sequenciais</li>
+        <li>Analisar o meio-somador, o somador completo e um somador de 2 bits, porta a porta</li>
+        <li>Relacionar a análise do somador ao aumento de abstração nos níveis superiores do modelo</li>
       </ul>
     </div>
 
     <div class="toc">
+      <a href="#s0">Introdução</a>
       <a href="#s1">3.1 Álgebra Booleana</a>
       <a href="#s1a">3.1.1 Proposição</a>
       <a href="#s1b">3.1.2 AND</a>
@@ -214,13 +265,39 @@ footer p{font-size:.8rem;color:var(--muted);font-family:var(--font-mono);}
       <a href="#s1d">3.1.4 NOT</a>
       <a href="#s1e">3.1.5 Expressões lógicas</a>
       <a href="#s2">3.2 Tabela-verdade</a>
+      <a href="#s2a">3.2.1 Funções de três variáveis</a>
       <a href="#s3">3.3 Portas lógicas</a>
       <a href="#s3d">3.3.4 Circuitos lógicos digitais</a>
+      <a href="#s4">3.4 Somador de 2 bits</a>
+      <a href="#s5">3.5 Do nível 0 aos demais níveis</a>
+      <a href="#refs">Referências</a>
     </div>
   </div>
 </section>
 
 <div class="container">
+
+
+  <!-- INTRODUÇÃO -->
+  <section class="section" id="s0">
+    <p class="section-label">introdução / o nível 0 da máquina multinível</p>
+    <h2>Introdução: o nível de lógica digital na máquina multinível</h2>
+
+    <p>No Capítulo 2, o computador foi apresentado como uma <strong>máquina multinível</strong>: uma hierarquia de máquinas virtuais em que cada nível <em>M<sub>n</sub></em> oferece uma linguagem <em>L<sub>n</sub></em> ao nível superior e executa seus programas por <strong>tradução</strong> ou <strong>interpretação</strong> com o auxílio do nível imediatamente inferior. No modelo de seis níveis (TANENBAUM; AUSTIN, 2013), cada degrau acima esconde detalhes do degrau de baixo e oferece uma interface mais simples e mais próxima do raciocínio humano.</p>
+
+    <p>Este capítulo trata do degrau da base: o <strong>nível 0 — lógica digital</strong>. Ele é o nível <strong>mais primitivo</strong> do modelo, ou seja, o de <strong>menor abstração</strong>. Nele não existem instruções, variáveis nem programas; existem apenas <strong>sinais binários</strong> (0 e 1) e <strong>portas lógicas</strong> que os combinam segundo funções booleanas. Tudo o que os níveis superiores realizam — somar, comparar, deslocar, armazenar — precisa, em última instância, ser executado por redes de portas.</p>
+
+    <figure class="fig-full"><p class="fig-title">Figura 3.1 – Máquina multinível de seis níveis, com destaque para o nível de lógica digital</p><svg viewBox="0 0 1050 440" xmlns="http://www.w3.org/2000/svg" class="circ " role="img" aria-label="Máquina multinível de seis níveis"><rect x="150" y="20" width="530" height="50" rx="8" class="lvl"/><text x="172" y="51" class="lvn">5</text><text x="210" y="51" class="t">Nível 5 · Linguagem orientada a problemas</text><text x="698" y="79.0" class="ts">↓ tradução (compilador)</text><rect x="150" y="80" width="530" height="50" rx="8" class="lvl"/><text x="172" y="111" class="lvn">4</text><text x="210" y="111" class="t">Nível 4 · Linguagem de montagem</text><text x="698" y="139.0" class="ts">↓ tradução (montador)</text><rect x="150" y="140" width="530" height="50" rx="8" class="lvl"/><text x="172" y="171" class="lvn">3</text><text x="210" y="171" class="t">Nível 3 · Máquina do sistema operacional</text><text x="698" y="199.0" class="ts">↓ interpretação parcial (SO)</text><rect x="150" y="200" width="530" height="50" rx="8" class="lvl"/><text x="172" y="231" class="lvn">2</text><text x="210" y="231" class="t">Nível 2 · Arquitetura do conjunto de instruções (ISA)</text><text x="698" y="259.0" class="ts">↓ interpretação (microprograma) ou execução direta</text><rect x="150" y="260" width="530" height="50" rx="8" class="lvl"/><text x="172" y="291" class="lvn">1</text><text x="210" y="291" class="t">Nível 1 · Microarquitetura</text><text x="698" y="319.0" class="ts">↓ hardware</text><rect x="150" y="320" width="530" height="50" rx="8" class="lvl hl"/><text x="172" y="351" class="lvn hl">0</text><text x="210" y="351" class="t thl">Nível 0 · Lógica digital</text><rect x="150" y="380" width="530" height="44" rx="8" class="lvl dev"/><text x="210" y="408" class="ts">Nível de dispositivo · transistores (fora do modelo)</text><path d="M100 370 V32" class="w axis"/><path d="M94 34 L100 20 L106 34 Z" class="arrh"/><text x="80" y="195.0" class="ts" text-anchor="middle" transform="rotate(-90 80 195.0)">abstração crescente</text></svg><p class="fig-source">Fonte: adaptada de Tanenbaum e Austin (2013).</p></figure>
+
+    <div class="definition">
+      <p class="dtitle">nível de lógica digital</p>
+      <p style="margin:0">Nível 0 do modelo de máquina multinível. É a <strong>máquina real</strong> formada por portas lógicas interligadas, cuja “linguagem” são os valores lógicos 0 e 1 e as funções booleanas que as portas implementam. É o ponto de contato entre a abstração lógica e a realidade física do circuito eletrônico.</p>
+    </div>
+
+    <p>Abaixo do nível 0 situa-se o <strong>nível de dispositivo</strong> — transistores, tensões, correntes e física dos semicondutores —, domínio da engenharia eletrônica e, por isso, fora do escopo do modelo. O nível de lógica digital funciona como uma primeira abstração sobre ele: em vez de tensões contínuas, interessa apenas se o sinal é <strong>alto (1)</strong> ou <strong>baixo (0)</strong>.</p>
+
+    <div class="note"><strong>Roteiro do capítulo.</strong> Primeiro, o ferramental matemático do nível 0: a álgebra booleana (3.1) e as tabelas-verdade (3.2). Em seguida, os elementos físicos: as portas lógicas (3.3). Por fim, um primeiro bloco aritmético — o somador de 2 bits (3.4) — e a análise de como essa mesma soma é vista, com abstração crescente, em cada um dos níveis superiores (3.5).</div>
+  </section>
 
   <!-- 3.1 -->
   <section class="section" id="s1">
@@ -337,6 +414,24 @@ footer p{font-size:.8rem;color:var(--muted);font-family:var(--font-mono);}
       </tbody>
     </table>
 
+
+    <h3 id="s2a">3.2.1 Exemplos de funções de três variáveis</h3>
+    <p>Com três variáveis, A, B e C, há 2<sup>3</sup> = <strong>8 combinações</strong>. Por convenção, as linhas são listadas na ordem da contagem binária de 000 a 111, com A como bit mais significativo. As colunas intermediárias registram os termos da expressão e facilitam a verificação do resultado.</p>
+
+    <div class="ex-head"><span class="method-num">exemplo 1</span><h4>$F = A \cdot B + \bar{C}$</h4></div>
+    <p>A saída vale 1 quando A e B valem 1 simultaneamente <strong>ou</strong> quando C vale 0. Pela precedência, resolve-se primeiro a negação, depois a conjunção e, por fim, a disjunção.</p>
+    <div class="tt-wrap" style="max-width:460px"><p class="fig-title">Tabela 3.1 – Tabela-verdade de F = A·B + C̄</p><table class="tt"><thead><tr><th class="in">A</th><th class="in">B</th><th class="in">C</th><th class="mid">$A\cdot B$</th><th class="mid">$\bar{C}$</th><th class="out">F</th></tr></thead><tbody><tr><td class="in">0</td><td class="in">0</td><td class="in">0</td><td class="mid">0</td><td class="mid">1</td><td class="out">1</td></tr><tr><td class="in">0</td><td class="in">0</td><td class="in">1</td><td class="mid">0</td><td class="mid">0</td><td class="out">0</td></tr><tr><td class="in">0</td><td class="in">1</td><td class="in">0</td><td class="mid">0</td><td class="mid">1</td><td class="out">1</td></tr><tr><td class="in">0</td><td class="in">1</td><td class="in">1</td><td class="mid">0</td><td class="mid">0</td><td class="out">0</td></tr><tr><td class="in">1</td><td class="in">0</td><td class="in">0</td><td class="mid">0</td><td class="mid">1</td><td class="out">1</td></tr><tr><td class="in">1</td><td class="in">0</td><td class="in">1</td><td class="mid">0</td><td class="mid">0</td><td class="out">0</td></tr><tr><td class="in">1</td><td class="in">1</td><td class="in">0</td><td class="mid">1</td><td class="mid">1</td><td class="out">1</td></tr><tr><td class="in">1</td><td class="in">1</td><td class="in">1</td><td class="mid">1</td><td class="mid">0</td><td class="out">1</td></tr></tbody></table><p class="fig-source">Fonte: elaborada pelo autor (2026).</p></div>
+
+    <div class="ex-head"><span class="method-num">exemplo 2</span><h4>Função maioria: $M = A\cdot B + A\cdot C + B\cdot C$</h4></div>
+    <p>A saída vale 1 quando <strong>a maioria</strong> das entradas — isto é, pelo menos duas das três — vale 1. É a lógica de um sistema de votação com três votantes.</p>
+    <div class="tt-wrap" style="max-width:540px"><p class="fig-title">Tabela 3.2 – Tabela-verdade da função maioria</p><table class="tt"><thead><tr><th class="in">A</th><th class="in">B</th><th class="in">C</th><th class="mid">$A\cdot B$</th><th class="mid">$A\cdot C$</th><th class="mid">$B\cdot C$</th><th class="out">M</th></tr></thead><tbody><tr><td class="in">0</td><td class="in">0</td><td class="in">0</td><td class="mid">0</td><td class="mid">0</td><td class="mid">0</td><td class="out">0</td></tr><tr><td class="in">0</td><td class="in">0</td><td class="in">1</td><td class="mid">0</td><td class="mid">0</td><td class="mid">0</td><td class="out">0</td></tr><tr><td class="in">0</td><td class="in">1</td><td class="in">0</td><td class="mid">0</td><td class="mid">0</td><td class="mid">0</td><td class="out">0</td></tr><tr><td class="in">0</td><td class="in">1</td><td class="in">1</td><td class="mid">0</td><td class="mid">0</td><td class="mid">1</td><td class="out">1</td></tr><tr><td class="in">1</td><td class="in">0</td><td class="in">0</td><td class="mid">0</td><td class="mid">0</td><td class="mid">0</td><td class="out">0</td></tr><tr><td class="in">1</td><td class="in">0</td><td class="in">1</td><td class="mid">0</td><td class="mid">1</td><td class="mid">0</td><td class="out">1</td></tr><tr><td class="in">1</td><td class="in">1</td><td class="in">0</td><td class="mid">1</td><td class="mid">0</td><td class="mid">0</td><td class="out">1</td></tr><tr><td class="in">1</td><td class="in">1</td><td class="in">1</td><td class="mid">1</td><td class="mid">1</td><td class="mid">1</td><td class="out">1</td></tr></tbody></table><p class="fig-source">Fonte: elaborada pelo autor (2026).</p></div>
+
+    <div class="ex-head"><span class="method-num">exemplo 3</span><h4>Função paridade ímpar: P</h4></div>
+    <p>A saída vale 1 quando um <strong>número ímpar</strong> de entradas vale 1. Aqui a função é dada por uma descrição verbal; a tabela-verdade é construída diretamente pela contagem de uns em cada linha. Lendo as linhas em que P = 1, obtém-se a expressão $P = \bar{A}\bar{B}C + \bar{A}B\bar{C} + A\bar{B}\bar{C} + ABC$.</p>
+    <div class="tt-wrap" style="max-width:400px"><p class="fig-title">Tabela 3.3 – Tabela-verdade da função paridade ímpar</p><table class="tt"><thead><tr><th class="in">A</th><th class="in">B</th><th class="in">C</th><th class="mid">nº de uns</th><th class="out">P</th></tr></thead><tbody><tr><td class="in">0</td><td class="in">0</td><td class="in">0</td><td class="mid">0</td><td class="out">0</td></tr><tr><td class="in">0</td><td class="in">0</td><td class="in">1</td><td class="mid">1</td><td class="out">1</td></tr><tr><td class="in">0</td><td class="in">1</td><td class="in">0</td><td class="mid">1</td><td class="out">1</td></tr><tr><td class="in">0</td><td class="in">1</td><td class="in">1</td><td class="mid">2</td><td class="out">0</td></tr><tr><td class="in">1</td><td class="in">0</td><td class="in">0</td><td class="mid">1</td><td class="out">1</td></tr><tr><td class="in">1</td><td class="in">0</td><td class="in">1</td><td class="mid">2</td><td class="out">0</td></tr><tr><td class="in">1</td><td class="in">1</td><td class="in">0</td><td class="mid">2</td><td class="out">0</td></tr><tr><td class="in">1</td><td class="in">1</td><td class="in">1</td><td class="mid">3</td><td class="out">1</td></tr></tbody></table><p class="fig-source">Fonte: elaborada pelo autor (2026).</p></div>
+
+    <div class="note"><strong>Guarde estes resultados.</strong> As funções maioria e paridade ímpar reaparecem na seção 3.4: elas são, respectivamente, o <strong>vai-um</strong> (<em>C<sub>out</sub></em>) e o <strong>bit de soma</strong> (<em>S</em>) do somador completo. Uma tabela-verdade aparentemente abstrata descreve, de fato, um circuito aritmético.</div>
+
     <div class="definition">
       <p class="dtitle">princípio fundamental</p>
       <p style="margin:0">Os circuitos eletrônicos digitais <strong>implementam funções lógicas</strong>.</p>
@@ -368,14 +463,7 @@ footer p{font-size:.8rem;color:var(--muted);font-family:var(--font-mono);}
           </tbody>
         </table>
       </div>
-      <div class="concept-fig">
-        <svg viewBox="0 0 200 140" xmlns="http://www.w3.org/2000/svg">
-          <path d="M40 30 Q70 30 80 55 Q90 80 80 105 Q70 130 40 130 Q55 80 40 30 Z" class="gate"/>
-          <path d="M10 50 H42" class="dwire"/><text x="2" y="54" class="dlbl2">A</text>
-          <path d="M10 110 H42" class="dwire"/><text x="2" y="114" class="dlbl2">B</text>
-          <path d="M88 80 H150" class="dwire"/><text x="158" y="84" class="dlbl">S</text>
-        </svg>
-      </div>
+      <figure class="concept-fig"><p class="fig-title">Figura 3.2 – Símbolo da porta OR</p><svg viewBox="0 0 240 120" xmlns="http://www.w3.org/2000/svg" class="circ " role="img" aria-label="Símbolo da porta OR"><path d="M85 25 Q122.2 25 145.0 50 Q122.2 75 85 75 Q97.5 50 85 25 Z" class="g"/><path d="M40 37.5 L89.6875 37.5" class="w"/><circle cx="40" cy="37.5" r="4" class="term"/><text x="30" y="42" class="t" text-anchor="end">A</text><path d="M40 62.5 L89.6875 62.5" class="w"/><circle cx="40" cy="62.5" r="4" class="term"/><text x="30" y="67" class="t" text-anchor="end">B</text><path d="M145 50 L200 50" class="w"/><circle cx="200" cy="50" r="4" class="term"/><text x="210" y="54.5" class="t">S</text><text x="120" y="104" class="ts" text-anchor="middle">S = A + B</text></svg><p class="fig-source">Fonte: elaborada pelo autor (2026).</p></figure>
     </div>
     <p>Fabricantes como a <em>Texas Instruments</em> produzem portas OR como a <a href="https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/sisdig_aulas/SN74HC32N_Texas.pdf" target="_blank">SN54HC32/SN74HC32</a>.</p>
 
@@ -395,14 +483,7 @@ footer p{font-size:.8rem;color:var(--muted);font-family:var(--font-mono);}
           </tbody>
         </table>
       </div>
-      <div class="concept-fig">
-        <svg viewBox="0 0 200 140" xmlns="http://www.w3.org/2000/svg">
-          <path d="M40 30 H70 A40 40 0 0 1 70 130 H40 Z" class="gate"/>
-          <path d="M10 50 H42" class="dwire"/><text x="2" y="54" class="dlbl2">A</text>
-          <path d="M10 110 H42" class="dwire"/><text x="2" y="114" class="dlbl2">B</text>
-          <path d="M110 80 H150" class="dwire"/><text x="158" y="84" class="dlbl">S</text>
-        </svg>
-      </div>
+      <figure class="concept-fig"><p class="fig-title">Figura 3.3 – Símbolo da porta AND</p><svg viewBox="0 0 240 120" xmlns="http://www.w3.org/2000/svg" class="circ " role="img" aria-label="Símbolo da porta AND"><path d="M85 25 H112.5 A25.0 25.0 0 0 1 112.5 75 H85 Z" class="g"/><path d="M40 37.5 L85 37.5" class="w"/><circle cx="40" cy="37.5" r="4" class="term"/><text x="30" y="42" class="t" text-anchor="end">A</text><path d="M40 62.5 L85 62.5" class="w"/><circle cx="40" cy="62.5" r="4" class="term"/><text x="30" y="67" class="t" text-anchor="end">B</text><path d="M137.5 50 L200 50" class="w"/><circle cx="200" cy="50" r="4" class="term"/><text x="210" y="54.5" class="t">S</text><text x="120" y="104" class="ts" text-anchor="middle">S = A·B</text></svg><p class="fig-source">Fonte: elaborada pelo autor (2026).</p></figure>
     </div>
     <p>A <em>Motorola</em> fabrica portas AND como a <a href="https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/sisdig_aulas/CD14082BCP_Motorola.pdf" target="_blank">MC14081/MC14082</a> (variam pelo número de entradas). A <em>Philips</em> também fabrica, como a <a href="https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/sisdig_aulas/74HC08N_Philips.pdf" target="_blank">74HC08N</a>.</p>
 
@@ -418,14 +499,7 @@ footer p{font-size:.8rem;color:var(--muted);font-family:var(--font-mono);}
           </tbody>
         </table>
       </div>
-      <div class="concept-fig">
-        <svg viewBox="0 0 200 140" xmlns="http://www.w3.org/2000/svg">
-          <path d="M50 50 L50 90 L120 70 Z" class="gate"/>
-          <circle cx="128" cy="70" r="6" class="gate"/>
-          <path d="M10 70 H50" class="dwire"/><text x="2" y="74" class="dlbl2">A</text>
-          <path d="M136 70 H150" class="dwire"/><text x="158" y="74" class="dlbl">S</text>
-        </svg>
-      </div>
+      <figure class="concept-fig"><p class="fig-title">Figura 3.4 – Símbolo do inversor NOT</p><svg viewBox="0 0 240 120" xmlns="http://www.w3.org/2000/svg" class="circ " role="img" aria-label="Símbolo do inversor NOT"><path d="M80 42 L80 78 L121.4 60 Z" class="g"/><circle cx="125.4" cy="60" r="4" class="g"/><path d="M40 60 L80 60" class="w"/><circle cx="40" cy="60" r="4" class="term"/><text x="30" y="64.5" class="t" text-anchor="end">A</text><path d="M129.4 60 L200 60" class="w"/><circle cx="200" cy="60" r="4" class="term"/><text x="210" y="64.5" class="t">S</text><text x="120" y="104" class="ts" text-anchor="middle">S = Ā</text></svg><p class="fig-source">Fonte: elaborada pelo autor (2026).</p></figure>
     </div>
     <p>A <em>Philips</em> produz os inversores <a href="https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/sisdig_aulas/SN74HC04_Philips.pdf" target="_blank">7404</a>.</p>
 
@@ -454,83 +528,139 @@ footer p{font-size:.8rem;color:var(--muted);font-family:var(--font-mono);}
 
     <p>Exemplo ilustrativo: um circuito com duas entradas A e B, em que a porta 1 (AND) combina A e B, a porta 2 (NOT) inverte B, e a porta 3 (OR) combina as saídas das portas 1 e 2:</p>
 
-    <div class="fig-full">
-      <svg viewBox="0 0 560 220" xmlns="http://www.w3.org/2000/svg">
-        <text x="10" y="44" class="dlbl">A</text><circle cx="34" cy="40" r="3" fill="#cbd5e1"/>
-        <path d="M37 40 H140" class="dwire"/>
-        <text x="10" y="174" class="dlbl">B</text><circle cx="34" cy="170" r="3" fill="#cbd5e1"/>
-        <path d="M37 170 H80 V60 H140" class="dwire"/>
-        <path d="M37 170 H80 V145 H160" class="dwire"/>
-
-        <path d="M140 25 H170 A22 22 0 0 1 170 55 H140 Z" class="gate"/>
-        <text x="146" y="44" class="dlbl2">1 · AND</text>
-        <text x="195" y="34" class="dlbl2">S1 = A.B</text>
-        <path d="M192 40 H260" class="dwire"/>
-
-        <path d="M160 130 L185 145 L160 160 Z" class="gate"/>
-        <circle cx="189" cy="145" r="3" class="gate"/>
-        <text x="166" y="148" class="dlbl2" style="font-size:9px">2</text>
-        <text x="198" y="135" class="dlbl2">S2 = B̅</text>
-        <path d="M192 145 H260" class="dwire"/>
-
-        <path d="M260 25 Q290 25 300 50 Q310 75 300 100 Q290 125 260 125 Q272 75 260 25 Z" class="gate" transform="translate(0,35)"/>
-        <text x="305" y="115" class="dlbl2">3 · OR</text>
-        <path d="M312 115 H420" class="dwire"/>
-        <circle cx="424" cy="115" r="3" fill="#cbd5e1"/>
-        <text x="432" y="120" class="dlbl">S = S1+S2 = A.B + B̅</text>
-      </svg>
-      <p class="fig-caption">Fig. 3.1 — Exemplo de circuito combinacional e sua descrição algébrica, porta a porta, da entrada até a saída</p>
-    </div>
+    <figure class="fig-full"><p class="fig-title">Figura 3.5 – Exemplo de circuito combinacional descrito porta a porta, da entrada até a saída</p><svg viewBox="0 0 700 200" xmlns="http://www.w3.org/2000/svg" class="circ " role="img" aria-label="Circuito exemplo S = A.B + not B"><path d="M200 40 H222.0 A20.0 20.0 0 0 1 222.0 80 H200 Z" class="g"/><text x="214.1" y="63.5" class="tg" text-anchor="middle">1</text><path d="M205 137 L205 163 L234.9 150 Z" class="g"/><circle cx="238.9" cy="150" r="4" class="g"/><text x="215.465" y="153.5" class="tg" text-anchor="middle">2</text><path d="M380 80 Q409.76 80 428.0 100 Q409.76 120 380 120 Q390.0 100 380 80 Z" class="g"/><text x="400.16" y="103.5" class="tg" text-anchor="middle">3</text><circle cx="50" cy="50" r="4" class="term"/><text x="40" y="54.5" class="t" text-anchor="end">A</text><path d="M50 50 L200 50" class="w"/><circle cx="50" cy="150" r="4" class="term"/><text x="40" y="154.5" class="t" text-anchor="end">B</text><path d="M50 150 L205 150" class="w"/><path d="M130 150 L130 70 L200 70" class="w"/><circle cx="130" cy="150" r="3.4" class="jd"/><path d="M242 60 L320 60 L320 90 L383.75 90" class="w"/><path d="M242.9 150 L320 150 L320 110 L383.75 110" class="w"/><text x="250" y="50" class="ts" text-anchor="start">S1 = A·B</text><text x="250" y="172" class="ts" text-anchor="start">S2 = B̄</text><path d="M428 100 L650 100" class="w"/><circle cx="650" cy="100" r="4" class="term"/><text x="660" y="104.5" class="t">S</text><text x="440" y="88" class="ts" text-anchor="start">S = S1 + S2 = A·B + B̄</text></svg><p class="fig-source">Fonte: elaborada pelo autor (2026).</p></figure>
 
     <p>Cada saída pode ser definida como <strong>uma função das entradas</strong>. Logo, a cada saída corresponde <strong>uma</strong> tabela-verdade.</p>
   </section>
 
-  <!-- QUIZ -->
-  <section class="section" id="quiz">
-    <p class="section-label">checkpoint</p>
-    <h2>Teste seus conhecimentos</h2>
 
-    <div class="quiz">
-      <div class="quiz-header">
-        <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="8" stroke="#7c3aed" stroke-width="1.4"/><text x="10" y="14" font-size="10" fill="#7c3aed" text-anchor="middle" font-weight="600">?</text></svg>
-        <span class="quiz-title">Pergunta 1 de 3</span>
+  <!-- 3.4 -->
+  <section class="section" id="s4">
+    <p class="section-label">3.4 / circuito somador</p>
+    <h2>Circuito somador de um número de 2 bits</h2>
+
+    <p>A soma binária é a operação aritmética fundamental de qualquer processador. Somar dois números de 2 bits, <em>A = A<sub>1</sub>A<sub>0</sub></em> e <em>B = B<sub>1</sub>B<sub>0</sub></em>, produz um resultado de até <strong>3 bits</strong>, <em>C<sub>out</sub>S<sub>1</sub>S<sub>0</sub></em>, pois o maior resultado possível é 3 + 3 = 6 = 110<sub>2</sub>. O procedimento é o mesmo da soma decimal feita à mão: coluna a coluna, da direita para a esquerda, levando o <strong>vai-um</strong> (<em>carry</em>) para a coluna seguinte.</p>
+
+<pre class="colsum"><span class="c">  vai-um:   1 1  </span>
+       A:     1 1    (3)
+       B:   + 0 1    (1)
+            -----
+<span class="r">            1 0 0    (4)</span></pre>
+
+    <p>Na coluna 0, 1 + 1 = 10<sub>2</sub>: escreve-se 0 e vai 1. Na coluna 1, 1 + 0 + 1 (o vai-um) = 10<sub>2</sub>: escreve-se 0 e vai 1, que se torna o bit mais significativo do resultado. Nota-se que a <strong>coluna 0 soma dois bits</strong>, enquanto a <strong>coluna 1 soma três</strong> (os dois bits e o vai-um). Essa diferença define os dois blocos do somador: o meio-somador e o somador completo. Antes, porém, convém apresentar uma porta adicional.</p>
+
+    <h3 id="s4a">3.4.1 Porta <em>XOR</em> (ou-exclusivo)</h3>
+    <p>A porta XOR produz 1 quando as entradas são <strong>diferentes</strong>: $S = A \oplus B = A\cdot\bar{B} + \bar{A}\cdot B$. Ela não é uma operação primitiva — pode ser construída com AND, OR e NOT —, mas é tão frequente que é fabricada como componente próprio, por exemplo o circuito integrado 74HC86, com quatro portas XOR de duas entradas.</p>
+    <div class="concept-grid">
+      <div class="concept-text">
+        <div class="tt-wrap" style="max-width:240px"><p class="fig-title">Tabela 3.4 – Tabela-verdade da porta XOR</p><table class="tt"><thead><tr><th class="in">A</th><th class="in">B</th><th class="out">S</th></tr></thead><tbody><tr><td class="in">0</td><td class="in">0</td><td class="out">0</td></tr><tr><td class="in">0</td><td class="in">1</td><td class="out">1</td></tr><tr><td class="in">1</td><td class="in">0</td><td class="out">1</td></tr><tr><td class="in">1</td><td class="in">1</td><td class="out">0</td></tr></tbody></table><p class="fig-source">Fonte: elaborada pelo autor (2026).</p></div>
       </div>
-      <p class="quiz-q">Qual sentença abaixo é uma proposição válida (admite valor lógico V ou F)?</p>
-      <div class="quiz-options">
-        <button class="quiz-opt" onclick="checkAnswer(this, false, 'q1fb')">"Que horas são?"</button>
-        <button class="quiz-opt" onclick="checkAnswer(this, true, 'q1fb')">"O sinal está em nível alto."</button>
-        <button class="quiz-opt" onclick="checkAnswer(this, false, 'q1fb')">"Ligue o circuito!"</button>
+      <figure class="concept-fig"><p class="fig-title">Figura 3.6 – Símbolo da porta XOR</p><svg viewBox="0 0 240 120" xmlns="http://www.w3.org/2000/svg" class="circ " role="img" aria-label="Símbolo da porta XOR"><path d="M85 25 Q122.2 25 145.0 50 Q122.2 75 85 75 Q97.5 50 85 25 Z" class="g"/><path d="M76 25 Q88.5 50 76 75" class="g" style="fill:none"/><path d="M40 37.5 L80.6875 37.5" class="w"/><circle cx="40" cy="37.5" r="4" class="term"/><text x="30" y="42" class="t" text-anchor="end">A</text><path d="M40 62.5 L80.6875 62.5" class="w"/><circle cx="40" cy="62.5" r="4" class="term"/><text x="30" y="67" class="t" text-anchor="end">B</text><path d="M145 50 L200 50" class="w"/><circle cx="200" cy="50" r="4" class="term"/><text x="210" y="54.5" class="t">S</text><text x="120" y="104" class="ts" text-anchor="middle">S = A ⊕ B</text></svg><p class="fig-source">Fonte: elaborada pelo autor (2026).</p></figure>
+    </div>
+    <figure class="fig-full"><p class="fig-title">Figura 3.7 – Porta XOR construída com portas básicas</p><svg viewBox="0 0 640 200" xmlns="http://www.w3.org/2000/svg" class="circ " role="img" aria-label="Porta XOR construída com portas básicas"><path d="M270 30 H292.0 A20.0 20.0 0 0 1 292.0 70 H270 Z" class="g"/><text x="284.1" y="53.5" class="tg" text-anchor="middle">3</text><path d="M270 110 H292.0 A20.0 20.0 0 0 1 292.0 150 H270 Z" class="g"/><text x="284.1" y="133.5" class="tg" text-anchor="middle">4</text><path d="M150 107.0 L150 133.0 L179.9 120 Z" class="g"/><circle cx="183.9" cy="120" r="4" class="g"/><text x="160.465" y="123.5" class="tg" text-anchor="middle">2</text><path d="M170 47.0 L170 73.0 L199.9 60 Z" class="g"/><circle cx="203.9" cy="60" r="4" class="g"/><text x="180.465" y="63.5" class="tg" text-anchor="middle">1</text><path d="M400 70 Q429.76 70 448.0 90 Q429.76 110 400 110 Q410.0 90 400 70 Z" class="g"/><text x="420.16" y="93.5" class="tg" text-anchor="middle">5</text><circle cx="50" cy="40" r="4" class="term"/><text x="40" y="44.5" class="t" text-anchor="end">A</text><path d="M50 40 L270 40" class="w"/><path d="M100 40 L100 120 L150 120" class="w"/><circle cx="100" cy="40" r="3.4" class="jd"/><path d="M187.9 120 L270 120" class="w"/><circle cx="50" cy="140" r="4" class="term"/><text x="40" y="144.5" class="t" text-anchor="end">B</text><path d="M50 140 L270 140" class="w"/><path d="M125 140 L125 60 L170 60" class="w"/><circle cx="125" cy="140" r="3.4" class="jd"/><path d="M207.9 60 L270 60" class="w"/><path d="M312 50 L360 50 L360 80 L403.75 80" class="w"/><path d="M312 130 L360 130 L360 100 L403.75 100" class="w"/><text x="318" y="42" class="ts" text-anchor="start">A·B̄</text><text x="318" y="148" class="ts" text-anchor="start">Ā·B</text><path d="M448 90 L560 90" class="w"/><circle cx="560" cy="90" r="4" class="term"/><text x="570" y="94.5" class="t">S</text><text x="460" y="78" class="ts" text-anchor="start">S = A·B̄ + Ā·B</text><rect x="85" y="14" width="390" height="160" rx="10" class="box"/><text x="92" y="190" class="tb" text-anchor="start">bloco XOR = 2 NOT + 2 AND + 1 OR</text></svg><p class="fig-source">Fonte: elaborada pelo autor (2026).</p></figure>
+    <div class="note">A Figura 3.7 já ilustra a ideia central deste capítulo: o símbolo XOR é uma <strong>abstração</strong> que encapsula cinco portas básicas. Quem usa o símbolo raciocina apenas com a sua tabela-verdade e ignora a estrutura interna.</div>
+
+    <h3 id="s4b">3.4.2 Meio-somador (<em>half adder</em>)</h3>
+    <p>Soma <strong>dois bits</strong>, A e B, e produz o bit de soma <em>S</em> e o vai-um <em>C</em>. Pela tabela-verdade, <em>S</em> vale 1 quando as entradas diferem (XOR) e <em>C</em> vale 1 apenas quando ambas valem 1 (AND).</p>
+    <div class="two-col">
+      <div>
+        <div class="tt-wrap" style="max-width:260px"><p class="fig-title">Tabela 3.5 – Tabela-verdade do meio-somador</p><table class="tt"><thead><tr><th class="in">A</th><th class="in">B</th><th class="out">C</th><th class="out">S</th></tr></thead><tbody><tr><td class="in">0</td><td class="in">0</td><td class="out">0</td><td class="out">0</td></tr><tr><td class="in">0</td><td class="in">1</td><td class="out">0</td><td class="out">1</td></tr><tr><td class="in">1</td><td class="in">0</td><td class="out">0</td><td class="out">1</td></tr><tr><td class="in">1</td><td class="in">1</td><td class="out">1</td><td class="out">0</td></tr></tbody></table><p class="fig-source">Fonte: elaborada pelo autor (2026).</p></div>
+        <div class="codeline">S = A ⊕ B &nbsp;&nbsp;·&nbsp;&nbsp; C = A·B</div>
       </div>
-      <div class="quiz-feedback" id="q1fb"></div>
+      <figure class="concept-fig"><p class="fig-title">Figura 3.8 – Meio-somador</p><svg viewBox="0 0 500 195" xmlns="http://www.w3.org/2000/svg" class="circ " role="img" aria-label="Meio-somador"><path d="M220 30 Q249.76 30 268.0 50 Q249.76 70 220 70 Q230.0 50 220 30 Z" class="g"/><path d="M212.8 30 Q222.8 50 212.8 70" class="g" style="fill:none"/><text x="240.16" y="53.5" class="tg" text-anchor="middle">1</text><path d="M220 110 H242.0 A20.0 20.0 0 0 1 242.0 150 H220 Z" class="g"/><text x="234.1" y="133.5" class="tg" text-anchor="middle">2</text><circle cx="60" cy="40" r="4" class="term"/><text x="50" y="44.5" class="t" text-anchor="end">A</text><path d="M60 40 L216.55 40" class="w"/><circle cx="60" cy="60" r="4" class="term"/><text x="50" y="64.5" class="t" text-anchor="end">B</text><path d="M60 60 L216.55 60" class="w"/><path d="M120 40 L120 120 L220 120" class="w"/><circle cx="120" cy="40" r="3.4" class="jd"/><path d="M150 60 L150 140 L220 140" class="w"/><circle cx="150" cy="60" r="3.4" class="jd"/><path d="M268 50 L420 50" class="w"/><circle cx="420" cy="50" r="4" class="term"/><text x="430" y="54.5" class="t">S</text><path d="M262 130 L420 130" class="w"/><circle cx="420" cy="130" r="4" class="term"/><text x="430" y="134.5" class="t">C</text><text x="300" y="42" class="ts" text-anchor="start">S = A ⊕ B</text><text x="300" y="122" class="ts" text-anchor="start">C = A·B</text><rect x="95" y="14" width="195" height="150" rx="10" class="box"/><text x="102" y="182" class="tb" text-anchor="start">meio-somador (half adder)</text></svg><p class="fig-source">Fonte: elaborada pelo autor (2026).</p></figure>
     </div>
 
-    <div class="quiz">
-      <div class="quiz-header">
-        <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="8" stroke="#7c3aed" stroke-width="1.4"/><text x="10" y="14" font-size="10" fill="#7c3aed" text-anchor="middle" font-weight="600">?</text></svg>
-        <span class="quiz-title">Pergunta 2 de 3</span>
+    <h3 id="s4c">3.4.3 Somador completo (<em>full adder</em>)</h3>
+    <p>Soma <strong>três bits</strong>: A, B e o vai-um de entrada <em>C<sub>in</sub></em>, vindo da coluna anterior. A tabela-verdade mostra que <em>S</em> é a <strong>paridade ímpar</strong> das três entradas (Exemplo 3) e que <em>C<sub>out</sub></em> é a <strong>função maioria</strong> (Exemplo 2). A implementação usual reaproveita o sinal intermediário $P = A \oplus B$:</p>
+    <div class="codeline">S = A ⊕ B ⊕ C<sub>in</sub> &nbsp;&nbsp;·&nbsp;&nbsp; C<sub>out</sub> = A·B + C<sub>in</sub>·(A ⊕ B)</div>
+    <div class="tt-wrap" style="max-width:480px"><p class="fig-title">Tabela 3.6 – Tabela-verdade do somador completo</p><table class="tt"><thead><tr><th class="in">A</th><th class="in">B</th><th class="in">C<sub>in</sub></th><th class="out">C<sub>out</sub></th><th class="out">S</th><th class="mid">soma (decimal)</th></tr></thead><tbody><tr><td class="in">0</td><td class="in">0</td><td class="in">0</td><td class="out">0</td><td class="out">0</td><td class="mid">0</td></tr><tr><td class="in">0</td><td class="in">0</td><td class="in">1</td><td class="out">0</td><td class="out">1</td><td class="mid">1</td></tr><tr><td class="in">0</td><td class="in">1</td><td class="in">0</td><td class="out">0</td><td class="out">1</td><td class="mid">1</td></tr><tr><td class="in">0</td><td class="in">1</td><td class="in">1</td><td class="out">1</td><td class="out">0</td><td class="mid">2</td></tr><tr><td class="in">1</td><td class="in">0</td><td class="in">0</td><td class="out">0</td><td class="out">1</td><td class="mid">1</td></tr><tr><td class="in">1</td><td class="in">0</td><td class="in">1</td><td class="out">1</td><td class="out">0</td><td class="mid">2</td></tr><tr><td class="in">1</td><td class="in">1</td><td class="in">0</td><td class="out">1</td><td class="out">0</td><td class="mid">2</td></tr><tr><td class="in">1</td><td class="in">1</td><td class="in">1</td><td class="out">1</td><td class="out">1</td><td class="mid">3</td></tr></tbody></table><p class="fig-source">Fonte: elaborada pelo autor (2026).</p></div>
+    <figure class="fig-full"><p class="fig-title">Figura 3.9 – Somador completo implementado com duas portas XOR, duas AND e uma OR</p><svg viewBox="0 0 760 215" xmlns="http://www.w3.org/2000/svg" class="circ " role="img" aria-label="Somador completo"><path d="M210 30 Q239.76 30 258.0 50 Q239.76 70 210 70 Q220.0 50 210 30 Z" class="g"/><path d="M202.8 30 Q212.8 50 202.8 70" class="g" style="fill:none"/><text x="230.16" y="53.5" class="tg" text-anchor="middle">1</text><path d="M210 160 H232.0 A20.0 20.0 0 0 1 232.0 200 H210 Z" class="g"/><text x="224.1" y="183.5" class="tg" text-anchor="middle">3</text><path d="M430 40 Q459.76 40 478.0 60 Q459.76 80 430 80 Q440.0 60 430 40 Z" class="g"/><path d="M422.8 40 Q432.8 60 422.8 80" class="g" style="fill:none"/><text x="450.16" y="63.5" class="tg" text-anchor="middle">2</text><path d="M430 100 H452.0 A20.0 20.0 0 0 1 452.0 140 H430 Z" class="g"/><text x="444.1" y="123.5" class="tg" text-anchor="middle">4</text><path d="M570 130 Q599.76 130 618.0 150 Q599.76 170 570 170 Q580.0 150 570 130 Z" class="g"/><text x="590.16" y="153.5" class="tg" text-anchor="middle">5</text><path d="M70 40 L206.55 40" class="w"/><path d="M70 60 L206.55 60" class="w"/><path d="M130 40 L130 170 L210 170" class="w"/><circle cx="130" cy="40" r="3.4" class="jd"/><path d="M160 60 L160 190 L210 190" class="w"/><circle cx="160" cy="60" r="3.4" class="jd"/><path d="M258 50 L426.55 50" class="w"/><path d="M340 50 L340 110 L430 110" class="w"/><circle cx="340" cy="50" r="3.4" class="jd"/><path d="M70 145 L380 145" class="w"/><path d="M380 145 L380 70 L426.55 70" class="w"/><path d="M380 130 L430 130" class="w"/><circle cx="380" cy="130" r="3.4" class="jd"/><path d="M472 120 L535 120 L535 140 L573.75 140" class="w"/><path d="M252 180 L550 180 L550 160 L573.75 160" class="w"/><circle cx="70" cy="40" r="4" class="term"/><text x="60" y="44.5" class="t" text-anchor="end">A</text><circle cx="70" cy="60" r="4" class="term"/><text x="60" y="64.5" class="t" text-anchor="end">B</text><circle cx="70" cy="145" r="4" class="term"/><text x="60" y="149.5" class="t" text-anchor="end">C<tspan class="sub">in</tspan></text><path d="M478 60 L680 60" class="w"/><circle cx="680" cy="60" r="4" class="term"/><text x="690" y="64.5" class="t">S</text><path d="M618 150 L680 150" class="w"/><circle cx="680" cy="150" r="4" class="term"/><text x="690" y="154.5" class="t">C<tspan class="sub">out</tspan></text><text x="264" y="42" class="ts" text-anchor="start">P = A⊕B</text><text x="258" y="172" class="ts" text-anchor="start">G = A·B</text><text x="422" y="154" class="ts" text-anchor="start">T = P·Cin</text><text x="486" y="52" class="ts" text-anchor="start">S = P⊕Cin</text><text x="600" y="180" class="ts" text-anchor="start">Cout = G + T</text></svg><p class="fig-source">Fonte: elaborada pelo autor (2026).</p></figure>
+    <div class="note">A expressão $A\cdot B + C_{in}\cdot(A\oplus B)$ é <strong>logicamente equivalente</strong> à função maioria $A\cdot B + A\cdot C_{in} + B\cdot C_{in}$: basta comparar a coluna <em>C<sub>out</sub></em> da Tabela 3.6 com a coluna M da Tabela 3.2. A forma com <em>P</em> é preferida porque reaproveita a porta XOR que já calcula a soma.</div>
+
+    <h3 id="s4d">3.4.4 Somador de 2 bits</h3>
+    <p>O somador de 2 bits resulta da composição dos dois blocos: um <strong>meio-somador</strong> na coluna 0 e um <strong>somador completo</strong> na coluna 1, cuja entrada <em>C<sub>in</sub></em> recebe o vai-um <em>C<sub>1</sub></em> gerado na coluna 0. Como o vai-um “ondula” de uma coluna para a seguinte, essa organização é chamada de <strong>somador com propagação de vai-um</strong> (<em>ripple-carry adder</em>). Ao todo, são <strong>7 portas</strong> e <strong>11 sinais</strong>.</p>
+
+    <div class="sim" id="adder2">
+      <p class="fig-title">Figura 3.10 – Somador de 2 bits porta a porta (interativo)</p>
+      <div class="sim-ctrl">
+        <div class="sim-group">A =
+          <button class="bit" data-in="A1">A<sub>1</sub> = <b>0</b></button>
+          <button class="bit" data-in="A0">A<sub>0</sub> = <b>0</b></button>
+        </div>
+        <div class="sim-group">B =
+          <button class="bit" data-in="B1">B<sub>1</sub> = <b>0</b></button>
+          <button class="bit" data-in="B0">B<sub>0</sub> = <b>0</b></button>
+        </div>
+        <div class="sim-read" id="simRead">0 + 0 = <b>000</b> (0)</div>
       </div>
-      <p class="quiz-q">Uma expressão booleana com 4 variáveis possui quantas combinações possíveis na tabela-verdade?</p>
-      <div class="quiz-options">
-        <button class="quiz-opt" onclick="checkAnswer(this, false, 'q2fb')">4</button>
-        <button class="quiz-opt" onclick="checkAnswer(this, false, 'q2fb')">8</button>
-        <button class="quiz-opt" onclick="checkAnswer(this, true, 'q2fb')">16</button>
-      </div>
-      <div class="quiz-feedback" id="q2fb"></div>
+      <svg viewBox="0 0 900 470" xmlns="http://www.w3.org/2000/svg" class="circ interactive" role="img" aria-label="Somador de 2 bits porta a porta"><path d="M250 40 Q279.76 40 298.0 60 Q279.76 80 250 80 Q260.0 60 250 40 Z" class="g"/><path d="M242.8 40 Q252.8 60 242.8 80" class="g" style="fill:none"/><text x="270.16" y="63.5" class="tg" text-anchor="middle">1</text><path d="M250 115 H272.0 A20.0 20.0 0 0 1 272.0 155 H250 Z" class="g"/><text x="264.1" y="138.5" class="tg" text-anchor="middle">2</text><path d="M90 50 L246.55 50" class="w sig" data-s="A0"/><circle cx="90" cy="50" r="4" class="term"/><text x="80" y="54.5" class="t" text-anchor="end">A<tspan class="sub">0</tspan></text><path d="M90 70 L246.55 70" class="w sig" data-s="B0"/><circle cx="90" cy="70" r="4" class="term"/><text x="80" y="74.5" class="t" text-anchor="end">B<tspan class="sub">0</tspan></text><path d="M150 50 L150 125 L250 125" class="w sig" data-s="A0"/><circle cx="150" cy="50" r="3.4" class="jd sig" data-s="A0"/><path d="M180 70 L180 145 L250 145" class="w sig" data-s="B0"/><circle cx="180" cy="70" r="3.4" class="jd sig" data-s="B0"/><path d="M298 60 L800 60" class="w sig" data-s="S0"/><circle cx="800" cy="60" r="4" class="term"/><text x="810" y="64.5" class="t">S<tspan class="sub">0</tspan></text><text x="306" y="52" class="ts" text-anchor="start">S0 = A0⊕B0</text><text x="300" y="127" class="ts" text-anchor="start">C1 = A0·B0</text><rect x="130" y="22" width="240" height="150" rx="10" class="box"/><text x="138" y="188" class="tb" text-anchor="start">bit 0 · meio-somador</text><path d="M230 250 Q259.76 250 278.0 270 Q259.76 290 230 290 Q240.0 270 230 250 Z" class="g"/><path d="M222.8 250 Q232.8 270 222.8 290" class="g" style="fill:none"/><text x="250.16" y="273.5" class="tg" text-anchor="middle">3</text><path d="M230 380 H252.0 A20.0 20.0 0 0 1 252.0 420 H230 Z" class="g"/><text x="244.1" y="403.5" class="tg" text-anchor="middle">5</text><path d="M450 260 Q479.76 260 498.0 280 Q479.76 300 450 300 Q460.0 280 450 260 Z" class="g"/><path d="M442.8 260 Q452.8 280 442.8 300" class="g" style="fill:none"/><text x="470.16" y="283.5" class="tg" text-anchor="middle">4</text><path d="M450 320 H472.0 A20.0 20.0 0 0 1 472.0 360 H450 Z" class="g"/><text x="464.1" y="343.5" class="tg" text-anchor="middle">6</text><path d="M590 350 Q619.76 350 638.0 370 Q619.76 390 590 390 Q600.0 370 590 350 Z" class="g"/><text x="610.16" y="373.5" class="tg" text-anchor="middle">7</text><path d="M90 260 L226.55 260" class="w sig" data-s="A1"/><path d="M90 280 L226.55 280" class="w sig" data-s="B1"/><path d="M150 260 L150 390 L230 390" class="w sig" data-s="A1"/><circle cx="150" cy="260" r="3.4" class="jd sig" data-s="A1"/><path d="M180 280 L180 410 L230 410" class="w sig" data-s="B1"/><circle cx="180" cy="280" r="3.4" class="jd sig" data-s="B1"/><path d="M278 270 L446.55 270" class="w sig" data-s="P"/><path d="M360 270 L360 330 L450 330" class="w sig" data-s="P"/><circle cx="360" cy="270" r="3.4" class="jd sig" data-s="P"/><path d="M292 135 L400 135 L400 350 L450 350" class="w sig" data-s="C1"/><path d="M400 290 L446.55 290" class="w sig" data-s="C1"/><circle cx="400" cy="290" r="3.4" class="jd sig" data-s="C1"/><path d="M492 340 L555 340 L555 360 L593.75 360" class="w sig" data-s="T"/><path d="M272 400 L570 400 L570 380 L593.75 380" class="w sig" data-s="G"/><circle cx="90" cy="260" r="4" class="term"/><text x="80" y="264.5" class="t" text-anchor="end">A<tspan class="sub">1</tspan></text><circle cx="90" cy="280" r="4" class="term"/><text x="80" y="284.5" class="t" text-anchor="end">B<tspan class="sub">1</tspan></text><path d="M498 280 L800 280" class="w sig" data-s="S1"/><circle cx="800" cy="280" r="4" class="term"/><text x="810" y="284.5" class="t">S<tspan class="sub">1</tspan></text><path d="M638 370 L800 370" class="w sig" data-s="C2"/><circle cx="800" cy="370" r="4" class="term"/><text x="810" y="374.5" class="t">C<tspan class="sub">out</tspan></text><text x="284" y="262" class="ts" text-anchor="start">P</text><text x="278" y="392" class="ts" text-anchor="start">G</text><text x="496" y="358" class="ts" text-anchor="start">T</text><text x="506" y="272" class="ts" text-anchor="start">S1 = P⊕C1</text><text x="620" y="400" class="ts" text-anchor="start">Cout = G + T</text><rect x="130" y="232" width="600" height="200" rx="10" class="box"/><text x="138" y="448" class="tb" text-anchor="start">bit 1 · somador completo (Cin = C1)</text><text x="48" y="54.5" class="tv" data-v="A0" text-anchor="end">0</text><text x="48" y="74.5" class="tv" data-v="B0" text-anchor="end">0</text><text x="48" y="264.5" class="tv" data-v="A1" text-anchor="end">0</text><text x="48" y="284.5" class="tv" data-v="B1" text-anchor="end">0</text><text x="870" y="64.5" class="tv" data-v="S0">0</text><text x="870" y="284.5" class="tv" data-v="S1">0</text><text x="870" y="374.5" class="tv" data-v="C2">0</text></svg>
+      <div class="trace" id="trace"></div>
+      <p class="fig-source">Fonte: elaborada pelo autor (2026). Clique nas entradas para alterar seus valores; os fios em amarelo estão em nível lógico 1.</p>
     </div>
 
-    <div class="quiz">
-      <div class="quiz-header">
-        <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="8" stroke="#7c3aed" stroke-width="1.4"/><text x="10" y="14" font-size="10" fill="#7c3aed" text-anchor="middle" font-weight="600">?</text></svg>
-        <span class="quiz-title">Pergunta 3 de 3</span>
-      </div>
-      <p class="quiz-q">O que diferencia um circuito sequencial de um combinacional?</p>
-      <div class="quiz-options">
-        <button class="quiz-opt" onclick="checkAnswer(this, false, 'q3fb')">O sequencial usa apenas portas NAND</button>
-        <button class="quiz-opt" onclick="checkAnswer(this, true, 'q3fb')">O sequencial possui memória: a saída depende também de um instante anterior</button>
-        <button class="quiz-opt" onclick="checkAnswer(this, false, 'q3fb')">O combinacional não possui entradas</button>
-      </div>
-      <div class="quiz-feedback" id="q3fb"></div>
+    <p>O painel abaixo do circuito mostra a <strong>análise porta a porta</strong>: cada porta é avaliada a partir dos valores presentes em suas entradas, seguindo o método da seção 3.3.4, da entrada até a saída. A Tabela 3.7 resume alguns casos.</p>
+    <div class="tt-wrap" style="max-width:520px"><p class="fig-title">Tabela 3.7 – Alguns casos do somador de 2 bits</p><table class="tt"><thead><tr><th class="in">A</th><th class="in">B</th><th class="out">C<sub>out</sub></th><th class="out">S<sub>1</sub></th><th class="out">S<sub>0</sub></th><th class="mid">A + B</th></tr></thead><tbody><tr><td class="in">01 (1)</td><td class="in">10 (2)</td><td class="out">0</td><td class="out">1</td><td class="out">1</td><td class="mid">3</td></tr><tr><td class="in">10 (2)</td><td class="in">11 (3)</td><td class="out">1</td><td class="out">0</td><td class="out">1</td><td class="mid">5</td></tr><tr><td class="in">11 (3)</td><td class="in">01 (1)</td><td class="out">1</td><td class="out">0</td><td class="out">0</td><td class="mid">4</td></tr><tr><td class="in">11 (3)</td><td class="in">11 (3)</td><td class="out">1</td><td class="out">1</td><td class="out">0</td><td class="mid">6</td></tr></tbody></table><p class="fig-source">Fonte: elaborada pelo autor (2026).</p></div>
+
+    <div class="definition">
+      <p class="dtitle">atraso de propagação</p>
+      <p style="margin:0">Cada porta leva um tempo finito — o <strong>atraso de propagação</strong>, <em>t<sub>pd</sub></em>, da ordem de nanossegundos na família 74HC — para refletir na saída uma mudança nas entradas. No somador de 2 bits, o caminho mais longo é A<sub>0</sub>/B<sub>0</sub> → porta 2 → porta 6 → porta 7: <em>C<sub>out</sub></em> só se estabiliza após <strong>três atrasos de porta</strong>. Em um somador <em>ripple-carry</em> de <em>n</em> bits, esse atraso cresce proporcionalmente a <em>n</em>.</p>
     </div>
+  </section>
+
+  <!-- 3.5 -->
+  <section class="section" id="s5">
+    <p class="section-label">3.5 / escalada de abstração</p>
+    <h2>Do nível de lógica digital aos demais níveis</h2>
+
+    <p>A resposta do somador pode ser analisada com <strong>graus crescentes de abstração</strong>. Em cada passo, o observador deixa de enxergar parte dos detalhes do passo anterior e passa a raciocinar com objetos mais complexos. Os três primeiros passos ainda ocorrem <strong>dentro do nível 0</strong>; os demais percorrem os níveis superiores do modelo.</p>
+
+    <h3>3.5.1 Dentro do nível 0: das portas à caixa-preta</h3>
+    <ol class="plain">
+      <li><strong>Porta a porta.</strong> É o grau mais fino de análise. Conhece-se cada uma das 7 portas e cada um dos 11 sinais; a saída é obtida propagando valores pela rede, como no painel da Figura 3.10. Esse é o único ponto de vista em que o atraso de propagação e o caminho crítico são visíveis.</li>
+      <li><strong>Blocos funcionais.</strong> As portas são agrupadas em meio-somador e somador completo, cada qual descrito apenas por sua tabela-verdade. O observador passa a contar <strong>2 blocos</strong>, não 7 portas, e já não precisa saber como cada bloco foi construído (Figura 3.11a).</li>
+      <li><strong>Caixa-preta aritmética.</strong> O circuito inteiro passa a ser visto como uma função sobre <strong>números</strong>: entram A e B, sai A + B. O raciocínio deixa de ser sobre bits isolados (Figura 3.11b). Ampliado para <em>n</em> bits e combinado com outros blocos — operações lógicas bit a bit, deslocadores e um multiplexador que seleciona a operação —, o somador torna-se o núcleo da <strong>Unidade Lógica e Aritmética (ULA)</strong>.</li>
+    </ol>
+    <figure class="fig-full"><p class="fig-title">Figura 3.11 – Somador de 2 bits visto como blocos funcionais e como caixa-preta aritmética</p><svg viewBox="0 0 920 285" xmlns="http://www.w3.org/2000/svg" class="circ " role="img" aria-label="Somador de 2 bits em blocos e como caixa-preta"><rect x="90" y="90" width="150" height="80" rx="8" class="blk"/><text x="165.0" y="128.0" class="t" text-anchor="middle">SC</text><text x="165.0" y="146.0" class="ts" text-anchor="middle">somador completo</text><rect x="300" y="90" width="150" height="80" rx="8" class="blk"/><text x="375.0" y="128.0" class="t" text-anchor="middle">MS</text><text x="375.0" y="146.0" class="ts" text-anchor="middle">meio-somador</text><path d="M135 40 L135 90" class="w"/><circle cx="135.0" cy="40" r="4" class="term"/><text x="135.0" y="28" class="t" text-anchor="middle">A<tspan class="sub">1</tspan></text><path d="M195 40 L195 90" class="w"/><circle cx="195.0" cy="40" r="4" class="term"/><text x="195.0" y="28" class="t" text-anchor="middle">B<tspan class="sub">1</tspan></text><path d="M165 170 L165 220" class="w"/><circle cx="165.0" cy="220" r="4" class="term"/><text x="165.0" y="242" class="t" text-anchor="middle">S<tspan class="sub">1</tspan></text><path d="M345 40 L345 90" class="w"/><circle cx="345.0" cy="40" r="4" class="term"/><text x="345.0" y="28" class="t" text-anchor="middle">A<tspan class="sub">0</tspan></text><path d="M405 40 L405 90" class="w"/><circle cx="405.0" cy="40" r="4" class="term"/><text x="405.0" y="28" class="t" text-anchor="middle">B<tspan class="sub">0</tspan></text><path d="M375 170 L375 220" class="w"/><circle cx="375.0" cy="220" r="4" class="term"/><text x="375.0" y="242" class="t" text-anchor="middle">S<tspan class="sub">0</tspan></text><path d="M300 130 L240 130" class="w"/><text x="270" y="122" class="ts" text-anchor="middle">C1</text><path d="M90 130 L40 130 L40 220" class="w"/><circle cx="40" cy="220" r="4" class="term"/><text x="40" y="242" class="t" text-anchor="middle">C<tspan class="sub">out</tspan></text><text x="270" y="268" class="tb" text-anchor="middle">(a) blocos funcionais</text><path d="M492 130 H548" class="w arr"/><path d="M548 124 L558 130 L548 136 Z" class="arrh"/><text x="525" y="112" class="ts" text-anchor="middle">encapsular</text><rect x="640" y="70" width="150" height="120" rx="10" class="blk2"/><text x="715.0" y="134.0" class="tbig" text-anchor="middle">Σ</text><text x="715.0" y="158.0" class="ts" text-anchor="middle">somador 2 bits</text><path d="M585 105 H640" class="w bus"/><path d="M606 98 l8 14" class="w"/><text x="610" y="94" class="ts" text-anchor="middle">2</text><text x="575" y="110" class="t" text-anchor="end">A</text><path d="M585 155 H640" class="w bus"/><path d="M606 148 l8 14" class="w"/><text x="610" y="144" class="ts" text-anchor="middle">2</text><text x="575" y="160" class="t" text-anchor="end">B</text><path d="M790 130 H850" class="w bus"/><path d="M816 123 l8 14" class="w"/><text x="820" y="119" class="ts" text-anchor="middle">3</text><text x="858" y="135" class="t">A+B</text><text x="735" y="268" class="tb" text-anchor="middle">(b) caixa-preta aritmética</text></svg><p class="fig-source">Fonte: elaborada pelo autor (2026).</p></figure>
+
+    <h3>3.5.2 Acima do nível 0: a mesma soma em cada nível</h3>
+    <ol class="plain" start="4">
+      <li><strong>Nível 1 — microarquitetura.</strong> A ULA é um componente do <strong>caminho de dados</strong> (<em>datapath</em>): registradores fornecem os operandos por barramentos, a ULA executa a operação e o resultado é gravado em outro registrador. As perguntas mudam: quais registradores alimentam a ULA, qual <strong>sinal de controle</strong> seleciona a soma e em que ciclo de <em>clock</em> o resultado é armazenado. O atraso de propagação das portas reaparece aqui de forma indireta, limitando a <strong>frequência máxima do clock</strong>.</li>
+      <li><strong>Nível 2 — ISA.</strong> A soma é uma <strong>instrução de máquina</strong>, por exemplo ADD R3, R1, R2, codificada como uma palavra binária. O programador desse nível enxerga registradores, formato de instrução e <em>flags</em>; não enxerga a ULA nem o caminho de dados. O vai-um final (<em>C<sub>out</sub></em>) reaparece como a <strong>flag de carry</strong>. Uma mesma ISA pode ser implementada por microarquiteturas diferentes — com somador <em>ripple-carry</em> ou com somadores mais rápidos, como o <em>carry-lookahead</em> —, o que concretiza a distinção entre arquitetura e organização vista no Capítulo 2.</li>
+      <li><strong>Nível 3 — máquina do sistema operacional.</strong> A instrução de soma é executada diretamente pelo nível 2, pois o SO realiza apenas uma <strong>interpretação parcial</strong>: acrescenta chamadas de sistema, memória virtual e gerência de processos. Para o SO, a soma é parte de um <strong>processo</strong>; ao trocar de processo, ele salva e restaura os registradores e as flags no contexto.</li>
+      <li><strong>Nível 4 — linguagem de montagem.</strong> A instrução aparece em forma simbólica e legível, ADD R3, R1, R2, que o <strong>montador</strong> traduz para o binário do nível 2.</li>
+      <li><strong>Nível 5 — linguagem orientada a problemas.</strong> O programador escreve simplesmente <code>c = a + b;</code>. O <strong>compilador</strong> escolhe os registradores e a instrução; o tipo da variável (por exemplo, inteiro de 32 bits) determina a largura do somador utilizado. O vai-um final, que no nível 0 era apenas um fio, aparece aqui como o fenômeno do <strong>estouro</strong> (<em>overflow</em>) da aritmética de inteiros.</li>
+    </ol>
+
+    <figure class="fig-full"><p class="fig-title">Figura 3.12 – A mesma operação de soma vista em cada nível do modelo</p><svg viewBox="0 0 980 412" xmlns="http://www.w3.org/2000/svg" class="circ " role="img" aria-label="A mesma soma vista em cada nível"><rect x="120" y="16" width="820" height="56" rx="8" class="lvl"/><text x="140" y="50" class="lvn">5</text><text x="175" y="40" class="t">Linguagem orientada a problemas</text><text x="175" y="59" class="ts">variáveis e tipos</text><text x="550" y="50" class="tcode">c = a + b;</text><rect x="120" y="80" width="820" height="56" rx="8" class="lvl"/><text x="140" y="114" class="lvn">4</text><text x="175" y="104" class="t">Linguagem de montagem</text><text x="175" y="123" class="ts">mnemônicos e registradores nomeados</text><text x="550" y="114" class="tcode">ADD R3, R1, R2</text><rect x="120" y="144" width="820" height="56" rx="8" class="lvl"/><text x="140" y="178" class="lvn">3</text><text x="175" y="168" class="t">Máquina do SO</text><text x="175" y="187" class="ts">processos, chamadas de sistema</text><text x="550" y="178" class="tcode">processo P · contexto (R1…R3, flags)</text><rect x="120" y="208" width="820" height="56" rx="8" class="lvl"/><text x="140" y="242" class="lvn">2</text><text x="175" y="232" class="t">ISA</text><text x="175" y="251" class="ts">instrução binária, registradores, flag C</text><text x="550" y="242" class="tcode">0001 011 001 010 000</text><rect x="120" y="272" width="820" height="56" rx="8" class="lvl"/><text x="140" y="306" class="lvn">1</text><text x="175" y="296" class="t">Microarquitetura</text><text x="175" y="315" class="ts">caminho de dados, sinais de controle, clock</text><text x="550" y="306" class="tcode">R1,R2 → ULA[op=soma] → R3</text><rect x="120" y="336" width="820" height="56" rx="8" class="lvl hl"/><text x="140" y="370" class="lvn hl">0</text><text x="175" y="360" class="t thl">Lógica digital</text><text x="175" y="379" class="ts">portas, sinais 0/1, atraso de propagação</text><text x="550" y="370" class="tcode">S0=A0⊕B0 · C1=A0·B0 · S1=P⊕C1 …</text><path d="M70 392 V28" class="w axis"/><path d="M64 30 L70 16 L76 30 Z" class="arrh"/><text x="50" y="204.0" class="ts" text-anchor="middle" transform="rotate(-90 50 204.0)">abstração ↑ · detalhe ↓</text></svg><p class="fig-source">Fonte: elaborada pelo autor (2026). A codificação binária do nível 2 é hipotética.</p></figure>
+
+    <div class="tt-wrap">
+      <p class="fig-title">Quadro 3.1 – Síntese da escalada de abstração no somador</p>
+      <table class="lvl-table">
+        <thead><tr><th class="tleft">Nível</th><th class="tleft">Unidade de análise</th><th class="tleft">Como a soma aparece</th><th class="tleft">O que fica oculto</th></tr></thead>
+        <tbody>
+          <tr class="hl"><td class="tleft">0</td><td class="tleft">Portas → blocos → somador</td><td class="tleft">Sinais S<sub>0</sub>, S<sub>1</sub>, C<sub>out</sub> em função de A<sub>1</sub>A<sub>0</sub> e B<sub>1</sub>B<sub>0</sub></td><td class="tleft">Transistores e tensões elétricas</td></tr>
+          <tr><td class="tleft">1</td><td class="tleft">Registradores, ULA, barramentos, controle</td><td class="tleft">Operação da ULA selecionada por sinal de controle em um ciclo de clock</td><td class="tleft">Portas e atraso individual de cada porta</td></tr>
+          <tr><td class="tleft">2</td><td class="tleft">Instrução de máquina</td><td class="tleft">ADD R3, R1, R2 em binário; flag de carry</td><td class="tleft">Caminho de dados e sinais de controle</td></tr>
+          <tr><td class="tleft">3</td><td class="tleft">Processo</td><td class="tleft">Instrução executada diretamente; contexto salvo na troca de processo</td><td class="tleft">Como a instrução é executada pelo hardware</td></tr>
+          <tr><td class="tleft">4</td><td class="tleft">Mnemônico</td><td class="tleft">ADD R3, R1, R2 em forma simbólica</td><td class="tleft">Codificação binária</td></tr>
+          <tr><td class="tleft">5</td><td class="tleft">Expressão e variáveis</td><td class="tleft">c = a + b;</td><td class="tleft">Registradores e instruções</td></tr>
+        </tbody>
+      </table>
+      <p class="fig-source">Fonte: elaborado pelo autor (2026).</p>
+    </div>
+
+    <div class="definition">
+      <p class="dtitle">síntese</p>
+      <p style="margin:0">Cada nível <strong>oculta</strong> os detalhes do nível imediatamente inferior e oferece ao superior uma interface mais simples. Os detalhes, porém, não desaparecem: o atraso das portas do nível 0 reaparece como limite de clock no nível 1; o vai-um final reaparece como flag no nível 2 e como <em>overflow</em> no nível 5. Compreender o nível de lógica digital é compreender a origem dessas restrições.</p>
+    </div>
+  </section>
+
+  <!-- REFERÊNCIAS -->
+  <section class="section" id="refs">
+    <p class="section-label">referências</p>
+    <h2>Referências</h2>
+    <p class="abnt-ref">TANENBAUM, Andrew S.; AUSTIN, Todd. <strong>Organização estruturada de computadores</strong>. 6. ed. São Paulo: Pearson Prentice Hall, 2013.</p>
+    <p class="abnt-ref">TOCCI, Ronald J.; WIDMER, Neal S.; MOSS, Gregory L. <strong>Sistemas digitais</strong>: princípios e aplicações. 11. ed. São Paulo: Pearson Prentice Hall, 2011.</p>
   </section>
 
   <!-- CHAPTER NAV -->
@@ -555,22 +685,41 @@ window.addEventListener('scroll', () => {
   document.getElementById('progressFill').style.width = scrolled + '%';
 });
 
-function checkAnswer(btn, isCorrect, fbId) {
-  const group = btn.parentElement;
-  const buttons = group.querySelectorAll('.quiz-opt');
-  buttons.forEach(b => b.disabled = true);
-  btn.classList.add(isCorrect ? 'correct' : 'wrong');
-  const fb = document.getElementById(fbId);
-  fb.classList.add('show');
-  const msgs = {
-    q1fb: isCorrect ? '✓ Correto! É uma oração declarativa, que admite valor V ou F.' : '✗ Sentenças interrogativas e imperativas não são proposições.',
-    q2fb: isCorrect ? '✓ Correto! 2⁴ = 16 combinações.' : '✗ Lembre-se: 2ⁿ combinações para n variáveis.',
-    q3fb: isCorrect ? '✓ Correto! A memória é o que distingue o circuito sequencial do combinacional.' : '✗ Revise a seção 3.3.4.'
-  };
-  if (!isCorrect) buttons.forEach(b => { if (b.getAttribute('onclick').includes(', true,')) b.classList.add('correct'); });
-  fb.classList.add(isCorrect ? 'correct-fb' : 'wrong-fb');
-  fb.textContent = msgs[fbId];
-}
+(function(){
+  const root = document.getElementById('adder2');
+  if (!root) return;
+  const st = {A1:0, A0:1, B1:0, B0:1};
+  const xs = ['0','1'];
+  function evaluate(){
+    const s = Object.assign({}, st);
+    s.S0 = s.A0 ^ s.B0;  s.C1 = s.A0 & s.B0;
+    s.P  = s.A1 ^ s.B1;  s.S1 = s.P ^ s.C1;
+    s.G  = s.A1 & s.B1;  s.T  = s.P & s.C1;
+    s.C2 = s.G | s.T;
+    return s;
+  }
+  function v(x){ return '<span class="' + (x ? 'v1' : '') + '">' + x + '</span>'; }
+  function render(){
+    const s = evaluate();
+    root.querySelectorAll('.sig').forEach(e => e.classList.toggle('hi', s[e.dataset.s] === 1));
+    root.querySelectorAll('.tv').forEach(e => { const x = s[e.dataset.v]; e.textContent = x; e.classList.toggle('hi', x === 1); });
+    root.querySelectorAll('.bit').forEach(b => { const x = st[b.dataset.in]; b.querySelector('b').textContent = x; b.classList.toggle('on', x === 1); });
+    const A = 2*s.A1 + s.A0, B = 2*s.B1 + s.B0, R = 4*s.C2 + 2*s.S1 + s.S0;
+    document.getElementById('simRead').innerHTML = `${s.A1}${s.A0} + ${s.B1}${s.B0} = <b>${s.C2}${s.S1}${s.S0}</b> &nbsp;(${A} + ${B} = ${R})`;
+    const rows = [
+      ['porta 1 · XOR', 'S0 = A0 ⊕ B0', `${v(s.A0)} ⊕ ${v(s.B0)} = ${v(s.S0)}`],
+      ['porta 2 · AND', 'C1 = A0 · B0', `${v(s.A0)} · ${v(s.B0)} = ${v(s.C1)}`],
+      ['porta 3 · XOR', 'P = A1 ⊕ B1',  `${v(s.A1)} ⊕ ${v(s.B1)} = ${v(s.P)}`],
+      ['porta 4 · XOR', 'S1 = P ⊕ C1',  `${v(s.P)} ⊕ ${v(s.C1)} = ${v(s.S1)}`],
+      ['porta 5 · AND', 'G = A1 · B1',  `${v(s.A1)} · ${v(s.B1)} = ${v(s.G)}`],
+      ['porta 6 · AND', 'T = P · C1',   `${v(s.P)} · ${v(s.C1)} = ${v(s.T)}`],
+      ['porta 7 · OR',  'Cout = G + T', `${v(s.G)} + ${v(s.T)} = ${v(s.C2)}`]
+    ];
+    document.getElementById('trace').innerHTML = rows.map(r => `<div><b>${r[0]}</b><br>${r[1]} = ${r[2]}</div>`).join('');
+  }
+  root.querySelectorAll('.bit').forEach(b => b.addEventListener('click', () => { st[b.dataset.in] ^= 1; render(); }));
+  render();
+})();
 
 renderMathInElement(document.body, {
   delimiters: [
