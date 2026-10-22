@@ -331,7 +331,42 @@ footer p{font-size:.8rem;color:var(--muted);font-family:var(--font-mono);}
       <li>São hardware que permite armazenar o <strong>estado presente</strong> de uma máquina sequencial.</li>
     </ol>
 
-    <p>Os <strong>Flip-Flops</strong> são dispositivos amplamente utilizados nas máquinas de estados finitos síncronas. Utilizam como base de construção a <strong>célula binária (latch)</strong>, <strong>entradas de controle</strong> e um <strong>sinal de clock</strong>.</p>
+<section id="flip-flops">
+  <h2>Flip-flops: armazenamento sincronizado pelo clock</h2>
+
+  <p>
+    Um <strong>flip-flop é um circuito sequencial biestável capaz de
+    armazenar 1 bit</strong>. Seu estado é representado pela saída
+    <strong>Q</strong> e atualizado, conforme as entradas, em uma
+    <strong>borda ativa do clock</strong>: de subida (0 &rarr; 1)
+    ou de descida (1 &rarr; 0).
+  </p>
+
+  <p>
+    Entre as bordas ativas, o valor armazenado permanece constante.
+    Essa característica permite sincronizar operações em
+    <strong>registradores, contadores e máquinas de estados</strong>.
+  </p>
+
+  <p>
+    <strong>Latch e flip-flop:</strong> o latch é sensível ao nível
+    de habilitação; o flip-flop é sensível à borda do clock.
+  </p>
+
+  <p>
+    No <strong>flip-flop D</strong>, Q recebe o valor de D na borda
+    ativa e o mantém até a próxima. Para uma captura confiável,
+    D deve permanecer estável durante os intervalos de
+    <em>setup</em> e <em>hold</em>, antes e depois dessa borda.
+  </p>
+
+  <p>
+    Alguns dispositivos também possuem entradas
+    <strong>assíncronas de SET e RESET</strong>, que atuam
+    independentemente do clock e têm prioridade sobre a operação
+    sincronizada.
+  </p>
+</section>
 
     <div class="fig-full">
       <img src="https://github.com/claytonjasilva/claytonjasilva.github.io/raw/main/sisdig_aulas/images_sisdig/modeloFF.jpg" alt="Modelo de Flip-Flop">
