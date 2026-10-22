@@ -1,0 +1,79 @@
+<!DOCTYPE html><html lang="pt-BR"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Prática 5 — Contador assíncrono | Sistemas Digitais</title><style>
+    :root{
+      --bg:#0a0e17; --surface:#111827; --surface2:#0f172a; --border:#243044;
+      --text:#e5edf6; --muted:#94a3b8; --accent:#00c2ff; --accent2:#7c3aed;
+      --ok:#22c55e; --warn:#f59e0b;
+      --font-sans:Inter,Segoe UI,Arial,sans-serif;
+      --font-mono:"JetBrains Mono",Consolas,monospace;
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0;background:var(--bg);color:var(--text);font-family:var(--font-sans);line-height:1.65}
+    a{color:var(--accent);text-decoration:none}
+    a:hover{text-decoration:underline}
+    .container{max-width:1000px;margin:0 auto;padding:0 2rem}
+    nav{position:sticky;top:0;z-index:100;background:rgba(10,14,23,.9);backdrop-filter:blur(12px);
+      border-bottom:1px solid var(--border);padding:1rem 0}
+    nav .container{display:flex;justify-content:space-between;align-items:center;gap:1rem;flex-wrap:wrap}
+    .nav-brand{font-family:var(--font-mono);font-size:.82rem;color:var(--accent)}
+    .nav-links{display:flex;gap:1.2rem;list-style:none;margin:0;padding:0;flex-wrap:wrap}
+    .nav-links a{font-size:.82rem;color:var(--muted)}
+    .nav-links a:hover{color:var(--text);text-decoration:none}
+    .hero{padding:4.5rem 0 3rem;background:
+      radial-gradient(circle at 78% 18%,rgba(124,58,237,.14),transparent 32%),
+      radial-gradient(circle at 18% 30%,rgba(0,194,255,.10),transparent 30%)}
+    .eyebrow{font-family:var(--font-mono);text-transform:uppercase;letter-spacing:.12em;font-size:.72rem;color:var(--accent);margin-bottom:.7rem}
+    h1{font-size:clamp(2rem,5vw,3.6rem);line-height:1.08;margin:.2rem 0 1rem;font-weight:700}
+    h1 strong{color:var(--accent);font-weight:700}
+    .lead{max-width:780px;color:var(--muted);font-size:1.02rem}
+    .section{padding:3rem 0;border-top:1px solid var(--border)}
+    .section-title{display:flex;align-items:center;gap:.8rem;font-family:var(--font-mono);
+      text-transform:uppercase;letter-spacing:.1em;font-size:.72rem;color:var(--accent2);margin-bottom:1rem}
+    .section-title::after{content:"";height:1px;background:var(--border);flex:1}
+    h2{font-size:1.55rem;margin:.2rem 0 1rem}
+    h3{font-size:1.05rem;margin:1.4rem 0 .7rem}
+    p{margin:.55rem 0 1rem;color:#cbd5e1}
+    .card{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:1.25rem 1.4rem;margin:1rem 0}
+    .tool-card{border-left:3px solid var(--accent)}
+    .note{background:rgba(245,158,11,.07);border:1px solid rgba(245,158,11,.24);
+      border-left:3px solid var(--warn);border-radius:8px;padding:1rem 1.15rem;color:#cbd5e1;margin:1rem 0}
+    .tip{background:rgba(34,197,94,.06);border:1px solid rgba(34,197,94,.22);
+      border-left:3px solid var(--ok);border-radius:8px;padding:1rem 1.15rem;color:#cbd5e1;margin:1rem 0}
+    .steps{counter-reset:step;display:flex;flex-direction:column;gap:1rem;margin-top:1.2rem}
+    .step{counter-increment:step;background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:1.25rem 1.4rem}
+    .step h3{display:flex;gap:.75rem;align-items:flex-start;margin:0 0 .75rem}
+    .step h3::before{content:counter(step,decimal-leading-zero);font-family:var(--font-mono);font-size:.72rem;
+      color:var(--accent2);background:rgba(124,58,237,.1);border:1px solid rgba(124,58,237,.25);
+      border-radius:4px;padding:.18rem .48rem;flex-shrink:0;margin-top:.14rem}
+    .task{margin:.8rem 0 0;padding-left:1.35rem;color:#cbd5e1}
+    .task li{margin:.45rem 0}
+    .io-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1rem;margin:1rem 0}
+    .io-card{background:var(--surface2);border:1px solid var(--border);border-radius:8px;padding:1rem 1.1rem}
+    .io-card h3{margin:0 0 .6rem;color:var(--accent);font-family:var(--font-mono);font-size:.9rem}
+    .io-card ul{margin:.3rem 0;padding-left:1.2rem;color:#cbd5e1}
+    .table-wrap{overflow-x:auto;margin:1rem 0}
+    table{width:100%;border-collapse:collapse;background:var(--surface2);font-family:var(--font-mono);font-size:.88rem}
+    th,td{border:1px solid var(--border);padding:.65rem .75rem;text-align:center}
+    th{color:var(--accent);background:rgba(0,194,255,.05)}
+    code{font-family:var(--font-mono);color:#bae6fd}
+    .btn{display:inline-block;margin-top:.4rem;padding:.65rem .9rem;border:1px solid rgba(0,194,255,.35);
+      border-radius:6px;background:rgba(0,194,255,.07);font-family:var(--font-mono);font-size:.8rem}
+    footer{border-top:1px solid var(--border);padding:2rem 0;margin-top:2rem}
+    footer .container{display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap}
+    footer p{font-family:var(--font-mono);font-size:.78rem;color:var(--muted);margin:0}
+    @media(max-width:700px){.container{padding:0 1.2rem}.nav-links{display:none}.hero{padding:3rem 0 2.2rem}.io-grid{grid-template-columns:1fr}}
+  </style></head><body><nav><div class="container"><span class="nav-brand">sisdig · prática 5</span><ul class="nav-links"><li><a href="#problema">Desafio</a></li><li><a href="#projeto">Projeto</a></li><li><a href="#testes">Testes</a></li><li><a href="#entrega">Entrega</a></li><li><a href="../sisdig.html">← disciplina</a></li></ul></div></nav>
+<header class="hero"><div class="container"><p class="eyebrow">Sistemas Digitais · Práticas de Laboratório</p><h1>Prática 5 — <strong>contador assíncrono</strong></h1><p class="lead">Projete um contador de números pares ou ímpares com flip-flops D. Cada acionamento de um push-button deverá avançar a contagem, exibida em três LEDs.</p></div></header>
+<main class="container">
+<section class="section" id="problema"><p class="section-title">01 / desafio</p><h2>Uma contagem, duas sequências</h2><div class="card tool-card"><p>Desenvolva um circuito sequencial capaz de percorrer, de forma cíclica, os números <strong>pares de 0 a 6</strong> ou os números <strong>ímpares de 1 a 7</strong>. Uma chave de seleção define o modo de operação. Um <strong>LED azul</strong> indica o modo par e um <strong>LED amarelo</strong> indica o modo ímpar.</p><p>O número deve ser apresentado em binário por <strong>três LEDs independentes</strong>, identificados por Q<sub>2</sub>, Q<sub>1</sub> e Q<sub>0</sub>. Um acionamento do botão de contagem corresponde a um avanço de duas unidades, com retorno ao início da sequência.</p></div>
+<div class="io-grid"><div class="io-card"><h3>Modo par · M = 0</h3><p><strong>0 → 2 → 4 → 6 → 0 → …</strong></p><p>LED azul aceso; amarelo apagado.</p></div><div class="io-card"><h3>Modo ímpar · M = 1</h3><p><strong>1 → 3 → 5 → 7 → 1 → …</strong></p><p>LED amarelo aceso; azul apagado.</p></div></div>
+<div class="note"><strong>Convenção:</strong> são <strong>três bits de saída</strong> e <strong>quatro estados de contagem em cada modo</strong>. Q<sub>2</sub> é o bit mais significativo e Q<sub>0</sub> é o menos significativo. LED de saída aceso representa 1.</div></section>
+<section class="section"><p class="section-title">02 / preparação</p><h2>Objetivos, entradas e recursos</h2><div class="io-grid"><div class="io-card"><h3>Objetivos</h3><ul><li>Utilizar flip-flops D na construção de um contador;</li><li>compreender o encadeamento assíncrono dos estágios;</li><li>relacionar representação binária e paridade;</li><li>tratar o repique de contatos do botão;</li><li>observar os atrasos de propagação.</li></ul></div><div class="io-card"><h3>Recursos</h3><ul><li>Flip-flops D e portas lógicas disponíveis;</li><li>push-button de contagem e comando de inicialização;</li><li>chave de seleção M;</li><li>três LEDs para a palavra binária, um azul e um amarelo;</li><li>resistores, protoboard, alimentação e solução de antirrepique;</li><li>simulador lógico e, se disponível, osciloscópio ou analisador lógico.</li></ul></div></div>
+<div class="note"><strong>Contador assíncrono:</strong> os estágios não recebem todos o mesmo clock; a saída de um estágio comanda o clock do seguinte. O botão fornece os pulsos ao primeiro estágio. O acionamento manual, isoladamente, não caracteriza um contador como assíncrono.</div></section>
+<section class="section" id="projeto"><p class="section-title">03 / especificação e projeto</p><h2>Requisitos de funcionamento</h2><ul class="task"><li>Utilize <strong>flip-flops do tipo D</strong> para armazenar o estado da contagem. Não utilize contador integrado pronto, microcontrolador ou programação.</li><li>Implemente o contador em <strong>cascata assíncrona</strong>, justificando as conexões conforme a borda ativa dos flip-flops escolhidos.</li><li>Cada pressão completa no botão deve gerar <strong>um único avanço</strong>; soltar o botão não deve produzir outra contagem.</li><li>Ao inicializar, a saída deve indicar <strong>000 no modo par</strong> ou <strong>001 no modo ímpar</strong>.</li><li>Altere o modo com o botão de contagem solto e execute a inicialização antes de retomar os testes.</li><li>Após a estabilização, apenas o LED correspondente ao modo selecionado deve permanecer aceso.</li></ul>
+<div class="steps"><article class="step"><h3>Planejamento da sequência</h3><ul class="task"><li>Escreva as duas sequências em binário e construa as tabelas de estado atual e próximo estado.</li><li>Identifique quais bits variam e qual bit caracteriza a paridade.</li><li>Determine o número mínimo de flip-flops D necessário. Justifique por que três LEDs não implicam necessariamente três flip-flops.</li><li>Determine a relação entre D e a saída de cada estágio para obter a alternância de estado.</li></ul></article><article class="step"><h3>Diagrama lógico</h3><ul class="task"><li>Desenhe o circuito completo: seleção de modo, entrada de pulsos, flip-flops, inicialização e cinco LEDs.</li><li>Identifique a borda ativa de cada clock e escolha a saída que deverá comandar o estágio seguinte para obter a contagem crescente.</li><li>Projete o antirrepique e indique qual transição corresponde à pressão do botão.</li><li>Consulte o datasheet dos componentes: alimentação, pinagem, polaridade das entradas assíncronas e limites de corrente das saídas.</li><li>Preveja resistores para os LEDs, níveis definidos nas entradas e desacoplamento da alimentação. Não ative simultaneamente SET e RESET assíncronos de um mesmo flip-flop.</li></ul></article></div></section>
+<section class="section"><p class="section-title">04 / simulação e montagem</p><h2>Do circuito ideal ao botão real</h2><div class="steps"><article class="step"><h3>Simulação funcional</h3><ul class="task"><li>Implemente o projeto em um simulador e comece com pulsos ideais.</li><li>Inicialize e execute pelo menos dois ciclos completos em cada modo.</li><li>Registre um diagrama de temporização com o pulso de entrada, os clocks dos estágios e Q<sub>2</sub>, Q<sub>1</sub>, Q<sub>0</sub>.</li><li>Verifique se a topologia permanece assíncrona e se a contagem segue a ordem especificada.</li></ul></article><article class="step"><h3>Montagem e antirrepique</h3><ul class="task"><li>Monte e verifique a alimentação antes de conectar o circuito completo.</li><li>Teste a inicialização e os indicadores de modo.</li><li>Integre o botão com antirrepique e confirme um avanço por pressão.</li><li>Explique por que um botão sem tratamento pode provocar vários avanços em um único acionamento.</li></ul></article></div><div class="tip"><strong>Observação experimental:</strong> em um contador assíncrono, as saídas não mudam exatamente ao mesmo tempo. Compare os valores estáveis com os estados transitórios decorrentes da propagação entre estágios. Se o simulador utilizar atrasos nulos, registre essa limitação.</div></section>
+<section class="section" id="testes"><p class="section-title">05 / validação</p><h2>Plano de testes</h2><p>Preencha os resultados observados após a estabilização das saídas. O número de acionamentos é contado a partir da inicialização.</p><div class="table-wrap"><table><caption>Valores esperados em cada modo</caption><thead><tr><th>Acionamentos</th><th>Par · Q₂Q₁Q₀</th><th>Decimal</th><th>Ímpar · Q₂Q₁Q₀</th><th>Decimal</th></tr></thead><tbody><tr><td>0 — inicialização</td><td>000</td><td>0</td><td>001</td><td>1</td></tr><tr><td>1</td><td>010</td><td>2</td><td>011</td><td>3</td></tr><tr><td>2</td><td>100</td><td>4</td><td>101</td><td>5</td></tr><tr><td>3</td><td>110</td><td>6</td><td>111</td><td>7</td></tr><tr><td>4 — retorno</td><td>000</td><td>0</td><td>001</td><td>1</td></tr></tbody></table></div><ul class="task"><li>Repita a sequência até completar oito acionamentos por modo.</li><li>Mantenha o botão pressionado: deve ocorrer apenas um avanço. Solte-o: a saída deve permanecer no mesmo número.</li><li>Acione a inicialização a partir de diferentes valores e confirme o primeiro número do modo escolhido.</li><li>Confira os LEDs de modo em todos os valores, inclusive no zero.</li><li>Observe com atenção 2 → 4 e 3 → 5: explique os possíveis estados transitórios entre os valores estáveis.</li></ul></section>
+<section class="section" id="entrega"><p class="section-title">06 / resultado esperado</p><h2>Entrega da prática</h2><div class="card"><p>Apresente as <strong>tabelas de transição</strong>, o <strong>dimensionamento dos flip-flops</strong>, o <strong>diagrama completo</strong>, a justificativa das conexões de clock, a solução de antirrepique e as evidências dos testes nos dois modos.</p><p>Inclua um diagrama de temporização e explique: como o circuito avança de duas em duas unidades; como identifica a paridade; por que a contagem é assíncrona; e qual a diferença entre repique do botão e atraso de propagação dos estágios.</p></div><div class="tip">A avaliação considera a correspondência entre projeto e sequências especificadas, o uso de flip-flops D em cascata assíncrona, a inicialização, a confiabilidade do acionamento manual e a clareza da documentação.</div></section>
+</main><footer><div class="container"><p>© 2026 · Prof. Clayton J A Silva · Sistemas Digitais</p><p><a href="../sisdig.html">Voltar à página da disciplina</a></p></div></footer>
+</body></html>
