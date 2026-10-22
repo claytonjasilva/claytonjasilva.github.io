@@ -385,10 +385,10 @@ footer p{font-size:.8rem;color:var(--muted);font-family:var(--font-mono);}
         <p class="fig-caption">Fig. 9.9 — Flip-Flop SR: representação e tabela-verdade</p>
       </div>
       <ul class="behavior-list">
-        <li><span class="binputs">S=1, C=0</span> Seta a saída em 1, independente da transição de clock</li>
-        <li><span class="binputs">S=0, C=1</span> Reseta a saída em 0, independente da transição de clock</li>
+        <li><span class="binputs">S=1, C=0</span> Seta a saída em 1. Coloca a saída em 1 na borda de subida do clock.</li>
+        <li><span class="binputs">S=0, C=1</span> Reseta a saída em 0. Coloca a saída em 0 na borda de subida do clock.</li>
         <li><span class="binputs">S=0, C=0</span> Mantém a saída igual ao instante anterior</li>
-        <li><span class="binputs">S=1, C=1</span> Combinação não utilizada</li>
+        <li><span class="binputs">S=1, C=1</span> Condição indesejada.</li>
       </ul>
       <div class="fig-full">
         <img src="https://github.com/claytonjasilva/claytonjasilva.github.io/raw/main/sisdig_aulas/images_sisdig/temporizacao_ffsr.jpg" alt="Flip-Flop RS - temporização">
