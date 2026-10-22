@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Missão Scrum</title>
+  <meta name="description" content="Jogo de planejamento de projetos com Scrum — Gestão de Projetos, Unidade 5.">
+  <meta name="theme-color" content="#0a0e17">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%230a0e17'/%3E%3Cpath d='M16 6a10 10 0 1 0 10 10' fill='none' stroke='%2300c2ff' stroke-width='3' stroke-linecap='round'/%3E%3Cpath d='M22 4l4 6-7 1z' fill='%2300c2ff'/%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,600;1,300&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/estilo.css">
+</head>
+<body>
+  <a class="pular" href="#app">Pular para o jogo</a>
+  <header class="topo">
+    <div class="topo-int">
+      <button class="marca" data-acao="inicio" aria-label="Missão Scrum — voltar ao início">
+        <span class="marca-ic" aria-hidden="true"></span>Missão <b>Scrum</b>
+      </button>
+      <div class="topo-info" id="topo-info"></div>
+      <div class="topo-acoes">
+        <button class="btn-ic" data-acao="som" id="btn-som" aria-pressed="true" title="Som">Som</button>
+        <button class="btn-ic" data-acao="tema" id="btn-tema" title="Alternar tema claro/escuro">Tema</button>
+      </div>
+    </div>
+  </header>
+  <main id="app" tabindex="-1" aria-live="polite"></main>
+  <div id="aviso" class="aviso" role="status" aria-live="polite" hidden></div>
+  <canvas id="confete" aria-hidden="true"></canvas>
+  <footer class="rodape">
+    <span>Gestão de Projetos · Unidade 5 — Gestão de escopo e tempo com Scrum</span>
+    <span>Conceitos: SBOK™ Guide (SCRUMstudy, 2016), Scrum Guide (2020) e Agile Alliance</span>
+  </footer>
+  <script src="js/dados.js"></script>
+  <script src="js/personas.js"></script>
+  <script src="js/motor.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
