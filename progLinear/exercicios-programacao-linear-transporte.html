@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="pt-BR"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="description" content="25 exercícios autorais sobre o problema de transporte: Canto Noroeste, Stepping Stone, casos especiais e decisões com Excel."><title>Exercícios de Transporte — Prof. Clayton J A Silva</title><style>
+    :root {
+      --bg: #f5f5f3;
+      --paper: #ffffff;
+      --ink: #171717;
+      --muted: #66645f;
+      --line: #d9d8d3;
+      --accent: #e96f2d;
+      --accent-soft: #fff0e7;
+      --dark: #111111;
+      --radius: 16px;
+      --shadow: 0 10px 28px rgba(0,0,0,.07);
+    }
+
+    * { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--ink);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.65;
+    }
+
+    a { color: inherit; }
+
+    .topbar {
+      background: var(--dark);
+      color: #fff;
+      border-bottom: 1px solid #2a2a2a;
+    }
+
+    .topbar-inner {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 14px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .brand {
+      font-size: .92rem;
+      font-weight: 700;
+      letter-spacing: .02em;
+    }
+
+    .nav a {
+      text-decoration: none;
+      color: #d7d7d7;
+      font-size: .9rem;
+      margin-left: 18px;
+    }
+
+    .nav a:hover { color: #fff; }
+
+    .hero {
+      background: var(--dark);
+      color: #fff;
+      padding: 58px 24px 66px;
+    }
+
+    .hero-inner {
+      max-width: 1120px;
+      margin: 0 auto;
+    }
+
+    .eyebrow {
+      display: inline-block;
+      margin-bottom: 14px;
+      font-size: .78rem;
+      text-transform: uppercase;
+      letter-spacing: .16em;
+      color: #ff9a62;
+      font-weight: 800;
+    }
+
+    h1 {
+      margin: 0;
+      max-width: 760px;
+      font-size: clamp(2.3rem, 6vw, 4.7rem);
+      line-height: .98;
+      letter-spacing: -.055em;
+      font-weight: 800;
+    }
+
+    .hero p {
+      max-width: 760px;
+      margin: 22px 0 0;
+      color: #cfcfcf;
+      font-size: 1.04rem;
+    }
+
+    .meta {
+      margin-top: 28px;
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .tag {
+      border: 1px solid #3a3a3a;
+      border-radius: 999px;
+      padding: 7px 12px;
+      font-size: .82rem;
+      color: #e4e4e4;
+    }
+
+    main {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 42px 24px 72px;
+    }
+
+    .intro-grid {
+      display: grid;
+      grid-template-columns: 1.2fr .8fr;
+      gap: 24px;
+      margin-bottom: 34px;
+    }
+
+    .panel,
+    .exercise {
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+    }
+
+    .panel { padding: 24px; }
+
+    .panel h2,
+    .section-title {
+      margin: 0 0 10px;
+      font-size: 1.3rem;
+      letter-spacing: -.02em;
+    }
+
+    .panel p { margin: 0; color: var(--muted); }
+
+    .source-box {
+      border-left: 4px solid var(--accent);
+    }
+
+    .source-box strong { color: var(--ink); }
+
+    .section-kicker {
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: .13em;
+      font-size: .78rem;
+      font-weight: 800;
+      margin: 44px 0 6px;
+    }
+
+    .section-title {
+      font-size: 2rem;
+      margin-bottom: 22px;
+    }
+
+    .exercise-list {
+      display: grid;
+      gap: 20px;
+    }
+
+    .exercise {
+      padding: 24px;
+      overflow: hidden;
+    }
+
+    .exercise-head {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 14px;
+      border-bottom: 1px solid var(--line);
+      padding-bottom: 12px;
+    }
+
+    .exercise-head h3 {
+      margin: 0;
+      font-size: 1.18rem;
+    }
+
+    .badge {
+      white-space: nowrap;
+      color: var(--accent);
+      font-size: .78rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+    }
+
+    .exercise p { margin: 0 0 10px; }
+
+    .exercise ul,
+    .exercise ol { margin: 8px 0 12px 22px; }
+
+    .exercise li { margin: 5px 0; }
+
+    .math {
+      margin: 14px 0;
+      padding: 14px 18px;
+      background: #f7f7f5;
+      border: 1px solid #e4e3df;
+      border-radius: 12px;
+      font-family: "Times New Roman", Times, serif;
+      font-size: 1.08rem;
+      overflow-x: auto;
+    }
+
+    .math div { margin: 4px 0; }
+
+    .ask {
+      margin-top: 14px;
+      padding: 12px 14px;
+      border-radius: 10px;
+      background: var(--accent-soft);
+      border: 1px solid #ffd8c2;
+    }
+
+    .ask strong { color: #a54412; }
+
+    .resource-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+      margin: 14px 0;
+    }
+
+    .resource-card {
+      background: #f7f7f5;
+      border: 1px solid #e5e4df;
+      border-radius: 12px;
+      padding: 14px;
+    }
+
+    .resource-card h4 { margin: 0 0 8px; }
+    .resource-card ul { margin-bottom: 0; }
+
+    footer {
+      background: var(--dark);
+      color: #bcbcbc;
+      padding: 28px 24px;
+    }
+
+    .footer-inner {
+      max-width: 1120px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      gap: 18px;
+      flex-wrap: wrap;
+      font-size: .88rem;
+    }
+
+    .footer-inner a {
+      color: #fff;
+      text-decoration: none;
+    }
+
+    @media (max-width: 760px) {
+      .intro-grid,
+      .resource-grid { grid-template-columns: 1fr; }
+      .nav { width: 100%; }
+      .nav a { margin: 0 14px 0 0; }
+      .hero { padding-top: 42px; }
+      .exercise { padding: 19px; }
+    }
+   table{width:100%;border-collapse:collapse;margin:12px 0;font-size:.94rem;font-variant-numeric:tabular-nums}caption{text-align:left;color:var(--muted);font-size:.85rem;margin-bottom:6px}th,td{padding:10px 12px;border-bottom:1px solid var(--line);text-align:right}th{background:#f7f7f5}th:first-child{text-align:left}tfoot{font-weight:700}.table-wrap{overflow-x:auto}.exercise{scroll-margin-top:20px}.exercise-head{align-items:flex-start}.badge{white-space:normal;text-align:right}.guide{margin-bottom:24px}.guide p+p{margin-top:12px}.guide li{margin:8px 0}.toc{display:flex;gap:7px;flex-wrap:wrap;margin-top:18px}.toc a{display:inline-block;min-width:36px;padding:5px 9px;text-align:center;border:1px solid var(--line);border-radius:8px;text-decoration:none;background:white}.toc a:hover,.toc a:focus-visible{background:var(--accent-soft);outline:2px solid var(--accent)}.toolbar{display:flex;gap:14px;align-items:center;flex-wrap:wrap;margin:20px 0}.toolbar button{background:var(--accent);color:#151515;font:inherit;font-weight:700;border:0;border-radius:8px;padding:10px 16px;cursor:pointer}.ask ol{margin-bottom:0}.model{font-family:Georgia,serif;background:#f7f7f5;padding:16px;border-radius:10px}.group-note{color:var(--muted);margin-top:-10px;margin-bottom:24px}@media(max-width:600px){.exercise-head{display:block}.badge{display:block;text-align:left;margin-top:6px}th,td{padding:8px}.hero h1{font-size:2.7rem}}@media print{@page{margin:16mm}body{background:white;font-size:10pt}.topbar,.toolbar,.toc{display:none}.hero{background:white;color:black;padding:10px 0 20px}.hero p,.eyebrow,.tag{color:black}.tag{border-color:#aaa}.hero h1{font-size:30pt}main{padding:10px 0}.panel,.exercise{box-shadow:none;border-color:#aaa}.exercise{break-inside:avoid;margin-bottom:12px}.exercise-list{display:block}.section-title{break-after:avoid}.intro-grid{display:block}.intro-grid .panel{margin-bottom:12px}footer{background:white;color:black}.footer-inner a{color:black}a{overflow-wrap:anywhere}.ask{background:#fafafa;border-color:#aaa}}</style></head><body>
+<header class="topbar"><div class="topbar-inner"><div class="brand">Prof. Clayton J A Silva</div><nav class="nav" aria-label="Navegação principal"><a href="https://claytonjasilva.github.io/progLinear.html">Programação Linear</a><a href="#exercicios">Exercícios</a><a href="#excel">Excel</a><a href="#referencia">Referência</a></nav></div></header>
+<section class="hero"><div class="hero-inner"><span class="eyebrow">Programação Linear · Capítulo 5</span><h1>Exercícios de<br>Transporte</h1><p>25 problemas para transformar ofertas, demandas e custos em planos de distribuição. Do primeiro quadro pelo Canto Noroeste à melhoria por Stepping Stone e à decisão gerencial.</p><div class="meta"><span class="tag">25 exercícios</span><span class="tag">Canto Noroeste</span><span class="tag">Stepping Stone</span><span class="tag">manual e Excel</span><span class="tag">decisões justificadas</span></div></div></section>
+<main><section class="intro-grid"><article class="panel"><h2>Como trabalhar</h2><p>Em cada problema, defina xᵢⱼ como a quantidade enviada da origem i ao destino j, confira as unidades e o balanço e registre o custo inicial e final. Os dados são fictícios, criados para prática didática. A ordem padrão é a das linhas e colunas da tabela; qualquer mudança deve ser informada.</p></article><aside class="panel source-box" id="referencia"><h2>Referência conceitual</h2><p><a href="https://claytonjasilva.github.io/progLinear/cap5.html">Capítulo 5 — Problema de Transporte</a>, Prof. Clayton J A Silva: formulação, soluções iniciais, ciclos de melhoria, degenerescência e aplicação computacional. Os enunciados desta lista são autorais, elaborados para acompanhar o capítulo; não são transcrições de exercícios da referência.</p></aside></section>
+<section class="panel guide"><h2>Roteiro comum de resolução</h2><div class="model">Minimizar Z = Σᵢ Σⱼ cᵢⱼ xᵢⱼ<br>Σⱼ xᵢⱼ = aᵢ por origem; Σᵢ xᵢⱼ = bⱼ por destino; xᵢⱼ ≥ 0.</div><ol><li><strong>Balancear:</strong> confira Σaᵢ e Σbⱼ. Adicione origem ou destino fictício somente com interpretação e custo coerentes com o enunciado.</li><li><strong>Inicializar:</strong> no Canto Noroeste, aloque o mínimo entre oferta e demanda remanescentes, começando no alto à esquerda. O procedimento não usa os custos para escolher a próxima célula.</li><li><strong>Manter a base:</strong> no quadro clássico completo, use m + n − 1 células básicas sem ciclo. Quando necessário, mantenha básicas de valor zero; não acrescente mercadoria fictícia para eliminar degenerescência.</li><li><strong>Avaliar:</strong> para cada célula não básica permitida, construa um ciclo fechado de movimentos horizontais e verticais por células básicas; comece com + e alterne os sinais. Calcule Δ pela soma dos custos com esses sinais.</li><li><strong>Ajustar:</strong> em minimização, escolha Δ &lt; 0 e tome θ como o menor fluxo nas posições −. Atualize as alocações e confira Z novo = Z anterior + θΔ. Declare como resolveu empates; em empate de saída, retire apenas uma variável da base.</li><li><strong>Concluir:</strong> repita até todos os Δ serem não negativos. Um Δ nulo pode permitir outro ótimo; demonstre uma mudança com θ positivo antes de afirmar uma distribuição alternativa. Em casos degenerados, uma troca de base pode ter θ = 0; mantenha um critério consistente para evitar repetição de bases.</li></ol><p><strong>Entrega:</strong> modelo, tabelas de alocação, custos, ciclos utilizados e conclusão no contexto. Nas decisões abertas, indique sua escolha, as contas e as hipóteses. Não há gabarito nesta versão do aluno.</p></section>
+<section class="panel guide source-box" id="excel"><h2>Como sugerido: resolver com contas no Excel</h2><p>Nos exercícios menores, a resolução cabe em papel. Nos marcados como Excel, use uma matriz de custos e outra de quantidades, somas por linha e coluna e <strong>=SOMARPRODUTO(intervalo_custos;intervalo_quantidades)</strong> para o custo total. As matrizes devem ter as mesmas dimensões.</p><p><strong>Stepping Stone na planilha:</strong> mantenha um quadro por iteração. Para cada candidata, registre o ciclo, os custos com sinais, Δ, o mínimo das alocações negativas (θ) e o novo custo. A planilha faz as contas; a escolha dos ciclos deve aparecer no trabalho.</p><p><strong>Conferência com Solver:</strong> minimize a célula de custo, alterando a matriz de quantidades, com somas de linhas iguais às ofertas, somas de colunas iguais às demandas e quantidades não negativas. Escolha <strong>Simplex LP</strong>. Adicione limites e proibições quando exigidos; para capacidades ociosas, use o balanceamento indicado ou restrições de oferta ≤ no modelo direto. Não inclua uma taxa fixa como se fosse um custo por unidade. Planos diferentes podem ter o mesmo custo ótimo.</p></section>
+<div class="toolbar"><button type="button" onclick="window.print()">Imprimir / salvar em PDF</button><span>Escolha um exercício para navegar:</span></div><nav class="toc" aria-label="Índice dos 25 exercícios"><a href='#ex-1' aria-label='Exercício 1'>1</a><a href='#ex-2' aria-label='Exercício 2'>2</a><a href='#ex-3' aria-label='Exercício 3'>3</a><a href='#ex-4' aria-label='Exercício 4'>4</a><a href='#ex-5' aria-label='Exercício 5'>5</a><a href='#ex-6' aria-label='Exercício 6'>6</a><a href='#ex-7' aria-label='Exercício 7'>7</a><a href='#ex-8' aria-label='Exercício 8'>8</a><a href='#ex-9' aria-label='Exercício 9'>9</a><a href='#ex-10' aria-label='Exercício 10'>10</a><a href='#ex-11' aria-label='Exercício 11'>11</a><a href='#ex-12' aria-label='Exercício 12'>12</a><a href='#ex-13' aria-label='Exercício 13'>13</a><a href='#ex-14' aria-label='Exercício 14'>14</a><a href='#ex-15' aria-label='Exercício 15'>15</a><a href='#ex-16' aria-label='Exercício 16'>16</a><a href='#ex-17' aria-label='Exercício 17'>17</a><a href='#ex-18' aria-label='Exercício 18'>18</a><a href='#ex-19' aria-label='Exercício 19'>19</a><a href='#ex-20' aria-label='Exercício 20'>20</a><a href='#ex-21' aria-label='Exercício 21'>21</a><a href='#ex-22' aria-label='Exercício 22'>22</a><a href='#ex-23' aria-label='Exercício 23'>23</a><a href='#ex-24' aria-label='Exercício 24'>24</a><a href='#ex-25' aria-label='Exercício 25'>25</a></nav><div class='section-kicker'>01 / fundamentos</div><h2 class='section-title' id='exercicios'>Do quadro inicial à primeira melhoria</h2><p class='group-note'>Exercícios 1–5 · modelagem, ciclos e efeito da ordem da tabela.</p><section class='exercise-list'><article class='exercise' id='ex-1'><div class='exercise-head'><h3>Exercício 1 — Hortaliças para feiras de bairro</h3><span class='badge'>Manual · 2 × 2</span></div><p>Duas cooperativas distribuem caixas padronizadas de hortaliças para duas feiras em uma manhã. Os custos incluem carregamento e frete, em R$/caixa.</p><div class='table-wrap'><table><caption>Exercício 1 · custos unitários, oferta e demanda nas unidades do enunciado</caption><thead><tr><th scope='col'>Origem / destino</th><th scope='col'>Feira Centro</th><th scope='col'>Feira Sul</th><th scope='col'>Oferta</th></tr></thead><tbody><tr><th scope='row'>Cooperativa A</th><td>2</td><td>7</td><td>15</td></tr><tr><th scope='row'>Cooperativa B</th><td>6</td><td>3</td><td>25</td></tr></tbody><tfoot><tr><th scope='row'>Demanda</th><td>20</td><td>20</td><td>40</td></tr></tfoot></table></div><p><small>Oferta total: 40 · demanda total: 40.</small></p><div class='ask'><strong>Pede-se:</strong><ol type='a'><li>Defina as variáveis e formule o modelo de custo mínimo.</li><li>Construa o quadro pelo Canto Noroeste na ordem apresentada e calcule o custo inicial.</li><li>Avalie a única célula não básica pelo Stepping Stone e conclua sobre a otimalidade.</li></ol></div></article><article class='exercise' id='ex-2'><div class='exercise-head'><h3>Exercício 2 — Água mineral para um evento</h3><span class='badge'>Manual · primeira melhoria</span></div><p>Dois depósitos abastecem dois pontos de apoio de um evento. A unidade é um lote de garrafas; o custo é dado em R$/lote.</p><div class='table-wrap'><table><caption>Exercício 2 · custos unitários, oferta e demanda nas unidades do enunciado</caption><thead><tr><th scope='col'>Origem / destino</th><th scope='col'>Ponto 1</th><th scope='col'>Ponto 2</th><th scope='col'>Oferta</th></tr></thead><tbody><tr><th scope='row'>Depósito A</th><td>8</td><td>2</td><td>20</td></tr><tr><th scope='row'>Depósito B</th><td>3</td><td>7</td><td>30</td></tr></tbody><tfoot><tr><th scope='row'>Demanda</th><td>25</td><td>25</td><td>50</td></tr></tfoot></table></div><p><small>Oferta total: 50 · demanda total: 50.</small></p><div class='ask'><strong>Pede-se:</strong><ol type='a'><li>Obtenha a solução pelo Canto Noroeste.</li><li>Construa o ciclo da célula A → Ponto 2, indique os sinais e determine Δ e θ.</li><li>Atualize os fluxos, confirme o ótimo e calcule a economia absoluta e percentual sobre o custo inicial.</li></ol></div></article><article class='exercise' id='ex-3'><div class='exercise-head'><h3>Exercício 3 — Medicamentos para unidades de saúde</h3><span class='badge'>Manual · 2 × 3</span></div><p>Dois almoxarifados enviam caixas idênticas de um medicamento a três unidades. Todas as caixas têm o mesmo prazo de validade e condições de conservação. Custos em R$/caixa.</p><div class='table-wrap'><table><caption>Exercício 3 · custos unitários, oferta e demanda nas unidades do enunciado</caption><thead><tr><th scope='col'>Origem / destino</th><th scope='col'>Unidade 1</th><th scope='col'>Unidade 2</th><th scope='col'>Unidade 3</th><th scope='col'>Oferta</th></tr></thead><tbody><tr><th scope='row'>Almoxarifado A</th><td>7</td><td>3</td><td>6</td><td>18</td></tr><tr><th scope='row'>Almoxarifado B</th><td>4</td><td>8</td><td>2</td><td>22</td></tr></tbody><tfoot><tr><th scope='row'>Demanda</th><td>12</td><td>15</td><td>13</td><td>40</td></tr></tfoot></table></div><p><small>Oferta total: 40 · demanda total: 40.</small></p><div class='ask'><strong>Pede-se:</strong><ol type='a'><li>Resolva pelo Canto Noroeste e identifique as quatro variáveis básicas.</li><li>Calcule Δ para cada célula não básica e escolha uma rota de melhoria.</li><li>Repita o Stepping Stone até o teste completo de otimalidade; apresente o plano de abastecimento.</li></ol></div></article><article class='exercise' id='ex-4'><div class='exercise-head'><h3>Exercício 4 — Leite para duas indústrias</h3><span class='badge'>Manual · 3 × 2</span></div><p>Três postos de coleta distribuem leite para duas indústrias. Cada unidade representa 100 litros; os custos são R$/unidade de 100 litros. Não há perdas no transporte.</p><div class='table-wrap'><table><caption>Exercício 4 · custos unitários, oferta e demanda nas unidades do enunciado</caption><thead><tr><th scope='col'>Origem / destino</th><th scope='col'>Indústria 1</th><th scope='col'>Indústria 2</th><th scope='col'>Oferta</th></tr></thead><tbody><tr><th scope='row'>Posto A</th><td>3</td><td>8</td><td>10</td></tr><tr><th scope='row'>Posto B</th><td>7</td><td>4</td><td>18</td></tr><tr><th scope='row'>Posto C</th><td>5</td><td>2</td><td>12</td></tr></tbody><tfoot><tr><th scope='row'>Demanda</th><td>17</td><td>23</td><td>40</td></tr></tfoot></table></div><p><small>Oferta total: 40 · demanda total: 40.</small></p><div class='ask'><strong>Pede-se:</strong><ol type='a'><li>Construa a solução inicial pelo Canto Noroeste e calcule seu custo.</li><li>Aplique o Stepping Stone até o ótimo, registrando cada ciclo utilizado.</li><li>Converta o plano final para litros e explique a utilidade da técnica para a operação diária.</li></ol></div></article><article class='exercise' id='ex-5'><div class='exercise-head'><h3>Exercício 5 — A ordem da tabela altera o começo?</h3><span class='badge'>Manual · decisão do aluno</span></div><p>Duas fábricas distribuem lotes de embalagens para três clientes. Os custos são R$/lote. A ordem de apresentação não representa prioridade comercial.</p><div class='table-wrap'><table><caption>Exercício 5 · custos unitários, oferta e demanda nas unidades do enunciado</caption><thead><tr><th scope='col'>Origem / destino</th><th scope='col'>Cliente 1</th><th scope='col'>Cliente 2</th><th scope='col'>Cliente 3</th><th scope='col'>Oferta</th></tr></thead><tbody><tr><th scope='row'>Fábrica A</th><td>9</td><td>2</td><td>5</td><td>16</td></tr><tr><th scope='row'>Fábrica B</th><td>3</td><td>7</td><td>4</td><td>24</td></tr></tbody><tfoot><tr><th scope='row'>Demanda</th><td>11</td><td>14</td><td>15</td><td>40</td></tr></tfoot></table></div><p><small>Oferta total: 40 · demanda total: 40.</small></p><div class='ask'><strong>Pede-se:</strong><ol type='a'><li>Obtenha o Canto Noroeste na ordem original.</li><li>Escolha e justifique outra ordem de colunas; refaça o Canto Noroeste preservando os custos e as demandas de cada cliente.</li><li>Otimize os dois quadros pelo Stepping Stone. Compare custos iniciais, custos finais e número de ajustes; explique por que reordenar não muda o problema econômico.</li></ol></div></article></section><div class='section-kicker'>02 / variações do algoritmo</div><h2 class='section-title' id='grupo-6'>Bases, empates e soluções alternativas</h2><p class='group-note'>Exercícios 6–10 · situações que exigem atenção à estrutura da base.</p><section class='exercise-list'><article class='exercise' id='ex-6'><div class='exercise-head'><h3>Exercício 6 — Igualdade simultânea de oferta e demanda</h3><span class='badge'>Manual · degenerescência inicial</span></div><p>Dois centros de livros abastecem três bibliotecas. A unidade é um kit e o custo é R$/kit. Na primeira célula, a oferta da origem e a demanda do destino se esgotam ao mesmo tempo.</p><div class='table-wrap'><table><caption>Exercício 6 · custos unitários, oferta e demanda nas unidades do enunciado</caption><thead><tr><th scope='col'>Origem / destino</th><th scope='col'>Biblioteca 1</th><th scope='col'>Biblioteca 2</th><th scope='col'>Biblioteca 3</th><th scope='col'>Oferta</th></tr></thead><tbody><tr><th scope='row'>Centro A</th><td>6</td><td>2</td><td>5</td><td>10</td></tr><tr><th scope='row'>Centro B</th><td>3</td><td>7</td><td>4</td><td>20</td></tr></tbody><tfoot><tr><th scope='row'>Demanda</th><td>10</td><td>8</td><td>12</td><td>30</td></tr></tfoot></table></div><p><small>Oferta total: 30 · demanda total: 30.</small></p><div class='ask'><strong>Pede-se:</strong><ol type='a'><li>Aplique o Canto Noroeste e conte as alocações estritamente positivas.</li><li>Complete uma base com m + n − 1 células, escolhendo uma célula básica de valor zero que não forme ciclo com as demais básicas. Registre essa escolha.</li><li>Aplique o Stepping Stone incluindo as básicas nulas e apresente o teste final. Use zero simbólico, sem acrescentar unidades reais à oferta.</li></ol></div></article><article class='exercise' id='ex-7'><div class='exercise-head'><h3>Exercício 7 — Empate entre rotas de melhoria</h3><span class='badge'>Manual · escolha de entrada</span></div><p>Duas gráficas enviam lotes de material didático a três escolas. Os custos são R$/lote.</p><div class='table-wrap'><table><caption>Exercício 7 · custos unitários, oferta e demanda nas unidades do enunciado</caption><thead><tr><th scope='col'>Origem / destino</th><th scope='col'>Escola 1</th><th scope='col'>Escola 2</th><th scope='col'>Escola 3</th><th scope='col'>Oferta</th></tr></thead><tbody><tr><th scope='row'>Gráfica A</th><td>8</td><td>3</td><td>5</td><td>15</td></tr><tr><th scope='row'>Gráfica B</th><td>10</td><td>7</td><td>9</td><td>25</td></tr></tbody><tfoot><tr><th scope='row'>Demanda</th><td>20</td><td>10</td><td>10</td><td>40</td></tr></tfoot></table></div><p><small>Oferta total: 40 · demanda total: 40.</small></p><div class='ask'><strong>Pede-se:</strong><ol type='a'><li>Calcule o Canto Noroeste e os dois índices Δ das células não básicas; verifique o empate negativo.</li><li>Escolha qual rota entra primeiro e explicite a regra de desempate.</li><li>Continue até o ótimo e compare com um colega que tenha escolhido a outra rota. A distribuição final precisa ser igual? Justifique pelo custo e pelo teste de otimalidade.</li></ol></div></article><article class='exercise' id='ex-8'><div class='exercise-head'><h3>Exercício 8 — Duas distribuições com o mesmo custo</h3><span class='badge'>Manual · ótimo alternativo</span></div><p>Duas unidades de produção entregam cestas padronizadas a dois bairros. Os custos são R$/cesta.</p><div class='table-wrap'><table><caption>Exercício 8 · custos unitários, oferta e demanda nas unidades do enunciado</caption><thead><tr><th scope='col'>Origem / destino</th><th scope='col'>Bairro 1</th><th scope='col'>Bairro 2</th><th scope='col'>Oferta</th></tr></thead><tbody><tr><th scope='row'>Unidade A</th><td>2</td><td>4</td><td>12</td></tr><tr><th scope='row'>Unidade B</th><td>3</td><td>5</td><td>18</td></tr></tbody><tfoot><tr><th scope='row'>Demanda</th><td>15</td><td>15</td><td>30</td></tr></tfoot></table></div><p><small>Oferta total: 30 · demanda total: 30.</small></p><div class='ask'><strong>Pede-se:</strong><ol type='a'><li>Construa o Canto Noroeste e calcule o índice da rota não básica.</li><li>Mostre, com um ajuste de θ positivo, outra distribuição ótima e confirme o mesmo custo total.</li><li>Entre os dois planos, escolha um com base em um critério operacional que você proponha, como concentração de entregas. Separe esse critério do objetivo de custo original.</li></ol></div></article><article class='exercise' id='ex-9'><div class='exercise-head'><h3>Exercício 9 — Empate na saída da base</h3><span class='badge'>Manual · ajuste degenerado</span></div><p>Duas fábricas fornecem lotes de peças a dois clientes. Custos em R$/lote.</p><div class='table-wrap'><table><caption>Exercício 9 · custos unitários, oferta e demanda nas unidades do enunciado</caption><thead><tr><th scope='col'>Origem / destino</th><th scope='col'>Cliente 1</th><th scope='col'>Cliente 2</th><th scope='col'>Oferta</th></tr></thead><tbody><tr><th scope='row'>Fábrica A</th><td>8</td><td>2</td><td>10</td></tr><tr><th scope='row'>Fábrica B</th><td>3</td><td>7</td><td>20</td></tr></tbody><tfoot><tr><th scope='row'>Demanda</th><td>20</td><td>10</td><td>30</td></tr></tfoot></table></div><p><small>Oferta total: 30 · demanda total: 30.</small></p><div class='ask'><strong>Pede-se:</strong><ol type='a'><li>Obtenha o Canto Noroeste e avalie a entrada da rota A → Cliente 2.</li><li>Mostre por que duas células atingem zero simultaneamente no ajuste máximo.</li><li>Escolha apenas uma variável para sair da base, mantenha a outra básica nula e realize o teste de otimalidade. Explique por que quantidade positiva e variável básica não são sinônimos.</li></ol></div></article><article class='exercise' id='ex-10'><div class='exercise-head'><h3>Exercício 10 — Alimentos para restaurantes universitários</h3><span class='badge'>Manual ou Excel · 3 × 3</span></div><p>Três cozinhas distribuem lotes homogêneos de refeições a três restaurantes, sem perdas. Os custos incluem preparo e entrega, em R$/lote.</p><div class='table-wrap'><table><caption>Exercício 10 · custos unitários, oferta e demanda nas unidades do enunciado</caption><thead><tr><th scope='col'>Origem / destino</th><th scope='col'>Restaurante 1</th><th scope='col'>Restaurante 2</th><th scope='col'>Restaurante 3</th><th scope='col'>Oferta</th></tr></thead><tbody><tr><th scope='row'>Cozinha A</th><td>6</td><td>4</td><td>8</td><td>12</td></tr><tr><th scope='row'>Cozinha B</th><td>5</td><td>7</td><td>3</td><td>17</td></tr><tr><th scope='row'>Cozinha C</th><td>9</td><td>2</td><td>5</td><td>11</td></tr></tbody><tfoot><tr><th scope='row'>Demanda</th><td>10</td><td>14</td><td>16</td><td>40</td></tr></tfoot></table></div><p><small>Oferta total: 40 · demanda total: 40.</small></p><div class='ask'><strong>Pede-se:</strong><ol type='a'><li>Formule o problema e construa a solução pelo Canto Noroeste.</li><li>Execute o Stepping Stone até o ótimo e mantenha um registro de Δ, θ e custo em cada iteração.</li><li>Se usar Excel, monte os quadros e os cálculos de cada ciclo por fórmulas; use o Solver apenas para conferir o resultado final.</li></ol></div></article></section><div class='section-kicker'>03 / balanceamento e cenários</div><h2 class='section-title' id='grupo-11'>Oferta, demanda e interpretação econômica</h2><p class='group-note'>Exercícios 11–15 · fictícios, escassez, compra emergencial e descontos.</p><section class='exercise-list'><article class='exercise' id='ex-11'><div class='exercise-head'><h3>Exercício 11 — Excesso de cimento disponível</h3><span class='badge'>Manual · destino fictício</span></div><p>Duas fábricas têm sacos de cimento disponíveis, mas apenas parte precisa ser enviada nesta semana. A sobra pode permanecer na fábrica sem custo adicional neste horizonte. Custos de entrega em R$/saco.</p><div class='table-wrap'><table><caption>Exercício 11 · custos unitários, oferta e demanda nas unidades do enunciado</caption><thead><tr><th scope='col'>Origem / destino</th><th scope='col'>Obra 1</th><th scope='col'>Obra 2</th><th scope='col'>Oferta</th></tr></thead><tbody><tr><th scope='row'>Fábrica A</th><td>4</td><td>7</td><td>25</td></tr><tr><th scope='row'>Fábrica B</th><td>6</td><td>3</td><td>20</td></tr></tbody><tfoot><tr><th scope='row'>Demanda</th><td>18</td><td>17</td><td>35</td></tr></tfoot></table></div><p><small>Oferta total: 45 · demanda total: 35.</small></p><div class='ask'><strong>Pede-se:</strong><ol type='a'><li>Calcule o excedente e acrescente um destino fictício na última coluna, com custo zero.</li><li>Resolva pelo Canto Noroeste seguido do Stepping Stone.</li><li>Informe quanto fica em cada fábrica e explique por que o fluxo para o destino fictício não é uma entrega física.</li></ol></div></article><article class='exercise' id='ex-12'><div class='exercise-head'><h3>Exercício 12 — Estoque com custos distintos de permanência</h3><span class='badge'>Manual · fictício com custo</span></div><p>Duas câmaras frias dispõem de caixas de frutas para dois mercados. A sobra fica armazenada por uma semana: R$ 2/caixa na câmara A e R$ 5/caixa na B. Custos de entrega em R$/caixa na matriz.</p><div class='table-wrap'><table><caption>Exercício 12 · custos unitários, oferta e demanda nas unidades do enunciado</caption><thead><tr><th scope='col'>Origem / destino</th><th scope='col'>Mercado 1</th><th scope='col'>Mercado 2</th><th scope='col'>Oferta</th></tr></thead><tbody><tr><th scope='row'>Câmara A</th><td>5</td><td>8</td><td>20</td></tr><tr><th scope='row'>Câmara B</th><td>6</td><td>3</td><td>25</td></tr></tbody><tfoot><tr><th scope='row'>Demanda</th><td>15</td><td>20</td><td>35</td></tr></tfoot></table></div><p><small>Oferta total: 45 · demanda total: 35.</small></p><div class='ask'><strong>Pede-se:</strong><ol type='a'><li>Acrescente o destino Estoque com a demanda de balanceamento e os custos de permanência indicados.</li><li>Aplique Canto Noroeste e Stepping Stone; separe custo de entrega e custo de estoque na solução final.</li><li>Compare com a hipótese de custo zero no destino fictício e discuta o efeito dessa simplificação.</li></ol></div></article><article class='exercise' id='ex-13'><div class='exercise-head'><h3>Exercício 13 — Escassez temporária de material escolar</h3><span class='badge'>Manual · origem fictícia</span></div><p>Dois depósitos não têm kits suficientes para três escolas. Neste exercício, admite-se atendimento parcial, com penalidades didáticas de R$ 12, R$ 20 e R$ 15 por kit não entregue às escolas 1, 2 e 3. Elas não representam frete nem compra emergencial. Custos reais em R$/kit.</p><div class='table-wrap'><table><caption>Exercício 13 · custos unitários, oferta e demanda nas unidades do enunciado</caption><thead><tr><th scope='col'>Origem / destino</th><th scope='col'>Escola 1</th><th scope='col'>Escola 2</th><th scope='col'>Escola 3</th><th scope='col'>Oferta</th></tr></thead><tbody><tr><th scope='row'>Depósito A</th><td>3</td><td>6</td><td>5</td><td>12</td></tr><tr><th scope='row'>Depósito B</th><td>7</td><td>2</td><td>4</td><td>18</td></tr></tbody><tfoot><tr><th scope='row'>Demanda</th><td>10</td><td>14</td><td>11</td><td>35</td></tr></tfoot></table></div><p><small>Oferta total: 30 · demanda total: 35.</small></p><div class='ask'><strong>Pede-se:</strong><ol type='a'><li>Inclua uma origem fictícia por último para representar os kits não atendidos; use as penalidades como custos dessa origem.</li><li>Resolva por Canto Noroeste e Stepping Stone e indique a falta em cada escola.</li><li>Apresente separadamente o gasto real e a penalidade modelada. Explique o que mudaria se toda demanda fosse obrigatória e não houvesse fornecedor extra.</li></ol></div></article><article class='exercise' id='ex-14'><div class='exercise-head'><h3>Exercício 14 — Compra emergencial de ração</h3><span class='badge'>Manual ou Excel · fonte adicional</span></div><p>Duas fábricas abastecem três fazendas em sacos de ração. Um fornecedor emergencial pode vender até 8 sacos; seus custos totais de compra e entrega são R$ 11, R$ 9 e R$ 10 por saco para as fazendas 1, 2 e 3. Os custos regulares da tabela também incluem compra e entrega.</p><div class='table-wrap'><table><caption>Exercício 14 · custos unitários, oferta e demanda nas unidades do enunciado</caption><thead><tr><th scope='col'>Origem / destino</th><th scope='col'>Fazenda 1</th><th scope='col'>Fazenda 2</th><th scope='col'>Fazenda 3</th><th scope='col'>Oferta</th></tr></thead><tbody><tr><th scope='row'>Fábrica A</th><td>4</td><td>7</td><td>6</td><td>14</td></tr><tr><th scope='row'>Fábrica B</th><td>8</td><td>3</td><td>5</td><td>16</td></tr></tbody><tfoot><tr><th scope='row'>Demanda</th><td>12</td><td>15</td><td>9</td><td>36</td></tr></tfoot></table></div><p><small>Oferta total: 30 · demanda total: 36.</small></p><div class='ask'><strong>Pede-se:</strong><ol type='a'><li>Determine a compra mínima necessária para atender tudo. Acrescente a origem Emergencial com capacidade 8 e um destino fictício para a capacidade total ociosa, com custos zero.</li><li>Obtenha o Canto Noroeste e otimize por Stepping Stone, ou use Excel para registrar os ciclos e conferir no Solver.</li><li>Informe a compra efetiva do fornecedor e diferencie essa origem real da origem fictícia do exercício anterior.</li></ol></div></article><article class='exercise' id='ex-15'><div class='exercise-head'><h3>Exercício 15 — Qual rota pode receber desconto?</h3><span class='badge'>Manual · sensibilidade</span></div><p>Duas indústrias distribuem lotes de tecidos a dois centros. Os custos atuais são R$/lote. Considere um desconto d apenas no custo A → Centro 2, com 0 ≤ d ≤ 7.</p><div class='table-wrap'><table><caption>Exercício 15 · custos unitários, oferta e demanda nas unidades do enunciado</caption><thead><tr><th scope='col'>Origem / destino</th><th scope='col'>Centro 1</th><th scope='col'>Centro 2</th><th scope='col'>Oferta</th></tr></thead><tbody><tr><th scope='row'>Indústria A</th><td>2</td><td>7</td><td>15</td></tr><tr><th scope='row'>Indústria B</th><td>6</td><td>3</td><td>25</td></tr></tbody><tfoot><tr><th scope='row'>Demanda</th><td>20</td><td>20</td><td>40</td></tr></tfoot></table></div><p><small>Oferta total: 40 · demanda total: 40.</small></p><div class='ask'><strong>Pede-se:</strong><ol type='a'><li>Obtenha o Canto Noroeste e escreva Δ da rota não básica em função de d.</li><li>Determine o desconto que torna a rota indiferente e o intervalo em que ela permite melhoria.</li><li>Resolva o cenário d = 6. Escolha um desconto para uma proposta de negociação e justifique sua escolha com o custo total.</li></ol></div></article></section><div class='section-kicker'>04 / aplicações e restrições</div><h2 class='section-title' id='grupo-16'>Decisões em redes reais</h2><p class='group-note'>Exercícios 16–20 · capacidade, mobilidade, reciclagem e contratos.</p><section class='exercise-list'><article class='exercise' id='ex-16'><div class='exercise-head'><h3>Exercício 16 — Capacidade temporária em um depósito</h3><span class='badge'>Manual ou Excel · cenários</span></div><p>Dois depósitos de produtos de limpeza atendem três lojas. No cenário-base, oferta e demanda estão equilibradas. Custos em R$/caixa.</p><div class='table-wrap'><table><caption>Exercício 16 · custos unitários, oferta e demanda nas unidades do enunciado</caption><thead><tr><th scope='col'>Origem / destino</th><th scope='col'>Loja 1</th><th scope='col'>Loja 2</th><th scope='col'>Loja 3</th><th scope='col'>Oferta</th></tr></thead><tbody><tr><th scope='row'>Depósito A</th><td>2</td><td>7</td><td>6</td><td>15</td></tr><tr><th scope='row'>Depósito B</th><td>8</td><td>3</td><td>4</td><td>25</td></tr></tbody><tfoot><tr><th scope='row'>Demanda</th><td>18</td><td>12</td><td>10</td><td>40</td></tr></tfoot></table></div><p><small>Oferta total: 40 · demanda total: 40.</small></p><div class='ask'><strong>Pede-se:</strong><ol type='a'><li>Resolva o cenário-base pelo Canto Noroeste seguido do Stepping Stone.</li><li>A empresa pode transferir 5 unidades de capacidade de B para A sem alterar a oferta total, pagando uma taxa fixa de R$ 15. Refaça o problema com ofertas 20 e 20.</li><li>Compare a economia operacional com a taxa e recomende aceitar ou recusar a transferência. Se usar Excel, mantenha um quadro para cada cenário.</li></ol></div></article><article class='exercise' id='ex-17'><div class='exercise-head'><h3>Exercício 17 — Redistribuição de bicicletas compartilhadas</h3><span class='badge'>Manual · logística urbana</span></div><p>Ao final do dia, três estações têm bicicletas excedentes e três estações precisam recebê-las. Cada bicicleta é uma unidade indivisível. Os custos em R$/bicicleta representam o deslocamento operacional; não há limite adicional por rota.</p><div class='table-wrap'><table><caption>Exercício 17 · custos unitários, oferta e demanda nas unidades do enunciado</caption><thead><tr><th scope='col'>Origem / destino</th><th scope='col'>Estação D</th><th scope='col'>Estação E</th><th scope='col'>Estação F</th><th scope='col'>Oferta</th></tr></thead><tbody><tr><th scope='row'>Estação A</th><td>3</td><td>6</td><td>4</td><td>7</td></tr><tr><th scope='row'>Estação B</th><td>5</td><td>2</td><td>7</td><td>9</td></tr><tr><th scope='row'>Estação C</th><td>6</td><td>4</td><td>3</td><td>8</td></tr></tbody><tfoot><tr><th scope='row'>Demanda</th><td>6</td><td>8</td><td>10</td><td>24</td></tr></tfoot></table></div><p><small>Oferta total: 24 · demanda total: 24.</small></p><div class='ask'><strong>Pede-se:</strong><ol type='a'><li>Construa o Canto Noroeste e otimize por Stepping Stone.</li><li>Verifique a integralidade do plano e o atendimento de cada estação.</li><li>Escolha uma informação adicional que seria necessária para transformar os fluxos em uma programação de viagens de caminhão. Explique por que a tabela não determina, sozinha, a sequência dessas viagens.</li></ol></div></article><article class='exercise' id='ex-18'><div class='exercise-head'><h3>Exercício 18 — Resíduos recicláveis para processamento</h3><span class='badge'>Manual ou Excel · ambiente</span></div><p>Três pontos de coleta encaminham toneladas de um mesmo material reciclável a três plantas. Toda a quantidade deve ser processada. Os valores são custos totais de transporte e processamento, em R$/tonelada.</p><div class='table-wrap'><table><caption>Exercício 18 · custos unitários, oferta e demanda nas unidades do enunciado</caption><thead><tr><th scope='col'>Origem / destino</th><th scope='col'>Planta 1</th><th scope='col'>Planta 2</th><th scope='col'>Planta 3</th><th scope='col'>Oferta</th></tr></thead><tbody><tr><th scope='row'>Coleta A</th><td>8</td><td>5</td><td>9</td><td>8</td></tr><tr><th scope='row'>Coleta B</th><td>4</td><td>7</td><td>6</td><td>13</td></tr><tr><th scope='row'>Coleta C</th><td>6</td><td>3</td><td>5</td><td>9</td></tr></tbody><tfoot><tr><th scope='row'>Demanda</th><td>10</td><td>7</td><td>13</td><td>30</td></tr></tfoot></table></div><p><small>Oferta total: 30 · demanda total: 30.</small></p><div class='ask'><strong>Pede-se:</strong><ol type='a'><li>Resolva por Canto Noroeste e Stepping Stone, manualmente ou com os ciclos calculados em Excel.</li><li>Separe claramente toneladas encaminhadas e custo de cada rota utilizada.</li><li>Proponha um indicador ambiental adicional que poderia orientar a decisão. Diga quais novos dados seriam necessários e por que custo monetário mínimo não garante o melhor resultado nesse indicador.</li></ol></div></article><article class='exercise' id='ex-19'><div class='exercise-head'><h3>Exercício 19 — Uma rota interditada</h3><span class='badge'>Excel sugerido · rota proibida</span></div><p>Duas distribuidoras entregam caixas a três lojas, mas a ligação A → Loja 1 está interditada. O símbolo — indica rota proibida; não é custo zero. Os demais custos são R$/caixa.</p><div class='table-wrap'><table><caption>Exercício 19 · custos unitários, oferta e demanda nas unidades do enunciado</caption><thead><tr><th scope='col'>Origem / destino</th><th scope='col'>Loja 1</th><th scope='col'>Loja 2</th><th scope='col'>Loja 3</th><th scope='col'>Oferta</th></tr></thead><tbody><tr><th scope='row'>Distribuidora A</th><td>—</td><td>3</td><td>5</td><td>12</td></tr><tr><th scope='row'>Distribuidora B</th><td>4</td><td>6</td><td>2</td><td>18</td></tr></tbody><tfoot><tr><th scope='row'>Demanda</th><td>10</td><td>8</td><td>12</td><td>30</td></tr></tfoot></table></div><p><small>Oferta total: 30 · demanda total: 30.</small></p><div class='ask'><strong>Pede-se:</strong><ol type='a'><li>Explique por que o Canto Noroeste na ordem original produziria um fluxo proibido.</li><li>Reordene as colunas para Loja 2, Loja 3, Loja 1 e construa um quadro viável pelo Canto Noroeste. Faça o Stepping Stone somente com rotas permitidas; não avalie a célula proibida como candidata.</li><li>Confira no Excel Solver impondo x(A,Loja 1) = 0. Para SOMARPRODUTO, use um marcador numérico zero nessa posição e mantenha a restrição explícita. Não use uma penalidade arbitrária como substituto da proibição.</li></ol></div></article><article class='exercise' id='ex-20'><div class='exercise-head'><h3>Exercício 20 — Contrato mínimo de entrega</h3><span class='badge'>Manual ou Excel · limite inferior</span></div><p>Duas fábricas distribuem lotes a três clientes. Há um compromisso contratual de enviar pelo menos 5 lotes de A para o Cliente 3. Custos em R$/lote.</p><div class='table-wrap'><table><caption>Exercício 20 · custos unitários, oferta e demanda nas unidades do enunciado</caption><thead><tr><th scope='col'>Origem / destino</th><th scope='col'>Cliente 1</th><th scope='col'>Cliente 2</th><th scope='col'>Cliente 3</th><th scope='col'>Oferta</th></tr></thead><tbody><tr><th scope='row'>Fábrica A</th><td>4</td><td>3</td><td>8</td><td>18</td></tr><tr><th scope='row'>Fábrica B</th><td>6</td><td>7</td><td>2</td><td>22</td></tr></tbody><tfoot><tr><th scope='row'>Demanda</th><td>12</td><td>13</td><td>15</td><td>40</td></tr></tfoot></table></div><p><small>Oferta total: 40 · demanda total: 40.</small></p><div class='ask'><strong>Pede-se:</strong><ol type='a'><li>Reserve os 5 lotes obrigatórios: desconte-os da oferta de A e da demanda do Cliente 3; registre separadamente seu custo fixado.</li><li>Aplique Canto Noroeste e Stepping Stone ao problema residual e recomponha o fluxo total da rota contratada.</li><li>Resolva também sem o contrato, manualmente ou no Excel. Quantifique o acréscimo de custo e recomende um valor mínimo de compensação para aceitar a obrigação.</li></ol></div></article></section><div class='section-kicker'>05 / integração com Excel</div><h2 class='section-title' id='grupo-21'>Restrições adicionais e recomendação gerencial</h2><p class='group-note'>Exercícios 21–25 · limites por rota, planejamento temporal e comparação de alternativas.</p><section class='exercise-list'><article class='exercise' id='ex-21'><div class='exercise-head'><h3>Exercício 21 — Limite de capacidade de uma ligação</h3><span class='badge'>Excel sugerido · limite superior</span></div><p>Dois armazéns atendem três clientes. Por disponibilidade de veículos, a rota A → Cliente 2 comporta no máximo 6 lotes. Custos em R$/lote.</p><div class='table-wrap'><table><caption>Exercício 21 · custos unitários, oferta e demanda nas unidades do enunciado</caption><thead><tr><th scope='col'>Origem / destino</th><th scope='col'>Cliente 1</th><th scope='col'>Cliente 2</th><th scope='col'>Cliente 3</th><th scope='col'>Oferta</th></tr></thead><tbody><tr><th scope='row'>Armazém A</th><td>6</td><td>2</td><td>5</td><td>16</td></tr><tr><th scope='row'>Armazém B</th><td>3</td><td>8</td><td>4</td><td>24</td></tr></tbody><tfoot><tr><th scope='row'>Demanda</th><td>10</td><td>14</td><td>16</td><td>40</td></tr></tfoot></table></div><p><small>Oferta total: 40 · demanda total: 40.</small></p><div class='ask'><strong>Pede-se:</strong><ol type='a'><li>Construa o Canto Noroeste e verifique explicitamente o limite de 6 lotes.</li><li>Resolva no Excel Solver com a restrição adicional x(A,Cliente 2) ≤ 6. Compare com o ótimo obtido sem esse limite.</li><li>Se realizar ajustes manuais, limite θ tanto pelos fluxos das posições negativas quanto pela capacidade residual das posições positivas limitadas. Explique por que o teste clássico apenas de células não básicas nulas exige adaptação neste caso.</li></ol></div></article><article class='exercise' id='ex-22'><div class='exercise-head'><h3>Exercício 22 — Produção e estoque entre meses</h3><span class='badge'>Manual ou Excel · tempo</span></div><p>Uma empresa planeja lotes de produção para janeiro e fevereiro. A capacidade máxima é 20 lotes em janeiro e 25 em fevereiro; as demandas são 15 e 22. Produzir custa R$ 10/lote em janeiro e R$ 12/lote em fevereiro. Guardar um lote de janeiro para fevereiro custa R$ 1. Não é permitido atender janeiro com produção de fevereiro. Não há estoque inicial nem necessidade de estoque final.</p><div class='ask'><strong>Pede-se:</strong><ol type='a'><li>Monte a tabela com meses de produção como origens e meses de consumo como destinos: custos Jan→Jan = 10, Jan→Fev = 11, Fev→Fev = 12 e Fev→Jan proibido. Acrescente um destino Capacidade ociosa de 8 lotes, com custos zero.</li><li>Na ordem Jan, Fev, Capacidade ociosa, obtenha um Canto Noroeste viável e aplique o Stepping Stone às rotas permitidas; confira no Excel se desejar.</li><li>Interprete quanto produzir, quanto estocar de janeiro para fevereiro e quanta capacidade deixar ociosa. Explique por que capacidade não utilizada não é produto fabricado.</li></ol></div></article><article class='exercise' id='ex-23'><div class='exercise-head'><h3>Exercício 23 — Rede de distribuição de comércio eletrônico</h3><span class='badge'>Excel recomendado · 4 × 4</span></div><p>Quatro centros de distribuição enviam lotes padronizados a quatro regiões. Custos em R$/lote; todos os lotes têm o mesmo conteúdo e não há restrição adicional por rota.</p><div class='table-wrap'><table><caption>Exercício 23 · custos unitários, oferta e demanda nas unidades do enunciado</caption><thead><tr><th scope='col'>Origem / destino</th><th scope='col'>Norte</th><th scope='col'>Sul</th><th scope='col'>Leste</th><th scope='col'>Oeste</th><th scope='col'>Oferta</th></tr></thead><tbody><tr><th scope='row'>CD A</th><td>7</td><td>4</td><td>8</td><td>6</td><td>18</td></tr><tr><th scope='row'>CD B</th><td>5</td><td>9</td><td>3</td><td>7</td><td>22</td></tr><tr><th scope='row'>CD C</th><td>6</td><td>5</td><td>7</td><td>2</td><td>16</td></tr><tr><th scope='row'>CD D</th><td>4</td><td>6</td><td>5</td><td>8</td><td>24</td></tr></tbody><tfoot><tr><th scope='row'>Demanda</th><td>15</td><td>20</td><td>25</td><td>20</td><td>80</td></tr></tfoot></table></div><p><small>Oferta total: 80 · demanda total: 80.</small></p><div class='ask'><strong>Pede-se:</strong><ol type='a'><li>Monte no Excel o Canto Noroeste e calcule o custo por SOMARPRODUTO.</li><li>Faça pelo menos duas iterações do Stepping Stone na planilha, avaliando todas as células não básicas em cada uma. Se o ótimo for atingido antes, apresente o teste completo e justifique a parada.</li><li>Conclua com o Solver e compare com a última solução manual. Relate custo mínimo, economia sobre o quadro inicial e sete variáveis básicas, incluindo eventuais básicas de valor zero.</li></ol></div></article><article class='exercise' id='ex-24'><div class='exercise-head'><h3>Exercício 24 — Entrega local ou frota terceirizada?</h3><span class='badge'>Excel recomendado · decisão do aluno</span></div><p>Três centros atendem quatro lojas em lotes. A matriz apresenta o custo unitário da frota própria, em R$/lote. Uma transportadora oferece atender exclusivamente toda a demanda da Loja 4 por R$ 3/lote, mais uma taxa fixa de R$ 40. Nesse cenário, a frota própria atende somente as lojas 1 a 3; a oferta não usada fica disponível sem custo.</p><div class='table-wrap'><table><caption>Exercício 24 · custos unitários, oferta e demanda nas unidades do enunciado</caption><thead><tr><th scope='col'>Origem / destino</th><th scope='col'>Loja 1</th><th scope='col'>Loja 2</th><th scope='col'>Loja 3</th><th scope='col'>Loja 4</th><th scope='col'>Oferta</th></tr></thead><tbody><tr><th scope='row'>Centro A</th><td>4</td><td>7</td><td>5</td><td>9</td><td>20</td></tr><tr><th scope='row'>Centro B</th><td>6</td><td>3</td><td>8</td><td>7</td><td>25</td></tr><tr><th scope='row'>Centro C</th><td>5</td><td>6</td><td>4</td><td>8</td><td>15</td></tr></tbody><tfoot><tr><th scope='row'>Demanda</th><td>12</td><td>16</td><td>14</td><td>18</td><td>60</td></tr></tfoot></table></div><p><small>Oferta total: 60 · demanda total: 60.</small></p><div class='ask'><strong>Pede-se:</strong><ol type='a'><li>Resolva o cenário com todas as lojas atendidas pela frota própria, partindo do Canto Noroeste.</li><li>Para a terceirização, retire a Loja 4, acrescente um destino fictício de 18 lotes com custos zero e otimize novamente. Some ao custo próprio o frete terceirizado e a taxa fixa, fora da matriz de custos unitários.</li><li>Use Excel para comparar os dois cenários e escolha uma alternativa. Calcule a maior taxa fixa que manteria a terceirização economicamente vantajosa ou indiferente e proponha um critério de serviço para complementar a recomendação.</li></ol></div></article><article class='exercise' id='ex-25'><div class='exercise-head'><h3>Exercício 25 — Plano de abastecimento e decisão gerencial</h3><span class='badge'>Excel recomendado · síntese</span></div><p>Quatro fornecedores entregam lotes idênticos a cinco polos de uma rede de serviços. Os custos totais unitários de compra e entrega estão em R$/lote. A rede estuda um aumento de 5 lotes na demanda do Polo 5; para o cenário ampliado, o Fornecedor D pode aumentar sua capacidade de 25 para 30 lotes, cobrando os mesmos custos unitários.</p><div class='table-wrap'><table><caption>Exercício 25 · custos unitários, oferta e demanda nas unidades do enunciado</caption><thead><tr><th scope='col'>Origem / destino</th><th scope='col'>Polo 1</th><th scope='col'>Polo 2</th><th scope='col'>Polo 3</th><th scope='col'>Polo 4</th><th scope='col'>Polo 5</th><th scope='col'>Oferta</th></tr></thead><tbody><tr><th scope='row'>Fornecedor A</th><td>4</td><td>8</td><td>6</td><td>7</td><td>5</td><td>20</td></tr><tr><th scope='row'>Fornecedor B</th><td>7</td><td>3</td><td>5</td><td>9</td><td>6</td><td>30</td></tr><tr><th scope='row'>Fornecedor C</th><td>6</td><td>7</td><td>4</td><td>3</td><td>8</td><td>25</td></tr><tr><th scope='row'>Fornecedor D</th><td>5</td><td>6</td><td>7</td><td>4</td><td>2</td><td>25</td></tr></tbody><tfoot><tr><th scope='row'>Demanda</th><td>15</td><td>20</td><td>25</td><td>18</td><td>22</td><td>100</td></tr></tfoot></table></div><p><small>Oferta total: 100 · demanda total: 100.</small></p><div class='ask'><strong>Pede-se:</strong><ol type='a'><li>Formule o cenário-base e obtenha o Canto Noroeste no Excel. Realize e documente ao menos uma melhoria por Stepping Stone antes de concluir no Solver.</li><li>Resolva o cenário ampliado com demanda do Polo 5 igual a 27 e capacidade de D igual a 30. Compare fluxos, custos totais e custo médio por lote nos dois cenários.</li><li>A direção pode adiar integralmente os 5 lotes adicionais mediante uma penalidade total de R$ 35. Escolha entre atender o aumento ou adiá-lo, comparando o custo incremental com a penalidade; apresente também uma consequência operacional que os valores não capturam.</li><li>Entregue uma recomendação curta com a alternativa escolhida, os números que a sustentam e as hipóteses adotadas. Não trate o custo médio como custo marginal.</li></ol></div></article></section><section class="panel source-box" style="margin-top:34px"><h2>Para concluir a análise</h2><p>Uma boa resposta informa quanto enviar em cada rota, verifica as restrições e demonstra o custo. Ao recomendar uma decisão, explicite também o horizonte, os limites do modelo e os critérios adicionais adotados.</p><p style="margin-top:10px">Leitura de apoio: <a href="https://claytonjasilva.github.io/progLinear/cap5.html">Capítulo 5 — Problema de Transporte</a>. Proposta didática com 25 enunciados originais e valores fictícios.</p></section></main><footer><div class="footer-inner"><span>Programação Linear · Lista de exercícios de transporte</span><span><a href="https://claytonjasilva.github.io/progLinear/cap5.html">Voltar ao capítulo 5</a></span></div></footer></body></html>
