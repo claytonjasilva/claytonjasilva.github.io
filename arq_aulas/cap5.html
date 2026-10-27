@@ -1,16 +1,6 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Cap. 5 — Barramento | Arquitetura de Computadores</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
+<!doctype html><html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="Capítulo 5: barramentos. Classificação funcional, estrutura, multiplexação, arbitração, temporização e padrões, com diagramas vetoriais incorporados."><title>Capítulo 5 — Barramentos | Arquitetura de Computadores</title><link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/contrib/auto-render.min.js"></script>
-<style>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300&display=swap" rel="stylesheet"><style>
 :root {
   --bg:        #0a0e17;
   --surface:   #111827;
@@ -114,21 +104,6 @@ td.tleft, th.tleft{text-align:left;}
 .ds-item a{font-size:.8rem;color:var(--text);font-family:var(--font-mono);}
 .ds-item a:hover{color:var(--accent);text-decoration:none;}
 
-.quiz{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:1.6rem;margin:1.5rem 0;}
-.quiz-header{display:flex;align-items:center;gap:.6rem;margin-bottom:1.2rem;}
-.quiz-header svg{flex-shrink:0;}
-.quiz-title{font-family:var(--font-mono);font-size:.8rem;color:var(--accent2);letter-spacing:.05em;}
-.quiz-q{font-size:.95rem;margin-bottom:.9rem;color:var(--text);}
-.quiz-options{display:flex;flex-direction:column;gap:.55rem;}
-.quiz-opt{background:var(--tag-bg);border:1px solid var(--border);border-radius:6px;padding:.7rem 1rem;font-size:.85rem;color:var(--muted);cursor:pointer;transition:.15s;text-align:left;width:100%;font-family:var(--font-sans);}
-.quiz-opt:hover{border-color:var(--accent);color:var(--text);}
-.quiz-opt.correct{border-color:#22c55e;background:rgba(34,197,94,.08);color:#86efac;}
-.quiz-opt.wrong{border-color:#ef4444;background:rgba(239,68,68,.08);color:#fca5a5;}
-.quiz-feedback{margin-top:.9rem;font-size:.85rem;padding:.8rem 1rem;border-radius:6px;display:none;}
-.quiz-feedback.show{display:block;}
-.quiz-feedback.correct-fb{background:rgba(34,197,94,.08);border:1px solid #22c55e;color:#86efac;}
-.quiz-feedback.wrong-fb{background:rgba(239,68,68,.08);border:1px solid #ef4444;color:#fca5a5;}
-
 .refs-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:.8rem;}
 .ref-card{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:1rem 1.2rem;display:flex;gap:.8rem;align-items:flex-start;transition:.2s;}
 .ref-card:hover{border-color:var(--accent);}
@@ -156,11 +131,29 @@ footer p{font-size:.8rem;color:var(--muted);font-family:var(--font-mono);}
 .dbox2{stroke:#7c3aed;stroke-width:1.6;fill:none;}
 .dlbl{font-family:'IBM Plex Mono',monospace;font-size:13px;fill:#cbd5e1;}
 .dlbl2{font-family:'IBM Plex Mono',monospace;font-size:11px;fill:#64748b;}
-</style>
-</head>
-<body>
 
-<nav>
+html{scroll-padding-top:85px}body{color:var(--text)}
+.skip{position:absolute;left:16px;top:-100px;z-index:200;background:var(--surface);padding:10px}.skip:focus{top:12px}
+a:focus-visible,button:focus-visible,summary:focus-visible{outline:2px solid var(--accent);outline-offset:4px}
+.hero .container{position:relative}.objectives li,.nav-links a{color:#94a3b8}
+main.container{padding-bottom:1rem}.intro{background:var(--surface);border:1px solid var(--border);border-left:3px solid var(--accent2);border-radius:0 8px 8px 0;padding:1.2rem 1.5rem;margin:0 0 2rem}.intro p:last-child{margin-bottom:0}
+.section-number{font-family:var(--font-mono);font-size:.7rem;color:var(--accent);letter-spacing:.14em;text-transform:uppercase;display:flex;align-items:center;gap:.7rem;margin-bottom:1.4rem}.section-number::after{content:'';flex:1;height:1px;background:var(--border)}
+h3{margin-top:1.8rem}li{margin-bottom:.45rem}main ol,main ul{padding-left:1.3rem;color:#cbd5e1}.ref{font-size:.74rem;white-space:nowrap}
+.formula{background:var(--tag-bg);border:1px solid var(--border);border-radius:6px;padding:1rem;font-family:var(--font-mono);font-size:1.12rem;color:var(--accent);text-align:center;margin:1.2rem 0}.formula small{display:block;font-size:.75rem;color:#94a3b8;margin-top:.6rem}
+.cards{display:grid;grid-template-columns:1fr 1fr;gap:1.2rem;margin:1.4rem 0}.card{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:1.4rem;position:relative;overflow:hidden}.card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--accent),var(--accent2))}.card h4{margin-top:0;color:var(--text)}.card ol{font-size:.88rem}.card li:last-child{margin-bottom:0}
+aside.note p{font-size:.88rem;color:#b5c4d5}aside.note p:last-child{margin-bottom:0}
+figure{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:1.2rem;margin:1.5rem 0}.graphic{overflow:auto}.graphic svg{display:block;width:100%;height:auto;min-width:620px}
+figcaption{font-size:.82rem;color:#94a3b8;line-height:1.65;margin-top:1rem}figcaption strong{color:var(--text)}figcaption small{display:block;font-size:.7rem;margin-top:.5rem;color:#94a3b8}
+.fig-actions{display:flex;margin-top:.7rem}.fig-actions button,dialog button{font-family:var(--font-mono);font-size:.7rem;border:1px solid var(--border);border-radius:5px;padding:.45rem .8rem;background:var(--tag-bg);color:var(--accent);cursor:pointer}.fig-actions button:hover,dialog button:hover{border-color:var(--accent)}
+.table-wrap{overflow:auto;margin:1.2rem 0}table{margin:0}caption{text-align:left;color:var(--text);font-size:.82rem;font-weight:600;margin-bottom:.7rem}thead th{text-align:left;color:#94a3b8;min-width:100px}tbody td{text-align:left;color:#b5c4d5;padding:.65rem .7rem;vertical-align:top}tbody tr:nth-child(even){background:rgba(255,255,255,.012)}
+.sources{font-size:.86rem}.sources li{margin-bottom:1rem}.sources a{overflow-wrap:anywhere}details{border:1px solid var(--border);background:var(--surface);padding:1rem 1.2rem;border-radius:8px;font-size:.82rem;margin:1.4rem 0}summary{cursor:pointer;color:var(--accent);font-weight:600}details ul{margin-top:1rem}
+.bottom-links{display:flex;justify-content:space-between;gap:1rem;margin-top:2rem;font-size:.8rem}
+dialog{background:var(--surface);color:var(--text);border:1px solid var(--border);border-radius:10px;width:min(1500px,96vw);max-width:96vw;max-height:95vh;padding:16px}dialog::backdrop{background:#000b}.modal-head{display:flex;justify-content:space-between;align-items:center;gap:20px;font-size:.85rem;padding-bottom:12px}.modal-body{overflow:auto}dialog svg{display:block;width:100%;max-height:80vh}
+@media(max-width:760px){.cards{grid-template-columns:1fr}figure{padding:.7rem}.graphic svg{min-width:650px}.bottom-links{flex-direction:column}dialog svg{min-width:650px}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.progress-fill{transition:none}}
+@media print{body{background:white;color:#111}nav,.progress-track,.fig-actions,.skip,.chapter-nav,.bottom-links,dialog{display:none}.container{max-width:none;padding:0}.hero{padding:1rem 0}.hero::before{display:none}p,li,main ol,main ul,tbody td,strong,h1,h2,h3,h4,.section-number,figcaption,figcaption strong{color:#111!important}.hero-meta,.toc{display:none}.objectives,.intro,aside.note,.card,details,.formula{background:white;color:#111;border-color:#bbb}.objectives li,.objectives p.label,.formula small,aside.note p{color:#333}.graphic svg{min-width:0}figure{break-inside:avoid;background:#111827;print-color-adjust:exact;-webkit-print-color-adjust:exact}figcaption,figcaption strong,figcaption small{color:#e2e8f0!important}h2,h3{break-after:avoid}.section{padding:1.5rem 0}.table-wrap{overflow:visible}.cards{display:block}.card{margin-bottom:1rem}a{color:#111}footer{margin-top:1rem;padding:1rem 0}}
+</style></head><body>
+<a class="skip" href="#conteudo">Ir para o conteúdo</a><nav aria-label="Seções do capítulo">
   <div class="container">
     <span class="nav-brand">arq · cap. 5</span>
     <ul class="nav-links">
@@ -169,13 +162,11 @@ footer p{font-size:.8rem;color:var(--muted);font-family:var(--font-mono);}
       <li><a href="#s3">5.3 Multiplexação</a></li>
       <li><a href="#s4">5.4 Protocolos</a></li>
       <li><a href="#s5">5.5 Padrões</a></li>
-      <li><a href="#quiz">Quiz</a></li>
       <li><a href="https://claytonjasilva.github.io/arq.html">← disciplina</a></li>
     </ul>
   </div>
 </nav>
 <div class="progress-track"><div class="progress-fill" id="progressFill"></div></div>
-
 <section class="hero">
   <div class="container">
     <p class="hero-eyebrow">Arquitetura de Computadores · Ibmec RJ</p>
@@ -203,7 +194,7 @@ footer p{font-size:.8rem;color:var(--muted);font-family:var(--font-mono);}
         <li>Descrever a estrutura hierárquica do barramento do sistema</li>
         <li>Compreender a multiplexação de linhas de barramento</li>
         <li>Diferenciar arbitração centralizada/distribuída e temporização síncrona/assíncrona</li>
-        <li>Reconhecer os principais padrões de barramento de mercado (ISA, PCI, AGP, PCI-X)</li>
+        <li>Reconhecer os principais padrões históricos de barramento (ISA, PCI, AGP, PCI-X)</li>
       </ul>
     </div>
 
@@ -217,362 +208,86 @@ footer p{font-size:.8rem;color:var(--muted);font-family:var(--font-mono);}
     </div>
   </div>
 </section>
+<main id="conteudo" class="container"><div class="intro"><p><strong>Ao estudar este capítulo</strong>, procure relacionar três perguntas: o que cada sinal informa, quem pode iniciar uma transferência e em que momento a informação pode ser aceita.</p><p>O ponto de partida é o <strong>barramento paralelo compartilhado</strong>, modelo fundamental para compreender interconexões. As diferenças em relação aos enlaces seriais ponto a ponto aparecem ao final. A organização mantém a sequência do capítulo-base.</p></div>
 
-<div class="container">
+<section class="section" id="s1"><div class="section-number">5.1 / Classificação funcional</div><h2>Dados, endereços e controle</h2>
+<p>Um <strong>barramento</strong> é um meio de comunicação que permite a troca de informações entre módulos de um sistema computacional. No modelo compartilhado, vários módulos utilizam um mesmo conjunto de linhas, respeitando regras de acesso. Nas implementações elétricas, essas linhas conduzem sinais cujos níveis e transições representam bits.</p>
+<p>O barramento, por si só, <strong>não armazena dados</strong>: ele os transporta. Registradores, buffers e filas existentes nas interfaces podem reter informações temporariamente, mas essa é uma função dos circuitos conectados à interconexão.</p>
+<p>Quanto à função dos sinais, distinguem-se três grupos: <strong>dados, endereços e controle</strong>. A classificação é lógica: determinados projetos usam linhas físicas distintas para cada grupo; outros reutilizam as mesmas linhas em momentos diferentes. <a class="ref" href="#r1">[1]</a> <a class="ref" href="#r2">[2]</a></p>
+<figure id="fig1"><div class="graphic"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" role="img" aria-labelledby="ft1 fd1"><title id="ft1">Classificação funcional dos sinais</title><desc id="fd1">As linhas são agrupadas pela função. O sentido dos dados depende da operação; sinais de controle podem ter origens diferentes.</desc><defs><marker id="arr1" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 Z" fill="#00c2ff"/></marker></defs><style>text{font-family:Arial,Helvetica,sans-serif}</style><rect width="1200" height="675" fill="#111827"/><text x="44" y="58" font-size="32" fill="#e2e8f0" text-anchor="start" font-weight="700">Três funções, uma comunicação coordenada</text><text x="44" y="94" font-size="20" fill="#94a3b8" text-anchor="start" font-weight="400">Modelo paralelo compartilhado: CPU iniciadora; memória ou E/S como destino selecionado.</text><rect x="60" y="140" width="280" height="90" rx="12" fill="#14283e" stroke="#3b526b" stroke-width="2"/><text x="200.0" y="182.0" font-size="23" fill="#e2e8f0" text-anchor="middle" font-weight="650">Processador</text><text x="200.0" y="212.0" font-size="18" fill="#e2e8f0" text-anchor="middle" font-weight="400">inicia a transação</text><rect x="460" y="140" width="280" height="90" rx="12" fill="#14283e" stroke="#3b526b" stroke-width="2"/><text x="600.0" y="182.0" font-size="23" fill="#e2e8f0" text-anchor="middle" font-weight="650">Memória principal</text><text x="600.0" y="212.0" font-size="18" fill="#e2e8f0" text-anchor="middle" font-weight="400">instruções e dados</text><rect x="860" y="140" width="280" height="90" rx="12" fill="#14283e" stroke="#3b526b" stroke-width="2"/><text x="1000.0" y="182.0" font-size="23" fill="#e2e8f0" text-anchor="middle" font-weight="650">Módulo de E/S</text><text x="1000.0" y="212.0" font-size="18" fill="#e2e8f0" text-anchor="middle" font-weight="400">registradores de interface</text><rect x="60" y="320" width="1080" height="15" rx="7" fill="#00c2ff"/><text x="280" y="368" font-size="20" fill="#00c2ff" text-anchor="start" font-weight="650">ENDEREÇOS · onde acessar?</text><path d="M145 230 L145 320" fill="none" stroke="#00c2ff" stroke-width="3"/><path d="M545 230 L545 320" fill="none" stroke="#00c2ff" stroke-width="3"/><path d="M945 230 L945 320" fill="none" stroke="#00c2ff" stroke-width="3"/><rect x="60" y="425" width="1080" height="15" rx="7" fill="#2dd4bf"/><text x="280" y="473" font-size="20" fill="#2dd4bf" text-anchor="start" font-weight="650">DADOS · o que transferir?</text><path d="M200 230 L200 425" fill="none" stroke="#2dd4bf" stroke-width="3"/><path d="M600 230 L600 425" fill="none" stroke="#2dd4bf" stroke-width="3"/><path d="M1000 230 L1000 425" fill="none" stroke="#2dd4bf" stroke-width="3"/><rect x="60" y="530" width="1080" height="15" rx="7" fill="#e9b569"/><text x="280" y="578" font-size="20" fill="#e9b569" text-anchor="start" font-weight="650">CONTROLE · como e quando?</text><path d="M255 230 L255 530" fill="none" stroke="#e9b569" stroke-width="3"/><path d="M655 230 L655 530" fill="none" stroke="#e9b569" stroke-width="3"/><path d="M1055 230 L1055 530" fill="none" stroke="#e9b569" stroke-width="3"/><text x="600" y="604" font-size="22" fill="#e2e8f0" text-anchor="middle" font-weight="400">Leitura: destino → iniciador     •     Escrita: iniciador → destino</text><text x="44" y="637" font-size="14" fill="#94a3b8" text-anchor="start" font-weight="400">Fonte: elaboração própria; conceitos de Stallings (2016) e Tanenbaum e Austin (2013).</text><text x="44" y="660" font-size="14" fill="#94a3b8" text-anchor="start" font-weight="400">ARQUITETURA DE COMPUTADORES  /  CAPÍTULO 5                                      FIGURA 5.1</text></svg></div><figcaption><strong>Figura 5.1 — Classificação funcional dos sinais.</strong> As linhas são agrupadas pela função. O sentido dos dados depende da operação; sinais de controle podem ter origens diferentes.<small>Fonte: Elaboração própria; conceitos: Stallings [1] e Tanenbaum e Austin [2]. Redesenho conceitual de classificacaobarramentos.jpg do material-base.</small></figcaption><div class="fig-actions"><button type="button" data-expand="fig1">Ampliar figura</button></div></figure>
+<h3>Barramento de dados</h3><p>Transporta as instruções buscadas na memória e os valores manipulados pelas instruções. No modelo convencional, é <strong>bidirecional</strong>: em uma escrita, o iniciador envia dados ao destino; em uma leitura, o destino fornece dados ao iniciador. Isso não significa que ambos possam dirigir simultaneamente as mesmas linhas: o protocolo define quem as utiliza em cada fase.</p>
+<h3>Barramento de endereços</h3><p>Identifica a posição de memória ou o registrador de interface de E/S envolvido na operação. O endereço seleciona <strong>onde</strong> acessar; o sinal de controle informa <strong>qual operação</strong> executar. Em uma transação convencional, o endereço parte do iniciador em direção ao destino.</p><p>A CPU não é necessariamente o único módulo capaz de emitir endereços. Um controlador com capacidade de <em>bus mastering</em>, como um controlador de DMA, também pode iniciar acessos quando obtém autorização. A E/S pode usar um espaço de endereçamento próprio, com portas, ou compartilhar o espaço da memória (<strong>E/S mapeada em memória</strong>).</p>
+<h3>Barramento de controle</h3><p>Reúne os sinais que coordenam operações, acesso e validade das informações. Alguns partem do iniciador, outros do destino ou de um controlador. A tabela apresenta funções típicas; nem todo padrão oferece todas elas como linhas separadas.</p>
+<div class="table-wrap"><table><caption>Sinais de controle típicos e suas funções</caption><thead><tr><th scope="col">Sinal / função</th><th scope="col">Significado</th></tr></thead><tbody>
+<tr><td>Escrita em memória</td><td>Solicita que o dado seja gravado na posição indicada pelo endereço.</td></tr><tr><td>Leitura de memória</td><td>Solicita que a memória apresente o conteúdo da posição endereçada.</td></tr><tr><td>Escrita em porta de E/S</td><td>Transfere um valor ao registrador da interface selecionada.</td></tr><tr><td>Leitura de porta de E/S</td><td>Obtém um valor do registrador da interface selecionada.</td></tr><tr><td>Confirmação de transferência (ACK)</td><td>Informa aceitação ou disponibilidade dos dados, conforme o protocolo; pode também indicar conclusão.</td></tr><tr><td>Requisição do barramento (bus request)</td><td>Indica que um possível iniciador deseja usar o barramento.</td></tr><tr><td>Concessão do barramento (bus grant)</td><td>Autoriza o solicitante selecionado a assumir o barramento.</td></tr><tr><td>Requisição de interrupção (IRQ)</td><td>Sinaliza uma interrupção pendente para atendimento pelo processador.</td></tr><tr><td>Confirmação de interrupção</td><td>Indica que a requisição foi reconhecida; os detalhes dependem do sistema.</td></tr><tr><td>Relógio (clock)</td><td>Fornece a referência temporal em um barramento síncrono.</td></tr><tr><td>Reinicialização (reset)</td><td>Coloca módulos em estados iniciais definidos pelo projeto.</td></tr>
+</tbody></table></div>
+<h3>Largura e suas consequências</h3><p>Em um barramento <strong>paralelo</strong>, a largura de um grupo corresponde ao número de linhas que transportam seus bits simultaneamente. Assim, 32 linhas de dados permitem transferir até 32 bits em uma transferência desse grupo. Largura de dados e largura de endereços são características diferentes e não precisam coincidir.</p>
+<div class="formula">N = 2<sup>n</sup><small>n linhas de endereço permitem distinguir até N unidades endereçáveis.</small></div>
+<p>O tamanho da unidade endereçável importa: com 32 bits de endereço e endereçamento por byte, o espaço teórico é de 2<sup>32</sup> bytes, ou <strong>4 GiB</strong>. Isso não garante que toda essa capacidade esteja instalada ou disponível como RAM: parte do espaço pode estar reservada à E/S, e a implementação pode impor limites adicionais.</p>
+<p>Uma largura maior de dados pode elevar a quantidade transferida por operação. Já a largura de endereços determina principalmente a capacidade de endereçamento; ampliá-la <strong>não torna automaticamente cada acesso mais rápido</strong>. Frequência, transferências por ciclo, latência, arbitragem e sobrecarga do protocolo também afetam o desempenho.</p>
+<div class="formula">Taxa de pico = (W ÷ 8) × f × k<small>W: bits de dados por transferência · f: ciclos/s · k: transferências de dados por ciclo.</small></div><p>Por exemplo, 32 bits, 33⅓ MHz e uma transferência de dados por ciclo resultam em aproximadamente <strong>133 MB/s</strong> de pico. A taxa útil é menor quando há fases de endereço, esperas, disputas ou intervalos sem dados. MB/s usa bytes decimais; GiB usa potência de dois.</p>
+</section>
 
-  <!-- 5.1 -->
-  <section class="section" id="s1">
-    <p class="section-label">5.1 / classificação funcional dos barramentos</p>
-    <h2>Classificação funcional dos barramentos</h2>
+<section class="section" id="s2"><div class="section-number">5.2 / Estrutura do barramento</div><h2>Conectar módulos e organizar o tráfego</h2><p>No modelo clássico, o <strong>barramento do sistema</strong> interliga processador, memória e módulos de E/S por condutores e interfaces. Um único segmento para todos os dispositivos simplifica a organização, mas pode se tornar um gargalo: os participantes disputam o mesmo recurso, e a carga elétrica e os atrasos de propagação limitam a operação.</p>
+<p>Por isso, uma organização pode utilizar <strong>múltiplos barramentos em hierarquia</strong>. Pontes e controladores encaminham transações entre segmentos, adaptam protocolos e usam buffers para acomodar diferenças de velocidade. As denominações local, de sistema, de expansão e de alta velocidade descrevem uma organização didática histórica, não quatro níveis obrigatórios. <a class="ref" href="#r1">[1]</a></p>
+<div class="cards"><div class="card"><h4>a. Enviar dados: escrita</h4><ol><li>Obter o direito de uso do segmento, se houver disputa.</li><li>Apresentar endereço e comando de escrita, conforme o protocolo.</li><li>Apresentar os dados e cumprir a condição de aceitação.</li><li>Encerrar a transação e liberar os recursos utilizados.</li></ol></div><div class="card"><h4>b. Requisitar dados: leitura</h4><ol><li>Obter o direito de uso do segmento, quando necessário.</li><li>Apresentar endereço e comando de leitura.</li><li>Aguardar a resposta e capturar os dados quando válidos.</li><li>Encerrar a transação conforme o protocolo.</li></ol></div></div>
+<p>Esses passos são um modelo de transação simples. Há protocolos nos quais pedido e resposta são separados: o iniciador pode liberar o segmento enquanto o destino prepara os dados, permitindo que outra transação avance.</p><figure id="fig2"><div class="graphic"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" role="img" aria-labelledby="ft2 fd2"><title id="ft2">Estrutura hierárquica de barramentos</title><desc id="fd2">As conexões indicam os caminhos efetivos entre processador, memória e controladores. Os quatro nomes descrevem funções nesta arquitetura, não uma organização obrigatória de todo computador.</desc><defs><marker id="arr2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 Z" fill="#00c2ff"/></marker></defs><style>text{font-family:Arial,Helvetica,sans-serif}</style><rect width="1200" height="675" fill="#111827"/><text x="44" y="58" font-size="32" fill="#e2e8f0" text-anchor="start" font-weight="700">Uma hierarquia para distribuir o tráfego</text><text x="44" y="94" font-size="20" fill="#94a3b8" text-anchor="start" font-weight="400">Arquitetura didática histórica: pontes separam segmentos e adaptam seus protocolos.</text><rect x="45" y="145" width="220" height="85" rx="12" fill="#14283e" stroke="#3b526b" stroke-width="2"/><text x="155.0" y="194.5" font-size="23" fill="#e2e8f0" text-anchor="middle" font-weight="650">Processador</text><rect x="385" y="145" width="270" height="85" rx="12" fill="#14283e" stroke="#3b526b" stroke-width="2"/><text x="520.0" y="184.5" font-size="23" fill="#e2e8f0" text-anchor="middle" font-weight="650">Cache / ponte</text><text x="520.0" y="214.5" font-size="18" fill="#e2e8f0" text-anchor="middle" font-weight="400">controladores e buffers</text><rect x="875" y="145" width="280" height="85" rx="12" fill="#14283e" stroke="#3b526b" stroke-width="2"/><text x="1015.0" y="194.5" font-size="23" fill="#e2e8f0" text-anchor="middle" font-weight="650">Memória principal</text><path d="M265 187 L385 187" fill="none" stroke="#00c2ff" stroke-width="3"/><text x="325" y="165" font-size="20" fill="#e2e8f0" text-anchor="middle" font-weight="400">Local</text><path d="M655 187 L875 187" fill="none" stroke="#00c2ff" stroke-width="3"/><text x="765" y="165" font-size="20" fill="#e2e8f0" text-anchor="middle" font-weight="400">Sistema</text><path d="M520 230 L520 290" fill="none" stroke="#00c2ff" stroke-width="3"/><rect x="60" y="290" width="1080" height="14" rx="7" fill="#00c2ff"/><text x="70" y="280" font-size="19" fill="#00c2ff" text-anchor="start" font-weight="700">BARRAMENTO DE ALTA VELOCIDADE</text><path d="M185 304 L185 345" fill="none" stroke="#00c2ff" stroke-width="3"/><rect x="65" y="345" width="240" height="72" rx="12" fill="#14283e" stroke="#3b526b" stroke-width="2"/><text x="185.0" y="378.0" font-size="23" fill="#e2e8f0" text-anchor="middle" font-weight="650">Rede</text><text x="185.0" y="408.0" font-size="18" fill="#e2e8f0" text-anchor="middle" font-weight="400">controlador</text><path d="M455 304 L455 345" fill="none" stroke="#00c2ff" stroke-width="3"/><rect x="335" y="345" width="240" height="72" rx="12" fill="#14283e" stroke="#3b526b" stroke-width="2"/><text x="455.0" y="378.0" font-size="23" fill="#e2e8f0" text-anchor="middle" font-weight="650">Armazenamento</text><text x="455.0" y="408.0" font-size="18" fill="#e2e8f0" text-anchor="middle" font-weight="400">controlador</text><path d="M725 304 L725 345" fill="none" stroke="#00c2ff" stroke-width="3"/><rect x="605" y="345" width="240" height="72" rx="12" fill="#14283e" stroke="#3b526b" stroke-width="2"/><text x="725.0" y="378.0" font-size="23" fill="#e2e8f0" text-anchor="middle" font-weight="650">Vídeo</text><text x="725.0" y="408.0" font-size="18" fill="#e2e8f0" text-anchor="middle" font-weight="400">controlador</text><path d="M995 304 L995 345" fill="none" stroke="#00c2ff" stroke-width="3"/><rect x="875" y="345" width="240" height="72" rx="12" fill="#14283e" stroke="#3b526b" stroke-width="2"/><text x="995.0" y="378.0" font-size="23" fill="#e2e8f0" text-anchor="middle" font-weight="650">Ponte de expansão</text><text x="995.0" y="408.0" font-size="18" fill="#e2e8f0" text-anchor="middle" font-weight="400">adaptação e buffers</text><path d="M995 417 L995 480" fill="none" stroke="#00c2ff" stroke-width="3"/><path d="M100 480 L1140 480" fill="none" stroke="#00c2ff" stroke-width="3"/><text x="110" y="465" font-size="19" fill="#00c2ff" text-anchor="start" font-weight="700">BARRAMENTO DE EXPANSÃO</text><path d="M260 480 L260 535" fill="none" stroke="#00c2ff" stroke-width="3"/><rect x="130" y="535" width="260" height="60" rx="12" fill="#14283e" stroke="#3b526b" stroke-width="2"/><text x="260.0" y="572.0" font-size="23" fill="#e2e8f0" text-anchor="middle" font-weight="650">Porta serial</text><path d="M580 480 L580 535" fill="none" stroke="#00c2ff" stroke-width="3"/><rect x="450" y="535" width="260" height="60" rx="12" fill="#14283e" stroke="#3b526b" stroke-width="2"/><text x="580.0" y="572.0" font-size="23" fill="#e2e8f0" text-anchor="middle" font-weight="650">Interface de E/S</text><path d="M900 480 L900 535" fill="none" stroke="#00c2ff" stroke-width="3"/><rect x="770" y="535" width="260" height="60" rx="12" fill="#14283e" stroke="#3b526b" stroke-width="2"/><text x="900.0" y="572.0" font-size="23" fill="#e2e8f0" text-anchor="middle" font-weight="650">Outros periféricos</text><text x="44" y="637" font-size="14" fill="#94a3b8" text-anchor="start" font-weight="400">Fonte: elaboração própria; conceitos de Stallings (2016) e Tanenbaum e Austin (2013).</text><text x="44" y="660" font-size="14" fill="#94a3b8" text-anchor="start" font-weight="400">ARQUITETURA DE COMPUTADORES  /  CAPÍTULO 5                                      FIGURA 5.2</text></svg></div><figcaption><strong>Figura 5.2 — Estrutura hierárquica de barramentos.</strong> As conexões indicam os caminhos efetivos entre processador, memória e controladores. Os quatro nomes descrevem funções nesta arquitetura, não uma organização obrigatória de todo computador.<small>Fonte: Elaboração própria; conceitos: Stallings [1] e Tanenbaum e Austin [2]. Redesenho conceitual de hierarquiabarramento.jpg do material-base.</small></figcaption><div class="fig-actions"><button type="button" data-expand="fig2">Ampliar figura</button></div></figure>
+<div class="table-wrap"><table><caption>Funções dos segmentos no modelo ilustrado</caption><thead><tr><th scope="col">Segmento</th><th scope="col">Papel</th></tr></thead><tbody><tr><td><strong>Local</strong></td><td>Atende a comunicação próxima ao processador, incluindo a interface com cache/ponte no modelo histórico.</td></tr><tr><td><strong>Do sistema</strong></td><td>Conecta o subsistema processador/cache à memória principal e às pontes de E/S.</td></tr><tr><td><strong>De alta velocidade</strong></td><td>Atende controladores que demandam maior taxa de dados, evitando subordiná-los ao segmento mais lento.</td></tr><tr><td><strong>De expansão</strong></td><td>Agrega periféricos por uma interface ou ponte, com possível armazenamento temporário e adaptação de protocolo.</td></tr></tbody></table></div>
+<aside class="note"><p><strong>A hierarquia reduz interferências, mas não as elimina.</strong> Uma transferência de DMA pode ocorrer sem a CPU executar cada movimentação. Ainda assim, CPU e E/S podem competir pela memória, por um controlador ou por um enlace comum. Coerência de cache e disponibilidade de largura de banda continuam relevantes.</p></aside>
+<p>No esquema apresentado, o bloco cache/ponte faz a ligação entre os caminhos local, de memória e de E/S. Isso não significa que o controlador de cache de todo computador desempenhe essas funções. Em muitos projetos, caches e controlador de memória integram o processador; interconexões no chip e enlaces ponto a ponto substituem parte dos barramentos compartilhados.</p></section>
 
-    <p>O barramento é o meio de comunicação pelo qual os elementos da arquitetura se comunicam, veiculando <strong>sinais elétricos</strong>. Os barramentos <strong>não armazenam dados</strong>.</p>
+<section class="section" id="s3"><div class="section-number">5.3 / Multiplexação de barramento</div><h2>Reutilizar linhas em momentos diferentes</h2><p>Uma linha <strong>dedicada à função</strong> mantém uma finalidade específica, como transportar endereços ou dados. Também se pode falar em dedicação <strong>física</strong> quando um segmento atende apenas a um subconjunto de módulos. São aspectos diferentes: quais componentes compartilham o caminho e quais funções compartilham as linhas.</p><p>Na <strong>multiplexação no tempo</strong>, o mesmo conjunto físico assume funções distintas em fases diferentes. Um exemplo comum é o grupo AD (<em>address/data</em>): primeiro transporta o endereço; depois, os dados. O protocolo identifica a fase por sinais de controle ou por sua sequência definida. Um sinal de validade ou de captura de endereço pode orientar o receptor a retê-lo em um registrador. <a class="ref" href="#r1">[1]</a> <a class="ref" href="#r2">[2]</a></p><figure id="fig3"><div class="graphic"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" role="img" aria-labelledby="ft3 fd3"><title id="ft3">Multiplexação de endereços e dados</title><desc id="fd3">Na solução multiplexada, o endereço vem antes dos dados da mesma transação. A economia ilustrada considera apenas A e D; não inclui controle, alimentação ou terra.</desc><defs><marker id="arr3" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 Z" fill="#00c2ff"/></marker></defs><style>text{font-family:Arial,Helvetica,sans-serif}</style><rect width="1200" height="675" fill="#111827"/><text x="44" y="58" font-size="32" fill="#e2e8f0" text-anchor="start" font-weight="700">Linhas dedicadas × linhas multiplexadas</text><text x="44" y="94" font-size="20" fill="#94a3b8" text-anchor="start" font-weight="400">Exemplo: endereço de 32 bits e dados de 32 bits; linhas de controle não incluídas na contagem.</text><text x="60" y="155" font-size="23" fill="#e2e8f0" text-anchor="start" font-weight="700">LINHAS DEDICADAS</text><text x="640" y="155" font-size="23" fill="#e2e8f0" text-anchor="start" font-weight="700">LINHAS MULTIPLEXADAS</text><text x="60" y="201" font-size="19" fill="#e2e8f0" text-anchor="start" font-weight="400">fase de endereço</text><text x="330" y="201" font-size="19" fill="#e2e8f0" text-anchor="start" font-weight="400">fase de dados</text><text x="640" y="201" font-size="19" fill="#e2e8f0" text-anchor="start" font-weight="400">fase de endereço</text><text x="910" y="201" font-size="19" fill="#e2e8f0" text-anchor="start" font-weight="400">fase de dados</text><text x="60" y="250" font-size="21" fill="#e2e8f0" text-anchor="start" font-weight="650">A[31:0]</text><rect x="190" y="218" width="390" height="50" rx="12" fill="#14283e" stroke="#3b526b" stroke-width="2"/><text x="385.0" y="250.0" font-size="23" fill="#e2e8f0" text-anchor="middle" font-weight="650">Endereço mantido</text><text x="60" y="330" font-size="21" fill="#e2e8f0" text-anchor="start" font-weight="650">D[31:0]</text><rect x="190" y="298" width="180" height="50" rx="12" fill="#1a2535" stroke="#3b526b" stroke-width="2"/><text x="280.0" y="330.0" font-size="23" fill="#e2e8f0" text-anchor="middle" font-weight="650">sem dado válido</text><rect x="380" y="298" width="200" height="50" rx="12" fill="#123c39" stroke="#3b526b" stroke-width="2"/><text x="480.0" y="330.0" font-size="23" fill="#e2e8f0" text-anchor="middle" font-weight="650">Dado válido</text><text x="640" y="270" font-size="21" fill="#e2e8f0" text-anchor="start" font-weight="650">AD[31:0]</text><rect x="790" y="238" width="165" height="80" rx="12" fill="#14283e" stroke="#3b526b" stroke-width="2"/><text x="872.5" y="285.0" font-size="23" fill="#e2e8f0" text-anchor="middle" font-weight="650">Endereço</text><rect x="965" y="238" width="175" height="80" rx="12" fill="#123c39" stroke="#3b526b" stroke-width="2"/><text x="1052.5" y="285.0" font-size="23" fill="#e2e8f0" text-anchor="middle" font-weight="650">Dado</text><text x="640" y="370" font-size="21" fill="#e2e8f0" text-anchor="start" font-weight="400">Sinal de controle identifica cada fase.</text><text x="640" y="404" font-size="21" fill="#e2e8f0" text-anchor="start" font-weight="400">O receptor captura e retém o endereço.</text><rect x="60" y="450" width="520" height="120" rx="12" fill="#14283e" stroke="#3b526b" stroke-width="2"/><text x="320.0" y="507.0" font-size="23" fill="#e2e8f0" text-anchor="middle" font-weight="650">64 linhas para A + D</text><text x="320.0" y="537.0" font-size="18" fill="#e2e8f0" text-anchor="middle" font-weight="400">endereço e dados em grupos separados</text><rect x="640" y="450" width="500" height="120" rx="12" fill="#14283e" stroke="#3b526b" stroke-width="2"/><text x="890.0" y="507.0" font-size="23" fill="#e2e8f0" text-anchor="middle" font-weight="650">32 linhas para AD</text><text x="890.0" y="537.0" font-size="18" fill="#e2e8f0" text-anchor="middle" font-weight="400">mesmo grupo reutilizado no tempo</text><text x="600" y="610" font-size="22" fill="#e2e8f0" text-anchor="middle" font-weight="400">Menos pinos e trilhas; fases adicionais e lógica de captura têm custo.</text><text x="44" y="637" font-size="14" fill="#94a3b8" text-anchor="start" font-weight="400">Fonte: elaboração própria; conceitos de Stallings (2016) e Tanenbaum e Austin (2013).</text><text x="44" y="660" font-size="14" fill="#94a3b8" text-anchor="start" font-weight="400">ARQUITETURA DE COMPUTADORES  /  CAPÍTULO 5                                      FIGURA 5.3</text></svg></div><figcaption><strong>Figura 5.3 — Multiplexação de endereços e dados.</strong> Na solução multiplexada, o endereço vem antes dos dados da mesma transação. A economia ilustrada considera apenas A e D; não inclui controle, alimentação ou terra.<small>Fonte: Elaboração própria; conceitos: Stallings [1] e Tanenbaum e Austin [2].</small></figcaption><div class="fig-actions"><button type="button" data-expand="fig3">Ampliar figura</button></div></figure><p>Como endereço e dados usam as mesmas linhas, eles não podem ocupar simultaneamente esse grupo físico. O circuito precisa preservar a seleção do destino após a fase de endereço. O benefício é a redução de pinos, trilhas e custo; em contrapartida, há lógica adicional de seleção e captura e pode haver maior tempo por transação.</p><aside class="note"><p><strong>Multiplexação e compartilhamento não são sinônimos.</strong> Um barramento pode ser compartilhado por vários módulos e ainda ter linhas dedicadas para endereço e dados. Também pode multiplexar essas funções dentro de uma conexão usada por poucos participantes.</p></aside></section>
 
-    <div class="fig-full">
-      <svg viewBox="0 0 560 150" xmlns="http://www.w3.org/2000/svg">
-        <text x="20" y="22" class="dlbl2">Barramento de dados</text>
-        <path d="M20 35 H540" class="dwire"/><path d="M20 30 v10 M540 30 v10" class="dwire"/>
-        <text x="280" y="55" text-anchor="middle" class="dlbl2" style="font-size:9px">bi-direcional — leitura/escrita de instruções e dados</text>
+<section class="section" id="s4"><div class="section-number">5.4 / Protocolos de barramento</div><h2>Regras para acessar e transferir</h2><p>Um <strong>protocolo de barramento</strong> define como uma transação começa, como o destino é selecionado, quem dirige cada sinal, quando os dados são válidos e como ocorre a conclusão. Também pode prever tratamento de erros, cancelamentos e limites de espera. Duas questões centrais são a arbitração e a temporização.</p>
+<h3 id="s4a">5.4.1 Arbitração de barramentos</h3><p>Quando vários módulos podem iniciar operações em um mesmo segmento compartilhado, é preciso decidir qual deles terá acesso. A <strong>arbitração</strong> seleciona o próximo iniciador e evita que fontes incompatíveis conduzam as mesmas linhas ao mesmo tempo. A restrição se aplica ao recurso compartilhado: segmentos independentes podem operar em paralelo.</p><p>Na <strong>arbitração centralizada</strong>, um árbitro recebe solicitações e concede o acesso segundo uma política. Ele pode ser um circuito separado ou fazer parte de outro módulo. Na <strong>arbitração distribuída</strong>, os próprios participantes contêm lógica de acesso e resolvem a disputa de acordo com regras comuns, sem um árbitro central único. <a class="ref" href="#r2">[2]</a></p><figure id="fig4"><div class="graphic"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" role="img" aria-labelledby="ft4 fd4"><title id="ft4">Arbitração centralizada e distribuída</title><desc id="fd4">DMA é o mecanismo de acesso direto à memória. O controlador de DMA pode disputar o barramento; o árbitro não precisa transportar os dados.</desc><defs><marker id="arr4" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 Z" fill="#00c2ff"/></marker></defs><style>text{font-family:Arial,Helvetica,sans-serif}</style><rect width="1200" height="675" fill="#111827"/><text x="44" y="58" font-size="32" fill="#e2e8f0" text-anchor="start" font-weight="700">Quem pode iniciar a próxima transação?</text><text x="44" y="94" font-size="20" fill="#94a3b8" text-anchor="start" font-weight="400">A arbitração resolve a disputa entre possíveis iniciadores de um segmento compartilhado.</text><text x="300" y="155" font-size="24" fill="#e2e8f0" text-anchor="middle" font-weight="700">CENTRALIZADA</text><text x="900" y="155" font-size="24" fill="#e2e8f0" text-anchor="middle" font-weight="700">DISTRIBUÍDA</text><rect x="55" y="195" width="485" height="80" rx="12" fill="#14283e" stroke="#3b526b" stroke-width="2"/><text x="297.5" y="232.0" font-size="23" fill="#e2e8f0" text-anchor="middle" font-weight="650">Árbitro</text><text x="297.5" y="262.0" font-size="18" fill="#e2e8f0" text-anchor="middle" font-weight="400">aplica a política de acesso</text><rect x="55" y="365" width="145" height="70" rx="12" fill="#14283e" stroke="#3b526b" stroke-width="2"/><text x="127.5" y="407.0" font-size="23" fill="#e2e8f0" text-anchor="middle" font-weight="650">CPU</text><path d="M105 365 L105 275" fill="none" stroke="#00c2ff" stroke-width="3" marker-end="url(#arr4)"/><path d="M155 275 L155 365" fill="none" stroke="#00c2ff" stroke-width="3" marker-end="url(#arr4)"/><path d="M127 435 L127 485" fill="none" stroke="#00c2ff" stroke-width="3"/><rect x="225" y="365" width="145" height="70" rx="12" fill="#14283e" stroke="#3b526b" stroke-width="2"/><text x="297.5" y="407.0" font-size="23" fill="#e2e8f0" text-anchor="middle" font-weight="650">DMA</text><path d="M275 365 L275 275" fill="none" stroke="#00c2ff" stroke-width="3" marker-end="url(#arr4)"/><path d="M325 275 L325 365" fill="none" stroke="#00c2ff" stroke-width="3" marker-end="url(#arr4)"/><path d="M297 435 L297 485" fill="none" stroke="#00c2ff" stroke-width="3"/><rect x="395" y="365" width="145" height="70" rx="12" fill="#14283e" stroke="#3b526b" stroke-width="2"/><text x="467.5" y="407.0" font-size="23" fill="#e2e8f0" text-anchor="middle" font-weight="650">E/S</text><path d="M445 365 L445 275" fill="none" stroke="#00c2ff" stroke-width="3" marker-end="url(#arr4)"/><path d="M495 275 L495 365" fill="none" stroke="#00c2ff" stroke-width="3" marker-end="url(#arr4)"/><path d="M467 435 L467 485" fill="none" stroke="#00c2ff" stroke-width="3"/><text x="300" y="570" font-size="19" fill="#e2e8f0" text-anchor="middle" font-weight="400">requisições ↑  /  concessão ↓</text><path d="M65 485 L535 485" fill="none" stroke="#00c2ff" stroke-width="3"/><text x="300" y="530" font-size="21" fill="#e2e8f0" text-anchor="middle" font-weight="400">Um árbitro; várias políticas possíveis.</text><rect x="650" y="245" width="150" height="110" rx="12" fill="#14283e" stroke="#3b526b" stroke-width="2"/><text x="725.0" y="297.0" font-size="23" fill="#e2e8f0" text-anchor="middle" font-weight="650">CPU</text><text x="725.0" y="327.0" font-size="18" fill="#e2e8f0" text-anchor="middle" font-weight="400">+ lógica de acesso</text><path d="M725 355 L725 420" fill="none" stroke="#00c2ff" stroke-width="3"/><rect x="820" y="245" width="150" height="110" rx="12" fill="#14283e" stroke="#3b526b" stroke-width="2"/><text x="895.0" y="297.0" font-size="23" fill="#e2e8f0" text-anchor="middle" font-weight="650">DMA</text><text x="895.0" y="327.0" font-size="18" fill="#e2e8f0" text-anchor="middle" font-weight="400">+ lógica de acesso</text><path d="M895 355 L895 420" fill="none" stroke="#00c2ff" stroke-width="3"/><rect x="990" y="245" width="150" height="110" rx="12" fill="#14283e" stroke="#3b526b" stroke-width="2"/><text x="1065.0" y="297.0" font-size="23" fill="#e2e8f0" text-anchor="middle" font-weight="650">E/S</text><text x="1065.0" y="327.0" font-size="18" fill="#e2e8f0" text-anchor="middle" font-weight="400">+ lógica de acesso</text><path d="M1065 355 L1065 420" fill="none" stroke="#00c2ff" stroke-width="3"/><path d="M665 420 L1135 420" fill="none" stroke="#00c2ff" stroke-width="3"/><text x="900" y="463" font-size="20" fill="#e2e8f0" text-anchor="middle" font-weight="400">sinais de arbitragem compartilhados</text><text x="900" y="530" font-size="21" fill="#e2e8f0" text-anchor="middle" font-weight="400">Os módulos decidem pelo protocolo.</text><text x="600" y="596" font-size="22" fill="#e2e8f0" text-anchor="middle" font-weight="400">Prioridade fixa pode causar espera indefinida; rodízio pode melhorar a equidade.</text><text x="44" y="637" font-size="14" fill="#94a3b8" text-anchor="start" font-weight="400">Fonte: elaboração própria; conceitos de Stallings (2016) e Tanenbaum e Austin (2013).</text><text x="44" y="660" font-size="14" fill="#94a3b8" text-anchor="start" font-weight="400">ARQUITETURA DE COMPUTADORES  /  CAPÍTULO 5                                      FIGURA 5.4</text></svg></div><figcaption><strong>Figura 5.4 — Arbitração centralizada e distribuída.</strong> DMA é o mecanismo de acesso direto à memória. O controlador de DMA pode disputar o barramento; o árbitro não precisa transportar os dados.<small>Fonte: Elaboração própria; conceitos: Stallings [1] e Tanenbaum e Austin [2]. Redesenho conceitual de controladorbarramento.jpg do material-base.</small></figcaption><div class="fig-actions"><button type="button" data-expand="fig4">Ampliar figura</button></div></figure>
+<p>A organização da decisão e a política de escolha são dimensões distintas. Prioridade fixa favorece certos solicitantes e pode provocar <strong>inanição</strong> de outros; rodízio (<em>round-robin</em>) alterna oportunidades de acesso. Uma concessão pode valer para uma transação ou para uma rajada, conforme o padrão.</p>
+<p>Na terminologia tradicional, <strong>mestre (<em>master</em>)</strong> é quem inicia a transação, e <strong>escravo (<em>slave</em>)</strong> é o módulo que responde. Neste texto, também são usados os termos <strong>iniciador</strong> e <strong>destino</strong>. Os papéis pertencem à operação: não são necessariamente atributos permanentes do componente.</p><figure id="fig5"><div class="graphic"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" role="img" aria-labelledby="ft5 fd5"><title id="ft5">Papéis dos módulos e direção dos dados</title><desc id="fd5">O iniciador emite o comando. Na leitura, o destino fornece os dados; na escrita, o iniciador os fornece. Os termos tradicionais master/slave correspondem a esses papéis.</desc><defs><marker id="arr5" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 Z" fill="#00c2ff"/></marker></defs><style>text{font-family:Arial,Helvetica,sans-serif}</style><rect width="1200" height="675" fill="#111827"/><text x="44" y="58" font-size="32" fill="#e2e8f0" text-anchor="start" font-weight="700">Iniciar a operação não é sempre enviar os dados</text><text x="44" y="94" font-size="20" fill="#94a3b8" text-anchor="start" font-weight="400">O papel de cada participante é definido para a transação em curso.</text><text x="60" y="150" font-size="22" fill="#e2e8f0" text-anchor="start" font-weight="700">LEITURA</text><rect x="60" y="170" width="300" height="110" rx="12" fill="#14283e" stroke="#3b526b" stroke-width="2"/><text x="210.0" y="222.0" font-size="23" fill="#e2e8f0" text-anchor="middle" font-weight="650">Iniciador (mestre)</text><text x="210.0" y="252.0" font-size="18" fill="#e2e8f0" text-anchor="middle" font-weight="400">CPU ou controlador de DMA</text><rect x="840" y="170" width="300" height="110" rx="12" fill="#14283e" stroke="#3b526b" stroke-width="2"/><text x="990.0" y="222.0" font-size="23" fill="#e2e8f0" text-anchor="middle" font-weight="650">Destino (escravo)</text><text x="990.0" y="252.0" font-size="18" fill="#e2e8f0" text-anchor="middle" font-weight="400">memória ou módulo de E/S</text><path d="M370 195 L830 195" fill="none" stroke="#00c2ff" stroke-width="3" marker-end="url(#arr5)"/><text x="600" y="175" font-size="21" fill="#e2e8f0" text-anchor="middle" font-weight="400">endereço + comando</text><path d="M830 255 L370 255" fill="none" stroke="#00c2ff" stroke-width="3" marker-end="url(#arr5)"/><text x="600" y="237" font-size="23" fill="#2dd4bf" text-anchor="middle" font-weight="650">dados</text><text x="60" y="370" font-size="22" fill="#e2e8f0" text-anchor="start" font-weight="700">ESCRITA</text><rect x="60" y="390" width="300" height="110" rx="12" fill="#14283e" stroke="#3b526b" stroke-width="2"/><text x="210.0" y="442.0" font-size="23" fill="#e2e8f0" text-anchor="middle" font-weight="650">Iniciador (mestre)</text><text x="210.0" y="472.0" font-size="18" fill="#e2e8f0" text-anchor="middle" font-weight="400">CPU ou controlador de DMA</text><rect x="840" y="390" width="300" height="110" rx="12" fill="#14283e" stroke="#3b526b" stroke-width="2"/><text x="990.0" y="442.0" font-size="23" fill="#e2e8f0" text-anchor="middle" font-weight="650">Destino (escravo)</text><text x="990.0" y="472.0" font-size="18" fill="#e2e8f0" text-anchor="middle" font-weight="400">memória ou módulo de E/S</text><path d="M370 415 L830 415" fill="none" stroke="#00c2ff" stroke-width="3" marker-end="url(#arr5)"/><text x="600" y="395" font-size="21" fill="#e2e8f0" text-anchor="middle" font-weight="400">endereço + comando</text><path d="M370 475 L830 475" fill="none" stroke="#00c2ff" stroke-width="3" marker-end="url(#arr5)"/><text x="600" y="457" font-size="23" fill="#2dd4bf" text-anchor="middle" font-weight="650">dados</text><text x="600" y="575" font-size="22" fill="#e2e8f0" text-anchor="middle" font-weight="400">A confirmação retorna do destino conforme as regras do protocolo.</text><text x="44" y="637" font-size="14" fill="#94a3b8" text-anchor="start" font-weight="400">Fonte: elaboração própria; conceitos de Stallings (2016) e Tanenbaum e Austin (2013).</text><text x="44" y="660" font-size="14" fill="#94a3b8" text-anchor="start" font-weight="400">ARQUITETURA DE COMPUTADORES  /  CAPÍTULO 5                                      FIGURA 5.5</text></svg></div><figcaption><strong>Figura 5.5 — Papéis dos módulos e direção dos dados.</strong> O iniciador emite o comando. Na leitura, o destino fornece os dados; na escrita, o iniciador os fornece. Os termos tradicionais master/slave correspondem a esses papéis.<small>Fonte: Elaboração própria; conceitos: Stallings [1] e Tanenbaum e Austin [2]. Redesenho conceitual de masterslavebarramento.jpg do material-base.</small></figcaption><div class="fig-actions"><button type="button" data-expand="fig5">Ampliar figura</button></div></figure><p>Em uma leitura, o destino dirige as linhas de dados mesmo sem ter iniciado a operação. Portanto, “ser mestre” não significa “ser sempre a fonte dos dados”. De modo semelhante, uma interrupção solicita atendimento da CPU; não equivale, por si só, a uma concessão de controle do barramento.</p>
+<h3 id="s4b">5.4.2 Temporização de barramentos</h3><p>A <strong>temporização</strong> define como os eventos de uma transferência se coordenam e quais intervalos tornam a informação confiável. Os dois modelos básicos são o síncrono e o assíncrono.</p><h4>Transmissão síncrona</h4><p>Os participantes usam um <strong>relógio comum como referência</strong>. O protocolo estabelece em quais bordas ou fases os sinais podem mudar e ser amostrados. O clock do barramento não precisa ter a mesma frequência do clock interno da CPU.</p><p>O iniciador apresenta endereço e comando; o destino responde dentro dos intervalos previstos. Se o protocolo permitir e o destino precisar de mais tempo, sinais como READY ou WAIT prolongam a transação em <strong>estados de espera (<em>wait states</em>)</strong>. A espera ocupa tempo de comunicação; seu efeito sobre a execução da CPU depende da arquitetura, das caches e da capacidade de sobrepor operações.</p><figure id="fig6"><div class="graphic"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" role="img" aria-labelledby="ft6 fd6"><title id="ft6">Temporização síncrona</title><desc id="fd6">O endereço e READ são estabelecidos após t0. Neste protocolo ilustrativo, t3 seria a primeira conclusão possível. Como READY ainda está baixo nessa borda, insere-se um ciclo de espera (t3–t4); a leitura termina em t4.</desc><defs><marker id="arr6" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 Z" fill="#00c2ff"/></marker></defs><style>text{font-family:Arial,Helvetica,sans-serif}</style><rect width="1200" height="675" fill="#111827"/><text x="44" y="58" font-size="32" fill="#e2e8f0" text-anchor="start" font-weight="700">Leitura síncrona com um estado de espera</text><text x="44" y="94" font-size="20" fill="#94a3b8" text-anchor="start" font-weight="400">Exemplo didático: amostragem nas bordas de subida; READY indica conclusão possível.</text><path d="M240 160 L240 535" fill="none" stroke="#3b526b" stroke-width="3" stroke-dasharray="7 7"/><text x="240" y="145" font-size="19" fill="#e2e8f0" text-anchor="middle" font-weight="400">t0</text><path d="M420 160 L420 535" fill="none" stroke="#3b526b" stroke-width="3" stroke-dasharray="7 7"/><text x="420" y="145" font-size="19" fill="#e2e8f0" text-anchor="middle" font-weight="400">t1</text><path d="M600 160 L600 535" fill="none" stroke="#3b526b" stroke-width="3" stroke-dasharray="7 7"/><text x="600" y="145" font-size="19" fill="#e2e8f0" text-anchor="middle" font-weight="400">t2</text><path d="M780 160 L780 535" fill="none" stroke="#3b526b" stroke-width="3" stroke-dasharray="7 7"/><text x="780" y="145" font-size="19" fill="#e2e8f0" text-anchor="middle" font-weight="400">t3</text><path d="M960 160 L960 535" fill="none" stroke="#3b526b" stroke-width="3" stroke-dasharray="7 7"/><text x="960" y="145" font-size="19" fill="#e2e8f0" text-anchor="middle" font-weight="400">t4</text><text x="50" y="205" font-size="21" fill="#e2e8f0" text-anchor="start" font-weight="650">CLOCK</text><text x="50" y="295" font-size="21" fill="#e2e8f0" text-anchor="start" font-weight="650">ENDEREÇO</text><text x="50" y="385" font-size="21" fill="#e2e8f0" text-anchor="start" font-weight="650">READ</text><text x="50" y="475" font-size="21" fill="#e2e8f0" text-anchor="start" font-weight="650">READY</text><path d="M200 225 H240 V185 H320 V225 H420 V185 H500 V225 H600 V185 H680 V225 H780 V185 H860 V225 H960 V185 H1040 V225 H1100" fill="none" stroke="#00c2ff" stroke-width="3"/><rect x="250" y="266" width="730" height="45" rx="12" fill="#14283e" stroke="#3b526b" stroke-width="2"/><text x="615.0" y="295.5" font-size="23" fill="#e2e8f0" text-anchor="middle" font-weight="650">Endereço válido</text><path d="M200 400 H260 V360 H970 V400 H1100 M200 490 H840 V450 H970 V490 H1100" fill="none" stroke="#00c2ff" stroke-width="3"/><rect x="780" y="165" width="180" height="355" fill="#f5bd4e" opacity=".15"/><text x="870" y="520" font-size="21" fill="#e2e8f0" text-anchor="middle" font-weight="700">espera</text><text x="960" y="520" font-size="21" fill="#e2e8f0" text-anchor="middle" font-weight="700">captura</text><text x="50" y="562" font-size="21" fill="#e2e8f0" text-anchor="start" font-weight="650">DADOS</text><rect x="850" y="532" width="160" height="43" rx="12" fill="#123c39" stroke="#3b526b" stroke-width="2"/><text x="930.0" y="560.5" font-size="23" fill="#e2e8f0" text-anchor="middle" font-weight="650">Dado válido</text><text x="600" y="592" font-size="22" fill="#e2e8f0" text-anchor="middle" font-weight="400">Dados válidos antes de t4 e mantidos após t4 pelo intervalo exigido.</text><text x="44" y="637" font-size="14" fill="#94a3b8" text-anchor="start" font-weight="400">Fonte: elaboração própria; conceitos de Stallings (2016) e Tanenbaum e Austin (2013).</text><text x="44" y="660" font-size="14" fill="#94a3b8" text-anchor="start" font-weight="400">ARQUITETURA DE COMPUTADORES  /  CAPÍTULO 5                                      FIGURA 5.6</text></svg></div><figcaption><strong>Figura 5.6 — Temporização síncrona.</strong> O endereço e READ são estabelecidos após t0. Neste protocolo ilustrativo, t3 seria a primeira conclusão possível. Como READY ainda está baixo nessa borda, insere-se um ciclo de espera (t3–t4); a leitura termina em t4.<small>Fonte: Elaboração própria; conceitos: Stallings [1] e Tanenbaum e Austin [2]. Redesenho conceitual de barramentosincrono.jpg do material-base.</small></figcaption><div class="fig-actions"><button type="button" data-expand="fig6">Ampliar figura</button></div></figure>
+<p>Na borda de captura, os dados precisam estar estáveis por um intervalo anterior (<em>setup</em>) e posterior (<em>hold</em>). O período do relógio deve acomodar os atrasos relevantes. Distribuição do clock, diferenças de chegada do sinal (<em>skew</em>) e carga elétrica dificultam o aumento da frequência em barramentos paralelos extensos.</p>
+<h4>Transmissão assíncrona</h4><p>Uma transferência assíncrona <strong>não depende de um relógio global do barramento</strong> para definir todas as suas fases. A sequência avança por eventos e confirmações, em um mecanismo de <strong><em>handshake</em></strong>. Isso não significa ausência de temporização: há atrasos de propagação, exigências de estabilidade e condições para reconhecer cada sinal.</p><figure id="fig7"><div class="graphic"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" role="img" aria-labelledby="ft7 fd7"><title id="ft7">Temporização assíncrona</title><desc id="fd7">Exemplo de leitura com sinais ativos em nível alto. O destino apresenta os dados antes de ativar ACK e os mantém até reconhecer a retirada de REQ. As setas tracejadas mostram dependências, não ciclos de relógio.</desc><defs><marker id="arr7" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 Z" fill="#00c2ff"/></marker></defs><style>text{font-family:Arial,Helvetica,sans-serif}</style><rect width="1200" height="675" fill="#111827"/><text x="44" y="58" font-size="32" fill="#e2e8f0" text-anchor="start" font-weight="700">Leitura assíncrona: handshake em quatro fases</text><text x="44" y="94" font-size="20" fill="#94a3b8" text-anchor="start" font-weight="400">Sem relógio global para coordenar esta transação; há requisitos de tempo e causalidade.</text><path d="M320 190 L320 520" fill="none" stroke="#3b526b" stroke-width="3" stroke-dasharray="7 7"/><text x="320" y="166" font-size="21" fill="#e2e8f0" text-anchor="middle" font-weight="650">1 · REQ ↑</text><path d="M580 190 L580 520" fill="none" stroke="#3b526b" stroke-width="3" stroke-dasharray="7 7"/><text x="580" y="166" font-size="21" fill="#e2e8f0" text-anchor="middle" font-weight="650">2 · ACK ↑</text><path d="M820 190 L820 520" fill="none" stroke="#3b526b" stroke-width="3" stroke-dasharray="7 7"/><text x="820" y="166" font-size="21" fill="#e2e8f0" text-anchor="middle" font-weight="650">3 · REQ ↓</text><path d="M1030 190 L1030 520" fill="none" stroke="#3b526b" stroke-width="3" stroke-dasharray="7 7"/><text x="1030" y="166" font-size="21" fill="#e2e8f0" text-anchor="middle" font-weight="650">4 · ACK ↓</text><text x="55" y="270" font-size="22" fill="#e2e8f0" text-anchor="start" font-weight="650">REQ</text><text x="55" y="380" font-size="22" fill="#e2e8f0" text-anchor="start" font-weight="650">ACK</text><text x="55" y="480" font-size="22" fill="#e2e8f0" text-anchor="start" font-weight="650">DADOS</text><path d="M200 285 H320 V245 H820 V285 H1130 M200 395 H580 V355 H1030 V395 H1130" fill="none" stroke="#00c2ff" stroke-width="3"/><rect x="535" y="443" width="390" height="55" rx="12" fill="#123c39" stroke="#3b526b" stroke-width="2"/><text x="730.0" y="477.5" font-size="23" fill="#e2e8f0" text-anchor="middle" font-weight="650">Dado válido</text><path d="M335 250 L565 355" fill="none" stroke="#00c2ff" stroke-width="3" marker-end="url(#arr7)" stroke-dasharray="7 7"/><path d="M595 355 L805 250" fill="none" stroke="#00c2ff" stroke-width="3" marker-end="url(#arr7)" stroke-dasharray="7 7"/><path d="M835 285 L1015 395" fill="none" stroke="#00c2ff" stroke-width="3" marker-end="url(#arr7)" stroke-dasharray="7 7"/><text x="600" y="556" font-size="22" fill="#e2e8f0" text-anchor="middle" font-weight="400">REQ: iniciador → destino     |     ACK: destino → iniciador</text><text x="600" y="598" font-size="22" fill="#e2e8f0" text-anchor="middle" font-weight="400">O iniciador captura o dado ao reconhecer ACK e então retira REQ.</text><text x="44" y="637" font-size="14" fill="#94a3b8" text-anchor="start" font-weight="400">Fonte: elaboração própria; conceitos de Stallings (2016) e Tanenbaum e Austin (2013).</text><text x="44" y="660" font-size="14" fill="#94a3b8" text-anchor="start" font-weight="400">ARQUITETURA DE COMPUTADORES  /  CAPÍTULO 5                                      FIGURA 5.7</text></svg></div><figcaption><strong>Figura 5.7 — Temporização assíncrona.</strong> Exemplo de leitura com sinais ativos em nível alto. O destino apresenta os dados antes de ativar ACK e os mantém até reconhecer a retirada de REQ. As setas tracejadas mostram dependências, não ciclos de relógio.<small>Fonte: Elaboração própria; conceitos: Stallings [1] e Tanenbaum e Austin [2]. Redesenho conceitual de barramentoassincrono.jpg do material-base.</small></figcaption><div class="fig-actions"><button type="button" data-expand="fig7">Ampliar figura</button></div></figure>
+<ol><li><strong>REQ é ativado:</strong> o iniciador já estabeleceu endereço e comando e sinaliza a requisição.</li><li><strong>ACK é ativado:</strong> em uma leitura, o destino apresenta dados válidos e confirma a resposta.</li><li><strong>REQ é retirado:</strong> o iniciador reconhece ACK, captura o dado e sinaliza o encerramento de sua solicitação.</li><li><strong>ACK é retirado:</strong> o destino reconhece o término e retorna ao estado de repouso.</li></ol>
+<p>A figura apresenta um <em>handshake</em> de quatro fases, com retorno a zero; há outros protocolos. Em uma escrita, o iniciador disponibiliza o dado antes da requisição e o mantém pelo intervalo exigido até a aceitação. O significado preciso de ACK depende da operação e do padrão.</p>
+<div class="table-wrap"><table><caption>Comparação entre modelos de temporização</caption><thead><tr><th scope="col">Aspecto</th><th scope="col">Síncrono</th><th scope="col">Assíncrono</th></tr></thead><tbody><tr><td>Referência</td><td>Clock e regras de amostragem.</td><td>Dependências entre eventos e confirmações.</td></tr><tr><td>Duração</td><td>Organizada por ciclos ou fases; pode incluir espera.</td><td>Adapta-se aos tempos de resposta, com custo de handshake.</td></tr><tr><td>Vantagem possível</td><td>Sequenciamento regular e implementação previsível.</td><td>Acomodação de participantes com tempos diferentes.</td></tr><tr><td>Limitações</td><td>Distribuição de clock, margens temporais e ciclos de espera.</td><td>Lógica de coordenação e atrasos de ida e volta dos sinais.</td></tr></tbody></table></div><aside class="note"><p><strong>Não há superioridade universal.</strong> O desempenho depende do protocolo, das distâncias, dos dispositivos e da carga. A comunicação assíncrona pode evitar esperar por uma próxima borda de clock, mas as confirmações também consomem tempo. <a class="ref" href="#r2">[2]</a></p></aside></section>
 
-        <text x="20" y="75" class="dlbl2">Barramento de endereços</text>
-        <path d="M20 88 H540" class="dwire"/><path d="M20 83 v10 M540 83 v10" class="dwire"/>
-        <text x="280" y="108" text-anchor="middle" class="dlbl2" style="font-size:9px">define a fonte/destino — memória ou porta de E/S</text>
+<section class="section" id="s5"><div class="section-number">5.5 / Padrões de barramento</div><h2>Padrões, taxas e contexto histórico</h2><p>Um padrão especifica aspectos <strong>lógicos, elétricos, temporais e físicos</strong> da comunicação: sinais, transações, níveis de tensão, condições de operação e, quando aplicável, conectores. A lista a seguir preserva os padrões do capítulo-base, distinguindo variantes e evitando confundir clock com taxa de transferência.</p>
+<div class="table-wrap"><table><caption>Características de padrões históricos — configurações de referência</caption><thead><tr><th scope="col">Padrão</th><th scope="col">Dados</th><th scope="col">Clock / taxa</th><th scope="col">Observação</th></tr></thead><tbody>
+<tr><td><strong>ISA</strong><br>Industry Standard Architecture</td><td>8 ou 16 bits</td><td>Referência típica do ISA de 16 bits: cerca de 8,33 MHz.</td><td>O barramento de 8 bits do PC original operava próximo de 4,77 MHz. Não se deve atribuir um clock único a toda a linhagem.</td></tr>
+<tr><td><strong>PCI convencional</strong><br>Peripheral Component Interconnect</td><td>32 bits na configuração clássica; há versões de 64 bits.</td><td>33⅓ MHz na configuração clássica; há variantes de 66⅔ MHz.</td><td>Paralelo e compartilhado. Pico clássico de aproximadamente 133 MB/s, com 32 bits.</td></tr>
+<tr><td><strong>AGP 1.0</strong><br>Accelerated Graphics Port</td><td>32 bits</td><td>Clock de referência ≈ 66⅔ MHz; modos 1× e 2×.</td><td>Conexão dedicada ao vídeo. Picos aproximados de 267 e 533 MB/s.</td></tr>
+<tr><td><strong>AGP 2.0 / 3.0</strong></td><td>32 bits</td><td>Modos 4× e 8×, respectivamente, com referência ≈ 66⅔ MHz.</td><td>Picos aproximados de 1,07 e 2,13 GB/s. Versão, modo e tensão devem ser compatíveis.</td></tr>
+<tr><td><strong>PCI-X 1.0</strong><br>PCI eXtended</td><td>64 bits na configuração de referência.</td><td>Operação a 66, 100 ou 133 MHz, conforme a implementação.</td><td>Pico de aproximadamente 1,06 GB/s a 133 MHz e 64 bits.</td></tr>
+<tr><td><strong>PCI-X 2.0</strong></td><td>64 bits na configuração de referência; outras larguras são previstas.</td><td>Classes 266 e 533: cerca de 266 / 533 milhões de transferências por segundo, com DDR / QDR sobre referência próxima de 133 MHz.</td><td>Picos de aproximadamente 2,13 e 4,26 GB/s em 64 bits. A revisão também contempla classes inferiores.</td></tr>
+</tbody></table></div>
+<p class="sources">Fontes da comparação: Tanenbaum e Austin [2] para o contexto de barramentos; PCI-SIG [3, 4] para PCI e PCI-X; Intel [5, 6] para AGP e IBM/Intel [7] para ISA. Os valores são nominais e arredondados, não medições de taxa útil.</p>
+<aside class="note"><p><strong>Por que “PCI-X 533” não significa simplesmente clock de 533 MHz?</strong> A denominação identifica uma classe de transferência. O modo QDR realiza quatro transferências por ciclo de referência. Diferenciar MHz de MT/s evita aplicar incorretamente a fórmula de largura de banda. <a class="ref" href="#r4">[4]</a></p></aside>
+<figure id="fig8"><div class="graphic"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" role="img" aria-labelledby="ft8 fd8"><title id="ft8">Interconexões e padrões históricos</title><desc id="fd8">PCI-X continua sendo um barramento paralelo. PCI Express (PCIe) usa enlaces seriais e comutação; apesar do nome, não é apenas um PCI-X com frequência maior.</desc><defs><marker id="arr8" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 Z" fill="#00c2ff"/></marker></defs><style>text{font-family:Arial,Helvetica,sans-serif}</style><rect width="1200" height="675" fill="#111827"/><text x="44" y="58" font-size="32" fill="#e2e8f0" text-anchor="start" font-weight="700">PCI / PCI-X, AGP e PCI Express: topologias diferentes</text><text x="44" y="94" font-size="20" fill="#94a3b8" text-anchor="start" font-weight="400">Diagrama lógico; os blocos não representam formato, chaveamento ou pinagem dos conectores.</text><text x="60" y="155" font-size="23" fill="#e2e8f0" text-anchor="start" font-weight="700">PCI / PCI-X</text><rect x="60" y="190" width="220" height="75" rx="12" fill="#14283e" stroke="#3b526b" stroke-width="2"/><text x="170.0" y="234.5" font-size="23" fill="#e2e8f0" text-anchor="middle" font-weight="650">Ponte</text><path d="M280 228 L1130 228" fill="none" stroke="#00c2ff" stroke-width="3"/><path d="M470 228 L470 280" fill="none" stroke="#00c2ff" stroke-width="3"/><rect x="350" y="280" width="240" height="65" rx="12" fill="#14283e" stroke="#3b526b" stroke-width="2"/><text x="470.0" y="319.5" font-size="23" fill="#e2e8f0" text-anchor="middle" font-weight="650">Rede</text><path d="M740 228 L740 280" fill="none" stroke="#00c2ff" stroke-width="3"/><rect x="620" y="280" width="240" height="65" rx="12" fill="#14283e" stroke="#3b526b" stroke-width="2"/><text x="740.0" y="319.5" font-size="23" fill="#e2e8f0" text-anchor="middle" font-weight="650">Armazenamento</text><path d="M1010 228 L1010 280" fill="none" stroke="#00c2ff" stroke-width="3"/><rect x="890" y="280" width="240" height="65" rx="12" fill="#14283e" stroke="#3b526b" stroke-width="2"/><text x="1010.0" y="319.5" font-size="23" fill="#e2e8f0" text-anchor="middle" font-weight="650">Outra placa</text><text x="60" y="320" font-size="20" fill="#e2e8f0" text-anchor="start" font-weight="400">Paralelo</text><text x="60" y="350" font-size="20" fill="#e2e8f0" text-anchor="start" font-weight="400">compartilhado</text><text x="60" y="414" font-size="23" fill="#e2e8f0" text-anchor="start" font-weight="700">AGP</text><rect x="270" y="380" width="250" height="75" rx="12" fill="#14283e" stroke="#3b526b" stroke-width="2"/><text x="395.0" y="424.5" font-size="23" fill="#e2e8f0" text-anchor="middle" font-weight="650">Chipset</text><path d="M520 418 L820 418" fill="none" stroke="#00c2ff" stroke-width="3"/><rect x="820" y="380" width="300" height="75" rx="12" fill="#14283e" stroke="#3b526b" stroke-width="2"/><text x="970.0" y="424.5" font-size="23" fill="#e2e8f0" text-anchor="middle" font-weight="650">Controlador gráfico</text><text x="600" y="397" font-size="20" fill="#e2e8f0" text-anchor="middle" font-weight="400">conexão dedicada</text><text x="60" y="535" font-size="23" fill="#e2e8f0" text-anchor="start" font-weight="700">PCI EXPRESS</text><rect x="270" y="495" width="250" height="95" rx="12" fill="#14283e" stroke="#3b526b" stroke-width="2"/><text x="395.0" y="539.5" font-size="23" fill="#e2e8f0" text-anchor="middle" font-weight="650">Complexo raiz</text><text x="395.0" y="569.5" font-size="18" fill="#e2e8f0" text-anchor="middle" font-weight="400">ou switch PCIe</text><path d="M520 525 L820 525" fill="none" stroke="#00c2ff" stroke-width="3"/><rect x="820" y="500" width="300" height="48" rx="12" fill="#14283e" stroke="#3b526b" stroke-width="2"/><text x="970.0" y="531.0" font-size="23" fill="#e2e8f0" text-anchor="middle" font-weight="650">Endpoint A</text><path d="M520 585 L820 585" fill="none" stroke="#00c2ff" stroke-width="3"/><rect x="820" y="560" width="300" height="48" rx="12" fill="#14283e" stroke="#3b526b" stroke-width="2"/><text x="970.0" y="591.0" font-size="23" fill="#e2e8f0" text-anchor="middle" font-weight="650">Endpoint B</text><text x="620" y="610" font-size="20" fill="#e2e8f0" text-anchor="middle" font-weight="400">Enlaces seriais ponto a ponto, com uma ou mais lanes.</text><text x="44" y="637" font-size="14" fill="#94a3b8" text-anchor="start" font-weight="400">Fonte: elaboração própria; conceitos de PCI-SIG (2006) e Stallings (2016).</text><text x="44" y="660" font-size="14" fill="#94a3b8" text-anchor="start" font-weight="400">ARQUITETURA DE COMPUTADORES  /  CAPÍTULO 5                                      FIGURA 5.8</text></svg></div><figcaption><strong>Figura 5.8 — Interconexões e padrões históricos.</strong> PCI-X continua sendo um barramento paralelo. PCI Express (PCIe) usa enlaces seriais e comutação; apesar do nome, não é apenas um PCI-X com frequência maior.<small>Fonte: Elaboração própria; PCI-SIG [3, 4] e Stallings [1]. Redesenho conceitual de barramentopcix.jpg (substituída por comparação lógica) do material-base.</small></figcaption><div class="fig-actions"><button type="button" data-expand="fig8">Ampliar figura</button></div></figure>
+<p>O PCI-X ampliou a família PCI paralela, com alterações de protocolo e mecanismos como transações divididas (<em>split transactions</em>). Já o <strong>PCI Express (PCIe)</strong> usa enlaces seriais ponto a ponto, organizados em uma ou mais <em>lanes</em>, e uma estrutura com encaminhamento de pacotes. Essa comparação ajuda a entender por que os conceitos de interconexão permanecem úteis, embora nem toda interface moderna tenha a forma de um barramento paralelo compartilhado. <a class="ref" href="#r1">[1]</a> <a class="ref" href="#r4">[4]</a></p></section>
 
-        <text x="20" y="128" class="dlbl2">Barramento de controle</text>
-        <path d="M20 141 H540" class="dwire"/>
-      </svg>
-      <p class="fig-caption">Fig. 5.1 — Classificação funcional dos barramentos: dados, endereços e controle</p>
-    </div>
-
-    <table>
-      <thead><tr><th class="tleft">Barramento</th><th class="tleft">Função</th></tr></thead>
-      <tbody>
-        <tr><td class="tleft"><strong>Dados</strong></td><td class="tleft">Veicula bits das instruções armazenadas em memória e os dados operados — <strong>bi-direcional</strong> (escrita e leitura)</td></tr>
-        <tr><td class="tleft"><strong>Endereços</strong></td><td class="tleft">Designa a fonte ou destino dos dados — indica endereço de memória ou porta de E/S</td></tr>
-        <tr><td class="tleft"><strong>Controle</strong></td><td class="tleft">Veicula comandos e informações de temporização entre os elementos do sistema</td></tr>
-      </tbody>
-    </table>
-
-    <p>Sinais de comando veiculados pelo barramento de controle:</p>
-    <table>
-      <thead><tr><th class="tleft">Sinal</th><th class="tleft">Função</th></tr></thead>
-      <tbody>
-        <tr><td class="tleft">Escrita em memória</td><td class="tleft">Grava os dados do barramento de dados na posição indicada pelo barramento de endereços</td></tr>
-        <tr><td class="tleft">Leitura de memória</td><td class="tleft">Operação inversa à escrita</td></tr>
-        <tr><td class="tleft">Escrita em porta de I/O</td><td class="tleft">Envia dados do barramento de dados para o dispositivo de I/O</td></tr>
-        <tr><td class="tleft">Leitura de porta de I/O</td><td class="tleft">Operação inversa</td></tr>
-        <tr><td class="tleft"><em>Acknowledge</em></td><td class="tleft">Confirmação de transferência de dados no barramento</td></tr>
-        <tr><td class="tleft">Requisição do barramento</td><td class="tleft">Dispositivo solicita controle para transferência de dados</td></tr>
-        <tr><td class="tleft">Autorização de concessão</td><td class="tleft">Indica que a requisição do barramento foi autorizada</td></tr>
-        <tr><td class="tleft">Requisição de interrupção (IR)</td><td class="tleft">Dispositivo requisita uma operação ao processador</td></tr>
-        <tr><td class="tleft">Confirmação de interrupção</td><td class="tleft">Processador confirma o pedido de interrupção</td></tr>
-        <tr><td class="tleft">Relógio</td><td class="tleft">Temporização das operações</td></tr>
-        <tr><td class="tleft"><em>Reset</em></td><td class="tleft">Inicializa todos os módulos do sistema</td></tr>
-      </tbody>
-    </table>
-
-    <div class="definition">
-      <p class="dtitle">largura do barramento</p>
-      <p style="margin:0">Número de linhas distintas, cada uma trafegando <strong>1 bit</strong> de dados, endereço ou controle. Maior largura do barramento de <strong>dados</strong> → mais bits transferidos por vez. Maior largura do barramento de <strong>endereços</strong> → mais posições endereçáveis pelo processador.</p>
-    </div>
-  </section>
-
-  <!-- 5.2 -->
-  <section class="section" id="s2">
-    <p class="section-label">5.2 / estrutura do barramento</p>
-    <h2>Estrutura do barramento</h2>
-
-    <p>O barramento do sistema é um conjunto de condutores elétricos que se estende por todos os componentes. A maioria dos sistemas usa <strong>múltiplos barramentos</strong>, organizados hierarquicamente.</p>
-
-    <div class="method-card">
-      <span class="method-num">operação</span>
-      <h4>a. Módulo envia dados a outro módulo</h4>
-      <ol class="steps">
-        <li>Obtém o controle do barramento</li>
-        <li>Envia os dados</li>
-      </ol>
-    </div>
-    <div class="method-card">
-      <span class="method-num">operação</span>
-      <h4>b. Módulo requisita dados de outro módulo</h4>
-      <ol class="steps">
-        <li>Obtém o controle do barramento</li>
-        <li>Envia uma requisição de transferência de dados</li>
-        <li>Aguarda os dados requisitados</li>
-      </ol>
-    </div>
-
-    <div class="fig-full">
-      <svg viewBox="0 0 560 220" xmlns="http://www.w3.org/2000/svg">
-        <rect x="20" y="10" width="120" height="40" rx="6" class="dbox" fill="rgba(0,194,255,.1)"/>
-        <text x="80" y="34" text-anchor="middle" class="dlbl2">CPU + Cache</text>
-        <rect x="20" y="70" width="120" height="30" rx="4" class="dbox" fill="rgba(0,194,255,.06)"/>
-        <text x="80" y="90" text-anchor="middle" class="dlbl2" style="font-size:9px">Barramento local</text>
-
-        <rect x="180" y="40" width="140" height="40" rx="6" class="dbox2" fill="rgba(124,58,237,.08)"/>
-        <text x="250" y="64" text-anchor="middle" class="dlbl2">Memória Principal</text>
-        <rect x="180" y="100" width="140" height="30" rx="4" class="dbox2" fill="rgba(124,58,237,.05)"/>
-        <text x="250" y="120" text-anchor="middle" class="dlbl2" style="font-size:9px">Barramento de sistema</text>
-
-        <rect x="360" y="40" width="120" height="40" rx="6" class="dbox" fill="rgba(0,194,255,.08)"/>
-        <text x="420" y="64" text-anchor="middle" class="dlbl2">Disp. de E/S</text>
-        <rect x="360" y="130" width="120" height="30" rx="4" class="dbox" fill="rgba(0,194,255,.05)"/>
-        <text x="420" y="150" text-anchor="middle" class="dlbl2" style="font-size:9px">Barramento de expansão</text>
-
-        <rect x="20" y="170" width="460" height="40" rx="6" class="dbox2" fill="rgba(124,58,237,.04)"/>
-        <text x="250" y="194" text-anchor="middle" class="dlbl2">Dispositivos de alta velocidade — barramento de alta velocidade</text>
-
-        <path d="M140 90 H180" class="dwire"/>
-        <path d="M320 60 H360" class="dwire"/>
-      </svg>
-      <p class="fig-caption">Fig. 5.2 — Estrutura hierárquica: barramento local, de sistema, de expansão e de alta velocidade</p>
-    </div>
-
-    <table>
-      <thead><tr><th class="tleft">Barramento</th><th class="tleft">Interliga</th></tr></thead>
-      <tbody>
-        <tr><td class="tleft"><strong>Local</strong></td><td class="tleft">Processador, memória cache e outros dispositivos de alta velocidade</td></tr>
-        <tr><td class="tleft"><strong>Sistema</strong></td><td class="tleft">Memória principal — isola o processador das transferências entre I/O e MP</td></tr>
-        <tr><td class="tleft"><strong>Expansão</strong></td><td class="tleft">Dispositivos de I/O, via interface com armazenamento temporário de dados</td></tr>
-        <tr><td class="tleft"><strong>Alta velocidade</strong></td><td class="tleft">Dispositivos que exigem desempenho superior</td></tr>
-      </tbody>
-    </table>
-    <div class="note">O controlador da cache conecta-se tanto ao <strong>barramento local</strong> quanto ao <strong>barramento de sistema</strong>. Embora isole o processador, o barramento de sistema isoladamente ainda não é uma solução totalmente eficiente — daí a necessidade dos demais níveis.</div>
-  </section>
-
-  <!-- 5.3 -->
-  <section class="section" id="s3">
-    <p class="section-label">5.3 / multiplexação de barramento</p>
-    <h2>Multiplexação de barramento</h2>
-
-    <p>As linhas de barramento podem ser <strong>dedicadas</strong> (função fixa, associada a um subconjunto de componentes) ou <strong>multiplexadas</strong> (a mesma linha serve a mais de uma função).</p>
-
-    <div class="fig-full">
-      <svg viewBox="0 0 560 130" xmlns="http://www.w3.org/2000/svg">
-        <path d="M20 60 H540" class="dwire"/>
-        <rect x="20" y="40" width="120" height="40" class="dbox" fill="rgba(0,194,255,.08)"/>
-        <text x="80" y="64" text-anchor="middle" class="dlbl2">Dados</text>
-        <rect x="160" y="40" width="120" height="40" class="dbox2" fill="rgba(124,58,237,.08)"/>
-        <text x="220" y="64" text-anchor="middle" class="dlbl2">Endereço</text>
-        <rect x="300" y="40" width="120" height="40" class="dbox" fill="rgba(0,194,255,.08)"/>
-        <text x="360" y="64" text-anchor="middle" class="dlbl2">Dados</text>
-        <rect x="440" y="40" width="100" height="40" class="dbox2" fill="rgba(124,58,237,.08)"/>
-        <text x="490" y="64" text-anchor="middle" class="dlbl2">Endereço</text>
-        <text x="280" y="105" text-anchor="middle" class="dlbl2" style="font-size:9px">mesma linha física, usos alternados no tempo — multiplexação no tempo</text>
-      </svg>
-      <p class="fig-caption">Fig. 5.3 — Multiplexação no tempo: mesma linha de barramento usada para dados e endereços, em janelas temporais distintas</p>
-    </div>
-
-    <p>Exemplo comum: multiplexar a mesma linha para <strong>dados</strong> e <strong>endereçamento</strong>. É necessário sinalizar, no barramento de controle, se os bits referem-se a um endereço válido — e não usar dados e endereços na mesma janela temporal (<strong>multiplexação no tempo</strong>).</p>
-
-    <div class="note">A vantagem de multiplexar dados e endereços é <strong>economizar espaço e custo do circuito</strong>.</div>
-  </section>
-
-  <!-- 5.4 -->
-  <section class="section" id="s4">
-    <p class="section-label">5.4 / protocolos de barramento</p>
-    <h2>Protocolos de barramento</h2>
-    <p>Protocolos são <strong>regras</strong> que definem a comunicação entre os elementos do sistema computacional.</p>
-
-    <h3 id="s4a">5.4.1 Arbitração de barramentos</h3>
-    <p>Como apenas uma unidade pode transmitir por vez, é necessário um <strong>método de arbitração</strong>:</p>
-
-    <div class="fig-full">
-      <svg viewBox="0 0 560 180" xmlns="http://www.w3.org/2000/svg">
-        <text x="120" y="20" text-anchor="middle" class="dlbl" fill="#00c2ff">Centralizado</text>
-        <rect x="90" y="35" width="60" height="35" rx="6" class="dbox" fill="rgba(0,194,255,.1)"/>
-        <text x="120" y="57" text-anchor="middle" class="dlbl2" style="font-size:9px">Árbitro</text>
-        <path d="M120 70 V100 M60 130 L120 100 L180 130" class="dwire" fill="none"/>
-        <rect x="30" y="130" width="60" height="30" rx="4" class="dbox" fill="rgba(0,194,255,.05)"/>
-        <rect x="90" y="130" width="60" height="30" rx="4" class="dbox" fill="rgba(0,194,255,.05)"/>
-        <rect x="150" y="130" width="60" height="30" rx="4" class="dbox" fill="rgba(0,194,255,.05)"/>
-        <text x="60" y="150" text-anchor="middle" class="dlbl2" style="font-size:8px">Módulo</text>
-        <text x="120" y="150" text-anchor="middle" class="dlbl2" style="font-size:8px">Módulo</text>
-        <text x="180" y="150" text-anchor="middle" class="dlbl2" style="font-size:8px">Módulo</text>
-
-        <text x="440" y="20" text-anchor="middle" class="dlbl" fill="#7c3aed">Distribuído</text>
-        <rect x="350" y="40" width="60" height="30" rx="4" class="dbox2" fill="rgba(124,58,237,.06)"/>
-        <rect x="420" y="40" width="60" height="30" rx="4" class="dbox2" fill="rgba(124,58,237,.06)"/>
-        <rect x="490" y="40" width="60" height="30" rx="4" class="dbox2" fill="rgba(124,58,237,.06)"/>
-        <text x="380" y="60" text-anchor="middle" class="dlbl2" style="font-size:8px">Mód.+lógica</text>
-        <text x="450" y="60" text-anchor="middle" class="dlbl2" style="font-size:8px">Mód.+lógica</text>
-        <text x="520" y="60" text-anchor="middle" class="dlbl2" style="font-size:8px">Mód.+lógica</text>
-        <path d="M380 70 V90 H520 V70 M450 70 V90" class="dwire" fill="none"/>
-        <text x="450" y="105" text-anchor="middle" class="dlbl2" style="font-size:9px">decisão conjunta entre módulos</text>
-      </svg>
-      <p class="fig-caption">Fig. 5.4 — Métodos de arbitração: centralizado (árbitro único) e distribuído (lógica em cada módulo)</p>
-    </div>
-
-    <table>
-      <thead><tr><th class="tleft">Método</th><th class="tleft">Característica</th></tr></thead>
-      <tbody>
-        <tr><td class="tleft"><strong>Centralizado</strong></td><td class="tleft">Um único <strong>controlador de barramento</strong> (árbitro) aloca o tempo de uso para cada módulo</td></tr>
-        <tr><td class="tleft"><strong>Distribuído</strong></td><td class="tleft">Cada módulo contém lógica de controle de acesso; módulos agem em conjunto para compartilhar o barramento</td></tr>
-      </tbody>
-    </table>
-
-    <div class="fig-full">
-      <svg viewBox="0 0 400 90" xmlns="http://www.w3.org/2000/svg">
-        <rect x="20" y="25" width="120" height="40" rx="6" class="dbox" fill="rgba(0,194,255,.1)"/>
-        <text x="80" y="49" text-anchor="middle" class="dlbl2">Master</text>
-        <path d="M140 45 H260" class="dwire"/><path d="M252 38 L260 45 L252 52" class="dwire"/>
-        <rect x="260" y="25" width="120" height="40" rx="6" class="dbox2" fill="rgba(124,58,237,.08)"/>
-        <text x="320" y="49" text-anchor="middle" class="dlbl2">Slave</text>
-      </svg>
-      <p class="fig-caption">Fig. 5.5 — Master (ativo, inicia a transferência) e Slave (passivo, aguarda requisições)</p>
-    </div>
-
-    <h3 id="s4b">5.4.2 Temporização de barramentos</h3>
-    <p>Refere-se ao modo pelo qual os eventos são coordenados — dois esquemas básicos:</p>
-
-    <div class="fig-full">
-      <svg viewBox="0 0 560 150" xmlns="http://www.w3.org/2000/svg">
-        <text x="100" y="18" text-anchor="middle" class="dlbl" fill="#00c2ff">Síncrona</text>
-        <text x="20" y="40" class="dlbl2">Clock</text>
-        <path d="M50 30 H60 V45 H80 V30 H100 V45 H120 V30 H160" class="dwire"/>
-        <text x="20" y="65" class="dlbl2">Master</text>
-        <path d="M50 60 H90 V75 H150" class="dwire"/>
-        <text x="20" y="90" class="dlbl2">Slave</text>
-        <path d="M50 85 H130 V70 H160" class="dwire"/>
-        <text x="100" y="115" text-anchor="middle" class="dlbl2" style="font-size:9px">wait state — espera por ciclos de clock até estar pronto</text>
-
-        <text x="450" y="18" text-anchor="middle" class="dlbl" fill="#7c3aed">Assíncrona</text>
-        <text x="340" y="40" class="dlbl2">Master</text>
-        <path d="M380 35 H420 V50 H540" class="dwire"/>
-        <text x="340" y="65" class="dlbl2">Slave</text>
-        <path d="M380 60 H440 V75 H540" class="dwire"/>
-        <text x="450" y="100" text-anchor="middle" class="dlbl2" style="font-size:9px">requisição → acknowledge</text>
-        <text x="450" y="113" text-anchor="middle" class="dlbl2" style="font-size:9px">eventos sequenciados, sem clock</text>
-      </svg>
-      <p class="fig-caption">Fig. 5.6 — Temporização síncrona (referenciada por clock, sujeita a <em>wait states</em>) e assíncrona (handshake requisição/acknowledge)</p>
-    </div>
-
-    <table>
-      <thead><tr><th class="tleft">Esquema</th><th class="tleft">Funcionamento</th><th class="tleft">Trade-off</th></tr></thead>
-      <tbody>
-        <tr><td class="tleft"><strong>Síncrona</strong></td><td class="tleft">Eventos referenciados por uma <strong>linha de relógio</strong> no barramento de controle; o <em>master</em> disponibiliza sinal de escrita/leitura e, após um número de ciclos, o <em>slave</em> está pronto</td><td class="tleft">CPU pode entrar em <strong>estado de espera</strong> (<em>wait state</em>) — perda de performance</td></tr>
-        <tr><td class="tleft"><strong>Assíncrona</strong></td><td class="tleft">Um evento depende do evento anterior — o <em>master</em> sinaliza a operação, o <em>slave</em> reconhece e devolve um <em>acknowledge</em></td><td class="tleft">Mais eficiente, porém mais <strong>complexa</strong> de implementar</td></tr>
-      </tbody>
-    </table>
-  </section>
-
-  <!-- 5.5 -->
-  <section class="section" id="s5">
-    <p class="section-label">5.5 / padrões de barramento</p>
-    <h2>Padrões de barramento</h2>
-    <p>Cada padrão define <strong>protocolos</strong> de comunicação e padrões físicos, lógicos e elétricos.</p>
-
-    <table>
-      <thead><tr><th class="tleft">Padrão</th><th class="tleft">Largura</th><th class="tleft">Clock</th></tr></thead>
-      <tbody>
-        <tr><td class="tleft">ISA (<em>Industry Standard Architecture</em>)</td><td class="tleft">8 bits (16 bits)</td><td class="tleft">8,33 MHz</td></tr>
-        <tr><td class="tleft">PCI (<em>Peripheral Component Interconnect</em>)</td><td class="tleft">32 bits</td><td class="tleft">33 MHz</td></tr>
-        <tr><td class="tleft">AGP 1.0 (<em>Accelerated Graphics Port</em>)</td><td class="tleft">32 bits</td><td class="tleft">66 MHz</td></tr>
-        <tr><td class="tleft">PCI-X 1.0</td><td class="tleft">64 bits</td><td class="tleft">66 / 100 / 133 MHz</td></tr>
-        <tr><td class="tleft">PCI-X 2.0</td><td class="tleft">64 bits</td><td class="tleft">266 / 533 MHz</td></tr>
-      </tbody>
-    </table>
-
-    <div class="fig-full">
-      <img src="images/barramentopcix.jpg" alt="Barramento PCI-X">
-      <p class="fig-caption">Fig. 5.7 — Barramento PCI-X</p>
-    </div>
-  </section>
-
-  <!-- QUIZ -->
-  <section class="section" id="quiz">
-    <p class="section-label">checkpoint</p>
-    <h2>Teste seus conhecimentos</h2>
-
-    <div class="quiz">
-      <div class="quiz-header">
-        <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="8" stroke="#7c3aed" stroke-width="1.4"/><text x="10" y="14" font-size="10" fill="#7c3aed" text-anchor="middle" font-weight="600">?</text></svg>
-        <span class="quiz-title">Pergunta 1 de 3</span>
-      </div>
-      <p class="quiz-q">Qual barramento é responsável por designar a fonte ou destino dos dados transferidos?</p>
-      <div class="quiz-options">
-        <button class="quiz-opt" onclick="checkAnswer(this, false, 'q1fb')">Barramento de dados</button>
-        <button class="quiz-opt" onclick="checkAnswer(this, true, 'q1fb')">Barramento de endereços</button>
-        <button class="quiz-opt" onclick="checkAnswer(this, false, 'q1fb')">Barramento de controle</button>
-      </div>
-      <div class="quiz-feedback" id="q1fb"></div>
-    </div>
-
-    <div class="quiz">
-      <div class="quiz-header">
-        <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="8" stroke="#7c3aed" stroke-width="1.4"/><text x="10" y="14" font-size="10" fill="#7c3aed" text-anchor="middle" font-weight="600">?</text></svg>
-        <span class="quiz-title">Pergunta 2 de 3</span>
-      </div>
-      <p class="quiz-q">Na arbitração centralizada de barramento, quem aloca o tempo de uso para cada módulo?</p>
-      <div class="quiz-options">
-        <button class="quiz-opt" onclick="checkAnswer(this, false, 'q2fb')">Cada módulo decide individualmente</button>
-        <button class="quiz-opt" onclick="checkAnswer(this, true, 'q2fb')">Um controlador de barramento (árbitro) único</button>
-        <button class="quiz-opt" onclick="checkAnswer(this, false, 'q2fb')">O dispositivo slave</button>
-      </div>
-      <div class="quiz-feedback" id="q2fb"></div>
-    </div>
-
-    <div class="quiz">
-      <div class="quiz-header">
-        <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="8" stroke="#7c3aed" stroke-width="1.4"/><text x="10" y="14" font-size="10" fill="#7c3aed" text-anchor="middle" font-weight="600">?</text></svg>
-        <span class="quiz-title">Pergunta 3 de 3</span>
-      </div>
-      <p class="quiz-q">Por que a transmissão assíncrona, embora mais eficiente, é menos usada em alguns contextos?</p>
-      <div class="quiz-options">
-        <button class="quiz-opt" onclick="checkAnswer(this, false, 'q3fb')">Porque não admite dispositivos slave</button>
-        <button class="quiz-opt" onclick="checkAnswer(this, true, 'q3fb')">Porque implica maior complexidade de implementação</button>
-        <button class="quiz-opt" onclick="checkAnswer(this, false, 'q3fb')">Porque depende obrigatoriamente de um sinal de relógio</button>
-      </div>
-      <div class="quiz-feedback" id="q3fb"></div>
-    </div>
-  </section>
-
-  <!-- CHAPTER NAV -->
-  <div class="chapter-nav">
+<section class="section sources" id="referencias"><div class="section-number">Referências e créditos</div><h2>Base conceitual e fontes das figuras</h2><p>Texto reescrito a partir do capítulo-base, com revisão dos conceitos e complementação didática. As figuras são diagramas vetoriais de elaboração própria: preservam os temas do material fornecido, corrigem ambiguidades e não reproduzem as ilustrações editoriais dos livros.</p><ol>
+<li id="r1"><strong>STALLINGS, William.</strong> <cite>Computer Organization and Architecture: Designing for Performance</cite>. 10. ed. Pearson, 2016. Cap. 3: interconexão, estrutura de barramentos e enlaces ponto a ponto. <a href="https://os.ecci.ucr.ac.cr/ci0114/material/Stallings/Computer-Organization-and-Architecture-10th-William-Stallings.pdf">Consultar a obra (PDF em repositório universitário)</a>.</li>
+<li id="r2"><strong>TANENBAUM, Andrew S.; AUSTIN, Todd.</strong> <cite>Structured Computer Organization</cite>. 6. ed. Pearson, 2013. Cap. 3, especialmente §§ 3.4.2–3.4.6 e 3.6: barramentos, largura, temporização, arbitração e exemplos. <a href="https://www.pearson.com/en-gb/subject-catalog/p/Tanenbaum-Structured-Computer-Organization-e-Book-International-Edition-6th-Edition/P200000005538?view=educator">Catálogo e sumário da editora</a>. Material complementar de consulta: <a href="https://www.verlab.dcc.ufmg.br/old/_media/cursos/arquitetura/2011-1/transparencias/tanembaum_3.pdf">transparências da 5ª edição, capítulo 3, creditadas à Pearson e hospedadas na UFMG</a>.</li>
+<li id="r3"><strong>PCI-SIG.</strong> <cite>FAQ — PCI-X</cite>. Relação com PCI, classes de velocidade, compatibilidade e recursos da revisão 2.0. <a href="https://pcisig.com/faq?field_category_value%5B%5D=pcix_2.0">Consultar FAQ oficial</a>.</li>
+<li id="r4"><strong>PCI-SIG.</strong> <cite>PCI-SIG Architecture Overview</cite>. Apresentação técnica, Developers Conference Europe, 2006. PCI, PCI-X, DDR/QDR e PCI Express. <a href="https://www.cs.uml.edu/~bill/cs520/slides_15A_PCI_Express.pdf">Consultar apresentação (cópia em repositório universitário)</a>.</li>
+<li id="r5"><strong>INTEL.</strong> <cite>Intel 875P Chipset Datasheet</cite>. Interface AGP e modos de transferência. <a href="https://www.intel.com/content/dam/doc/datasheet/875p-chipset-datasheet.pdf">Consultar documento técnico</a>.</li>
+<li id="r6"><strong>INTEL.</strong> <cite>Intel Doubles Graphics Bus Bandwidth With AGP 8x Technology</cite>. 11 set. 2002. <a href="https://www.intel.com/pressroom/archive/releases/2002/20020911tech.htm">Consultar comunicado técnico</a>.</li>
+<li id="r7"><strong>IBM; INTEL.</strong> Documentação histórica de barramentos: <a href="https://web-docs.gsi.de/~kraemer/COLLECTION/IBM/sg242581.pdf">IBM Redbook SG24-2581-00, comparação de barramentos</a>; <a href="https://bitsavers.org/components/intel/pci/1993_Intel_82378_PCI-ISA_System_IO.pdf">Intel 82378 System I/O, documentação da interface PCI–ISA</a>. Fontes para o contexto e os clocks de referência do ISA.</li>
+</ol><p><strong>Uso das ilustrações:</strong> cada figura está incorporada como SVG no próprio HTML, com descrição acessível. O botão “Ampliar figura” abre a visualização maior. Todas usam proporção 16:9 para facilitar eventual adaptação a slides, sem substituir o trabalho posterior de composição da apresentação.</p>
+<details><summary>Notas da revisão do capítulo</summary><ul><li>Corrigida a identificação do barramento de endereços e preservadas as onze funções de controle do texto-base.</li><li>Separados largura de dados, capacidade de endereçamento, taxa de pico e desempenho efetivo.</li><li>Reformulada a alegação de isolamento entre CPU e E/S: pontes e DMA reduzem interferências, mas não eliminam disputas.</li><li>Explicados dedicação física, multiplexação funcional e papéis de iniciador e destino.</li><li>Corrigidas a suposta ausência de temporização assíncrona e a afirmação de eficiência sempre superior.</li><li>Completados os modos AGP e diferenciadas as classes de transferência PCI-X do clock de referência.</li><li>Substituídas as ilustrações por oito diagramas incorporados; removida a seção de checkpoint.</li></ul></details>
+</section><div class="bottom-links"><a href="https://github.com/claytonjasilva/claytonjasilva.github.io/blob/main/arq_aulas.md">← Conteúdo de Arquitetura de Computadores</a><a href="#conteudo">Voltar ao início ↑</a></div><div class="chapter-nav">
     <a href="cap4.html"><span class="dir">← anterior</span>Cap. 4 — Sistema de Memória</a>
     <a class="next" href="cap6.html"><span class="dir">próximo →</span>Cap. 6 — Processadores</a>
-  </div>
-
-</div>
-
-<footer>
+  </div></main><footer>
   <div class="container">
     <p>© 2026 · Prof. Clayton J A Silva · Ibmec RJ</p>
     <p><a href="https://claytonjasilva.github.io">claytonjasilva.github.io</a></p>
   </div>
 </footer>
-
+<dialog id="viewer" aria-labelledby="viewer-title"><div class="modal-head"><strong id="viewer-title">Figura ampliada</strong><button type="button" id="close-viewer">Fechar</button></div><div class="modal-body"></div></dialog>
 <script>
-window.addEventListener('scroll', () => {
-  const h = document.documentElement;
-  const scrolled = (h.scrollTop) / (h.scrollHeight - h.clientHeight) * 100;
-  document.getElementById('progressFill').style.width = scrolled + '%';
-});
+const viewer=document.getElementById('viewer');let opener;
+document.querySelectorAll('[data-expand]').forEach(button=>button.addEventListener('click',()=>{const fig=document.getElementById(button.dataset.expand);const clone=fig.querySelector('svg').cloneNode(true);clone.querySelectorAll('[id]').forEach(el=>el.id='modal-'+el.id);clone.setAttribute('aria-labelledby',clone.getAttribute('aria-labelledby').split(' ').map(x=>'modal-'+x).join(' '));clone.querySelectorAll('[marker-end]').forEach(el=>el.setAttribute('marker-end',el.getAttribute('marker-end').replace('url(#','url(#modal-')));viewer.querySelector('.modal-body').replaceChildren(clone);document.getElementById('viewer-title').textContent=fig.querySelector('figcaption strong').textContent;opener=button;viewer.showModal();}));
+document.getElementById('close-viewer').addEventListener('click',()=>viewer.close());viewer.addEventListener('close',()=>{viewer.querySelector('.modal-body').replaceChildren();opener?.focus();});
 
-function checkAnswer(btn, isCorrect, fbId) {
-  const group = btn.parentElement;
-  const buttons = group.querySelectorAll('.quiz-opt');
-  buttons.forEach(b => b.disabled = true);
-  btn.classList.add(isCorrect ? 'correct' : 'wrong');
-  const fb = document.getElementById(fbId);
-  fb.classList.add('show');
-  const msgs = {
-    q1fb: isCorrect ? '✓ Correto! O barramento de endereços designa fonte/destino dos dados.' : '✗ Revise a tabela da seção 5.1.',
-    q2fb: isCorrect ? '✓ Correto! O árbitro central aloca o tempo de uso do barramento.' : '✗ Revise a seção 5.4.1.',
-    q3fb: isCorrect ? '✓ Correto! O ganho de eficiência tem como custo a maior complexidade do protocolo.' : '✗ Revise a seção 5.4.2.'
-  };
-  if (!isCorrect) buttons.forEach(b => { if (b.getAttribute('onclick').includes(', true,')) b.classList.add('correct'); });
-  fb.classList.add(isCorrect ? 'correct-fb' : 'wrong-fb');
-  fb.textContent = msgs[fbId];
-}
-
-renderMathInElement(document.body, {
-  delimiters: [
-    {left: "$$", right: "$$", display: true},
-    {left: "$", right: "$", display: false}
-  ],
-  throwOnError: false
-});
-</script>
-
-</body>
-</html>
+function updateProgress(){const h=document.documentElement;const total=h.scrollHeight-h.clientHeight;document.getElementById('progressFill').style.width=(total>0?h.scrollTop/total*100:0)+'%';const nav=document.querySelector('nav');document.querySelector('.progress-track').style.top=nav.offsetHeight+'px';}
+window.addEventListener('scroll',updateProgress,{passive:true});window.addEventListener('resize',updateProgress);updateProgress();
+</script></body></html>
