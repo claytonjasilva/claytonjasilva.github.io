@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Cap. 6 — Análise de Sensibilidade | Programação Linear Aplicada</title>
+<title>Cap. 6 — Programação Inteira: Modelagem, métodos de solução e aplicações | Programação Linear Aplicada</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300&display=swap" rel="stylesheet">
@@ -166,137 +166,101 @@ footer p{font-size:.8rem;color:var(--muted);font-family:var(--font-mono);}
 .key-card p{font-size:.86rem;color:var(--muted);margin:0}
 </style>
 </head>
-<body>
-<nav>
-  <div class="container">
-    <span class="nav-brand">proglinear · cap. 6</span>
-    <ul class="nav-links">
-      <li><a href="#s1">conceitos</a></li>
-      <li><a href="#s2">formulação</a></li>
-      <li><a href="#s3">aplicação</a></li>
-      <li><a href="#exemplo">exemplo</a></li>
-      <li><a href="#quiz">quiz</a></li>
-      <li><a href="../progLinear.html">← disciplina</a></li>
-    </ul>
-  </div>
-</nav>
-<div class="progress-track"><div class="progress-fill" id="progressFill"></div></div>
-<section class="hero">
-  <div class="container">
-    <p class="hero-eyebrow">Programação Linear Aplicada · Capítulo 6</p>
-    <h1>Cap. 6<br><strong>Análise de Sensibilidade</strong></h1>
-    <div class="hero-meta">
-      <span class="meta-item">leitura ~50 min</span>
-      <span class="meta-item">Prof. Clayton J A Silva</span>
-      <span class="meta-item">IBM0803</span>
-    </div>
-    <div class="objectives">
-      <p class="label">Objetivos de aprendizagem</p>
-      <ul><li>Analisar variações em recursos.</li><li>Avaliar mudanças nos coeficientes da função objetivo.</li><li>Interpretar intervalos de validade.</li><li>Compreender robustez.</li></ul>
-    </div>
-    <div class="toc">
-      <a href="#s1">Conceitos</a>
-      <a href="#s2">Formulação</a>
-      <a href="#s3">Aplicação</a>
-      <a href="#exemplo">Exemplo orientado</a>
-      <a href="#pratica">Prática sugerida</a>
-      <a href="#quiz">Quiz</a>
-    </div>
-  </div>
-</section>
-<div class="container">
-
-  <section class="section" id="s1">
-    <p class="section-label">6.1 / desenvolvimento</p>
-    <h2>Conceitos fundamentais</h2>
-    <p>Modelos usam dados estimados; a análise de sensibilidade verifica como a solução reage a variações.</p>
-    <div class="key-grid">
-      <div class="key-card"><strong>Para lembrar</strong><p>Explique sempre o significado operacional das variáveis e restrições.</p></div>
-      <div class="key-card"><strong>Em aula</strong><p>Discuta um exemplo numérico e peça aos alunos que interpretem a solução.</p></div>
-      <div class="key-card"><strong>Erro comum</strong><p>Resolver mecanicamente sem validar se o modelo representa o problema real.</p></div>
-    </div>
-  </section>
-  <section class="section" id="s2">
-    <p class="section-label">6.2 / desenvolvimento</p>
-    <h2>Formulação e interpretação</h2>
-    <p>Mudanças no lado direito alteram disponibilidade de recursos e podem ser avaliadas por preços-sombra.</p>
-    <div class="key-grid">
-      <div class="key-card"><strong>Para lembrar</strong><p>Explique sempre o significado operacional das variáveis e restrições.</p></div>
-      <div class="key-card"><strong>Em aula</strong><p>Discuta um exemplo numérico e peça aos alunos que interpretem a solução.</p></div>
-      <div class="key-card"><strong>Erro comum</strong><p>Resolver mecanicamente sem validar se o modelo representa o problema real.</p></div>
-    </div>
-  </section>
-  <section class="section" id="s3">
-    <p class="section-label">6.3 / desenvolvimento</p>
-    <h2>Aplicação em aula</h2>
-    <p>Mudanças nos coeficientes da função objetivo alteram a atratividade das variáveis.</p>
-    <div class="key-grid">
-      <div class="key-card"><strong>Para lembrar</strong><p>Explique sempre o significado operacional das variáveis e restrições.</p></div>
-      <div class="key-card"><strong>Em aula</strong><p>Discuta um exemplo numérico e peça aos alunos que interpretem a solução.</p></div>
-      <div class="key-card"><strong>Erro comum</strong><p>Resolver mecanicamente sem validar se o modelo representa o problema real.</p></div>
-    </div>
-  </section>
-  <section class="section" id="formula">
-    <p class="section-label">síntese matemática</p>
-    <h2>Representação matemática essencial</h2>
-    <div class="formula-card">Z_novo = Z* + preço-sombra_i * Delta bi</div>
-    <div class="note"><strong>Observação:</strong> esta síntese deve ser associada a um problema concreto durante a aula.</div>
-  </section>
-  <section class="section" id="exemplo">
-    <p class="section-label">exemplo orientado</p>
-    <h2>Exemplo para discussão em aula</h2>
-    <div class="exercise-card"><h4>Problema-base</h4><p>Verificar se a solução ótima permanece válida quando o lucro unitário de um produto cai 10%.</p></div>
-    <div class="method-card">
-      <span class="method-num">roteiro</span>
-      <h4>Como conduzir a solução</h4>
-      <ol class="steps">
-        <li>Definir variáveis de decisão.</li>
-        <li>Escrever função objetivo.</li>
-        <li>Traduzir limites em restrições.</li>
-        <li>Resolver manualmente ou em ferramenta computacional.</li>
-        <li>Interpretar solução, folgas, restrições ativas e limitações.</li>
-      </ol>
-    </div>
-  </section>
-  <section class="section" id="pratica">
-    <p class="section-label">prática sugerida</p>
-    <h2>Atividade computacional ou de modelagem</h2>
-    <p>Variar um recurso em Python e gerar tabela do valor ótimo.</p>
-    <div class="ds-grid">
-      <div class="ds-item"><a href="https://www.python.org/" target="_blank">Python.org</a></div>
-      <div class="ds-item"><a href="https://colab.research.google.com/" target="_blank">Google Colab</a></div>
-      <div class="ds-item"><a href="https://docs.scipy.org/doc/scipy/reference/optimize.linprog.html" target="_blank">SciPy linprog</a></div>
-      <div class="ds-item"><a href="https://coin-or.github.io/pulp/" target="_blank">PuLP</a></div>
-    </div>
-  </section>
-  <section class="section" id="quiz">
-    <p class="section-label">checkpoint</p>
-    <h2>Teste rápido</h2>
-    <div class="quiz">
-      <div class="quiz-header"><span class="quiz-title">Pergunta do capítulo</span></div>
-      <p class="quiz-q">Qual atitude é mais adequada ao trabalhar com este tema?</p>
-      <div class="quiz-options">
-        <button class="quiz-opt" onclick="checkAnswer(this, true, 'qfb')">Construir, resolver e interpretar o modelo, verificando se ele representa o problema real.</button>
-        <button class="quiz-opt" onclick="checkAnswer(this, false, 'qfb')">Resolver por tentativa e erro, sem explicitar variáveis e restrições.</button>
-        <button class="quiz-opt" onclick="checkAnswer(this, false, 'qfb')">Ignorar restrições para maximizar apenas a função objetivo.</button>
-      </div>
-      <div class="quiz-feedback" id="qfb"></div>
-    </div>
-  </section>
-  <div class="chapter-nav">
-    <a href="cap5.html"><span class="dir">← anterior</span>Cap. 5</a>
-    <a class="next" href="cap7.html"><span class="dir">próximo →</span>Cap. 7</a>
-  </div>
-</div>
-<footer>
-  <div class="container">
-    <p>© 2026 · Prof. Clayton J A Silva</p>
-    <p><a href="../progLinear.html">Programação Linear Aplicada</a></p>
-  </div>
-</footer>
-<script>
-window.addEventListener('scroll',()=>{const h=document.documentElement;document.getElementById('progressFill').style.width=(h.scrollTop/(h.scrollHeight-h.clientHeight)*100)+'%';});
-function checkAnswer(btn,isCorrect,fbId){const group=btn.parentElement;const buttons=group.querySelectorAll('.quiz-opt');buttons.forEach(b=>b.disabled=true);btn.classList.add(isCorrect?'correct':'wrong');const fb=document.getElementById(fbId);fb.classList.add('show');if(!isCorrect) buttons.forEach(b=>{if(b.getAttribute('onclick').includes(', true,')) b.classList.add('correct');});fb.classList.add(isCorrect?'correct-fb':'wrong-fb');fb.textContent=isCorrect?'✓ Correto. Modelar, resolver e interpretar são etapas inseparáveis.':'✗ Revise os objetivos e a síntese do capítulo.';}
-</script>
-</body>
-</html>
+<body id="topo"><nav><div class="container"><span class="nav-brand">proglinear · cap. 6</span><ul class="nav-links"><li><a href="#s1">conceitos</a></li><li><a href="#s2">formulação</a></li><li><a href="#bb">Branch and Bound</a></li><li><a href="#california">California</a></li><li><a href="#exemplo2">exemplos</a></li><li><a href="../progLinear.html">← disciplina</a></li></ul></div></nav><div class="progress-track"><div class="progress-fill" id="progressFill"></div></div><section class="hero"><div class="container"><p class="hero-eyebrow">Programação Linear Aplicada · Capítulo 6 · Encerramento</p><h1>Cap. 6<br><strong>Programação Inteira</strong></h1><p>Modelagem, métodos de solução e aplicações</p><div class="hero-meta"><span class="meta-item">leitura e prática ~95 min</span><span class="meta-item">Prof. Clayton J A Silva</span><span class="meta-item">IBM0803</span></div><div class="objectives"><p class="label">Objetivos de aprendizagem</p><ul><li>Distinguir PI pura, mista e binária e formular modelos com domínios adequados.</li><li>Resolver e comparar relaxação linear, arredondamento e solução inteira.</li><li>Acompanhar ramificação, limites e encerramento de nós no Branch and Bound.</li><li>Representar dependências e exclusões com variáveis binárias.</li><li>Resolver os exemplos no Excel Solver e interpretar os resultados.</li></ul></div><div class="toc"><a href="#s1">Introdução</a><a href="#s2">Tipos e formulação</a><a href="#s3">Produção</a><a href="#formula">Relaxação</a><a href="#exemplo">Arredondamento</a><a href="#bb">Branch and Bound</a><a href="#exemplo2">Exemplo: duas variáveis</a><a href="#binaria">Decisões binárias</a><a href="#simnao1">Sim ou não: orçamento</a><a href="#simnao2">Sim ou não: dependência</a><a href="#exemplo3">Exemplo: três variáveis</a><a href="#california">California</a><a href="#aplicacoes">Aplicações</a><a href="#pratica">Excel Solver</a><a href="#referencias">Referências</a></div></div></section><div class="container"><section class="section" id="s1"><p class="section-label">6.1 / Programação Inteira</p><h2>Da divisibilidade às decisões inteiras</h2><p>Ao longo da disciplina, a Programação Linear permitiu organizar decisões de produção, transporte e alocação de recursos. Seus modelos combinam variáveis, função objetivo e restrições lineares. Uma hipótese importante é a <em>divisibilidade</em>: as variáveis podem assumir valores fracionários.</p>
+<p>Essa hipótese é adequada para toneladas, litros e horas de operação. Porém, uma resposta como 3,6 caminhões ou 2,33 máquinas não representa diretamente uma decisão executável. Quando a decisão exige unidades indivisíveis, precisamos impor a <strong>integralidade</strong>.</p>
+<div class="definition"><p class="dtitle">Definição</p><p>Na Programação Linear Inteira, algumas ou todas as variáveis devem assumir valores inteiros. A função objetivo e as restrições permanecem lineares; muda o domínio das variáveis e, com ele, o conjunto de soluções admissíveis.</p></div>
+<p>O conjunto inteiro está contido na região viável contínua. Por isso, o ótimo contínuo pode deixar de ser admissível e o Simplex, isoladamente, não assegura uma solução inteira. Este capítulo encerra a disciplina conectando a modelagem já estudada a decisões quantitativas e decisões do tipo sim ou não.</p>
+<div class="note">Fundamentação: Hillier e Lieberman, capítulo de Programação Inteira; Taha, capítulos de modelagem e programação inteira. Veja as <a href="#referencias">referências</a>.</div></section><section class="section" id="s2"><p class="section-label">6.2 / Programação Inteira</p><h2>PI pura, mista e binária</h2><div class="key-grid"><div class="key-card"><strong>PI pura</strong><p>Todas as variáveis de decisão são inteiras. Exemplo: quantidades de máquinas de dois tipos, x₁, x₂ ∈ ℤ≥0.</p></div><div class="key-card"><strong>PI mista</strong><p>Combina variáveis inteiras e contínuas. Exemplo: número de caminhões n ∈ ℤ≥0 e carga q ≥ 0, em toneladas, com q ≤ Cn.</p></div><div class="key-card"><strong>PI binária</strong><p>As variáveis assumem 0 ou 1. Exemplo: y = 1 se uma instalação for aberta; y = 0 caso contrário. É um caso particular da PI.</p></div></div><h3>Estrutura matemática</h3><div class="formula-card">Maximizar Z = Σ cⱼxⱼ
+Sujeito a: Σ aᵢⱼxⱼ ≤ bᵢ, para i = 1, …, m
+xⱼ ≥ 0, para j = 1, …, n
+xⱼ ∈ ℤ, para j pertencente ao conjunto I</div><p>Os coeficientes cⱼ representam contribuições ao objetivo; aᵢⱼ são consumos ou relações técnicas; bᵢ são limites. O conjunto I identifica as variáveis que exigem integralidade. Se I contém todas as variáveis, a PI é pura; se contém apenas parte delas, é mista. Restrições de igualdade e de mínimo também podem aparecer.</p><h3>Roteiro de formulação</h3><ol class="steps"><li>Descrever a decisão, o horizonte de planejamento e as unidades.</li><li>Definir cada variável e seu significado operacional.</li><li>Construir a função objetivo, com unidades consistentes.</li><li>Traduzir recursos, demandas e relações lógicas em restrições.</li><li>Especificar domínios: contínuo, inteiro não negativo ou binário.</li><li>Validar o modelo e interpretar a solução no contexto do problema.</li></ol><div class="note"><strong>Cuidado:</strong> coeficientes inteiros não tornam uma variável inteira. O domínio precisa ser declarado explicitamente. Base conceitual: Taha e Trick.</div></section><section class="section" id="s3"><p class="section-label">6.3 / Programação Inteira</p><h2>Modelagem: planejamento da produção</h2><p>Uma empresa produz equipamentos A e B, vendidos em unidades indivisíveis. Cada unidade utiliza dois recursos limitados. O objetivo é maximizar o lucro do período. Os valores são didáticos e as quantidades de recursos usam unidades compatíveis com a tabela.</p><table><thead><tr><th>Informação</th><th>A</th><th>B</th><th>Disponibilidade</th></tr></thead><tbody><tr><td>Recurso 1</td><td>2</td><td>1</td><td>7</td></tr><tr><td>Recurso 2</td><td>1</td><td>2</td><td>7</td></tr><tr><td>Lucro unitário (R$)</td><td>5</td><td>4</td><td>—</td></tr></tbody></table><p>Definimos x₁ como o número de equipamentos A e x₂ como o número de equipamentos B produzidos no período.</p><div class="formula-card">Maximizar Z = 5x₁ + 4x₂
+Sujeito a:
+2x₁ + x₂ ≤ 7   (recurso 1)
+x₁ + 2x₂ ≤ 7   (recurso 2)
+x₁, x₂ ∈ ℤ≥0</div><p>Trata-se de uma PI pura: ambas as variáveis são inteiras não negativas. Os limites de recursos continuam sendo restrições lineares. Não precisamos alterar a forma da função objetivo para representar a indivisibilidade.</p></section><section class="section" id="formula"><p class="section-label">6.4 / Programação Inteira</p><h2>Relaxação linear e limites</h2><p>A <em>relaxação linear</em> retira temporariamente a exigência de integralidade, mantendo todas as outras restrições. Assim, podemos aplicar o método gráfico ou o Simplex.</p><p>No exemplo, a interseção das restrições ativas satisfaz 2x₁ + x₂ = 7 e x₁ + 2x₂ = 7. Subtraindo as equações, x₁ = x₂; substituindo, 3x₁ = 7.</p><div class="formula-card">x₁ = x₂ = 7/3 ≈ 2,3333
+ZLP = 5(7/3) + 4(7/3) = 21</div><p>Os demais vértices são (0; 0), (3,5; 0) e (0; 3,5), com lucros 0, 17,5 e 14. Logo, o ótimo contínuo é 21. Ele não é uma solução admissível para equipamentos indivisíveis.</p><div class="definition"><p class="dtitle">O papel dos limites</p><p>Na maximização, o ótimo da relaxação é um <strong>limite superior</strong> para o ótimo inteiro. Uma solução inteira viável fornece um <strong>limite inferior</strong>. Na minimização, os sentidos se invertem.</p></div><p>Isso decorre da inclusão entre conjuntos viáveis: retirar a integralidade amplia as possibilidades de escolha. Se a solução ótima da relaxação já for inteira, ela também será ótima para o problema inteiro.</p><div class="note">Leitura de apoio: Trick, relação entre PI e PL; MIT OpenCourseWare, aulas de programação inteira.</div></section><section class="section" id="exemplo"><p class="section-label">6.5 / Programação Inteira</p><h2>Por que não basta arredondar?</h2><p>Arredondar (7/3; 7/3) para (2; 2) produz uma solução viável: os dois recursos têm consumo 6, inferior ao limite 7. O lucro, entretanto, é apenas 18.</p><p>A combinação (3; 1) consome 7 unidades do recurso 1 e 5 do recurso 2. Seu lucro é 5(3) + 4(1) = 19, superior ao resultado arredondado.</p><table><thead><tr><th>Alternativa</th><th>x₁</th><th>x₂</th><th>Z</th><th>Situação</th></tr></thead><tbody><tr><td>Relaxação</td><td>7/3</td><td>7/3</td><td>21</td><td>Ótima contínua; não inteira</td></tr><tr><td>Arredondamento</td><td>2</td><td>2</td><td>18</td><td>Viável; não ótima</td></tr><tr><td>Candidata inteira</td><td>3</td><td>1</td><td>19</td><td>Viável; otimalidade demonstrada a seguir</td></tr><tr><td>Arredondamento para cima</td><td>3</td><td>3</td><td>27</td><td>Inviável: ambos os consumos são 9</td></tr></tbody></table><div class="note"><strong>Conclusão:</strong> arredondar pode perder qualidade ou violar restrições. Mesmo arredondar para baixo não é uma regra geral de viabilidade em modelos com igualdades, demandas mínimas ou outras relações.</div></section><section class="section" id="bb"><p class="section-label">6.6 / Programação Inteira</p><h2>Branch and Bound: ramificação e limites</h2><p>O método combina relaxações lineares e uma busca organizada em subproblemas. <strong>Ramificar</strong> significa dividir as possibilidades inteiras. <strong>Limitar</strong> significa usar o valor ótimo de cada relaxação para verificar se vale a pena continuar a busca. A melhor solução inteira conhecida é chamada de <em>incumbente</em>.</p>
+<div class="method-card"><span class="method-num">Etapa 1 / raiz</span><h4>Resolver a relaxação</h4><p>A raiz tem solução (7/3; 7/3), com limite superior 21. Como há variáveis fracionárias, precisamos ramificar.</p></div>
+<div class="method-card"><span class="method-num">Etapa 2 / dividir</span><h4>Escolher x₁ = 7/3</h4><p>Todo valor inteiro de x₁ satisfaz x₁ ≤ 2 ou x₁ ≥ 3. Criamos A e B acrescentando uma dessas condições às restrições originais. Nenhuma solução inteira é perdida.</p></div>
+<div class="method-card"><span class="method-num">Etapa 3 / resolver A e B</span><h4>Comparar relaxações e encontrar uma incumbente</h4><p>Em A, x₁ ≤ 2: o ótimo relaxado é (2; 2,5), com Z = 20; a variável x₂ ainda é fracionária. Em B, x₁ ≥ 3: o ótimo é (3; 1), com Z = 19. Como é inteiro, B é encerrado e essa solução torna-se a incumbente.</p><p>Não podemos encerrar A: seu limite 20 ainda supera o lucro 19 já alcançado.</p></div>
+<div class="method-card"><span class="method-num">Etapa 4 / ramificar A</span><h4>Separar x₂ ≤ 2 de x₂ ≥ 3</h4><p>Os dois filhos herdam x₁ ≤ 2 e todas as restrições originais. A1, com x₂ ≤ 2, tem ótimo (2; 2), Z = 18. A2, com x₂ ≥ 3, tem ótimo (1; 3), Z = 17. Ambos são inteiros e inferiores à incumbente. Encerramos os dois nós.</p></div>
+<div class="codeblock" role="img" aria-label="Árvore de ramificação: raiz com limite 21, nós A e B; A gera A1 e A2.">Raiz: (7/3; 7/3), LS = 21
+├── A: x₁ ≤ 2 → (2; 2,5), LS = 20
+│   ├── A1: x₂ ≤ 2 → (2; 2), Z = 18 → encerrar
+│   └── A2: x₂ ≥ 3 → (1; 3), Z = 17 → encerrar
+└── B: x₁ ≥ 3 → (3; 1), Z = 19 → incumbente</div>
+<h3>Quando encerrar um nó?</h3><ul class="plain"><li><strong>Inviabilidade:</strong> a relaxação não possui solução viável.</li><li><strong>Integralidade:</strong> a solução ótima relaxada atende ao domínio inteiro; atualizar a incumbente se houver melhora.</li><li><strong>Limite:</strong> em maximização, o limite superior do nó é menor ou igual ao valor da incumbente; nenhuma solução naquele nó pode melhorá-la.</li></ul><p>No exemplo, todos os nós finais foram encerrados por integralidade; os valores também permitem comparar os seus resultados com a incumbente. Nenhum ramo em aberto pode superar 19.</p><div class="formula-card">Solução ótima inteira: x₁ = 3, x₂ = 1, Z* = R$ 19
+Folgas: recurso 1 = 0; recurso 2 = 2
+Diferença para a relaxação: 21 − 19 = 2</div><p>A ordem de exploração pode variar sem alterar o ótimo comprovado. Em problemas grandes, a árvore pode crescer muito; implementações combinam seleção de nós, heurísticas e cortes. A compreensão exigida aqui é a lógica de ramificar, estabelecer limites e comprovar a solução, como discutido por Trick e pelo MIT.</p></section><section class="section" id="exemplo2"><p class="section-label">6.7 / Programação Inteira</p><h2>Mais um exemplo com duas variáveis: contratação de veículos</h2>
+<p>Uma empresa precisa transportar pelo menos 18 toneladas em uma viagem. Pode contratar veículos pequenos, com capacidade de 4 toneladas e custo de R$ 40 por viagem, ou grandes, com capacidade de 7 toneladas e custo de R$ 65. Há veículos suficientes dos dois tipos e é permitido deixar parte da capacidade ociosa. Quantos contratar para minimizar o custo?</p>
+<h3>1. Variáveis e formulação</h3><p>Sejam x₁ a quantidade de veículos pequenos e x₂ a quantidade de veículos grandes. Como não se contrata uma fração de veículo, ambas as variáveis são inteiras não negativas.</p>
+<div class="formula-card">Minimizar C = 40x₁ + 65x₂
+Sujeito a:
+4x₁ + 7x₂ ≥ 18   (capacidade suficiente para a carga)
+x₁, x₂ ∈ ℤ≥0</div>
+<p>A desigualdade é de mínimo: a capacidade contratada deve atender ou superar 18 toneladas. Exigir igualdade impediria combinações válidas com capacidade ociosa.</p>
+<h3>2. Relaxação linear</h3><p>O custo por tonelada de capacidade é R$ 10 no veículo pequeno e aproximadamente R$ 9,29 no grande. Sem integralidade, a melhor opção seria usar somente o grande: x₁ = 0 e x₂ = 18/7, com custo 1170/7 ≈ R$ 167,14. Por ser uma minimização, esse valor é um limite inferior para o ótimo inteiro.</p>
+<h3>3. Solução inteira por enumeração reduzida</h3><p>Fixada a quantidade de veículos grandes, escolhemos o menor número de pequenos que atende à carga. Contratar mais pequenos apenas aumentaria o custo.</p>
+<table><thead><tr><th>Grandes x₂</th><th>Pequenos x₁ mínimos</th><th>Capacidade (t)</th><th>Custo (R$)</th></tr></thead><tbody>
+<tr><td>0</td><td>5</td><td>20</td><td>200</td></tr><tr><td>1</td><td>3</td><td>19</td><td>185</td></tr><tr><td>2</td><td>1</td><td>18</td><td>170</td></tr><tr><td>3</td><td>0</td><td>21</td><td>195</td></tr></tbody></table>
+<p>Para x₂ ≥ 3, o custo é pelo menos R$ 195, mesmo sem veículos pequenos, e cresce com x₂. Portanto, nenhum caso omitido pode melhorar R$ 170. A tabela, junto desse limite, comprova a otimalidade.</p>
+<div class="definition"><p class="dtitle">Decisão ótima</p><p>Contratar <strong>um veículo pequeno e dois grandes</strong>: capacidade total de 18 toneladas, custo mínimo de <strong>R$ 170</strong> e nenhuma capacidade ociosa.</p></div>
+<div class="note"><strong>Comparação:</strong> arredondar 18/7 para três veículos grandes gera uma solução viável de R$ 195, mas custa R$ 25 a mais que a solução ótima. No Solver, selecione minimizar, mantenha a restrição de capacidade com ≥ e declare as duas variáveis inteiras.</div>
+<p>Exemplo elaborado para este capítulo, com valores didáticos.</p></section><section class="section" id="binaria"><p class="section-label">6.8 / Programação Inteira</p><h2>Decisões do tipo sim ou não</h2><p>Para escolher projetos, abrir instalações ou contratar fornecedores, usamos yⱼ = 1 quando a decisão é adotada e yⱼ = 0 caso contrário. A variável representa uma escolha, não uma quantidade física contínua.</p><table><thead><tr><th>Relação</th><th>Restrição binária</th><th>Interpretação</th></tr></thead><tbody><tr><td>Dependência</td><td>yB ≤ yA</td><td>B exige A; A não exige B</td></tr><tr><td>No máximo uma</td><td>yA + yB ≤ 1</td><td>Pode escolher nenhuma ou apenas uma</td></tr><tr><td>Exatamente uma</td><td>yA + yB = 1</td><td>Uma escolha é obrigatória</td></tr><tr><td>Pelo menos uma</td><td>yA + yB ≥ 1</td><td>Ambas também são permitidas</td></tr><tr><td>Vincular produção e abertura</td><td>0 ≤ q ≤ Uy</td><td>Sem abertura, q = 0; U é um limite válido</td></tr></tbody></table><p>No último caso, q pode ser contínua e y é binária, formando um modelo misto. O valor U deve ser um limite justificável para a produção; não deve ser escolhido arbitrariamente grande.</p><div class="note"><strong>Teste lógico:</strong> em yB ≤ yA, substituir yA = 0 obriga yB = 0. Já yA = 1 permite yB igual a 0 ou 1. Essa substituição ajuda a conferir o significado da formulação.</div></section><section class="section" id="simnao1"><p class="section-label">6.9 / Programação Inteira</p><h2>Sim ou não — exemplo 1: escolher investimentos</h2>
+<p>Uma pequena empresa dispõe de <strong>R$ 6 mil</strong> e avalia dois investimentos. Cada um pode ser realizado integralmente ou não ser realizado. Os valores são didáticos; os benefícios podem ser somados.</p>
+<table><thead><tr><th>Investimento</th><th>Custo (R$ mil)</th><th>Benefício estimado (R$ mil)</th></tr></thead><tbody><tr><td>A — equipamento</td><td>4</td><td>7</td></tr><tr><td>B — divulgação</td><td>3</td><td>5</td></tr></tbody></table>
+<h3>1. Representar as decisões</h3><p>Definimos y₁ = 1 se o investimento A for realizado e 0 caso contrário; y₂ = 1 se o investimento B for realizado e 0 caso contrário. Não são quantidades de equipamentos ou ações: cada variável indica apenas a escolha da alternativa apresentada.</p>
+<h3>2. Entender de onde vêm os coeficientes</h3><p>Os números <strong>4 e 3</strong> são os custos da tabela. Multiplicar cada custo pela respectiva variável inclui o gasto quando a escolha é sim (1) e o elimina quando a escolha é não (0). O número <strong>6</strong> é o orçamento disponível. Já <strong>7 e 5</strong> são os benefícios usados na função objetivo.</p>
+<div class="formula-card">Maximizar Z = 7y₁ + 5y₂   (benefício em R$ mil)
+Sujeito a:
+4y₁ + 3y₂ ≤ 6            (gasto em R$ mil)
+y₁, y₂ ∈ {0, 1}</div>
+<h3>3. Testar as quatro combinações</h3><table><thead><tr><th>(y₁, y₂)</th><th>Escolha</th><th>Gasto</th><th>Benefício</th><th>Situação</th></tr></thead><tbody><tr><td>(0, 0)</td><td>Nenhum</td><td>0</td><td>0</td><td>Viável</td></tr><tr><td>(1, 0)</td><td>Somente A</td><td>4</td><td>7</td><td>Viável e ótima</td></tr><tr><td>(0, 1)</td><td>Somente B</td><td>3</td><td>5</td><td>Viável</td></tr><tr><td>(1, 1)</td><td>A e B</td><td>7</td><td>12</td><td>Inviável: gasto maior que 6</td></tr></tbody></table>
+<div class="definition"><p class="dtitle">Solução e interpretação</p><p>Escolher somente A: <strong>(y₁, y₂) = (1, 0)</strong>. O benefício máximo viável é R$ 7 mil, o gasto é R$ 4 mil e sobram R$ 2 mil do orçamento. A combinação com maior benefício bruto, A + B, é descartada porque não cabe no orçamento.</p></div>
+<div class="note"><strong>Ideia central:</strong> primeiro verificamos quais combinações são permitidas; depois comparamos o benefício entre elas. Não é obrigatório gastar todo o orçamento.</div></section>
+<section class="section" id="simnao2"><p class="section-label">6.10 / Programação Inteira</p><h2>Sim ou não — exemplo 2: uma escolha depende da outra</h2>
+<p>Uma empresa pode adquirir um software e contratar um treinamento específico para ele. O treinamento só pode ser contratado se o software também for adquirido. O orçamento é de <strong>R$ 3 mil</strong>. Para simplificar, os benefícios estimados abaixo são incrementais e aditivos: o benefício do treinamento se soma ao do software.</p>
+<table><thead><tr><th>Decisão</th><th>Custo (R$ mil)</th><th>Benefício adicional (R$ mil)</th></tr></thead><tbody><tr><td>Adquirir software</td><td>2</td><td>3</td></tr><tr><td>Contratar treinamento</td><td>1</td><td>4</td></tr></tbody></table>
+<h3>1. Definir variáveis e orçamento</h3><p>Seja y₁ = 1 se o software for adquirido e y₂ = 1 se o treinamento for contratado; caso contrário, cada variável vale 0. Os custos <strong>2 e 1</strong> vêm da tabela, e o limite <strong>3</strong> vem do orçamento.</p>
+<h3>2. Acrescentar a dependência</h3><p>A condição <strong>y₂ ≤ y₁</strong> traduz “treinamento exige software”. Se y₁ = 0, ela obriga y₂ = 0. Se y₁ = 1, permite y₂ igual a 0 ou 1. Portanto, comprar o software não obriga a contratar o treinamento.</p>
+<div class="formula-card">Maximizar Z = 3y₁ + 4y₂   (benefício em R$ mil)
+Sujeito a:
+2y₁ + y₂ ≤ 3             (orçamento)
+y₂ ≤ y₁                  (treinamento exige software)
+y₁, y₂ ∈ {0, 1}</div>
+<h3>3. Conferir orçamento e lógica</h3><table><thead><tr><th>(y₁, y₂)</th><th>Escolha</th><th>Gasto</th><th>Benefício</th><th>Situação</th></tr></thead><tbody><tr><td>(0, 0)</td><td>Nenhuma</td><td>0</td><td>0</td><td>Viável</td></tr><tr><td>(1, 0)</td><td>Somente software</td><td>2</td><td>3</td><td>Viável</td></tr><tr><td>(0, 1)</td><td>Somente treinamento</td><td>1</td><td>4*</td><td>Inviável: viola y₂ ≤ y₁</td></tr><tr><td>(1, 1)</td><td>Software e treinamento</td><td>3</td><td>7</td><td>Viável e ótima</td></tr></tbody></table>
+<p>*O valor 4 é apenas a avaliação algébrica da função objetivo nessa combinação. Ela não representa uma alternativa permitida, pois o treinamento depende da aquisição do software.</p>
+<div class="definition"><p class="dtitle">Solução e interpretação</p><p>Adquirir o software e contratar o treinamento: <strong>(y₁, y₂) = (1, 1)</strong>. O gasto é R$ 3 mil e o benefício total estimado é R$ 7 mil.</p></div>
+<div class="note"><strong>O que mudou?</strong> Uma combinação pode caber no orçamento e ainda ser inviável por uma condição lógica. A modelagem binária precisa representar tanto os limites numéricos quanto as relações entre decisões. Nestes exemplos pequenos, a enumeração completa comprova o ótimo; em modelos maiores, usamos métodos como Branch and Bound.</div>
+<p>Os dois exemplos foram elaborados para este capítulo. A seguir, a mesma abordagem é ampliada para três projetos.</p></section><section class="section" id="exemplo3"><p class="section-label">6.11 / Programação Inteira</p><h2>Exemplo simples com três variáveis: seleção de projetos</h2>
+<p>Uma organização dispõe de R$ 5 mil para investir em três projetos independentes. Cada projeto pode ser executado uma única vez, integralmente, ou não ser escolhido. Os benefícios estimados são aditivos e não há dependências entre os projetos.</p>
+<table><thead><tr><th>Projeto</th><th>Investimento (R$ mil)</th><th>Benefício (R$ mil)</th></tr></thead><tbody><tr><td>A</td><td>4</td><td>7</td></tr><tr><td>B</td><td>3</td><td>5</td></tr><tr><td>C</td><td>2</td><td>4</td></tr></tbody></table>
+<h3>1. Definição das três variáveis</h3><p>Use y₁, y₂ e y₃ para os projetos A, B e C, respectivamente: yⱼ = 1 se o projeto for selecionado e yⱼ = 0 caso contrário.</p>
+<div class="formula-card">Maximizar B = 7y₁ + 5y₂ + 4y₃
+Sujeito a:
+4y₁ + 3y₂ + 2y₃ ≤ 5   (orçamento em R$ mil)
+y₁, y₂, y₃ ∈ {0, 1}</div>
+<h3>2. Examinar as oito combinações</h3><p>Com três variáveis binárias, há apenas 2³ = 8 possibilidades. Podemos conferir todas elas diretamente.</p>
+<table><thead><tr><th>(y₁, y₂, y₃)</th><th>Investimento</th><th>Benefício</th><th>Situação</th></tr></thead><tbody>
+<tr><td>(0, 0, 0)</td><td>0</td><td>0</td><td>Viável</td></tr><tr><td>(1, 0, 0)</td><td>4</td><td>7</td><td>Viável</td></tr><tr><td>(0, 1, 0)</td><td>3</td><td>5</td><td>Viável</td></tr><tr><td>(0, 0, 1)</td><td>2</td><td>4</td><td>Viável</td></tr><tr><td>(1, 1, 0)</td><td>7</td><td>12</td><td>Inviável</td></tr><tr><td>(1, 0, 1)</td><td>6</td><td>11</td><td>Inviável</td></tr><tr><td>(0, 1, 1)</td><td>5</td><td>9</td><td>Viável e ótima</td></tr><tr><td>(1, 1, 1)</td><td>9</td><td>16</td><td>Inviável</td></tr></tbody></table>
+<h3>3. Interpretar a solução</h3><p>A melhor combinação viável é <strong>(0; 1; 1)</strong>: executar os projetos B e C. O investimento total é R$ 5 mil e o benefício máximo é R$ 9 mil. Embora A tenha o maior benefício individual, a combinação B + C apresenta resultado melhor dentro do orçamento.</p>
+<div class="note"><strong>No Excel Solver:</strong> coloque as três decisões em células variáveis, maximize a soma dos benefícios ponderados, limite a soma dos investimentos a 5 e defina as decisões como binárias. A enumeração acima permite conferir o resultado do programa.</div>
+<p>Exemplo elaborado para este capítulo, com valores didáticos. A seguir, o caso California amplia a mesma lógica para quatro decisões e acrescenta dependências e exclusão entre alternativas.</p></section><section class="section" id="california"><p class="section-label">6.12 / Programação Inteira</p><h2>California Manufacturing Company</h2><p>No caso didático de Hillier e Lieberman, a empresa considera construir fábricas e depósitos em Los Angeles e San Francisco. Deseja maximizar o valor presente líquido (VPL) dos investimentos, respeitando um orçamento de US$ 10 milhões. As fábricas podem ser construídas nas duas cidades, mas haverá <strong>no máximo um depósito</strong>; cada depósito exige uma fábrica na mesma cidade.</p><table><thead><tr><th>Variável</th><th>Decisão se xⱼ = 1</th><th>VPL (US$ milhões)</th><th>Capital (US$ milhões)</th></tr></thead><tbody><tr><td>x₁</td><td>Fábrica em Los Angeles</td><td>9</td><td>6</td></tr><tr><td>x₂</td><td>Fábrica em San Francisco</td><td>5</td><td>3</td></tr><tr><td>x₃</td><td>Depósito em Los Angeles</td><td>6</td><td>5</td></tr><tr><td>x₄</td><td>Depósito em San Francisco</td><td>4</td><td>2</td></tr></tbody></table><p>Todas as variáveis são binárias: xⱼ = 0 indica não realizar o investimento. Os valores abaixo seguem o caso discutido no texto-base da conversa.</p><div class="formula-card">Maximizar Z = 9x₁ + 5x₂ + 6x₃ + 4x₄
+Sujeito a:
+6x₁ + 3x₂ + 5x₃ + 2x₄ ≤ 10   (orçamento)
+x₃ ≤ x₁                       (depósito LA exige fábrica LA)
+x₄ ≤ x₂                       (depósito SF exige fábrica SF)
+x₃ + x₄ ≤ 1                   (no máximo um depósito)
+x₁, x₂, x₃, x₄ ∈ {0, 1}</div><h3>Interpretação das dependências</h3><p>Se x₁ = 0, então x₃ = 0; se x₂ = 0, então x₄ = 0. Uma fábrica pode existir sem depósito. A desigualdade x₃ + x₄ ≤ 1 permite não construir depósito algum; usar igualdade mudaria o enunciado.</p><h3>Resolução por enumeração</h3><p>Quatro variáveis binárias geram 2⁴ = 16 combinações. Aplicando as dependências, a exclusão entre depósitos e o orçamento, restam as cinco alternativas viáveis abaixo. Para um modelo pequeno, a enumeração completa comprova o ótimo.</p><table><thead><tr><th>(x₁, x₂, x₃, x₄)</th><th>Capital</th><th>VPL</th><th>Decisão</th></tr></thead><tbody><tr><td>(0, 0, 0, 0)</td><td>0</td><td>0</td><td>Nenhuma instalação</td></tr><tr><td>(1, 0, 0, 0)</td><td>6</td><td>9</td><td>Fábrica LA</td></tr><tr><td>(0, 1, 0, 0)</td><td>3</td><td>5</td><td>Fábrica SF</td></tr><tr><td>(0, 1, 0, 1)</td><td>5</td><td>9</td><td>Fábrica e depósito SF</td></tr><tr><td>(1, 1, 0, 0)</td><td>9</td><td>14</td><td>Duas fábricas — ótima</td></tr></tbody></table><p>A fábrica com depósito em Los Angeles custaria 11 e viola o orçamento; as duas fábricas com depósito em San Francisco também custariam 11. As duas fábricas com depósito em Los Angeles custariam 14. As demais combinações violam dependências ou a condição de no máximo um depósito.</p><div class="formula-card">x* = (1, 1, 0, 0)
+Capital utilizado = US$ 9 milhões
+Folga orçamentária = US$ 1 milhão
+VPL máximo = US$ 14 milhões</div><div class="note"><strong>Interpretação gerencial:</strong> construir as duas fábricas, sem depósitos. O orçamento não precisa ser totalmente utilizado. O modelo maximiza VPL, não gasto nem quantidade de projetos.</div></section><section class="section" id="aplicacoes"><p class="section-label">6.13 / Programação Inteira</p><h2>Aplicações e interpretação</h2><div class="key-grid"><div class="key-card"><strong>Investimentos</strong><p>Selecionar projetos com orçamento limitado; usar variáveis binárias e restrições de dependência.</p></div><div class="key-card"><strong>Localização e distribuição</strong><p>Decidir quais instalações abrir e quanto transportar; combinar custos fixos, capacidades e demandas.</p></div><div class="key-card"><strong>Escalas e alocação</strong><p>Designar pessoas a turnos ou tarefas; respeitar cobertura, disponibilidade e limites de jornada.</p></div><div class="key-card"><strong>Transportes e aviação</strong><p>Selecionar rotas, alocar aeronaves e representar quantidades indivisíveis de veículos.</p></div></div><p>Essas aplicações retomam a mesma disciplina de modelagem: definir unidades, explicitar hipóteses e validar restrições. Uma resposta computacional só é útil se o modelo representar corretamente as decisões reais.</p><p>A sensibilidade de um modelo inteiro requer cuidado: pequenas alterações nos dados podem mudar discretamente as escolhas. Não se deve aplicar automaticamente ao modelo inteiro a interpretação dos preços-sombra da relaxação. Compare cenários resolvendo novamente o modelo.</p></section><section class="section" id="pratica"><p class="section-label">6.14 / Programação Inteira</p><h2>Prática orientada: Excel Solver</h2><p>Monte primeiro o exemplo de produção em uma planilha. Use as fórmulas abaixo no Excel em português; em outras configurações, os nomes e separadores podem mudar.</p><table><thead><tr><th>Célula / intervalo</th><th>Conteúdo</th></tr></thead><tbody><tr><td>B2:C2</td><td>Quantidades x₁ e x₂; valores iniciais 0</td></tr><tr><td>B3:C3</td><td>Lucros unitários: 5 e 4</td></tr><tr><td>D3</td><td>=SOMARPRODUTO(B2:C2;B3:C3)</td></tr><tr><td>B5:C5 / E5</td><td>Consumos 2 e 1 / limite 7</td></tr><tr><td>B6:C6 / E6</td><td>Consumos 1 e 2 / limite 7</td></tr><tr><td>D5</td><td>=SOMARPRODUTO($B$2:$C$2;B5:C5)</td></tr><tr><td>D6</td><td>=SOMARPRODUTO($B$2:$C$2;B6:C6)</td></tr></tbody></table><div class="method-card"><span class="method-num">Configuração</span><h4>Resolver e conferir</h4><ol class="steps"><li>Ative o suplemento Solver, se necessário, e abra Dados → Solver.</li><li>Defina D3 como objetivo a maximizar e B2:C2 como células variáveis.</li><li>Acrescente D5:D6 ≤ E5:E6 e B2:C2 ≥ 0.</li><li>Resolva primeiro sem integralidade, usando Simplex LP. Espere x₁ = x₂ = 7/3 e Z = 21.</li><li>Adicione a restrição de tipo inteiro (int) a B2:C2. Mantenha Simplex LP como método para o modelo linear; o Solver trata a integralidade com busca apropriada.</li><li>Confira se a opção de ignorar restrições inteiras está desmarcada. Para buscar a comprovação do ótimo neste exercício pequeno, use tolerância de otimalidade inteira de 0%, quando disponível.</li><li>Resolva novamente. Confira (3; 1), lucro 19, consumos (7; 5) e o status informado pelo Solver.</li></ol></div>
+<h3>Resolver o caso binário</h3><p>Em outra aba, use B2:E2 para x₁,…,x₄; B3:E3 para os VPLs (9; 5; 6; 4); B4:E4 para os capitais (6; 3; 5; 2). Em F3 calcule =SOMARPRODUTO(B2:E2;B3:E3), e em F4 =SOMARPRODUTO(B2:E2;B4:E4).</p><p>Maximize F3 alterando B2:E2. Adicione F4 ≤ 10, D2 ≤ B2, E2 ≤ C2, e uma célula auxiliar F5 = D2+E2 com F5 ≤ 1. Defina B2:E2 como binárias (bin). O resultado esperado é (1; 1; 0; 0), com VPL 14.</p>
+<div class="exercise-card"><h4>Atividade de encerramento</h4><ol class="plain"><li>Compare relaxação, arredondamento e solução inteira no problema de produção.</li><li>Refaça o caso California com orçamento 11. Qual investimento passa a ser possível?</li><li>Explique por que trocar “no máximo um depósito” por “exatamente um” altera o modelo.</li><li>Entregue variáveis, modelo completo, configuração do Solver, solução e interpretação gerencial.</li></ol></div><div class="note"><strong>Conferência:</strong> com orçamento 11, a melhor escolha é (1; 1; 0; 1), capital 11 e VPL 18. Para o orçamento original 10, exigir exatamente um depósito deixa como única solução viável a fábrica com depósito em San Francisco, VPL 9.</div><p>Se a execução terminar por limite de tempo ou tolerância, diferencie “melhor solução encontrada” de “ótimo comprovado”. Consulte o <a href="https://support.microsoft.com/pt-br/office/definir-e-resolver-um-problema-usando-o-solver-5d1a388f-079d-43ac-a7eb-f63e45925040" target="_blank" rel="noopener">guia do Solver da Microsoft</a>.</p></section><section class="section" id="referencias"><p class="section-label">6.15 / Programação Inteira</p><h2>Referências e fechamento</h2><p>O capítulo integra a modelagem de Hillier e Lieberman e Taha com a apresentação de métodos de Trick e os materiais do MIT. O exemplo de produção foi desenvolvido didaticamente; o caso California é uma adaptação do exemplo desses autores, com os coeficientes do texto-base. A numeração dos capítulos dos livros varia conforme a edição.</p>
+<div class="refs-grid"><div class="ref-card"><div><span class="ref-type">Livro / modelagem e aplicações</span><h4>Hillier e Lieberman</h4><p>HILLIER, Frederick S.; LIEBERMAN, Gerald J. <em>Introdução à Pesquisa Operacional</em>. McGraw-Hill / AMGH. Capítulo de Programação Inteira, especialmente decisões binárias e o caso California Manufacturing Company. Na edição digitalizada discutida em aula: capítulo 11, seção 11.1.</p></div></div>
+<div class="ref-card"><div><span class="ref-type">Livro / formulação e solução</span><h4>Hamdy A. Taha</h4><p>TAHA, Hamdy A. <em>Operations Research: An Introduction</em>. Pearson. Capítulos de modelagem e programação inteira. Consulte a edição adotada na disciplina.</p></div></div>
+<div class="ref-card"><div><span class="ref-type">Tutorial / acesso aberto</span><h4>Michael A. Trick</h4><p>TRICK, Michael A. <a href="https://mat.tepper.cmu.edu/classes/integer/integer.html" target="_blank" rel="noopener">A Tutorial on Integer Programming</a>. Carnegie Mellon University, material de curso dos anos 1990. Seções de modelagem, relação com PL e Branch and Bound.</p></div></div>
+<div class="ref-card"><div><span class="ref-type">Aulas / acesso aberto</span><h4>MIT OpenCourseWare</h4><p>ORLIN, James; NASRABADI, Ebrahim. <a href="https://ocw.mit.edu/courses/15-053-optimization-methods-in-management-science-spring-2013/pages/lecture-notes/" target="_blank" rel="noopener">15.053 — Optimization Methods in Management Science</a>. Primavera de 2013. Aulas 10–14: formulação inteira, Branch and Bound e cortes.</p></div></div></div>
+<div class="definition"><p class="dtitle">Encerramento da disciplina</p><p>Modelar é traduzir uma decisão em variáveis, objetivos, restrições e domínios coerentes. Resolver é buscar a melhor alternativa admissível e compreender o alcance da comprovação. Interpretar é transformar a resposta matemática em uma decisão justificável. A Programação Inteira amplia esse percurso para unidades indivisíveis e escolhas do tipo sim ou não.</p></div></section><div class="chapter-nav"><a href="cap5.html"><span class="dir">← capítulo anterior</span>Cap. 5</a><a class="next" href="../progLinear.html"><span class="dir">disciplina concluída →</span>Voltar ao índice da disciplina</a></div></div><footer><div class="container"><p>© 2026 · Prof. Clayton J A Silva</p><p><a href="#topo">↑ Voltar ao topo</a> · <a href="../progLinear.html">Programação Linear Aplicada</a></p></div></footer><script>
+function updateProgress(){const h=document.documentElement;const range=h.scrollHeight-h.clientHeight;document.getElementById('progressFill').style.width=(range>0?Math.min(100,Math.max(0,h.scrollTop/range*100)):0)+'%';}
+window.addEventListener('scroll',updateProgress);window.addEventListener('resize',updateProgress);updateProgress();
+</script></body></html>
