@@ -1,0 +1,287 @@
+<!DOCTYPE html><html lang="pt-BR"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="description" content="22 exercícios autorais de Programação Inteira e decisões binárias, com duas e três variáveis, para resolução manual ou no Excel Solver."><title>Exercícios de Programação Inteira — Prof. Clayton J A Silva</title><style>
+    :root {
+      --bg: #f5f5f3;
+      --paper: #ffffff;
+      --ink: #171717;
+      --muted: #66645f;
+      --line: #d9d8d3;
+      --accent: #e96f2d;
+      --accent-soft: #fff0e7;
+      --dark: #111111;
+      --radius: 16px;
+      --shadow: 0 10px 28px rgba(0,0,0,.07);
+    }
+
+    * { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--ink);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.65;
+    }
+
+    a { color: inherit; }
+
+    .topbar {
+      background: var(--dark);
+      color: #fff;
+      border-bottom: 1px solid #2a2a2a;
+    }
+
+    .topbar-inner {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 14px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .brand {
+      font-size: .92rem;
+      font-weight: 700;
+      letter-spacing: .02em;
+    }
+
+    .nav a {
+      text-decoration: none;
+      color: #d7d7d7;
+      font-size: .9rem;
+      margin-left: 18px;
+    }
+
+    .nav a:hover { color: #fff; }
+
+    .hero {
+      background: var(--dark);
+      color: #fff;
+      padding: 58px 24px 66px;
+    }
+
+    .hero-inner {
+      max-width: 1120px;
+      margin: 0 auto;
+    }
+
+    .eyebrow {
+      display: inline-block;
+      margin-bottom: 14px;
+      font-size: .78rem;
+      text-transform: uppercase;
+      letter-spacing: .16em;
+      color: #ff9a62;
+      font-weight: 800;
+    }
+
+    h1 {
+      margin: 0;
+      max-width: 760px;
+      font-size: clamp(2.3rem, 6vw, 4.7rem);
+      line-height: .98;
+      letter-spacing: -.055em;
+      font-weight: 800;
+    }
+
+    .hero p {
+      max-width: 760px;
+      margin: 22px 0 0;
+      color: #cfcfcf;
+      font-size: 1.04rem;
+    }
+
+    .meta {
+      margin-top: 28px;
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .tag {
+      border: 1px solid #3a3a3a;
+      border-radius: 999px;
+      padding: 7px 12px;
+      font-size: .82rem;
+      color: #e4e4e4;
+    }
+
+    main {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 42px 24px 72px;
+    }
+
+    .intro-grid {
+      display: grid;
+      grid-template-columns: 1.2fr .8fr;
+      gap: 24px;
+      margin-bottom: 34px;
+    }
+
+    .panel,
+    .exercise {
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+    }
+
+    .panel { padding: 24px; }
+
+    .panel h2,
+    .section-title {
+      margin: 0 0 10px;
+      font-size: 1.3rem;
+      letter-spacing: -.02em;
+    }
+
+    .panel p { margin: 0; color: var(--muted); }
+
+    .source-box {
+      border-left: 4px solid var(--accent);
+    }
+
+    .source-box strong { color: var(--ink); }
+
+    .section-kicker {
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: .13em;
+      font-size: .78rem;
+      font-weight: 800;
+      margin: 44px 0 6px;
+    }
+
+    .section-title {
+      font-size: 2rem;
+      margin-bottom: 22px;
+    }
+
+    .exercise-list {
+      display: grid;
+      gap: 20px;
+    }
+
+    .exercise {
+      padding: 24px;
+      overflow: hidden;
+    }
+
+    .exercise-head {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 14px;
+      border-bottom: 1px solid var(--line);
+      padding-bottom: 12px;
+    }
+
+    .exercise-head h3 {
+      margin: 0;
+      font-size: 1.18rem;
+    }
+
+    .badge {
+      white-space: nowrap;
+      color: var(--accent);
+      font-size: .78rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+    }
+
+    .exercise p { margin: 0 0 10px; }
+
+    .exercise ul,
+    .exercise ol { margin: 8px 0 12px 22px; }
+
+    .exercise li { margin: 5px 0; }
+
+    .math {
+      margin: 14px 0;
+      padding: 14px 18px;
+      background: #f7f7f5;
+      border: 1px solid #e4e3df;
+      border-radius: 12px;
+      font-family: "Times New Roman", Times, serif;
+      font-size: 1.08rem;
+      overflow-x: auto;
+    }
+
+    .math div { margin: 4px 0; }
+
+    .ask {
+      margin-top: 14px;
+      padding: 12px 14px;
+      border-radius: 10px;
+      background: var(--accent-soft);
+      border: 1px solid #ffd8c2;
+    }
+
+    .ask strong { color: #a54412; }
+
+    .resource-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+      margin: 14px 0;
+    }
+
+    .resource-card {
+      background: #f7f7f5;
+      border: 1px solid #e5e4df;
+      border-radius: 12px;
+      padding: 14px;
+    }
+
+    .resource-card h4 { margin: 0 0 8px; }
+    .resource-card ul { margin-bottom: 0; }
+
+    footer {
+      background: var(--dark);
+      color: #bcbcbc;
+      padding: 28px 24px;
+    }
+
+    .footer-inner {
+      max-width: 1120px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      gap: 18px;
+      flex-wrap: wrap;
+      font-size: .88rem;
+    }
+
+    .footer-inner a {
+      color: #fff;
+      text-decoration: none;
+    }
+
+    @media (max-width: 760px) {
+      .intro-grid,
+      .resource-grid { grid-template-columns: 1fr; }
+      .nav { width: 100%; }
+      .nav a { margin: 0 14px 0 0; }
+      .hero { padding-top: 42px; }
+      .exercise { padding: 19px; }
+    }
+   table{width:100%;border-collapse:collapse;margin:12px 0;font-size:.94rem;font-variant-numeric:tabular-nums}caption{text-align:left;color:var(--muted);font-size:.85rem;margin-bottom:6px}th,td{padding:10px 12px;border-bottom:1px solid var(--line);text-align:right}th{background:#f7f7f5}th:first-child{text-align:left}tfoot{font-weight:700}.table-wrap{overflow-x:auto}.exercise{scroll-margin-top:20px}.exercise-head{align-items:flex-start}.badge{white-space:normal;text-align:right}.guide{margin-bottom:24px}.guide p+p{margin-top:12px}.guide li{margin:8px 0}.toc{display:flex;gap:7px;flex-wrap:wrap;margin-top:18px}.toc a{display:inline-block;min-width:36px;padding:5px 9px;text-align:center;border:1px solid var(--line);border-radius:8px;text-decoration:none;background:white}.toc a:hover,.toc a:focus-visible{background:var(--accent-soft);outline:2px solid var(--accent)}.toolbar{display:flex;gap:14px;align-items:center;flex-wrap:wrap;margin:20px 0}.toolbar button{background:var(--accent);color:#151515;font:inherit;font-weight:700;border:0;border-radius:8px;padding:10px 16px;cursor:pointer}.ask ol{margin-bottom:0}.model{font-family:Georgia,serif;background:#f7f7f5;padding:16px;border-radius:10px}.group-note{color:var(--muted);margin-top:-10px;margin-bottom:24px}@media(max-width:600px){.exercise-head{display:block}.badge{display:block;text-align:left;margin-top:6px}th,td{padding:8px}.hero h1{font-size:2.7rem}}@media print{@page{margin:16mm}body{background:white;font-size:10pt}.topbar,.toolbar,.toc{display:none}.hero{background:white;color:black;padding:10px 0 20px}.hero p,.eyebrow,.tag{color:black}.tag{border-color:#aaa}.hero h1{font-size:30pt}main{padding:10px 0}.panel,.exercise{box-shadow:none;border-color:#aaa}.exercise{break-inside:avoid;margin-bottom:12px}.exercise-list{display:block}.section-title{break-after:avoid}.intro-grid{display:block}.intro-grid .panel{margin-bottom:12px}footer{background:white;color:black}.footer-inner a{color:black}a{overflow-wrap:anywhere}.ask{background:#fafafa;border-color:#aaa}}</style></head><body>
+<header class="topbar"><div class="topbar-inner"><div class="brand">Prof. Clayton J A Silva</div><nav class="nav" aria-label="Navegação principal"><a href="https://claytonjasilva.github.io/progLinear.html">Programação Linear</a><a href="#exercicios">Exercícios</a><a href="#excel">Excel</a><a href="#referencia">Referência</a></nav></div></header>
+<section class="hero"><div class="hero-inner"><span class="eyebrow">Programação Linear · Capítulo 6</span><h1>Exercícios de<br>Programação Inteira</h1><p>22 problemas de solução simples: relaxação linear, solução inteira e escolhas do tipo sim ou não. Duas práticas extras de PI após os exercícios 1 e 2, antes das decisões sim ou não. Depois, seguem pares de PI e de problemas binários, com progressão de duas para três variáveis.</p><div class="meta"><span class="tag">22 exercícios</span><span class="tag">12 de PI com relaxação fracionária</span><span class="tag">10 de decisão binária</span><span class="tag">manual e Excel</span><span class="tag">primeiros 14 com 2 variáveis</span></div></div></section>
+<main><section class="intro-grid"><article class="panel"><h2>Como trabalhar</h2><p>Resolva os exercícios 1 e 2 e, em seguida, as práticas em sala 3 (maximização) e 4 (minimização). Os exercícios 5 e 6 iniciam as escolhas sim ou não. A partir daí, a lista mantém pares alternados de PI e decisões binárias. Os exercícios 1–14 usam duas variáveis; os exercícios 15–22 usam três. Os dados são fictícios, criados para prática didática. Nos 12 exercícios de PI pura, o ótimo da relaxação é fracionário e seu valor difere do ótimo inteiro. Todos cabem em uma análise de poucos casos.</p></article><aside class="panel source-box" id="referencia"><h2>Referência conceitual</h2><p><a href="https://claytonjasilva.github.io/progLinear/cap6.html">Capítulo 6 — Programação Inteira: Modelagem, métodos de solução e aplicações</a>, Prof. Clayton J A Silva. Os enunciados desta lista são autorais e não são transcrições de exercícios de livros.</p></aside></section>
+<section class="panel guide"><h2>Roteiro comum de resolução</h2><div class="model">Quantidades: xⱼ ∈ ℤ, xⱼ ≥ 0.<br>Decisões sim ou não: yⱼ ∈ {0, 1}, com 1 = realizar e 0 = não realizar.<br>Objetivo: maximizar lucro ou benefício, ou minimizar custo, conforme o enunciado.</div><ol><li><strong>Definir:</strong> escreva o significado de cada variável e sua unidade.</li><li><strong>Modelar:</strong> use os lucros, benefícios e custos na função objetivo. Traduza os recursos e requisitos em restrições.</li><li><strong>Declarar o domínio:</strong> quantidades indivisíveis exigem variáveis inteiras; escolhas únicas exigem variáveis binárias. PI binária é um caso particular da PI.</li><li><strong>Resolver:</strong> nos problemas inteiros, resolva primeiro a relaxação, teste o arredondamento e depois examine os valores inteiros possíveis. Nos binários, teste as 4 combinações para duas variáveis ou as 8 para três.</li><li><strong>Conferir:</strong> elimine combinações inviáveis antes de comparar os valores da função objetivo. Não basta arredondar uma solução contínua.</li><li><strong>Interpretar:</strong> apresente a decisão, o valor ótimo, as sobras ou excedentes e uma justificativa de que nenhum caso omitido pode melhorar o resultado.</li></ol><p><strong>Entrega:</strong> variáveis, modelo, tabela de casos e conclusão no contexto. Nos exercícios de PI, inclua um quadro com solução relaxada, arredondamento (viável ou inviável), solução inteira e os respectivos valores do objetivo. Esta é uma versão do aluno, sem gabarito.</p></section>
+<section class="panel guide source-box"><h2>Comparar relaxação e solução inteira</h2><p>Na maximização, a relaxação fornece um limite superior para o ótimo inteiro. Na minimização, fornece um limite inferior. Calcule a diferença absoluta entre os valores ótimos, sem arredondar o ótimo contínuo antes da comparação.</p><p>Arredondamento não é um método de solução: pode produzir uma alternativa inviável ou viável com resultado pior. Para cada valor não negativo t, use ⌊t + 0,5⌋ como arredondamento ao inteiro mais próximo, com empate para cima. Os exercícios binários continuam focados nas escolhas e nas combinações, sem exigir sua relaxação.</p></section><section class="panel guide source-box"><h2>Como representar relações entre escolhas</h2><div class="resource-grid"><div class="resource-card"><h4>Dependência</h4><p>Se B exige A: yB ≤ yA. Quando A = 0, B também precisa valer 0.</p></div><div class="resource-card"><h4>Quantidade de escolhas</h4><p>No máximo uma: yA + yB ≤ 1.<br>Exatamente uma: yA + yB = 1.<br>Pelo menos uma: yA + yB ≥ 1.</p></div></div><p>Na restrição de orçamento, os coeficientes são os custos informados. Por exemplo, 4yA + 3yB ≤ 6 inclui o custo de cada alternativa escolhida. Todas as parcelas precisam usar a mesma unidade monetária.</p></section>
+<section class="panel guide source-box" id="excel"><h2>Conferência no Excel Solver</h2><p>Nos exercícios de PI, resolva primeiro o modelo contínuo com o método gráfico ou Simplex, mantendo todos os limites e retirando apenas a integralidade. Nos de duas variáveis, compare os vértices da região viável. Nos de três, use o Solver se desejar; não fixe uma variável como inteira durante a relaxação. Depois, teste o arredondamento e resolva o modelo inteiro. Nos binários, faça a tabela de combinações. Para conferir no Excel, coloque as variáveis em uma linha e os coeficientes do objetivo em outra. Calcule o total com <strong>=SOMARPRODUTO(intervalo_variaveis;intervalo_coeficientes)</strong>. Use a mesma ideia para calcular o consumo de cada recurso.</p><p>No Solver, escolha maximizar ou minimizar a célula do objetivo, alterando as variáveis. Acrescente todas as restrições do enunciado. Para obter a relaxação dos exercícios de PI pura, mantenha as variáveis contínuas e não negativas. Salve o resultado; em seguida, adicione o tipo <strong>inteiro (int)</strong> e resolva novamente. Nos de sim ou não, declare-as <strong>binárias (bin)</strong>. Selecione <strong>Simplex LP</strong> para esses modelos lineares; mantenha ativas as restrições de integralidade.</p><p>Compare a resposta com a enumeração e confira o status da solução. Para os modelos pequenos desta lista, use tolerância de otimalidade inteira de 0%, quando disponível, para buscar a comprovação do ótimo.</p></section>
+<div class="toolbar"><button type="button" onclick="window.print()">Imprimir / salvar em PDF</button><span>Escolha um exercício para navegar:</span></div><nav class="toc" aria-label="Índice dos 22 exercícios"><a href="#ex-1" aria-label="Exercício 1">1</a><a href="#ex-2" aria-label="Exercício 2">2</a><a href="#ex-3" aria-label="Exercício 3">3</a><a href="#ex-4" aria-label="Exercício 4">4</a><a href="#ex-5" aria-label="Exercício 5">5</a><a href="#ex-6" aria-label="Exercício 6">6</a><a href="#ex-7" aria-label="Exercício 7">7</a><a href="#ex-8" aria-label="Exercício 8">8</a><a href="#ex-9" aria-label="Exercício 9">9</a><a href="#ex-10" aria-label="Exercício 10">10</a><a href="#ex-11" aria-label="Exercício 11">11</a><a href="#ex-12" aria-label="Exercício 12">12</a><a href="#ex-13" aria-label="Exercício 13">13</a><a href="#ex-14" aria-label="Exercício 14">14</a><a href="#ex-15" aria-label="Exercício 15">15</a><a href="#ex-16" aria-label="Exercício 16">16</a><a href="#ex-17" aria-label="Exercício 17">17</a><a href="#ex-18" aria-label="Exercício 18">18</a><a href="#ex-19" aria-label="Exercício 19">19</a><a href="#ex-20" aria-label="Exercício 20">20</a><a href="#ex-21" aria-label="Exercício 21">21</a><a href="#ex-22" aria-label="Exercício 22">22</a></nav><div class="section-kicker">01 / duas variáveis</div><h2 class="section-title" id="exercicios">Primeiras quantidades e escolhas</h2><p class="group-note">Exercícios 1–6 · produção, capacidade, duas práticas em sala, orçamento e dependência.</p><section class="exercise-list"><article class="exercise" id="ex-1"><div class="exercise-head"><h3>Exercício 1 — Banquinhos e mesas</h3><span class="badge">PI pura · 2 variáveis</span></div><p>Uma oficina produz banquinhos e mesas em unidades inteiras. Dispõe de 7 horas de trabalho e 7 placas de madeira no dia. Os consumos e lucros por unidade estão na tabela. Toda a produção pode ser vendida; não há produção mínima.</p><div class="table-wrap"><table><caption>Exercício 1 · dados por unidade ou alternativa, conforme o enunciado</caption><thead><tr><th scope="col">Informação</th><th scope="col">Banquinho</th><th scope="col">Mesa</th><th scope="col">Disponível</th></tr></thead><tbody><tr><th scope="row">Trabalho (h)</th><td>2</td><td>1</td><td>7</td></tr><tr><th scope="row">Madeira (placas)</th><td>1</td><td>2</td><td>7</td></tr><tr><th scope="row">Lucro (R$/unidade)</th><td>5</td><td>4</td><td>—</td></tr></tbody></table></div><div class="ask"><strong>Pede-se:</strong><ol type="a"><li>Defina as variáveis e formule o modelo inteiro, com todas as restrições e domínios.</li><li>Retire somente a exigência de integralidade e resolva a relaxação linear. Mantenha a não negatividade e todos os demais limites. Registre as quantidades fracionárias e o valor do objetivo.</li><li>Arredonde cada componente do ótimo relaxado para o inteiro mais próximo (em empate, para cima). Confira todas as restrições e calcule o objetivo; se a combinação for inviável, não a use como solução do problema inteiro.</li><li>Encontre a solução inteira ótima por enumeração de poucos casos ou por Branch and Bound. Justifique a otimalidade e compare-a com a relaxação e com o arredondamento.</li><li>Calcule a diferença absoluta entre os valores ótimos contínuo e inteiro. Explique o sentido do limite e interprete a decisão no contexto.</li></ol></div></article><article class="exercise" id="ex-2"><div class="exercise-head"><h3>Exercício 2 — Veículos para uma visita</h3><span class="badge">PI pura · 2 variáveis</span></div><p>Uma escola precisa transportar 18 pessoas em uma única viagem. Pode contratar vans de 4 lugares ou micro-ônibus de 7 lugares, com os custos da tabela. Há veículos suficientes dos dois tipos. Todos os lugares estão disponíveis aos passageiros; lugares vazios são permitidos.</p><div class="table-wrap"><table><caption>Exercício 2 · dados por unidade ou alternativa, conforme o enunciado</caption><thead><tr><th scope="col">Informação</th><th scope="col">Van</th><th scope="col">Micro-ônibus</th></tr></thead><tbody><tr><th scope="row">Lugares por veículo</th><td>4</td><td>7</td></tr><tr><th scope="row">Custo por viagem (R$)</th><td>40</td><td>65</td></tr></tbody></table></div><div class="ask"><strong>Pede-se:</strong><ol type="a"><li>Defina as variáveis e formule o modelo inteiro, com todas as restrições e domínios.</li><li>Retire somente a exigência de integralidade e resolva a relaxação linear. Mantenha a não negatividade e todos os demais limites. Registre as quantidades fracionárias e o valor do objetivo.</li><li>Arredonde cada componente do ótimo relaxado para o inteiro mais próximo (em empate, para cima). Confira todas as restrições e calcule o objetivo; se a combinação for inviável, não a use como solução do problema inteiro.</li><li>Encontre o ótimo inteiro testando de 0 a 3 unidades do tipo maior e completando com o mínimo necessário do menor. Justifique por custo por que quantidades maiores não melhoram o resultado.</li><li>Calcule a diferença absoluta entre os valores ótimos contínuo e inteiro. Explique o sentido do limite e interprete a decisão no contexto.</li></ol></div></article><article class="exercise" id="ex-3"><div class="exercise-head"><h3>Exercício 3 — Prática em sala: kits de lembranças</h3><span class="badge">PI pura · maximização · 2 variáveis</span></div><p>Uma oficina monta kits A e B de lembranças para um evento. Cada kit deve ser produzido inteiro, e toda a produção pode ser vendida. Há 8 unidades de material e 8 horas de preparação. Os dados por kit estão na tabela; não há produção mínima.</p>
+<div class="table-wrap"><table><caption>Exercício 3 · consumos por kit e lucro unitário</caption><thead><tr><th scope="col">Informação</th><th scope="col">Kit A</th><th scope="col">Kit B</th><th scope="col">Disponível</th></tr></thead><tbody><tr><th scope="row">Material (unidades/kit)</th><td>2</td><td>1</td><td>8</td></tr><tr><th scope="row">Preparação (h/kit)</th><td>1</td><td>2</td><td>8</td></tr><tr><th scope="row">Lucro (R$/kit)</th><td>6</td><td>5</td><td>—</td></tr></tbody></table></div>
+<div class="ask"><strong>Pede-se:</strong><ol type="a"><li>Defina x1 e x2 e formule o modelo para maximizar o lucro, com quantidades inteiras e não negativas.</li><li>Resolva a relaxação linear: encontre a interseção das duas restrições e compare os vértices da região viável.</li><li>Arredonde a solução relaxada para os inteiros mais próximos e confira os dois recursos. O ponto arredondado é viável?</li><li>Aplique Branch and Bound: comece dividindo a variável x1 entre x1 ≤ ⌊x1 relaxado⌋ e x1 ≥ ⌊x1 relaxado⌋ + 1. Mantenha as restrições originais, resolva os ramos e prossiga se necessário. Você também pode conferir por enumeração.</li><li>Informe o plano inteiro ótimo, o lucro, as folgas e a diferença para o lucro da relaxação. Explique por que o valor relaxado é um limite superior.</li></ol></div></article>
+<article class="exercise" id="ex-4"><div class="exercise-head"><h3>Exercício 4 — Prática em sala: equipes para um evento</h3><span class="badge">PI pura · minimização · 2 variáveis</span></div><p>Um evento precisa de pelo menos 13 pessoas de apoio no mesmo turno. Pode contratar equipes pequenas de 3 pessoas ou equipes grandes de 5. Cada equipe deve ser contratada integralmente. Há equipes suficientes dos dois tipos, e pessoas excedentes são permitidas. Os custos são por equipe e por turno.</p>
+<div class="table-wrap"><table><caption>Exercício 4 · capacidade e custo de cada equipe</caption><thead><tr><th scope="col">Informação</th><th scope="col">Equipe pequena</th><th scope="col">Equipe grande</th></tr></thead><tbody><tr><th scope="row">Pessoas por equipe</th><td>3</td><td>5</td></tr><tr><th scope="row">Custo por turno (R$)</th><td>30</td><td>46</td></tr></tbody></table></div>
+<div class="ask"><strong>Pede-se:</strong><ol type="a"><li>Defina as duas variáveis e formule o modelo de custo mínimo. Some a capacidade dos dois tipos na mesma restrição de atendimento.</li><li>Calcule o custo por pessoa de cada tipo e resolva a relaxação linear, permitindo temporariamente frações de equipes.</li><li>Arredonde a solução contínua para os inteiros mais próximos. Calcule o custo e o número de pessoas contratadas.</li><li>Aplique Branch and Bound na variável fracionária. Compare os ramos e encontre a contratação inteira de menor custo. Para conferir, teste 0, 1, 2 e 3 equipes grandes, completando cada caso com o mínimo de pequenas.</li><li>Compare o custo relaxado, o custo arredondado e o ótimo inteiro. Informe a diferença entre os ótimos e explique por que o custo relaxado é um limite inferior.</li></ol></div></article><article class="exercise" id="ex-5"><div class="exercise-head"><h3>Exercício 5 — Equipamento ou divulgação</h3><span class="badge">Sim ou não · 2 variáveis</span></div><p>Uma pequena empresa dispõe de R$ 6 mil e considera dois investimentos independentes. Cada investimento pode ser realizado uma única vez e integralmente, ou não ser realizado. Os benefícios são estimativas aditivas. É permitido não investir e deixar parte do orçamento sem uso.</p><div class="table-wrap"><table><caption>Exercício 5 · dados por unidade ou alternativa, conforme o enunciado</caption><thead><tr><th scope="col">Investimento</th><th scope="col">Custo (R$ mil)</th><th scope="col">Benefício (R$ mil)</th></tr></thead><tbody><tr><th scope="row">A — equipamento</th><td>4</td><td>7</td></tr><tr><th scope="row">B — divulgação</th><td>3</td><td>5</td></tr></tbody></table></div><div class="ask"><strong>Pede-se:</strong><ol type="a"><li>Defina duas variáveis binárias e escreva a função objetivo e a restrição de orçamento.</li><li>Teste as quatro combinações possíveis e identifique as viáveis.</li><li>Escolha a combinação de maior benefício e informe o gasto e a sobra de orçamento.</li></ol></div></article><article class="exercise" id="ex-6"><div class="exercise-head"><h3>Exercício 6 — Software e treinamento</h3><span class="badge">Sim ou não · 2 variáveis</span></div><p>Uma empresa dispõe de R$ 3 mil para adquirir um software e contratar seu treinamento específico. O treinamento só pode ser contratado se o software também for adquirido. Comprar o software sem treinamento é permitido. Cada item só pode ser escolhido uma vez. Os benefícios do treinamento são adicionais aos do software.</p><div class="table-wrap"><table><caption>Exercício 6 · dados por unidade ou alternativa, conforme o enunciado</caption><thead><tr><th scope="col">Item</th><th scope="col">Custo (R$ mil)</th><th scope="col">Benefício adicional (R$ mil)</th></tr></thead><tbody><tr><th scope="row">Software</th><td>2</td><td>3</td></tr><tr><th scope="row">Treinamento</th><td>1</td><td>4</td></tr></tbody></table></div><div class="ask"><strong>Pede-se:</strong><ol type="a"><li>Defina as variáveis binárias na ordem da tabela e represente o orçamento.</li><li>Escreva a dependência entre treinamento e software e confira seu sentido com os valores 0 e 1.</li><li>Teste as quatro combinações e escolha a melhor alternativa viável.</li></ol></div></article></section><div class="section-kicker">02 / duas variáveis</div><h2 class="section-title" id="grupo-7">Recursos e regras de seleção</h2><p class="group-note">Exercícios 7–10 · kits, compra de pacotes, no máximo uma e exatamente uma.</p><section class="exercise-list"><article class="exercise" id="ex-7"><div class="exercise-head"><h3>Exercício 7 — Kits de papelaria</h3><span class="badge">PI pura · 2 variáveis</span></div><p>Uma papelaria monta kits simples e completos, sempre em unidades inteiras. Há 9 cadernos e 8 canetas disponíveis. Os consumos por kit e os lucros estão na tabela; toda a produção pode ser vendida.</p><div class="table-wrap"><table><caption>Exercício 7 · dados por unidade ou alternativa, conforme o enunciado</caption><thead><tr><th scope="col">Informação</th><th scope="col">Kit simples</th><th scope="col">Kit completo</th><th scope="col">Disponível</th></tr></thead><tbody><tr><th scope="row">Cadernos por kit</th><td>2</td><td>1</td><td>9</td></tr><tr><th scope="row">Canetas por kit</th><td>1</td><td>2</td><td>8</td></tr><tr><th scope="row">Lucro (R$/kit)</th><td>3</td><td>5</td><td>—</td></tr></tbody></table></div><div class="ask"><strong>Pede-se:</strong><ol type="a"><li>Defina as variáveis e formule o modelo inteiro, com todas as restrições e domínios.</li><li>Retire somente a exigência de integralidade e resolva a relaxação linear. Mantenha a não negatividade e todos os demais limites. Registre as quantidades fracionárias e o valor do objetivo.</li><li>Arredonde cada componente do ótimo relaxado para o inteiro mais próximo (em empate, para cima). Confira todas as restrições e calcule o objetivo; se a combinação for inviável, não a use como solução do problema inteiro.</li><li>Encontre a solução inteira ótima por enumeração de poucos casos ou por Branch and Bound. Justifique a otimalidade e compare-a com a relaxação e com o arredondamento.</li><li>Calcule a diferença absoluta entre os valores ótimos contínuo e inteiro. Explique o sentido do limite e interprete a decisão no contexto.</li></ol></div></article><article class="exercise" id="ex-8"><div class="exercise-head"><h3>Exercício 8 — Pacotes de refeições</h3><span class="badge">PI pura · 2 variáveis</span></div><p>Um organizador precisa comprar pelo menos 23 refeições. O fornecedor vende apenas pacotes fechados: pequenos com 5 refeições e grandes com 8. Os custos são os da tabela e há pacotes suficientes. Refeições excedentes podem ser doadas, sem receita nem custo adicional.</p><div class="table-wrap"><table><caption>Exercício 8 · dados por unidade ou alternativa, conforme o enunciado</caption><thead><tr><th scope="col">Informação</th><th scope="col">Pacote pequeno</th><th scope="col">Pacote grande</th></tr></thead><tbody><tr><th scope="row">Refeições por pacote</th><td>5</td><td>8</td></tr><tr><th scope="row">Custo por pacote (R$)</th><td>30</td><td>44</td></tr></tbody></table></div><div class="ask"><strong>Pede-se:</strong><ol type="a"><li>Defina as variáveis e formule o modelo inteiro, com todas as restrições e domínios.</li><li>Retire somente a exigência de integralidade e resolva a relaxação linear. Mantenha a não negatividade e todos os demais limites. Registre as quantidades fracionárias e o valor do objetivo.</li><li>Arredonde cada componente do ótimo relaxado para o inteiro mais próximo (em empate, para cima). Confira todas as restrições e calcule o objetivo; se a combinação for inviável, não a use como solução do problema inteiro.</li><li>Encontre o ótimo inteiro testando de 0 a 3 unidades do tipo maior e completando com o mínimo necessário do menor. Justifique por custo por que quantidades maiores não melhoram o resultado.</li><li>Calcule a diferença absoluta entre os valores ótimos contínuo e inteiro. Explique o sentido do limite e interprete a decisão no contexto.</li></ol></div></article><article class="exercise" id="ex-9"><div class="exercise-head"><h3>Exercício 9 — Uma ação de divulgação</h3><span class="badge">Sim ou não · 2 variáveis</span></div><p>Uma loja pode contratar uma campanha digital e uma ação em uma feira, mas dispõe de equipe para executar no máximo uma delas. O orçamento é de R$ 5 mil. Cada ação é escolhida integralmente, no máximo uma vez, e os benefícios são estimativas monetárias comparáveis.</p><div class="table-wrap"><table><caption>Exercício 9 · dados por unidade ou alternativa, conforme o enunciado</caption><thead><tr><th scope="col">Ação</th><th scope="col">Custo (R$ mil)</th><th scope="col">Benefício (R$ mil)</th></tr></thead><tbody><tr><th scope="row">Campanha digital</th><td>2</td><td>5</td></tr><tr><th scope="row">Ação na feira</th><td>3</td><td>7</td></tr></tbody></table></div><div class="ask"><strong>Pede-se:</strong><ol type="a"><li>Formule o modelo binário com orçamento e limite de no máximo uma ação.</li><li>Teste as quatro combinações e identifique qual é eliminada pelo limite de equipe, mesmo cabendo no orçamento.</li><li>Recomende a ação e informe custo e benefício.</li></ol></div></article><article class="exercise" id="ex-10"><div class="exercise-head"><h3>Exercício 10 — Escolha de uma sala</h3><span class="badge">Sim ou não · 2 variáveis</span></div><p>Um curso precisa alugar exatamente uma de duas salas para realizar um evento. Ambas atendem aos requisitos mínimos. A direção atribuiu notas de adequação de 0 a 10 e dispõe de até R$ 4 mil para o aluguel. Cada sala é uma alternativa completa.</p><div class="table-wrap"><table><caption>Exercício 10 · dados por unidade ou alternativa, conforme o enunciado</caption><thead><tr><th scope="col">Sala</th><th scope="col">Aluguel (R$ mil)</th><th scope="col">Nota de adequação</th></tr></thead><tbody><tr><th scope="row">A</th><td>3</td><td>8</td></tr><tr><th scope="row">B</th><td>4</td><td>9</td></tr></tbody></table></div><div class="ask"><strong>Pede-se:</strong><ol type="a"><li>Represente a decisão com duas variáveis binárias e maximize a nota da sala escolhida.</li><li>Escreva a condição de exatamente uma sala e a restrição de orçamento.</li><li>Teste as combinações e escolha a sala. Explique o que mudaria no modelo se o texto dissesse no máximo uma.</li></ol></div></article></section><div class="section-kicker">03 / duas variáveis</div><h2 class="section-title" id="grupo-11">Planos e comparação de cenários</h2><p class="group-note">Exercícios 11–14 · produção, equipes, orçamento e cobertura mínima.</p><section class="exercise-list"><article class="exercise" id="ex-11"><div class="exercise-head"><h3>Exercício 11 — Canecas e camisetas</h3><span class="badge">PI pura · 2 variáveis</span></div><p>Uma loja personaliza canecas e camisetas, em unidades inteiras. Há 9 horas de impressão e 8 unidades de material para embalagem. Os consumos e lucros por produto estão na tabela. Toda a produção pode ser vendida, sem quantidade mínima.</p><div class="table-wrap"><table><caption>Exercício 11 · dados por unidade ou alternativa, conforme o enunciado</caption><thead><tr><th scope="col">Informação</th><th scope="col">Caneca</th><th scope="col">Camiseta</th><th scope="col">Disponível</th></tr></thead><tbody><tr><th scope="row">Impressão (h/unidade)</th><td>2</td><td>1</td><td>9</td></tr><tr><th scope="row">Material de embalagem (unidades/produto)</th><td>1</td><td>2</td><td>8</td></tr><tr><th scope="row">Lucro (R$/unidade)</th><td>8</td><td>5</td><td>—</td></tr></tbody></table></div><div class="ask"><strong>Pede-se:</strong><ol type="a"><li>Defina as variáveis e formule o modelo inteiro, com todas as restrições e domínios.</li><li>Retire somente a exigência de integralidade e resolva a relaxação linear. Mantenha a não negatividade e todos os demais limites. Registre as quantidades fracionárias e o valor do objetivo.</li><li>Arredonde cada componente do ótimo relaxado para o inteiro mais próximo (em empate, para cima). Confira todas as restrições e calcule o objetivo; se a combinação for inviável, não a use como solução do problema inteiro.</li><li>Encontre a solução inteira ótima por enumeração de poucos casos ou por Branch and Bound. Justifique a otimalidade e compare-a com a relaxação e com o arredondamento.</li><li>Calcule a diferença absoluta entre os valores ótimos contínuo e inteiro. Explique o sentido do limite e interprete a decisão no contexto.</li></ol></div></article><article class="exercise" id="ex-12"><div class="exercise-head"><h3>Exercício 12 — Equipes de apoio</h3><span class="badge">PI pura · 2 variáveis</span></div><p>Um evento precisa disponibilizar ao menos 14 pessoas de apoio durante o mesmo turno. Pode contratar equipes pequenas de 3 pessoas e equipes grandes de 5. Por disponibilidade, pode contratar no máximo 2 equipes grandes. Cada equipe é contratada integralmente, e há equipes pequenas suficientes.</p><div class="table-wrap"><table><caption>Exercício 12 · dados por unidade ou alternativa, conforme o enunciado</caption><thead><tr><th scope="col">Informação</th><th scope="col">Equipe pequena</th><th scope="col">Equipe grande</th></tr></thead><tbody><tr><th scope="row">Pessoas por equipe</th><td>3</td><td>5</td></tr><tr><th scope="row">Custo por turno (R$)</th><td>90</td><td>140</td></tr></tbody></table></div><div class="ask"><strong>Pede-se:</strong><ol type="a"><li>Defina as variáveis e formule o modelo inteiro, com todas as restrições e domínios.</li><li>Retire somente a exigência de integralidade e resolva a relaxação linear. Mantenha a não negatividade e todos os demais limites. Registre as quantidades fracionárias e o valor do objetivo.</li><li>Arredonde cada componente do ótimo relaxado para o inteiro mais próximo (em empate, para cima). Confira todas as restrições e calcule o objetivo; se a combinação for inviável, não a use como solução do problema inteiro.</li><li>Encontre o ótimo inteiro pelos casos de 0, 1 ou 2 equipes grandes, completando com o mínimo de pequenas. Compare com a relaxação e o arredondamento.</li><li>Calcule a diferença absoluta entre os valores ótimos contínuo e inteiro. Explique o sentido do limite e interprete a decisão no contexto.</li></ol></div></article><article class="exercise" id="ex-13"><div class="exercise-head"><h3>Exercício 13 — Melhorias em uma oficina</h3><span class="badge">Sim ou não · 2 variáveis</span></div><p>Uma oficina dispõe de R$ 5 mil para duas melhorias independentes. Cada uma é realizada integralmente, no máximo uma vez. Os ganhos anuais estimados são aditivos. O objetivo é maximizar o ganho anual e não é obrigatório utilizar todo o orçamento.</p><div class="table-wrap"><table><caption>Exercício 13 · dados por unidade ou alternativa, conforme o enunciado</caption><thead><tr><th scope="col">Melhoria</th><th scope="col">Custo (R$ mil)</th><th scope="col">Ganho anual (R$ mil)</th></tr></thead><tbody><tr><th scope="row">A — iluminação</th><td>2</td><td>4</td></tr><tr><th scope="row">B — ferramenta</th><td>3</td><td>6</td></tr></tbody></table></div><div class="ask"><strong>Pede-se:</strong><ol type="a"><li>Formule o modelo binário e teste as quatro combinações.</li><li>Determine a melhor escolha com o orçamento original.</li><li>Reduza apenas o orçamento para R$ 3 mil e resolva novamente. Compare as decisões.</li></ol></div></article><article class="exercise" id="ex-14"><div class="exercise-head"><h3>Exercício 14 — Cobertura de dois setores</h3><span class="badge">Sim ou não · 2 variáveis</span></div><p>Uma empresa precisa contratar pelo menos uma de duas prestadoras para atender um serviço. Qualquer uma delas consegue atender toda a necessidade. Contratar ambas também é permitido, mas o objetivo é minimizar o custo total. Não há orçamento adicional nem outros limites.</p><div class="table-wrap"><table><caption>Exercício 14 · dados por unidade ou alternativa, conforme o enunciado</caption><thead><tr><th scope="col">Prestadora</th><th scope="col">Custo total (R$ mil)</th></tr></thead><tbody><tr><th scope="row">A</th><td>4</td></tr><tr><th scope="row">B</th><td>6</td></tr></tbody></table></div><div class="ask"><strong>Pede-se:</strong><ol type="a"><li>Defina duas variáveis binárias e formule a condição de contratar pelo menos uma.</li><li>Liste as quatro combinações, seus custos e sua viabilidade.</li><li>Determine a contratação de menor custo e explique por que a combinação (0; 0) é proibida.</li></ol></div></article></section><div class="section-kicker">04 / três variáveis</div><h2 class="section-title" id="grupo-15">Poucos casos, mais alternativas</h2><p class="group-note">Exercícios 15–18 · resolver por casos e testar oito combinações.</p><section class="exercise-list"><article class="exercise" id="ex-15"><div class="exercise-head"><h3>Exercício 15 — Três modelos de caixas</h3><span class="badge">PI pura · 3 variáveis</span></div><p>Uma fábrica produz caixas A, B e C, em unidades inteiras. Dispõe de 8 unidades de material e 8 horas de acabamento. A demanda permite vender no máximo uma caixa C. Os consumos e lucros estão na tabela; toda a produção permitida pode ser vendida.</p><div class="table-wrap"><table><caption>Exercício 15 · dados por unidade ou alternativa, conforme o enunciado</caption><thead><tr><th scope="col">Informação</th><th scope="col">A</th><th scope="col">B</th><th scope="col">C</th><th scope="col">Disponível</th></tr></thead><tbody><tr><th scope="row">Material por caixa</th><td>2</td><td>1</td><td>1</td><td>8</td></tr><tr><th scope="row">Acabamento (h/caixa)</th><td>1</td><td>2</td><td>1</td><td>8</td></tr><tr><th scope="row">Lucro (R$/caixa)</th><td>5</td><td>4</td><td>6</td><td>—</td></tr></tbody></table></div><div class="ask"><strong>Pede-se:</strong><ol type="a"><li>Defina as variáveis e formule o modelo inteiro, com todas as restrições e domínios.</li><li>Retire somente a exigência de integralidade e resolva a relaxação linear. Mantenha a não negatividade e todos os demais limites. Registre as quantidades fracionárias e o valor do objetivo.</li><li>Arredonde cada componente do ótimo relaxado para o inteiro mais próximo (em empate, para cima). Confira todas as restrições e calcule o objetivo; se a combinação for inviável, não a use como solução do problema inteiro.</li><li>Encontre o ótimo inteiro separando os casos de 0 ou 1 unidade do terceiro produto. Resolva as duas variáveis restantes em cada caso ou use Branch and Bound. Compare com a relaxação e o arredondamento.</li><li>Calcule a diferença absoluta entre os valores ótimos contínuo e inteiro. Explique o sentido do limite e interprete a decisão no contexto.</li></ol></div></article><article class="exercise" id="ex-16"><div class="exercise-head"><h3>Exercício 16 — Transporte de 17 passageiros</h3><span class="badge">PI pura · 3 variáveis</span></div><p>Uma organização precisa transportar pelo menos 17 passageiros em uma viagem. Pode contratar três tipos de veículos. Os lugares da tabela são todos destinados aos passageiros. Há no máximo um veículo grande e no máximo dois médios; pequenos estão disponíveis em quantidade suficiente. Capacidade ociosa é permitida.</p><div class="table-wrap"><table><caption>Exercício 16 · dados por unidade ou alternativa, conforme o enunciado</caption><thead><tr><th scope="col">Informação</th><th scope="col">Pequeno</th><th scope="col">Médio</th><th scope="col">Grande</th></tr></thead><tbody><tr><th scope="row">Lugares por veículo</th><td>4</td><td>6</td><td>10</td></tr><tr><th scope="row">Custo por viagem (R$)</th><td>50</td><td>68</td><td>105</td></tr></tbody></table></div><div class="ask"><strong>Pede-se:</strong><ol type="a"><li>Defina as variáveis e formule o modelo inteiro, com todas as restrições e domínios.</li><li>Retire somente a exigência de integralidade e resolva a relaxação linear. Mantenha a não negatividade e todos os demais limites. Registre as quantidades fracionárias e o valor do objetivo.</li><li>Arredonde cada componente do ótimo relaxado para o inteiro mais próximo (em empate, para cima). Confira todas as restrições e calcule o objetivo; se a combinação for inviável, não a use como solução do problema inteiro.</li><li>Encontre o ótimo inteiro pelos seis casos: 0 ou 1 unidade do tipo grande e 0, 1 ou 2 do médio. Complete com o mínimo necessário do pequeno. Compare com a relaxação e o arredondamento.</li><li>Calcule a diferença absoluta entre os valores ótimos contínuo e inteiro. Explique o sentido do limite e interprete a decisão no contexto.</li></ol></div></article><article class="exercise" id="ex-17"><div class="exercise-head"><h3>Exercício 17 — Seleção de três projetos</h3><span class="badge">Sim ou não · 3 variáveis</span></div><p>Uma empresa dispõe de R$ 5 mil e considera três projetos independentes. Cada projeto pode ser realizado integralmente uma única vez, ou ser recusado. Os benefícios estimados são aditivos e é permitido deixar recursos sem uso.</p><div class="table-wrap"><table><caption>Exercício 17 · dados por unidade ou alternativa, conforme o enunciado</caption><thead><tr><th scope="col">Projeto</th><th scope="col">Custo (R$ mil)</th><th scope="col">Benefício (R$ mil)</th></tr></thead><tbody><tr><th scope="row">A</th><td>4</td><td>7</td></tr><tr><th scope="row">B</th><td>3</td><td>5</td></tr><tr><th scope="row">C</th><td>2</td><td>4</td></tr></tbody></table></div><div class="ask"><strong>Pede-se:</strong><ol type="a"><li>Defina as três variáveis binárias e formule o modelo.</li><li>Examine as oito combinações possíveis, calculando gasto e benefício.</li><li>Escolha a melhor combinação viável e compare-a com a escolha isolada do projeto de maior benefício individual.</li></ol></div></article><article class="exercise" id="ex-18"><div class="exercise-head"><h3>Exercício 18 — Loja virtual e serviços adicionais</h3><span class="badge">Sim ou não · 3 variáveis</span></div><p>Uma empresa dispõe de R$ 5 mil para implantar uma loja virtual, um módulo de estoque e uma campanha. O módulo de estoque só pode ser escolhido se a loja virtual for implantada. A campanha é independente. Cada ação é contratada uma vez ou não é contratada; os benefícios são adicionais e aditivos.</p><div class="table-wrap"><table><caption>Exercício 18 · dados por unidade ou alternativa, conforme o enunciado</caption><thead><tr><th scope="col">Ação</th><th scope="col">Custo (R$ mil)</th><th scope="col">Benefício adicional (R$ mil)</th></tr></thead><tbody><tr><th scope="row">Loja virtual</th><td>3</td><td>5</td></tr><tr><th scope="row">Módulo de estoque</th><td>2</td><td>4</td></tr><tr><th scope="row">Campanha</th><td>2</td><td>3</td></tr></tbody></table></div><div class="ask"><strong>Pede-se:</strong><ol type="a"><li>Formule o modelo binário na ordem da tabela, com orçamento e dependência.</li><li>Teste as oito combinações e identifique as que falham na dependência ou no orçamento.</li><li>Determine a melhor escolha e informe gasto e benefício.</li></ol></div></article></section><div class="section-kicker">05 / três variáveis</div><h2 class="section-title" id="grupo-19">Consolidação da modelagem</h2><p class="group-note">Exercícios 19–22 · recursos, pacotes, exclusão e cobertura de serviços.</p><section class="exercise-list"><article class="exercise" id="ex-19"><div class="exercise-head"><h3>Exercício 19 — Produção de três brindes</h3><span class="badge">PI pura · 3 variáveis</span></div><p>Uma oficina produz chaveiros, canecas e placas, sempre em unidades inteiras. Dispõe de 8 horas de personalização e 8 unidades de material de embalagem. Pode vender no máximo uma placa. Os dados por produto são os da tabela; toda a produção permitida pode ser vendida.</p><div class="table-wrap"><table><caption>Exercício 19 · dados por unidade ou alternativa, conforme o enunciado</caption><thead><tr><th scope="col">Informação</th><th scope="col">Chaveiro</th><th scope="col">Caneca</th><th scope="col">Placa</th><th scope="col">Disponível</th></tr></thead><tbody><tr><th scope="row">Personalização (h/unidade)</th><td>2</td><td>1</td><td>1</td><td>8</td></tr><tr><th scope="row">Material de embalagem (unidades/produto)</th><td>1</td><td>2</td><td>2</td><td>8</td></tr><tr><th scope="row">Lucro (R$/unidade)</th><td>4</td><td>5</td><td>7</td><td>—</td></tr></tbody></table></div><div class="ask"><strong>Pede-se:</strong><ol type="a"><li>Defina as variáveis e formule o modelo inteiro, com todas as restrições e domínios.</li><li>Retire somente a exigência de integralidade e resolva a relaxação linear. Mantenha a não negatividade e todos os demais limites. Registre as quantidades fracionárias e o valor do objetivo.</li><li>Arredonde cada componente do ótimo relaxado para o inteiro mais próximo (em empate, para cima). Confira todas as restrições e calcule o objetivo; se a combinação for inviável, não a use como solução do problema inteiro.</li><li>Encontre o ótimo inteiro separando os casos de 0 ou 1 unidade do terceiro produto. Resolva as duas variáveis restantes em cada caso ou use Branch and Bound. Compare com a relaxação e o arredondamento.</li><li>Calcule a diferença absoluta entre os valores ótimos contínuo e inteiro. Explique o sentido do limite e interprete a decisão no contexto.</li></ol></div></article><article class="exercise" id="ex-20"><div class="exercise-head"><h3>Exercício 20 — Compra de pacotes de materiais</h3><span class="badge">PI pura · 3 variáveis</span></div><p>Uma escola precisa de pelo menos 19 unidades de um mesmo material e pode comprar pacotes fechados de três tamanhos. O fornecedor dispõe de no máximo 2 pacotes médios e 1 grande; pequenos estão disponíveis em quantidade suficiente. Unidades excedentes podem ser armazenadas sem custo adicional.</p><div class="table-wrap"><table><caption>Exercício 20 · dados por unidade ou alternativa, conforme o enunciado</caption><thead><tr><th scope="col">Informação</th><th scope="col">Pequeno</th><th scope="col">Médio</th><th scope="col">Grande</th></tr></thead><tbody><tr><th scope="row">Unidades por pacote</th><td>4</td><td>7</td><td>10</td></tr><tr><th scope="row">Custo por pacote (R$)</th><td>18</td><td>30</td><td>43</td></tr></tbody></table></div><div class="ask"><strong>Pede-se:</strong><ol type="a"><li>Defina as variáveis e formule o modelo inteiro, com todas as restrições e domínios.</li><li>Retire somente a exigência de integralidade e resolva a relaxação linear. Mantenha a não negatividade e todos os demais limites. Registre as quantidades fracionárias e o valor do objetivo.</li><li>Arredonde cada componente do ótimo relaxado para o inteiro mais próximo (em empate, para cima). Confira todas as restrições e calcule o objetivo; se a combinação for inviável, não a use como solução do problema inteiro.</li><li>Encontre o ótimo inteiro pelos seis casos: 0 ou 1 unidade do tipo grande e 0, 1 ou 2 do médio. Complete com o mínimo necessário do pequeno. Compare com a relaxação e o arredondamento.</li><li>Calcule a diferença absoluta entre os valores ótimos contínuo e inteiro. Explique o sentido do limite e interprete a decisão no contexto.</li></ol></div></article><article class="exercise" id="ex-21"><div class="exercise-head"><h3>Exercício 21 — Duas campanhas e uma pesquisa</h3><span class="badge">Sim ou não · 3 variáveis</span></div><p>Uma empresa dispõe de R$ 5 mil. Pode executar uma campanha digital, uma campanha em rádio e uma pesquisa de mercado. Por restrição de equipe, pode escolher no máximo uma das duas campanhas. A pesquisa é independente. Cada ação é integral e única, e os benefícios estimados são aditivos.</p><div class="table-wrap"><table><caption>Exercício 21 · dados por unidade ou alternativa, conforme o enunciado</caption><thead><tr><th scope="col">Ação</th><th scope="col">Custo (R$ mil)</th><th scope="col">Benefício (R$ mil)</th></tr></thead><tbody><tr><th scope="row">Campanha digital</th><td>3</td><td>7</td></tr><tr><th scope="row">Campanha em rádio</th><td>2</td><td>5</td></tr><tr><th scope="row">Pesquisa</th><td>2</td><td>4</td></tr></tbody></table></div><div class="ask"><strong>Pede-se:</strong><ol type="a"><li>Formule o modelo binário com o limite de orçamento e a exclusão entre campanhas.</li><li>Examine as oito combinações e registre o motivo de cada inviabilidade.</li><li>Escolha a melhor combinação e informe sua sobra de orçamento.</li></ol></div></article><article class="exercise" id="ex-22"><div class="exercise-head"><h3>Exercício 22 — Pacotes de manutenção</h3><span class="badge">Sim ou não · 3 variáveis</span></div><p>Uma escola precisa atender aos serviços elétrico e hidráulico. Pode contratar um pacote só elétrico, um só hidráulico ou um completo, que atende ambos. Cada pacote pode ser contratado no máximo uma vez. É permitido sobrepor coberturas, mas não há benefício adicional por isso. Minimize o gasto, garantindo os dois serviços.</p><div class="table-wrap"><table><caption>Exercício 22 · dados por unidade ou alternativa, conforme o enunciado</caption><thead><tr><th scope="col">Pacote</th><th scope="col">Custo (R$ mil)</th><th scope="col">Elétrico</th><th scope="col">Hidráulico</th></tr></thead><tbody><tr><th scope="row">A — elétrico</th><td>3</td><td>Sim</td><td>Não</td></tr><tr><th scope="row">B — hidráulico</th><td>4</td><td>Não</td><td>Sim</td></tr><tr><th scope="row">C — completo</th><td>6</td><td>Sim</td><td>Sim</td></tr></tbody></table></div><div class="ask"><strong>Pede-se:</strong><ol type="a"><li>Defina três variáveis binárias na ordem da tabela e formule a função de custo.</li><li>Escreva uma restrição de cobertura para cada serviço e teste as oito combinações.</li><li>Determine a contratação de menor custo e compare-a com a compra dos dois pacotes separados.</li></ol></div></article></section><section class="panel source-box" style="margin-top:34px"><h2>Para concluir a análise</h2><p>Uma solução de Programação Inteira precisa respeitar os recursos, as regras lógicas e o domínio das variáveis. Nos problemas de sim ou não, o maior benefício calculado só é admissível se a combinação for viável. Nas compras e contratações, explique por que a capacidade ou a quantidade adquirida pode superar o mínimo necessário.</p><p style="margin-top:10px">Leitura de apoio: <a href="https://claytonjasilva.github.io/progLinear/cap6.html">Capítulo 6 — Programação Inteira</a>. Proposta didática com 22 enunciados originais e valores fictícios.</p></section></main><footer><div class="footer-inner"><span>Programação Linear · Lista de exercícios de Programação Inteira</span><span><a href="https://claytonjasilva.github.io/progLinear/cap6.html">Voltar ao capítulo 6</a></span></div></footer></body></html>
