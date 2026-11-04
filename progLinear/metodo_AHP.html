@@ -1,0 +1,594 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Método AHP</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Literata:opsz,wght@7..72,500;7..72,700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: coluna única de leitura (~70ch), blocos de exemplo e diagramas podem se alargar até 960px */
+:root{
+  --bg:#0f1519; --panel:#151d23; --panel2:#1b252d; --line:#2a3842;
+  --fg:#dfe7ea; --muted:#93a4ad; --accent:#4fc1b0; --accent2:#e3b25b;
+  --bad:#e5786b; --good:#6cc28a;
+  --f-display:"Literata", Georgia, "Times New Roman", serif;
+  --f-body:"IBM Plex Sans", "Segoe UI", system-ui, sans-serif;
+  --f-mono:"IBM Plex Mono", ui-monospace, Consolas, monospace;
+  color-scheme:dark;
+}
+@media (prefers-color-scheme: light){ :root:not([data-theme="dark"]){
+  --bg:#f6f8f8; --panel:#ffffff; --panel2:#eef3f3; --line:#d3dddf;
+  --fg:#18252b; --muted:#566870; --accent:#137d70; --accent2:#a8700f;
+  --bad:#b8402f; --good:#2c7d4b; color-scheme:light }}
+:root[data-theme="light"]{
+  --bg:#f6f8f8; --panel:#ffffff; --panel2:#eef3f3; --line:#d3dddf;
+  --fg:#18252b; --muted:#566870; --accent:#137d70; --accent2:#a8700f;
+  --bad:#b8402f; --good:#2c7d4b; color-scheme:light }
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.65 var(--f-body)}
+.wrap{max-width:960px;margin:0 auto;padding-block:40px 80px;
+  padding-left:max(16px, env(safe-area-inset-left, 0px));padding-right:max(16px, env(safe-area-inset-right, 0px))}
+.prose{max-width:70ch}
+header{border-bottom:1px solid var(--line);padding-bottom:28px;margin-bottom:12px}
+.eyebrow{font:500 12px/1 var(--f-mono);letter-spacing:.12em;text-transform:uppercase;color:var(--accent)}
+h1{font:700 clamp(2rem,5vw,3rem)/1.1 var(--f-display);margin:14px 0 12px;text-wrap:balance}
+h2{font:700 1.6rem/1.25 var(--f-display);margin:56px 0 12px;text-wrap:balance}
+h2 .n{font:500 .9rem var(--f-mono);color:var(--accent);margin-right:10px;vertical-align:middle}
+h3{font:600 1.1rem/1.3 var(--f-body);margin:28px 0 8px}
+p{margin:0 0 14px}
+.lead{font-size:1.12rem;color:var(--muted)}
+a{color:var(--accent)}
+.cite{color:var(--muted)} span.cite{white-space:nowrap}
+code,.mono{font-family:var(--f-mono);font-size:.92em}
+.box{background:var(--panel);border:1px solid var(--line);border-radius:6px;padding:18px 20px;margin:18px 0}
+.box.key{border-left:3px solid var(--accent)}
+.box.warn{border-left:3px solid var(--accent2)}
+.box h3{margin-top:0}
+.tbl{overflow-x:auto;margin:14px 0}
+table{border-collapse:collapse;font-size:.95rem;min-width:100%}
+th,td{border-bottom:1px solid var(--line);padding:7px 10px;text-align:left;vertical-align:top}
+th{font-weight:600;color:var(--muted);font-size:.82rem;letter-spacing:.04em;text-transform:uppercase}
+td.num,th.num{text-align:right;font-family:var(--f-mono);font-variant-numeric:tabular-nums;white-space:nowrap}
+.mx td{font-family:var(--f-mono);text-align:center;font-variant-numeric:tabular-nums}
+.mx th{text-align:center}
+.hl{color:var(--bad);font-weight:600}
+.ok{color:var(--good);font-weight:600}
+.grid2{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px}
+.grid2>*{min-width:0}
+.formula{font:500 1.05rem var(--f-mono);background:var(--panel2);padding:10px 14px;border-radius:4px;display:inline-block;margin:4px 0 12px}
+figure{margin:22px 0}
+figcaption{font-size:.88rem;color:var(--muted);margin-top:8px}
+.diagram{overflow-x:auto;background:var(--panel);border:1px solid var(--line);border-radius:6px;padding:10px}
+.diagram svg{display:block;min-width:720px;width:100%;height:auto}
+ol.steps{counter-reset:s;list-style:none;padding:0;margin:18px 0}
+ol.steps>li{counter-increment:s;position:relative;padding:0 0 18px 52px;border-left:1px solid var(--line);margin-left:16px}
+ol.steps>li:last-child{border-left-color:transparent}
+ol.steps>li::before{content:counter(s);position:absolute;left:-16px;top:-2px;width:32px;height:32px;border-radius:50%;
+  background:var(--panel2);border:1px solid var(--accent);color:var(--accent);font:600 .9rem/30px var(--f-mono);text-align:center}
+ol.steps strong{display:block;margin-bottom:2px}
+.bars{display:grid;gap:8px;margin:12px 0}
+.bar{display:grid;grid-template-columns:110px 1fr 64px;gap:10px;align-items:center}
+.bar .t{height:14px;background:var(--panel2);border-radius:3px;overflow:hidden}
+.bar .t i{display:block;height:100%;background:var(--accent)}
+.bar .v{font-family:var(--f-mono);text-align:right;font-variant-numeric:tabular-nums}
+.fib{display:flex;flex-wrap:wrap;gap:6px;margin:10px 0}
+.fib span{font:500 .9rem var(--f-mono);background:var(--panel2);border:1px solid var(--line);border-radius:4px;padding:3px 8px}
+.calc{display:grid;gap:10px}
+.calc label{display:grid;grid-template-columns:minmax(0,1fr) 150px;gap:10px;align-items:center}
+select{font:500 .95rem var(--f-mono);background:var(--panel2);color:var(--fg);border:1px solid var(--line);border-radius:4px;padding:6px}
+select:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.out{font-family:var(--f-mono);font-variant-numeric:tabular-nums}
+.refs p{overflow-wrap:anywhere;padding-left:2em;text-indent:-2em;font-size:.95rem}
+.stepper{background:var(--panel);border:1px solid var(--line);border-radius:6px;padding:16px 20px 20px;margin:20px 0}
+.stepnav{display:flex;flex-wrap:wrap;gap:10px;align-items:center;justify-content:space-between;margin-bottom:12px}
+.pills{display:flex;flex-wrap:wrap;gap:6px}
+.pills button,.stepnav .nav{font:500 .85rem var(--f-mono);background:var(--panel2);color:var(--fg);border:1px solid var(--line);border-radius:4px;padding:6px 10px;cursor:pointer}
+.pills button[aria-current="step"]{background:var(--accent);color:var(--bg);border-color:var(--accent)}
+.pills button.done{border-color:var(--accent);color:var(--accent)}
+.stepnav .nav:disabled{opacity:.4;cursor:default}
+.stepnav button:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.track{display:flex;flex-wrap:wrap;gap:6px;margin:0 0 14px;padding-bottom:12px;border-bottom:1px solid var(--line)}
+.tk{font:400 .78rem var(--f-mono);color:var(--muted);background:var(--panel2);border-radius:3px;padding:3px 7px}
+.tk b{color:var(--accent);font-weight:500}
+.js .tk.off{display:none}
+.step{max-width:78ch}
+.step+.step{margin-top:28px;padding-top:20px;border-top:1px dashed var(--line)}
+.js .step+.step{margin-top:0;padding-top:0;border-top:0}
+.sh{font:700 1.15rem/1.3 var(--f-display);margin:0 0 10px}
+.sn{display:inline-block;font:500 .78rem var(--f-mono);color:var(--accent);border:1px solid var(--accent);border-radius:3px;padding:1px 6px;margin-right:10px;vertical-align:2px}
+.mini{font-size:.9rem;margin:4px 0}
+td.new{color:var(--accent2);font-weight:600}
+tr.sum th,tr.sum td{border-top:1.5px solid var(--muted)}
+@media (prefers-reduced-motion:no-preference){.js .step:not([hidden]){animation:fin .25s ease-out}}
+@keyframes fin{from{opacity:.4;transform:translateY(4px)}to{opacity:1;transform:none}}
+footer{margin-top:60px;border-top:1px solid var(--line);padding-top:16px;color:var(--muted);font-size:.85rem}
+@media (max-width:560px){ .calc label{grid-template-columns:1fr} .bar{grid-template-columns:80px 1fr 56px} }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <div class="eyebrow">Apoio multicritério à decisão</div>
+  <h1>Método AHP — Analytic Hierarchy Process</h1>
+  <p class="lead prose">Como transformar julgamentos subjetivos de especialistas em pesos numéricos defensáveis, verificar se esses julgamentos são coerentes e chegar a uma ordenação final das alternativas.</p>
+  <p class="cite">Prof. Clayton J. A. Silva · Material de apoio baseado em Rosas e Silva (2007) e Ribeiro e Alves (2016)</p>
+</header>
+
+<!-- 1 -->
+<section class="prose">
+<h2><span class="n">1</span>A ideia central</h2>
+<p>O AHP foi criado por Thomas L. Saaty na década de 1970. A ideia é reduzir um problema de decisão complexo a uma <strong>sequência de comparações aos pares</strong>. Em vez de pedir a alguém que dê uma nota absoluta para “segurança” ou “facilidade de manutenção”, o método pergunta apenas: <em>entre estes dois, qual é mais importante, e quanto?</em> <span class="cite">(ROSAS E SILVA, 2007)</span>.</p>
+<p>Segundo Saaty, o método reproduz o modo natural de funcionamento da mente: diante de muitos elementos, agrupamos por propriedades comuns, formamos níveis e, depois, sintetizamos. <strong>Decomposição e síntese</strong> <span class="cite">(SAATY, 1991 apud ROSAS E SILVA, 2007)</span>.</p>
+<p>A aplicação tem cinco fases <span class="cite">(RIBEIRO; ALVES, 2016)</span>:</p>
+<ol>
+  <li>estruturar o problema em uma hierarquia;</li>
+  <li>coletar os julgamentos (comparações paritárias);</li>
+  <li>calcular as prioridades;</li>
+  <li>verificar a consistência dos julgamentos;</li>
+  <li>calcular as prioridades globais das alternativas.</li>
+</ol>
+</section>
+
+<!-- 2 -->
+<section>
+<div class="prose">
+<h2><span class="n">2</span>A árvore hierárquica</h2>
+<p>No topo fica o <strong>objetivo</strong>. Abaixo, os <strong>critérios</strong>, que podem se abrir em <strong>subcritérios</strong>. Na base, as <strong>alternativas</strong>. A árvore não precisa ser simétrica: cada critério se decompõe apenas o necessário. No exemplo abaixo, “Desempenho técnico” tem três subcritérios, “Custo” tem dois e “Prazo” nenhum.</p>
+<p>A regra prática para montar a hierarquia é perguntar: <em>posso comparar os elementos de um nível usando o elemento do nível de cima como critério?</em> <span class="cite">(ROSAS E SILVA, 2007)</span>. Também convém limitar cada grupo a <strong>7 ± 2 elementos</strong>, pois a precisão das comparações cai à medida que o grupo cresce <span class="cite">(MILLER, 1956 apud RIBEIRO; ALVES, 2016)</span>.</p>
+</div>
+
+<figure>
+<div class="diagram">
+<svg viewBox="0 0 900 430" role="img" aria-label="Árvore hierárquica assimétrica do exemplo">
+  <style>
+    .nd{fill:var(--panel2);stroke:var(--line);stroke-width:1.2}
+    .nd.goal{stroke:var(--accent);stroke-width:2}
+    .nd.leaf{stroke:var(--accent2)}
+    .nd.alt{fill:var(--panel);stroke:var(--muted)}
+    .tx{fill:var(--fg);font:500 13px var(--f-body);text-anchor:middle}
+    .wt{fill:var(--accent);font:500 11.5px var(--f-mono);text-anchor:middle}
+    .lv{fill:var(--muted);font:500 11px var(--f-mono);letter-spacing:.08em}
+    .ln{stroke:var(--line);stroke-width:1.3;fill:none}
+    .lnA{stroke:var(--muted);stroke-width:.8;fill:none;opacity:.45}
+  </style>
+  <text class="lv" x="10" y="38">NÍVEL 0 · OBJETIVO</text>
+  <text class="lv" x="10" y="128">NÍVEL 1 · CRITÉRIOS</text>
+  <text class="lv" x="10" y="232">NÍVEL 2 · SUBCRITÉRIOS</text>
+  <text class="lv" x="10" y="388">ALTERNATIVAS</text>
+
+  <!-- links goal->crit -->
+  <path class="ln" d="M450 62 L250 104 M450 62 L590 104 M450 62 L790 104"/>
+  <!-- crit->sub -->
+  <path class="ln" d="M250 144 L130 206 M250 144 L250 206 M250 144 L370 206 M590 144 L520 206 M590 144 L660 206"/>
+  <!-- leaves -> alternatives (todas as folhas avaliam todas as alternativas) -->
+  <g class="lnA">
+    <path d="M130 246 L300 362 M130 246 L450 362 M130 246 L600 362"/>
+    <path d="M250 246 L300 362 M250 246 L450 362 M250 246 L600 362"/>
+    <path d="M370 246 L300 362 M370 246 L450 362 M370 246 L600 362"/>
+    <path d="M520 246 L300 362 M520 246 L450 362 M520 246 L600 362"/>
+    <path d="M660 246 L300 362 M660 246 L450 362 M660 246 L600 362"/>
+    <path d="M790 144 L300 362 M790 144 L450 362 M790 144 L600 362"/>
+  </g>
+
+  <rect class="nd goal" x="300" y="18" width="300" height="44" rx="6"/>
+  <text class="tx" x="450" y="45">Selecionar a solução de comunicações</text>
+
+  <rect class="nd" x="165" y="104" width="170" height="40" rx="5"/><text class="tx" x="250" y="122">Desempenho técnico</text><text class="wt" x="250" y="138">0,581</text>
+  <rect class="nd" x="525" y="104" width="130" height="40" rx="5"/><text class="tx" x="590" y="122">Custo</text><text class="wt" x="590" y="138">0,309</text>
+  <rect class="nd leaf" x="735" y="104" width="110" height="40" rx="5"/><text class="tx" x="790" y="122">Prazo</text><text class="wt" x="790" y="138">0,110</text>
+
+  <rect class="nd leaf" x="70" y="206" width="120" height="40" rx="5"/><text class="tx" x="130" y="224">Cobertura</text><text class="wt" x="130" y="240">0,648 → 0,376</text>
+  <rect class="nd leaf" x="195" y="206" width="110" height="40" rx="5"/><text class="tx" x="250" y="224">Interoperab.</text><text class="wt" x="250" y="240">0,230 → 0,134</text>
+  <rect class="nd leaf" x="315" y="206" width="110" height="40" rx="5"/><text class="tx" x="370" y="224">Capacidade</text><text class="wt" x="370" y="240">0,122 → 0,071</text>
+  <rect class="nd leaf" x="460" y="206" width="120" height="40" rx="5"/><text class="tx" x="520" y="224">Aquisição</text><text class="wt" x="520" y="240">0,250 → 0,077</text>
+  <rect class="nd leaf" x="595" y="206" width="130" height="40" rx="5"/><text class="tx" x="660" y="224">Ciclo de vida</text><text class="wt" x="660" y="240">0,750 → 0,232</text>
+
+  <rect class="nd alt" x="250" y="362" width="100" height="40" rx="20"/><text class="tx" x="300" y="387">Solução A</text>
+  <rect class="nd alt" x="400" y="362" width="100" height="40" rx="20"/><text class="tx" x="450" y="387">Solução B</text>
+  <rect class="nd alt" x="550" y="362" width="100" height="40" rx="20"/><text class="tx" x="600" y="387">Solução C</text>
+</svg>
+</div>
+<figcaption>Figura 1 – Hierarquia assimétrica do exemplo deste material. Os números indicam a prioridade local (relativa ao nó “pai”) e, após a seta, a prioridade global (relativa ao objetivo). As folhas (contorno dourado) são os pontos em que as alternativas são avaliadas. Fonte: elaborado pelo autor, com base no procedimento de Ribeiro e Alves (2016).</figcaption>
+</figure>
+</section>
+
+<!-- 3 -->
+<section class="prose">
+<h2><span class="n">3</span>A escala de Saaty: do qualitativo ao quantitativo</h2>
+<p>O decisor primeiro emite um julgamento <strong>verbal</strong> e só depois o converte em número <span class="cite">(RIBEIRO; ALVES, 2016)</span>. A escala fundamental vai de 1 a 9:</p>
+<div class="tbl"><table>
+<thead><tr><th class="num">Valor</th><th>Definição</th><th>Explicação</th></tr></thead>
+<tbody>
+<tr><td class="num">1</td><td>Mesma importância</td><td>Os dois elementos contribuem igualmente para o objetivo.</td></tr>
+<tr><td class="num">3</td><td>Importância pequena</td><td>Experiência e julgamento favorecem levemente um elemento.</td></tr>
+<tr><td class="num">5</td><td>Importância grande ou essencial</td><td>Experiência e julgamento favorecem fortemente um elemento.</td></tr>
+<tr><td class="num">7</td><td>Importância muito grande</td><td>A dominância de um elemento é demonstrada na prática.</td></tr>
+<tr><td class="num">9</td><td>Importância absoluta</td><td>A evidência favorece um elemento com o mais alto grau de certeza.</td></tr>
+<tr><td class="num">2, 4, 6, 8</td><td>Valores intermediários</td><td>Usados como compromisso entre duas definições.</td></tr>
+<tr><td class="num">1/x</td><td>Recíprocos</td><td>Se <i>i</i> recebe <i>x</i> em relação a <i>j</i>, então <i>j</i> recebe 1/<i>x</i> em relação a <i>i</i>.</td></tr>
+</tbody></table></div>
+<p class="cite">Quadro 1 – Escala fundamental. Fonte: Saaty (1991) apud Rosas e Silva (2007).</p>
+
+<h3>Por que essa escala funciona para julgamentos subjetivos?</h3>
+<p>A justificativa vem da psicofísica. A <strong>lei de Weber-Fechner</strong> diz que percebemos diferenças de estímulo de forma <em>proporcional</em>, e não absoluta: notamos a diferença entre 1 kg e 2 kg, mas não entre 50 kg e 51 kg. Saaty usou esse princípio para propor uma escala de <strong>razões</strong>: a pergunta “A é quantas vezes mais importante que B?” corresponde ao modo como de fato percebemos intensidades <span class="cite">(SAATY, 1980)</span>.</p>
+<p>Há ainda um limite cognitivo: conseguimos distinguir com segurança cerca de 7 ± 2 níveis de intensidade <span class="cite">(MILLER, 1956)</span>. Cinco âncoras verbais (1, 3, 5, 7, 9) e quatro valores intermediários ficam dentro desse limite. Uma escala de 0 a 100 daria uma falsa precisão: ninguém distingue com segurança “importância 63” de “importância 67”.</p>
+<p>Por fim, a reciprocidade (<i>a<sub>ji</sub></i> = 1/<i>a<sub>ij</sub></i>) garante que a escala é de razão. Isso permite somar e multiplicar os resultados de forma legítima, o que não seria válido com uma simples escala ordinal (1º, 2º, 3º).</p>
+
+<div class="box key">
+<h3>A analogia com a sequência de Fibonacci</h3>
+<p>Na sequência de Fibonacci, cada termo é a soma dos dois anteriores:</p>
+<div class="fib"><span>1</span><span>2</span><span>3</span><span>5</span><span>8</span><span>13</span><span>21</span></div>
+<p>A razão entre termos consecutivos converge para o número de ouro, φ ≈ 1,618 (2/1 = 2; 3/2 = 1,5; 5/3 ≈ 1,67; 8/5 = 1,6; 13/8 ≈ 1,63…). Cada degrau é, portanto, um <strong>salto proporcional aproximadamente constante</strong>, exatamente o tipo de progressão que a lei de Weber-Fechner associa à percepção humana. É por isso que equipes ágeis usam 1, 2, 3, 5, 8, 13 para estimar esforço: os números “se afastam” na mesma medida em que nossa incerteza cresce.</p>
+<p>A lição para o AHP é a mesma: <strong>a escolha dos números importa</strong>. Uma boa escala oferece degraus que o avaliador consegue distinguir e que guardam relação de razão entre si. Assim, a conversão do julgamento qualitativo (“bem mais importante”) em valor quantitativo (5) fica mais fiel ao que o especialista realmente pensa.</p>
+</div>
+</section>
+
+<!-- 4 -->
+<section class="prose">
+<h2><span class="n">4</span>Comparações paritárias e o embasamento matemático</h2>
+<p>Os elementos de um mesmo nível, sob um mesmo “pai”, são organizados em uma matriz quadrada. Cada célula <i>a<sub>ij</sub></i> registra quanto o elemento da linha <i>i</i> domina o da coluna <i>j</i>. A diagonal vale 1 e a metade inferior é o recíproco da superior. Para <i>n</i> elementos, bastam <strong>n(n − 1)/2</strong> julgamentos <span class="cite">(RIBEIRO; ALVES, 2016)</span>.</p>
+<div class="grid2">
+<div class="tbl"><table class="mx">
+<thead><tr><th>Critérios</th><th>Desemp.</th><th>Custo</th><th>Prazo</th></tr></thead>
+<tbody>
+<tr><th>Desemp.</th><td>1</td><td>2</td><td>5</td></tr>
+<tr><th>Custo</th><td>1/2</td><td>1</td><td>3</td></tr>
+<tr><th>Prazo</th><td>1/5</td><td>1/3</td><td>1</td></tr>
+</tbody></table></div>
+<div>
+<p style="margin-top:6px">Lê-se: “Desempenho é <b>2 vezes</b> mais importante que Custo e <b>5 vezes</b> mais importante que Prazo”. São 3 julgamentos para uma matriz 3 × 3.</p>
+</div>
+</div>
+
+<h3>O que está por trás do cálculo</h3>
+<p>Se os pesos verdadeiros fossem conhecidos, <i>w</i><sub>1</sub>, <i>w</i><sub>2</sub>, …, <i>w<sub>n</sub></i>, cada célula seria exatamente a razão <i>a<sub>ij</sub></i> = <i>w<sub>i</sub></i>/<i>w<sub>j</sub></i>. Uma matriz assim, multiplicada pelo vetor de pesos, devolve o próprio vetor multiplicado por <i>n</i>:</p>
+<div class="formula">A · w = n · w</div>
+<p>Ou seja, o vetor de pesos é o <strong>autovetor principal</strong> da matriz, e <i>n</i> é seu autovalor máximo. Na prática, os julgamentos humanos não são razões perfeitas. Saaty mostrou que, para uma matriz recíproca positiva, o autovetor principal continua sendo a melhor estimativa dos pesos, e o autovalor máximo <i>λ</i><sub>max</sub> fica sempre ≥ <i>n</i>. Quanto mais <i>λ</i><sub>max</sub> se afasta de <i>n</i>, mais incoerentes são os julgamentos <span class="cite">(SAATY, 1991 apud ROSAS E SILVA, 2007)</span>.</p>
+<p>Esse é o embasamento: <strong>o autovetor dá a ordem de prioridade; o autovalor mede a consistência</strong>. Para uso em sala ou em planilha, Ribeiro e Alves (2016) adotam uma aproximação simples, apresentada na seção 7, que produz praticamente o mesmo resultado quando os julgamentos são consistentes.</p>
+</section>
+
+<!-- 5 -->
+<section>
+<div class="prose">
+<h2><span class="n">5</span>Inconsistência de julgamentos</h2>
+<p>Como existem comparações redundantes, é possível testar a coerência. Se A = 2B e B = 3C, a lógica exige A = 6C. Saaty propõe dois índices:</p>
+<div class="formula">IC = (λ<sub>max</sub> − n) / (n − 1)  ·  RC = IC / IR</div>
+<p>O índice randômico <b>IR</b> é a consistência média de matrizes recíprocas geradas ao acaso. Se <b>RC ≤ 0,10</b>, a matriz é aceita; caso contrário, os julgamentos devem ser revistos <span class="cite">(SAATY, 1991 apud RIBEIRO; ALVES, 2016)</span>. A tolerância de inconsistência não é uma falha do método, e sim um retrato da realidade <span class="cite">(GRANDZOL, 2005 apud ROSAS E SILVA, 2007)</span>.</p>
+</div>
+<div class="tbl"><table class="mx">
+<thead><tr><th>n</th><th>1</th><th>2</th><th>3</th><th>4</th><th>5</th><th>6</th><th>7</th><th>8</th><th>9</th><th>10</th></tr></thead>
+<tbody><tr><th>IR</th><td>0,00</td><td>0,00</td><td>0,58</td><td>0,90</td><td>1,12</td><td>1,24</td><td>1,32</td><td>1,41</td><td>1,45</td><td>1,49</td></tr></tbody>
+</table></div>
+<p class="cite">Quadro 2 – Índice randômico médio. Fonte: Saaty (1991) apud Rosas e Silva (2007).</p>
+
+<h3>Três exemplos</h3>
+<div class="grid2">
+  <div class="box">
+    <h3>a) Consistente</h3>
+    <div class="tbl"><table class="mx"><tbody>
+      <tr><td>1</td><td>2</td><td>4</td></tr>
+      <tr><td>1/2</td><td>1</td><td>2</td></tr>
+      <tr><td>1/4</td><td>1/2</td><td>1</td></tr></tbody></table></div>
+    <p>A = 2B, B = 2C e A = 4C. Tudo fecha.<br>Pesos: 0,571 · 0,286 · 0,143<br>RC = <span class="ok">0,00</span></p>
+  </div>
+  <div class="box">
+    <h3>b) Inconsistência moderada</h3>
+    <div class="tbl"><table class="mx"><tbody>
+      <tr><td>1</td><td>5</td><td>6</td><td>7</td></tr>
+      <tr><td>1/5</td><td>1</td><td class="hl">4</td><td>6</td></tr>
+      <tr><td>1/6</td><td>1/4</td><td>1</td><td>4</td></tr>
+      <tr><td>1/7</td><td>1/6</td><td>1/4</td><td>1</td></tr></tbody></table></div>
+    <p>Matriz “Iluminação” de Rosas e Silva (2007). Se A = 5B e A = 6C, então B/C = 6/5 = 1,2, mas o avaliador registrou <b>4</b>.<br>RC = <span class="hl">0,24</span> → rever.</p>
+  </div>
+  <div class="box">
+    <h3>c) Intransitividade</h3>
+    <div class="tbl"><table class="mx"><tbody>
+      <tr><td>1</td><td>3</td><td class="hl">1/3</td></tr>
+      <tr><td>1/3</td><td>1</td><td>3</td></tr>
+      <tr><td class="hl">3</td><td>1/3</td><td>1</td></tr></tbody></table></div>
+    <p>A &gt; B, B &gt; C, mas C &gt; A: um ciclo. Os pesos saem iguais (0,333 cada), o que esconde o conflito. Só o índice o revela.<br>RC = <span class="hl">≈ 1,15</span> → julgamento inválido.</p>
+  </div>
+</div>
+
+<div class="box key">
+  <h3>Experimente: três critérios</h3>
+  <p class="prose">Escolha os julgamentos e observe como os pesos e a razão de consistência reagem. Tente fixar A×B = 2 e A×C = 4 e depois varie B×C: o valor coerente é 2.</p>
+  <div class="calc">
+    <label for="ab">Critério A em relação a B<select id="ab"></select></label>
+    <label for="ac">Critério A em relação a C<select id="ac"></select></label>
+    <label for="bc">Critério B em relação a C<select id="bc"></select></label>
+  </div>
+  <div class="bars" id="cbars"></div>
+  <p class="out" id="cout"></p>
+</div>
+</section>
+
+<!-- 6 -->
+<section class="prose">
+<h2><span class="n">6</span>Julgamento em grupo e inteligência coletiva</h2>
+<p>Um único especialista carrega seus vieses. Quando várias pessoas julgam o mesmo par de forma independente, os erros individuais tendem a se compensar e o resultado converge para uma espécie de <strong>inteligência coletiva</strong> <span class="cite">(SUROWIECKI, 2004)</span>. Isso só funciona com diversidade de visões, independência inicial e uma boa forma de agregar.</p>
+<h3>Como agregar</h3>
+<p>No AHP, os julgamentos individuais de um mesmo par são combinados pela <strong>média geométrica</strong>, e não pela aritmética. Só a média geométrica preserva a reciprocidade da matriz <span class="cite">(ACZÉL; SAATY, 1983)</span>.</p>
+<div class="box">
+<p style="margin:0">Três especialistas compararam Desempenho × Custo: <span class="mono">1, 3 e 5</span>.<br>
+Média geométrica: <span class="mono">∛(1 × 3 × 5) ≈ 2,47</span>; o par inverso fica <span class="mono">∛(1 × 1/3 × 1/5) ≈ 1/2,47</span>. ✔<br>
+Média aritmética: <span class="mono">3,0</span>; mas a média de 1, 1/3 e 1/5 é <span class="mono">0,51 ≠ 1/3</span>. ✘</p>
+</div>
+<h3>Refinar antes de agregar: o método Delphi</h3>
+<p>A convergência melhora muito quando o grupo <strong>explica e refina os critérios</strong> antes de julgá-los. O método Delphi organiza isso em rodadas <span class="cite">(MARTINO, 1993)</span>:</p>
+<ol>
+  <li>cada especialista responde de forma anônima e justifica suas respostas;</li>
+  <li>um coordenador consolida os resultados e as justificativas e os devolve ao grupo;</li>
+  <li>cada um revê sua posição à luz dos argumentos dos demais;</li>
+  <li>repete-se até a dispersão ficar aceitável.</li>
+</ol>
+<p>Ribeiro e Alves (2016) seguiram uma lógica semelhante. Uma comissão de cinco membros discutiu e padronizou os critérios. Os julgamentos foram registrados por consenso em uma planilha que calculava a razão de consistência na hora, e os gestores revisavam a decisão sempre que surgia inconsistência. Os autores concluem que a discussão levou a “um entendimento comum e maior consistência na avaliação” e aumentou a credibilidade do processo.</p>
+<div class="box warn"><p style="margin:0"><b>Atenção:</b> a explicação dos critérios é tão importante quanto os números. Se cada avaliador entende “custo” de um jeito (aquisição? ciclo de vida?), a média geométrica apenas mistura perguntas diferentes. A hierarquia bem definida é o que dá sentido à agregação.</p></div>
+</section>
+
+<!-- 7 -->
+<section>
+<div class="prose">
+<h2><span class="n">7</span>Sequência simplificada: dos julgamentos à nota final</h2>
+<p>A seguir, o encadeamento completo, passo a passo, aplicado ao exemplo da Figura 1. Use os botões para avançar: a faixa no alto do painel acumula o que já foi calculado, e os valores novos de cada passo aparecem em destaque. O cálculo dos pesos usa o procedimento aproximado adotado por Ribeiro e Alves (2016): normalizar as colunas e tirar a média das linhas.</p>
+<div class="box key"><p style="margin:0"><b>Terminologia.</b> <b>Prioridade local (relativa)</b>: peso de um elemento em relação ao seu “pai” imediato; os irmãos somam 1. <b>Prioridade global (absoluta)</b>: peso em relação ao objetivo; todas as folhas somam 1. <b>Mensuração absoluta</b>: as alternativas recebem um conceito (Excelente, Bom…) em cada folha, em vez de serem comparadas entre si <span class="cite">(RIBEIRO; ALVES, 2016)</span>.</p></div>
+</div>
+
+<div class="stepper" id="stepper">
+<nav class="stepnav" aria-label="Passos do exemplo">
+  <button type="button" class="nav prev" id="sprev">← Anterior</button>
+  <div class="pills" id="spills"></div>
+  <button type="button" class="nav next" id="snext">Próximo →</button>
+</nav>
+<div class="track" aria-label="O que já foi calculado">
+  <span class="tk" data-from="3">Critérios: <b>D 0,581 · C 0,309 · P 0,110</b></span>
+  <span class="tk" data-from="4">RC critérios <b>0,004 ✔</b></span>
+  <span class="tk" data-from="5">Subcritérios: <b>0,648 · 0,230 · 0,122 | 0,25 · 0,75</b></span>
+  <span class="tk" data-from="6">Folhas (globais): <b>0,376 · 0,134 · 0,071 · 0,077 · 0,232 · 0,110</b></span>
+  <span class="tk" data-from="7">Conceitos: <b>E 1 · B 0,444 · R 0,203 · F 0,089</b></span>
+  <span class="tk" data-from="8">Notas: <b>A 0,570 · C 0,525 · B 0,475</b></span>
+</div>
+
+<article class="step" data-step="1">
+  <p class="sh"><span class="sn">Passo 1</span>Montar a matriz e somar as colunas</p>
+  <p>O ponto de partida é a matriz de critérios da seção 4: três julgamentos (Desempenho × Custo = 2; Desempenho × Prazo = 5; Custo × Prazo = 3) e seus recíprocos. Soma-se cada coluna.</p>
+  <div class="tbl"><table class="mx">
+    <thead><tr><th></th><th>Desemp.</th><th>Custo</th><th>Prazo</th></tr></thead>
+    <tbody>
+      <tr><th>Desemp.</th><td>1</td><td>2</td><td>5</td></tr>
+      <tr><th>Custo</th><td>1/2</td><td>1</td><td>3</td></tr>
+      <tr><th>Prazo</th><td>1/5</td><td>1/3</td><td>1</td></tr>
+      <tr class="sum"><th>Σ coluna</th><td class="new">1,700</td><td class="new">3,333</td><td class="new">9,000</td></tr>
+    </tbody></table></div>
+</article>
+
+<article class="step" data-step="2">
+  <p class="sh"><span class="sn">Passo 2</span>Normalizar as colunas</p>
+  <p>Cada célula é dividida pela soma da sua coluna. Ex.: 1 ÷ 1,700 = 0,588; 2 ÷ 3,333 = 0,600. Agora cada coluna soma 1 e pode ser lida como “a distribuição de importância vista a partir daquele critério”.</p>
+  <div class="tbl"><table class="mx">
+    <thead><tr><th></th><th>Desemp.</th><th>Custo</th><th>Prazo</th></tr></thead>
+    <tbody>
+      <tr><th>Desemp.</th><td class="new">0,588</td><td class="new">0,600</td><td class="new">0,556</td></tr>
+      <tr><th>Custo</th><td class="new">0,294</td><td class="new">0,300</td><td class="new">0,333</td></tr>
+      <tr><th>Prazo</th><td class="new">0,118</td><td class="new">0,100</td><td class="new">0,111</td></tr>
+      <tr class="sum"><th>Σ coluna</th><td>1,000</td><td>1,000</td><td>1,000</td></tr>
+    </tbody></table></div>
+  <p class="cite">Repare que as três colunas são quase iguais. Isso já indica julgamentos coerentes: se fossem perfeitamente consistentes, seriam idênticas.</p>
+</article>
+
+<article class="step" data-step="3">
+  <p class="sh"><span class="sn">Passo 3</span>Média de cada linha → prioridade local</p>
+  <p>A média aritmética de cada linha da matriz normalizada é o peso do critério em relação ao objetivo (seu “pai”).</p>
+  <div class="tbl"><table class="mx">
+    <thead><tr><th></th><th>Desemp.</th><th>Custo</th><th>Prazo</th><th>Média = peso</th></tr></thead>
+    <tbody>
+      <tr><th>Desemp.</th><td>0,588</td><td>0,600</td><td>0,556</td><td class="new">0,581</td></tr>
+      <tr><th>Custo</th><td>0,294</td><td>0,300</td><td>0,333</td><td class="new">0,309</td></tr>
+      <tr><th>Prazo</th><td>0,118</td><td>0,100</td><td>0,111</td><td class="new">0,110</td></tr>
+      <tr class="sum"><th>Σ</th><td></td><td></td><td></td><td>1,000</td></tr>
+    </tbody></table></div>
+  <p>Leitura: Desempenho responde por 58,1% da decisão, Custo por 30,9% e Prazo por 11,0%.</p>
+</article>
+
+<article class="step" data-step="4">
+  <p class="sh"><span class="sn">Passo 4</span>Verificar a consistência</p>
+  <p>Multiplica-se cada soma de coluna (passo 1) pelo peso correspondente (passo 3) e somam-se os produtos para estimar <i>λ</i><sub>max</sub>.</p>
+  <div class="tbl"><table>
+    <thead><tr><th>Critério</th><th class="num">Σ coluna</th><th class="num">× peso</th><th class="num">= produto</th></tr></thead>
+    <tbody>
+      <tr><td>Desempenho</td><td class="num">1,700</td><td class="num">0,581</td><td class="num new">0,988</td></tr>
+      <tr><td>Custo</td><td class="num">3,333</td><td class="num">0,309</td><td class="num new">1,031</td></tr>
+      <tr><td>Prazo</td><td class="num">9,000</td><td class="num">0,110</td><td class="num new">0,986</td></tr>
+      <tr class="sum"><th>λ<sub>max</sub></th><td></td><td></td><td class="num new">3,005</td></tr>
+    </tbody></table></div>
+  <p class="formula">IC = (3,005 − 3) / 2 = 0,002   RC = 0,002 / 0,58 = <span class="ok">0,004 ≤ 0,10 ✔</span></p>
+  <p>Os julgamentos são aceitos. Se o RC passasse de 0,10, voltaríamos ao passo 1 para rever as comparações antes de prosseguir.</p>
+</article>
+
+<article class="step" data-step="5">
+  <p class="sh"><span class="sn">Passo 5</span>Repetir os passos 1 a 4 em cada nó “pai”</p>
+  <p>Agora cada critério que se divide em subcritérios ganha sua própria matriz. Prazo não tem filhos e pula esta etapa.</p>
+  <div class="grid2">
+    <div>
+      <p class="mini">Sob <b>Desempenho técnico</b></p>
+      <div class="tbl"><table class="mx">
+        <thead><tr><th></th><th>Cob.</th><th>Inter.</th><th>Cap.</th><th>Peso</th></tr></thead>
+        <tbody>
+          <tr><th>Cob.</th><td>1</td><td>3</td><td>5</td><td class="new">0,648</td></tr>
+          <tr><th>Inter.</th><td>1/3</td><td>1</td><td>2</td><td class="new">0,230</td></tr>
+          <tr><th>Cap.</th><td>1/5</td><td>1/2</td><td>1</td><td class="new">0,122</td></tr>
+          <tr class="sum"><th>Σ col.</th><td>1,533</td><td>4,500</td><td>8,000</td><td>RC 0,005 ✔</td></tr>
+        </tbody></table></div>
+    </div>
+    <div>
+      <p class="mini">Sob <b>Custo</b></p>
+      <div class="tbl"><table class="mx">
+        <thead><tr><th></th><th>Aquis.</th><th>Ciclo</th><th>Peso</th></tr></thead>
+        <tbody>
+          <tr><th>Aquis.</th><td>1</td><td>1/3</td><td class="new">0,250</td></tr>
+          <tr><th>Ciclo</th><td>3</td><td>1</td><td class="new">0,750</td></tr>
+          <tr class="sum"><th>Σ col.</th><td>4,000</td><td>1,333</td><td>RC 0 ✔</td></tr>
+        </tbody></table></div>
+      <p class="cite">Matriz 2 × 2 é sempre consistente: só há um julgamento.</p>
+    </div>
+  </div>
+  <p>Estes pesos ainda são <b>locais</b>: os três subcritérios de Desempenho somam 1 entre si, e os dois de Custo também.</p>
+</article>
+
+<article class="step" data-step="6">
+  <p class="sh"><span class="sn">Passo 6</span>Descer pela árvore multiplicando → prioridade global</p>
+  <p>O peso global de cada folha é o seu peso local multiplicado pelo peso global do pai. É aqui que a importância decidida no topo “escorre” pela hierarquia.</p>
+  <div class="tbl"><table>
+    <thead><tr><th>Folha</th><th class="num">Peso do pai</th><th class="num">× local</th><th class="num">= global</th></tr></thead>
+    <tbody>
+      <tr><td>Cobertura</td><td class="num">0,581</td><td class="num">0,648</td><td class="num new">0,376</td></tr>
+      <tr><td>Interoperabilidade</td><td class="num">0,581</td><td class="num">0,230</td><td class="num new">0,134</td></tr>
+      <tr><td>Capacidade</td><td class="num">0,581</td><td class="num">0,122</td><td class="num new">0,071</td></tr>
+      <tr><td>Aquisição</td><td class="num">0,309</td><td class="num">0,250</td><td class="num new">0,077</td></tr>
+      <tr><td>Ciclo de vida</td><td class="num">0,309</td><td class="num">0,750</td><td class="num new">0,232</td></tr>
+      <tr><td>Prazo</td><td class="num">—</td><td class="num">0,110</td><td class="num new">0,110</td></tr>
+      <tr class="sum"><th>Σ folhas</th><td></td><td></td><td class="num">1,000</td></tr>
+    </tbody></table></div>
+  <p>Note como a ordem muda em relação aos pesos locais: Ciclo de vida (0,750 local) termina com 0,232, abaixo de Cobertura (0,648 local, mas sob um pai mais pesado).</p>
+</article>
+
+<article class="step" data-step="7">
+  <p class="sh"><span class="sn">Passo 7</span>Pontuar as alternativas em cada folha</p>
+  <p>Com mensuração absoluta, primeiro se calcula o peso de cada conceito com uma matriz paritária (passos 1 a 4 de novo). Depois, no <b>modo ideal</b>, divide-se pelo maior valor, para que “Excelente” valha 1.</p>
+  <div class="grid2">
+    <div class="tbl"><table class="mx">
+      <thead><tr><th></th><th>Exc.</th><th>Bom</th><th>Reg.</th><th>Fraco</th><th>Peso</th></tr></thead>
+      <tbody>
+        <tr><th>Exc.</th><td>1</td><td>3</td><td>5</td><td>9</td><td>0,576</td></tr>
+        <tr><th>Bom</th><td>1/3</td><td>1</td><td>3</td><td>5</td><td>0,256</td></tr>
+        <tr><th>Reg.</th><td>1/5</td><td>1/3</td><td>1</td><td>3</td><td>0,117</td></tr>
+        <tr><th>Fraco</th><td>1/9</td><td>1/5</td><td>1/3</td><td>1</td><td>0,051</td></tr>
+        <tr class="sum"><th colspan="5">RC = 0,042 ✔</th><td></td></tr>
+      </tbody></table></div>
+    <div class="tbl"><table>
+      <thead><tr><th>Conceito</th><th class="num">Peso</th><th class="num">÷ 0,576 = ideal</th></tr></thead>
+      <tbody>
+        <tr><td>Excelente</td><td class="num">0,576</td><td class="num new">1,000</td></tr>
+        <tr><td>Bom</td><td class="num">0,256</td><td class="num new">0,444</td></tr>
+        <tr><td>Regular</td><td class="num">0,117</td><td class="num new">0,203</td></tr>
+        <tr><td>Fraco</td><td class="num">0,051</td><td class="num new">0,089</td></tr>
+      </tbody></table></div>
+  </div>
+  <p>Os avaliadores então atribuem um conceito a cada alternativa em cada folha, que vira número pela tabela acima:</p>
+  <div class="tbl"><table>
+    <thead><tr><th>Folha</th><th>Solução A</th><th>Solução B</th><th>Solução C</th></tr></thead>
+    <tbody>
+      <tr><td>Cobertura</td><td>Excelente → 1,000</td><td>Bom → 0,444</td><td>Regular → 0,203</td></tr>
+      <tr><td>Interoperabilidade</td><td>Bom → 0,444</td><td>Excelente → 1,000</td><td>Bom → 0,444</td></tr>
+      <tr><td>Capacidade</td><td>Bom → 0,444</td><td>Regular → 0,203</td><td>Excelente → 1,000</td></tr>
+      <tr><td>Aquisição</td><td>Fraco → 0,089</td><td>Bom → 0,444</td><td>Excelente → 1,000</td></tr>
+      <tr><td>Ciclo de vida</td><td>Regular → 0,203</td><td>Bom → 0,444</td><td>Excelente → 1,000</td></tr>
+      <tr><td>Prazo</td><td>Bom → 0,444</td><td>Regular → 0,203</td><td>Fraco → 0,089</td></tr>
+    </tbody></table></div>
+  <p class="cite">Alternativa: no modo relativo, as três soluções seriam comparadas aos pares sob cada folha (seis matrizes 3 × 3). A mensuração absoluta evita esse volume quando há muitas alternativas (RIBEIRO; ALVES, 2016).</p>
+</article>
+
+<article class="step" data-step="8">
+  <p class="sh"><span class="sn">Passo 8</span>Somar os produtos → nota final</p>
+  <p>Cada célula abaixo é <b>peso global da folha (passo 6) × pontuação da alternativa (passo 7)</b>. A soma da coluna é a nota final.</p>
+  <div class="tbl"><table>
+    <thead><tr><th>Folha</th><th class="num">Peso global</th><th class="num">Solução A</th><th class="num">Solução B</th><th class="num">Solução C</th></tr></thead>
+    <tbody>
+      <tr><td>Cobertura</td><td class="num">0,376</td><td class="num">0,376</td><td class="num">0,167</td><td class="num">0,076</td></tr>
+      <tr><td>Interoperabilidade</td><td class="num">0,134</td><td class="num">0,059</td><td class="num">0,134</td><td class="num">0,059</td></tr>
+      <tr><td>Capacidade</td><td class="num">0,071</td><td class="num">0,031</td><td class="num">0,014</td><td class="num">0,071</td></tr>
+      <tr><td>Aquisição</td><td class="num">0,077</td><td class="num">0,007</td><td class="num">0,034</td><td class="num">0,077</td></tr>
+      <tr><td>Ciclo de vida</td><td class="num">0,232</td><td class="num">0,047</td><td class="num">0,103</td><td class="num">0,232</td></tr>
+      <tr><td>Prazo</td><td class="num">0,110</td><td class="num">0,049</td><td class="num">0,022</td><td class="num">0,010</td></tr>
+      <tr class="sum"><th>Nota final</th><td class="num">1,000</td><td class="num new">0,570</td><td class="num new">0,475</td><td class="num new">0,525</td></tr>
+    </tbody></table></div>
+  <p class="cite">Pequenas diferenças na terceira casa decorrem de arredondamento.</p>
+  <div class="bars" aria-label="Ranking final">
+    <div class="bar"><span>1º Solução A</span><div class="t"><i style="width:57%"></i></div><span class="v">0,570</span></div>
+    <div class="bar"><span>2º Solução C</span><div class="t"><i style="width:52.5%"></i></div><span class="v">0,525</span></div>
+    <div class="bar"><span>3º Solução B</span><div class="t"><i style="width:47.5%"></i></div><span class="v">0,475</span></div>
+  </div>
+  <p>No <b>modo distributivo</b>, as notas seriam divididas pelo total (1,570) para somar 1: A 0,363 · C 0,334 · B 0,303. A ordem é a mesma; muda só a leitura (participação relativa em vez de distância ao ideal) <span class="cite">(ROSAS E SILVA, 2007)</span>.</p>
+</article>
+</div>
+
+<div class="box prose"><p style="margin:0"><b>Leitura do resultado.</b> A Solução C é a melhor em quatro das seis folhas, mas perde para A. O motivo é o encadeamento dos pesos: Cobertura concentra 37,6% da decisão, porque é o subcritério mais importante do critério mais importante, e nela A é Excelente e C é Regular. É assim que os julgamentos feitos lá em cima, na matriz de critérios, se propagam até a nota final das alternativas. Por isso, antes de decidir, vale fazer uma <b>análise de sensibilidade</b>: variar os pesos dos critérios e ver se a ordem se mantém <span class="cite">(SAATY, 1994 apud ROSAS E SILVA, 2007)</span>.</p></div>
+</section>
+
+<!-- 8 -->
+<section class="prose">
+<h2><span class="n">8</span>Síntese</h2>
+<ul>
+  <li><b>Hierarquia:</b> decompor o problema, sem exigir simetria, com até 7 ± 2 elementos por grupo.</li>
+  <li><b>Escala:</b> julgamentos verbais convertidos em razões de 1 a 9, compatíveis com o modo como percebemos diferenças.</li>
+  <li><b>Matemática:</b> o autovetor principal fornece os pesos; o autovalor máximo mede a coerência.</li>
+  <li><b>Consistência:</b> RC ≤ 0,10. Acima disso, rever os julgamentos.</li>
+  <li><b>Grupo:</b> média geométrica dos julgamentos, precedida de discussão e refinamento dos critérios (Delphi).</li>
+  <li><b>Síntese:</b> local → global por multiplicação ao longo da árvore; nota final por soma ponderada.</li>
+  <li><b>Muitas alternativas:</b> combinar a mensuração relativa (critérios) com a absoluta (conceitos), como em Ribeiro e Alves (2016).</li>
+</ul>
+</section>
+
+<!-- refs -->
+<section class="refs prose">
+<h2>Referências</h2>
+<p>ACZÉL, J.; SAATY, T. L. Procedures for synthesizing ratio judgements. <b>Journal of Mathematical Psychology</b>, v. 27, n. 1, p. 93-102, 1983.</p>
+<p>MARTINO, J. P. <b>Technological forecasting for decision making</b>. 3. ed. New York: McGraw-Hill, 1993.</p>
+<p>MILLER, G. A. The magical number seven, plus or minus two: some limits on our capacity for processing information. <b>Psychological Review</b>, v. 63, n. 2, p. 81-97, 1956.</p>
+<p>RIBEIRO, M. C. C. R.; ALVES, A. S. Aplicação do método Analytic Hierarchy Process (AHP) com a mensuração absoluta num problema de seleção qualitativa. <b>Sistemas &amp; Gestão</b>, Niterói, v. 11, n. 3, 2016. Disponível em: <a href="https://revistasg.uff.br/sg/article/download/988/494/4279">https://revistasg.uff.br/sg/article/download/988/494/4279</a>. Acesso em: 4 nov. 2026.</p>
+<p>ROSAS E SILVA, D. M. <b>Aplicação do método AHP para avaliação de projetos industriais</b>. 2007. Dissertação (Mestrado em Engenharia Industrial) – Departamento de Engenharia Industrial, Pontifícia Universidade Católica do Rio de Janeiro, Rio de Janeiro, 2007. Cap. 3: O método AHP – Analytic Hierarchy Process. Disponível em: <a href="https://www.maxwell.vrac.puc-rio.br/10385/10385_1.PDF">https://www.maxwell.vrac.puc-rio.br/10385/10385_1.PDF</a>. Acesso em: 4 nov. 2026.</p>
+<p>SAATY, T. L. <b>The analytic hierarchy process</b>. New York: McGraw-Hill, 1980.</p>
+<p>SAATY, T. L. <b>Método de análise hierárquica</b>. Tradução de Wainer da Silveira e Silva. São Paulo: McGraw-Hill; Makron, 1991.</p>
+<p>SUROWIECKI, J. <b>The wisdom of crowds</b>. New York: Doubleday, 2004.</p>
+</section>
+
+<footer>Os exemplos numéricos das seções 2, 4, 6 e 7 foram elaborados para este material. A matriz do exemplo 5b foi reproduzida de Rosas e Silva (2007).</footer>
+</div>
+
+<script>
+(function(){
+  var vals=[[1/9,"1/9"],[1/7,"1/7"],[1/5,"1/5"],[1/3,"1/3"],[1/2,"1/2"],[1,"1"],[2,"2"],[3,"3"],[4,"4"],[5,"5"],[7,"7"],[9,"9"]];
+  var init={ab:"2",ac:"4",bc:"2"};
+  ["ab","ac","bc"].forEach(function(id){
+    var s=document.getElementById(id);
+    vals.forEach(function(v){var o=document.createElement("option");o.value=v[0];o.textContent=v[1];if(v[1]===init[id])o.selected=true;s.appendChild(o);});
+    s.addEventListener("change",calc);
+  });
+  function f(x){return x.toFixed(3).replace(".",",");}
+  function calc(){
+    var ab=+document.getElementById("ab").value, ac=+document.getElementById("ac").value, bc=+document.getElementById("bc").value;
+    var A=[[1,ab,ac],[1/ab,1,bc],[1/ac,1/bc,1]];
+    var cs=[0,1,2].map(function(j){return A[0][j]+A[1][j]+A[2][j];});
+    var w=[0,1,2].map(function(i){return (A[i][0]/cs[0]+A[i][1]/cs[1]+A[i][2]/cs[2])/3;});
+    var lm=cs[0]*w[0]+cs[1]*w[1]+cs[2]*w[2];
+    var ci=(lm-3)/2, cr=Math.max(0,ci/0.58);
+    var names=["A","B","C"], html="";
+    w.forEach(function(x,i){html+='<div class="bar"><span>Critério '+names[i]+'</span><div class="t"><i style="width:'+(x*100).toFixed(1)+'%"></i></div><span class="v">'+f(x)+'</span></div>';});
+    document.getElementById("cbars").innerHTML=html;
+    var ideal=ac/ab, ok=cr<=0.10;
+    document.getElementById("cout").innerHTML="λmax = "+f(lm)+" · IC = "+f(Math.max(0,ci))+" · RC = <span class='"+(ok?"ok":"hl")+"'>"+f(cr)+(ok?" (consistente)":" (rever julgamentos)")+"</span><br>Valor de B×C coerente com A×B e A×C: "+(ideal>=1?ideal.toFixed(2):"1/"+(1/ideal).toFixed(2)).replace(".",",");
+  }
+  calc();
+})();
+</script>
+<script>
+(function(){
+  var root=document.getElementById("stepper"); if(!root) return;
+  document.documentElement.classList.add("js");
+  var steps=[].slice.call(root.querySelectorAll(".step")), tks=[].slice.call(root.querySelectorAll(".tk"));
+  var pills=document.getElementById("spills"), prev=document.getElementById("sprev"), next=document.getElementById("snext"), cur=1;
+  steps.forEach(function(st,i){var b=document.createElement("button");b.type="button";b.textContent=i+1;b.setAttribute("aria-label","Passo "+(i+1));b.addEventListener("click",function(){go(i+1)});pills.appendChild(b);});
+  function go(n){cur=Math.max(1,Math.min(steps.length,n));
+    steps.forEach(function(st,i){st.hidden=(i+1)!==cur;});
+    [].forEach.call(pills.children,function(b,i){if(i+1===cur)b.setAttribute("aria-current","step");else b.removeAttribute("aria-current");b.classList.toggle("done",i+1<cur);});
+    tks.forEach(function(t){t.classList.toggle("off",+t.dataset.from>cur);});
+    prev.disabled=cur===1;next.disabled=cur===steps.length;}
+  prev.addEventListener("click",function(){go(cur-1)});next.addEventListener("click",function(){go(cur+1)});
+  root.addEventListener("keydown",function(e){if(e.key==="ArrowRight")go(cur+1);if(e.key==="ArrowLeft")go(cur-1);});
+  go(1);
+})();
+</script>
+</body>
+</html>
