@@ -1,0 +1,163 @@
+/*
+  Descrição: Estilos do aplicativo Viagem de Moto para celular e impressão.
+  Data de criação: 17/11/2026
+  Versão: 1.0
+  Copyright: Clayton Silva
+*/
+
+:root {
+  font: 17px/1.5 system-ui, sans-serif;
+  color: #15281e;
+  background: #f3f5ed;
+  color-scheme: light;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+}
+
+/* Cabeçalho e área principal */
+header {
+  background: #13372b;
+  color: #fff;
+}
+
+header div,
+main {
+  max-width: 680px;
+  margin: auto;
+  padding: 16px;
+}
+
+header a {
+  color: inherit;
+  font-weight: 750;
+  text-decoration: none;
+}
+
+h1 {
+  font-size: clamp(1.65rem, 7vw, 2.4rem);
+  line-height: 1.15;
+  margin: 0.25em 0 0.55em;
+}
+
+h2 {
+  font-size: 1.22rem;
+  margin: 0.6em 0;
+}
+
+p {
+  margin: 0.4em 0 0.8em;
+}
+
+/* Controles com área de toque adequada para celular */
+button,
+.button,
+summary,
+input,
+select,
+textarea {
+  font: inherit;
+  min-height: 48px;
+  max-width: 100%;
+  padding: 10px;
+  border: 1px solid #8eaa97;
+  border-radius: 10px;
+  color: inherit;
+  background: #fff;
+}
+
+button,
+.button,
+summary {
+  font-weight: 650;
+  cursor: pointer;
+}
+
+.button {
+  display: inline-block;
+  text-decoration: none;
+}
+
+.primary {
+  color: #fff;
+  background: #194835;
+  border-color: #194835;
+}
+
+button:disabled {
+  opacity: 0.5;
+}
+
+label {
+  display: block;
+  margin: 10px 0;
+}
+
+label :is(input, textarea, select) {
+  display: block;
+  width: 100%;
+  margin-top: 3px;
+}
+
+label input[type="checkbox"] {
+  display: inline;
+  width: auto;
+  min-height: auto;
+}
+
+/* Navegação, cartões e registros da viagem */
+nav,
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 12px 0;
+}
+
+.card {
+  padding: 14px;
+  margin: 9px 0;
+  background: #e2ece0;
+  border-radius: 13px;
+  overflow-wrap: anywhere;
+}
+
+details {
+  margin: 8px 0;
+}
+
+.sub {
+  font-size: 0.9rem;
+  color: #365248;
+}
+
+img,
+video {
+  display: block;
+  width: auto;
+  max-width: 100%;
+  max-height: 320px;
+  margin-top: 10px;
+}
+
+/* Na impressão, prioriza o conteúdo do relatório */
+@media print {
+  header,
+  nav,
+  button,
+  .button,
+  form {
+    display: none !important;
+  }
+
+  body,
+  main {
+    color: #000;
+    background: #fff;
+  }
+}
