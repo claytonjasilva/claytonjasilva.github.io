@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<!-- Descrição geral: prática interativa de custos, riscos e BDI. Data de criação: 27/11/2026. Versão: 1.3. Copyright: Clayton J A Silva. -->
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Prática — Custos, Riscos e BDI | Gestão de Projetos</title>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,600;1,300&display=swap" rel="stylesheet">
+  <style>
+    :root{--bg:#0a0e17;--surface:#111827;--border:#1e2d40;--accent:#00c2ff;--accent2:#7c3aed;--green:#10b981;--yellow:#f59e0b;--red:#ef4444;--text:#e2e8f0;--muted:#64748b;--tag-bg:#0f172a;--font-mono:'IBM Plex Mono',monospace;--font-sans:'IBM Plex Sans',sans-serif;}
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}html{scroll-behavior:smooth;}
+    body{background:var(--bg);color:var(--text);font-family:var(--font-sans);font-size:16px;line-height:1.7;min-height:100vh;}
+    a{color:var(--accent);text-decoration:none;}a:hover{text-decoration:underline;}
+    .container{max-width:900px;margin:0 auto;padding:0 2rem;}
+    nav{position:sticky;top:0;z-index:100;background:rgba(10,14,23,.92);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);padding:.85rem 0;}
+    nav .container{display:flex;align-items:center;justify-content:space-between;gap:1rem;}
+    .nav-brand{font-family:var(--font-mono);font-size:.8rem;color:var(--accent);}
+    .nav-back{font-family:var(--font-mono);font-size:.78rem;color:var(--muted);}.nav-back:hover{color:var(--text);text-decoration:none;}
+    .hero{padding:4rem 0 2.5rem;position:relative;overflow:hidden;}
+    .hero::before{content:'';position:absolute;inset:0;background-image:linear-gradient(var(--border) 1px,transparent 1px),linear-gradient(90deg,var(--border) 1px,transparent 1px);background-size:40px 40px;opacity:.25;mask-image:radial-gradient(ellipse 80% 60% at 50% 0%,black 40%,transparent 100%);}
+    .hero-eyebrow{font-family:var(--font-mono);font-size:.72rem;color:var(--yellow);letter-spacing:.15em;text-transform:uppercase;margin-bottom:.75rem;display:flex;align-items:center;gap:.6rem;}
+    .hero-eyebrow::before{content:'';display:inline-block;width:1.5rem;height:1px;background:var(--yellow);}
+    h1{font-size:clamp(1.6rem,3.5vw,2.6rem);font-weight:300;line-height:1.1;letter-spacing:-.02em;margin-bottom:.6rem;}h1 strong{font-weight:600;color:var(--yellow);}
+    .hero-desc{font-size:.9rem;color:var(--muted);max-width:620px;margin-bottom:1.5rem;}
+    .hero-tags{display:flex;flex-wrap:wrap;gap:.4rem;}
+    .tag{font-family:var(--font-mono);font-size:.7rem;color:var(--yellow);background:rgba(245,158,11,.1);border:1px solid rgba(245,158,11,.25);border-radius:4px;padding:.2rem .55rem;}
+    .section{padding:2.5rem 0;border-top:1px solid var(--border);}
+    .section-label{font-family:var(--font-mono);font-size:.7rem;color:var(--yellow);letter-spacing:.15em;text-transform:uppercase;margin-bottom:1.25rem;display:flex;align-items:center;gap:.6rem;}
+    .section-label::after{content:'';flex:1;height:1px;background:var(--border);}
+    h2{font-size:1.1rem;font-weight:600;margin-bottom:1rem;}h3{font-size:.93rem;font-weight:600;margin-bottom:.6rem;color:var(--yellow);}
+    .step-list{display:flex;flex-direction:column;gap:.75rem;margin:1rem 0;counter-reset:steps;}
+    .step{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:1.1rem 1.25rem;display:flex;gap:1rem;align-items:flex-start;counter-increment:steps;}
+    .step::before{content:counter(steps,'decimal-leading-zero');font-family:var(--font-mono);font-size:.75rem;color:var(--yellow);min-width:28px;padding-top:.05rem;}
+    .step-body{flex:1;}.step-name{font-size:.9rem;font-weight:600;margin-bottom:.2rem;}.step-desc{font-size:.82rem;color:var(--muted);}
+    .note-box{background:var(--tag-bg);border:1px solid var(--yellow);border-radius:8px;padding:1rem 1.25rem;margin:1rem 0;}
+    .note-label{font-family:var(--font-mono);font-size:.65rem;color:var(--yellow);letter-spacing:.1em;text-transform:uppercase;margin-bottom:.3rem;}
+    .note-text{font-size:.85rem;}
+    .resource-table{width:100%;border-collapse:collapse;font-size:.82rem;margin:1rem 0;}
+    .resource-table th{background:var(--tag-bg);padding:.55rem .75rem;text-align:left;font-family:var(--font-mono);font-size:.67rem;color:var(--muted);border-bottom:1px solid var(--border);}
+    .resource-table td{padding:.55rem .75rem;border-bottom:1px solid var(--border);color:var(--muted);}
+    .resource-table td:first-child{color:var(--text);font-weight:600;}
+    .assign-table{width:100%;border-collapse:collapse;font-size:.82rem;margin:1rem 0;}
+    .assign-table th{background:var(--tag-bg);padding:.55rem .75rem;text-align:left;font-family:var(--font-mono);font-size:.67rem;color:var(--muted);border-bottom:1px solid var(--border);}
+    .assign-table td{padding:.55rem .75rem;border-bottom:1px solid var(--border);color:var(--muted);}
+    .assign-table td:first-child{color:var(--text);}
+    .superalloc{color:var(--red);font-weight:600;}
+    .alloc-ok{color:var(--green);}
+    .concept-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:.65rem;margin:1rem 0;}
+    .concept-card{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:1rem;}
+    .concept-title{font-size:.85rem;font-weight:600;margin-bottom:.25rem;}.concept-desc{font-size:.78rem;color:var(--muted);}
+    footer{border-top:1px solid var(--border);padding:1.75rem 0;margin-top:2rem;}
+    footer .container{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;}
+    footer p{font-size:.8rem;color:var(--muted);font-family:var(--font-mono);}
+    .nav-bottom{display:flex;justify-content:space-between;align-items:center;padding:1.5rem 0;border-top:1px solid var(--border);}
+    .nav-pg{font-family:var(--font-mono);font-size:.78rem;color:var(--yellow);}
+    :root{--muted:#a4b2c5}
+    [hidden]{display:none!important}
+    .table-wrap{overflow-x:auto;margin:1rem 0;border:1px solid var(--border);border-radius:8px}
+    .table-wrap table{margin:0}
+    .resource-table th,.resource-table td{vertical-align:middle}
+    input,select,button{font:inherit;color:var(--text);background:var(--tag-bg);border:1px solid #566680;border-radius:5px;padding:.42rem .55rem}
+    input{width:8rem}
+    button{border-color:var(--accent);color:var(--accent);cursor:pointer;margin:.65rem .6rem .65rem 0}
+    :focus-visible{outline:2px solid var(--yellow);outline-offset:2px}
+    [aria-invalid=true]{border-color:#ff8c8c}
+    .feedback ul{padding-left:1.3rem}
+    .feedback{color:var(--yellow);min-height:1.5em}
+    section{scroll-margin-top:5rem}
+    @media(max-width:550px){.container{padding:0 1rem}.hero{padding-top:2.5rem}}
+    @media print{body{background:white;color:black}nav,button{display:none}.resource-table td,.resource-table th,footer p{color:black}}
+  </style>
+</head>
+<body>
+<nav>
+  <div class="container">
+    <span class="nav-brand"><a href="../gestao_projetos.html" style="color:inherit;text-decoration:none;">Gestão de Projetos</a></span>
+    <div style="display:flex;align-items:center;gap:1.5rem;"><a class="nav-back" href="../gestao_projetos.html">← índice</a></div>
+  </div>
+</nav>
+
+<section class="hero"><div class="container">
+  <p class="hero-eyebrow">Prática / Unidade 7</p>
+  <h1>Gestão de Custos <strong>e Riscos</strong></h1>
+  <p class="hero-desc">Estime o custo das tarefas de um projeto, priorize riscos e calcule o orçamento e o preço com BDI.</p>
+  <div class="hero-tags"><span class="tag">Estimativa de custos</span><span class="tag">Probabilidade × Impacto</span><span class="tag">Reservas e BDI</span></div>
+</div></section>
+<main id="atividade"><section class="section" id="parte1"><div class="container">
+  <p class="section-label">Parte 1</p><h2>Estimativa de custos</h2>
+  <h3 id="titulo-caso"></h3>
+  <p id="enunciado-caso">Uma empresa foi convidada a orçar a montagem de uma estação didática de prototipagem. Seu trabalho abrange preparar o espaço, montar a estação e testá-la. Use as cotações e os consumos abaixo. Os valores são didáticos.</p>
+  <div id="cronograma">
+    <h3>Precedência e alocação de recursos</h3>
+    <p><strong>Início do projeto:</strong> 30/11/2026. <strong>Término previsto:</strong> 03/12/2026.</p>
+    <p>As ligações são do tipo término–início. Cada tarefa sucessora começa no dia útil seguinte ao término da predecessora.</p>
+    <div id="tabela-cronograma"></div>
+  </div>
+  <div id="dados"></div>
+  <div class="note-box"><p class="note-label">Base de uso</p><p class="note-text">Classifique cada recurso pelo elemento de despesa da Unidade 7. Selecione taxa por tempo (hora), quantidade por unidade (kit, unidade ou kWh) ou preço fixo por serviço. Na coluna <strong>Quantidade a usar</strong>, digite o número de horas, kits, peças, kWh ou serviços, conforme o recurso. Exemplo: para um único serviço a preço fixo, digite <strong>1</strong> e selecione <strong>Preço fixo por serviço</strong>. A página multiplica a quantidade pelo valor cotado.</p></div>
+  <form id="estimativa"><div id="classificacao"></div><button>Gerar estimativa</button><div class="feedback" role="status"></div></form>
+  <div id="estimativa-gerada" hidden></div>
+  <p id="acesso-parte2" hidden><a href="#parte2">Continuar para a Parte 2 →</a></p>
+  <p id="orientacao-parte2" class="hero-desc">A Parte 2 é liberada após a geração da estimativa.</p>
+</div></section>
+<section class="section" id="parte2" hidden><div class="container">
+  <p class="section-label">Parte 2</p><h2>Dos riscos ao orçamento</h2>
+  <h3>Análise qualitativa</h3>
+  <p>As notas de probabilidade (P) e impacto (I) vão de 1 (muito baixo) a 5 (muito alto). Calcule P × I e classifique cada risco. A política do projeto exige ação preventiva para as prioridades alta e crítica.</p>
+  <p class="hero-desc">Baixa: 1–4 · Média: 5–9 · Alta: 10–16 · Crítica: 17–25</p>
+  <form id="riscos"><div id="registro"></div><button>Conferir prioridades</button><div class="feedback" role="status"></div></form>
+  <section id="tratamento" hidden>
+    <h3>Respostas aos riscos</h3>
+    <p>Em campos de valor em reais, use um formato como 1400, 1.400 ou 1.400,00.</p>
+    <p>Selecione as ações preventivas exigidas pela política e informe o custo a incorporar por risco. Digite zero quando a ação não for selecionada.</p>
+    <form id="acoes"><div id="respostas"></div><button>Consolidar os custos iniciais</button><div class="feedback" role="status"></div></form>
+  </section>
+  <section id="orcamento" hidden>
+    <h3>Orçamento e reserva gerencial</h3>
+    <p id="regra-reservas">Os custos iniciais incluem o trabalho e as ações preventivas selecionadas. Mesmo após a mitigação, há 20% de chance de atraso das bancadas, com efeito financeiro de R$ 1.000,00. Use o valor monetário esperado como contingência. Para esta simulação, os demais riscos serão monitorados sem provisão adicional. O patrocinador adota reserva gerencial de 5% da linha de base.</p>
+    <div class="note-box"><p class="note-label">Mitigação e contingência</p>
+    <p class="note-text">A mitigação é uma ação planejada e seu custo entra na estimativa mesmo que o problema jamais ocorra. Se ainda existir possibilidade de ocorrência após a ação, essa chance é a <strong>probabilidade residual</strong>. O <strong>efeito</strong> é o gasto adicional caso o risco ocorra. Multiplicar os dois dá o valor monetário esperado usado nesta prática para provisionar a contingência. É uma previsão durante o planejamento. Se o risco ocorrer apesar da prevenção, o gasto pode chegar ao efeito estimado, mesmo com uma provisão menor.</p></div>
+    <p>Informe os valores com uma casa decimal. Você também pode informar mais casas se preferir.</p>
+    <div id="custos-iniciais"></div>
+    <form id="reservas"><div id="campos-reservas"></div><button>Conferir orçamento</button><div class="feedback" role="status"></div></form>
+    <div id="orcamento-gerado" hidden></div>
+  </section>
+  <section id="preco" hidden>
+    <h3>Formação do preço com BDI</h3>
+    <p>A empresa aplicará o BDI aos custos diretos iniciais, incluindo as ações preventivas. Na simulação, as reservas são mantidas pelo patrocinador. A parcela R do BDI é zero porque a contingência do projeto já foi prevista pelo patrocinador.</p>
+    <div id="taxas"></div>
+    <div class="note-box"><p class="note-text">BDI = [(1 + AC + S + R + G) × (1 + DF) × (1 + L)] ÷ (1 − I) − 1.<br>Use taxas decimais na fórmula. Informe o BDI em percentual com uma casa decimal. Para o preço, use o fator completo da fórmula ou o BDI arredondado que você informou. Uma casa decimal é suficiente para os valores em reais.</p></div>
+    <form id="bdi"><div id="campos-bdi"></div><button>Gerar quadro final</button><div class="feedback" role="status"></div></form>
+    <div id="final" hidden></div>
+  </section>
+</div></section>
+</main>
+<section class="section" id="novos-casos" hidden><div class="container">
+  <h2>Outros casos para praticar</h2>
+  <p>Escolha um caso para iniciar uma nova rodada. Ao trocar de caso, os campos são reiniciados.</p>
+  <div id="menu-casos" class="concept-grid"></div>
+</div></section>
+<footer><div class="container"><p>© 2026 · Prof. Clayton J A Silva · Ibmec RJ</p><p><a href="../gestao_projetos.html">← Gestão de Projetos</a></p></div></footer>
+<script>
+"use strict";
+
+// Dados do caso. Cada recurso tem uma cotação e um consumo por tarefa.
+const elementos = ["Insumos", "Material permanente", "Despesas com concessionárias", "Serviços de terceiros", "RH"];
+const bases = ["Taxa por tempo (h)", "Quantidade por unidade", "Preço fixo por serviço"];
+const recursosOriginais = [
+  { tarefa:"Preparar o espaço", nome:"Instalação elétrica contratada", uso:"1 instalação a preço fechado", cotacao:"serviço", valor:1400, qtd:1, elemento:3, base:2 },
+  { tarefa:"Montar a estação", nome:"Bancada durável", uso:"2 bancadas", cotacao:"un.", valor:950, qtd:2, elemento:1, base:1 },
+  { tarefa:"Montar a estação", nome:"Kits de cabos e conectores consumíveis", uso:"6 kits", cotacao:"kit", valor:80, qtd:6, elemento:0, base:1 },
+  { tarefa:"Montar a estação", nome:"Técnico da equipe interna", uso:"12 horas", cotacao:"h", valor:75, qtd:12, elemento:4, base:0 },
+  { tarefa:"Testar a estação", nome:"Analista da equipe interna", uso:"8 horas", cotacao:"h", valor:90, qtd:8, elemento:4, base:0 },
+  { tarefa:"Testar a estação", nome:"Energia faturada pela concessionária", uso:"100 kWh", cotacao:"kWh", valor:1.2, qtd:100, elemento:2, base:1 }
+];
+const riscosOriginais = [
+  { id:"R1", evento:"Atraso na entrega das bancadas", p:4, i:3, acao:"Antecipar o pedido e pagar 1 frete expresso de R$ 300,00.", custo:300 },
+  { id:"R2", evento:"Incompatibilidade de conectores", p:4, i:4, acao:"Fazer um teste antecipado de compatibilidade com o técnico interno por 4 h a R$ 75,00/h.", custo:300 },
+  { id:"R3", evento:"Falta temporária do analista de testes", p:2, i:3, acao:"Contratar 2 h de apoio externo de prontidão a R$ 110,00/h.", custo:220 },
+  { id:"R4", evento:"Aumento do consumo de energia no teste", p:2, i:1, acao:"Alugar 1 medidor adicional por uma diária de R$ 90,00.", custo:90 }
+];
+const faixas = ["Baixa", "Média", "Alta", "Crítica"];
+const taxasOriginais = { AC:0.04, S:0.008, R:0, G:0.004, DF:0.01, L:0.08, I:0.06 };
+const moeda = new Intl.NumberFormat("pt-BR", {style:"currency", currency:"BRL"});
+const formatar = valor => moeda.format(valor);
+const arredondar = valor => Math.round((valor + Number.EPSILON) * 100) / 100;
+const obter = id => document.getElementById(id);
+const cronogramaOriginal = [
+  { id:"A", tarefa:"Preparar o espaço", anterior:"—", inicio:"30/11/2026", fim:"30/11/2026", alocacao:"Instalação elétrica contratada no dia 30/11." },
+  { id:"B", tarefa:"Montar a estação", anterior:"A", inicio:"01/12/2026", fim:"02/12/2026", alocacao:"2 bancadas e 6 kits disponibilizados em 01/12. Técnico interno alocado por 6 h em cada dia (12 h ao todo)." },
+  { id:"C", tarefa:"Testar a estação", anterior:"B", inicio:"03/12/2026", fim:"03/12/2026", alocacao:"Analista interno por 8 h. Consumo previsto de 100 kWh durante os testes." }
+];
+
+function prioridade(pontuacao) {
+  return [5,10,17].filter(limite => pontuacao >= limite).length;
+}
+
+function tratar(risco) {
+  return prioridade(risco.p * risco.i) >= 2;
+}
+
+// As tabelas compartilham o padrão visual e a mesma estrutura de cabeçalhos.
+function tabela(titulo, cabecalhos, linhas) {
+  const cabecalho = cabecalhos.map(celula => '<th scope="col">' + celula + '</th>').join("");
+  const corpo = linhas.map(linha => '<tr><th scope="row">' + linha[0] + '</th>' +
+    linha.slice(1).map(celula => '<td>' + celula + '</td>').join("") + '</tr>').join("");
+  return '<div class="table-wrap" tabindex="0" role="region" aria-label="' + titulo + '"><table class="resource-table"><thead><tr>' +
+    cabecalho + '</tr></thead><tbody>' + corpo + '</tbody></table></div>';
+}
+
+function inserirTabela(id, titulo, cabecalhos, linhas) {
+  obter(id).innerHTML = tabela(titulo, cabecalhos, linhas);
+}
+
+function selecao(id, rotulo, opcoes) {
+  return '<select id="' + id + '" aria-label="' + rotulo + '" required><option value="">Selecione</option>' +
+    opcoes.map((opcao, indice) => '<option value="' + indice + '">' + opcao + '</option>').join("") + '</select>';
+}
+
+// Campos em reais aceitam separador de milhares no padrão brasileiro.
+function lerNumero(valor, monetario) {
+  const agrupado = monetario && /^[0-9]{1,3}(\.[0-9]{3})+(,[0-9]{1,2})?$/.test(valor);
+  return Number((agrupado ? valor.replaceAll(".", "") : valor).replace(",", "."));
+}
+
+function numero(id, rotulo, modo = "decimal") {
+  const monetario = modo === "moeda";
+  const padraoDecimal = "[0-9]+([,.][0-9]+)?";
+  const padraoMoeda = padraoDecimal + "|[0-9]{1,3}([.][0-9]{3})+(,[0-9]{1,2})?";
+  const padrao = modo === "numeric" ? "[0-9]+" : monetario ? padraoMoeda : padraoDecimal;
+  const teclado = monetario ? "decimal" : modo;
+  return '<input id="' + id + '" aria-label="' + rotulo + '" inputmode="' + teclado + '" data-moeda="' + monetario + '" pattern="' + padrao + '" required>';
+}
+
+function conferir(formId, respostas, proximaEtapa) {
+  const formulario = obter(formId);
+  const aviso = formulario.querySelector(".feedback");
+  formulario.noValidate = true;
+  formulario.addEventListener("input", evento => {
+    evento.target.removeAttribute("aria-invalid");
+    const mensagem = aviso.querySelector('[data-campo="' + evento.target.id + '"]');
+    if (mensagem) mensagem.remove();
+    evento.target.removeAttribute("aria-describedby");
+  });
+  formulario.addEventListener("submit", evento => {
+    evento.preventDefault();
+    const erros = [];
+    for (const [id, esperado, dica] of respostas) {
+      const campo = obter(id);
+      const valor = lerNumero(campo.value, campo.dataset.moeda === "true");
+      const opcoes = Array.isArray(esperado) ? esperado : [esperado];
+      const decimal = campo.inputMode === "decimal";
+      const comparar = decimal ? numero => Math.round((numero + Number.EPSILON) * 10) : numero => numero;
+      const correto = campo.value && campo.validity.valid && Number.isFinite(valor) &&
+        opcoes.some(opcao => comparar(opcao) === comparar(valor));
+      campo.setAttribute("aria-invalid", String(!correto));
+      campo.removeAttribute("aria-describedby");
+      if (correto) continue;
+
+      const formato = decimal ? "Digite um número. Use vírgula para a parte decimal." : "Digite um número inteiro.";
+      const motivo = campo.value === "" ? "Preencha este campo. " + dica :
+        campo.validity.valid ? dica : formato + " " + dica;
+      erros.push({ campo, motivo });
+    }
+    if (erros.length) {
+      const lista = document.createElement("ul");
+      for (const { campo, motivo } of erros) {
+        const item = document.createElement("li");
+        item.id = "erro-" + campo.id;
+        item.dataset.campo = campo.id;
+        item.textContent = campo.getAttribute("aria-label") + ". " + motivo;
+        campo.setAttribute("aria-describedby", item.id);
+        lista.append(item);
+      }
+      aviso.replaceChildren(lista);
+      erros[0].campo.focus();
+      return;
+    }
+
+    // Confirma a etapa somente quando todas as respostas estão corretas.
+    formulario.querySelectorAll("input, select, button").forEach(campo => { campo.disabled = true; });
+    aviso.textContent = "Etapa conferida.";
+    proximaEtapa();
+  });
+}
+
+function revelar(id) {
+  obter(id).hidden = false;
+}
+
+
+const casosExtras = [
+  ["Oficina de impressão 3D","Preparar o laboratório|Montar as impressoras|Validar as peças",[[0,"Instalação elétrica contratada",1,"serviço",680,3],[1,"Impressoras 3D",2,"un.",1200,1],[1,"Filamento consumível",4,"kg",85,0],[2,"Técnico interno",6,"h",70,4]],[["Atraso das impressoras",4,4,"Reservar frete expresso",1,"frete",280],["Falha de aderência",3,3,"Comprar placas de teste",2,"placas",45],["Consumo extra de filamento",2,2,"Adquirir bobina de reserva",1,"bobina",85]],[[1,0.15,1200]],0.05,0.08,0.06],
+  ["Feira de iniciação científica","Preparar os estandes|Montar a sinalização|Realizar a feira",[[0,"Montagem de estandes contratada",1,"serviço",1800,3],[1,"Placas descartáveis de sinalização",12,"un.",38,0],[2,"Equipe interna de apoio",8,"h",55,4],[2,"Energia da concessionária",150,"kWh",1.2,2]],[["Chuva na área de exposição",5,4,"Instalar proteção preventiva",2,"módulos",180],["Atraso na impressão dos painéis",4,3,"Fazer conferência antecipada de arquivos",3,"horas",60],["Baixa adesão do público",2,2,"Distribuir material adicional",50,"folhetos",2]],[[1,0.2,800],[2,0.1,500]],0.06,0.07,0.05],
+  ["Horta escolar","Preparar os canteiros|Instalar a irrigação|Plantar as mudas",[[0,"Equipe interna de jardinagem",5,"h",60,4],[1,"Sistema durável de irrigação",1,"un.",890,1],[1,"Instalação hidráulica contratada",1,"serviço",520,3],[2,"Mudas",36,"un.",8,0]],[["Falta de água no plantio",4,3,"Organizar abastecimento antecipado",2,"cargas",90],["Atraso na entrega de mudas",2,4,"Reservar fornecedor alternativo",1,"serviço",120],["Perda de etiquetas",1,2,"Comprar etiquetas extras",2,"pacotes",12]],[],0.04,0.09,0.05],
+  ["Digitalização de acervo","Preparar os documentos|Digitalizar o acervo|Conferir os arquivos",[[0,"Caixas consumíveis de acondicionamento",10,"un.",24,0],[1,"Scanner de uso durável",1,"un.",2100,1],[1,"Operador interno",12,"h",62,4],[2,"Revisão externa contratada",1,"serviço",460,3]],[["Dados ilegíveis em documentos antigos",3,4,"Testar perfis de captura",4,"horas",58],["Parada do scanner",2,5,"Realizar revisão preventiva",1,"serviço",250],["Atraso na triagem",3,2,"Reforçar a equipe de triagem",3,"horas",40]],[[2,0.1,1800]],0.08,0.08,0.07],
+  ["Modernização de biblioteca","Preparar o salão|Instalar o mobiliário|Organizar as coleções",[[0,"Pintura contratada",1,"serviço",1250,3],[1,"Estantes duráveis",4,"un.",580,1],[2,"Etiquetas consumíveis",8,"pacotes",28,0],[2,"Bibliotecário interno",7,"h",65,4]],[["Estantes incompatíveis com o espaço",4,4,"Fazer medição técnica antecipada",2,"horas",110],["Atraso na pintura",3,4,"Preparar amostra de tinta antes do serviço",2,"amostras",60],["Falta de etiquetas",2,2,"Comprar lote suplementar",1,"pacote",28]],[[1,0.1,900]],0.05,0.1,0.06],
+  ["Sala para aulas híbridas","Preparar a rede|Instalar o audiovisual|Testar a transmissão",[[0,"Cabeamento contratado",1,"serviço",980,3],[1,"Câmeras duráveis",2,"un.",760,1],[1,"Adaptadores consumíveis",5,"un.",48,0],[2,"Técnico interno",8,"h",82,4],[2,"Energia da concessionária",80,"kWh",1.25,2]],[["Instabilidade na transmissão",5,3,"Testar a conexão sob carga",3,"horas",82],["Atraso no cabeamento",2,4,"Reservar janela suplementar",1,"serviço",260],["Divergência de conectores",4,3,"Testar a compatibilidade",2,"horas",82]],[[1,0.15,1400],[3,0.05,600]],0.07,0.09,0.06],
+  ["Ponto de coleta seletiva","Preparar a área|Instalar os coletores|Treinar a equipe",[[0,"Demarcação contratada",1,"serviço",570,3],[1,"Coletores duráveis",5,"un.",320,1],[2,"Material impresso consumível",80,"un.",3,0],[2,"Instrutor interno",4,"h",120,4]],[["Baixa adesão ao descarte correto",4,4,"Organizar demonstrações prévias",2,"sessões",140],["Atraso de coletores",3,3,"Reservar transporte extra",1,"frete",180],["Danos na sinalização",1,2,"Imprimir mais placas",2,"placas",40]],[[1,0.25,600]],0.03,0.08,0.05],
+  ["Reforma de sala de estudos","Preparar o ambiente|Montar as mesas|Entregar a sala",[[0,"Tinta e materiais consumíveis",8,"kits",75,0],[0,"Pintor contratado",1,"serviço",950,3],[1,"Mesas duráveis",6,"un.",420,1],[2,"Equipe interna de vistoria",5,"h",68,4]],[["Umidade na parede",4,5,"Inspecionar e proteger as superfícies",2,"áreas",190],["Atraso das mesas",3,4,"Confirmar estoque e reservar retirada",1,"serviço",230],["Divergência de cor",2,3,"Comprar amostras adicionais",3,"amostras",35]],[[1,0.1,1600]],0.08,0.11,0.07],
+  ["Laboratório de robótica","Preparar as bancadas|Montar os kits didáticos|Validar as atividades",[[0,"Equipe interna de montagem",6,"h",72,4],[1,"Controladores de uso durável",8,"un.",220,1],[1,"Componentes consumíveis para montagem",8,"kits",66,0],[2,"Validação externa contratada",1,"serviço",640,3]],[["Falha de alimentação dos kits",4,4,"Testar fontes em bancada",4,"horas",72],["Atraso dos componentes",2,4,"Reservar um lote alternativo",1,"lote",200],["Erro no roteiro de montagem",4,3,"Revisar os roteiros com monitores",3,"horas",56]],[[1,0.1,1000],[3,0.15,700]],0.05,0.08,0.06],
+  ["Exposição fotográfica","Preparar a galeria|Montar os painéis|Abrir a exposição",[[0,"Preparação da iluminação contratada",1,"serviço",840,3],[1,"Painéis expositores duráveis",6,"un.",360,1],[1,"Impressões fotográficas consumíveis",18,"un.",55,0],[2,"Equipe interna de recepção",8,"h",58,4],[2,"Energia da concessionária",120,"kWh",1.3,2]],[["Danos às impressões no transporte",4,4,"Embalar as impressões com proteção reforçada",3,"lotes",70],["Luz inadequada sobre os painéis",3,4,"Fazer ensaio de iluminação",2,"horas",95],["Atraso nos convites",2,2,"Enviar lembretes impressos",30,"unidades",3]],[],0.06,0.1,0.06]
+];
+const atividade = obter("atividade");
+const modeloAtividade = atividade.innerHTML;
+const casoOriginal = {
+  titulo:"Estação didática de prototipagem",
+  recursos:recursosOriginais, riscos:riscosOriginais, cronograma:cronogramaOriginal,
+  residuais:[[1,0.20,1000]], taxaGerencial:0.05, taxas:taxasOriginais
+};
+
+function criarCaso([titulo, listaTarefas, itens, ameacas, residuais, taxaGerencial, lucro, tributos]) {
+  const nomes = listaTarefas.split("|");
+  const periodos = [["30/11/2026","30/11/2026"],["01/12/2026","02/12/2026"],["03/12/2026","03/12/2026"]];
+  const recursos = itens.map(([indice,nome,qtd,cotacao,valor,elemento]) => ({
+    tarefa:nomes[indice], nome, qtd, cotacao, valor, elemento, uso:qtd + " " + cotacao,
+    base:elemento === 4 ? 0 : elemento === 3 ? 2 : 1
+  }));
+  const cronograma = nomes.map((tarefa, indice) => {
+    const [inicio,fim] = periodos[indice];
+    const alocacao = recursos.filter(item => item.tarefa === tarefa)
+      .map(item => item.nome + " (" + item.uso + (item.cotacao === "h" && inicio !== fim ? " no período" : "") + ")").join("; ");
+    return { id:"ABC"[indice], tarefa, anterior:indice ? "ABC"[indice-1] : "—", inicio, fim, alocacao };
+  });
+  const riscos = ameacas.map(([evento,p,i,acao,qtd,unidade,valor], indice) => ({
+    id:"R"+(indice+1), evento, p, i, acao:acao + " · " + qtd + " " + unidade + " × " + formatar(valor) + ".", custo:qtd*valor
+  }));
+  return {titulo, recursos, cronograma, riscos, residuais, taxaGerencial, taxas:{...taxasOriginais,L:lucro,I:tributos}};
+}
+
+function iniciarCaso(caso) {
+  atividade.innerHTML = modeloAtividade;
+  const {titulo, recursos, riscos, cronograma, residuais, taxaGerencial, taxas} = caso;
+  obter("titulo-caso").textContent = titulo;
+  if (caso !== casoOriginal) {
+    obter("enunciado-caso").textContent = "Prepare a estimativa e o orçamento do projeto " + titulo.toLowerCase() +
+      ". Use o cronograma, os consumos e as cotações didáticas fornecidos.";
+  }
+  const taxaEmTexto = valor => new Intl.NumberFormat("pt-BR", {style:"percent"}).format(valor);
+  const exposicoes = residuais.map(([id, probabilidade, efeito]) => {
+    const risco = riscos[id-1];
+    return risco.id + " (" + risco.evento.toLowerCase() + "): probabilidade residual de " + taxaEmTexto(probabilidade) +
+      " e efeito adicional de " + formatar(efeito) + " se ocorrer.";
+  });
+  const regra = exposicoes.length ?
+    "Após as ações preventivas, estime a contingência pelo valor monetário esperado das exposições abaixo. " + exposicoes.join(" ") +
+    " As demais exposições são monitoradas sem provisão adicional nesta simulação." :
+    "Neste caso, o patrocinador determinou monitoramento das exposições residuais sem provisão de contingência. Informe zero para a contingência.";
+  obter("regra-reservas").textContent = "Os custos iniciais incluem o trabalho e as ações preventivas selecionadas. " + regra +
+    " A reserva gerencial é de " + taxaEmTexto(taxaGerencial) + " da linha de base.";
+  const tarefas = cronograma.map(item => item.tarefa);
+  const totalTarefa = tarefa => arredondar(recursos.filter(item => item.tarefa === tarefa).reduce((soma, item) => soma + item.qtd * item.valor, 0));
+  const custoEstimado = arredondar(tarefas.reduce((soma, tarefa) => soma + totalTarefa(tarefa), 0));
+  const custoAcoes = riscos.filter(tratar).reduce((soma, risco) => soma + risco.custo, 0);
+  const custoDireto = arredondar(custoEstimado + custoAcoes);
+  const contingencia = arredondar(residuais.reduce((total, [,probabilidade, efeito]) => total + probabilidade * efeito, 0));
+  const linhaBase = arredondar(custoDireto + contingencia);
+  const gerencial = arredondar(linhaBase * taxaGerencial);
+  const orcamento = arredondar(linhaBase + gerencial);
+  const fatorBDI = (1 + taxas.AC + taxas.S + taxas.R + taxas.G) * (1 + taxas.DF) * (1 + taxas.L) / (1 - taxas.I);
+  const preco = arredondar(custoDireto * fatorBDI);
+  
+  inserirTabela("tabela-cronograma", "Precedência e alocação de recursos",
+    ["ID", "Tarefa", "Predecessora", "Início", "Término", "Alocação prevista"],
+    cronograma.map(item => [item.id, item.tarefa, item.anterior, item.inicio, item.fim, item.alocacao]));
+  inserirTabela("dados", "Dados do enunciado", ["Tarefa", "Recurso", "Uso previsto", "Cotação"], recursos.map(item =>
+    [item.tarefa, item.nome, item.uso, formatar(item.valor) + " / " + item.cotacao]));
+  inserirTabela("classificacao", "Classificação e uso", ["Recurso", "Elemento de despesa", "Base de uso", "Quantidade a usar"], recursos.map((item, i) =>
+    [item.nome, selecao("el"+i, "Elemento de despesa — "+item.nome, elementos),
+      selecao("ba"+i, "Base de uso — "+item.nome, bases), numero("qt"+i, "Quantidade — "+item.nome, "numeric")]));
+  conferir("estimativa", recursos.flatMap((item, i) => [
+    ["el"+i,item.elemento,"Revise a natureza do recurso conforme os elementos de despesa da Unidade 7."],
+    ["ba"+i,item.base,"Observe se a cotação é por hora, por unidade de consumo ou por serviço a preço fixo."],
+    ["qt"+i,item.qtd,"Informe a quantidade em " + item.cotacao + " indicada no enunciado. A página calcula o custo em reais."]
+  ]), () => {
+    const linhas = recursos.map(item => [item.tarefa, item.nome, elementos[item.elemento], item.qtd + " × " + formatar(item.valor), formatar(item.qtd * item.valor)]);
+    tarefas.forEach(tarefa => linhas.push(["Subtotal", tarefa, "", "", formatar(totalTarefa(tarefa))]));
+    linhas.push(["Total estimado", "", "", "", formatar(custoEstimado)]);
+    inserirTabela("estimativa-gerada", "Estimativa de custos", ["Tarefa", "Recurso", "Elemento", "Cálculo", "Custo"], linhas);
+    obter("estimativa-gerada").before(obter("cronograma"));
+    revelar("estimativa-gerada");
+    obter("orientacao-parte2").hidden = true;
+    revelar("parte2");
+    revelar("acesso-parte2");
+  });
+  
+  inserirTabela("registro", "Análise qualitativa de riscos", ["Risco", "P", "I", "P × I", "Prioridade"], riscos.map(risco =>
+    [risco.id + " · " + risco.evento, risco.p, risco.i, numero("pi"+risco.id, "Pontuação — "+risco.id, "numeric"),
+      selecao("pr"+risco.id, "Prioridade — "+risco.id, faixas)]));
+  conferir("riscos", riscos.flatMap(risco => [
+    ["pi"+risco.id,risco.p*risco.i,"Multiplique a nota de probabilidade pela nota de impacto."],
+    ["pr"+risco.id,prioridade(risco.p*risco.i),"Compare o produto P × I com os intervalos de prioridade acima da tabela."]
+  ]), () => revelar("tratamento"));
+  
+  inserirTabela("respostas", "Ações para tratamento de riscos", ["Risco", "Ação proposta", "Incluir ação?", "Custo (R$)"], riscos.map(risco =>
+    [risco.id, risco.acao, selecao("in"+risco.id, "Incluir ação — "+risco.id, ["Não", "Sim"]), numero("ct"+risco.id, "Custo — "+risco.id, "moeda")]));
+  conferir("acoes", riscos.flatMap(risco => [
+    ["in"+risco.id,Number(tratar(risco)),"Pela política do exercício, inclua ações para prioridades alta e crítica."],
+    ["ct"+risco.id,tratar(risco) ? risco.custo : 0,"Para ação exigida, multiplique a quantidade pelo preço unitário. Nos demais casos, informe zero."]
+  ]), () => revelar("orcamento"));
+  
+  const cabecalhosValores = ["Componente", "Valor"];
+  function linhasMoeda(linhas) {
+    return linhas.map(([rotulo, valor]) => [rotulo, formatar(valor)]);
+  }
+  
+  inserirTabela("custos-iniciais", "Composição dos custos iniciais", cabecalhosValores, linhasMoeda([
+    ["Estimativa da Parte 1", custoEstimado], ["Ações preventivas (" + riscos.filter(tratar).map(risco => risco.id).join(", ") + ")", custoAcoes], ["Custos diretos iniciais", custoDireto]
+  ]));
+  const camposOrcamento = [
+    ["rc", "Reserva de contingência", contingencia, "Some P residual em decimal × efeito em reais das exposições indicadas. Se o caso não tem provisão residual, informe zero."],
+    ["lb", "Linha de base de custos", linhaBase, "Some os custos diretos iniciais e a contingência."],
+    ["rg", "Reserva gerencial", gerencial, "Aplique a taxa de reserva gerencial à linha de base."],
+    ["ot", "Orçamento total do projeto", orcamento, "Some a linha de base e a reserva gerencial."]
+  ];
+  inserirTabela("campos-reservas", "Orçamento e reservas", ["Componente", "Valor (R$)"],
+    camposOrcamento.map(([id, rotulo]) => [rotulo, numero(id, rotulo, "moeda")]));
+  conferir("reservas", camposOrcamento.map(([id,,valor,dica]) => [id,valor,dica]), () => {
+    inserirTabela("orcamento-gerado", "Orçamento consolidado", cabecalhosValores,
+      linhasMoeda(camposOrcamento.map(([,rotulo,valor]) => [rotulo,valor])));
+    revelar("orcamento-gerado");
+    revelar("preco");
+  });
+  
+  const percentuais = new Intl.NumberFormat("pt-BR", {style:"percent", maximumFractionDigits:1});
+  const nomesTaxas = ["Administração central", "Seguros", "Riscos", "Garantias", "Despesas financeiras", "Lucro", "Tributos sobre o preço"];
+  inserirTabela("taxas", "Parcelas do BDI", ["Parcela", "Taxa"], Object.entries(taxas).map(([sigla, valor], i) =>
+    [sigla + " · " + nomesTaxas[i], percentuais.format(valor)]));
+  inserirTabela("campos-bdi", "Cálculo do BDI e do preço", ["Componente", "Valor"], [
+    ["BDI (%)", numero("taxa-bdi", "BDI em percentual")], ["Preço da proposta (R$)", numero("valor-preco", "Preço da proposta em reais", "moeda")]
+  ]);
+  conferir("bdi", [
+    ["taxa-bdi",(fatorBDI-1)*100,"Use taxas decimais na fórmula e multiplique o resultado por 100 para digitar o BDI em percentual."],
+    ["valor-preco",[preco, custoDireto * (1 + Math.round((fatorBDI - 1) * 1000) / 1000)],
+      "Multiplique os custos diretos iniciais por 1 + BDI em decimal. As reservas do patrocinador são consideradas depois."]
+  ], () => {
+    inserirTabela("final", "Quadro final da prática", cabecalhosValores, [
+      ...linhasMoeda([["Custos diretos iniciais",custoDireto],["Contingência",contingencia],["Linha de base de custos",linhaBase],
+        ["Reserva gerencial",gerencial],["Orçamento do projeto antes do BDI",orcamento]]),
+      ["BDI da proposta",percentuais.format(fatorBDI-1)],
+      ...linhasMoeda([["Preço da proposta com BDI (fator completo)",preco],
+        ["Total a provisionar pelo patrocinador (preço + reservas)",arredondar(preco+contingencia+gerencial)]])
+    ]);
+    revelar("final");
+    revelar("novos-casos");
+  });
+}
+
+const projetos = [casoOriginal, ...casosExtras.map(criarCaso)];
+for (const projeto of projetos) {
+  const botao = document.createElement("button");
+  botao.type = "button";
+  botao.textContent = projeto === casoOriginal ? "Refazer " + projeto.titulo.toLowerCase() : projeto.titulo;
+  botao.addEventListener("click", () => {
+    iniciarCaso(projeto);
+    const titulo = obter("titulo-caso");
+    titulo.tabIndex = -1;
+    titulo.focus({preventScroll:true});
+    obter("parte1").scrollIntoView();
+  });
+  obter("menu-casos").append(botao);
+}
+
+iniciarCaso(casoOriginal);
+</script>
+</body></html>
