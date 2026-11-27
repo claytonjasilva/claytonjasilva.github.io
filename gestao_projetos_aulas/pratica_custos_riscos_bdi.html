@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- Descrição geral: prática interativa de custos, riscos e BDI. Data de criação: 27/11/2026. Versão: 1.3. Copyright: Clayton J A Silva. -->
+<!-- Descrição geral: prática interativa de custos, riscos e BDI. Data de criação: 27/11/2026. Versão: 1.4. Copyright: Clayton J A Silva. -->
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -62,6 +62,10 @@
     button{border-color:var(--accent);color:var(--accent);cursor:pointer;margin:.65rem .6rem .65rem 0}
     :focus-visible{outline:2px solid var(--yellow);outline-offset:2px}
     [aria-invalid=true]{border-color:#ff8c8c}
+    .resultado-desafio{margin-top:1rem}
+    .comemoracao{border-color:var(--green);animation:comemorar .55s ease-out}
+    @keyframes comemorar{from{transform:scale(.97);opacity:.6}to{transform:scale(1);opacity:1}}
+    @media(prefers-reduced-motion:reduce){.comemoracao{animation:none}}
     .feedback ul{padding-left:1.3rem}
     .feedback{color:var(--yellow);min-height:1.5em}
     section{scroll-margin-top:5rem}
@@ -86,6 +90,7 @@
 <main id="atividade"><section class="section" id="parte1"><div class="container">
   <p class="section-label">Parte 1</p><h2>Estimativa de custos</h2>
   <h3 id="titulo-caso"></h3>
+  <div id="regras-desafio" class="note-box" hidden></div>
   <p id="enunciado-caso">Uma empresa foi convidada a orçar a montagem de uma estação didática de prototipagem. Seu trabalho abrange preparar o espaço, montar a estação e testá-la. Use as cotações e os consumos abaixo. Os valores são didáticos.</p>
   <div id="cronograma">
     <h3>Precedência e alocação de recursos</h3>
@@ -103,7 +108,7 @@
 <section class="section" id="parte2" hidden><div class="container">
   <p class="section-label">Parte 2</p><h2>Dos riscos ao orçamento</h2>
   <h3>Análise qualitativa</h3>
-  <p>As notas de probabilidade (P) e impacto (I) vão de 1 (muito baixo) a 5 (muito alto). Calcule P × I e classifique cada risco. A política do projeto exige ação preventiva para as prioridades alta e crítica.</p>
+  <p id="politica-riscos">As notas de probabilidade (P) e impacto (I) vão de 1 (muito baixo) a 5 (muito alto). Calcule P × I e classifique cada risco. A política do projeto exige ação preventiva para as prioridades alta e crítica.</p>
   <p class="hero-desc">Baixa: 1–4 · Média: 5–9 · Alta: 10–16 · Crítica: 17–25</p>
   <form id="riscos"><div id="registro"></div><button>Conferir prioridades</button><div class="feedback" role="status"></div></form>
   <section id="tratamento" hidden>
@@ -129,6 +134,7 @@
     <div class="note-box"><p class="note-text">BDI = [(1 + AC + S + R + G) × (1 + DF) × (1 + L)] ÷ (1 − I) − 1.<br>Use taxas decimais na fórmula. Informe o BDI em percentual com uma casa decimal. Para o preço, use o fator completo da fórmula ou o BDI arredondado que você informou. Uma casa decimal é suficiente para os valores em reais.</p></div>
     <form id="bdi"><div id="campos-bdi"></div><button>Gerar quadro final</button><div class="feedback" role="status"></div></form>
     <div id="final" hidden></div>
+    <div id="nota-desafio" class="note-box resultado-desafio" role="status" hidden></div>
   </section>
 </div></section>
 </main>
@@ -136,6 +142,9 @@
   <h2>Outros casos para praticar</h2>
   <p>Escolha um caso para iniciar uma nova rodada. Ao trocar de caso, os campos são reiniciados.</p>
   <div id="menu-casos" class="concept-grid"></div>
+  <h3>Desafios!!!</h3>
+  <p>Dez cenários com situações especiais de planejamento. Cada desafio vale de 0 a 100 pontos.</p>
+  <div id="menu-desafios" class="concept-grid"></div>
 </div></section>
 <footer><div class="container"><p>© 2026 · Prof. Clayton J A Silva · Ibmec RJ</p><p><a href="../gestao_projetos.html">← Gestão de Projetos</a></p></div></footer>
 <script>
@@ -174,10 +183,6 @@ function prioridade(pontuacao) {
   return [5,10,17].filter(limite => pontuacao >= limite).length;
 }
 
-function tratar(risco) {
-  return prioridade(risco.p * risco.i) >= 2;
-}
-
 // As tabelas compartilham o padrão visual e a mesma estrutura de cabeçalhos.
 function tabela(titulo, cabecalhos, linhas) {
   const cabecalho = cabecalhos.map(celula => '<th scope="col">' + celula + '</th>').join("");
@@ -211,7 +216,7 @@ function numero(id, rotulo, modo = "decimal") {
   return '<input id="' + id + '" aria-label="' + rotulo + '" inputmode="' + teclado + '" data-moeda="' + monetario + '" pattern="' + padrao + '" required>';
 }
 
-function conferir(formId, respostas, proximaEtapa) {
+function conferir(formId, respostas, proximaEtapa, registrarTentativa) {
   const formulario = obter(formId);
   const aviso = formulario.querySelector(".feedback");
   formulario.noValidate = true;
@@ -241,6 +246,7 @@ function conferir(formId, respostas, proximaEtapa) {
         campo.validity.valid ? dica : formato + " " + dica;
       erros.push({ campo, motivo });
     }
+    if (registrarTentativa) registrarTentativa(respostas.length - erros.length, respostas.length);
     if (erros.length) {
       const lista = document.createElement("ul");
       for (const { campo, motivo } of erros) {
@@ -307,34 +313,90 @@ function criarCaso([titulo, listaTarefas, itens, ameacas, residuais, taxaGerenci
   return {titulo, recursos, cronograma, riscos, residuais, taxaGerencial, taxas:{...taxasOriginais,L:lucro,I:tributos}};
 }
 
+const dadosDesafios = [
+  [["Inventário com fornecedor único","Preparar as etiquetas|Etiquetar o acervo|Conferir os registros",[[0,"Etiquetas consumíveis",250,"un.",1.2,0],[1,"Leitor portátil durável",2,"un.",480,1],[1,"Equipe interna de inventário",12,"h",65,4],[2,"Conferência externa contratada",1,"serviço",440,3]],[["Atraso do fornecedor",4,3,"Comprar lote antecipado",1,"remessa",260],["Falha de leitura de etiquetas",3,3,"Testar amostras",2,"horas",60],["Indisponibilidade da sala",2,2,"Reservar sala de apoio",1,"diária",140]],[[1,0.15,900]],0.06,0.09,0.06],{"limite":9,"peculiaridade":"Fornecedor único. O patrocinador exige ação preventiva a partir de 9 pontos, inclusive quando o risco ainda é classificado como médio."}],
+  [["Auditório para um seminário","Preparar o auditório|Montar os equipamentos|Realizar o seminário",[[0,"Preparação acústica contratada",1,"serviço",850,3],[1,"Microfones duráveis",4,"un.",380,1],[2,"Operador interno de som",8,"h",85,4],[2,"Energia da concessionária",95,"kWh",1.3,2]],[["Falha crítica de áudio",5,4,"Ensaiar com equipamento de reserva",3,"horas",110],["Atraso da preparação acústica",4,3,"Fazer vistoria prévia",2,"horas",80],["Material de apoio insuficiente",2,2,"Imprimir cópias de reserva",40,"unidades",2]],[[1,0.12,1500],[2,0.2,500]],0.05,0.08,0.06],{"limite":17,"peculiaridade":"Prazo curto. A equipe só pode executar ações preventivas para riscos críticos. Um risco alto permanece monitorado e pode ter contingência."}],
+  [["Arquivo climatizado","Preparar o espaço|Montar o sistema|Medir as condições",[[0,"Vedação contratada",1,"serviço",1200,3],[1,"Medidores duráveis de umidade",3,"un.",290,1],[1,"Filtros consumíveis",6,"un.",50,0],[2,"Energia faturada pela concessionária",160,"kWh",1.5,2]],[["Umidade acima do limite",4,4,"Verificar vedações antes da montagem",2,"inspeções",155],["Leitura incorreta dos medidores",3,4,"Conferir a calibração",3,"verificações",60],["Atraso na entrega dos filtros",2,3,"Adquirir lote de reserva",1,"lote",180]],[[1,0.15,1600]],0.04,0.1,0.07],{"fixa":375,"peculiaridade":"O patrocinador definiu a reserva gerencial como valor fixo de R$ 375,00."}],
+  [["Credenciamento de um congresso","Preparar o cadastro|Montar os postos|Testar o atendimento",[[0,"Equipe interna de cadastro",6,"h",55,4],[1,"Impressoras de crachás duráveis",2,"un.",620,1],[1,"Crachás consumíveis",240,"un.",3,0],[2,"Teste externo contratado",1,"serviço",470,3]],[["Listas de participantes duplicadas",4,3,"Revisar o cadastro",3,"horas",55],["Impressora indisponível",3,4,"Executar teste antecipado",2,"horas",80],["Falta de crachás",2,2,"Encomendar lote extra",30,"unidades",3]],[[1,0.1,850],[2,0.2,600]],0.06,0.08,0],{"peculiaridade":"O exercício assume tributos sobre o preço iguais a zero. Há duas exposições residuais e ambas devem entrar na contingência."}],
+  [["Bicicletário universitário","Demarcar a área|Instalar os suportes|Vistoriar o bicicletário",[[0,"Demarcação contratada",1,"serviço",730,3],[1,"Suportes duráveis",10,"un.",225,1],[1,"Consumíveis de instalação",12,"kits",27,0],[2,"Equipe interna de vistoria",4,"h",75,4]],[["Incompatibilidade com a base de fixação",4,4,"Fazer ensaio de fixação",2,"ensaios",95],["Interdição temporária do acesso",3,3,"Planejar área alternativa",2,"horas",70],["Desgaste de sinalização",2,2,"Comprar sinalização extra",2,"placas",60]],[],0.07,0.09,0.06],{"peculiaridade":"A política do piloto prevê monitoramento sem provisão de contingência. A reserva gerencial continua prevista."}],
+  [["Cozinha didática de panificação","Preparar a cozinha|Montar as bancadas|Executar o teste-piloto",[[0,"Instalação contratada",1,"serviço",1200,3],[1,"Batedeiras duráveis",2,"un.",760,1],[2,"Ingredientes consumíveis",18,"kg",18,0],[2,"Instrutor interno",6,"h",115,4],[2,"Energia da concessionária",85,"kWh",1.4,2]],[["Temperatura irregular no teste",4,3,"Fazer calibração antecipada",2,"horas",125],["Reposição de ingrediente indisponível",3,4,"Homologar fornecedor alternativo",2,"horas",65],["Turma reduzida no piloto",2,3,"Reforçar divulgação",1,"campanha",160]],[[2,0.125,1440]],0.05,0.11,0.06],{"peculiaridade":"A contingência cobre apenas a reposição de ingredientes. A probabilidade residual de 12,5% precisa ser convertida em decimal."}],
+  [["Espaço de prototipagem têxtil","Preparar o ateliê|Montar as máquinas|Validar os protótipos",[[0,"Montagem elétrica contratada",1,"serviço",790,3],[1,"Máquinas de costura duráveis",3,"un.",920,1],[1,"Tecidos consumíveis",32,"m",24,0],[2,"Técnico interno",7,"h",72,4]],[["Máquina para durante a validação",5,4,"Realizar revisão antecipada",3,"revisões",120],["Tecido fora da especificação",4,3,"Comparar amostras",4,"amostras",45],["Cerzimento imprevisto no teste",2,3,"Separar retalhos adicionais",4,"metros",24]],[[1,0.1,1700]],0.05,0.08,0.07],{"fixa":0,"peculiaridade":"O patrocinador assumiu diretamente as incertezas não identificadas e fixou a reserva gerencial deste orçamento em R$ 0,00."}],
+  [["Sinalização de uma trilha interpretativa","Preparar o percurso|Instalar as placas|Vistoriar a trilha",[[0,"Mapeamento contratado",1,"serviço",660,3],[1,"Placas duráveis",8,"un.",195,1],[1,"Consumíveis de fixação",8,"kits",31,0],[2,"Equipe interna de vistoria",6,"h",66,4]],[["Chuva atrasa a vistoria",3,4,"Programar janela de folga",2,"horas",66],["Dano durante o transporte",4,3,"Reforçar a embalagem",8,"placas",18],["Texto ilegível em uma placa",2,3,"Fazer uma prova em escala real",1,"impressão",45]],[[1,0.1,700],[2,0.05,1200]],0.05,0.08,0.06],{"fixa":250,"peculiaridade":"As duas exposições entram na contingência pela soma dos valores esperados. Depois, some a reserva gerencial fixa de R$ 250,00 ao orçamento."}],
+  [["Central de empréstimo de materiais","Organizar o armazenamento|Instalar os postos|Simular os empréstimos",[[0,"Organização externa contratada",1,"serviço",510,3],[1,"Armários duráveis",3,"un.",650,1],[1,"Etiquetas consumíveis",70,"un.",2.5,0],[2,"Equipe interna de atendimento",8,"h",54,4]],[["Armários atrasam",4,2,"Reservar transporte antecipado",1,"frete",145],["Divergência no inventário",3,3,"Fazer conferência adicional",3,"horas",54],["Fila no atendimento",2,3,"Simular a chegada de grupos",2,"horas",54]],[[2,0.1,600]],0.08,0.07,0.05],{"limite":8,"peculiaridade":"O patrocinador exige prevenção a partir de 8 pontos. Dois riscos podem ter a mesma classificação qualitativa e exigir decisões diferentes."}],
+  [["Estúdio de podcast comunitário","Preparar a sala|Montar os equipamentos|Gravar o piloto",[[0,"Tratamento acústico externo",1,"serviço",980,3],[1,"Equipamentos de áudio duráveis",3,"un.",590,1],[1,"Consumíveis para instalação",6,"kits",45,0],[2,"Operador interno",8,"h",80,4]],[["Ruído externo interfere na gravação",5,4,"Medir e reforçar o isolamento",2,"horas",110],["Problema de compatibilidade do áudio",4,4,"Ensaiar a cadeia de gravação",3,"horas",80],["Falta de consumível",2,2,"Comprar um kit suplementar",1,"kit",45]],[[1,0.2,1500]],0.05,0,0.06],{"peculiaridade":"A entidade prestadora não incluirá margem de lucro nesta simulação. As demais parcelas do BDI continuam aplicáveis."}]
+];
+
+const etapasPontuadas = {
+  estimativa:"Estimativa de custos",
+  riscos:"Análise qualitativa de riscos",
+  acoes:"Respostas aos riscos",
+  reservas:"Orçamento e reservas",
+  bdi:"BDI e preço"
+};
+
+function apresentarNota(pontosPorEtapa) {
+  const pontos = Object.values(pontosPorEtapa).reduce((total, valor) => total + valor, 0);
+  const nota = Math.round(pontos);
+  const painel = obter("nota-desafio");
+  const formatador = new Intl.NumberFormat("pt-BR", {maximumFractionDigits:1});
+  const linhas = Object.entries(etapasPontuadas).map(([id, titulo]) =>
+    [titulo, formatador.format(pontosPorEtapa[id]) + " / 20"]);
+  painel.innerHTML = '<h4>Pontuação do planejamento · ' + nota + ' / 100</h4>' +
+    tabela("Pontuação da primeira tentativa", ["Etapa", "Pontos"], linhas) +
+    (nota > 80 ? '<p>🎉 Parabéns! Você superou 80 pontos neste desafio.</p>' :
+      '<p>Desafio concluído. Confira quanto cada etapa contribuiu para sua nota.</p>');
+  if (nota > 80) painel.classList.add("comemoracao");
+  revelar("nota-desafio");
+}
+
 function iniciarCaso(caso) {
   atividade.innerHTML = modeloAtividade;
-  const {titulo, recursos, riscos, cronograma, residuais, taxaGerencial, taxas} = caso;
+  const {titulo, recursos, riscos, cronograma, residuais, taxaGerencial, taxas, desafio} = caso;
+  const limite = desafio?.limite ?? 10;
+  const exigeAcao = risco => risco.p * risco.i >= limite;
+  const pontosPorEtapa = {};
+  function avaliar(etapa, respostas, proximaEtapa) {
+    const registrarTentativa = desafio ? (acertos, total) => {
+      pontosPorEtapa[etapa] ??= 20 * acertos / total;
+    } : undefined;
+    conferir(etapa, respostas, proximaEtapa, registrarTentativa);
+  }
+  if (desafio) {
+    const regras = obter("regras-desafio");
+    regras.innerHTML = '<p class="note-label">Desafio</p><p>' + desafio.peculiaridade + '</p>' +
+      '<p>Cada etapa vale 20 pontos. A nota usa a proporção de campos corretos no primeiro envio de cada etapa. ' +
+      'Campos vazios contam como erros. Use o feedback para corrigir e avançar até o quadro final.</p>';
+    revelar("regras-desafio");
+    obter("politica-riscos").textContent = "As notas de probabilidade (P) e impacto (I) vão de 1 (muito baixo) a 5 (muito alto). " +
+      "Calcule P × I e classifique cada risco pelas faixas abaixo. Neste desafio, inclua a ação preventiva quando a pontuação for de " +
+      limite + " ou mais.";
+  }
   obter("titulo-caso").textContent = titulo;
   if (caso !== casoOriginal) {
     obter("enunciado-caso").textContent = "Prepare a estimativa e o orçamento do projeto " + titulo.toLowerCase() +
       ". Use o cronograma, os consumos e as cotações didáticas fornecidos.";
   }
-  const taxaEmTexto = valor => new Intl.NumberFormat("pt-BR", {style:"percent"}).format(valor);
+  const taxaEmTexto = valor => new Intl.NumberFormat("pt-BR", {style:"percent", maximumFractionDigits:1}).format(valor);
   const exposicoes = residuais.map(([id, probabilidade, efeito]) => {
     const risco = riscos[id-1];
     return risco.id + " (" + risco.evento.toLowerCase() + "): probabilidade residual de " + taxaEmTexto(probabilidade) +
       " e efeito adicional de " + formatar(efeito) + " se ocorrer.";
   });
   const regra = exposicoes.length ?
-    "Após as ações preventivas, estime a contingência pelo valor monetário esperado das exposições abaixo. " + exposicoes.join(" ") +
+    "Considerando as ações preventivas selecionadas e os riscos monitorados, estime a contingência pelo valor monetário esperado das exposições abaixo. " + exposicoes.join(" ") +
     " As demais exposições são monitoradas sem provisão adicional nesta simulação." :
     "Neste caso, o patrocinador determinou monitoramento das exposições residuais sem provisão de contingência. Informe zero para a contingência.";
   obter("regra-reservas").textContent = "Os custos iniciais incluem o trabalho e as ações preventivas selecionadas. " + regra +
-    " A reserva gerencial é de " + taxaEmTexto(taxaGerencial) + " da linha de base.";
+    (desafio?.fixa != null ? " A reserva gerencial é fixa em " + formatar(desafio.fixa) + "." :
+      " A reserva gerencial é de " + taxaEmTexto(taxaGerencial) + " da linha de base.");
   const tarefas = cronograma.map(item => item.tarefa);
   const totalTarefa = tarefa => arredondar(recursos.filter(item => item.tarefa === tarefa).reduce((soma, item) => soma + item.qtd * item.valor, 0));
   const custoEstimado = arredondar(tarefas.reduce((soma, tarefa) => soma + totalTarefa(tarefa), 0));
-  const custoAcoes = riscos.filter(tratar).reduce((soma, risco) => soma + risco.custo, 0);
+  const custoAcoes = riscos.filter(exigeAcao).reduce((soma, risco) => soma + risco.custo, 0);
   const custoDireto = arredondar(custoEstimado + custoAcoes);
   const contingencia = arredondar(residuais.reduce((total, [,probabilidade, efeito]) => total + probabilidade * efeito, 0));
   const linhaBase = arredondar(custoDireto + contingencia);
-  const gerencial = arredondar(linhaBase * taxaGerencial);
+  const gerencial = desafio?.fixa ?? arredondar(linhaBase * taxaGerencial);
   const orcamento = arredondar(linhaBase + gerencial);
   const fatorBDI = (1 + taxas.AC + taxas.S + taxas.R + taxas.G) * (1 + taxas.DF) * (1 + taxas.L) / (1 - taxas.I);
   const preco = arredondar(custoDireto * fatorBDI);
@@ -347,7 +409,7 @@ function iniciarCaso(caso) {
   inserirTabela("classificacao", "Classificação e uso", ["Recurso", "Elemento de despesa", "Base de uso", "Quantidade a usar"], recursos.map((item, i) =>
     [item.nome, selecao("el"+i, "Elemento de despesa — "+item.nome, elementos),
       selecao("ba"+i, "Base de uso — "+item.nome, bases), numero("qt"+i, "Quantidade — "+item.nome, "numeric")]));
-  conferir("estimativa", recursos.flatMap((item, i) => [
+  avaliar("estimativa", recursos.flatMap((item, i) => [
     ["el"+i,item.elemento,"Revise a natureza do recurso conforme os elementos de despesa da Unidade 7."],
     ["ba"+i,item.base,"Observe se a cotação é por hora, por unidade de consumo ou por serviço a preço fixo."],
     ["qt"+i,item.qtd,"Informe a quantidade em " + item.cotacao + " indicada no enunciado. A página calcula o custo em reais."]
@@ -366,16 +428,16 @@ function iniciarCaso(caso) {
   inserirTabela("registro", "Análise qualitativa de riscos", ["Risco", "P", "I", "P × I", "Prioridade"], riscos.map(risco =>
     [risco.id + " · " + risco.evento, risco.p, risco.i, numero("pi"+risco.id, "Pontuação — "+risco.id, "numeric"),
       selecao("pr"+risco.id, "Prioridade — "+risco.id, faixas)]));
-  conferir("riscos", riscos.flatMap(risco => [
+  avaliar("riscos", riscos.flatMap(risco => [
     ["pi"+risco.id,risco.p*risco.i,"Multiplique a nota de probabilidade pela nota de impacto."],
     ["pr"+risco.id,prioridade(risco.p*risco.i),"Compare o produto P × I com os intervalos de prioridade acima da tabela."]
   ]), () => revelar("tratamento"));
   
   inserirTabela("respostas", "Ações para tratamento de riscos", ["Risco", "Ação proposta", "Incluir ação?", "Custo (R$)"], riscos.map(risco =>
     [risco.id, risco.acao, selecao("in"+risco.id, "Incluir ação — "+risco.id, ["Não", "Sim"]), numero("ct"+risco.id, "Custo — "+risco.id, "moeda")]));
-  conferir("acoes", riscos.flatMap(risco => [
-    ["in"+risco.id,Number(tratar(risco)),"Pela política do exercício, inclua ações para prioridades alta e crítica."],
-    ["ct"+risco.id,tratar(risco) ? risco.custo : 0,"Para ação exigida, multiplique a quantidade pelo preço unitário. Nos demais casos, informe zero."]
+  avaliar("acoes", riscos.flatMap(risco => [
+    ["in"+risco.id,Number(exigeAcao(risco)),"Inclua a ação quando P × I for igual ou superior a " + limite + " pontos."],
+    ["ct"+risco.id,exigeAcao(risco) ? risco.custo : 0,"Para ação exigida, multiplique a quantidade pelo preço unitário. Nos demais casos, informe zero."]
   ]), () => revelar("orcamento"));
   
   const cabecalhosValores = ["Componente", "Valor"];
@@ -384,17 +446,17 @@ function iniciarCaso(caso) {
   }
   
   inserirTabela("custos-iniciais", "Composição dos custos iniciais", cabecalhosValores, linhasMoeda([
-    ["Estimativa da Parte 1", custoEstimado], ["Ações preventivas (" + riscos.filter(tratar).map(risco => risco.id).join(", ") + ")", custoAcoes], ["Custos diretos iniciais", custoDireto]
+    ["Estimativa da Parte 1", custoEstimado], ["Ações preventivas (" + riscos.filter(exigeAcao).map(risco => risco.id).join(", ") + ")", custoAcoes], ["Custos diretos iniciais", custoDireto]
   ]));
   const camposOrcamento = [
     ["rc", "Reserva de contingência", contingencia, "Some P residual em decimal × efeito em reais das exposições indicadas. Se o caso não tem provisão residual, informe zero."],
     ["lb", "Linha de base de custos", linhaBase, "Some os custos diretos iniciais e a contingência."],
-    ["rg", "Reserva gerencial", gerencial, "Aplique a taxa de reserva gerencial à linha de base."],
+    ["rg", "Reserva gerencial", gerencial, desafio?.fixa != null ? "Use o valor fixo de reserva gerencial informado no enunciado." : "Aplique a taxa de reserva gerencial à linha de base."],
     ["ot", "Orçamento total do projeto", orcamento, "Some a linha de base e a reserva gerencial."]
   ];
   inserirTabela("campos-reservas", "Orçamento e reservas", ["Componente", "Valor (R$)"],
     camposOrcamento.map(([id, rotulo]) => [rotulo, numero(id, rotulo, "moeda")]));
-  conferir("reservas", camposOrcamento.map(([id,,valor,dica]) => [id,valor,dica]), () => {
+  avaliar("reservas", camposOrcamento.map(([id,,valor,dica]) => [id,valor,dica]), () => {
     inserirTabela("orcamento-gerado", "Orçamento consolidado", cabecalhosValores,
       linhasMoeda(camposOrcamento.map(([,rotulo,valor]) => [rotulo,valor])));
     revelar("orcamento-gerado");
@@ -408,7 +470,7 @@ function iniciarCaso(caso) {
   inserirTabela("campos-bdi", "Cálculo do BDI e do preço", ["Componente", "Valor"], [
     ["BDI (%)", numero("taxa-bdi", "BDI em percentual")], ["Preço da proposta (R$)", numero("valor-preco", "Preço da proposta em reais", "moeda")]
   ]);
-  conferir("bdi", [
+  avaliar("bdi", [
     ["taxa-bdi",(fatorBDI-1)*100,"Use taxas decimais na fórmula e multiplique o resultado por 100 para digitar o BDI em percentual."],
     ["valor-preco",[preco, custoDireto * (1 + Math.round((fatorBDI - 1) * 1000) / 1000)],
       "Multiplique os custos diretos iniciais por 1 + BDI em decimal. As reservas do patrocinador são consideradas depois."]
@@ -421,12 +483,14 @@ function iniciarCaso(caso) {
         ["Total a provisionar pelo patrocinador (preço + reservas)",arredondar(preco+contingencia+gerencial)]])
     ]);
     revelar("final");
+    if (desafio) apresentarNota(pontosPorEtapa);
     revelar("novos-casos");
   });
 }
 
 const projetos = [casoOriginal, ...casosExtras.map(criarCaso)];
-for (const projeto of projetos) {
+const desafios = dadosDesafios.map(([dados, desafio]) => ({...criarCaso(dados), desafio}));
+for (const projeto of [...projetos, ...desafios]) {
   const botao = document.createElement("button");
   botao.type = "button";
   botao.textContent = projeto === casoOriginal ? "Refazer " + projeto.titulo.toLowerCase() : projeto.titulo;
@@ -437,7 +501,7 @@ for (const projeto of projetos) {
     titulo.focus({preventScroll:true});
     obter("parte1").scrollIntoView();
   });
-  obter("menu-casos").append(botao);
+  obter(projeto.desafio ? "menu-desafios" : "menu-casos").append(botao);
 }
 
 iniciarCaso(casoOriginal);
