@@ -1,0 +1,635 @@
+<!DOCTYPE html>
+<!-- Descrição geral: guia de revisão interativo para a 2ª avaliação de Gestão de Projetos
+     Data de criação: 27/11/2026
+     Versão: 1.0
+     Copyright © 2026 Clayton J A Silva -->
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Orientação para a 2ª Avaliação — Gestão de Projetos</title>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&amp;family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,600;1,300&amp;display=swap" rel="stylesheet"/>
+<style>
+
+:root {
+  --bg:#0a0e17; --surface:#111827; --border:#1e2d40; --accent:#00c2ff;
+  --accent2:#7c3aed; --green:#10b981; --red:#f43f5e; --text:#e2e8f0; --muted:#64748b;
+  --tag-bg:#0f172a; --font-mono:'IBM Plex Mono',monospace;
+  --font-sans:'IBM Plex Sans',sans-serif;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:var(--font-sans);font-size:16px;line-height:1.6;min-height:100vh}
+a{color:var(--accent);text-decoration:none}
+a:hover{text-decoration:underline}
+.container{width:100%;max-width:1060px;margin:0 auto;padding:0 2rem}
+
+nav{position:sticky;top:0;z-index:100;background:rgba(10,14,23,.90);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);padding:1rem 0}
+nav .container{display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap;max-width:1100px}
+.nav-brand{display:inline-block;padding:.2rem 0;font-family:var(--font-mono);font-size:.82rem;color:var(--accent)}
+.nav-links{display:flex;gap:1.25rem;list-style:none;flex-wrap:wrap}
+.nav-links a{font-family:var(--font-mono);font-size:.76rem;color:var(--muted)}
+.nav-links a:hover{color:var(--text);text-decoration:none}
+
+.hero{padding:5rem 0 3.5rem;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;inset:0;background-image:linear-gradient(var(--border) 1px,transparent 1px),linear-gradient(90deg,var(--border) 1px,transparent 1px);background-size:40px 40px;opacity:.3;mask-image:radial-gradient(ellipse 80% 60% at 50% 0%,black 40%,transparent 100%)}
+.hero .container{position:relative}
+.hero-tag{font-family:var(--font-mono);font-size:.72rem;color:var(--accent);letter-spacing:.12em;text-transform:uppercase;margin-bottom:.6rem}
+h1{font-size:clamp(2rem,4vw,3rem);font-weight:300;line-height:1.1;letter-spacing:-.02em;margin-bottom:.75rem}
+.hero-sub{font-size:.88rem;color:var(--muted);font-family:var(--font-mono)}
+
+.section{padding:3rem 0;border-top:1px solid var(--border)}
+.section-heading{display:flex;align-items:center;gap:.85rem;margin-bottom:1.35rem;font-size:clamp(1.35rem,2vw,1.7rem);font-weight:600;letter-spacing:-.01em}
+.section-heading::after{content:'';flex:1;height:1px;background:var(--border)}
+.section-number{font-family:var(--font-mono);font-size:.72rem;color:var(--accent);letter-spacing:.12em;white-space:nowrap}
+.section-intro{color:var(--muted);margin:-.45rem 0 1.4rem;max-width:820px}
+
+.content-num{font-family:var(--font-mono);font-size:.7rem;color:var(--accent);background:rgba(0,194,255,.08);border:1px solid rgba(0,194,255,.2);border-radius:3px;padding:.2rem .5rem;white-space:nowrap}
+
+/* instruções e painel */
+.aval-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%, 270px),1fr));gap:1rem}
+.aval-card{border:1px solid var(--border);border-radius:8px;padding:1.5rem;background:var(--surface);position:relative;overflow:hidden}
+.aval-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--accent),var(--accent2))}
+.aval-badge{font-family:var(--font-mono);font-size:.7rem;color:var(--accent);display:inline-block;margin-bottom:.7rem}
+.aval-card h3{font-size:.98rem;margin-bottom:.55rem}
+.aval-list{list-style:none;display:flex;flex-direction:column;gap:.35rem}
+.aval-list li{font-size:.84rem;color:var(--muted)}
+.aval-list li::before{content:'·';color:var(--accent);margin-right:.45rem}
+.score{font-family:var(--font-mono);font-size:1.6rem;color:var(--text);margin:.2rem 0 .6rem}
+.score small{font-size:.78rem;color:var(--muted)}
+.btn-row{display:flex;gap:.6rem;flex-wrap:wrap}
+.btn{font-family:var(--font-mono);font-size:.74rem;color:var(--accent);background:rgba(0,194,255,.06);border:1px solid rgba(0,194,255,.25);border-radius:4px;padding:.4rem .75rem;cursor:pointer}
+.btn:hover{background:rgba(0,194,255,.14)}
+
+/* questões */
+.q-list{display:flex;flex-direction:column;gap:1rem}
+.q-card{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:1.3rem 1.4rem;scroll-margin-top:5rem}
+.q-head{display:flex;gap:1rem;align-items:flex-start;margin-bottom:.9rem}
+.q-text{font-size:.95rem;font-weight:600;line-height:1.45}
+.opt-list{list-style:none;display:flex;flex-direction:column;gap:.45rem;margin-left:3.4rem}
+.opt{width:100%;display:flex;gap:.65rem;align-items:flex-start;text-align:left;background:var(--tag-bg);border:1px solid var(--border);border-radius:6px;padding:.55rem .8rem;color:var(--muted);font-family:var(--font-sans);font-size:.88rem;line-height:1.45;cursor:pointer;transition:border-color .15s,color .15s}
+.opt:hover:not(:disabled){border-color:rgba(0,194,255,.45);color:var(--text)}
+.opt:disabled{cursor:default}
+.opt-letter{font-family:var(--font-mono);color:var(--accent);font-weight:600;min-width:1.4rem}
+.opt.correct{border-color:var(--green);background:rgba(16,185,129,.10);color:var(--text)}
+.opt.correct .opt-letter{color:var(--green)}
+.opt.wrong{border-color:var(--red);background:rgba(244,63,94,.08);color:var(--text)}
+.opt.wrong .opt-letter{color:var(--red)}
+.q-feedback{margin:.85rem 0 0 3.4rem;padding:.7rem .9rem;border-left:2px solid var(--accent2);background:rgba(124,58,237,.06);border-radius:0 6px 6px 0;font-size:.84rem;color:var(--muted)}
+.q-feedback strong{color:var(--text)}
+
+/* gabarito */
+.agenda-wrap{overflow-x:auto;border:1px solid var(--border);border-radius:8px}
+.agenda-wrap table{width:100%;border-collapse:collapse;font-size:.86rem}
+.agenda-wrap th{padding:.75rem 1rem;text-align:left;font-family:var(--font-mono);font-size:.7rem;color:var(--muted);letter-spacing:.08em;text-transform:uppercase;background:var(--tag-bg)}
+.agenda-wrap td{padding:.72rem 1rem;border-top:1px solid var(--border);color:var(--muted);vertical-align:top}
+.agenda-wrap td:first-child{font-family:var(--font-mono);white-space:nowrap}
+.gab-item{display:inline-block;font-family:var(--font-mono);font-size:.8rem;color:var(--text);margin:0 .9rem .3rem 0;white-space:nowrap}
+.gab-item a{color:var(--muted)}
+details.gab summary{cursor:pointer;font-family:var(--font-mono);font-size:.84rem;color:var(--accent);margin-bottom:1rem}
+
+footer{border-top:1px solid var(--border);padding:2rem 0;margin-top:2rem}
+footer .container{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem}
+footer p{font-size:.82rem;color:var(--muted);font-family:var(--font-mono)}
+
+@media(max-width:760px){
+  .container,nav .container{padding-left:1rem;padding-right:1rem}
+  .nav-links{gap:.8rem}
+  .hero{padding:3.5rem 0 2.5rem}
+  .opt-list,.q-feedback{margin-left:0}
+  .q-head{flex-direction:column;gap:.5rem}
+}
+
+@media print{
+  :root{--bg:#fff;--surface:#fff;--text:#000;--muted:#333;--border:#bbb;--tag-bg:#fff}
+  nav,.hero::before,#painel,.q-feedback,#gabarito{display:none!important}
+  .fig-card,.fig-svg *{print-color-adjust:exact;-webkit-print-color-adjust:exact}
+  .q-card{break-inside:avoid}
+}
+
+:root{--muted:#a7b6c9;--font-sans:'IBM Plex Sans',system-ui,sans-serif}
+:focus-visible{outline:2px solid var(--accent);outline-offset:4px}
+section[id]{scroll-margin-top:8rem}
+.skip{position:absolute;left:1rem;top:-4rem;z-index:200;background:var(--bg);padding:.5rem 1rem}
+.skip:focus{top:.5rem}
+#conteudos{overflow-x:auto}
+.q-feedback{padding-top:0;padding-bottom:0}
+.q-feedback:has(.explicacao:not([hidden])){padding:.7rem .9rem}
+.resultado{font-weight:600;color:var(--text)}
+.opt[aria-disabled=true]{cursor:default}
+.case{margin:.55rem 0 .1rem}
+.case p{color:var(--muted);max-width:80ch}
+.quiz-status{margin-top:.6rem;color:var(--muted);font-size:.86rem}
+@media(max-width:560px){nav .container{gap:.25rem}.nav-links{column-gap:1rem;row-gap:.35rem}}
+</style>
+</head>
+<body>
+<a class="skip" href="#conteudo">Pular para o conteúdo</a>
+<nav aria-label="Navegação da revisão"><div class="container">
+<a class="nav-brand" href="../gestao_projetos.html">← Disciplina</a>
+<ul class="nav-links">
+<li><a href="#painel">Instruções</a></li><li><a href="#u5">Unidade 5</a></li><li><a href="#u6">Unidade 6</a></li><li><a href="#u7">Unidade 7</a></li><li><a href="#casos">Casos aplicados</a></li>
+<li><a href="#gabarito">Gabarito</a></li>
+</ul></div></nav>
+<header class="hero"><div class="container">
+<p class="hero-tag">Lista de exercícios</p>
+<h1>Orientação para a 2ª Avaliação</h1>
+<p class="hero-sub">Gestão de Projetos · Prof. Clayton J A Silva · ESPM Rio · 2026.2</p>
+</div></header>
+<main id="conteudo">
+<section class="section" id="painel"><div class="container">
+<h2 class="section-heading">Instruções</h2>
+<div class="aval-grid">
+<article class="aval-card"><h3>Como estudar</h3>
+<p>Resolva as 48 questões de múltipla escolha. Cada questão tem uma alternativa correta. Depois de responder, leia a justificativa e volte ao material da unidade quando precisar rever um conceito.</p>
+<noscript><p>Ative o JavaScript para usar a correção interativa. O gabarito resumido pode ser consultado no fim da página.</p></noscript></article>
+<article class="aval-card"><h3>Conteúdo da revisão</h3><ul class="aval-list">
+<li><a href="#u5">Unidade 5 · Gestão de escopo e tempo com Scrum</a> (13)</li>
+<li><a href="#u6">Unidade 6 · Gestão de pessoas e equipes</a> (15)</li>
+<li><a href="#u7">Unidade 7 · Gestão de custos e riscos</a> (13)</li>
+<li><a href="#casos">Casos aplicados</a> (7)</li>
+</ul></article>
+<article class="aval-card"><h3>Seu desempenho</h3>
+<p class="score" aria-live="polite"><span id="acertos">0</span> <small>acertos em</small> <span id="respondidas">0</span> <small>respostas · 48 questões</small></p>
+<div class="btn-row"><button class="btn" id="btn-reset" type="button">Reiniciar lista</button>
+<button class="btn" id="btn-show" type="button">Mostrar todas as respostas</button></div>
+<p class="quiz-status" id="quiz-status" role="status"></p></article>
+</div></div></section>
+<section id="u5" class="section"><div class="container"><h2 class="section-heading">Unidade 5 · Gestão de escopo e tempo com Scrum</h2>
+<p class="section-intro">Revise valor, mudanças, backlogs, histórias, eventos e planejamento da Sprint.</p><div class="q-list"><article class="q-card" id="q1" aria-labelledby="enunciado1" data-key="1">
+  <div class="q-head"><span class="content-num">Questão 1</span><h3 class="q-text" id="enunciado1">Qual decisão aplica o controle empírico do processo?</h3></div>
+  <ol class="opt-list"><li><button class="opt" type="button"><span class="opt-letter">A.</span><span>Ajustar o prazo com base apenas na opinião do patrocinador.</span></button></li>
+<li><button class="opt" type="button"><span class="opt-letter">B.</span><span>Usar o resultado da Sprint para inspecionar o produto e adaptar o trabalho futuro.</span></button></li>
+<li><button class="opt" type="button"><span class="opt-letter">C.</span><span>Fixar desde o início todos os requisitos para preservar a comparação.</span></button></li>
+<li><button class="opt" type="button"><span class="opt-letter">D.</span><span>Revisar o produto somente na entrega final.</span></button></li></ol>
+  <div class="q-feedback" aria-live="polite"><p class="resultado"></p><p class="explicacao" hidden>Transparência torna o trabalho visível. A inspeção permite avaliar o resultado e a adaptação incorpora o aprendizado.</p></div>
+</article>
+<article class="q-card" id="q2" aria-labelledby="enunciado2" data-key="3">
+  <div class="q-head"><span class="content-num">Questão 2</span><h3 class="q-text" id="enunciado2">Um requisito perdeu relevância após um teste com usuários. Que decisão é coerente com a justificativa de negócio?</h3></div>
+  <ol class="opt-list"><li><button class="opt" type="button"><span class="opt-letter">A.</span><span>Preservar a ordem porque ela foi definida na abertura.</span></button></li>
+<li><button class="opt" type="button"><span class="opt-letter">B.</span><span>Transferir o requisito diretamente para a Sprint atual.</span></button></li>
+<li><button class="opt" type="button"><span class="opt-letter">C.</span><span>Medir seu valor exclusivamente pelas horas já investidas.</span></button></li>
+<li><button class="opt" type="button"><span class="opt-letter">D.</span><span>Reavaliar seu valor e ajustar a ordem do Product Backlog.</span></button></li></ol>
+  <div class="q-feedback" aria-live="polite"><p class="resultado"></p><p class="explicacao" hidden>A justificativa de negócio sustenta a decisão de continuar investindo. Novas evidências podem alterar a prioridade de um requisito.</p></div>
+</article>
+<article class="q-card" id="q3" aria-labelledby="enunciado3" data-key="0">
+  <div class="q-head"><span class="content-num">Questão 3</span><h3 class="q-text" id="enunciado3">Qual é a principal função do Product Backlog?</h3></div>
+  <ol class="opt-list"><li><button class="opt" type="button"><span class="opt-letter">A.</span><span>Manter ordenado o trabalho necessário ao produto e evoluir com o aprendizado.</span></button></li>
+<li><button class="opt" type="button"><span class="opt-letter">B.</span><span>Distribuir as tarefas diárias entre pessoas de um projeto.</span></button></li>
+<li><button class="opt" type="button"><span class="opt-letter">C.</span><span>Registrar apenas as entregas aceitas no fim de cada Sprint.</span></button></li>
+<li><button class="opt" type="button"><span class="opt-letter">D.</span><span>Fixar as datas contratuais de todas as releases.</span></button></li></ol>
+  <div class="q-feedback" aria-live="polite"><p class="resultado"></p><p class="explicacao" hidden>O Product Backlog reúne necessidades do produto e evolui ao longo do trabalho. O Product Owner responde pela sua gestão eficaz.</p></div>
+</article>
+<article class="q-card" id="q4" aria-labelledby="enunciado4" data-key="2">
+  <div class="q-head"><span class="content-num">Questão 4</span><h3 class="q-text" id="enunciado4">Qual opção descreve uma história de usuário?</h3></div>
+  <ol class="opt-list"><li><button class="opt" type="button"><span class="opt-letter">A.</span><span>Criar uma tabela de inscrições no banco de dados.</span></button></li>
+<li><button class="opt" type="button"><span class="opt-letter">B.</span><span>Testar o botão de cancelamento com três navegadores.</span></button></li>
+<li><button class="opt" type="button"><span class="opt-letter">C.</span><span>Como participante, quero cancelar minha inscrição para liberar a vaga quando não puder comparecer.</span></button></li>
+<li><button class="opt" type="button"><span class="opt-letter">D.</span><span>Fechar as tarefas do cadastro até sexta-feira.</span></button></li></ol>
+  <div class="q-feedback" aria-live="polite"><p class="resultado"></p><p class="explicacao" hidden>A história expressa quem precisa de algo, o que precisa e por quê. As demais opções descrevem trabalho técnico ou prazo.</p></div>
+</article>
+<article class="q-card" id="q5" aria-labelledby="enunciado5" data-key="0">
+  <div class="q-head"><span class="content-num">Questão 5</span><h3 class="q-text" id="enunciado5">Para uma história de cancelamento de inscrição, qual é um critério de aceitação verificável?</h3></div>
+  <ol class="opt-list"><li><button class="opt" type="button"><span class="opt-letter">A.</span><span>Ao confirmar o cancelamento, a vaga fica disponível e o participante recebe a confirmação.</span></button></li>
+<li><button class="opt" type="button"><span class="opt-letter">B.</span><span>A tela de cancelamento é suficientemente agradável.</span></button></li>
+<li><button class="opt" type="button"><span class="opt-letter">C.</span><span>A equipe prefere implementar essa função primeiro.</span></button></li>
+<li><button class="opt" type="button"><span class="opt-letter">D.</span><span>O usuário poderá usar um sistema de boa qualidade.</span></button></li></ol>
+  <div class="q-feedback" aria-live="polite"><p class="resultado"></p><p class="explicacao" hidden>O critério explicita resultados observáveis que podem ser verificados ao testar a história.</p></div>
+</article>
+<article class="q-card" id="q6" aria-labelledby="enunciado6" data-key="3">
+  <div class="q-head"><span class="content-num">Questão 6</span><h3 class="q-text" id="enunciado6">Qual é a relação entre persona, épico e história?</h3></div>
+  <ol class="opt-list"><li><button class="opt" type="button"><span class="opt-letter">A.</span><span>A persona define a duração da Sprint e o épico registra suas horas.</span></button></li>
+<li><button class="opt" type="button"><span class="opt-letter">B.</span><span>O épico representa um tipo de usuário e a persona descreve a tarefa técnica.</span></button></li>
+<li><button class="opt" type="button"><span class="opt-letter">C.</span><span>Cada história agrupa vários épicos e define quem executa cada tarefa.</span></button></li>
+<li><button class="opt" type="button"><span class="opt-letter">D.</span><span>A persona representa um tipo de usuário e um épico pode ser desdobrado em histórias menores.</span></button></li></ol>
+  <div class="q-feedback" aria-live="polite"><p class="resultado"></p><p class="explicacao" hidden>A persona ajuda a compreender necessidades. O épico representa uma necessidade ampla que pode ser dividida em histórias aptas ao planejamento.</p></div>
+</article>
+<article class="q-card" id="q7" aria-labelledby="enunciado7" data-key="2">
+  <div class="q-head"><span class="content-num">Questão 7</span><h3 class="q-text" id="enunciado7">Uma funcionalidade oferece alto valor, mas depende de uma integração ainda incerta. Qual decisão considera valor, risco e dependência?</h3></div>
+  <ol class="opt-list"><li><button class="opt" type="button"><span class="opt-letter">A.</span><span>Prometer a funcionalidade na primeira Sprint por ter valor alto.</span></button></li>
+<li><button class="opt" type="button"><span class="opt-letter">B.</span><span>Implementar primeiro todos os itens de baixo valor.</span></button></li>
+<li><button class="opt" type="button"><span class="opt-letter">C.</span><span>Planejar uma verificação antecipada da integração e reavaliar a sequência de entrega.</span></button></li>
+<li><button class="opt" type="button"><span class="opt-letter">D.</span><span>Ordenar os itens unicamente pelo esforço estimado.</span></button></li></ol>
+  <div class="q-feedback" aria-live="polite"><p class="resultado"></p><p class="explicacao" hidden>Testar a integração cedo pode reduzir a incerteza e orientar a ordem do trabalho necessário para entregar valor.</p></div>
+</article>
+<article class="q-card" id="q8" aria-labelledby="enunciado8" data-key="1">
+  <div class="q-head"><span class="content-num">Questão 8</span><h3 class="q-text" id="enunciado8">Segundo a sequência didática do SBOK apresentada na Unidade 5, o que vem entre criar as tarefas e criar o Sprint Backlog?</h3></div>
+  <ol class="opt-list"><li><button class="opt" type="button"><span class="opt-letter">A.</span><span>Realizar a Sprint Review.</span></button></li>
+<li><button class="opt" type="button"><span class="opt-letter">B.</span><span>Estimar o esforço das tarefas.</span></button></li>
+<li><button class="opt" type="button"><span class="opt-letter">C.</span><span>Aprovar a release com os usuários.</span></button></li>
+<li><button class="opt" type="button"><span class="opt-letter">D.</span><span>Definir a visão do projeto.</span></button></li></ol>
+  <div class="q-feedback" aria-live="polite"><p class="resultado"></p><p class="explicacao" hidden>A unidade apresenta seis processos: criar o backlog priorizado, criar histórias, aprovar e estimar histórias e assumir compromisso, criar tarefas, estimá-las e criar o Sprint Backlog.</p></div>
+</article>
+<article class="q-card" id="q9" aria-labelledby="enunciado9" data-key="3">
+  <div class="q-head"><span class="content-num">Questão 9</span><h3 class="q-text" id="enunciado9">O que diferencia o Sprint Backlog do planejamento de releases?</h3></div>
+  <ol class="opt-list"><li><button class="opt" type="button"><span class="opt-letter">A.</span><span>O Sprint Backlog prevê todos os lançamentos e o planejamento de releases descreve tarefas diárias.</span></button></li>
+<li><button class="opt" type="button"><span class="opt-letter">B.</span><span>Ambos são nomes distintos para o mesmo artefato.</span></button></li>
+<li><button class="opt" type="button"><span class="opt-letter">C.</span><span>O Sprint Backlog registra somente o trabalho já aceito e o planejamento de releases registra impedimentos.</span></button></li>
+<li><button class="opt" type="button"><span class="opt-letter">D.</span><span>O Sprint Backlog organiza o trabalho do ciclo atual e o planejamento de releases prevê disponibilizações do produto.</span></button></li></ol>
+  <div class="q-feedback" aria-live="polite"><p class="resultado"></p><p class="explicacao" hidden>É possível entregar um incremento utilizável durante ou ao fim de uma Sprint e decidir sua disponibilização conforme as necessidades do produto.</p></div>
+</article>
+<article class="q-card" id="q10" aria-labelledby="enunciado10" data-key="0">
+  <div class="q-head"><span class="content-num">Questão 10</span><h3 class="q-text" id="enunciado10">A equipe estima 15 horas de esforço para uma história. Por que a duração pode superar 15 horas corridas?</h3></div>
+  <ol class="opt-list"><li><button class="opt" type="button"><span class="opt-letter">A.</span><span>Disponibilidade parcial e dependências podem criar intervalos entre as tarefas.</span></button></li>
+<li><button class="opt" type="button"><span class="opt-letter">B.</span><span>Toda estimativa de esforço exige dobrar a duração.</span></button></li>
+<li><button class="opt" type="button"><span class="opt-letter">C.</span><span>Horas de esforço só podem ser usadas para calcular custo.</span></button></li>
+<li><button class="opt" type="button"><span class="opt-letter">D.</span><span>Histórias de usuário têm duração fixada pelo Product Owner.</span></button></li></ol>
+  <div class="q-feedback" aria-live="polite"><p class="resultado"></p><p class="explicacao" hidden>Esforço mede o trabalho necessário. A duração depende também da disponibilidade, das dependências e da possibilidade de trabalhar em paralelo.</p></div>
+</article>
+<article class="q-card" id="q11" aria-labelledby="enunciado11" data-key="1">
+  <div class="q-head"><span class="content-num">Questão 11</span><h3 class="q-text" id="enunciado11">Em uma Sprint de duas semanas, a equipe identifica que o trabalho selecionado excede sua capacidade. O que preserva o time-box e o objetivo?</h3></div>
+  <ol class="opt-list"><li><button class="opt" type="button"><span class="opt-letter">A.</span><span>Estender o ciclo até completar a seleção original.</span></button></li>
+<li><button class="opt" type="button"><span class="opt-letter">B.</span><span>Negociar o escopo com o Product Owner e ajustar o plano em torno da Meta da Sprint.</span></button></li>
+<li><button class="opt" type="button"><span class="opt-letter">C.</span><span>Reduzir os critérios de qualidade para concluir tudo.</span></button></li>
+<li><button class="opt" type="button"><span class="opt-letter">D.</span><span>Manter a seleção e transferir a decisão para a Retrospectiva.</span></button></li></ol>
+  <div class="q-feedback" aria-live="polite"><p class="resultado"></p><p class="explicacao" hidden>A duração da Sprint delimita o trabalho. O escopo pode ser esclarecido e renegociado conforme o aprendizado, preservando a meta e a qualidade.</p></div>
+</article>
+<article class="q-card" id="q12" aria-labelledby="enunciado12" data-key="2">
+  <div class="q-head"><span class="content-num">Questão 12</span><h3 class="q-text" id="enunciado12">Qual evento inspeciona o resultado com stakeholders e qual planeja melhorias na forma de trabalhar?</h3></div>
+  <ol class="opt-list"><li><button class="opt" type="button"><span class="opt-letter">A.</span><span>Sprint Retrospective e Sprint Review, respectivamente.</span></button></li>
+<li><button class="opt" type="button"><span class="opt-letter">B.</span><span>Daily Scrum e Sprint Planning, respectivamente.</span></button></li>
+<li><button class="opt" type="button"><span class="opt-letter">C.</span><span>Sprint Review e Sprint Retrospective, respectivamente.</span></button></li>
+<li><button class="opt" type="button"><span class="opt-letter">D.</span><span>Sprint Planning e Daily Scrum, respectivamente.</span></button></li></ol>
+  <div class="q-feedback" aria-live="polite"><p class="resultado"></p><p class="explicacao" hidden>Na Review, examinam-se o produto e os próximos passos. Na Retrospectiva, o time planeja melhorias na qualidade e na eficácia.</p></div>
+</article>
+<article class="q-card" id="q13" aria-labelledby="enunciado13" data-key="2">
+  <div class="q-head"><span class="content-num">Questão 13</span><h3 class="q-text" id="enunciado13">Segundo o Guia Scrum de 2020 apresentado na Unidade 6, qual é a finalidade da Daily Scrum?</h3></div>
+  <ol class="opt-list"><li><button class="opt" type="button"><span class="opt-letter">A.</span><span>Obter aprovação formal do Product Owner para cada tarefa diária.</span></button></li>
+<li><button class="opt" type="button"><span class="opt-letter">B.</span><span>Apresentar o incremento aos stakeholders a cada manhã.</span></button></li>
+<li><button class="opt" type="button"><span class="opt-letter">C.</span><span>Permitir aos Developers inspecionar o progresso rumo à Meta da Sprint e adaptar o plano em até 15 minutos.</span></button></li>
+<li><button class="opt" type="button"><span class="opt-letter">D.</span><span>Distribuir tarefas por ordem do Scrum Master durante meia hora.</span></button></li></ol>
+  <div class="q-feedback" aria-live="polite"><p class="resultado"></p><p class="explicacao" hidden>A Daily Scrum é um evento de 15 minutos destinado aos Developers para ajustar o trabalho em direção à meta.</p></div>
+</article></div></div></section>
+<section id="u6" class="section"><div class="container"><h2 class="section-heading">Unidade 6 · Gestão de pessoas e equipes</h2>
+<p class="section-intro">Revise CHA, estrutura, alocação, mobilização, MIPPE, comunicações e responsabilidades no Scrum.</p><div class="q-list"><article class="q-card" id="q14" aria-labelledby="enunciado14" data-key="0">
+  <div class="q-head"><span class="content-num">Questão 14</span><h3 class="q-text" id="enunciado14">Uma analista conhece a técnica, executa a análise corretamente e toma a iniciativa de comunicar um desvio. Qual sequência representa o CHA?</h3></div>
+  <ol class="opt-list"><li><button class="opt" type="button"><span class="opt-letter">A.</span><span>Conhecimento, habilidade e atitude.</span></button></li>
+<li><button class="opt" type="button"><span class="opt-letter">B.</span><span>Habilidade, atitude e conhecimento.</span></button></li>
+<li><button class="opt" type="button"><span class="opt-letter">C.</span><span>Atitude, conhecimento e habilidade.</span></button></li>
+<li><button class="opt" type="button"><span class="opt-letter">D.</span><span>Conhecimento, atitude e habilidade.</span></button></li></ol>
+  <div class="q-feedback" aria-live="polite"><p class="resultado"></p><p class="explicacao" hidden>Conhecimento é o saber. Habilidade é saber aplicar. Atitude é a disposição para agir.</p></div>
+</article>
+<article class="q-card" id="q15" aria-labelledby="enunciado15" data-key="3">
+  <div class="q-head"><span class="content-num">Questão 15</span><h3 class="q-text" id="enunciado15">Por que o MIPPE define perfis antes de escolher pessoas?</h3></div>
+  <ol class="opt-list"><li><button class="opt" type="button"><span class="opt-letter">A.</span><span>Para adiar a análise de competências até iniciar a execução.</span></button></li>
+<li><button class="opt" type="button"><span class="opt-letter">B.</span><span>Para vincular desde cedo cada entrega ao quadro atual de funcionários.</span></button></li>
+<li><button class="opt" type="button"><span class="opt-letter">C.</span><span>Para padronizar a composição das equipes em todos os projetos.</span></button></li>
+<li><button class="opt" type="button"><span class="opt-letter">D.</span><span>Para derivar do trabalho as competências técnicas e comportamentais necessárias.</span></button></li></ol>
+  <div class="q-feedback" aria-live="polite"><p class="resultado"></p><p class="explicacao" hidden>O perfil descreve a posição e suas competências. A escolha de uma pessoa vem depois, considerando sua adequação e disponibilidade.</p></div>
+</article>
+<article class="q-card" id="q16" aria-labelledby="enunciado16" data-key="1">
+  <div class="q-head"><span class="content-num">Questão 16</span><h3 class="q-text" id="enunciado16">Na estrutura discutida na unidade, quem coordena interfaces entre equipes técnicas e quem assessora o gerente nas áreas de gestão?</h3></div>
+  <ol class="opt-list"><li><button class="opt" type="button"><span class="opt-letter">A.</span><span>Núcleo de gestão e equipe de integração, respectivamente.</span></button></li>
+<li><button class="opt" type="button"><span class="opt-letter">B.</span><span>Equipe de integração e núcleo de gestão, respectivamente.</span></button></li>
+<li><button class="opt" type="button"><span class="opt-letter">C.</span><span>Equipe técnica e fornecedor principal, respectivamente.</span></button></li>
+<li><button class="opt" type="button"><span class="opt-letter">D.</span><span>Patrocinador e líder técnico, respectivamente.</span></button></li></ol>
+  <div class="q-feedback" aria-live="polite"><p class="resultado"></p><p class="explicacao" hidden>As equipes técnicas produzem seus blocos de trabalho. A integração coordena interfaces e padrões. O núcleo de gestão assessora o gerente do projeto.</p></div>
+</article>
+<article class="q-card" id="q17" aria-labelledby="enunciado17" data-key="0">
+  <div class="q-head"><span class="content-num">Questão 17</span><h3 class="q-text" id="enunciado17">O especialista mais experiente deve liderar automaticamente sua equipe?</h3></div>
+  <ol class="opt-list"><li><button class="opt" type="button"><span class="opt-letter">A.</span><span>A escolha deve considerar competência técnica e capacidade de liderar pessoas.</span></button></li>
+<li><button class="opt" type="button"><span class="opt-letter">B.</span><span>O tempo na função é suficiente para assegurar liderança.</span></button></li>
+<li><button class="opt" type="button"><span class="opt-letter">C.</span><span>A liderança deve ser atribuída ao perfil de menor custo.</span></button></li>
+<li><button class="opt" type="button"><span class="opt-letter">D.</span><span>A maior certificação técnica determina quem deve liderar.</span></button></li></ol>
+  <div class="q-feedback" aria-live="polite"><p class="resultado"></p><p class="explicacao" hidden>A liderança envolve coordenar, negociar e lidar com conflitos, além de acompanhar a qualidade técnica.</p></div>
+</article>
+<article class="q-card" id="q18" aria-labelledby="enunciado18" data-key="1">
+  <div class="q-head"><span class="content-num">Questão 18</span><h3 class="q-text" id="enunciado18">Em uma matriz RACI, como se classificam quem executa, quem responde pelo resultado, quem é consultado e quem é informado, nessa ordem?</h3></div>
+  <ol class="opt-list"><li><button class="opt" type="button"><span class="opt-letter">A.</span><span>A, R, I, C.</span></button></li>
+<li><button class="opt" type="button"><span class="opt-letter">B.</span><span>R, A, C, I.</span></button></li>
+<li><button class="opt" type="button"><span class="opt-letter">C.</span><span>R, C, A, I.</span></button></li>
+<li><button class="opt" type="button"><span class="opt-letter">D.</span><span>C, A, R, I.</span></button></li></ol>
+  <div class="q-feedback" aria-live="polite"><p class="resultado"></p><p class="explicacao" hidden>R é Responsible, A é Accountable, C é Consulted e I é Informed. A matriz vincula essas responsabilidades às atividades ou entregas.</p></div>
+</article>
+<article class="q-card" id="q19" aria-labelledby="enunciado19" data-key="3">
+  <div class="q-head"><span class="content-num">Questão 19</span><h3 class="q-text" id="enunciado19">A gerência funcional informa que a especialista de testes só poderá começar duas semanas depois do previsto. Qual é a melhor ação inicial?</h3></div>
+  <ol class="opt-list"><li><button class="opt" type="button"><span class="opt-letter">A.</span><span>Manter a data de testes e atualizar apenas o organograma.</span></button></li>
+<li><button class="opt" type="button"><span class="opt-letter">B.</span><span>Excluir do cronograma a atividade de testes até haver alguém disponível.</span></button></li>
+<li><button class="opt" type="button"><span class="opt-letter">C.</span><span>Aumentar o número de pessoas em outra equipe sem alterar as dependências.</span></button></li>
+<li><button class="opt" type="button"><span class="opt-letter">D.</span><span>Reavaliar as dependências e a data de testes e negociar alternativas de alocação.</span></button></li></ol>
+  <div class="q-feedback" aria-live="polite"><p class="resultado"></p><p class="explicacao" hidden>A disponibilidade do perfil altera o cronograma viável. O cronograma também orienta quando mobilizar e desmobilizar cada perfil.</p></div>
+</article>
+<article class="q-card" id="q20" aria-labelledby="enunciado20" data-key="0">
+  <div class="q-head"><span class="content-num">Questão 20</span><h3 class="q-text" id="enunciado20">Ao planejar a mobilização em uma estrutura matricial, a competência necessária não está disponível internamente. O que fazer?</h3></div>
+  <ol class="opt-list"><li><button class="opt" type="button"><span class="opt-letter">A.</span><span>Acionar a seleção e registrar a aquisição do perfil como dependência do cronograma.</span></button></li>
+<li><button class="opt" type="button"><span class="opt-letter">B.</span><span>Registrar a pessoa como alocada para manter o prazo de referência.</span></button></li>
+<li><button class="opt" type="button"><span class="opt-letter">C.</span><span>Postergar o contato com RH até a atividade começar.</span></button></li>
+<li><button class="opt" type="button"><span class="opt-letter">D.</span><span>Distribuir a tarefa por igual entre os profissionais disponíveis.</span></button></li></ol>
+  <div class="q-feedback" aria-live="polite"><p class="resultado"></p><p class="explicacao" hidden>Uma seleção pode levar tempo. Registrá-la como dependência torna visível o impacto no início do trabalho.</p></div>
+</article>
+<article class="q-card" id="q21" aria-labelledby="enunciado21" data-key="2">
+  <div class="q-head"><span class="content-num">Questão 21</span><h3 class="q-text" id="enunciado21">Qual conjunto reúne formas de contratação discutidas na unidade?</h3></div>
+  <ol class="opt-list"><li><button class="opt" type="button"><span class="opt-letter">A.</span><span>Contratação direta e promoção interna, com exclusão de serviços contratados.</span></button></li>
+<li><button class="opt" type="button"><span class="opt-letter">B.</span><span>Terceirização integral como única possibilidade para demandas temporárias.</span></button></li>
+<li><button class="opt" type="button"><span class="opt-letter">C.</span><span>Contratação direta por prazo determinado ou indeterminado, prestação de serviços e terceirização de uma frente.</span></button></li>
+<li><button class="opt" type="button"><span class="opt-letter">D.</span><span>Contratação por prazo indeterminado para todos os perfis alocados.</span></button></li></ol>
+  <div class="q-feedback" aria-live="polite"><p class="resultado"></p><p class="explicacao" hidden>Compare duração da necessidade, disponibilidade, retenção de conhecimento, flexibilidade e custo antes de escolher a estratégia.</p></div>
+</article>
+<article class="q-card" id="q22" aria-labelledby="enunciado22" data-key="0">
+  <div class="q-head"><span class="content-num">Questão 22</span><h3 class="q-text" id="enunciado22">Com pouca autonomia para contratar ou substituir profissionais, como o gerente pode manter o planejamento realista?</h3></div>
+  <ol class="opt-list"><li><button class="opt" type="button"><span class="opt-letter">A.</span><span>Planejar os perfis, identificar lacunas e negociar alocação, desenvolvimento ou replanejamento.</span></button></li>
+<li><button class="opt" type="button"><span class="opt-letter">B.</span><span>Eliminar a definição de perfis e usar apenas a lista nominal recebida.</span></button></li>
+<li><button class="opt" type="button"><span class="opt-letter">C.</span><span>Assumir que o patrocinador garantirá todas as competências na data prevista.</span></button></li>
+<li><button class="opt" type="button"><span class="opt-letter">D.</span><span>Manter a alocação inicial e tratar as lacunas apenas no encerramento.</span></button></li></ol>
+  <div class="q-feedback" aria-live="polite"><p class="resultado"></p><p class="explicacao" hidden>O grau de liberdade reduz as opções de composição. Diagnosticar lacunas e negociar respostas ajuda a ajustar responsabilidades e prazos.</p></div>
+</article>
+<article class="q-card" id="q23" aria-labelledby="enunciado23" data-key="3">
+  <div class="q-head"><span class="content-num">Questão 23</span><h3 class="q-text" id="enunciado23">Qual sequência representa um ciclo do MIPPE?</h3></div>
+  <ol class="opt-list"><li><button class="opt" type="button"><span class="opt-letter">A.</span><span>Perfis → contratação → papéis → cronograma → pacotes → encerramento.</span></button></li>
+<li><button class="opt" type="button"><span class="opt-letter">B.</span><span>Cronograma → contratação → escopo → estrutura → perfis → papéis.</span></button></li>
+<li><button class="opt" type="button"><span class="opt-letter">C.</span><span>Papéis → contratação → cronograma → perfis → estrutura → aprovação final.</span></button></li>
+<li><button class="opt" type="button"><span class="opt-letter">D.</span><span>Escopo e pacotes → estrutura → perfis → quantitativos e alocação → papéis e autoridade → revisão com escopo e cronograma.</span></button></li></ol>
+  <div class="q-feedback" aria-live="polite"><p class="resultado"></p><p class="explicacao" hidden>As etapas podem ser revistas em ciclos. Estrutura, perfis, quantidades e responsabilidades precisam permanecer coerentes com escopo e cronograma.</p></div>
+</article>
+<article class="q-card" id="q24" aria-labelledby="enunciado24" data-key="2">
+  <div class="q-head"><span class="content-num">Questão 24</span><h3 class="q-text" id="enunciado24">Uma equipe recém-formada já tem as competências individuais exigidas. Por que ainda reservar tempo para sua consolidação?</h3></div>
+  <ol class="opt-list"><li><button class="opt" type="button"><span class="opt-letter">A.</span><span>A equipe alcança seu melhor desempenho no momento da formação.</span></button></li>
+<li><button class="opt" type="button"><span class="opt-letter">B.</span><span>A consolidação substitui a necessidade de competências técnicas.</span></button></li>
+<li><button class="opt" type="button"><span class="opt-letter">C.</span><span>O desempenho coletivo depende do ajuste de papéis, rotinas e formas de colaboração.</span></button></li>
+<li><button class="opt" type="button"><span class="opt-letter">D.</span><span>O desempenho só melhora quando todas as pessoas são trocadas.</span></button></li></ol>
+  <div class="q-feedback" aria-live="polite"><p class="resultado"></p><p class="explicacao" hidden>A formação pode passar por conflito e normatização até alcançar desempenho mais estável. Clareza de objetivos e regras de trabalho favorece essa evolução.</p></div>
+</article>
+<article class="q-card" id="q25" aria-labelledby="enunciado25" data-key="1">
+  <div class="q-head"><span class="content-num">Questão 25</span><h3 class="q-text" id="enunciado25">Qual conteúdo torna um relatório de status útil para a tomada de decisão?</h3></div>
+  <ol class="opt-list"><li><button class="opt" type="button"><span class="opt-letter">A.</span><span>Relação de tarefas concluídas, sem referência ao plano.</span></button></li>
+<li><button class="opt" type="button"><span class="opt-letter">B.</span><span>Situação em relação ao plano, desvios, ações e decisões pendentes.</span></button></li>
+<li><button class="opt" type="button"><span class="opt-letter">C.</span><span>Lista de pessoas copiadas em mensagens na semana.</span></button></li>
+<li><button class="opt" type="button"><span class="opt-letter">D.</span><span>Descrição do escopo inicial, sem dados atuais.</span></button></li></ol>
+  <div class="q-feedback" aria-live="polite"><p class="resultado"></p><p class="explicacao" hidden>O relatório deve ajudar o leitor a interpretar o estado do projeto e agir. A frequência de revisão deve acompanhar a velocidade das mudanças.</p></div>
+</article>
+<article class="q-card" id="q26" aria-labelledby="enunciado26" data-key="3">
+  <div class="q-head"><span class="content-num">Questão 26</span><h3 class="q-text" id="enunciado26">Qual é a finalidade do kick-off e como se mantém o alinhamento depois dele?</h3></div>
+  <ol class="opt-list"><li><button class="opt" type="button"><span class="opt-letter">A.</span><span>Ratificar contratos e enviar o mesmo relatório a todos, em frequência fixa.</span></button></li>
+<li><button class="opt" type="button"><span class="opt-letter">B.</span><span>Encerrar o planejamento detalhado e suspender revisões até a entrega.</span></button></li>
+<li><button class="opt" type="button"><span class="opt-letter">C.</span><span>Apresentar o organograma e delegar a comunicação apenas aos fornecedores.</span></button></li>
+<li><button class="opt" type="button"><span class="opt-letter">D.</span><span>Construir entendimento comum e manter comunicações ajustadas ao poder, interesse e necessidades dos stakeholders.</span></button></li></ol>
+  <div class="q-feedback" aria-live="polite"><p class="resultado"></p><p class="explicacao" hidden>O kick-off alinha objetivos, expectativas e papéis. O plano de comunicações sustenta o entendimento ao longo do projeto.</p></div>
+</article>
+<article class="q-card" id="q27" aria-labelledby="enunciado27" data-key="0">
+  <div class="q-head"><span class="content-num">Questão 27</span><h3 class="q-text" id="enunciado27">No Guia Scrum de 2020, qual associação de responsabilidades está correta?</h3></div>
+  <ol class="opt-list"><li><button class="opt" type="button"><span class="opt-letter">A.</span><span>Product Owner maximiza valor, Developers criam incrementos utilizáveis e Scrum Master promove a eficácia do time.</span></button></li>
+<li><button class="opt" type="button"><span class="opt-letter">B.</span><span>Product Owner distribui tarefas, Developers ordenam o Product Backlog e Scrum Master aprova produtos.</span></button></li>
+<li><button class="opt" type="button"><span class="opt-letter">C.</span><span>Product Owner preside a Daily, Developers gerenciam o contrato e Scrum Master define sozinho a Meta da Sprint.</span></button></li>
+<li><button class="opt" type="button"><span class="opt-letter">D.</span><span>Product Owner remove todos os impedimentos, Developers validam o orçamento e Scrum Master escolhe os itens do produto.</span></button></li></ol>
+  <div class="q-feedback" aria-live="polite"><p class="resultado"></p><p class="explicacao" hidden>O Product Owner responde pela gestão eficaz do backlog. Os Developers planejam e adaptam o trabalho. O Scrum Master estabelece o Scrum e ajuda a remover impedimentos.</p></div>
+</article>
+<article class="q-card" id="q28" aria-labelledby="enunciado28" data-key="1">
+  <div class="q-head"><span class="content-num">Questão 28</span><h3 class="q-text" id="enunciado28">Qual situação exemplifica autogerenciamento e multifuncionalidade no Scrum Team?</h3></div>
+  <ol class="opt-list"><li><button class="opt" type="button"><span class="opt-letter">A.</span><span>O Scrum Master atribui cada tarefa e cada especialista trabalha isoladamente.</span></button></li>
+<li><button class="opt" type="button"><span class="opt-letter">B.</span><span>O time reúne as competências para produzir o incremento e decide internamente como organizar seu trabalho.</span></button></li>
+<li><button class="opt" type="button"><span class="opt-letter">C.</span><span>Cada pessoa precisa dominar sozinha todas as especialidades.</span></button></li>
+<li><button class="opt" type="button"><span class="opt-letter">D.</span><span>As áreas funcionais aprovam diariamente a distribuição das tarefas.</span></button></li></ol>
+  <div class="q-feedback" aria-live="polite"><p class="resultado"></p><p class="explicacao" hidden>O time organiza o trabalho e reúne competências complementares. A colaboração com áreas externas ajuda a tratar dependências.</p></div>
+</article></div></div></section>
+<section id="u7" class="section"><div class="container"><h2 class="section-heading">Unidade 7 · Gestão de custos e riscos</h2>
+<p class="section-intro">Revise estimativas, linha de base, reservas, BDI, análise de riscos e respostas.</p><div class="q-list"><article class="q-card" id="q29" aria-labelledby="enunciado29" data-key="2">
+  <div class="q-head"><span class="content-num">Questão 29</span><h3 class="q-text" id="enunciado29">Qual sequência liga corretamente os processos de custos às suas finalidades?</h3></div>
+  <ol class="opt-list"><li><button class="opt" type="button"><span class="opt-letter">A.</span><span>Estimar as reservas → controlar as atividades → planejar a EAP → fixar o preço.</span></button></li>
+<li><button class="opt" type="button"><span class="opt-letter">B.</span><span>Controlar os gastos → determinar o preço → estimar recursos → planejar regras.</span></button></li>
+<li><button class="opt" type="button"><span class="opt-letter">C.</span><span>Planejar regras → estimar recursos monetários → agregar estimativas e contingências → comparar o desempenho com a linha de base.</span></button></li>
+<li><button class="opt" type="button"><span class="opt-letter">D.</span><span>Planejar os riscos → definir financiamento → estimar prazos → aprovar fornecedores.</span></button></li></ol>
+  <div class="q-feedback" aria-live="polite"><p class="resultado"></p><p class="explicacao" hidden>Planejar o gerenciamento dos custos, estimar custos, determinar o orçamento e controlar os custos têm essas finalidades, respectivamente.</p></div>
+</article>
+<article class="q-card" id="q30" aria-labelledby="enunciado30" data-key="2">
+  <div class="q-head"><span class="content-num">Questão 30</span><h3 class="q-text" id="enunciado30">Uma equipe usa o custo de um projeto semelhante, ajustando diferenças. Outra calcula 180 horas por uma taxa validada de R$ 90 por hora. Que técnicas elas aplicam?</h3></div>
+  <ol class="opt-list"><li><button class="opt" type="button"><span class="opt-letter">A.</span><span>Paramétrica e análoga, respectivamente.</span></button></li>
+<li><button class="opt" type="button"><span class="opt-letter">B.</span><span>Ascendente e de três pontos, respectivamente.</span></button></li>
+<li><button class="opt" type="button"><span class="opt-letter">C.</span><span>Análoga e paramétrica, respectivamente.</span></button></li>
+<li><button class="opt" type="button"><span class="opt-letter">D.</span><span>De três pontos e ascendente, respectivamente.</span></button></li></ol>
+  <div class="q-feedback" aria-live="polite"><p class="resultado"></p><p class="explicacao" hidden>A análoga usa uma referência comparável. A paramétrica usa uma relação mensurável entre quantidade e taxa.</p></div>
+</article>
+<article class="q-card" id="q31" aria-labelledby="enunciado31" data-key="0">
+  <div class="q-head"><span class="content-num">Questão 31</span><h3 class="q-text" id="enunciado31">Qual alternativa associa corretamente a estimativa ascendente à estimativa de três pontos?</h3></div>
+  <ol class="opt-list"><li><button class="opt" type="button"><span class="opt-letter">A.</span><span>A ascendente soma estimativas dos componentes. A de três pontos explicita cenários otimista, mais provável e pessimista.</span></button></li>
+<li><button class="opt" type="button"><span class="opt-letter">B.</span><span>A ascendente ajusta um projeto anterior. A de três pontos aplica uma única taxa.</span></button></li>
+<li><button class="opt" type="button"><span class="opt-letter">C.</span><span>A ascendente calcula preço por BDI. A de três pontos calcula reserva gerencial.</span></button></li>
+<li><button class="opt" type="button"><span class="opt-letter">D.</span><span>A ascendente estima por média histórica. A de três pontos soma todos os pacotes da EAP.</span></button></li></ol>
+  <div class="q-feedback" aria-live="polite"><p class="resultado"></p><p class="explicacao" hidden>A técnica ascendente parte do detalhamento do trabalho. A de três pontos explicita a variação a partir de três cenários.</p></div>
+</article>
+<article class="q-card" id="q32" aria-labelledby="enunciado32" data-key="3">
+  <div class="q-head"><span class="content-num">Questão 32</span><h3 class="q-text" id="enunciado32">Qual registro sustenta a conferência de uma estimativa por atividade?</h3></div>
+  <ol class="opt-list"><li><button class="opt" type="button"><span class="opt-letter">A.</span><span>Apenas o subtotal atualizado.</span></button></li>
+<li><button class="opt" type="button"><span class="opt-letter">B.</span><span>Apenas o valor aprovado pelo patrocinador.</span></button></li>
+<li><button class="opt" type="button"><span class="opt-letter">C.</span><span>Nome do fornecedor e saldo da reserva gerencial.</span></button></li>
+<li><button class="opt" type="button"><span class="opt-letter">D.</span><span>Quantidade, unidade, taxa, fonte, data e premissas.</span></button></li></ol>
+  <div class="q-feedback" aria-live="polite"><p class="resultado"></p><p class="explicacao" hidden>A base da estimativa permite verificar o cálculo e atualizar valores quando as premissas mudarem.</p></div>
+</article>
+<article class="q-card" id="q33" aria-labelledby="enunciado33" data-key="1">
+  <div class="q-head"><span class="content-num">Questão 33</span><h3 class="q-text" id="enunciado33">Uma taxa de administração central é rateada entre vários projetos. Como se classifica essa parcela para um projeto que recebe o rateio?</h3></div>
+  <ol class="opt-list"><li><button class="opt" type="button"><span class="opt-letter">A.</span><span>Custo direto medido em materiais.</span></button></li>
+<li><button class="opt" type="button"><span class="opt-letter">B.</span><span>Custo indireto compartilhado.</span></button></li>
+<li><button class="opt" type="button"><span class="opt-letter">C.</span><span>Reserva de contingência.</span></button></li>
+<li><button class="opt" type="button"><span class="opt-letter">D.</span><span>Margem de lucro.</span></button></li></ol>
+  <div class="q-feedback" aria-live="polite"><p class="resultado"></p><p class="explicacao" hidden>A estrutura administrativa serve a vários projetos e seu custo é apropriado conforme o critério de rateio.</p></div>
+</article>
+<article class="q-card" id="q34" aria-labelledby="enunciado34" data-key="0">
+  <div class="q-head"><span class="content-num">Questão 34</span><h3 class="q-text" id="enunciado34">Qual artefato indica quanto dinheiro deve estar disponível e em que momentos?</h3></div>
+  <ol class="opt-list"><li><button class="opt" type="button"><span class="opt-letter">A.</span><span>Requisitos de financiamento.</span></button></li>
+<li><button class="opt" type="button"><span class="opt-letter">B.</span><span>Registro dos riscos.</span></button></li>
+<li><button class="opt" type="button"><span class="opt-letter">C.</span><span>Matriz de probabilidade e impacto.</span></button></li>
+<li><button class="opt" type="button"><span class="opt-letter">D.</span><span>Relatório de riscos.</span></button></li></ol>
+  <div class="q-feedback" aria-live="polite"><p class="resultado"></p><p class="explicacao" hidden>Os requisitos de financiamento mostram montantes e momentos. A linha de base de custos é a referência aprovada e distribuída no tempo para medir desempenho.</p></div>
+</article>
+<article class="q-card" id="q35" aria-labelledby="enunciado35" data-key="1">
+  <div class="q-head"><span class="content-num">Questão 35</span><h3 class="q-text" id="enunciado35">Qual é a diferença entre reserva de contingência e reserva gerencial?</h3></div>
+  <ol class="opt-list"><li><button class="opt" type="button"><span class="opt-letter">A.</span><span>As duas reservas integram sempre a linha de base.</span></button></li>
+<li><button class="opt" type="button"><span class="opt-letter">B.</span><span>A contingência cobre riscos identificados e integra a linha de base. A gerencial integra o orçamento total e fica fora da linha de base.</span></button></li>
+<li><button class="opt" type="button"><span class="opt-letter">C.</span><span>A gerencial é destinada aos riscos identificados e a contingência fica fora do orçamento.</span></button></li>
+<li><button class="opt" type="button"><span class="opt-letter">D.</span><span>A contingência remunera o contratado e a gerencial cobre apenas reajustes previstos.</span></button></li></ol>
+  <div class="q-feedback" aria-live="polite"><p class="resultado"></p><p class="explicacao" hidden>A reserva gerencial cobre incertezas ainda não identificadas dentro do escopo. Sua incorporação à linha de base passa pela governança e pelo controle de mudanças.</p></div>
+</article>
+<article class="q-card" id="q36" aria-labelledby="enunciado36" data-key="3">
+  <div class="q-head"><span class="content-num">Questão 36</span><h3 class="q-text" id="enunciado36">Qual descrição articula causa, evento incerto e efeito de um risco?</h3></div>
+  <ol class="opt-list"><li><button class="opt" type="button"><span class="opt-letter">A.</span><span>O fornecedor confirmou atraso e a locação já foi contratada.</span></button></li>
+<li><button class="opt" type="button"><span class="opt-letter">B.</span><span>Monitorar o fornecedor toda semana e registrar as cotações.</span></button></li>
+<li><button class="opt" type="button"><span class="opt-letter">C.</span><span>Atrasos e despesas são assuntos para a próxima reunião.</span></button></li>
+<li><button class="opt" type="button"><span class="opt-letter">D.</span><span>Estoque limitado pode atrasar a entrega de bancadas e exigir locação temporária.</span></button></li></ol>
+  <div class="q-feedback" aria-live="polite"><p class="resultado"></p><p class="explicacao" hidden>O estoque é a causa, o possível atraso é o evento e a necessidade de locação é o efeito. Quando o atraso se confirma, ele passa a ser tratado como problema.</p></div>
+</article>
+<article class="q-card" id="q37" aria-labelledby="enunciado37" data-key="0">
+  <div class="q-head"><span class="content-num">Questão 37</span><h3 class="q-text" id="enunciado37">Para que serve o diagrama de Ishikawa na análise de riscos?</h3></div>
+  <ol class="opt-list"><li><button class="opt" type="button"><span class="opt-letter">A.</span><span>Organizar hipóteses de causas e orientar a busca de evidências.</span></button></li>
+<li><button class="opt" type="button"><span class="opt-letter">B.</span><span>Calcular a probabilidade dividindo o número de causas pelo número de áreas.</span></button></li>
+<li><button class="opt" type="button"><span class="opt-letter">C.</span><span>Definir automaticamente a reserva de contingência.</span></button></li>
+<li><button class="opt" type="button"><span class="opt-letter">D.</span><span>Substituir a matriz de rastreabilidade.</span></button></li></ol>
+  <div class="q-feedback" aria-live="polite"><p class="resultado"></p><p class="explicacao" hidden>Os ramos representam hipóteses. Para estimar probabilidade, use evidências e examine como as causas se combinam.</p></div>
+</article>
+<article class="q-card" id="q38" aria-labelledby="enunciado38" data-key="2">
+  <div class="q-head"><span class="content-num">Questão 38</span><h3 class="q-text" id="enunciado38">O que distingue a análise qualitativa da quantitativa?</h3></div>
+  <ol class="opt-list"><li><button class="opt" type="button"><span class="opt-letter">A.</span><span>A qualitativa apura custos já realizados. A quantitativa identifica stakeholders.</span></button></li>
+<li><button class="opt" type="button"><span class="opt-letter">B.</span><span>A qualitativa calcula reservas em reais. A quantitativa apenas ordena os riscos.</span></button></li>
+<li><button class="opt" type="button"><span class="opt-letter">C.</span><span>A qualitativa prioriza por escalas de probabilidade e impacto. A quantitativa estima efeitos em unidades como reais ou dias.</span></button></li>
+<li><button class="opt" type="button"><span class="opt-letter">D.</span><span>Ambas usam sempre o produto de duas notas como valor monetário.</span></button></li></ol>
+  <div class="q-feedback" aria-live="polite"><p class="resultado"></p><p class="explicacao" hidden>A nota da matriz orienta a prioridade. O VME ou uma simulação estimam efeitos numéricos a partir de probabilidades e impactos mensuráveis.</p></div>
+</article>
+<article class="q-card" id="q39" aria-labelledby="enunciado39" data-key="0">
+  <div class="q-head"><span class="content-num">Questão 39</span><h3 class="q-text" id="enunciado39">Antecipar a compra para reduzir a chance de atraso, contratar seguro e preparar locação a ser acionada somente se houver atraso são, respectivamente, quais respostas?</h3></div>
+  <ol class="opt-list"><li><button class="opt" type="button"><span class="opt-letter">A.</span><span>Mitigar, transferir e aceitar de forma ativa.</span></button></li>
+<li><button class="opt" type="button"><span class="opt-letter">B.</span><span>Evitar, escalar e aceitar de forma passiva.</span></button></li>
+<li><button class="opt" type="button"><span class="opt-letter">C.</span><span>Transferir, mitigar e explorar.</span></button></li>
+<li><button class="opt" type="button"><span class="opt-letter">D.</span><span>Aceitar de forma passiva, evitar e compartilhar.</span></button></li></ol>
+  <div class="q-feedback" aria-live="polite"><p class="resultado"></p><p class="explicacao" hidden>A antecipação reduz a probabilidade. O seguro transfere consequências definidas no contrato. O plano de locação prepara uma resposta vinculada a um gatilho.</p></div>
+</article>
+<article class="q-card" id="q40" aria-labelledby="enunciado40" data-key="3">
+  <div class="q-head"><span class="content-num">Questão 40</span><h3 class="q-text" id="enunciado40">Duas instituições decidem cooperar para capturar e dividir o desconto de uma oportunidade de compra conjunta. Qual é a estratégia?</h3></div>
+  <ol class="opt-list"><li><button class="opt" type="button"><span class="opt-letter">A.</span><span>Explorar.</span></button></li>
+<li><button class="opt" type="button"><span class="opt-letter">B.</span><span>Evitar.</span></button></li>
+<li><button class="opt" type="button"><span class="opt-letter">C.</span><span>Transferir.</span></button></li>
+<li><button class="opt" type="button"><span class="opt-letter">D.</span><span>Compartilhar.</span></button></li></ol>
+  <div class="q-feedback" aria-live="polite"><p class="resultado"></p><p class="explicacao" hidden>Compartilhar envolve parceiro e divisão do benefício. Explorar busca assegurar a ocorrência do efeito favorável.</p></div>
+</article>
+<article class="q-card" id="q41" aria-labelledby="enunciado41" data-key="2">
+  <div class="q-head"><span class="content-num">Questão 41</span><h3 class="q-text" id="enunciado41">Qual conjunto permite rastrear a resposta a um risco até sua execução?</h3></div>
+  <ol class="opt-list"><li><button class="opt" type="button"><span class="opt-letter">A.</span><span>Apenas probabilidade e impacto.</span></button></li>
+<li><button class="opt" type="button"><span class="opt-letter">B.</span><span>Somente orçamento total e data do kick-off.</span></button></li>
+<li><button class="opt" type="button"><span class="opt-letter">C.</span><span>ID do risco, entrega da EAP, resposta, gatilho, responsável, vínculo financeiro e evidência.</span></button></li>
+<li><button class="opt" type="button"><span class="opt-letter">D.</span><span>Apenas nome do fornecedor e descrição da ameaça.</span></button></li></ol>
+  <div class="q-feedback" aria-live="polite"><p class="resultado"></p><p class="explicacao" hidden>A matriz liga o risco ao trabalho afetado e indica quem age, quando, com quais recursos e como comprovar a ação.</p></div>
+</article></div></div></section>
+<section id="casos" class="section"><div class="container"><h2 class="section-heading">Casos aplicados</h2>
+<p class="section-intro">Resolva os cálculos antes de escolher uma alternativa.</p><div class="q-list"><aside class="aval-card case"><h3>Caso 1 · Orçamento de um laboratório</h3><p>O projeto prevê 30 kits a R$ 180 por unidade, 80 horas técnicas a R$ 75 por hora e um serviço contratado por R$ 3.600. Há uma ameaça com 30% de chance de gerar R$ 4.000 de custo extra. Adote o valor monetário esperado (VME) da ameaça como contingência. A reserva gerencial é de R$ 1.500. Na escala didática da Unidade 7, 30% corresponde a P = 3 e R$ 4.000 a I = 4. Pontuações de 10 a 16 são altas.</p></aside>
+<article class="q-card" id="q42" aria-labelledby="enunciado42" data-key="1">
+  <div class="q-head"><span class="content-num">Questão 42</span><h3 class="q-text" id="enunciado42">Qual é o total dos custos estimados antes das reservas?</h3></div>
+  <ol class="opt-list"><li><button class="opt" type="button"><span class="opt-letter">A.</span><span>R$ 13.800.</span></button></li>
+<li><button class="opt" type="button"><span class="opt-letter">B.</span><span>R$ 15.000.</span></button></li>
+<li><button class="opt" type="button"><span class="opt-letter">C.</span><span>R$ 16.200.</span></button></li>
+<li><button class="opt" type="button"><span class="opt-letter">D.</span><span>R$ 17.700.</span></button></li></ol>
+  <div class="q-feedback" aria-live="polite"><p class="resultado"></p><p class="explicacao" hidden>Kits: 30 × 180 = R$ 5.400. Equipe: 80 × 75 = R$ 6.000. Serviço: R$ 3.600. A soma é R$ 15.000.</p></div>
+</article>
+<article class="q-card" id="q43" aria-labelledby="enunciado43" data-key="3">
+  <div class="q-head"><span class="content-num">Questão 43</span><h3 class="q-text" id="enunciado43">Qual é a prioridade qualitativa da ameaça?</h3></div>
+  <ol class="opt-list"><li><button class="opt" type="button"><span class="opt-letter">A.</span><span>7, média.</span></button></li>
+<li><button class="opt" type="button"><span class="opt-letter">B.</span><span>1.200, crítica.</span></button></li>
+<li><button class="opt" type="button"><span class="opt-letter">C.</span><span>12, média.</span></button></li>
+<li><button class="opt" type="button"><span class="opt-letter">D.</span><span>12, alta.</span></button></li></ol>
+  <div class="q-feedback" aria-live="polite"><p class="resultado"></p><p class="explicacao" hidden>P × I = 3 × 4 = 12. A pontuação é alta na escala fornecida.</p></div>
+</article>
+<article class="q-card" id="q44" aria-labelledby="enunciado44" data-key="0">
+  <div class="q-head"><span class="content-num">Questão 44</span><h3 class="q-text" id="enunciado44">Qual é o VME da ameaça e o que ele representa?</h3></div>
+  <ol class="opt-list"><li><button class="opt" type="button"><span class="opt-letter">A.</span><span>R$ 1.200 de exposição monetária esperada para planejar a contingência.</span></button></li>
+<li><button class="opt" type="button"><span class="opt-letter">B.</span><span>R$ 4.000 de perda certa antes do evento.</span></button></li>
+<li><button class="opt" type="button"><span class="opt-letter">C.</span><span>R$ 1.200 de custo máximo se o evento ocorrer.</span></button></li>
+<li><button class="opt" type="button"><span class="opt-letter">D.</span><span>R$ 1.500 de reserva gerencial calculada pelo risco.</span></button></li></ol>
+  <div class="q-feedback" aria-live="polite"><p class="resultado"></p><p class="explicacao" hidden>VME = 0,30 × R$ 4.000 = R$ 1.200. Se o evento ocorrer, seu efeito estimado é de R$ 4.000.</p></div>
+</article>
+<article class="q-card" id="q45" aria-labelledby="enunciado45" data-key="1">
+  <div class="q-head"><span class="content-num">Questão 45</span><h3 class="q-text" id="enunciado45">Quais são a linha de base e o orçamento total, respectivamente?</h3></div>
+  <ol class="opt-list"><li><button class="opt" type="button"><span class="opt-letter">A.</span><span>R$ 15.000 e R$ 16.500.</span></button></li>
+<li><button class="opt" type="button"><span class="opt-letter">B.</span><span>R$ 16.200 e R$ 17.700.</span></button></li>
+<li><button class="opt" type="button"><span class="opt-letter">C.</span><span>R$ 16.500 e R$ 17.700.</span></button></li>
+<li><button class="opt" type="button"><span class="opt-letter">D.</span><span>R$ 17.700 e R$ 17.700.</span></button></li></ol>
+  <div class="q-feedback" aria-live="polite"><p class="resultado"></p><p class="explicacao" hidden>A linha de base soma R$ 15.000 e R$ 1.200. O orçamento total acrescenta R$ 1.500 de reserva gerencial.</p></div>
+</article>
+<aside class="aval-card case"><h3>Caso 2 · Formação do preço</h3><p>Para uma proposta independente, um prestador estima custo direto de R$ 3.000. Use AC = 5%, DF = 0%, L = 10%, I = 5% e S = R = G = 0%. Aplique BDI = [(1 + AC + S + R + G) × (1 + DF) × (1 + L)] ÷ (1 − I) − 1. Arredonde apenas o preço final para centavos.</p></aside>
+<article class="q-card" id="q46" aria-labelledby="enunciado46" data-key="2">
+  <div class="q-head"><span class="content-num">Questão 46</span><h3 class="q-text" id="enunciado46">Qual é o preço cobrado pelo prestador?</h3></div>
+  <ol class="opt-list"><li><button class="opt" type="button"><span class="opt-letter">A.</span><span>R$ 3.600,00.</span></button></li>
+<li><button class="opt" type="button"><span class="opt-letter">B.</span><span>R$ 3.450,00.</span></button></li>
+<li><button class="opt" type="button"><span class="opt-letter">C.</span><span>R$ 3.647,37.</span></button></li>
+<li><button class="opt" type="button"><span class="opt-letter">D.</span><span>R$ 3.292,50.</span></button></li></ol>
+  <div class="q-feedback" aria-live="polite"><p class="resultado"></p><p class="explicacao" hidden>O fator é 1,05 × 1,10 ÷ 0,95. Multiplicado pelo custo direto de R$ 3.000, resulta em aproximadamente R$ 3.647,37.</p></div>
+</article>
+<aside class="aval-card case"><h3>Caso 3 · Equipe, cronograma e Sprint</h3><p>Um time planeja uma Sprint de duas semanas para permitir que estudantes registrem solicitações. A história essencial requer 30 horas de desenvolvimento e, depois, 16 horas de testes. O desenvolvimento termina na primeira semana. Na segunda, a única pessoa com o perfil de testes tem 10 horas disponíveis. Um relatório de baixa prioridade tem 6 horas de desenvolvimento e não é necessário à Meta da Sprint.</p></aside>
+<article class="q-card" id="q47" aria-labelledby="enunciado47" data-key="2">
+  <div class="q-head"><span class="content-num">Questão 47</span><h3 class="q-text" id="enunciado47">Qual conclusão deve orientar a revisão do planejamento?</h3></div>
+  <ol class="opt-list"><li><button class="opt" type="button"><span class="opt-letter">A.</span><span>Há uma lacuna total de 6 horas, que desaparece ao retirar o relatório.</span></button></li>
+<li><button class="opt" type="button"><span class="opt-letter">B.</span><span>Basta somar as horas de desenvolvimento e testes e repartir o saldo entre os perfis.</span></button></li>
+<li><button class="opt" type="button"><span class="opt-letter">C.</span><span>Há uma lacuna de 6 horas no perfil de testes. Retirar o relatório, por si só, deixa a lacuna intacta.</span></button></li>
+<li><button class="opt" type="button"><span class="opt-letter">D.</span><span>Basta manter todos os itens e estender a Sprint quando as horas acabarem.</span></button></li></ol>
+  <div class="q-feedback" aria-live="polite"><p class="resultado"></p><p class="explicacao" hidden>O problema é de disponibilidade da competência de testes: 16 − 10 = 6 horas. Liberar horas de desenvolvimento não aumenta a capacidade do perfil de testes.</p></div>
+</article>
+<article class="q-card" id="q48" aria-labelledby="enunciado48" data-key="0">
+  <div class="q-head"><span class="content-num">Questão 48</span><h3 class="q-text" id="enunciado48">Qual resposta é coerente com o MIPPE e com o planejamento da Sprint?</h3></div>
+  <ol class="opt-list"><li><button class="opt" type="button"><span class="opt-letter">A.</span><span>Negociar capacidade de testes e, se ela não for viável, rever a seleção ou dividir a história em um incremento utilizável e verificável.</span></button></li>
+<li><button class="opt" type="button"><span class="opt-letter">B.</span><span>Declarar a história pronta após o desenvolvimento e mover os testes para a próxima Sprint.</span></button></li>
+<li><button class="opt" type="button"><span class="opt-letter">C.</span><span>Atribuir testes adicionais a qualquer pessoa sem verificar sua competência.</span></button></li>
+<li><button class="opt" type="button"><span class="opt-letter">D.</span><span>Trocar o objetivo por um relatório sem discutir o valor com o Product Owner.</span></button></li></ol>
+  <div class="q-feedback" aria-live="polite"><p class="resultado"></p><p class="explicacao" hidden>A negociação trata a dependência de capacidade. Uma divisão viável preserva valor e qualidade, e o plano precisa ser ajustado com o Product Owner quando o escopo mudar.</p></div>
+</article></div></div></section>
+<section id="gabarito" class="section"><div class="container"><h2 class="section-heading">Gabarito</h2>
+<details class="gab" id="respostas"><summary>Consultar gabarito resumido</summary>
+<div class="agenda-wrap"><table><thead><tr><th scope="col">Bloco</th><th scope="col">Respostas</th></tr></thead><tbody>
+<tr><th scope="row">Unidade 5</th><td><a class="gab-item" href="#q1" aria-label="Questão 1, alternativa B">1 · B</a><a class="gab-item" href="#q2" aria-label="Questão 2, alternativa D">2 · D</a><a class="gab-item" href="#q3" aria-label="Questão 3, alternativa A">3 · A</a><a class="gab-item" href="#q4" aria-label="Questão 4, alternativa C">4 · C</a><a class="gab-item" href="#q5" aria-label="Questão 5, alternativa A">5 · A</a><a class="gab-item" href="#q6" aria-label="Questão 6, alternativa D">6 · D</a><a class="gab-item" href="#q7" aria-label="Questão 7, alternativa C">7 · C</a><a class="gab-item" href="#q8" aria-label="Questão 8, alternativa B">8 · B</a><a class="gab-item" href="#q9" aria-label="Questão 9, alternativa D">9 · D</a><a class="gab-item" href="#q10" aria-label="Questão 10, alternativa A">10 · A</a><a class="gab-item" href="#q11" aria-label="Questão 11, alternativa B">11 · B</a><a class="gab-item" href="#q12" aria-label="Questão 12, alternativa C">12 · C</a><a class="gab-item" href="#q13" aria-label="Questão 13, alternativa C">13 · C</a></td></tr>
+<tr><th scope="row">Unidade 6</th><td><a class="gab-item" href="#q14" aria-label="Questão 14, alternativa A">14 · A</a><a class="gab-item" href="#q15" aria-label="Questão 15, alternativa D">15 · D</a><a class="gab-item" href="#q16" aria-label="Questão 16, alternativa B">16 · B</a><a class="gab-item" href="#q17" aria-label="Questão 17, alternativa A">17 · A</a><a class="gab-item" href="#q18" aria-label="Questão 18, alternativa B">18 · B</a><a class="gab-item" href="#q19" aria-label="Questão 19, alternativa D">19 · D</a><a class="gab-item" href="#q20" aria-label="Questão 20, alternativa A">20 · A</a><a class="gab-item" href="#q21" aria-label="Questão 21, alternativa C">21 · C</a><a class="gab-item" href="#q22" aria-label="Questão 22, alternativa A">22 · A</a><a class="gab-item" href="#q23" aria-label="Questão 23, alternativa D">23 · D</a><a class="gab-item" href="#q24" aria-label="Questão 24, alternativa C">24 · C</a><a class="gab-item" href="#q25" aria-label="Questão 25, alternativa B">25 · B</a><a class="gab-item" href="#q26" aria-label="Questão 26, alternativa D">26 · D</a><a class="gab-item" href="#q27" aria-label="Questão 27, alternativa A">27 · A</a><a class="gab-item" href="#q28" aria-label="Questão 28, alternativa B">28 · B</a></td></tr>
+<tr><th scope="row">Unidade 7</th><td><a class="gab-item" href="#q29" aria-label="Questão 29, alternativa C">29 · C</a><a class="gab-item" href="#q30" aria-label="Questão 30, alternativa C">30 · C</a><a class="gab-item" href="#q31" aria-label="Questão 31, alternativa A">31 · A</a><a class="gab-item" href="#q32" aria-label="Questão 32, alternativa D">32 · D</a><a class="gab-item" href="#q33" aria-label="Questão 33, alternativa B">33 · B</a><a class="gab-item" href="#q34" aria-label="Questão 34, alternativa A">34 · A</a><a class="gab-item" href="#q35" aria-label="Questão 35, alternativa B">35 · B</a><a class="gab-item" href="#q36" aria-label="Questão 36, alternativa D">36 · D</a><a class="gab-item" href="#q37" aria-label="Questão 37, alternativa A">37 · A</a><a class="gab-item" href="#q38" aria-label="Questão 38, alternativa C">38 · C</a><a class="gab-item" href="#q39" aria-label="Questão 39, alternativa A">39 · A</a><a class="gab-item" href="#q40" aria-label="Questão 40, alternativa D">40 · D</a><a class="gab-item" href="#q41" aria-label="Questão 41, alternativa C">41 · C</a></td></tr>
+<tr><th scope="row">Casos aplicados</th><td><a class="gab-item" href="#q42" aria-label="Questão 42, alternativa B">42 · B</a><a class="gab-item" href="#q43" aria-label="Questão 43, alternativa D">43 · D</a><a class="gab-item" href="#q44" aria-label="Questão 44, alternativa A">44 · A</a><a class="gab-item" href="#q45" aria-label="Questão 45, alternativa B">45 · B</a><a class="gab-item" href="#q46" aria-label="Questão 46, alternativa C">46 · C</a><a class="gab-item" href="#q47" aria-label="Questão 47, alternativa C">47 · C</a><a class="gab-item" href="#q48" aria-label="Questão 48, alternativa A">48 · A</a></td></tr>
+</tbody></table></div></details></div></section>
+</main>
+<footer><div class="container"><p>Gestão de Projetos · ESPM Rio</p><p>Prof. Clayton J A Silva</p></div></footer>
+<script>
+// Corrige cada questão uma vez e contabiliza somente as tentativas do aluno.
+const cards = Array.from(document.querySelectorAll('.q-card'));
+const score = document.getElementById('acertos');
+const attempted = document.getElementById('respondidas');
+const revealButton = document.getElementById('btn-show');
+const quizStatus = document.getElementById('quiz-status');
+const answerKey = document.getElementById('respostas');
+let correctCount = 0;
+let attemptCount = 0;
+
+function optionsFor(card) {
+  return Array.from(card.querySelectorAll('.opt'));
+}
+
+function updateScore() {
+  score.textContent = correctCount;
+  attempted.textContent = attemptCount;
+}
+
+function showAnswer(card, selected) {
+  if (card.dataset.state) return;
+  const options = optionsFor(card);
+  const key = Number(card.dataset.key);
+  const message = card.querySelector('.resultado');
+  const answered = selected !== undefined;
+  const correct = selected === key;
+  card.dataset.state = answered ? 'answered' : 'revealed';
+  options.forEach((button, index) => {
+    button.setAttribute('aria-disabled', 'true');
+    button.classList.toggle('correct', index === key);
+    button.classList.toggle('wrong', index === selected && !correct);
+  });
+  if (answered) {
+    attemptCount += 1;
+    correctCount += Number(correct);
+    updateScore();
+  }
+  const letter = 'ABCD'[key];
+  message.textContent = answered ? (correct ? 'Correto. Alternativa ' : 'Resposta incorreta. Alternativa correta ') + letter + '.' : 'Alternativa correta ' + letter + '.';
+  card.querySelector('.explicacao').hidden = false;
+}
+
+for (const card of cards) {
+  optionsFor(card).forEach((button, index) => {
+    button.addEventListener('click', () => showAnswer(card, index));
+  });
+}
+
+// A consulta ao gabarito preserva o placar das respostas já dadas.
+revealButton.addEventListener('click', () => {
+  cards.forEach(card => showAnswer(card));
+  answerKey.open = true;
+  quizStatus.textContent = 'Gabarito exibido. Use Reiniciar lista para fazer uma nova tentativa.';
+  revealButton.disabled = true;
+});
+
+document.getElementById('btn-reset').addEventListener('click', () => {
+  cards.forEach(card => {
+    delete card.dataset.state;
+    optionsFor(card).forEach(button => {
+      button.removeAttribute('aria-disabled');
+      button.classList.remove('correct', 'wrong');
+    });
+    card.querySelector('.resultado').textContent = '';
+    card.querySelector('.explicacao').hidden = true;
+  });
+  correctCount = 0;
+  attemptCount = 0;
+  updateScore();
+  answerKey.open = false;
+  revealButton.disabled = false;
+  quizStatus.textContent = 'Lista reiniciada.';
+});
+</script>
+</body>
+</html>
